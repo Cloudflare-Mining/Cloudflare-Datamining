@@ -502,6 +502,12 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "zones.custom-nameservers",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
 		}
 	},
 	"PUT /zones/{zone_id}/custom_ns": {
@@ -984,6 +990,12 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "zones.custom-nameservers",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
 		}
 	}
 }

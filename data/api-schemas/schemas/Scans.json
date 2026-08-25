@@ -184,12 +184,16 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.scans.config",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/vuln_scanner/scans/{scan_id}": {
 		"operationId": "delete-scan",
-		"summary": "Delete Scan",
-		"description": "Deletes a scan and all associated data.\n\nOnly scans in a terminal state (`finished`, `failed`) may be deleted.\nAttempting to delete a scan that is still being created or executed\n(`created`, `scheduled`, `planning`, `running`) returns `400`.\n",
+		"summary": "Delete scan",
+		"description": "Deletes a scan and all associated data. Only scans in a terminal state (`finished`, `failed`) may be deleted. Attempting to delete a scan that is still being created or executed (`created`, `scheduled`, `planning`, `running`) returns `400`.",
 		"responses": {
 			"200": {
 				"description": "Successful response.",
@@ -433,7 +437,12 @@
 		],
 		"tags": [
 			"Scans"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.scans",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation permanently deletes the completed or failed scan and all associated scan data."
 	},
 	"GET /accounts/{account_id}/cloudforce-one/scans/config": {
 		"operationId": "get_ConfigFetch",
@@ -728,7 +737,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.scans.config",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/scans/results/{config_id}": {
 		"operationId": "get_GetOpenPorts",
@@ -947,11 +960,15 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.scans.results",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/vuln_scanner/scans": {
 		"operationId": "list-scans",
-		"summary": "List Scans",
+		"summary": "List scans",
 		"description": "Returns all scans for the account.",
 		"parameters": [
 			{
@@ -1776,11 +1793,15 @@
 		],
 		"tags": [
 			"Scans"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.scans",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/vuln_scanner/scans/{scan_id}": {
 		"operationId": "get-scan",
-		"summary": "Get Scan",
+		"summary": "Get scan",
 		"description": "Returns a single scan by ID.",
 		"responses": {
 			"200": {
@@ -2543,7 +2564,11 @@
 		],
 		"tags": [
 			"Scans"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.scans",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/scans/config/{config_id}": {
 		"operationId": "post_ConfigUpdate",
@@ -2886,7 +2911,11 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.scans.config",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/scans/config": {
 		"operationId": "post_ConfigCreate",
@@ -3222,12 +3251,16 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.scans.config",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/vuln_scanner/scans": {
 		"operationId": "create-scan",
-		"summary": "Create Scan",
-		"description": "Creates and starts a new vulnerability scan. The response may include\nnon-fatal warnings in the `messages` array.\n",
+		"summary": "Create scan",
+		"description": "Creates and starts a new vulnerability scan. The response may include non-fatal warnings in the `messages` array.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -4053,6 +4086,10 @@
 		],
 		"tags": [
 			"Scans"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.scans",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

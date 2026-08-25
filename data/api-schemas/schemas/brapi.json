@@ -912,6 +912,17 @@
 					"type": "boolean",
 					"default": false
 				}
+			},
+			{
+				"name": "cf-brapi-guardrails",
+				"in": "header",
+				"description": "Optional base64url-encoded JSON connection guardrails (mode)",
+				"schema": {
+					"description": "Optional base64url-encoded JSON connection guardrails (mode)",
+					"type": "string",
+					"example": "eyJtb2RlIjoicmVhZG9ubHkifQ",
+					"nullable": true
+				}
 			}
 		],
 		"responses": {
@@ -2558,6 +2569,17 @@
 					"description": "Target ID, e.g. page ID.",
 					"type": "string",
 					"pattern": "^[a-zA-Z0-9]+$"
+				}
+			},
+			{
+				"name": "cf-brapi-guardrails",
+				"in": "header",
+				"description": "Optional base64url-encoded JSON connection guardrails (mode)",
+				"schema": {
+					"description": "Optional base64url-encoded JSON connection guardrails (mode)",
+					"type": "string",
+					"example": "eyJtb2RlIjoicmVhZG9ubHkifQ",
+					"nullable": true
 				}
 			}
 		],
@@ -6478,6 +6500,296 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/live_view": {
+		"operationId": "brapi-post_LiveView",
+		"summary": "Mint live view URLs for a browser session",
+		"description": "Generates time-limited URLs to view a remote browser session. Set `guardrails: { mode: 'readonly' }` to create a view-only link.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "session_id",
+				"in": "path",
+				"description": "Browser session ID",
+				"required": true,
+				"schema": {
+					"description": "Browser session ID",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"expiresInMs": {
+								"description": "How long the live view URLs remain valid, in milliseconds. Default: 5 minutes. Max: 60 minutes.",
+								"type": "number",
+								"default": 300000,
+								"maximum": 3600000,
+								"minimum": 60000
+							},
+							"guardrails": {
+								"description": "Connection guardrails. Use `{ mode: 'readonly' }` to generate a view-only link.",
+								"type": "object",
+								"additionalProperties": false,
+								"properties": {
+									"mode": {
+										"type": "string",
+										"enum": [
+											"readonly"
+										]
+									}
+								},
+								"required": [
+									"mode"
+								]
+							},
+							"mode": {
+								"description": "UI mode: 'devtools' (Chrome DevTools), 'tab' (single tab view), 'full' (multi-tab browser)",
+								"type": "string",
+								"default": "devtools",
+								"enum": [
+									"devtools",
+									"tab",
+									"full"
+								]
+							},
+							"targetId": {
+								"description": "Target ID (page) to connect to. If omitted, auto-resolves to the first active page.",
+								"type": "string",
+								"pattern": "^[a-fA-F0-9]+$"
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Live view URLs generated successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"devtoolsFrontendUrl": {
+									"description": "URL to open the live view in a browser",
+									"type": "string",
+									"format": "uri"
+								},
+								"id": {
+									"description": "Target ID",
+									"type": "string"
+								},
+								"options": {
+									"type": "object",
+									"properties": {
+										"guardrails": {
+											"description": "Connection guardrails applied to this link",
+											"type": "object",
+											"additionalProperties": false,
+											"properties": {
+												"mode": {
+													"type": "string",
+													"enum": [
+														"readonly"
+													]
+												}
+											},
+											"required": [
+												"mode"
+											]
+										},
+										"mode": {
+											"description": "UI mode for the live view",
+											"type": "string",
+											"enum": [
+												"devtools",
+												"tab",
+												"full"
+											]
+										}
+									},
+									"required": [
+										"mode"
+									]
+								},
+								"webSocketDebuggerUrl": {
+									"description": "WebSocket URL for CDP connection",
+									"type": "string",
+									"format": "uri"
+								}
+							},
+							"required": [
+								"webSocketDebuggerUrl",
+								"devtoolsFrontendUrl",
+								"id",
+								"options"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad request - invalid parameters",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Browser session or target not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal server error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"brapi"
+		],
+		"x-api-token-group": [
+			"Browser Rendering Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			],
+			"type": "string"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "browser-run.devtools.browser.live-view",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},

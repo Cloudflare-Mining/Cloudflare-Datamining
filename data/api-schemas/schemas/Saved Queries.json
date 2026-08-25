@@ -60,7 +60,8 @@
 											"type": "boolean"
 										},
 										"created": {
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"createdBy": {
 											"type": "string"
@@ -448,7 +449,8 @@
 											"type": "object"
 										},
 										"updated": {
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"updatedBy": {
 											"type": "string"
@@ -664,7 +666,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "observability.queries",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This operation deletes the saved query."
 	},
 	"GET /accounts/{account_id}/workers/observability/queries": {
 		"operationId": "queries.list",
@@ -764,7 +766,8 @@
 												"type": "boolean"
 											},
 											"created": {
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"createdBy": {
 												"type": "string"
@@ -1152,7 +1155,8 @@
 												"type": "object"
 											},
 											"updated": {
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"updatedBy": {
 												"type": "string"
@@ -1369,8 +1373,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "observability.queries",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/workers/observability/queries/{queryId}": {
 		"operationId": "queries.get",
@@ -1433,7 +1436,8 @@
 											"type": "boolean"
 										},
 										"created": {
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"createdBy": {
 											"type": "string"
@@ -1821,7 +1825,8 @@
 											"type": "object"
 										},
 										"updated": {
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"updatedBy": {
 											"type": "string"
@@ -2037,8 +2042,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "observability.queries",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/workers/observability/queries/{queryId}": {
 		"operationId": "queries.patch",
@@ -2498,7 +2502,8 @@
 											"type": "boolean"
 										},
 										"created": {
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"createdBy": {
 											"type": "string"
@@ -2886,7 +2891,8 @@
 											"type": "object"
 										},
 										"updated": {
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"updatedBy": {
 											"type": "string"
@@ -3101,8 +3107,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "observability.queries",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/workers/observability/queries": {
 		"operationId": "queries.post",
@@ -3552,7 +3557,8 @@
 											"type": "boolean"
 										},
 										"created": {
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"createdBy": {
 											"type": "string"
@@ -3940,7 +3946,8 @@
 											"type": "object"
 										},
 										"updated": {
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"updatedBy": {
 											"type": "string"
@@ -4155,7 +4162,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "observability.queries",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

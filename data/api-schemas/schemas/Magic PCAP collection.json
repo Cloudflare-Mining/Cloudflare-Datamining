@@ -60,7 +60,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.pcaps.ownership",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/pcaps": {
 		"operationId": "magic-pcap-collection-list-packet-capture-requests",
@@ -931,7 +935,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.pcaps",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/pcaps/{pcap_id}": {
 		"operationId": "magic-pcap-collection-get-pcap-request",
@@ -1768,7 +1776,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.pcaps",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/pcaps/{pcap_id}/download": {
 		"operationId": "magic-pcap-collection-download-simple-pcap",
@@ -1835,7 +1847,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.pcaps.download",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/pcaps/ownership": {
 		"operationId": "magic-pcap-collection-list-pca-ps-bucket-ownership",
@@ -2334,7 +2350,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.pcaps.ownership",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/pcaps": {
 		"operationId": "magic-pcap-collection-create-pcap-request",
@@ -3360,7 +3380,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.pcaps",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/pcaps/ownership": {
 		"operationId": "magic-pcap-collection-add-buckets-for-full-packet-captures",
@@ -3790,7 +3814,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.pcaps.ownership",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/pcaps/ownership/validate": {
 		"operationId": "magic-pcap-collection-validate-buckets-for-full-packet-captures",
@@ -4226,7 +4254,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.pcaps.ownership",
+		"x-fern-sdk-method-name": "validate",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/pcaps/{pcap_id}/stop": {
 		"operationId": "magic-pcap-collection-stop-full-pcap",
@@ -4374,6 +4406,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.pcaps",
+		"x-fern-sdk-method-name": "stop",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation halts an in-progress full packet capture. Any unsaved capture data will be lost."
 	}
 }

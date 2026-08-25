@@ -256,7 +256,11 @@
 		],
 		"x-api-token-group": [
 			"IP Prefixes: Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.prefixes.service-bindings",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}/bindings": {
 		"operationId": "ip-address-management-service-bindings-list-service-bindings",
@@ -562,7 +566,11 @@
 		"x-api-token-group": [
 			"IP Prefixes: Write",
 			"IP Prefixes: Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.prefixes.service-bindings",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}/bindings/{binding_id}": {
 		"operationId": "ip-address-management-service-bindings-get-service-binding",
@@ -877,7 +885,11 @@
 		"x-api-token-group": [
 			"IP Prefixes: Write",
 			"IP Prefixes: Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.prefixes.service-bindings",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/addressing/services": {
 		"operationId": "ip-address-management-service-bindings-list-services",
@@ -1141,7 +1153,11 @@
 		"x-api-token-group": [
 			"IP Prefixes: Write",
 			"IP Prefixes: Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.services",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/addressing/prefixes/{prefix_id}/bindings": {
 		"operationId": "ip-address-management-service-bindings-create-service-binding",
@@ -1471,6 +1487,10 @@
 		],
 		"x-api-token-group": [
 			"IP Prefixes: Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.prefixes.service-bindings",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

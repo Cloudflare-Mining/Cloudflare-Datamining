@@ -1528,7 +1528,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rum.site-info",
+		"x-fern-sdk-method-name": "list-site-tags",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/rum/site_info/validate/{hostname}": {
 		"operationId": "web-analytics-validate-site-hostname",
@@ -1770,7 +1774,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rum.site-info",
+		"x-fern-sdk-method-name": "validate-hostname",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/rum/site_info/zone_tag/list": {
 		"operationId": "web-analytics-list-zone-tags",
@@ -2006,7 +2014,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rum.site-info",
+		"x-fern-sdk-method-name": "list-zone-tags",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/rum/v2/{ruleset_id}/rules": {
 		"operationId": "web-analytics-list-rules",

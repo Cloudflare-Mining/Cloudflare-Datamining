@@ -1,8 +1,8 @@
 {
 	"GET /zones/{zone_id}/api_gateway/configuration": {
 		"operationId": "api-shield-settings-retrieve-information-about-specific-configuration-properties",
-		"summary": "Retrieve information about specific configuration properties",
-		"description": "Gets the current API Shield configuration settings for a zone, including validation behavior and enforcement mode.",
+		"summary": "Get session identifier settings",
+		"description": "Returns the authentication identifier characteristics configured for the zone. Header, cookie, or JWT claim values identify distinct API sessions.",
 		"responses": {
 			"200": {
 				"description": "Retrieve information about specific configuration properties response",
@@ -308,14 +308,14 @@
 			"Domain API Gateway Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.configurations",
+		"x-fern-sdk-group-name": "api-security.session-identifiers",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/api_gateway/configuration": {
 		"operationId": "api-shield-settings-set-configuration-properties",
-		"summary": "Update configuration properties",
-		"description": "Updates API Shield configuration settings for a zone. Can modify validation strictness, enforcement mode, and other global settings.",
+		"summary": "Update session identifier settings",
+		"description": "Replaces the zone's authentication identifier characteristics used to identify distinct API sessions.",
 		"requestBody": {
 			"content": {
 				"application/json": {
@@ -696,7 +696,7 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.configurations",
+		"x-fern-sdk-group-name": "api-security.session-identifiers",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	}

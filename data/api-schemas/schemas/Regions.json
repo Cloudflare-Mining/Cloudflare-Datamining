@@ -2,7 +2,6 @@
 	"GET /accounts/{account_id}/dls/regions": {
 		"operationId": "publicListRegions",
 		"summary": "List DLS regions for an account",
-		"description": "List the DLS regions (managed and custom) available to an account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -66,11 +65,6 @@
 												"type": "integer",
 												"minimum": 1000
 											},
-											"error_chain": {
-												"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-												"type": "array",
-												"items": "[Circular ~.GET /accounts/{account_id}/dls/regions.responses.200.content.application/json.schema.properties.errors.items]"
-											},
 											"message": {
 												"type": "string"
 											}
@@ -89,11 +83,6 @@
 											"code": {
 												"type": "integer",
 												"minimum": 1000
-											},
-											"error_chain": {
-												"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-												"type": "array",
-												"items": "[Circular ~.GET /accounts/{account_id}/dls/regions.responses.200.content.application/json.schema.properties.messages.items]"
 											},
 											"message": {
 												"type": "string"
@@ -204,11 +193,6 @@
 														"type": "integer",
 														"minimum": 1000
 													},
-													"error_chain": {
-														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"type": "array",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regions.responses.400.content.application/json.schema.allOf.0.properties.messages.items]"
-													},
 													"message": {
 														"type": "string"
 													}
@@ -238,11 +222,6 @@
 													"code": {
 														"type": "integer",
 														"minimum": 1000
-													},
-													"error_chain": {
-														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"type": "array",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regions.responses.400.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -287,11 +266,6 @@
 														"type": "integer",
 														"minimum": 1000
 													},
-													"error_chain": {
-														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"type": "array",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regions.responses.401.content.application/json.schema.allOf.0.properties.messages.items]"
-													},
 													"message": {
 														"type": "string"
 													}
@@ -321,11 +295,6 @@
 													"code": {
 														"type": "integer",
 														"minimum": 1000
-													},
-													"error_chain": {
-														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"type": "array",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regions.responses.401.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -370,11 +339,6 @@
 														"type": "integer",
 														"minimum": 1000
 													},
-													"error_chain": {
-														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"type": "array",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regions.responses.403.content.application/json.schema.allOf.0.properties.messages.items]"
-													},
 													"message": {
 														"type": "string"
 													}
@@ -404,11 +368,6 @@
 													"code": {
 														"type": "integer",
 														"minimum": 1000
-													},
-													"error_chain": {
-														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"type": "array",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regions.responses.403.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -453,11 +412,6 @@
 														"type": "integer",
 														"minimum": 1000
 													},
-													"error_chain": {
-														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"type": "array",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regions.responses.500.content.application/json.schema.allOf.0.properties.messages.items]"
-													},
 													"message": {
 														"type": "string"
 													}
@@ -487,11 +441,6 @@
 													"code": {
 														"type": "integer",
 														"minimum": 1000
-													},
-													"error_chain": {
-														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"type": "array",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regions.responses.500.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -531,15 +480,14 @@
 		"tags": [
 			"Regions"
 		],
-		"x-api-token-group": [
-			"DLS: Read",
-			"DLS: Write"
-		]
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dls.regions",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dls/regions/{region_id}": {
 		"operationId": "publicGetRegion",
 		"summary": "Get a DLS region",
-		"description": "Retrieve a single DLS region (managed or custom) by ID or region key.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -588,11 +536,6 @@
 																"type": "integer",
 																"minimum": 1000
 															},
-															"error_chain": {
-																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-																"type": "array",
-																"items": "[Circular ~.GET /accounts/{account_id}/dls/regions/{region_id}.responses.200.content.application/json.schema.allOf.0.allOf.0.properties.messages.items]"
-															},
 															"message": {
 																"type": "string"
 															}
@@ -622,11 +565,6 @@
 															"code": {
 																"type": "integer",
 																"minimum": 1000
-															},
-															"error_chain": {
-																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-																"type": "array",
-																"items": "[Circular ~.GET /accounts/{account_id}/dls/regions/{region_id}.responses.200.content.application/json.schema.allOf.0.allOf.1.properties.errors.items]"
 															},
 															"message": {
 																"type": "string"
@@ -714,11 +652,6 @@
 														"type": "integer",
 														"minimum": 1000
 													},
-													"error_chain": {
-														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"type": "array",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regions/{region_id}.responses.401.content.application/json.schema.allOf.0.properties.messages.items]"
-													},
 													"message": {
 														"type": "string"
 													}
@@ -748,11 +681,6 @@
 													"code": {
 														"type": "integer",
 														"minimum": 1000
-													},
-													"error_chain": {
-														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"type": "array",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regions/{region_id}.responses.401.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -797,11 +725,6 @@
 														"type": "integer",
 														"minimum": 1000
 													},
-													"error_chain": {
-														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"type": "array",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regions/{region_id}.responses.403.content.application/json.schema.allOf.0.properties.messages.items]"
-													},
 													"message": {
 														"type": "string"
 													}
@@ -831,11 +754,6 @@
 													"code": {
 														"type": "integer",
 														"minimum": 1000
-													},
-													"error_chain": {
-														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"type": "array",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regions/{region_id}.responses.403.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -880,11 +798,6 @@
 														"type": "integer",
 														"minimum": 1000
 													},
-													"error_chain": {
-														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"type": "array",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regions/{region_id}.responses.404.content.application/json.schema.allOf.0.properties.messages.items]"
-													},
 													"message": {
 														"type": "string"
 													}
@@ -914,11 +827,6 @@
 													"code": {
 														"type": "integer",
 														"minimum": 1000
-													},
-													"error_chain": {
-														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"type": "array",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regions/{region_id}.responses.404.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -963,11 +871,6 @@
 														"type": "integer",
 														"minimum": 1000
 													},
-													"error_chain": {
-														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"type": "array",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regions/{region_id}.responses.500.content.application/json.schema.allOf.0.properties.messages.items]"
-													},
 													"message": {
 														"type": "string"
 													}
@@ -997,11 +900,6 @@
 													"code": {
 														"type": "integer",
 														"minimum": 1000
-													},
-													"error_chain": {
-														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"type": "array",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regions/{region_id}.responses.500.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -1041,9 +939,9 @@
 		"tags": [
 			"Regions"
 		],
-		"x-api-token-group": [
-			"DLS: Read",
-			"DLS: Write"
-		]
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dls.regions",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	}
 }

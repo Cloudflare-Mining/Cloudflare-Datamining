@@ -2,7 +2,7 @@
 	"DELETE /zones/{zone_id}/schema_validation/schemas/{schema_id}": {
 		"operationId": "schema-validation-delete-schema",
 		"summary": "Delete a schema",
-		"description": "Permanently removes an uploaded OpenAPI schema from API Shield. Operations using this schema will lose their validation rules.",
+		"description": "Permanently removes an uploaded OpenAPI schema from API Security. Operations using this schema will lose their validation rules.",
 		"responses": {
 			"200": {
 				"description": "Success",
@@ -100,18 +100,9 @@
 								{
 									"properties": {
 										"result": {
+											"description": "Schema deletion returns no result body.",
 											"type": "object",
-											"properties": {
-												"id": {
-													"description": "The ID of the schema that was just deleted",
-													"type": "string",
-													"format": "uuid",
-													"x-auditable": true
-												}
-											},
-											"required": [
-												"id"
-											]
+											"nullable": true
 										}
 									},
 									"required": [
@@ -255,14 +246,15 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "schema-validation.schemas",
+		"x-fern-sdk-group-name": "api-security.schema-validation.schemas",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation permanently deletes the uploaded schema and removes its validation coverage."
 	},
 	"GET /zones/{zone_id}/schema_validation/schemas": {
 		"operationId": "schema-validation-list-schemas-paginated",
 		"summary": "List all uploaded schemas",
-		"description": "Lists all OpenAPI schemas uploaded to API Shield with pagination support.",
+		"description": "Lists all OpenAPI schemas uploaded to API Security.",
 		"parameters": [
 			{
 				"description": "Page number of paginated results.",
@@ -667,14 +659,14 @@
 			"Domain API Gateway Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "schema-validation.schemas",
+		"x-fern-sdk-group-name": "api-security.schema-validation.schemas",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/schema_validation/schemas/{schema_id}": {
 		"operationId": "schema-validation-get-schema",
 		"summary": "Get details of a schema",
-		"description": "Gets the contents and metadata of a specific OpenAPI schema uploaded to API Shield.",
+		"description": "Gets the contents and metadata of a specific OpenAPI schema uploaded to API Security.",
 		"parameters": [
 			{
 				"description": "Omit the source-files of schemas and only retrieve their meta-data.",
@@ -1007,13 +999,13 @@
 			"Domain API Gateway Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "schema-validation.schemas",
+		"x-fern-sdk-group-name": "api-security.schema-validation.schemas",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/schema_validation/schemas/{schema_id}/operations": {
 		"operationId": "schema-validation-extract-operations-from-schema",
-		"summary": "Retrieve all operations from the schema.",
+		"summary": "Retrieve all operations from the schema",
 		"description": "Retrieves all operations from the schema. Operations that already exist in API Shield Endpoint Management will be returned as full operations.",
 		"parameters": [
 			{
@@ -1662,9 +1654,10 @@
 																										]
 																									},
 																									"is_learned": {
-																										"description": "True if schema is Cloudflare-provided.",
+																										"description": "Deprecated. Always false.",
 																										"type": "boolean",
-																										"example": true,
+																										"example": false,
+																										"deprecated": true,
 																										"x-auditable": true
 																									},
 																									"name": {
@@ -1897,8 +1890,8 @@
 			"Domain API Gateway Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "schema-validation.schemas.operations",
-		"x-fern-sdk-method-name": "get",
+		"x-fern-sdk-group-name": "api-security.schema-validation.schemas.operations",
+		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/schema_validation/schemas/hosts": {
@@ -2277,14 +2270,14 @@
 			"Domain API Gateway Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "schema-validation.schemas.hosts",
+		"x-fern-sdk-group-name": "api-security.schema-validation.schemas.hosts",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/schema_validation/schemas/{schema_id}": {
 		"operationId": "schema-validation-edit-schema",
-		"summary": "Edit details of a schema to enable validation",
-		"description": "Modifies an existing OpenAPI schema in API Shield, updating the validation rules for associated API operations.",
+		"summary": "Set schema validation state",
+		"description": "Enables or disables validation for an uploaded OpenAPI schema without changing the schema document.",
 		"requestBody": {
 			"content": {
 				"application/json": {
@@ -2620,14 +2613,14 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "schema-validation.schemas",
-		"x-fern-sdk-method-name": "edit",
+		"x-fern-sdk-group-name": "api-security.schema-validation.schemas",
+		"x-fern-sdk-method-name": "set-validation",
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/schema_validation/schemas": {
 		"operationId": "schema-validation-create-schema",
 		"summary": "Upload a schema",
-		"description": "Uploads a new OpenAPI schema for API Shield schema validation. The schema defines expected request/response formats for API endpoints.",
+		"description": "Uploads an OpenAPI schema that defines expected request formats for API operations.",
 		"requestBody": {
 			"content": {
 				"application/json": {
@@ -3157,7 +3150,7 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "schema-validation.schemas",
+		"x-fern-sdk-group-name": "api-security.schema-validation.schemas",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	}

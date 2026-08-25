@@ -140,13 +140,11 @@
 																			"properties": {
 																				"enable_high_bitrate": {
 																					"description": "Enable High Quality Audio for your meetings",
-																					"type": "boolean",
-																					"default": false
+																					"type": "boolean"
 																				},
 																				"enable_stereo": {
 																					"description": "Enable Stereo for your meetings",
-																					"type": "boolean",
-																					"default": false
+																					"type": "boolean"
 																				}
 																			}
 																		},
@@ -349,8 +347,7 @@
 																	"type": "boolean"
 																},
 																"is_recorder": {
-																	"type": "boolean",
-																	"default": false
+																	"type": "boolean"
 																},
 																"kick_participant": {
 																	"type": "boolean"
@@ -493,7 +490,6 @@
 																"recorder_type": {
 																	"description": "Type of the recording peer",
 																	"type": "string",
-																	"default": "NONE",
 																	"enum": [
 																		"RECORDER",
 																		"LIVESTREAMER",
@@ -581,24 +577,19 @@
 																					"type": "object",
 																					"properties": {
 																						"600": {
-																							"type": "string",
-																							"default": "#222222"
+																							"type": "string"
 																						},
 																						"700": {
-																							"type": "string",
-																							"default": "#1f1f1f"
+																							"type": "string"
 																						},
 																						"800": {
-																							"type": "string",
-																							"default": "#1b1b1b"
+																							"type": "string"
 																						},
 																						"900": {
-																							"type": "string",
-																							"default": "#181818"
+																							"type": "string"
 																						},
 																						"1000": {
-																							"type": "string",
-																							"default": "#141414"
+																							"type": "string"
 																						}
 																					},
 																					"required": [
@@ -613,24 +604,19 @@
 																					"type": "object",
 																					"properties": {
 																						"300": {
-																							"type": "string",
-																							"default": "#844d1c"
+																							"type": "string"
 																						},
 																						"400": {
-																							"type": "string",
-																							"default": "#9d5b22"
+																							"type": "string"
 																						},
 																						"500": {
-																							"type": "string",
-																							"default": "#b56927"
+																							"type": "string"
 																						},
 																						"600": {
-																							"type": "string",
-																							"default": "#d37c30"
+																							"type": "string"
 																						},
 																						"700": {
-																							"type": "string",
-																							"default": "#d9904f"
+																							"type": "string"
 																						}
 																					},
 																					"required": [
@@ -642,28 +628,22 @@
 																					]
 																				},
 																				"danger": {
-																					"type": "string",
-																					"default": "#FF2D2D"
+																					"type": "string"
 																				},
 																				"success": {
-																					"type": "string",
-																					"default": "#62A504"
+																					"type": "string"
 																				},
 																				"text": {
-																					"type": "string",
-																					"default": "#EEEEEE"
+																					"type": "string"
 																				},
 																				"text_on_brand": {
-																					"type": "string",
-																					"default": "#EEEEEE"
+																					"type": "string"
 																				},
 																				"video_bg": {
-																					"type": "string",
-																					"default": "#191919"
+																					"type": "string"
 																				},
 																				"warning": {
-																					"type": "string",
-																					"default": "#FFCD07"
+																					"type": "string"
 																				}
 																			},
 																			"required": [
@@ -689,7 +669,6 @@
 																		},
 																		"spacing_base": {
 																			"type": "number",
-																			"default": 4,
 																			"minimum": 1
 																		},
 																		"theme": {
@@ -748,7 +727,11 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.presets",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "This operation permanently deletes the preset."
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/presets": {
 		"operationId": "get-presets",
@@ -909,7 +892,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.presets",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/presets/{preset_id}": {
 		"operationId": "get-presets-preset_id",
@@ -1052,13 +1038,11 @@
 																			"properties": {
 																				"enable_high_bitrate": {
 																					"description": "Enable High Quality Audio for your meetings",
-																					"type": "boolean",
-																					"default": false
+																					"type": "boolean"
 																				},
 																				"enable_stereo": {
 																					"description": "Enable Stereo for your meetings",
-																					"type": "boolean",
-																					"default": false
+																					"type": "boolean"
 																				}
 																			}
 																		},
@@ -1261,8 +1245,7 @@
 																	"type": "boolean"
 																},
 																"is_recorder": {
-																	"type": "boolean",
-																	"default": false
+																	"type": "boolean"
 																},
 																"kick_participant": {
 																	"type": "boolean"
@@ -1405,7 +1388,6 @@
 																"recorder_type": {
 																	"description": "Type of the recording peer",
 																	"type": "string",
-																	"default": "NONE",
 																	"enum": [
 																		"RECORDER",
 																		"LIVESTREAMER",
@@ -1493,24 +1475,19 @@
 																					"type": "object",
 																					"properties": {
 																						"600": {
-																							"type": "string",
-																							"default": "#222222"
+																							"type": "string"
 																						},
 																						"700": {
-																							"type": "string",
-																							"default": "#1f1f1f"
+																							"type": "string"
 																						},
 																						"800": {
-																							"type": "string",
-																							"default": "#1b1b1b"
+																							"type": "string"
 																						},
 																						"900": {
-																							"type": "string",
-																							"default": "#181818"
+																							"type": "string"
 																						},
 																						"1000": {
-																							"type": "string",
-																							"default": "#141414"
+																							"type": "string"
 																						}
 																					},
 																					"required": [
@@ -1525,24 +1502,19 @@
 																					"type": "object",
 																					"properties": {
 																						"300": {
-																							"type": "string",
-																							"default": "#844d1c"
+																							"type": "string"
 																						},
 																						"400": {
-																							"type": "string",
-																							"default": "#9d5b22"
+																							"type": "string"
 																						},
 																						"500": {
-																							"type": "string",
-																							"default": "#b56927"
+																							"type": "string"
 																						},
 																						"600": {
-																							"type": "string",
-																							"default": "#d37c30"
+																							"type": "string"
 																						},
 																						"700": {
-																							"type": "string",
-																							"default": "#d9904f"
+																							"type": "string"
 																						}
 																					},
 																					"required": [
@@ -1554,28 +1526,22 @@
 																					]
 																				},
 																				"danger": {
-																					"type": "string",
-																					"default": "#FF2D2D"
+																					"type": "string"
 																				},
 																				"success": {
-																					"type": "string",
-																					"default": "#62A504"
+																					"type": "string"
 																				},
 																				"text": {
-																					"type": "string",
-																					"default": "#EEEEEE"
+																					"type": "string"
 																				},
 																				"text_on_brand": {
-																					"type": "string",
-																					"default": "#EEEEEE"
+																					"type": "string"
 																				},
 																				"video_bg": {
-																					"type": "string",
-																					"default": "#191919"
+																					"type": "string"
 																				},
 																				"warning": {
-																					"type": "string",
-																					"default": "#FFCD07"
+																					"type": "string"
 																				}
 																			},
 																			"required": [
@@ -1601,7 +1567,6 @@
 																		},
 																		"spacing_base": {
 																			"type": "number",
-																			"default": 4,
 																			"minimum": 1
 																		},
 																		"theme": {
@@ -1660,7 +1625,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.presets",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/realtime/kit/{app_id}/presets/{preset_id}": {
 		"operationId": "patch-presets-preset_id",
@@ -1748,13 +1716,11 @@
 												"properties": {
 													"enable_high_bitrate": {
 														"description": "Enable High Quality Audio for your meetings",
-														"type": "boolean",
-														"default": false
+														"type": "boolean"
 													},
 													"enable_stereo": {
 														"description": "Enable Stereo for your meetings",
-														"type": "boolean",
-														"default": false
+														"type": "boolean"
 													}
 												}
 											},
@@ -1918,8 +1884,7 @@
 										"type": "boolean"
 									},
 									"is_recorder": {
-										"type": "boolean",
-										"default": false
+										"type": "boolean"
 									},
 									"kick_participant": {
 										"type": "boolean"
@@ -2037,7 +2002,6 @@
 									"recorder_type": {
 										"description": "Type of the recording peer",
 										"type": "string",
-										"default": "NONE",
 										"enum": [
 											"RECORDER",
 											"LIVESTREAMER",
@@ -2102,24 +2066,19 @@
 														"type": "object",
 														"properties": {
 															"600": {
-																"type": "string",
-																"default": "#222222"
+																"type": "string"
 															},
 															"700": {
-																"type": "string",
-																"default": "#1f1f1f"
+																"type": "string"
 															},
 															"800": {
-																"type": "string",
-																"default": "#1b1b1b"
+																"type": "string"
 															},
 															"900": {
-																"type": "string",
-																"default": "#181818"
+																"type": "string"
 															},
 															"1000": {
-																"type": "string",
-																"default": "#141414"
+																"type": "string"
 															}
 														}
 													},
@@ -2127,50 +2086,39 @@
 														"type": "object",
 														"properties": {
 															"300": {
-																"type": "string",
-																"default": "#844d1c"
+																"type": "string"
 															},
 															"400": {
-																"type": "string",
-																"default": "#9d5b22"
+																"type": "string"
 															},
 															"500": {
-																"type": "string",
-																"default": "#b56927"
+																"type": "string"
 															},
 															"600": {
-																"type": "string",
-																"default": "#d37c30"
+																"type": "string"
 															},
 															"700": {
-																"type": "string",
-																"default": "#d9904f"
+																"type": "string"
 															}
 														}
 													},
 													"danger": {
-														"type": "string",
-														"default": "#FF2D2D"
+														"type": "string"
 													},
 													"success": {
-														"type": "string",
-														"default": "#62A504"
+														"type": "string"
 													},
 													"text": {
-														"type": "string",
-														"default": "#EEEEEE"
+														"type": "string"
 													},
 													"text_on_brand": {
-														"type": "string",
-														"default": "#EEEEEE"
+														"type": "string"
 													},
 													"video_bg": {
-														"type": "string",
-														"default": "#191919"
+														"type": "string"
 													},
 													"warning": {
-														"type": "string",
-														"default": "#FFCD07"
+														"type": "string"
 													}
 												}
 											},
@@ -2186,7 +2134,6 @@
 											},
 											"spacing_base": {
 												"type": "number",
-												"default": 4,
 												"minimum": 1
 											},
 											"theme": {
@@ -2310,13 +2257,11 @@
 																			"properties": {
 																				"enable_high_bitrate": {
 																					"description": "Enable High Quality Audio for your meetings",
-																					"type": "boolean",
-																					"default": false
+																					"type": "boolean"
 																				},
 																				"enable_stereo": {
 																					"description": "Enable Stereo for your meetings",
-																					"type": "boolean",
-																					"default": false
+																					"type": "boolean"
 																				}
 																			}
 																		},
@@ -2519,8 +2464,7 @@
 																	"type": "boolean"
 																},
 																"is_recorder": {
-																	"type": "boolean",
-																	"default": false
+																	"type": "boolean"
 																},
 																"kick_participant": {
 																	"type": "boolean"
@@ -2663,7 +2607,6 @@
 																"recorder_type": {
 																	"description": "Type of the recording peer",
 																	"type": "string",
-																	"default": "NONE",
 																	"enum": [
 																		"RECORDER",
 																		"LIVESTREAMER",
@@ -2751,24 +2694,19 @@
 																					"type": "object",
 																					"properties": {
 																						"600": {
-																							"type": "string",
-																							"default": "#222222"
+																							"type": "string"
 																						},
 																						"700": {
-																							"type": "string",
-																							"default": "#1f1f1f"
+																							"type": "string"
 																						},
 																						"800": {
-																							"type": "string",
-																							"default": "#1b1b1b"
+																							"type": "string"
 																						},
 																						"900": {
-																							"type": "string",
-																							"default": "#181818"
+																							"type": "string"
 																						},
 																						"1000": {
-																							"type": "string",
-																							"default": "#141414"
+																							"type": "string"
 																						}
 																					},
 																					"required": [
@@ -2783,24 +2721,19 @@
 																					"type": "object",
 																					"properties": {
 																						"300": {
-																							"type": "string",
-																							"default": "#844d1c"
+																							"type": "string"
 																						},
 																						"400": {
-																							"type": "string",
-																							"default": "#9d5b22"
+																							"type": "string"
 																						},
 																						"500": {
-																							"type": "string",
-																							"default": "#b56927"
+																							"type": "string"
 																						},
 																						"600": {
-																							"type": "string",
-																							"default": "#d37c30"
+																							"type": "string"
 																						},
 																						"700": {
-																							"type": "string",
-																							"default": "#d9904f"
+																							"type": "string"
 																						}
 																					},
 																					"required": [
@@ -2812,28 +2745,22 @@
 																					]
 																				},
 																				"danger": {
-																					"type": "string",
-																					"default": "#FF2D2D"
+																					"type": "string"
 																				},
 																				"success": {
-																					"type": "string",
-																					"default": "#62A504"
+																					"type": "string"
 																				},
 																				"text": {
-																					"type": "string",
-																					"default": "#EEEEEE"
+																					"type": "string"
 																				},
 																				"text_on_brand": {
-																					"type": "string",
-																					"default": "#EEEEEE"
+																					"type": "string"
 																				},
 																				"video_bg": {
-																					"type": "string",
-																					"default": "#191919"
+																					"type": "string"
 																				},
 																				"warning": {
-																					"type": "string",
-																					"default": "#FFCD07"
+																					"type": "string"
 																				}
 																			},
 																			"required": [
@@ -2859,7 +2786,6 @@
 																		},
 																		"spacing_base": {
 																			"type": "number",
-																			"default": 4,
 																			"minimum": 1
 																		},
 																		"theme": {
@@ -2918,7 +2844,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.presets",
+		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/presets": {
 		"operationId": "post-presets",
@@ -3000,13 +2929,11 @@
 												"properties": {
 													"enable_high_bitrate": {
 														"description": "Enable High Quality Audio for your meetings",
-														"type": "boolean",
-														"default": false
+														"type": "boolean"
 													},
 													"enable_stereo": {
 														"description": "Enable Stereo for your meetings",
-														"type": "boolean",
-														"default": false
+														"type": "boolean"
 													}
 												}
 											},
@@ -3209,8 +3136,7 @@
 										"type": "boolean"
 									},
 									"is_recorder": {
-										"type": "boolean",
-										"default": false
+										"type": "boolean"
 									},
 									"kick_participant": {
 										"type": "boolean"
@@ -3353,7 +3279,6 @@
 									"recorder_type": {
 										"description": "Type of the recording peer",
 										"type": "string",
-										"default": "NONE",
 										"enum": [
 											"RECORDER",
 											"LIVESTREAMER",
@@ -3441,24 +3366,19 @@
 														"type": "object",
 														"properties": {
 															"600": {
-																"type": "string",
-																"default": "#222222"
+																"type": "string"
 															},
 															"700": {
-																"type": "string",
-																"default": "#1f1f1f"
+																"type": "string"
 															},
 															"800": {
-																"type": "string",
-																"default": "#1b1b1b"
+																"type": "string"
 															},
 															"900": {
-																"type": "string",
-																"default": "#181818"
+																"type": "string"
 															},
 															"1000": {
-																"type": "string",
-																"default": "#141414"
+																"type": "string"
 															}
 														},
 														"required": [
@@ -3473,24 +3393,19 @@
 														"type": "object",
 														"properties": {
 															"300": {
-																"type": "string",
-																"default": "#844d1c"
+																"type": "string"
 															},
 															"400": {
-																"type": "string",
-																"default": "#9d5b22"
+																"type": "string"
 															},
 															"500": {
-																"type": "string",
-																"default": "#b56927"
+																"type": "string"
 															},
 															"600": {
-																"type": "string",
-																"default": "#d37c30"
+																"type": "string"
 															},
 															"700": {
-																"type": "string",
-																"default": "#d9904f"
+																"type": "string"
 															}
 														},
 														"required": [
@@ -3502,28 +3417,22 @@
 														]
 													},
 													"danger": {
-														"type": "string",
-														"default": "#FF2D2D"
+														"type": "string"
 													},
 													"success": {
-														"type": "string",
-														"default": "#62A504"
+														"type": "string"
 													},
 													"text": {
-														"type": "string",
-														"default": "#EEEEEE"
+														"type": "string"
 													},
 													"text_on_brand": {
-														"type": "string",
-														"default": "#EEEEEE"
+														"type": "string"
 													},
 													"video_bg": {
-														"type": "string",
-														"default": "#191919"
+														"type": "string"
 													},
 													"warning": {
-														"type": "string",
-														"default": "#FFCD07"
+														"type": "string"
 													}
 												},
 												"required": [
@@ -3549,7 +3458,6 @@
 											},
 											"spacing_base": {
 												"type": "number",
-												"default": 4,
 												"minimum": 1
 											},
 											"theme": {
@@ -3689,13 +3597,11 @@
 																			"properties": {
 																				"enable_high_bitrate": {
 																					"description": "Enable High Quality Audio for your meetings",
-																					"type": "boolean",
-																					"default": false
+																					"type": "boolean"
 																				},
 																				"enable_stereo": {
 																					"description": "Enable Stereo for your meetings",
-																					"type": "boolean",
-																					"default": false
+																					"type": "boolean"
 																				}
 																			}
 																		},
@@ -3898,8 +3804,7 @@
 																	"type": "boolean"
 																},
 																"is_recorder": {
-																	"type": "boolean",
-																	"default": false
+																	"type": "boolean"
 																},
 																"kick_participant": {
 																	"type": "boolean"
@@ -4042,7 +3947,6 @@
 																"recorder_type": {
 																	"description": "Type of the recording peer",
 																	"type": "string",
-																	"default": "NONE",
 																	"enum": [
 																		"RECORDER",
 																		"LIVESTREAMER",
@@ -4130,24 +4034,19 @@
 																					"type": "object",
 																					"properties": {
 																						"600": {
-																							"type": "string",
-																							"default": "#222222"
+																							"type": "string"
 																						},
 																						"700": {
-																							"type": "string",
-																							"default": "#1f1f1f"
+																							"type": "string"
 																						},
 																						"800": {
-																							"type": "string",
-																							"default": "#1b1b1b"
+																							"type": "string"
 																						},
 																						"900": {
-																							"type": "string",
-																							"default": "#181818"
+																							"type": "string"
 																						},
 																						"1000": {
-																							"type": "string",
-																							"default": "#141414"
+																							"type": "string"
 																						}
 																					},
 																					"required": [
@@ -4162,24 +4061,19 @@
 																					"type": "object",
 																					"properties": {
 																						"300": {
-																							"type": "string",
-																							"default": "#844d1c"
+																							"type": "string"
 																						},
 																						"400": {
-																							"type": "string",
-																							"default": "#9d5b22"
+																							"type": "string"
 																						},
 																						"500": {
-																							"type": "string",
-																							"default": "#b56927"
+																							"type": "string"
 																						},
 																						"600": {
-																							"type": "string",
-																							"default": "#d37c30"
+																							"type": "string"
 																						},
 																						"700": {
-																							"type": "string",
-																							"default": "#d9904f"
+																							"type": "string"
 																						}
 																					},
 																					"required": [
@@ -4191,28 +4085,22 @@
 																					]
 																				},
 																				"danger": {
-																					"type": "string",
-																					"default": "#FF2D2D"
+																					"type": "string"
 																				},
 																				"success": {
-																					"type": "string",
-																					"default": "#62A504"
+																					"type": "string"
 																				},
 																				"text": {
-																					"type": "string",
-																					"default": "#EEEEEE"
+																					"type": "string"
 																				},
 																				"text_on_brand": {
-																					"type": "string",
-																					"default": "#EEEEEE"
+																					"type": "string"
 																				},
 																				"video_bg": {
-																					"type": "string",
-																					"default": "#191919"
+																					"type": "string"
 																				},
 																				"warning": {
-																					"type": "string",
-																					"default": "#FFCD07"
+																					"type": "string"
 																				}
 																			},
 																			"required": [
@@ -4238,7 +4126,6 @@
 																		},
 																		"spacing_base": {
 																			"type": "number",
-																			"default": 4,
 																			"minimum": 1
 																		},
 																		"theme": {
@@ -4297,7 +4184,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.presets",
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/realtime/kit/{app_id}/presets/{preset_id}": {
 		"operationId": "put-presets-preset_id",
@@ -4389,13 +4279,11 @@
 												"properties": {
 													"enable_high_bitrate": {
 														"description": "Enable High Quality Audio for your meetings",
-														"type": "boolean",
-														"default": false
+														"type": "boolean"
 													},
 													"enable_stereo": {
 														"description": "Enable Stereo for your meetings",
-														"type": "boolean",
-														"default": false
+														"type": "boolean"
 													}
 												}
 											},
@@ -4598,8 +4486,7 @@
 										"type": "boolean"
 									},
 									"is_recorder": {
-										"type": "boolean",
-										"default": false
+										"type": "boolean"
 									},
 									"kick_participant": {
 										"type": "boolean"
@@ -4742,7 +4629,6 @@
 									"recorder_type": {
 										"description": "Type of the recording peer",
 										"type": "string",
-										"default": "NONE",
 										"enum": [
 											"RECORDER",
 											"LIVESTREAMER",
@@ -4830,24 +4716,19 @@
 														"type": "object",
 														"properties": {
 															"600": {
-																"type": "string",
-																"default": "#222222"
+																"type": "string"
 															},
 															"700": {
-																"type": "string",
-																"default": "#1f1f1f"
+																"type": "string"
 															},
 															"800": {
-																"type": "string",
-																"default": "#1b1b1b"
+																"type": "string"
 															},
 															"900": {
-																"type": "string",
-																"default": "#181818"
+																"type": "string"
 															},
 															"1000": {
-																"type": "string",
-																"default": "#141414"
+																"type": "string"
 															}
 														},
 														"required": [
@@ -4862,24 +4743,19 @@
 														"type": "object",
 														"properties": {
 															"300": {
-																"type": "string",
-																"default": "#844d1c"
+																"type": "string"
 															},
 															"400": {
-																"type": "string",
-																"default": "#9d5b22"
+																"type": "string"
 															},
 															"500": {
-																"type": "string",
-																"default": "#b56927"
+																"type": "string"
 															},
 															"600": {
-																"type": "string",
-																"default": "#d37c30"
+																"type": "string"
 															},
 															"700": {
-																"type": "string",
-																"default": "#d9904f"
+																"type": "string"
 															}
 														},
 														"required": [
@@ -4891,28 +4767,22 @@
 														]
 													},
 													"danger": {
-														"type": "string",
-														"default": "#FF2D2D"
+														"type": "string"
 													},
 													"success": {
-														"type": "string",
-														"default": "#62A504"
+														"type": "string"
 													},
 													"text": {
-														"type": "string",
-														"default": "#EEEEEE"
+														"type": "string"
 													},
 													"text_on_brand": {
-														"type": "string",
-														"default": "#EEEEEE"
+														"type": "string"
 													},
 													"video_bg": {
-														"type": "string",
-														"default": "#191919"
+														"type": "string"
 													},
 													"warning": {
-														"type": "string",
-														"default": "#FFCD07"
+														"type": "string"
 													}
 												},
 												"required": [
@@ -4938,7 +4808,6 @@
 											},
 											"spacing_base": {
 												"type": "number",
-												"default": 4,
 												"minimum": 1
 											},
 											"theme": {
@@ -5078,13 +4947,11 @@
 																			"properties": {
 																				"enable_high_bitrate": {
 																					"description": "Enable High Quality Audio for your meetings",
-																					"type": "boolean",
-																					"default": false
+																					"type": "boolean"
 																				},
 																				"enable_stereo": {
 																					"description": "Enable Stereo for your meetings",
-																					"type": "boolean",
-																					"default": false
+																					"type": "boolean"
 																				}
 																			}
 																		},
@@ -5287,8 +5154,7 @@
 																	"type": "boolean"
 																},
 																"is_recorder": {
-																	"type": "boolean",
-																	"default": false
+																	"type": "boolean"
 																},
 																"kick_participant": {
 																	"type": "boolean"
@@ -5431,7 +5297,6 @@
 																"recorder_type": {
 																	"description": "Type of the recording peer",
 																	"type": "string",
-																	"default": "NONE",
 																	"enum": [
 																		"RECORDER",
 																		"LIVESTREAMER",
@@ -5519,24 +5384,19 @@
 																					"type": "object",
 																					"properties": {
 																						"600": {
-																							"type": "string",
-																							"default": "#222222"
+																							"type": "string"
 																						},
 																						"700": {
-																							"type": "string",
-																							"default": "#1f1f1f"
+																							"type": "string"
 																						},
 																						"800": {
-																							"type": "string",
-																							"default": "#1b1b1b"
+																							"type": "string"
 																						},
 																						"900": {
-																							"type": "string",
-																							"default": "#181818"
+																							"type": "string"
 																						},
 																						"1000": {
-																							"type": "string",
-																							"default": "#141414"
+																							"type": "string"
 																						}
 																					},
 																					"required": [
@@ -5551,24 +5411,19 @@
 																					"type": "object",
 																					"properties": {
 																						"300": {
-																							"type": "string",
-																							"default": "#844d1c"
+																							"type": "string"
 																						},
 																						"400": {
-																							"type": "string",
-																							"default": "#9d5b22"
+																							"type": "string"
 																						},
 																						"500": {
-																							"type": "string",
-																							"default": "#b56927"
+																							"type": "string"
 																						},
 																						"600": {
-																							"type": "string",
-																							"default": "#d37c30"
+																							"type": "string"
 																						},
 																						"700": {
-																							"type": "string",
-																							"default": "#d9904f"
+																							"type": "string"
 																						}
 																					},
 																					"required": [
@@ -5580,28 +5435,22 @@
 																					]
 																				},
 																				"danger": {
-																					"type": "string",
-																					"default": "#FF2D2D"
+																					"type": "string"
 																				},
 																				"success": {
-																					"type": "string",
-																					"default": "#62A504"
+																					"type": "string"
 																				},
 																				"text": {
-																					"type": "string",
-																					"default": "#EEEEEE"
+																					"type": "string"
 																				},
 																				"text_on_brand": {
-																					"type": "string",
-																					"default": "#EEEEEE"
+																					"type": "string"
 																				},
 																				"video_bg": {
-																					"type": "string",
-																					"default": "#191919"
+																					"type": "string"
 																				},
 																				"warning": {
-																					"type": "string",
-																					"default": "#FFCD07"
+																					"type": "string"
 																				}
 																			},
 																			"required": [
@@ -5627,7 +5476,6 @@
 																		},
 																		"spacing_base": {
 																			"type": "number",
-																			"default": 4,
 																			"minimum": 1
 																		},
 																		"theme": {
@@ -5686,6 +5534,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.presets",
+		"x-fern-sdk-method-name": "replace",
+		"x-forge-hidden": true
 	}
 }

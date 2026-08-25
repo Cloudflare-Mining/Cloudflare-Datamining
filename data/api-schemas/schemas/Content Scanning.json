@@ -1,8 +1,8 @@
 {
 	"DELETE /zones/{zone_id}/content-upload-scan/payloads/{expression_id}": {
 		"operationId": "waf-content-scanning-delete-custom-scan-expressions",
-		"summary": "Delete a Custom Scan Expression",
-		"description": "Delete a Content Scan Custom Expression.",
+		"summary": "Delete a Content Scanning custom expression from a zone.",
+		"description": "Delete the Content Scanning custom expression with the given identifier and return the expressions that remain. Content objects reached only by the deleted expression are no longer scanned.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -22,7 +22,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "defines the unique ID for this custom scan expression.",
+					"description": "Defines the unique ID for this Content Scanning custom expression.",
 					"example": "a350a054caa840c9becd89c3b4f0195b",
 					"allOf": [
 						{
@@ -39,7 +39,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Delete Content Scan custom scan expressions response.",
+				"description": "Delete Content Scanning custom expression response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -144,11 +144,11 @@
 										"result": {
 											"type": "array",
 											"items": {
-												"description": "Defines a custom scan expression to match Content Scanning on.",
+												"description": "Defines a Content Scanning custom expression.",
 												"type": "object",
 												"properties": {
 													"id": {
-														"description": "defines the unique ID for this custom scan expression.",
+														"description": "Defines the unique ID for this Content Scanning custom expression.",
 														"example": "a350a054caa840c9becd89c3b4f0195b",
 														"allOf": [
 															{
@@ -162,7 +162,7 @@
 														]
 													},
 													"payload": {
-														"description": "Defines the ruleset expression to use in matching content objects.",
+														"description": "Defines the custom content extraction expression used to reach content objects in the request.",
 														"type": "string",
 														"example": "lookup_json_string(http.request.body.raw, \"file\")",
 														"x-auditable": true
@@ -179,7 +179,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Delete Content Scan custom scan expressions failure response.",
+				"description": "Delete Content Scanning custom expression failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -286,11 +286,11 @@
 												"result": {
 													"type": "array",
 													"items": {
-														"description": "Defines a custom scan expression to match Content Scanning on.",
+														"description": "Defines a Content Scanning custom expression.",
 														"type": "object",
 														"properties": {
 															"id": {
-																"description": "defines the unique ID for this custom scan expression.",
+																"description": "Defines the unique ID for this Content Scanning custom expression.",
 																"example": "a350a054caa840c9becd89c3b4f0195b",
 																"allOf": [
 																	{
@@ -304,7 +304,7 @@
 																]
 															},
 															"payload": {
-																"description": "Defines the ruleset expression to use in matching content objects.",
+																"description": "Defines the custom content extraction expression used to reach content objects in the request.",
 																"type": "string",
 																"example": "lookup_json_string(http.request.body.raw, \"file\")",
 																"x-auditable": true
@@ -422,14 +422,15 @@
 			"Account WAF Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "content-scanning.payloads",
+		"x-fern-sdk-group-name": "content-scan.expressions",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes a Content Scanning custom expression."
 	},
 	"GET /zones/{zone_id}/content-upload-scan/payloads": {
 		"operationId": "waf-content-scanning-list-custom-scan-expressions",
-		"summary": "List Existing Custom Scan Expressions",
-		"description": "Get a list of existing custom scan expressions for Content Scanning.",
+		"summary": "List the Content Scanning custom expressions of a zone.",
+		"description": "List the Content Scanning custom expressions configured for the zone, each with its own identifier. A custom expression tells the scanner how to reach content objects in a request it cannot parse on its own, such as files Base64-encoded inside a JSON body.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -447,7 +448,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "List existing Content Scan custom scan expressions response.",
+				"description": "List existing Content Scanning custom expressions response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -552,11 +553,11 @@
 										"result": {
 											"type": "array",
 											"items": {
-												"description": "Defines a custom scan expression to match Content Scanning on.",
+												"description": "Defines a Content Scanning custom expression.",
 												"type": "object",
 												"properties": {
 													"id": {
-														"description": "defines the unique ID for this custom scan expression.",
+														"description": "Defines the unique ID for this Content Scanning custom expression.",
 														"example": "a350a054caa840c9becd89c3b4f0195b",
 														"allOf": [
 															{
@@ -570,7 +571,7 @@
 														]
 													},
 													"payload": {
-														"description": "Defines the ruleset expression to use in matching content objects.",
+														"description": "Defines the custom content extraction expression used to reach content objects in the request.",
 														"type": "string",
 														"example": "lookup_json_string(http.request.body.raw, \"file\")",
 														"x-auditable": true
@@ -587,7 +588,7 @@
 				}
 			},
 			"4XX": {
-				"description": "List existing Content Scan custom scan expressions failure response.",
+				"description": "List existing Content Scanning custom expressions failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -694,11 +695,11 @@
 												"result": {
 													"type": "array",
 													"items": {
-														"description": "Defines a custom scan expression to match Content Scanning on.",
+														"description": "Defines a Content Scanning custom expression.",
 														"type": "object",
 														"properties": {
 															"id": {
-																"description": "defines the unique ID for this custom scan expression.",
+																"description": "Defines the unique ID for this Content Scanning custom expression.",
 																"example": "a350a054caa840c9becd89c3b4f0195b",
 																"allOf": [
 																	{
@@ -712,7 +713,7 @@
 																]
 															},
 															"payload": {
-																"description": "Defines the ruleset expression to use in matching content objects.",
+																"description": "Defines the custom content extraction expression used to reach content objects in the request.",
 																"type": "string",
 																"example": "lookup_json_string(http.request.body.raw, \"file\")",
 																"x-auditable": true
@@ -832,14 +833,14 @@
 			"Account WAF Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "content-scanning.payloads",
+		"x-fern-sdk-group-name": "content-scan.expressions",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/content-upload-scan/settings": {
 		"operationId": "waf-content-scanning-get-status",
-		"summary": "Get Content Scanning Status",
-		"description": "Retrieve the current status of Content Scanning.",
+		"summary": "Get the Content Scanning status for a zone.",
+		"description": "Get the current Content Scanning status for the zone, together with the date the status was last modified.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -1099,14 +1100,14 @@
 			"Account WAF Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "content-scanning.settings",
+		"x-fern-sdk-group-name": "content-scan",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/content-upload-scan/disable": {
 		"operationId": "waf-content-scanning-disable",
-		"summary": "Disable Content Scanning",
-		"description": "Disable Content Scanning.",
+		"summary": "Disable Content Scanning for a zone.",
+		"description": "Disable Content Scanning for a zone. The `cf.waf.content_scan.*` fields are no longer populated, so rules that reference them stop matching.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -1317,17 +1318,12 @@
 		"x-api-token-group": [
 			"Zone WAF Write",
 			"Account WAF Write"
-		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "content-scanning",
-		"x-fern-sdk-method-name": "disable",
-		"x-forge-hidden": true,
-		"x-forge-require-confirmation": "This operation turns off WAF content scanning for a zone."
+		]
 	},
 	"POST /zones/{zone_id}/content-upload-scan/enable": {
 		"operationId": "waf-content-scanning-enable",
-		"summary": "Enable Content Scanning",
-		"description": "Enable Content Scanning.",
+		"summary": "Enable Content Scanning for a zone.",
+		"description": "Enable Content Scanning for a zone, so that Cloudflare inspects content objects uploaded to the zone and checks them for malware. Scan results populate the `cf.waf.content_scan.*` fields, which you can reference in custom rules and rate limiting rules.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -1538,16 +1534,12 @@
 		"x-api-token-group": [
 			"Zone WAF Write",
 			"Account WAF Write"
-		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "content-scanning",
-		"x-fern-sdk-method-name": "enable",
-		"x-forge-hidden": true
+		]
 	},
 	"POST /zones/{zone_id}/content-upload-scan/payloads": {
 		"operationId": "waf-content-scanning-add-custom-scan-expressions",
-		"summary": "Add Custom Scan Expressions",
-		"description": "Add custom scan expressions for Content Scanning.",
+		"summary": "Create Content Scanning custom expressions for a zone.",
+		"description": "Create one or more Content Scanning custom expressions, appending them to the existing list of the zone, and return the updated list. Each expression reaches content objects the scanner cannot find automatically, for example `lookup_json_string(http.request.body.raw, \"file\")`.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -1564,7 +1556,7 @@
 			}
 		],
 		"requestBody": {
-			"description": "Array of custom scan expressions to add.",
+			"description": "Array of Content Scanning custom expressions to create.",
 			"required": true,
 			"content": {
 				"application/json": {
@@ -1573,7 +1565,7 @@
 						"items": {
 							"properties": {
 								"payload": {
-									"description": "Defines the ruleset expression to use in matching content objects.",
+									"description": "Defines the custom content extraction expression used to reach content objects in the request.",
 									"type": "string",
 									"example": "lookup_json_string(http.request.body.raw, \"file\")",
 									"x-auditable": true
@@ -1590,7 +1582,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Add custom scan expressions for Content Scanning.",
+				"description": "Create Content Scanning custom expressions response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1695,11 +1687,11 @@
 										"result": {
 											"type": "array",
 											"items": {
-												"description": "Defines a custom scan expression to match Content Scanning on.",
+												"description": "Defines a Content Scanning custom expression.",
 												"type": "object",
 												"properties": {
 													"id": {
-														"description": "defines the unique ID for this custom scan expression.",
+														"description": "Defines the unique ID for this Content Scanning custom expression.",
 														"example": "a350a054caa840c9becd89c3b4f0195b",
 														"allOf": [
 															{
@@ -1713,7 +1705,7 @@
 														]
 													},
 													"payload": {
-														"description": "Defines the ruleset expression to use in matching content objects.",
+														"description": "Defines the custom content extraction expression used to reach content objects in the request.",
 														"type": "string",
 														"example": "lookup_json_string(http.request.body.raw, \"file\")",
 														"x-auditable": true
@@ -1730,7 +1722,7 @@
 				}
 			},
 			"4XX": {
-				"description": "List existing Content Scan custom scan expressions failure response.",
+				"description": "Create Content Scanning custom expressions failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1837,11 +1829,11 @@
 												"result": {
 													"type": "array",
 													"items": {
-														"description": "Defines a custom scan expression to match Content Scanning on.",
+														"description": "Defines a Content Scanning custom expression.",
 														"type": "object",
 														"properties": {
 															"id": {
-																"description": "defines the unique ID for this custom scan expression.",
+																"description": "Defines the unique ID for this Content Scanning custom expression.",
 																"example": "a350a054caa840c9becd89c3b4f0195b",
 																"allOf": [
 																	{
@@ -1855,7 +1847,7 @@
 																]
 															},
 															"payload": {
-																"description": "Defines the ruleset expression to use in matching content objects.",
+																"description": "Defines the custom content extraction expression used to reach content objects in the request.",
 																"type": "string",
 																"example": "lookup_json_string(http.request.body.raw, \"file\")",
 																"x-auditable": true
@@ -1973,14 +1965,14 @@
 			"Account WAF Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "content-scanning.payloads",
+		"x-fern-sdk-group-name": "content-scan.expressions",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/content-upload-scan/settings": {
 		"operationId": "waf-content-scanning-update-settings",
-		"summary": "Update Content Scanning Status",
-		"description": "Update the Content Scanning status.",
+		"summary": "Update the Content Scanning status for a zone.",
+		"description": "Update the Content Scanning status by setting the status value to `enabled` or `disabled`. This is equivalent to calling the dedicated enable and disable endpoints.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -2263,8 +2255,9 @@
 			"Account WAF Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "content-scanning",
+		"x-fern-sdk-group-name": "content-scan",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation toggles Content Scanning for a zone."
 	}
 }

@@ -7,6 +7,7 @@
 			{
 				"name": "id",
 				"in": "path",
+				"description": "Specify the ID of the shared query.",
 				"required": true,
 				"schema": {
 					"description": "Specify the ID of the shared query.",
@@ -16,6 +17,7 @@
 			{
 				"name": "view",
 				"in": "query",
+				"description": "Select the view of the query result to return, defaults to events.",
 				"schema": {
 					"description": "Select the view of the query result to return, defaults to events.",
 					"type": "string",
@@ -95,7 +97,7 @@
 														}
 													},
 													"id": {
-														"description": "Pagination cursor derived from the first agent invocation in the run.",
+														"description": "Stable pagination cursor for this agent run.",
 														"type": "string"
 													},
 													"inputTokens": {
@@ -1503,7 +1505,8 @@
 																	"type": "boolean"
 																},
 																"created": {
-																	"type": "string"
+																	"type": "string",
+																	"format": "date-time"
 																},
 																"createdBy": {
 																	"type": "string"
@@ -1891,7 +1894,8 @@
 																	"type": "object"
 																},
 																"updated": {
-																	"type": "string"
+																	"type": "string",
+																	"format": "date-time"
 																},
 																"updatedBy": {
 																	"type": "string"
@@ -1917,6 +1921,7 @@
 																			"type": "string"
 																		},
 																		{
+																			"format": "date-time",
 																			"type": "string"
 																		}
 																	]
@@ -1927,6 +1932,7 @@
 																			"type": "string"
 																		},
 																		{
+																			"format": "date-time",
 																			"type": "string"
 																		}
 																	]
@@ -1972,16 +1978,20 @@
 													]
 												},
 												"timeframe": {
-													"description": "Time range for the query execution",
+													"description": "Time range for the query execution. 'from' must be earlier than 'to'. No fractional milliseconds.",
 													"type": "object",
 													"properties": {
 														"from": {
-															"description": "Start timestamp for the query timeframe (Unix timestamp in milliseconds)",
-															"type": "number"
+															"description": "Start timestamp for the query timeframe. Unix timestamp in milliseconds",
+															"type": "integer",
+															"maximum": 253402300799999,
+															"minimum": 0
 														},
 														"to": {
-															"description": "End timestamp for the query timeframe (Unix timestamp in milliseconds)",
-															"type": "number"
+															"description": "End timestamp for the query timeframe. Unix timestamp in milliseconds",
+															"type": "integer",
+															"maximum": 253402300799999,
+															"minimum": 0
 														}
 													},
 													"required": [
@@ -2234,6 +2244,63 @@
 					}
 				}
 			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
 			"500": {
 				"description": "Internal error",
 				"content": {
@@ -2299,7 +2366,10 @@
 		"x-api-token-group": [
 			"Workers Observability Write",
 			"Workers Observability Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "observability.shared-queries",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/workers/observability/shared/query": {
 		"operationId": "shared.query.post",
@@ -2330,6 +2400,14 @@
 							"compare": {
 								"description": "When true, includes a comparison dataset from the previous time period of equal length.",
 								"type": "boolean"
+							},
+							"distributionScale": {
+								"description": "Value-axis bucketing for chartType 'distribution'. Omitted or 'log': geometric buckets, best for heavy-tailed latency. 'linear': fixed-width buckets, clearer for narrow or additive ranges. Ignored for other chartTypes. The response echoes the scheme used in distribution.bucketMode.",
+								"type": "string",
+								"enum": [
+									"log",
+									"linear"
+								]
 							},
 							"dry": {
 								"description": "When true, executes the query without persisting the results. Useful for validation or previewing.",
@@ -2381,7 +2459,7 @@
 															"type": "string"
 														},
 														"key": {
-															"description": "Field name to calculate over. Must exist in the data — verify with the keys endpoint. Required for every operator except `count`, which aggregates whole rows and may omit it.",
+															"description": "Field name to calculate over. Must exist in the data. Verify with the keys endpoint. Required for every operator except `count`, which aggregates whole rows and may omit it.",
 															"type": "string"
 														},
 														"keyType": {
@@ -2414,7 +2492,7 @@
 															"type": "string"
 														},
 														"key": {
-															"description": "Field name to calculate over. Must exist in the data — verify with the keys endpoint. Required for every operator except `count`, which aggregates whole rows and may omit it.",
+															"description": "Field name to calculate over. Must exist in the data. Verify with the keys endpoint. Required for every operator except `count`, which aggregates whole rows and may omit it.",
 															"type": "string",
 															"pattern": "\\S"
 														},
@@ -2992,16 +3070,20 @@
 								"type": "string"
 							},
 							"timeframe": {
-								"description": "Timeframe for the query using Unix timestamps in milliseconds. Narrower timeframes produce faster responses and more specific results.",
+								"description": "Timeframe for the query using Unix timestamps in milliseconds. 'from' must be earlier than 'to'. Narrower timeframes produce faster responses and more specific results.",
 								"type": "object",
 								"properties": {
 									"from": {
-										"description": "Start timestamp for the query timeframe (Unix timestamp in milliseconds)",
-										"type": "number"
+										"description": "Start timestamp for the query timeframe. Unix timestamp in milliseconds",
+										"type": "integer",
+										"maximum": 253402300799999,
+										"minimum": 0
 									},
 									"to": {
-										"description": "End timestamp for the query timeframe (Unix timestamp in milliseconds)",
-										"type": "number"
+										"description": "End timestamp for the query timeframe. Unix timestamp in milliseconds",
+										"type": "integer",
+										"maximum": 253402300799999,
+										"minimum": 0
 									}
 								},
 								"required": [
@@ -3334,6 +3416,9 @@
 		],
 		"x-api-token-group": [
 			"Workers Observability Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "observability.shared-queries",
+		"x-fern-sdk-method-name": "create"
 	}
 }

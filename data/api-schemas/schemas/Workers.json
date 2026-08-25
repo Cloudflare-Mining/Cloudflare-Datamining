@@ -252,7 +252,11 @@
 		],
 		"x-api-token-group": [
 			"Workers CI Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers-builds.workers",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/workers/workers/{worker_id}": {
 		"operationId": "deleteWorker",
@@ -2127,7 +2131,11 @@
 		"x-api-token-group": [
 			"Workers CI Write",
 			"Workers CI Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers-builds.workers",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/workers": {
 		"operationId": "listWorkers",
@@ -2423,6 +2431,12 @@
 																	}
 																}
 															},
+															"redact_query_string": {
+																"description": "Whether query strings are removed from request URLs in logs and traces.",
+																"type": "boolean",
+																"default": false,
+																"x-auditable": true
+															},
 															"traces": {
 																"description": "Trace settings for the Worker.",
 																"type": "object",
@@ -2456,13 +2470,14 @@
 																		"x-auditable": true
 																	},
 																	"propagation_policy": {
-																		"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" (default) honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.",
+																		"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.",
 																		"type": "string",
-																		"default": "authenticated",
 																		"enum": [
 																			"authenticated",
-																			"accept"
+																			"accept",
+																			null
 																		],
+																		"nullable": true,
 																		"x-auditable": true
 																	}
 																}
@@ -3276,6 +3291,12 @@
 																}
 															}
 														},
+														"redact_query_string": {
+															"description": "Whether query strings are removed from request URLs in logs and traces.",
+															"type": "boolean",
+															"default": false,
+															"x-auditable": true
+														},
 														"traces": {
 															"description": "Trace settings for the Worker.",
 															"type": "object",
@@ -3309,13 +3330,14 @@
 																	"x-auditable": true
 																},
 																"propagation_policy": {
-																	"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" (default) honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.",
+																	"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.",
 																	"type": "string",
-																	"default": "authenticated",
 																	"enum": [
 																		"authenticated",
-																		"accept"
+																		"accept",
+																		null
 																	],
+																	"nullable": true,
 																	"x-auditable": true
 																}
 															}
@@ -4631,7 +4653,11 @@
 		],
 		"x-api-token-group": [
 			"Workers CI Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers-builds.workers",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/workers/workers/{worker_id}": {
 		"operationId": "editWorker",
@@ -4761,6 +4787,12 @@
 													}
 												}
 											},
+											"redact_query_string": {
+												"description": "Whether query strings are removed from request URLs in logs and traces.",
+												"type": "boolean",
+												"default": false,
+												"x-auditable": true
+											},
 											"traces": {
 												"description": "Trace settings for the Worker.",
 												"type": "object",
@@ -4794,13 +4826,14 @@
 														"x-auditable": true
 													},
 													"propagation_policy": {
-														"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" (default) honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.",
+														"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.",
 														"type": "string",
-														"default": "authenticated",
 														"enum": [
 															"authenticated",
-															"accept"
+															"accept",
+															null
 														],
+														"nullable": true,
 														"x-auditable": true
 													}
 												}
@@ -5174,6 +5207,12 @@
 													}
 												}
 											},
+											"redact_query_string": {
+												"description": "Whether query strings are removed from request URLs in logs and traces.",
+												"type": "boolean",
+												"default": false,
+												"x-auditable": true
+											},
 											"traces": {
 												"description": "Trace settings for the Worker.",
 												"type": "object",
@@ -5207,13 +5246,14 @@
 														"x-auditable": true
 													},
 													"propagation_policy": {
-														"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" (default) honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.",
+														"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.",
 														"type": "string",
-														"default": "authenticated",
 														"enum": [
 															"authenticated",
-															"accept"
+															"accept",
+															null
 														],
+														"nullable": true,
 														"x-auditable": true
 													}
 												}
@@ -5677,6 +5717,12 @@
 																}
 															}
 														},
+														"redact_query_string": {
+															"description": "Whether query strings are removed from request URLs in logs and traces.",
+															"type": "boolean",
+															"default": false,
+															"x-auditable": true
+														},
 														"traces": {
 															"description": "Trace settings for the Worker.",
 															"type": "object",
@@ -5710,13 +5756,14 @@
 																	"x-auditable": true
 																},
 																"propagation_policy": {
-																	"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" (default) honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.",
+																	"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.",
 																	"type": "string",
-																	"default": "authenticated",
 																	"enum": [
 																		"authenticated",
-																		"accept"
+																		"accept",
+																		null
 																	],
+																	"nullable": true,
 																	"x-auditable": true
 																}
 															}
@@ -7861,7 +7908,11 @@
 		],
 		"x-api-token-group": [
 			"Workers CI Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers-builds.workers",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/workers/workers": {
 		"operationId": "createWorker",
@@ -7982,6 +8033,12 @@
 													}
 												}
 											},
+											"redact_query_string": {
+												"description": "Whether query strings are removed from request URLs in logs and traces.",
+												"type": "boolean",
+												"default": false,
+												"x-auditable": true
+											},
 											"traces": {
 												"description": "Trace settings for the Worker.",
 												"type": "object",
@@ -8015,13 +8072,14 @@
 														"x-auditable": true
 													},
 													"propagation_policy": {
-														"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" (default) honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.",
+														"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.",
 														"type": "string",
-														"default": "authenticated",
 														"enum": [
 															"authenticated",
-															"accept"
+															"accept",
+															null
 														],
+														"nullable": true,
 														"x-auditable": true
 													}
 												}
@@ -8488,6 +8546,12 @@
 																}
 															}
 														},
+														"redact_query_string": {
+															"description": "Whether query strings are removed from request URLs in logs and traces.",
+															"type": "boolean",
+															"default": false,
+															"x-auditable": true
+														},
 														"traces": {
 															"description": "Trace settings for the Worker.",
 															"type": "object",
@@ -8521,13 +8585,14 @@
 																	"x-auditable": true
 																},
 																"propagation_policy": {
-																	"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" (default) honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.",
+																	"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.",
 																	"type": "string",
-																	"default": "authenticated",
 																	"enum": [
 																		"authenticated",
-																		"accept"
+																		"accept",
+																		null
 																	],
+																	"nullable": true,
 																	"x-auditable": true
 																}
 															}
@@ -9878,6 +9943,12 @@
 													}
 												}
 											},
+											"redact_query_string": {
+												"description": "Whether query strings are removed from request URLs in logs and traces.",
+												"type": "boolean",
+												"default": false,
+												"x-auditable": true
+											},
 											"traces": {
 												"description": "Trace settings for the Worker.",
 												"type": "object",
@@ -9911,13 +9982,14 @@
 														"x-auditable": true
 													},
 													"propagation_policy": {
-														"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" (default) honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.",
+														"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.",
 														"type": "string",
-														"default": "authenticated",
 														"enum": [
 															"authenticated",
-															"accept"
+															"accept",
+															null
 														],
+														"nullable": true,
 														"x-auditable": true
 													}
 												}
@@ -10384,6 +10456,12 @@
 																}
 															}
 														},
+														"redact_query_string": {
+															"description": "Whether query strings are removed from request URLs in logs and traces.",
+															"type": "boolean",
+															"default": false,
+															"x-auditable": true
+														},
 														"traces": {
 															"description": "Trace settings for the Worker.",
 															"type": "object",
@@ -10417,13 +10495,14 @@
 																	"x-auditable": true
 																},
 																"propagation_policy": {
-																	"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" (default) honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.",
+																	"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.",
 																	"type": "string",
-																	"default": "authenticated",
 																	"enum": [
 																		"authenticated",
-																		"accept"
+																		"accept",
+																		null
 																	],
+																	"nullable": true,
 																	"x-auditable": true
 																}
 															}

@@ -360,7 +360,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.email.rules",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dlp/email/account_mapping": {
 		"operationId": "dlp-email-scanner-get-account-mapping",
@@ -659,7 +663,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.email.account-mapping",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dlp/email/rules": {
 		"operationId": "dlp-email-scanner-list-all-rules",
@@ -1017,7 +1025,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.email.rules",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dlp/email/rules/{rule_id}": {
 		"operationId": "dlp-email-scanner-get-rule",
@@ -1381,7 +1393,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.email.rules",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/dlp/email/rules": {
 		"operationId": "dlp-email-scanner-update-rule-priorities",
@@ -1760,7 +1776,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.email.rules",
+		"x-fern-sdk-method-name": "bulk-edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/dlp/email/account_mapping": {
 		"operationId": "dlp-email-scanner-create-account-mapping",
@@ -2113,7 +2133,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.email.account-mapping",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/dlp/email/rules": {
 		"operationId": "dlp-email-scanner-create-rule",
@@ -2562,7 +2586,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.email.rules",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/dlp/email/rules/{rule_id}": {
 		"operationId": "dlp-email-scanner-update-rule",
@@ -3020,6 +3048,10 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.email.rules",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

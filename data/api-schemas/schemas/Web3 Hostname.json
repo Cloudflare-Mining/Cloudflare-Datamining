@@ -645,7 +645,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "web3.hostnames",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{content_list_entry_identifier}": {
 		"operationId": "web3-hostname-delete-ipfs-universal-path-gateway-content-list-entry",
@@ -1217,7 +1221,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "web3.hostnames.ipfs-universal-paths.content-lists.entries",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/web3/hostnames": {
 		"operationId": "web3-hostname-list-web3-hostnames",
@@ -2024,7 +2032,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "web3.hostnames",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/web3/hostnames/{identifier}": {
 		"operationId": "web3-hostname-web3-hostname-details",
@@ -2805,7 +2817,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "web3.hostnames",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list": {
 		"operationId": "web3-hostname-ipfs-universal-path-gateway-content-list-details",
@@ -3417,7 +3433,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "web3.hostnames.ipfs-universal-paths.content-lists",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries": {
 		"operationId": "web3-hostname-list-ipfs-universal-path-gateway-content-list-entries",
@@ -4203,7 +4223,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "web3.hostnames.ipfs-universal-paths.content-lists.entries",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{content_list_entry_identifier}": {
 		"operationId": "web3-hostname-ipfs-universal-path-gateway-content-list-entry-details",
@@ -4926,7 +4950,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "web3.hostnames.ipfs-universal-paths.content-lists.entries",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/web3/hostnames/{identifier}": {
 		"operationId": "web3-hostname-edit-web3-hostname",
@@ -5729,7 +5757,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "web3.hostnames",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/web3/hostnames": {
 		"operationId": "web3-hostname-create-web3-hostname",
@@ -6540,7 +6572,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "web3.hostnames",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries": {
 		"operationId": "web3-hostname-create-ipfs-universal-path-gateway-content-list-entry",
@@ -7284,7 +7320,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "web3.hostnames.ipfs-universal-paths.content-lists.entries",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list": {
 		"operationId": "web3-hostname-update-ipfs-universal-path-gateway-content-list",
@@ -7969,7 +8009,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "web3.hostnames.ipfs-universal-paths.content-lists",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{content_list_entry_identifier}": {
 		"operationId": "web3-hostname-edit-ipfs-universal-path-gateway-content-list-entry",
@@ -8728,6 +8772,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "web3.hostnames.ipfs-universal-paths.content-lists.entries",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

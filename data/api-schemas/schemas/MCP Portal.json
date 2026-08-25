@@ -194,7 +194,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "zero-trust.access.ai-controls.mcp.portals",
+		"x-fern-sdk-group-name": "mcp.portals",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation permanently deletes the MCP portal."
@@ -416,8 +416,7 @@
 															"readOnly": true
 														},
 														"default_disabled": {
-															"type": "boolean",
-															"default": false
+															"type": "boolean"
 														},
 														"description": {
 															"description": "Optional description of the MCP server.",
@@ -501,8 +500,7 @@
 															"maxLength": 350
 														},
 														"on_behalf": {
-															"type": "boolean",
-															"default": true
+															"type": "boolean"
 														},
 														"prompts": {
 															"type": "array",
@@ -716,7 +714,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "zero-trust.access.ai-controls.mcp.portals",
+		"x-fern-sdk-group-name": "mcp.portals",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -922,8 +920,7 @@
 														"readOnly": true
 													},
 													"default_disabled": {
-														"type": "boolean",
-														"default": false
+														"type": "boolean"
 													},
 													"description": {
 														"description": "Optional description of the MCP server.",
@@ -1007,8 +1004,7 @@
 														"maxLength": 350
 													},
 													"on_behalf": {
-														"type": "boolean",
-														"default": true
+														"type": "boolean"
 													},
 													"prompts": {
 														"type": "array",
@@ -1224,7 +1220,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "zero-trust.access.ai-controls.mcp.portals",
+		"x-fern-sdk-group-name": "mcp.portals",
 		"x-fern-sdk-method-name": "read",
 		"x-forge-hidden": true
 	},
@@ -1381,7 +1377,7 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.ai-controls.mcp.portals",
+		"x-fern-sdk-group-name": "mcp.portals",
 		"x-fern-sdk-method-name": "resolve-oauth-redirect-uri"
 	},
 	"POST /accounts/{account_id}/access/ai-controls/mcp/portals": {
@@ -1461,13 +1457,11 @@
 									"properties": {
 										"default_disabled": {
 											"description": "Disable this server by default for clients connecting through the portal.",
-											"type": "boolean",
-											"default": false
+											"type": "boolean"
 										},
 										"on_behalf": {
 											"description": "Use end-user OAuth credentials when connecting this server to the portal.",
-											"type": "boolean",
-											"default": true
+											"type": "boolean"
 										},
 										"server_id": {
 											"description": "Unique identifier for the MCP server.",
@@ -1732,8 +1726,7 @@
 														"readOnly": true
 													},
 													"default_disabled": {
-														"type": "boolean",
-														"default": false
+														"type": "boolean"
 													},
 													"description": {
 														"description": "Optional description of the MCP server.",
@@ -1817,8 +1810,7 @@
 														"maxLength": 350
 													},
 													"on_behalf": {
-														"type": "boolean",
-														"default": true
+														"type": "boolean"
 													},
 													"prompts": {
 														"type": "array",
@@ -2041,7 +2033,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "zero-trust.access.ai-controls.mcp.portals",
+		"x-fern-sdk-group-name": "mcp.portals",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
@@ -2127,13 +2119,11 @@
 									"properties": {
 										"default_disabled": {
 											"description": "Disable this server by default for clients connecting through the portal.",
-											"type": "boolean",
-											"default": false
+											"type": "boolean"
 										},
 										"on_behalf": {
 											"description": "Use end-user OAuth credentials when connecting this server to the portal.",
-											"type": "boolean",
-											"default": true
+											"type": "boolean"
 										},
 										"server_id": {
 											"description": "Unique identifier for the MCP server.",
@@ -2393,8 +2383,7 @@
 														"readOnly": true
 													},
 													"default_disabled": {
-														"type": "boolean",
-														"default": false
+														"type": "boolean"
 													},
 													"description": {
 														"description": "Optional description of the MCP server.",
@@ -2478,8 +2467,7 @@
 														"maxLength": 350
 													},
 													"on_behalf": {
-														"type": "boolean",
-														"default": true
+														"type": "boolean"
 													},
 													"prompts": {
 														"type": "array",
@@ -2744,7 +2732,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "zero-trust.access.ai-controls.mcp.portals",
+		"x-fern-sdk-group-name": "mcp.portals",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true,
 		"x-forge-params": {

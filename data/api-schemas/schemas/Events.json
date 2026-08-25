@@ -138,7 +138,7 @@
 												"attacker": "APT28",
 												"category": "intrusion",
 												"datasetId": "a1b2c3d4-0001-4000-8000-000000000001",
-												"date": "2026-06-01",
+												"date": "2026-06-01T00:00:00Z",
 												"event": "Attacker registered domain evil.example.com",
 												"id": "event:550e8400-e29b-41d4-a716-446655440000",
 												"role": "focal",
@@ -222,7 +222,7 @@
 											"attacker": "APT28",
 											"category": "intrusion",
 											"datasetId": "a1b2c3d4-0001-4000-8000-000000000001",
-											"date": "2026-06-01",
+											"date": "2026-06-01T00:00:00Z",
 											"event": "Attacker registered domain evil.example.com for C2 infrastructure",
 											"id": "event:550e8400-e29b-41d4-a716-446655440000",
 											"role": "focal",
@@ -234,7 +234,7 @@
 												"attacker": "APT28",
 												"category": "intrusion",
 												"datasetId": "a1b2c3d4-0001-4000-8000-000000000001",
-												"date": "2026-06-01",
+												"date": "2026-06-01T00:00:00Z",
 												"event": "Attacker registered domain evil.example.com for C2 infrastructure",
 												"id": "event:550e8400-e29b-41d4-a716-446655440000",
 												"role": "focal",
@@ -673,6 +673,10 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.stakeout.graphs",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	}
 }

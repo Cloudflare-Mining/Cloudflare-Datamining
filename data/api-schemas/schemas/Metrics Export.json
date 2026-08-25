@@ -332,7 +332,9 @@
 		],
 		"x-api-token-group": [
 			"Workers Observability Write"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/observability/metricsexport": {
 		"operationId": "metricsExport.list",
@@ -557,7 +559,9 @@
 		"x-api-token-group": [
 			"Workers Observability Write",
 			"Workers Observability Read"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/workers/observability/metricsexport": {
 		"operationId": "metricsExport.upsert",
@@ -1044,6 +1048,8 @@
 		],
 		"x-api-token-group": [
 			"Workers Observability Write"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	}
 }

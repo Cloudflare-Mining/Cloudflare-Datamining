@@ -171,7 +171,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.account-providers.costs",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/custom-providers/costs": {
 		"operationId": "aig-config-list-account-provider-cost",
@@ -402,7 +406,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.account-providers.costs",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/custom-providers/costs/{id}": {
 		"operationId": "aig-config-fetch-account-provider-cost",
@@ -577,7 +585,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.account-providers.costs",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/ai-gateway/custom-providers/costs/{id}": {
 		"operationId": "aig-config-update-account-provider-cost",
@@ -875,7 +887,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.account-providers.costs",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/custom-providers/costs": {
 		"operationId": "aig-config-create-account-provider-cost",
@@ -1133,6 +1149,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.account-providers.costs",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

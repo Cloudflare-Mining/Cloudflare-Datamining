@@ -287,6 +287,10 @@
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.sensitivity-group-templates",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stainless-skip": [
 			"terraform"
 		]
@@ -585,6 +589,10 @@
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.sensitivity-group-templates",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stainless-skip": [
 			"terraform"
 		]

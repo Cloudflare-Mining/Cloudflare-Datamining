@@ -301,7 +301,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "bot-management.feedback",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/bot_management/feedback": {
 		"operationId": "bot-management-zone-feedback-create",
@@ -633,6 +637,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "bot-management.feedback",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

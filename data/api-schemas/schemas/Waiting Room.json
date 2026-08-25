@@ -1436,7 +1436,6 @@
 															"da-DK",
 															"fi-FI",
 															"lt-LT",
-															"lv-LV",
 															"ms-MY",
 															"nb-NO",
 															"ro-RO",
@@ -1523,14 +1522,14 @@
 													"next_event_prequeue_start_time": {
 														"description": "An ISO 8601 timestamp that marks when the next event will begin queueing.",
 														"type": "string",
-														"example": "2021-09-28T15:00:00.000Z",
+														"example": "2021-09-28T15:00:00Z",
 														"nullable": true,
 														"x-auditable": true
 													},
 													"next_event_start_time": {
 														"description": "An ISO 8601 timestamp that marks when the next event will start.",
 														"type": "string",
-														"example": "2021-09-28T15:00:00.000Z",
+														"example": "2021-09-28T15:00:00Z",
 														"nullable": true,
 														"x-auditable": true
 													},
@@ -1869,7 +1868,6 @@
 																	"da-DK",
 																	"fi-FI",
 																	"lt-LT",
-																	"lv-LV",
 																	"ms-MY",
 																	"nb-NO",
 																	"ro-RO",
@@ -1956,14 +1954,14 @@
 															"next_event_prequeue_start_time": {
 																"description": "An ISO 8601 timestamp that marks when the next event will begin queueing.",
 																"type": "string",
-																"example": "2021-09-28T15:00:00.000Z",
+																"example": "2021-09-28T15:00:00Z",
 																"nullable": true,
 																"x-auditable": true
 															},
 															"next_event_start_time": {
 																"description": "An ISO 8601 timestamp that marks when the next event will start.",
 																"type": "string",
-																"example": "2021-09-28T15:00:00.000Z",
+																"example": "2021-09-28T15:00:00Z",
 																"nullable": true,
 																"x-auditable": true
 															},
@@ -2474,7 +2472,6 @@
 															"da-DK",
 															"fi-FI",
 															"lt-LT",
-															"lv-LV",
 															"ms-MY",
 															"nb-NO",
 															"ro-RO",
@@ -2561,14 +2558,14 @@
 													"next_event_prequeue_start_time": {
 														"description": "An ISO 8601 timestamp that marks when the next event will begin queueing.",
 														"type": "string",
-														"example": "2021-09-28T15:00:00.000Z",
+														"example": "2021-09-28T15:00:00Z",
 														"nullable": true,
 														"x-auditable": true
 													},
 													"next_event_start_time": {
 														"description": "An ISO 8601 timestamp that marks when the next event will start.",
 														"type": "string",
-														"example": "2021-09-28T15:00:00.000Z",
+														"example": "2021-09-28T15:00:00Z",
 														"nullable": true,
 														"x-auditable": true
 													},
@@ -2907,7 +2904,6 @@
 																	"da-DK",
 																	"fi-FI",
 																	"lt-LT",
-																	"lv-LV",
 																	"ms-MY",
 																	"nb-NO",
 																	"ro-RO",
@@ -2994,14 +2990,14 @@
 															"next_event_prequeue_start_time": {
 																"description": "An ISO 8601 timestamp that marks when the next event will begin queueing.",
 																"type": "string",
-																"example": "2021-09-28T15:00:00.000Z",
+																"example": "2021-09-28T15:00:00Z",
 																"nullable": true,
 																"x-auditable": true
 															},
 															"next_event_start_time": {
 																"description": "An ISO 8601 timestamp that marks when the next event will start.",
 																"type": "string",
-																"example": "2021-09-28T15:00:00.000Z",
+																"example": "2021-09-28T15:00:00Z",
 																"nullable": true,
 																"x-auditable": true
 															},
@@ -3408,7 +3404,6 @@
 														"da-DK",
 														"fi-FI",
 														"lt-LT",
-														"lv-LV",
 														"ms-MY",
 														"nb-NO",
 														"ro-RO",
@@ -3495,14 +3490,14 @@
 												"next_event_prequeue_start_time": {
 													"description": "An ISO 8601 timestamp that marks when the next event will begin queueing.",
 													"type": "string",
-													"example": "2021-09-28T15:00:00.000Z",
+													"example": "2021-09-28T15:00:00Z",
 													"nullable": true,
 													"x-auditable": true
 												},
 												"next_event_start_time": {
 													"description": "An ISO 8601 timestamp that marks when the next event will start.",
 													"type": "string",
-													"example": "2021-09-28T15:00:00.000Z",
+													"example": "2021-09-28T15:00:00Z",
 													"nullable": true,
 													"x-auditable": true
 												},
@@ -3746,7 +3741,6 @@
 																"da-DK",
 																"fi-FI",
 																"lt-LT",
-																"lv-LV",
 																"ms-MY",
 																"nb-NO",
 																"ro-RO",
@@ -3833,14 +3827,14 @@
 														"next_event_prequeue_start_time": {
 															"description": "An ISO 8601 timestamp that marks when the next event will begin queueing.",
 															"type": "string",
-															"example": "2021-09-28T15:00:00.000Z",
+															"example": "2021-09-28T15:00:00Z",
 															"nullable": true,
 															"x-auditable": true
 														},
 														"next_event_start_time": {
 															"description": "An ISO 8601 timestamp that marks when the next event will start.",
 															"type": "string",
-															"example": "2021-09-28T15:00:00.000Z",
+															"example": "2021-09-28T15:00:00Z",
 															"nullable": true,
 															"x-auditable": true
 														},
@@ -4288,13 +4282,13 @@
 													"event_end_time": {
 														"description": "An ISO 8601 timestamp that marks the end of the event.",
 														"type": "string",
-														"example": "2021-09-28T17:00:00.000Z",
+														"example": "2021-09-28T17:00:00Z",
 														"x-auditable": true
 													},
 													"event_start_time": {
 														"description": "An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.",
 														"type": "string",
-														"example": "2021-09-28T15:30:00.000Z",
+														"example": "2021-09-28T15:30:00Z",
 														"x-auditable": true
 													},
 													"id": {
@@ -4326,7 +4320,7 @@
 													"prequeue_start_time": {
 														"description": "An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.",
 														"type": "string",
-														"example": "2021-09-28T15:00:00.000Z",
+														"example": "2021-09-28T15:00:00Z",
 														"nullable": true,
 														"x-auditable": true
 													},
@@ -4567,13 +4561,13 @@
 															"event_end_time": {
 																"description": "An ISO 8601 timestamp that marks the end of the event.",
 																"type": "string",
-																"example": "2021-09-28T17:00:00.000Z",
+																"example": "2021-09-28T17:00:00Z",
 																"x-auditable": true
 															},
 															"event_start_time": {
 																"description": "An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.",
 																"type": "string",
-																"example": "2021-09-28T15:30:00.000Z",
+																"example": "2021-09-28T15:30:00Z",
 																"x-auditable": true
 															},
 															"id": {
@@ -4605,7 +4599,7 @@
 															"prequeue_start_time": {
 																"description": "An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.",
 																"type": "string",
-																"example": "2021-09-28T15:00:00.000Z",
+																"example": "2021-09-28T15:00:00Z",
 																"nullable": true,
 																"x-auditable": true
 															},
@@ -4924,13 +4918,13 @@
 												"event_end_time": {
 													"description": "An ISO 8601 timestamp that marks the end of the event.",
 													"type": "string",
-													"example": "2021-09-28T17:00:00.000Z",
+													"example": "2021-09-28T17:00:00Z",
 													"x-auditable": true
 												},
 												"event_start_time": {
 													"description": "An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.",
 													"type": "string",
-													"example": "2021-09-28T15:30:00.000Z",
+													"example": "2021-09-28T15:30:00Z",
 													"x-auditable": true
 												},
 												"id": {
@@ -4962,7 +4956,7 @@
 												"prequeue_start_time": {
 													"description": "An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.",
 													"type": "string",
-													"example": "2021-09-28T15:00:00.000Z",
+													"example": "2021-09-28T15:00:00Z",
 													"nullable": true,
 													"x-auditable": true
 												},
@@ -5108,13 +5102,13 @@
 														"event_end_time": {
 															"description": "An ISO 8601 timestamp that marks the end of the event.",
 															"type": "string",
-															"example": "2021-09-28T17:00:00.000Z",
+															"example": "2021-09-28T17:00:00Z",
 															"x-auditable": true
 														},
 														"event_start_time": {
 															"description": "An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.",
 															"type": "string",
-															"example": "2021-09-28T15:30:00.000Z",
+															"example": "2021-09-28T15:30:00Z",
 															"x-auditable": true
 														},
 														"id": {
@@ -5146,7 +5140,7 @@
 														"prequeue_start_time": {
 															"description": "An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.",
 															"type": "string",
-															"example": "2021-09-28T15:00:00.000Z",
+															"example": "2021-09-28T15:00:00Z",
 															"nullable": true,
 															"x-auditable": true
 														},
@@ -5461,13 +5455,13 @@
 												"event_end_time": {
 													"description": "An ISO 8601 timestamp that marks the end of the event.",
 													"type": "string",
-													"example": "2021-09-28T17:00:00.000Z",
+													"example": "2021-09-28T17:00:00Z",
 													"x-auditable": true
 												},
 												"event_start_time": {
 													"description": "An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.",
 													"type": "string",
-													"example": "2021-09-28T15:30:00.000Z",
+													"example": "2021-09-28T15:30:00Z",
 													"x-auditable": true
 												},
 												"id": {
@@ -5495,7 +5489,7 @@
 												"prequeue_start_time": {
 													"description": "An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.",
 													"type": "string",
-													"example": "2021-09-28T15:00:00.000Z",
+													"example": "2021-09-28T15:00:00Z",
 													"nullable": true,
 													"x-auditable": true
 												},
@@ -5606,13 +5600,13 @@
 														"event_end_time": {
 															"description": "An ISO 8601 timestamp that marks the end of the event.",
 															"type": "string",
-															"example": "2021-09-28T17:00:00.000Z",
+															"example": "2021-09-28T17:00:00Z",
 															"x-auditable": true
 														},
 														"event_start_time": {
 															"description": "An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.",
 															"type": "string",
-															"example": "2021-09-28T15:30:00.000Z",
+															"example": "2021-09-28T15:30:00Z",
 															"x-auditable": true
 														},
 														"id": {
@@ -5640,7 +5634,7 @@
 														"prequeue_start_time": {
 															"description": "An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.",
 															"type": "string",
-															"example": "2021-09-28T15:00:00.000Z",
+															"example": "2021-09-28T15:00:00Z",
 															"nullable": true,
 															"x-auditable": true
 														},
@@ -7120,7 +7114,6 @@
 									"da-DK",
 									"fi-FI",
 									"lt-LT",
-									"lv-LV",
 									"ms-MY",
 									"nb-NO",
 									"ro-RO",
@@ -7431,7 +7424,6 @@
 														"da-DK",
 														"fi-FI",
 														"lt-LT",
-														"lv-LV",
 														"ms-MY",
 														"nb-NO",
 														"ro-RO",
@@ -7518,14 +7510,14 @@
 												"next_event_prequeue_start_time": {
 													"description": "An ISO 8601 timestamp that marks when the next event will begin queueing.",
 													"type": "string",
-													"example": "2021-09-28T15:00:00.000Z",
+													"example": "2021-09-28T15:00:00Z",
 													"nullable": true,
 													"x-auditable": true
 												},
 												"next_event_start_time": {
 													"description": "An ISO 8601 timestamp that marks when the next event will start.",
 													"type": "string",
-													"example": "2021-09-28T15:00:00.000Z",
+													"example": "2021-09-28T15:00:00Z",
 													"nullable": true,
 													"x-auditable": true
 												},
@@ -7769,7 +7761,6 @@
 																"da-DK",
 																"fi-FI",
 																"lt-LT",
-																"lv-LV",
 																"ms-MY",
 																"nb-NO",
 																"ro-RO",
@@ -7856,14 +7847,14 @@
 														"next_event_prequeue_start_time": {
 															"description": "An ISO 8601 timestamp that marks when the next event will begin queueing.",
 															"type": "string",
-															"example": "2021-09-28T15:00:00.000Z",
+															"example": "2021-09-28T15:00:00Z",
 															"nullable": true,
 															"x-auditable": true
 														},
 														"next_event_start_time": {
 															"description": "An ISO 8601 timestamp that marks when the next event will start.",
 															"type": "string",
-															"example": "2021-09-28T15:00:00.000Z",
+															"example": "2021-09-28T15:00:00Z",
 															"nullable": true,
 															"x-auditable": true
 														},
@@ -8162,13 +8153,13 @@
 							"event_end_time": {
 								"description": "An ISO 8601 timestamp that marks the end of the event.",
 								"type": "string",
-								"example": "2021-09-28T17:00:00.000Z",
+								"example": "2021-09-28T17:00:00Z",
 								"x-auditable": true
 							},
 							"event_start_time": {
 								"description": "An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.",
 								"type": "string",
-								"example": "2021-09-28T15:30:00.000Z",
+								"example": "2021-09-28T15:30:00Z",
 								"x-auditable": true
 							},
 							"name": {
@@ -8188,7 +8179,7 @@
 							"prequeue_start_time": {
 								"description": "An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.",
 								"type": "string",
-								"example": "2021-09-28T15:00:00.000Z",
+								"example": "2021-09-28T15:00:00Z",
 								"nullable": true,
 								"x-auditable": true
 							},
@@ -8332,13 +8323,13 @@
 												"event_end_time": {
 													"description": "An ISO 8601 timestamp that marks the end of the event.",
 													"type": "string",
-													"example": "2021-09-28T17:00:00.000Z",
+													"example": "2021-09-28T17:00:00Z",
 													"x-auditable": true
 												},
 												"event_start_time": {
 													"description": "An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.",
 													"type": "string",
-													"example": "2021-09-28T15:30:00.000Z",
+													"example": "2021-09-28T15:30:00Z",
 													"x-auditable": true
 												},
 												"id": {
@@ -8370,7 +8361,7 @@
 												"prequeue_start_time": {
 													"description": "An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.",
 													"type": "string",
-													"example": "2021-09-28T15:00:00.000Z",
+													"example": "2021-09-28T15:00:00Z",
 													"nullable": true,
 													"x-auditable": true
 												},
@@ -8516,13 +8507,13 @@
 														"event_end_time": {
 															"description": "An ISO 8601 timestamp that marks the end of the event.",
 															"type": "string",
-															"example": "2021-09-28T17:00:00.000Z",
+															"example": "2021-09-28T17:00:00Z",
 															"x-auditable": true
 														},
 														"event_start_time": {
 															"description": "An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.",
 															"type": "string",
-															"example": "2021-09-28T15:30:00.000Z",
+															"example": "2021-09-28T15:30:00Z",
 															"x-auditable": true
 														},
 														"id": {
@@ -8554,7 +8545,7 @@
 														"prequeue_start_time": {
 															"description": "An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.",
 															"type": "string",
-															"example": "2021-09-28T15:00:00.000Z",
+															"example": "2021-09-28T15:00:00Z",
 															"nullable": true,
 															"x-auditable": true
 														},
@@ -9838,7 +9829,6 @@
 									"da-DK",
 									"fi-FI",
 									"lt-LT",
-									"lv-LV",
 									"ms-MY",
 									"nb-NO",
 									"ro-RO",
@@ -10149,7 +10139,6 @@
 														"da-DK",
 														"fi-FI",
 														"lt-LT",
-														"lv-LV",
 														"ms-MY",
 														"nb-NO",
 														"ro-RO",
@@ -10236,14 +10225,14 @@
 												"next_event_prequeue_start_time": {
 													"description": "An ISO 8601 timestamp that marks when the next event will begin queueing.",
 													"type": "string",
-													"example": "2021-09-28T15:00:00.000Z",
+													"example": "2021-09-28T15:00:00Z",
 													"nullable": true,
 													"x-auditable": true
 												},
 												"next_event_start_time": {
 													"description": "An ISO 8601 timestamp that marks when the next event will start.",
 													"type": "string",
-													"example": "2021-09-28T15:00:00.000Z",
+													"example": "2021-09-28T15:00:00Z",
 													"nullable": true,
 													"x-auditable": true
 												},
@@ -10487,7 +10476,6 @@
 																"da-DK",
 																"fi-FI",
 																"lt-LT",
-																"lv-LV",
 																"ms-MY",
 																"nb-NO",
 																"ro-RO",
@@ -10574,14 +10562,14 @@
 														"next_event_prequeue_start_time": {
 															"description": "An ISO 8601 timestamp that marks when the next event will begin queueing.",
 															"type": "string",
-															"example": "2021-09-28T15:00:00.000Z",
+															"example": "2021-09-28T15:00:00Z",
 															"nullable": true,
 															"x-auditable": true
 														},
 														"next_event_start_time": {
 															"description": "An ISO 8601 timestamp that marks when the next event will start.",
 															"type": "string",
-															"example": "2021-09-28T15:00:00.000Z",
+															"example": "2021-09-28T15:00:00Z",
 															"nullable": true,
 															"x-auditable": true
 														},
@@ -10870,13 +10858,13 @@
 							"event_end_time": {
 								"description": "An ISO 8601 timestamp that marks the end of the event.",
 								"type": "string",
-								"example": "2021-09-28T17:00:00.000Z",
+								"example": "2021-09-28T17:00:00Z",
 								"x-auditable": true
 							},
 							"event_start_time": {
 								"description": "An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.",
 								"type": "string",
-								"example": "2021-09-28T15:30:00.000Z",
+								"example": "2021-09-28T15:30:00Z",
 								"x-auditable": true
 							},
 							"name": {
@@ -10896,7 +10884,7 @@
 							"prequeue_start_time": {
 								"description": "An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.",
 								"type": "string",
-								"example": "2021-09-28T15:00:00.000Z",
+								"example": "2021-09-28T15:00:00Z",
 								"nullable": true,
 								"x-auditable": true
 							},
@@ -11040,13 +11028,13 @@
 												"event_end_time": {
 													"description": "An ISO 8601 timestamp that marks the end of the event.",
 													"type": "string",
-													"example": "2021-09-28T17:00:00.000Z",
+													"example": "2021-09-28T17:00:00Z",
 													"x-auditable": true
 												},
 												"event_start_time": {
 													"description": "An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.",
 													"type": "string",
-													"example": "2021-09-28T15:30:00.000Z",
+													"example": "2021-09-28T15:30:00Z",
 													"x-auditable": true
 												},
 												"id": {
@@ -11078,7 +11066,7 @@
 												"prequeue_start_time": {
 													"description": "An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.",
 													"type": "string",
-													"example": "2021-09-28T15:00:00.000Z",
+													"example": "2021-09-28T15:00:00Z",
 													"nullable": true,
 													"x-auditable": true
 												},
@@ -11224,13 +11212,13 @@
 														"event_end_time": {
 															"description": "An ISO 8601 timestamp that marks the end of the event.",
 															"type": "string",
-															"example": "2021-09-28T17:00:00.000Z",
+															"example": "2021-09-28T17:00:00Z",
 															"x-auditable": true
 														},
 														"event_start_time": {
 															"description": "An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.",
 															"type": "string",
-															"example": "2021-09-28T15:30:00.000Z",
+															"example": "2021-09-28T15:30:00Z",
 															"x-auditable": true
 														},
 														"id": {
@@ -11262,7 +11250,7 @@
 														"prequeue_start_time": {
 															"description": "An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.",
 															"type": "string",
-															"example": "2021-09-28T15:00:00.000Z",
+															"example": "2021-09-28T15:00:00Z",
 															"nullable": true,
 															"x-auditable": true
 														},
@@ -12490,7 +12478,6 @@
 									"da-DK",
 									"fi-FI",
 									"lt-LT",
-									"lv-LV",
 									"ms-MY",
 									"nb-NO",
 									"ro-RO",
@@ -12801,7 +12788,6 @@
 														"da-DK",
 														"fi-FI",
 														"lt-LT",
-														"lv-LV",
 														"ms-MY",
 														"nb-NO",
 														"ro-RO",
@@ -12888,14 +12874,14 @@
 												"next_event_prequeue_start_time": {
 													"description": "An ISO 8601 timestamp that marks when the next event will begin queueing.",
 													"type": "string",
-													"example": "2021-09-28T15:00:00.000Z",
+													"example": "2021-09-28T15:00:00Z",
 													"nullable": true,
 													"x-auditable": true
 												},
 												"next_event_start_time": {
 													"description": "An ISO 8601 timestamp that marks when the next event will start.",
 													"type": "string",
-													"example": "2021-09-28T15:00:00.000Z",
+													"example": "2021-09-28T15:00:00Z",
 													"nullable": true,
 													"x-auditable": true
 												},
@@ -13139,7 +13125,6 @@
 																"da-DK",
 																"fi-FI",
 																"lt-LT",
-																"lv-LV",
 																"ms-MY",
 																"nb-NO",
 																"ro-RO",
@@ -13226,14 +13211,14 @@
 														"next_event_prequeue_start_time": {
 															"description": "An ISO 8601 timestamp that marks when the next event will begin queueing.",
 															"type": "string",
-															"example": "2021-09-28T15:00:00.000Z",
+															"example": "2021-09-28T15:00:00Z",
 															"nullable": true,
 															"x-auditable": true
 														},
 														"next_event_start_time": {
 															"description": "An ISO 8601 timestamp that marks when the next event will start.",
 															"type": "string",
-															"example": "2021-09-28T15:00:00.000Z",
+															"example": "2021-09-28T15:00:00Z",
 															"nullable": true,
 															"x-auditable": true
 														},
@@ -13532,13 +13517,13 @@
 							"event_end_time": {
 								"description": "An ISO 8601 timestamp that marks the end of the event.",
 								"type": "string",
-								"example": "2021-09-28T17:00:00.000Z",
+								"example": "2021-09-28T17:00:00Z",
 								"x-auditable": true
 							},
 							"event_start_time": {
 								"description": "An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.",
 								"type": "string",
-								"example": "2021-09-28T15:30:00.000Z",
+								"example": "2021-09-28T15:30:00Z",
 								"x-auditable": true
 							},
 							"name": {
@@ -13558,7 +13543,7 @@
 							"prequeue_start_time": {
 								"description": "An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.",
 								"type": "string",
-								"example": "2021-09-28T15:00:00.000Z",
+								"example": "2021-09-28T15:00:00Z",
 								"nullable": true,
 								"x-auditable": true
 							},
@@ -13702,13 +13687,13 @@
 												"event_end_time": {
 													"description": "An ISO 8601 timestamp that marks the end of the event.",
 													"type": "string",
-													"example": "2021-09-28T17:00:00.000Z",
+													"example": "2021-09-28T17:00:00Z",
 													"x-auditable": true
 												},
 												"event_start_time": {
 													"description": "An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.",
 													"type": "string",
-													"example": "2021-09-28T15:30:00.000Z",
+													"example": "2021-09-28T15:30:00Z",
 													"x-auditable": true
 												},
 												"id": {
@@ -13740,7 +13725,7 @@
 												"prequeue_start_time": {
 													"description": "An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.",
 													"type": "string",
-													"example": "2021-09-28T15:00:00.000Z",
+													"example": "2021-09-28T15:00:00Z",
 													"nullable": true,
 													"x-auditable": true
 												},
@@ -13886,13 +13871,13 @@
 														"event_end_time": {
 															"description": "An ISO 8601 timestamp that marks the end of the event.",
 															"type": "string",
-															"example": "2021-09-28T17:00:00.000Z",
+															"example": "2021-09-28T17:00:00Z",
 															"x-auditable": true
 														},
 														"event_start_time": {
 															"description": "An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.",
 															"type": "string",
-															"example": "2021-09-28T15:30:00.000Z",
+															"example": "2021-09-28T15:30:00Z",
 															"x-auditable": true
 														},
 														"id": {
@@ -13924,7 +13909,7 @@
 														"prequeue_start_time": {
 															"description": "An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.",
 															"type": "string",
-															"example": "2021-09-28T15:00:00.000Z",
+															"example": "2021-09-28T15:00:00Z",
 															"nullable": true,
 															"x-auditable": true
 														},

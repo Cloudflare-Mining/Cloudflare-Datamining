@@ -2874,7 +2874,11 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.cloud-integrations",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/cloud/providers": {
 		"operationId": "providers-list",
@@ -5537,7 +5541,11 @@
 		"x-api-token-group": [
 			"Magic WAN Write",
 			"Magic WAN Read"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.cloud-integrations",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/cloud/providers/{provider_id}": {
 		"operationId": "providers-read",
@@ -8655,7 +8663,11 @@
 		"x-api-token-group": [
 			"Magic WAN Write",
 			"Magic WAN Read"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.cloud-integrations",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/cloud/providers/{provider_id}/initial_setup": {
 		"operationId": "providers-initial-setup",
@@ -11590,7 +11602,11 @@
 		"x-api-token-group": [
 			"Magic WAN Write",
 			"Magic WAN Read"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.cloud-integrations",
+		"x-fern-sdk-method-name": "initial-setup",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/magic/cloud/providers/{provider_id}": {
 		"operationId": "providers-patch",
@@ -15680,7 +15696,11 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.cloud-integrations",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/cloud/providers": {
 		"operationId": "providers-create",
@@ -19299,7 +19319,11 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.cloud-integrations",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/cloud/providers/{provider_id}/discover": {
 		"operationId": "providers-discover",
@@ -22627,7 +22651,11 @@
 		],
 		"tags": [
 			"Cloud Integrations"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.cloud-integrations",
+		"x-fern-sdk-method-name": "discover",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/cloud/providers/discover": {
 		"operationId": "providers-discover-all",
@@ -25471,7 +25499,11 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.cloud-integrations",
+		"x-fern-sdk-method-name": "discover-all",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/magic/cloud/providers/{provider_id}": {
 		"operationId": "providers-update",
@@ -29561,6 +29593,10 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.cloud-integrations",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

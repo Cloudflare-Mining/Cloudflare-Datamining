@@ -6941,7 +6941,11 @@
 		],
 		"tags": [
 			"Security Center Insights"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-center.insights",
+		"x-fern-sdk-method-name": "update-classification",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/security-center/insights/{issue_id}/classification": {
 		"operationId": "update-zone-security-center-insight-classification",
@@ -7223,7 +7227,11 @@
 		],
 		"tags": [
 			"Security Center Insights"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-center.zone-insights",
+		"x-fern-sdk-method-name": "update-classification",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/intel/attack-surface-report/issues/{issue_id}/dismiss": {
 		"operationId": "archive-security-center-insight-deprecated",

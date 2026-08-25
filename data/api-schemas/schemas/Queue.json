@@ -3399,7 +3399,11 @@
 			"Queues Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues.metrics",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/queues/{queue_id}/purge": {
 		"operationId": "queues-purge-get",

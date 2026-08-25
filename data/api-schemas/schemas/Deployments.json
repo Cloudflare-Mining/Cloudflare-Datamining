@@ -690,6 +690,9 @@
 		"x-api-token-group": [
 			"Workers Containers Write",
 			"Workers Containers Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "containers.instances",
+		"x-fern-sdk-method-name": "ssh"
 	}
 }

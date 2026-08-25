@@ -353,7 +353,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust: PII Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.risk-scoring",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/zt_risk_scoring/behaviors": {
 		"operationId": "dlp-risk-score-behaviors-get",
@@ -639,7 +643,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.risk-scoring.behaviours",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/zt_risk_scoring/summary": {
 		"operationId": "dlp-risk-score-summary-get",
@@ -970,7 +978,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust: PII Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.risk-scoring.summary",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/zt_risk_scoring/{user_id}/reset": {
 		"operationId": "dlp-risk-score-reset-post",
@@ -1229,7 +1241,12 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.risk-scoring",
+		"x-fern-sdk-method-name": "reset",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation wipes risk-scoring history."
 	},
 	"PUT /accounts/{account_id}/zt_risk_scoring/behaviors": {
 		"operationId": "dlp-risk-score-behaviors-put",
@@ -1546,6 +1563,10 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.risk-scoring.behaviours",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

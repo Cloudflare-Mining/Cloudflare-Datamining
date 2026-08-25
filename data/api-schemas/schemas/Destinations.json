@@ -326,7 +326,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "observability.destinations",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This operation deletes the destination."
 	},
 	"GET /accounts/{account_id}/workers/observability/destinations": {
 		"operationId": "destination.list",
@@ -717,8 +717,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "observability.destinations",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"PATCH /accounts/{account_id}/workers/observability/destinations/{slug}": {
 		"operationId": "destination.update",
@@ -1147,8 +1146,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "observability.destinations",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/workers/observability/destinations": {
 		"operationId": "destination.create",
@@ -1598,7 +1596,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "observability.destinations",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

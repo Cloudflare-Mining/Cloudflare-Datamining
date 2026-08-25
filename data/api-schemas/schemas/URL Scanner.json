@@ -2620,6 +2620,113 @@
 																"discoverability": {
 																	"type": "object",
 																	"properties": {
+																		"dnsAid": {
+																			"type": "object",
+																			"properties": {
+																				"details": {
+																					"type": "object"
+																				},
+																				"durationMs": {
+																					"type": "number"
+																				},
+																				"evidence": {
+																					"type": "array",
+																					"items": {
+																						"properties": {
+																							"action": {
+																								"type": "string",
+																								"example": "fetch"
+																							},
+																							"finding": {
+																								"type": "object",
+																								"properties": {
+																									"outcome": {
+																										"type": "string",
+																										"example": "positive"
+																									},
+																									"summary": {
+																										"type": "string",
+																										"example": "Found valid robots.txt"
+																									}
+																								},
+																								"required": [
+																									"outcome",
+																									"summary"
+																								]
+																							},
+																							"label": {
+																								"type": "string",
+																								"example": "GET /robots.txt"
+																							},
+																							"request": {
+																								"type": "object",
+																								"properties": {
+																									"headers": {
+																										"type": "object"
+																									},
+																									"method": {
+																										"type": "string",
+																										"example": "GET"
+																									},
+																									"url": {
+																										"type": "string",
+																										"example": "https://example.com/robots.txt"
+																									}
+																								},
+																								"required": [
+																									"url",
+																									"method"
+																								]
+																							},
+																							"response": {
+																								"type": "object",
+																								"properties": {
+																									"bodyPreview": {
+																										"type": "string"
+																									},
+																									"bodySize": {
+																										"type": "integer"
+																									},
+																									"headers": {
+																										"type": "object"
+																									},
+																									"redirectedTo": {
+																										"type": "string"
+																									},
+																									"status": {
+																										"type": "integer",
+																										"example": 200
+																									},
+																									"statusText": {
+																										"type": "string",
+																										"example": "OK"
+																									}
+																								},
+																								"required": [
+																									"status",
+																									"statusText"
+																								]
+																							}
+																						},
+																						"required": [
+																							"action",
+																							"label"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"message": {
+																					"type": "string"
+																				},
+																				"status": {
+																					"type": "string",
+																					"example": "fail"
+																				}
+																			},
+																			"required": [
+																				"status"
+																			]
+																		},
 																		"linkHeaders": {
 																			"type": "object",
 																			"properties": {
@@ -2945,7 +3052,8 @@
 																	"required": [
 																		"robotsTxt",
 																		"sitemap",
-																		"linkHeaders"
+																		"linkHeaders",
+																		"dnsAid"
 																	]
 																},
 																"discovery": {
@@ -3166,6 +3274,220 @@
 																			]
 																		},
 																		"apiCatalog": {
+																			"type": "object",
+																			"properties": {
+																				"details": {
+																					"type": "object"
+																				},
+																				"durationMs": {
+																					"type": "number"
+																				},
+																				"evidence": {
+																					"type": "array",
+																					"items": {
+																						"properties": {
+																							"action": {
+																								"type": "string",
+																								"example": "fetch"
+																							},
+																							"finding": {
+																								"type": "object",
+																								"properties": {
+																									"outcome": {
+																										"type": "string",
+																										"example": "positive"
+																									},
+																									"summary": {
+																										"type": "string",
+																										"example": "Found valid robots.txt"
+																									}
+																								},
+																								"required": [
+																									"outcome",
+																									"summary"
+																								]
+																							},
+																							"label": {
+																								"type": "string",
+																								"example": "GET /robots.txt"
+																							},
+																							"request": {
+																								"type": "object",
+																								"properties": {
+																									"headers": {
+																										"type": "object"
+																									},
+																									"method": {
+																										"type": "string",
+																										"example": "GET"
+																									},
+																									"url": {
+																										"type": "string",
+																										"example": "https://example.com/robots.txt"
+																									}
+																								},
+																								"required": [
+																									"url",
+																									"method"
+																								]
+																							},
+																							"response": {
+																								"type": "object",
+																								"properties": {
+																									"bodyPreview": {
+																										"type": "string"
+																									},
+																									"bodySize": {
+																										"type": "integer"
+																									},
+																									"headers": {
+																										"type": "object"
+																									},
+																									"redirectedTo": {
+																										"type": "string"
+																									},
+																									"status": {
+																										"type": "integer",
+																										"example": 200
+																									},
+																									"statusText": {
+																										"type": "string",
+																										"example": "OK"
+																									}
+																								},
+																								"required": [
+																									"status",
+																									"statusText"
+																								]
+																							}
+																						},
+																						"required": [
+																							"action",
+																							"label"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"message": {
+																					"type": "string"
+																				},
+																				"status": {
+																					"type": "string",
+																					"example": "fail"
+																				}
+																			},
+																			"required": [
+																				"status"
+																			]
+																		},
+																		"ard": {
+																			"type": "object",
+																			"properties": {
+																				"details": {
+																					"type": "object"
+																				},
+																				"durationMs": {
+																					"type": "number"
+																				},
+																				"evidence": {
+																					"type": "array",
+																					"items": {
+																						"properties": {
+																							"action": {
+																								"type": "string",
+																								"example": "fetch"
+																							},
+																							"finding": {
+																								"type": "object",
+																								"properties": {
+																									"outcome": {
+																										"type": "string",
+																										"example": "positive"
+																									},
+																									"summary": {
+																										"type": "string",
+																										"example": "Found valid robots.txt"
+																									}
+																								},
+																								"required": [
+																									"outcome",
+																									"summary"
+																								]
+																							},
+																							"label": {
+																								"type": "string",
+																								"example": "GET /robots.txt"
+																							},
+																							"request": {
+																								"type": "object",
+																								"properties": {
+																									"headers": {
+																										"type": "object"
+																									},
+																									"method": {
+																										"type": "string",
+																										"example": "GET"
+																									},
+																									"url": {
+																										"type": "string",
+																										"example": "https://example.com/robots.txt"
+																									}
+																								},
+																								"required": [
+																									"url",
+																									"method"
+																								]
+																							},
+																							"response": {
+																								"type": "object",
+																								"properties": {
+																									"bodyPreview": {
+																										"type": "string"
+																									},
+																									"bodySize": {
+																										"type": "integer"
+																									},
+																									"headers": {
+																										"type": "object"
+																									},
+																									"redirectedTo": {
+																										"type": "string"
+																									},
+																									"status": {
+																										"type": "integer",
+																										"example": 200
+																									},
+																									"statusText": {
+																										"type": "string",
+																										"example": "OK"
+																									}
+																								},
+																								"required": [
+																									"status",
+																									"statusText"
+																								]
+																							}
+																						},
+																						"required": [
+																							"action",
+																							"label"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"message": {
+																					"type": "string"
+																				},
+																				"status": {
+																					"type": "string",
+																					"example": "fail"
+																				}
+																			},
+																			"required": [
+																				"status"
+																			]
+																		},
+																		"authMd": {
 																			"type": "object",
 																			"properties": {
 																				"details": {
@@ -3705,10 +4027,12 @@
 																		"apiCatalog",
 																		"oauthDiscovery",
 																		"oauthProtectedResource",
+																		"authMd",
 																		"mcpServerCard",
 																		"a2aAgentCard",
 																		"agentSkills",
-																		"webMcp"
+																		"webMcp",
+																		"ard"
 																	]
 																}
 															},
@@ -5429,7 +5753,7 @@
 												"properties": {
 													"time": {
 														"type": "string",
-														"example": "2024-09-30T23:54:02.881000+00:00"
+														"example": "2024-09-30T23:54:02.881Z"
 													},
 													"url": {
 														"type": "string",

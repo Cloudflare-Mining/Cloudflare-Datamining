@@ -256,7 +256,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.entries.predefined",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/dlp/entries/predefined": {
 		"operationId": "dlp-entries-create-predefined-entry",
@@ -639,6 +643,10 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.entries.predefined",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

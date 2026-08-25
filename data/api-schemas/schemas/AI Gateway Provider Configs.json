@@ -174,7 +174,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.gateways.providers",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs": {
 		"operationId": "aig-config-list-providers",
@@ -361,7 +365,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.gateways.providers",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs": {
 		"operationId": "aig-config-create-providers",
@@ -576,7 +584,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.gateways.providers",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs/{id}": {
 		"operationId": "aig-config-update-providers",
@@ -817,6 +829,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.gateways.providers",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

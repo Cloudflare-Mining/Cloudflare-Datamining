@@ -7,6 +7,7 @@
 			{
 				"name": "from",
 				"in": "query",
+				"description": "Unix timestamp in milliseconds for the start of the range.",
 				"required": true,
 				"schema": {
 					"description": "Unix timestamp in milliseconds for the start of the range.",
@@ -17,6 +18,7 @@
 			{
 				"name": "to",
 				"in": "query",
+				"description": "Unix timestamp in milliseconds for the end of the range.",
 				"required": true,
 				"schema": {
 					"description": "Unix timestamp in milliseconds for the end of the range.",
@@ -239,6 +241,63 @@
 					}
 				}
 			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
 			"429": {
 				"description": "Too many requests",
 				"content": {
@@ -360,6 +419,8 @@
 		"x-api-token-group": [
 			"Workers Observability Write",
 			"Workers Observability Read"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	}
 }

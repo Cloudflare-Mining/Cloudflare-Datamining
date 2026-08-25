@@ -476,7 +476,11 @@
 		],
 		"x-api-token-group": [
 			"Magic Network Monitoring Admin"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-network-monitoring.configs",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/mnm/config": {
 		"operationId": "magic-network-monitoring-configuration-list-account-configuration",
@@ -951,7 +955,11 @@
 			"Magic Network Monitoring Admin",
 			"Magic Network Monitoring Config Write",
 			"Magic Network Monitoring Config Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-network-monitoring.configs",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/mnm/config/full": {
 		"operationId": "magic-network-monitoring-configuration-list-rules-and-account-configuration",
@@ -1426,7 +1434,11 @@
 			"Magic Network Monitoring Admin",
 			"Magic Network Monitoring Config Write",
 			"Magic Network Monitoring Config Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-network-monitoring.configs.full",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/mnm/config": {
 		"operationId": "magic-network-monitoring-configuration-update-account-configuration-fields",
@@ -1966,7 +1978,11 @@
 		"x-api-token-group": [
 			"Magic Network Monitoring Admin",
 			"Magic Network Monitoring Config Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-network-monitoring.configs",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/mnm/config": {
 		"operationId": "magic-network-monitoring-configuration-create-account-configuration",
@@ -2509,7 +2525,11 @@
 		],
 		"x-api-token-group": [
 			"Magic Network Monitoring Admin"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-network-monitoring.configs",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/mnm/config": {
 		"operationId": "magic-network-monitoring-configuration-update-an-entire-account-configuration",
@@ -3053,6 +3073,10 @@
 		"x-api-token-group": [
 			"Magic Network Monitoring Admin",
 			"Magic Network Monitoring Config Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-network-monitoring.configs",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

@@ -158,94 +158,125 @@
 													"type": "array",
 													"items": {
 														"description": "A container instance belonging to an application.",
-														"type": "object",
-														"properties": {
-															"application_id": {
-																"description": "An Application ID represents an identifier of an application.",
-																"type": "string"
-															},
-															"created_at": {
-																"description": "UTC timestamp string in ISO 8601 format.",
-																"type": "string",
-																"example": "2021-04-01T12:32:41.488Z"
-															},
-															"id": {
-																"description": "An opaque identifier for a container instance within an application.",
-																"type": "string",
-																"minLength": 1
-															},
-															"image": {
-																"description": "The image for the current container placement, or the image currently configured for the application when the instance lacks a placement.\n",
-																"allOf": [
-																	{
-																		"description": "Image url.",
-																		"type": "string"
-																	}
-																]
-															},
-															"location": {
-																"description": "The location of the instance's current container placement.",
+														"allOf": [
+															{
+																"description": "The last-reported state of a logical container instance.",
 																"type": "object",
 																"properties": {
-																	"name": {
-																		"description": "Unique location code used to identify locations on a logical level.",
+																	"application_id": {
+																		"description": "An Application ID represents an identifier of an application.",
 																		"type": "string"
 																	},
-																	"region": {
-																		"description": "Represents a group of datacenters. Choose one of \"AFR\", \"APAC\", \"EEUR\", \"ENAM\", \"WNAM\", \"ME\", \"OC\", \"SAM\", or \"WEUR\".\n",
+																	"id": {
+																		"description": "A container instance ID (64-character hex Durable Object actor ID).",
 																		"type": "string",
-																		"example": "WNAM"
-																	}
-																},
-																"required": [
-																	"name",
-																	"region"
-																]
-															},
-															"name": {
-																"description": "The customer-provided instance name, when one is available.",
-																"type": "string"
-															},
-															"status": {
-																"description": "The latest known status of a container instance.",
-																"type": "object",
-																"properties": {
-																	"exit_code": {
-																		"description": "The process exit code, when the runtime reports one.",
-																		"type": "integer"
+																		"maxLength": 64,
+																		"minLength": 64,
+																		"pattern": "^[a-f0-9]{64}$"
 																	},
-																	"state": {
-																		"description": "The current lifecycle state of a container instance.",
-																		"type": "string",
-																		"enum": [
-																			"provisioning",
-																			"running",
-																			"failed",
-																			"stopping",
-																			"stopped",
-																			"unhealthy",
-																			"inactive",
-																			"unknown"
+																	"image": {
+																		"description": "The image for the current container placement, when one is available.\n",
+																		"allOf": [
+																			{
+																				"description": "Image url.",
+																				"type": "string"
+																			}
 																		]
 																	},
-																	"updated_at": {
-																		"description": "UTC timestamp string in ISO 8601 format.",
-																		"type": "string",
-																		"example": "2021-04-01T12:32:41.488Z"
+																	"location": {
+																		"description": "The location of the instance's current container placement.",
+																		"type": "object",
+																		"properties": {
+																			"name": {
+																				"description": "Unique location code used to identify locations on a logical level.",
+																				"type": "string"
+																			},
+																			"region": {
+																				"description": "Represents a group of datacenters. Choose one of \"AFR\", \"APAC\", \"EEUR\", \"ENAM\", \"WNAM\", \"ME\", \"OC\", \"SAM\", or \"WEUR\".\n",
+																				"type": "string",
+																				"example": "WNAM"
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"region"
+																		]
+																	},
+																	"name": {
+																		"description": "The customer-provided instance name, when available. Its UTF-8 encoding uses at most 1,024 bytes.\n",
+																		"type": "string"
+																	},
+																	"started_at": {
+																		"description": "The time at which the current container placement started, when one exists.",
+																		"allOf": [
+																			{
+																				"description": "UTC timestamp string in ISO 8601 format.",
+																				"type": "string",
+																				"example": "2021-04-01T12:32:41.488Z"
+																			}
+																		]
+																	},
+																	"status": {
+																		"description": "The latest known status of a container instance.",
+																		"type": "object",
+																		"properties": {
+																			"exit_code": {
+																				"description": "The process exit code, when the runtime reports one.",
+																				"type": "integer"
+																			},
+																			"state": {
+																				"description": "The current lifecycle state of a container instance.",
+																				"type": "string",
+																				"enum": [
+																					"provisioning",
+																					"running",
+																					"failed",
+																					"stopping",
+																					"stopped",
+																					"unhealthy",
+																					"inactive",
+																					"unknown"
+																				]
+																			},
+																			"updated_at": {
+																				"description": "UTC timestamp string in ISO 8601 format.",
+																				"type": "string",
+																				"example": "2021-04-01T12:32:41.488Z"
+																			}
+																		},
+																		"required": [
+																			"state",
+																			"updated_at"
+																		]
 																	}
 																},
 																"required": [
-																	"state",
-																	"updated_at"
+																	"id",
+																	"status"
 																]
+															},
+															{
+																"properties": {
+																	"application_id": {
+																		"description": "An Application ID represents an identifier of an application.",
+																		"type": "string"
+																	},
+																	"image": {
+																		"description": "The image for the current container placement, or the image currently configured for the application when the instance lacks a placement.\n",
+																		"allOf": [
+																			{
+																				"description": "Image url.",
+																				"type": "string"
+																			}
+																		]
+																	}
+																},
+																"required": [
+																	"application_id",
+																	"image"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"id",
-															"application_id",
-															"created_at",
-															"status",
-															"image"
 														]
 													}
 												}
@@ -717,7 +748,10 @@
 		"x-api-token-group": [
 			"Workers Containers Write",
 			"Workers Containers Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "containers.applications.instances",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/containers/applications/{application_id}/instances/{instance_id}": {
 		"operationId": "getContainerInstance",
@@ -738,9 +772,11 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "An opaque identifier for a container instance within an application.",
+					"description": "A container instance ID (64-character hex Durable Object actor ID).",
 					"type": "string",
-					"minLength": 1
+					"maxLength": 64,
+					"minLength": 64,
+					"pattern": "^[a-f0-9]{64}$"
 				}
 			}
 		],
@@ -834,94 +870,125 @@
 									"properties": {
 										"result": {
 											"description": "A container instance belonging to an application.",
-											"type": "object",
-											"properties": {
-												"application_id": {
-													"description": "An Application ID represents an identifier of an application.",
-													"type": "string"
-												},
-												"created_at": {
-													"description": "UTC timestamp string in ISO 8601 format.",
-													"type": "string",
-													"example": "2021-04-01T12:32:41.488Z"
-												},
-												"id": {
-													"description": "An opaque identifier for a container instance within an application.",
-													"type": "string",
-													"minLength": 1
-												},
-												"image": {
-													"description": "The image for the current container placement, or the image currently configured for the application when the instance lacks a placement.\n",
-													"allOf": [
-														{
-															"description": "Image url.",
-															"type": "string"
-														}
-													]
-												},
-												"location": {
-													"description": "The location of the instance's current container placement.",
+											"allOf": [
+												{
+													"description": "The last-reported state of a logical container instance.",
 													"type": "object",
 													"properties": {
-														"name": {
-															"description": "Unique location code used to identify locations on a logical level.",
+														"application_id": {
+															"description": "An Application ID represents an identifier of an application.",
 															"type": "string"
 														},
-														"region": {
-															"description": "Represents a group of datacenters. Choose one of \"AFR\", \"APAC\", \"EEUR\", \"ENAM\", \"WNAM\", \"ME\", \"OC\", \"SAM\", or \"WEUR\".\n",
+														"id": {
+															"description": "A container instance ID (64-character hex Durable Object actor ID).",
 															"type": "string",
-															"example": "WNAM"
-														}
-													},
-													"required": [
-														"name",
-														"region"
-													]
-												},
-												"name": {
-													"description": "The customer-provided instance name, when one is available.",
-													"type": "string"
-												},
-												"status": {
-													"description": "The latest known status of a container instance.",
-													"type": "object",
-													"properties": {
-														"exit_code": {
-															"description": "The process exit code, when the runtime reports one.",
-															"type": "integer"
+															"maxLength": 64,
+															"minLength": 64,
+															"pattern": "^[a-f0-9]{64}$"
 														},
-														"state": {
-															"description": "The current lifecycle state of a container instance.",
-															"type": "string",
-															"enum": [
-																"provisioning",
-																"running",
-																"failed",
-																"stopping",
-																"stopped",
-																"unhealthy",
-																"inactive",
-																"unknown"
+														"image": {
+															"description": "The image for the current container placement, when one is available.\n",
+															"allOf": [
+																{
+																	"description": "Image url.",
+																	"type": "string"
+																}
 															]
 														},
-														"updated_at": {
-															"description": "UTC timestamp string in ISO 8601 format.",
-															"type": "string",
-															"example": "2021-04-01T12:32:41.488Z"
+														"location": {
+															"description": "The location of the instance's current container placement.",
+															"type": "object",
+															"properties": {
+																"name": {
+																	"description": "Unique location code used to identify locations on a logical level.",
+																	"type": "string"
+																},
+																"region": {
+																	"description": "Represents a group of datacenters. Choose one of \"AFR\", \"APAC\", \"EEUR\", \"ENAM\", \"WNAM\", \"ME\", \"OC\", \"SAM\", or \"WEUR\".\n",
+																	"type": "string",
+																	"example": "WNAM"
+																}
+															},
+															"required": [
+																"name",
+																"region"
+															]
+														},
+														"name": {
+															"description": "The customer-provided instance name, when available. Its UTF-8 encoding uses at most 1,024 bytes.\n",
+															"type": "string"
+														},
+														"started_at": {
+															"description": "The time at which the current container placement started, when one exists.",
+															"allOf": [
+																{
+																	"description": "UTC timestamp string in ISO 8601 format.",
+																	"type": "string",
+																	"example": "2021-04-01T12:32:41.488Z"
+																}
+															]
+														},
+														"status": {
+															"description": "The latest known status of a container instance.",
+															"type": "object",
+															"properties": {
+																"exit_code": {
+																	"description": "The process exit code, when the runtime reports one.",
+																	"type": "integer"
+																},
+																"state": {
+																	"description": "The current lifecycle state of a container instance.",
+																	"type": "string",
+																	"enum": [
+																		"provisioning",
+																		"running",
+																		"failed",
+																		"stopping",
+																		"stopped",
+																		"unhealthy",
+																		"inactive",
+																		"unknown"
+																	]
+																},
+																"updated_at": {
+																	"description": "UTC timestamp string in ISO 8601 format.",
+																	"type": "string",
+																	"example": "2021-04-01T12:32:41.488Z"
+																}
+															},
+															"required": [
+																"state",
+																"updated_at"
+															]
 														}
 													},
 													"required": [
-														"state",
-														"updated_at"
+														"id",
+														"status"
 													]
+												},
+												{
+													"properties": {
+														"application_id": {
+															"description": "An Application ID represents an identifier of an application.",
+															"type": "string"
+														},
+														"image": {
+															"description": "The image for the current container placement, or the image currently configured for the application when the instance lacks a placement.\n",
+															"allOf": [
+																{
+																	"description": "Image url.",
+																	"type": "string"
+																}
+															]
+														}
+													},
+													"required": [
+														"application_id",
+														"image"
+													],
+													"type": "object"
 												}
-											},
-											"required": [
-												"id",
-												"application_id",
-												"created_at",
-												"status",
-												"image"
 											]
 										}
 									},
@@ -1387,6 +1454,9 @@
 		"x-api-token-group": [
 			"Workers Containers Write",
 			"Workers Containers Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "containers.applications.instances",
+		"x-fern-sdk-method-name": "get"
 	}
 }

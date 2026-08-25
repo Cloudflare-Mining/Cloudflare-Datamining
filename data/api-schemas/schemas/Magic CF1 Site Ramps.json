@@ -401,7 +401,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.cf1-sites.ramps",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps": {
 		"operationId": "magic-cf1-sites-list-cf1-site-ramps",
@@ -798,7 +802,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.cf1-sites.ramps",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps/{ramp_id}": {
 		"operationId": "magic-cf1-sites-get-cf1-site-ramp",
@@ -1204,7 +1212,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.cf1-sites.ramps",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps": {
 		"operationId": "magic-cf1-sites-create-cf1-site-ramps",
@@ -1638,6 +1650,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.cf1-sites.ramps",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

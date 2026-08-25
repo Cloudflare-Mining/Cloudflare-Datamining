@@ -256,7 +256,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.custom",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/dlp/profiles/predefined/{profile_id}": {
 		"operationId": "dlp-profiles-delete-predefined-profile",
@@ -515,7 +519,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.predefined",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dlp/profiles": {
 		"operationId": "dlp-profiles-list-all-profiles",
@@ -3578,7 +3586,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.profiles",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dlp/profiles/{profile_id}": {
 		"operationId": "dlp-profiles-get-dlp-profile",
@@ -6639,7 +6651,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.profiles",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dlp/profiles/custom": {
 		"operationId": "dlp-profiles-list-all-custom-profiles",
@@ -8025,7 +8041,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.profiles.custom",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dlp/profiles/custom/{profile_id}": {
 		"operationId": "dlp-profiles-get-custom-profile",
@@ -11086,7 +11106,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.custom",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dlp/profiles/predefined/{profile_id}": {
 		"operationId": "dlp-profiles-get-predefined-profile",
@@ -14147,7 +14171,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.profiles.predefined",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dlp/profiles/predefined/{profile_id}/config": {
 		"operationId": "dlp-profiles-get-predefined-profile-config",
@@ -14954,7 +14982,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.predefined",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/dlp/profiles/custom": {
 		"operationId": "dlp-profiles-create-custom-profiles",
@@ -18211,7 +18243,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.custom",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/dlp/profiles/predefined": {
 		"operationId": "dlp-profiles-create-predefined-profile",
@@ -21361,7 +21397,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.profiles.predefined",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/dlp/profiles/predefined/{profile_id}/config": {
 		"operationId": "dlp-profiles-create-predefined-profile-config",
@@ -22231,7 +22271,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.predefined",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/dlp/profiles/custom/{profile_id}": {
 		"operationId": "dlp-profiles-update-custom-profile",
@@ -25532,7 +25576,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.custom",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/dlp/profiles/predefined/{profile_id}": {
 		"operationId": "dlp-profiles-update-predefined-profile",
@@ -28675,7 +28723,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.profiles.predefined",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/dlp/profiles/predefined/{profile_id}/config": {
 		"operationId": "dlp-profiles-update-predefined-profile-config",
@@ -29545,6 +29597,10 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.predefined",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

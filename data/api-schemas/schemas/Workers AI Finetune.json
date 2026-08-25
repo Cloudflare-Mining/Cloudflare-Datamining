@@ -2,7 +2,7 @@
 	"DELETE /accounts/{account_id}/ai/finetunes/{finetune_id}": {
 		"operationId": "workers-ai-delete-finetune",
 		"summary": "Delete a Finetune",
-		"description": "Permanently deletes a finetune. D1 rows are removed immediately and R2 objects are moved to a trash bucket with a 30-day lifecycle rule for recovery.",
+		"description": "Delete a finetune. Any in-flight requests referencing the lora will fail after the files are deleted.",
 		"parameters": [
 			{
 				"name": "account_id",

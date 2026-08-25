@@ -514,7 +514,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "precursor",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/precursor": {
 		"operationId": "precursor-for-a-zone-update-config",
@@ -1160,6 +1164,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "precursor",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

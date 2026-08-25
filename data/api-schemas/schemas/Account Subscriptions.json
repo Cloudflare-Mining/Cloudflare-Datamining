@@ -167,208 +167,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													}
-												}
-											]
-										},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"subscription_id": {
-															"description": "Subscription identifier tag.",
-															"type": "string",
-															"example": "506e3185e9c882d175a2d0cb0093d9f2",
-															"maxLength": 32,
-															"readOnly": true,
-															"x-auditable": true
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
 													}
-												}
-											}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -548,16 +427,19 @@
 														"type": "object",
 														"properties": {
 															"app": {
+																"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+																"deprecated": true,
 																"properties": {
 																	"install_id": {
 																		"description": "app install id.",
 																		"type": "string",
+																		"deprecated": true,
 																		"x-auditable": true
 																	}
 																}
 															},
 															"component_values": {
-																"description": "The list of add-ons subscribed to.",
+																"description": "Configurable component values for the subscription.",
 																"type": "array",
 																"items": {
 																	"description": "A component value for a subscription.",
@@ -769,431 +651,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"properties": {
-														"result": {
-															"type": "array",
-															"items": {},
-															"nullable": true
-														},
-														"result_info": {
-															"type": "object",
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"type": "number",
-																	"example": 1
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"type": "number",
-																	"example": 1
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"type": "number",
-																	"example": 20
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"type": "number",
-																	"example": 2000
-																}
-															}
-														}
-													}
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"allOf": [
-															{
-																"type": "object",
-																"properties": {
-																	"app": {
-																		"properties": {
-																			"install_id": {
-																				"description": "app install id.",
-																				"type": "string",
-																				"x-auditable": true
-																			}
-																		}
-																	},
-																	"component_values": {
-																		"description": "The list of add-ons subscribed to.",
-																		"type": "array",
-																		"items": {
-																			"description": "A component value for a subscription.",
-																			"type": "object",
-																			"properties": {
-																				"default": {
-																					"description": "The default amount assigned.",
-																					"type": "number",
-																					"example": 5,
-																					"x-auditable": true
-																				},
-																				"display_name": {
-																					"description": "A human-readable version of the component name.",
-																					"type": "string",
-																					"example": "Page Rules"
-																				},
-																				"kind": {
-																					"description": "The type of component value. \"enum\" for discrete values (including boolean on/off toggles where 0=off and 1=on), \"sum\" for countable quantities, \"usage\" for metered billing components.",
-																					"type": "string",
-																					"example": "sum",
-																					"enum": [
-																						"enum",
-																						"sum",
-																						"usage"
-																					]
-																				},
-																				"name": {
-																					"description": "The name of the component value.",
-																					"type": "string",
-																					"example": "page_rules",
-																					"x-auditable": true
-																				},
-																				"price": {
-																					"description": "The unit price for the component value.",
-																					"type": "number",
-																					"example": 5,
-																					"x-auditable": true
-																				},
-																				"value": {
-																					"description": "The amount of the component value assigned.",
-																					"type": "number",
-																					"example": 20,
-																					"x-auditable": true
-																				}
-																			}
-																		}
-																	},
-																	"currency": {
-																		"description": "The monetary unit in which pricing information is displayed.",
-																		"type": "string",
-																		"example": "USD",
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"current_period_end": {
-																		"description": "The end of the current period and also when the next billing is due.",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-03-31T12:20:00Z",
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"current_period_start": {
-																		"description": "When the current billing period started. May match initial_period_start if this is the first period.",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-05-11T12:20:00Z",
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"frequency": {
-																		"description": "How often the subscription is renewed automatically.",
-																		"type": "string",
-																		"example": "monthly",
-																		"enum": [
-																			"weekly",
-																			"monthly",
-																			"quarterly",
-																			"yearly"
-																		],
-																		"x-auditable": true
-																	},
-																	"id": {
-																		"description": "Subscription identifier tag.",
-																		"type": "string",
-																		"example": "506e3185e9c882d175a2d0cb0093d9f2",
-																		"maxLength": 32,
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"price": {
-																		"description": "The price of the subscription that will be billed, in US dollars.",
-																		"type": "number",
-																		"example": 20,
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"rate_plan": {
-																		"description": "The rate plan applied to the subscription.",
-																		"type": "object",
-																		"properties": {
-																			"currency": {
-																				"description": "The currency applied to the rate plan subscription.",
-																				"type": "string",
-																				"example": "USD",
-																				"x-auditable": true,
-																				"x-stainless-terraform-configurability": "computed_optional"
-																			},
-																			"externally_managed": {
-																				"description": "Whether this rate plan is managed externally from Cloudflare.",
-																				"type": "boolean",
-																				"example": false,
-																				"x-auditable": true,
-																				"x-stainless-terraform-configurability": "computed_optional"
-																			},
-																			"id": {
-																				"description": "The ID of the rate plan.",
-																				"type": "string",
-																				"example": "free",
-																				"x-auditable": true
-																			},
-																			"is_contract": {
-																				"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
-																				"type": "boolean",
-																				"example": false,
-																				"x-auditable": true,
-																				"x-stainless-terraform-configurability": "computed_optional"
-																			},
-																			"public_name": {
-																				"description": "The full name of the rate plan.",
-																				"type": "string",
-																				"example": "Business Plan",
-																				"x-auditable": true,
-																				"x-stainless-terraform-configurability": "computed_optional"
-																			},
-																			"scope": {
-																				"description": "The scope that this rate plan applies to.",
-																				"type": "string",
-																				"example": "zone",
-																				"x-auditable": true,
-																				"x-stainless-terraform-configurability": "computed_optional"
-																			},
-																			"sets": {
-																				"description": "The list of sets this rate plan applies to. Returns array of strings.",
-																				"type": "array",
-																				"items": {
-																					"type": "string",
-																					"x-auditable": true
-																				},
-																				"example": [],
-																				"x-stainless-terraform-configurability": "optional"
-																			}
-																		}
-																	},
-																	"state": {
-																		"description": "The state that the subscription is in.",
-																		"type": "string",
-																		"example": "Paid",
-																		"enum": [
-																			"Trial",
-																			"Provisioned",
-																			"Paid",
-																			"AwaitingPayment",
-																			"Cancelled",
-																			"Failed",
-																			"Expired"
-																		],
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"zone": {
-																		"description": "A simple zone object. May have null properties if not a zone subscription.",
-																		"type": "object",
-																		"properties": {
-																			"id": {
-																				"description": "Identifier",
-																				"type": "string",
-																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																				"maxLength": 32,
-																				"readOnly": true,
-																				"x-auditable": true
-																			},
-																			"name": {
-																				"description": "The domain name",
-																				"type": "string",
-																				"example": "example.com",
-																				"maxLength": 253,
-																				"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-																				"readOnly": true,
-																				"x-auditable": true
-																			}
-																		}
-																	}
-																}
-															}
-														]
-													}
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1228,6 +766,860 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.subscriptions",
 		"x-fern-sdk-method-name": "get"
+	},
+	"GET /accounts/{account_id}/subscriptions/{subscription_identifier}": {
+		"operationId": "account-subscriptions-get-subscription",
+		"summary": "Get Subscription",
+		"description": "Gets an account subscription by identifier.",
+		"parameters": [
+			{
+				"name": "subscription_identifier",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Subscription identifier tag.",
+					"type": "string",
+					"example": "506e3185e9c882d175a2d0cb0093d9f2",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get Subscription response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"app": {
+															"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+															"deprecated": true,
+															"properties": {
+																"install_id": {
+																	"description": "app install id.",
+																	"type": "string",
+																	"deprecated": true,
+																	"x-auditable": true
+																}
+															}
+														},
+														"component_values": {
+															"description": "Configurable component values for the subscription.",
+															"type": "array",
+															"items": {
+																"description": "A component value for a subscription.",
+																"type": "object",
+																"properties": {
+																	"default": {
+																		"description": "The default amount assigned.",
+																		"type": "number",
+																		"example": 5,
+																		"x-auditable": true
+																	},
+																	"display_name": {
+																		"description": "A human-readable version of the component name.",
+																		"type": "string",
+																		"example": "Page Rules"
+																	},
+																	"kind": {
+																		"description": "The type of component value. \"enum\" for discrete values (including boolean on/off toggles where 0=off and 1=on), \"sum\" for countable quantities, \"usage\" for metered billing components.",
+																		"type": "string",
+																		"example": "sum",
+																		"enum": [
+																			"enum",
+																			"sum",
+																			"usage"
+																		]
+																	},
+																	"name": {
+																		"description": "The name of the component value.",
+																		"type": "string",
+																		"example": "page_rules",
+																		"x-auditable": true
+																	},
+																	"price": {
+																		"description": "The unit price for the component value.",
+																		"type": "number",
+																		"example": 5,
+																		"x-auditable": true
+																	},
+																	"value": {
+																		"description": "The amount of the component value assigned.",
+																		"type": "number",
+																		"example": 20,
+																		"x-auditable": true
+																	}
+																}
+															}
+														},
+														"currency": {
+															"description": "The monetary unit in which pricing information is displayed.",
+															"type": "string",
+															"example": "USD",
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"current_period_end": {
+															"description": "The end of the current period and also when the next billing is due.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-03-31T12:20:00Z",
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"current_period_start": {
+															"description": "When the current billing period started. May match initial_period_start if this is the first period.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-05-11T12:20:00Z",
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"frequency": {
+															"description": "How often the subscription is renewed automatically.",
+															"type": "string",
+															"example": "monthly",
+															"enum": [
+																"weekly",
+																"monthly",
+																"quarterly",
+																"yearly"
+															],
+															"x-auditable": true
+														},
+														"id": {
+															"description": "Subscription identifier tag.",
+															"type": "string",
+															"example": "506e3185e9c882d175a2d0cb0093d9f2",
+															"maxLength": 32,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"price": {
+															"description": "The price of the subscription that will be billed, in US dollars.",
+															"type": "number",
+															"example": 20,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"rate_plan": {
+															"description": "The rate plan applied to the subscription.",
+															"type": "object",
+															"properties": {
+																"currency": {
+																	"description": "The currency applied to the rate plan subscription.",
+																	"type": "string",
+																	"example": "USD",
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
+																},
+																"externally_managed": {
+																	"description": "Whether this rate plan is managed externally from Cloudflare.",
+																	"type": "boolean",
+																	"example": false,
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
+																},
+																"id": {
+																	"description": "The ID of the rate plan.",
+																	"type": "string",
+																	"example": "free",
+																	"x-auditable": true
+																},
+																"is_contract": {
+																	"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
+																	"type": "boolean",
+																	"example": false,
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
+																},
+																"public_name": {
+																	"description": "The full name of the rate plan.",
+																	"type": "string",
+																	"example": "Business Plan",
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
+																},
+																"scope": {
+																	"description": "The scope that this rate plan applies to.",
+																	"type": "string",
+																	"example": "zone",
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
+																},
+																"sets": {
+																	"description": "The list of sets this rate plan applies to. Returns array of strings.",
+																	"type": "array",
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"example": [],
+																	"x-stainless-terraform-configurability": "optional"
+																}
+															}
+														},
+														"state": {
+															"description": "The state that the subscription is in.",
+															"type": "string",
+															"example": "Paid",
+															"enum": [
+																"Trial",
+																"Provisioned",
+																"Paid",
+																"AwaitingPayment",
+																"Cancelled",
+																"Failed",
+																"Expired"
+															],
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"zone": {
+															"description": "A simple zone object. May have null properties if not a zone subscription.",
+															"type": "object",
+															"properties": {
+																"id": {
+																	"description": "Identifier",
+																	"type": "string",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "The domain name",
+																	"type": "string",
+																	"example": "example.com",
+																	"maxLength": 253,
+																	"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+																	"readOnly": true,
+																	"x-auditable": true
+																}
+															}
+														}
+													}
+												}
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Subscription not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get Subscription response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Account Subscriptions"
+		],
+		"x-api-token-group": [
+			"Billing Write",
+			"Billing Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#subscription:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/subscriptions/{subscription_identifier}/cancel-reason": {
+		"operationId": "account-subscriptions-get-cancel-reason",
+		"summary": "Get Cancel Reason",
+		"description": "Gets the cancellation reason for an account subscription.",
+		"parameters": [
+			{
+				"name": "subscription_identifier",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Subscription identifier tag.",
+					"type": "string",
+					"example": "506e3185e9c882d175a2d0cb0093d9f2",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get Cancel Reason response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"id": {
+													"description": "The cancel reason identifier.",
+													"type": "string"
+												},
+												"other": {
+													"description": "Additional cancellation details.",
+													"type": "string"
+												},
+												"reason_code": {
+													"description": "The cancellation reason codes.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"submitted": {
+													"description": "When the cancel reason was submitted.",
+													"type": "string",
+													"format": "date-time"
+												},
+												"subscription_id": {
+													"description": "The subscription identifier.",
+													"type": "string"
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get Cancel Reason response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Account Subscriptions"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
 	},
 	"POST /accounts/{account_id}/bulk/subscriptions": {
 		"operationId": "account-subscriptions-bulk-create-subscription",
@@ -1275,16 +1667,19 @@
 									"type": "object",
 									"properties": {
 										"app": {
+											"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+											"deprecated": true,
 											"properties": {
 												"install_id": {
 													"description": "app install id.",
 													"type": "string",
+													"deprecated": true,
 													"x-auditable": true
 												}
 											}
 										},
 										"component_values": {
-											"description": "The list of add-ons subscribed to.",
+											"description": "Configurable component values for the subscription.",
 											"type": "array",
 											"items": {
 												"description": "A component value for a subscription.",
@@ -1633,16 +2028,19 @@
 																"type": "object",
 																"properties": {
 																	"app": {
+																		"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+																		"deprecated": true,
 																		"properties": {
 																			"install_id": {
 																				"description": "app install id.",
 																				"type": "string",
+																				"deprecated": true,
 																				"x-auditable": true
 																			}
 																		}
 																	},
 																	"component_values": {
-																		"description": "The list of add-ons subscribed to.",
+																		"description": "Configurable component values for the subscription.",
 																		"type": "array",
 																		"items": {
 																			"description": "A component value for a subscription.",
@@ -1996,16 +2394,19 @@
 																		"type": "object",
 																		"properties": {
 																			"app": {
+																				"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+																				"deprecated": true,
 																				"properties": {
 																					"install_id": {
 																						"description": "app install id.",
 																						"type": "string",
+																						"deprecated": true,
 																						"x-auditable": true
 																					}
 																				}
 																			},
 																			"component_values": {
-																				"description": "The list of add-ons subscribed to.",
+																				"description": "Configurable component values for the subscription.",
 																				"type": "array",
 																				"items": {
 																					"description": "A component value for a subscription.",
@@ -2356,16 +2757,19 @@
 						"type": "object",
 						"properties": {
 							"app": {
+								"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+								"deprecated": true,
 								"properties": {
 									"install_id": {
 										"description": "app install id.",
 										"type": "string",
+										"deprecated": true,
 										"x-auditable": true
 									}
 								}
 							},
 							"component_values": {
-								"description": "The list of add-ons subscribed to.",
+								"description": "Configurable component values for the subscription.",
 								"type": "array",
 								"items": {
 									"description": "A component value for a subscription.",
@@ -2676,16 +3080,19 @@
 													"type": "object",
 													"properties": {
 														"app": {
+															"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+															"deprecated": true,
 															"properties": {
 																"install_id": {
 																	"description": "app install id.",
 																	"type": "string",
+																	"deprecated": true,
 																	"x-auditable": true
 																}
 															}
 														},
 														"component_values": {
-															"description": "The list of add-ons subscribed to.",
+															"description": "Configurable component values for the subscription.",
 															"type": "array",
 															"items": {
 																"description": "A component value for a subscription.",
@@ -2896,410 +3303,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"app": {
-																	"properties": {
-																		"install_id": {
-																			"description": "app install id.",
-																			"type": "string",
-																			"x-auditable": true
-																		}
-																	}
-																},
-																"component_values": {
-																	"description": "The list of add-ons subscribed to.",
-																	"type": "array",
-																	"items": {
-																		"description": "A component value for a subscription.",
-																		"type": "object",
-																		"properties": {
-																			"default": {
-																				"description": "The default amount assigned.",
-																				"type": "number",
-																				"example": 5,
-																				"x-auditable": true
-																			},
-																			"display_name": {
-																				"description": "A human-readable version of the component name.",
-																				"type": "string",
-																				"example": "Page Rules"
-																			},
-																			"kind": {
-																				"description": "The type of component value. \"enum\" for discrete values (including boolean on/off toggles where 0=off and 1=on), \"sum\" for countable quantities, \"usage\" for metered billing components.",
-																				"type": "string",
-																				"example": "sum",
-																				"enum": [
-																					"enum",
-																					"sum",
-																					"usage"
-																				]
-																			},
-																			"name": {
-																				"description": "The name of the component value.",
-																				"type": "string",
-																				"example": "page_rules",
-																				"x-auditable": true
-																			},
-																			"price": {
-																				"description": "The unit price for the component value.",
-																				"type": "number",
-																				"example": 5,
-																				"x-auditable": true
-																			},
-																			"value": {
-																				"description": "The amount of the component value assigned.",
-																				"type": "number",
-																				"example": 20,
-																				"x-auditable": true
-																			}
-																		}
-																	}
-																},
-																"currency": {
-																	"description": "The monetary unit in which pricing information is displayed.",
-																	"type": "string",
-																	"example": "USD",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"current_period_end": {
-																	"description": "The end of the current period and also when the next billing is due.",
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-03-31T12:20:00Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"current_period_start": {
-																	"description": "When the current billing period started. May match initial_period_start if this is the first period.",
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-05-11T12:20:00Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"frequency": {
-																	"description": "How often the subscription is renewed automatically.",
-																	"type": "string",
-																	"example": "monthly",
-																	"enum": [
-																		"weekly",
-																		"monthly",
-																		"quarterly",
-																		"yearly"
-																	],
-																	"x-auditable": true
-																},
-																"id": {
-																	"description": "Subscription identifier tag.",
-																	"type": "string",
-																	"example": "506e3185e9c882d175a2d0cb0093d9f2",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"price": {
-																	"description": "The price of the subscription that will be billed, in US dollars.",
-																	"type": "number",
-																	"example": 20,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"rate_plan": {
-																	"description": "The rate plan applied to the subscription.",
-																	"type": "object",
-																	"properties": {
-																		"currency": {
-																			"description": "The currency applied to the rate plan subscription.",
-																			"type": "string",
-																			"example": "USD",
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"externally_managed": {
-																			"description": "Whether this rate plan is managed externally from Cloudflare.",
-																			"type": "boolean",
-																			"example": false,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"id": {
-																			"description": "The ID of the rate plan.",
-																			"type": "string",
-																			"example": "free",
-																			"x-auditable": true
-																		},
-																		"is_contract": {
-																			"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
-																			"type": "boolean",
-																			"example": false,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"public_name": {
-																			"description": "The full name of the rate plan.",
-																			"type": "string",
-																			"example": "Business Plan",
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"scope": {
-																			"description": "The scope that this rate plan applies to.",
-																			"type": "string",
-																			"example": "zone",
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"sets": {
-																			"description": "The list of sets this rate plan applies to. Returns array of strings.",
-																			"type": "array",
-																			"items": {
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			"example": [],
-																			"x-stainless-terraform-configurability": "optional"
-																		}
-																	}
-																},
-																"state": {
-																	"description": "The state that the subscription is in.",
-																	"type": "string",
-																	"example": "Paid",
-																	"enum": [
-																		"Trial",
-																		"Provisioned",
-																		"Paid",
-																		"AwaitingPayment",
-																		"Cancelled",
-																		"Failed",
-																		"Expired"
-																	],
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"zone": {
-																	"description": "A simple zone object. May have null properties if not a zone subscription.",
-																	"type": "object",
-																	"properties": {
-																		"id": {
-																			"description": "Identifier",
-																			"type": "string",
-																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																			"maxLength": 32,
-																			"readOnly": true,
-																			"x-auditable": true
-																		},
-																		"name": {
-																			"description": "The domain name",
-																			"type": "string",
-																			"example": "example.com",
-																			"maxLength": 253,
-																			"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-																			"readOnly": true,
-																			"x-auditable": true
-																		}
-																	}
-																}
-															}
-														}
-													]
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -3375,16 +3459,19 @@
 						"type": "object",
 						"properties": {
 							"app": {
+								"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+								"deprecated": true,
 								"properties": {
 									"install_id": {
 										"description": "app install id.",
 										"type": "string",
+										"deprecated": true,
 										"x-auditable": true
 									}
 								}
 							},
 							"component_values": {
-								"description": "The list of add-ons subscribed to.",
+								"description": "Configurable component values for the subscription.",
 								"type": "array",
 								"items": {
 									"description": "A component value for a subscription.",
@@ -3695,16 +3782,19 @@
 													"type": "object",
 													"properties": {
 														"app": {
+															"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+															"deprecated": true,
 															"properties": {
 																"install_id": {
 																	"description": "app install id.",
 																	"type": "string",
+																	"deprecated": true,
 																	"x-auditable": true
 																}
 															}
 														},
 														"component_values": {
-															"description": "The list of add-ons subscribed to.",
+															"description": "Configurable component values for the subscription.",
 															"type": "array",
 															"items": {
 																"description": "A component value for a subscription.",
@@ -4023,16 +4113,19 @@
 															"type": "object",
 															"properties": {
 																"app": {
+																	"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+																	"deprecated": true,
 																	"properties": {
 																		"install_id": {
 																			"description": "app install id.",
 																			"type": "string",
+																			"deprecated": true,
 																			"x-auditable": true
 																		}
 																	}
 																},
 																"component_values": {
-																	"description": "The list of add-ons subscribed to.",
+																	"description": "Configurable component values for the subscription.",
 																	"type": "array",
 																	"items": {
 																		"description": "A component value for a subscription.",
@@ -4353,6 +4446,582 @@
 		"x-fern-ignore": true,
 		"x-forge-hidden": true
 	},
+	"POST /accounts/{account_id}/subscriptions/{subscription_identifier}/cancel-reason": {
+		"operationId": "account-subscriptions-create-cancel-reason",
+		"summary": "Create Cancel Reason",
+		"description": "Records a cancellation reason for an account subscription.",
+		"parameters": [
+			{
+				"name": "subscription_identifier",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Subscription identifier tag.",
+					"type": "string",
+					"example": "506e3185e9c882d175a2d0cb0093d9f2",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"other": {
+								"description": "Additional cancellation details.",
+								"type": "string"
+							},
+							"reason_code": {
+								"description": "The cancellation reason codes.",
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Create Cancel Reason response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"id": {
+													"description": "The cancel reason identifier.",
+													"type": "string"
+												},
+												"other": {
+													"description": "Additional cancellation details.",
+													"type": "string"
+												},
+												"reason_code": {
+													"description": "The cancellation reason codes.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"submitted": {
+													"description": "When the cancel reason was submitted.",
+													"type": "string",
+													"format": "date-time"
+												},
+												"subscription_id": {
+													"description": "The subscription identifier.",
+													"type": "string"
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Create Cancel Reason response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Account Subscriptions"
+		],
+		"x-api-token-group": [
+			"Billing Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#subscription:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/subscriptions/cancel-downgrade": {
+		"operationId": "account-subscriptions-cancel-delayed-downgrade",
+		"summary": "Cancel Delayed Downgrade",
+		"description": "Cancels pending delayed downgrades for the specified subscriptions.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"subscription_ids": {
+								"description": "List of subscription identifiers to cancel downgrades for.",
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Cancel Delayed Downgrade response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"anyOf": [
+												{
+													"nullable": true,
+													"type": "object"
+												},
+												{
+													"nullable": true,
+													"type": "string"
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			},
+			"204": {
+				"description": "Cancel Delayed Downgrade response (no content)"
+			},
+			"4XX": {
+				"description": "Cancel Delayed Downgrade response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Account Subscriptions"
+		],
+		"x-api-token-group": [
+			"Billing Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#subscription:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"PUT /accounts/{account_id}/subscriptions/{subscription_identifier}": {
 		"operationId": "account-subscriptions-update-subscription",
 		"summary": "Update Subscription",
@@ -4393,16 +5062,19 @@
 						"type": "object",
 						"properties": {
 							"app": {
+								"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+								"deprecated": true,
 								"properties": {
 									"install_id": {
 										"description": "app install id.",
 										"type": "string",
+										"deprecated": true,
 										"x-auditable": true
 									}
 								}
 							},
 							"component_values": {
-								"description": "The list of add-ons subscribed to.",
+								"description": "Configurable component values for the subscription.",
 								"type": "array",
 								"items": {
 									"description": "A component value for a subscription.",
@@ -4713,16 +5385,19 @@
 													"type": "object",
 													"properties": {
 														"app": {
+															"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+															"deprecated": true,
 															"properties": {
 																"install_id": {
 																	"description": "app install id.",
 																	"type": "string",
+																	"deprecated": true,
 																	"x-auditable": true
 																}
 															}
 														},
 														"component_values": {
-															"description": "The list of add-ons subscribed to.",
+															"description": "Configurable component values for the subscription.",
 															"type": "array",
 															"items": {
 																"description": "A component value for a subscription.",
@@ -4933,410 +5608,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"app": {
-																	"properties": {
-																		"install_id": {
-																			"description": "app install id.",
-																			"type": "string",
-																			"x-auditable": true
-																		}
-																	}
-																},
-																"component_values": {
-																	"description": "The list of add-ons subscribed to.",
-																	"type": "array",
-																	"items": {
-																		"description": "A component value for a subscription.",
-																		"type": "object",
-																		"properties": {
-																			"default": {
-																				"description": "The default amount assigned.",
-																				"type": "number",
-																				"example": 5,
-																				"x-auditable": true
-																			},
-																			"display_name": {
-																				"description": "A human-readable version of the component name.",
-																				"type": "string",
-																				"example": "Page Rules"
-																			},
-																			"kind": {
-																				"description": "The type of component value. \"enum\" for discrete values (including boolean on/off toggles where 0=off and 1=on), \"sum\" for countable quantities, \"usage\" for metered billing components.",
-																				"type": "string",
-																				"example": "sum",
-																				"enum": [
-																					"enum",
-																					"sum",
-																					"usage"
-																				]
-																			},
-																			"name": {
-																				"description": "The name of the component value.",
-																				"type": "string",
-																				"example": "page_rules",
-																				"x-auditable": true
-																			},
-																			"price": {
-																				"description": "The unit price for the component value.",
-																				"type": "number",
-																				"example": 5,
-																				"x-auditable": true
-																			},
-																			"value": {
-																				"description": "The amount of the component value assigned.",
-																				"type": "number",
-																				"example": 20,
-																				"x-auditable": true
-																			}
-																		}
-																	}
-																},
-																"currency": {
-																	"description": "The monetary unit in which pricing information is displayed.",
-																	"type": "string",
-																	"example": "USD",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"current_period_end": {
-																	"description": "The end of the current period and also when the next billing is due.",
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-03-31T12:20:00Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"current_period_start": {
-																	"description": "When the current billing period started. May match initial_period_start if this is the first period.",
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-05-11T12:20:00Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"frequency": {
-																	"description": "How often the subscription is renewed automatically.",
-																	"type": "string",
-																	"example": "monthly",
-																	"enum": [
-																		"weekly",
-																		"monthly",
-																		"quarterly",
-																		"yearly"
-																	],
-																	"x-auditable": true
-																},
-																"id": {
-																	"description": "Subscription identifier tag.",
-																	"type": "string",
-																	"example": "506e3185e9c882d175a2d0cb0093d9f2",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"price": {
-																	"description": "The price of the subscription that will be billed, in US dollars.",
-																	"type": "number",
-																	"example": 20,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"rate_plan": {
-																	"description": "The rate plan applied to the subscription.",
-																	"type": "object",
-																	"properties": {
-																		"currency": {
-																			"description": "The currency applied to the rate plan subscription.",
-																			"type": "string",
-																			"example": "USD",
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"externally_managed": {
-																			"description": "Whether this rate plan is managed externally from Cloudflare.",
-																			"type": "boolean",
-																			"example": false,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"id": {
-																			"description": "The ID of the rate plan.",
-																			"type": "string",
-																			"example": "free",
-																			"x-auditable": true
-																		},
-																		"is_contract": {
-																			"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
-																			"type": "boolean",
-																			"example": false,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"public_name": {
-																			"description": "The full name of the rate plan.",
-																			"type": "string",
-																			"example": "Business Plan",
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"scope": {
-																			"description": "The scope that this rate plan applies to.",
-																			"type": "string",
-																			"example": "zone",
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"sets": {
-																			"description": "The list of sets this rate plan applies to. Returns array of strings.",
-																			"type": "array",
-																			"items": {
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			"example": [],
-																			"x-stainless-terraform-configurability": "optional"
-																		}
-																	}
-																},
-																"state": {
-																	"description": "The state that the subscription is in.",
-																	"type": "string",
-																	"example": "Paid",
-																	"enum": [
-																		"Trial",
-																		"Provisioned",
-																		"Paid",
-																		"AwaitingPayment",
-																		"Cancelled",
-																		"Failed",
-																		"Expired"
-																	],
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"zone": {
-																	"description": "A simple zone object. May have null properties if not a zone subscription.",
-																	"type": "object",
-																	"properties": {
-																		"id": {
-																			"description": "Identifier",
-																			"type": "string",
-																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																			"maxLength": 32,
-																			"readOnly": true,
-																			"x-auditable": true
-																		},
-																		"name": {
-																			"description": "The domain name",
-																			"type": "string",
-																			"example": "example.com",
-																			"maxLength": 253,
-																			"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-																			"readOnly": true,
-																			"x-auditable": true
-																		}
-																	}
-																}
-															}
-														}
-													]
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}

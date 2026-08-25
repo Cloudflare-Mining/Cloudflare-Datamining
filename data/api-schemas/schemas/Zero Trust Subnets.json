@@ -153,7 +153,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -327,7 +327,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -483,9 +483,10 @@
 			"Cloudflare One Networks Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.networks.subnets.warp",
+		"x-fern-sdk-group-name": "network.subnets.warp",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation permanently deletes a WARP IP subnet."
 	},
 	"GET /accounts/{account_id}/zerotrust/subnets": {
 		"operationId": "zero-trust-networks-subnets-list",
@@ -788,7 +789,7 @@
 														"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 														"type": "string",
 														"format": "date-time",
-														"example": "2009-11-10T23:00:00.000000Z",
+														"example": "2009-11-10T23:00:00Z",
 														"readOnly": true
 													},
 													"id": {
@@ -1003,7 +1004,7 @@
 																"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 																"type": "string",
 																"format": "date-time",
-																"example": "2009-11-10T23:00:00.000000Z",
+																"example": "2009-11-10T23:00:00Z",
 																"readOnly": true
 															},
 															"id": {
@@ -1161,7 +1162,7 @@
 			"Cloudflare One Networks Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.networks.subnets",
+		"x-fern-sdk-group-name": "network.subnets",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -1320,7 +1321,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -1493,7 +1494,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -1650,7 +1651,7 @@
 			"Cloudflare One Networks Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.networks.subnets.initial-resolved-ip",
+		"x-fern-sdk-group-name": "network.subnets.initial-resolved-ip",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -1807,7 +1808,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -1980,7 +1981,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -2137,7 +2138,7 @@
 			"Cloudflare One Networks Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.networks.subnets.warp",
+		"x-fern-sdk-group-name": "network.subnets.warp",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -2328,7 +2329,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -2501,7 +2502,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -2657,8 +2658,8 @@
 			"Cloudflare One Networks Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.networks.subnets.cloudflare-source",
-		"x-fern-sdk-method-name": "update",
+		"x-fern-sdk-group-name": "network.subnets.cloudflare-source",
+		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/zerotrust/subnets/warp/{subnet_id}": {
@@ -2853,7 +2854,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -3026,7 +3027,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -3182,7 +3183,7 @@
 			"Cloudflare One Networks Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.networks.subnets.warp",
+		"x-fern-sdk-group-name": "network.subnets.warp",
 		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true
 	},
@@ -3370,7 +3371,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -3543,7 +3544,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -3699,7 +3700,7 @@
 			"Cloudflare One Networks Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.networks.subnets.warp",
+		"x-fern-sdk-group-name": "network.subnets.warp",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
@@ -3890,7 +3891,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -4063,7 +4064,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -4216,8 +4217,8 @@
 			"Zero Trust Subnets"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.networks.subnets.initial-resolved-ip",
-		"x-fern-sdk-method-name": "update",
+		"x-fern-sdk-group-name": "network.subnets.initial-resolved-ip",
+		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true
 	}
 }

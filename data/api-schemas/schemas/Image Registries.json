@@ -110,10 +110,6 @@
 													"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
 													"type": "string",
 													"example": "docker.io"
-												},
-												"secrets_store_ref": {
-													"description": "Reference to credentials in Secrets Store that remain unused across all other\nregistries, so you can safely remove them. The value takes the form `<store_id>:<secret_name>`.\n",
-													"type": "string"
 												}
 											},
 											"required": [
@@ -582,7 +578,11 @@
 		],
 		"x-api-token-group": [
 			"Workers Containers Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "containers.registries",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "This operation deletes the registry configuration. Containers will no longer be able to pull images from it."
 	},
 	"GET /accounts/{account_id}/containers/registries": {
 		"operationId": "listImageRegistries",
@@ -711,32 +711,6 @@
 																	"default"
 																]
 															}
-														]
-													},
-													"private_credential": {
-														"description": "A reference to a secret stored in Secrets Store.",
-														"type": "object",
-														"properties": {
-															"secret_name": {
-																"description": "Name of the secret being referenced.",
-																"type": "string",
-																"example": "API_KEY",
-																"maxLength": 255,
-																"minLength": 1,
-																"pattern": "^[A-z0-9-_]+$"
-															},
-															"store_id": {
-																"description": "Store ID where the secret is stored.",
-																"type": "string",
-																"example": "14758f1afd44c09b7992073ccf00b43d",
-																"maxLength": 32,
-																"minLength": 32,
-																"pattern": "^[a-f0-9]{32}$"
-															}
-														},
-														"required": [
-															"store_id",
-															"secret_name"
 														]
 													},
 													"public_key": {
@@ -995,35 +969,36 @@
 		"x-api-token-group": [
 			"Workers Containers Write",
 			"Workers Containers Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "containers.registries",
+		"x-fern-sdk-method-name": "list"
 	},
 	"POST /accounts/{account_id}/containers/registries": {
 		"operationId": "createImageRegistry",
-		"summary": "Add a new image registry configuration",
-		"description": "Add an authenticated external image registry to the account so Containers can pull images from it.",
+		"summary": "Configure a private external image registry",
+		"description": "Registers credentials for a supported private external image registry so\nContainers can pull images from it. This endpoint does not create a registry\nor upload an image. Public Docker Hub images and images in the Cloudflare\nmanaged registry do not require this configuration.\n\nRefer to [Image management](https://developers.cloudflare.com/containers/platform-details/image-management/)\nfor supported registries and instructions for storing registry credentials.\n",
 		"requestBody": {
 			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Request body for adding an authenticated external registry to a Containers account.",
+						"description": "Configuration for connecting Containers to a supported private external image\nregistry. See [Image management](https://developers.cloudflare.com/containers/platform-details/image-management/)\nfor supported providers and credential setup instructions.\n",
 						"type": "object",
 						"properties": {
 							"auth": {
-								"description": "Credentials needed to authenticate with an external image registry.",
+								"description": "Credentials for authenticating to a private external image registry. Store the\nprivate credential in [Secrets Store](https://developers.cloudflare.com/secrets-store/)\nbefore calling the API. Refer to [Image management](https://developers.cloudflare.com/containers/platform-details/image-management/)\nfor the credential required by each supported registry provider.\n",
 								"type": "object",
 								"properties": {
 									"private_credential": {
-										"oneOf": [
+										"description": "A reference to the private registry credential in Secrets Store. The referenced\nsecret must have the `containers` scope. Raw secret values are not accepted.\n",
+										"allOf": [
 											{
-												"type": "string"
-											},
-											{
-												"description": "A reference to a secret stored in Secrets Store.",
+												"description": "Identifies an existing secret in [Secrets Store](https://developers.cloudflare.com/secrets-store/).\nThis reference does not contain or upload the secret value.\n",
 												"type": "object",
 												"properties": {
 													"secret_name": {
-														"description": "Name of the secret being referenced.",
+														"description": "Name of the secret within the store.",
 														"type": "string",
 														"example": "API_KEY",
 														"maxLength": 255,
@@ -1031,7 +1006,7 @@
 														"pattern": "^[A-z0-9-_]+$"
 													},
 													"store_id": {
-														"description": "Store ID where the secret is stored.",
+														"description": "Identifier of the Secrets Store containing the secret.",
 														"type": "string",
 														"example": "14758f1afd44c09b7992073ccf00b43d",
 														"maxLength": 32,
@@ -1047,9 +1022,9 @@
 										]
 									},
 									"public_credential": {
-										"description": "The registry you configure determines the format of this value.",
+										"description": "The non-secret part of the registry credential: an AWS access key ID for ECR,\na username for Docker Hub, or a service account email for Google Artifact Registry.\n",
 										"type": "string",
-										"example": "AWS_ACCESS_KEY_ID"
+										"example": "example-user"
 									}
 								},
 								"required": [
@@ -1058,25 +1033,30 @@
 								]
 							},
 							"domain": {
-								"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
+								"description": "Hostname of the private registry, without a scheme or image path. Supported\nhostnames are `docker.io`, AWS ECR hostnames, and Google Artifact Registry\n`*-docker.pkg.dev` hostnames.\n",
 								"type": "string",
 								"example": "docker.io"
 							},
 							"is_public": {
-								"description": "Containers only supports authenticated external registries. If provided, set this to false.",
+								"description": "Omit this field or set it to `false`. Public Docker Hub images do not require\nregistry configuration and cannot be added with this endpoint.\n",
 								"type": "boolean",
 								"enum": [
 									false
 								]
 							},
 							"kind": {
-								"description": "The type of external registry that is being configured.",
-								"type": "string",
-								"example": "ECR",
-								"enum": [
-									"ECR",
-									"DockerHub",
-									"GAR"
+								"description": "Registry provider. This must match `domain`: `DockerHub` for `docker.io`,\n`ECR` for AWS ECR, or `GAR` for Google Artifact Registry.\n",
+								"allOf": [
+									{
+										"description": "The type of external registry that is being configured.",
+										"type": "string",
+										"example": "ECR",
+										"enum": [
+											"ECR",
+											"DockerHub",
+											"GAR"
+										]
+									}
 								]
 							}
 						},
@@ -1091,7 +1071,7 @@
 		},
 		"responses": {
 			"201": {
-				"description": "Created a new image registry in the account.",
+				"description": "The external image registry configuration was added to the account.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1210,32 +1190,6 @@
 																"default"
 															]
 														}
-													]
-												},
-												"private_credential": {
-													"description": "A reference to a secret stored in Secrets Store.",
-													"type": "object",
-													"properties": {
-														"secret_name": {
-															"description": "Name of the secret being referenced.",
-															"type": "string",
-															"example": "API_KEY",
-															"maxLength": 255,
-															"minLength": 1,
-															"pattern": "^[A-z0-9-_]+$"
-														},
-														"store_id": {
-															"description": "Store ID where the secret is stored.",
-															"type": "string",
-															"example": "14758f1afd44c09b7992073ccf00b43d",
-															"maxLength": 32,
-															"minLength": 32,
-															"pattern": "^[a-f0-9]{32}$"
-														}
-													},
-													"required": [
-														"store_id",
-														"secret_name"
 													]
 												},
 												"public_key": {
@@ -1710,7 +1664,10 @@
 		],
 		"x-api-token-group": [
 			"Workers Containers Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "containers.registries",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/containers/registries/{domain}/credentials": {
 		"operationId": "generateImageRegistryCredentials",
@@ -2448,7 +2405,7 @@
 			"Image Registries"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.registries.credentials",
+		"x-fern-sdk-group-name": "containers.registries.credentials",
 		"x-fern-sdk-method-name": "generate",
 		"x-forge-hidden": true
 	}

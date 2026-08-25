@@ -188,28 +188,28 @@
 				"description": "start date in YYYY-MM-DD format",
 				"examples": {
 					"default": {
-						"value": "2022-09-01"
+						"value": "2022-09-01T00:00:00Z"
 					}
 				},
 				"in": "query",
 				"name": "start_date",
 				"schema": {
 					"type": "string",
-					"example": "2022-09-01"
+					"example": "2022-09-01T00:00:00Z"
 				}
 			},
 			{
 				"description": "end date in YYYY-MM-DD format",
 				"examples": {
 					"default": {
-						"value": "2022-09-22"
+						"value": "2022-09-22T00:00:00Z"
 					}
 				},
 				"in": "query",
 				"name": "end_date",
 				"schema": {
 					"type": "string",
-					"example": "2022-09-22"
+					"example": "2022-09-22T00:00:00Z"
 				}
 			}
 		],
@@ -315,7 +315,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.analytics.usage",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /organizations": {
 		"operationId": "Organization_listOrganizations",
@@ -523,6 +526,9 @@
 																	"account_creation": {
 																		"type": "string"
 																	},
+																	"account_creation_applies_tenant_defaults": {
+																		"type": "string"
+																	},
 																	"account_deletion": {
 																		"type": "string"
 																	},
@@ -544,6 +550,7 @@
 																},
 																"required": [
 																	"account_creation",
+																	"account_creation_applies_tenant_defaults",
 																	"account_deletion",
 																	"account_migration",
 																	"account_mobility",
@@ -826,6 +833,9 @@
 																"account_creation": {
 																	"type": "string"
 																},
+																"account_creation_applies_tenant_defaults": {
+																	"type": "string"
+																},
 																"account_deletion": {
 																	"type": "string"
 																},
@@ -847,6 +857,7 @@
 															},
 															"required": [
 																"account_creation",
+																"account_creation_applies_tenant_defaults",
 																"account_deletion",
 																"account_migration",
 																"account_mobility",
@@ -1591,6 +1602,9 @@
 													"account_creation": {
 														"type": "string"
 													},
+													"account_creation_applies_tenant_defaults": {
+														"type": "string"
+													},
 													"account_deletion": {
 														"type": "string"
 													},
@@ -1612,6 +1626,7 @@
 												},
 												"required": [
 													"account_creation",
+													"account_creation_applies_tenant_defaults",
 													"account_deletion",
 													"account_migration",
 													"account_mobility",
@@ -1763,6 +1778,9 @@
 																"account_creation": {
 																	"type": "string"
 																},
+																"account_creation_applies_tenant_defaults": {
+																	"type": "string"
+																},
 																"account_deletion": {
 																	"type": "string"
 																},
@@ -1784,6 +1802,7 @@
 															},
 															"required": [
 																"account_creation",
+																"account_creation_applies_tenant_defaults",
 																"account_deletion",
 																"account_migration",
 																"account_mobility",
@@ -2019,6 +2038,9 @@
 													"account_creation": {
 														"type": "string"
 													},
+													"account_creation_applies_tenant_defaults": {
+														"type": "string"
+													},
 													"account_deletion": {
 														"type": "string"
 													},
@@ -2040,6 +2062,7 @@
 												},
 												"required": [
 													"account_creation",
+													"account_creation_applies_tenant_defaults",
 													"account_deletion",
 													"account_migration",
 													"account_mobility",
@@ -2191,6 +2214,9 @@
 																"account_creation": {
 																	"type": "string"
 																},
+																"account_creation_applies_tenant_defaults": {
+																	"type": "string"
+																},
 																"account_deletion": {
 																	"type": "string"
 																},
@@ -2212,6 +2238,7 @@
 															},
 															"required": [
 																"account_creation",
+																"account_creation_applies_tenant_defaults",
 																"account_deletion",
 																"account_migration",
 																"account_mobility",

@@ -183,6 +183,113 @@
 												"type": "string",
 												"example": "Actor"
 											},
+											"schema": {
+												"description": "Parsed FieldDefinition[] defining custom fields for this category, or null if none.",
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"allowedValues": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
+															"example": [
+																"low",
+																"medium",
+																"high",
+																"critical"
+															]
+														},
+														"annotations": {
+															"type": "object",
+															"additionalProperties": false,
+															"properties": {
+																"confidence": {
+																	"type": "boolean"
+																},
+																"tlp": {
+																	"type": "boolean"
+																}
+															}
+														},
+														"element": "[Circular ~.GET /accounts/{account_id}/cloudforce-one/events/tags/categories.responses.200.content.application/json.schema.properties.categories.items.properties.schema.items]",
+														"enforcement": {
+															"type": "string",
+															"enum": [
+																"error",
+																"warn",
+																"off"
+															]
+														},
+														"format": {
+															"type": "string",
+															"enum": [
+																"date",
+																"url",
+																"duration",
+																"country"
+															]
+														},
+														"key": {
+															"type": "string",
+															"example": "family",
+															"pattern": "^[a-zA-Z][a-zA-Z0-9_]{0,63}$"
+														},
+														"kind": {
+															"type": "string",
+															"example": "string",
+															"enum": [
+																"string",
+																"number",
+																"enum",
+																"date",
+																"array",
+																"object"
+															]
+														},
+														"label": {
+															"type": "string",
+															"example": "Attacker Name",
+															"maxLength": 128,
+															"minLength": 1
+														},
+														"maxLength": {
+															"type": "integer",
+															"exclusiveMinimum": true,
+															"minimum": 0
+														},
+														"numberConstraint": {
+															"type": "object",
+															"additionalProperties": false,
+															"properties": {
+																"integer": {
+																	"type": "boolean"
+																},
+																"max": {
+																	"type": "number"
+																},
+																"min": {
+																	"type": "number"
+																}
+															}
+														},
+														"properties": {
+															"description": "Map of property key to FieldDefinition for object fields. Required when kind is 'object'. See FieldDefinition (recursive).",
+															"type": "object",
+															"additionalProperties": "[Circular ~.GET /accounts/{account_id}/cloudforce-one/events/tags/categories.responses.200.content.application/json.schema.properties.categories.items.properties.schema.items]"
+														},
+														"required": {
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"key",
+														"kind"
+													]
+												},
+												"nullable": true
+											},
 											"updatedAt": {
 												"type": "string"
 											},
@@ -262,6 +369,225 @@
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
+	"GET /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}": {
+		"operationId": "get_TagCategoryDetail",
+		"summary": "Gets a tag category by UUID (SoT)",
+		"description": "Returns a single Source-of-Truth tag category by UUID, including its full schema.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "category_uuid",
+				"in": "path",
+				"description": "Tag Category UUID.",
+				"required": true,
+				"schema": {
+					"description": "Tag Category UUID.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns the tag category.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"createdAt": {
+									"type": "string"
+								},
+								"description": {
+									"type": "string"
+								},
+								"name": {
+									"type": "string",
+									"example": "Actor"
+								},
+								"schema": {
+									"description": "Parsed FieldDefinition[] defining custom fields for this category, or null if none.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"allowedValues": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												},
+												"example": [
+													"low",
+													"medium",
+													"high",
+													"critical"
+												]
+											},
+											"annotations": {
+												"type": "object",
+												"additionalProperties": false,
+												"properties": {
+													"confidence": {
+														"type": "boolean"
+													},
+													"tlp": {
+														"type": "boolean"
+													}
+												}
+											},
+											"element": "[Circular ~.GET /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}.responses.200.content.application/json.schema.properties.schema.items]",
+											"enforcement": {
+												"type": "string",
+												"enum": [
+													"error",
+													"warn",
+													"off"
+												]
+											},
+											"format": {
+												"type": "string",
+												"enum": [
+													"date",
+													"url",
+													"duration",
+													"country"
+												]
+											},
+											"key": {
+												"type": "string",
+												"example": "family",
+												"pattern": "^[a-zA-Z][a-zA-Z0-9_]{0,63}$"
+											},
+											"kind": {
+												"type": "string",
+												"example": "string",
+												"enum": [
+													"string",
+													"number",
+													"enum",
+													"date",
+													"array",
+													"object"
+												]
+											},
+											"label": {
+												"type": "string",
+												"example": "Attacker Name",
+												"maxLength": 128,
+												"minLength": 1
+											},
+											"maxLength": {
+												"type": "integer",
+												"exclusiveMinimum": true,
+												"minimum": 0
+											},
+											"numberConstraint": {
+												"type": "object",
+												"additionalProperties": false,
+												"properties": {
+													"integer": {
+														"type": "boolean"
+													},
+													"max": {
+														"type": "number"
+													},
+													"min": {
+														"type": "number"
+													}
+												}
+											},
+											"properties": {
+												"description": "Map of property key to FieldDefinition for object fields. Required when kind is 'object'. See FieldDefinition (recursive).",
+												"type": "object",
+												"additionalProperties": "[Circular ~.GET /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}.responses.200.content.application/json.schema.properties.schema.items]"
+											},
+											"required": {
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"key",
+											"kind"
+										]
+									},
+									"nullable": true
+								},
+								"updatedAt": {
+									"type": "string"
+								},
+								"uuid": {
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
+								}
+							},
+							"required": [
+								"uuid",
+								"name"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"TagCategory"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}": {
 		"operationId": "patch_TagCategoryUpdate",
 		"summary": "Updates a tag category (SoT)",
@@ -299,6 +625,112 @@
 							},
 							"name": {
 								"type": "string"
+							},
+							"schema": {
+								"description": "Optional array of FieldDefinition objects. When provided, replaces the existing field schema. When omitted, the existing schema is preserved.",
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"allowedValues": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"example": [
+												"low",
+												"medium",
+												"high",
+												"critical"
+											]
+										},
+										"annotations": {
+											"type": "object",
+											"additionalProperties": false,
+											"properties": {
+												"confidence": {
+													"type": "boolean"
+												},
+												"tlp": {
+													"type": "boolean"
+												}
+											}
+										},
+										"element": "[Circular ~.PATCH /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}.requestBody.content.application/json.schema.properties.schema.items]",
+										"enforcement": {
+											"type": "string",
+											"enum": [
+												"error",
+												"warn",
+												"off"
+											]
+										},
+										"format": {
+											"type": "string",
+											"enum": [
+												"date",
+												"url",
+												"duration",
+												"country"
+											]
+										},
+										"key": {
+											"type": "string",
+											"example": "family",
+											"pattern": "^[a-zA-Z][a-zA-Z0-9_]{0,63}$"
+										},
+										"kind": {
+											"type": "string",
+											"example": "string",
+											"enum": [
+												"string",
+												"number",
+												"enum",
+												"date",
+												"array",
+												"object"
+											]
+										},
+										"label": {
+											"type": "string",
+											"example": "Attacker Name",
+											"maxLength": 128,
+											"minLength": 1
+										},
+										"maxLength": {
+											"type": "integer",
+											"exclusiveMinimum": true,
+											"minimum": 0
+										},
+										"numberConstraint": {
+											"type": "object",
+											"additionalProperties": false,
+											"properties": {
+												"integer": {
+													"type": "boolean"
+												},
+												"max": {
+													"type": "number"
+												},
+												"min": {
+													"type": "number"
+												}
+											}
+										},
+										"properties": {
+											"description": "Map of property key to FieldDefinition for object fields. Required when kind is 'object'. See FieldDefinition (recursive).",
+											"type": "object",
+											"additionalProperties": "[Circular ~.PATCH /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}.requestBody.content.application/json.schema.properties.schema.items]"
+										},
+										"required": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"key",
+										"kind"
+									]
+								}
 							}
 						}
 					}
@@ -322,6 +754,113 @@
 								"name": {
 									"type": "string",
 									"example": "Actor"
+								},
+								"schema": {
+									"description": "Parsed FieldDefinition[] defining custom fields for this category, or null if none.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"allowedValues": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												},
+												"example": [
+													"low",
+													"medium",
+													"high",
+													"critical"
+												]
+											},
+											"annotations": {
+												"type": "object",
+												"additionalProperties": false,
+												"properties": {
+													"confidence": {
+														"type": "boolean"
+													},
+													"tlp": {
+														"type": "boolean"
+													}
+												}
+											},
+											"element": "[Circular ~.PATCH /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}.responses.200.content.application/json.schema.properties.schema.items]",
+											"enforcement": {
+												"type": "string",
+												"enum": [
+													"error",
+													"warn",
+													"off"
+												]
+											},
+											"format": {
+												"type": "string",
+												"enum": [
+													"date",
+													"url",
+													"duration",
+													"country"
+												]
+											},
+											"key": {
+												"type": "string",
+												"example": "family",
+												"pattern": "^[a-zA-Z][a-zA-Z0-9_]{0,63}$"
+											},
+											"kind": {
+												"type": "string",
+												"example": "string",
+												"enum": [
+													"string",
+													"number",
+													"enum",
+													"date",
+													"array",
+													"object"
+												]
+											},
+											"label": {
+												"type": "string",
+												"example": "Attacker Name",
+												"maxLength": 128,
+												"minLength": 1
+											},
+											"maxLength": {
+												"type": "integer",
+												"exclusiveMinimum": true,
+												"minimum": 0
+											},
+											"numberConstraint": {
+												"type": "object",
+												"additionalProperties": false,
+												"properties": {
+													"integer": {
+														"type": "boolean"
+													},
+													"max": {
+														"type": "number"
+													},
+													"min": {
+														"type": "number"
+													}
+												}
+											},
+											"properties": {
+												"description": "Map of property key to FieldDefinition for object fields. Required when kind is 'object'. See FieldDefinition (recursive).",
+												"type": "object",
+												"additionalProperties": "[Circular ~.PATCH /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}.responses.200.content.application/json.schema.properties.schema.items]"
+											},
+											"required": {
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"key",
+											"kind"
+										]
+									},
+									"nullable": true
 								},
 								"updatedAt": {
 									"type": "string"
@@ -498,6 +1037,112 @@
 							"name": {
 								"type": "string",
 								"example": "Actor"
+							},
+							"schema": {
+								"description": "Optional array of FieldDefinition objects defining custom fields for tags in this category. Persisted as JSON; returned as a parsed array.",
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"allowedValues": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"example": [
+												"low",
+												"medium",
+												"high",
+												"critical"
+											]
+										},
+										"annotations": {
+											"type": "object",
+											"additionalProperties": false,
+											"properties": {
+												"confidence": {
+													"type": "boolean"
+												},
+												"tlp": {
+													"type": "boolean"
+												}
+											}
+										},
+										"element": "[Circular ~.POST /accounts/{account_id}/cloudforce-one/events/tags/categories/create.requestBody.content.application/json.schema.properties.schema.items]",
+										"enforcement": {
+											"type": "string",
+											"enum": [
+												"error",
+												"warn",
+												"off"
+											]
+										},
+										"format": {
+											"type": "string",
+											"enum": [
+												"date",
+												"url",
+												"duration",
+												"country"
+											]
+										},
+										"key": {
+											"type": "string",
+											"example": "family",
+											"pattern": "^[a-zA-Z][a-zA-Z0-9_]{0,63}$"
+										},
+										"kind": {
+											"type": "string",
+											"example": "string",
+											"enum": [
+												"string",
+												"number",
+												"enum",
+												"date",
+												"array",
+												"object"
+											]
+										},
+										"label": {
+											"type": "string",
+											"example": "Attacker Name",
+											"maxLength": 128,
+											"minLength": 1
+										},
+										"maxLength": {
+											"type": "integer",
+											"exclusiveMinimum": true,
+											"minimum": 0
+										},
+										"numberConstraint": {
+											"type": "object",
+											"additionalProperties": false,
+											"properties": {
+												"integer": {
+													"type": "boolean"
+												},
+												"max": {
+													"type": "number"
+												},
+												"min": {
+													"type": "number"
+												}
+											}
+										},
+										"properties": {
+											"description": "Map of property key to FieldDefinition for object fields. Required when kind is 'object'. See FieldDefinition (recursive).",
+											"type": "object",
+											"additionalProperties": "[Circular ~.POST /accounts/{account_id}/cloudforce-one/events/tags/categories/create.requestBody.content.application/json.schema.properties.schema.items]"
+										},
+										"required": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"key",
+										"kind"
+									]
+								}
 							}
 						},
 						"required": [
@@ -524,6 +1169,113 @@
 								"name": {
 									"type": "string",
 									"example": "Actor"
+								},
+								"schema": {
+									"description": "Parsed FieldDefinition[] defining custom fields for this category, or null if none.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"allowedValues": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												},
+												"example": [
+													"low",
+													"medium",
+													"high",
+													"critical"
+												]
+											},
+											"annotations": {
+												"type": "object",
+												"additionalProperties": false,
+												"properties": {
+													"confidence": {
+														"type": "boolean"
+													},
+													"tlp": {
+														"type": "boolean"
+													}
+												}
+											},
+											"element": "[Circular ~.POST /accounts/{account_id}/cloudforce-one/events/tags/categories/create.responses.200.content.application/json.schema.properties.schema.items]",
+											"enforcement": {
+												"type": "string",
+												"enum": [
+													"error",
+													"warn",
+													"off"
+												]
+											},
+											"format": {
+												"type": "string",
+												"enum": [
+													"date",
+													"url",
+													"duration",
+													"country"
+												]
+											},
+											"key": {
+												"type": "string",
+												"example": "family",
+												"pattern": "^[a-zA-Z][a-zA-Z0-9_]{0,63}$"
+											},
+											"kind": {
+												"type": "string",
+												"example": "string",
+												"enum": [
+													"string",
+													"number",
+													"enum",
+													"date",
+													"array",
+													"object"
+												]
+											},
+											"label": {
+												"type": "string",
+												"example": "Attacker Name",
+												"maxLength": 128,
+												"minLength": 1
+											},
+											"maxLength": {
+												"type": "integer",
+												"exclusiveMinimum": true,
+												"minimum": 0
+											},
+											"numberConstraint": {
+												"type": "object",
+												"additionalProperties": false,
+												"properties": {
+													"integer": {
+														"type": "boolean"
+													},
+													"max": {
+														"type": "number"
+													},
+													"min": {
+														"type": "number"
+													}
+												}
+											},
+											"properties": {
+												"description": "Map of property key to FieldDefinition for object fields. Required when kind is 'object'. See FieldDefinition (recursive).",
+												"type": "object",
+												"additionalProperties": "[Circular ~.POST /accounts/{account_id}/cloudforce-one/events/tags/categories/create.responses.200.content.application/json.schema.properties.schema.items]"
+											},
+											"required": {
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"key",
+											"kind"
+										]
+									},
+									"nullable": true
 								},
 								"updatedAt": {
 									"type": "string"

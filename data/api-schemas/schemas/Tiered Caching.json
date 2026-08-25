@@ -319,7 +319,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "argo.tiered-caching",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/argo/tiered_caching": {
 		"operationId": "tiered-caching-patch-tiered-caching-setting",
@@ -667,6 +671,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "argo.tiered-caching",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	}
 }

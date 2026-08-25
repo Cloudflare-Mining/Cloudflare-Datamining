@@ -1,0 +1,600 @@
+{
+	"GET /accounts/{account_id}/access/ai-controls/mcp/analytics/portals/{portal_id}/tool-calls/timeseries": {
+		"operationId": "mcp-portals-api-portal-tool-call-timeseries",
+		"summary": "Per-portal MCP tool-call timeseries",
+		"description": "Returns daily or monthly tool-call counts for a portal.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "a86a8f5c339544d7bdc89926de14fb8c"
+				}
+			},
+			{
+				"name": "portal_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "granularity",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"default": "daily",
+					"enum": [
+						"daily",
+						"monthly"
+					]
+				}
+			},
+			{
+				"name": "aggregate",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"default": "false",
+					"enum": [
+						"true",
+						"false"
+					]
+				}
+			},
+			{
+				"name": "tz",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"default": "utc",
+					"pattern": "^(utc|Z|\\+(?:(?:0\\d|1[0-3]):[0-5]\\d|14:00)|-(?:(?:0\\d|1[01]):[0-5]\\d|12:00))$"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Per-day tool/call counts across all servers in a portal over the selected window",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"aggregate": {
+											"type": "boolean"
+										},
+										"end": {
+											"type": "integer"
+										},
+										"granularity": {
+											"type": "string",
+											"enum": [
+												"daily",
+												"monthly"
+											]
+										},
+										"series": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"count": {
+														"type": "integer"
+													},
+													"day": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"day",
+													"count"
+												],
+												"type": "object"
+											}
+										},
+										"start": {
+											"type": "integer"
+										},
+										"total": {
+											"type": "integer"
+										},
+										"tz": {
+											"type": "string",
+											"pattern": "^(utc|Z|\\+(?:(?:0\\d|1[0-3]):[0-5]\\d|14:00)|-(?:(?:0\\d|1[01]):[0-5]\\d|12:00))$"
+										}
+									},
+									"required": [
+										"granularity",
+										"aggregate",
+										"tz",
+										"start",
+										"end",
+										"series",
+										"total"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"MCP Portal Analytics"
+		],
+		"x-api-token-group": [
+			"MCP Portals Write",
+			"MCP Portals Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.mcp_portals"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "mcp.portals",
+		"x-fern-sdk-method-name": "portal-tool-call-timeseries",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/access/ai-controls/mcp/analytics/servers/{server_id}/tool-calls/timeseries": {
+		"operationId": "mcp-portals-api-server-tool-call-timeseries",
+		"summary": "Per-server MCP tool-call timeseries",
+		"description": "Returns daily or monthly tool-call counts for a server.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "a86a8f5c339544d7bdc89926de14fb8c"
+				}
+			},
+			{
+				"name": "server_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "granularity",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"default": "daily",
+					"enum": [
+						"daily",
+						"monthly"
+					]
+				}
+			},
+			{
+				"name": "aggregate",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"default": "false",
+					"enum": [
+						"true",
+						"false"
+					]
+				}
+			},
+			{
+				"name": "tz",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"default": "utc",
+					"pattern": "^(utc|Z|\\+(?:(?:0\\d|1[0-3]):[0-5]\\d|14:00)|-(?:(?:0\\d|1[01]):[0-5]\\d|12:00))$"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Per-day tool/call counts for a single server over the selected window",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"aggregate": {
+											"type": "boolean"
+										},
+										"end": {
+											"type": "integer"
+										},
+										"granularity": {
+											"type": "string",
+											"enum": [
+												"daily",
+												"monthly"
+											]
+										},
+										"series": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"count": {
+														"type": "integer"
+													},
+													"day": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"day",
+													"count"
+												],
+												"type": "object"
+											}
+										},
+										"start": {
+											"type": "integer"
+										},
+										"total": {
+											"type": "integer"
+										},
+										"tz": {
+											"type": "string",
+											"pattern": "^(utc|Z|\\+(?:(?:0\\d|1[0-3]):[0-5]\\d|14:00)|-(?:(?:0\\d|1[01]):[0-5]\\d|12:00))$"
+										}
+									},
+									"required": [
+										"granularity",
+										"aggregate",
+										"tz",
+										"start",
+										"end",
+										"series",
+										"total"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"MCP Portal Analytics"
+		],
+		"x-api-token-group": [
+			"MCP Portals Write",
+			"MCP Portals Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.mcp_portals"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "mcp.servers",
+		"x-fern-sdk-method-name": "server-tool-call-timeseries",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/access/ai-controls/mcp/analytics/tool-calls/timeseries": {
+		"operationId": "mcp-portals-api-account-tool-call-timeseries",
+		"summary": "Account-global MCP tool-call timeseries",
+		"description": "Returns daily or monthly tool-call counts across the account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "a86a8f5c339544d7bdc89926de14fb8c"
+				}
+			},
+			{
+				"name": "granularity",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"default": "daily",
+					"enum": [
+						"daily",
+						"monthly"
+					]
+				}
+			},
+			{
+				"name": "aggregate",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"default": "false",
+					"enum": [
+						"true",
+						"false"
+					]
+				}
+			},
+			{
+				"name": "tz",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"default": "utc",
+					"pattern": "^(utc|Z|\\+(?:(?:0\\d|1[0-3]):[0-5]\\d|14:00)|-(?:(?:0\\d|1[01]):[0-5]\\d|12:00))$"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Per-day tool/call counts across the whole account over the selected window",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"aggregate": {
+											"type": "boolean"
+										},
+										"end": {
+											"type": "integer"
+										},
+										"granularity": {
+											"type": "string",
+											"enum": [
+												"daily",
+												"monthly"
+											]
+										},
+										"series": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"count": {
+														"type": "integer"
+													},
+													"day": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"day",
+													"count"
+												],
+												"type": "object"
+											}
+										},
+										"start": {
+											"type": "integer"
+										},
+										"total": {
+											"type": "integer"
+										},
+										"tz": {
+											"type": "string",
+											"pattern": "^(utc|Z|\\+(?:(?:0\\d|1[0-3]):[0-5]\\d|14:00)|-(?:(?:0\\d|1[01]):[0-5]\\d|12:00))$"
+										}
+									},
+									"required": [
+										"granularity",
+										"aggregate",
+										"tz",
+										"start",
+										"end",
+										"series",
+										"total"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"MCP Portal Analytics"
+		],
+		"x-api-token-group": [
+			"MCP Portals Write",
+			"MCP Portals Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.mcp_portals"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "mcp.portals",
+		"x-fern-sdk-method-name": "account-tool-call-timeseries",
+		"x-forge-hidden": true
+	}
+}

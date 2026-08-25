@@ -1,8 +1,8 @@
 {
 	"DELETE /zones/{zone_id}/api_gateway/labels/user": {
 		"operationId": "api-shield-labels-delete-user-labels",
-		"summary": "Delete user labels",
-		"description": "Delete user labels",
+		"summary": "Delete user-defined operation labels",
+		"description": "Deletes one or more user-defined labels and removes their associations with web and API operations.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -369,14 +369,15 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.labels.user",
+		"x-fern-sdk-group-name": "web-assets.labels.user",
 		"x-fern-sdk-method-name": "bulk-delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes the selected user-defined labels and removes them from associated web and API operations."
 	},
 	"DELETE /zones/{zone_id}/api_gateway/labels/user/{name}": {
 		"operationId": "api-shield-delete-user-label",
-		"summary": "Delete user label",
-		"description": "Delete user label",
+		"summary": "Delete a user-defined operation label",
+		"description": "Deletes a user-defined label and removes its associations with web and API operations.",
 		"responses": {
 			"200": {
 				"description": "Delete user label response",
@@ -684,14 +685,15 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.labels.user",
+		"x-fern-sdk-group-name": "web-assets.labels.user",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes the user-defined label and removes it from associated web and API operations."
 	},
 	"DELETE /zones/{zone_id}/api_gateway/operations/{operation_id}/labels": {
 		"operationId": "api-shield-operations-delete-labels-from-operation",
-		"summary": "Remove label(s) on an operation in endpoint management",
-		"description": "Remove label(s) on an operation in endpoint management",
+		"summary": "Remove labels from a web or API operation",
+		"description": "Removes one or more labels from a web or API operation.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -1131,14 +1133,15 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.operations.labels",
+		"x-fern-sdk-group-name": "web-assets.operations.labels",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation removes the selected labels from the web or API operation."
 	},
 	"DELETE /zones/{zone_id}/api_gateway/operations/labels": {
 		"operationId": "api-shield-operations-bulk-delete-labels-to-operations",
-		"summary": "Bulk remove label(s) on operation(s) in endpoint management",
-		"description": "Bulk remove label(s) on operation(s) in endpoint management",
+		"summary": "Remove labels from web or API operations",
+		"description": "Removes labels from multiple web or API operations in one request.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -1631,14 +1634,15 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.operations.labels",
+		"x-fern-sdk-group-name": "web-assets.operations.labels",
 		"x-fern-sdk-method-name": "bulk-delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation removes the selected labels from the selected web and API operations."
 	},
 	"GET /zones/{zone_id}/api_gateway/labels": {
 		"operationId": "api-shield-labels-get-labels",
-		"summary": "Retrieve all labels",
-		"description": "Retrieve all labels",
+		"summary": "List operation labels",
+		"description": "Returns all managed and user-defined labels available for web and API operations in the zone.",
 		"parameters": [
 			{
 				"description": "Page number of paginated results.",
@@ -2092,14 +2096,14 @@
 			"Domain API Gateway Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.labels",
+		"x-fern-sdk-group-name": "web-assets.labels",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/api_gateway/labels/managed/{name}": {
 		"operationId": "api-shield-labels-get-managed-label",
-		"summary": "Retrieve managed label",
-		"description": "Retrieve managed label",
+		"summary": "Get a managed operation label",
+		"description": "Returns a managed label and the web and API operations associated with it.",
 		"parameters": [
 			{
 				"description": "Include `mapped_resources` for each label",
@@ -2449,14 +2453,14 @@
 			"Domain API Gateway Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.labels.managed",
+		"x-fern-sdk-group-name": "web-assets.labels.managed",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/api_gateway/labels/user/{name}": {
 		"operationId": "api-shield-labels-get-user-label",
-		"summary": "Retrieve user label",
-		"description": "Retrieve user label",
+		"summary": "Get a user-defined operation label",
+		"description": "Returns a user-defined label and the web and API operations associated with it.",
 		"parameters": [
 			{
 				"description": "Include `mapped_resources` for each label",
@@ -2794,14 +2798,14 @@
 			"Domain API Gateway Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.labels.user",
+		"x-fern-sdk-group-name": "web-assets.labels.user",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/api_gateway/labels/user/{name}": {
 		"operationId": "api-shield-patch-user-label",
-		"summary": "Patch user label",
-		"description": "Update certain fields on a label",
+		"summary": "Edit a user-defined operation label",
+		"description": "Updates only the supplied fields on a user-defined label.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -3134,14 +3138,14 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.labels.user",
+		"x-fern-sdk-group-name": "web-assets.labels.user",
 		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/api_gateway/labels/user": {
 		"operationId": "api-shield-labels-create-user-labels",
-		"summary": "Create user labels",
-		"description": "Create user labels",
+		"summary": "Create user-defined operation labels",
+		"description": "Creates one or more user-defined labels for classifying web and API operations.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -3529,14 +3533,14 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.labels.user",
+		"x-fern-sdk-group-name": "web-assets.labels.user",
 		"x-fern-sdk-method-name": "bulk-create",
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/api_gateway/operations/{operation_id}/labels": {
 		"operationId": "api-shield-operations-post-labels-to-operation",
-		"summary": "Attach label(s) on an operation in endpoint management",
-		"description": "Attach label(s) on an operation in endpoint management",
+		"summary": "Attach labels to a web or API operation",
+		"description": "Attaches one or more labels to a web or API operation.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -3978,14 +3982,14 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.operations.labels",
+		"x-fern-sdk-group-name": "web-assets.operations.labels",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/api_gateway/operations/labels": {
 		"operationId": "api-shield-operations-bulk-post-labels-to-operations",
-		"summary": "Bulk attach label(s) on operation(s) in endpoint management",
-		"description": "Bulk attach label(s) on operation(s) in endpoint management",
+		"summary": "Attach labels to web or API operations",
+		"description": "Attaches labels to multiple web or API operations in one request.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -4480,14 +4484,14 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.operations.labels",
+		"x-fern-sdk-group-name": "web-assets.operations.labels",
 		"x-fern-sdk-method-name": "bulk-create",
 		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/api_gateway/labels/managed/{name}/resources/operation": {
 		"operationId": "api-shield-labels-replace-operations-attached-to-managed-label",
-		"summary": "Replace operation(s) attached to a managed label",
-		"description": "Replace all operations(s) attached to a managed label",
+		"summary": "Replace operations attached to a managed label",
+		"description": "Replaces the complete set of web and API operations attached to the managed label.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -4875,14 +4879,14 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.labels.managed.resources.operation",
+		"x-fern-sdk-group-name": "web-assets.labels.managed.operations",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/api_gateway/labels/user/{name}": {
 		"operationId": "api-shield-put-user-label",
-		"summary": "Update user label",
-		"description": "Update all fields on a label",
+		"summary": "Update a user-defined operation label",
+		"description": "Replaces all editable fields on a user-defined label.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -5215,14 +5219,14 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.labels.user",
+		"x-fern-sdk-group-name": "web-assets.labels.user",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/api_gateway/labels/user/{name}/resources/operation": {
 		"operationId": "api-shield-labels-replace-operations-attached-to-user-label",
-		"summary": "Replace operation(s) attached to a user label",
-		"description": "Replace all operations(s) attached to a user label",
+		"summary": "Replace operations attached to a user-defined label",
+		"description": "Replaces the complete set of web and API operations attached to the user-defined label.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -5598,14 +5602,14 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.labels.user.resources.operation",
+		"x-fern-sdk-group-name": "web-assets.labels.user.operations",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/api_gateway/operations/{operation_id}/labels": {
 		"operationId": "api-shield-operations-put-labels-to-operation",
-		"summary": "Replace label(s) on an operation in endpoint management",
-		"description": "Replace label(s) on an operation in endpoint management",
+		"summary": "Replace labels on a web or API operation",
+		"description": "Replaces the complete label set on a web or API operation.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -6045,14 +6049,14 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.operations.labels",
+		"x-fern-sdk-group-name": "web-assets.operations.labels",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/api_gateway/operations/labels": {
 		"operationId": "api-shield-operations-bulk-put-labels-to-operations",
-		"summary": "Bulk replace label(s) on operation(s) in endpoint management",
-		"description": "Bulk replace label(s) on operation(s) in endpoint management",
+		"summary": "Replace labels on web or API operations",
+		"description": "Replaces the complete label sets on multiple web or API operations in one request.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -6555,7 +6559,7 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.operations.labels",
+		"x-fern-sdk-group-name": "web-assets.operations.labels",
 		"x-fern-sdk-method-name": "bulk-update",
 		"x-forge-hidden": true
 	}

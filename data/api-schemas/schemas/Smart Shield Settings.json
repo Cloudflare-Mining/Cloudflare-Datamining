@@ -717,7 +717,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "smart-shield",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/smart_shield": {
 		"operationId": "smart-shield-patch-settings",
@@ -1406,6 +1410,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "smart-shield",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

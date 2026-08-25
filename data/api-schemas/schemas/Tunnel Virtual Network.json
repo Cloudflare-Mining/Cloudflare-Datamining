@@ -142,7 +142,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -290,7 +290,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -438,9 +438,10 @@
 			"Cloudflare Tunnel Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.networks.virtual-networks",
+		"x-fern-sdk-group-name": "network.virtual-networks",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation permanently deletes a virtual network."
 	},
 	"GET /accounts/{account_id}/teamnet/virtual_networks": {
 		"operationId": "tunnel-virtual-network-list-virtual-networks",
@@ -657,7 +658,7 @@
 														"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 														"type": "string",
 														"format": "date-time",
-														"example": "2009-11-10T23:00:00.000000Z",
+														"example": "2009-11-10T23:00:00Z",
 														"readOnly": true
 													},
 													"id": {
@@ -847,7 +848,7 @@
 																"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 																"type": "string",
 																"format": "date-time",
-																"example": "2009-11-10T23:00:00.000000Z",
+																"example": "2009-11-10T23:00:00Z",
 																"readOnly": true
 															},
 															"id": {
@@ -998,7 +999,7 @@
 			"Cloudflare Tunnel Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.networks.virtual-networks",
+		"x-fern-sdk-group-name": "network.virtual-networks",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -1173,7 +1174,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -1321,7 +1322,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -1465,7 +1466,7 @@
 			"Tunnel Virtual Network"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.networks.virtual-networks",
+		"x-fern-sdk-group-name": "network.virtual-networks",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -1641,7 +1642,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -1789,7 +1790,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -1937,7 +1938,7 @@
 			"Cloudflare Tunnel Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.networks.virtual-networks",
+		"x-fern-sdk-group-name": "network.virtual-networks",
 		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true
 	},
@@ -2113,7 +2114,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -2261,7 +2262,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -2409,7 +2410,7 @@
 			"Cloudflare Tunnel Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.networks.virtual-networks",
+		"x-fern-sdk-group-name": "network.virtual-networks",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	}

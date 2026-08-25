@@ -270,6 +270,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
 	"GET /accounts": {
@@ -456,7 +457,7 @@
 														"description": "Timestamp for the creation of the account",
 														"type": "string",
 														"format": "date-time",
-														"example": "2014-03-01T12:21:02.0000Z",
+														"example": "2014-03-01T12:21:02Z",
 														"readOnly": true,
 														"x-auditable": true
 													},
@@ -665,7 +666,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}": {
 		"operationId": "accounts-account-details",
@@ -795,7 +800,7 @@
 													"description": "Timestamp for the creation of the account",
 													"type": "string",
 													"format": "date-time",
-													"example": "2014-03-01T12:21:02.0000Z",
+													"example": "2014-03-01T12:21:02Z",
 													"readOnly": true,
 													"x-auditable": true
 												},
@@ -1039,7 +1044,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/organizations": {
 		"operationId": "Accounts_listAccountOrganizations",
@@ -1135,6 +1144,9 @@
 																	"account_creation": {
 																		"type": "string"
 																	},
+																	"account_creation_applies_tenant_defaults": {
+																		"type": "string"
+																	},
 																	"account_deletion": {
 																		"type": "string"
 																	},
@@ -1156,6 +1168,7 @@
 																},
 																"required": [
 																	"account_creation",
+																	"account_creation_applies_tenant_defaults",
 																	"account_deletion",
 																	"account_migration",
 																	"account_mobility",
@@ -1698,7 +1711,7 @@
 													"description": "Timestamp for the creation of the account",
 													"type": "string",
 													"format": "date-time",
-													"example": "2014-03-01T12:21:02.0000Z",
+													"example": "2014-03-01T12:21:02Z",
 													"readOnly": true,
 													"x-auditable": true
 												},
@@ -1909,7 +1922,8 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/move": {
 		"operationId": "Accounts_moveAccounts",
@@ -2311,7 +2325,7 @@
 										"description": "Timestamp for the creation of the account",
 										"type": "string",
 										"format": "date-time",
-										"example": "2014-03-01T12:21:02.0000Z",
+										"example": "2014-03-01T12:21:02Z",
 										"readOnly": true,
 										"x-auditable": true
 									},
@@ -2490,7 +2504,7 @@
 													"description": "Timestamp for the creation of the account",
 													"type": "string",
 													"format": "date-time",
-													"example": "2014-03-01T12:21:02.0000Z",
+													"example": "2014-03-01T12:21:02Z",
 													"readOnly": true,
 													"x-auditable": true
 												},
@@ -2706,7 +2720,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/profile": {
 		"operationId": "Accounts_modifyAccountProfile",

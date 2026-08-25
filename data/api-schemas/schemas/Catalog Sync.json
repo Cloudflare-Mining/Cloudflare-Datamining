@@ -3349,7 +3349,11 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.catalog-syncs",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/cloud/catalog-syncs": {
 		"operationId": "catalog-syncs-list",
@@ -6484,7 +6488,11 @@
 		"x-api-token-group": [
 			"Magic WAN Write",
 			"Magic WAN Read"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.catalog-syncs",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}": {
 		"operationId": "catalog-syncs-read",
@@ -9625,7 +9633,11 @@
 		"x-api-token-group": [
 			"Magic WAN Write",
 			"Magic WAN Read"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.catalog-syncs",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/cloud/catalog-syncs/prebuilt-policies": {
 		"operationId": "catalog-syncs-prebuilt-policies-list",
@@ -12057,7 +12069,11 @@
 		"x-api-token-group": [
 			"Magic WAN Write",
 			"Magic WAN Read"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.catalog-syncs.prebuilt-policies",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}": {
 		"operationId": "catalog-syncs-patch",
@@ -16166,7 +16182,11 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.catalog-syncs",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/cloud/catalog-syncs": {
 		"operationId": "catalog-syncs-create",
@@ -19824,7 +19844,11 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.catalog-syncs",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}/refresh": {
 		"operationId": "catalog-syncs-refresh",
@@ -23630,7 +23654,11 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.catalog-syncs",
+		"x-fern-sdk-method-name": "refresh",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}": {
 		"operationId": "catalog-syncs-update",
@@ -27739,6 +27767,10 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.catalog-syncs",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

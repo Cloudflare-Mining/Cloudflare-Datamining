@@ -1,0 +1,375 @@
+{
+	"GET /accounts/{account_id}/billing/history": {
+		"operationId": "account-billing-history-get-billing-history",
+		"summary": "Get Account Billing History",
+		"description": "Gets the billing history for an account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"schema": {
+					"description": "Page number of paginated results.",
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"schema": {
+					"description": "Number of items per page.",
+					"type": "integer",
+					"default": 20,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "status",
+				"in": "query",
+				"schema": {
+					"description": "Filter billing history by status.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get Account Billing History response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {},
+													"nullable": true
+												},
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"type": "number",
+															"example": 1
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"type": "number",
+															"example": 20
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"type": "number",
+															"example": 2000
+														}
+													}
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"action": {
+														"description": "The billing item action.",
+														"type": "string",
+														"example": "subscription"
+													},
+													"amount": {
+														"description": "The amount associated with this billing item.",
+														"type": "number",
+														"example": 20.99
+													},
+													"amount_to_pay": {
+														"description": "The amount remaining to pay.",
+														"type": "number",
+														"example": 0
+													},
+													"currency": {
+														"description": "The currency of the billing item.",
+														"type": "string",
+														"example": "USD"
+													},
+													"description": {
+														"description": "The billing item description.",
+														"type": "string",
+														"example": "The billing item description"
+													},
+													"external_invoice_id": {
+														"description": "The external invoice identifier.",
+														"type": "string"
+													},
+													"hosted_invoice_url": {
+														"description": "URL to the hosted invoice.",
+														"type": "string"
+													},
+													"id": {
+														"description": "Billing history item identifier.",
+														"type": "string",
+														"example": "b69a9f3492637782896352daae219e7d"
+													},
+													"invoice_id": {
+														"description": "The associated invoice identifier.",
+														"type": "string"
+													},
+													"occurred_at": {
+														"description": "When the billing event occurred.",
+														"type": "string",
+														"format": "date-time",
+														"example": "2014-03-01T12:21:59.3456Z"
+													},
+													"receipt_id": {
+														"description": "The associated receipt identifier.",
+														"type": "string"
+													},
+													"source": {
+														"description": "The source of the billing item.",
+														"type": "string"
+													},
+													"source_invoice_id": {
+														"description": "The source invoice identifier.",
+														"type": "string"
+													},
+													"status": {
+														"description": "The status of the billing item.",
+														"type": "string"
+													},
+													"type": {
+														"description": "The billing item type.",
+														"type": "string",
+														"example": "charge"
+													}
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get Account Billing History response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Account Billing History"
+		],
+		"x-api-token-group": [
+			"Billing Write",
+			"Billing Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#billing:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

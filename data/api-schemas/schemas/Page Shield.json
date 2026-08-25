@@ -128,7 +128,12 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "client-side-security.policies",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation permanently deletes the content security rule from the zone."
 	},
 	"GET /zones/{zone_id}/page_shield": {
 		"operationId": "page-shield-get-settings",
@@ -366,7 +371,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "client-side-security.settings",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/page_shield/connections": {
 		"operationId": "page-shield-list-connections",
@@ -819,7 +828,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "client-side-security.connections",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/page_shield/connections/{connection_id}": {
 		"operationId": "page-shield-get-connection",
@@ -1127,7 +1140,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "client-side-security.connections",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/page_shield/cookies": {
 		"operationId": "page-shield-list-cookies",
@@ -1615,7 +1632,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "client-side-security.cookies",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/page_shield/cookies/{cookie_id}": {
 		"operationId": "page-shield-get-cookie",
@@ -1925,7 +1946,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "client-side-security.cookies",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/page_shield/policies": {
 		"operationId": "page-shield-list-policies",
@@ -2245,7 +2270,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "client-side-security.policies",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/page_shield/policies/{policy_id}": {
 		"operationId": "page-shield-get-policy",
@@ -2538,7 +2567,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "client-side-security.policies",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/page_shield/scripts": {
 		"operationId": "page-shield-list-scripts",
@@ -3069,7 +3102,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "client-side-security.scripts",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/page_shield/scripts/{script_id}": {
 		"operationId": "page-shield-get-script",
@@ -3537,7 +3574,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "client-side-security.scripts",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/page_shield/policies": {
 		"operationId": "page-shield-create-policy",
@@ -3867,7 +3908,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "client-side-security.policies",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/page_shield": {
 		"operationId": "page-shield-update-settings",
@@ -4152,7 +4197,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "client-side-security.settings",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/page_shield/policies/{policy_id}": {
 		"operationId": "page-shield-update-policy",
@@ -4488,6 +4537,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "client-side-security.policies",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

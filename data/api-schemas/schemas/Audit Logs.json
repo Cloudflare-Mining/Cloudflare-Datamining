@@ -888,6 +888,7 @@
 						"enum": [
 							"account",
 							"cloudflare_admin",
+							"delegated_service",
 							"system",
 							"user"
 						],
@@ -1191,6 +1192,7 @@
 						"enum": [
 							"account",
 							"cloudflare_admin",
+							"delegated_service",
 							"system",
 							"user"
 						],
@@ -1559,6 +1561,7 @@
 																		"enum": [
 																			"account",
 																			"cloudflare_admin",
+																			"delegated_service",
 																			"system",
 																			"user"
 																		]
@@ -1742,7 +1745,8 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.logs.audit",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/logs/audit/{id}/history": {
 		"operationId": "audit-logs-v2-get-account-audit-log-history",
@@ -1963,6 +1967,7 @@
 																"enum": [
 																	"account",
 																	"cloudflare_admin",
+																	"delegated_service",
 																	"system",
 																	"user"
 																]
@@ -2260,7 +2265,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts.logs.audit",
+		"x-fern-sdk-method-name": "history",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/logs/audit/product_categories": {
 		"operationId": "audit-logs-v2-list-account-product-categories",
@@ -2431,7 +2440,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts.logs.audit",
+		"x-fern-sdk-method-name": "product-categories",
+		"x-forge-hidden": true
 	},
 	"GET /organizations/{organization_id}/logs/audit": {
 		"operationId": "audit-logs-v2-get-organization-audit-logs",
@@ -3792,7 +3805,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "organizations.logs.audit",
+		"x-fern-sdk-method-name": "history",
+		"x-forge-hidden": true
 	},
 	"GET /user/audit_logs": {
 		"operationId": "audit-logs-get-user-audit-logs",

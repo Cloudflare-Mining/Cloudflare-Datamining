@@ -241,7 +241,11 @@
 		],
 		"tags": [
 			"Namespaces"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "agent-memory",
+		"x-fern-sdk-method-name": "delete-namespace",
+		"x-forge-require-confirmation": "This operation deletes the namespace along with all memory profiles, memories, and sessions it contains."
 	},
 	"GET /accounts/{account_id}/agent-memory/namespaces": {
 		"operationId": "agent-memory-namespace-list",
@@ -381,7 +385,7 @@
 												"description": "Time the namespace was created.",
 												"type": "string",
 												"format": "date-time",
-												"example": "2025-09-21T14:30:00.000Z"
+												"example": "2025-09-21T14:30:00Z"
 											},
 											"id": {
 												"description": "Unique identifier of the namespace.",
@@ -397,7 +401,7 @@
 												"description": "Time the namespace was last updated.",
 												"type": "string",
 												"format": "date-time",
-												"example": "2025-09-21T14:30:00.000Z"
+												"example": "2025-09-21T14:30:00Z"
 											}
 										},
 										"required": [
@@ -564,7 +568,10 @@
 		],
 		"tags": [
 			"Namespaces"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "agent-memory",
+		"x-fern-sdk-method-name": "list-namespaces"
 	},
 	"GET /accounts/{account_id}/agent-memory/namespaces/{namespace_name}": {
 		"operationId": "agent-memory-namespace-get",
@@ -676,7 +683,7 @@
 											"description": "Time the namespace was created.",
 											"type": "string",
 											"format": "date-time",
-											"example": "2025-09-21T14:30:00.000Z"
+											"example": "2025-09-21T14:30:00Z"
 										},
 										"id": {
 											"description": "Unique identifier of the namespace.",
@@ -692,7 +699,7 @@
 											"description": "Time the namespace was last updated.",
 											"type": "string",
 											"format": "date-time",
-											"example": "2025-09-21T14:30:00.000Z"
+											"example": "2025-09-21T14:30:00Z"
 										}
 									},
 									"required": [
@@ -837,7 +844,10 @@
 		],
 		"tags": [
 			"Namespaces"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "agent-memory",
+		"x-fern-sdk-method-name": "get-namespace"
 	},
 	"POST /accounts/{account_id}/agent-memory/namespaces": {
 		"operationId": "agent-memory-namespace-create",
@@ -957,7 +967,7 @@
 											"description": "Time the namespace was created.",
 											"type": "string",
 											"format": "date-time",
-											"example": "2025-09-21T14:30:00.000Z"
+											"example": "2025-09-21T14:30:00Z"
 										},
 										"id": {
 											"description": "Unique identifier of the namespace.",
@@ -973,7 +983,7 @@
 											"description": "Time the namespace was last updated.",
 											"type": "string",
 											"format": "date-time",
-											"example": "2025-09-21T14:30:00.000Z"
+											"example": "2025-09-21T14:30:00Z"
 										}
 									},
 									"required": [
@@ -1118,6 +1128,9 @@
 		],
 		"tags": [
 			"Namespaces"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "agent-memory",
+		"x-fern-sdk-method-name": "create-namespace"
 	}
 }

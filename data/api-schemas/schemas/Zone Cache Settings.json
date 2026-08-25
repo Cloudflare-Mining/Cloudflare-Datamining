@@ -300,7 +300,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cache.settings.variants",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": false
 	},
 	"GET /zones/{zone_id}/cache/cache_reserve": {
 		"operationId": "zone-cache-settings-get-cache-reserve-setting",
@@ -663,7 +667,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cache.settings.reserve",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": false
 	},
 	"GET /zones/{zone_id}/cache/cache_reserve_clear": {
 		"operationId": "zone-cache-settings-get-cache-reserve-clear",
@@ -1013,7 +1021,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cache.settings.reserve",
+		"x-fern-sdk-method-name": "status",
+		"x-forge-hidden": false
 	},
 	"GET /zones/{zone_id}/cache/regional_tiered_cache": {
 		"operationId": "zone-cache-settings-get-regional-tiered-cache-setting",
@@ -1347,7 +1359,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cache.settings.regional-tiered-cache",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": false
 	},
 	"GET /zones/{zone_id}/cache/variants": {
 		"operationId": "zone-cache-settings-get-variants-setting",
@@ -1820,7 +1836,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cache.settings.variants",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": false
 	},
 	"PATCH /zones/{zone_id}/cache/cache_reserve": {
 		"operationId": "zone-cache-settings-change-cache-reserve-setting",
@@ -2206,7 +2226,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cache.settings.reserve",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": false
 	},
 	"PATCH /zones/{zone_id}/cache/regional_tiered_cache": {
 		"operationId": "zone-cache-settings-change-regional-tiered-cache-setting",
@@ -2563,7 +2587,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cache.settings.regional-tiered-cache",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": false
 	},
 	"PATCH /zones/{zone_id}/cache/variants": {
 		"operationId": "zone-cache-settings-change-variants-setting",
@@ -3198,7 +3226,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cache.settings.variants",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": false
 	},
 	"POST /zones/{zone_id}/cache/cache_reserve_clear": {
 		"operationId": "zone-cache-settings-start-cache-reserve-clear",
@@ -3542,6 +3574,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cache.settings.reserve",
+		"x-fern-sdk-method-name": "clear",
+		"x-forge-hidden": false,
+		"x-forge-require-confirmation": "This operation permanently clears Cache Reserve for this zone and cannot be undone."
 	}
 }

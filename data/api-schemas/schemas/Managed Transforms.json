@@ -205,7 +205,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "managed-transforms",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/managed_headers": {
 		"operationId": "listManagedTransforms",
@@ -731,7 +735,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "managed-transforms",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/managed_headers": {
 		"operationId": "updateManagedTransforms",
@@ -1400,6 +1408,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "managed-transforms",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

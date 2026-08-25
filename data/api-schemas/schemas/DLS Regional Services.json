@@ -254,7 +254,11 @@
 		],
 		"x-api-token-group": [
 			"DNS Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.regional_hostnames",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/addressing/regional_hostnames/regions": {
 		"operationId": "dls-account-regional-hostnames-list-regions",
@@ -564,7 +568,11 @@
 		"x-api-token-group": [
 			"DNS Read",
 			"DNS Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.regional_hostnames.regions",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/addressing/regional_hostnames": {
 		"operationId": "dls-zone-regional-hostnames-list",
@@ -904,7 +912,11 @@
 		"x-api-token-group": [
 			"DNS Read",
 			"DNS Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.regional_hostnames",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/addressing/regional_hostnames/{hostname}": {
 		"operationId": "dls-zone-regional-hostnames-fetch",
@@ -1213,7 +1225,11 @@
 		"x-api-token-group": [
 			"DNS Read",
 			"DNS Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.regional_hostnames",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/addressing/regional_hostnames/{hostname}": {
 		"operationId": "dls-zone-regional-hostnames-patch",
@@ -1541,7 +1557,11 @@
 		],
 		"x-api-token-group": [
 			"DNS Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.regional_hostnames",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/addressing/regional_hostnames": {
 		"operationId": "dls-zone-regional-hostnames-create",
@@ -1872,6 +1892,10 @@
 		],
 		"x-api-token-group": [
 			"DNS Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.regional_hostnames",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

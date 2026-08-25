@@ -494,6 +494,9 @@
 																	"account_creation": {
 																		"type": "string"
 																	},
+																	"account_creation_applies_tenant_defaults": {
+																		"type": "string"
+																	},
 																	"account_deletion": {
 																		"type": "string"
 																	},
@@ -515,6 +518,7 @@
 																},
 																"required": [
 																	"account_creation",
+																	"account_creation_applies_tenant_defaults",
 																	"account_deletion",
 																	"account_migration",
 																	"account_mobility",

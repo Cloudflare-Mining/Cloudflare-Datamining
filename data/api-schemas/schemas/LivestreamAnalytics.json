@@ -65,7 +65,7 @@
 									"data": [
 										{
 											"count": 4,
-											"date": "2023-07-15",
+											"date": "2023-07-15T00:00:00Z",
 											"total_ingest_seconds": 531,
 											"total_viewer_seconds": 116
 										}
@@ -123,7 +123,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.analytics.livestreams.daily",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/analytics/livestreams/overall": {
 		"operationId": "get-livestream-analytics-complete",
@@ -238,6 +241,9 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.analytics.livestreams",
+		"x-fern-sdk-method-name": "get"
 	}
 }

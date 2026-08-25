@@ -303,7 +303,11 @@
 		],
 		"tags": [
 			"Security Center Scans"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-center.scans",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/security-center/insights/scans": {
 		"operationId": "get-security-center-zone-scans",
@@ -613,7 +617,11 @@
 		"x-api-token-group": [
 			"Zone Settings Write",
 			"Zone Settings Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-center.zone-scans",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/security-center/insights/scans": {
 		"operationId": "start-security-center-account-scan",
@@ -917,7 +925,11 @@
 		],
 		"tags": [
 			"Security Center Scans"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-center.scans",
+		"x-fern-sdk-method-name": "start",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/security-center/insights/scans": {
 		"operationId": "start-security-center-zone-scan",
@@ -1224,6 +1236,10 @@
 		],
 		"x-api-token-group": [
 			"Zone Settings Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-center.zone-scans",
+		"x-fern-sdk-method-name": "start",
+		"x-forge-hidden": true
 	}
 }

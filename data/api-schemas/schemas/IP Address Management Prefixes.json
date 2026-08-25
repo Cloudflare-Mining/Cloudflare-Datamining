@@ -381,7 +381,11 @@
 		],
 		"x-api-token-group": [
 			"Magic Transit Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.prefixes",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/addressing/loa_documents/{loa_document_id}/download": {
 		"operationId": "ip-address-management-prefixes-download-loa-document",
@@ -557,7 +561,11 @@
 		"x-api-token-group": [
 			"Magic Transit Read",
 			"Magic Transit Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.loa-documents",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/addressing/prefixes": {
 		"operationId": "ip-address-management-prefixes-list-prefixes",
@@ -1799,7 +1807,11 @@
 			"IP Prefixes: Read",
 			"IP Prefixes: BGP On Demand Write",
 			"IP Prefixes: BGP On Demand Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.prefixes",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/addressing/prefixes/{prefix_id}": {
 		"operationId": "ip-address-management-prefixes-update-prefix-description",
@@ -2440,7 +2452,11 @@
 		"x-api-token-group": [
 			"Magic Transit Write",
 			"IP Prefixes: Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.prefixes",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/addressing/loa_documents": {
 		"operationId": "ip-address-management-prefixes-upload-loa-document",
@@ -2921,7 +2937,11 @@
 		],
 		"x-api-token-group": [
 			"Magic Transit Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.loa-documents",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/addressing/prefixes": {
 		"operationId": "ip-address-management-prefixes-add-prefix",
@@ -4195,6 +4215,10 @@
 		"x-api-token-group": [
 			"Magic Transit Write",
 			"IP Prefixes: Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.prefixes.validate",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

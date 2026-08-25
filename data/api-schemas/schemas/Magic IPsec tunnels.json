@@ -4676,7 +4676,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.ipsec-tunnels",
+		"x-fern-sdk-method-name": "psk-set",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/magic/ipsec_tunnels": {
 		"operationId": "magic-ipsec-tunnels-update-multiple-ipsec-tunnels",

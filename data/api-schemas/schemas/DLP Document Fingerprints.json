@@ -152,7 +152,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.document-fingerprints",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dlp/document_fingerprints": {
 		"operationId": "dlp-document-fingerprints-read-all",
@@ -464,7 +468,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.document-fingerprints.get.fingerprints",
+		"x-fern-sdk-method-name": "all",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dlp/document_fingerprints/{document_fingerprint_id}": {
 		"operationId": "dlp-document-fingerprints-read",
@@ -782,7 +790,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.document-fingerprints.get.document",
+		"x-fern-sdk-method-name": "fingerprints",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/dlp/document_fingerprints": {
 		"operationId": "dlp-document-fingerprints-create",
@@ -1118,7 +1130,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.document-fingerprints.create.document",
+		"x-fern-sdk-method-name": "fingerprints",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/dlp/document_fingerprints/{document_fingerprint_id}": {
 		"operationId": "dlp-document-fingerprints-update",
@@ -1461,7 +1477,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.document-fingerprints.create",
+		"x-fern-sdk-method-name": "v2",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/dlp/document_fingerprints/{document_fingerprint_id}": {
 		"operationId": "dlp-document-fingerprints-upload",
@@ -1797,6 +1817,10 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.document-fingerprints",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

@@ -7786,6 +7786,10 @@
 			"free": false,
 			"pro": false
 		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "resource-tagging.summary",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/tags/values/{tag_key}": {

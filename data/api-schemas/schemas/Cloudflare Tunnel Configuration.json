@@ -1,8 +1,8 @@
 {
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/configurations": {
 		"operationId": "cloudflare-tunnel-configuration-get-configuration",
-		"summary": "Get configuration",
-		"description": "Gets the configuration for a remotely-managed tunnel",
+		"summary": "Get Tunnel configuration",
+		"description": "Retrieves the configuration for a remotely managed Cloudflare Tunnel.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -563,7 +563,7 @@
 			"Cloudflare Tunnel Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared.configurations",
+		"x-fern-sdk-group-name": "tunnel.config",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -951,12 +951,16 @@
 			"Cloudflare One Connectors Read",
 			"Cloudflare One Connector: WARP Write",
 			"Cloudflare One Connector: WARP Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "mesh.nodes.configurations",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/cfd_tunnel/{tunnel_id}/configurations": {
 		"operationId": "cloudflare-tunnel-configuration-put-configuration",
-		"summary": "Put configuration",
-		"description": "Adds or updates the configuration for a remotely-managed tunnel.",
+		"summary": "Update Tunnel configuration",
+		"description": "Replaces the configuration for a remotely managed Cloudflare Tunnel, including its ingress rules and origin request settings.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1777,7 +1781,7 @@
 			"Cloudflare Tunnel Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared.configurations",
+		"x-fern-sdk-group-name": "tunnel.config",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
@@ -2260,6 +2264,10 @@
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connector: WARP Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "mesh.nodes.configurations",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

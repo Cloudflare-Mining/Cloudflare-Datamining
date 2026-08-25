@@ -320,6 +320,12 @@
 																"example": "cf-bounce",
 																"readOnly": true
 															},
+															"drop_suppressed_recipients": {
+																"description": "Whether a send request that includes a recipient suppressed on\nthis subdomain drops that recipient and still delivers to the\nrest, instead of failing the entire request.\n",
+																"type": "boolean",
+																"example": false,
+																"x-auditable": true
+															},
 															"enabled": {
 																"description": "Whether Email Sending is enabled on this subdomain.",
 																"type": "boolean",
@@ -545,6 +551,12 @@
 															"type": "string",
 															"example": "cf-bounce",
 															"readOnly": true
+														},
+														"drop_suppressed_recipients": {
+															"description": "Whether a send request that includes a recipient suppressed on\nthis subdomain drops that recipient and still delivers to the\nrest, instead of failing the entire request.\n",
+															"type": "boolean",
+															"example": false,
+															"x-auditable": true
 														},
 														"enabled": {
 															"description": "Whether Email Sending is enabled on this subdomain.",
@@ -1565,34 +1577,10 @@
 												"complaints": {
 													"type": "integer",
 													"minimum": 0
-												},
-												"generated_at": {
-													"type": "string",
-													"format": "date-time"
-												},
-												"subdomain_id": {
-													"description": "Sending subdomain identifier.",
-													"type": "string",
-													"example": "aabbccdd11223344aabbccdd11223344",
-													"maxLength": 32,
-													"readOnly": true,
-													"x-auditable": true
-												},
-												"window_end": {
-													"type": "string",
-													"format": "date-time"
-												},
-												"window_start": {
-													"type": "string",
-													"format": "date-time"
 												}
 											},
 											"required": [
-												"subdomain_id",
-												"window_start",
-												"window_end",
-												"complaints",
-												"generated_at"
+												"complaints"
 											]
 										}
 									}
@@ -1676,16 +1664,31 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"description": "At least one of `preview_enabled` or `drop_suppressed_recipients` must\nbe provided. A field omitted from the request body is left unchanged.\n",
 						"type": "object",
 						"properties": {
+							"drop_suppressed_recipients": {
+								"description": "Whether a send request that includes a recipient suppressed on\nthis subdomain drops that recipient and still delivers to the\nrest, instead of failing the entire request.\n",
+								"type": "boolean",
+								"example": true
+							},
 							"preview_enabled": {
 								"description": "Whether sent messages from this subdomain can be previewed in the activity log.",
 								"type": "boolean",
 								"example": true
 							}
 						},
-						"required": [
-							"preview_enabled"
+						"anyOf": [
+							{
+								"required": [
+									"preview_enabled"
+								]
+							},
+							{
+								"required": [
+									"drop_suppressed_recipients"
+								]
+							}
 						]
 					}
 				}
@@ -1804,6 +1807,12 @@
 															"type": "string",
 															"example": "cf-bounce",
 															"readOnly": true
+														},
+														"drop_suppressed_recipients": {
+															"description": "Whether a send request that includes a recipient suppressed on\nthis subdomain drops that recipient and still delivers to the\nrest, instead of failing the entire request.\n",
+															"type": "boolean",
+															"example": false,
+															"x-auditable": true
 														},
 														"enabled": {
 															"description": "Whether Email Sending is enabled on this subdomain.",
@@ -2036,6 +2045,12 @@
 															"type": "string",
 															"example": "cf-bounce",
 															"readOnly": true
+														},
+														"drop_suppressed_recipients": {
+															"description": "Whether a send request that includes a recipient suppressed on\nthis subdomain drops that recipient and still delivers to the\nrest, instead of failing the entire request.\n",
+															"type": "boolean",
+															"example": false,
+															"x-auditable": true
 														},
 														"enabled": {
 															"description": "Whether Email Sending is enabled on this subdomain.",

@@ -1702,7 +1702,10 @@
 		],
 		"tags": [
 			"Email Sending suppressions"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-sending.suppressions",
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/email/sending/suppression": {
 		"operationId": "post_publicNewSuppressionSending",

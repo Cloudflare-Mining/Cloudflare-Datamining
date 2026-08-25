@@ -543,7 +543,10 @@
 		],
 		"x-api-token-group": [
 			"Billing Read"
-		]
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "billing.usage",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/media/usage": {
 		"operationId": "usage-analytics-get-account-media-usage",
@@ -1037,7 +1040,10 @@
 		],
 		"x-api-token-group": [
 			"Images Read"
-		]
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "media.usage",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/stream/usage": {
 		"operationId": "usage-analytics-get-account-stream-usage",
@@ -1531,7 +1537,10 @@
 		],
 		"x-api-token-group": [
 			"Stream Read"
-		]
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "stream.usage",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/media/usage": {
 		"operationId": "usage-analytics-get-zone-media-usage",
@@ -2025,7 +2034,10 @@
 		],
 		"x-api-token-group": [
 			"Images Read"
-		]
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "media.usage",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/stream/usage": {
 		"operationId": "usage-analytics-get-zone-stream-usage",
@@ -2519,6 +2531,9 @@
 		],
 		"x-api-token-group": [
 			"Stream Read"
-		]
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "stream.usage",
+		"x-fern-sdk-method-name": "get"
 	}
 }

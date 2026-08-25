@@ -1199,7 +1199,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "smart-shield.health-checks",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/healthchecks": {
 		"operationId": "health-checks-list-health-checks",
@@ -4721,7 +4725,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "smart-shield.health-checks",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/smart_shield/healthchecks/{healthcheck_id}": {
 		"operationId": "smart-shield-health-check-details",
@@ -5572,7 +5580,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "smart-shield.health-checks",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/healthchecks/{healthcheck_id}": {
 		"operationId": "health-checks-patch-health-check",
@@ -7701,7 +7713,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "smart-shield.health-checks",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/healthchecks": {
 		"operationId": "health-checks-create-health-check",
@@ -10859,7 +10875,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "smart-shield.health-checks",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/healthchecks/{healthcheck_id}": {
 		"operationId": "health-checks-update-health-check",
@@ -13130,6 +13150,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "smart-shield.health-checks",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

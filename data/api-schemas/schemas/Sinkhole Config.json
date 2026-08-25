@@ -10,7 +10,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "An identifier for the resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -30,7 +30,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Successful Response",
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -247,7 +247,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Error Response",
+				"description": "Error response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -375,7 +375,10 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.sinkholes",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /zones/{zone_id}/intel/sinkholes/{sinkhole_id}/ingresses/{ingress_id}": {
 		"operationId": "sinkhole-config-delete-ingress",
@@ -388,7 +391,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "An identifier for the resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -418,7 +421,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Successful Response",
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -518,7 +521,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Error Response",
+				"description": "Error response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -646,7 +649,10 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.sinkholes.ingresses",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/intel/sinkholes": {
 		"operationId": "sinkhole-config-list-sinkholes",
@@ -659,7 +665,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "An identifier for the resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -669,7 +675,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Successful Response",
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -805,8 +811,7 @@
 												}
 											}
 										}
-									},
-									"type": "object"
+									}
 								}
 							]
 						}
@@ -814,7 +819,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Error Response",
+				"description": "Error response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -943,7 +948,10 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.sinkholes",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/intel/sinkholes/{sinkhole_id}": {
 		"operationId": "sinkhole-config-get-sinkhole",
@@ -956,7 +964,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "An identifier for the resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -976,7 +984,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Successful Response",
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1117,7 +1125,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Error Response",
+				"description": "Error response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1246,12 +1254,15 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.sinkholes",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/intel/sinkholes/{sinkhole_id}/ingresses": {
 		"operationId": "sinkhole-config-list-sinkhole-ingresses",
 		"summary": "List ingresses for a sinkhole",
-		"description": "List all ingress rules associated with the specified sinkhole.",
+		"description": "Returns all ingress rules associated with the specified sinkhole.",
 		"parameters": [
 			{
 				"description": "The unique identifier for the Cloudflare account.",
@@ -1259,7 +1270,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "An identifier for the resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -1279,7 +1290,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Successful Response",
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1418,7 +1429,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Error Response",
+				"description": "Error response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1547,7 +1558,10 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.sinkholes.ingresses",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/intel/sinkholes/{sinkhole_id}/ingresses/{ingress_id}": {
 		"operationId": "sinkhole-config-get-ingress",
@@ -1560,7 +1574,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "An identifier for the resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -1590,7 +1604,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Successful Response",
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1726,7 +1740,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Error Response",
+				"description": "Error response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1855,7 +1869,10 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.sinkholes.ingresses",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/intel/sinkholes": {
 		"operationId": "sinkhole-config-create-sinkhole",
@@ -1868,7 +1885,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "An identifier for the resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -1910,10 +1927,10 @@
 		},
 		"responses": {
 			"201": {
-				"description": "Sinkhole Created",
+				"description": "Sinkhole created.",
 				"headers": {
 					"Location": {
-						"description": "URI of the created sinkhole",
+						"description": "URI of the created sinkhole.",
 						"schema": {
 							"type": "string"
 						}
@@ -2059,7 +2076,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Error Response",
+				"description": "Error response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2187,7 +2204,10 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.sinkholes",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /zones/{zone_id}/intel/sinkholes/{sinkhole_id}/ingresses": {
 		"operationId": "sinkhole-config-create-ingress",
@@ -2200,7 +2220,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "An identifier for the resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -2226,7 +2246,7 @@
 						"type": "object",
 						"properties": {
 							"cidr": {
-								"description": "The CIDR block for the ingress rule in IPv4 or IPv6 notation (e.g., 192.0.2.0/24). Must be a Cloudflare BYOIP associated with your account.",
+								"description": "The CIDR block for the ingress rule in IPv4 or IPv6 notation (e.g., 192.0.2.0/24). Provide a Cloudflare BYOIP CIDR that your account owns.",
 								"type": "string"
 							}
 						},
@@ -2239,10 +2259,10 @@
 		},
 		"responses": {
 			"201": {
-				"description": "Ingress Created",
+				"description": "Ingress created.",
 				"headers": {
 					"Location": {
-						"description": "URI of the created ingress",
+						"description": "URI of the created ingress.",
 						"schema": {
 							"type": "string"
 						}
@@ -2383,7 +2403,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Error Response",
+				"description": "Error response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2511,12 +2531,15 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.sinkholes.ingresses",
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/intel/sinkholes/{sinkhole_id}": {
 		"operationId": "sinkhole-config-update-sinkhole",
 		"summary": "Update a sinkhole",
-		"description": "Update the name or R2 configuration of the specified sinkhole.",
+		"description": "Replaces the name or R2 configuration of the specified sinkhole. This is a full replacement. All fields, including r2_secret, must be re-supplied. Omitting r2_secret overwrites the stored value with an empty string.",
 		"parameters": [
 			{
 				"description": "The unique identifier for the Cloudflare account.",
@@ -2524,7 +2547,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "An identifier for the resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -2576,7 +2599,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Successful Response",
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2676,7 +2699,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Error Response",
+				"description": "Error response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2804,12 +2827,15 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.sinkholes",
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /zones/{zone_id}/intel/sinkholes/{sinkhole_id}/ingresses/{ingress_id}": {
 		"operationId": "sinkhole-config-update-ingress",
 		"summary": "Update an ingress rule",
-		"description": "Update the specified ingress rule. The sinkhole must belong to the same account as the zone.",
+		"description": "Replaces the specified ingress rule. The sinkhole must belong to the same account as the zone.",
 		"parameters": [
 			{
 				"description": "The unique identifier for the Cloudflare zone.",
@@ -2817,7 +2843,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "An identifier for the resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -2853,7 +2879,7 @@
 						"type": "object",
 						"properties": {
 							"cidr": {
-								"description": "The CIDR block for the ingress rule in IPv4 or IPv6 notation (e.g., 192.0.2.0/24). Must be a Cloudflare BYOIP associated with your account.",
+								"description": "The CIDR block for the ingress rule in IPv4 or IPv6 notation (e.g., 192.0.2.0/24). Provide a Cloudflare BYOIP CIDR that your account owns.",
 								"type": "string"
 							}
 						},
@@ -2866,7 +2892,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Successful Response",
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2966,7 +2992,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Error Response",
+				"description": "Error response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3094,6 +3120,9 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.sinkholes.ingresses",
+		"x-fern-sdk-method-name": "update"
 	}
 }

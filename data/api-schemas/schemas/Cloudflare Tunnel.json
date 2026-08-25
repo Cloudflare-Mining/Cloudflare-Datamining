@@ -2,7 +2,7 @@
 	"DELETE /accounts/{account_id}/cfd_tunnel/{tunnel_id}": {
 		"operationId": "cloudflare-tunnel-delete-a-cloudflare-tunnel",
 		"summary": "Delete a Cloudflare Tunnel",
-		"description": "Deletes a Cloudflare Tunnel from an account.",
+		"description": "Permanently deletes a Cloudflare Tunnel from an account. The tunnel must have no active connections.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -181,6 +181,14 @@
 																"readOnly": true,
 																"x-auditable": true
 															},
+															"is_pending_reconnect": {
+																"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																"type": "boolean",
+																"example": false,
+																"deprecated": true,
+																"x-fern-ignore": true,
+																"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+															},
 															"opened_at": {
 																"description": "Timestamp of when the connection was established.",
 																"type": "string",
@@ -233,7 +241,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -440,6 +448,14 @@
 																		"readOnly": true,
 																		"x-auditable": true
 																	},
+																	"is_pending_reconnect": {
+																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																		"type": "boolean",
+																		"example": false,
+																		"deprecated": true,
+																		"x-fern-ignore": true,
+																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																	},
 																	"opened_at": {
 																		"description": "Timestamp of when the connection was established.",
 																		"type": "string",
@@ -492,7 +508,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -667,9 +683,10 @@
 			"Cloudflare Tunnel Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared",
+		"x-fern-sdk-group-name": "tunnel",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation permanently deletes a Cloudflare Tunnel."
 	},
 	"DELETE /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connections": {
 		"operationId": "cloudflare-tunnel-clean-up-cloudflare-tunnel-connections",
@@ -1034,9 +1051,10 @@
 			"Cloudflare Tunnel Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared.connections",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "tunnel.connections",
+		"x-fern-sdk-method-name": "cleanup",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation removes Cloudflare Tunnel connections."
 	},
 	"DELETE /accounts/{account_id}/warp_connector/{tunnel_id}": {
 		"operationId": "cloudflare-tunnel-delete-a-warp-connector-tunnel",
@@ -1210,6 +1228,14 @@
 																"readOnly": true,
 																"x-auditable": true
 															},
+															"is_pending_reconnect": {
+																"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																"type": "boolean",
+																"example": false,
+																"deprecated": true,
+																"x-fern-ignore": true,
+																"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+															},
 															"opened_at": {
 																"description": "Timestamp of when the connection was established.",
 																"type": "string",
@@ -1262,7 +1288,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -1450,6 +1476,14 @@
 																		"readOnly": true,
 																		"x-auditable": true
 																	},
+																	"is_pending_reconnect": {
+																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																		"type": "boolean",
+																		"example": false,
+																		"deprecated": true,
+																		"x-fern-ignore": true,
+																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																	},
 																	"opened_at": {
 																		"description": "Timestamp of when the connection was established.",
 																		"type": "string",
@@ -1502,7 +1536,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -1667,9 +1701,15 @@
 			"Cloudflare One Connector: WARP Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.tunnels.warp-connector",
+		"x-fern-sdk-group-name": "mesh.nodes",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"tunnel_id": {
+				"flagName": "node-id"
+			}
+		},
+		"x-forge-require-confirmation": "This operation permanently deletes a Mesh node (Warp Connector Tunnel)."
 	},
 	"GET /accounts/{account_id}/cfd_tunnel": {
 		"operationId": "cloudflare-tunnel-list-cloudflare-tunnels",
@@ -1980,6 +2020,14 @@
 																	"readOnly": true,
 																	"x-auditable": true
 																},
+																"is_pending_reconnect": {
+																	"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																	"type": "boolean",
+																	"example": false,
+																	"deprecated": true,
+																	"x-fern-ignore": true,
+																	"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																},
 																"opened_at": {
 																	"description": "Timestamp of when the connection was established.",
 																	"type": "string",
@@ -2032,7 +2080,7 @@
 														"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 														"type": "string",
 														"format": "date-time",
-														"example": "2009-11-10T23:00:00.000000Z",
+														"example": "2009-11-10T23:00:00Z",
 														"readOnly": true
 													},
 													"id": {
@@ -2281,6 +2329,14 @@
 																			"readOnly": true,
 																			"x-auditable": true
 																		},
+																		"is_pending_reconnect": {
+																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																			"type": "boolean",
+																			"example": false,
+																			"deprecated": true,
+																			"x-fern-ignore": true,
+																			"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																		},
 																		"opened_at": {
 																			"description": "Timestamp of when the connection was established.",
 																			"type": "string",
@@ -2333,7 +2389,7 @@
 																"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 																"type": "string",
 																"format": "date-time",
-																"example": "2009-11-10T23:00:00.000000Z",
+																"example": "2009-11-10T23:00:00Z",
 																"readOnly": true
 															},
 															"id": {
@@ -2512,7 +2568,7 @@
 			"Cloudflare Tunnel Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared",
+		"x-fern-sdk-group-name": "tunnel",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -2688,6 +2744,14 @@
 																"readOnly": true,
 																"x-auditable": true
 															},
+															"is_pending_reconnect": {
+																"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																"type": "boolean",
+																"example": false,
+																"deprecated": true,
+																"x-fern-ignore": true,
+																"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+															},
 															"opened_at": {
 																"description": "Timestamp of when the connection was established.",
 																"type": "string",
@@ -2740,7 +2804,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -2947,6 +3011,14 @@
 																		"readOnly": true,
 																		"x-auditable": true
 																	},
+																	"is_pending_reconnect": {
+																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																		"type": "boolean",
+																		"example": false,
+																		"deprecated": true,
+																		"x-fern-ignore": true,
+																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																	},
 																	"opened_at": {
 																		"description": "Timestamp of when the connection was established.",
 																		"type": "string",
@@ -2999,7 +3071,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -3177,14 +3249,14 @@
 			"Cloudflare Tunnel Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared",
+		"x-fern-sdk-group-name": "tunnel",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connections": {
 		"operationId": "cloudflare-tunnel-list-cloudflare-tunnel-connections",
 		"summary": "List Cloudflare Tunnel connections",
-		"description": "Fetches connection details for a Cloudflare Tunnel.",
+		"description": "Lists the connections for a Cloudflare Tunnel, including connector IDs, cloudflared versions, and Cloudflare locations.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3384,6 +3456,14 @@
 																	"maxLength": 36,
 																	"readOnly": true,
 																	"x-auditable": true
+																},
+																"is_pending_reconnect": {
+																	"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																	"type": "boolean",
+																	"example": false,
+																	"deprecated": true,
+																	"x-fern-ignore": true,
+																	"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
 																},
 																"opened_at": {
 																	"description": "Timestamp of when the connection was established.",
@@ -3623,6 +3703,14 @@
 																			"readOnly": true,
 																			"x-auditable": true
 																		},
+																		"is_pending_reconnect": {
+																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																			"type": "boolean",
+																			"example": false,
+																			"deprecated": true,
+																			"x-fern-ignore": true,
+																			"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																		},
 																		"opened_at": {
 																			"description": "Timestamp of when the connection was established.",
 																			"type": "string",
@@ -3800,14 +3888,14 @@
 			"Cloudflare Tunnel Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared.connections",
-		"x-fern-sdk-method-name": "get",
+		"x-fern-sdk-group-name": "tunnel.connections",
+		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connectors/{connector_id}": {
 		"operationId": "cloudflare-tunnel-get-cloudflare-tunnel-connector",
 		"summary": "Get Cloudflare Tunnel connector",
-		"description": "Fetches connector and connection details for a Cloudflare Tunnel.",
+		"description": "Retrieves a connector and its connection details for a Cloudflare Tunnel, including its cloudflared version, architecture, and connected Cloudflare locations.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3980,6 +4068,14 @@
 																"maxLength": 36,
 																"readOnly": true,
 																"x-auditable": true
+															},
+															"is_pending_reconnect": {
+																"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																"type": "boolean",
+																"example": false,
+																"deprecated": true,
+																"x-fern-ignore": true,
+																"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
 															},
 															"opened_at": {
 																"description": "Timestamp of when the connection was established.",
@@ -4177,6 +4273,14 @@
 																		"readOnly": true,
 																		"x-auditable": true
 																	},
+																	"is_pending_reconnect": {
+																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																		"type": "boolean",
+																		"example": false,
+																		"deprecated": true,
+																		"x-fern-ignore": true,
+																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																	},
 																	"opened_at": {
 																		"description": "Timestamp of when the connection was established.",
 																		"type": "string",
@@ -4353,14 +4457,14 @@
 			"Cloudflare Tunnel Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared.connectors",
+		"x-fern-sdk-group-name": "tunnel.connectors",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/token": {
 		"operationId": "cloudflare-tunnel-get-a-cloudflare-tunnel-token",
 		"summary": "Get a Cloudflare Tunnel token",
-		"description": "Gets the token used to associate cloudflared with a specific tunnel.",
+		"description": "Retrieves the token used to run cloudflared and associate it with a specific Cloudflare Tunnel. Treat the token as a secret.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4697,7 +4801,7 @@
 			"Cloudflare Tunnel Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared.token",
+		"x-fern-sdk-group-name": "tunnel.token",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -5036,6 +5140,14 @@
 																			"readOnly": true,
 																			"x-auditable": true
 																		},
+																		"is_pending_reconnect": {
+																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																			"type": "boolean",
+																			"example": false,
+																			"deprecated": true,
+																			"x-fern-ignore": true,
+																			"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																		},
 																		"opened_at": {
 																			"description": "Timestamp of when the connection was established.",
 																			"type": "string",
@@ -5088,7 +5200,7 @@
 																"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 																"type": "string",
 																"format": "date-time",
-																"example": "2009-11-10T23:00:00.000000Z",
+																"example": "2009-11-10T23:00:00Z",
 																"readOnly": true
 															},
 															"id": {
@@ -5192,6 +5304,14 @@
 																			"readOnly": true,
 																			"x-auditable": true
 																		},
+																		"is_pending_reconnect": {
+																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																			"type": "boolean",
+																			"example": false,
+																			"deprecated": true,
+																			"x-fern-ignore": true,
+																			"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																		},
 																		"opened_at": {
 																			"description": "Timestamp of when the connection was established.",
 																			"type": "string",
@@ -5244,7 +5364,7 @@
 																"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 																"type": "string",
 																"format": "date-time",
-																"example": "2009-11-10T23:00:00.000000Z",
+																"example": "2009-11-10T23:00:00Z",
 																"readOnly": true
 															},
 															"id": {
@@ -5488,6 +5608,14 @@
 																					"readOnly": true,
 																					"x-auditable": true
 																				},
+																				"is_pending_reconnect": {
+																					"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																					"type": "boolean",
+																					"example": false,
+																					"deprecated": true,
+																					"x-fern-ignore": true,
+																					"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																				},
 																				"opened_at": {
 																					"description": "Timestamp of when the connection was established.",
 																					"type": "string",
@@ -5540,7 +5668,7 @@
 																		"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 																		"type": "string",
 																		"format": "date-time",
-																		"example": "2009-11-10T23:00:00.000000Z",
+																		"example": "2009-11-10T23:00:00Z",
 																		"readOnly": true
 																	},
 																	"id": {
@@ -5644,6 +5772,14 @@
 																					"readOnly": true,
 																					"x-auditable": true
 																				},
+																				"is_pending_reconnect": {
+																					"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																					"type": "boolean",
+																					"example": false,
+																					"deprecated": true,
+																					"x-fern-ignore": true,
+																					"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																				},
 																				"opened_at": {
 																					"description": "Timestamp of when the connection was established.",
 																					"type": "string",
@@ -5696,7 +5832,7 @@
 																		"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 																		"type": "string",
 																		"format": "date-time",
-																		"example": "2009-11-10T23:00:00.000000Z",
+																		"example": "2009-11-10T23:00:00Z",
 																		"readOnly": true
 																	},
 																	"id": {
@@ -5868,7 +6004,7 @@
 			"Cloudflare Tunnel Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.tunnels",
+		"x-fern-sdk-group-name": "tunnels",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -6171,6 +6307,14 @@
 																	"readOnly": true,
 																	"x-auditable": true
 																},
+																"is_pending_reconnect": {
+																	"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																	"type": "boolean",
+																	"example": false,
+																	"deprecated": true,
+																	"x-fern-ignore": true,
+																	"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																},
 																"opened_at": {
 																	"description": "Timestamp of when the connection was established.",
 																	"type": "string",
@@ -6223,7 +6367,7 @@
 														"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 														"type": "string",
 														"format": "date-time",
-														"example": "2009-11-10T23:00:00.000000Z",
+														"example": "2009-11-10T23:00:00Z",
 														"readOnly": true
 													},
 													"id": {
@@ -6453,6 +6597,14 @@
 																			"readOnly": true,
 																			"x-auditable": true
 																		},
+																		"is_pending_reconnect": {
+																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																			"type": "boolean",
+																			"example": false,
+																			"deprecated": true,
+																			"x-fern-ignore": true,
+																			"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																		},
 																		"opened_at": {
 																			"description": "Timestamp of when the connection was established.",
 																			"type": "string",
@@ -6505,7 +6657,7 @@
 																"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 																"type": "string",
 																"format": "date-time",
-																"example": "2009-11-10T23:00:00.000000Z",
+																"example": "2009-11-10T23:00:00Z",
 																"readOnly": true
 															},
 															"id": {
@@ -6673,7 +6825,7 @@
 			"Cloudflare One Connector: WARP Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.tunnels.warp-connector",
+		"x-fern-sdk-group-name": "mesh.nodes",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -6839,6 +6991,14 @@
 																"readOnly": true,
 																"x-auditable": true
 															},
+															"is_pending_reconnect": {
+																"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																"type": "boolean",
+																"example": false,
+																"deprecated": true,
+																"x-fern-ignore": true,
+																"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+															},
 															"opened_at": {
 																"description": "Timestamp of when the connection was established.",
 																"type": "string",
@@ -6891,7 +7051,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -7079,6 +7239,14 @@
 																		"readOnly": true,
 																		"x-auditable": true
 																	},
+																	"is_pending_reconnect": {
+																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																		"type": "boolean",
+																		"example": false,
+																		"deprecated": true,
+																		"x-fern-ignore": true,
+																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																	},
 																	"opened_at": {
 																		"description": "Timestamp of when the connection was established.",
 																		"type": "string",
@@ -7131,7 +7299,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -7298,9 +7466,14 @@
 			"Cloudflare One Connector: WARP Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.tunnels.warp-connector",
+		"x-fern-sdk-group-name": "mesh.nodes",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"tunnel_id": {
+				"flagName": "node-id"
+			}
+		}
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/connections": {
 		"operationId": "cloudflare-tunnel-list-warp-connector-tunnel-connections",
@@ -7913,9 +8086,14 @@
 			"Cloudflare One Connector: WARP Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.tunnels.warp-connector.connections",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "mesh.nodes.connections",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"tunnel_id": {
+				"flagName": "node-id"
+			}
+		}
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/connectors/{connector_id}": {
 		"operationId": "cloudflare-tunnel-get-warp-connector-tunnel-connector",
@@ -8458,9 +8636,14 @@
 			"Cloudflare One Connector: WARP Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.tunnels.warp-connector.connectors",
+		"x-fern-sdk-group-name": "mesh.nodes.connectors",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"tunnel_id": {
+				"flagName": "node-id"
+			}
+		}
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/token": {
 		"operationId": "cloudflare-tunnel-get-a-warp-connector-tunnel-token",
@@ -8802,14 +8985,19 @@
 			"Cloudflare Tunnel Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.tunnels.warp-connector.token",
+		"x-fern-sdk-group-name": "mesh.nodes.token",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"tunnel_id": {
+				"flagName": "node-id"
+			}
+		}
 	},
 	"PATCH /accounts/{account_id}/cfd_tunnel/{tunnel_id}": {
 		"operationId": "cloudflare-tunnel-update-a-cloudflare-tunnel",
 		"summary": "Update a Cloudflare Tunnel",
-		"description": "Updates an existing Cloudflare Tunnel.",
+		"description": "Updates the name or secret of an existing Cloudflare Tunnel.",
 		"parameters": [
 			{
 				"name": "tunnel_id",
@@ -9001,6 +9189,14 @@
 																"readOnly": true,
 																"x-auditable": true
 															},
+															"is_pending_reconnect": {
+																"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																"type": "boolean",
+																"example": false,
+																"deprecated": true,
+																"x-fern-ignore": true,
+																"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+															},
 															"opened_at": {
 																"description": "Timestamp of when the connection was established.",
 																"type": "string",
@@ -9053,7 +9249,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -9260,6 +9456,14 @@
 																		"readOnly": true,
 																		"x-auditable": true
 																	},
+																	"is_pending_reconnect": {
+																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																		"type": "boolean",
+																		"example": false,
+																		"deprecated": true,
+																		"x-fern-ignore": true,
+																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																	},
 																	"opened_at": {
 																		"description": "Timestamp of when the connection was established.",
 																		"type": "string",
@@ -9312,7 +9516,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -9487,7 +9691,7 @@
 			"Cloudflare Tunnel Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared",
+		"x-fern-sdk-group-name": "tunnel",
 		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true
 	},
@@ -9676,6 +9880,14 @@
 																"readOnly": true,
 																"x-auditable": true
 															},
+															"is_pending_reconnect": {
+																"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																"type": "boolean",
+																"example": false,
+																"deprecated": true,
+																"x-fern-ignore": true,
+																"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+															},
 															"opened_at": {
 																"description": "Timestamp of when the connection was established.",
 																"type": "string",
@@ -9728,7 +9940,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -9916,6 +10128,14 @@
 																		"readOnly": true,
 																		"x-auditable": true
 																	},
+																	"is_pending_reconnect": {
+																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																		"type": "boolean",
+																		"example": false,
+																		"deprecated": true,
+																		"x-fern-ignore": true,
+																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																	},
 																	"opened_at": {
 																		"description": "Timestamp of when the connection was established.",
 																		"type": "string",
@@ -9968,7 +10188,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -10133,14 +10353,19 @@
 			"Cloudflare One Connector: WARP Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.tunnels.warp-connector",
+		"x-fern-sdk-group-name": "mesh.nodes",
 		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"tunnel_id": {
+				"flagName": "node-id"
+			}
+		}
 	},
 	"POST /accounts/{account_id}/cfd_tunnel": {
 		"operationId": "cloudflare-tunnel-create-a-cloudflare-tunnel",
 		"summary": "Create a Cloudflare Tunnel",
-		"description": "Creates a new Cloudflare Tunnel in an account.",
+		"description": "Creates a remotely or locally managed Cloudflare Tunnel in an account. After creation, retrieve its token and run cloudflared to establish the connector connection.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -10331,6 +10556,14 @@
 																"readOnly": true,
 																"x-auditable": true
 															},
+															"is_pending_reconnect": {
+																"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																"type": "boolean",
+																"example": false,
+																"deprecated": true,
+																"x-fern-ignore": true,
+																"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+															},
 															"opened_at": {
 																"description": "Timestamp of when the connection was established.",
 																"type": "string",
@@ -10383,7 +10616,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -10590,6 +10823,14 @@
 																		"readOnly": true,
 																		"x-auditable": true
 																	},
+																	"is_pending_reconnect": {
+																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																		"type": "boolean",
+																		"example": false,
+																		"deprecated": true,
+																		"x-fern-ignore": true,
+																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																	},
 																	"opened_at": {
 																		"description": "Timestamp of when the connection was established.",
 																		"type": "string",
@@ -10642,7 +10883,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -10817,14 +11058,19 @@
 			"Cloudflare Tunnel Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared",
+		"x-fern-sdk-group-name": "tunnel",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"config_src": {
+				"flagName": "config-source"
+			}
+		}
 	},
 	"POST /accounts/{account_id}/cfd_tunnel/{tunnel_id}/management": {
 		"operationId": "cloudflare-tunnel-get-a-cloudflare-tunnel-management-token",
 		"summary": "Get a Cloudflare Tunnel management token",
-		"description": "Gets a management token used to access the management resources (i.e. Streaming Logs) of a tunnel.",
+		"description": "Creates a short-lived management token for the requested Tunnel management resources, such as streaming logs. Treat the token as a secret.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -11187,7 +11433,7 @@
 			"Cloudflare Tunnel Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared.management",
+		"x-fern-sdk-group-name": "tunnel.management.token",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
@@ -11364,6 +11610,14 @@
 																"readOnly": true,
 																"x-auditable": true
 															},
+															"is_pending_reconnect": {
+																"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																"type": "boolean",
+																"example": false,
+																"deprecated": true,
+																"x-fern-ignore": true,
+																"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+															},
 															"opened_at": {
 																"description": "Timestamp of when the connection was established.",
 																"type": "string",
@@ -11416,7 +11670,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -11604,6 +11858,14 @@
 																		"readOnly": true,
 																		"x-auditable": true
 																	},
+																	"is_pending_reconnect": {
+																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																		"type": "boolean",
+																		"example": false,
+																		"deprecated": true,
+																		"x-fern-ignore": true,
+																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																	},
 																	"opened_at": {
 																		"description": "Timestamp of when the connection was established.",
 																		"type": "string",
@@ -11656,7 +11918,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -11821,7 +12083,7 @@
 			"Cloudflare One Connector: WARP Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.tunnels.warp-connector",
+		"x-fern-sdk-group-name": "mesh.nodes",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
@@ -12187,8 +12449,17 @@
 			"Cloudflare One Connector: WARP Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.tunnels.warp-connector.failover",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "mesh.nodes",
+		"x-fern-sdk-method-name": "failover",
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"client_id": {
+				"flagName": "connector-id"
+			},
+			"tunnel_id": {
+				"flagName": "node-id"
+			}
+		},
+		"x-forge-require-confirmation": "This operation triggers a manual failover, changing the active connector for a Mesh node."
 	}
 }

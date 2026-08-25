@@ -1540,7 +1540,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "bot-management",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/bot_management": {
 		"operationId": "bot-management-for-a-zone-update-config",
@@ -3776,6 +3780,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "bot-management",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

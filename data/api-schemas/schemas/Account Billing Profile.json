@@ -1,7 +1,147 @@
 {
+	"DELETE /accounts/{account_id}/billing/profile": {
+		"operationId": "account-billing-profile-delete-billing-profile",
+		"summary": "Delete Billing Profile",
+		"description": "Deletes the billing profile for an account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"204": {
+				"description": "Delete Billing Profile response"
+			},
+			"4XX": {
+				"description": "Delete Billing Profile response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Account Billing Profile"
+		],
+		"x-api-token-group": [
+			"Billing Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#billing:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /accounts/{account_id}/billing/profile": {
-		"operationId": "account-billing-profile-(-deprecated)-billing-profile-details",
-		"summary": "Billing Profile Details",
+		"operationId": "account-billing-profile-get-billing-profile",
+		"summary": "Get Billing Profile",
 		"description": "Gets the current billing profile for the account.",
 		"parameters": [
 			{
@@ -173,7 +313,8 @@
 												},
 												"device_data": {
 													"type": "string",
-													"example": "sample_data"
+													"example": "sample_data",
+													"writeOnly": true
 												},
 												"edited_on": {
 													"type": "string",
@@ -241,7 +382,8 @@
 												},
 												"payment_gateway": {
 													"type": "string",
-													"example": "gateway"
+													"example": "gateway",
+													"writeOnly": true
 												},
 												"payment_last_name": {
 													"type": "string",
@@ -249,7 +391,8 @@
 												},
 												"payment_nonce": {
 													"type": "string",
-													"example": "abc123"
+													"example": "abc123",
+													"writeOnly": true
 												},
 												"payment_state": {
 													"type": "string",
@@ -275,10 +418,6 @@
 												"telephone": {
 													"type": "string",
 													"example": 1234567899
-												},
-												"use_legacy": {
-													"type": "boolean",
-													"example": false
 												},
 												"validation_code": {
 													"type": "string",
@@ -307,374 +446,93 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													}
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"account_type": {
-															"type": "string",
-															"example": "type"
-														},
-														"address": {
-															"type": "string",
-															"example": "123 Main Street"
-														},
-														"address2": {
-															"type": "string",
-															"example": "Apt 1"
-														},
-														"balance": {
-															"type": "string",
-															"example": 0
-														},
-														"card_expiry_month": {
-															"type": "integer",
-															"example": 12
-														},
-														"card_expiry_year": {
-															"type": "integer",
-															"example": 2099
-														},
-														"card_number": {
-															"type": "string",
-															"example": 4242424242424242
-														},
-														"city": {
-															"type": "string",
-															"example": "Anytown"
-														},
-														"company": {
-															"type": "string",
-															"example": "Company"
-														},
-														"country": {
-															"type": "string",
-															"example": "Anycountry"
-														},
-														"created_on": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-03-01T12:21:59.3456Z"
-														},
-														"device_data": {
-															"type": "string",
-															"example": "sample_data"
-														},
-														"edited_on": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-03-01T12:21:59.3456Z"
-														},
-														"enterprise_billing_email": {
-															"type": "string",
-															"example": "johndoe@gmail.com",
-															"x-auditable": true
-														},
-														"enterprise_primary_email": {
-															"type": "string",
-															"example": "johndoe@gmail.com",
-															"x-auditable": true
-														},
-														"first_name": {
-															"type": "string",
-															"example": "John"
-														},
-														"id": {
-															"description": "Billing item identifier tag.",
-															"type": "string",
-															"example": "b69a9f3492637782896352daae219e7d",
-															"maxLength": 32,
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"is_partner": {
-															"type": "boolean",
-															"example": false
-														},
-														"last_name": {
-															"type": "string",
-															"example": "Doe"
-														},
-														"next_bill_date": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-03-01T12:21:59.3456Z"
-														},
-														"payment_address": {
-															"type": "string",
-															"example": "123 Main Street"
-														},
-														"payment_address2": {
-															"type": "string",
-															"example": "Apt 1"
-														},
-														"payment_city": {
-															"type": "string",
-															"example": "Anytown"
-														},
-														"payment_country": {
-															"type": "string",
-															"example": "Anycountry"
-														},
-														"payment_email": {
-															"type": "string",
-															"example": "johndoe@gmail.com"
-														},
-														"payment_first_name": {
-															"type": "string",
-															"example": "John"
-														},
-														"payment_gateway": {
-															"type": "string",
-															"example": "gateway"
-														},
-														"payment_last_name": {
-															"type": "string",
-															"example": "Doe"
-														},
-														"payment_nonce": {
-															"type": "string",
-															"example": "abc123"
-														},
-														"payment_state": {
-															"type": "string",
-															"example": "state"
-														},
-														"payment_zipcode": {
-															"type": "string",
-															"example": 12345
-														},
-														"primary_email": {
-															"type": "string",
-															"example": "johndoe@gmail.com",
-															"x-auditable": true
-														},
-														"state": {
-															"type": "string",
-															"example": "AnyState"
-														},
-														"tax_id_type": {
-															"type": "string",
-															"example": "type"
-														},
-														"telephone": {
-															"type": "string",
-															"example": 1234567899
-														},
-														"use_legacy": {
-															"type": "boolean",
-															"example": false
-														},
-														"validation_code": {
-															"type": "string",
-															"example": 1111
-														},
-														"vat": {
-															"type": "string",
-															"example": "GB123456789"
-														},
-														"zipcode": {
-															"type": "string",
-															"example": 12345
-														}
-													}
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
 				}
 			}
 		},
-		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -704,5 +562,1493 @@
 		"x-fern-sdk-group-name": "billing.profiles",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
+	},
+	"PATCH /accounts/{account_id}/billing/profile": {
+		"operationId": "account-billing-profile-update-billing-email",
+		"summary": "Update Billing Email",
+		"description": "Updates the billing email addresses and preferred locale for an account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"billing_email": {
+								"type": "string",
+								"example": "billing@example.com"
+							},
+							"preferred_locale": {
+								"type": "string",
+								"example": "en-US"
+							},
+							"secondary_billing_email": {
+								"type": "string",
+								"example": "secondary@example.com"
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Update Billing Email response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"account_type": {
+													"type": "string",
+													"example": "type"
+												},
+												"address": {
+													"type": "string",
+													"example": "123 Main Street"
+												},
+												"address2": {
+													"type": "string",
+													"example": "Apt 1"
+												},
+												"balance": {
+													"type": "string",
+													"example": 0
+												},
+												"card_expiry_month": {
+													"type": "integer",
+													"example": 12
+												},
+												"card_expiry_year": {
+													"type": "integer",
+													"example": 2099
+												},
+												"card_number": {
+													"type": "string",
+													"example": 4242424242424242
+												},
+												"city": {
+													"type": "string",
+													"example": "Anytown"
+												},
+												"company": {
+													"type": "string",
+													"example": "Company"
+												},
+												"country": {
+													"type": "string",
+													"example": "Anycountry"
+												},
+												"created_on": {
+													"type": "string",
+													"format": "date-time",
+													"example": "2014-03-01T12:21:59.3456Z"
+												},
+												"device_data": {
+													"type": "string",
+													"example": "sample_data",
+													"writeOnly": true
+												},
+												"edited_on": {
+													"type": "string",
+													"format": "date-time",
+													"example": "2014-03-01T12:21:59.3456Z"
+												},
+												"enterprise_billing_email": {
+													"type": "string",
+													"example": "johndoe@gmail.com",
+													"x-auditable": true
+												},
+												"enterprise_primary_email": {
+													"type": "string",
+													"example": "johndoe@gmail.com",
+													"x-auditable": true
+												},
+												"first_name": {
+													"type": "string",
+													"example": "John"
+												},
+												"id": {
+													"description": "Billing item identifier tag.",
+													"type": "string",
+													"example": "b69a9f3492637782896352daae219e7d",
+													"maxLength": 32,
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"is_partner": {
+													"type": "boolean",
+													"example": false
+												},
+												"last_name": {
+													"type": "string",
+													"example": "Doe"
+												},
+												"next_bill_date": {
+													"type": "string",
+													"format": "date-time",
+													"example": "2014-03-01T12:21:59.3456Z"
+												},
+												"payment_address": {
+													"type": "string",
+													"example": "123 Main Street"
+												},
+												"payment_address2": {
+													"type": "string",
+													"example": "Apt 1"
+												},
+												"payment_city": {
+													"type": "string",
+													"example": "Anytown"
+												},
+												"payment_country": {
+													"type": "string",
+													"example": "Anycountry"
+												},
+												"payment_email": {
+													"type": "string",
+													"example": "johndoe@gmail.com"
+												},
+												"payment_first_name": {
+													"type": "string",
+													"example": "John"
+												},
+												"payment_gateway": {
+													"type": "string",
+													"example": "gateway",
+													"writeOnly": true
+												},
+												"payment_last_name": {
+													"type": "string",
+													"example": "Doe"
+												},
+												"payment_nonce": {
+													"type": "string",
+													"example": "abc123",
+													"writeOnly": true
+												},
+												"payment_state": {
+													"type": "string",
+													"example": "state"
+												},
+												"payment_zipcode": {
+													"type": "string",
+													"example": 12345
+												},
+												"primary_email": {
+													"type": "string",
+													"example": "johndoe@gmail.com",
+													"x-auditable": true
+												},
+												"state": {
+													"type": "string",
+													"example": "AnyState"
+												},
+												"tax_id_type": {
+													"type": "string",
+													"example": "type"
+												},
+												"telephone": {
+													"type": "string",
+													"example": 1234567899
+												},
+												"validation_code": {
+													"type": "string",
+													"example": 1111
+												},
+												"vat": {
+													"type": "string",
+													"example": "GB123456789"
+												},
+												"zipcode": {
+													"type": "string",
+													"example": 12345
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Update Billing Email response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Account Billing Profile"
+		],
+		"x-api-token-group": [
+			"Billing Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#billing:read",
+				"#billing:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/billing/profile": {
+		"operationId": "account-billing-profile-create-billing-profile",
+		"summary": "Create Billing Profile",
+		"description": "Creates a billing profile for an account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Request body for creating or updating a billing profile.",
+						"type": "object",
+						"properties": {
+							"address": {
+								"description": "Street address line 1.",
+								"type": "string",
+								"example": "123 Main Street"
+							},
+							"address2": {
+								"description": "Street address line 2 (apt, suite, etc.).",
+								"type": "string",
+								"example": "Apt 1"
+							},
+							"billing_email": {
+								"description": "Primary billing email address.",
+								"type": "string",
+								"example": "billing@example.com"
+							},
+							"buying_rate_plan": {
+								"description": "Rate plan being purchased right after profile setup.",
+								"type": "string"
+							},
+							"captcha_challenge_jwt": {
+								"description": "Captcha challenge JWT issued during onboarding.",
+								"type": "string"
+							},
+							"cf_turnstile_response": {
+								"description": "Cloudflare Turnstile response.",
+								"type": "string"
+							},
+							"city": {
+								"description": "City on the billing profile.",
+								"type": "string",
+								"example": "Anytown"
+							},
+							"company": {
+								"description": "Company name on the billing profile.",
+								"type": "string",
+								"example": "Example Inc"
+							},
+							"country": {
+								"description": "ISO 3166-1 alpha-2 country code.",
+								"type": "string",
+								"example": "US"
+							},
+							"first_name": {
+								"description": "First name on the billing profile.",
+								"type": "string",
+								"example": "John"
+							},
+							"h_captcha_response": {
+								"description": "hCaptcha response.",
+								"type": "string"
+							},
+							"last_name": {
+								"description": "Last name on the billing profile.",
+								"type": "string",
+								"example": "Doe"
+							},
+							"preferred_locale": {
+								"description": "Preferred locale for invoice rendering (BCP 47).",
+								"type": "string",
+								"example": "en-US"
+							},
+							"secondary_billing_email": {
+								"description": "Secondary billing email address for CC on invoices.",
+								"type": "string",
+								"example": "secondary@example.com"
+							},
+							"state": {
+								"description": "State or region on the billing profile.",
+								"type": "string",
+								"example": "CA"
+							},
+							"tax_id_type": {
+								"description": "Type of tax ID provided.",
+								"type": "string"
+							},
+							"telephone": {
+								"description": "Contact phone number.",
+								"type": "string",
+								"example": "+1-555-555-5555"
+							},
+							"vat": {
+								"description": "VAT identifier.",
+								"type": "string"
+							},
+							"zipcode": {
+								"description": "ZIP or postal code.",
+								"type": "string",
+								"example": "94103"
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Create Billing Profile response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"account_type": {
+													"type": "string",
+													"example": "type"
+												},
+												"address": {
+													"type": "string",
+													"example": "123 Main Street"
+												},
+												"address2": {
+													"type": "string",
+													"example": "Apt 1"
+												},
+												"balance": {
+													"type": "string",
+													"example": 0
+												},
+												"card_expiry_month": {
+													"type": "integer",
+													"example": 12
+												},
+												"card_expiry_year": {
+													"type": "integer",
+													"example": 2099
+												},
+												"card_number": {
+													"type": "string",
+													"example": 4242424242424242
+												},
+												"city": {
+													"type": "string",
+													"example": "Anytown"
+												},
+												"company": {
+													"type": "string",
+													"example": "Company"
+												},
+												"country": {
+													"type": "string",
+													"example": "Anycountry"
+												},
+												"created_on": {
+													"type": "string",
+													"format": "date-time",
+													"example": "2014-03-01T12:21:59.3456Z"
+												},
+												"device_data": {
+													"type": "string",
+													"example": "sample_data",
+													"writeOnly": true
+												},
+												"edited_on": {
+													"type": "string",
+													"format": "date-time",
+													"example": "2014-03-01T12:21:59.3456Z"
+												},
+												"enterprise_billing_email": {
+													"type": "string",
+													"example": "johndoe@gmail.com",
+													"x-auditable": true
+												},
+												"enterprise_primary_email": {
+													"type": "string",
+													"example": "johndoe@gmail.com",
+													"x-auditable": true
+												},
+												"first_name": {
+													"type": "string",
+													"example": "John"
+												},
+												"id": {
+													"description": "Billing item identifier tag.",
+													"type": "string",
+													"example": "b69a9f3492637782896352daae219e7d",
+													"maxLength": 32,
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"is_partner": {
+													"type": "boolean",
+													"example": false
+												},
+												"last_name": {
+													"type": "string",
+													"example": "Doe"
+												},
+												"next_bill_date": {
+													"type": "string",
+													"format": "date-time",
+													"example": "2014-03-01T12:21:59.3456Z"
+												},
+												"payment_address": {
+													"type": "string",
+													"example": "123 Main Street"
+												},
+												"payment_address2": {
+													"type": "string",
+													"example": "Apt 1"
+												},
+												"payment_city": {
+													"type": "string",
+													"example": "Anytown"
+												},
+												"payment_country": {
+													"type": "string",
+													"example": "Anycountry"
+												},
+												"payment_email": {
+													"type": "string",
+													"example": "johndoe@gmail.com"
+												},
+												"payment_first_name": {
+													"type": "string",
+													"example": "John"
+												},
+												"payment_gateway": {
+													"type": "string",
+													"example": "gateway",
+													"writeOnly": true
+												},
+												"payment_last_name": {
+													"type": "string",
+													"example": "Doe"
+												},
+												"payment_nonce": {
+													"type": "string",
+													"example": "abc123",
+													"writeOnly": true
+												},
+												"payment_state": {
+													"type": "string",
+													"example": "state"
+												},
+												"payment_zipcode": {
+													"type": "string",
+													"example": 12345
+												},
+												"primary_email": {
+													"type": "string",
+													"example": "johndoe@gmail.com",
+													"x-auditable": true
+												},
+												"state": {
+													"type": "string",
+													"example": "AnyState"
+												},
+												"tax_id_type": {
+													"type": "string",
+													"example": "type"
+												},
+												"telephone": {
+													"type": "string",
+													"example": 1234567899
+												},
+												"validation_code": {
+													"type": "string",
+													"example": 1111
+												},
+												"vat": {
+													"type": "string",
+													"example": "GB123456789"
+												},
+												"zipcode": {
+													"type": "string",
+													"example": 12345
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Create Billing Profile response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Account Billing Profile"
+		],
+		"x-api-token-group": [
+			"Billing Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#billing:read",
+				"#billing:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /accounts/{account_id}/billing/profile": {
+		"operationId": "account-billing-profile-update-billing-profile",
+		"summary": "Update Billing Profile",
+		"description": "Updates the billing profile for an account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Request body for creating or updating a billing profile.",
+						"type": "object",
+						"properties": {
+							"address": {
+								"description": "Street address line 1.",
+								"type": "string",
+								"example": "123 Main Street"
+							},
+							"address2": {
+								"description": "Street address line 2 (apt, suite, etc.).",
+								"type": "string",
+								"example": "Apt 1"
+							},
+							"billing_email": {
+								"description": "Primary billing email address.",
+								"type": "string",
+								"example": "billing@example.com"
+							},
+							"buying_rate_plan": {
+								"description": "Rate plan being purchased right after profile setup.",
+								"type": "string"
+							},
+							"captcha_challenge_jwt": {
+								"description": "Captcha challenge JWT issued during onboarding.",
+								"type": "string"
+							},
+							"cf_turnstile_response": {
+								"description": "Cloudflare Turnstile response.",
+								"type": "string"
+							},
+							"city": {
+								"description": "City on the billing profile.",
+								"type": "string",
+								"example": "Anytown"
+							},
+							"company": {
+								"description": "Company name on the billing profile.",
+								"type": "string",
+								"example": "Example Inc"
+							},
+							"country": {
+								"description": "ISO 3166-1 alpha-2 country code.",
+								"type": "string",
+								"example": "US"
+							},
+							"first_name": {
+								"description": "First name on the billing profile.",
+								"type": "string",
+								"example": "John"
+							},
+							"h_captcha_response": {
+								"description": "hCaptcha response.",
+								"type": "string"
+							},
+							"last_name": {
+								"description": "Last name on the billing profile.",
+								"type": "string",
+								"example": "Doe"
+							},
+							"preferred_locale": {
+								"description": "Preferred locale for invoice rendering (BCP 47).",
+								"type": "string",
+								"example": "en-US"
+							},
+							"secondary_billing_email": {
+								"description": "Secondary billing email address for CC on invoices.",
+								"type": "string",
+								"example": "secondary@example.com"
+							},
+							"state": {
+								"description": "State or region on the billing profile.",
+								"type": "string",
+								"example": "CA"
+							},
+							"tax_id_type": {
+								"description": "Type of tax ID provided.",
+								"type": "string"
+							},
+							"telephone": {
+								"description": "Contact phone number.",
+								"type": "string",
+								"example": "+1-555-555-5555"
+							},
+							"vat": {
+								"description": "VAT identifier.",
+								"type": "string"
+							},
+							"zipcode": {
+								"description": "ZIP or postal code.",
+								"type": "string",
+								"example": "94103"
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Update Billing Profile response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"account_type": {
+													"type": "string",
+													"example": "type"
+												},
+												"address": {
+													"type": "string",
+													"example": "123 Main Street"
+												},
+												"address2": {
+													"type": "string",
+													"example": "Apt 1"
+												},
+												"balance": {
+													"type": "string",
+													"example": 0
+												},
+												"card_expiry_month": {
+													"type": "integer",
+													"example": 12
+												},
+												"card_expiry_year": {
+													"type": "integer",
+													"example": 2099
+												},
+												"card_number": {
+													"type": "string",
+													"example": 4242424242424242
+												},
+												"city": {
+													"type": "string",
+													"example": "Anytown"
+												},
+												"company": {
+													"type": "string",
+													"example": "Company"
+												},
+												"country": {
+													"type": "string",
+													"example": "Anycountry"
+												},
+												"created_on": {
+													"type": "string",
+													"format": "date-time",
+													"example": "2014-03-01T12:21:59.3456Z"
+												},
+												"device_data": {
+													"type": "string",
+													"example": "sample_data",
+													"writeOnly": true
+												},
+												"edited_on": {
+													"type": "string",
+													"format": "date-time",
+													"example": "2014-03-01T12:21:59.3456Z"
+												},
+												"enterprise_billing_email": {
+													"type": "string",
+													"example": "johndoe@gmail.com",
+													"x-auditable": true
+												},
+												"enterprise_primary_email": {
+													"type": "string",
+													"example": "johndoe@gmail.com",
+													"x-auditable": true
+												},
+												"first_name": {
+													"type": "string",
+													"example": "John"
+												},
+												"id": {
+													"description": "Billing item identifier tag.",
+													"type": "string",
+													"example": "b69a9f3492637782896352daae219e7d",
+													"maxLength": 32,
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"is_partner": {
+													"type": "boolean",
+													"example": false
+												},
+												"last_name": {
+													"type": "string",
+													"example": "Doe"
+												},
+												"next_bill_date": {
+													"type": "string",
+													"format": "date-time",
+													"example": "2014-03-01T12:21:59.3456Z"
+												},
+												"payment_address": {
+													"type": "string",
+													"example": "123 Main Street"
+												},
+												"payment_address2": {
+													"type": "string",
+													"example": "Apt 1"
+												},
+												"payment_city": {
+													"type": "string",
+													"example": "Anytown"
+												},
+												"payment_country": {
+													"type": "string",
+													"example": "Anycountry"
+												},
+												"payment_email": {
+													"type": "string",
+													"example": "johndoe@gmail.com"
+												},
+												"payment_first_name": {
+													"type": "string",
+													"example": "John"
+												},
+												"payment_gateway": {
+													"type": "string",
+													"example": "gateway",
+													"writeOnly": true
+												},
+												"payment_last_name": {
+													"type": "string",
+													"example": "Doe"
+												},
+												"payment_nonce": {
+													"type": "string",
+													"example": "abc123",
+													"writeOnly": true
+												},
+												"payment_state": {
+													"type": "string",
+													"example": "state"
+												},
+												"payment_zipcode": {
+													"type": "string",
+													"example": 12345
+												},
+												"primary_email": {
+													"type": "string",
+													"example": "johndoe@gmail.com",
+													"x-auditable": true
+												},
+												"state": {
+													"type": "string",
+													"example": "AnyState"
+												},
+												"tax_id_type": {
+													"type": "string",
+													"example": "type"
+												},
+												"telephone": {
+													"type": "string",
+													"example": 1234567899
+												},
+												"validation_code": {
+													"type": "string",
+													"example": 1111
+												},
+												"vat": {
+													"type": "string",
+													"example": "GB123456789"
+												},
+												"zipcode": {
+													"type": "string",
+													"example": 12345
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Update Billing Profile response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Account Billing Profile"
+		],
+		"x-api-token-group": [
+			"Billing Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#billing:read",
+				"#billing:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
 	}
 }

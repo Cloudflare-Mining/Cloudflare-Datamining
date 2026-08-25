@@ -1577,7 +1577,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.apps",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/realtime/kit/apps/{app_id}": {
 		"operationId": "get_app",
@@ -1665,7 +1668,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.apps",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/flagship/apps": {
 		"operationId": "flagship_create_app",
@@ -2237,7 +2243,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.apps",
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/flagship/apps/{app_id}": {
 		"operationId": "flagship_update_app",

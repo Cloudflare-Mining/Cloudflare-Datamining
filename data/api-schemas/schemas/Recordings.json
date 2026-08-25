@@ -293,7 +293,8 @@
 																	"access_key": {
 																		"description": "Access key of the storage medium. Access key is not required for the `gcs` storage media type.\n\nNote that this field is not readable by clients, only writeable.",
 																		"type": "string",
-																		"writeOnly": true
+																		"writeOnly": true,
+																		"x-sensitive": true
 																	},
 																	"auth_method": {
 																		"description": "Authentication method used for \"sftp\" type storage medium\n",
@@ -313,7 +314,9 @@
 																	},
 																	"password": {
 																		"description": "SSH destination server password for SFTP type storage medium when auth_method is \"PASSWORD\". If auth_method is \"KEY\", this specifies the password for the ssh private key.",
-																		"type": "string"
+																		"type": "string",
+																		"writeOnly": true,
+																		"x-sensitive": true
 																	},
 																	"path": {
 																		"description": "Path relative to the bucket root at which the recording will be placed.",
@@ -325,7 +328,9 @@
 																	},
 																	"private_key": {
 																		"description": "Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is \"KEY\"",
-																		"type": "string"
+																		"type": "string",
+																		"writeOnly": true,
+																		"x-sensitive": true
 																	},
 																	"region": {
 																		"description": "Region of the storage medium.",
@@ -334,7 +339,9 @@
 																	},
 																	"secret": {
 																		"description": "Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable.",
-																		"type": "string"
+																		"type": "string",
+																		"writeOnly": true,
+																		"x-sensitive": true
 																	},
 																	"type": {
 																		"description": "Type of storage media.",
@@ -353,8 +360,90 @@
 																	}
 																},
 																"nullable": true,
+																"oneOf": [
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"gcs"
+																				]
+																			}
+																		}
+																	},
+																	{
+																		"properties": {
+																			"access_key": {
+																				"minLength": 1
+																			},
+																			"region": {
+																				"minLength": 1
+																			},
+																			"type": {
+																				"enum": [
+																					"aws",
+																					"azure",
+																					"digitalocean"
+																				]
+																			}
+																		},
+																		"required": [
+																			"access_key",
+																			"region"
+																		]
+																	},
+																	{
+																		"oneOf": [
+																			{
+																				"properties": {
+																					"auth_method": {
+																						"enum": [
+																							"KEY"
+																						]
+																					}
+																				},
+																				"required": [
+																					"private_key"
+																				]
+																			},
+																			{
+																				"properties": {
+																					"auth_method": {
+																						"enum": [
+																							"PASSWORD"
+																						]
+																					}
+																				},
+																				"required": [
+																					"password"
+																				]
+																			}
+																		],
+																		"properties": {
+																			"access_key": {
+																				"minLength": 1
+																			},
+																			"region": {
+																				"minLength": 1
+																			},
+																			"type": {
+																				"enum": [
+																					"sftp"
+																				]
+																			}
+																		},
+																		"required": [
+																			"access_key",
+																			"region",
+																			"auth_method",
+																			"username",
+																			"host",
+																			"port"
+																		]
+																	}
+																],
 																"required": [
-																	"type"
+																	"type",
+																	"bucket"
 																],
 																"title": "StorageConfig"
 															}
@@ -465,7 +554,8 @@
 																					"access_key": {
 																						"description": "Access key of the storage medium. Access key is not required for the `gcs` storage media type.\n\nNote that this field is not readable by clients, only writeable.",
 																						"type": "string",
-																						"writeOnly": true
+																						"writeOnly": true,
+																						"x-sensitive": true
 																					},
 																					"auth_method": {
 																						"description": "Authentication method used for \"sftp\" type storage medium\n",
@@ -485,7 +575,9 @@
 																					},
 																					"password": {
 																						"description": "SSH destination server password for SFTP type storage medium when auth_method is \"PASSWORD\". If auth_method is \"KEY\", this specifies the password for the ssh private key.",
-																						"type": "string"
+																						"type": "string",
+																						"writeOnly": true,
+																						"x-sensitive": true
 																					},
 																					"path": {
 																						"description": "Path relative to the bucket root at which the recording will be placed.",
@@ -497,7 +589,9 @@
 																					},
 																					"private_key": {
 																						"description": "Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is \"KEY\"",
-																						"type": "string"
+																						"type": "string",
+																						"writeOnly": true,
+																						"x-sensitive": true
 																					},
 																					"region": {
 																						"description": "Region of the storage medium.",
@@ -506,7 +600,9 @@
 																					},
 																					"secret": {
 																						"description": "Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable.",
-																						"type": "string"
+																						"type": "string",
+																						"writeOnly": true,
+																						"x-sensitive": true
 																					},
 																					"type": {
 																						"description": "Type of storage media.",
@@ -525,8 +621,90 @@
 																					}
 																				},
 																				"nullable": true,
+																				"oneOf": [
+																					{
+																						"properties": {
+																							"type": {
+																								"enum": [
+																									"gcs"
+																								]
+																							}
+																						}
+																					},
+																					{
+																						"properties": {
+																							"access_key": {
+																								"minLength": 1
+																							},
+																							"region": {
+																								"minLength": 1
+																							},
+																							"type": {
+																								"enum": [
+																									"aws",
+																									"azure",
+																									"digitalocean"
+																								]
+																							}
+																						},
+																						"required": [
+																							"access_key",
+																							"region"
+																						]
+																					},
+																					{
+																						"oneOf": [
+																							{
+																								"properties": {
+																									"auth_method": {
+																										"enum": [
+																											"KEY"
+																										]
+																									}
+																								},
+																								"required": [
+																									"private_key"
+																								]
+																							},
+																							{
+																								"properties": {
+																									"auth_method": {
+																										"enum": [
+																											"PASSWORD"
+																										]
+																									}
+																								},
+																								"required": [
+																									"password"
+																								]
+																							}
+																						],
+																						"properties": {
+																							"access_key": {
+																								"minLength": 1
+																							},
+																							"region": {
+																								"minLength": 1
+																							},
+																							"type": {
+																								"enum": [
+																									"sftp"
+																								]
+																							}
+																						},
+																						"required": [
+																							"access_key",
+																							"region",
+																							"auth_method",
+																							"username",
+																							"host",
+																							"port"
+																						]
+																					}
+																				],
 																				"required": [
-																					"type"
+																					"type",
+																					"bucket"
 																				],
 																				"title": "StorageConfig"
 																			},
@@ -539,7 +717,8 @@
 																						"default": "H264",
 																						"enum": [
 																							"H264",
-																							"VP8"
+																							"VP8",
+																							"VP9"
 																						]
 																					},
 																					"export_file": {
@@ -673,7 +852,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.recordings",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/recordings/{recording_id}": {
 		"operationId": "get_one_recording",
@@ -924,7 +1106,8 @@
 																"access_key": {
 																	"description": "Access key of the storage medium. Access key is not required for the `gcs` storage media type.\n\nNote that this field is not readable by clients, only writeable.",
 																	"type": "string",
-																	"writeOnly": true
+																	"writeOnly": true,
+																	"x-sensitive": true
 																},
 																"auth_method": {
 																	"description": "Authentication method used for \"sftp\" type storage medium\n",
@@ -944,7 +1127,9 @@
 																},
 																"password": {
 																	"description": "SSH destination server password for SFTP type storage medium when auth_method is \"PASSWORD\". If auth_method is \"KEY\", this specifies the password for the ssh private key.",
-																	"type": "string"
+																	"type": "string",
+																	"writeOnly": true,
+																	"x-sensitive": true
 																},
 																"path": {
 																	"description": "Path relative to the bucket root at which the recording will be placed.",
@@ -956,7 +1141,9 @@
 																},
 																"private_key": {
 																	"description": "Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is \"KEY\"",
-																	"type": "string"
+																	"type": "string",
+																	"writeOnly": true,
+																	"x-sensitive": true
 																},
 																"region": {
 																	"description": "Region of the storage medium.",
@@ -965,7 +1152,9 @@
 																},
 																"secret": {
 																	"description": "Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable.",
-																	"type": "string"
+																	"type": "string",
+																	"writeOnly": true,
+																	"x-sensitive": true
 																},
 																"type": {
 																	"description": "Type of storage media.",
@@ -984,8 +1173,90 @@
 																}
 															},
 															"nullable": true,
+															"oneOf": [
+																{
+																	"properties": {
+																		"type": {
+																			"enum": [
+																				"gcs"
+																			]
+																		}
+																	}
+																},
+																{
+																	"properties": {
+																		"access_key": {
+																			"minLength": 1
+																		},
+																		"region": {
+																			"minLength": 1
+																		},
+																		"type": {
+																			"enum": [
+																				"aws",
+																				"azure",
+																				"digitalocean"
+																			]
+																		}
+																	},
+																	"required": [
+																		"access_key",
+																		"region"
+																	]
+																},
+																{
+																	"oneOf": [
+																		{
+																			"properties": {
+																				"auth_method": {
+																					"enum": [
+																						"KEY"
+																					]
+																				}
+																			},
+																			"required": [
+																				"private_key"
+																			]
+																		},
+																		{
+																			"properties": {
+																				"auth_method": {
+																					"enum": [
+																						"PASSWORD"
+																					]
+																				}
+																			},
+																			"required": [
+																				"password"
+																			]
+																		}
+																	],
+																	"properties": {
+																		"access_key": {
+																			"minLength": 1
+																		},
+																		"region": {
+																			"minLength": 1
+																		},
+																		"type": {
+																			"enum": [
+																				"sftp"
+																			]
+																		}
+																	},
+																	"required": [
+																		"access_key",
+																		"region",
+																		"auth_method",
+																		"username",
+																		"host",
+																		"port"
+																	]
+																}
+															],
 															"required": [
-																"type"
+																"type",
+																"bucket"
 															],
 															"title": "StorageConfig"
 														}
@@ -1015,6 +1286,9 @@
 			"Realtime Admin",
 			"Realtime"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.recordings",
+		"x-fern-sdk-method-name": "get",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/recordings/active-recording/{meeting_id}": {
@@ -1239,7 +1513,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.recordings.active",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/recordings": {
 		"operationId": "start_recording",
@@ -1406,7 +1683,8 @@
 									"access_key": {
 										"description": "Access key of the storage medium. Access key is not required for the `gcs` storage media type.\n\nNote that this field is not readable by clients, only writeable.",
 										"type": "string",
-										"writeOnly": true
+										"writeOnly": true,
+										"x-sensitive": true
 									},
 									"auth_method": {
 										"description": "Authentication method used for \"sftp\" type storage medium\n",
@@ -1426,7 +1704,9 @@
 									},
 									"password": {
 										"description": "SSH destination server password for SFTP type storage medium when auth_method is \"PASSWORD\". If auth_method is \"KEY\", this specifies the password for the ssh private key.",
-										"type": "string"
+										"type": "string",
+										"writeOnly": true,
+										"x-sensitive": true
 									},
 									"path": {
 										"description": "Path relative to the bucket root at which the recording will be placed.",
@@ -1438,7 +1718,9 @@
 									},
 									"private_key": {
 										"description": "Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is \"KEY\"",
-										"type": "string"
+										"type": "string",
+										"writeOnly": true,
+										"x-sensitive": true
 									},
 									"region": {
 										"description": "Region of the storage medium.",
@@ -1447,7 +1729,9 @@
 									},
 									"secret": {
 										"description": "Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable.",
-										"type": "string"
+										"type": "string",
+										"writeOnly": true,
+										"x-sensitive": true
 									},
 									"type": {
 										"description": "Type of storage media.",
@@ -1466,8 +1750,90 @@
 									}
 								},
 								"nullable": true,
+								"oneOf": [
+									{
+										"properties": {
+											"type": {
+												"enum": [
+													"gcs"
+												]
+											}
+										}
+									},
+									{
+										"properties": {
+											"access_key": {
+												"minLength": 1
+											},
+											"region": {
+												"minLength": 1
+											},
+											"type": {
+												"enum": [
+													"aws",
+													"azure",
+													"digitalocean"
+												]
+											}
+										},
+										"required": [
+											"access_key",
+											"region"
+										]
+									},
+									{
+										"oneOf": [
+											{
+												"properties": {
+													"auth_method": {
+														"enum": [
+															"KEY"
+														]
+													}
+												},
+												"required": [
+													"private_key"
+												]
+											},
+											{
+												"properties": {
+													"auth_method": {
+														"enum": [
+															"PASSWORD"
+														]
+													}
+												},
+												"required": [
+													"password"
+												]
+											}
+										],
+										"properties": {
+											"access_key": {
+												"minLength": 1
+											},
+											"region": {
+												"minLength": 1
+											},
+											"type": {
+												"enum": [
+													"sftp"
+												]
+											}
+										},
+										"required": [
+											"access_key",
+											"region",
+											"auth_method",
+											"username",
+											"host",
+											"port"
+										]
+									}
+								],
 								"required": [
-									"type"
+									"type",
+									"bucket"
 								],
 								"title": "StorageConfig"
 							},
@@ -1485,7 +1851,8 @@
 										"default": "H264",
 										"enum": [
 											"H264",
-											"VP8"
+											"VP8",
+											"VP9"
 										]
 									},
 									"export_file": {
@@ -1769,7 +2136,8 @@
 																"access_key": {
 																	"description": "Access key of the storage medium. Access key is not required for the `gcs` storage media type.\n\nNote that this field is not readable by clients, only writeable.",
 																	"type": "string",
-																	"writeOnly": true
+																	"writeOnly": true,
+																	"x-sensitive": true
 																},
 																"auth_method": {
 																	"description": "Authentication method used for \"sftp\" type storage medium\n",
@@ -1789,7 +2157,9 @@
 																},
 																"password": {
 																	"description": "SSH destination server password for SFTP type storage medium when auth_method is \"PASSWORD\". If auth_method is \"KEY\", this specifies the password for the ssh private key.",
-																	"type": "string"
+																	"type": "string",
+																	"writeOnly": true,
+																	"x-sensitive": true
 																},
 																"path": {
 																	"description": "Path relative to the bucket root at which the recording will be placed.",
@@ -1801,7 +2171,9 @@
 																},
 																"private_key": {
 																	"description": "Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is \"KEY\"",
-																	"type": "string"
+																	"type": "string",
+																	"writeOnly": true,
+																	"x-sensitive": true
 																},
 																"region": {
 																	"description": "Region of the storage medium.",
@@ -1810,7 +2182,9 @@
 																},
 																"secret": {
 																	"description": "Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable.",
-																	"type": "string"
+																	"type": "string",
+																	"writeOnly": true,
+																	"x-sensitive": true
 																},
 																"type": {
 																	"description": "Type of storage media.",
@@ -1829,8 +2203,90 @@
 																}
 															},
 															"nullable": true,
+															"oneOf": [
+																{
+																	"properties": {
+																		"type": {
+																			"enum": [
+																				"gcs"
+																			]
+																		}
+																	}
+																},
+																{
+																	"properties": {
+																		"access_key": {
+																			"minLength": 1
+																		},
+																		"region": {
+																			"minLength": 1
+																		},
+																		"type": {
+																			"enum": [
+																				"aws",
+																				"azure",
+																				"digitalocean"
+																			]
+																		}
+																	},
+																	"required": [
+																		"access_key",
+																		"region"
+																	]
+																},
+																{
+																	"oneOf": [
+																		{
+																			"properties": {
+																				"auth_method": {
+																					"enum": [
+																						"KEY"
+																					]
+																				}
+																			},
+																			"required": [
+																				"private_key"
+																			]
+																		},
+																		{
+																			"properties": {
+																				"auth_method": {
+																					"enum": [
+																						"PASSWORD"
+																					]
+																				}
+																			},
+																			"required": [
+																				"password"
+																			]
+																		}
+																	],
+																	"properties": {
+																		"access_key": {
+																			"minLength": 1
+																		},
+																		"region": {
+																			"minLength": 1
+																		},
+																		"type": {
+																			"enum": [
+																				"sftp"
+																			]
+																		}
+																	},
+																	"required": [
+																		"access_key",
+																		"region",
+																		"auth_method",
+																		"username",
+																		"host",
+																		"port"
+																	]
+																}
+															],
 															"required": [
-																"type"
+																"type",
+																"bucket"
 															],
 															"title": "StorageConfig"
 														}
@@ -1860,6 +2316,9 @@
 			"Realtime Admin",
 			"Realtime"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.recordings",
+		"x-fern-sdk-method-name": "start",
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/recordings/track": {
@@ -2115,7 +2574,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.recordings.tracks",
+		"x-fern-sdk-method-name": "start"
 	},
 	"PUT /accounts/{account_id}/realtime/kit/{app_id}/recordings/{recording_id}": {
 		"operationId": "pause_resume_stop_recording",
@@ -2391,7 +2853,8 @@
 																"access_key": {
 																	"description": "Access key of the storage medium. Access key is not required for the `gcs` storage media type.\n\nNote that this field is not readable by clients, only writeable.",
 																	"type": "string",
-																	"writeOnly": true
+																	"writeOnly": true,
+																	"x-sensitive": true
 																},
 																"auth_method": {
 																	"description": "Authentication method used for \"sftp\" type storage medium\n",
@@ -2411,7 +2874,9 @@
 																},
 																"password": {
 																	"description": "SSH destination server password for SFTP type storage medium when auth_method is \"PASSWORD\". If auth_method is \"KEY\", this specifies the password for the ssh private key.",
-																	"type": "string"
+																	"type": "string",
+																	"writeOnly": true,
+																	"x-sensitive": true
 																},
 																"path": {
 																	"description": "Path relative to the bucket root at which the recording will be placed.",
@@ -2423,7 +2888,9 @@
 																},
 																"private_key": {
 																	"description": "Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is \"KEY\"",
-																	"type": "string"
+																	"type": "string",
+																	"writeOnly": true,
+																	"x-sensitive": true
 																},
 																"region": {
 																	"description": "Region of the storage medium.",
@@ -2432,7 +2899,9 @@
 																},
 																"secret": {
 																	"description": "Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable.",
-																	"type": "string"
+																	"type": "string",
+																	"writeOnly": true,
+																	"x-sensitive": true
 																},
 																"type": {
 																	"description": "Type of storage media.",
@@ -2451,8 +2920,90 @@
 																}
 															},
 															"nullable": true,
+															"oneOf": [
+																{
+																	"properties": {
+																		"type": {
+																			"enum": [
+																				"gcs"
+																			]
+																		}
+																	}
+																},
+																{
+																	"properties": {
+																		"access_key": {
+																			"minLength": 1
+																		},
+																		"region": {
+																			"minLength": 1
+																		},
+																		"type": {
+																			"enum": [
+																				"aws",
+																				"azure",
+																				"digitalocean"
+																			]
+																		}
+																	},
+																	"required": [
+																		"access_key",
+																		"region"
+																	]
+																},
+																{
+																	"oneOf": [
+																		{
+																			"properties": {
+																				"auth_method": {
+																					"enum": [
+																						"KEY"
+																					]
+																				}
+																			},
+																			"required": [
+																				"private_key"
+																			]
+																		},
+																		{
+																			"properties": {
+																				"auth_method": {
+																					"enum": [
+																						"PASSWORD"
+																					]
+																				}
+																			},
+																			"required": [
+																				"password"
+																			]
+																		}
+																	],
+																	"properties": {
+																		"access_key": {
+																			"minLength": 1
+																		},
+																		"region": {
+																			"minLength": 1
+																		},
+																		"type": {
+																			"enum": [
+																				"sftp"
+																			]
+																		}
+																	},
+																	"required": [
+																		"access_key",
+																		"region",
+																		"auth_method",
+																		"username",
+																		"host",
+																		"port"
+																	]
+																}
+															],
 															"required": [
-																"type"
+																"type",
+																"bucket"
 															],
 															"title": "StorageConfig"
 														}
@@ -2482,6 +3033,9 @@
 			"Realtime Admin",
 			"Realtime"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.recordings",
+		"x-fern-sdk-method-name": "control",
 		"x-stability": "beta"
 	}
 }

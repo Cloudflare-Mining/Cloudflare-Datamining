@@ -207,6 +207,10 @@
 			"Realtime Admin",
 			"Realtime"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.webhooks",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "This operation deletes the webhook. Event delivery to it will stop.",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/webhooks": {
@@ -363,7 +367,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.webhooks",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}": {
 		"operationId": "getWebhook",
@@ -573,6 +580,9 @@
 			"Realtime Admin",
 			"Realtime"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.webhooks",
+		"x-fern-sdk-method-name": "get",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/webhooks/all": {
@@ -654,7 +664,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.webhooks.events",
+		"x-fern-sdk-method-name": "list"
 	},
 	"PATCH /accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}": {
 		"operationId": "editWebhook",
@@ -918,6 +931,9 @@
 			"Realtime Admin",
 			"Realtime"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.webhooks",
+		"x-fern-sdk-method-name": "update",
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/webhooks": {
@@ -1179,7 +1195,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.webhooks",
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}": {
 		"operationId": "replaceWebhook",
@@ -1461,6 +1480,9 @@
 			"Realtime Admin",
 			"Realtime"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.webhooks",
+		"x-fern-sdk-method-name": "replace",
 		"x-stability": "beta"
 	}
 }

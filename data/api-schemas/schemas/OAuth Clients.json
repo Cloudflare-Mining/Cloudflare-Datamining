@@ -291,7 +291,12 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "iam.oauth-clients",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
 	"DELETE /accounts/{account_id}/oauth_clients/{oauth_client_id}/rotate_secret": {
 		"operationId": "oauth-clients-delete-rotated-secret",
@@ -585,7 +590,12 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "iam.oauth-clients",
+		"x-fern-sdk-method-name": "delete-rotated-secret",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
 	"GET /accounts/{account_id}/oauth_clients": {
 		"operationId": "oauth-clients-list",
@@ -789,6 +799,17 @@
 																"description": "URL of the client's logo.",
 																"type": "string",
 																"example": "https://example.com/logo.png",
+																"x-auditable": true
+															},
+															"optional_scopes": {
+																"description": "Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offline_access` cannot be optional.",
+																"type": "array",
+																"items": {
+																	"type": "string"
+																},
+																"example": [
+																	"account.write"
+																],
 																"x-auditable": true
 															},
 															"policy_uri": {
@@ -1104,7 +1125,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "iam.oauth-clients",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/oauth_clients/{oauth_client_id}": {
 		"operationId": "oauth-clients-get",
@@ -1289,6 +1314,17 @@
 															"description": "URL of the client's logo.",
 															"type": "string",
 															"example": "https://example.com/logo.png",
+															"x-auditable": true
+														},
+														"optional_scopes": {
+															"description": "Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offline_access` cannot be optional.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
+															"example": [
+																"account.write"
+															],
 															"x-auditable": true
 														},
 														"policy_uri": {
@@ -1603,7 +1639,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "iam.oauth-clients",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /oauth/scopes": {
 		"operationId": "oauth-scopes-list",
@@ -1913,7 +1953,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "iam.oauth-scopes",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/oauth_clients/{oauth_client_id}": {
 		"operationId": "oauth-clients-update",
@@ -2006,6 +2050,17 @@
 										"description": "URL of the client's logo.",
 										"type": "string",
 										"example": "https://example.com/logo.png",
+										"x-auditable": true
+									},
+									"optional_scopes": {
+										"description": "Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offline_access` cannot be optional.",
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"example": [
+											"account.write"
+										],
 										"x-auditable": true
 									},
 									"policy_uri": {
@@ -2248,6 +2303,17 @@
 															"description": "URL of the client's logo.",
 															"type": "string",
 															"example": "https://example.com/logo.png",
+															"x-auditable": true
+														},
+														"optional_scopes": {
+															"description": "Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offline_access` cannot be optional.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
+															"example": [
+																"account.write"
+															],
 															"x-auditable": true
 														},
 														"policy_uri": {
@@ -2562,7 +2628,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "iam.oauth-clients",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/oauth_clients": {
 		"operationId": "oauth-clients-create",
@@ -2642,6 +2712,17 @@
 										"description": "URL of the client's logo.",
 										"type": "string",
 										"example": "https://example.com/logo.png",
+										"x-auditable": true
+									},
+									"optional_scopes": {
+										"description": "Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offline_access` cannot be optional.",
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"example": [
+											"account.write"
+										],
 										"x-auditable": true
 									},
 									"policy_uri": {
@@ -2885,6 +2966,17 @@
 																	"description": "URL of the client's logo.",
 																	"type": "string",
 																	"example": "https://example.com/logo.png",
+																	"x-auditable": true
+																},
+																"optional_scopes": {
+																	"description": "Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offline_access` cannot be optional.",
+																	"type": "array",
+																	"items": {
+																		"type": "string"
+																	},
+																	"example": [
+																		"account.write"
+																	],
 																	"x-auditable": true
 																},
 																"policy_uri": {
@@ -3214,7 +3306,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "iam.oauth-clients",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/oauth_clients/{oauth_client_id}/rotate_secret": {
 		"operationId": "oauth-clients-rotate-secret",
@@ -3509,6 +3605,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "iam.oauth-clients",
+		"x-fern-sdk-method-name": "rotate-secret",
+		"x-forge-hidden": true
 	}
 }

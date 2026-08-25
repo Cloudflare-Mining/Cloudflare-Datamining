@@ -2,6 +2,7 @@
 	"DELETE /tenants/{tenant_tag}/custom_ns/{custom_ns_id}": {
 		"operationId": "tenant-level-custom-nameservers-delete-tenant-custom-nameserver",
 		"summary": "Delete Tenant Custom Nameserver",
+		"description": "Deletes a tenant's custom nameserver.",
 		"parameters": [
 			{
 				"name": "custom_ns_id",
@@ -30,7 +31,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Delete Tenant Custom Nameserver response",
+				"description": "Delete Tenant Custom Nameserver response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -163,7 +164,7 @@
 										"result": {
 											"type": "array",
 											"items": {
-												"description": "Unused",
+												"description": "Unused.",
 												"type": "string",
 												"x-auditable": true
 											},
@@ -178,7 +179,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Delete Tenant Custom Nameserver response failure",
+				"description": "Delete Tenant Custom Nameserver response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -314,7 +315,7 @@
 												"result": {
 													"type": "array",
 													"items": {
-														"description": "Unused",
+														"description": "Unused.",
 														"type": "string",
 														"x-auditable": true
 													},
@@ -454,12 +455,16 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "tenant-custom-nameservers",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /tenants/{tenant_tag}/custom_ns": {
 		"operationId": "tenant-level-custom-nameservers-list-tenant-custom-nameservers",
 		"summary": "List Tenant Custom Nameservers",
-		"description": "List a tenant's custom nameservers.",
+		"description": "Lists a tenant's custom nameservers.",
 		"parameters": [
 			{
 				"name": "tenant_tag",
@@ -476,7 +481,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "List Tenant Custom Nameservers response",
+				"description": "List Tenant Custom Nameservers response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -692,7 +697,7 @@
 				}
 			},
 			"4XX": {
-				"description": "List Tenant Custom Nameservers response failure",
+				"description": "List Tenant Custom Nameservers response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1036,11 +1041,16 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "tenant-custom-nameservers",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /tenants/{tenant_tag}/custom_ns": {
 		"operationId": "tenant-level-custom-nameservers-add-tenant-custom-nameserver",
 		"summary": "Add Tenant Custom Nameserver",
+		"description": "Adds a custom nameserver for a tenant.",
 		"parameters": [
 			{
 				"name": "tenant_tag",
@@ -1089,7 +1099,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Add Tenant Custom Nameserver response",
+				"description": "Add Tenant Custom Nameserver response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1267,7 +1277,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Add Tenant Custom Nameserver response failure",
+				"description": "Add Tenant Custom Nameserver response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1573,6 +1583,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "tenant-custom-nameservers",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

@@ -246,6 +246,17 @@
 																		"type": "string",
 																		"example": "_dmarc.example.com"
 																	},
+																	"resolved": {
+																		"description": "For a CNAME record, the TXT content(s) found by following the CNAME chain to its target. An empty array means the chain was resolved but nothing usable was found there; omitted/null means resolution was not attempted for this record (always the case for non-CNAME entries). A CNAME chain that terminates in more than one TXT value at the target yields multiple entries. Populated on entries in cname_dmarc_records, cname_spf_records, and cname_dkim_records.",
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
+																		"example": [
+																			"v=DMARC1; p=reject; rua=mailto:rua@dmarc-reports.cloudflare.net"
+																		],
+																		"nullable": true
+																	},
 																	"ttl": {
 																		"description": "Time to live in seconds",
 																		"type": "integer",
@@ -260,7 +271,7 @@
 															}
 														},
 														"cname_dkim_records": {
-															"description": "CNAME records for DKIM",
+															"description": "CNAME records for DKIM selectors. Each selector is resolved independently; when a selector's CNAME resolves to a DKIM TXT record, the API returns that record's content in the `resolved` field of the corresponding entry.",
 															"type": "array",
 															"items": {
 																"description": "Summary of a single DNS record",
@@ -280,6 +291,17 @@
 																		"description": "DNS record name",
 																		"type": "string",
 																		"example": "_dmarc.example.com"
+																	},
+																	"resolved": {
+																		"description": "For a CNAME record, the TXT content(s) found by following the CNAME chain to its target. An empty array means the chain was resolved but nothing usable was found there; omitted/null means resolution was not attempted for this record (always the case for non-CNAME entries). A CNAME chain that terminates in more than one TXT value at the target yields multiple entries. Populated on entries in cname_dmarc_records, cname_spf_records, and cname_dkim_records.",
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
+																		"example": [
+																			"v=DMARC1; p=reject; rua=mailto:rua@dmarc-reports.cloudflare.net"
+																		],
+																		"nullable": true
 																	},
 																	"ttl": {
 																		"description": "Time to live in seconds",
@@ -295,7 +317,7 @@
 															}
 														},
 														"cname_dmarc_records": {
-															"description": "CNAME records at _dmarc. When such a CNAME resolves to a DMARC TXT record, the API returns that record in resolved_dmarc_records.",
+															"description": "CNAME records at _dmarc. When such a CNAME resolves to a DMARC TXT record, the API returns that record's content in the `resolved` field of the corresponding entry.",
 															"type": "array",
 															"items": {
 																"description": "Summary of a single DNS record",
@@ -315,6 +337,17 @@
 																		"description": "DNS record name",
 																		"type": "string",
 																		"example": "_dmarc.example.com"
+																	},
+																	"resolved": {
+																		"description": "For a CNAME record, the TXT content(s) found by following the CNAME chain to its target. An empty array means the chain was resolved but nothing usable was found there; omitted/null means resolution was not attempted for this record (always the case for non-CNAME entries). A CNAME chain that terminates in more than one TXT value at the target yields multiple entries. Populated on entries in cname_dmarc_records, cname_spf_records, and cname_dkim_records.",
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
+																		"example": [
+																			"v=DMARC1; p=reject; rua=mailto:rua@dmarc-reports.cloudflare.net"
+																		],
+																		"nullable": true
 																	},
 																	"ttl": {
 																		"description": "Time to live in seconds",
@@ -330,7 +363,7 @@
 															}
 														},
 														"cname_spf_records": {
-															"description": "CNAME records for SPF",
+															"description": "CNAME records at the zone apex. When such a CNAME resolves to an SPF TXT record, the API returns that record's content in the `resolved` field of the corresponding entry.",
 															"type": "array",
 															"items": {
 																"description": "Summary of a single DNS record",
@@ -350,6 +383,17 @@
 																		"description": "DNS record name",
 																		"type": "string",
 																		"example": "_dmarc.example.com"
+																	},
+																	"resolved": {
+																		"description": "For a CNAME record, the TXT content(s) found by following the CNAME chain to its target. An empty array means the chain was resolved but nothing usable was found there; omitted/null means resolution was not attempted for this record (always the case for non-CNAME entries). A CNAME chain that terminates in more than one TXT value at the target yields multiple entries. Populated on entries in cname_dmarc_records, cname_spf_records, and cname_dkim_records.",
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
+																		"example": [
+																			"v=DMARC1; p=reject; rua=mailto:rua@dmarc-reports.cloudflare.net"
+																		],
+																		"nullable": true
 																	},
 																	"ttl": {
 																		"description": "Time to live in seconds",
@@ -386,6 +430,17 @@
 																		"type": "string",
 																		"example": "_dmarc.example.com"
 																	},
+																	"resolved": {
+																		"description": "For a CNAME record, the TXT content(s) found by following the CNAME chain to its target. An empty array means the chain was resolved but nothing usable was found there; omitted/null means resolution was not attempted for this record (always the case for non-CNAME entries). A CNAME chain that terminates in more than one TXT value at the target yields multiple entries. Populated on entries in cname_dmarc_records, cname_spf_records, and cname_dkim_records.",
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
+																		"example": [
+																			"v=DMARC1; p=reject; rua=mailto:rua@dmarc-reports.cloudflare.net"
+																		],
+																		"nullable": true
+																	},
 																	"ttl": {
 																		"description": "Time to live in seconds",
 																		"type": "integer",
@@ -421,6 +476,17 @@
 																		"type": "string",
 																		"example": "_dmarc.example.com"
 																	},
+																	"resolved": {
+																		"description": "For a CNAME record, the TXT content(s) found by following the CNAME chain to its target. An empty array means the chain was resolved but nothing usable was found there; omitted/null means resolution was not attempted for this record (always the case for non-CNAME entries). A CNAME chain that terminates in more than one TXT value at the target yields multiple entries. Populated on entries in cname_dmarc_records, cname_spf_records, and cname_dkim_records.",
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
+																		"example": [
+																			"v=DMARC1; p=reject; rua=mailto:rua@dmarc-reports.cloudflare.net"
+																		],
+																		"nullable": true
+																	},
 																	"ttl": {
 																		"description": "Time to live in seconds",
 																		"type": "integer",
@@ -451,8 +517,11 @@
 																		"type": "string",
 																		"example": "_dmarc.example.com"
 																	}
-																}
-															}
+																},
+																"deprecated": true
+															},
+															"deprecated": true,
+															"x-stainless-deprecation-message": "Use the `resolved` field on the corresponding entry in cname_dmarc_records instead."
 														},
 														"spf_records": {
 															"description": "SPF TXT records",
@@ -475,6 +544,17 @@
 																		"description": "DNS record name",
 																		"type": "string",
 																		"example": "_dmarc.example.com"
+																	},
+																	"resolved": {
+																		"description": "For a CNAME record, the TXT content(s) found by following the CNAME chain to its target. An empty array means the chain was resolved but nothing usable was found there; omitted/null means resolution was not attempted for this record (always the case for non-CNAME entries). A CNAME chain that terminates in more than one TXT value at the target yields multiple entries. Populated on entries in cname_dmarc_records, cname_spf_records, and cname_dkim_records.",
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
+																		"example": [
+																			"v=DMARC1; p=reject; rua=mailto:rua@dmarc-reports.cloudflare.net"
+																		],
+																		"nullable": true
 																	},
 																	"ttl": {
 																		"description": "Time to live in seconds",
@@ -1325,6 +1405,17 @@
 																		"type": "string",
 																		"example": "_dmarc.example.com"
 																	},
+																	"resolved": {
+																		"description": "For a CNAME record, the TXT content(s) found by following the CNAME chain to its target. An empty array means the chain was resolved but nothing usable was found there; omitted/null means resolution was not attempted for this record (always the case for non-CNAME entries). A CNAME chain that terminates in more than one TXT value at the target yields multiple entries. Populated on entries in cname_dmarc_records, cname_spf_records, and cname_dkim_records.",
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
+																		"example": [
+																			"v=DMARC1; p=reject; rua=mailto:rua@dmarc-reports.cloudflare.net"
+																		],
+																		"nullable": true
+																	},
 																	"ttl": {
 																		"description": "Time to live in seconds",
 																		"type": "integer",
@@ -1339,7 +1430,7 @@
 															}
 														},
 														"cname_dkim_records": {
-															"description": "CNAME records for DKIM",
+															"description": "CNAME records for DKIM selectors. Each selector is resolved independently; when a selector's CNAME resolves to a DKIM TXT record, the API returns that record's content in the `resolved` field of the corresponding entry.",
 															"type": "array",
 															"items": {
 																"description": "Summary of a single DNS record",
@@ -1359,6 +1450,17 @@
 																		"description": "DNS record name",
 																		"type": "string",
 																		"example": "_dmarc.example.com"
+																	},
+																	"resolved": {
+																		"description": "For a CNAME record, the TXT content(s) found by following the CNAME chain to its target. An empty array means the chain was resolved but nothing usable was found there; omitted/null means resolution was not attempted for this record (always the case for non-CNAME entries). A CNAME chain that terminates in more than one TXT value at the target yields multiple entries. Populated on entries in cname_dmarc_records, cname_spf_records, and cname_dkim_records.",
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
+																		"example": [
+																			"v=DMARC1; p=reject; rua=mailto:rua@dmarc-reports.cloudflare.net"
+																		],
+																		"nullable": true
 																	},
 																	"ttl": {
 																		"description": "Time to live in seconds",
@@ -1374,7 +1476,7 @@
 															}
 														},
 														"cname_dmarc_records": {
-															"description": "CNAME records at _dmarc. When such a CNAME resolves to a DMARC TXT record, the API returns that record in resolved_dmarc_records.",
+															"description": "CNAME records at _dmarc. When such a CNAME resolves to a DMARC TXT record, the API returns that record's content in the `resolved` field of the corresponding entry.",
 															"type": "array",
 															"items": {
 																"description": "Summary of a single DNS record",
@@ -1394,6 +1496,17 @@
 																		"description": "DNS record name",
 																		"type": "string",
 																		"example": "_dmarc.example.com"
+																	},
+																	"resolved": {
+																		"description": "For a CNAME record, the TXT content(s) found by following the CNAME chain to its target. An empty array means the chain was resolved but nothing usable was found there; omitted/null means resolution was not attempted for this record (always the case for non-CNAME entries). A CNAME chain that terminates in more than one TXT value at the target yields multiple entries. Populated on entries in cname_dmarc_records, cname_spf_records, and cname_dkim_records.",
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
+																		"example": [
+																			"v=DMARC1; p=reject; rua=mailto:rua@dmarc-reports.cloudflare.net"
+																		],
+																		"nullable": true
 																	},
 																	"ttl": {
 																		"description": "Time to live in seconds",
@@ -1409,7 +1522,7 @@
 															}
 														},
 														"cname_spf_records": {
-															"description": "CNAME records for SPF",
+															"description": "CNAME records at the zone apex. When such a CNAME resolves to an SPF TXT record, the API returns that record's content in the `resolved` field of the corresponding entry.",
 															"type": "array",
 															"items": {
 																"description": "Summary of a single DNS record",
@@ -1429,6 +1542,17 @@
 																		"description": "DNS record name",
 																		"type": "string",
 																		"example": "_dmarc.example.com"
+																	},
+																	"resolved": {
+																		"description": "For a CNAME record, the TXT content(s) found by following the CNAME chain to its target. An empty array means the chain was resolved but nothing usable was found there; omitted/null means resolution was not attempted for this record (always the case for non-CNAME entries). A CNAME chain that terminates in more than one TXT value at the target yields multiple entries. Populated on entries in cname_dmarc_records, cname_spf_records, and cname_dkim_records.",
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
+																		"example": [
+																			"v=DMARC1; p=reject; rua=mailto:rua@dmarc-reports.cloudflare.net"
+																		],
+																		"nullable": true
 																	},
 																	"ttl": {
 																		"description": "Time to live in seconds",
@@ -1465,6 +1589,17 @@
 																		"type": "string",
 																		"example": "_dmarc.example.com"
 																	},
+																	"resolved": {
+																		"description": "For a CNAME record, the TXT content(s) found by following the CNAME chain to its target. An empty array means the chain was resolved but nothing usable was found there; omitted/null means resolution was not attempted for this record (always the case for non-CNAME entries). A CNAME chain that terminates in more than one TXT value at the target yields multiple entries. Populated on entries in cname_dmarc_records, cname_spf_records, and cname_dkim_records.",
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
+																		"example": [
+																			"v=DMARC1; p=reject; rua=mailto:rua@dmarc-reports.cloudflare.net"
+																		],
+																		"nullable": true
+																	},
 																	"ttl": {
 																		"description": "Time to live in seconds",
 																		"type": "integer",
@@ -1500,6 +1635,17 @@
 																		"type": "string",
 																		"example": "_dmarc.example.com"
 																	},
+																	"resolved": {
+																		"description": "For a CNAME record, the TXT content(s) found by following the CNAME chain to its target. An empty array means the chain was resolved but nothing usable was found there; omitted/null means resolution was not attempted for this record (always the case for non-CNAME entries). A CNAME chain that terminates in more than one TXT value at the target yields multiple entries. Populated on entries in cname_dmarc_records, cname_spf_records, and cname_dkim_records.",
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
+																		"example": [
+																			"v=DMARC1; p=reject; rua=mailto:rua@dmarc-reports.cloudflare.net"
+																		],
+																		"nullable": true
+																	},
 																	"ttl": {
 																		"description": "Time to live in seconds",
 																		"type": "integer",
@@ -1530,8 +1676,11 @@
 																		"type": "string",
 																		"example": "_dmarc.example.com"
 																	}
-																}
-															}
+																},
+																"deprecated": true
+															},
+															"deprecated": true,
+															"x-stainless-deprecation-message": "Use the `resolved` field on the corresponding entry in cname_dmarc_records instead."
 														},
 														"spf_records": {
 															"description": "SPF TXT records",
@@ -1554,6 +1703,17 @@
 																		"description": "DNS record name",
 																		"type": "string",
 																		"example": "_dmarc.example.com"
+																	},
+																	"resolved": {
+																		"description": "For a CNAME record, the TXT content(s) found by following the CNAME chain to its target. An empty array means the chain was resolved but nothing usable was found there; omitted/null means resolution was not attempted for this record (always the case for non-CNAME entries). A CNAME chain that terminates in more than one TXT value at the target yields multiple entries. Populated on entries in cname_dmarc_records, cname_spf_records, and cname_dkim_records.",
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
+																		"example": [
+																			"v=DMARC1; p=reject; rua=mailto:rua@dmarc-reports.cloudflare.net"
+																		],
+																		"nullable": true
 																	},
 																	"ttl": {
 																		"description": "Time to live in seconds",

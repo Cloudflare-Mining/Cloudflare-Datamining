@@ -571,8 +571,10 @@
 		"tags": [
 			"Domain Discovery"
 		],
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
-		"x-fern-sdk-method-name": "search"
+		"x-fern-sdk-method-name": "search",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/registrar/domain-search": {
 		"operationId": "registrar-domain-discovery-search",
@@ -1146,8 +1148,10 @@
 		"tags": [
 			"Domain Discovery"
 		],
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "search"
+		"x-fern-sdk-method-name": "search",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/registrar-sandbox/domain-check": {
 		"operationId": "sandbox-registrar-domain-discovery-check",
@@ -1743,8 +1747,10 @@
 		"tags": [
 			"Domain Discovery"
 		],
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
-		"x-fern-sdk-method-name": "check"
+		"x-fern-sdk-method-name": "check",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/registrar/domain-check": {
 		"operationId": "registrar-domain-discovery-check",
@@ -2340,7 +2346,9 @@
 		"tags": [
 			"Domain Discovery"
 		],
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "check"
+		"x-fern-sdk-method-name": "check",
+		"x-forge-hidden": true
 	}
 }

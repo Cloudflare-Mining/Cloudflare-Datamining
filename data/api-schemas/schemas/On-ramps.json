@@ -3358,7 +3358,11 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.on-ramps",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/cloud/onramps": {
 		"operationId": "onramps-list",
@@ -8384,7 +8388,11 @@
 		"x-api-token-group": [
 			"Magic WAN Write",
 			"Magic WAN Read"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.on-ramps",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/cloud/onramps/{onramp_id}": {
 		"operationId": "onramps-read",
@@ -13886,7 +13894,11 @@
 		"x-api-token-group": [
 			"Magic WAN Write",
 			"Magic WAN Read"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.on-ramps",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space": {
 		"operationId": "onramps-mwan-addr-space-read",
@@ -16758,7 +16770,11 @@
 		"x-api-token-group": [
 			"Magic WAN Write",
 			"Magic WAN Read"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.on-ramps.address-spaces",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/magic/cloud/onramps/{onramp_id}": {
 		"operationId": "onramps-patch",
@@ -23224,7 +23240,11 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.on-ramps",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space": {
 		"operationId": "onramps-mwan-addr-space-patch",
@@ -26589,7 +26609,11 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.on-ramps.address-spaces",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/cloud/onramps": {
 		"operationId": "onramps-create",
@@ -32642,7 +32666,11 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.on-ramps",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/cloud/onramps/{onramp_id}/apply": {
 		"operationId": "onramps-apply",
@@ -35966,7 +35994,11 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.on-ramps",
+		"x-fern-sdk-method-name": "apply",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/cloud/onramps/{onramp_id}/export": {
 		"operationId": "onramps-export",
@@ -38846,7 +38878,11 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.on-ramps",
+		"x-fern-sdk-method-name": "export",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/cloud/onramps/{onramp_id}/plan": {
 		"operationId": "onramps-plan",
@@ -42170,7 +42206,11 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.on-ramps",
+		"x-fern-sdk-method-name": "plan",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/magic/cloud/onramps/{onramp_id}": {
 		"operationId": "onramps-update",
@@ -48636,7 +48676,11 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.on-ramps",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space": {
 		"operationId": "onramps-mwan-addr-space-update",
@@ -52001,6 +52045,10 @@
 		],
 		"x-api-token-group": [
 			"Magic WAN Write"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.on-ramps.address-spaces",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

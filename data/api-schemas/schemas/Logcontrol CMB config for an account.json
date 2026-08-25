@@ -263,7 +263,11 @@
 			"enum": [
 				"#logs:edit"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logs.control.cmb.config",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/logs/control/cmb/config": {
 		"operationId": "get-accounts-account_id-logs-control-cmb-config",
@@ -543,7 +547,11 @@
 				"#logs:read",
 				"#analytics:read"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logs.control.cmb.config",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/logs/control/cmb/config": {
 		"operationId": "post-accounts-account_id-logs-control-cmb-config",
@@ -848,6 +856,10 @@
 			"enum": [
 				"#logs:edit"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logs.control.cmb.config",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

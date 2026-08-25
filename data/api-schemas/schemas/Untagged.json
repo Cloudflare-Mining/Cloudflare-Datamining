@@ -882,6 +882,18 @@
 			}
 		}
 	],
+	"PARAMETERS /accounts/{account_id}/containers/image-preparations": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string",
+				"example": "account-123"
+			}
+		}
+	],
 	"PARAMETERS /accounts/{account_id}/containers/instance-groups": [
 		{
 			"description": "Account identifier.",
@@ -1424,6 +1436,63 @@
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/email-security/settings/block_senders/batch": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"type": "string",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/settings/content_policies": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"type": "string",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/settings/content_policies/{policy_id}": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"type": "string",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"x-auditable": true
+			}
+		},
+		{
+			"name": "policy_id",
+			"in": "path",
+			"required": true,
+			"schema": {
+				"description": "Content policy identifier.",
+				"type": "string",
+				"format": "uuid",
+				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/settings/content_policies/batch": [
 		{
 			"description": "Account identifier tag.",
 			"in": "path",

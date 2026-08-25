@@ -411,12 +411,12 @@
 												"validFrom": {
 													"description": "The start date of the certificate’s validity period (ISO format).",
 													"type": "string",
-													"example": "2019-12-09"
+													"example": "2019-12-09T00:00:00Z"
 												},
 												"validTo": {
 													"description": "The end date of the certificate’s validity period (ISO format).",
 													"type": "string",
-													"example": "2032-06-08"
+													"example": "2032-06-08T00:00:00Z"
 												}
 											},
 											"required": [

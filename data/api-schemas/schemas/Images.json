@@ -78,7 +78,11 @@
 		],
 		"tags": [
 			"Images"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{accountId}/v1/images": {
 		"operationId": "get_ImageList",
@@ -245,7 +249,11 @@
 		],
 		"tags": [
 			"Images"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.v1",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{accountId}/v1/images/{imageId}": {
 		"operationId": "get_ImageGet",
@@ -361,7 +369,11 @@
 		],
 		"tags": [
 			"Images"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{accountId}/v1/images/{imageId}/blob": {
 		"operationId": "get_ImageGetBlob",
@@ -430,7 +442,11 @@
 		],
 		"tags": [
 			"Images"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images",
+		"x-fern-sdk-method-name": "get-blob",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{accountId}/v2/images": {
 		"operationId": "get__accounts_accountId_v2_images",
@@ -597,7 +613,11 @@
 		],
 		"tags": [
 			"Images"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{accountId}/zones/{zoneId}/v1/images/flows": {
 		"operationId": "get_FlowsGet",
@@ -901,6 +921,9 @@
 		"tags": [
 			"Images"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.flows",
+		"x-fern-sdk-method-name": "get",
 		"x-stability": "stable"
 	},
 	"PATCH /accounts/{accountId}/v1/images/{imageId}": {
@@ -1005,7 +1028,11 @@
 		],
 		"tags": [
 			"Images"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{accountId}/v1/images": {
 		"operationId": "post_ImageUpload",
@@ -1148,7 +1175,11 @@
 		],
 		"tags": [
 			"Images"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{accountId}/v2/images/direct_upload": {
 		"operationId": "post_DirectUploadLink",
@@ -1261,7 +1292,11 @@
 		],
 		"tags": [
 			"Images"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images",
+		"x-fern-sdk-method-name": "direct-upload",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{accountId}/v1/images/{imageId}": {
 		"operationId": "put_ImageDirectUpload",
@@ -1397,7 +1432,11 @@
 		],
 		"tags": [
 			"Images"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.v1.direct-uploads",
+		"x-fern-sdk-method-name": "upload",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{accountId}/zones/{zoneId}/v1/images/flows": {
 		"operationId": "put_FlowsUpdate",
@@ -1931,6 +1970,9 @@
 		"tags": [
 			"Images"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.flows",
+		"x-fern-sdk-method-name": "update",
 		"x-stability": "stable"
 	}
 }

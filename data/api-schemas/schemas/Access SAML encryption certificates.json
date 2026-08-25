@@ -380,7 +380,11 @@
 		],
 		"tags": [
 			"Access SAML encryption certificates"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.saml-certificates",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/saml_certificates/{saml_cert_set_id}": {
 		"operationId": "access-saml-certificates-get-certificate-set",
@@ -821,7 +825,11 @@
 		],
 		"tags": [
 			"Access SAML encryption certificates"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.saml-certificates",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/saml_certificates/{saml_cert_set_id}/pem": {
 		"operationId": "access-saml-certificates-get-pem",
@@ -1110,7 +1118,11 @@
 		],
 		"tags": [
 			"Access SAML encryption certificates"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.saml-certificates",
+		"x-fern-sdk-method-name": "get-pem",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/access/saml_certificates/{saml_cert_set_id}/rotate": {
 		"operationId": "access-saml-certificates-rotate-certificate",
@@ -1551,6 +1563,10 @@
 		],
 		"tags": [
 			"Access SAML encryption certificates"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.saml-certificates",
+		"x-fern-sdk-method-name": "rotate",
+		"x-forge-hidden": true
 	}
 }

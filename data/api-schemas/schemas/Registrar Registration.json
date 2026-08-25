@@ -460,7 +460,7 @@
 														"type": "string",
 														"example": "redaction",
 														"enum": [
-															false,
+															"off",
 															"redaction"
 														]
 													},
@@ -647,8 +647,10 @@
 		"tags": [
 			"Registrar Registration"
 		],
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/registrar-sandbox/registrations/{domain_name}": {
 		"operationId": "sandbox-registrar-domain-registration-get",
@@ -824,7 +826,7 @@
 													"type": "string",
 													"example": "redaction",
 													"enum": [
-														false,
+														"off",
 														"redaction"
 													]
 												},
@@ -994,8 +996,10 @@
 		"tags": [
 			"Registrar Registration"
 		],
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/registrar-sandbox/registrations/{domain_name}/registration-status": {
 		"operationId": "sandbox-registrar-domain-registration-get-status",
@@ -1261,6 +1265,7 @@
 													"format": "date-time"
 												},
 												"error": {
+													"type": "object",
 													"allOf": [
 														{
 															"description": "Error details when a workflow reaches the `failed` state. The specific\nerror codes and messages depend on the workflow type (registration,\nupdate, etc.) and the underlying registry response. These workflow\nerror codes are separate from immediate HTTP error `errors[].code`\nvalues returned by non-2xx responses. Surface\n`error.message` to the user for context.\n",
@@ -1457,8 +1462,10 @@
 		"tags": [
 			"Registrar Registration"
 		],
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
-		"x-fern-sdk-method-name": "get-registration-status"
+		"x-fern-sdk-method-name": "get-registration-status",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/registrar-sandbox/registrations/{domain_name}/update-status": {
 		"operationId": "sandbox-registrar-domain-registration-get-update-status",
@@ -1671,6 +1678,7 @@
 													"format": "date-time"
 												},
 												"error": {
+													"type": "object",
 													"allOf": [
 														{
 															"description": "Error details when a workflow reaches the `failed` state. The specific\nerror codes and messages depend on the workflow type (registration,\nupdate, etc.) and the underlying registry response. These workflow\nerror codes are separate from immediate HTTP error `errors[].code`\nvalues returned by non-2xx responses. Surface\n`error.message` to the user for context.\n",
@@ -1867,8 +1875,10 @@
 		"tags": [
 			"Registrar Registration"
 		],
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
-		"x-fern-sdk-method-name": "get-update-status"
+		"x-fern-sdk-method-name": "get-update-status",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/registrar/registrations": {
 		"operationId": "registrar-domain-registration-list",
@@ -2331,7 +2341,7 @@
 														"type": "string",
 														"example": "redaction",
 														"enum": [
-															false,
+															"off",
 															"redaction"
 														]
 													},
@@ -2518,8 +2528,10 @@
 		"tags": [
 			"Registrar Registration"
 		],
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/registrar/registrations/{domain_name}": {
 		"operationId": "registrar-domain-registration-get",
@@ -2695,7 +2707,7 @@
 													"type": "string",
 													"example": "redaction",
 													"enum": [
-														false,
+														"off",
 														"redaction"
 													]
 												},
@@ -2865,8 +2877,10 @@
 		"tags": [
 			"Registrar Registration"
 		],
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/registrar/registrations/{domain_name}/registration-status": {
 		"operationId": "registrar-domain-registration-get-status",
@@ -3132,6 +3146,7 @@
 													"format": "date-time"
 												},
 												"error": {
+													"type": "object",
 													"allOf": [
 														{
 															"description": "Error details when a workflow reaches the `failed` state. The specific\nerror codes and messages depend on the workflow type (registration,\nupdate, etc.) and the underlying registry response. These workflow\nerror codes are separate from immediate HTTP error `errors[].code`\nvalues returned by non-2xx responses. Surface\n`error.message` to the user for context.\n",
@@ -3328,8 +3343,10 @@
 		"tags": [
 			"Registrar Registration"
 		],
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "get-registration-status"
+		"x-fern-sdk-method-name": "get-registration-status",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/registrar/registrations/{domain_name}/update-status": {
 		"operationId": "registrar-domain-registration-get-update-status",
@@ -3542,6 +3559,7 @@
 													"format": "date-time"
 												},
 												"error": {
+													"type": "object",
 													"allOf": [
 														{
 															"description": "Error details when a workflow reaches the `failed` state. The specific\nerror codes and messages depend on the workflow type (registration,\nupdate, etc.) and the underlying registry response. These workflow\nerror codes are separate from immediate HTTP error `errors[].code`\nvalues returned by non-2xx responses. Surface\n`error.message` to the user for context.\n",
@@ -3738,8 +3756,10 @@
 		"tags": [
 			"Registrar Registration"
 		],
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "get-update-status"
+		"x-fern-sdk-method-name": "get-update-status",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/registrar-sandbox/registrations/{domain_name}": {
 		"operationId": "sandbox-registrar-domain-registration-update",
@@ -3961,6 +3981,7 @@
 													"format": "date-time"
 												},
 												"error": {
+													"type": "object",
 													"allOf": [
 														{
 															"description": "Error details when a workflow reaches the `failed` state. The specific\nerror codes and messages depend on the workflow type (registration,\nupdate, etc.) and the underlying registry response. These workflow\nerror codes are separate from immediate HTTP error `errors[].code`\nvalues returned by non-2xx responses. Surface\n`error.message` to the user for context.\n",
@@ -4178,6 +4199,7 @@
 													"format": "date-time"
 												},
 												"error": {
+													"type": "object",
 													"allOf": [
 														{
 															"description": "Error details when a workflow reaches the `failed` state. The specific\nerror codes and messages depend on the workflow type (registration,\nupdate, etc.) and the underlying registry response. These workflow\nerror codes are separate from immediate HTTP error `errors[].code`\nvalues returned by non-2xx responses. Surface\n`error.message` to the user for context.\n",
@@ -4391,8 +4413,10 @@
 		"tags": [
 			"Registrar Registration"
 		],
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/registrar/registrations/{domain_name}": {
 		"operationId": "registrar-domain-registration-update",
@@ -4614,6 +4638,7 @@
 													"format": "date-time"
 												},
 												"error": {
+													"type": "object",
 													"allOf": [
 														{
 															"description": "Error details when a workflow reaches the `failed` state. The specific\nerror codes and messages depend on the workflow type (registration,\nupdate, etc.) and the underlying registry response. These workflow\nerror codes are separate from immediate HTTP error `errors[].code`\nvalues returned by non-2xx responses. Surface\n`error.message` to the user for context.\n",
@@ -4831,6 +4856,7 @@
 													"format": "date-time"
 												},
 												"error": {
+													"type": "object",
 													"allOf": [
 														{
 															"description": "Error details when a workflow reaches the `failed` state. The specific\nerror codes and messages depend on the workflow type (registration,\nupdate, etc.) and the underlying registry response. These workflow\nerror codes are separate from immediate HTTP error `errors[].code`\nvalues returned by non-2xx responses. Surface\n`error.message` to the user for context.\n",
@@ -5044,13 +5070,15 @@
 		"tags": [
 			"Registrar Registration"
 		],
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/registrar-sandbox/registrations": {
 		"operationId": "sandbox-registrar-domain-registration-create",
 		"summary": "Create Registration",
-		"description": "Starts a domain registration workflow.\n\n### Prerequisites\n- The account must not already be at the maximum supported domain limit.\n    A single account may own up to 100 domains in total across registrations\n    created through either the dashboard or this API.\n- The domain must be on a supported extension for programmatic registration.\n- Use `POST /domain-check` immediately before calling this endpoint to confirm\n    real-time availability and pricing.\n\n### Defaults\n- `years`: defaults to the extension's minimum registration period (1 year for\n    most extensions, but varies — for example, `.ai` (if supported) requires a minimum of 2 years).\n- `auto_renew`: defaults to `false`. Setting it to `true` is an explicit\n    opt-in authorizing Cloudflare to charge the account's default payment\n    method up to 30 days before domain expiry to renew the registration.\n    Renewal pricing may change over time based on registry pricing.\n- `privacy_mode`: defaults to `redaction`.\n\n### Premium domains\nPremium domain registration is not currently supported by this API.\nIf `POST /domain-check` returns `tier: premium`, do not call this\nendpoint for that domain.\n\n### Response behavior\nBy default, the server holds the connection for a bounded, server-defined\namount of time while the registration completes. Most registrations finish\nwithin this window and return `201 Created` with a completed workflow status.\n\nIf the registration is still processing after this synchronous wait window,\nthe server returns `202 Accepted`. Poll the URL in `links.self` to track progress.\n\nTo skip the wait and receive an immediate `202`, send `Prefer: respond-async`.",
+		"description": "Starts a domain registration workflow.\n\n### Prerequisites\n- The account must not already be at the maximum supported domain limit.\n    A single account may own up to 500 domains in total across registrations\n    created through either the dashboard or this API.\n- The domain must be on a supported extension for programmatic registration.\n- Use `POST /domain-check` immediately before calling this endpoint to confirm\n    real-time availability and pricing.\n\n### Defaults\n- `years`: defaults to the extension's minimum registration period (1 year for\n    most extensions, but varies — for example, `.ai` (if supported) requires a minimum of 2 years).\n- `auto_renew`: defaults to `false`. Setting it to `true` is an explicit\n    opt-in authorizing Cloudflare to charge the account's default payment\n    method up to 30 days before domain expiry to renew the registration.\n    Renewal pricing may change over time based on registry pricing.\n- `privacy_mode`: defaults to `redaction`.\n\n### Premium domains\nPremium domain registration is not currently supported by this API.\nIf `POST /domain-check` returns `tier: premium`, do not call this\nendpoint for that domain.\n\n### Response behavior\nBy default, the server holds the connection for a bounded, server-defined\namount of time while the registration completes. Most registrations finish\nwithin this window and return `201 Created` with a completed workflow status.\n\nIf the registration is still processing after this synchronous wait window,\nthe server returns `202 Accepted`. Poll the URL in `links.self` to track progress.\n\nTo skip the wait and receive an immediate `202`, send `Prefer: respond-async`.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -5669,7 +5697,7 @@
 								"example": "redaction",
 								"default": "redaction",
 								"enum": [
-									false,
+									"off",
 									"redaction"
 								]
 							},
@@ -5833,6 +5861,7 @@
 													"format": "date-time"
 												},
 												"error": {
+													"type": "object",
 													"allOf": [
 														{
 															"description": "Error details when a workflow reaches the `failed` state. The specific\nerror codes and messages depend on the workflow type (registration,\nupdate, etc.) and the underlying registry response. These workflow\nerror codes are separate from immediate HTTP error `errors[].code`\nvalues returned by non-2xx responses. Surface\n`error.message` to the user for context.\n",
@@ -6050,6 +6079,7 @@
 													"format": "date-time"
 												},
 												"error": {
+													"type": "object",
 													"allOf": [
 														{
 															"description": "Error details when a workflow reaches the `failed` state. The specific\nerror codes and messages depend on the workflow type (registration,\nupdate, etc.) and the underlying registry response. These workflow\nerror codes are separate from immediate HTTP error `errors[].code`\nvalues returned by non-2xx responses. Surface\n`error.message` to the user for context.\n",
@@ -6138,7 +6168,7 @@
 									"errors": [
 										{
 											"code": 10000,
-											"message": "Domain limit reached: you cannot register more than 100 domains.",
+											"message": "Domain limit reached: you cannot register more than 500 domains.",
 											"source": {
 												"pointer": "/domain_name"
 											}
@@ -6316,13 +6346,15 @@
 		"tags": [
 			"Registrar Registration"
 		],
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/registrar/registrations": {
 		"operationId": "registrar-domain-registration-create",
 		"summary": "Create Registration",
-		"description": "Starts a domain registration workflow. This is a billable operation — successful\nregistration charges the account's default payment method. All successful\ndomain registrations are non-refundable — once the workflow completes with\n`state: succeeded`, the charge cannot be reversed.\n\n### Prerequisites\n- The account must have a billing profile with a valid default payment method.\n  Set this up at `https://dash.cloudflare.com/{account_id}/billing/payment-info`.\n- The account must not already be at the maximum supported domain limit.\n  A single account may own up to 100 domains in total across registrations\n  created through either the dashboard or this API.\n- The domain must be on a supported extension for programmatic registration.\n- Use `POST /domain-check` immediately before calling this endpoint to confirm\n  real-time availability and pricing.\n\n### Express mode\nThe only required field is `domain_name`. If `contacts` is omitted, the system\nuses the account's default address book entry as the registrant. If no default\nexists and no contact is provided, the request fails. Set up a default address\nbook entry and accept the required agreement at\n`https://dash.cloudflare.com/{account_id}/domains/registrations`.\n\n### Defaults\n- `years`: defaults to the extension's minimum registration period (1 year for\n  most extensions, but varies — for example, `.ai` (if supported) requires a minimum of 2 years).\n- `auto_renew`: defaults to `false`. Setting it to `true` is an explicit\n  opt-in authorizing Cloudflare to charge the account's default payment\n  method up to 30 days before domain expiry to renew the registration.\n  Renewal pricing may change over time based on registry pricing.\n- `privacy_mode`: defaults to `redaction`.\n\n### Premium domains\nPremium domain registration is not currently supported by this API.\nIf `POST /domain-check` returns `tier: premium`, do not call this\nendpoint for that domain.\n\n### Response behavior\nBy default, the server holds the connection for a bounded, server-defined\namount of time while the registration completes. Most registrations finish\nwithin this window and return `201 Created` with a completed workflow status.\n\nIf the registration is still processing after this synchronous wait window,\nthe server returns `202 Accepted`. Poll the URL in `links.self` to track progress.\n\nTo skip the wait and receive an immediate `202`, send `Prefer: respond-async`.\n",
+		"description": "Starts a domain registration workflow. This is a billable operation — successful\nregistration charges the account's default payment method. All successful\ndomain registrations are non-refundable — once the workflow completes with\n`state: succeeded`, the charge cannot be reversed.\n\n### Prerequisites\n- The account must have a billing profile with a valid default payment method.\n  Set this up at `https://dash.cloudflare.com/{account_id}/billing/payment-info`.\n- The account must not already be at the maximum supported domain limit.\n  A single account may own up to 500 domains in total across registrations\n  created through either the dashboard or this API.\n- The domain must be on a supported extension for programmatic registration.\n- Use `POST /domain-check` immediately before calling this endpoint to confirm\n  real-time availability and pricing.\n\n### Express mode\nThe only required field is `domain_name`. If `contacts` is omitted, the system\nuses the account's default address book entry as the registrant. If no default\nexists and no contact is provided, the request fails. Set up a default address\nbook entry and accept the required agreement at\n`https://dash.cloudflare.com/{account_id}/domains/registrations`.\n\n### Defaults\n- `years`: defaults to the extension's minimum registration period (1 year for\n  most extensions, but varies — for example, `.ai` (if supported) requires a minimum of 2 years).\n- `auto_renew`: defaults to `false`. Setting it to `true` is an explicit\n  opt-in authorizing Cloudflare to charge the account's default payment\n  method up to 30 days before domain expiry to renew the registration.\n  Renewal pricing may change over time based on registry pricing.\n- `privacy_mode`: defaults to `redaction`.\n\n### Premium domains\nPremium domain registration is not currently supported by this API.\nIf `POST /domain-check` returns `tier: premium`, do not call this\nendpoint for that domain.\n\n### Response behavior\nBy default, the server holds the connection for a bounded, server-defined\namount of time while the registration completes. Most registrations finish\nwithin this window and return `201 Created` with a completed workflow status.\n\nIf the registration is still processing after this synchronous wait window,\nthe server returns `202 Accepted`. Poll the URL in `links.self` to track progress.\n\nTo skip the wait and receive an immediate `202`, send `Prefer: respond-async`.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -6941,7 +6973,7 @@
 								"example": "redaction",
 								"default": "redaction",
 								"enum": [
-									false,
+									"off",
 									"redaction"
 								]
 							},
@@ -7105,6 +7137,7 @@
 													"format": "date-time"
 												},
 												"error": {
+													"type": "object",
 													"allOf": [
 														{
 															"description": "Error details when a workflow reaches the `failed` state. The specific\nerror codes and messages depend on the workflow type (registration,\nupdate, etc.) and the underlying registry response. These workflow\nerror codes are separate from immediate HTTP error `errors[].code`\nvalues returned by non-2xx responses. Surface\n`error.message` to the user for context.\n",
@@ -7322,6 +7355,7 @@
 													"format": "date-time"
 												},
 												"error": {
+													"type": "object",
 													"allOf": [
 														{
 															"description": "Error details when a workflow reaches the `failed` state. The specific\nerror codes and messages depend on the workflow type (registration,\nupdate, etc.) and the underlying registry response. These workflow\nerror codes are separate from immediate HTTP error `errors[].code`\nvalues returned by non-2xx responses. Surface\n`error.message` to the user for context.\n",
@@ -7410,7 +7444,7 @@
 									"errors": [
 										{
 											"code": 10000,
-											"message": "Domain limit reached: you cannot register more than 100 domains.",
+											"message": "Domain limit reached: you cannot register more than 500 domains.",
 											"source": {
 												"pointer": "/domain_name"
 											}
@@ -7588,7 +7622,9 @@
 		"tags": [
 			"Registrar Registration"
 		],
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

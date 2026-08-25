@@ -400,7 +400,11 @@
 			"IP Prefixes: Read",
 			"IP Prefixes: BGP On Demand Write",
 			"IP Prefixes: BGP On Demand Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.prefixes.advertisement-status",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/status": {
 		"operationId": "ip-address-management-dynamic-advertisement-update-prefix-dynamic-advertisement-status",
@@ -820,6 +824,10 @@
 			"Magic Transit Write",
 			"IP Prefixes: Write",
 			"IP Prefixes: BGP On Demand Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.prefixes.advertisement-status",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	}
 }

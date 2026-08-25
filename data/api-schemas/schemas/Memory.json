@@ -254,7 +254,11 @@
 		],
 		"tags": [
 			"Memory"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "agent-memory",
+		"x-fern-sdk-method-name": "delete-profile",
+		"x-forge-require-confirmation": "This operation deletes the profile along with all of its memories and messages."
 	},
 	"DELETE /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/memories/{memory_id}": {
 		"operationId": "agent-memory-memory-delete",
@@ -578,7 +582,11 @@
 		],
 		"tags": [
 			"Memory"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "agent-memory",
+		"x-fern-sdk-method-name": "delete-memory",
+		"x-forge-require-confirmation": "This operation deletes the memory and any source messages linked to it."
 	},
 	"DELETE /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/sessions/{session_id}": {
 		"operationId": "agent-memory-session-delete",
@@ -848,7 +856,11 @@
 		],
 		"tags": [
 			"Memory"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "agent-memory",
+		"x-fern-sdk-method-name": "delete-session",
+		"x-forge-require-confirmation": "This operation deletes all memories and messages tagged with this session ID."
 	},
 	"GET /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/memories": {
 		"operationId": "agent-memory-memory-list",
@@ -1224,7 +1236,10 @@
 		],
 		"tags": [
 			"Memory"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "agent-memory",
+		"x-fern-sdk-method-name": "list-memories"
 	},
 	"GET /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/memories/{memory_id}": {
 		"operationId": "agent-memory-memory-get",
@@ -1548,7 +1563,10 @@
 		],
 		"tags": [
 			"Memory"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "agent-memory",
+		"x-fern-sdk-method-name": "get-memory"
 	},
 	"POST /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/ingest": {
 		"operationId": "agent-memory-ingest",
@@ -1861,7 +1879,10 @@
 		],
 		"tags": [
 			"Memory"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "agent-memory",
+		"x-fern-sdk-method-name": "ingest"
 	},
 	"POST /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/recall": {
 		"operationId": "agent-memory-recall",
@@ -1911,7 +1932,7 @@
 							"referenceDate": {
 								"description": "Temporal anchor for relative date references in the query.",
 								"type": "string",
-								"example": "2025-09-21"
+								"example": "2025-09-21T00:00:00Z"
 							},
 							"responseLength": {
 								"description": "Verbosity of the synthesized answer. Defaults to 'medium'.",
@@ -2215,7 +2236,10 @@
 		],
 		"tags": [
 			"Memory"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "agent-memory",
+		"x-fern-sdk-method-name": "recall"
 	},
 	"POST /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/remember": {
 		"operationId": "agent-memory-remember",
@@ -2553,7 +2577,10 @@
 		],
 		"tags": [
 			"Memory"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "agent-memory",
+		"x-fern-sdk-method-name": "remember"
 	},
 	"POST /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/summary": {
 		"operationId": "agent-memory-summary",
@@ -2837,6 +2864,9 @@
 		],
 		"tags": [
 			"Memory"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "agent-memory",
+		"x-fern-sdk-method-name": "summary"
 	}
 }

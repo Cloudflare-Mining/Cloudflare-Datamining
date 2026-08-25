@@ -526,8 +526,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "firewall.ua-rules",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
-		"x-forge-require-confirmation": "This operation deletes the User Agent Blocking rule from the zone."
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/firewall/ua_rules": {
 		"operationId": "user-agent-blocking-rules-list-user-agent-blocking-rules",

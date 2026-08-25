@@ -199,7 +199,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.meetings.active",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/kick": {
 		"operationId": "KickPartcipants",
@@ -249,23 +252,34 @@
 								"type": "array",
 								"items": {
 									"type": "string"
-								}
+								},
+								"minItems": 1
 							},
 							"participant_ids": {
 								"type": "array",
 								"items": {
+									"format": "uuid",
 									"type": "string"
-								}
+								},
+								"minItems": 1
 							}
 						},
-						"required": [
-							"participant_ids",
-							"custom_participant_ids"
+						"anyOf": [
+							{
+								"required": [
+									"participant_ids"
+								]
+							},
+							{
+								"required": [
+									"custom_participant_ids"
+								]
+							}
 						]
 					}
 				}
 			},
-			"description": "Request body for kicking participants from an active session. Only one of `participant_id` or `custom_participant_id` is required.",
+			"description": "Request body for kicking participants from an active session. At least one of `participant_ids` or `custom_participant_ids` must contain a value.",
 			"required": true
 		},
 		"responses": {
@@ -390,7 +404,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.meetings.active",
+		"x-fern-sdk-method-name": "kick"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/kick-all": {
 		"operationId": "KickAllParticipants",
@@ -469,7 +486,11 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.meetings.active",
+		"x-fern-sdk-method-name": "kick-all",
+		"x-forge-require-confirmation": "This operation disconnects every active participant immediately."
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/mute": {
 		"operationId": "MuteParticipants",
@@ -519,23 +540,33 @@
 								"type": "array",
 								"items": {
 									"type": "string"
-								}
+								},
+								"minItems": 1
 							},
 							"participant_ids": {
 								"type": "array",
 								"items": {
 									"type": "string"
-								}
+								},
+								"minItems": 1
 							}
 						},
-						"required": [
-							"participant_ids",
-							"custom_participant_ids"
+						"anyOf": [
+							{
+								"required": [
+									"participant_ids"
+								]
+							},
+							{
+								"required": [
+									"custom_participant_ids"
+								]
+							}
 						]
 					}
 				}
 			},
-			"description": "Request body for kicking participants from an active session. Only one of `participant_id` or `custom_participant_id` is required.",
+			"description": "Request body for muting participants in an active session. At least one of `participant_ids` or `custom_participant_ids` must contain a value.",
 			"required": true
 		},
 		"responses": {
@@ -610,7 +641,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.meetings.active",
+		"x-fern-sdk-method-name": "mute"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/mute-all": {
 		"operationId": "MuteAllParticipants",
@@ -658,12 +692,10 @@
 						"properties": {
 							"allow_unmute": {
 								"description": "if false, participants won't be able to unmute themselves after they are muted",
-								"type": "boolean"
+								"type": "boolean",
+								"default": false
 							}
-						},
-						"required": [
-							"allow_unmute"
-						]
+						}
 					}
 				}
 			},
@@ -709,7 +741,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.meetings.active",
+		"x-fern-sdk-method-name": "mute-all"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/poll": {
 		"operationId": "CreatePoll",
@@ -897,6 +932,9 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.meetings.active.polls",
+		"x-fern-sdk-method-name": "create"
 	}
 }

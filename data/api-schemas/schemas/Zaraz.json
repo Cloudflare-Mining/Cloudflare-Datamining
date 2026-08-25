@@ -1742,7 +1742,11 @@
 			"Zaraz Edit",
 			"Zaraz Read",
 			"Zaraz Admin"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zaraz.config",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/settings/zaraz/default": {
 		"operationId": "get-zones-zone_identifier-zaraz-default",
@@ -3487,7 +3491,11 @@
 			"Zaraz Edit",
 			"Zaraz Read",
 			"Zaraz Admin"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zaraz.default",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/settings/zaraz/export": {
 		"operationId": "get-zones-zone_identifier-zaraz-export",
@@ -5150,7 +5158,11 @@
 			"Zaraz Edit",
 			"Zaraz Read",
 			"Zaraz Admin"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zaraz.export",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/settings/zaraz/history": {
 		"operationId": "get-zones-zone_identifier-zaraz-history",
@@ -5506,7 +5518,11 @@
 			"Zaraz Edit",
 			"Zaraz Read",
 			"Zaraz Admin"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zaraz.history",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/settings/zaraz/history/configs": {
 		"operationId": "get-zones-zone_identifier-zaraz-config-history",
@@ -7399,7 +7415,11 @@
 			"Zaraz Edit",
 			"Zaraz Read",
 			"Zaraz Admin"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zaraz.history.configs",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/settings/zaraz/workflow": {
 		"operationId": "get-zones-zone_identifier-zaraz-workflow",
@@ -7656,7 +7676,11 @@
 			"Zaraz Edit",
 			"Zaraz Read",
 			"Zaraz Admin"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zaraz.workflow",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/settings/zaraz/publish": {
 		"operationId": "post-zones-zone_identifier-zaraz-publish",
@@ -7922,7 +7946,11 @@
 			"enum": [
 				"#zaraz:publish"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zaraz.publish",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/settings/zaraz/config": {
 		"operationId": "put-zones-zone_identifier-zaraz-config",
@@ -11170,7 +11198,11 @@
 		"x-api-token-group": [
 			"Zaraz Edit",
 			"Zaraz Admin"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zaraz.config",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/settings/zaraz/history": {
 		"operationId": "put-zones-zone_identifier-zaraz-history",
@@ -12927,7 +12959,11 @@
 		"x-api-token-group": [
 			"Zaraz Edit",
 			"Zaraz Admin"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zaraz.history",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/settings/zaraz/workflow": {
 		"operationId": "put-zones-zone_identifier-zaraz-workflow",
@@ -13199,6 +13235,10 @@
 		"x-api-token-group": [
 			"Zaraz Edit",
 			"Zaraz Admin"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zaraz.workflow",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

@@ -264,7 +264,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "ai-gateway.billing.spending_limit",
+		"x-fern-sdk-group-name": "ai-gateway.billing.spending-limit",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
 	},
@@ -646,10 +646,7 @@
 											},
 											"required": [
 												"threshold",
-												"amount",
-												"error",
-												"disabledReason",
-												"lastFailedAt"
+												"amount"
 											]
 										}
 									},
@@ -865,7 +862,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.billing",
-		"x-fern-sdk-method-name": "credit_balance",
+		"x-fern-sdk-method-name": "credit-balance",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/invoice-history": {
@@ -1241,7 +1238,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.billing",
-		"x-fern-sdk-method-name": "invoice_history",
+		"x-fern-sdk-method-name": "invoice-history",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/invoice-preview": {
@@ -1637,7 +1634,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.billing",
-		"x-fern-sdk-method-name": "invoice_preview",
+		"x-fern-sdk-method-name": "invoice-preview",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/spending-limit": {
@@ -1937,7 +1934,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "ai-gateway.billing.spending_limit",
+		"x-fern-sdk-group-name": "ai-gateway.billing.spending-limit",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -2026,10 +2023,7 @@
 									},
 									"required": [
 										"threshold",
-										"amount",
-										"error",
-										"disabledReason",
-										"lastFailedAt"
+										"amount"
 									]
 								},
 								"result_info": {
@@ -2524,7 +2518,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.billing",
+		"x-fern-sdk-method-name": "get-topup-limits",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/usage-history": {
 		"operationId": "aig-billing-get-usage-history",
@@ -2861,7 +2859,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.billing",
-		"x-fern-sdk-method-name": "usage_history",
+		"x-fern-sdk-method-name": "usage-history",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/billing/spending-limit": {
@@ -3173,7 +3171,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "ai-gateway.billing.spending_limit",
+		"x-fern-sdk-group-name": "ai-gateway.billing.spending-limit",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
@@ -3849,6 +3847,409 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.billing.topup.config",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/ai-gateway/billing/topup/eligibility": {
+		"operationId": "aig-billing-topup-eligibility",
+		"summary": "Get top-up eligibility",
+		"description": "Determine whether an account can self-serve a credit top-up, and if not, why. The dashboard forwards the account's payment-method list in the body; the reason logic is owned here.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"payment_methods": {
+								"description": "Account-level payment methods, forwarded by the dashboard.",
+								"type": "array",
+								"items": {
+									"properties": {
+										"default": {
+											"description": "Whether this is the account default payment method.",
+											"type": "boolean",
+											"example": true
+										},
+										"last_four": {
+											"description": "Last 4 digits, for display copy only.",
+											"type": "string",
+											"example": "4242"
+										},
+										"type": {
+											"description": "Payment-method type. Absent or unrecognized is treated as non-card (does not error). Known values: PAYPAL, CREDIT_CARD, APPLE_PAY, GOOGLE_PAY, ACH_DIRECT_DEBIT, SEPA_DEBIT, CASHAPP, LINK, CRYPTO.",
+											"type": "string",
+											"example": "CREDIT_CARD"
+										}
+									},
+									"type": "object"
+								},
+								"maxItems": 100
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Eligibility determined.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"account_payment_method_state": {
+											"description": "Account-level PM posture derived from the passed-in list.",
+											"type": "string",
+											"example": "SUPPORTED_PRESENT",
+											"enum": [
+												"NONE",
+												"UNSUPPORTED_ONLY",
+												"SUPPORTED_PRESENT",
+												"UNKNOWN"
+											]
+										},
+										"aig_customer_state": {
+											"description": "AIG Stripe customer resolution outcome.",
+											"type": "string",
+											"example": "RESOLVED",
+											"enum": [
+												"RESOLVED",
+												"RESOLUTION_FAILED"
+											]
+										},
+										"aig_default_payment_method_state": {
+											"description": "Whether the AIG Stripe customer has a default PM attached.",
+											"type": "string",
+											"example": "MISSING",
+											"enum": [
+												"PRESENT",
+												"MISSING"
+											]
+										},
+										"display_payment_method": {
+											"description": "Card to reference in the UI, e.g. \"use card ending 1234\".",
+											"type": "object",
+											"nullable": true,
+											"properties": {
+												"brand": {
+													"type": "string",
+													"example": "visa"
+												},
+												"last4": {
+													"type": "string",
+													"example": "1234"
+												}
+											},
+											"required": [
+												"last4"
+											]
+										},
+										"eligible": {
+											"description": "True only when reason === ELIGIBLE.",
+											"type": "boolean",
+											"example": false
+										},
+										"reason": {
+											"description": "Canonical (in)eligibility cause. Drives Stratus copy + support triage.",
+											"type": "string",
+											"example": "ACCOUNT_PAYMENT_METHOD_NOT_LINKED_TO_AIG",
+											"enum": [
+												"ELIGIBLE",
+												"NO_ACCOUNT_PAYMENT_METHOD",
+												"UNSUPPORTED_ACCOUNT_PAYMENT_METHOD",
+												"ACCOUNT_PAYMENT_METHOD_NOT_DEFAULT",
+												"ACCOUNT_PAYMENT_METHOD_NOT_LINKED_TO_AIG",
+												"CONTRACT_BILLING_NOT_SELF_SERVE",
+												"AIG_CUSTOMER_RESOLUTION_FAILED",
+												"PENDING_3DS_AUTHENTICATION",
+												"PAYMENT_AUTHENTICATION_FAILED"
+											]
+										},
+										"recommended_action": {
+											"description": "Machine-readable next step.",
+											"type": "string",
+											"example": "USE_EXISTING_CARD",
+											"enum": [
+												"NONE",
+												"ADD_SUPPORTED_PAYMENT_METHOD",
+												"USE_EXISTING_CARD",
+												"SET_CARD_AS_DEFAULT",
+												"CONTACT_SUPPORT",
+												"RESUME_AUTHENTICATION",
+												"RETRY"
+											]
+										},
+										"recoverable": {
+											"description": "Whether the customer can resolve this themselves (vs contact support).",
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"required": [
+										"eligible",
+										"reason",
+										"recoverable",
+										"recommended_action",
+										"account_payment_method_state",
+										"aig_customer_state",
+										"aig_default_payment_method_state",
+										"display_payment_method"
+									]
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"has_more": {
+											"type": "boolean"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"has_more",
+										"page",
+										"per_page",
+										"total_count"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"AI Gateway"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-sdk-group-name": "ai-gateway.billing.topup",
+		"x-fern-sdk-method-name": "eligibility",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/billing/topup/status": {

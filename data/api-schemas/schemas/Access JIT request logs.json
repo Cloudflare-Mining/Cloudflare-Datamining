@@ -399,7 +399,11 @@
 		],
 		"tags": [
 			"Access JIT request logs"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.logs.jit-requests",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/logs/jit_requests/{knock_request_id}": {
 		"operationId": "access-jit-request-logs-get",
@@ -882,6 +886,10 @@
 		],
 		"tags": [
 			"Access JIT request logs"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.logs.jit-requests",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	}
 }

@@ -65,7 +65,7 @@
 									"data": [
 										{
 											"count": 4,
-											"date": "2023-07-15",
+											"date": "2023-07-15T00:00:00Z",
 											"total_ingest_seconds": 531,
 											"total_viewer_seconds": 116
 										}
@@ -123,7 +123,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.analytics.livestreams.daily",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/analytics/livestreams/overall": {
 		"operationId": "get-livestream-analytics-complete",
@@ -238,7 +241,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.analytics.livestreams",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/livestreams": {
 		"operationId": "fetch_all_livestreams",
@@ -417,7 +423,8 @@
 										"stream_key": {
 											"description": "Unique key for accessing each livestream.",
 											"type": "string",
-											"example": "f26566285faca6fbe2e79a73a66rsrrsrrsr3cde23a2bb7dbc6c2c1761b98f4e4"
+											"example": "f26566285faca6fbe2e79a73a66rsrrsrrsr3cde23a2bb7dbc6c2c1761b98f4e4",
+											"x-sensitive": true
 										},
 										"updated_at": {
 											"description": "Timestamp the object was updated at. The time is returned in ISO format.",
@@ -447,7 +454,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.livestreams",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/livestreams/{livestream_id}": {
 		"operationId": "get-v2-livestream-session-livestream-id",
@@ -531,7 +541,7 @@
 												"ingest_seconds": 60,
 												"invoked_time": null,
 												"livestream_id": "b60ef3da-fbbb-441b-9168-8235b0035248",
-												"started_time": "2023-07-15T07:08:39.000Z",
+												"started_time": "2023-07-15T07:08:39Z",
 												"stopped_time": null,
 												"updated_at": "2023-07-15T07:08:40.742Z",
 												"viewer_seconds": 60
@@ -595,7 +605,8 @@
 												},
 												"stream_key": {
 													"description": "Unique key for accessing each livestream.",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												},
 												"updated_at": {
 													"description": "Timestamp the object was updated at. The time is returned in ISO format.",
@@ -690,7 +701,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.livestreams",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/livestreams/{livestream_id}/active-livestream-session": {
 		"operationId": "get-v2-active-livestream-session-details",
@@ -757,7 +771,7 @@
 											"ingest_seconds": 60,
 											"invoked_time": null,
 											"livestream_id": "b60ef3da-fbbb-441b-9168-8235b0035248",
-											"started_time": "2023-07-15T07:08:39.000Z",
+											"started_time": "2023-07-15T07:08:39Z",
 											"stopped_time": null,
 											"updated_at": "2023-07-15T07:08:40.742Z",
 											"viewer_seconds": 60
@@ -815,7 +829,8 @@
 												},
 												"stream_key": {
 													"description": "Unique key for accessing each livestream.",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												},
 												"updated_at": {
 													"description": "Timestamp the object was updated at. The time is returned in ISO format.",
@@ -893,7 +908,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.livestreams.sessions",
+		"x-fern-sdk-method-name": "list-active"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/livestreams/sessions/{livestream-session-id}": {
 		"operationId": "get-v2-livestreams-livestream-session-id",
@@ -947,7 +965,7 @@
 										"ingest_seconds": 60,
 										"invoked_time": null,
 										"livestream_id": "b60ef3da-fbbb-441b-9168-8235b0035248",
-										"started_time": "2023-07-15T07:08:39.000Z",
+										"started_time": "2023-07-15T07:08:39Z",
 										"stopped_time": null,
 										"updated_at": "2023-07-15T07:08:40.742Z",
 										"viewer_seconds": 60
@@ -1020,7 +1038,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.livestreams.sessions",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-livestream": {
 		"operationId": "get-v2-meetings-meetingId-active-livestream",
@@ -1106,7 +1127,8 @@
 										},
 										"stream_key": {
 											"description": "Unique key for accessing each livestream.",
-											"type": "string"
+											"type": "string",
+											"x-sensitive": true
 										},
 										"updated_at": {
 											"description": "Timestamp the object was updated at. The time is returned in ISO format.",
@@ -1135,7 +1157,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.meetings.livestream",
+		"x-fern-sdk-method-name": "list-active"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/livestream": {
 		"operationId": "livestream-session-details",
@@ -1199,7 +1224,7 @@
 												"ingest_seconds": 60,
 												"invoked_time": null,
 												"livestream_id": "b60ef3da-fbbb-441b-9168-8235b0035248",
-												"started_time": "2023-07-15T07:08:39.000Z",
+												"started_time": "2023-07-15T07:08:39Z",
 												"stopped_time": null,
 												"updated_at": "2023-07-15T07:08:40.742Z",
 												"viewer_seconds": 60
@@ -1266,7 +1291,8 @@
 													},
 													"stream_key": {
 														"description": "Unique key for accessing each livestream.",
-														"type": "string"
+														"type": "string",
+														"x-sensitive": true
 													},
 													"updated_at": {
 														"description": "The timestamp at which the livestream was updated. The time is returned in ISO format.",
@@ -1361,7 +1387,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.meetings.livestream",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/livestream-sessions": {
 		"operationId": "get-v2-livestreamsession-session-meetingId-active-livestream",
@@ -1434,8 +1463,8 @@
 												"ingest_seconds": 118,
 												"invoked_time": null,
 												"livestream_id": "b60ef3da-fbbb-441b-9168-8235b0035123",
-												"started_time": "2023-07-15T07:08:39.000Z",
-												"stopped_time": "2023-07-15T07:10:45.000Z",
+												"started_time": "2023-07-15T07:08:39Z",
+												"stopped_time": "2023-07-15T07:10:45Z",
 												"updated_at": "2023-07-15T07:11:47.274Z",
 												"viewer_seconds": 116.11599994199997
 											}
@@ -1537,7 +1566,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.sessions.livestreams",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/livestreams": {
 		"operationId": "create_livestream",
@@ -1630,7 +1662,8 @@
 										},
 										"stream_key": {
 											"description": "Unique key for accessing each livestream.",
-											"type": "string"
+											"type": "string",
+											"x-sensitive": true
 										}
 									}
 								},
@@ -1654,7 +1687,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.livestreams",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-livestream/stop": {
 		"operationId": "stop_livestreaming",
@@ -1721,7 +1757,11 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.livestreams",
+		"x-fern-sdk-method-name": "stop",
+		"x-forge-require-confirmation": "This operation stops the active livestream. Viewers lose the broadcast immediately."
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/livestreams": {
 		"operationId": "start-livestreaming",
@@ -1824,7 +1864,8 @@
 										},
 										"stream_key": {
 											"description": "Unique key for accessing each livestream.",
-											"type": "string"
+											"type": "string",
+											"x-sensitive": true
 										}
 									}
 								},
@@ -1848,6 +1889,9 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.livestreams",
+		"x-fern-sdk-method-name": "start"
 	}
 }

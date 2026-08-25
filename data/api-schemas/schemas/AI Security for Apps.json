@@ -1,8 +1,8 @@
 {
 	"GET /zones/{zone_id}/ai-security/custom-topics": {
 		"operationId": "ai-security-custom-topics-get",
-		"summary": "Get AI Security for Apps Custom Topics",
-		"description": "Get the AI Security for Apps custom topic categories for a zone.",
+		"summary": "Get the AI Security for Apps custom topics of a zone.",
+		"description": "Get the custom topic categories defined for the zone. While AI Security for Apps is enabled, it scores every incoming prompt against these topics and writes the scores to the `cf.llm.prompt.custom_topic_categories` field, keyed by topic label. Topics can be configured while the detection is disabled, but no prompt is scored until you enable it.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -146,7 +146,8 @@
 																"type": "string",
 																"example": "credit card numbers",
 																"maxLength": 50,
-																"minLength": 2
+																"minLength": 2,
+																"pattern": "^[ -~]+$"
 															}
 														},
 														"required": [
@@ -297,7 +298,8 @@
 																		"type": "string",
 																		"example": "credit card numbers",
 																		"maxLength": 50,
-																		"minLength": 2
+																		"minLength": 2,
+																		"pattern": "^[ -~]+$"
 																	}
 																},
 																"required": [
@@ -413,12 +415,16 @@
 		],
 		"tags": [
 			"AI Security for Apps"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-security.custom-topics",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/ai-security/settings": {
 		"operationId": "ai-security-settings-get",
-		"summary": "Get AI Security for Apps Status",
-		"description": "Get whether AI Security for Apps is enabled or disabled for a zone.",
+		"summary": "Get the AI Security for Apps status for a zone.",
+		"description": "Get the current AI Security for Apps status for the zone. While enabled, Cloudflare scans prompts sent to endpoints labeled `cf-llm` for personally identifiable information, unsafe topics, and prompt injection attempts.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -783,12 +789,16 @@
 		],
 		"tags": [
 			"AI Security for Apps"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-security",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/ai-security/custom-topics": {
 		"operationId": "ai-security-custom-topics-put",
-		"summary": "Set AI Security for Apps Custom Topics",
-		"description": "Set the AI Security for Apps custom topic categories for a zone.\n\nA maximum of 20 custom topics can be configured per zone.\nEach topic label must be 2–20 characters using only lowercase letters (a–z), digits (0–9), and hyphens.\nEach topic description must be 2–50 printable ASCII characters.\n\nChanges can take up to a minute to propagate to the zone.\n",
+		"summary": "Update the AI Security for Apps custom topics of a zone.",
+		"description": "Update the custom topic list of the zone, overwriting it entirely with the topics in the request, so include\nevery topic you want to keep. Changes can take up to a minute to propagate.\n\nEach entry has a `label`, used to reference the topic in rule expressions and analytics, and a `topic`\ndescription, which the classifier scores prompts against while AI Security for Apps is enabled. The following\nrules apply:\n\n- A zone can hold at most 20 topics.\n- `label` must be 2–20 characters, using only lowercase letters (a–z), digits (0–9), and hyphens.\n- `topic` must be 2–50 printable ASCII characters.\n- Labels must be unique within the zone, and so must topic descriptions.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -828,7 +838,8 @@
 											"type": "string",
 											"example": "credit card numbers",
 											"maxLength": 50,
-											"minLength": 2
+											"minLength": 2,
+											"pattern": "^[ -~]+$"
 										}
 									},
 									"required": [
@@ -845,7 +856,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Set AI Security for Apps custom topics response.",
+				"description": "Update AI Security for Apps custom topics response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -973,7 +984,8 @@
 																"type": "string",
 																"example": "credit card numbers",
 																"maxLength": 50,
-																"minLength": 2
+																"minLength": 2,
+																"pattern": "^[ -~]+$"
 															}
 														},
 														"required": [
@@ -994,7 +1006,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Set AI Security for Apps custom topics failure response.",
+				"description": "Update AI Security for Apps custom topics failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1124,7 +1136,8 @@
 																		"type": "string",
 																		"example": "credit card numbers",
 																		"maxLength": 50,
-																		"minLength": 2
+																		"minLength": 2,
+																		"pattern": "^[ -~]+$"
 																	}
 																},
 																"required": [
@@ -1240,12 +1253,17 @@
 		],
 		"tags": [
 			"AI Security for Apps"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-security.custom-topics",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation overwrites the AI Security for Apps custom topics for a zone."
 	},
 	"PUT /zones/{zone_id}/ai-security/settings": {
 		"operationId": "ai-security-settings-put",
-		"summary": "Set AI Security for Apps Status",
-		"description": "Enable or disable AI Security for Apps for a zone.\n\nChanges can take up to a minute to propagate to the zone.\n",
+		"summary": "Update the AI Security for Apps status for a zone.",
+		"description": "Update the AI Security for Apps status for the zone, enabling or disabling the detection. The detection results are exposed as `cf.llm.prompt.*` fields for use in custom rules and rate limiting rules; changes can take up to a minute to propagate.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -1279,7 +1297,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Set AI Security for Apps status response.",
+				"description": "Update AI Security for Apps status response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1405,7 +1423,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Set AI Security for Apps status failure response.",
+				"description": "Update AI Security for Apps status failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1628,6 +1646,11 @@
 		],
 		"tags": [
 			"AI Security for Apps"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-security",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation toggles AI Security for Apps for a zone."
 	}
 }

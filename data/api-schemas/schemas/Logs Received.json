@@ -275,7 +275,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logs.control.retention",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/logs/rayids/{ray_id}": {
 		"operationId": "get-zones-zone_id-logs-rayids-ray_id",
@@ -490,7 +494,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logs.rayid",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/logs/received": {
 		"operationId": "get-zones-zone_id-logs-received",
@@ -754,7 +762,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logs.received",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/logs/received/fields": {
 		"operationId": "get-zones-zone_id-logs-received-fields",
@@ -929,7 +941,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logs.received.fields",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/logs/control/retention/flag": {
 		"operationId": "post-zones-zone_id-logs-control-retention-flag",
@@ -1224,6 +1240,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logs.control.retention",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

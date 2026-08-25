@@ -1,8 +1,8 @@
 {
 	"DELETE /zones/{zone_id}/token_validation/rules/{rule_id}": {
 		"operationId": "token-validation-rules-delete",
-		"summary": "Delete a zone token validation rule",
-		"description": "Delete a zone token validation rule.",
+		"summary": "Delete a token validation rule",
+		"description": "Deletes a token validation rule from the zone.",
 		"responses": {
 			"200": {
 				"description": "OK",
@@ -238,12 +238,17 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-security.token-validation.rules",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes the token validation rule from the zone."
 	},
 	"GET /zones/{zone_id}/token_validation/rules": {
 		"operationId": "token-validation-rules-list",
 		"summary": "List token validation rules",
-		"description": "List token validation rules",
+		"description": "Lists token validation rules for the zone, with filters for configuration, action, state, ID, and host.",
 		"parameters": [
 			{
 				"description": "Maximum number of results per page.",
@@ -838,12 +843,16 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-security.token-validation.rules",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/token_validation/rules/{rule_id}": {
 		"operationId": "token-validation-rules-get",
-		"summary": "Get a zone token validation rule",
-		"description": "Get a zone token validation rule.",
+		"summary": "Get a token validation rule",
+		"description": "Returns a token validation rule by ID.",
 		"responses": {
 			"200": {
 				"description": "OK",
@@ -1243,12 +1252,16 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-security.token-validation.rules",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/token_validation/rules/{rule_id}": {
 		"operationId": "token-validation-rules-edit",
-		"summary": "Edit a zone token validation rule",
-		"description": "Edit a zone token validation rule.",
+		"summary": "Edit a token validation rule",
+		"description": "Updates only the supplied fields on a token validation rule.",
 		"requestBody": {
 			"content": {
 				"application/json": {
@@ -1824,12 +1837,16 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-security.token-validation.rules",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/token_validation/rules/bulk": {
 		"operationId": "token-validation-rules-bulk-edit",
-		"summary": "Bulk edit token validation rules",
-		"description": "Edit token validation rules.\n\nA request can update multiple Token Validation Rules.\n\nRules can be re-ordered using the `position` field.\n\nReturns all updated rules.\n",
+		"summary": "Edit token validation rules",
+		"description": "Updates and reorders multiple token validation rules in one request, then returns the updated rules.",
 		"requestBody": {
 			"content": {
 				"application/json": {
@@ -2466,12 +2483,16 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-security.token-validation.rules",
+		"x-fern-sdk-method-name": "bulk-edit",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/token_validation/rules": {
 		"operationId": "token-validation-rules-create",
 		"summary": "Create a token validation rule",
-		"description": "Create a token validation rule.",
+		"description": "Creates a token validation rule for the zone.",
 		"requestBody": {
 			"content": {
 				"application/json": {
@@ -3004,12 +3025,16 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-security.token-validation.rules",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/token_validation/rules/bulk": {
 		"operationId": "token-validation-rules-bulk-create",
-		"summary": "Bulk create token validation rules",
-		"description": "Create zone token validation rules.\n\nA request can create multiple Token Validation Rules.\n",
+		"summary": "Create token validation rules",
+		"description": "Creates multiple token validation rules for the zone in one request.",
 		"requestBody": {
 			"content": {
 				"application/json": {
@@ -3583,12 +3608,16 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-security.token-validation.rules",
+		"x-fern-sdk-method-name": "bulk-create",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/token_validation/rules/preview": {
 		"operationId": "token-validation-rules-preview",
-		"summary": "Preview operations covered by a Token Validation rule",
-		"description": "Preview operations covered by a Token Validation rule.\n\nThe API will return all operations on a zone annotated with an additional `state` field.\nOperations with an `included` `state` will be covered by a Token Validation Rule.\n",
+		"summary": "Preview a token validation rule",
+		"description": "Returns zone operations annotated as included or excluded to preview the rule's coverage before creation.",
 		"parameters": [
 			{
 				"description": "Maximum number of results per page.",
@@ -4206,6 +4235,11 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "api-security.token-validation.rules",
+		"x-fern-sdk-method-name": "preview",
+		"x-forge-hidden": true
 	}
 }

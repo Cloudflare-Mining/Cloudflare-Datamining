@@ -510,6 +510,7 @@
 																				"example": "Data exposure and potential compliance violations."
 																			}
 																		},
+																		"nullable": true,
 																		"required": [
 																			"frameworks",
 																			"guide",
@@ -1209,7 +1210,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/findings/{finding_id}": {
 		"operationId": "GetFinding",
@@ -1501,6 +1506,7 @@
 																			"example": "Data exposure and potential compliance violations."
 																		}
 																	},
+																	"nullable": true,
 																	"required": [
 																		"frameworks",
 																		"guide",
@@ -2311,8 +2317,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
-		"x-stability": "beta"
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances": {
 		"operationId": "ListFindingInstances",
@@ -4091,8 +4096,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
-		"x-stability": "beta"
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances/unarchive": {
 		"operationId": "UnarchiveFindingInstance",
@@ -4635,8 +4639,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
-		"x-stability": "beta"
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/reset_finding_severity": {
 		"operationId": "ResetFindingSeverity",
@@ -4928,6 +4931,7 @@
 																			"example": "Data exposure and potential compliance violations."
 																		}
 																	},
+																	"nullable": true,
 																	"required": [
 																		"frameworks",
 																		"guide",
@@ -5419,8 +5423,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
-		"x-stability": "beta"
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/tune_finding_severity": {
 		"operationId": "ChangeFindingSeverity",
@@ -5738,6 +5741,7 @@
 																			"example": "Data exposure and potential compliance violations."
 																		}
 																	},
+																	"nullable": true,
 																	"required": [
 																		"frameworks",
 																		"guide",
@@ -6229,8 +6233,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
-		"x-stability": "beta"
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/ignore": {
 		"operationId": "IgnoreFinding",
@@ -6542,6 +6545,7 @@
 																			"example": "Data exposure and potential compliance violations."
 																		}
 																	},
+																	"nullable": true,
 																	"required": [
 																		"frameworks",
 																		"guide",
@@ -6922,8 +6926,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
-		"x-stability": "beta"
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/unignore": {
 		"operationId": "UnIgnoreFinding",
@@ -7235,6 +7238,7 @@
 																			"example": "Data exposure and potential compliance violations."
 																		}
 																	},
+																	"nullable": true,
 																	"required": [
 																		"frameworks",
 																		"guide",
@@ -7615,7 +7619,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
-		"x-stability": "beta"
+		"x-forge-hidden": true
 	}
 }

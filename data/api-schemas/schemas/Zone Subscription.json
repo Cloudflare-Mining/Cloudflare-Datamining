@@ -379,7 +379,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.subscriptions",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /zones/{zone_id}/subscriptions": {
 		"operationId": "zone-subscription-delete-zone-subscriptions",
@@ -896,16 +900,19 @@
 													"type": "object",
 													"properties": {
 														"app": {
+															"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+															"deprecated": true,
 															"properties": {
 																"install_id": {
 																	"description": "app install id.",
 																	"type": "string",
+																	"deprecated": true,
 																	"x-auditable": true
 																}
 															}
 														},
 														"component_values": {
-															"description": "The list of add-ons subscribed to.",
+															"description": "Configurable component values for the subscription.",
 															"type": "array",
 															"items": {
 																"description": "A component value for a subscription.",
@@ -1150,444 +1157,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"app": {
-																	"properties": {
-																		"install_id": {
-																			"description": "app install id.",
-																			"type": "string",
-																			"x-auditable": true
-																		}
-																	}
-																},
-																"component_values": {
-																	"description": "The list of add-ons subscribed to.",
-																	"type": "array",
-																	"items": {
-																		"description": "A component value for a subscription.",
-																		"type": "object",
-																		"properties": {
-																			"default": {
-																				"description": "The default amount assigned.",
-																				"type": "number",
-																				"example": 5,
-																				"x-auditable": true
-																			},
-																			"display_name": {
-																				"description": "A human-readable version of the component name.",
-																				"type": "string",
-																				"example": "Page Rules"
-																			},
-																			"kind": {
-																				"description": "The type of component value. \"enum\" for discrete values (including boolean on/off toggles where 0=off and 1=on), \"sum\" for countable quantities, \"usage\" for metered billing components.",
-																				"type": "string",
-																				"example": "sum",
-																				"enum": [
-																					"enum",
-																					"sum",
-																					"usage"
-																				]
-																			},
-																			"name": {
-																				"description": "The name of the component value.",
-																				"type": "string",
-																				"example": "page_rules",
-																				"x-auditable": true
-																			},
-																			"price": {
-																				"description": "The unit price for the component value.",
-																				"type": "number",
-																				"example": 5,
-																				"x-auditable": true
-																			},
-																			"value": {
-																				"description": "The amount of the component value assigned.",
-																				"type": "number",
-																				"example": 20,
-																				"x-auditable": true
-																			}
-																		}
-																	}
-																},
-																"currency": {
-																	"description": "The monetary unit in which pricing information is displayed.",
-																	"type": "string",
-																	"example": "USD",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"current_period_end": {
-																	"description": "The end of the current period and also when the next billing is due.",
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-03-31T12:20:00Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"current_period_start": {
-																	"description": "When the current billing period started. May match initial_period_start if this is the first period.",
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-05-11T12:20:00Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"frequency": {
-																	"description": "How often the subscription is renewed automatically.",
-																	"type": "string",
-																	"example": "monthly",
-																	"enum": [
-																		"weekly",
-																		"monthly",
-																		"quarterly",
-																		"yearly"
-																	],
-																	"x-auditable": true
-																},
-																"id": {
-																	"description": "Subscription identifier tag.",
-																	"type": "string",
-																	"example": "506e3185e9c882d175a2d0cb0093d9f2",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"price": {
-																	"description": "The price of the subscription that will be billed, in US dollars.",
-																	"type": "number",
-																	"example": 20,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"rate_plan": {
-																	"description": "The rate plan applied to the subscription.",
-																	"type": "object",
-																	"properties": {
-																		"currency": {
-																			"description": "The currency applied to the rate plan subscription.",
-																			"type": "string",
-																			"example": "USD",
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"externally_managed": {
-																			"description": "Whether this rate plan is managed externally from Cloudflare.",
-																			"type": "boolean",
-																			"example": false,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"id": {
-																			"description": "The ID of the rate plan.",
-																			"type": "string",
-																			"example": "free",
-																			"x-auditable": true
-																		},
-																		"is_contract": {
-																			"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
-																			"type": "boolean",
-																			"example": false,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"public_name": {
-																			"description": "The full name of the rate plan.",
-																			"type": "string",
-																			"example": "Business Plan",
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"scope": {
-																			"description": "The scope that this rate plan applies to.",
-																			"type": "string",
-																			"example": "zone",
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"sets": {
-																			"description": "The list of sets this rate plan applies to. Returns array of strings.",
-																			"type": "array",
-																			"items": {
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			"example": [],
-																			"x-stainless-terraform-configurability": "optional"
-																		}
-																	}
-																},
-																"state": {
-																	"description": "The state that the subscription is in.",
-																	"type": "string",
-																	"example": "Paid",
-																	"enum": [
-																		"Trial",
-																		"Provisioned",
-																		"Paid",
-																		"AwaitingPayment",
-																		"Cancelled",
-																		"Failed",
-																		"Expired"
-																	],
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"zone": {
-																	"description": "A simple zone object. May have null properties if not a zone subscription.",
-																	"type": "object",
-																	"properties": {
-																		"id": {
-																			"description": "Identifier",
-																			"type": "string",
-																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																			"maxLength": 32,
-																			"readOnly": true,
-																			"x-auditable": true
-																		},
-																		"name": {
-																			"description": "The domain name",
-																			"type": "string",
-																			"example": "example.com",
-																			"maxLength": 253,
-																			"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-																			"readOnly": true,
-																			"x-auditable": true
-																		}
-																	}
-																}
-															}
-														},
-														{
-															"properties": {
-																"frequency": {
-																	"description": "How often the subscription is renewed automatically (computed field).",
-																	"allOf": [
-																		{
-																			"description": "How often the subscription is renewed automatically.",
-																			"type": "string",
-																			"example": "monthly",
-																			"enum": [
-																				"weekly",
-																				"monthly",
-																				"quarterly",
-																				"yearly"
-																			],
-																			"x-auditable": true
-																		},
-																		{
-																			"enum": [
-																				"weekly",
-																				"monthly",
-																				"quarterly",
-																				"yearly",
-																				"not-applicable"
-																			],
-																			"type": "string"
-																		}
-																	],
-																	"readOnly": true,
-																	"x-stainless-terraform-configurability": "computed"
-																}
-															},
-															"type": "object"
-														}
-													]
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1650,16 +1300,19 @@
 						"type": "object",
 						"properties": {
 							"app": {
+								"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+								"deprecated": true,
 								"properties": {
 									"install_id": {
 										"description": "app install id.",
 										"type": "string",
+										"deprecated": true,
 										"x-auditable": true
 									}
 								}
 							},
 							"component_values": {
-								"description": "The list of add-ons subscribed to.",
+								"description": "Configurable component values for the subscription.",
 								"type": "array",
 								"items": {
 									"description": "A component value for a subscription.",
@@ -1970,16 +1623,19 @@
 													"type": "object",
 													"properties": {
 														"app": {
+															"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+															"deprecated": true,
 															"properties": {
 																"install_id": {
 																	"description": "app install id.",
 																	"type": "string",
+																	"deprecated": true,
 																	"x-auditable": true
 																}
 															}
 														},
 														"component_values": {
-															"description": "The list of add-ons subscribed to.",
+															"description": "Configurable component values for the subscription.",
 															"type": "array",
 															"items": {
 																"description": "A component value for a subscription.",
@@ -2224,444 +1880,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"app": {
-																	"properties": {
-																		"install_id": {
-																			"description": "app install id.",
-																			"type": "string",
-																			"x-auditable": true
-																		}
-																	}
-																},
-																"component_values": {
-																	"description": "The list of add-ons subscribed to.",
-																	"type": "array",
-																	"items": {
-																		"description": "A component value for a subscription.",
-																		"type": "object",
-																		"properties": {
-																			"default": {
-																				"description": "The default amount assigned.",
-																				"type": "number",
-																				"example": 5,
-																				"x-auditable": true
-																			},
-																			"display_name": {
-																				"description": "A human-readable version of the component name.",
-																				"type": "string",
-																				"example": "Page Rules"
-																			},
-																			"kind": {
-																				"description": "The type of component value. \"enum\" for discrete values (including boolean on/off toggles where 0=off and 1=on), \"sum\" for countable quantities, \"usage\" for metered billing components.",
-																				"type": "string",
-																				"example": "sum",
-																				"enum": [
-																					"enum",
-																					"sum",
-																					"usage"
-																				]
-																			},
-																			"name": {
-																				"description": "The name of the component value.",
-																				"type": "string",
-																				"example": "page_rules",
-																				"x-auditable": true
-																			},
-																			"price": {
-																				"description": "The unit price for the component value.",
-																				"type": "number",
-																				"example": 5,
-																				"x-auditable": true
-																			},
-																			"value": {
-																				"description": "The amount of the component value assigned.",
-																				"type": "number",
-																				"example": 20,
-																				"x-auditable": true
-																			}
-																		}
-																	}
-																},
-																"currency": {
-																	"description": "The monetary unit in which pricing information is displayed.",
-																	"type": "string",
-																	"example": "USD",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"current_period_end": {
-																	"description": "The end of the current period and also when the next billing is due.",
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-03-31T12:20:00Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"current_period_start": {
-																	"description": "When the current billing period started. May match initial_period_start if this is the first period.",
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-05-11T12:20:00Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"frequency": {
-																	"description": "How often the subscription is renewed automatically.",
-																	"type": "string",
-																	"example": "monthly",
-																	"enum": [
-																		"weekly",
-																		"monthly",
-																		"quarterly",
-																		"yearly"
-																	],
-																	"x-auditable": true
-																},
-																"id": {
-																	"description": "Subscription identifier tag.",
-																	"type": "string",
-																	"example": "506e3185e9c882d175a2d0cb0093d9f2",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"price": {
-																	"description": "The price of the subscription that will be billed, in US dollars.",
-																	"type": "number",
-																	"example": 20,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"rate_plan": {
-																	"description": "The rate plan applied to the subscription.",
-																	"type": "object",
-																	"properties": {
-																		"currency": {
-																			"description": "The currency applied to the rate plan subscription.",
-																			"type": "string",
-																			"example": "USD",
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"externally_managed": {
-																			"description": "Whether this rate plan is managed externally from Cloudflare.",
-																			"type": "boolean",
-																			"example": false,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"id": {
-																			"description": "The ID of the rate plan.",
-																			"type": "string",
-																			"example": "free",
-																			"x-auditable": true
-																		},
-																		"is_contract": {
-																			"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
-																			"type": "boolean",
-																			"example": false,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"public_name": {
-																			"description": "The full name of the rate plan.",
-																			"type": "string",
-																			"example": "Business Plan",
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"scope": {
-																			"description": "The scope that this rate plan applies to.",
-																			"type": "string",
-																			"example": "zone",
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"sets": {
-																			"description": "The list of sets this rate plan applies to. Returns array of strings.",
-																			"type": "array",
-																			"items": {
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			"example": [],
-																			"x-stainless-terraform-configurability": "optional"
-																		}
-																	}
-																},
-																"state": {
-																	"description": "The state that the subscription is in.",
-																	"type": "string",
-																	"example": "Paid",
-																	"enum": [
-																		"Trial",
-																		"Provisioned",
-																		"Paid",
-																		"AwaitingPayment",
-																		"Cancelled",
-																		"Failed",
-																		"Expired"
-																	],
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"zone": {
-																	"description": "A simple zone object. May have null properties if not a zone subscription.",
-																	"type": "object",
-																	"properties": {
-																		"id": {
-																			"description": "Identifier",
-																			"type": "string",
-																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																			"maxLength": 32,
-																			"readOnly": true,
-																			"x-auditable": true
-																		},
-																		"name": {
-																			"description": "The domain name",
-																			"type": "string",
-																			"example": "example.com",
-																			"maxLength": 253,
-																			"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-																			"readOnly": true,
-																			"x-auditable": true
-																		}
-																	}
-																}
-															}
-														},
-														{
-															"properties": {
-																"frequency": {
-																	"description": "How often the subscription is renewed automatically (computed field).",
-																	"allOf": [
-																		{
-																			"description": "How often the subscription is renewed automatically.",
-																			"type": "string",
-																			"example": "monthly",
-																			"enum": [
-																				"weekly",
-																				"monthly",
-																				"quarterly",
-																				"yearly"
-																			],
-																			"x-auditable": true
-																		},
-																		{
-																			"enum": [
-																				"weekly",
-																				"monthly",
-																				"quarterly",
-																				"yearly",
-																				"not-applicable"
-																			],
-																			"type": "string"
-																		}
-																	],
-																	"readOnly": true,
-																	"x-stainless-terraform-configurability": "computed"
-																}
-															},
-															"type": "object"
-														}
-													]
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -2724,16 +2023,19 @@
 						"type": "object",
 						"properties": {
 							"app": {
+								"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+								"deprecated": true,
 								"properties": {
 									"install_id": {
 										"description": "app install id.",
 										"type": "string",
+										"deprecated": true,
 										"x-auditable": true
 									}
 								}
 							},
 							"component_values": {
-								"description": "The list of add-ons subscribed to.",
+								"description": "Configurable component values for the subscription.",
 								"type": "array",
 								"items": {
 									"description": "A component value for a subscription.",
@@ -3044,16 +2346,19 @@
 													"type": "object",
 													"properties": {
 														"app": {
+															"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+															"deprecated": true,
 															"properties": {
 																"install_id": {
 																	"description": "app install id.",
 																	"type": "string",
+																	"deprecated": true,
 																	"x-auditable": true
 																}
 															}
 														},
 														"component_values": {
-															"description": "The list of add-ons subscribed to.",
+															"description": "Configurable component values for the subscription.",
 															"type": "array",
 															"items": {
 																"description": "A component value for a subscription.",
@@ -3406,16 +2711,19 @@
 															"type": "object",
 															"properties": {
 																"app": {
+																	"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+																	"deprecated": true,
 																	"properties": {
 																		"install_id": {
 																			"description": "app install id.",
 																			"type": "string",
+																			"deprecated": true,
 																			"x-auditable": true
 																		}
 																	}
 																},
 																"component_values": {
-																	"description": "The list of add-ons subscribed to.",
+																	"description": "Configurable component values for the subscription.",
 																	"type": "array",
 																	"items": {
 																		"description": "A component value for a subscription.",
@@ -3797,16 +3105,19 @@
 						"type": "object",
 						"properties": {
 							"app": {
+								"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+								"deprecated": true,
 								"properties": {
 									"install_id": {
 										"description": "app install id.",
 										"type": "string",
+										"deprecated": true,
 										"x-auditable": true
 									}
 								}
 							},
 							"component_values": {
-								"description": "The list of add-ons subscribed to.",
+								"description": "Configurable component values for the subscription.",
 								"type": "array",
 								"items": {
 									"description": "A component value for a subscription.",
@@ -4117,16 +3428,19 @@
 													"type": "object",
 													"properties": {
 														"app": {
+															"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+															"deprecated": true,
 															"properties": {
 																"install_id": {
 																	"description": "app install id.",
 																	"type": "string",
+																	"deprecated": true,
 																	"x-auditable": true
 																}
 															}
 														},
 														"component_values": {
-															"description": "The list of add-ons subscribed to.",
+															"description": "Configurable component values for the subscription.",
 															"type": "array",
 															"items": {
 																"description": "A component value for a subscription.",
@@ -4371,444 +3685,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"app": {
-																	"properties": {
-																		"install_id": {
-																			"description": "app install id.",
-																			"type": "string",
-																			"x-auditable": true
-																		}
-																	}
-																},
-																"component_values": {
-																	"description": "The list of add-ons subscribed to.",
-																	"type": "array",
-																	"items": {
-																		"description": "A component value for a subscription.",
-																		"type": "object",
-																		"properties": {
-																			"default": {
-																				"description": "The default amount assigned.",
-																				"type": "number",
-																				"example": 5,
-																				"x-auditable": true
-																			},
-																			"display_name": {
-																				"description": "A human-readable version of the component name.",
-																				"type": "string",
-																				"example": "Page Rules"
-																			},
-																			"kind": {
-																				"description": "The type of component value. \"enum\" for discrete values (including boolean on/off toggles where 0=off and 1=on), \"sum\" for countable quantities, \"usage\" for metered billing components.",
-																				"type": "string",
-																				"example": "sum",
-																				"enum": [
-																					"enum",
-																					"sum",
-																					"usage"
-																				]
-																			},
-																			"name": {
-																				"description": "The name of the component value.",
-																				"type": "string",
-																				"example": "page_rules",
-																				"x-auditable": true
-																			},
-																			"price": {
-																				"description": "The unit price for the component value.",
-																				"type": "number",
-																				"example": 5,
-																				"x-auditable": true
-																			},
-																			"value": {
-																				"description": "The amount of the component value assigned.",
-																				"type": "number",
-																				"example": 20,
-																				"x-auditable": true
-																			}
-																		}
-																	}
-																},
-																"currency": {
-																	"description": "The monetary unit in which pricing information is displayed.",
-																	"type": "string",
-																	"example": "USD",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"current_period_end": {
-																	"description": "The end of the current period and also when the next billing is due.",
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-03-31T12:20:00Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"current_period_start": {
-																	"description": "When the current billing period started. May match initial_period_start if this is the first period.",
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-05-11T12:20:00Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"frequency": {
-																	"description": "How often the subscription is renewed automatically.",
-																	"type": "string",
-																	"example": "monthly",
-																	"enum": [
-																		"weekly",
-																		"monthly",
-																		"quarterly",
-																		"yearly"
-																	],
-																	"x-auditable": true
-																},
-																"id": {
-																	"description": "Subscription identifier tag.",
-																	"type": "string",
-																	"example": "506e3185e9c882d175a2d0cb0093d9f2",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"price": {
-																	"description": "The price of the subscription that will be billed, in US dollars.",
-																	"type": "number",
-																	"example": 20,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"rate_plan": {
-																	"description": "The rate plan applied to the subscription.",
-																	"type": "object",
-																	"properties": {
-																		"currency": {
-																			"description": "The currency applied to the rate plan subscription.",
-																			"type": "string",
-																			"example": "USD",
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"externally_managed": {
-																			"description": "Whether this rate plan is managed externally from Cloudflare.",
-																			"type": "boolean",
-																			"example": false,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"id": {
-																			"description": "The ID of the rate plan.",
-																			"type": "string",
-																			"example": "free",
-																			"x-auditable": true
-																		},
-																		"is_contract": {
-																			"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
-																			"type": "boolean",
-																			"example": false,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"public_name": {
-																			"description": "The full name of the rate plan.",
-																			"type": "string",
-																			"example": "Business Plan",
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"scope": {
-																			"description": "The scope that this rate plan applies to.",
-																			"type": "string",
-																			"example": "zone",
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"sets": {
-																			"description": "The list of sets this rate plan applies to. Returns array of strings.",
-																			"type": "array",
-																			"items": {
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			"example": [],
-																			"x-stainless-terraform-configurability": "optional"
-																		}
-																	}
-																},
-																"state": {
-																	"description": "The state that the subscription is in.",
-																	"type": "string",
-																	"example": "Paid",
-																	"enum": [
-																		"Trial",
-																		"Provisioned",
-																		"Paid",
-																		"AwaitingPayment",
-																		"Cancelled",
-																		"Failed",
-																		"Expired"
-																	],
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"zone": {
-																	"description": "A simple zone object. May have null properties if not a zone subscription.",
-																	"type": "object",
-																	"properties": {
-																		"id": {
-																			"description": "Identifier",
-																			"type": "string",
-																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																			"maxLength": 32,
-																			"readOnly": true,
-																			"x-auditable": true
-																		},
-																		"name": {
-																			"description": "The domain name",
-																			"type": "string",
-																			"example": "example.com",
-																			"maxLength": 253,
-																			"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-																			"readOnly": true,
-																			"x-auditable": true
-																		}
-																	}
-																}
-															}
-														},
-														{
-															"properties": {
-																"frequency": {
-																	"description": "How often the subscription is renewed automatically (computed field).",
-																	"allOf": [
-																		{
-																			"description": "How often the subscription is renewed automatically.",
-																			"type": "string",
-																			"example": "monthly",
-																			"enum": [
-																				"weekly",
-																				"monthly",
-																				"quarterly",
-																				"yearly"
-																			],
-																			"x-auditable": true
-																		},
-																		{
-																			"enum": [
-																				"weekly",
-																				"monthly",
-																				"quarterly",
-																				"yearly",
-																				"not-applicable"
-																			],
-																			"type": "string"
-																		}
-																	],
-																	"readOnly": true,
-																	"x-stainless-terraform-configurability": "computed"
-																}
-															},
-															"type": "object"
-														}
-													]
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -4871,16 +3828,19 @@
 						"type": "object",
 						"properties": {
 							"app": {
+								"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+								"deprecated": true,
 								"properties": {
 									"install_id": {
 										"description": "app install id.",
 										"type": "string",
+										"deprecated": true,
 										"x-auditable": true
 									}
 								}
 							},
 							"component_values": {
-								"description": "The list of add-ons subscribed to.",
+								"description": "Configurable component values for the subscription.",
 								"type": "array",
 								"items": {
 									"description": "A component value for a subscription.",
@@ -5191,16 +4151,19 @@
 													"type": "object",
 													"properties": {
 														"app": {
+															"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+															"deprecated": true,
 															"properties": {
 																"install_id": {
 																	"description": "app install id.",
 																	"type": "string",
+																	"deprecated": true,
 																	"x-auditable": true
 																}
 															}
 														},
 														"component_values": {
-															"description": "The list of add-ons subscribed to.",
+															"description": "Configurable component values for the subscription.",
 															"type": "array",
 															"items": {
 																"description": "A component value for a subscription.",
@@ -5553,16 +4516,19 @@
 															"type": "object",
 															"properties": {
 																"app": {
+																	"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+																	"deprecated": true,
 																	"properties": {
 																		"install_id": {
 																			"description": "app install id.",
 																			"type": "string",
+																			"deprecated": true,
 																			"x-auditable": true
 																		}
 																	}
 																},
 																"component_values": {
-																	"description": "The list of add-ons subscribed to.",
+																	"description": "Configurable component values for the subscription.",
 																	"type": "array",
 																	"items": {
 																		"description": "A component value for a subscription.",

@@ -1,8 +1,8 @@
 {
 	"POST /zones/{zone_id}/api_gateway/expression-template/fallthrough": {
 		"operationId": "api-shield-expression-templates-fallthrough",
-		"summary": "Generate fallthrough WAF expression template from a set of API hosts",
-		"description": "Creates an expression template fallthrough rule for API Shield. Used for configuring default behavior when no other expression templates match.",
+		"summary": "Generate a fallthrough WAF expression template",
+		"description": "Generates a WAF expression template that matches fallthrough traffic for the supplied API hosts. This operation is deprecated and should not be used for new integrations.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -268,6 +268,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -282,9 +283,10 @@
 			"Account API Gateway",
 			"Domain API Gateway"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.expression-template.fallthrough",
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "api-security.expression-template.fallthrough",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stainless-deprecation-message": "Use the cf.api_gateway.fallthrough_detected field in custom rule for a more customized logic check."
 	}
 }

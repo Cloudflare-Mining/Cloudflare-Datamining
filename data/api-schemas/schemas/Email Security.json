@@ -428,7 +428,7 @@
 				},
 				"deprecated": true,
 				"x-stainless-deprecation-message": "Use cursor pagination instead.",
-				"x-sunset": "2026-11-01"
+				"x-sunset": "2026-11-01T00:00:00Z"
 			}
 		],
 		"responses": {
@@ -2476,6 +2476,8 @@
 												"findings": {
 													"type": "array",
 													"items": {
+														"description": "A single detection finding for a message.",
+														"type": "object",
 														"properties": {
 															"attachment": {
 																"type": "string",
@@ -2486,19 +2488,26 @@
 																"nullable": true
 															},
 															"detection": {
+																"description": "Detection result associated with this finding.",
 																"type": "string",
-																"enum": [
-																	"MALICIOUS",
-																	"MALICIOUS-BEC",
-																	"SUSPICIOUS",
-																	"SPOOF",
-																	"SPAM",
-																	"BULK",
-																	"ENCRYPTED",
-																	"EXTERNAL",
-																	"UNKNOWN",
-																	"NONE"
-																]
+																"allOf": [
+																	{
+																		"type": "string",
+																		"enum": [
+																			"MALICIOUS",
+																			"MALICIOUS-BEC",
+																			"SUSPICIOUS",
+																			"SPOOF",
+																			"SPAM",
+																			"BULK",
+																			"ENCRYPTED",
+																			"EXTERNAL",
+																			"UNKNOWN",
+																			"NONE"
+																		]
+																	}
+																],
+																"nullable": true
 															},
 															"field": {
 																"type": "string",
@@ -2525,8 +2534,7 @@
 																"type": "string",
 																"nullable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"nullable": true
 												},
@@ -5218,9 +5226,9 @@
 					"format": "date"
 				},
 				"deprecated": true,
-				"example": "2020-08-01",
+				"example": "2020-08-01T00:00:00Z",
 				"x-stainless-deprecation-message": "Use `start` instead.",
-				"x-sunset": "2026-11-01"
+				"x-sunset": "2026-11-01T00:00:00Z"
 			},
 			{
 				"name": "to_date",
@@ -5231,9 +5239,9 @@
 					"format": "date"
 				},
 				"deprecated": true,
-				"example": "2020-09-01",
+				"example": "2020-09-01T00:00:00Z",
 				"x-stainless-deprecation-message": "Use `end` instead.",
-				"x-sunset": "2026-11-01"
+				"x-sunset": "2026-11-01T00:00:00Z"
 			}
 		],
 		"responses": {

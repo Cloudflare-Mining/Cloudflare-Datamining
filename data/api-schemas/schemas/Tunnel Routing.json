@@ -136,7 +136,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -285,7 +285,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -434,9 +434,10 @@
 			"Cloudflare Tunnel Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.networks.routes",
+		"x-fern-sdk-group-name": "network.routes.cidr",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation permanently deletes a private network route."
 	},
 	"DELETE /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
 		"operationId": "tunnel-route-delete-a-tunnel-route-with-cidr",
@@ -616,7 +617,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -765,7 +766,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -1222,7 +1223,7 @@
 														"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 														"type": "string",
 														"format": "date-time",
-														"example": "2009-11-10T23:00:00.000000Z",
+														"example": "2009-11-10T23:00:00Z",
 														"readOnly": true
 													},
 													"id": {
@@ -1441,7 +1442,7 @@
 																"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 																"type": "string",
 																"format": "date-time",
-																"example": "2009-11-10T23:00:00.000000Z",
+																"example": "2009-11-10T23:00:00Z",
 																"readOnly": true
 															},
 															"id": {
@@ -1621,7 +1622,7 @@
 			"Cloudflare Tunnel Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.networks.routes",
+		"x-fern-sdk-group-name": "network.routes.cidr",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -1762,7 +1763,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -1911,7 +1912,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -2056,7 +2057,7 @@
 			"Tunnel Routing"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.networks.routes",
+		"x-fern-sdk-group-name": "network.routes.cidr",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -2214,7 +2215,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -2391,7 +2392,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -2570,8 +2571,8 @@
 			"Cloudflare Tunnel Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.networks.routes.ips",
-		"x-fern-sdk-method-name": "get",
+		"x-fern-sdk-group-name": "network.routes",
+		"x-fern-sdk-method-name": "resolve",
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/teamnet/routes/{route_id}": {
@@ -2754,7 +2755,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -2903,7 +2904,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -3052,7 +3053,7 @@
 			"Cloudflare Tunnel Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.networks.routes",
+		"x-fern-sdk-group-name": "network.routes.cidr",
 		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true
 	},
@@ -3191,7 +3192,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -3340,7 +3341,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -3664,7 +3665,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -3813,7 +3814,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {
@@ -3962,7 +3963,7 @@
 			"Cloudflare Tunnel Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.networks.routes",
+		"x-fern-sdk-group-name": "network.routes.cidr",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
@@ -4140,7 +4141,7 @@
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"type": "string",
 													"format": "date-time",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"example": "2009-11-10T23:00:00Z",
 													"readOnly": true
 												},
 												"id": {
@@ -4289,7 +4290,7 @@
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"type": "string",
 															"format": "date-time",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"example": "2009-11-10T23:00:00Z",
 															"readOnly": true
 														},
 														"id": {

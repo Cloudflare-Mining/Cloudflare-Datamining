@@ -2126,6 +2126,14 @@
 																					{
 																						"type": "object",
 																						"properties": {
+																							"identity": {
+																								"description": "Enables Gateway identity for the binding. Requires network_id to be \"cf1:network\" and cannot be combined with tunnel_id.\n",
+																								"type": "string",
+																								"enum": [
+																									"runtime-email-alpha"
+																								],
+																								"x-auditable": true
+																							},
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
 																								"type": "string",
@@ -2275,7 +2283,7 @@
 																		"compatibility_date": {
 																			"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 																			"type": "string",
-																			"example": "2022-11-08",
+																			"example": "2022-11-08T00:00:00Z",
 																			"readOnly": true,
 																			"x-auditable": true
 																		},
@@ -4136,6 +4144,14 @@
 																							{
 																								"type": "object",
 																								"properties": {
+																									"identity": {
+																										"description": "Enables Gateway identity for the binding. Requires network_id to be \"cf1:network\" and cannot be combined with tunnel_id.\n",
+																										"type": "string",
+																										"enum": [
+																											"runtime-email-alpha"
+																										],
+																										"x-auditable": true
+																									},
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"type": "string",
@@ -4285,7 +4301,7 @@
 																				"compatibility_date": {
 																					"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 																					"type": "string",
-																					"example": "2022-11-08",
+																					"example": "2022-11-08T00:00:00Z",
 																					"readOnly": true,
 																					"x-auditable": true
 																				},
@@ -4842,11 +4858,41 @@
 												"example": "staging",
 												"maxLength": 63
 											},
+											"workers/commit_sha": {
+												"description": "Full commit SHA associated with the version, detected from the CI environment. Maximum 64 bytes.",
+												"type": "string",
+												"example": "8b6aeb38455e2f92e170deb46313b90166ccc1e5",
+												"maxLength": 64
+											},
 											"workers/message": {
 												"description": "Human-readable message about the version. Truncated to 1000 bytes if longer.",
 												"type": "string",
 												"example": "Fixed worker code.",
 												"maxLength": 1000
+											},
+											"workers/pull_request_number": {
+												"description": "Number of the pull or merge request associated with the version, detected from the CI environment. Maximum 20 bytes.",
+												"type": "string",
+												"example": "14966",
+												"maxLength": 20
+											},
+											"workers/pull_request_title": {
+												"description": "Title of the pull or merge request associated with the version, detected from the CI environment. Maximum 512 bytes.",
+												"type": "string",
+												"example": "Add a cool new feature",
+												"maxLength": 512
+											},
+											"workers/pull_request_url": {
+												"description": "URL of the pull or merge request associated with the version, detected from the CI environment. Maximum 512 bytes.",
+												"type": "string",
+												"example": "https://github.com/cloudflare/workers-sdk/pull/14966",
+												"maxLength": 512
+											},
+											"workers/repository_url": {
+												"description": "URL of the source repository the version was built from, detected from the CI environment. Maximum 512 bytes.",
+												"type": "string",
+												"example": "https://github.com/cloudflare/workers-sdk",
+												"maxLength": 512
 											},
 											"workers/tag": {
 												"description": "User-provided identifier for the version. Maximum 100 bytes.",
@@ -6162,6 +6208,14 @@
 												{
 													"type": "object",
 													"properties": {
+														"identity": {
+															"description": "Enables Gateway identity for the binding. Requires network_id to be \"cf1:network\" and cannot be combined with tunnel_id.\n",
+															"type": "string",
+															"enum": [
+																"runtime-email-alpha"
+															],
+															"x-auditable": true
+														},
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
 															"type": "string",
@@ -6231,7 +6285,7 @@
 									"compatibility_date": {
 										"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 										"type": "string",
-										"example": "2021-01-01",
+										"example": "2021-01-01T00:00:00Z",
 										"x-auditable": true
 									},
 									"compatibility_flags": {
@@ -8105,6 +8159,14 @@
 																							{
 																								"type": "object",
 																								"properties": {
+																									"identity": {
+																										"description": "Enables Gateway identity for the binding. Requires network_id to be \"cf1:network\" and cannot be combined with tunnel_id.\n",
+																										"type": "string",
+																										"enum": [
+																											"runtime-email-alpha"
+																										],
+																										"x-auditable": true
+																									},
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
 																										"type": "string",
@@ -8254,7 +8316,7 @@
 																				"compatibility_date": {
 																					"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 																					"type": "string",
-																					"example": "2022-11-08",
+																					"example": "2022-11-08T00:00:00Z",
 																					"readOnly": true,
 																					"x-auditable": true
 																				},
@@ -10401,6 +10463,14 @@
 																											{
 																												"type": "object",
 																												"properties": {
+																													"identity": {
+																														"description": "Enables Gateway identity for the binding. Requires network_id to be \"cf1:network\" and cannot be combined with tunnel_id.\n",
+																														"type": "string",
+																														"enum": [
+																															"runtime-email-alpha"
+																														],
+																														"x-auditable": true
+																													},
 																													"name": {
 																														"description": "A JavaScript variable name for the binding.",
 																														"type": "string",
@@ -10550,7 +10620,7 @@
 																								"compatibility_date": {
 																									"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 																									"type": "string",
-																									"example": "2022-11-08",
+																									"example": "2022-11-08T00:00:00Z",
 																									"readOnly": true,
 																									"x-auditable": true
 																								},

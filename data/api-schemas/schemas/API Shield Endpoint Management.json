@@ -1,8 +1,8 @@
 {
 	"DELETE /zones/{zone_id}/api_gateway/operations": {
 		"operationId": "api-shield-endpoint-management-delete-multiple-operations",
-		"summary": "Delete multiple operations",
-		"description": "Bulk removes multiple API operations from API Shield endpoint management in a single request. Efficient for cleaning up unused endpoints.",
+		"summary": "Delete web or API operations",
+		"description": "Deletes multiple web or API operations from endpoint management in one request.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -274,14 +274,15 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.operations",
+		"x-fern-sdk-group-name": "web-assets.operations",
 		"x-fern-sdk-method-name": "bulk-delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes the selected web or API operations."
 	},
 	"DELETE /zones/{zone_id}/api_gateway/operations/{operation_id}": {
 		"operationId": "api-shield-endpoint-management-delete-an-operation",
-		"summary": "Delete an operation",
-		"description": "Removes a single API operation from API Shield endpoint management. The operation will no longer be tracked or protected by API Shield rules.",
+		"summary": "Delete a web or API operation",
+		"description": "Deletes a web or API operation from endpoint management so its feature configuration is no longer tracked.",
 		"responses": {
 			"200": {
 				"description": "Delete an operation response",
@@ -501,14 +502,15 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.operations",
+		"x-fern-sdk-group-name": "web-assets.operations",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes the web or API operation."
 	},
 	"GET /zones/{zone_id}/api_gateway/operations": {
 		"operationId": "api-shield-endpoint-management-retrieve-information-about-all-operations-on-a-zone",
-		"summary": "Retrieve information about all operations on a zone",
-		"description": "Lists all API operations tracked by API Shield for a zone with pagination. Returns operation details including method, path, and feature configurations.",
+		"summary": "List web and API operations",
+		"description": "Lists web and API operations tracked for the zone, including each operation's method, path, and feature configuration.",
 		"parameters": [
 			{
 				"description": "Page number of paginated results.",
@@ -1170,9 +1172,10 @@
 																										]
 																									},
 																									"is_learned": {
-																										"description": "True if schema is Cloudflare-provided.",
+																										"description": "Deprecated. Always false.",
 																										"type": "boolean",
-																										"example": true,
+																										"example": false,
+																										"deprecated": true,
 																										"x-auditable": true
 																									},
 																									"name": {
@@ -1359,14 +1362,14 @@
 			"Domain API Gateway Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.operations",
+		"x-fern-sdk-group-name": "web-assets.operations",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/api_gateway/operations/{operation_id}": {
 		"operationId": "api-shield-endpoint-management-retrieve-information-about-an-operation",
-		"summary": "Retrieve information about an operation",
-		"description": "Gets detailed information about a specific API operation in API Shield, including its schema validation settings and traffic statistics.",
+		"summary": "Get a web or API operation",
+		"description": "Returns a web or API operation, including its schema validation settings and requested feature data.",
 		"parameters": [
 			{
 				"description": "Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the specific meaning.",
@@ -1911,9 +1914,10 @@
 																									]
 																								},
 																								"is_learned": {
-																									"description": "True if schema is Cloudflare-provided.",
+																									"description": "Deprecated. Always false.",
 																									"type": "boolean",
-																									"example": true,
+																									"example": false,
+																									"deprecated": true,
 																									"x-auditable": true
 																								},
 																								"name": {
@@ -2151,14 +2155,14 @@
 			"Domain API Gateway Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.operations",
+		"x-fern-sdk-group-name": "web-assets.operations",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/api_gateway/schemas": {
 		"operationId": "api-shield-endpoint-management-retrieve-operations-and-features-as-open-api-schemas",
-		"summary": "Retrieve operations and features as OpenAPI schemas",
-		"description": "Retrieves API operations and their features exported as OpenAPI schemas.",
+		"summary": "Export web and API operations as OpenAPI schemas",
+		"description": "Returns tracked web and API operations and their feature configuration rendered as OpenAPI schemas.",
 		"parameters": [
 			{
 				"name": "host",
@@ -2490,14 +2494,14 @@
 			"Domain API Gateway Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.schemas",
+		"x-fern-sdk-group-name": "web-assets.schemas",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/api_gateway/operations": {
 		"operationId": "api-shield-endpoint-management-add-operations-to-a-zone",
-		"summary": "Add operations to a zone",
-		"description": "Add one or more operations to a zone. Endpoints can contain path variables. Host, method, endpoint will be normalized to a canoncial form when creating an operation and must be unique on the zone. Inserting an operation that matches an existing one will return the record of the already existing operation and update its last_updated date.",
+		"summary": "Create web or API operations",
+		"description": "Creates one or more web or API operations. Hosts, methods, and paths are normalized; an existing matching operation is returned instead of duplicated.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -3064,9 +3068,10 @@
 																								]
 																							},
 																							"is_learned": {
-																								"description": "True if schema is Cloudflare-provided.",
+																								"description": "Deprecated. Always false.",
 																								"type": "boolean",
-																								"example": true,
+																								"example": false,
+																								"deprecated": true,
 																								"x-auditable": true
 																							},
 																							"name": {
@@ -3249,14 +3254,14 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.operations",
+		"x-fern-sdk-group-name": "web-assets.operations",
 		"x-fern-sdk-method-name": "bulk-create",
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/api_gateway/operations/item": {
 		"operationId": "api-shield-endpoint-management-add-operation-to-a-zone",
-		"summary": "Add one operation to a zone",
-		"description": "Add one operation to a zone. Endpoints can contain path variables. Host, method, endpoint will be normalized to a canoncial form when creating an operation and must be unique on the zone. Inserting an operation that matches an existing one will return the record of the already existing operation and update its last_updated date.",
+		"summary": "Create a web or API operation",
+		"description": "Creates one web or API operation. The host, method, and path are normalized; an existing matching operation is returned instead of duplicated.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -3820,9 +3825,10 @@
 																									]
 																								},
 																								"is_learned": {
-																									"description": "True if schema is Cloudflare-provided.",
+																									"description": "Deprecated. Always false.",
 																									"type": "boolean",
-																									"example": true,
+																									"example": false,
+																									"deprecated": true,
 																									"x-auditable": true
 																								},
 																								"name": {
@@ -4058,7 +4064,7 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.operations",
+		"x-fern-sdk-group-name": "web-assets.operations",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	}

@@ -578,7 +578,11 @@
 		"x-api-token-group": [
 			"Fraud Detection Read",
 			"Fraud Detection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "fraud",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/fraud_detection/settings": {
 		"operationId": "fraud-detection-zone-update-settings",
@@ -1352,6 +1356,10 @@
 		],
 		"x-api-token-group": [
 			"Fraud Detection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "fraud",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

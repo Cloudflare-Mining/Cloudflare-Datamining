@@ -348,7 +348,11 @@
 		],
 		"x-api-token-group": [
 			"Load Balancers Account Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "load-balancers.account",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/load_balancers": {
 		"operationId": "account-load-balancers-list-account-load-balancers",
@@ -2520,7 +2524,11 @@
 		"x-api-token-group": [
 			"Load Balancers Account Write",
 			"Load Balancers Account Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "load-balancers.account",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/load_balancers/{load_balancer_id}": {
 		"operationId": "account-load-balancers-account-load-balancer-details",
@@ -4654,7 +4662,11 @@
 		"x-api-token-group": [
 			"Load Balancers Account Write",
 			"Load Balancers Account Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "load-balancers.account",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/load_balancers/usage": {
 		"operationId": "account-load-balancers-list-load-balancer-usage",
@@ -5076,7 +5088,11 @@
 		"x-api-token-group": [
 			"Load Balancing: Monitors and Pools Write",
 			"Load Balancing: Monitors and Pools Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "load-balancers.account.usage",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/load_balancers/{load_balancer_id}": {
 		"operationId": "account-load-balancers-patch-account-load-balancer",
@@ -7914,7 +7930,11 @@
 		],
 		"x-api-token-group": [
 			"Load Balancers Account Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "load-balancers.account",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/load_balancers": {
 		"operationId": "account-load-balancers-create-account-load-balancer",
@@ -10750,7 +10770,11 @@
 		],
 		"x-api-token-group": [
 			"Load Balancers Account Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "load-balancers.account",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/load_balancers/{load_balancer_id}": {
 		"operationId": "account-load-balancers-update-account-load-balancer",
@@ -13596,6 +13620,10 @@
 		],
 		"x-api-token-group": [
 			"Load Balancers Account Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "load-balancers.account",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

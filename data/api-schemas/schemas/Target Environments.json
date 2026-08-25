@@ -1,7 +1,7 @@
 {
 	"DELETE /accounts/{account_id}/vuln_scanner/target_environments/{target_environment_id}": {
 		"operationId": "delete-target-environment",
-		"summary": "Delete Target Environment",
+		"summary": "Delete target environment",
 		"description": "Removes a target environment.",
 		"responses": {
 			"200": {
@@ -236,11 +236,16 @@
 		],
 		"tags": [
 			"Target Environments"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation permanently deletes the target environment from Vulnerability Scanner."
 	},
 	"GET /accounts/{account_id}/vuln_scanner/target_environments": {
 		"operationId": "list-target-environments",
-		"summary": "List Target Environments",
+		"summary": "List target environments",
 		"description": "Returns all target environments for the account.",
 		"parameters": [
 			{
@@ -593,11 +598,15 @@
 		],
 		"tags": [
 			"Target Environments"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/vuln_scanner/target_environments/{target_environment_id}": {
 		"operationId": "get-target-environment",
-		"summary": "Get Target Environment",
+		"summary": "Get target environment",
 		"description": "Returns a single target environment by ID.",
 		"responses": {
 			"200": {
@@ -888,11 +897,15 @@
 		],
 		"tags": [
 			"Target Environments"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/vuln_scanner/target_environments/{target_environment_id}": {
 		"operationId": "edit-target-environment",
-		"summary": "Edit Target Environment",
+		"summary": "Edit target environment",
 		"description": "Updates a target environment with only the provided fields; omitted fields remain unchanged.",
 		"requestBody": {
 			"required": true,
@@ -1240,11 +1253,15 @@
 		],
 		"tags": [
 			"Target Environments"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/vuln_scanner/target_environments": {
 		"operationId": "create-target-environment",
-		"summary": "Create Target Environment",
+		"summary": "Create target environment",
 		"description": "Creates a new target environment for the account.",
 		"requestBody": {
 			"required": true,
@@ -1595,11 +1612,15 @@
 		],
 		"tags": [
 			"Target Environments"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/vuln_scanner/target_environments/{target_environment_id}": {
 		"operationId": "update-target-environment",
-		"summary": "Update Target Environment",
+		"summary": "Update target environment",
 		"description": "Replaces a target environment. All fields must be provided.",
 		"requestBody": {
 			"required": true,
@@ -1951,6 +1972,10 @@
 		],
 		"tags": [
 			"Target Environments"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

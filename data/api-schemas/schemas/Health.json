@@ -1,0 +1,88 @@
+{
+	"GET /api/v4/health": {
+		"operationId": "monolithHealthCheck",
+		"summary": "API health check",
+		"description": "Returns the operational health status of the Cloudflare API monolith.\nThis is an internal infrastructure health check endpoint and is not\nintended for customer use. It is permanently exempt from SDK and public\ndocs generation (see x-fern-ignore). Ref: APIOPS-12957.\n",
+		"responses": {
+			"200": {
+				"description": "The API is healthy.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"healthy": {
+											"description": "Whether the API monolith is healthy.",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"healthy"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [],
+		"tags": [
+			"Health"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "health",
+		"x-fern-sdk-method-name": "check"
+	}
+}

@@ -1,0 +1,1082 @@
+{
+	"GET /zones/{zone_id}/settings/nel": {
+		"operationId": "nel-settings-get",
+		"summary": "Get NEL setting",
+		"description": "Fetches the Network Error Logging (NEL) setting for a zone. NEL allows browsers to report network errors to a configured endpoint. The setting is enabled by default for free and pro zones, and disabled by default for business and enterprise zones unless the NEL product feature is enabled.\n",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"description": "Identifier of the zone.",
+				"required": true,
+				"schema": {
+					"description": "Identifier of the zone.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "NEL setting response",
+				"content": {
+					"application/json": {
+						"examples": {
+							"nel_disabled": {
+								"summary": "NEL disabled (enterprise zone default)",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"editable": false,
+										"id": "nel",
+										"modified_on": "0001-01-01T00:00:00Z",
+										"value": {
+											"enabled": false
+										}
+									},
+									"success": true
+								}
+							},
+							"nel_enabled": {
+								"summary": "NEL enabled (free/pro zone default)",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"editable": true,
+										"id": "nel",
+										"modified_on": "2024-01-15T10:30:00Z",
+										"value": {
+											"enabled": true
+										}
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"description": "Response envelope for a single NEL setting.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "An API response message or error.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1001
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "missing_value"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"example": []
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "An API response message or error.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1001
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "missing_value"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "A zone-scoped NEL configuration setting.",
+									"type": "object",
+									"properties": {
+										"editable": {
+											"description": "Whether the setting is editable. This is false when the zone's plan does not include NEL or the NEL product feature is not enabled.\n",
+											"type": "boolean",
+											"example": true,
+											"readOnly": true
+										},
+										"id": {
+											"description": "Zone setting identifier.",
+											"type": "string",
+											"example": "nel",
+											"enum": [
+												"nel"
+											],
+											"readOnly": true
+										},
+										"modified_on": {
+											"description": "When the setting was last modified. A zero value (0001-01-01T00:00:00Z) indicates the setting has never been explicitly set and is using the default value.\n",
+											"type": "string",
+											"format": "date-time",
+											"example": "2024-01-15T10:30:00Z",
+											"readOnly": true
+										},
+										"value": {
+											"description": "The NEL configuration value.",
+											"type": "object",
+											"properties": {
+												"enabled": {
+													"description": "Whether Network Error Logging is enabled for the zone. When enabled, browsers report network errors to Cloudflare's NEL endpoint.\n",
+													"type": "boolean",
+													"example": true
+												}
+											},
+											"required": [
+												"enabled"
+											]
+										}
+									},
+									"required": [
+										"id",
+										"editable",
+										"value",
+										"modified_on"
+									]
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication required",
+				"content": {
+					"application/json": {
+						"examples": {
+							"unauthorized": {
+								"summary": "Missing or invalid authentication",
+								"value": {
+									"errors": [
+										{
+											"code": 1009,
+											"message": "auth.not_authorized"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"description": "API error response envelope.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "An API response message or error.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1001
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "missing_value"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "An API response message or error.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1001
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "missing_value"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Always null for error responses.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Insufficient permissions",
+				"content": {
+					"application/json": {
+						"examples": {
+							"forbidden": {
+								"summary": "Missing zone_settings:read permission",
+								"value": {
+									"errors": [
+										{
+											"code": 1010,
+											"message": "auth.forbidden"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"description": "API error response envelope.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "An API response message or error.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1001
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "missing_value"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "An API response message or error.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1001
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "missing_value"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Always null for error responses.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal server error",
+				"content": {
+					"application/json": {
+						"examples": {
+							"internal_error": {
+								"summary": "Database or upstream failure",
+								"value": {
+									"errors": [
+										{
+											"code": 1000,
+											"message": "internal_error"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"description": "API error response envelope.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "An API response message or error.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1001
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "missing_value"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "An API response message or error.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1001
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "missing_value"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Always null for error responses.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"NEL Settings"
+		],
+		"x-api-token-group": [
+			"Zone Settings Read"
+		]
+	},
+	"PATCH /zones/{zone_id}/settings/nel": {
+		"operationId": "nel-settings-edit",
+		"summary": "Edit NEL setting",
+		"description": "Updates the Network Error Logging (NEL) setting for a zone. Requires the NEL product feature to be enabled for the zone. The setting controls whether browsers report network errors to Cloudflare's NEL endpoint.\n",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"description": "Identifier of the zone.",
+				"required": true,
+				"schema": {
+					"description": "Identifier of the zone.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"examples": {
+						"disable_nel": {
+							"summary": "Disable NEL",
+							"value": {
+								"value": {
+									"enabled": false
+								}
+							}
+						},
+						"enable_nel": {
+							"summary": "Enable NEL",
+							"value": {
+								"value": {
+									"enabled": true
+								}
+							}
+						}
+					},
+					"schema": {
+						"description": "Request body for updating the NEL setting.",
+						"type": "object",
+						"properties": {
+							"value": {
+								"description": "The NEL configuration value.",
+								"type": "object",
+								"properties": {
+									"enabled": {
+										"description": "Whether Network Error Logging is enabled for the zone. When enabled, browsers report network errors to Cloudflare's NEL endpoint.\n",
+										"type": "boolean",
+										"example": true
+									}
+								},
+								"required": [
+									"enabled"
+								]
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"value"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Updated NEL setting response",
+				"content": {
+					"application/json": {
+						"examples": {
+							"nel_updated": {
+								"summary": "NEL setting updated successfully",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"editable": true,
+										"id": "nel",
+										"modified_on": "2024-01-15T10:30:00Z",
+										"value": {
+											"enabled": true
+										}
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"description": "Response envelope for a single NEL setting.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "An API response message or error.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1001
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "missing_value"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"example": []
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "An API response message or error.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1001
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "missing_value"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "A zone-scoped NEL configuration setting.",
+									"type": "object",
+									"properties": {
+										"editable": {
+											"description": "Whether the setting is editable. This is false when the zone's plan does not include NEL or the NEL product feature is not enabled.\n",
+											"type": "boolean",
+											"example": true,
+											"readOnly": true
+										},
+										"id": {
+											"description": "Zone setting identifier.",
+											"type": "string",
+											"example": "nel",
+											"enum": [
+												"nel"
+											],
+											"readOnly": true
+										},
+										"modified_on": {
+											"description": "When the setting was last modified. A zero value (0001-01-01T00:00:00Z) indicates the setting has never been explicitly set and is using the default value.\n",
+											"type": "string",
+											"format": "date-time",
+											"example": "2024-01-15T10:30:00Z",
+											"readOnly": true
+										},
+										"value": {
+											"description": "The NEL configuration value.",
+											"type": "object",
+											"properties": {
+												"enabled": {
+													"description": "Whether Network Error Logging is enabled for the zone. When enabled, browsers report network errors to Cloudflare's NEL endpoint.\n",
+													"type": "boolean",
+													"example": true
+												}
+											},
+											"required": [
+												"enabled"
+											]
+										}
+									},
+									"required": [
+										"id",
+										"editable",
+										"value",
+										"modified_on"
+									]
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid request body",
+				"content": {
+					"application/json": {
+						"examples": {
+							"invalid_content_type": {
+								"summary": "Request Content-Type is not application/json",
+								"value": {
+									"errors": [
+										{
+											"code": 1001,
+											"message": "invalid_content_type"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"invalid_json": {
+								"summary": "Invalid JSON body",
+								"value": {
+									"errors": [
+										{
+											"code": 1001,
+											"message": "invalid_json_body"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"missing_value": {
+								"summary": "Missing value field in request body",
+								"value": {
+									"errors": [
+										{
+											"code": 1001,
+											"message": "missing_value"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"description": "API error response envelope.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "An API response message or error.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1001
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "missing_value"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "An API response message or error.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1001
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "missing_value"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Always null for error responses.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication required",
+				"content": {
+					"application/json": {
+						"examples": {
+							"unauthorized": {
+								"summary": "Missing or invalid authentication",
+								"value": {
+									"errors": [
+										{
+											"code": 1009,
+											"message": "auth.not_authorized"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"description": "API error response envelope.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "An API response message or error.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1001
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "missing_value"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "An API response message or error.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1001
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "missing_value"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Always null for error responses.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Insufficient permissions or NEL feature not enabled",
+				"content": {
+					"application/json": {
+						"examples": {
+							"forbidden": {
+								"summary": "Missing zone_settings:edit permission or NEL feature not enabled",
+								"value": {
+									"errors": [
+										{
+											"code": 1010,
+											"message": "auth.forbidden"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"description": "API error response envelope.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "An API response message or error.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1001
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "missing_value"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "An API response message or error.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1001
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "missing_value"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Always null for error responses.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal server error",
+				"content": {
+					"application/json": {
+						"examples": {
+							"internal_error": {
+								"summary": "Database or upstream failure",
+								"value": {
+									"errors": [
+										{
+											"code": 1000,
+											"message": "internal_error"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"description": "API error response envelope.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "An API response message or error.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1001
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "missing_value"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "An API response message or error.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1001
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "missing_value"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Always null for error responses.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"NEL Settings"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
+		]
+	}
+}

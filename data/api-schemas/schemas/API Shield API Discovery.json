@@ -1,8 +1,8 @@
 {
 	"GET /zones/{zone_id}/api_gateway/discovery": {
 		"operationId": "api-shield-api-discovery-retrieve-discovered-operations-on-a-zone-as-openapi",
-		"summary": "Retrieve discovered operations on a zone rendered as OpenAPI schemas",
-		"description": "Retrieve the most up to date view of discovered operations, rendered as OpenAPI schemas",
+		"summary": "Export discovered API operations as OpenAPI schemas",
+		"description": "Returns the latest API operations discovered from zone traffic, rendered as OpenAPI schemas.",
 		"responses": {
 			"200": {
 				"description": "Retrieve discovered operations on a zone, rendered as OpenAPI schemas response",
@@ -454,14 +454,14 @@
 			"Domain API Gateway Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.discovery",
+		"x-fern-sdk-group-name": "web-assets.discovery",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/api_gateway/discovery/operations": {
 		"operationId": "api-shield-api-discovery-retrieve-discovered-operations-on-a-zone",
-		"summary": "Retrieve discovered operations on a zone",
-		"description": "Retrieve the most up to date view of discovered operations",
+		"summary": "List discovered web and API operations",
+		"description": "Returns the latest web and API operations discovered from zone traffic.",
 		"parameters": [
 			{
 				"description": "Page number of paginated results.",
@@ -1027,14 +1027,14 @@
 			"Domain API Gateway Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.discovery.operations",
+		"x-fern-sdk-group-name": "web-assets.discovery.operations",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/api_gateway/discovery/operations/{discovery_id}": {
 		"operationId": "api-shield-api-discovery-retrieve-discovered-operation-by-id",
-		"summary": "Retrieve a discovered operation",
-		"description": "Retrieve a single discovered operation by ID",
+		"summary": "Get a discovered web or API operation",
+		"description": "Returns a discovered web or API operation by discovery ID.",
 		"responses": {
 			"200": {
 				"description": "Retrieve discovered operation response",
@@ -1469,12 +1469,16 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "web-assets.discovery.operations",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/api_gateway/discovery/operations": {
 		"operationId": "api-shield-api-patch-discovered-operations",
-		"summary": "Patch discovered operations",
-		"description": "Update the `state` on one or more discovered operations",
+		"summary": "Edit discovered web and API operations",
+		"description": "Updates the state of one or more discovered web and API operations.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -1765,14 +1769,14 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "api-gateway.discovery.operations",
+		"x-fern-sdk-group-name": "web-assets.discovery.operations",
 		"x-fern-sdk-method-name": "bulk-edit",
 		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/api_gateway/discovery/operations/{discovery_id}": {
 		"operationId": "api-shield-api-patch-discovered-operation",
-		"summary": "Patch discovered operation",
-		"description": "Update the `state` on a discovered operation",
+		"summary": "Edit a discovered web or API operation",
+		"description": "Updates the state of a discovered web or API operation.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -2042,6 +2046,10 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "web-assets.discovery.operations",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	}
 }

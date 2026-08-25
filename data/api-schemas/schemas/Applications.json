@@ -467,12 +467,16 @@
 		],
 		"x-api-token-group": [
 			"Workers Containers Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "containers.applications",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "This operation permanently deletes the application and stops its containers."
 	},
 	"DELETE /accounts/{account_id}/resource-library/applications/{id}": {
 		"operationId": "deleteResourceLibraryApplication",
 		"summary": "Delete application",
-		"description": "Delete a custom application and all of its versions.",
+		"description": "Delete a custom application and all of its versions. Deletion is rejected when other resources reference the application.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -603,6 +607,130 @@
 									],
 									"type": "object"
 								}
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "The application is referenced by other resources and cannot be deleted.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string",
+												"example": "Application is referenced by other resources"
+											},
+											"meta": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"description": "The complete list of resources in the account that reference the application.",
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"description": "The public identifier of the referencing resource.",
+																	"type": "string",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+																},
+																"name": {
+																	"description": "The name of the referencing resource.",
+																	"type": "string",
+																	"example": "Allow Spotify"
+																},
+																"type": {
+																	"description": "The resource type, such as Rule or Profile. Additional types may be returned.",
+																	"type": "string",
+																	"example": "Rule"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"type"
+															]
+														},
+														"minItems": 1
+													}
+												},
+												"required": [
+													"references"
+												]
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"meta"
+										],
+										"type": "object"
+									},
+									"maxItems": 1,
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"example": []
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -760,17 +888,6 @@
 					"description": "Image url.",
 					"type": "string"
 				}
-			},
-			{
-				"name": "label",
-				"in": "query",
-				"description": "Filter applications by label.",
-				"schema": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				}
 			}
 		],
 		"responses": {
@@ -911,32 +1028,6 @@
 																	"--default-option"
 																]
 															},
-															"disk": {
-																"description": "The disk configuration for this deployment.",
-																"allOf": [
-																	{
-																		"description": "The disk configuration for this deployment. All containers default to a disk size of 2GB.",
-																		"type": "object",
-																		"properties": {
-																			"size": {
-																				"description": "Deprecated in favor of size_mb.",
-																				"allOf": [
-																					{
-																						"description": "A disk size that specifies its unit at the end.",
-																						"type": "string",
-																						"example": "1GB"
-																					}
-																				],
-																				"deprecated": true
-																			},
-																			"size_mb": {
-																				"description": "Size of the disk, in MB.",
-																				"type": "integer"
-																			}
-																		}
-																	}
-																]
-															},
 															"dns": {
 																"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
 																"type": "object",
@@ -993,14 +1084,6 @@
 																	]
 																}
 															},
-															"experimental_flags": {
-																"description": "Opt-in experimental flags for this application. Users can set only a subset of\nexperimental flags; the API rejects unsupported values.\n",
-																"type": "array",
-																"items": {
-																	"type": "string"
-																},
-																"maxItems": 10
-															},
 															"image": {
 																"description": "Image url.",
 																"type": "string"
@@ -1023,54 +1106,6 @@
 																		"type": "string"
 																	}
 																]
-															},
-															"labels": {
-																"description": "Deployment labels.",
-																"type": "array",
-																"items": {
-																	"description": "A label.",
-																	"type": "object",
-																	"properties": {
-																		"name": {
-																			"description": "A label name.",
-																			"type": "string"
-																		},
-																		"value": {
-																			"description": "A label value.",
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"name",
-																		"value"
-																	]
-																}
-															},
-															"lifecycle": {
-																"description": "Lifecycle configuration for a deployment.",
-																"type": "object",
-																"properties": {
-																	"max_termination_duration": {
-																		"description": "Duration string using the Go standard library format.\n  A string representing the duration in the form \"3d1h3m\". Go omits leading zero units.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
-																		"type": "string",
-																		"example": "30s"
-																	}
-																}
-															},
-															"memory": {
-																"description": "Deprecated in favor of memory_mib.",
-																"allOf": [
-																	{
-																		"description": "A memory size that specifies its unit at the end.",
-																		"type": "string",
-																		"example": "1GB"
-																	}
-																],
-																"deprecated": true
-															},
-															"memory_mib": {
-																"description": "Specify the memory for the deployment, in MiB. Defaults to the value configured for the account.",
-																"type": "integer"
 															},
 															"observability": {
 																"description": "Settings for deployment observability such as logging.",
@@ -1107,11 +1142,6 @@
 																		"public_key"
 																	]
 																}
-															},
-															"vcpu": {
-																"description": "Specify the vcpu for the deployment. The minimum vcpu is 1. Values round to\nthe nearest 0.0001. Defaults to the value configured for the account.\n",
-																"type": "number",
-																"format": "float"
 															},
 															"wrangler_ssh": {
 																"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
@@ -1354,7 +1384,8 @@
 														"description": "The scheduling policy to use for an application.",
 														"type": "string",
 														"enum": [
-															"default"
+															"default",
+															"instance"
 														]
 													},
 													"updated_at": {
@@ -1620,7 +1651,10 @@
 		],
 		"tags": [
 			"Applications"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "containers.applications",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/containers/applications/{application_id}": {
 		"operationId": "getApplication",
@@ -1772,32 +1806,6 @@
 																"--default-option"
 															]
 														},
-														"disk": {
-															"description": "The disk configuration for this deployment.",
-															"allOf": [
-																{
-																	"description": "The disk configuration for this deployment. All containers default to a disk size of 2GB.",
-																	"type": "object",
-																	"properties": {
-																		"size": {
-																			"description": "Deprecated in favor of size_mb.",
-																			"allOf": [
-																				{
-																					"description": "A disk size that specifies its unit at the end.",
-																					"type": "string",
-																					"example": "1GB"
-																				}
-																			],
-																			"deprecated": true
-																		},
-																		"size_mb": {
-																			"description": "Size of the disk, in MB.",
-																			"type": "integer"
-																		}
-																	}
-																}
-															]
-														},
 														"dns": {
 															"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
 															"type": "object",
@@ -1854,14 +1862,6 @@
 																]
 															}
 														},
-														"experimental_flags": {
-															"description": "Opt-in experimental flags for this application. Users can set only a subset of\nexperimental flags; the API rejects unsupported values.\n",
-															"type": "array",
-															"items": {
-																"type": "string"
-															},
-															"maxItems": 10
-														},
 														"image": {
 															"description": "Image url.",
 															"type": "string"
@@ -1884,54 +1884,6 @@
 																	"type": "string"
 																}
 															]
-														},
-														"labels": {
-															"description": "Deployment labels.",
-															"type": "array",
-															"items": {
-																"description": "A label.",
-																"type": "object",
-																"properties": {
-																	"name": {
-																		"description": "A label name.",
-																		"type": "string"
-																	},
-																	"value": {
-																		"description": "A label value.",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"name",
-																	"value"
-																]
-															}
-														},
-														"lifecycle": {
-															"description": "Lifecycle configuration for a deployment.",
-															"type": "object",
-															"properties": {
-																"max_termination_duration": {
-																	"description": "Duration string using the Go standard library format.\n  A string representing the duration in the form \"3d1h3m\". Go omits leading zero units.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
-																	"type": "string",
-																	"example": "30s"
-																}
-															}
-														},
-														"memory": {
-															"description": "Deprecated in favor of memory_mib.",
-															"allOf": [
-																{
-																	"description": "A memory size that specifies its unit at the end.",
-																	"type": "string",
-																	"example": "1GB"
-																}
-															],
-															"deprecated": true
-														},
-														"memory_mib": {
-															"description": "Specify the memory for the deployment, in MiB. Defaults to the value configured for the account.",
-															"type": "integer"
 														},
 														"observability": {
 															"description": "Settings for deployment observability such as logging.",
@@ -1968,11 +1920,6 @@
 																	"public_key"
 																]
 															}
-														},
-														"vcpu": {
-															"description": "Specify the vcpu for the deployment. The minimum vcpu is 1. Values round to\nthe nearest 0.0001. Defaults to the value configured for the account.\n",
-															"type": "number",
-															"format": "float"
 														},
 														"wrangler_ssh": {
 															"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
@@ -2215,7 +2162,8 @@
 													"description": "The scheduling policy to use for an application.",
 													"type": "string",
 													"enum": [
-														"default"
+														"default",
+														"instance"
 													]
 												},
 												"updated_at": {
@@ -2593,7 +2541,10 @@
 		"x-api-token-group": [
 			"Workers Containers Write",
 			"Workers Containers Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "containers.applications",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/containers/applications/{application_id}/versions": {
 		"operationId": "listApplicationVersions",
@@ -2739,32 +2690,6 @@
 																	"--default-option"
 																]
 															},
-															"disk": {
-																"description": "The disk configuration for this deployment.",
-																"allOf": [
-																	{
-																		"description": "The disk configuration for this deployment. All containers default to a disk size of 2GB.",
-																		"type": "object",
-																		"properties": {
-																			"size": {
-																				"description": "Deprecated in favor of size_mb.",
-																				"allOf": [
-																					{
-																						"description": "A disk size that specifies its unit at the end.",
-																						"type": "string",
-																						"example": "1GB"
-																					}
-																				],
-																				"deprecated": true
-																			},
-																			"size_mb": {
-																				"description": "Size of the disk, in MB.",
-																				"type": "integer"
-																			}
-																		}
-																	}
-																]
-															},
 															"dns": {
 																"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
 																"type": "object",
@@ -2821,14 +2746,6 @@
 																	]
 																}
 															},
-															"experimental_flags": {
-																"description": "Opt-in experimental flags for this application. Users can set only a subset of\nexperimental flags; the API rejects unsupported values.\n",
-																"type": "array",
-																"items": {
-																	"type": "string"
-																},
-																"maxItems": 10
-															},
 															"image": {
 																"description": "Image url.",
 																"type": "string"
@@ -2851,54 +2768,6 @@
 																		"type": "string"
 																	}
 																]
-															},
-															"labels": {
-																"description": "Deployment labels.",
-																"type": "array",
-																"items": {
-																	"description": "A label.",
-																	"type": "object",
-																	"properties": {
-																		"name": {
-																			"description": "A label name.",
-																			"type": "string"
-																		},
-																		"value": {
-																			"description": "A label value.",
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"name",
-																		"value"
-																	]
-																}
-															},
-															"lifecycle": {
-																"description": "Lifecycle configuration for a deployment.",
-																"type": "object",
-																"properties": {
-																	"max_termination_duration": {
-																		"description": "Duration string using the Go standard library format.\n  A string representing the duration in the form \"3d1h3m\". Go omits leading zero units.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
-																		"type": "string",
-																		"example": "30s"
-																	}
-																}
-															},
-															"memory": {
-																"description": "Deprecated in favor of memory_mib.",
-																"allOf": [
-																	{
-																		"description": "A memory size that specifies its unit at the end.",
-																		"type": "string",
-																		"example": "1GB"
-																	}
-																],
-																"deprecated": true
-															},
-															"memory_mib": {
-																"description": "Specify the memory for the deployment, in MiB. Defaults to the value configured for the account.",
-																"type": "integer"
 															},
 															"observability": {
 																"description": "Settings for deployment observability such as logging.",
@@ -2935,11 +2804,6 @@
 																		"public_key"
 																	]
 																}
-															},
-															"vcpu": {
-																"description": "Specify the vcpu for the deployment. The minimum vcpu is 1. Values round to\nthe nearest 0.0001. Defaults to the value configured for the account.\n",
-																"type": "number",
-																"format": "float"
 															},
 															"wrangler_ssh": {
 																"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
@@ -3327,7 +3191,10 @@
 		"x-api-token-group": [
 			"Workers Containers Write",
 			"Workers Containers Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "containers.applications.versions",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/one/applications": {
 		"operationId": "list_applications_v2",
@@ -4329,7 +4196,7 @@
 			"Applications"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.casb.applications.auth_methods",
+		"x-fern-sdk-group-name": "zero-trust.casb.applications.authMethods",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -4781,7 +4648,7 @@
 			"Applications"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.casb.applications.setup_flows",
+		"x-fern-sdk-group-name": "zero-trust.casb.applications.setupFlows",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -4789,7 +4656,7 @@
 	"GET /accounts/{account_id}/resource-library/applications": {
 		"operationId": "getResourceLibraryApplications",
 		"summary": "List applications",
-		"description": "List applications with different filters.",
+		"description": "List the applications available to an account, both the applications Cloudflare\ncurates and the custom applications the account has defined.\n\nResults are paginated. Use `filter` and `search` to narrow the list, `order_by` to\nsort it, and `fields` to reduce each result to only the properties you need.\n\nThe authenticated principal must have access to the account identified by\n`account_id`.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4804,7 +4671,7 @@
 			{
 				"name": "filter",
 				"in": "query",
-				"description": "Filter applications using key:value format. Supported filter keys:\n- name: Filter by application name (e.g., name:HR)\n- id: Filter by application ID (e.g., id:498)\n- human_id: Filter by human-readable ID (e.g., human_id:HR)\n- hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)\n- source: Filter by application source name (e.g., source:cloudflare)\n- ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)\n- category_id: Filter by category ID (e.g., category_id:12).\n- category_name: Filter by category name (e.g., category_name:HR).\n- supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.\n.\n",
+				"description": "Filter applications using key:value format. Supported filter keys:\n- name: Filter by application name (e.g., name:HR)\n- id: Filter by application ID (e.g., id:498)\n- human_id: Filter by human-readable ID (e.g., human_id:HR)\n- hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)\n- source: Filter by application source name (e.g., source:cloudflare)\n- ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)\n- category_id: Filter by category ID (e.g., category_id:12).\n- category_name: Filter by category name (e.g., category_name:HR).\n- supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.\n- review_status: Filter by the account's Gateway review status. Values: approved, unapproved, in_review, unreviewed.\n.\n",
 				"schema": {
 					"type": "string"
 				},
@@ -4847,6 +4714,15 @@
 					"minLength": 2
 				},
 				"example": "MyNewApp"
+			},
+			{
+				"name": "fields",
+				"in": "query",
+				"description": "Return only the listed properties on each application, as a comma-separated list.\nUse this to keep responses small when you only need part of each application — for\nexample populating a picker with `fields=id,name` instead of downloading every\nhostname and IP subnet.\n\nOmit this parameter to receive the full application object.\n\n`id` is always returned.\n\nSelectable properties: `id`, `name`, `human_id`, `version`, `hostnames`,\n`support_domains`, `ip_subnets`, `port_protocols`, `supported`, `gen_ai_score`,\n`application_confidence_score`, `created_at`, `updated_at`, `review_status`.\n\nUnknown or empty property names return `400`.\n",
+				"schema": {
+					"type": "string"
+				},
+				"example": "id,name"
 			}
 		],
 		"responses": {
@@ -4979,6 +4855,7 @@
 											"description": "Returns the list of applications.",
 											"type": "array",
 											"items": {
+												"description": "Describes one application in a list response. This endpoint returns every property below unless the `fields` query parameter narrows the response, so treat all of them except `id` as optional.",
 												"type": "object",
 												"properties": {
 													"application_confidence_score": {
@@ -5089,6 +4966,16 @@
 														],
 														"x-stainless-collection-type": "set"
 													},
+													"review_status": {
+														"description": "The account-specific Gateway review status. Applications with no assigned review status are returned as `unreviewed`.",
+														"type": "string",
+														"enum": [
+															"approved",
+															"unapproved",
+															"in_review",
+															"unreviewed"
+														]
+													},
 													"support_domains": {
 														"description": "Support domains matched by the application.",
 														"type": "array",
@@ -5130,29 +5017,352 @@
 													}
 												},
 												"required": [
-													"application_source",
-													"application_type",
-													"category_id",
-													"application_type_description",
-													"gen_ai_score",
-													"application_confidence_score",
-													"created_at",
-													"supported",
-													"hostnames",
-													"human_id",
-													"id",
-													"ip_subnets",
-													"name",
-													"port_protocols",
-													"support_domains",
-													"updated_at",
-													"version"
+													"id"
 												]
 											}
 										}
 									},
 									"type": "object"
 								}
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "The authenticated principal does not have access to the requested account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"502": {
+				"description": "Application review statuses could not be retrieved.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Application review statuses were requested but are not available.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -5289,6 +5499,7 @@
 													"description": "Returns the list of applications.",
 													"type": "array",
 													"items": {
+														"description": "Describes one application in a list response. This endpoint returns every property below unless the `fields` query parameter narrows the response, so treat all of them except `id` as optional.",
 														"type": "object",
 														"properties": {
 															"application_confidence_score": {
@@ -5399,6 +5610,16 @@
 																],
 																"x-stainless-collection-type": "set"
 															},
+															"review_status": {
+																"description": "The account-specific Gateway review status. Applications with no assigned review status are returned as `unreviewed`.",
+																"type": "string",
+																"enum": [
+																	"approved",
+																	"unapproved",
+																	"in_review",
+																	"unreviewed"
+																]
+															},
 															"support_domains": {
 																"description": "Support domains matched by the application.",
 																"type": "array",
@@ -5440,23 +5661,7 @@
 															}
 														},
 														"required": [
-															"application_source",
-															"application_type",
-															"category_id",
-															"application_type_description",
-															"gen_ai_score",
-															"application_confidence_score",
-															"created_at",
-															"supported",
-															"hostnames",
-															"human_id",
-															"id",
-															"ip_subnets",
-															"name",
-															"port_protocols",
-															"support_domains",
-															"updated_at",
-															"version"
+															"id"
 														]
 													}
 												}
@@ -6335,25 +6540,6 @@
 											]
 										}
 									},
-									"experimental_flags": {
-										"description": "Opt-in experimental flags for this application. Users can set only a subset of\nexperimental flags; the API rejects unsupported values.\n",
-										"type": "array",
-										"items": {
-											"type": "string"
-										},
-										"maxItems": 10
-									},
-									"lifecycle": {
-										"description": "Lifecycle configuration for a deployment.",
-										"type": "object",
-										"properties": {
-											"max_termination_duration": {
-												"description": "Duration string using the Go standard library format.\n  A string representing the duration in the form \"3d1h3m\". Go omits leading zero units.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
-												"type": "string",
-												"example": "30s"
-											}
-										}
-									},
 									"trusted_user_ca_keys": {
 										"type": "array",
 										"items": {
@@ -6408,11 +6594,6 @@
 										}
 									}
 								}
-							},
-							"instances": {
-								"description": "Number of instances to maintain for a non-Durable Object application. Durable\nObject-backed applications manage instance count automatically.\n",
-								"type": "integer",
-								"minimum": 0
 							},
 							"max_instances": {
 								"description": "Maximum number of instances that an autoscaling application can run.",
@@ -6598,32 +6779,6 @@
 																"--default-option"
 															]
 														},
-														"disk": {
-															"description": "The disk configuration for this deployment.",
-															"allOf": [
-																{
-																	"description": "The disk configuration for this deployment. All containers default to a disk size of 2GB.",
-																	"type": "object",
-																	"properties": {
-																		"size": {
-																			"description": "Deprecated in favor of size_mb.",
-																			"allOf": [
-																				{
-																					"description": "A disk size that specifies its unit at the end.",
-																					"type": "string",
-																					"example": "1GB"
-																				}
-																			],
-																			"deprecated": true
-																		},
-																		"size_mb": {
-																			"description": "Size of the disk, in MB.",
-																			"type": "integer"
-																		}
-																	}
-																}
-															]
-														},
 														"dns": {
 															"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
 															"type": "object",
@@ -6680,14 +6835,6 @@
 																]
 															}
 														},
-														"experimental_flags": {
-															"description": "Opt-in experimental flags for this application. Users can set only a subset of\nexperimental flags; the API rejects unsupported values.\n",
-															"type": "array",
-															"items": {
-																"type": "string"
-															},
-															"maxItems": 10
-														},
 														"image": {
 															"description": "Image url.",
 															"type": "string"
@@ -6710,54 +6857,6 @@
 																	"type": "string"
 																}
 															]
-														},
-														"labels": {
-															"description": "Deployment labels.",
-															"type": "array",
-															"items": {
-																"description": "A label.",
-																"type": "object",
-																"properties": {
-																	"name": {
-																		"description": "A label name.",
-																		"type": "string"
-																	},
-																	"value": {
-																		"description": "A label value.",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"name",
-																	"value"
-																]
-															}
-														},
-														"lifecycle": {
-															"description": "Lifecycle configuration for a deployment.",
-															"type": "object",
-															"properties": {
-																"max_termination_duration": {
-																	"description": "Duration string using the Go standard library format.\n  A string representing the duration in the form \"3d1h3m\". Go omits leading zero units.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
-																	"type": "string",
-																	"example": "30s"
-																}
-															}
-														},
-														"memory": {
-															"description": "Deprecated in favor of memory_mib.",
-															"allOf": [
-																{
-																	"description": "A memory size that specifies its unit at the end.",
-																	"type": "string",
-																	"example": "1GB"
-																}
-															],
-															"deprecated": true
-														},
-														"memory_mib": {
-															"description": "Specify the memory for the deployment, in MiB. Defaults to the value configured for the account.",
-															"type": "integer"
 														},
 														"observability": {
 															"description": "Settings for deployment observability such as logging.",
@@ -6794,11 +6893,6 @@
 																	"public_key"
 																]
 															}
-														},
-														"vcpu": {
-															"description": "Specify the vcpu for the deployment. The minimum vcpu is 1. Values round to\nthe nearest 0.0001. Defaults to the value configured for the account.\n",
-															"type": "number",
-															"format": "float"
 														},
 														"wrangler_ssh": {
 															"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
@@ -7041,7 +7135,8 @@
 													"description": "The scheduling policy to use for an application.",
 													"type": "string",
 													"enum": [
-														"default"
+														"default",
+														"instance"
 													]
 												},
 												"updated_at": {
@@ -7636,7 +7731,10 @@
 		],
 		"x-api-token-group": [
 			"Workers Containers Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "containers.applications",
+		"x-fern-sdk-method-name": "edit"
 	},
 	"PATCH /accounts/{account_id}/resource-library/applications/{id}": {
 		"operationId": "updateResourceLibraryApplication",
@@ -8138,210 +8236,266 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Create a new application object for dynamic scheduling.",
-						"type": "object",
-						"properties": {
-							"configuration": {
-								"description": "The deployment configuration for every deployment this application creates.\n",
-								"allOf": [
-									{
-										"description": "User-specified container configuration.",
-										"type": "object",
-										"properties": {
-											"authorized_keys": {
-												"type": "array",
-												"items": {
-													"description": "User-provided SSH public key.",
-													"type": "object",
-													"properties": {
-														"name": {
-															"description": "Optional human readable name for this key.",
-															"type": "string"
-														},
-														"public_key": {
-															"description": "An SSH public key.",
-															"type": "string"
+						"description": "Create a new Containers application.",
+						"oneOf": [
+							{
+								"description": "Create a new scheduler-backed Containers application.",
+								"type": "object",
+								"properties": {
+									"configuration": {
+										"description": "The deployment configuration of all deployments created by this application.\n",
+										"allOf": [
+											{
+												"description": "User-specified container configuration.",
+												"type": "object",
+												"properties": {
+													"authorized_keys": {
+														"type": "array",
+														"items": {
+															"description": "User-provided SSH public key.",
+															"type": "object",
+															"properties": {
+																"name": {
+																	"description": "Optional human readable name for this key.",
+																	"type": "string"
+																},
+																"public_key": {
+																	"description": "An SSH public key.",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"public_key"
+															]
 														}
 													},
-													"required": [
-														"public_key"
-													]
-												}
-											},
-											"command": {
-												"description": "The command that runs when the container starts, passed to the entrypoint.\nYou can override this at run-time. If you override only the command,\nit gets passed to the default entrypoint specified in the image.\n",
-												"type": "array",
-												"items": {
-													"type": "string"
-												},
-												"example": [
-													"myapp",
-													"--default-option"
-												]
-											},
-											"disk": {
-												"description": "The disk configuration for this deployment.",
-												"allOf": [
-													{
-														"description": "The disk configuration for this deployment. All containers default to a disk size of 2GB.",
+													"command": {
+														"description": "The command that runs when the container starts, passed to the entrypoint.\nYou can override this at run-time. If you override only the command,\nit gets passed to the default entrypoint specified in the image.\n",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"example": [
+															"myapp",
+															"--default-option"
+														]
+													},
+													"dns": {
+														"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
 														"type": "object",
 														"properties": {
-															"size": {
-																"description": "Deprecated in favor of size_mb.",
-																"allOf": [
-																	{
-																		"description": "A disk size that specifies its unit at the end.",
-																		"type": "string",
-																		"example": "1GB"
-																	}
-																],
-																"deprecated": true
+															"searches": {
+																"description": "The container resolver appends these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it appends 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
+																"type": "array",
+																"items": {
+																	"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
+																	"type": "string",
+																	"example": "docker.io"
+																}
 															},
-															"size_mb": {
-																"description": "Size of the disk, in MB.",
-																"type": "integer"
+															"servers": {
+																"description": "List of DNS servers the deployment uses to resolve domain names. You can only specify a maximum of 3.",
+																"type": "array",
+																"items": {
+																	"description": "A string representation of an IP, either v6 or v4.",
+																	"type": "string",
+																	"example": "192.1.1.1"
+																}
+															}
+														}
+													},
+													"entrypoint": {
+														"description": "The entry point for the container, specifying the executable to run when the container starts.\nYou can override this at run-time. If you do, the default command from the image is ignored.\nSpecify both entrypoint and command at run-time to completely replace the image defaults.\n",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"example": [
+															"/bin/bash"
+														]
+													},
+													"environment_variables": {
+														"description": "Container environment variables.",
+														"type": "array",
+														"items": {
+															"description": "An environment variable with a value set.",
+															"type": "object",
+															"properties": {
+																"name": {
+																	"description": "An environment variable name.",
+																	"type": "string"
+																},
+																"value": {
+																	"description": "An environment variable value.",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"value"
+															]
+														}
+													},
+													"image": {
+														"description": "Image url.",
+														"type": "string"
+													},
+													"instance_type": {
+														"description": "The instance type configures vCPU, memory, and disk.\n\n- \"lite\": 1/16 vCPU, 256 MiB memory, 2 GB disk\n- \"basic\": 1/4 vCPU, 1 GiB memory, 4 GB disk\n- \"standard-1\": 1/2 vCPU, 4 GiB memory, 8 GB disk\n- \"standard-2\": 1 vCPU, 6 GiB memory, 12 GB disk\n- \"standard-3\": 2 vCPU, 8 GiB memory, 16 GB disk\n- \"standard-4\": 4 vCPU, 12 GiB memory, 20 GB disk\n",
+														"type": "string",
+														"example": "lite",
+														"default": "lite",
+														"anyOf": [
+															{
+																"enum": [
+																	"lite",
+																	"basic",
+																	"standard-1",
+																	"standard-2",
+																	"standard-3",
+																	"standard-4"
+																],
+																"type": "string"
+															}
+														]
+													},
+													"observability": {
+														"description": "Settings for deployment observability such as logging.",
+														"type": "object",
+														"properties": {
+															"logs": {
+																"description": "Observability logging settings.",
+																"type": "object",
+																"properties": {
+																	"enabled": {
+																		"type": "boolean",
+																		"default": false
+																	}
+																}
+															}
+														}
+													},
+													"trusted_user_ca_keys": {
+														"type": "array",
+														"items": {
+															"description": "User-provided SSH public key.",
+															"type": "object",
+															"properties": {
+																"name": {
+																	"description": "Optional human readable name for this key.",
+																	"type": "string"
+																},
+																"public_key": {
+																	"description": "An SSH public key.",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"public_key"
+															]
+														}
+													},
+													"wrangler_ssh": {
+														"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
+														"type": "object",
+														"properties": {
+															"enabled": {
+																"type": "boolean",
+																"default": true
+															},
+															"port": {
+																"type": "integer",
+																"default": 22,
+																"maximum": 65535,
+																"minimum": 1
 															}
 														}
 													}
-												]
-											},
-											"dns": {
-												"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
-												"type": "object",
-												"properties": {
-													"searches": {
-														"description": "The container resolver appends these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it appends 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
-														"type": "array",
-														"items": {
-															"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
-															"type": "string",
-															"example": "docker.io"
-														}
-													},
-													"servers": {
-														"description": "List of DNS servers the deployment uses to resolve domain names. You can only specify a maximum of 3.",
-														"type": "array",
-														"items": {
-															"description": "A string representation of an IP, either v6 or v4.",
-															"type": "string",
-															"example": "192.1.1.1"
-														}
-													}
-												}
-											},
-											"entrypoint": {
-												"description": "The entry point for the container, specifying the executable to run when the container starts.\nYou can override this at run-time. If you do, the default command from the image is ignored.\nSpecify both entrypoint and command at run-time to completely replace the image defaults.\n",
-												"type": "array",
-												"items": {
-													"type": "string"
 												},
-												"example": [
-													"/bin/bash"
+												"required": [
+													"image"
 												]
-											},
-											"environment_variables": {
-												"description": "Container environment variables.",
-												"type": "array",
-												"items": {
-													"description": "An environment variable with a value set.",
-													"type": "object",
-													"properties": {
-														"name": {
-															"description": "An environment variable name.",
-															"type": "string"
-														},
-														"value": {
-															"description": "An environment variable value.",
-															"type": "string"
-														}
-													},
-													"required": [
-														"name",
-														"value"
-													]
-												}
-											},
-											"experimental_flags": {
-												"description": "Opt-in experimental flags for this application. Users can set only a subset of\nexperimental flags; the API rejects unsupported values.\n",
-												"type": "array",
-												"items": {
-													"type": "string"
-												},
-												"maxItems": 10
-											},
-											"image": {
-												"description": "Image url.",
+											}
+										]
+									},
+									"constraints": {
+										"type": "object",
+										"properties": {
+											"jurisdiction": {
+												"description": "Currently supports only \"eu\" and \"fedramp\". Overlap between jurisdiction and region is allowed for ENAM, WNAM (FedRAMP) and EEUR, WEUR (EU).",
 												"type": "string"
 											},
-											"instance_type": {
-												"description": "The instance type configures vCPU, memory, and disk.\n\n- \"lite\": 1/16 vCPU, 256 MiB memory, 2 GB disk\n- \"basic\": 1/4 vCPU, 1 GiB memory, 4 GB disk\n- \"standard-1\": 1/2 vCPU, 4 GiB memory, 8 GB disk\n- \"standard-2\": 1 vCPU, 6 GiB memory, 12 GB disk\n- \"standard-3\": 2 vCPU, 8 GiB memory, 16 GB disk\n- \"standard-4\": 4 vCPU, 12 GiB memory, 20 GB disk\n",
-												"type": "string",
-												"example": "lite",
-												"default": "lite",
-												"anyOf": [
-													{
-														"enum": [
-															"lite",
-															"basic",
-															"standard-1",
-															"standard-2",
-															"standard-3",
-															"standard-4"
-														],
-														"type": "string"
-													}
-												]
-											},
-											"labels": {
-												"description": "Deployment labels.",
+											"regions": {
 												"type": "array",
 												"items": {
-													"description": "A label.",
-													"type": "object",
-													"properties": {
-														"name": {
-															"description": "A label name.",
-															"type": "string"
-														},
-														"value": {
-															"description": "A label value.",
-															"type": "string"
-														}
-													},
-													"required": [
-														"name",
-														"value"
-													]
+													"description": "Represents a group of datacenters. Choose one of \"AFR\", \"APAC\", \"EEUR\", \"ENAM\", \"WNAM\", \"ME\", \"OC\", \"SAM\", or \"WEUR\".\n",
+													"type": "string",
+													"example": "WNAM"
 												}
-											},
-											"lifecycle": {
-												"description": "Lifecycle configuration for a deployment.",
-												"type": "object",
-												"properties": {
-													"max_termination_duration": {
-														"description": "Duration string using the Go standard library format.\n  A string representing the duration in the form \"3d1h3m\". Go omits leading zero units.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
-														"type": "string",
-														"example": "30s"
-													}
-												}
-											},
-											"memory": {
-												"description": "Deprecated in favor of memory_mib.",
-												"allOf": [
+											}
+										}
+									},
+									"durable_objects": {
+										"description": "If set, it will make the container application back a durable object namespace.",
+										"allOf": [
+											{
+												"description": "Set of properties to configure a Durable Object-backed application.",
+												"oneOf": [
 													{
-														"description": "A memory size that specifies its unit at the end.",
-														"type": "string",
-														"example": "1GB"
+														"description": "Durable object configuration using a namespace ID.",
+														"type": "object",
+														"properties": {
+															"namespace_id": {
+																"description": "The namespace ID of the durable object namespace to use for this application.",
+																"type": "string",
+																"example": "14758f1afd44c09b7992073ccf00b43d"
+															}
+														},
+														"required": [
+															"namespace_id"
+														]
+													},
+													{
+														"description": "Durable object configuration using script and class names.",
+														"type": "object",
+														"properties": {
+															"class_name": {
+																"description": "The class name of the durable object.",
+																"type": "string"
+															},
+															"script_name": {
+																"description": "The script name where the durable object class is defined.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"script_name",
+															"class_name"
+														]
 													}
-												],
-												"deprecated": true
-											},
-											"memory_mib": {
-												"description": "Specify the memory for the deployment, in MiB. Defaults to the value configured for the account.",
-												"type": "integer"
-											},
-											"observability": {
-												"description": "Settings for deployment observability such as logging.",
+												]
+											}
+										]
+									},
+									"instances": {
+										"description": "Number of deployments to create",
+										"type": "integer",
+										"minimum": 0
+									},
+									"max_instances": {
+										"description": "Maximum number of instances that the application will allow.",
+										"type": "integer",
+										"minimum": 0
+									},
+									"name": {
+										"description": "The name for this application",
+										"type": "string"
+									},
+									"observability": {
+										"description": "Top-level observability settings for the application.\nThis field is mutually exclusive with configuration.observability.\n",
+										"allOf": [
+											{
+												"description": "Settings for application observability such as logging.",
 												"type": "object",
 												"properties": {
 													"logs": {
@@ -8353,182 +8507,293 @@
 																"default": false
 															}
 														}
-													}
-												}
-											},
-											"trusted_user_ca_keys": {
-												"type": "array",
-												"items": {
-													"description": "User-provided SSH public key.",
-													"type": "object",
-													"properties": {
-														"name": {
-															"description": "Optional human readable name for this key.",
-															"type": "string"
-														},
-														"public_key": {
-															"description": "An SSH public key.",
-															"type": "string"
-														}
 													},
-													"required": [
-														"public_key"
-													]
-												}
-											},
-											"vcpu": {
-												"description": "Specify the vcpu for the deployment. The minimum vcpu is 1. Values round to\nthe nearest 0.0001. Defaults to the value configured for the account.\n",
-												"type": "number",
-												"format": "float"
-											},
-											"wrangler_ssh": {
-												"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
-												"type": "object",
-												"properties": {
-													"enabled": {
-														"type": "boolean",
-														"default": true
-													},
-													"port": {
+													"target_instance_count": {
+														"description": "Fixed number of instances that should receive the application-level observability overlay.\nMutually exclusive with `target_instance_percentage`.\n",
 														"type": "integer",
-														"default": 22,
-														"maximum": 65535,
+														"minimum": 1
+													},
+													"target_instance_percentage": {
+														"description": "Percentage of instances that should receive the application-level observability overlay.\nThis rounds up so at least this percentage of instances is targeted.\nMutually exclusive with `target_instance_count`.\n",
+														"type": "integer",
+														"maximum": 99,
 														"minimum": 1
 													}
 												}
 											}
-										},
-										"required": [
-											"image"
+										]
+									},
+									"rollout_active_grace_period": {
+										"description": "Grace period for active instances to stay alive before becoming eligible for shutdown signal due to a rollout, in seconds.\nDefaults to 0.\n",
+										"type": "integer",
+										"default": 0,
+										"maximum": 604800,
+										"minimum": 0
+									},
+									"scheduling_policy": {
+										"description": "The scheduling policy to use for a scheduler-backed application.",
+										"type": "string",
+										"enum": [
+											"default"
 										]
 									}
+								},
+								"required": [
+									"name",
+									"scheduling_policy",
+									"instances",
+									"max_instances",
+									"configuration"
 								]
 							},
-							"constraints": {
+							{
+								"description": "Create a namespace-backed Containers application whose instances are owned by Durable Objects.",
 								"type": "object",
 								"properties": {
-									"jurisdiction": {
-										"description": "Currently supports only \"eu\" and \"fedramp\". Overlap between jurisdiction and region is allowed for ENAM, WNAM (FedRAMP) and EEUR, WEUR (EU).",
-										"type": "string"
-									},
-									"regions": {
-										"type": "array",
-										"items": {
-											"description": "Represents a group of datacenters. Choose one of \"AFR\", \"APAC\", \"EEUR\", \"ENAM\", \"WNAM\", \"ME\", \"OC\", \"SAM\", or \"WEUR\".\n",
-											"type": "string",
-											"example": "WNAM"
-										}
-									}
-								}
-							},
-							"durable_objects": {
-								"description": "If set, the container application backs a durable object namespace.",
-								"allOf": [
-									{
-										"description": "Set of properties to configure a Durable Object-backed application.",
-										"oneOf": [
+									"configuration": {
+										"description": "Instance applications choose their image and runtime configuration when each Durable Object starts a container.\nSet image to an empty string and omit every other configuration field.\n",
+										"allOf": [
 											{
-												"description": "Durable object configuration using a namespace ID.",
+												"description": "User-specified container configuration.",
 												"type": "object",
 												"properties": {
-													"namespace_id": {
-														"description": "The namespace ID of the durable object namespace to use for this application.",
-														"type": "string",
-														"example": "14758f1afd44c09b7992073ccf00b43d"
-													}
-												},
-												"required": [
-													"namespace_id"
-												]
-											},
-											{
-												"description": "Durable object configuration using script and class names.",
-												"type": "object",
-												"properties": {
-													"class_name": {
-														"description": "The class name of the durable object.",
+													"authorized_keys": {
+														"type": "array",
+														"items": {
+															"description": "User-provided SSH public key.",
+															"type": "object",
+															"properties": {
+																"name": {
+																	"description": "Optional human readable name for this key.",
+																	"type": "string"
+																},
+																"public_key": {
+																	"description": "An SSH public key.",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"public_key"
+															]
+														}
+													},
+													"command": {
+														"description": "The command that runs when the container starts, passed to the entrypoint.\nYou can override this at run-time. If you override only the command,\nit gets passed to the default entrypoint specified in the image.\n",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"example": [
+															"myapp",
+															"--default-option"
+														]
+													},
+													"dns": {
+														"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
+														"type": "object",
+														"properties": {
+															"searches": {
+																"description": "The container resolver appends these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it appends 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
+																"type": "array",
+																"items": {
+																	"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
+																	"type": "string",
+																	"example": "docker.io"
+																}
+															},
+															"servers": {
+																"description": "List of DNS servers the deployment uses to resolve domain names. You can only specify a maximum of 3.",
+																"type": "array",
+																"items": {
+																	"description": "A string representation of an IP, either v6 or v4.",
+																	"type": "string",
+																	"example": "192.1.1.1"
+																}
+															}
+														}
+													},
+													"entrypoint": {
+														"description": "The entry point for the container, specifying the executable to run when the container starts.\nYou can override this at run-time. If you do, the default command from the image is ignored.\nSpecify both entrypoint and command at run-time to completely replace the image defaults.\n",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"example": [
+															"/bin/bash"
+														]
+													},
+													"environment_variables": {
+														"description": "Container environment variables.",
+														"type": "array",
+														"items": {
+															"description": "An environment variable with a value set.",
+															"type": "object",
+															"properties": {
+																"name": {
+																	"description": "An environment variable name.",
+																	"type": "string"
+																},
+																"value": {
+																	"description": "An environment variable value.",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"value"
+															]
+														}
+													},
+													"image": {
+														"description": "Image url.",
 														"type": "string"
 													},
-													"script_name": {
-														"description": "The script name where the durable object class is defined.",
-														"type": "string"
+													"instance_type": {
+														"description": "The instance type configures vCPU, memory, and disk.\n\n- \"lite\": 1/16 vCPU, 256 MiB memory, 2 GB disk\n- \"basic\": 1/4 vCPU, 1 GiB memory, 4 GB disk\n- \"standard-1\": 1/2 vCPU, 4 GiB memory, 8 GB disk\n- \"standard-2\": 1 vCPU, 6 GiB memory, 12 GB disk\n- \"standard-3\": 2 vCPU, 8 GiB memory, 16 GB disk\n- \"standard-4\": 4 vCPU, 12 GiB memory, 20 GB disk\n",
+														"type": "string",
+														"example": "lite",
+														"default": "lite",
+														"anyOf": [
+															{
+																"enum": [
+																	"lite",
+																	"basic",
+																	"standard-1",
+																	"standard-2",
+																	"standard-3",
+																	"standard-4"
+																],
+																"type": "string"
+															}
+														]
+													},
+													"observability": {
+														"description": "Settings for deployment observability such as logging.",
+														"type": "object",
+														"properties": {
+															"logs": {
+																"description": "Observability logging settings.",
+																"type": "object",
+																"properties": {
+																	"enabled": {
+																		"type": "boolean",
+																		"default": false
+																	}
+																}
+															}
+														}
+													},
+													"trusted_user_ca_keys": {
+														"type": "array",
+														"items": {
+															"description": "User-provided SSH public key.",
+															"type": "object",
+															"properties": {
+																"name": {
+																	"description": "Optional human readable name for this key.",
+																	"type": "string"
+																},
+																"public_key": {
+																	"description": "An SSH public key.",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"public_key"
+															]
+														}
+													},
+													"wrangler_ssh": {
+														"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
+														"type": "object",
+														"properties": {
+															"enabled": {
+																"type": "boolean",
+																"default": true
+															},
+															"port": {
+																"type": "integer",
+																"default": 22,
+																"maximum": 65535,
+																"minimum": 1
+															}
+														}
 													}
 												},
 												"required": [
-													"script_name",
-													"class_name"
+													"image"
 												]
 											}
 										]
-									}
-								]
-							},
-							"instances": {
-								"description": "Number of deployments to create.",
-								"type": "integer",
-								"minimum": 0
-							},
-							"max_instances": {
-								"description": "Maximum number of instances the application allows. This is relevant for applications that auto-scale.",
-								"type": "integer",
-								"minimum": 0
-							},
-							"name": {
-								"description": "The name for this application.",
-								"type": "string"
-							},
-							"observability": {
-								"description": "Top-level observability settings for the application.\nThis field is mutually exclusive with configuration.observability.\n",
-								"allOf": [
-									{
-										"description": "Settings for application observability such as logging.",
-										"type": "object",
-										"properties": {
-											"logs": {
-												"description": "Observability logging settings.",
-												"type": "object",
-												"properties": {
-													"enabled": {
-														"type": "boolean",
-														"default": false
+									},
+									"durable_objects": {
+										"description": "The customer-owned Durable Object namespace that owns this application and its instances.",
+										"allOf": [
+											{
+												"description": "Set of properties to configure a Durable Object-backed application.",
+												"oneOf": [
+													{
+														"description": "Durable object configuration using a namespace ID.",
+														"type": "object",
+														"properties": {
+															"namespace_id": {
+																"description": "The namespace ID of the durable object namespace to use for this application.",
+																"type": "string",
+																"example": "14758f1afd44c09b7992073ccf00b43d"
+															}
+														},
+														"required": [
+															"namespace_id"
+														]
+													},
+													{
+														"description": "Durable object configuration using script and class names.",
+														"type": "object",
+														"properties": {
+															"class_name": {
+																"description": "The class name of the durable object.",
+																"type": "string"
+															},
+															"script_name": {
+																"description": "The script name where the durable object class is defined.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"script_name",
+															"class_name"
+														]
 													}
-												}
-											},
-											"target_instance_count": {
-												"description": "Fixed number of instances that should receive the application-level observability overlay.\nMutually exclusive with `target_instance_percentage`.\n",
-												"type": "integer",
-												"minimum": 1
-											},
-											"target_instance_percentage": {
-												"description": "Percentage of instances that should receive the application-level observability overlay.\nThis rounds up so at least this percentage of instances is targeted.\nMutually exclusive with `target_instance_count`.\n",
-												"type": "integer",
-												"maximum": 99,
-												"minimum": 1
+												]
 											}
-										}
+										]
+									},
+									"instances": {
+										"description": "Instance applications do not pre-create deployments.",
+										"type": "integer",
+										"enum": [
+											0
+										]
+									},
+									"name": {
+										"description": "The name for this application",
+										"type": "string"
+									},
+									"scheduling_policy": {
+										"type": "string",
+										"enum": [
+											"instance"
+										]
 									}
-								]
-							},
-							"rollout_active_grace_period": {
-								"description": "Grace period for active instances to stay alive before becoming eligible for shutdown signal due to a rollout, in seconds.\nDefaults to 0.\n",
-								"type": "integer",
-								"default": 0,
-								"maximum": 604800,
-								"minimum": 0
-							},
-							"scheduling_policy": {
-								"description": "The scheduling policy to use for an application.",
-								"type": "string",
-								"enum": [
-									"default"
+								},
+								"required": [
+									"name",
+									"scheduling_policy",
+									"instances",
+									"configuration",
+									"durable_objects"
 								]
 							}
-						},
-						"required": [
-							"name",
-							"scheduling_policy",
-							"instances",
-							"configuration"
 						]
 					}
 				}
@@ -8669,32 +8934,6 @@
 																"--default-option"
 															]
 														},
-														"disk": {
-															"description": "The disk configuration for this deployment.",
-															"allOf": [
-																{
-																	"description": "The disk configuration for this deployment. All containers default to a disk size of 2GB.",
-																	"type": "object",
-																	"properties": {
-																		"size": {
-																			"description": "Deprecated in favor of size_mb.",
-																			"allOf": [
-																				{
-																					"description": "A disk size that specifies its unit at the end.",
-																					"type": "string",
-																					"example": "1GB"
-																				}
-																			],
-																			"deprecated": true
-																		},
-																		"size_mb": {
-																			"description": "Size of the disk, in MB.",
-																			"type": "integer"
-																		}
-																	}
-																}
-															]
-														},
 														"dns": {
 															"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
 															"type": "object",
@@ -8751,14 +8990,6 @@
 																]
 															}
 														},
-														"experimental_flags": {
-															"description": "Opt-in experimental flags for this application. Users can set only a subset of\nexperimental flags; the API rejects unsupported values.\n",
-															"type": "array",
-															"items": {
-																"type": "string"
-															},
-															"maxItems": 10
-														},
 														"image": {
 															"description": "Image url.",
 															"type": "string"
@@ -8781,54 +9012,6 @@
 																	"type": "string"
 																}
 															]
-														},
-														"labels": {
-															"description": "Deployment labels.",
-															"type": "array",
-															"items": {
-																"description": "A label.",
-																"type": "object",
-																"properties": {
-																	"name": {
-																		"description": "A label name.",
-																		"type": "string"
-																	},
-																	"value": {
-																		"description": "A label value.",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"name",
-																	"value"
-																]
-															}
-														},
-														"lifecycle": {
-															"description": "Lifecycle configuration for a deployment.",
-															"type": "object",
-															"properties": {
-																"max_termination_duration": {
-																	"description": "Duration string using the Go standard library format.\n  A string representing the duration in the form \"3d1h3m\". Go omits leading zero units.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
-																	"type": "string",
-																	"example": "30s"
-																}
-															}
-														},
-														"memory": {
-															"description": "Deprecated in favor of memory_mib.",
-															"allOf": [
-																{
-																	"description": "A memory size that specifies its unit at the end.",
-																	"type": "string",
-																	"example": "1GB"
-																}
-															],
-															"deprecated": true
-														},
-														"memory_mib": {
-															"description": "Specify the memory for the deployment, in MiB. Defaults to the value configured for the account.",
-															"type": "integer"
 														},
 														"observability": {
 															"description": "Settings for deployment observability such as logging.",
@@ -8865,11 +9048,6 @@
 																	"public_key"
 																]
 															}
-														},
-														"vcpu": {
-															"description": "Specify the vcpu for the deployment. The minimum vcpu is 1. Values round to\nthe nearest 0.0001. Defaults to the value configured for the account.\n",
-															"type": "number",
-															"format": "float"
 														},
 														"wrangler_ssh": {
 															"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
@@ -9112,7 +9290,8 @@
 													"description": "The scheduling policy to use for an application.",
 													"type": "string",
 													"enum": [
-														"default"
+														"default",
+														"instance"
 													]
 												},
 												"updated_at": {
@@ -9595,7 +9774,10 @@
 		],
 		"tags": [
 			"Applications"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "containers.applications",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/resource-library/applications": {
 		"operationId": "createResourceLibraryApplication",

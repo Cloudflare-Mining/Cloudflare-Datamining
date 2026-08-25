@@ -1138,7 +1138,7 @@
 																		"compatibility_date": {
 																			"description": "Compatibility date used for Pages Functions.",
 																			"type": "string",
-																			"example": "2025-01-01",
+																			"example": "2025-01-01T00:00:00Z",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
@@ -1611,7 +1611,7 @@
 																		"compatibility_date": {
 																			"description": "Compatibility date used for Pages Functions.",
 																			"type": "string",
-																			"example": "2025-01-01",
+																			"example": "2025-01-01T00:00:00Z",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
@@ -2968,7 +2968,11 @@
 		],
 		"x-api-token-group": [
 			"Pages Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "pages.projects",
+		"x-fern-sdk-method-name": "disconnect-source",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/pages/projects": {
 		"operationId": "pages-project-get-projects",
@@ -3887,7 +3891,7 @@
 																			"compatibility_date": {
 																				"description": "Compatibility date used for Pages Functions.",
 																				"type": "string",
-																				"example": "2025-01-01",
+																				"example": "2025-01-01T00:00:00Z",
 																				"x-auditable": true,
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
@@ -4360,7 +4364,7 @@
 																			"compatibility_date": {
 																				"description": "Compatibility date used for Pages Functions.",
 																				"type": "string",
-																				"example": "2025-01-01",
+																				"example": "2025-01-01T00:00:00Z",
 																				"x-auditable": true,
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
@@ -6594,7 +6598,7 @@
 																		"compatibility_date": {
 																			"description": "Compatibility date used for Pages Functions.",
 																			"type": "string",
-																			"example": "2025-01-01",
+																			"example": "2025-01-01T00:00:00Z",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
@@ -7067,7 +7071,7 @@
 																		"compatibility_date": {
 																			"description": "Compatibility date used for Pages Functions.",
 																			"type": "string",
-																			"example": "2025-01-01",
+																			"example": "2025-01-01T00:00:00Z",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
@@ -8879,7 +8883,7 @@
 													"compatibility_date": {
 														"description": "Compatibility date used for Pages Functions.",
 														"type": "string",
-														"example": "2025-01-01",
+														"example": "2025-01-01T00:00:00Z",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
@@ -9356,7 +9360,7 @@
 													"compatibility_date": {
 														"description": "Compatibility date used for Pages Functions.",
 														"type": "string",
-														"example": "2025-01-01",
+														"example": "2025-01-01T00:00:00Z",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
@@ -9881,7 +9885,7 @@
 						"example": {
 							"deployment_configs": {
 								"production": {
-									"compatibility_date": "2022-01-01",
+									"compatibility_date": "2022-01-01T00:00:00Z",
 									"compatibility_flags": [
 										"url_standard"
 									],
@@ -10741,7 +10745,7 @@
 																		"compatibility_date": {
 																			"description": "Compatibility date used for Pages Functions.",
 																			"type": "string",
-																			"example": "2025-01-01",
+																			"example": "2025-01-01T00:00:00Z",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
@@ -11214,7 +11218,7 @@
 																		"compatibility_date": {
 																			"description": "Compatibility date used for Pages Functions.",
 																			"type": "string",
-																			"example": "2025-01-01",
+																			"example": "2025-01-01T00:00:00Z",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
@@ -12734,7 +12738,7 @@
 													"compatibility_date": {
 														"description": "Compatibility date used for Pages Functions.",
 														"type": "string",
-														"example": "2025-01-01",
+														"example": "2025-01-01T00:00:00Z",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
@@ -13211,7 +13215,7 @@
 													"compatibility_date": {
 														"description": "Compatibility date used for Pages Functions.",
 														"type": "string",
-														"example": "2025-01-01",
+														"example": "2025-01-01T00:00:00Z",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
@@ -14580,7 +14584,7 @@
 																		"compatibility_date": {
 																			"description": "Compatibility date used for Pages Functions.",
 																			"type": "string",
-																			"example": "2025-01-01",
+																			"example": "2025-01-01T00:00:00Z",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
@@ -15053,7 +15057,7 @@
 																		"compatibility_date": {
 																			"description": "Compatibility date used for Pages Functions.",
 																			"type": "string",
-																			"example": "2025-01-01",
+																			"example": "2025-01-01T00:00:00Z",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
@@ -17421,7 +17425,7 @@
 																		"compatibility_date": {
 																			"description": "Compatibility date used for Pages Functions.",
 																			"type": "string",
-																			"example": "2025-01-01",
+																			"example": "2025-01-01T00:00:00Z",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
@@ -17894,7 +17898,7 @@
 																		"compatibility_date": {
 																			"description": "Compatibility date used for Pages Functions.",
 																			"type": "string",
-																			"example": "2025-01-01",
+																			"example": "2025-01-01T00:00:00Z",
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
@@ -19251,6 +19255,10 @@
 		],
 		"x-api-token-group": [
 			"Pages Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "pages.projects",
+		"x-fern-sdk-method-name": "connect-source",
+		"x-forge-hidden": true
 	}
 }

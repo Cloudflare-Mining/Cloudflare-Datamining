@@ -257,6 +257,10 @@
 		"x-api-token-group": [
 			"Zero Trust Write"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.custom-prompt-topics",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
 		"x-stainless-skip": [
 			"terraform"
 		]
@@ -556,7 +560,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.custom-prompt-topics",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dlp/custom_prompt_topics/{entry_id}": {
 		"operationId": "dlp-custom-prompt-topics-get",
@@ -859,7 +867,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.custom-prompt-topics",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/dlp/custom_prompt_topics": {
 		"operationId": "dlp-custom-prompt-topics-create",
@@ -1190,6 +1202,10 @@
 		"x-api-token-group": [
 			"Zero Trust Write"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.custom-prompt-topics",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
 		"x-stainless-skip": [
 			"terraform"
 		]
@@ -1528,6 +1544,10 @@
 		"x-api-token-group": [
 			"Zero Trust Write"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.custom-prompt-topics",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true,
 		"x-stainless-skip": [
 			"terraform"
 		]

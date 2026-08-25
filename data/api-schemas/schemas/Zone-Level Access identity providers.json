@@ -2073,6 +2073,13 @@
 																				"type": "string",
 																				"example": "https://whoami.com"
 																			},
+																			"max_sso_url_length": {
+																				"description": "The maximum URL length the IdP accepts for the SSO redirect URL.\nWhen the constructed SSO URL would exceed this length, the RelayState\nis stored server-side and a short nonce is passed to the IdP instead.\nSet this if your IdP enforces a URL length limit.\n",
+																				"type": "integer",
+																				"example": 8192,
+																				"maximum": 100000,
+																				"minimum": 512
+																			},
 																			"sign_request": {
 																				"description": "Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.",
 																				"type": "boolean"
@@ -4369,6 +4376,13 @@
 																			"type": "string",
 																			"example": "https://whoami.com"
 																		},
+																		"max_sso_url_length": {
+																			"description": "The maximum URL length the IdP accepts for the SSO redirect URL.\nWhen the constructed SSO URL would exceed this length, the RelayState\nis stored server-side and a short nonce is passed to the IdP instead.\nSet this if your IdP enforces a URL length limit.\n",
+																			"type": "integer",
+																			"example": 8192,
+																			"maximum": 100000,
+																			"minimum": 512
+																		},
 																		"sign_request": {
 																			"description": "Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.",
 																			"type": "boolean"
@@ -6440,6 +6454,13 @@
 														"type": "string",
 														"example": "https://whoami.com"
 													},
+													"max_sso_url_length": {
+														"description": "The maximum URL length the IdP accepts for the SSO redirect URL.\nWhen the constructed SSO URL would exceed this length, the RelayState\nis stored server-side and a short nonce is passed to the IdP instead.\nSet this if your IdP enforces a URL length limit.\n",
+														"type": "integer",
+														"example": 8192,
+														"maximum": 100000,
+														"minimum": 512
+													},
 													"sign_request": {
 														"description": "Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.",
 														"type": "boolean"
@@ -8449,6 +8470,13 @@
 																			"description": "IdP Entity ID or Issuer URL",
 																			"type": "string",
 																			"example": "https://whoami.com"
+																		},
+																		"max_sso_url_length": {
+																			"description": "The maximum URL length the IdP accepts for the SSO redirect URL.\nWhen the constructed SSO URL would exceed this length, the RelayState\nis stored server-side and a short nonce is passed to the IdP instead.\nSet this if your IdP enforces a URL length limit.\n",
+																			"type": "integer",
+																			"example": 8192,
+																			"maximum": 100000,
+																			"minimum": 512
 																		},
 																		"sign_request": {
 																			"description": "Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.",
@@ -10533,6 +10561,13 @@
 														"type": "string",
 														"example": "https://whoami.com"
 													},
+													"max_sso_url_length": {
+														"description": "The maximum URL length the IdP accepts for the SSO redirect URL.\nWhen the constructed SSO URL would exceed this length, the RelayState\nis stored server-side and a short nonce is passed to the IdP instead.\nSet this if your IdP enforces a URL length limit.\n",
+														"type": "integer",
+														"example": 8192,
+														"maximum": 100000,
+														"minimum": 512
+													},
 													"sign_request": {
 														"description": "Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.",
 														"type": "boolean"
@@ -12542,6 +12577,13 @@
 																			"description": "IdP Entity ID or Issuer URL",
 																			"type": "string",
 																			"example": "https://whoami.com"
+																		},
+																		"max_sso_url_length": {
+																			"description": "The maximum URL length the IdP accepts for the SSO redirect URL.\nWhen the constructed SSO URL would exceed this length, the RelayState\nis stored server-side and a short nonce is passed to the IdP instead.\nSet this if your IdP enforces a URL length limit.\n",
+																			"type": "integer",
+																			"example": 8192,
+																			"maximum": 100000,
+																			"minimum": 512
 																		},
 																		"sign_request": {
 																			"description": "Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.",

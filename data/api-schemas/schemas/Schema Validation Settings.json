@@ -258,9 +258,10 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "schema-validation.settings.operations",
+		"x-fern-sdk-group-name": "api-security.schema-validation.settings.operations",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes the operation-specific schema validation setting and restores the zone default."
 	},
 	"GET /zones/{zone_id}/schema_validation/settings": {
 		"operationId": "schema-validation-get-settings",
@@ -534,14 +535,14 @@
 			"Domain API Gateway Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "schema-validation.settings",
+		"x-fern-sdk-group-name": "api-security.schema-validation.settings",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/schema_validation/settings/operations": {
 		"operationId": "schema-validation-list-per-operation-settings",
 		"summary": "List per-operation schema validation settings",
-		"description": "Lists all per-operation schema validation settings configured for the zone.",
+		"description": "Lists per-operation schema validation settings configured for the zone.",
 		"parameters": [
 			{
 				"description": "Page number of paginated results.",
@@ -880,7 +881,7 @@
 			"Domain API Gateway Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "schema-validation.settings.operations",
+		"x-fern-sdk-group-name": "api-security.schema-validation.settings.operations",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -1160,7 +1161,7 @@
 			"Domain API Gateway Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "schema-validation.settings.operations",
+		"x-fern-sdk-group-name": "api-security.schema-validation.settings.operations",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -1467,7 +1468,7 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "schema-validation.settings",
+		"x-fern-sdk-group-name": "api-security.schema-validation.settings",
 		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true
 	},
@@ -1604,51 +1605,25 @@
 								{
 									"properties": {
 										"result": {
-											"description": "Operation ID to per operation setting mapping",
+											"description": "Operation ID to updated mitigation action mapping",
 											"type": "object",
-											"example": {
-												"3818d821-5901-4147-a474-f5f5aec1d54e": {
-													"mitigation_action": "log"
-												},
-												"b17c8043-99a0-4202-b7d9-8f7cdbee02cd": {
-													"mitigation_action": "block"
-												}
-											},
 											"additionalProperties": {
 												"type": "object",
 												"properties": {
 													"mitigation_action": {
-														"description": "When set, this applies a mitigation action to this operation which supersedes a global schema validation setting just for this operation\n\n  - `\"log\"` - log request when request does not conform to schema for this operation\n  - `\"block\"` - deny access to the site when request does not conform to schema for this operation\n  - `\"none\"` - will skip mitigation for this operation\n",
+														"description": "When set, this applies a mitigation action to this operation\n\n  - `\"log\"` - log request when request does not conform to schema for this operation\n  - `\"block\"` - deny access to the site when request does not conform to schema for this operation\n  - `\"none\"` - will skip mitigation for this operation\n  - `null` - clears any mitigation action\n",
 														"type": "string",
 														"example": "block",
 														"enum": [
 															"log",
 															"block",
-															"none"
+															"none",
+															null
 														],
+														"nullable": true,
 														"x-auditable": true
-													},
-													"operation_id": {
-														"allOf": [
-															{
-																"minLength": 36,
-																"type": "string",
-																"x-auditable": true
-															},
-															{
-																"description": "UUID.",
-																"type": "string",
-																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																"maxLength": 36,
-																"x-auditable": true
-															}
-														]
 													}
-												},
-												"required": [
-													"operation_id",
-													"mitigation_action"
-												]
+												}
 											}
 										}
 									},
@@ -1793,7 +1768,7 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "schema-validation.settings.operations",
+		"x-fern-sdk-group-name": "api-security.schema-validation.settings.operations",
 		"x-fern-sdk-method-name": "bulk-edit",
 		"x-forge-hidden": true
 	},
@@ -2111,7 +2086,7 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "schema-validation.settings",
+		"x-fern-sdk-group-name": "api-security.schema-validation.settings",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
@@ -2425,7 +2400,7 @@
 			"Domain API Gateway"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "schema-validation.settings.operations",
+		"x-fern-sdk-group-name": "api-security.schema-validation.settings.operations",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	}

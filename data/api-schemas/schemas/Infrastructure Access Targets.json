@@ -160,7 +160,7 @@
 			"Infrastructure Access Targets"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "access.infrastructure.targets",
+		"x-fern-sdk-group-name": "access.targets",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
 	},
@@ -340,9 +340,9 @@
 			"Infrastructure Access Targets"
 		],
 		"x-fern-availability": "deprecated",
-		"x-fern-sdk-group-name": "access.infrastructure.targets",
-		"x-fern-sdk-method-name": "bulk-delete",
-		"x-forge-hidden": true
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "access.targets",
+		"x-fern-sdk-method-name": "bulk-delete"
 	},
 	"GET /accounts/{account_id}/infrastructure/targets": {
 		"operationId": "infra-targets-list",
@@ -918,7 +918,7 @@
 			"Infrastructure Access Targets"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "access.infrastructure.targets",
+		"x-fern-sdk-group-name": "access.targets",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -1267,7 +1267,7 @@
 			"Infrastructure Access Targets"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "access.infrastructure.targets",
+		"x-fern-sdk-group-name": "access.targets",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -1670,7 +1670,7 @@
 			"Infrastructure Access Targets"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "access.infrastructure.targets",
+		"x-fern-sdk-group-name": "access.targets",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
@@ -1849,8 +1849,8 @@
 			"Infrastructure Access Targets"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "access.infrastructure.targets",
-		"x-fern-sdk-method-name": "bulk-delete-v2",
+		"x-fern-sdk-group-name": "access.targets.bulk",
+		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/infrastructure/targets/{target_id}": {
@@ -2266,7 +2266,7 @@
 			"Infrastructure Access Targets"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "access.infrastructure.targets",
+		"x-fern-sdk-group-name": "access.targets",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
@@ -2675,8 +2675,8 @@
 			"Infrastructure Access Targets"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "access.infrastructure.targets",
-		"x-fern-sdk-method-name": "bulk-update",
+		"x-fern-sdk-group-name": "access.targets.bulk",
+		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	}
 }

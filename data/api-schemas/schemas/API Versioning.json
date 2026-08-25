@@ -1,0 +1,368 @@
+{
+	"GET /versions/calendar": {
+		"operationId": "api-versioning-release-calendar",
+		"summary": "List API release calendar",
+		"description": "Returns the release calendar for the Cloudflare API versioning system. Each entry contains a date, train name, and composite version tag that clients use in the `api-version` request header. Releases are grouped into named trains; new trains occur roughly every six months but may happen more frequently when a specific need arises. Requests that omit the `api-version` header will fall back to the pre-versioned API state.",
+		"responses": {
+			"200": {
+				"description": "Release calendar response",
+				"headers": {
+					"cache-control": {
+						"description": "Caching directive for the response.",
+						"schema": {
+							"type": "string",
+							"example": "public, max-age=86400"
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": [
+								{
+									"freeze_date": "2026-09-25T00:00:00Z",
+									"train": "air",
+									"version": "2026-10-07.air",
+									"version_date": "2026-10-07T00:00:00Z"
+								},
+								{
+									"freeze_date": "2026-10-30T00:00:00Z",
+									"train": "air",
+									"version": "2026-11-04.air",
+									"version_date": "2026-11-04T00:00:00Z"
+								},
+								{
+									"freeze_date": "2026-11-27T00:00:00Z",
+									"train": "air",
+									"version": "2026-12-02.air",
+									"version_date": "2026-12-02T00:00:00Z"
+								}
+							],
+							"success": true
+						},
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"description": "A single release in the API versioning calendar.",
+												"type": "object",
+												"properties": {
+													"freeze_date": {
+														"description": "The date after which breaking changes are no longer accepted for this release, in `YYYY-MM-DD` format. Major releases (first entry of a new train) freeze 10 days before the version date; minor releases freeze 5 days before. Freeze dates always fall on weekdays.",
+														"type": "string",
+														"format": "date",
+														"example": "2026-09-25"
+													},
+													"train": {
+														"description": "The train name for this release. New trains occur roughly every six months but may happen more frequently when a specific need arises. Unversioned requests fall back to the pre-versioned API state.",
+														"type": "string",
+														"example": "air"
+													},
+													"version": {
+														"description": "The composite version tag (`YYYY-MM-DD.train`) used in the `api-version` request header.",
+														"type": "string",
+														"example": "2026-10-07.air"
+													},
+													"version_date": {
+														"description": "The release date in `YYYY-MM-DD` format. All releases land on the first Wednesday of the month.",
+														"type": "string",
+														"format": "date",
+														"example": "2026-10-07"
+													}
+												},
+												"required": [
+													"version_date",
+													"freeze_date",
+													"train",
+													"version"
+												]
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Release calendar response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{}
+		],
+		"tags": [
+			"API Versioning"
+		]
+	},
+	"HEAD /versions/calendar": {
+		"description": "Returns the same headers as the GET request but with no response body.",
+		"operationId": "api-versioning-release-calendar-head",
+		"responses": {
+			"200": {
+				"description": "Release calendar headers",
+				"headers": {
+					"cache-control": {
+						"description": "Caching directive for the response.",
+						"schema": {
+							"type": "string",
+							"example": "public, max-age=86400"
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Release calendar headers failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{}
+		],
+		"summary": "Release calendar headers",
+		"tags": [
+			"API Versioning"
+		]
+	}
+}

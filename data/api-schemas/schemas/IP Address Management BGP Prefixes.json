@@ -253,7 +253,11 @@
 		],
 		"tags": [
 			"IP Address Management BGP Prefixes"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.prefixes.bgp-prefixes",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes": {
 		"operationId": "ip-address-management-prefixes-list-bgp-prefixes",
@@ -831,7 +835,11 @@
 			"IP Prefixes: Read",
 			"IP Prefixes: BGP On Demand Write",
 			"IP Prefixes: BGP On Demand Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.prefixes.bgp-prefixes",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes/{bgp_prefix_id}": {
 		"operationId": "ip-address-management-prefixes-fetch-bgp-prefix",
@@ -1415,7 +1423,11 @@
 			"IP Prefixes: Read",
 			"IP Prefixes: BGP On Demand Write",
 			"IP Prefixes: BGP On Demand Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.prefixes.bgp-prefixes",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes/{bgp_prefix_id}": {
 		"operationId": "ip-address-management-prefixes-update-bgp-prefix",
@@ -2032,7 +2044,11 @@
 			"Magic Transit Write",
 			"IP Prefixes: Write",
 			"IP Prefixes: BGP On Demand Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.prefixes.bgp-prefixes",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes": {
 		"operationId": "ip-address-management-prefixes-create-bgp-prefix",
@@ -2617,6 +2633,10 @@
 		],
 		"tags": [
 			"IP Address Management BGP Prefixes"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.prefixes.bgp-prefixes",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

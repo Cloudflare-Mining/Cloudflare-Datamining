@@ -638,7 +638,9 @@
 		],
 		"x-api-token-group": [
 			"Workers Observability Write"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/workers/observability/telemetry/live-tail/heartbeat": {
 		"operationId": "telemetry.live-tail.heartbeat.get",
@@ -839,6 +841,8 @@
 		],
 		"x-api-token-group": [
 			"Workers Observability Write"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	}
 }

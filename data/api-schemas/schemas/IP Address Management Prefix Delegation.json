@@ -401,7 +401,11 @@
 		],
 		"x-api-token-group": [
 			"IP Prefixes: Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.prefixes.delegations",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}/delegations": {
 		"operationId": "ip-address-management-prefix-delegation-list-prefix-delegations",
@@ -923,7 +927,11 @@
 		],
 		"tags": [
 			"IP Address Management Prefix Delegation"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.prefixes.delegations",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/addressing/prefixes/{prefix_id}/delegations": {
 		"operationId": "ip-address-management-prefix-delegation-create-prefix-delegation",
@@ -1400,6 +1408,10 @@
 		],
 		"x-api-token-group": [
 			"IP Prefixes: Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.prefixes.delegations",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

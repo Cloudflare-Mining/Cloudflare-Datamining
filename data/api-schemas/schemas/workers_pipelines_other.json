@@ -168,15 +168,6 @@
 					"maxLength": 32,
 					"minLength": 32
 				}
-			},
-			{
-				"name": "force",
-				"in": "query",
-				"schema": {
-					"description": "Deprecated: Delete sink forcefully, including deleting any dependent pipelines.",
-					"type": "string"
-				},
-				"deprecated": true
 			}
 		],
 		"responses": {
@@ -236,15 +227,6 @@
 		"summary": "Delete Stream",
 		"description": "Delete Stream in Account.",
 		"parameters": [
-			{
-				"name": "force",
-				"in": "query",
-				"schema": {
-					"description": "Deprecated: Delete stream forcefully, including deleting any dependent pipelines.",
-					"type": "string"
-				},
-				"deprecated": true
-			},
 			{
 				"name": "account_id",
 				"in": "path",

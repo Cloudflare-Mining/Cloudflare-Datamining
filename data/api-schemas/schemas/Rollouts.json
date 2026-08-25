@@ -125,32 +125,6 @@
 											"--default-option"
 										]
 									},
-									"disk": {
-										"description": "The disk configuration for this deployment.",
-										"allOf": [
-											{
-												"description": "The disk configuration for this deployment. All containers default to a disk size of 2GB.",
-												"type": "object",
-												"properties": {
-													"size": {
-														"description": "Deprecated in favor of size_mb.",
-														"allOf": [
-															{
-																"description": "A disk size that specifies its unit at the end.",
-																"type": "string",
-																"example": "1GB"
-															}
-														],
-														"deprecated": true
-													},
-													"size_mb": {
-														"description": "Size of the disk, in MB.",
-														"type": "integer"
-													}
-												}
-											}
-										]
-									},
 									"dns": {
 										"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
 										"type": "object",
@@ -207,14 +181,6 @@
 											]
 										}
 									},
-									"experimental_flags": {
-										"description": "Opt-in experimental flags for this application. Users can set only a subset of\nexperimental flags; the API rejects unsupported values.\n",
-										"type": "array",
-										"items": {
-											"type": "string"
-										},
-										"maxItems": 10
-									},
 									"image": {
 										"description": "Image url.",
 										"type": "string"
@@ -237,54 +203,6 @@
 												"type": "string"
 											}
 										]
-									},
-									"labels": {
-										"description": "Deployment labels.",
-										"type": "array",
-										"items": {
-											"description": "A label.",
-											"type": "object",
-											"properties": {
-												"name": {
-													"description": "A label name.",
-													"type": "string"
-												},
-												"value": {
-													"description": "A label value.",
-													"type": "string"
-												}
-											},
-											"required": [
-												"name",
-												"value"
-											]
-										}
-									},
-									"lifecycle": {
-										"description": "Lifecycle configuration for a deployment.",
-										"type": "object",
-										"properties": {
-											"max_termination_duration": {
-												"description": "Duration string using the Go standard library format.\n  A string representing the duration in the form \"3d1h3m\". Go omits leading zero units.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
-												"type": "string",
-												"example": "30s"
-											}
-										}
-									},
-									"memory": {
-										"description": "Deprecated in favor of memory_mib.",
-										"allOf": [
-											{
-												"description": "A memory size that specifies its unit at the end.",
-												"type": "string",
-												"example": "1GB"
-											}
-										],
-										"deprecated": true
-									},
-									"memory_mib": {
-										"description": "Specify the memory for the deployment, in MiB. Defaults to the value configured for the account.",
-										"type": "integer"
 									},
 									"observability": {
 										"description": "Settings for deployment observability such as logging.",
@@ -321,11 +239,6 @@
 												"public_key"
 											]
 										}
-									},
-									"vcpu": {
-										"description": "Specify the vcpu for the deployment. The minimum vcpu is 1. Values round to\nthe nearest 0.0001. Defaults to the value configured for the account.\n",
-										"type": "number",
-										"format": "float"
 									},
 									"wrangler_ssh": {
 										"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
@@ -487,32 +400,6 @@
 																"--default-option"
 															]
 														},
-														"disk": {
-															"description": "The disk configuration for this deployment.",
-															"allOf": [
-																{
-																	"description": "The disk configuration for this deployment. All containers default to a disk size of 2GB.",
-																	"type": "object",
-																	"properties": {
-																		"size": {
-																			"description": "Deprecated in favor of size_mb.",
-																			"allOf": [
-																				{
-																					"description": "A disk size that specifies its unit at the end.",
-																					"type": "string",
-																					"example": "1GB"
-																				}
-																			],
-																			"deprecated": true
-																		},
-																		"size_mb": {
-																			"description": "Size of the disk, in MB.",
-																			"type": "integer"
-																		}
-																	}
-																}
-															]
-														},
 														"dns": {
 															"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
 															"type": "object",
@@ -569,14 +456,6 @@
 																]
 															}
 														},
-														"experimental_flags": {
-															"description": "Opt-in experimental flags for this application. Users can set only a subset of\nexperimental flags; the API rejects unsupported values.\n",
-															"type": "array",
-															"items": {
-																"type": "string"
-															},
-															"maxItems": 10
-														},
 														"image": {
 															"description": "Image url.",
 															"type": "string"
@@ -599,54 +478,6 @@
 																	"type": "string"
 																}
 															]
-														},
-														"labels": {
-															"description": "Deployment labels.",
-															"type": "array",
-															"items": {
-																"description": "A label.",
-																"type": "object",
-																"properties": {
-																	"name": {
-																		"description": "A label name.",
-																		"type": "string"
-																	},
-																	"value": {
-																		"description": "A label value.",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"name",
-																	"value"
-																]
-															}
-														},
-														"lifecycle": {
-															"description": "Lifecycle configuration for a deployment.",
-															"type": "object",
-															"properties": {
-																"max_termination_duration": {
-																	"description": "Duration string using the Go standard library format.\n  A string representing the duration in the form \"3d1h3m\". Go omits leading zero units.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
-																	"type": "string",
-																	"example": "30s"
-																}
-															}
-														},
-														"memory": {
-															"description": "Deprecated in favor of memory_mib.",
-															"allOf": [
-																{
-																	"description": "A memory size that specifies its unit at the end.",
-																	"type": "string",
-																	"example": "1GB"
-																}
-															],
-															"deprecated": true
-														},
-														"memory_mib": {
-															"description": "Specify the memory for the deployment, in MiB. Defaults to the value configured for the account.",
-															"type": "integer"
 														},
 														"observability": {
 															"description": "Settings for deployment observability such as logging.",
@@ -683,11 +514,6 @@
 																	"public_key"
 																]
 															}
-														},
-														"vcpu": {
-															"description": "Specify the vcpu for the deployment. The minimum vcpu is 1. Values round to\nthe nearest 0.0001. Defaults to the value configured for the account.\n",
-															"type": "number",
-															"format": "float"
 														},
 														"wrangler_ssh": {
 															"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
@@ -1030,32 +856,6 @@
 																"--default-option"
 															]
 														},
-														"disk": {
-															"description": "The disk configuration for this deployment.",
-															"allOf": [
-																{
-																	"description": "The disk configuration for this deployment. All containers default to a disk size of 2GB.",
-																	"type": "object",
-																	"properties": {
-																		"size": {
-																			"description": "Deprecated in favor of size_mb.",
-																			"allOf": [
-																				{
-																					"description": "A disk size that specifies its unit at the end.",
-																					"type": "string",
-																					"example": "1GB"
-																				}
-																			],
-																			"deprecated": true
-																		},
-																		"size_mb": {
-																			"description": "Size of the disk, in MB.",
-																			"type": "integer"
-																		}
-																	}
-																}
-															]
-														},
 														"dns": {
 															"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
 															"type": "object",
@@ -1112,14 +912,6 @@
 																]
 															}
 														},
-														"experimental_flags": {
-															"description": "Opt-in experimental flags for this application. Users can set only a subset of\nexperimental flags; the API rejects unsupported values.\n",
-															"type": "array",
-															"items": {
-																"type": "string"
-															},
-															"maxItems": 10
-														},
 														"image": {
 															"description": "Image url.",
 															"type": "string"
@@ -1142,54 +934,6 @@
 																	"type": "string"
 																}
 															]
-														},
-														"labels": {
-															"description": "Deployment labels.",
-															"type": "array",
-															"items": {
-																"description": "A label.",
-																"type": "object",
-																"properties": {
-																	"name": {
-																		"description": "A label name.",
-																		"type": "string"
-																	},
-																	"value": {
-																		"description": "A label value.",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"name",
-																	"value"
-																]
-															}
-														},
-														"lifecycle": {
-															"description": "Lifecycle configuration for a deployment.",
-															"type": "object",
-															"properties": {
-																"max_termination_duration": {
-																	"description": "Duration string using the Go standard library format.\n  A string representing the duration in the form \"3d1h3m\". Go omits leading zero units.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
-																	"type": "string",
-																	"example": "30s"
-																}
-															}
-														},
-														"memory": {
-															"description": "Deprecated in favor of memory_mib.",
-															"allOf": [
-																{
-																	"description": "A memory size that specifies its unit at the end.",
-																	"type": "string",
-																	"example": "1GB"
-																}
-															],
-															"deprecated": true
-														},
-														"memory_mib": {
-															"description": "Specify the memory for the deployment, in MiB. Defaults to the value configured for the account.",
-															"type": "integer"
 														},
 														"observability": {
 															"description": "Settings for deployment observability such as logging.",
@@ -1226,11 +970,6 @@
 																	"public_key"
 																]
 															}
-														},
-														"vcpu": {
-															"description": "Specify the vcpu for the deployment. The minimum vcpu is 1. Values round to\nthe nearest 0.0001. Defaults to the value configured for the account.\n",
-															"type": "number",
-															"format": "float"
 														},
 														"wrangler_ssh": {
 															"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
@@ -1856,6 +1595,9 @@
 		],
 		"tags": [
 			"Rollouts"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "containers.applications.rollouts",
+		"x-fern-sdk-method-name": "create"
 	}
 }

@@ -938,6 +938,17 @@
 														"readOnly": true,
 														"x-auditable": true
 													},
+													"jurisdiction": {
+														"description": "Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.",
+														"type": "string",
+														"example": "eu",
+														"enum": [
+															"eu",
+															"fedramp",
+															"us"
+														],
+														"x-auditable": true
+													},
 													"supports_url_encoding": {
 														"description": "True if keys written on the URL will be URL-decoded before storing. For example, if set to \"true\", a key written on the URL as \"%3F\" will be stored as \"?\".",
 														"type": "boolean",
@@ -1188,6 +1199,17 @@
 													"example": "0f2ac74b498b48028cb68387c421e279",
 													"maxLength": 32,
 													"readOnly": true,
+													"x-auditable": true
+												},
+												"jurisdiction": {
+													"description": "Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.",
+													"type": "string",
+													"example": "eu",
+													"enum": [
+														"eu",
+														"fedramp",
+														"us"
+													],
 													"x-auditable": true
 												},
 												"supports_url_encoding": {
@@ -2133,6 +2155,17 @@
 					"schema": {
 						"type": "object",
 						"properties": {
+							"jurisdiction": {
+								"description": "Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.",
+								"type": "string",
+								"example": "eu",
+								"enum": [
+									"eu",
+									"fedramp",
+									"us"
+								],
+								"x-auditable": true
+							},
 							"title": {
 								"description": "A human-readable string name for a Namespace.",
 								"type": "string",
@@ -2226,6 +2259,17 @@
 													"example": "0f2ac74b498b48028cb68387c421e279",
 													"maxLength": 32,
 													"readOnly": true,
+													"x-auditable": true
+												},
+												"jurisdiction": {
+													"description": "Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.",
+													"type": "string",
+													"example": "eu",
+													"enum": [
+														"eu",
+														"fedramp",
+														"us"
+													],
 													"x-auditable": true
 												},
 												"supports_url_encoding": {
@@ -3200,6 +3244,17 @@
 													"example": "0f2ac74b498b48028cb68387c421e279",
 													"maxLength": 32,
 													"readOnly": true,
+													"x-auditable": true
+												},
+												"jurisdiction": {
+													"description": "Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.",
+													"type": "string",
+													"example": "eu",
+													"enum": [
+														"eu",
+														"fedramp",
+														"us"
+													],
 													"x-auditable": true
 												},
 												"supports_url_encoding": {

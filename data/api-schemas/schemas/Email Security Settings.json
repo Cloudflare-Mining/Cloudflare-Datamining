@@ -515,6 +515,260 @@
 		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
+	"DELETE /accounts/{account_id}/email-security/settings/content_policies/{policy_id}": {
+		"operationId": "email_security_delete_content_policy",
+		"summary": "Delete a content policy",
+		"description": "Removes a content policy. After deletion, emails will no longer be evaluated against this pattern.",
+		"responses": {
+			"200": {
+				"description": "Deleted content policy.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"id": {
+													"description": "Content policy identifier.",
+													"type": "string",
+													"format": "uuid",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"id"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Email Security Settings"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
+		],
+		"x-stability": "beta"
+	},
 	"DELETE /accounts/{account_id}/email-security/settings/domains": {
 		"operationId": "email_security_delete_domains",
 		"summary": "Unprotect multiple email domains",
@@ -798,6 +1052,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email-security.settings.domains",
 		"x-fern-sdk-method-name": "bulk_delete",
 		"x-forge-hidden": true,
@@ -3784,6 +4039,756 @@
 		"x-fern-sdk-group-name": "email-security.settings.block-senders",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true,
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/email-security/settings/content_policies": {
+		"operationId": "email_security_list_content_policies",
+		"summary": "List content policies",
+		"description": "Returns a paginated list of content policies. These policies match against the subject or body of emails using a pattern. Supports filtering by name or enabled status, and searching across name and pattern fields.",
+		"parameters": [
+			{
+				"description": "Current page within paginated list of results.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "integer",
+					"example": 1,
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"description": "The number of results per page. Maximum value is 1000.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer",
+					"example": 20,
+					"default": 20,
+					"maximum": 1000,
+					"minimum": 1
+				}
+			},
+			{
+				"description": "Search term for filtering records. Behavior may change.",
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "order",
+				"in": "query",
+				"description": "Field to sort by.",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"name",
+						"created_at"
+					]
+				}
+			},
+			{
+				"description": "The sorting direction.",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"asc",
+						"desc"
+					]
+				}
+			},
+			{
+				"name": "enabled",
+				"in": "query",
+				"description": "Filter by enabled status.",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			{
+				"name": "name",
+				"in": "query",
+				"description": "Filter by exact policy name.",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List of content policies.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"type": "number",
+															"example": 1
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"type": "number",
+															"example": 20
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"type": "number",
+															"example": 2000
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"description": "A content policy pattern that matches against the subject or body of an email.",
+												"type": "object",
+												"properties": {
+													"created_at": {
+														"allOf": [
+															{
+																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
+																"x-auditable": true
+															}
+														],
+														"readOnly": true
+													},
+													"enabled": {
+														"type": "boolean",
+														"example": true,
+														"x-auditable": true
+													},
+													"id": {
+														"allOf": [
+															{
+																"description": "Content policy identifier.",
+																"type": "string",
+																"format": "uuid",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"x-auditable": true
+															}
+														],
+														"readOnly": true
+													},
+													"modified_at": {
+														"allOf": [
+															{
+																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
+																"x-auditable": true
+															}
+														],
+														"readOnly": true
+													},
+													"name": {
+														"type": "string",
+														"example": "Block phishing keywords",
+														"maxLength": 256,
+														"minLength": 1,
+														"x-auditable": true
+													},
+													"notes": {
+														"type": "string",
+														"example": "Blocks common phishing subject lines",
+														"maxLength": 4096,
+														"nullable": true
+													},
+													"pattern": {
+														"type": "string",
+														"example": "urgent.*verify.*account",
+														"maxLength": 2048,
+														"minLength": 1,
+														"x-auditable": true
+													},
+													"targets": {
+														"type": "array",
+														"items": {
+															"description": "The part of the email to match the pattern against.",
+															"type": "string",
+															"example": "SUBJECT",
+															"enum": [
+																"SUBJECT",
+																"BODY"
+															]
+														},
+														"example": [
+															"SUBJECT"
+														],
+														"minItems": 1,
+														"x-auditable": true
+													}
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Email Security Settings"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write",
+			"Cloud Email Security: Read"
+		],
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/email-security/settings/content_policies/{policy_id}": {
+		"operationId": "email_security_get_content_policy",
+		"summary": "Get a content policy",
+		"description": "Retrieves details for a specific content policy including its pattern, targets, and metadata.",
+		"responses": {
+			"200": {
+				"description": "Content policy details.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A content policy pattern that matches against the subject or body of an email.",
+											"type": "object",
+											"properties": {
+												"created_at": {
+													"allOf": [
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"enabled": {
+													"type": "boolean",
+													"example": true,
+													"x-auditable": true
+												},
+												"id": {
+													"allOf": [
+														{
+															"description": "Content policy identifier.",
+															"type": "string",
+															"format": "uuid",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"modified_at": {
+													"allOf": [
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"name": {
+													"type": "string",
+													"example": "Block phishing keywords",
+													"maxLength": 256,
+													"minLength": 1,
+													"x-auditable": true
+												},
+												"notes": {
+													"type": "string",
+													"example": "Blocks common phishing subject lines",
+													"maxLength": 4096,
+													"nullable": true
+												},
+												"pattern": {
+													"type": "string",
+													"example": "urgent.*verify.*account",
+													"maxLength": 2048,
+													"minLength": 1,
+													"x-auditable": true
+												},
+												"targets": {
+													"type": "array",
+													"items": {
+														"description": "The part of the email to match the pattern against.",
+														"type": "string",
+														"example": "SUBJECT",
+														"enum": [
+															"SUBJECT",
+															"BODY"
+														]
+													},
+													"example": [
+														"SUBJECT"
+													],
+													"minItems": 1,
+													"x-auditable": true
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Email Security Settings"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write",
+			"Cloud Email Security: Read"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/domains": {
@@ -9100,6 +10105,422 @@
 		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
+	"PATCH /accounts/{account_id}/email-security/settings/content_policies/{policy_id}": {
+		"operationId": "email_security_update_content_policy",
+		"summary": "Update a content policy",
+		"description": "Updates an existing content policy. Only provided fields will be modified.",
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Update a content policy.",
+						"allOf": [
+							{
+								"description": "A content policy pattern that matches against the subject or body of an email.",
+								"type": "object",
+								"properties": {
+									"created_at": {
+										"allOf": [
+											{
+												"type": "string",
+												"format": "date-time",
+												"example": "2014-01-01T05:20:00.12345Z",
+												"x-auditable": true
+											}
+										],
+										"readOnly": true
+									},
+									"enabled": {
+										"type": "boolean",
+										"example": true,
+										"x-auditable": true
+									},
+									"id": {
+										"allOf": [
+											{
+												"description": "Content policy identifier.",
+												"type": "string",
+												"format": "uuid",
+												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+												"x-auditable": true
+											}
+										],
+										"readOnly": true
+									},
+									"modified_at": {
+										"allOf": [
+											{
+												"type": "string",
+												"format": "date-time",
+												"example": "2014-01-01T05:20:00.12345Z",
+												"x-auditable": true
+											}
+										],
+										"readOnly": true
+									},
+									"name": {
+										"type": "string",
+										"example": "Block phishing keywords",
+										"maxLength": 256,
+										"minLength": 1,
+										"x-auditable": true
+									},
+									"notes": {
+										"type": "string",
+										"example": "Blocks common phishing subject lines",
+										"maxLength": 4096,
+										"nullable": true
+									},
+									"pattern": {
+										"type": "string",
+										"example": "urgent.*verify.*account",
+										"maxLength": 2048,
+										"minLength": 1,
+										"x-auditable": true
+									},
+									"targets": {
+										"type": "array",
+										"items": {
+											"description": "The part of the email to match the pattern against.",
+											"type": "string",
+											"example": "SUBJECT",
+											"enum": [
+												"SUBJECT",
+												"BODY"
+											]
+										},
+										"example": [
+											"SUBJECT"
+										],
+										"minItems": 1,
+										"x-auditable": true
+									}
+								}
+							}
+						],
+						"minProperties": 1
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Updated content policy.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A content policy pattern that matches against the subject or body of an email.",
+											"type": "object",
+											"properties": {
+												"created_at": {
+													"allOf": [
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"enabled": {
+													"type": "boolean",
+													"example": true,
+													"x-auditable": true
+												},
+												"id": {
+													"allOf": [
+														{
+															"description": "Content policy identifier.",
+															"type": "string",
+															"format": "uuid",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"modified_at": {
+													"allOf": [
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"name": {
+													"type": "string",
+													"example": "Block phishing keywords",
+													"maxLength": 256,
+													"minLength": 1,
+													"x-auditable": true
+												},
+												"notes": {
+													"type": "string",
+													"example": "Blocks common phishing subject lines",
+													"maxLength": 4096,
+													"nullable": true
+												},
+												"pattern": {
+													"type": "string",
+													"example": "urgent.*verify.*account",
+													"maxLength": 2048,
+													"minLength": 1,
+													"x-auditable": true
+												},
+												"targets": {
+													"type": "array",
+													"items": {
+														"description": "The part of the email to match the pattern against.",
+														"type": "string",
+														"example": "SUBJECT",
+														"enum": [
+															"SUBJECT",
+															"BODY"
+														]
+													},
+													"example": [
+														"SUBJECT"
+													],
+													"minItems": 1,
+													"x-auditable": true
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Email Security Settings"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
+		],
+		"x-stability": "beta"
+	},
 	"PATCH /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
 		"operationId": "email_security_update_domain",
 		"summary": "Update an email domain",
@@ -14391,6 +15812,1313 @@
 		"x-fern-sdk-group-name": "email-security.settings.block-senders",
 		"x-fern-sdk-method-name": "batch",
 		"x-forge-hidden": true,
+		"x-stability": "beta"
+	},
+	"POST /accounts/{account_id}/email-security/settings/content_policies": {
+		"operationId": "email_security_create_content_policy",
+		"summary": "Create a content policy",
+		"description": "Creates a new content policy. Emails whose subject or body matches the pattern will be subject to the configured action.",
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Create a content policy.",
+						"allOf": [
+							{
+								"description": "A content policy pattern that matches against the subject or body of an email.",
+								"type": "object",
+								"properties": {
+									"created_at": {
+										"allOf": [
+											{
+												"type": "string",
+												"format": "date-time",
+												"example": "2014-01-01T05:20:00.12345Z",
+												"x-auditable": true
+											}
+										],
+										"readOnly": true
+									},
+									"enabled": {
+										"type": "boolean",
+										"example": true,
+										"x-auditable": true
+									},
+									"id": {
+										"allOf": [
+											{
+												"description": "Content policy identifier.",
+												"type": "string",
+												"format": "uuid",
+												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+												"x-auditable": true
+											}
+										],
+										"readOnly": true
+									},
+									"modified_at": {
+										"allOf": [
+											{
+												"type": "string",
+												"format": "date-time",
+												"example": "2014-01-01T05:20:00.12345Z",
+												"x-auditable": true
+											}
+										],
+										"readOnly": true
+									},
+									"name": {
+										"type": "string",
+										"example": "Block phishing keywords",
+										"maxLength": 256,
+										"minLength": 1,
+										"x-auditable": true
+									},
+									"notes": {
+										"type": "string",
+										"example": "Blocks common phishing subject lines",
+										"maxLength": 4096,
+										"nullable": true
+									},
+									"pattern": {
+										"type": "string",
+										"example": "urgent.*verify.*account",
+										"maxLength": 2048,
+										"minLength": 1,
+										"x-auditable": true
+									},
+									"targets": {
+										"type": "array",
+										"items": {
+											"description": "The part of the email to match the pattern against.",
+											"type": "string",
+											"example": "SUBJECT",
+											"enum": [
+												"SUBJECT",
+												"BODY"
+											]
+										},
+										"example": [
+											"SUBJECT"
+										],
+										"minItems": 1,
+										"x-auditable": true
+									}
+								}
+							}
+						],
+						"required": [
+							"name",
+							"pattern",
+							"targets",
+							"enabled"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"description": "Created content policy.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A content policy pattern that matches against the subject or body of an email.",
+											"type": "object",
+											"properties": {
+												"created_at": {
+													"allOf": [
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"enabled": {
+													"type": "boolean",
+													"example": true,
+													"x-auditable": true
+												},
+												"id": {
+													"allOf": [
+														{
+															"description": "Content policy identifier.",
+															"type": "string",
+															"format": "uuid",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"modified_at": {
+													"allOf": [
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"name": {
+													"type": "string",
+													"example": "Block phishing keywords",
+													"maxLength": 256,
+													"minLength": 1,
+													"x-auditable": true
+												},
+												"notes": {
+													"type": "string",
+													"example": "Blocks common phishing subject lines",
+													"maxLength": 4096,
+													"nullable": true
+												},
+												"pattern": {
+													"type": "string",
+													"example": "urgent.*verify.*account",
+													"maxLength": 2048,
+													"minLength": 1,
+													"x-auditable": true
+												},
+												"targets": {
+													"type": "array",
+													"items": {
+														"description": "The part of the email to match the pattern against.",
+														"type": "string",
+														"example": "SUBJECT",
+														"enum": [
+															"SUBJECT",
+															"BODY"
+														]
+													},
+													"example": [
+														"SUBJECT"
+													],
+													"minItems": 1,
+													"x-auditable": true
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Email Security Settings"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
+		],
+		"x-stability": "beta"
+	},
+	"POST /accounts/{account_id}/email-security/settings/content_policies/batch": {
+		"operationId": "email_security_batch_content_policies",
+		"summary": "Batch content policy operations",
+		"description": "Executes multiple operations atomically. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"deletes": {
+								"type": "array",
+								"items": {
+									"properties": {
+										"id": {
+											"description": "Content policy identifier.",
+											"type": "string",
+											"format": "uuid",
+											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"id"
+									],
+									"type": "object"
+								},
+								"maxItems": 1000
+							},
+							"patches": {
+								"type": "array",
+								"items": {
+									"allOf": [
+										{
+											"description": "Update a content policy.",
+											"allOf": [
+												{
+													"description": "A content policy pattern that matches against the subject or body of an email.",
+													"type": "object",
+													"properties": {
+														"created_at": {
+															"allOf": [
+																{
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
+														},
+														"enabled": {
+															"type": "boolean",
+															"example": true,
+															"x-auditable": true
+														},
+														"id": {
+															"allOf": [
+																{
+																	"description": "Content policy identifier.",
+																	"type": "string",
+																	"format": "uuid",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
+														},
+														"modified_at": {
+															"allOf": [
+																{
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
+														},
+														"name": {
+															"type": "string",
+															"example": "Block phishing keywords",
+															"maxLength": 256,
+															"minLength": 1,
+															"x-auditable": true
+														},
+														"notes": {
+															"type": "string",
+															"example": "Blocks common phishing subject lines",
+															"maxLength": 4096,
+															"nullable": true
+														},
+														"pattern": {
+															"type": "string",
+															"example": "urgent.*verify.*account",
+															"maxLength": 2048,
+															"minLength": 1,
+															"x-auditable": true
+														},
+														"targets": {
+															"type": "array",
+															"items": {
+																"description": "The part of the email to match the pattern against.",
+																"type": "string",
+																"example": "SUBJECT",
+																"enum": [
+																	"SUBJECT",
+																	"BODY"
+																]
+															},
+															"example": [
+																"SUBJECT"
+															],
+															"minItems": 1,
+															"x-auditable": true
+														}
+													}
+												}
+											],
+											"minProperties": 1
+										},
+										{
+											"properties": {
+												"id": {
+													"allOf": [
+														{
+															"description": "Content policy identifier.",
+															"type": "string",
+															"format": "uuid",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"x-auditable": true
+														}
+													]
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"maxItems": 1000
+							},
+							"posts": {
+								"type": "array",
+								"items": {
+									"description": "Create a content policy.",
+									"allOf": [
+										{
+											"description": "A content policy pattern that matches against the subject or body of an email.",
+											"type": "object",
+											"properties": {
+												"created_at": {
+													"allOf": [
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"enabled": {
+													"type": "boolean",
+													"example": true,
+													"x-auditable": true
+												},
+												"id": {
+													"allOf": [
+														{
+															"description": "Content policy identifier.",
+															"type": "string",
+															"format": "uuid",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"modified_at": {
+													"allOf": [
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"name": {
+													"type": "string",
+													"example": "Block phishing keywords",
+													"maxLength": 256,
+													"minLength": 1,
+													"x-auditable": true
+												},
+												"notes": {
+													"type": "string",
+													"example": "Blocks common phishing subject lines",
+													"maxLength": 4096,
+													"nullable": true
+												},
+												"pattern": {
+													"type": "string",
+													"example": "urgent.*verify.*account",
+													"maxLength": 2048,
+													"minLength": 1,
+													"x-auditable": true
+												},
+												"targets": {
+													"type": "array",
+													"items": {
+														"description": "The part of the email to match the pattern against.",
+														"type": "string",
+														"example": "SUBJECT",
+														"enum": [
+															"SUBJECT",
+															"BODY"
+														]
+													},
+													"example": [
+														"SUBJECT"
+													],
+													"minItems": 1,
+													"x-auditable": true
+												}
+											}
+										}
+									],
+									"required": [
+										"name",
+										"pattern",
+										"targets",
+										"enabled"
+									]
+								},
+								"maxItems": 1000
+							},
+							"puts": {
+								"type": "array",
+								"items": {
+									"allOf": [
+										{
+											"description": "Create a content policy.",
+											"allOf": [
+												{
+													"description": "A content policy pattern that matches against the subject or body of an email.",
+													"type": "object",
+													"properties": {
+														"created_at": {
+															"allOf": [
+																{
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
+														},
+														"enabled": {
+															"type": "boolean",
+															"example": true,
+															"x-auditable": true
+														},
+														"id": {
+															"allOf": [
+																{
+																	"description": "Content policy identifier.",
+																	"type": "string",
+																	"format": "uuid",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
+														},
+														"modified_at": {
+															"allOf": [
+																{
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
+														},
+														"name": {
+															"type": "string",
+															"example": "Block phishing keywords",
+															"maxLength": 256,
+															"minLength": 1,
+															"x-auditable": true
+														},
+														"notes": {
+															"type": "string",
+															"example": "Blocks common phishing subject lines",
+															"maxLength": 4096,
+															"nullable": true
+														},
+														"pattern": {
+															"type": "string",
+															"example": "urgent.*verify.*account",
+															"maxLength": 2048,
+															"minLength": 1,
+															"x-auditable": true
+														},
+														"targets": {
+															"type": "array",
+															"items": {
+																"description": "The part of the email to match the pattern against.",
+																"type": "string",
+																"example": "SUBJECT",
+																"enum": [
+																	"SUBJECT",
+																	"BODY"
+																]
+															},
+															"example": [
+																"SUBJECT"
+															],
+															"minItems": 1,
+															"x-auditable": true
+														}
+													}
+												}
+											],
+											"required": [
+												"name",
+												"pattern",
+												"targets",
+												"enabled"
+											]
+										},
+										{
+											"properties": {
+												"id": {
+													"allOf": [
+														{
+															"description": "Content policy identifier.",
+															"type": "string",
+															"format": "uuid",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"x-auditable": true
+														}
+													]
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"maxItems": 1000
+							}
+						},
+						"required": [
+							"deletes",
+							"patches",
+							"puts",
+							"posts"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Batch operation results.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"deletes": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"id": {
+																"description": "Content policy identifier.",
+																"type": "string",
+																"format": "uuid",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id"
+														]
+													}
+												},
+												"patches": {
+													"type": "array",
+													"items": {
+														"description": "A content policy pattern that matches against the subject or body of an email.",
+														"type": "object",
+														"properties": {
+															"created_at": {
+																"allOf": [
+																	{
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"x-auditable": true
+																	}
+																],
+																"readOnly": true
+															},
+															"enabled": {
+																"type": "boolean",
+																"example": true,
+																"x-auditable": true
+															},
+															"id": {
+																"allOf": [
+																	{
+																		"description": "Content policy identifier.",
+																		"type": "string",
+																		"format": "uuid",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"x-auditable": true
+																	}
+																],
+																"readOnly": true
+															},
+															"modified_at": {
+																"allOf": [
+																	{
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"x-auditable": true
+																	}
+																],
+																"readOnly": true
+															},
+															"name": {
+																"type": "string",
+																"example": "Block phishing keywords",
+																"maxLength": 256,
+																"minLength": 1,
+																"x-auditable": true
+															},
+															"notes": {
+																"type": "string",
+																"example": "Blocks common phishing subject lines",
+																"maxLength": 4096,
+																"nullable": true
+															},
+															"pattern": {
+																"type": "string",
+																"example": "urgent.*verify.*account",
+																"maxLength": 2048,
+																"minLength": 1,
+																"x-auditable": true
+															},
+															"targets": {
+																"type": "array",
+																"items": {
+																	"description": "The part of the email to match the pattern against.",
+																	"type": "string",
+																	"example": "SUBJECT",
+																	"enum": [
+																		"SUBJECT",
+																		"BODY"
+																	]
+																},
+																"example": [
+																	"SUBJECT"
+																],
+																"minItems": 1,
+																"x-auditable": true
+															}
+														}
+													}
+												},
+												"posts": {
+													"type": "array",
+													"items": {
+														"description": "A content policy pattern that matches against the subject or body of an email.",
+														"type": "object",
+														"properties": {
+															"created_at": {
+																"allOf": [
+																	{
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"x-auditable": true
+																	}
+																],
+																"readOnly": true
+															},
+															"enabled": {
+																"type": "boolean",
+																"example": true,
+																"x-auditable": true
+															},
+															"id": {
+																"allOf": [
+																	{
+																		"description": "Content policy identifier.",
+																		"type": "string",
+																		"format": "uuid",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"x-auditable": true
+																	}
+																],
+																"readOnly": true
+															},
+															"modified_at": {
+																"allOf": [
+																	{
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"x-auditable": true
+																	}
+																],
+																"readOnly": true
+															},
+															"name": {
+																"type": "string",
+																"example": "Block phishing keywords",
+																"maxLength": 256,
+																"minLength": 1,
+																"x-auditable": true
+															},
+															"notes": {
+																"type": "string",
+																"example": "Blocks common phishing subject lines",
+																"maxLength": 4096,
+																"nullable": true
+															},
+															"pattern": {
+																"type": "string",
+																"example": "urgent.*verify.*account",
+																"maxLength": 2048,
+																"minLength": 1,
+																"x-auditable": true
+															},
+															"targets": {
+																"type": "array",
+																"items": {
+																	"description": "The part of the email to match the pattern against.",
+																	"type": "string",
+																	"example": "SUBJECT",
+																	"enum": [
+																		"SUBJECT",
+																		"BODY"
+																	]
+																},
+																"example": [
+																	"SUBJECT"
+																],
+																"minItems": 1,
+																"x-auditable": true
+															}
+														}
+													}
+												},
+												"puts": {
+													"type": "array",
+													"items": {
+														"description": "A content policy pattern that matches against the subject or body of an email.",
+														"type": "object",
+														"properties": {
+															"created_at": {
+																"allOf": [
+																	{
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"x-auditable": true
+																	}
+																],
+																"readOnly": true
+															},
+															"enabled": {
+																"type": "boolean",
+																"example": true,
+																"x-auditable": true
+															},
+															"id": {
+																"allOf": [
+																	{
+																		"description": "Content policy identifier.",
+																		"type": "string",
+																		"format": "uuid",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"x-auditable": true
+																	}
+																],
+																"readOnly": true
+															},
+															"modified_at": {
+																"allOf": [
+																	{
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"x-auditable": true
+																	}
+																],
+																"readOnly": true
+															},
+															"name": {
+																"type": "string",
+																"example": "Block phishing keywords",
+																"maxLength": 256,
+																"minLength": 1,
+																"x-auditable": true
+															},
+															"notes": {
+																"type": "string",
+																"example": "Blocks common phishing subject lines",
+																"maxLength": 4096,
+																"nullable": true
+															},
+															"pattern": {
+																"type": "string",
+																"example": "urgent.*verify.*account",
+																"maxLength": 2048,
+																"minLength": 1,
+																"x-auditable": true
+															},
+															"targets": {
+																"type": "array",
+																"items": {
+																	"description": "The part of the email to match the pattern against.",
+																	"type": "string",
+																	"example": "SUBJECT",
+																	"enum": [
+																		"SUBJECT",
+																		"BODY"
+																	]
+																},
+																"example": [
+																	"SUBJECT"
+																],
+																"minItems": 1,
+																"x-auditable": true
+															}
+														}
+													}
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Email Security Settings"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
+		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/domains": {

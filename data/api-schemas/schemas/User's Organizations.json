@@ -172,7 +172,7 @@
 		"x-cfDeprecation": {
 			"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs, which have a broader range of features and are backwards compatible with these API.",
 			"display": true,
-			"eol": "2020-02-04",
+			"eol": "2020-02-04T00:00:00Z",
 			"id": "org_deprecation"
 		},
 		"x-cfPlanAvailability": {
@@ -180,7 +180,12 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "user.organizations",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
 	"GET /user/organizations": {
 		"operationId": "user'-s-organizations-list-organizations",
@@ -592,7 +597,7 @@
 		"x-cfDeprecation": {
 			"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs, which have a broader range of features and are backwards compatible with these API.",
 			"display": true,
-			"eol": "2020-02-04",
+			"eol": "2020-02-04T00:00:00Z",
 			"id": "org_deprecation"
 		},
 		"x-cfPlanAvailability": {
@@ -600,7 +605,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "user.organizations",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /user/organizations/{organization_id}": {
 		"operationId": "user'-s-organizations-organization-details",
@@ -855,7 +864,7 @@
 		"x-cfDeprecation": {
 			"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs, which have a broader range of features and are backwards compatible with these API.",
 			"display": true,
-			"eol": "2020-02-04",
+			"eol": "2020-02-04T00:00:00Z",
 			"id": "org_deprecation"
 		},
 		"x-cfPlanAvailability": {
@@ -863,6 +872,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "user.organizations",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	}
 }

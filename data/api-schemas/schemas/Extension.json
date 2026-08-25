@@ -335,8 +335,10 @@
 		"tags": [
 			"Extension"
 		],
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.extensions",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/registrar-sandbox/extensions/{extension}": {
 		"operationId": "sandbox-registrar-extension-get",
@@ -607,8 +609,10 @@
 		"tags": [
 			"Extension"
 		],
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.extensions",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/registrar/extensions": {
 		"operationId": "registrar-extension-list",
@@ -946,8 +950,10 @@
 		"tags": [
 			"Extension"
 		],
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.extensions",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/registrar/extensions/{extension}": {
 		"operationId": "registrar-extension-get",
@@ -1218,7 +1224,9 @@
 		"tags": [
 			"Extension"
 		],
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.extensions",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	}
 }

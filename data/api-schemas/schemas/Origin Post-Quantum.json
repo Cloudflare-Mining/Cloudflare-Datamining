@@ -326,7 +326,7 @@
 		"x-cfDeprecation": {
 			"description": "Origin post-quantum encryption selection is now handled automatically by Auto-Origin TLS KEX (`/zones/{zone_id}/settings/auto_origin_tls_kex`) combined with Origin TLS Compliance Modes (`/zones/{zone_id}/settings/origin_tls_compliance_modes`). As that rollout proceeds, the manual `origin_post_quantum_encryption` setting becomes ineffective and the endpoint will be removed on 2026-07-19.",
 			"display": true,
-			"eol": "2026-07-19",
+			"eol": "2026-07-19T00:00:00Z",
 			"id": "origin_pqe_deprecation"
 		},
 		"x-cfPermissionsRequired": {
@@ -339,7 +339,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "origin-post-quantum-encryption",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/cache/origin_post_quantum_encryption": {
 		"operationId": "zone-cache-settings-change-origin-post-quantum-encryption-setting",
@@ -692,7 +696,7 @@
 		"x-cfDeprecation": {
 			"description": "Origin post-quantum encryption selection is now handled automatically by Auto-Origin TLS KEX (`/zones/{zone_id}/settings/auto_origin_tls_kex`) combined with Origin TLS Compliance Modes (`/zones/{zone_id}/settings/origin_tls_compliance_modes`). As that rollout proceeds, the manual `origin_post_quantum_encryption` setting becomes ineffective and the endpoint will be removed on 2026-07-19.",
 			"display": true,
-			"eol": "2026-07-19",
+			"eol": "2026-07-19T00:00:00Z",
 			"id": "origin_pqe_deprecation"
 		},
 		"x-cfPermissionsRequired": {
@@ -705,6 +709,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "origin-post-quantum-encryption",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

@@ -266,7 +266,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.sessions",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}": {
 		"operationId": "GetSessionDetails",
@@ -430,7 +433,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.sessions",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/chat": {
 		"operationId": "GetSessionChat",
@@ -516,7 +522,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.sessions.chat",
+		"x-fern-sdk-method-name": "export"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/participants": {
 		"operationId": "GetSessionParticipants",
@@ -651,7 +660,7 @@
 												"display_name": "Mark",
 												"duration": 5.8097,
 												"id": "005f4e0c-4d08-4d4e-a391-a76be75cd296",
-												"joined_at": "2023-02-01T10:51:08.030Z",
+												"joined_at": "2023-02-01T10:51:08.03Z",
 												"left_at": "2023-02-01T10:56:56.612Z",
 												"preset_name": "webinar_participant",
 												"updated_at": "2023-02-01T10:56:56.618Z",
@@ -690,7 +699,7 @@
 												"display_name": "Mark",
 												"duration": 5.8097,
 												"id": "005f4e0c-4d08-4d4e-a391-a76be75cd296",
-												"joined_at": "2023-02-01T10:51:08.030Z",
+												"joined_at": "2023-02-01T10:51:08.03Z",
 												"left_at": "2023-02-01T10:56:56.612Z",
 												"peer_events": [
 													{
@@ -888,7 +897,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.sessions.participants",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/participants/{participant_id}": {
 		"operationId": "GetParticipantDetails",
@@ -1092,7 +1104,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.sessions.participants",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/summary": {
 		"operationId": "GetSessionSummary",
@@ -1182,7 +1197,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.sessions.summaries",
+		"x-fern-sdk-method-name": "export"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/transcript": {
 		"operationId": "GetSessionTranscript",
@@ -1287,7 +1305,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.sessions.transcripts",
+		"x-fern-sdk-method-name": "export"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/peer-report/{peer_id}": {
 		"operationId": "GetParticipantDataFromPeerId",
@@ -3313,7 +3334,10 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.sessions.peers",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/summary": {
 		"operationId": "post-sessions-session_id-summary",
@@ -3393,6 +3417,9 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtimekit.sessions.summaries",
+		"x-fern-sdk-method-name": "generate"
 	}
 }

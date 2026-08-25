@@ -4064,7 +4064,11 @@
 		"x-api-token-group": [
 			"Magic WAN Write",
 			"Magic WAN Read"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.resources",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/cloud/resources/{resource_id}": {
 		"operationId": "resources-catalog-read",
@@ -7909,7 +7913,11 @@
 		"x-api-token-group": [
 			"Magic WAN Write",
 			"Magic WAN Read"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.resources",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/cloud/resources/export": {
 		"operationId": "resources-catalog-export",
@@ -10445,7 +10453,11 @@
 		"x-api-token-group": [
 			"Magic WAN Write",
 			"Magic WAN Read"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.resources",
+		"x-fern-sdk-method-name": "export",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/cloud/resources/policy-preview": {
 		"operationId": "resources-catalog-policy-preview",
@@ -13317,6 +13329,10 @@
 		],
 		"tags": [
 			"Resources"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "magic-cloud-networking.resources",
+		"x-fern-sdk-method-name": "policy-preview",
+		"x-forge-hidden": true
 	}
 }

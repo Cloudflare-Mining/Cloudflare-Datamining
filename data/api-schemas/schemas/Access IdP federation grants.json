@@ -387,7 +387,11 @@
 		],
 		"tags": [
 			"Access IdP federation grants"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.idp-federation-grants",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/idp_federation_grants": {
 		"operationId": "access-idp-federation-grants-list",
@@ -717,6 +721,10 @@
 		"tags": [
 			"Access IdP federation grants"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.idp-federation-grants",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/access/idp_federation_grants/{grant_id}": {
@@ -1135,6 +1143,10 @@
 		"tags": [
 			"Access IdP federation grants"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.idp-federation-grants",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/access/idp_federation_grants": {
@@ -1449,6 +1461,10 @@
 		"tags": [
 			"Access IdP federation grants"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.idp-federation-grants",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	}
 }

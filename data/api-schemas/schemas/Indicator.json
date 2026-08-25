@@ -109,6 +109,129 @@
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
 	},
+	"DELETE /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}/relationships/{rel_uuid}": {
+		"operationId": "delete_IndicatorRelationshipDelete",
+		"summary": "Delete a relationship",
+		"description": "Deletes a relationship by UUID. Idempotent: returns deleted=false if not found.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset UUID.",
+				"required": true,
+				"schema": {
+					"description": "Dataset UUID.",
+					"type": "string",
+					"format": "uuid"
+				}
+			},
+			{
+				"name": "indicator_id",
+				"in": "path",
+				"description": "Indicator UUID.",
+				"required": true,
+				"schema": {
+					"description": "Indicator UUID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "rel_uuid",
+				"in": "path",
+				"description": "Relationship UUID.",
+				"required": true,
+				"schema": {
+					"description": "Relationship UUID.",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns whether the relationship was deleted.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"deleted": {
+											"type": "boolean"
+										}
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Indicator"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators": {
 		"operationId": "get_IndicatorListLegacy",
 		"summary": "Lists indicators",
@@ -506,6 +629,234 @@
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.get",
 		"x-fern-sdk-method-name": "indicator",
 		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}/relationships": {
+		"operationId": "get_IndicatorRelationshipsList",
+		"summary": "List relationships for an indicator",
+		"description": "Returns sparse relationship edges. Optionally hydrate related entities via `expand`.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset UUID.",
+				"required": true,
+				"schema": {
+					"description": "Dataset UUID.",
+					"type": "string",
+					"format": "uuid"
+				}
+			},
+			{
+				"name": "indicator_id",
+				"in": "path",
+				"description": "Indicator UUID.",
+				"required": true,
+				"schema": {
+					"description": "Indicator UUID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "search",
+				"in": "query",
+				"schema": {
+					"description": "JSON array of {field, op, value} filters, AND-combined. Fields: entityType (other-end type), type (relationship type), confidence (0–100), metadata.<key>. Example: [{\"field\":\"type\",\"op\":\"equals\",\"value\":\"appears_in\"},{\"field\":\"confidence\",\"op\":\"gte\",\"value\":50}]",
+					"type": "array",
+					"items": {
+						"properties": {
+							"field": {
+								"description": "entityType | type | confidence | metadata.<key>",
+								"type": "string"
+							},
+							"op": {
+								"description": "Search operator. 'exists' only valid for metadata.<key> fields.",
+								"type": "string",
+								"enum": [
+									"equals",
+									"not",
+									"gt",
+									"gte",
+									"lt",
+									"lte",
+									"like",
+									"contains",
+									"startsWith",
+									"endsWith",
+									"in",
+									"find",
+									"exists"
+								]
+							},
+							"value": {
+								"description": "Value to compare against. Omit for 'exists' op.",
+								"anyOf": [
+									{
+										"type": "string"
+									},
+									{
+										"type": "number"
+									},
+									{
+										"type": "boolean"
+									},
+									{
+										"items": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												}
+											]
+										},
+										"type": "array"
+									}
+								]
+							}
+						},
+						"required": [
+							"field",
+							"op"
+						],
+						"type": "object"
+					}
+				}
+			},
+			{
+				"name": "expand",
+				"in": "query",
+				"schema": {
+					"description": "Comma-separated entity types to hydrate (event, indicator, tag).",
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			{
+				"name": "cursor",
+				"in": "query",
+				"schema": {
+					"description": "Keyset cursor from a previous page.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "pageSize",
+				"in": "query",
+				"schema": {
+					"description": "Page size (1–100, default 25).",
+					"type": "integer",
+					"default": 25,
+					"maximum": 100,
+					"minimum": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns edges, optional hydrated entities, counts, and pagination.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"counts": {
+											"type": "object"
+										},
+										"cursor": {
+											"type": "string",
+											"nullable": true
+										},
+										"entities": {
+											"type": "array",
+											"items": {}
+										},
+										"hasMore": {
+											"type": "boolean"
+										},
+										"hydrationErrors": {
+											"type": "object"
+										},
+										"relationships": {
+											"type": "array",
+											"items": {}
+										}
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Indicator"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/tags": {
 		"operationId": "get_IndicatorTagsList",
@@ -1694,7 +2045,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.stakeout.indicators",
+		"x-fern-sdk-method-name": "aggregate",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}": {
 		"operationId": "patch_IndicatorUpdate",
@@ -2015,6 +2370,390 @@
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators",
 		"x-fern-sdk-method-name": "patch",
 		"x-forge-hidden": true
+	},
+	"PATCH /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}/relationships/{rel_uuid}": {
+		"operationId": "patch_IndicatorRelationshipUpdate",
+		"summary": "Update a relationship",
+		"description": "Partially updates a relationship by UUID. Only provided fields are changed.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset UUID.",
+				"required": true,
+				"schema": {
+					"description": "Dataset UUID.",
+					"type": "string",
+					"format": "uuid"
+				}
+			},
+			{
+				"name": "indicator_id",
+				"in": "path",
+				"description": "Indicator UUID.",
+				"required": true,
+				"schema": {
+					"description": "Indicator UUID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "rel_uuid",
+				"in": "path",
+				"description": "Relationship UUID.",
+				"required": true,
+				"schema": {
+					"description": "Relationship UUID.",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"confidence": {
+								"description": "Updated confidence. null clears it.",
+								"type": "integer",
+								"maximum": 100,
+								"minimum": 0,
+								"nullable": true
+							},
+							"metadata": {
+								"description": "Updated metadata. null clears it.",
+								"type": "object",
+								"additionalProperties": true,
+								"nullable": true
+							},
+							"type": {
+								"description": "Updated relationship type.",
+								"type": "string",
+								"minLength": 1
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Returns the updated relationship.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not Found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Indicator"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
+	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}/relationships": {
+		"operationId": "post_IndicatorRelationshipCreate",
+		"summary": "Create a relationship for an indicator",
+		"description": "Creates a new relationship with the indicator as the source entity. Indicator↔indicator relationships are not supported.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset UUID.",
+				"required": true,
+				"schema": {
+					"description": "Dataset UUID.",
+					"type": "string",
+					"format": "uuid"
+				}
+			},
+			{
+				"name": "indicator_id",
+				"in": "path",
+				"description": "Indicator UUID.",
+				"required": true,
+				"schema": {
+					"description": "Indicator UUID.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"confidence": {
+								"description": "Confidence score 0–100.",
+								"type": "integer",
+								"maximum": 100,
+								"minimum": 0
+							},
+							"metadata": {
+								"description": "Arbitrary JSON metadata.",
+								"type": "object",
+								"additionalProperties": true
+							},
+							"targetId": {
+								"description": "UUID of the target entity.",
+								"type": "string",
+								"minLength": 1
+							},
+							"targetType": {
+								"description": "Target type. \"indicator\" is not allowed (indicator↔indicator relationships are not supported).",
+								"type": "string",
+								"example": "event",
+								"enum": [
+									"event",
+									"tag"
+								]
+							},
+							"type": {
+								"description": "Relationship type.",
+								"type": "string",
+								"example": "related-to",
+								"minLength": 1
+							}
+						},
+						"required": [
+							"targetType",
+							"targetId",
+							"type"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Returns the created relationship.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Relationship already exists for this source, target, and type.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "Conflict"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Indicator"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/bulk": {
 		"operationId": "post_IndicatorCreateBulk",

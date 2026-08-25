@@ -3373,6 +3373,203 @@
 		"x-fern-sdk-group-name": "workflows.instances.step",
 		"x-fern-sdk-method-name": "get"
 	},
+	"GET /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/subscribe": {
+		"operationId": "wor-subscribe-workflow-instance-events",
+		"summary": "Subscribe to workflow instance events",
+		"description": "Upgrades the request to a WebSocket that streams workflow instance events.",
+		"parameters": [
+			{
+				"name": "workflow_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
+				}
+			},
+			{
+				"name": "instance_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression.",
+					"type": "string",
+					"maxLength": 271,
+					"minLength": 1
+				}
+			},
+			{
+				"name": "cursor",
+				"in": "query",
+				"schema": {
+					"description": "Last event ID already received.",
+					"type": "integer"
+				}
+			},
+			{
+				"name": "filter",
+				"in": "query",
+				"description": "Comma-separated workflow event types to include.",
+				"schema": {
+					"description": "Comma-separated workflow event types to include.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"101": {
+				"description": "WebSocket subscription established."
+			},
+			"400": {
+				"description": "Invalid subscription options.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Instance not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-ignore": true
+	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances/terminate": {
 		"operationId": "wor-status-terminate-workflow-instances",
 		"summary": "Get status of the job responsible for terminate all instances of a workflow",
@@ -7396,7 +7593,21 @@
 									}
 								},
 								"result": {
-									"type": "object"
+									"type": "object",
+									"properties": {
+										"instanceId": {
+											"type": "string"
+										},
+										"timestamp": {
+											"description": "Accepts ISO 8601 with no timezone offsets and in UTC.",
+											"type": "string",
+											"format": "date-time"
+										}
+									},
+									"required": [
+										"instanceId",
+										"timestamp"
+									]
 								},
 								"result_info": {
 									"type": "object",
@@ -7436,6 +7647,7 @@
 							"required": [
 								"success",
 								"errors",
+								"result",
 								"messages"
 							]
 						}
