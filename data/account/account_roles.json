@@ -1477,7 +1477,7 @@
 	{
 		"id": "3390240245b5d4d8be9f8c5789dca2d7",
 		"name": "Email Security Readonly",
-		"description": "Read access to all of Email Security, cannot see raw email, take action on emails, or make submissions (Requires Cloudflare Zero Trust PII)",
+		"description": "Read access to all of Email Security, cannot see raw email, take action on emails, or make submissions.",
 		"permissions": {
 			"cf1_integration": {
 				"read": true,
@@ -1534,7 +1534,7 @@
 	{
 		"id": "d9290f651ced29c9524b79aa5ac4fcaf",
 		"name": "Email Security Analyst",
-		"description": "Read access to all of Email Security including Settings, and can also action emails (Requires Cloudflare Zero Trust PII)",
+		"description": "Read access to all of Email Security including Settings, and can also action emails.",
 		"permissions": {
 			"ces_submissions": {
 				"read": true,
@@ -1593,7 +1593,7 @@
 	{
 		"id": "70035ec03549c8799c170a2afc25c139",
 		"name": "Email Configuration Admin",
-		"description": "Write access to all of Email Security, except for mail preview, raw email, on-demand reports, actions on emails, submissions, submission transparency. (Requires Cloudflare Zero Trust PII)",
+		"description": "Write access to all of Email Security, except for mail preview, raw email, on-demand reports, actions on emails, submissions, submission transparency.",
 		"permissions": {
 			"cf1_integration": {
 				"read": true,
