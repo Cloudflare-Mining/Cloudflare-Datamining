@@ -440,7 +440,7 @@
 			"Log Explorer Datasets"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logexplorer.datasets",
+		"x-fern-sdk-group-name": "logexplorer.account.datasets",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
 		"x-forge-require-confirmation": true
@@ -886,7 +886,7 @@
 			"Log Explorer Datasets"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logexplorer.datasets",
+		"x-fern-sdk-group-name": "logexplorer.zone.datasets",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
 		"x-forge-require-confirmation": true
@@ -1235,7 +1235,7 @@
 			"Logs Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logexplorer.datasets",
+		"x-fern-sdk-group-name": "logexplorer.account.datasets",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -1624,7 +1624,7 @@
 			"Logs Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logexplorer.datasets",
+		"x-fern-sdk-group-name": "logexplorer.account.datasets",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -1937,8 +1937,8 @@
 			"Logs Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logexplorer.datasets.available",
-		"x-fern-sdk-method-name": "list",
+		"x-fern-sdk-group-name": "logexplorer.account.datasets",
+		"x-fern-sdk-method-name": "available",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/logs/explorer/datasets": {
@@ -2277,7 +2277,7 @@
 			"Logs Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logexplorer.datasets",
+		"x-fern-sdk-group-name": "logexplorer.zone.datasets",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -2666,7 +2666,7 @@
 			"Logs Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logexplorer.datasets",
+		"x-fern-sdk-group-name": "logexplorer.zone.datasets",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -2979,8 +2979,8 @@
 			"Logs Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logexplorer.datasets.available",
-		"x-fern-sdk-method-name": "list",
+		"x-fern-sdk-group-name": "logexplorer.zone.datasets",
+		"x-fern-sdk-method-name": "available",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/logs/explorer/datasets": {
@@ -3467,7 +3467,7 @@
 			"Logs Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logexplorer.datasets",
+		"x-fern-sdk-group-name": "logexplorer.account.datasets",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
@@ -3955,7 +3955,7 @@
 			"Logs Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logexplorer.datasets",
+		"x-fern-sdk-group-name": "logexplorer.zone.datasets",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
@@ -4402,7 +4402,7 @@
 			"Logs Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logexplorer.datasets",
+		"x-fern-sdk-group-name": "logexplorer.account.datasets",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
@@ -4849,7 +4849,7 @@
 			"Logs Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logexplorer.datasets",
+		"x-fern-sdk-group-name": "logexplorer.zone.datasets",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	}

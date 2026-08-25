@@ -311,7 +311,7 @@
 		],
 		"x-auditable": false,
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "logexplorer",
+		"x-fern-sdk-group-name": "logexplorer.account",
 		"x-fern-sdk-method-name": "query-get"
 	},
 	"GET /zones/{zone_id}/logs/explorer/query/sql": {
@@ -626,7 +626,7 @@
 		],
 		"x-auditable": false,
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "logexplorer",
+		"x-fern-sdk-group-name": "logexplorer.zone",
 		"x-fern-sdk-method-name": "query-get"
 	},
 	"POST /accounts/{account_id}/logs/explorer/query/sql": {
@@ -942,7 +942,7 @@
 		],
 		"x-auditable": false,
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logexplorer",
+		"x-fern-sdk-group-name": "logexplorer.account",
 		"x-fern-sdk-method-name": "query",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -1260,7 +1260,7 @@
 		],
 		"x-auditable": false,
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logexplorer",
+		"x-fern-sdk-group-name": "logexplorer.zone",
 		"x-fern-sdk-method-name": "query",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
