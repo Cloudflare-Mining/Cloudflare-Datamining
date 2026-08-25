@@ -1,0 +1,166 @@
+{
+	"flat": true,
+	"modes": null,
+	"input": {
+		"rows": [
+			{
+				"id": "input_video",
+				"name": "input_video",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "HTTP(S) URL or base64-encoded MP4 video, up to 20 seconds and 50MB.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "upscale_factor",
+				"name": "upscale_factor",
+				"type": "number",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Output scale relative to the source resolution, from 1.5x to 3x.",
+				"metadata": {
+					"minimum": 1.5,
+					"maximum": 3
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "creativity",
+				"name": "creativity",
+				"type": "one of",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": true,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "creativity.0",
+						"name": "Option 1",
+						"type": "number",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": true,
+						"isFirstOneOfChild": true,
+						"isLastOneOfChild": false,
+						"required": false,
+						"description": "0 preserves the source precisely; 1 enhances fine detail creatively.",
+						"metadata": {
+							"const": 0
+						},
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
+						]
+					},
+					{
+						"id": "creativity.1",
+						"name": "Option 2",
+						"type": "number",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": true,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": true,
+						"required": false,
+						"description": "0 preserves the source precisely; 1 enhances fine detail creatively.",
+						"metadata": {
+							"const": 1
+						},
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							false
+						]
+					}
+				]
+			},
+			{
+				"id": "prompt",
+				"name": "prompt",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Optional description of the clip to guide creative detail enhancement.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "safety_tolerance",
+				"name": "safety_tolerance",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Moderation strictness, from 0 (strictest) to 4.",
+				"metadata": {
+					"minimum": 0,
+					"maximum": 4
+				},
+				"depth": 0,
+				"isLast": true,
+				"ancestorIsLast": []
+			}
+		],
+		"variants": null,
+		"isFlat": false
+	},
+	"output": {
+		"rows": [
+			{
+				"id": "video",
+				"name": "video",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "Signed URL to the upscaled MP4. Download promptly before it expires.",
+				"metadata": {
+					"format": "uri"
+				},
+				"depth": 0,
+				"isLast": true,
+				"ancestorIsLast": []
+			}
+		],
+		"variants": null,
+		"isFlat": false
+	}
+}

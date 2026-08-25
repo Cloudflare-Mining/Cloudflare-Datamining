@@ -1,0 +1,43 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"input_video": {
+			"description": "HTTP(S) URL or base64-encoded MP4 video, up to 20 seconds and 50MB.",
+			"type": "string"
+		},
+		"upscale_factor": {
+			"description": "Output scale relative to the source resolution, from 1.5x to 3x.",
+			"type": "number",
+			"minimum": 1.5,
+			"maximum": 3
+		},
+		"creativity": {
+			"description": "0 preserves the source precisely; 1 enhances fine detail creatively.",
+			"anyOf": [
+				{
+					"type": "number",
+					"const": 0
+				},
+				{
+					"type": "number",
+					"const": 1
+				}
+			]
+		},
+		"prompt": {
+			"description": "Optional description of the clip to guide creative detail enhancement.",
+			"type": "string"
+		},
+		"safety_tolerance": {
+			"description": "Moderation strictness, from 0 (strictest) to 4.",
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 4
+		}
+	},
+	"required": [
+		"input_video"
+	],
+	"additionalProperties": false
+}
