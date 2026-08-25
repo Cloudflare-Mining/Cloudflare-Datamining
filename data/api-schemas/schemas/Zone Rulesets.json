@@ -6859,6 +6859,27 @@
 																												"example": true,
 																												"title": "Origin Error Page Passthrough"
 																											},
+																											"origin_range_requests": {
+																												"description": "Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.",
+																												"type": "object",
+																												"properties": {
+																													"mode": {
+																														"description": "Whether to use range requests. `default` is the behaviour the zone gets without this rule.",
+																														"type": "string",
+																														"example": "on",
+																														"enum": [
+																															"on",
+																															"off",
+																															"default"
+																														],
+																														"title": "Mode"
+																													}
+																												},
+																												"required": [
+																													"mode"
+																												],
+																												"title": "Origin Range Requests"
+																											},
 																											"read_timeout": {
 																												"description": "A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.",
 																												"type": "integer",
@@ -16190,6 +16211,27 @@
 																										"example": true,
 																										"title": "Origin Error Page Passthrough"
 																									},
+																									"origin_range_requests": {
+																										"description": "Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.",
+																										"type": "object",
+																										"properties": {
+																											"mode": {
+																												"description": "Whether to use range requests. `default` is the behaviour the zone gets without this rule.",
+																												"type": "string",
+																												"example": "on",
+																												"enum": [
+																													"on",
+																													"off",
+																													"default"
+																												],
+																												"title": "Mode"
+																											}
+																										},
+																										"required": [
+																											"mode"
+																										],
+																										"title": "Origin Range Requests"
+																									},
 																									"read_timeout": {
 																										"description": "A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.",
 																										"type": "integer",
@@ -25288,6 +25330,27 @@
 																										"example": true,
 																										"title": "Origin Error Page Passthrough"
 																									},
+																									"origin_range_requests": {
+																										"description": "Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.",
+																										"type": "object",
+																										"properties": {
+																											"mode": {
+																												"description": "Whether to use range requests. `default` is the behaviour the zone gets without this rule.",
+																												"type": "string",
+																												"example": "on",
+																												"enum": [
+																													"on",
+																													"off",
+																													"default"
+																												],
+																												"title": "Mode"
+																											}
+																										},
+																										"required": [
+																											"mode"
+																										],
+																										"title": "Origin Range Requests"
+																									},
 																									"read_timeout": {
 																										"description": "A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.",
 																										"type": "integer",
@@ -33861,6 +33924,27 @@
 																										"type": "boolean",
 																										"example": true,
 																										"title": "Origin Error Page Passthrough"
+																									},
+																									"origin_range_requests": {
+																										"description": "Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.",
+																										"type": "object",
+																										"properties": {
+																											"mode": {
+																												"description": "Whether to use range requests. `default` is the behaviour the zone gets without this rule.",
+																												"type": "string",
+																												"example": "on",
+																												"enum": [
+																													"on",
+																													"off",
+																													"default"
+																												],
+																												"title": "Mode"
+																											}
+																										},
+																										"required": [
+																											"mode"
+																										],
+																										"title": "Origin Range Requests"
 																									},
 																									"read_timeout": {
 																										"description": "A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.",
@@ -42436,6 +42520,27 @@
 																										"type": "boolean",
 																										"example": true,
 																										"title": "Origin Error Page Passthrough"
+																									},
+																									"origin_range_requests": {
+																										"description": "Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.",
+																										"type": "object",
+																										"properties": {
+																											"mode": {
+																												"description": "Whether to use range requests. `default` is the behaviour the zone gets without this rule.",
+																												"type": "string",
+																												"example": "on",
+																												"enum": [
+																													"on",
+																													"off",
+																													"default"
+																												],
+																												"title": "Mode"
+																											}
+																										},
+																										"required": [
+																											"mode"
+																										],
+																										"title": "Origin Range Requests"
 																									},
 																									"read_timeout": {
 																										"description": "A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.",
@@ -51585,6 +51690,27 @@
 																										"example": true,
 																										"title": "Origin Error Page Passthrough"
 																									},
+																									"origin_range_requests": {
+																										"description": "Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.",
+																										"type": "object",
+																										"properties": {
+																											"mode": {
+																												"description": "Whether to use range requests. `default` is the behaviour the zone gets without this rule.",
+																												"type": "string",
+																												"example": "on",
+																												"enum": [
+																													"on",
+																													"off",
+																													"default"
+																												],
+																												"title": "Mode"
+																											}
+																										},
+																										"required": [
+																											"mode"
+																										],
+																										"title": "Origin Range Requests"
+																									},
 																									"read_timeout": {
 																										"description": "A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.",
 																										"type": "integer",
@@ -59917,6 +60043,27 @@
 																"type": "boolean",
 																"example": true,
 																"title": "Origin Error Page Passthrough"
+															},
+															"origin_range_requests": {
+																"description": "Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.",
+																"type": "object",
+																"properties": {
+																	"mode": {
+																		"description": "Whether to use range requests. `default` is the behaviour the zone gets without this rule.",
+																		"type": "string",
+																		"example": "on",
+																		"enum": [
+																			"on",
+																			"off",
+																			"default"
+																		],
+																		"title": "Mode"
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"title": "Origin Range Requests"
 															},
 															"read_timeout": {
 																"description": "A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.",
@@ -68270,6 +68417,27 @@
 																												"type": "boolean",
 																												"example": true,
 																												"title": "Origin Error Page Passthrough"
+																											},
+																											"origin_range_requests": {
+																												"description": "Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.",
+																												"type": "object",
+																												"properties": {
+																													"mode": {
+																														"description": "Whether to use range requests. `default` is the behaviour the zone gets without this rule.",
+																														"type": "string",
+																														"example": "on",
+																														"enum": [
+																															"on",
+																															"off",
+																															"default"
+																														],
+																														"title": "Mode"
+																													}
+																												},
+																												"required": [
+																													"mode"
+																												],
+																												"title": "Origin Range Requests"
 																											},
 																											"read_timeout": {
 																												"description": "A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.",
@@ -76680,6 +76848,27 @@
 																			"example": true,
 																			"title": "Origin Error Page Passthrough"
 																		},
+																		"origin_range_requests": {
+																			"description": "Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.",
+																			"type": "object",
+																			"properties": {
+																				"mode": {
+																					"description": "Whether to use range requests. `default` is the behaviour the zone gets without this rule.",
+																					"type": "string",
+																					"example": "on",
+																					"enum": [
+																						"on",
+																						"off",
+																						"default"
+																					],
+																					"title": "Mode"
+																				}
+																			},
+																			"required": [
+																				"mode"
+																			],
+																			"title": "Origin Range Requests"
+																		},
 																		"read_timeout": {
 																			"description": "A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.",
 																			"type": "integer",
@@ -84971,6 +85160,27 @@
 																												"type": "boolean",
 																												"example": true,
 																												"title": "Origin Error Page Passthrough"
+																											},
+																											"origin_range_requests": {
+																												"description": "Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.",
+																												"type": "object",
+																												"properties": {
+																													"mode": {
+																														"description": "Whether to use range requests. `default` is the behaviour the zone gets without this rule.",
+																														"type": "string",
+																														"example": "on",
+																														"enum": [
+																															"on",
+																															"off",
+																															"default"
+																														],
+																														"title": "Mode"
+																													}
+																												},
+																												"required": [
+																													"mode"
+																												],
+																												"title": "Origin Range Requests"
 																											},
 																											"read_timeout": {
 																												"description": "A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.",
@@ -93281,6 +93491,27 @@
 																"type": "boolean",
 																"example": true,
 																"title": "Origin Error Page Passthrough"
+															},
+															"origin_range_requests": {
+																"description": "Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.",
+																"type": "object",
+																"properties": {
+																	"mode": {
+																		"description": "Whether to use range requests. `default` is the behaviour the zone gets without this rule.",
+																		"type": "string",
+																		"example": "on",
+																		"enum": [
+																			"on",
+																			"off",
+																			"default"
+																		],
+																		"title": "Mode"
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"title": "Origin Range Requests"
 															},
 															"read_timeout": {
 																"description": "A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.",
@@ -101634,6 +101865,27 @@
 																												"type": "boolean",
 																												"example": true,
 																												"title": "Origin Error Page Passthrough"
+																											},
+																											"origin_range_requests": {
+																												"description": "Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.",
+																												"type": "object",
+																												"properties": {
+																													"mode": {
+																														"description": "Whether to use range requests. `default` is the behaviour the zone gets without this rule.",
+																														"type": "string",
+																														"example": "on",
+																														"enum": [
+																															"on",
+																															"off",
+																															"default"
+																														],
+																														"title": "Mode"
+																													}
+																												},
+																												"required": [
+																													"mode"
+																												],
+																												"title": "Origin Range Requests"
 																											},
 																											"read_timeout": {
 																												"description": "A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.",
@@ -110056,6 +110308,27 @@
 																			"example": true,
 																			"title": "Origin Error Page Passthrough"
 																		},
+																		"origin_range_requests": {
+																			"description": "Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.",
+																			"type": "object",
+																			"properties": {
+																				"mode": {
+																					"description": "Whether to use range requests. `default` is the behaviour the zone gets without this rule.",
+																					"type": "string",
+																					"example": "on",
+																					"enum": [
+																						"on",
+																						"off",
+																						"default"
+																					],
+																					"title": "Mode"
+																				}
+																			},
+																			"required": [
+																				"mode"
+																			],
+																			"title": "Origin Range Requests"
+																		},
 																		"read_timeout": {
 																			"description": "A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.",
 																			"type": "integer",
@@ -118342,6 +118615,27 @@
 																												"type": "boolean",
 																												"example": true,
 																												"title": "Origin Error Page Passthrough"
+																											},
+																											"origin_range_requests": {
+																												"description": "Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.",
+																												"type": "object",
+																												"properties": {
+																													"mode": {
+																														"description": "Whether to use range requests. `default` is the behaviour the zone gets without this rule.",
+																														"type": "string",
+																														"example": "on",
+																														"enum": [
+																															"on",
+																															"off",
+																															"default"
+																														],
+																														"title": "Mode"
+																													}
+																												},
+																												"required": [
+																													"mode"
+																												],
+																												"title": "Origin Range Requests"
 																											},
 																											"read_timeout": {
 																												"description": "A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.",
@@ -126745,6 +127039,27 @@
 																			"example": true,
 																			"title": "Origin Error Page Passthrough"
 																		},
+																		"origin_range_requests": {
+																			"description": "Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.",
+																			"type": "object",
+																			"properties": {
+																				"mode": {
+																					"description": "Whether to use range requests. `default` is the behaviour the zone gets without this rule.",
+																					"type": "string",
+																					"example": "on",
+																					"enum": [
+																						"on",
+																						"off",
+																						"default"
+																					],
+																					"title": "Mode"
+																				}
+																			},
+																			"required": [
+																				"mode"
+																			],
+																			"title": "Origin Range Requests"
+																		},
 																		"read_timeout": {
 																			"description": "A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.",
 																			"type": "integer",
@@ -135031,6 +135346,27 @@
 																												"type": "boolean",
 																												"example": true,
 																												"title": "Origin Error Page Passthrough"
+																											},
+																											"origin_range_requests": {
+																												"description": "Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.",
+																												"type": "object",
+																												"properties": {
+																													"mode": {
+																														"description": "Whether to use range requests. `default` is the behaviour the zone gets without this rule.",
+																														"type": "string",
+																														"example": "on",
+																														"enum": [
+																															"on",
+																															"off",
+																															"default"
+																														],
+																														"title": "Mode"
+																													}
+																												},
+																												"required": [
+																													"mode"
+																												],
+																												"title": "Origin Range Requests"
 																											},
 																											"read_timeout": {
 																												"description": "A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.",

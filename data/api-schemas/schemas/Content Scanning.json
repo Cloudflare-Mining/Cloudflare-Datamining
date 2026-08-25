@@ -1318,7 +1318,10 @@
 		"x-api-token-group": [
 			"Zone WAF Write",
 			"Account WAF Write"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "content-scan",
+		"x-fern-sdk-method-name": "disable"
 	},
 	"POST /zones/{zone_id}/content-upload-scan/enable": {
 		"operationId": "waf-content-scanning-enable",
@@ -1534,7 +1537,10 @@
 		"x-api-token-group": [
 			"Zone WAF Write",
 			"Account WAF Write"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "content-scan",
+		"x-fern-sdk-method-name": "enable"
 	},
 	"POST /zones/{zone_id}/content-upload-scan/payloads": {
 		"operationId": "waf-content-scanning-add-custom-scan-expressions",
