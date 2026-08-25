@@ -310,7 +310,9 @@
 			"Logs Read"
 		],
 		"x-auditable": false,
-		"x-fern-ignore": true
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "logexplorer",
+		"x-fern-sdk-method-name": "query-get"
 	},
 	"GET /zones/{zone_id}/logs/explorer/query/sql": {
 		"operationId": "zones-logs-explorer-query-get",
@@ -623,7 +625,9 @@
 			"Logs Read"
 		],
 		"x-auditable": false,
-		"x-fern-ignore": true
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "logexplorer",
+		"x-fern-sdk-method-name": "query-get"
 	},
 	"POST /accounts/{account_id}/logs/explorer/query/sql": {
 		"operationId": "accounts-logs-explorer-query-post",

@@ -640,6 +640,8 @@
 			"Workers Observability Write"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "observability.telemetry",
+		"x-fern-sdk-method-name": "liveTail",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/workers/observability/telemetry/live-tail/heartbeat": {
@@ -843,6 +845,8 @@
 			"Workers Observability Write"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "observability.telemetry",
+		"x-fern-sdk-method-name": "heartbeat",
 		"x-forge-hidden": true
 	}
 }

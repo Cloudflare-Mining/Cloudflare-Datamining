@@ -382,8 +382,10 @@
 													"description": "When not null, this overrides global both zone level and operation level mitigation actions. This can serve as a quick way to disable schema validation for the whole zone.\n\n  - `\"none\"` will skip running schema validation entirely for the request\n",
 													"type": "string",
 													"enum": [
-														"none"
+														"none",
+														null
 													],
+													"nullable": true,
 													"x-auditable": true
 												}
 											},
@@ -1317,8 +1319,10 @@
 													"description": "When not null, this overrides global both zone level and operation level mitigation actions. This can serve as a quick way to disable schema validation for the whole zone.\n\n  - `\"none\"` will skip running schema validation entirely for the request\n",
 													"type": "string",
 													"enum": [
-														"none"
+														"none",
+														null
 													],
+													"nullable": true,
 													"x-auditable": true
 												}
 											},
@@ -1935,8 +1939,10 @@
 													"description": "When not null, this overrides global both zone level and operation level mitigation actions. This can serve as a quick way to disable schema validation for the whole zone.\n\n  - `\"none\"` will skip running schema validation entirely for the request\n",
 													"type": "string",
 													"enum": [
-														"none"
+														"none",
+														null
 													],
+													"nullable": true,
 													"x-auditable": true
 												}
 											},

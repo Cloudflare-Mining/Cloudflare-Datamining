@@ -334,6 +334,8 @@
 			"Workers Observability Write"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "observability.metrics-export",
+		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/observability/metricsexport": {
@@ -561,6 +563,8 @@
 			"Workers Observability Read"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "observability.metrics-export",
+		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/workers/observability/metricsexport": {
@@ -1050,6 +1054,8 @@
 			"Workers Observability Write"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "observability.metrics-export",
+		"x-fern-sdk-method-name": "upsert",
 		"x-forge-hidden": true
 	}
 }
