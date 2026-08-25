@@ -484,6 +484,186 @@
 	"AccountAiGatewayCacheAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"AccountAiGatewayConversationAnalysesAdaptive": {
+		"__description": "Individual analyzed AI Gateway conversations. This list is sampled: an aggregate may report more conversations than this node can list. A conversation re-analyzed after resuming appears as another row with its accumulated totals; conversationId identifies repeated conversations.",
+		"assistantTurns": "Assistant turns in the analyzed trajectory",
+		"client": "Coding agent that held the conversation",
+		"conversationId": "Stable hash identifying the user and session conversation; evidence join key and marker for repeated rows of one conversation",
+		"costEstimate": "Estimated conversation cost in USD; not a billing figure. 0 when unmeasured, and overlapping analysis periods can double-count it",
+		"date": "Date of the conversation's last observed activity",
+		"datetime": "Conversation's last observed activity",
+		"datetimeFirstActivity": "First observed activity. This field is not filterable because the dataset is partitioned by last activity; use date or datetime filters to constrain the scanned range",
+		"gatewayId": "Name of the AI Gateway the conversation went through",
+		"measuredCount": "Number of analyses that measured usage; 0 means absent",
+		"outcome": "'ok' when analyzed end to end and 'skip' when refused",
+		"requiredTier": "Cheapest tier judged sufficient; empty when unavailable",
+		"sampleInterval": "Number of conversations this row represents under adaptive sampling; multiply when extrapolating from listed rows",
+		"servedModel": "Provider and model that served the analyzed conversation",
+		"servedTier": "Tier of the served model; empty when unavailable",
+		"spansOverlap": "1 when overlapping analysis periods double-count usage",
+		"taskLabel": "Task type assigned by the classifier; empty when unclassified",
+		"tokensIn": "Input tokens across the conversation's observed requests",
+		"tokensOut": "Output tokens across the conversation's observed requests",
+		"toolCalls": "Tool calls made by the assistant in the analyzed trajectory",
+		"userId": "CF Access user identity of the conversation's end user",
+		"userTurns": "User turns in the analyzed trajectory",
+		"verdict": "'overkill', 'appropriate', 'underpowered', 'skip' when unjudgeable, or empty when unclassified",
+		"verdictVersion": "Generation of the verdict rule used for this conversation"
+	},
+	"AccountAiGatewayConversationAnalysesAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountAiGatewayConversationAnalysesAdaptiveGroups": {
+		"__description": "Analyzed AI Gateway conversations, aggregated with adaptive sampling. One underlying row exists per analysis pick of a conversation; a conversation resumed and re-analyzed later contributes again with its accumulated totals.",
+		"avg": "",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Number of analyzed conversations (canonical analysis picks; re-analyses of a resumed conversation count again)",
+		"dimensions": "List of dimensions to group by",
+		"sum": ""
+	},
+	"AccountAiGatewayConversationAnalysesAdaptiveGroupsAvg": {
+		"__description": "",
+		"costEstimate": "Mean estimated cost in USD per conversation over conversations whose cost was measured; 0 when none in the group was measured. When recombining groups client-side, filter measuredCount greater than 0 and divide summed costEstimate by count rather than averaging these averages",
+		"sampleInterval": "Average sample interval of the rows behind this result; how heavily sampled the answer is"
+	},
+	"AccountAiGatewayConversationAnalysesAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Number of analyzed conversations (canonical analysis picks; re-analyses of a resumed conversation count again), with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": ""
+	},
+	"AccountAiGatewayConversationAnalysesAdaptiveGroupsDimensions": {
+		"__description": "",
+		"client": "Coding agent that held the conversation (for example claude-code, codex, or opencode); empty when no readable trajectory existed",
+		"date": "Date of the conversation's last observed activity",
+		"datetime": "Conversation's last observed activity",
+		"datetimeHour": "Conversation's last observed activity truncated to the hour",
+		"gatewayId": "Name of the AI Gateway the conversations went through",
+		"outcome": "'ok' when the conversation was analyzed end to end and 'skip' when a stage refused it; skipped conversations still carry usage measures",
+		"requiredTier": "Cheapest tier judged sufficient for the conversation's task; empty on unclassified conversations and when verdict is 'skip'",
+		"servedModel": "Provider and model that served the analyzed part of the conversation. A conversation that used several models is attributed to the model its picked analysis saw. Empty when outcome is not 'ok'",
+		"servedTier": "Tier of the served model; empty on unclassified conversations and on classified conversations whose verdict is 'skip'",
+		"skipReason": "Why a skipped conversation was refused; read with skipStage",
+		"skipStage": "Pipeline stage that refused a skipped conversation",
+		"taskLabel": "Task type the classifier assigned to the conversation; an open vocabulary that can shift when the classifier changes. Empty on conversations that were not classified; filter outcome to 'ok'",
+		"userId": "CF Access user identity of the conversation's end user, as the gateway recorded it. Grouping is most accurate within a single gateway; across many gateways results become coarse",
+		"userTurns": "User turns in the analyzed trajectory (consecutive same-role messages count once). 0 can mean no readable trajectory or no user turn",
+		"verdict": "Whether the served model's tier was above ('overkill'), at ('appropriate'), or below ('underpowered') what the conversation needed; 'skip' when it could not be judged and empty when unclassified",
+		"verdictVersion": "Generation of the verdict rule that judged this conversation; compare verdicts across time within one generation"
+	},
+	"AccountAiGatewayConversationAnalysesAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountAiGatewayConversationAnalysesAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountAiGatewayConversationAnalysesAdaptiveGroupsSum": {
+		"__description": "",
+		"costEstimate": "Total estimated cost in USD across the grouped conversations; an estimate from token counts and model rates, not a billing figure, and cached input is priced as fresh",
+		"tokensIn": "Total input tokens across the grouped conversations",
+		"tokensInCached": "Cached part of the total input tokens (provider-side prompt caching), not a pool beside tokensIn",
+		"tokensOut": "Total output tokens across the grouped conversations"
+	},
+	"AccountAiGatewayConversationAnalysesAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"costEstimate": "Confidence interval for the corresponding point estimate",
+		"tokensIn": "Confidence interval for the corresponding point estimate",
+		"tokensInCached": "Confidence interval for the corresponding point estimate",
+		"tokensOut": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountAiGatewayConversationAnalysesAdaptiveOrderBy": {
+		"__description": ""
+	},
+	"AccountAiGatewayConversationAnalysesStagingAdaptive": {
+		"__description": "Individual analyzed AI Gateway conversations with adaptive sampling (staging)",
+		"assistantTurns": "Assistant turns in the analyzed trajectory",
+		"client": "Coding agent that held the conversation",
+		"conversationId": "Stable hash identifying the user and session conversation; evidence join key and marker for repeated rows of one conversation",
+		"costEstimate": "Estimated conversation cost in USD; not a billing figure. 0 when unmeasured, and overlapping analysis periods can double-count it",
+		"date": "Date of the conversation's last observed activity",
+		"datetime": "Conversation's last observed activity",
+		"datetimeFirstActivity": "First observed activity. This field is not filterable because the dataset is partitioned by last activity; use date or datetime filters to constrain the scanned range",
+		"gatewayId": "Name of the AI Gateway the conversation went through",
+		"measuredCount": "Number of analyses that measured usage; 0 means absent",
+		"outcome": "'ok' when analyzed end to end and 'skip' when refused",
+		"requiredTier": "Cheapest tier judged sufficient; empty when unavailable",
+		"sampleInterval": "Number of conversations this row represents under adaptive sampling; multiply when extrapolating from listed rows",
+		"servedModel": "Provider and model that served the analyzed conversation",
+		"servedTier": "Tier of the served model; empty when unavailable",
+		"spansOverlap": "1 when overlapping analysis periods double-count usage",
+		"taskLabel": "Task type assigned by the classifier; empty when unclassified",
+		"tokensIn": "Input tokens across the conversation's observed requests",
+		"tokensOut": "Output tokens across the conversation's observed requests",
+		"toolCalls": "Tool calls made by the assistant in the analyzed trajectory",
+		"userId": "CF Access user identity of the conversation's end user",
+		"userTurns": "User turns in the analyzed trajectory",
+		"verdict": "'overkill', 'appropriate', 'underpowered', 'skip' when unjudgeable, or empty when unclassified",
+		"verdictVersion": "Generation of the verdict rule used for this conversation"
+	},
+	"AccountAiGatewayConversationAnalysesStagingAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountAiGatewayConversationAnalysesStagingAdaptiveGroups": {
+		"__description": "Analyzed AI Gateway conversations with adaptive sampling (staging)",
+		"avg": "",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Number of analyzed conversations (canonical analysis picks; re-analyses of a resumed conversation count again)",
+		"dimensions": "List of dimensions to group by",
+		"sum": ""
+	},
+	"AccountAiGatewayConversationAnalysesStagingAdaptiveGroupsAvg": {
+		"__description": "",
+		"costEstimate": "Mean estimated cost in USD per conversation over conversations whose cost was measured; 0 when none in the group was measured. When recombining groups client-side, filter measuredCount greater than 0 and divide summed costEstimate by count rather than averaging these averages",
+		"sampleInterval": "Average sample interval of the rows behind this result; how heavily sampled the answer is"
+	},
+	"AccountAiGatewayConversationAnalysesStagingAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Number of analyzed conversations (canonical analysis picks; re-analyses of a resumed conversation count again), with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": ""
+	},
+	"AccountAiGatewayConversationAnalysesStagingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"client": "Coding agent that held the conversation (for example claude-code, codex, or opencode); empty when no readable trajectory existed",
+		"date": "Date of the conversation's last observed activity",
+		"datetime": "Conversation's last observed activity",
+		"datetimeHour": "Conversation's last observed activity truncated to the hour",
+		"gatewayId": "Name of the AI Gateway the conversations went through",
+		"outcome": "'ok' when the conversation was analyzed end to end and 'skip' when a stage refused it; skipped conversations still carry usage measures",
+		"requiredTier": "Cheapest tier judged sufficient for the conversation's task; empty on unclassified conversations and when verdict is 'skip'",
+		"servedModel": "Provider and model that served the analyzed part of the conversation. A conversation that used several models is attributed to the model its picked analysis saw. Empty when outcome is not 'ok'",
+		"servedTier": "Tier of the served model; empty on unclassified conversations and on classified conversations whose verdict is 'skip'",
+		"skipReason": "Why a skipped conversation was refused; read with skipStage",
+		"skipStage": "Pipeline stage that refused a skipped conversation",
+		"taskLabel": "Task type the classifier assigned to the conversation; an open vocabulary that can shift when the classifier changes. Empty on conversations that were not classified; filter outcome to 'ok'",
+		"userId": "CF Access user identity of the conversation's end user, as the gateway recorded it. Grouping is most accurate within a single gateway; across many gateways results become coarse",
+		"userTurns": "User turns in the analyzed trajectory (consecutive same-role messages count once). 0 can mean no readable trajectory or no user turn",
+		"verdict": "Whether the served model's tier was above ('overkill'), at ('appropriate'), or below ('underpowered') what the conversation needed; 'skip' when it could not be judged and empty when unclassified",
+		"verdictVersion": "Generation of the verdict rule that judged this conversation; compare verdicts across time within one generation"
+	},
+	"AccountAiGatewayConversationAnalysesStagingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountAiGatewayConversationAnalysesStagingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountAiGatewayConversationAnalysesStagingAdaptiveGroupsSum": {
+		"__description": "",
+		"costEstimate": "Total estimated cost in USD across the grouped conversations; an estimate from token counts and model rates, not a billing figure, and cached input is priced as fresh",
+		"tokensIn": "Total input tokens across the grouped conversations",
+		"tokensInCached": "Cached part of the total input tokens (provider-side prompt caching), not a pool beside tokensIn",
+		"tokensOut": "Total output tokens across the grouped conversations"
+	},
+	"AccountAiGatewayConversationAnalysesStagingAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"costEstimate": "Confidence interval for the corresponding point estimate",
+		"tokensIn": "Confidence interval for the corresponding point estimate",
+		"tokensInCached": "Confidence interval for the corresponding point estimate",
+		"tokensOut": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountAiGatewayConversationAnalysesStagingAdaptiveOrderBy": {
+		"__description": ""
+	},
 	"AccountAiGatewayErrorsAdaptiveGroups": {
 		"__description": "AI Gateway Errors",
 		"confidence": "ALPHA - DO NOT USE",
@@ -6445,7 +6625,7 @@
 		"enabled": "1 if the origin is enabled, 0 otherwise",
 		"failureReason": "Reason the origin failed its health check (e.g., noFailure, httpTimeout, tcpFailure, codeMismatch, tlsHandshakeFailure)",
 		"fqdn": "Fully qualified domain name of the origin",
-		"health": "Health status of the origin (unknown = health state unknown, healthy = origin healthy, critical = origin critical)",
+		"health": "Health status of the origin. Values: unknown (health state unknown), healthy (origin healthy), critical (origin critical)",
 		"healthChanged": "1 if this origin's health changed at this event, 0 otherwise",
 		"ip": "IP address of the origin",
 		"originName": "Origin name",
@@ -8627,6 +8807,7 @@
 		"destinationAS": "Autonomous System to which the data is directed. Corresponds to DstAS field in the packet",
 		"destinationAddress": "IP to which the data was sent",
 		"destinationPort": "Value of the Destination Port header field in the packet",
+		"destinationSubnet": "Computed subnet of the destination address (/24 for IPv4; /48 for IPv6)",
 		"deviceID": "Device ID of the warp client exporting MNM flows",
 		"ethertype": "Value of the Ethertype header field in the Ethernet packet (2048 for IPv4; 34525 for IPv6)",
 		"ipToS": "Defines the IP Type Of Service (TOS)",
@@ -8638,6 +8819,7 @@
 		"sourceAS": "Autonomous System from which the data was sent. Corresponds to SrcAS field in the packet",
 		"sourceAddress": "IP from which the data was sent",
 		"sourcePort": "Value of the Source Port header field in the packet",
+		"sourceSubnet": "Computed subnet of the source address (/24 for IPv4; /48 for IPv6)",
 		"tcpFlags": "Value of the Flags header field in the TCP packet",
 		"tcpFlagsString": "Human-readable string representation of the Flags header field in the TCP packet",
 		"version": "Version of the record schema"
@@ -9386,6 +9568,7 @@
 		"asn": "ASN tied to that Precursor validation event",
 		"browserMajor": "Major version of the browser tied to that Precursor validation event",
 		"browserName": "Browser name tied to that Precursor validation event",
+		"clientASNDescription": "The ASN of the visitor as string",
 		"countryCode": "2 character country code tied to that Precursor validation event",
 		"date": "The date the Precursor validation event was emitted",
 		"datetime": "The date and time the Precursor validation event was emitted",
@@ -9417,6 +9600,44 @@
 	"AccountPrecursorEventsAdaptiveGroupsSumConfidence": {
 		"__description": "",
 		"sessionsStarted": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountPrecursorSessionsAdaptiveGroups": {
+		"__description": "Beta. Cloudflare Precursor session-level aggregates derived from sampled validation events",
+		"avg": "",
+		"count": "Estimated number of Cloudflare Precursor sessions observed in sampled validation events",
+		"dimensions": "List of dimensions to group by",
+		"sum": ""
+	},
+	"AccountPrecursorSessionsAdaptiveGroupsAvg": {
+		"__description": "",
+		"observedDurationSecs": "Average observed span, in seconds, between the first and last validation events for a Precursor session",
+		"validations": "Average number of Precursor validation events per observed session"
+	},
+	"AccountPrecursorSessionsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"asn": "Latest ASN observed for that Precursor session",
+		"browserName": "Latest browser name observed for that Precursor session",
+		"countryCode": "Latest 2 character country code observed for that Precursor session",
+		"date": "The date the Precursor session was first observed",
+		"datetime": "The date and time the Precursor session was first observed",
+		"datetimeDay": "The date and time the Precursor session was first observed truncated to the day",
+		"datetimeFifteenMinutes": "The date and time the Precursor session was first observed truncated to a multiple of 15 minutes",
+		"datetimeFiveMinutes": "The date and time the Precursor session was first observed truncated to a multiple of 5 minutes",
+		"datetimeHalfOfHour": "The date and time the Precursor session was first observed truncated to a multiple of 30 minutes",
+		"datetimeHour": "The date and time the Precursor session was first observed truncated to the hour",
+		"datetimeMinute": "The date and time the Precursor session was first observed truncated to the minute",
+		"hostname": "Latest hostname observed for that Precursor session",
+		"zoneId": "Zone ID tied to that Precursor session"
+	},
+	"AccountPrecursorSessionsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountPrecursorSessionsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountPrecursorSessionsAdaptiveGroupsSum": {
+		"__description": "",
+		"validations": "Estimated number of Cloudflare Precursor validation events for observed sessions"
 	},
 	"AccountPrivacyProxyAuthMetricsAdaptiveGroups": {
 		"__description": "Aggregated Privacy Proxy authentication metrics with adaptive sampling",
@@ -10681,6 +10902,10 @@
 		"agentMemoryOperationsAdaptiveGroups": "",
 		"agentModelInvocationsAdaptiveGroups": "",
 		"aiGatewayCacheAdaptiveGroups": "",
+		"aiGatewayConversationAnalysesAdaptive": "",
+		"aiGatewayConversationAnalysesAdaptiveGroups": "",
+		"aiGatewayConversationAnalysesStagingAdaptive": "",
+		"aiGatewayConversationAnalysesStagingAdaptiveGroups": "",
 		"aiGatewayErrorsAdaptiveGroups": "",
 		"aiGatewayRequestsAdaptiveGroups": "",
 		"aiGatewayRequestsStagingAdaptiveGroups": "",
@@ -10834,6 +11059,7 @@
 		"pipelinesUserErrorsStagingAdaptive": "",
 		"pipelinesUserErrorsStagingAdaptiveGroups": "",
 		"precursorEventsAdaptiveGroups": "",
+		"precursorSessionsAdaptiveGroups": "",
 		"privacyProxyAuthMetricsAdaptiveGroups": "",
 		"privacyProxyEgressConnMetricsAdaptiveGroups": "",
 		"privacyProxyIngressConnMetricsAdaptiveGroups": "",
@@ -10890,6 +11116,9 @@
 		"workersVpcConnectionAdaptiveGroups": "",
 		"workflowsAdaptive": "",
 		"workflowsAdaptiveGroups": "",
+		"workflowsBlockedReasonAdaptiveGroups": "",
+		"workflowsQueueDepthAdaptiveGroups": "",
+		"workflowsQueueWaitAdaptiveGroups": "",
 		"zarazTrackAdaptiveGroups": "",
 		"zarazTriggersAdaptiveGroups": "",
 		"zeroTrustPrivateNetworkDiscoveryGroups": ""
@@ -12595,6 +12824,140 @@
 	},
 	"AccountWorkflowsAdaptiveOrderBy": {
 		"__description": ""
+	},
+	"AccountWorkflowsBlockedReasonAdaptiveGroups": {
+		"__description": "Workflow gatekeeper block reason metrics with adaptive sampling. Each sample represents instances that were blocked by the gatekeeper, grouped by the reason for blocking.",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Number of blocked reason samples",
+		"dimensions": "List of dimensions to group by",
+		"sum": ""
+	},
+	"AccountWorkflowsBlockedReasonAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Number of blocked reason samples, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": ""
+	},
+	"AccountWorkflowsBlockedReasonAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Sample date",
+		"datetime": "Sample timestamp",
+		"datetimeFifteenMinutes": "Sample timestamp truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Sample timestamp truncated to five minutes",
+		"datetimeHour": "Sample timestamp truncated to the hour",
+		"datetimeMinute": "Sample timestamp truncated to the minute",
+		"reason": "Gatekeeper block reason: WORKFLOW_LIMIT, GLOBAL_LIMIT, or LIMIT_RESOLUTION_ERROR",
+		"workflowId": "Workflow script name"
+	},
+	"AccountWorkflowsBlockedReasonAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountWorkflowsBlockedReasonAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountWorkflowsBlockedReasonAdaptiveGroupsSum": {
+		"__description": "",
+		"blockedCount": "Total number of instances blocked by the gatekeeper"
+	},
+	"AccountWorkflowsBlockedReasonAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"blockedCount": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountWorkflowsQueueDepthAdaptiveGroups": {
+		"__description": "Workflow queue depth gauge metrics with adaptive sampling. Each sample represents a snapshot of the number of instances waiting in the gatekeeper queue for a workflow.",
+		"avg": "",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Number of queue depth samples",
+		"dimensions": "List of dimensions to group by",
+		"quantiles": ""
+	},
+	"AccountWorkflowsQueueDepthAdaptiveGroupsAvg": {
+		"__description": "",
+		"queueDepth": "Average queue depth (number of queued instances)"
+	},
+	"AccountWorkflowsQueueDepthAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Number of queue depth samples, with confidence intervals",
+		"level": "Confidence level that was requested"
+	},
+	"AccountWorkflowsQueueDepthAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Sample date",
+		"datetime": "Sample timestamp",
+		"datetimeFifteenMinutes": "Sample timestamp truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Sample timestamp truncated to five minutes",
+		"datetimeHour": "Sample timestamp truncated to the hour",
+		"datetimeMinute": "Sample timestamp truncated to the minute",
+		"workflowId": "Workflow script name"
+	},
+	"AccountWorkflowsQueueDepthAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountWorkflowsQueueDepthAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountWorkflowsQueueDepthAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"queueDepthP25": "Queue depth at the 25th percentile",
+		"queueDepthP50": "Queue depth at the 50th percentile",
+		"queueDepthP75": "Queue depth at the 75th percentile",
+		"queueDepthP90": "Queue depth at the 90th percentile",
+		"queueDepthP95": "Queue depth at the 95th percentile",
+		"queueDepthP99": "Queue depth at the 99th percentile",
+		"queueDepthP999": "Queue depth at the 99.9th percentile"
+	},
+	"AccountWorkflowsQueueWaitAdaptiveGroups": {
+		"__description": "Workflow queue wait time metrics with adaptive sampling. Each sample represents the time a workflow instance spent waiting in the gatekeeper queue before being admitted.",
+		"avg": "",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Number of queue wait samples",
+		"dimensions": "List of dimensions to group by",
+		"quantiles": "",
+		"sum": ""
+	},
+	"AccountWorkflowsQueueWaitAdaptiveGroupsAvg": {
+		"__description": "",
+		"waitMs": "Average queue wait time (ms)"
+	},
+	"AccountWorkflowsQueueWaitAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Number of queue wait samples, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": ""
+	},
+	"AccountWorkflowsQueueWaitAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Sample date",
+		"datetime": "Sample timestamp",
+		"datetimeFifteenMinutes": "Sample timestamp truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Sample timestamp truncated to five minutes",
+		"datetimeHour": "Sample timestamp truncated to the hour",
+		"datetimeMinute": "Sample timestamp truncated to the minute",
+		"workflowId": "Workflow script name"
+	},
+	"AccountWorkflowsQueueWaitAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountWorkflowsQueueWaitAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountWorkflowsQueueWaitAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"waitMsP25": "Queue wait time (ms) at the 25th percentile",
+		"waitMsP50": "Queue wait time (ms) at the 50th percentile",
+		"waitMsP75": "Queue wait time (ms) at the 75th percentile",
+		"waitMsP90": "Queue wait time (ms) at the 90th percentile",
+		"waitMsP95": "Queue wait time (ms) at the 95th percentile",
+		"waitMsP99": "Queue wait time (ms) at the 99th percentile",
+		"waitMsP999": "Queue wait time (ms) at the 99.9th percentile"
+	},
+	"AccountWorkflowsQueueWaitAdaptiveGroupsSum": {
+		"__description": "",
+		"waitMs": "Total queue wait time (ms)"
+	},
+	"AccountWorkflowsQueueWaitAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"waitMs": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountZarazTrackAdaptiveGroups": {
 		"__description": "Zaraz Track Analytics - counts zaraz.track calls",
@@ -16167,6 +16530,10 @@
 		"agentMemoryOperationsAdaptiveGroups": "Agent Memory operations with adaptive sampling",
 		"agentModelInvocationsAdaptiveGroups": "Agent model invocation usage with adaptive sampling",
 		"aiGatewayCacheAdaptiveGroups": "AI Gateway Cache",
+		"aiGatewayConversationAnalysesAdaptive": "Individual analyzed AI Gateway conversations. This list is sampled: an aggregate may report more conversations than this node can list. A conversation re-analyzed after resuming appears as another row with its accumulated totals; conversationId identifies repeated conversations.",
+		"aiGatewayConversationAnalysesAdaptiveGroups": "Analyzed AI Gateway conversations, aggregated with adaptive sampling. One underlying row exists per analysis pick of a conversation; a conversation resumed and re-analyzed later contributes again with its accumulated totals.",
+		"aiGatewayConversationAnalysesStagingAdaptive": "Individual analyzed AI Gateway conversations with adaptive sampling (staging)",
+		"aiGatewayConversationAnalysesStagingAdaptiveGroups": "Analyzed AI Gateway conversations with adaptive sampling (staging)",
 		"aiGatewayErrorsAdaptiveGroups": "AI Gateway Errors",
 		"aiGatewayRequestsAdaptiveGroups": "AI Gateway Requests",
 		"aiGatewayRequestsStagingAdaptiveGroups": "AI Gateway Requests (staging)",
@@ -16320,6 +16687,7 @@
 		"pipelinesUserErrorsStagingAdaptive": "Raw user errors from Workers Pipelines (staging)",
 		"pipelinesUserErrorsStagingAdaptiveGroups": "User errors from Workers Pipelines (staging)",
 		"precursorEventsAdaptiveGroups": "Beta. Cloudflare Precursor aggregated validation events with adaptive sampling",
+		"precursorSessionsAdaptiveGroups": "Beta. Cloudflare Precursor session-level aggregates derived from sampled validation events",
 		"privacyProxyAuthMetricsAdaptiveGroups": "Aggregated Privacy Proxy authentication metrics with adaptive sampling",
 		"privacyProxyEgressConnMetricsAdaptiveGroups": "Aggregated Privacy Proxy egress (proxy-to-origin) connection metrics with adaptive sampling",
 		"privacyProxyIngressConnMetricsAdaptiveGroups": "Aggregated Privacy Proxy ingress (client-to-proxy) connection metrics with adaptive sampling",
@@ -16377,6 +16745,9 @@
 		"workersVpcConnectionAdaptiveGroups": "Workers VPC connections with adaptive sampling.",
 		"workflowsAdaptive": "Workflows analytics",
 		"workflowsAdaptiveGroups": "Workflows analytics",
+		"workflowsBlockedReasonAdaptiveGroups": "Workflow gatekeeper block reason metrics with adaptive sampling. Each sample represents instances that were blocked by the gatekeeper, grouped by the reason for blocking.",
+		"workflowsQueueDepthAdaptiveGroups": "Workflow queue depth gauge metrics with adaptive sampling. Each sample represents a snapshot of the number of instances waiting in the gatekeeper queue for a workflow.",
+		"workflowsQueueWaitAdaptiveGroups": "Workflow queue wait time metrics with adaptive sampling. Each sample represents the time a workflow instance spent waiting in the gatekeeper queue before being admitted.",
 		"zarazTrackAdaptiveGroups": "Zaraz Track Analytics - counts zaraz.track calls",
 		"zarazTriggersAdaptiveGroups": "Zaraz Triggers Analytics (a trigger is a set of rules that can trigger a zaraz action)",
 		"zeroTrustPrivateNetworkDiscoveryGroups": "Beta - Unique origins, applications, and users discovered for Zero Trust private networks",
