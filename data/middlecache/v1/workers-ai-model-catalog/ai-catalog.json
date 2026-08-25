@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-08-24T04:34:05.903Z",
-	"model_count": 224,
+	"generated_at": "2026-08-25T04:33:50.640Z",
+	"model_count": 225,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -1376,6 +1376,49 @@
 			"terms": "https://blackforestlabs.ai/terms-of-service/",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/black-forest-labs/flux-3-video.png",
 			"created_at": "2026-08-04 19:40:03",
+			"zdr_comment": null
+		},
+		{
+			"model_id": "black-forest-labs/flux-video-upscale",
+			"slug": "black-forest-labs/flux-video-upscale",
+			"display_name": "FLUX Video Upscale",
+			"description": "FLUX Video Upscale increases video resolution with a precise mode for source-faithful results and a creative mode for stronger detail enhancement. It accepts clips up to 20 seconds and preserves audio.",
+			"task": {
+				"id": "",
+				"name": "video-to-video",
+				"description": ""
+			},
+			"tags": [
+				"Video Upscaling",
+				"Video Enhancement",
+				"Super Resolution"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://blackforestlabs.ai/terms-of-service/"
+				},
+				{
+					"property_id": "info",
+					"value": "https://docs.bfl.ml/flux_tools/flux_video_upscale"
+				}
+			],
+			"metadata": {
+				"Maximum Source Duration": "20 seconds",
+				"Maximum Source Resolution": "2560 x 1440",
+				"Maximum Source Size": "50 MB",
+				"Output Audio": "Preserved",
+				"Pricing": "$0.07 precise or $0.10 creative per megapixel-second"
+			},
+			"external_info": "https://docs.bfl.ml/flux_tools/flux_video_upscale",
+			"terms": "https://blackforestlabs.ai/terms-of-service/",
+			"cover_image_url": null,
+			"created_at": "2026-08-24 14:41:58",
 			"zdr_comment": null
 		},
 		{
@@ -8620,10 +8663,6 @@
 					"value": "true"
 				},
 				{
-					"property_id": "vision",
-					"value": "false"
-				},
-				{
 					"property_id": "price",
 					"value": [
 						{
@@ -9776,10 +9815,6 @@
 				{
 					"property_id": "reasoning",
 					"value": "true"
-				},
-				{
-					"property_id": "vision",
-					"value": "false"
 				},
 				{
 					"property_id": "price",
