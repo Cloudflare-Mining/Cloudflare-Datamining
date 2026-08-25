@@ -767,6 +767,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.content-policies",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/domains": {
@@ -1054,7 +1058,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email-security.settings.domains",
-		"x-fern-sdk-method-name": "bulk_delete",
+		"x-fern-sdk-method-name": "bulk-delete",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
@@ -4467,6 +4471,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.content-policies",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/content_policies/{policy_id}": {
@@ -4789,6 +4797,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.content-policies",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/domains": {
@@ -5060,7 +5072,8 @@
 																"API",
 																"RETRO_SCAN"
 															]
-														}
+														},
+														"x-stainless-collection-type": "set"
 													},
 													"authorization": {
 														"type": "object",
@@ -5125,7 +5138,8 @@
 																"UNKNOWN",
 																"NONE"
 															]
-														}
+														},
+														"x-stainless-collection-type": "set"
 													},
 													"emails_processed": {
 														"type": "object",
@@ -5193,7 +5207,8 @@
 														"example": [
 															"192.0.2.0/24",
 															"2001:db8::/32"
-														]
+														],
+														"x-stainless-collection-type": "set"
 													},
 													"last_modified": {
 														"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
@@ -5240,7 +5255,8 @@
 																"IN",
 																"US"
 															]
-														}
+														},
+														"x-stainless-collection-type": "set"
 													},
 													"require_tls_inbound": {
 														"type": "boolean",
@@ -5540,7 +5556,8 @@
 															"API",
 															"RETRO_SCAN"
 														]
-													}
+													},
+													"x-stainless-collection-type": "set"
 												},
 												"authorization": {
 													"type": "object",
@@ -5605,7 +5622,8 @@
 															"UNKNOWN",
 															"NONE"
 														]
-													}
+													},
+													"x-stainless-collection-type": "set"
 												},
 												"emails_processed": {
 													"type": "object",
@@ -5673,7 +5691,8 @@
 													"example": [
 														"192.0.2.0/24",
 														"2001:db8::/32"
-													]
+													],
+													"x-stainless-collection-type": "set"
 												},
 												"last_modified": {
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
@@ -5720,7 +5739,8 @@
 															"IN",
 															"US"
 														]
-													}
+													},
+													"x-stainless-collection-type": "set"
 												},
 												"require_tls_inbound": {
 													"type": "boolean",
@@ -10519,6 +10539,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.content-policies",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
@@ -10543,7 +10567,8 @@
 										"API",
 										"RETRO_SCAN"
 									]
-								}
+								},
+								"x-stainless-collection-type": "set"
 							},
 							"drop_dispositions": {
 								"type": "array",
@@ -10561,7 +10586,8 @@
 										"UNKNOWN",
 										"NONE"
 									]
-								}
+								},
+								"x-stainless-collection-type": "set"
 							},
 							"folder": {
 								"allOf": [
@@ -10592,7 +10618,8 @@
 								"example": [
 									"192.0.2.0/24",
 									"2001:db8::/32"
-								]
+								],
+								"x-stainless-collection-type": "set"
 							},
 							"lookback_hops": {
 								"type": "integer",
@@ -10612,7 +10639,8 @@
 										"IN",
 										"US"
 									]
-								}
+								},
+								"x-stainless-collection-type": "set"
 							},
 							"require_tls_inbound": {
 								"type": "boolean",
@@ -10743,7 +10771,8 @@
 															"API",
 															"RETRO_SCAN"
 														]
-													}
+													},
+													"x-stainless-collection-type": "set"
 												},
 												"authorization": {
 													"type": "object",
@@ -10808,7 +10837,8 @@
 															"UNKNOWN",
 															"NONE"
 														]
-													}
+													},
+													"x-stainless-collection-type": "set"
 												},
 												"emails_processed": {
 													"type": "object",
@@ -10876,7 +10906,8 @@
 													"example": [
 														"192.0.2.0/24",
 														"2001:db8::/32"
-													]
+													],
+													"x-stainless-collection-type": "set"
 												},
 												"last_modified": {
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
@@ -10923,7 +10954,8 @@
 															"IN",
 															"US"
 														]
-													}
+													},
+													"x-stainless-collection-type": "set"
 												},
 												"require_tls_inbound": {
 													"type": "boolean",
@@ -13632,141 +13664,155 @@
 								"items": {
 									"allOf": [
 										{
-											"description": "An email allow policy.",
-											"type": "object",
-											"properties": {
-												"comments": {
-													"type": "string",
-													"example": "Trust all messages send from test@example.com",
-													"maxLength": 1024,
-													"nullable": true
-												},
-												"created_at": {
-													"allOf": [
-														{
+											"description": "Create an allow policy.",
+											"allOf": [
+												{
+													"description": "An email allow policy.",
+													"type": "object",
+													"properties": {
+														"comments": {
 															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
+															"example": "Trust all messages send from test@example.com",
+															"maxLength": 1024,
+															"nullable": true
+														},
+														"created_at": {
+															"allOf": [
+																{
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
+														},
+														"id": {
+															"allOf": [
+																{
+																	"description": "Allow policy identifier.",
+																	"type": "string",
+																	"format": "uuid",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
+														},
+														"is_acceptable_sender": {
+															"description": "Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.",
+															"type": "boolean",
+															"example": false,
+															"x-auditable": true
+														},
+														"is_exempt_recipient": {
+															"description": "Bypasses all detections for messages to this recipient.",
+															"type": "boolean",
+															"example": false,
+															"x-auditable": true
+														},
+														"is_recipient": {
+															"description": "Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026.",
+															"type": "boolean",
+															"example": false,
+															"deprecated": true,
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
+														},
+														"is_regex": {
+															"type": "boolean",
+															"example": false,
+															"x-auditable": true
+														},
+														"is_sender": {
+															"description": "Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026.",
+															"type": "boolean",
+															"example": true,
+															"deprecated": true,
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
+														},
+														"is_spoof": {
+															"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
+															"type": "boolean",
+															"example": false,
+															"deprecated": true,
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
+														},
+														"is_trusted_sender": {
+															"description": "Bypasses all detections and link following for messages from this sender.",
+															"type": "boolean",
+															"example": true,
+															"x-auditable": true
+														},
+														"last_modified": {
+															"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
+															"allOf": [
+																{
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"x-auditable": true
+																}
+															],
+															"deprecated": true,
+															"readOnly": true,
+															"x-stainless-deprecation-message": "Use `modified_at` instead."
+														},
+														"modified_at": {
+															"allOf": [
+																{
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
+														},
+														"pattern": {
+															"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
+															"type": "string",
+															"example": "test@example.com",
+															"maxLength": 1024,
+															"minLength": 1,
+															"x-auditable": true
+														},
+														"pattern_type": {
+															"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
+															"type": "string",
+															"example": "EMAIL",
+															"enum": [
+																"EMAIL",
+																"DOMAIN",
+																"IP",
+																"UNKNOWN"
+															],
+															"x-auditable": true
+														},
+														"verify_sender": {
+															"description": "Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication.",
+															"type": "boolean",
+															"example": true,
 															"x-auditable": true
 														}
-													],
-													"readOnly": true
-												},
-												"id": {
-													"allOf": [
-														{
-															"description": "Allow policy identifier.",
-															"type": "string",
-															"format": "uuid",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-															"x-auditable": true
-														}
-													],
-													"readOnly": true
-												},
-												"is_acceptable_sender": {
-													"description": "Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.",
-													"type": "boolean",
-													"example": false,
-													"x-auditable": true
-												},
-												"is_exempt_recipient": {
-													"description": "Bypasses all detections for messages to this recipient.",
-													"type": "boolean",
-													"example": false,
-													"x-auditable": true
-												},
-												"is_recipient": {
-													"description": "Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026.",
-													"type": "boolean",
-													"example": false,
-													"deprecated": true,
-													"x-auditable": true,
-													"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
-												},
-												"is_regex": {
-													"type": "boolean",
-													"example": false,
-													"x-auditable": true
-												},
-												"is_sender": {
-													"description": "Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026.",
-													"type": "boolean",
-													"example": true,
-													"deprecated": true,
-													"x-auditable": true,
-													"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
-												},
-												"is_spoof": {
-													"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
-													"type": "boolean",
-													"example": false,
-													"deprecated": true,
-													"x-auditable": true,
-													"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
-												},
-												"is_trusted_sender": {
-													"description": "Bypasses all detections and link following for messages from this sender.",
-													"type": "boolean",
-													"example": true,
-													"x-auditable": true
-												},
-												"last_modified": {
-													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"allOf": [
-														{
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"x-auditable": true
-														}
-													],
-													"deprecated": true,
-													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
-												},
-												"modified_at": {
-													"allOf": [
-														{
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"x-auditable": true
-														}
-													],
-													"readOnly": true
-												},
-												"pattern": {
-													"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
-													"type": "string",
-													"example": "test@example.com",
-													"maxLength": 1024,
-													"minLength": 1,
-													"x-auditable": true
-												},
-												"pattern_type": {
-													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
-													"type": "string",
-													"example": "EMAIL",
-													"enum": [
-														"EMAIL",
-														"DOMAIN",
-														"IP",
-														"UNKNOWN"
-													],
-													"x-auditable": true
-												},
-												"verify_sender": {
-													"description": "Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication.",
-													"type": "boolean",
-													"example": true,
-													"x-auditable": true
+													},
+													"required": [
+														"id",
+														"created_at",
+														"last_modified"
+													]
 												}
-											},
+											],
 											"required": [
-												"id",
-												"created_at",
-												"last_modified"
+												"is_exempt_recipient",
+												"is_trusted_sender",
+												"is_acceptable_sender",
+												"pattern",
+												"is_regex",
+												"verify_sender",
+												"pattern_type"
 											]
 										},
 										{
@@ -15170,89 +15216,99 @@
 								"items": {
 									"allOf": [
 										{
-											"description": "A blocked sender pattern.",
-											"type": "object",
-											"properties": {
-												"comments": {
-													"type": "string",
-													"example": "Block sender with email test@example.com",
-													"maxLength": 1024,
-													"nullable": true
-												},
-												"created_at": {
-													"allOf": [
-														{
+											"description": "Create a blocked sender pattern.",
+											"allOf": [
+												{
+													"description": "A blocked sender pattern.",
+													"type": "object",
+													"properties": {
+														"comments": {
 															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
+															"example": "Block sender with email test@example.com",
+															"maxLength": 1024,
+															"nullable": true
+														},
+														"created_at": {
+															"allOf": [
+																{
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
+														},
+														"id": {
+															"allOf": [
+																{
+																	"description": "Blocked sender pattern identifier.",
+																	"type": "string",
+																	"format": "uuid",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
+														},
+														"is_regex": {
+															"type": "boolean",
+															"example": false,
+															"x-auditable": true
+														},
+														"last_modified": {
+															"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
+															"allOf": [
+																{
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"x-auditable": true
+																}
+															],
+															"deprecated": true,
+															"readOnly": true,
+															"x-stainless-deprecation-message": "Use `modified_at` instead."
+														},
+														"modified_at": {
+															"allOf": [
+																{
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
+														},
+														"pattern": {
+															"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
+															"type": "string",
+															"example": "test@example.com",
+															"maxLength": 1024,
+															"minLength": 1,
+															"x-auditable": true
+														},
+														"pattern_type": {
+															"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
+															"type": "string",
+															"example": "EMAIL",
+															"enum": [
+																"EMAIL",
+																"DOMAIN",
+																"IP",
+																"UNKNOWN"
+															],
 															"x-auditable": true
 														}
-													],
-													"readOnly": true
-												},
-												"id": {
-													"allOf": [
-														{
-															"description": "Blocked sender pattern identifier.",
-															"type": "string",
-															"format": "uuid",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-															"x-auditable": true
-														}
-													],
-													"readOnly": true
-												},
-												"is_regex": {
-													"type": "boolean",
-													"example": false,
-													"x-auditable": true
-												},
-												"last_modified": {
-													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"allOf": [
-														{
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"x-auditable": true
-														}
-													],
-													"deprecated": true,
-													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
-												},
-												"modified_at": {
-													"allOf": [
-														{
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"x-auditable": true
-														}
-													],
-													"readOnly": true
-												},
-												"pattern": {
-													"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
-													"type": "string",
-													"example": "test@example.com",
-													"maxLength": 1024,
-													"minLength": 1,
-													"x-auditable": true
-												},
-												"pattern_type": {
-													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
-													"type": "string",
-													"example": "EMAIL",
-													"enum": [
-														"EMAIL",
-														"DOMAIN",
-														"IP",
-														"UNKNOWN"
-													],
-													"x-auditable": true
+													}
 												}
-											}
+											],
+											"required": [
+												"pattern",
+												"is_regex",
+												"pattern_type"
+											]
 										},
 										{
 											"properties": {
@@ -16233,6 +16289,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.content-policies",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/content_policies/batch": {
@@ -17119,6 +17179,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.content-policies",
+		"x-fern-sdk-method-name": "batch",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/domains": {
@@ -17145,7 +17209,8 @@
 									]
 								},
 								"maxItems": 10,
-								"minItems": 1
+								"minItems": 1,
+								"x-stainless-collection-type": "set"
 							},
 							"domain": {
 								"type": "string",
@@ -17168,7 +17233,8 @@
 										"NONE"
 									]
 								},
-								"maxItems": 10
+								"maxItems": 10,
+								"x-stainless-collection-type": "set"
 							},
 							"folder": {
 								"allOf": [
@@ -17200,7 +17266,8 @@
 									"192.0.2.0/24",
 									"2001:db8::/32"
 								],
-								"maxItems": 100
+								"maxItems": 100,
+								"x-stainless-collection-type": "set"
 							},
 							"lookback_hops": {
 								"type": "integer",
@@ -17223,7 +17290,8 @@
 									]
 								},
 								"maxItems": 10,
-								"minItems": 1
+								"minItems": 1,
+								"x-stainless-collection-type": "set"
 							},
 							"require_tls_inbound": {
 								"type": "boolean",
@@ -17365,7 +17433,8 @@
 															"API",
 															"RETRO_SCAN"
 														]
-													}
+													},
+													"x-stainless-collection-type": "set"
 												},
 												"authorization": {
 													"type": "object",
@@ -17430,7 +17499,8 @@
 															"UNKNOWN",
 															"NONE"
 														]
-													}
+													},
+													"x-stainless-collection-type": "set"
 												},
 												"emails_processed": {
 													"type": "object",
@@ -17498,7 +17568,8 @@
 													"example": [
 														"192.0.2.0/24",
 														"2001:db8::/32"
-													]
+													],
+													"x-stainless-collection-type": "set"
 												},
 												"last_modified": {
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
@@ -17545,7 +17616,8 @@
 															"IN",
 															"US"
 														]
-													}
+													},
+													"x-stainless-collection-type": "set"
 												},
 												"require_tls_inbound": {
 													"type": "boolean",
@@ -17777,7 +17849,8 @@
 															"API",
 															"RETRO_SCAN"
 														]
-													}
+													},
+													"x-stainless-collection-type": "set"
 												},
 												"drop_dispositions": {
 													"type": "array",
@@ -17795,7 +17868,8 @@
 															"UNKNOWN",
 															"NONE"
 														]
-													}
+													},
+													"x-stainless-collection-type": "set"
 												},
 												"folder": {
 													"allOf": [
@@ -17826,7 +17900,8 @@
 													"example": [
 														"192.0.2.0/24",
 														"2001:db8::/32"
-													]
+													],
+													"x-stainless-collection-type": "set"
 												},
 												"lookback_hops": {
 													"type": "integer",
@@ -17846,7 +17921,8 @@
 															"IN",
 															"US"
 														]
-													}
+													},
+													"x-stainless-collection-type": "set"
 												},
 												"require_tls_inbound": {
 													"type": "boolean",
@@ -17901,7 +17977,8 @@
 												]
 											},
 											"maxItems": 10,
-											"minItems": 1
+											"minItems": 1,
+											"x-stainless-collection-type": "set"
 										},
 										"domain": {
 											"type": "string",
@@ -17924,7 +18001,8 @@
 													"NONE"
 												]
 											},
-											"maxItems": 10
+											"maxItems": 10,
+											"x-stainless-collection-type": "set"
 										},
 										"folder": {
 											"allOf": [
@@ -17956,7 +18034,8 @@
 												"192.0.2.0/24",
 												"2001:db8::/32"
 											],
-											"maxItems": 100
+											"maxItems": 100,
+											"x-stainless-collection-type": "set"
 										},
 										"lookback_hops": {
 											"type": "integer",
@@ -17979,7 +18058,8 @@
 												]
 											},
 											"maxItems": 10,
-											"minItems": 1
+											"minItems": 1,
+											"x-stainless-collection-type": "set"
 										},
 										"require_tls_inbound": {
 											"type": "boolean",
@@ -18031,7 +18111,8 @@
 														]
 													},
 													"maxItems": 10,
-													"minItems": 1
+													"minItems": 1,
+													"x-stainless-collection-type": "set"
 												},
 												"drop_dispositions": {
 													"type": "array",
@@ -18050,7 +18131,8 @@
 															"NONE"
 														]
 													},
-													"maxItems": 10
+													"maxItems": 10,
+													"x-stainless-collection-type": "set"
 												},
 												"folder": {
 													"allOf": [
@@ -18082,7 +18164,8 @@
 														"192.0.2.0/24",
 														"2001:db8::/32"
 													],
-													"maxItems": 100
+													"maxItems": 100,
+													"x-stainless-collection-type": "set"
 												},
 												"lookback_hops": {
 													"type": "integer",
@@ -18105,7 +18188,8 @@
 														]
 													},
 													"maxItems": 10,
-													"minItems": 1
+													"minItems": 1,
+													"x-stainless-collection-type": "set"
 												},
 												"require_tls_inbound": {
 													"type": "boolean",
@@ -18295,7 +18379,8 @@
 																		"API",
 																		"RETRO_SCAN"
 																	]
-																}
+																},
+																"x-stainless-collection-type": "set"
 															},
 															"authorization": {
 																"type": "object",
@@ -18360,7 +18445,8 @@
 																		"UNKNOWN",
 																		"NONE"
 																	]
-																}
+																},
+																"x-stainless-collection-type": "set"
 															},
 															"emails_processed": {
 																"type": "object",
@@ -18428,7 +18514,8 @@
 																"example": [
 																	"192.0.2.0/24",
 																	"2001:db8::/32"
-																]
+																],
+																"x-stainless-collection-type": "set"
 															},
 															"last_modified": {
 																"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
@@ -18475,7 +18562,8 @@
 																		"IN",
 																		"US"
 																	]
-																}
+																},
+																"x-stainless-collection-type": "set"
 															},
 															"require_tls_inbound": {
 																"type": "boolean",
@@ -18533,7 +18621,8 @@
 																		"API",
 																		"RETRO_SCAN"
 																	]
-																}
+																},
+																"x-stainless-collection-type": "set"
 															},
 															"authorization": {
 																"type": "object",
@@ -18598,7 +18687,8 @@
 																		"UNKNOWN",
 																		"NONE"
 																	]
-																}
+																},
+																"x-stainless-collection-type": "set"
 															},
 															"emails_processed": {
 																"type": "object",
@@ -18666,7 +18756,8 @@
 																"example": [
 																	"192.0.2.0/24",
 																	"2001:db8::/32"
-																]
+																],
+																"x-stainless-collection-type": "set"
 															},
 															"last_modified": {
 																"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
@@ -18713,7 +18804,8 @@
 																		"IN",
 																		"US"
 																	]
-																}
+																},
+																"x-stainless-collection-type": "set"
 															},
 															"require_tls_inbound": {
 																"type": "boolean",
@@ -18771,7 +18863,8 @@
 																		"API",
 																		"RETRO_SCAN"
 																	]
-																}
+																},
+																"x-stainless-collection-type": "set"
 															},
 															"authorization": {
 																"type": "object",
@@ -18836,7 +18929,8 @@
 																		"UNKNOWN",
 																		"NONE"
 																	]
-																}
+																},
+																"x-stainless-collection-type": "set"
 															},
 															"emails_processed": {
 																"type": "object",
@@ -18904,7 +18998,8 @@
 																"example": [
 																	"192.0.2.0/24",
 																	"2001:db8::/32"
-																]
+																],
+																"x-stainless-collection-type": "set"
 															},
 															"last_modified": {
 																"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
@@ -18951,7 +19046,8 @@
 																		"IN",
 																		"US"
 																	]
-																}
+																},
+																"x-stainless-collection-type": "set"
 															},
 															"require_tls_inbound": {
 																"type": "boolean",
@@ -21000,88 +21096,99 @@
 								"items": {
 									"allOf": [
 										{
-											"description": "A trusted email domain.",
-											"type": "object",
-											"properties": {
-												"comments": {
-													"type": "string",
-													"example": "Trusted partner domain",
-													"maxLength": 1024,
-													"nullable": true
-												},
-												"created_at": {
-													"allOf": [
-														{
+											"description": "Create a trusted domain.",
+											"allOf": [
+												{
+													"description": "A trusted email domain.",
+													"type": "object",
+													"properties": {
+														"comments": {
 															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
+															"example": "Trusted partner domain",
+															"maxLength": 1024,
+															"nullable": true
+														},
+														"created_at": {
+															"allOf": [
+																{
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
+														},
+														"id": {
+															"allOf": [
+																{
+																	"description": "Trusted domain identifier.",
+																	"type": "string",
+																	"format": "uuid",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
+														},
+														"is_recent": {
+															"description": "Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.",
+															"type": "boolean",
+															"example": true,
+															"x-auditable": true
+														},
+														"is_regex": {
+															"type": "boolean",
+															"example": false,
+															"x-auditable": true
+														},
+														"is_similarity": {
+															"description": "Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.",
+															"type": "boolean",
+															"example": false,
+															"x-auditable": true
+														},
+														"last_modified": {
+															"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
+															"allOf": [
+																{
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"x-auditable": true
+																}
+															],
+															"deprecated": true,
+															"readOnly": true,
+															"x-stainless-deprecation-message": "Use `modified_at` instead."
+														},
+														"modified_at": {
+															"allOf": [
+																{
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
+														},
+														"pattern": {
+															"type": "string",
+															"example": "example.com",
+															"maxLength": 1024,
+															"minLength": 1,
 															"x-auditable": true
 														}
-													],
-													"readOnly": true
-												},
-												"id": {
-													"allOf": [
-														{
-															"description": "Trusted domain identifier.",
-															"type": "string",
-															"format": "uuid",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-															"x-auditable": true
-														}
-													],
-													"readOnly": true
-												},
-												"is_recent": {
-													"description": "Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.",
-													"type": "boolean",
-													"example": true,
-													"x-auditable": true
-												},
-												"is_regex": {
-													"type": "boolean",
-													"example": false,
-													"x-auditable": true
-												},
-												"is_similarity": {
-													"description": "Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.",
-													"type": "boolean",
-													"example": false,
-													"x-auditable": true
-												},
-												"last_modified": {
-													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"allOf": [
-														{
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"x-auditable": true
-														}
-													],
-													"deprecated": true,
-													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
-												},
-												"modified_at": {
-													"allOf": [
-														{
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"x-auditable": true
-														}
-													],
-													"readOnly": true
-												},
-												"pattern": {
-													"type": "string",
-													"example": "example.com",
-													"maxLength": 1024,
-													"minLength": 1,
-													"x-auditable": true
+													}
 												}
-											}
+											],
+											"required": [
+												"pattern",
+												"is_regex",
+												"is_recent",
+												"is_similarity"
+											]
 										},
 										{
 											"properties": {
@@ -22614,6 +22721,970 @@
 		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
+	"PUT /accounts/{account_id}/email-security/settings/allow_policies/{policy_id}": {
+		"operationId": "email_security_replace_allow_policy",
+		"summary": "Replace an email allow policy",
+		"description": "Replaces an existing allow policy in full. Unlike PATCH, every field is taken from the request body, so optional fields that are omitted are reset rather than left untouched. Use this when managing policies declaratively.",
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Create an allow policy.",
+						"allOf": [
+							{
+								"description": "An email allow policy.",
+								"type": "object",
+								"properties": {
+									"comments": {
+										"type": "string",
+										"example": "Trust all messages send from test@example.com",
+										"maxLength": 1024,
+										"nullable": true
+									},
+									"created_at": {
+										"allOf": [
+											{
+												"type": "string",
+												"format": "date-time",
+												"example": "2014-01-01T05:20:00.12345Z",
+												"x-auditable": true
+											}
+										],
+										"readOnly": true
+									},
+									"id": {
+										"allOf": [
+											{
+												"description": "Allow policy identifier.",
+												"type": "string",
+												"format": "uuid",
+												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+												"x-auditable": true
+											}
+										],
+										"readOnly": true
+									},
+									"is_acceptable_sender": {
+										"description": "Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.",
+										"type": "boolean",
+										"example": false,
+										"x-auditable": true
+									},
+									"is_exempt_recipient": {
+										"description": "Bypasses all detections for messages to this recipient.",
+										"type": "boolean",
+										"example": false,
+										"x-auditable": true
+									},
+									"is_recipient": {
+										"description": "Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026.",
+										"type": "boolean",
+										"example": false,
+										"deprecated": true,
+										"x-auditable": true,
+										"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
+									},
+									"is_regex": {
+										"type": "boolean",
+										"example": false,
+										"x-auditable": true
+									},
+									"is_sender": {
+										"description": "Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026.",
+										"type": "boolean",
+										"example": true,
+										"deprecated": true,
+										"x-auditable": true,
+										"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
+									},
+									"is_spoof": {
+										"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
+										"type": "boolean",
+										"example": false,
+										"deprecated": true,
+										"x-auditable": true,
+										"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
+									},
+									"is_trusted_sender": {
+										"description": "Bypasses all detections and link following for messages from this sender.",
+										"type": "boolean",
+										"example": true,
+										"x-auditable": true
+									},
+									"last_modified": {
+										"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
+										"allOf": [
+											{
+												"type": "string",
+												"format": "date-time",
+												"example": "2014-01-01T05:20:00.12345Z",
+												"x-auditable": true
+											}
+										],
+										"deprecated": true,
+										"readOnly": true,
+										"x-stainless-deprecation-message": "Use `modified_at` instead."
+									},
+									"modified_at": {
+										"allOf": [
+											{
+												"type": "string",
+												"format": "date-time",
+												"example": "2014-01-01T05:20:00.12345Z",
+												"x-auditable": true
+											}
+										],
+										"readOnly": true
+									},
+									"pattern": {
+										"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
+										"type": "string",
+										"example": "test@example.com",
+										"maxLength": 1024,
+										"minLength": 1,
+										"x-auditable": true
+									},
+									"pattern_type": {
+										"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
+										"type": "string",
+										"example": "EMAIL",
+										"enum": [
+											"EMAIL",
+											"DOMAIN",
+											"IP",
+											"UNKNOWN"
+										],
+										"x-auditable": true
+									},
+									"verify_sender": {
+										"description": "Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication.",
+										"type": "boolean",
+										"example": true,
+										"x-auditable": true
+									}
+								},
+								"required": [
+									"id",
+									"created_at",
+									"last_modified"
+								]
+							}
+						],
+						"required": [
+							"is_exempt_recipient",
+							"is_trusted_sender",
+							"is_acceptable_sender",
+							"pattern",
+							"is_regex",
+							"verify_sender",
+							"pattern_type"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Replaced allow policy.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "An email allow policy.",
+											"type": "object",
+											"properties": {
+												"comments": {
+													"type": "string",
+													"example": "Trust all messages send from test@example.com",
+													"maxLength": 1024,
+													"nullable": true
+												},
+												"created_at": {
+													"allOf": [
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"id": {
+													"allOf": [
+														{
+															"description": "Allow policy identifier.",
+															"type": "string",
+															"format": "uuid",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"is_acceptable_sender": {
+													"description": "Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.",
+													"type": "boolean",
+													"example": false,
+													"x-auditable": true
+												},
+												"is_exempt_recipient": {
+													"description": "Bypasses all detections for messages to this recipient.",
+													"type": "boolean",
+													"example": false,
+													"x-auditable": true
+												},
+												"is_recipient": {
+													"description": "Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026.",
+													"type": "boolean",
+													"example": false,
+													"deprecated": true,
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
+												},
+												"is_regex": {
+													"type": "boolean",
+													"example": false,
+													"x-auditable": true
+												},
+												"is_sender": {
+													"description": "Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026.",
+													"type": "boolean",
+													"example": true,
+													"deprecated": true,
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
+												},
+												"is_spoof": {
+													"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
+													"type": "boolean",
+													"example": false,
+													"deprecated": true,
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
+												},
+												"is_trusted_sender": {
+													"description": "Bypasses all detections and link following for messages from this sender.",
+													"type": "boolean",
+													"example": true,
+													"x-auditable": true
+												},
+												"last_modified": {
+													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
+													"allOf": [
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													],
+													"deprecated": true,
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
+												},
+												"modified_at": {
+													"allOf": [
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"pattern": {
+													"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
+													"type": "string",
+													"example": "test@example.com",
+													"maxLength": 1024,
+													"minLength": 1,
+													"x-auditable": true
+												},
+												"pattern_type": {
+													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
+													"type": "string",
+													"example": "EMAIL",
+													"enum": [
+														"EMAIL",
+														"DOMAIN",
+														"IP",
+														"UNKNOWN"
+													],
+													"x-auditable": true
+												},
+												"verify_sender": {
+													"description": "Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication.",
+													"type": "boolean",
+													"example": true,
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"id",
+												"created_at",
+												"last_modified"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Email Security Settings"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.allow-policies",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true,
+		"x-stability": "beta"
+	},
+	"PUT /accounts/{account_id}/email-security/settings/block_senders/{pattern_id}": {
+		"operationId": "email_security_replace_blocked_sender",
+		"summary": "Replace a blocked email sender",
+		"description": "Replaces an existing blocked sender pattern in full. Unlike PATCH, every field is taken from the request body, so optional fields that are omitted are reset rather than left untouched. Use this when managing blocked senders declaratively.",
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Create a blocked sender pattern.",
+						"allOf": [
+							{
+								"description": "A blocked sender pattern.",
+								"type": "object",
+								"properties": {
+									"comments": {
+										"type": "string",
+										"example": "Block sender with email test@example.com",
+										"maxLength": 1024,
+										"nullable": true
+									},
+									"created_at": {
+										"allOf": [
+											{
+												"type": "string",
+												"format": "date-time",
+												"example": "2014-01-01T05:20:00.12345Z",
+												"x-auditable": true
+											}
+										],
+										"readOnly": true
+									},
+									"id": {
+										"allOf": [
+											{
+												"description": "Blocked sender pattern identifier.",
+												"type": "string",
+												"format": "uuid",
+												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+												"x-auditable": true
+											}
+										],
+										"readOnly": true
+									},
+									"is_regex": {
+										"type": "boolean",
+										"example": false,
+										"x-auditable": true
+									},
+									"last_modified": {
+										"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
+										"allOf": [
+											{
+												"type": "string",
+												"format": "date-time",
+												"example": "2014-01-01T05:20:00.12345Z",
+												"x-auditable": true
+											}
+										],
+										"deprecated": true,
+										"readOnly": true,
+										"x-stainless-deprecation-message": "Use `modified_at` instead."
+									},
+									"modified_at": {
+										"allOf": [
+											{
+												"type": "string",
+												"format": "date-time",
+												"example": "2014-01-01T05:20:00.12345Z",
+												"x-auditable": true
+											}
+										],
+										"readOnly": true
+									},
+									"pattern": {
+										"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
+										"type": "string",
+										"example": "test@example.com",
+										"maxLength": 1024,
+										"minLength": 1,
+										"x-auditable": true
+									},
+									"pattern_type": {
+										"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
+										"type": "string",
+										"example": "EMAIL",
+										"enum": [
+											"EMAIL",
+											"DOMAIN",
+											"IP",
+											"UNKNOWN"
+										],
+										"x-auditable": true
+									}
+								}
+							}
+						],
+						"required": [
+							"pattern",
+							"is_regex",
+							"pattern_type"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Replaced blocked sender.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A blocked sender pattern.",
+											"type": "object",
+											"properties": {
+												"comments": {
+													"type": "string",
+													"example": "Block sender with email test@example.com",
+													"maxLength": 1024,
+													"nullable": true
+												},
+												"created_at": {
+													"allOf": [
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"id": {
+													"allOf": [
+														{
+															"description": "Blocked sender pattern identifier.",
+															"type": "string",
+															"format": "uuid",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"is_regex": {
+													"type": "boolean",
+													"example": false,
+													"x-auditable": true
+												},
+												"last_modified": {
+													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
+													"allOf": [
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													],
+													"deprecated": true,
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
+												},
+												"modified_at": {
+													"allOf": [
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"pattern": {
+													"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
+													"type": "string",
+													"example": "test@example.com",
+													"maxLength": 1024,
+													"minLength": 1,
+													"x-auditable": true
+												},
+												"pattern_type": {
+													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
+													"type": "string",
+													"example": "EMAIL",
+													"enum": [
+														"EMAIL",
+														"DOMAIN",
+														"IP",
+														"UNKNOWN"
+													],
+													"x-auditable": true
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Email Security Settings"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.block-senders",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true,
+		"x-stability": "beta"
+	},
 	"PUT /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
 		"operationId": "email_security_replace_domain",
 		"summary": "Replace an email domain",
@@ -22639,7 +23710,8 @@
 									]
 								},
 								"maxItems": 10,
-								"minItems": 1
+								"minItems": 1,
+								"x-stainless-collection-type": "set"
 							},
 							"drop_dispositions": {
 								"type": "array",
@@ -22658,7 +23730,8 @@
 										"NONE"
 									]
 								},
-								"maxItems": 10
+								"maxItems": 10,
+								"x-stainless-collection-type": "set"
 							},
 							"folder": {
 								"allOf": [
@@ -22690,7 +23763,8 @@
 									"192.0.2.0/24",
 									"2001:db8::/32"
 								],
-								"maxItems": 100
+								"maxItems": 100,
+								"x-stainless-collection-type": "set"
 							},
 							"lookback_hops": {
 								"type": "integer",
@@ -22713,7 +23787,8 @@
 									]
 								},
 								"maxItems": 10,
-								"minItems": 1
+								"minItems": 1,
+								"x-stainless-collection-type": "set"
 							},
 							"require_tls_inbound": {
 								"type": "boolean",
@@ -22853,7 +23928,8 @@
 															"API",
 															"RETRO_SCAN"
 														]
-													}
+													},
+													"x-stainless-collection-type": "set"
 												},
 												"authorization": {
 													"type": "object",
@@ -22918,7 +23994,8 @@
 															"UNKNOWN",
 															"NONE"
 														]
-													}
+													},
+													"x-stainless-collection-type": "set"
 												},
 												"emails_processed": {
 													"type": "object",
@@ -22986,7 +24063,8 @@
 													"example": [
 														"192.0.2.0/24",
 														"2001:db8::/32"
-													]
+													],
+													"x-stainless-collection-type": "set"
 												},
 												"last_modified": {
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
@@ -23033,7 +24111,8 @@
 															"IN",
 															"US"
 														]
-													}
+													},
+													"x-stainless-collection-type": "set"
 												},
 												"require_tls_inbound": {
 													"type": "boolean",
@@ -23210,6 +24289,432 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.settings.domains",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true,
+		"x-stability": "beta"
+	},
+	"PUT /accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}": {
+		"operationId": "email_security_replace_trusted_domain",
+		"summary": "Replace a trusted email domain",
+		"description": "Replaces an existing trusted domain in full. Unlike PATCH, every field is taken from the request body, so optional fields that are omitted are reset rather than left untouched. Use this when managing trusted domains declaratively.",
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Create a trusted domain.",
+						"allOf": [
+							{
+								"description": "A trusted email domain.",
+								"type": "object",
+								"properties": {
+									"comments": {
+										"type": "string",
+										"example": "Trusted partner domain",
+										"maxLength": 1024,
+										"nullable": true
+									},
+									"created_at": {
+										"allOf": [
+											{
+												"type": "string",
+												"format": "date-time",
+												"example": "2014-01-01T05:20:00.12345Z",
+												"x-auditable": true
+											}
+										],
+										"readOnly": true
+									},
+									"id": {
+										"allOf": [
+											{
+												"description": "Trusted domain identifier.",
+												"type": "string",
+												"format": "uuid",
+												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+												"x-auditable": true
+											}
+										],
+										"readOnly": true
+									},
+									"is_recent": {
+										"description": "Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.",
+										"type": "boolean",
+										"example": true,
+										"x-auditable": true
+									},
+									"is_regex": {
+										"type": "boolean",
+										"example": false,
+										"x-auditable": true
+									},
+									"is_similarity": {
+										"description": "Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.",
+										"type": "boolean",
+										"example": false,
+										"x-auditable": true
+									},
+									"last_modified": {
+										"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
+										"allOf": [
+											{
+												"type": "string",
+												"format": "date-time",
+												"example": "2014-01-01T05:20:00.12345Z",
+												"x-auditable": true
+											}
+										],
+										"deprecated": true,
+										"readOnly": true,
+										"x-stainless-deprecation-message": "Use `modified_at` instead."
+									},
+									"modified_at": {
+										"allOf": [
+											{
+												"type": "string",
+												"format": "date-time",
+												"example": "2014-01-01T05:20:00.12345Z",
+												"x-auditable": true
+											}
+										],
+										"readOnly": true
+									},
+									"pattern": {
+										"type": "string",
+										"example": "example.com",
+										"maxLength": 1024,
+										"minLength": 1,
+										"x-auditable": true
+									}
+								}
+							}
+						],
+						"required": [
+							"pattern",
+							"is_regex",
+							"is_recent",
+							"is_similarity"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Replaced trusted domain.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A trusted email domain.",
+											"type": "object",
+											"properties": {
+												"comments": {
+													"type": "string",
+													"example": "Trusted partner domain",
+													"maxLength": 1024,
+													"nullable": true
+												},
+												"created_at": {
+													"allOf": [
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"id": {
+													"allOf": [
+														{
+															"description": "Trusted domain identifier.",
+															"type": "string",
+															"format": "uuid",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"is_recent": {
+													"description": "Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.",
+													"type": "boolean",
+													"example": true,
+													"x-auditable": true
+												},
+												"is_regex": {
+													"type": "boolean",
+													"example": false,
+													"x-auditable": true
+												},
+												"is_similarity": {
+													"description": "Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.",
+													"type": "boolean",
+													"example": false,
+													"x-auditable": true
+												},
+												"last_modified": {
+													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
+													"allOf": [
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													],
+													"deprecated": true,
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
+												},
+												"modified_at": {
+													"allOf": [
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"pattern": {
+													"type": "string",
+													"example": "example.com",
+													"maxLength": 1024,
+													"minLength": 1,
+													"x-auditable": true
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Email Security Settings"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.trusted-domains",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true,
 		"x-stability": "beta"

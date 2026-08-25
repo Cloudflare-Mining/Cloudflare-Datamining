@@ -79,6 +79,8 @@
 			"Email Sending suppressions"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "email.suppressions",
+		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/email/sending/suppressions/{suppression_id}": {
@@ -431,6 +433,8 @@
 			"Email Sending suppressions"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "email.suppressions",
+		"x-fern-sdk-method-name": "deleteByZone",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/email/sending/suppression": {
@@ -606,6 +610,8 @@
 			"Email Sending suppressions"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "email.suppressions",
+		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/email/sending/suppression/{suppression_id}": {
@@ -726,6 +732,8 @@
 			"Email Sending suppressions"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "email.suppressions",
+		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/email/sending/suppressions": {
@@ -1306,6 +1314,8 @@
 			"Email Sending suppressions"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "email.suppressions",
+		"x-fern-sdk-method-name": "listByZone",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/email/sending/suppression/{suppression_id}": {
@@ -1426,6 +1436,8 @@
 			"Email Sending suppressions"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "email.suppressions",
+		"x-fern-sdk-method-name": "getByZone",
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/email/sending/suppressions/{suppression_id}": {
@@ -1814,6 +1826,8 @@
 			"Email Sending suppressions"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "email.suppressions",
+		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/email/sending/suppressions": {
@@ -2434,6 +2448,8 @@
 			"Email Sending suppressions"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "email.suppressions",
+		"x-fern-sdk-method-name": "createByZone",
 		"x-forge-hidden": true
 	}
 }

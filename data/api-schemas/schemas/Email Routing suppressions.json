@@ -79,6 +79,8 @@
 			"Email Routing suppressions"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "email.suppressions",
+		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
 	},
 	"DELETE /zones/{zone_id}/email/routing/suppression/{suppression_id}": {
@@ -161,6 +163,8 @@
 			"Email Routing suppressions"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "email.suppressions",
+		"x-fern-sdk-method-name": "deleteByZone",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/email/routing/suppression": {
@@ -336,6 +340,8 @@
 			"Email Routing suppressions"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "email.suppressions",
+		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/email/routing/suppression/{suppression_id}": {
@@ -456,6 +462,8 @@
 			"Email Routing suppressions"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "email.suppressions",
+		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/email/routing/suppression": {
@@ -635,6 +643,8 @@
 			"Zone Settings Read"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "email.suppressions",
+		"x-fern-sdk-method-name": "listByZone",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/email/routing/suppression/{suppression_id}": {
@@ -759,6 +769,8 @@
 			"Zone Settings Read"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "email.suppressions",
+		"x-fern-sdk-method-name": "getByZone",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/email/routing/suppression": {
@@ -868,6 +880,8 @@
 			"Email Routing suppressions"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "email.suppressions",
+		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/email/routing/suppression": {
@@ -977,6 +991,8 @@
 			"Email Routing suppressions"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "email.suppressions",
+		"x-fern-sdk-method-name": "createByZone",
 		"x-forge-hidden": true
 	}
 }
