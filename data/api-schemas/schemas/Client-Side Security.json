@@ -1,8 +1,8 @@
 {
 	"DELETE /zones/{zone_id}/page_shield/policies/{policy_id}": {
 		"operationId": "page-shield-delete-policy",
-		"summary": "Delete a Page Shield policy",
-		"description": "Delete a Page Shield policy by ID.",
+		"summary": "Delete a content security rule",
+		"description": "Permanently deletes a content security rule by ID.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -33,10 +33,10 @@
 		],
 		"responses": {
 			"204": {
-				"description": "Delete a Page Shield policy response"
+				"description": "Delete a Client-Side Security policy response"
 			},
 			"4XX": {
-				"description": "Delete a Page Shield policy response failure",
+				"description": "Delete a Client-Side Security policy response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -116,7 +116,7 @@
 			}
 		],
 		"tags": [
-			"Page Shield"
+			"Client-Side Security"
 		],
 		"x-api-token-group": [
 			"Page Shield",
@@ -137,8 +137,8 @@
 	},
 	"GET /zones/{zone_id}/page_shield": {
 		"operationId": "page-shield-get-settings",
-		"summary": "Get Page Shield settings",
-		"description": "Fetches the Page Shield settings.",
+		"summary": "Get client-side security settings",
+		"description": "Returns the client-side security product enablement status and reporting behaviors.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -156,7 +156,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Get Page Shield settings response",
+				"description": "Get Client-Side Security settings response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -237,13 +237,13 @@
 										"result": {
 											"properties": {
 												"enabled": {
-													"description": "When true, indicates that Page Shield is enabled.",
+													"description": "When true, indicates that Client-Side Security is enabled.",
 													"type": "boolean",
 													"example": true,
 													"x-auditable": true
 												},
 												"updated_at": {
-													"description": "The timestamp of when Page Shield was last updated.",
+													"description": "The timestamp of when Client-Side Security was last updated.",
 													"type": "string",
 													"example": "2022-10-12T17:56:52.083582+01:00",
 													"x-auditable": true
@@ -276,7 +276,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Get Page Shield settings response failure",
+				"description": "Get Client-Side Security settings response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -356,7 +356,7 @@
 			}
 		],
 		"tags": [
-			"Page Shield"
+			"Client-Side Security"
 		],
 		"x-api-token-group": [
 			"Page Shield",
@@ -379,8 +379,8 @@
 	},
 	"GET /zones/{zone_id}/page_shield/connections": {
 		"operationId": "page-shield-list-connections",
-		"summary": "List Page Shield connections",
-		"description": "Lists all connections detected by Page Shield.",
+		"summary": "List detected connections",
+		"description": "Lists outbound connections made by webpages in the zone.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -519,7 +519,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "List Page Shield connections response",
+				"description": "List Client-Side Security connections response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -733,7 +733,7 @@
 				}
 			},
 			"4XX": {
-				"description": "List Page Shield connections response failure",
+				"description": "List Client-Side Security connections response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -813,7 +813,7 @@
 			}
 		],
 		"tags": [
-			"Page Shield"
+			"Client-Side Security"
 		],
 		"x-api-token-group": [
 			"Page Shield",
@@ -836,8 +836,8 @@
 	},
 	"GET /zones/{zone_id}/page_shield/connections/{connection_id}": {
 		"operationId": "page-shield-get-connection",
-		"summary": "Get a Page Shield connection",
-		"description": "Fetches a connection detected by Page Shield by connection ID.",
+		"summary": "Get a detected connection",
+		"description": "Returns a webpage connection detected on the zone by connection ID.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -868,7 +868,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Get a Page Shield connection response",
+				"description": "Get a Client-Side Security connection response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1045,7 +1045,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Get a Page Shield connection response failure",
+				"description": "Get a Client-Side Security connection response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1125,7 +1125,7 @@
 			}
 		],
 		"tags": [
-			"Page Shield"
+			"Client-Side Security"
 		],
 		"x-api-token-group": [
 			"Page Shield",
@@ -1148,8 +1148,8 @@
 	},
 	"GET /zones/{zone_id}/page_shield/cookies": {
 		"operationId": "page-shield-list-cookies",
-		"summary": "List Page Shield Cookies",
-		"description": "Lists all cookies collected by Page Shield.",
+		"summary": "List detected cookies",
+		"description": "Lists cookies detected on the zone.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -1318,7 +1318,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "List Page Shield cookies response",
+				"description": "List Client-Side Security cookies response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1537,7 +1537,7 @@
 				}
 			},
 			"4XX": {
-				"description": "List Page Shield cookies response failure",
+				"description": "List Client-Side Security cookies response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1617,7 +1617,7 @@
 			}
 		],
 		"tags": [
-			"Page Shield"
+			"Client-Side Security"
 		],
 		"x-api-token-group": [
 			"Page Shield",
@@ -1640,8 +1640,8 @@
 	},
 	"GET /zones/{zone_id}/page_shield/cookies/{cookie_id}": {
 		"operationId": "page-shield-get-cookie",
-		"summary": "Get a Page Shield cookie",
-		"description": "Fetches a cookie collected by Page Shield by cookie ID.",
+		"summary": "Get a detected cookie",
+		"description": "Returns a cookie detected on the zone by cookie ID.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -1672,7 +1672,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Get a Page Shield cookie response",
+				"description": "Get a Client-Side Security cookie response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1851,7 +1851,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Get a Page Shield cookie response failure",
+				"description": "Get a Client-Side Security cookie response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1931,7 +1931,7 @@
 			}
 		],
 		"tags": [
-			"Page Shield"
+			"Client-Side Security"
 		],
 		"x-api-token-group": [
 			"Page Shield",
@@ -1954,8 +1954,8 @@
 	},
 	"GET /zones/{zone_id}/page_shield/policies": {
 		"operationId": "page-shield-list-policies",
-		"summary": "List Page Shield policies",
-		"description": "Lists all Page Shield policies.",
+		"summary": "List content security rules",
+		"description": "Lists content security rules configured for the zone.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -1973,7 +1973,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "List Page Shield policies response",
+				"description": "List Client-Side Security policies response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2175,7 +2175,7 @@
 				}
 			},
 			"4XX": {
-				"description": "List Page Shield policies response failure",
+				"description": "List Client-Side Security policies response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2255,7 +2255,7 @@
 			}
 		],
 		"tags": [
-			"Page Shield"
+			"Client-Side Security"
 		],
 		"x-api-token-group": [
 			"Page Shield",
@@ -2278,8 +2278,8 @@
 	},
 	"GET /zones/{zone_id}/page_shield/policies/{policy_id}": {
 		"operationId": "page-shield-get-policy",
-		"summary": "Get a Page Shield policy",
-		"description": "Fetches a Page Shield policy by ID.",
+		"summary": "Get a content security rule",
+		"description": "Returns a content security rule by ID.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -2310,7 +2310,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Get a Page Shield policy response",
+				"description": "Get a Client-Side Security policy response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2472,7 +2472,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Get a Page Shield policy response failure",
+				"description": "Get a Client-Side Security policy response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2552,7 +2552,7 @@
 			}
 		],
 		"tags": [
-			"Page Shield"
+			"Client-Side Security"
 		],
 		"x-api-token-group": [
 			"Page Shield",
@@ -2575,8 +2575,8 @@
 	},
 	"GET /zones/{zone_id}/page_shield/scripts": {
 		"operationId": "page-shield-list-scripts",
-		"summary": "List Page Shield scripts",
-		"description": "Lists all scripts detected by Page Shield.",
+		"summary": "List detected scripts",
+		"description": "Lists scripts detected on webpages in the zone, with filtering and pagination.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -2726,7 +2726,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "List Page Shield scripts response",
+				"description": "List Client-Side Security scripts response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3007,7 +3007,7 @@
 				}
 			},
 			"4XX": {
-				"description": "List Page Shield scripts response failure",
+				"description": "List Client-Side Security scripts response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3087,7 +3087,7 @@
 			}
 		],
 		"tags": [
-			"Page Shield"
+			"Client-Side Security"
 		],
 		"x-api-token-group": [
 			"Page Shield",
@@ -3110,8 +3110,8 @@
 	},
 	"GET /zones/{zone_id}/page_shield/scripts/{script_id}": {
 		"operationId": "page-shield-get-script",
-		"summary": "Get a Page Shield script",
-		"description": "Fetches a script detected by Page Shield by script ID.",
+		"summary": "Get a detected script",
+		"description": "Returns a script detected on the zone by script ID.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -3142,7 +3142,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Get a Page Shield script response",
+				"description": "Get a Client-Side Security script response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3475,7 +3475,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Get a Page Shield script response failure",
+				"description": "Get a Client-Side Security script response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3559,7 +3559,7 @@
 			}
 		],
 		"tags": [
-			"Page Shield"
+			"Client-Side Security"
 		],
 		"x-api-token-group": [
 			"Page Shield",
@@ -3582,8 +3582,8 @@
 	},
 	"POST /zones/{zone_id}/page_shield/policies": {
 		"operationId": "page-shield-create-policy",
-		"summary": "Create a Page Shield policy",
-		"description": "Create a Page Shield policy.",
+		"summary": "Create a content security rule",
+		"description": "Creates a rule that applies a client-side security action when its filter expression matches.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -3654,7 +3654,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Create a Page Shield policy response",
+				"description": "Create a Client-Side Security policy response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3816,7 +3816,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Create a Page Shield policy response failure",
+				"description": "Create a Client-Side Security policy response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3896,7 +3896,7 @@
 			}
 		],
 		"tags": [
-			"Page Shield"
+			"Client-Side Security"
 		],
 		"x-api-token-group": [
 			"Page Shield",
@@ -3916,8 +3916,8 @@
 	},
 	"PUT /zones/{zone_id}/page_shield": {
 		"operationId": "page-shield-update-settings",
-		"summary": "Update Page Shield settings",
-		"description": "Updates Page Shield settings.",
+		"summary": "Update client-side security settings",
+		"description": "Updates client-side security enablement and reporting behaviors for the zone.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -3940,7 +3940,7 @@
 					"schema": {
 						"properties": {
 							"enabled": {
-								"description": "When true, indicates that Page Shield is enabled.",
+								"description": "When true, indicates that Client-Side Security is enabled.",
 								"type": "boolean",
 								"example": true,
 								"x-auditable": true
@@ -3964,7 +3964,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Update Page Shield settings response",
+				"description": "Update Client-Side Security settings response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4066,13 +4066,13 @@
 										"result": {
 											"properties": {
 												"enabled": {
-													"description": "When true, indicates that Page Shield is enabled.",
+													"description": "When true, indicates that Client-Side Security is enabled.",
 													"type": "boolean",
 													"example": true,
 													"x-auditable": true
 												},
 												"updated_at": {
-													"description": "The timestamp of when Page Shield was last updated.",
+													"description": "The timestamp of when Client-Side Security was last updated.",
 													"type": "string",
 													"example": "2022-10-12T17:56:52.083582+01:00",
 													"x-auditable": true
@@ -4105,7 +4105,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Update Page Shield settings response failure",
+				"description": "Update Client-Side Security settings response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4185,7 +4185,7 @@
 			}
 		],
 		"tags": [
-			"Page Shield"
+			"Client-Side Security"
 		],
 		"x-api-token-group": [
 			"Page Shield",
@@ -4205,8 +4205,8 @@
 	},
 	"PUT /zones/{zone_id}/page_shield/policies/{policy_id}": {
 		"operationId": "page-shield-update-policy",
-		"summary": "Update a Page Shield policy",
-		"description": "Update a Page Shield policy by ID.",
+		"summary": "Update a content security rule",
+		"description": "Updates the description, action, expression, enabled state, and policy value for a content security rule.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -4283,7 +4283,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Update a Page Shield policy response",
+				"description": "Update a Client-Side Security policy response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4445,7 +4445,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Update a Page Shield policy response failure",
+				"description": "Update a Client-Side Security policy response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4525,7 +4525,7 @@
 			}
 		],
 		"tags": [
-			"Page Shield"
+			"Client-Side Security"
 		],
 		"x-api-token-group": [
 			"Page Shield",
