@@ -1,0 +1,1045 @@
+{
+	"flat": true,
+	"modes": null,
+	"input": {
+		"rows": [
+			{
+				"id": "audio_url",
+				"name": "audio_url",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "The URL of the audio or video file to transcribe, or a data URI.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "audio_start_from",
+				"name": "audio_start_from",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Timestamp in milliseconds at which to begin transcription.",
+				"metadata": {
+					"minimum": 0,
+					"maximum": 9007199254740991
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "audio_end_at",
+				"name": "audio_end_at",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Timestamp in milliseconds at which to stop transcription.",
+				"metadata": {
+					"minimum": 0,
+					"maximum": 9007199254740991
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "language_code",
+				"name": "language_code",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Language code of the audio.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "language_detection",
+				"name": "language_detection",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Whether to automatically detect the language.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "language_detection_options",
+				"name": "language_detection_options",
+				"type": "object",
+				"isArray": false,
+				"isObject": true,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "language_detection_options.expected_languages",
+						"name": "expected_languages",
+						"type": "array",
+						"isArray": true,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"description": "Languages expected in the audio.",
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
+						],
+						"children": [
+							{
+								"id": "language_detection_options.expected_languages.items",
+								"name": "items",
+								"type": "string",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": false,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": false,
+								"depth": 2,
+								"isLast": true,
+								"ancestorIsLast": [
+									false,
+									false
+								]
+							}
+						]
+					},
+					{
+						"id": "language_detection_options.fallback_language",
+						"name": "fallback_language",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"description": "Fallback language when detection is uncertain.",
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
+						]
+					},
+					{
+						"id": "language_detection_options.code_switching",
+						"name": "code_switching",
+						"type": "boolean",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"description": "Whether to detect switching between languages.",
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
+						]
+					},
+					{
+						"id": "language_detection_options.code_switching_confidence_threshold",
+						"name": "code_switching_confidence_threshold",
+						"type": "number",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"description": "Minimum confidence for code-switching detection.",
+						"metadata": {
+							"minimum": 0,
+							"maximum": 1
+						},
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
+						]
+					},
+					{
+						"id": "language_detection_options.localization",
+						"name": "localization",
+						"type": "array",
+						"isArray": true,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"description": "Regional language variants to use when rendering text.",
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							false
+						],
+						"children": [
+							{
+								"id": "language_detection_options.localization.items",
+								"name": "items",
+								"type": "string",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": false,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": false,
+								"depth": 2,
+								"isLast": true,
+								"ancestorIsLast": [
+									false,
+									true
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "prompt",
+				"name": "prompt",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Natural-language instructions for transcription style.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "keyterms_prompt",
+				"name": "keyterms_prompt",
+				"type": "array",
+				"isArray": true,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Words or phrases to prioritize during transcription.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "keyterms_prompt.items",
+						"name": "items",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							false
+						]
+					}
+				]
+			},
+			{
+				"id": "temperature",
+				"name": "temperature",
+				"type": "number",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Controls transcription randomness from 0 to 1.",
+				"metadata": {
+					"minimum": 0,
+					"maximum": 1
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "punctuate",
+				"name": "punctuate",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Whether to add punctuation.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "format_text",
+				"name": "format_text",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Whether to apply text formatting.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "disfluencies",
+				"name": "disfluencies",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Whether to include filler words such as um and uh.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "filter_profanity",
+				"name": "filter_profanity",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Whether to filter profanity.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "speaker_labels",
+				"name": "speaker_labels",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Whether to identify speakers in the transcript.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "speakers_expected",
+				"name": "speakers_expected",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Expected number of speakers.",
+				"metadata": {
+					"exclusiveMinimum": 0,
+					"maximum": 9007199254740991
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "speaker_options",
+				"name": "speaker_options",
+				"type": "object",
+				"isArray": false,
+				"isObject": true,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "speaker_options.min_speakers_expected",
+						"name": "min_speakers_expected",
+						"type": "integer",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"description": "Minimum number of speakers to identify.",
+						"metadata": {
+							"exclusiveMinimum": 0,
+							"maximum": 9007199254740991
+						},
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
+						]
+					},
+					{
+						"id": "speaker_options.max_speakers_expected",
+						"name": "max_speakers_expected",
+						"type": "integer",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"description": "Maximum number of speakers to identify.",
+						"metadata": {
+							"exclusiveMinimum": 0,
+							"maximum": 9007199254740991
+						},
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							false
+						]
+					}
+				]
+			},
+			{
+				"id": "multichannel",
+				"name": "multichannel",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Whether to transcribe each audio channel separately.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "custom_spelling",
+				"name": "custom_spelling",
+				"type": "array",
+				"isArray": true,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "custom_spelling.from",
+						"name": "from",
+						"type": "array",
+						"isArray": true,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": true,
+						"description": "Words or phrases to replace.",
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
+						],
+						"children": [
+							{
+								"id": "custom_spelling.from.items",
+								"name": "items",
+								"type": "string",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": false,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": false,
+								"depth": 2,
+								"isLast": true,
+								"ancestorIsLast": [
+									false,
+									false
+								]
+							}
+						]
+					},
+					{
+						"id": "custom_spelling.to",
+						"name": "to",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": true,
+						"description": "Replacement word or phrase.",
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							false
+						]
+					}
+				]
+			},
+			{
+				"id": "auto_highlights",
+				"name": "auto_highlights",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Whether to extract key phrases.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "content_safety",
+				"name": "content_safety",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Whether to detect sensitive content.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "content_safety_confidence",
+				"name": "content_safety_confidence",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Content safety confidence threshold from 25 to 100.",
+				"metadata": {
+					"minimum": 25,
+					"maximum": 100
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "iab_categories",
+				"name": "iab_categories",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Whether to classify topics using IAB categories.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "entity_detection",
+				"name": "entity_detection",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Whether to detect named entities.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "sentiment_analysis",
+				"name": "sentiment_analysis",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Whether to analyze sentence sentiment.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "domain",
+				"name": "domain",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Domain-specific model for medical terminology.",
+				"metadata": {
+					"const": "medical-v1"
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "speech_threshold",
+				"name": "speech_threshold",
+				"type": "number",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Minimum fraction of speech required for transcription.",
+				"metadata": {
+					"minimum": 0,
+					"maximum": 1
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "redact_pii",
+				"name": "redact_pii",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Whether to redact personally identifiable information.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "redact_pii_audio",
+				"name": "redact_pii_audio",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Whether to generate an audio file with spoken PII redacted.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "redact_pii_audio_quality",
+				"name": "redact_pii_audio_quality",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Format of the redacted audio file.",
+				"enumValues": [
+					"mp3",
+					"wav"
+				],
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "redact_pii_audio_options",
+				"name": "redact_pii_audio_options",
+				"type": "object",
+				"isArray": false,
+				"isObject": true,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "redact_pii_audio_options.return_redacted_no_speech_audio",
+						"name": "return_redacted_no_speech_audio",
+						"type": "boolean",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"description": "Whether to return redacted audio when no speech is detected.",
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
+						]
+					},
+					{
+						"id": "redact_pii_audio_options.override_audio_redaction_method",
+						"name": "override_audio_redaction_method",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"description": "Replace redacted speech with silence instead of a beep.",
+						"metadata": {
+							"const": "silence"
+						},
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							false
+						]
+					}
+				]
+			},
+			{
+				"id": "redact_pii_policies",
+				"name": "redact_pii_policies",
+				"type": "array",
+				"isArray": true,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "PII categories to redact.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "redact_pii_policies.items",
+						"name": "items",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							false
+						]
+					}
+				]
+			},
+			{
+				"id": "redact_pii_sub",
+				"name": "redact_pii_sub",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Replacement strategy for redacted PII.",
+				"enumValues": [
+					"entity_name",
+					"hash"
+				],
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "redact_pii_return_unredacted",
+				"name": "redact_pii_return_unredacted",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Whether to include unredacted fields alongside the redacted transcript.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "redact_static_entities",
+				"name": "redact_static_entities",
+				"type": "object",
+				"isArray": false,
+				"isObject": true,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "User-defined terms to redact, grouped by label.",
+				"depth": 0,
+				"isLast": true,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "redact_static_entities.additionalProperties",
+						"name": "additionalProperties",
+						"type": "array",
+						"isArray": true,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							true
+						],
+						"children": [
+							{
+								"id": "redact_static_entities.additionalProperties.items",
+								"name": "items",
+								"type": "string",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": false,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": false,
+								"depth": 2,
+								"isLast": true,
+								"ancestorIsLast": [
+									true,
+									true
+								]
+							}
+						]
+					}
+				]
+			}
+		],
+		"variants": null,
+		"isFlat": false
+	},
+	"output": {
+		"rows": [
+			{
+				"id": "text",
+				"name": "text",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "The transcribed text.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "words",
+				"name": "words",
+				"type": "array | null",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Word-level timestamps and confidence scores.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "utterances",
+				"name": "utterances",
+				"type": "array | null",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Speaker-separated utterances (when speaker_labels is enabled).",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "confidence",
+				"name": "confidence",
+				"type": "number | null",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Overall confidence score for the transcription.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "language_code",
+				"name": "language_code",
+				"type": "string | null",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Detected or specified language code.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "language_confidence",
+				"name": "language_confidence",
+				"type": "number | null",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Confidence score for language detection.",
+				"depth": 0,
+				"isLast": true,
+				"ancestorIsLast": []
+			}
+		],
+		"variants": null,
+		"isFlat": false
+	}
+}

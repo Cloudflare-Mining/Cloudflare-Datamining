@@ -1,0 +1,131 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"text": {
+			"description": "The transcribed text.",
+			"type": "string"
+		},
+		"words": {
+			"description": "Word-level timestamps and confidence scores.",
+			"anyOf": [
+				{
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"text": {
+								"type": "string"
+							},
+							"start": {
+								"type": "number"
+							},
+							"end": {
+								"type": "number"
+							},
+							"confidence": {
+								"type": "number"
+							},
+							"speaker": {
+								"anyOf": [
+									{
+										"type": "string"
+									},
+									{
+										"type": "null"
+									}
+								]
+							}
+						},
+						"required": [
+							"text",
+							"start",
+							"end",
+							"confidence"
+						],
+						"additionalProperties": false
+					}
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"utterances": {
+			"description": "Speaker-separated utterances (when speaker_labels is enabled).",
+			"anyOf": [
+				{
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"text": {
+								"type": "string"
+							},
+							"start": {
+								"type": "number"
+							},
+							"end": {
+								"type": "number"
+							},
+							"confidence": {
+								"type": "number"
+							},
+							"speaker": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"text",
+							"start",
+							"end",
+							"confidence",
+							"speaker"
+						],
+						"additionalProperties": false
+					}
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"confidence": {
+			"description": "Overall confidence score for the transcription.",
+			"anyOf": [
+				{
+					"type": "number"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"language_code": {
+			"description": "Detected or specified language code.",
+			"anyOf": [
+				{
+					"type": "string"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"language_confidence": {
+			"description": "Confidence score for language detection.",
+			"anyOf": [
+				{
+					"type": "number"
+				},
+				{
+					"type": "null"
+				}
+			]
+		}
+	},
+	"required": [
+		"text"
+	],
+	"additionalProperties": false
+}

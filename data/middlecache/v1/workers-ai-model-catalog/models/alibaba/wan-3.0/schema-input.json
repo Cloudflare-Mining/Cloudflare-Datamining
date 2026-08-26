@@ -1,0 +1,39 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"prompt": {
+			"type": "string",
+			"minLength": 1,
+			"maxLength": 2500
+		},
+		"resolution": {
+			"type": "string",
+			"enum": [
+				"480P",
+				"720P",
+				"1080P"
+			]
+		},
+		"ratio": {
+			"type": "string",
+			"enum": [
+				"adaptive",
+				"16:9",
+				"9:16",
+				"1:1",
+				"4:3",
+				"3:4"
+			]
+		},
+		"duration": {
+			"type": "integer",
+			"minimum": 1,
+			"maximum": 15
+		}
+	},
+	"required": [
+		"prompt"
+	],
+	"additionalProperties": false
+}

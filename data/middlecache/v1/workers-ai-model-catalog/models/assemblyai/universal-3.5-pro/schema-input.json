@@ -1,0 +1,257 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"audio_url": {
+			"description": "The URL of the audio or video file to transcribe, or a data URI.",
+			"type": "string"
+		},
+		"audio_start_from": {
+			"description": "Timestamp in milliseconds at which to begin transcription.",
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 9007199254740991
+		},
+		"audio_end_at": {
+			"description": "Timestamp in milliseconds at which to stop transcription.",
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 9007199254740991
+		},
+		"language_code": {
+			"description": "Language code of the audio.",
+			"type": "string"
+		},
+		"language_detection": {
+			"description": "Whether to automatically detect the language.",
+			"type": "boolean"
+		},
+		"language_detection_options": {
+			"type": "object",
+			"properties": {
+				"expected_languages": {
+					"description": "Languages expected in the audio.",
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"fallback_language": {
+					"description": "Fallback language when detection is uncertain.",
+					"type": "string"
+				},
+				"code_switching": {
+					"description": "Whether to detect switching between languages.",
+					"type": "boolean"
+				},
+				"code_switching_confidence_threshold": {
+					"description": "Minimum confidence for code-switching detection.",
+					"type": "number",
+					"minimum": 0,
+					"maximum": 1
+				},
+				"localization": {
+					"description": "Regional language variants to use when rendering text.",
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"additionalProperties": false
+		},
+		"prompt": {
+			"description": "Natural-language instructions for transcription style.",
+			"type": "string"
+		},
+		"keyterms_prompt": {
+			"description": "Words or phrases to prioritize during transcription.",
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"temperature": {
+			"description": "Controls transcription randomness from 0 to 1.",
+			"type": "number",
+			"minimum": 0,
+			"maximum": 1
+		},
+		"punctuate": {
+			"description": "Whether to add punctuation.",
+			"type": "boolean"
+		},
+		"format_text": {
+			"description": "Whether to apply text formatting.",
+			"type": "boolean"
+		},
+		"disfluencies": {
+			"description": "Whether to include filler words such as um and uh.",
+			"type": "boolean"
+		},
+		"filter_profanity": {
+			"description": "Whether to filter profanity.",
+			"type": "boolean"
+		},
+		"speaker_labels": {
+			"description": "Whether to identify speakers in the transcript.",
+			"type": "boolean"
+		},
+		"speakers_expected": {
+			"description": "Expected number of speakers.",
+			"type": "integer",
+			"exclusiveMinimum": 0,
+			"maximum": 9007199254740991
+		},
+		"speaker_options": {
+			"type": "object",
+			"properties": {
+				"min_speakers_expected": {
+					"description": "Minimum number of speakers to identify.",
+					"type": "integer",
+					"exclusiveMinimum": 0,
+					"maximum": 9007199254740991
+				},
+				"max_speakers_expected": {
+					"description": "Maximum number of speakers to identify.",
+					"type": "integer",
+					"exclusiveMinimum": 0,
+					"maximum": 9007199254740991
+				}
+			},
+			"additionalProperties": false
+		},
+		"multichannel": {
+			"description": "Whether to transcribe each audio channel separately.",
+			"type": "boolean"
+		},
+		"custom_spelling": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"from": {
+						"description": "Words or phrases to replace.",
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
+					"to": {
+						"description": "Replacement word or phrase.",
+						"type": "string"
+					}
+				},
+				"required": [
+					"from",
+					"to"
+				],
+				"additionalProperties": false
+			}
+		},
+		"auto_highlights": {
+			"description": "Whether to extract key phrases.",
+			"type": "boolean"
+		},
+		"content_safety": {
+			"description": "Whether to detect sensitive content.",
+			"type": "boolean"
+		},
+		"content_safety_confidence": {
+			"description": "Content safety confidence threshold from 25 to 100.",
+			"type": "integer",
+			"minimum": 25,
+			"maximum": 100
+		},
+		"iab_categories": {
+			"description": "Whether to classify topics using IAB categories.",
+			"type": "boolean"
+		},
+		"entity_detection": {
+			"description": "Whether to detect named entities.",
+			"type": "boolean"
+		},
+		"sentiment_analysis": {
+			"description": "Whether to analyze sentence sentiment.",
+			"type": "boolean"
+		},
+		"domain": {
+			"description": "Domain-specific model for medical terminology.",
+			"type": "string",
+			"const": "medical-v1"
+		},
+		"speech_threshold": {
+			"description": "Minimum fraction of speech required for transcription.",
+			"type": "number",
+			"minimum": 0,
+			"maximum": 1
+		},
+		"redact_pii": {
+			"description": "Whether to redact personally identifiable information.",
+			"type": "boolean"
+		},
+		"redact_pii_audio": {
+			"description": "Whether to generate an audio file with spoken PII redacted.",
+			"type": "boolean"
+		},
+		"redact_pii_audio_quality": {
+			"description": "Format of the redacted audio file.",
+			"type": "string",
+			"enum": [
+				"mp3",
+				"wav"
+			]
+		},
+		"redact_pii_audio_options": {
+			"type": "object",
+			"properties": {
+				"return_redacted_no_speech_audio": {
+					"description": "Whether to return redacted audio when no speech is detected.",
+					"type": "boolean"
+				},
+				"override_audio_redaction_method": {
+					"description": "Replace redacted speech with silence instead of a beep.",
+					"type": "string",
+					"const": "silence"
+				}
+			},
+			"additionalProperties": false
+		},
+		"redact_pii_policies": {
+			"description": "PII categories to redact.",
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"redact_pii_sub": {
+			"description": "Replacement strategy for redacted PII.",
+			"type": "string",
+			"enum": [
+				"entity_name",
+				"hash"
+			]
+		},
+		"redact_pii_return_unredacted": {
+			"description": "Whether to include unredacted fields alongside the redacted transcript.",
+			"type": "boolean"
+		},
+		"redact_static_entities": {
+			"description": "User-defined terms to redact, grouped by label.",
+			"type": "object",
+			"propertyNames": {
+				"type": "string"
+			},
+			"additionalProperties": {
+				"type": "array",
+				"items": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"required": [
+		"audio_url"
+	],
+	"additionalProperties": false
+}
