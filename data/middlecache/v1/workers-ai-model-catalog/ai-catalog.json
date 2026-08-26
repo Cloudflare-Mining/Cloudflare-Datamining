@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-08-25T04:33:50.640Z",
-	"model_count": 225,
+	"generated_at": "2026-08-26T04:33:57.249Z",
+	"model_count": 227,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -554,6 +554,46 @@
 			"terms": "https://www.alibabacloud.com/help/en/legal",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/alibaba/wan-2.7-i2v.png",
 			"created_at": "2026-05-29 20:29:17",
+			"zdr_comment": null
+		},
+		{
+			"model_id": "alibaba/wan-3.0",
+			"slug": "alibaba/wan-3.0",
+			"display_name": "Wan 3.0 Video",
+			"description": "Alibaba's Wan 3.0 text-to-video model. Generates cinematic videos from text prompts with adaptive aspect ratio, 480P, 720P, or 1080P resolution, and configurable duration.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Video",
+				"description": ""
+			},
+			"tags": [
+				"Text-to-Video",
+				"Video Generation"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://www.alibabacloud.com/help/en/legal"
+				},
+				{
+					"property_id": "info",
+					"value": "https://www.alibabacloud.com/help/en/model-studio/models"
+				}
+			],
+			"metadata": {
+				"Aspect Ratio": "Adaptive",
+				"Duration": "1-15 seconds",
+				"Resolutions": "480P, 720P, 1080P"
+			},
+			"external_info": "https://www.alibabacloud.com/help/en/model-studio/models",
+			"terms": "https://www.alibabacloud.com/help/en/legal",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/alibaba/wan-3.0.png",
+			"created_at": "2026-08-25 16:36:31",
 			"zdr_comment": null
 		},
 		{
@@ -1125,6 +1165,46 @@
 			"terms": "https://www.assemblyai.com/legal/terms-of-service",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/assemblyai/universal-3-pro.png",
 			"created_at": "2026-05-22 17:52:58",
+			"zdr_comment": null
+		},
+		{
+			"model_id": "assemblyai/universal-3.5-pro",
+			"slug": "assemblyai/universal-3.5-pro",
+			"display_name": "AssemblyAI Universal-3.5 Pro",
+			"description": "AssemblyAI's Universal-3.5 Pro speech recognition model for fast, high-accuracy transcription.",
+			"task": {
+				"id": "",
+				"name": "Automatic Speech Recognition",
+				"description": ""
+			},
+			"tags": [
+				"Speech-to-Text",
+				"Transcription",
+				"Multilingual"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://www.assemblyai.com/legal/terms-of-service"
+				},
+				{
+					"property_id": "info",
+					"value": "https://www.assemblyai.com/docs/getting-started/universal-3-5-pro"
+				}
+			],
+			"metadata": {
+				"Languages": "18",
+				"Input": "Pre-recorded audio and video"
+			},
+			"external_info": "https://www.assemblyai.com/docs/getting-started/universal-3-5-pro",
+			"terms": "https://www.assemblyai.com/legal/terms-of-service",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/assemblyai/universal-3.5-pro.png",
+			"created_at": "2026-08-25 14:29:37",
 			"zdr_comment": null
 		},
 		{
