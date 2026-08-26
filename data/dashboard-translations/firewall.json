@@ -1532,6 +1532,7 @@
 	"firewall.activity_log.matched_data.args_get_names": "Matched on the query string argument name %{argument}",
 	"firewall.activity_log.matched_data.args_get": "http.request.uri.args %{argument}",
 	"firewall.activity_log.matched_data.request_headers": "http.request.headers %{argument}",
+	"firewall.activity_log.enable_payload_logging_cta": "Enable payload logging to analyze which part of the request matched this rule. <0>Read payload logging documentation</0>",
 	"firewall.activity_log.encrypted_matched_data.description": "The malicious portion of the request which caused the WAF to take action has been logged.",
 	"firewall.activity_log.encrypted_matched_data.decrypt": "Decrypt",
 	"firewall.activity_log.encrypted_matched_data.decrypt_link": "Decrypt payload match",
