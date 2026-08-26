@@ -1,0 +1,825 @@
+{
+	"GET /accounts/{account_id}/flagship/apps/{app_id}/definitions": {
+		"operationId": "flagship_get_definitions",
+		"summary": "Get flag definitions",
+		"description": "Returns an app's evaluation-only flag definitions for SDKs that evaluate locally. Send the returned `ETag` in `If-None-Match` to avoid downloading unchanged definitions.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "app_id",
+				"in": "path",
+				"description": "App identifier.",
+				"required": true,
+				"schema": {
+					"description": "App identifier.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "If-None-Match",
+				"in": "header",
+				"description": "Previously returned ETag, or `*`.",
+				"schema": {
+					"description": "Previously returned ETag, or `*`.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Evaluation-only flag definitions.",
+				"headers": {
+					"ETag": {
+						"description": "Strong entity tag for the current definitions payload.",
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"flags": {
+									"type": "object",
+									"additionalProperties": {
+										"properties": {
+											"default_variation": {
+												"description": "Variation the API serves when the flag is off, or when it's on but no rule matches the context. Must be a key in `variations`.",
+												"type": "string",
+												"minLength": 1
+											},
+											"enabled": {
+												"description": "When false, the flag bypasses all rules and always serves `default_variation`.",
+												"type": "boolean"
+											},
+											"key": {
+												"description": "Unique identifier for the flag within an app. Used in all evaluation and SDK calls.",
+												"type": "string",
+												"maxLength": 64,
+												"minLength": 1,
+												"pattern": "^[a-zA-Z0-9_-]+$"
+											},
+											"rules": {
+												"type": "array",
+												"items": {
+													"additionalProperties": false,
+													"properties": {
+														"conditions": {
+															"description": "Conditions the context must satisfy for this rule to match. An empty array matches all contexts.",
+															"type": "array",
+															"items": {
+																"anyOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"attribute": {
+																				"type": "string",
+																				"maxLength": 64,
+																				"minLength": 1
+																			},
+																			"operator": {
+																				"type": "string",
+																				"enum": [
+																					"equals",
+																					"not_equals",
+																					"greater_than",
+																					"less_than",
+																					"greater_than_or_equals",
+																					"less_than_or_equals",
+																					"contains",
+																					"starts_with",
+																					"ends_with",
+																					"in",
+																					"not_in"
+																				]
+																			},
+																			"value": {
+																				"oneOf": [
+																					{
+																						"nullable": true,
+																						"type": "string"
+																					},
+																					{
+																						"type": "number"
+																					},
+																					{
+																						"type": "boolean"
+																					},
+																					{
+																						"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/definitions.responses.200.content.application/json.schema.properties.flags.additionalProperties.properties.rules.items.properties.conditions.items.anyOf.0.properties.value]",
+																						"type": "object"
+																					},
+																					{
+																						"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/definitions.responses.200.content.application/json.schema.properties.flags.additionalProperties.properties.rules.items.properties.conditions.items.anyOf.0.properties.value]",
+																						"type": "array"
+																					}
+																				]
+																			}
+																		},
+																		"required": [
+																			"attribute",
+																			"operator",
+																			"value"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"clauses": {
+																				"type": "array",
+																				"items": {
+																					"anyOf": [
+																						{
+																							"additionalProperties": false,
+																							"properties": {
+																								"attribute": {
+																									"type": "string",
+																									"maxLength": 64,
+																									"minLength": 1
+																								},
+																								"operator": {
+																									"type": "string",
+																									"enum": [
+																										"equals",
+																										"not_equals",
+																										"greater_than",
+																										"less_than",
+																										"greater_than_or_equals",
+																										"less_than_or_equals",
+																										"contains",
+																										"starts_with",
+																										"ends_with",
+																										"in",
+																										"not_in"
+																									]
+																								},
+																								"value": {
+																									"oneOf": [
+																										{
+																											"nullable": true,
+																											"type": "string"
+																										},
+																										{
+																											"type": "number"
+																										},
+																										{
+																											"type": "boolean"
+																										},
+																										{
+																											"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/definitions.responses.200.content.application/json.schema.properties.flags.additionalProperties.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																											"type": "object"
+																										},
+																										{
+																											"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/definitions.responses.200.content.application/json.schema.properties.flags.additionalProperties.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																											"type": "array"
+																										}
+																									]
+																								}
+																							},
+																							"required": [
+																								"attribute",
+																								"operator",
+																								"value"
+																							],
+																							"type": "object"
+																						},
+																						{
+																							"additionalProperties": false,
+																							"properties": {
+																								"clauses": {
+																									"type": "array",
+																									"items": {
+																										"anyOf": [
+																											{
+																												"additionalProperties": false,
+																												"properties": {
+																													"attribute": {
+																														"type": "string",
+																														"maxLength": 64,
+																														"minLength": 1
+																													},
+																													"operator": {
+																														"type": "string",
+																														"enum": [
+																															"equals",
+																															"not_equals",
+																															"greater_than",
+																															"less_than",
+																															"greater_than_or_equals",
+																															"less_than_or_equals",
+																															"contains",
+																															"starts_with",
+																															"ends_with",
+																															"in",
+																															"not_in"
+																														]
+																													},
+																													"value": {
+																														"oneOf": [
+																															{
+																																"nullable": true,
+																																"type": "string"
+																															},
+																															{
+																																"type": "number"
+																															},
+																															{
+																																"type": "boolean"
+																															},
+																															{
+																																"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/definitions.responses.200.content.application/json.schema.properties.flags.additionalProperties.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																"type": "object"
+																															},
+																															{
+																																"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/definitions.responses.200.content.application/json.schema.properties.flags.additionalProperties.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																"type": "array"
+																															}
+																														]
+																													}
+																												},
+																												"required": [
+																													"attribute",
+																													"operator",
+																													"value"
+																												],
+																												"type": "object"
+																											},
+																											{
+																												"additionalProperties": false,
+																												"properties": {
+																													"clauses": {
+																														"type": "array",
+																														"items": {
+																															"anyOf": [
+																																{
+																																	"additionalProperties": false,
+																																	"properties": {
+																																		"attribute": {
+																																			"type": "string",
+																																			"maxLength": 64,
+																																			"minLength": 1
+																																		},
+																																		"operator": {
+																																			"type": "string",
+																																			"enum": [
+																																				"equals",
+																																				"not_equals",
+																																				"greater_than",
+																																				"less_than",
+																																				"greater_than_or_equals",
+																																				"less_than_or_equals",
+																																				"contains",
+																																				"starts_with",
+																																				"ends_with",
+																																				"in",
+																																				"not_in"
+																																			]
+																																		},
+																																		"value": {
+																																			"oneOf": [
+																																				{
+																																					"nullable": true,
+																																					"type": "string"
+																																				},
+																																				{
+																																					"type": "number"
+																																				},
+																																				{
+																																					"type": "boolean"
+																																				},
+																																				{
+																																					"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/definitions.responses.200.content.application/json.schema.properties.flags.additionalProperties.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																					"type": "object"
+																																				},
+																																				{
+																																					"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/definitions.responses.200.content.application/json.schema.properties.flags.additionalProperties.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																					"type": "array"
+																																				}
+																																			]
+																																		}
+																																	},
+																																	"required": [
+																																		"attribute",
+																																		"operator",
+																																		"value"
+																																	],
+																																	"type": "object"
+																																},
+																																{
+																																	"additionalProperties": false,
+																																	"properties": {
+																																		"clauses": {
+																																			"type": "array",
+																																			"items": {
+																																				"anyOf": [
+																																					{
+																																						"additionalProperties": false,
+																																						"properties": {
+																																							"attribute": {
+																																								"type": "string",
+																																								"maxLength": 64,
+																																								"minLength": 1
+																																							},
+																																							"operator": {
+																																								"type": "string",
+																																								"enum": [
+																																									"equals",
+																																									"not_equals",
+																																									"greater_than",
+																																									"less_than",
+																																									"greater_than_or_equals",
+																																									"less_than_or_equals",
+																																									"contains",
+																																									"starts_with",
+																																									"ends_with",
+																																									"in",
+																																									"not_in"
+																																								]
+																																							},
+																																							"value": {
+																																								"oneOf": [
+																																									{
+																																										"nullable": true,
+																																										"type": "string"
+																																									},
+																																									{
+																																										"type": "number"
+																																									},
+																																									{
+																																										"type": "boolean"
+																																									},
+																																									{
+																																										"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/definitions.responses.200.content.application/json.schema.properties.flags.additionalProperties.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																										"type": "object"
+																																									},
+																																									{
+																																										"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/definitions.responses.200.content.application/json.schema.properties.flags.additionalProperties.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																										"type": "array"
+																																									}
+																																								]
+																																							}
+																																						},
+																																						"required": [
+																																							"attribute",
+																																							"operator",
+																																							"value"
+																																						],
+																																						"type": "object"
+																																					},
+																																					{
+																																						"additionalProperties": false,
+																																						"properties": {
+																																							"clauses": {
+																																								"type": "array",
+																																								"items": {
+																																									"anyOf": [
+																																										{
+																																											"additionalProperties": false,
+																																											"properties": {
+																																												"attribute": {
+																																													"type": "string",
+																																													"maxLength": 64,
+																																													"minLength": 1
+																																												},
+																																												"operator": {
+																																													"type": "string",
+																																													"enum": [
+																																														"equals",
+																																														"not_equals",
+																																														"greater_than",
+																																														"less_than",
+																																														"greater_than_or_equals",
+																																														"less_than_or_equals",
+																																														"contains",
+																																														"starts_with",
+																																														"ends_with",
+																																														"in",
+																																														"not_in"
+																																													]
+																																												},
+																																												"value": {
+																																													"oneOf": [
+																																														{
+																																															"nullable": true,
+																																															"type": "string"
+																																														},
+																																														{
+																																															"type": "number"
+																																														},
+																																														{
+																																															"type": "boolean"
+																																														},
+																																														{
+																																															"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/definitions.responses.200.content.application/json.schema.properties.flags.additionalProperties.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																															"type": "object"
+																																														},
+																																														{
+																																															"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/definitions.responses.200.content.application/json.schema.properties.flags.additionalProperties.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																															"type": "array"
+																																														}
+																																													]
+																																												}
+																																											},
+																																											"required": [
+																																												"attribute",
+																																												"operator",
+																																												"value"
+																																											],
+																																											"type": "object"
+																																										},
+																																										{
+																																											"additionalProperties": false,
+																																											"properties": {
+																																												"clauses": {
+																																													"type": "array",
+																																													"items": {
+																																														"oneOf": [
+																																															{
+																																																"nullable": true,
+																																																"type": "string"
+																																															},
+																																															{
+																																																"type": "number"
+																																															},
+																																															{
+																																																"type": "boolean"
+																																															},
+																																															{
+																																																"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/definitions.responses.200.content.application/json.schema.properties.flags.additionalProperties.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items]",
+																																																"type": "object"
+																																															},
+																																															{
+																																																"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/definitions.responses.200.content.application/json.schema.properties.flags.additionalProperties.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items]",
+																																																"type": "array"
+																																															}
+																																														]
+																																													},
+																																													"minItems": 1
+																																												},
+																																												"logical_operator": {
+																																													"type": "string",
+																																													"enum": [
+																																														"AND",
+																																														"OR"
+																																													]
+																																												}
+																																											},
+																																											"required": [
+																																												"logical_operator",
+																																												"clauses"
+																																											],
+																																											"type": "object"
+																																										}
+																																									]
+																																								},
+																																								"minItems": 1
+																																							},
+																																							"logical_operator": {
+																																								"type": "string",
+																																								"enum": [
+																																									"AND",
+																																									"OR"
+																																								]
+																																							}
+																																						},
+																																						"required": [
+																																							"logical_operator",
+																																							"clauses"
+																																						],
+																																						"type": "object"
+																																					}
+																																				]
+																																			},
+																																			"minItems": 1
+																																		},
+																																		"logical_operator": {
+																																			"type": "string",
+																																			"enum": [
+																																				"AND",
+																																				"OR"
+																																			]
+																																		}
+																																	},
+																																	"required": [
+																																		"logical_operator",
+																																		"clauses"
+																																	],
+																																	"type": "object"
+																																}
+																															]
+																														},
+																														"minItems": 1
+																													},
+																													"logical_operator": {
+																														"type": "string",
+																														"enum": [
+																															"AND",
+																															"OR"
+																														]
+																													}
+																												},
+																												"required": [
+																													"logical_operator",
+																													"clauses"
+																												],
+																												"type": "object"
+																											}
+																										]
+																									},
+																									"minItems": 1
+																								},
+																								"logical_operator": {
+																									"type": "string",
+																									"enum": [
+																										"AND",
+																										"OR"
+																									]
+																								}
+																							},
+																							"required": [
+																								"logical_operator",
+																								"clauses"
+																							],
+																							"type": "object"
+																						}
+																					]
+																				},
+																				"minItems": 1
+																			},
+																			"logical_operator": {
+																				"type": "string",
+																				"enum": [
+																					"AND",
+																					"OR"
+																				]
+																			}
+																		},
+																		"required": [
+																			"logical_operator",
+																			"clauses"
+																		],
+																		"type": "object"
+																	}
+																]
+															}
+														},
+														"rollout": {
+															"type": "object",
+															"additionalProperties": false,
+															"properties": {
+																"attribute": {
+																	"description": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.",
+																	"type": "string",
+																	"minLength": 1
+																},
+																"percentage": {
+																	"description": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+																	"type": "number",
+																	"maximum": 100,
+																	"minimum": 0
+																}
+															},
+															"required": [
+																"percentage"
+															]
+														},
+														"serve_variation": {
+															"description": "Variation the API serves when this rule matches. Must be a key in `variations`.",
+															"type": "string",
+															"minLength": 1
+														}
+													},
+													"required": [
+														"conditions",
+														"serve_variation"
+													],
+													"type": "object"
+												}
+											},
+											"variations": {
+												"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
+												"type": "object",
+												"additionalProperties": {
+													"oneOf": [
+														{
+															"nullable": true,
+															"type": "string"
+														},
+														{
+															"type": "number"
+														},
+														{
+															"type": "boolean"
+														},
+														{
+															"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/definitions.responses.200.content.application/json.schema.properties.flags.additionalProperties.properties.variations.additionalProperties]",
+															"type": "object"
+														},
+														{
+															"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/definitions.responses.200.content.application/json.schema.properties.flags.additionalProperties.properties.variations.additionalProperties]",
+															"type": "array"
+														}
+													]
+												}
+											}
+										},
+										"required": [
+											"key",
+											"enabled",
+											"default_variation",
+											"variations",
+											"rules"
+										],
+										"type": "object"
+									}
+								}
+							},
+							"required": [
+								"flags"
+							]
+						}
+					}
+				}
+			},
+			"304": {
+				"description": "Definitions have not changed.",
+				"headers": {
+					"ETag": {
+						"description": "Strong entity tag for the current definitions payload.",
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "App not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Definitions error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Flag store temporarily unavailable.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Definitions"
+		],
+		"x-api-token-group": [
+			"Flagship Read",
+			"Flagship Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.flagship.app.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "flagship.apps.definitions",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	}
+}
