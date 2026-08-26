@@ -916,6 +916,8 @@
 			"Cloudflare Tunnel Write"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "network.routes.cidr",
+		"x-fern-sdk-method-name": "delete",
 		"x-stainless-deprecation-message": "This endpoint and its related APIs are deprecated in favor of the equivalent Tunnel Route (without CIDR) APIs."
 	},
 	"GET /accounts/{account_id}/teamnet/routes": {
@@ -3491,6 +3493,8 @@
 			"Cloudflare Tunnel Write"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "network.routes.cidr",
+		"x-fern-sdk-method-name": "edit",
 		"x-stainless-deprecation-message": "This endpoint and its related APIs are deprecated in favor of the equivalent Tunnel Route (without CIDR) APIs."
 	},
 	"POST /accounts/{account_id}/teamnet/routes": {
@@ -4440,6 +4444,8 @@
 			"Cloudflare Tunnel Write"
 		],
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "network.routes.cidr",
+		"x-fern-sdk-method-name": "create",
 		"x-stainless-deprecation-message": "This endpoint and its related APIs are deprecated in favor of the equivalent Tunnel Route (without CIDR) APIs."
 	}
 }

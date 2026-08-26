@@ -4698,7 +4698,7 @@
 			{
 				"name": "order_by",
 				"in": "query",
-				"description": "Order results by field name and direction (e.g., name:asc). Ignored when search is provided; results are ranked by relevance instead.",
+				"description": "Order results using field:direction format. Supported fields are name, id, human_id,\ncategory_id, application_type, application_confidence_score, and gen_ai_score.\nSupported directions are asc and desc. Ignored when search is provided; results are\nranked by relevance instead.\n",
 				"schema": {
 					"type": "string"
 				},
