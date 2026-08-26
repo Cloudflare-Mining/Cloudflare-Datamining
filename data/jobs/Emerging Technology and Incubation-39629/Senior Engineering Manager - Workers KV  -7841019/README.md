@@ -3,51 +3,44 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: Lisbon, Portugal&nbsp;</strong></p>
-<p><strong>About the role</strong></p>
-<p><strong>Role Summary</strong><strong><br></strong>We are seeking a highly motivated Indirect Tax Manager to act as a key functional lead within our global tax team. In this role, you will support Cloudflare’s global indirect tax function by helping improve processes, strengthen controls, and support the delivery of tax-related work across the business. This role will work closely with senior team members and cross-functional partners in Finance, Accounting, Legal, and other business areas to help coordinate priorities and move projects forward. The right candidate will be detail-oriented, collaborative, and motivated by finding better, smarter ways to work through automation, standardization, and AI-enabled improvements.</p>
-<p><strong>Role Responsibilities</strong><strong><br></strong></p>
+<h3><strong>Available Locations: Lisbon | London | Hybrid</strong></h3>
+<h3 id="JD:EngineeringManagerWorkersKV-AbouttheDepartment"><strong>About the Department</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<h3 id="JD:EngineeringManagerWorkersKV-AbouttheTeam">About the Team</h3>
+<p>The Workers KV team delivers Cloudflare's global, low-latency, key-value data storage. KV lets developers store and retrieve data globally. With Workers KV, you can build dynamic and performant APIs and websites that support high read volumes with low latency.</p>
+<p>KV is integrated with Cloudflare Workers but can also be used via our REST API. Here are a few example use-cases:</p>
 <ul>
-	<li>Influence and deliver global indirect tax projects and process improvements that improve compliance readiness, data quality, and operating efficiency.</li>
-	<li>Work with senior team members and cross-functional partners to gather requirements, track priorities, and support the delivery of tax-related initiatives.</li>
-	<li>Support global indirect tax compliance governance by helping organize inputs, review workstreams, and contribute to timely and accurate execution.</li>
-	<li>Identify opportunities to simplify, standardize, and automate indirect tax processes, with a strong interest in AI-enabled and technology-driven improvements.</li>
-	<li>Assist in evaluating the indirect tax impact of business changes, new products, system updates, and process changes, and help document conclusions and next steps.</li>
-	<li>Contribute to indirect tax risk management by supporting broader analysis, governance, and control-related activities in partnership with key stakeholders.</li>
-	<li>Prepare clear updates, presentations, and training materials to support project coordination, communicate indirect tax topics, and keep internal stakeholders informed on progress and process developments.</li>
-	<li>Apply wide-ranging experience and regulatory concepts to solve complex compliance issues; escalate highly complex or systemic issues to leadership alongside innovative proposals for resolution.</li>
+	<li><strong>Caching API responses</strong></li>
+	<li><strong>Storing user configurations and preferences</strong></li>
+	<li><strong>Storing user authentication details</strong></li>
 </ul>
-<p><strong>Role Requirements</strong></p>
-<p><strong>Must-Have Skills</strong></p>
+<p>The team is geographically distributed across Western Europe.</p>
+<h3 id="JD:EngineeringManagerWorkersKV-Whatyou'lldo"><strong>What you'll do</strong></h3>
+<p>We are looking for an experienced Senior Engineering Manager to join our team. You will work with a team of passionate, talented engineers that are building innovative products that bring security and speed to millions of internet users each day. You will play an active part in shaping product features and improving performance to make Workers KV the best it can be. You will make sure our company hits our ambitious goals from an engineering standpoint.&nbsp;You will change the way people build applications.</p>
+<p>You bring a passion for meeting business needs by building technical, innovative solutions. You excel to understand how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment and have experience in delivering scalable distributed systems. Most importantly, you have a track record of having past teams respect you as both a technical leader and manager.</p>
+<h3 id="JD:EngineeringManagerWorkersKV-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>Bachelor’s degree in Tax, Accounting, Finance, or a related field.</li>
-	<li>8+ years of experience in indirect tax, tax operations, tax compliance, or a related area.</li>
-	<li>Strong understanding of global indirect tax concepts and the ability to apply them in a multi-country environment.&nbsp;</li>
-	<li>Demonstrates a consistent focus on the long-term needs of the team and business. Understands how tax decisions will impact adjacent teams, sharing those impacts openly to co-create win-win solutions.</li>
-	<li>Demonstrated project coordination skills, including the ability to organize work, manage deadlines, and support multiple stakeholders. Works proactively and transparently to help get team deliverables across the finish line.&nbsp;</li>
-	<li>Advanced Excel skills and proficiency analyzing large, complex data sets.</li>
-	<li>Strong communication, critical thinking, and attention to detail, with the ability to work effectively across internal and external teams.</li>
-	<li>Experience supporting tax process improvement, automation, and AI-enabled workflow design.</li>
-	<li>Exposure to ERP systems, tax engines, or other finance and tax technology platforms.</li>
-	<li>Experience supporting global indirect tax compliance, audits, reserves, or business transformation projects.</li>
-	<li>Accounting knowledge, including journal entries and financial statement structure.</li>
+	<li>Strong communications skills - especially building a shared understanding of systems among a team's members.</li>
+	<li>Comfortable leading and hiring a team that builds distributed systems.</li>
+	<li>Navigate uncertainty and ambiguity - many of the things we build have never been built before anywhere and you are expected to find a way to deliver.</li>
+	<li>Excel at planning, creating teams, and overseeing execution to meet commitments and deliver with predictability</li>
+	<li>Comfortable building developer-loved APIs that scale</li>
+	<li>Demonstrate a track record of leading a team including hiring, on-boarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”.</li>
+	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
+	<li>At least 4 years of recent professional experience with TypeScript or Go.</li>
+	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
+	<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript and WebAssembly</li>
 </ul>
-<p><strong>Nice-to-Have Skills</strong></p>
+<h3 id="JD:EngineeringManagerWorkersKV-BonusPoints"><strong>Bonus Points</strong></h3>
 <ul>
-	<li>Ability to develop presentations, training content, or process documentation for cross-functional audiences.</li>
-	<li>Familiarity with data reconciliation and controls in a multi-system environment.</li>
-	<li>Advanced degree, CPA, or other relevant professional certification.</li>
+	<li>Experience building high performance distributed systems</li>
+	<li>Experience delivering and operating critical infrastructure for cloud platforms, especially serverless platforms</li>
+	<li>Deep Linux/UNIX systems, kernel, or networking knowledge</li>
+	<li>Contributions to large open source projects</li>
+	<li>Experience working with distributed storage and cache architectures</li>
+	<li>Experience debugging, optimizing and identifying failure modes in a large-scale Linux-based distributed system</li>
 </ul>
-<h3 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
-<p data-path-to-node="1">● For Portugal based hires: Estimated annual salary is between €50,000-68,000€,</p>
-<ul data-path-to-node="2">
-	<li>
-		<p data-path-to-node="2,0,0">The final offer will be inclusive of time exemption, in alignment with the applicable law and collective bargaining agreements.</p>
-	</li>
-</ul>
-<h3 data-path-to-node="3"><strong data-path-to-node="3" data-index-in-node="0">Equity</strong></h3>
-<p data-path-to-node="4">This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h4><br><br></h4>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -3,49 +3,76 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: Lisbon, Portugal&nbsp;</strong></p>
-<p><strong>About the Role</strong></p>
-<p>We’re looking for a proactive&nbsp;PR Associate, EMEA to help scale our communications program across the region. In this role, you will report to our EMEA PR lead to craft compelling stories, secure high-impact coverage, and manage regional execution from concept to completion.You’ll collaborate directly with a cross-functional team of Cloudflare experts—spanning engineering, legal and policy, partner marketing, and executive leadership. If you live and breathe technology, love translating complex technical innovations into clear stories, and thrive in a fast-paced environment, this is the place for you.</p>
-<p><strong>Responsibilities: </strong></p>
+<p><strong>Available Locations: New York</strong></p>
+<p><strong>Your Career</strong></p>
+<p>As our Global Physical Security Intelligence Specialist, reporting to our Sr. Director of Physical Security you will take ownership of our physical security technologies across our office and data center footprint.&nbsp;</p>
+<p>We are looking for someone excited about solving physical world challenges with next-generation technology on a global scale. You will be leading the overall strategy &amp; implementation as well as partnering with other teams to unify physical and digital access into one cohesive security solution for Cloudflare’s global network powering our products.</p>
+<p><strong>What You’ll Do</strong></p>
+<p>Continue to work as a member of a unique global physical security team and program in the following areas:&nbsp;</p>
+<p><strong>Physical security systems:</strong></p>
 <ul>
-	<li>Assist the PR Director, EMEA in managing PR operations including editorial calendar, content, execution, reporting, and PR agency coordination</li>
-	<li>Focus on EMEA partner PR, regional speaking opportunities and media awards.</li>
-	<li>Contribute to promote press releases, blog posts, and other materials to support regional and local communications initiatives</li>
-	<li>Collaborate with PR agencies</li>
-	<li>Help manage day-to-day execution for EMEA PR programs</li>
-	<li>Support to monitor and manage inbound media requests</li>
-	<li>Organize media briefings, interviews, and PR-focused events</li>
-	<li>Help to maintain strong media relationships across all types of media outlets, develop story ideas, and manage stories</li>
-	<li>Support and help manage key executive spokespeople</li>
+	<li>Ability to work within a global physical security program focused on developing and deploying innovative physical security technology &amp; operations across our global network of data centers. This will require traveling to a variety of locations, building relationships with our partners and working in an agile environment.&nbsp;</li>
+	<li>Ability to assist and manage investigations working with Cloudflare’s People’s Team.&nbsp;</li>
+	<li>Work alongside our SIRT Team&nbsp; as required for physical Security related incidents.&nbsp;</li>
+	<li>Deploy and remediate access control and CCTV equipment with vendor support</li>
+	<li>Coordinate and provide facility and personnel safety practices, guidance, assistance, and response as required.</li>
 </ul>
-<p>&nbsp;</p>
-<p>Drive Regional Execution: Manage day-to-day PR operations across EMEA, including content alignment, editorial calendars, media briefings, and campaign execution.</p>
-<p>Elevate Our Voice: Support regional speaking opportunities, industry awards, and partner PR initiatives to keep Cloudflare top-of-mind across EMEA markets.</p>
-<p>Partner with EMEA Agencies: Collaborate closely with our local agency partners to drive consistent strategy, streamline workflows, and measure results.</p>
-<p>Amplify Content: Package and pitch press releases, deep-technical blog posts, and research to regional and local media outlets.</p>
-<p>Manage Media Relations: Support inbound press inquiries, build authentic relationships with key tech and business journalists, and develop proactive story ideas.</p>
-<p>Support Spokespeople: Prepare and brief executives and technical experts for interviews, keynotes, and media events.</p>
-<p><strong>Requirements:&nbsp;</strong></p>
+<p><strong>Audit and certifications:</strong></p>
 <ul>
-	<li>BA/BS in Communications, Journalism, Public Relations or Marketing preferred</li>
-	<li>PR Experience: 3–5 years of B2B tech PR experience (in-house or agency) focused on the EMEA region.</li>
-	<li>Technical Curiosity: An ability to get under the hood of complex technology and translate technical concepts into simple, compelling narratives.</li>
-	<li>In-the-Trenches Mindset: A hands-on, highly accountable approach—we work fast, adapt constantly, and everyone pitches in to get big things done.</li>
-	<li>Sharp Execution: Exceptional written and verbal communication, strong project management, and meticulous attention to detail.</li>
-	<li>Detail Oriented: possesses a keen eye for detail, easily catching inconsistencies that others might overlook while maintaining high standards of quality.</li>
-	<li>Modern Toolkit: Familiarity with leveraging AI tools to streamline workflows, research, and content creation.</li>
-	<li>Language Fluency: Fluency in one or more European languages alongside English, ideally Spanish and/or Italian.</li>
+	<li>Establish, implement, and automate our physical security standards, policies, and processes globally.&nbsp;</li>
+	<li>Support implementation of operational metrics, project tracking, and status/ blockers reporting as needed.</li>
+	<li>Work alongside our infrastructure partners to enhance their standard operating procedures ensuring compliance with physical security standards and controls, including Cloudflare Data Centers and partners.</li>
+	<li>Work with the security compliance and risk management team on developing and implementing physical security controls as it relates to various compliance requirements including but not limited to FedRAMP, ISO 27001 and SOC 2; and support internal and external audits of physical security controls.</li>
 </ul>
-<h3 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
-<p data-path-to-node="1">● For Portugal based hires: Estimated annual salary is between €41,000- €56,000.</p>
-<ul data-path-to-node="2">
-	<li>
-		<p data-path-to-node="2,0,0">The final offer will be inclusive of time exemption, in alignment with the applicable law and collective bargaining agreements.</p>
-	</li>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<ul>
+	<li>Ability to make decisions on acceptable physical security risk and drive risk mitigation.&nbsp;</li>
+	<li>Experience managing a local physical security program and managing event security practices, preferably with experience of physical security controls.</li>
+	<li>Solid understanding of integrating and deploying access control and CCTV systems at scale, including networking and systems engineering.</li>
+	<li>Ability to coordinate with law enforcement and government agencies at every level</li>
+	<li>Understanding of networking security as it relates to physical security technology</li>
+	<li>Understanding of access control as it relates to granting logical access to systems</li>
+	<li>Previous experience working in Verkada Command and deploying Verkada cameras and access sensors</li>
+	<li>Ability to effectively prioritize and manage a large number of projects simultaneously</li>
+	<li>Equally adept at strategy formulation and tactical execution</li>
+	<li>Demonstrated success in earning trust across a broad variety of stakeholders and making principled decisions</li>
+	<li>Ability to influence and motivate people across a broad variety of job functions</li>
+	<li>Experience communicating physical security risk plans to the executive leadership</li>
+	<li>Experience performing site walk thoughts of data centers, corporate offices, and executive residences, including identification and measurement of risks and threats.</li>
+	<li>Experience in or desire to work with multiple time zones and ability to travel to all Cloudflare locations as required; roughly 35% travel required</li>
 </ul>
-<h3 data-path-to-node="3"><strong data-path-to-node="3" data-index-in-node="0">Equity</strong></h3>
-<p data-path-to-node="4">This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">Estimated annual salary of $102,000-$141,000</span></li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

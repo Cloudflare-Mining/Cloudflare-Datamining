@@ -3,10 +3,11 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h2>Available Locations</h2>
+<h3>Available Locations</h3>
 <ul>
 	<li>US</li>
 </ul>
+<p><strong>Applications will be accepted until November 22, 2026.</strong></p>
 <h2><strong>About the Role</strong></h2>
 <p><strong>Position Overview:</strong> We are seeking a high-velocity, strategic People M&amp;A Leader to own the human side of our mergers and acquisitions end-to-end. In this role, you will be the single designated point person (DRI) and strategic counterpart to our Corporate Development team. You will own the People lifecycle for all deals—from early-stage confirmatory due diligence through post-close integration.&nbsp;</p>
 <p>You will report directly to the VP, Talent who oversees global HRBPs, Talent Acquisition, Employee Relations, and Talent Development. When deal volume is low, you will focus on strategic programs and talent initiatives for our People organization. You are a systems thinker with an ability to foster relationships internally and externally.</p>
@@ -42,15 +43,15 @@
 	<li><strong>Technical &amp; Core HR Fluency:</strong> Solid foundational understanding of employment legal basics, high-growth compensation structures, and visa/immigration complexities (critical for international or highly technical talent).</li>
 	<li><strong>Influence Without Authority:</strong> Exceptional communication and relationship-building skills. Ability to earn the trust of elite technical founders and seamlessly align cross-functional internal executives.</li>
 </ul>
-<h2>Compensation</h2>
+<h3>Compensation</h3>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For San Francisco Bay Area based hires: Estimated annual salary of $214,000 - $295,000</li>
-	<li>For New York City and Washington based hires: Estimated annual salary of $205,000 - $282,000</li>
-	<li>For Colorado based hires: Estimated annual salary of $186,000 - $256,000</li>
+	<li>For San Francisco Bay Area based hires: Estimated annual salary of $187,000 - $257,000</li>
+	<li>For New York City, Washington, and California (excluding Bay Area) based hires. Estimated annual salary of $178,000 - $245,000</li>
+	<li>For Colorado based hires: Estimated annual salary of $162,000 - $223,000</li>
 </ul>
 <h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p>This role is eligible to participate in Cloudflare's equity plan.</p>
 <h3>Benefits</h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <p>Health &amp; Welfare Benefits</p>

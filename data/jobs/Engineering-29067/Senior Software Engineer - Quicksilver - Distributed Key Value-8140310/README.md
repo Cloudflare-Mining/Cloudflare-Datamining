@@ -3,7 +3,16 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong>Atlanta, Austin, Denver, NewYork, Seattle, Washington D.C.</p>
+<h3>Available Locations</h3>
+<ul>
+	<li>Atlanta, US</li>
+	<li>Austin, US</li>
+	<li>Denver, US</li>
+	<li>New York, US</li>
+	<li>Seattle, US</li>
+	<li>Washington DC, US</li>
+</ul>
+<p><strong>Applications will be accepted until November 19, 2026.</strong></p>
 <p><strong>About the role</strong></p>
 <p>Quicksilver is Cloudflare’s globally distributed key-value store. It replicates our data all around the world, over tens of thousands of servers and over 500 data centers. It handles all kinds of network conditions and serves billions of keys per second. In this role, you can expect to see challenges like unexpected network issues, hardware failures, kernel bugs and still have to deliver the data to the edge in a fast and reliable way. Along with the rest of the team, you will own and support the whole stack: the code base, the unit and integration test, deployment and rollback plans, operations, monitoring, alerting, debugging and on-call. Quicksilver is written in Go and C. If working at this scale excites you and you are intrigued by very tricky bugs, rather than being scared by them, you might be a match for this role.</p>
 <h4><strong>What you'll do</strong></h4>
@@ -24,17 +33,16 @@
 	<li>You enjoy being a part of a team that challenges each other's designs -- you are good at taking and giving constructive criticism with a goal of producing the best solution.</li>
 	<li>You are not afraid of engaging in outages on anti-social hours.</li>
 </ul>
-<p><strong>Compensation</strong></p>
+<h3>Compensation</h3>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Denver based hires: Estimated annual salary of $168,000 ~ $210,000</span></li>
-	<li><span data-sheets-root="1">For Washington D.C., New York and Seattle based hires: Estimated annual salary of $185,000 ~ $231,000</span></li>
+	<li>For Colorado based hires: Estimated annual salary of $168,000 - $231,000</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3>Equity</h3>
+<p>This role is eligible to participate in Cloudflare's equity plan.</p>
+<h3>Benefits</h3>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>Health &amp; Welfare Benefits</p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -45,14 +53,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<p>Financial Benefits</p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<p>Time Off</p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

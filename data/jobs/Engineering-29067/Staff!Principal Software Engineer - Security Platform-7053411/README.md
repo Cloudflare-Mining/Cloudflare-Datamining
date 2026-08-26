@@ -3,7 +3,7 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h2>Available Locations</h2>
+<h3>Available Locations</h3>
 <ul>
 	<li>Atlanta, US</li>
 	<li>Austin, US</li>
@@ -11,9 +11,9 @@
 	<li>New York, US</li>
 	<li>Toronto, Canada</li>
 	<li>Washington DC, US</li>
-	<li>Seattle, WA</li>
-	<li>Remote candidates within North America will also be considered.</li>
+	<li>US</li>
 </ul>
+<p><strong>Applications will be accepted until November 23, 2026.</strong></p>
 <h2>About the Role</h2>
 <p>The Security Platform team is an infrastructure/developer tools group tasked with building and operating powerful, resilient, and secure infrastructure and systems that enable other engineering teams to deliver products to our customers efficiently and securely. We are responsible for secrets management, internal certificate authorities/PKI, machine and workload identity, and more. We are not a policy, audit, or compliance team, but rather an infrastructure engineering/software development one.</p>
 <h2>Responsibilities</h2>
@@ -37,21 +37,38 @@
 	<li>Linux/UNIX system administration proficiency</li>
 	<li>Familiarity with Go and/or Python + Salt specifically</li>
 </ul>
-<h2>Compensation</h2>
+<h3>Compensation</h3>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li data-path-to-node="4">For New York City, Washington D.C., and Seattle based hires: Estimated annual salary of 185,000 - 275,000 USD.</li>
-	<li>
-		<p data-path-to-node="5">For Colorado based hires: Estimated annual salary of 168,000 - 250,000 USD.</p>
-	</li>
-	<li>
-		<p data-path-to-node="5">For Toronto, Canada based hires: Estimated annual salary of 150,000 ~ 240,000 CAD.</p>
-	</li>
+	<li>For Colorado based hires: Estimated annual salary of $200,000 - $275,000</li>
 </ul>
 <h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p>This role is eligible to participate in Cloudflare's equity plan.</p>
 <h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family, including medical, dental, and vision insurance, a 401(k) plan with company match, flexible paid time off, and fertility &amp; family-forming benefits.</p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>Health &amp; Welfare Benefits</p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p>Financial Benefits</p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p>Time Off</p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -5,10 +5,7 @@
 </div>
 <h2>Available Locations</h2>
 <ul>
-	<li>Austin</li>
-	<li>Atlanta</li>
-	<li>Denver</li>
-	<li>Seattle</li>
+	<li>Austin, TX</li>
 </ul>
 <h2>Responsibilities</h2>
 <ul>

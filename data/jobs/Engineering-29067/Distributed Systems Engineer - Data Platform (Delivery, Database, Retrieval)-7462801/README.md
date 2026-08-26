@@ -3,7 +3,16 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Locations Available: Atlanta, US, Austin, US, Denver, US, Seattle, US, Washington DC, US, Lisbon, Portugal</strong></p>
+<h3>Available Locations</h3>
+<ul>
+	<li>Atlanta, US</li>
+	<li>Austin, US</li>
+	<li>Denver, US</li>
+	<li>Lisbon, Portugal</li>
+	<li>Seattle, US</li>
+	<li>Washington DC, US</li>
+</ul>
+<p><strong>Applications will be accepted until November 23, 2026.</strong></p>
 <p><strong>About Role</strong></p>
 <p><span style="font-weight: 400;">We are looking for experienced and highly motivated engineers to join our DATA Org and help build the future of data at Cloudflare. Our organisation is responsible for the entire data lifecycle - from ingestion and processing to storage and retrieval - powering the critical logs and analytics that provide our customers with real-time visibility into the health and performance of their online properties.</span></p>
 <p><span style="font-weight: 400;">Our mission is to empower customers to leverage their data to drive better outcomes for their business. We build and maintain a suite of high-performance, scalable systems that handle more than a billion events in a second. As an engineer in our organisation, you will have the opportunity to work on complex distributed systems challenges across different parts of our data stack.</span></p>
@@ -44,28 +53,17 @@
 </ul>
 <p><span style="font-weight: 400;">If you're passionate about building scalable and performant data platforms using cutting-edge technologies and want to work with a world-class team of engineers, then we want to hear from you! Join us in our mission to help build a better internet for everyone!</span></p>
 <p>This role requires flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
-<p></p>
-<h3 data-path-to-node="1"><strong data-path-to-node="1" data-index-in-node="0">Compensation</strong></h3>
-<p data-path-to-node="2">Compensation may be adjusted depending on work location.</p>
-<p data-path-to-node="2"></p>
-<p data-path-to-node="1">● For Portugal based hires: Estimated annual salary is between €54,000 - €91,000.</p>
-<ul data-path-to-node="2">
-	<li>
-		<p data-path-to-node="2,0,0">The final offer will be inclusive of time exemption, in alignment with the applicable law and collective bargaining agreements.</p>
-	</li>
+<h3>Compensation</h3>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For Portugal based hires: Estimated annual salary is between €54,000 - €91,000.</li>
+	<li>For Colorado based hires: Estimated annual salary of $156,000 - $215,000</li>
 </ul>
-<p data-path-to-node="2"></p>
-<p data-path-to-node="3">● For Denver based hires: Estimated annual salary of $136,000 - $231,000.</p>
-<p data-path-to-node="4">● For Washington, D.C. and Seattle based hires: Estimated annual salary of $150,000 - $154,000.</p>
-<p data-path-to-node="4"></p>
-<p data-path-to-node="4"></p>
-<p><span style="font-weight: 400;"></span></p>
-<p>&nbsp;</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3>Equity</h3>
+<p>This role is eligible to participate in Cloudflare's equity plan.</p>
+<h3>Benefits</h3>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>Health &amp; Welfare Benefits</p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -76,21 +74,22 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<p>Financial Benefits</p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<p>Time Off</p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p></p>
+<h3 data-path-to-node="1">&nbsp;</h3>
 <p>&nbsp;</p>
-<p></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -3,8 +3,14 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><span style="font-size: 12pt;"><strong>Network Deployment Engineer</strong></span></p>
-<p><span style="font-size: 10pt;"><strong>Available locations:</strong> Austin, Atlanta, Denver, New York</span></p>
+<h3>Available Locations</h3>
+<ul>
+	<li>Atlanta, US</li>
+	<li>Austin, US</li>
+	<li>Denver, US</li>
+	<li>New York, US</li>
+</ul>
+<p><strong>Applications will be accepted until November 01, 2026.</strong></p>
 <p><strong>About the department </strong></p>
 <p>In this role, you will be focused on the build out and expansion of our global network. You'll work closely with Cloudflare’s SRE (Site Reliability Engineering) team, Network Engineering team, and with various vendors and partners (including hardware vendors, datacenter and network providers, and ISPs) to maintain and improve our global infrastructure, and to plan and aggressively execute on the expansion of our network.</p>
 <p>You will further be responsible for the development and implementation of consistent processes and visibility measurements for consistent and effective management of our infrastructure. This is a highly visible position that requires deep technical understanding of datacenter infrastructure, networking (physical), and basic experience with data analysis and project management.</p>
@@ -28,7 +34,6 @@
 	<li>Assist with the definition, documentation and implementation of consistent processes&nbsp;across all region</li>
 	<li>Aggressively seek opportunities to introduce cutting-edge technology and automation&nbsp;solutions that are effective, efficient and scalable in order to improve our ability to deploy&nbsp;and maintain our global infrastructure</li>
 </ul>
-<h2>&nbsp;</h2>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li>Bachelor’s degree; technical background in engineering, computer science, or MIS a</li>
@@ -59,18 +64,17 @@
 	<li>Scripting or software development experience in Bash, Python or Go-lang</li>
 	<li>Familiarity with load balancing and reverse proxies such as Nginx, Varnish, HAProxy,&nbsp;Apache</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
+<h3>Compensation</h3>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For Colorado, Illinois based hires: Estimated annual salary of $114,000 - $157,000.</li>
+	<li>For Colorado based hires: Estimated annual salary of $114,000 - $157,000</li>
 	<li>For New York City, Washington, Washington D.C. based hires: Estimated annual salary of $126,000 - $173,000.</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3>Equity</h3>
+<p>This role is eligible to participate in Cloudflare's equity plan.</p>
+<h3>Benefits</h3>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>Health &amp; Welfare Benefits</p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -81,14 +85,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<p>Financial Benefits</p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<p>Time Off</p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

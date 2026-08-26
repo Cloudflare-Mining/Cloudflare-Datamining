@@ -3,10 +3,17 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h2>Available Locations</h2>
+<h3>Available Locations</h3>
 <ul>
-	<li>Remote US</li>
+	<li>Atlanta, US</li>
+	<li>Austin, US</li>
+	<li>Denver, US</li>
+	<li>New York, US</li>
+	<li>San Francisco, US</li>
+	<li>Seattle, US</li>
+	<li>US</li>
 </ul>
+<p><strong>Applications will be accepted until September 20, 2026.</strong></p>
 <h2>About the role</h2>
 <p>Cloudflare is growing our People team. Our focus is finding the best people to work at Cloudflare and then allowing them to do their best work. As we continue to scale our global organization, we are looking for a trusted Business Partner who is naturally curious about our technology, deeply invested in our business strategy, and driven to help our people thrive.In this role, you will report to the Senior Director, People Team Business Partners and serve as a heavy-hitting strategic partner to our senior leadership across Product, Engineering and Security.</p>
 <p>You won't just execute HR programs; you will actively architect them. You will focus on macro-level organizational design, sophisticated talent management strategies, systemic change leadership, and workforce planning that aligns directly with our aggressive business goals. Moving at our pace brings a lot of change, complexity, and ambiguity—and a little bit of chaos. Cloudflarians thrive on that and are comfortable being uncomfortable. You will bring critical thought, deep business acumen, and a strong point of view to help our leaders navigate this unrelenting pace, transforming potential friction into high-impact execution.</p>
@@ -29,16 +36,16 @@
 	<li><strong>Empathic Influencer &amp; Communicator:</strong> You lead with empathy but do not shy away from radical candor. You are a masterful communicator—whether presenting to executives, writing strategic proposals, or delivering difficult feedback face-to-face.</li>
 	<li><strong>High Integrity:</strong> Uncompromising when it comes to your ethics, you speak truth to power, act with deep respect, and lead with dignity.</li>
 </ul>
-<h2>Compensation</h2>
+<h3>Compensation</h3>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For San Francisco Bay Area based hires: Estimated annual salary of $187,000 - $257,000.</li>
-	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $178,000 - $245,000.</li>
+	<li>For San Francisco Bay Area based hires: Estimated annual salary of $187,000 - $257,000</li>
+	<li>For New York City, Washington, and California (excluding Bay Area) based hires. Estimated annual salary of $178,000 - $245,000</li>
 	<li>For Colorado based hires: Estimated annual salary of $162,000 - $223,000</li>
 </ul>
 <h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<p>This role is eligible to participate in Cloudflare's equity plan.</p>
+<h3>Benefits</h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <p>Health &amp; Welfare Benefits</p>
 <ul>

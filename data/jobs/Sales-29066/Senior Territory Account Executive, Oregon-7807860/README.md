@@ -4,49 +4,43 @@
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
 <h3><strong>Available Location: This is a remote role but the location requirement is that you reside in Oregon<br></strong></h3>
-<hr>
-<p><strong>What you'll do</strong></p>
-<p>Cloudflare is looking for highly motivated Territory Account Executives seeking a role with the opportunity to help build a GTM working with some of the largest companies in North America. This position will manage a focused set of ~20-30 accounts with $1B -$25B in annual revenues. The Enterprise Account team will shape and lead Cloudflare’s Go To Market.</p>
-<p>We will leverage the strength of all Cloudflare functions to become a strategic partner to our customers and their digital transformation efforts. Our product and services and our methods of engagement will differentiate and delight our customers.</p>
-<p>The AE will interact with both C-level clients and senior technical decision makers, utilizing Cloudflare solutions and resources to drive a business partnership focused on joint success with our customers.&nbsp; Success requires consultative, solutions-oriented sales, and customer service skills in addition to intense personal energy and focused activity. A critical factor of achievement in this role is the ability and desire to focus and lead an internal group of constituents to bring their skillset to bear to build solutions and exponentially grow revenue. The AE must be expert in identifying business opportunities with customers, developing Enterprise Account Plans, driving execution across functional stakeholders, and closing revenue. The Enterprise Account Executive should be comfortable engaging in business level outcome conversations with the C-suite, presenting Cloudflare’s vision and plan for value creation to all levels, and negotiating win-win scenarios for all parties. The AE will be accountable to obtaining new business and expansion of Cloudflare wallet-share within existing customers. The role involves handling multiple accounts and will require high degrees of attention to detail and coordination with customers, partners, and internal resources. Lastly, the AE should thrive in an entrepreneurial environment where initiative is celebrated and enthusiasm for the possible is expected.</p>
-<p><strong>Enterprise Account Team Core Values:</strong></p>
-<p>Be Successful – Success comes from hitting your goals on a consistent basis. Have a plan for “how” you’ll hit your goals and evaluate often; that way you always know where you stand. Be in a position and ready to demonstrate your plan for success.</p>
-<p>Provide Customers with a Premium Business Experience - Solutions, Empathy, Proactiveness, Anticipation of needs, Company Support, Creativity, and Urgency to Deliver Value are core principles of a Cloudflare Strategic Account Experience. Give your customers a level of service that is unmatched in the industry.</p>
-<p>Be Brilliant in the Basics - The hallmark of a high performance team is their willingness to commit to Brilliance in the Basics in all aspects of their roles. Forecasting, SFDC Disciplines, Pipeline Management, Account Engagement, Negotiation, Closing, and Depth of Cloudflare Knowledge are the basic skills that make a Strategic Account Executive successful.</p>
-<p>Make Bold Decisions - Operating with the largest companies in the world is a “game of inches”. Often the Enterprise Account Executive will have to make strategic decisions on engagement, terms, and support. These decisions should be made by the AE who is closest to the issue and most affected by it. Top down management of accounts is outdated because of the speed of today’s business. If execution presents risk, Seek the advice of leaders when and where you need it.</p>
-<p>Teammate - We are all individually accountable to our goals, but we operate as a team. No one person has all the answers, but collectively the knowledge, experience, and acumen of the team is deep. Be the person who actively seeks to assist the team, shares knowledge, and extends your personal network. We are successful when we are all overachieving as a group.</p>
-<p><strong>Additional responsibilities will include:</strong></p>
+<p><strong>About the Department</strong></p>
+<p>Account Executives, Channel Account Managers, Business Development Representatives, Solution Engineers, Customer Success, and Sales Operations - all working together help our customers adopt Cloudflare and create great Internet-enabled experiences. The sales team at Cloudflare helps customers solve real, technical problems while creating the revenue streams that help the company provide free service to millions in our community.</p>
+<p><strong>About this Role</strong></p>
+<p>This role within the mid-market segment focuses on both the acquisition of new Territory accounts, as well as the expansion of existing customer accounts.&nbsp; Within the mid-market segment, you will work a set of accounts in the territory sub-segments. The ideal candidate will have both a sales and technical background that enables them to drive customer engagement from technical professionals through to senior executive levels, and across Security, Network, Development and Infrastructure teams.&nbsp;&nbsp;</p>
+<p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li>Proactively manage and grow a portfolio of assigned Enterprise level clients.</li>
-	<li>Close new and expansion business monthly, quarterly, and annual basis, meeting or exceeding assigned quota.</li>
-	<li>Manage customer relationships and assume ownership of deadlines and deliverables to ensure Cloudflare is correctly positioned to win business.</li>
-	<li>Develop C level and Decision Maker relationships within accounts for the purpose of establishing strategic alignment to customer’s transformative objectives.</li>
-	<li>Develop pipeline by maintaining a high level of activity/outreach directly and indirectly, deeply understanding the customers goals and objectives, and analyzing where Cloudflare can add value.</li>
-	<li>Maintain accurate forecasts and report to the sales leader on the status of New and Expansion opportunities for weekly sales meetings. Leverage MEDDPIC framework in SFDC document weekly progress.</li>
-	<li>Accountable to reverse closure steps and establish jointly owned timelines with Customers. Understand the purchasing process fully and be able to document progress against required steps to closure.</li>
-	<li>Organize and deliver executive level presentations, proposals, commercial terms with Customers.</li>
-	<li>Leverage the Executive Briefing Center and process to establish key sponsorships and support of accounts with Cloudflare Executives.</li>
-	<li>Build and maintain relationships with channel partners to establish joint value propositions and Customer value.</li>
-	<li>Participate in team meetings and deliver GTM guidance on how to better partner with accounts.</li>
+	<li>Develop and execute a comprehensive account/territory plan to achieve quarterly sales and annual revenue targets in a defined territory and/or account list.</li>
+	<li>Drive new business acquisition (new customer logos), customer expansion (upsell and cross sell Cloudflare solutions), and renewal within your territory.</li>
+	<li>Engage in account mapping sessions with partners, including training new partners on our technology and GTM strategies.</li>
+	<li>Developing scalable relationships with target partners, to expand partner ecosystem in a specific region.</li>
+	<li>Build a robust sales pipeline through continual engagement and nurturing of key prospect accounts.</li>
+	<li>Understand customer use-cases and how they pair with Cloudflare’s portfolio solutions in order to identify new sales opportunities.</li>
+	<li>Craft and communicate compelling value propositions for Cloudflare services. Drive awareness through regular outbound campaigns on product and feature roadmap updates.&nbsp;</li>
+	<li>Accurately forecast commercial outcomes by running a consistent sales process, including driving next step expectations and contract negotiations.</li>
+	<li>As a trusted advisor, build long-term strategic relationships with key accounts, to ensure customer adoption, retention and expansion. Regularly evaluate usage trends and articulate value to show Cloudflare impact and provide strategic recommendations during business reviews.&nbsp;</li>
+	<li>Network across different business units with each of your accounts, and multi-thread to identify and engage new divisional buyers.</li>
+	<li>Position Cloudflare's platform in each of your target customers, including Cloudflare One and the Connectivity Cloud to realize our full potential in every customer.</li>
+	<li>Operate internally as a liaison with cross-functional teams to share key customer feedback and insights to improve customer experience and further investments with Cloudflare.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Requirements:</strong></p>
 <ul>
-	<li>6+ years of experience coupled with proficiency in Cloud Networking and Security Technology with industry awareness.</li>
-	<li>Demonstrated track record of meeting and exceeding quota.</li>
-	<li>Expert Sales Acumen (Discovery, Position, Compete, Negotiate, Close, Expand).</li>
-	<li>Ability to lead a multidisciplinary team over a long term account horizon.</li>
-	<li>Able to identify key players in organizations and possess the ability to convert business issues into solutions.</li>
-	<li>Comfortable selling to obtain new business or expand existing business. Strong closing skills are essential.</li>
-	<li>Ability to build meaningful relationships quickly.</li>
-	<li>Someone who acts with integrity and honesty in all situations.</li>
-	<li>Be able to demonstrate a positive attitude internally and externally.</li>
-	<li>Expert at building rapport and owning the room.</li>
-	<li>Aggressiveness in execution and planning.</li>
-	<li>Ability to take successes and challenges in stride.</li>
-	<li>Discipline to work w/o instant gratification.</li>
-	<li>Someone who is bold in their actions and never satisfied with complacency.</li>
-	<li>A strong will and fortitude to work a plan in the face of challenge.</li>
-	<li>A business professional who loves the sales profession.</li>
+	<li>3+ years of direct B2B selling experience</li>
+	<li>Strong interpersonal communication (verbal and written) and organizational skills</li>
+	<li>Self-motivated; entrepreneurial spirit</li>
+	<li>Comfortable working in a fast paced dynamic environment</li>
+	<li>Bachelor's degree required</li>
+	<li>Demonstrated analytical and quantitative abilities</li>
+	<li>Software and system skills are a must (SFDC, Tableau, G-suite, MSFT suite)</li>
+</ul>
+<h3><strong>Examples of desirable skills, knowledge and experience:</strong></h3>
+<ul>
+	<li>5+ years in Software/SaaS/Security Sales &amp; Channel management.</li>
+	<li>Existing relationships and/or strong familiarity of the partner ecosystem in the region that they cover.</li>
+	<li>Understanding of cloud infrastructure ecosystem and cloud security is highly preferred.</li>
+	<li>Experience working in a start-up environment.</li>
+	<li>Ability to travel up to 25% of the time.</li>
+	<li>Technical competence strongly preferred.</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>

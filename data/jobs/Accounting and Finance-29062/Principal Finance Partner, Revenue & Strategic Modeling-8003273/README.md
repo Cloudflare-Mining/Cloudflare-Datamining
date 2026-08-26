@@ -3,13 +3,14 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h2>Available Locations</h2>
+<h3>Available Locations</h3>
 <ul>
 	<li>Austin, US</li>
 	<li>Denver, US</li>
 	<li>San Francisco, US</li>
 	<li>Seattle, US</li>
 </ul>
+<p><strong>Applications will be accepted until September 13, 2026.</strong></p>
 <h2>About the Role</h2>
 <p>The Finance &amp; BizOps team provides the financial insights and strategic guidance to shape Cloudflare's growth, profitability, and investment strategy. We're partners who embed across the business—connecting strategy to execution, driving planning and analysis, and collaborating with cross-functional leaders to develop and deliver key priorities. This team of passionate problem-solvers thrives in a fast-paced environment, designing and implementing high-quality, scalable solutions.</p>
 <p>We're looking for a seasoned, builder-minded revenue finance leader to own and advance our revenue model. In this high-visibility individual-contributor role, you'll be the engine behind how we forecast the topline—designing the methodology, running the planning cycles, and translating complex outputs into clear narratives for senior leadership. You'll partner closely with the Accounting, Business Operations, Anaplan, and broader FP&amp;A teams.</p>
@@ -43,17 +44,16 @@
 	<li>Strong executive presence: able to distill complex modeling outputs into simple, consumable, actionable takeaways for senior leaders and the board.</li>
 	<li>Bachelor's degree in Finance, Accounting, Economics, or a quantitative field.</li>
 </ul>
-<h2>Compensation</h2>
-<p><strong>Compensation</strong></p>
+<h3>Compensation</h3>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
 	<li>For San Francisco Bay Area based hires: Estimated annual salary of $188,000 - $259,000.</li>
 	<li>For Washington based hires: Estimated annual salary of $179,000 - $246,000.</li>
-	<li>For Colorado based hires: Estimated annual salary of $163,000 - $204,000.</li>
+	<li>For Colorado based hires: Estimated annual salary of $163,000 - $224,000</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h3>Equity</h3>
+<p>This role is eligible to participate in Cloudflare's equity plan.</p>
+<h3>Benefits</h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <p>Health &amp; Welfare Benefits</p>
 <ul>
