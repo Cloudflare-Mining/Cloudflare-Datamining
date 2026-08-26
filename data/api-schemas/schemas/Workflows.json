@@ -257,7 +257,9 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "workflows.triggers",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/workflows/{workflow_name}": {
 		"operationId": "wor-delete-workflow",
@@ -1084,7 +1086,9 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "workflows.triggers",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workflows": {
 		"operationId": "wor-list-workflows",
@@ -1995,7 +1999,7 @@
 											"type": "number"
 										},
 										"total_count": {
-											"description": "Deprecated: total count is not reliable with cursor-based pagination.",
+											"description": "Deprecated: cursor-based pagination can produce an inaccurate total count.",
 											"type": "number",
 											"deprecated": true
 										},
@@ -2459,7 +2463,7 @@
 																				]
 																			},
 																			"delay": {
-																				"description": "Specifies the delay duration. '[dynamic]' indicates the delay is computed by a user-supplied function.",
+																				"description": "Specifies the delay duration. The value '[dynamic]' means that a user-supplied function computes the delay.",
 																				"anyOf": [
 																					{
 																						"type": "string"
@@ -3046,7 +3050,7 @@
 											"type": "string"
 										},
 										"output": {
-											"description": "Full step output or waitForEvent payload without truncation. Sensitive outputs are returned as '[REDACTED]'. Populated when status='complete'. May be a ReadableStream when the step returned one from step.do; stream outputs are served as application/octet-stream rather than JSON.",
+											"description": "Contains the full step output or waitForEvent payload without truncation. Uses '[REDACTED]' for sensitive outputs. Contains a value when status='complete'. May contain a ReadableStream when step.do returns one; the response serves stream outputs as application/octet-stream rather than JSON.",
 											"type": "object"
 										},
 										"status": {
@@ -3376,7 +3380,7 @@
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/subscribe": {
 		"operationId": "wor-subscribe-workflow-instance-events",
 		"summary": "Subscribe to workflow instance events",
-		"description": "Upgrades the request to a WebSocket that streams workflow instance events.",
+		"description": "Opens a WebSocket that streams workflow instance events.",
 		"parameters": [
 			{
 				"name": "workflow_name",
@@ -3568,7 +3572,9 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "workflows.instances",
+		"x-fern-sdk-method-name": "subscribe"
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances/terminate": {
 		"operationId": "wor-status-terminate-workflow-instances",
@@ -3837,7 +3843,9 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "workflows.instances.batch",
+		"x-fern-sdk-method-name": "terminationStatus"
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/versions": {
 		"operationId": "wor-list-workflow-versions",
@@ -3959,7 +3967,7 @@
 												"format": "uuid"
 											},
 											"language": {
-												"description": "The programming language of the workflow implementation",
+												"description": "The programming language of the workflow implementation.",
 												"type": "string",
 												"enum": [
 													"javascript",
@@ -4237,7 +4245,7 @@
 											"format": "uuid"
 										},
 										"language": {
-											"description": "The programming language of the workflow implementation",
+											"description": "The programming language of the workflow implementation.",
 											"type": "string",
 											"enum": [
 												"javascript",
@@ -4701,7 +4709,9 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "workflows.versions",
+		"x-fern-sdk-method-name": "dag"
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/versions/{version_id}/graph": {
 		"operationId": "wor-describe-workflow-versions-graph",
@@ -6311,7 +6321,9 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "workflows.triggers",
+		"x-fern-sdk-method-name": "add"
 	},
 	"PATCH /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/status": {
 		"operationId": "wor-change-status-workflow-instance",
@@ -6754,6 +6766,8 @@
 			"free": true,
 			"pro": true
 		},
+		"x-fern-sdk-group-name": "workflows.instances.status",
+		"x-fern-sdk-method-name": "edit",
 		"x-forge-aliases": [
 			{
 				"x-fern-availability": "generally-available",
@@ -6823,7 +6837,7 @@
 	"PATCH /accounts/{account_id}/workflows/settings": {
 		"operationId": "wor-update-workflow-settings",
 		"summary": "Update account settings",
-		"description": "Partially updates account-level Workflows settings; only the fields present in the body are changed.",
+		"description": "Updates only the account-level Workflows settings fields present in the request body.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -7121,7 +7135,7 @@
 						"type": "object",
 						"properties": {
 							"instance_id": {
-								"description": "An id of exactly `cf_` followed by 64 lowercase hex characters is reserved for system-generated instances.",
+								"description": "The system reserves IDs that consist of the `cf_` prefix and exactly 64 lowercase hexadecimal characters.",
 								"type": "string",
 								"maximum": 100,
 								"minimum": 1,
@@ -7186,6 +7200,8 @@
 									"enam",
 									"eeur",
 									"apac",
+									"apac-ne",
+									"apac-se",
 									"oc",
 									"sam",
 									"afr",
@@ -7827,7 +7843,7 @@
 						"items": {
 							"properties": {
 								"instance_id": {
-									"description": "An id of exactly `cf_` followed by 64 lowercase hex characters is reserved for system-generated instances.",
+									"description": "The system reserves IDs that consist of the `cf_` prefix and exactly 64 lowercase hexadecimal characters.",
 									"type": "string",
 									"maximum": 100,
 									"minimum": 1,
@@ -7892,6 +7908,8 @@
 										"enam",
 										"eeur",
 										"apac",
+										"apac-ne",
+										"apac-se",
 										"oc",
 										"sam",
 										"afr",
@@ -8226,7 +8244,7 @@
 							"instances": {
 								"type": "array",
 								"items": {
-									"description": "Instance identifier. Accepts user-created ids (`^[a-zA-Z0-9_][a-zA-Z0-9-_]*$`, max 100 characters) and the system-generated ids returned by instance creation, which are `cf_` or `-` followed by exactly 64 lowercase hex characters.",
+									"description": "Instance identifier. Accepts user-created IDs (`^[a-zA-Z0-9_][a-zA-Z0-9-_]*$`, maximum 100 characters) and system-generated IDs that consist of a `cf_` or `-` prefix and exactly 64 lowercase hexadecimal characters.",
 									"maxLength": 100,
 									"minLength": 1,
 									"pattern": "^(-[0-9a-f]{64}|[a-zA-Z0-9_][a-zA-Z0-9-_]*)$",
@@ -8513,12 +8531,14 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "workflows.instances.batch",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"POST /accounts/{account_id}/workflows/{workflow_name}/instances/batch/terminate": {
 		"operationId": "wor-batch-terminate-workflow-instances",
 		"summary": "Batch terminate instances of a workflow",
-		"description": "Terminates multiple workflow instances in a single batch operation.",
+		"description": "Performs a batch termination of multiple workflow instances.",
 		"parameters": [
 			{
 				"name": "workflow_name",
@@ -8801,7 +8821,9 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "workflows.instances.batch",
+		"x-fern-sdk-method-name": "terminate"
 	},
 	"PUT /accounts/{account_id}/triggers/{script_name}": {
 		"operationId": "wor-replace-script-triggers",
@@ -9200,7 +9222,9 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "workflows.triggers",
+		"x-fern-sdk-method-name": "replace"
 	},
 	"PUT /accounts/{account_id}/workflows/{workflow_name}": {
 		"operationId": "wor-create-or-modify-workflow",
@@ -9557,6 +9581,8 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "workflows",
+		"x-fern-sdk-method-name": "update"
 	}
 }
