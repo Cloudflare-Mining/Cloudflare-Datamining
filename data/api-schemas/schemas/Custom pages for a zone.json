@@ -1386,7 +1386,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "custom-pages.zone-custom-pages.preview-tokens",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_identifier}/custom_pages/{identifier}": {
 		"operationId": "custom-pages-for-a-zone-update-a-custom-page",

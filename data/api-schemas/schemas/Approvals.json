@@ -31,6 +31,7 @@
 								"pending",
 								"approved",
 								"rejected",
+								"cancelled",
 								"all"
 							],
 							"example": "pending",
@@ -42,12 +43,13 @@
 									"pending",
 									"approved",
 									"rejected",
+									"cancelled",
 									"all"
 								],
 								"example": "pending",
 								"type": "string"
 							},
-							"maxItems": 3,
+							"maxItems": 4,
 							"minItems": 1,
 							"type": "array"
 						}
@@ -120,6 +122,16 @@
 						"delete"
 					]
 				}
+			},
+			{
+				"name": "rule_id",
+				"in": "query",
+				"description": "Filter approvals by rule ID.",
+				"schema": {
+					"description": "Filter approvals by rule ID.",
+					"type": "string",
+					"format": "uuid"
+				}
 			}
 		],
 		"responses": {
@@ -142,6 +154,20 @@
 												"description": "Whether the authenticated user may approve or reject this pending change.",
 												"type": "boolean",
 												"example": true
+											},
+											"cancelled_at": {
+												"description": "Time at which the requester cancelled the approval.",
+												"type": "number",
+												"example": 1679529600000,
+												"nullable": true,
+												"x-auditable": true
+											},
+											"cancelled_by": {
+												"description": "Requester who cancelled the pending approval.",
+												"type": "string",
+												"example": "requester@example.com",
+												"nullable": true,
+												"x-auditable": true
 											},
 											"change_description": {
 												"type": "string",
@@ -231,7 +257,6 @@
 															"path",
 															"description",
 															"namespaces",
-															"content",
 															"is_public",
 															"enabled",
 															"created_by",
@@ -377,7 +402,8 @@
 												"enum": [
 													"pending",
 													"approved",
-													"rejected"
+													"rejected",
+													"cancelled"
 												]
 											},
 											"superseded_by_approval_id": {
@@ -406,6 +432,8 @@
 											"status",
 											"reviewed_at",
 											"rejection_reason",
+											"cancelled_by",
+											"cancelled_at",
 											"supersedes_approval_id",
 											"superseded_by_approval_id",
 											"revision_number",
@@ -531,6 +559,20 @@
 											"type": "boolean",
 											"example": true
 										},
+										"cancelled_at": {
+											"description": "Time at which the requester cancelled the approval.",
+											"type": "number",
+											"example": 1679529600000,
+											"nullable": true,
+											"x-auditable": true
+										},
+										"cancelled_by": {
+											"description": "Requester who cancelled the pending approval.",
+											"type": "string",
+											"example": "requester@example.com",
+											"nullable": true,
+											"x-auditable": true
+										},
 										"change_description": {
 											"type": "string",
 											"example": "Updated rule content"
@@ -550,6 +592,101 @@
 											"type": "string",
 											"example": "Tighten regex to reduce false positives on legit CI workers.",
 											"nullable": true
+										},
+										"compiler_warnings": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"column": {
+														"type": "integer"
+													},
+													"footers": {
+														"type": "array",
+														"items": {
+															"properties": {
+																"level": {
+																	"type": "string"
+																},
+																"text": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"level",
+																"text"
+															],
+															"type": "object"
+														},
+														"default": []
+													},
+													"labels": {
+														"type": "array",
+														"items": {
+															"properties": {
+																"code_origin": {
+																	"type": "string",
+																	"nullable": true
+																},
+																"column": {
+																	"type": "integer"
+																},
+																"level": {
+																	"type": "string"
+																},
+																"line": {
+																	"type": "integer"
+																},
+																"span": {
+																	"type": "object",
+																	"properties": {
+																		"end": {
+																			"type": "integer"
+																		},
+																		"start": {
+																			"type": "integer"
+																		}
+																	},
+																	"required": [
+																		"start",
+																		"end"
+																	]
+																},
+																"text": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"level",
+																"code_origin",
+																"line",
+																"column",
+																"span",
+																"text"
+															],
+															"type": "object"
+														},
+														"default": []
+													},
+													"line": {
+														"type": "integer"
+													},
+													"text": {
+														"type": "string"
+													},
+													"title": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"title",
+													"text"
+												]
+											}
 										},
 										"current_rule": {
 											"anyOf": [
@@ -654,6 +791,39 @@
 															"type": "number",
 															"nullable": true
 														},
+														"pending_change": {
+															"description": "Proposed update or deletion awaiting approval. The other rule fields describe the currently applied version.",
+															"type": "object",
+															"properties": {
+																"approval_id": {
+																	"type": "number",
+																	"example": 12345
+																},
+																"requested_at": {
+																	"type": "number",
+																	"example": 1679529600000
+																},
+																"requested_by": {
+																	"type": "string",
+																	"example": "user@example.com"
+																},
+																"type": {
+																	"type": "string",
+																	"example": "update",
+																	"enum": [
+																		"update",
+																		"delete"
+																	]
+																}
+															},
+															"nullable": true,
+															"required": [
+																"approval_id",
+																"type",
+																"requested_at",
+																"requested_by"
+															]
+														},
 														"structured_source": {
 															"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
 															"type": "string",
@@ -676,14 +846,14 @@
 														"path",
 														"description",
 														"namespaces",
-														"content",
 														"is_public",
 														"enabled",
 														"created_at",
 														"updated_at",
 														"created_by",
 														"updated_by",
-														"pending_approval_id"
+														"pending_approval_id",
+														"pending_change"
 													]
 												},
 												{
@@ -759,7 +929,6 @@
 														"path",
 														"description",
 														"namespaces",
-														"content",
 														"is_public",
 														"enabled",
 														"created_by",
@@ -905,7 +1074,8 @@
 											"enum": [
 												"pending",
 												"approved",
-												"rejected"
+												"rejected",
+												"cancelled"
 											]
 										},
 										"superseded_by_approval_id": {
@@ -934,6 +1104,8 @@
 										"status",
 										"reviewed_at",
 										"rejection_reason",
+										"cancelled_by",
+										"cancelled_at",
 										"supersedes_approval_id",
 										"superseded_by_approval_id",
 										"revision_number",
@@ -1024,6 +1196,128 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules.approvals",
 		"x-fern-sdk-method-name": "get"
+	},
+	"POST /accounts/{account_id}/cloudforce-one/rules/approvals/{id}/cancel": {
+		"operationId": "cloudforce-one-cancel-rule-approval",
+		"summary": "Cancel a pending approval",
+		"description": "Cancel a pending rule approval. Only its original requester may cancel it.",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
+				}
+			},
+			{
+				"name": "id",
+				"in": "path",
+				"description": "The unique identifier for the approval.",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for the approval.",
+					"type": "string",
+					"example": "1"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Approval cancelled",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"success": {
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Not authorized to cancel this approval",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Approval not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Approval is no longer pending",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Approvals"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules.approvals",
+		"x-fern-sdk-method-name": "cancel",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/rules/approvals/{id}/resubmit": {
 		"operationId": "cloudforce-one-resubmit-rule-approval",
@@ -1218,6 +1512,9 @@
 		],
 		"tags": [
 			"Approvals"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules.approvals",
+		"x-fern-sdk-method-name": "resubmit"
 	}
 }

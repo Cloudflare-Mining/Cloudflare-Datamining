@@ -5246,6 +5246,24 @@
 										"description": "Attempt to proceed when 'awaited' events fail or timeout.",
 										"type": "boolean"
 									},
+									"contentUse": {
+										"description": "Intended content use level to respect the `use` Content-Signal directive in robots.txt. Levels (least to most permissive): 'reference', 'full'. A URL is disallowed when the publisher's declared `use` level is lower than this intent. Learn more: https://contentsignals.org/. Default: 'full'.",
+										"default": "full",
+										"anyOf": [
+											{
+												"enum": [
+													"reference"
+												],
+												"type": "string"
+											},
+											{
+												"enum": [
+													"full"
+												],
+												"type": "string"
+											}
+										]
+									},
 									"cookies": {
 										"description": "Check [options](https://pptr.dev/api/puppeteer.page.setcookie).",
 										"type": "array",
@@ -5859,6 +5877,24 @@
 							{
 								"additionalProperties": false,
 								"properties": {
+									"contentUse": {
+										"description": "Intended content use level to respect the `use` Content-Signal directive in robots.txt. Levels (least to most permissive): 'reference', 'full'. A URL is disallowed when the publisher's declared `use` level is lower than this intent. Learn more: https://contentsignals.org/. Default: 'full'.",
+										"default": "full",
+										"anyOf": [
+											{
+												"enum": [
+													"reference"
+												],
+												"type": "string"
+											},
+											{
+												"enum": [
+													"full"
+												],
+												"type": "string"
+											}
+										]
+									},
 									"crawlPurposes": {
 										"description": "List of crawl purposes to respect Content-Signal directives in robots.txt. Allowed values: 'search', 'ai-input', 'ai-train'. Learn more: https://contentsignals.org/. Default: ['search', 'ai-input', 'ai-train'].",
 										"type": "array",

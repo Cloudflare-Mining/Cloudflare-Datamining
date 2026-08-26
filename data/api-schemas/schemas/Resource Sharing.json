@@ -217,7 +217,8 @@
 																	"gateway-destination-ip",
 																	"gateway-block-page-settings",
 																	"gateway-extended-email-matching",
-																	"idp-federation-grant"
+																	"idp-federation-grant",
+																	"trust-grant"
 																],
 																"x-auditable": true
 															},
@@ -732,7 +733,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "resource-sharing.excluded_recipients",
+		"x-fern-sdk-group-name": "resource-sharing.excluded-recipients",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}": {
@@ -1232,7 +1233,8 @@
 														"gateway-destination-ip",
 														"gateway-block-page-settings",
 														"gateway-extended-email-matching",
-														"idp-federation-grant"
+														"idp-federation-grant",
+														"trust-grant"
 													],
 													"x-auditable": true
 												},
@@ -1495,7 +1497,8 @@
 							"gateway-destination-ip",
 							"gateway-block-page-settings",
 							"gateway-extended-email-matching",
-							"idp-federation-grant"
+							"idp-federation-grant",
+							"trust-grant"
 						],
 						"x-auditable": true
 					}
@@ -1821,7 +1824,8 @@
 																		"gateway-destination-ip",
 																		"gateway-block-page-settings",
 																		"gateway-extended-email-matching",
-																		"idp-federation-grant"
+																		"idp-federation-grant",
+																		"trust-grant"
 																	],
 																	"x-auditable": true
 																},
@@ -2279,7 +2283,8 @@
 																	"gateway-destination-ip",
 																	"gateway-block-page-settings",
 																	"gateway-extended-email-matching",
-																	"idp-federation-grant"
+																	"idp-federation-grant",
+																	"trust-grant"
 																],
 																"x-auditable": true
 															},
@@ -2853,7 +2858,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "resource-sharing.excluded_recipients",
+		"x-fern-sdk-group-name": "resource-sharing.excluded-recipients",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/shares/{share_id}/excluded-recipients/{excluded_recipient_id}": {
@@ -3149,7 +3154,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "resource-sharing.excluded_recipients",
+		"x-fern-sdk-group-name": "resource-sharing.excluded-recipients",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/shares/{share_id}/recipients": {
@@ -3979,7 +3984,8 @@
 						"gateway-destination-ip",
 						"gateway-block-page-settings",
 						"gateway-extended-email-matching",
-						"idp-federation-grant"
+						"idp-federation-grant",
+						"trust-grant"
 					],
 					"x-auditable": true
 				}
@@ -4164,7 +4170,8 @@
 															"gateway-destination-ip",
 															"gateway-block-page-settings",
 															"gateway-extended-email-matching",
-															"idp-federation-grant"
+															"idp-federation-grant",
+															"trust-grant"
 														],
 														"x-auditable": true
 													},
@@ -4505,7 +4512,8 @@
 														"gateway-destination-ip",
 														"gateway-block-page-settings",
 														"gateway-extended-email-matching",
-														"idp-federation-grant"
+														"idp-federation-grant",
+														"trust-grant"
 													],
 													"x-auditable": true
 												},
@@ -4767,7 +4775,8 @@
 							"gateway-destination-ip",
 							"gateway-block-page-settings",
 							"gateway-extended-email-matching",
-							"idp-federation-grant"
+							"idp-federation-grant",
+							"trust-grant"
 						],
 						"x-auditable": true
 					}
@@ -5059,7 +5068,8 @@
 																		"gateway-destination-ip",
 																		"gateway-block-page-settings",
 																		"gateway-extended-email-matching",
-																		"idp-federation-grant"
+																		"idp-federation-grant",
+																		"trust-grant"
 																	],
 																	"x-auditable": true
 																},
@@ -5388,7 +5398,8 @@
 												"gateway-destination-ip",
 												"gateway-block-page-settings",
 												"gateway-extended-email-matching",
-												"idp-federation-grant"
+												"idp-federation-grant",
+												"trust-grant"
 											],
 											"x-auditable": true
 										}
@@ -5599,7 +5610,8 @@
 																	"gateway-destination-ip",
 																	"gateway-block-page-settings",
 																	"gateway-extended-email-matching",
-																	"idp-federation-grant"
+																	"idp-federation-grant",
+																	"trust-grant"
 																],
 																"x-auditable": true
 															},
@@ -6128,7 +6140,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "resource-sharing.excluded_recipients",
+		"x-fern-sdk-group-name": "resource-sharing.excluded-recipients",
 		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/shares/{share_id}/recipients": {
@@ -6578,7 +6590,8 @@
 									"gateway-destination-ip",
 									"gateway-block-page-settings",
 									"gateway-extended-email-matching",
-									"idp-federation-grant"
+									"idp-federation-grant",
+									"trust-grant"
 								],
 								"x-auditable": true
 							}
@@ -6701,7 +6714,8 @@
 														"gateway-destination-ip",
 														"gateway-block-page-settings",
 														"gateway-extended-email-matching",
-														"idp-federation-grant"
+														"idp-federation-grant",
+														"trust-grant"
 													],
 													"x-auditable": true
 												},
@@ -7131,7 +7145,8 @@
 																	"gateway-destination-ip",
 																	"gateway-block-page-settings",
 																	"gateway-extended-email-matching",
-																	"idp-federation-grant"
+																	"idp-federation-grant",
+																	"trust-grant"
 																],
 																"x-auditable": true
 															},
@@ -7562,7 +7577,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "resource-sharing.excluded_recipients",
+		"x-fern-sdk-group-name": "resource-sharing.excluded-recipients",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/shares/{share_id}/recipients": {
@@ -7970,7 +7985,8 @@
 														"gateway-destination-ip",
 														"gateway-block-page-settings",
 														"gateway-extended-email-matching",
-														"idp-federation-grant"
+														"idp-federation-grant",
+														"trust-grant"
 													],
 													"x-auditable": true
 												},

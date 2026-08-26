@@ -866,6 +866,39 @@
 												"type": "number",
 												"nullable": true
 											},
+											"pending_change": {
+												"description": "Proposed update or deletion awaiting approval. The other rule fields describe the currently applied version.",
+												"type": "object",
+												"properties": {
+													"approval_id": {
+														"type": "number",
+														"example": 12345
+													},
+													"requested_at": {
+														"type": "number",
+														"example": 1679529600000
+													},
+													"requested_by": {
+														"type": "string",
+														"example": "user@example.com"
+													},
+													"type": {
+														"type": "string",
+														"example": "update",
+														"enum": [
+															"update",
+															"delete"
+														]
+													}
+												},
+												"nullable": true,
+												"required": [
+													"approval_id",
+													"type",
+													"requested_at",
+													"requested_by"
+												]
+											},
 											"structured_source": {
 												"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
 												"type": "string",
@@ -888,14 +921,14 @@
 											"path",
 											"description",
 											"namespaces",
-											"content",
 											"is_public",
 											"enabled",
 											"created_at",
 											"updated_at",
 											"created_by",
 											"updated_by",
-											"pending_approval_id"
+											"pending_approval_id",
+											"pending_change"
 										]
 									}
 								},
@@ -1082,6 +1115,39 @@
 									"type": "number",
 									"nullable": true
 								},
+								"pending_change": {
+									"description": "Proposed update or deletion awaiting approval. The other rule fields describe the currently applied version.",
+									"type": "object",
+									"properties": {
+										"approval_id": {
+											"type": "number",
+											"example": 12345
+										},
+										"requested_at": {
+											"type": "number",
+											"example": 1679529600000
+										},
+										"requested_by": {
+											"type": "string",
+											"example": "user@example.com"
+										},
+										"type": {
+											"type": "string",
+											"example": "update",
+											"enum": [
+												"update",
+												"delete"
+											]
+										}
+									},
+									"nullable": true,
+									"required": [
+										"approval_id",
+										"type",
+										"requested_at",
+										"requested_by"
+									]
+								},
 								"structured_source": {
 									"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
 									"type": "string",
@@ -1104,14 +1170,14 @@
 								"path",
 								"description",
 								"namespaces",
-								"content",
 								"is_public",
 								"enabled",
 								"created_at",
 								"updated_at",
 								"created_by",
 								"updated_by",
-								"pending_approval_id"
+								"pending_approval_id",
+								"pending_change"
 							]
 						}
 					}
@@ -1717,6 +1783,39 @@
 														"type": "number",
 														"nullable": true
 													},
+													"pending_change": {
+														"description": "Proposed update or deletion awaiting approval. The other rule fields describe the currently applied version.",
+														"type": "object",
+														"properties": {
+															"approval_id": {
+																"type": "number",
+																"example": 12345
+															},
+															"requested_at": {
+																"type": "number",
+																"example": 1679529600000
+															},
+															"requested_by": {
+																"type": "string",
+																"example": "user@example.com"
+															},
+															"type": {
+																"type": "string",
+																"example": "update",
+																"enum": [
+																	"update",
+																	"delete"
+																]
+															}
+														},
+														"nullable": true,
+														"required": [
+															"approval_id",
+															"type",
+															"requested_at",
+															"requested_by"
+														]
+													},
 													"structured_source": {
 														"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
 														"type": "string",
@@ -1739,14 +1838,14 @@
 													"path",
 													"description",
 													"namespaces",
-													"content",
 													"is_public",
 													"enabled",
 													"created_at",
 													"updated_at",
 													"created_by",
 													"updated_by",
-													"pending_approval_id"
+													"pending_approval_id",
+													"pending_change"
 												]
 											},
 											{
@@ -2100,6 +2199,39 @@
 												"type": "number",
 												"nullable": true
 											},
+											"pending_change": {
+												"description": "Proposed update or deletion awaiting approval. The other rule fields describe the currently applied version.",
+												"type": "object",
+												"properties": {
+													"approval_id": {
+														"type": "number",
+														"example": 12345
+													},
+													"requested_at": {
+														"type": "number",
+														"example": 1679529600000
+													},
+													"requested_by": {
+														"type": "string",
+														"example": "user@example.com"
+													},
+													"type": {
+														"type": "string",
+														"example": "update",
+														"enum": [
+															"update",
+															"delete"
+														]
+													}
+												},
+												"nullable": true,
+												"required": [
+													"approval_id",
+													"type",
+													"requested_at",
+													"requested_by"
+												]
+											},
 											"structured_source": {
 												"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
 												"type": "string",
@@ -2122,14 +2254,14 @@
 											"path",
 											"description",
 											"namespaces",
-											"content",
 											"is_public",
 											"enabled",
 											"created_at",
 											"updated_at",
 											"created_by",
 											"updated_by",
-											"pending_approval_id"
+											"pending_approval_id",
+											"pending_change"
 										]
 									}
 								},
@@ -2316,6 +2448,39 @@
 									"type": "number",
 									"nullable": true
 								},
+								"pending_change": {
+									"description": "Proposed update or deletion awaiting approval. The other rule fields describe the currently applied version.",
+									"type": "object",
+									"properties": {
+										"approval_id": {
+											"type": "number",
+											"example": 12345
+										},
+										"requested_at": {
+											"type": "number",
+											"example": 1679529600000
+										},
+										"requested_by": {
+											"type": "string",
+											"example": "user@example.com"
+										},
+										"type": {
+											"type": "string",
+											"example": "update",
+											"enum": [
+												"update",
+												"delete"
+											]
+										}
+									},
+									"nullable": true,
+									"required": [
+										"approval_id",
+										"type",
+										"requested_at",
+										"requested_by"
+									]
+								},
 								"structured_source": {
 									"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
 									"type": "string",
@@ -2338,14 +2503,14 @@
 								"path",
 								"description",
 								"namespaces",
-								"content",
 								"is_public",
 								"enabled",
 								"created_at",
 								"updated_at",
 								"created_by",
 								"updated_by",
-								"pending_approval_id"
+								"pending_approval_id",
+								"pending_change"
 							]
 						}
 					}
@@ -2429,9 +2594,211 @@
 					"application/json": {
 						"schema": {
 							"type": "object",
-							"additionalProperties": {
-								"nullable": true
-							}
+							"properties": {
+								"arrays": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"counter": {
+												"type": "string"
+											},
+											"fields": {
+												"type": "array",
+												"items": {
+													"properties": {
+														"name": {
+															"type": "string"
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"string",
+																"integer",
+																"float",
+																"boolean"
+															]
+														}
+													},
+													"required": [
+														"name",
+														"type"
+													],
+													"type": "object"
+												}
+											},
+											"path": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"path",
+											"counter",
+											"fields"
+										],
+										"type": "object"
+									}
+								},
+								"headers": {
+									"type": "object",
+									"properties": {
+										"fields": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"name": {
+														"type": "string"
+													},
+													"type": {
+														"type": "string",
+														"enum": [
+															"string",
+															"integer",
+															"float",
+															"boolean"
+														]
+													}
+												},
+												"required": [
+													"name",
+													"type"
+												],
+												"type": "object"
+											}
+										},
+										"path": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"path",
+										"fields"
+									]
+								},
+								"operators": {
+									"type": "object",
+									"properties": {
+										"boolean": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"float": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"integer": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"string": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										}
+									},
+									"required": [
+										"string",
+										"integer",
+										"float",
+										"boolean"
+									]
+								},
+								"scalars": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"path": {
+												"type": "string"
+											},
+											"type": {
+												"type": "string",
+												"enum": [
+													"string",
+													"integer",
+													"float",
+													"boolean"
+												]
+											}
+										},
+										"required": [
+											"path",
+											"type"
+										],
+										"type": "object"
+									}
+								},
+								"string_arrays": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"counter": {
+												"type": "string"
+											},
+											"path": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"path",
+											"counter"
+										],
+										"type": "object"
+									}
+								},
+								"structs": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"fields": {
+												"type": "array",
+												"items": {
+													"properties": {
+														"name": {
+															"type": "string"
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"string",
+																"integer",
+																"float",
+																"boolean"
+															]
+														}
+													},
+													"required": [
+														"name",
+														"type"
+													],
+													"type": "object"
+												}
+											},
+											"path": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"path",
+											"fields"
+										],
+										"type": "object"
+									}
+								}
+							},
+							"required": [
+								"scalars",
+								"structs",
+								"arrays",
+								"string_arrays",
+								"headers",
+								"operators"
+							]
 						}
 					}
 				}
@@ -2468,6 +2835,9 @@
 		"tags": [
 			"Rules"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules.email.schema",
+		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/tree": {
@@ -2855,6 +3225,39 @@
 									"type": "number",
 									"nullable": true
 								},
+								"pending_change": {
+									"description": "Proposed update or deletion awaiting approval. The other rule fields describe the currently applied version.",
+									"type": "object",
+									"properties": {
+										"approval_id": {
+											"type": "number",
+											"example": 12345
+										},
+										"requested_at": {
+											"type": "number",
+											"example": 1679529600000
+										},
+										"requested_by": {
+											"type": "string",
+											"example": "user@example.com"
+										},
+										"type": {
+											"type": "string",
+											"example": "update",
+											"enum": [
+												"update",
+												"delete"
+											]
+										}
+									},
+									"nullable": true,
+									"required": [
+										"approval_id",
+										"type",
+										"requested_at",
+										"requested_by"
+									]
+								},
 								"structured_source": {
 									"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
 									"type": "string",
@@ -2884,7 +3287,8 @@
 								"updated_at",
 								"created_by",
 								"updated_by",
-								"pending_approval_id"
+								"pending_approval_id",
+								"pending_change"
 							]
 						}
 					}
@@ -3600,6 +4004,39 @@
 									"type": "number",
 									"nullable": true
 								},
+								"pending_change": {
+									"description": "Proposed update or deletion awaiting approval. The other rule fields describe the currently applied version.",
+									"type": "object",
+									"properties": {
+										"approval_id": {
+											"type": "number",
+											"example": 12345
+										},
+										"requested_at": {
+											"type": "number",
+											"example": 1679529600000
+										},
+										"requested_by": {
+											"type": "string",
+											"example": "user@example.com"
+										},
+										"type": {
+											"type": "string",
+											"example": "update",
+											"enum": [
+												"update",
+												"delete"
+											]
+										}
+									},
+									"nullable": true,
+									"required": [
+										"approval_id",
+										"type",
+										"requested_at",
+										"requested_by"
+									]
+								},
 								"structured_source": {
 									"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
 									"type": "string",
@@ -3622,14 +4059,14 @@
 								"path",
 								"description",
 								"namespaces",
-								"content",
 								"is_public",
 								"enabled",
 								"created_at",
 								"updated_at",
 								"created_by",
 								"updated_by",
-								"pending_approval_id"
+								"pending_approval_id",
+								"pending_change"
 							]
 						}
 					}
@@ -4353,6 +4790,9 @@
 		"tags": [
 			"Rules"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules.email.approvals",
+		"x-fern-sdk-method-name": "resubmit",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/rules/structured/validate": {
@@ -4606,6 +5046,12 @@
 							"enabled": {
 								"type": "boolean",
 								"default": true
+							},
+							"existing_rule_id": {
+								"description": "Existing rule ID to exclude from duplicate-name checks when validating an update.",
+								"type": "string",
+								"format": "uuid",
+								"example": "550e8400-e29b-41d4-a716-446655440000"
 							},
 							"meta": {
 								"type": "array",
@@ -5121,6 +5567,39 @@
 									"type": "number",
 									"nullable": true
 								},
+								"pending_change": {
+									"description": "Proposed update or deletion awaiting approval. The other rule fields describe the currently applied version.",
+									"type": "object",
+									"properties": {
+										"approval_id": {
+											"type": "number",
+											"example": 12345
+										},
+										"requested_at": {
+											"type": "number",
+											"example": 1679529600000
+										},
+										"requested_by": {
+											"type": "string",
+											"example": "user@example.com"
+										},
+										"type": {
+											"type": "string",
+											"example": "update",
+											"enum": [
+												"update",
+												"delete"
+											]
+										}
+									},
+									"nullable": true,
+									"required": [
+										"approval_id",
+										"type",
+										"requested_at",
+										"requested_by"
+									]
+								},
 								"structured_source": {
 									"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
 									"type": "string",
@@ -5143,14 +5622,14 @@
 								"path",
 								"description",
 								"namespaces",
-								"content",
 								"is_public",
 								"enabled",
 								"created_at",
 								"updated_at",
 								"created_by",
 								"updated_by",
-								"pending_approval_id"
+								"pending_approval_id",
+								"pending_change"
 							]
 						}
 					}
@@ -5984,6 +6463,39 @@
 									"type": "number",
 									"nullable": true
 								},
+								"pending_change": {
+									"description": "Proposed update or deletion awaiting approval. The other rule fields describe the currently applied version.",
+									"type": "object",
+									"properties": {
+										"approval_id": {
+											"type": "number",
+											"example": 12345
+										},
+										"requested_at": {
+											"type": "number",
+											"example": 1679529600000
+										},
+										"requested_by": {
+											"type": "string",
+											"example": "user@example.com"
+										},
+										"type": {
+											"type": "string",
+											"example": "update",
+											"enum": [
+												"update",
+												"delete"
+											]
+										}
+									},
+									"nullable": true,
+									"required": [
+										"approval_id",
+										"type",
+										"requested_at",
+										"requested_by"
+									]
+								},
 								"structured_source": {
 									"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
 									"type": "string",
@@ -6006,14 +6518,14 @@
 								"path",
 								"description",
 								"namespaces",
-								"content",
 								"is_public",
 								"enabled",
 								"created_at",
 								"updated_at",
 								"created_by",
 								"updated_by",
-								"pending_approval_id"
+								"pending_approval_id",
+								"pending_change"
 							]
 						}
 					}
@@ -6148,5 +6660,769 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules.email",
 		"x-fern-sdk-method-name": "update"
+	},
+	"PUT /accounts/{account_id}/cloudforce-one/rules/structured/approvals/{id}": {
+		"operationId": "cloudforce-one-update-pending-email-rule-approval",
+		"summary": "Update a pending structured email rule approval",
+		"description": "Validate, compile, and replace the proposed structured email rule on a pending approval. Only the original requester may update it.",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
+				}
+			},
+			{
+				"name": "id",
+				"in": "path",
+				"description": "The unique identifier for the approval.",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for the approval.",
+					"type": "string",
+					"example": "1"
+				}
+			},
+			{
+				"name": "module",
+				"in": "query",
+				"description": "Structured rule module.",
+				"schema": {
+					"description": "Structured rule module.",
+					"type": "string",
+					"example": "eml",
+					"default": "eml",
+					"enum": [
+						"eml"
+					]
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"condition": {
+								"nullable": true
+							},
+							"description": {
+								"type": "string",
+								"maxLength": 1000
+							},
+							"enabled": {
+								"type": "boolean",
+								"default": true
+							},
+							"meta": {
+								"type": "array",
+								"items": {
+									"description": "A YARA meta entry. Value type is resolved server-side. Constrained keys: 'detection' must be one of MALICIOUS, SUSPICIOUS, SPAM, SPOOF.",
+									"type": "object",
+									"properties": {
+										"key": {
+											"type": "string",
+											"maxLength": 128,
+											"minLength": 1,
+											"pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+										},
+										"value": {
+											"anyOf": [
+												{
+													"maxLength": 10000,
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											]
+										}
+									},
+									"required": [
+										"key",
+										"value"
+									]
+								},
+								"maxItems": 50
+							},
+							"name": {
+								"type": "string",
+								"maxLength": 255,
+								"minLength": 1
+							},
+							"strings": {
+								"type": "array",
+								"items": {
+									"properties": {
+										"identifier": {
+											"type": "string",
+											"maxLength": 128,
+											"minLength": 1,
+											"pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+										},
+										"match_type": {
+											"type": "string",
+											"default": "text",
+											"enum": [
+												"text",
+												"hex",
+												"regex"
+											]
+										},
+										"modifiers": {
+											"type": "array",
+											"items": {
+												"enum": [
+													"nocase",
+													"wide",
+													"ascii",
+													"fullword"
+												],
+												"type": "string"
+											},
+											"default": []
+										},
+										"type": {
+											"type": "string",
+											"enum": [
+												"string_match"
+											]
+										},
+										"value": {
+											"type": "string",
+											"maxLength": 10000,
+											"minLength": 1
+										}
+									},
+									"required": [
+										"type",
+										"identifier",
+										"value"
+									],
+									"type": "object"
+								},
+								"default": [],
+								"maxItems": 50
+							}
+						},
+						"required": [
+							"name"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Pending approval updated.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"approval": {
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"audit_log_id": {
+													"type": "number",
+													"example": 1
+												},
+												"can_review": {
+													"description": "Whether the authenticated user may approve or reject this pending change.",
+													"type": "boolean",
+													"example": true
+												},
+												"cancelled_at": {
+													"description": "Time at which the requester cancelled the approval.",
+													"type": "number",
+													"example": 1679529600000,
+													"nullable": true,
+													"x-auditable": true
+												},
+												"cancelled_by": {
+													"description": "Requester who cancelled the pending approval.",
+													"type": "string",
+													"example": "requester@example.com",
+													"nullable": true,
+													"x-auditable": true
+												},
+												"change_description": {
+													"type": "string",
+													"example": "Updated rule content"
+												},
+												"change_type": {
+													"type": "string",
+													"example": "create",
+													"enum": [
+														"create",
+														"update",
+														"delete",
+														"unresolved"
+													]
+												},
+												"commit_message": {
+													"description": "Human-readable justification supplied by the requester when the change was submitted. Required for internal-account mutations; optional for customer accounts and sync-originated changes.",
+													"type": "string",
+													"example": "Tighten regex to reduce false positives on legit CI workers.",
+													"nullable": true
+												},
+												"id": {
+													"type": "number",
+													"example": 12345,
+													"x-auditable": true
+												},
+												"proposed_changes": {
+													"description": "Structured proposed rule changes, or null when persisted data cannot be resolved.",
+													"oneOf": [
+														{
+															"properties": {
+																"content": {
+																	"type": "string"
+																},
+																"created_at": {
+																	"type": "number"
+																},
+																"created_by": {
+																	"type": "string"
+																},
+																"description": {
+																	"type": "string"
+																},
+																"enabled": {
+																	"type": "boolean"
+																},
+																"id": {
+																	"type": "string"
+																},
+																"is_public": {
+																	"type": "boolean"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"namespaces": {
+																	"type": "array",
+																	"items": {
+																		"type": "string"
+																	}
+																},
+																"path": {
+																	"type": "string",
+																	"minLength": 1
+																},
+																"structured_source": {
+																	"type": "string",
+																	"nullable": true
+																},
+																"sync_message": {
+																	"type": "string"
+																},
+																"sync_source": {
+																	"type": "string"
+																},
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"create"
+																	]
+																}
+															},
+															"required": [
+																"type",
+																"id",
+																"name",
+																"path",
+																"description",
+																"namespaces",
+																"is_public",
+																"enabled",
+																"created_by",
+																"created_at"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"content": {
+																	"type": "string"
+																},
+																"description": {
+																	"type": "string"
+																},
+																"enabled": {
+																	"type": "boolean"
+																},
+																"is_public": {
+																	"type": "boolean"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"namespaces": {
+																	"type": "array",
+																	"items": {
+																		"type": "string"
+																	}
+																},
+																"path": {
+																	"type": "string",
+																	"minLength": 1
+																},
+																"structured_source": {
+																	"type": "string",
+																	"nullable": true
+																},
+																"sync_message": {
+																	"type": "string"
+																},
+																"sync_source": {
+																	"type": "string"
+																},
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"update"
+																	]
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"id": {
+																	"type": "string"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"sync_message": {
+																	"type": "string"
+																},
+																"sync_source": {
+																	"type": "string"
+																},
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"delete"
+																	]
+																}
+															},
+															"required": [
+																"type",
+																"id",
+																"name"
+															],
+															"type": "object"
+														},
+														{
+															"nullable": true
+														}
+													]
+												},
+												"rejection_reason": {
+													"description": "Optional reason supplied by the reviewer when rejecting the change.",
+													"type": "string",
+													"example": "Narrow the hostname match to avoid false positives.",
+													"nullable": true,
+													"x-auditable": true
+												},
+												"requested_at": {
+													"type": "number",
+													"example": 1679529600000,
+													"x-auditable": true
+												},
+												"requested_by": {
+													"type": "string",
+													"example": "user@example.com",
+													"x-auditable": true
+												},
+												"reviewed_at": {
+													"type": "number",
+													"example": 1679529600000,
+													"nullable": true,
+													"x-auditable": true
+												},
+												"reviewed_by": {
+													"type": "string",
+													"example": "approver@example.com",
+													"nullable": true,
+													"x-auditable": true
+												},
+												"reviewer_scope": {
+													"description": "Review policy: general Nomos approvers for default; general approvers or Phishguard for email.",
+													"type": "string",
+													"example": "email",
+													"enum": [
+														"default",
+														"email",
+														"unresolved"
+													]
+												},
+												"revision_number": {
+													"description": "Revision number within this approval request chain.",
+													"type": "integer",
+													"example": 2,
+													"exclusiveMinimum": true,
+													"minimum": 0
+												},
+												"rule_id": {
+													"type": "string",
+													"format": "uuid",
+													"example": "550e8400-e29b-41d4-a716-446655440000",
+													"x-auditable": true
+												},
+												"rule_name": {
+													"type": "string",
+													"example": "suspicious_email.yar"
+												},
+												"source_account_id": {
+													"description": "Customer account that owns this approval when returned by the aggregated email queue.",
+													"type": "integer",
+													"example": 12345678,
+													"exclusiveMinimum": true,
+													"minimum": 0
+												},
+												"status": {
+													"type": "string",
+													"example": "pending",
+													"enum": [
+														"pending",
+														"approved",
+														"rejected",
+														"cancelled"
+													]
+												},
+												"superseded_by_approval_id": {
+													"description": "Newer approval revision that replaced this approval.",
+													"type": "number",
+													"example": 12346,
+													"nullable": true
+												},
+												"supersedes_approval_id": {
+													"description": "Previous approval revision replaced by this approval.",
+													"type": "number",
+													"example": 12344,
+													"nullable": true
+												}
+											},
+											"required": [
+												"id",
+												"rule_id",
+												"rule_name",
+												"audit_log_id",
+												"requested_by",
+												"requested_at",
+												"change_description",
+												"change_type",
+												"proposed_changes",
+												"status",
+												"reviewed_by",
+												"reviewed_at",
+												"rejection_reason",
+												"cancelled_by",
+												"cancelled_at",
+												"supersedes_approval_id",
+												"superseded_by_approval_id",
+												"revision_number",
+												"commit_message",
+												"reviewer_scope",
+												"can_review"
+											]
+										},
+										{
+											"properties": {
+												"current_rule": {
+													"anyOf": [
+														{
+															"type": "object",
+															"properties": {
+																"content": {
+																	"example": "rule example { condition: true }",
+																	"type": "string"
+																},
+																"created_at": {
+																	"type": "number",
+																	"example": 1679529600000,
+																	"x-auditable": true
+																},
+																"created_by": {
+																	"type": "string",
+																	"example": "user@example.com",
+																	"x-auditable": true
+																},
+																"description": {
+																	"type": "string",
+																	"example": "Detects malicious proxy workers"
+																},
+																"enabled": {
+																	"description": "Whether this rule is active for dice consumers.",
+																	"type": "boolean",
+																	"example": true
+																},
+																"id": {
+																	"type": "string",
+																	"format": "uuid",
+																	"example": "550e8400-e29b-41d4-a716-446655440000",
+																	"x-auditable": true
+																},
+																"is_public": {
+																	"description": "Whether this rule is visible to other internal accounts.",
+																	"type": "boolean",
+																	"example": false,
+																	"x-auditable": true
+																},
+																"meta": {
+																	"description": "Structured meta entries for the rule (parsed from content plus any request-supplied meta). Returned in source order.",
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"key": {
+																				"type": "string"
+																			},
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"string",
+																					"bool",
+																					"int"
+																				]
+																			},
+																			"value": {
+																				"anyOf": [
+																					{
+																						"type": "string"
+																					},
+																					{
+																						"type": "boolean"
+																					},
+																					{
+																						"type": "number"
+																					}
+																				]
+																			}
+																		},
+																		"required": [
+																			"key",
+																			"value",
+																			"type"
+																		]
+																	}
+																},
+																"name": {
+																	"type": "string",
+																	"example": "block-malicious-workers",
+																	"x-auditable": true
+																},
+																"namespaces": {
+																	"type": "array",
+																	"items": {
+																		"type": "string"
+																	},
+																	"example": [
+																		"yara/workers"
+																	],
+																	"x-auditable": true
+																},
+																"path": {
+																	"type": "string",
+																	"example": "yara/workers",
+																	"x-auditable": true
+																},
+																"pending_approval_id": {
+																	"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
+																	"type": "number",
+																	"nullable": true
+																},
+																"pending_change": {
+																	"description": "Proposed update or deletion awaiting approval. The other rule fields describe the currently applied version.",
+																	"type": "object",
+																	"properties": {
+																		"approval_id": {
+																			"type": "number",
+																			"example": 12345
+																		},
+																		"requested_at": {
+																			"type": "number",
+																			"example": 1679529600000
+																		},
+																		"requested_by": {
+																			"type": "string",
+																			"example": "user@example.com"
+																		},
+																		"type": {
+																			"type": "string",
+																			"example": "update",
+																			"enum": [
+																				"update",
+																				"delete"
+																			]
+																		}
+																	},
+																	"nullable": true,
+																	"required": [
+																		"approval_id",
+																		"type",
+																		"requested_at",
+																		"requested_by"
+																	]
+																},
+																"structured_source": {
+																	"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
+																	"type": "string",
+																	"nullable": true
+																},
+																"updated_at": {
+																	"type": "number",
+																	"example": 1679529600000,
+																	"x-auditable": true
+																},
+																"updated_by": {
+																	"type": "string",
+																	"example": "user@example.com",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"path",
+																"description",
+																"namespaces",
+																"is_public",
+																"enabled",
+																"created_at",
+																"updated_at",
+																"created_by",
+																"updated_by",
+																"pending_approval_id",
+																"pending_change"
+															]
+														},
+														{
+															"nullable": true
+														}
+													]
+												}
+											},
+											"type": "object"
+										}
+									]
+								}
+							},
+							"required": [
+								"approval"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Structured rule validation or compilation failed.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Not authorized to update this approval.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Approval not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Approval is not pending or is not a structured EML rule.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Rules"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules.email",
+		"x-fern-sdk-method-name": "updatePendingApproval",
+		"x-forge-hidden": true
 	}
 }
