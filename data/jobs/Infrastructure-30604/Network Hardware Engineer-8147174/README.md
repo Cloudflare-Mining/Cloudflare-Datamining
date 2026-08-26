@@ -3,46 +3,46 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong>Austin, TX</p>
-<p><strong>About the Department</strong><strong><br></strong></p>
-<p>Cloudflare's Enterprise Integrations Engineering Team designs, builds, and maintains integrations across the SaaS applications used throughout the organization. We're increasingly applying AI, from agentic workflows to LLM-assisted development and automated diagnostics, to build integrations faster, operate them more reliably, and reduce manual toil across the team. Our mission is to create scalable, reliable, and intelligent systems that ensure data flows securely and efficiently between platforms, and to use AI as a force multiplier for how we design, build, and support that work.</p>
-<p>Our team is highly collaborative, values continuous learning, and supports each other through shared ownership and open communication. We work closely with both technical and business teams, conduct regular retrospectives, and are actively evolving how AI tooling changes the way we plan, build, test, and troubleshoot integrations.</p>
-<h4><strong>What You’ll Do</strong></h4>
-<p>We're looking for an engineer who is as comfortable designing an AI-assisted solution as they are writing the service that implements it. You'll build and maintain integration workflows between Cloudflare and a variety of SaaS applications, but increasingly, you'll also evaluate where an LLM, agent, or automation layer can replace brittle point-to-point logic, speed up development, or improve operational response.</p>
-<p>Responsibilities include:</p>
+<p><strong>Available Location:&nbsp;</strong>Austin, TX</p>
+<p><strong>Job Title </strong></p>
+<p>Network Hardware Engineer&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>Role Summary</strong></p>
+<p>As a pivotal technical contributor within the Network Hardware Engineering (NetHW) team, you will drive the selection and qualification process for network devices used in Cloudflare's Global Network. The NetHW team manages the New Product Introduction (NPI) process for all network devices. Our responsibilities also include the evaluation and qualification of new production network operating system images and versions. Furthermore, we provide essential support by reproducing bugs to assist Operations with TAC cases and testing new features and major configuration updates.</p>
+<p><strong>Role Responsibilities</strong></p>
+<p>You will be involved in every stage of the New Product Introduction (NPI) process, including requirements gathering, device selection, Device Validation Testing (DVT), Production Validation Testing (PVT), and Operational Acceptance. Furthermore, you will be responsible for creating and automating test plans that align with both operational needs and hardware limitations, as well as driving efforts to improve testing efficiency.</p>
+<p>Network Hardware Systems Engineering Responsibilities:</p>
 <ul>
-	<li>Taking integration work from concept through implementation: requirements, technical specs, development, testing, and deployment</li>
-	<li>Identifying where AI/LLM-based approaches (agentic workflows, automated triage, code generation) can improve integration design, delivery speed, or operational support</li>
-	<li>Building and/or extending internal AI tooling (agents, skills, MCP servers, automation scripts) that supports the team's engineering and BAU workflows</li>
-	<li>Collaborating with internal stakeholders to translate business problems into technical solutions, whether that's a traditional service or an AI-driven one</li>
-	<li>Contributing to how the team evaluates, adopts, and governs AI tooling responsibly (data handling, model choice, skills, guardrails)</li>
-	<li>As you grow, leading larger initiatives and owning integration/ui/mcp projects, including AI-tooling initiatives, end to end</li>
+	<li><strong>Product Lifecycle Management:</strong> Lead the introduction of new network hardware systems, including detailed engineering validation in lab environments</li>
+	<li><strong>Qualification &amp; Validation:</strong> Gather requirements, contribute to network architecture, and execute hardware design and product validation</li>
+	<li><strong>Cross-Functional Collaboration:</strong> Partner with Network Engineering &amp; Operations, Datacenter Engineering &amp; Operations, and other operational teams to make network hardware decisions</li>
+	<li><strong>Automation &amp; Performance Testing:</strong> Develop tools and automation to effectively evaluate network hardware performance</li>
+	<li><strong>Operational Support:</strong> Assist operational engineers by troubleshooting, reproducing, and resolving network hardware issues</li>
+	<li><strong>Communication:</strong> Document and share results and updates via blog/wiki posts, ticketing systems, and internal presentations</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<p>&nbsp;</p>
+<p><strong>Role Requirements (Must-Have Skills)</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li>Bachelor's degree in Computer Science or related field, or equivalent work experience</li>
-	<li>3+ years of professional software engineering experience</li>
-	<li>Proficiency in at least one backend language (Go strongly preferred; Python/TypeScript also considered)</li>
-	<li>Demonstrated experience using AI/LLM tools to build real solutions, such as building an AI agent, LLM powered automation, or shipping code with heavy AI-assisted development (not just using ChatGPT to write code faster)</li>
-	<li>Experience working with internal stakeholders to solve business problems through integration or automation solutions</li>
-	<li>Experience building RESTful APIs with proper service security practices</li>
-	<li>Experience with observability tooling (Grafana, Prometheus, Sentry, Kibana, or similar)</li>
-	<li>Working familiarity with containerized/cloud environments (Kubernetes, or equivalent cloud-native experience)</li>
-	<li>Experience with serverless computing platform (e.g., AWS Lambda, Google Cloud Functions, Azure Functions, or Cloudflare Workers)</li>
-	<li>Experience with GitLab or other CI/CD tooling</li>
-	<li>Willingness to participate in an on-call rotation with 10+ engineers</li>
+	<li>BS, MS, or PhD in Computer Engineering, Electrical Engineering, Computer Science, or equivalent practical experience</li>
+	<li>Proven ability to conduct thorough evaluation and experimentation, including testing, measurement, and/or simulation of hardware performance</li>
+	<li>Extensive experience with networking hardware architecture, validation, performance benchmarking, debugging, and deployment</li>
+	<li>Deep knowledge of network engineering and protocols used in data center switching and routing as well as Internet routing</li>
+	<li>Track record of driving engineering projects from idea to experiment to implementation</li>
+	<li>Demonstrated success in working with OEM/ODMs and technology vendors</li>
+	<li>Professional-level proficiency in Python or similar programming and/or scripting languages</li>
+	<li>Familiarity with various coding agents and other AI tools and technologies</li>
 </ul>
-<p><strong>Bonus Points:</strong><strong><br></strong></p>
+<p>&nbsp;</p>
+<p><strong>NIce-to-Have Skills</strong></p>
 <ul>
-	<li>Experience with LLM APIs (Anthropic, OpenAI, etc.)</li>
-	<li>Experience with prompt engineering, evals, or AI guardrail/governance practices</li>
-	<li>Experience with business systems such as Oracle or NetSuite</li>
-	<li>Experience working in an Agile Scrum environment</li>
-	<li>Familiarity with Jira and Confluence</li>
-	<li>Familiarity with integration patterns (pub/sub, api-first, CDM, batch processing)</li>
-	<li>Experience with PostgreSQL</li>
-	<li>Experience with Cloudflare Developer Platform (Workers, Workflows, D1, etc.)</li>
-	<li>&nbsp;</li>
+	<li>Adept at automating traffic generation equipment (Spirent/Ixia) and test cases</li>
+	<li>In-depth hardware knowledge of platforms (ASICs, TCAMs, Packet-Pipelines, etc)</li>
+	<li>Experience with Optical Line Systems and troubleshooting transceiver issues</li>
+	<li>Familiarity with different network operating systems such as Junos, IOS-XR, EOS, SONiC,&nbsp; and ArcOS</li>
+	<li>Experience with white-box network switches and open source projects</li>
+	<li>Proficient in using observability and monitoring tools like Prometheus and Grafana, with the ability to analyze and observe trends over time.</li>
+	<li>Hands-on experience with configuring and validating RoCEv2 (RDMA over Converged Ethernet) fabrics, specifically implementing Priority Flow Control (PFC) and Explicit Congestion Notification (ECN) on network devices.</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

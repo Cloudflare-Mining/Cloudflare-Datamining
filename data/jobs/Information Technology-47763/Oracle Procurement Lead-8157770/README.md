@@ -3,35 +3,47 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Location - </strong>Canada; Remote</p>
-<p><strong>Job Title - </strong>Senior Security Compliance Specialist</p>
-<p><strong>The Team</strong></p>
-<p>Security Compliance is a critical business function at Cloudflare. Compliance certifications allow our customers to be confident in the security and privacy of our products, while also providing frameworks for well-tuned information security management systems and programs. These standards provide clarity to Cloudflare’s teams on how to incorporate security principles in the management of systems, the development of products, and the expansion of our business footprint.</p>
-<p>This is an opportunity to join a world-class security organization within a billion-dollar business. You will join as a member focused on leading Cloudflare through the Canadian Centre for Cyber Security (CCCS) Cloud Service Provider (CSP) Information Technology (ITS) Assessment Process. This team is part of the Governance, Risk, and Compliance team and is part of the greater Security Team reporting to Cloudflare’s Chief Security Officer.</p>
+<p><strong>Available Location:&nbsp;</strong>Austin, TX</p>
+<p><strong>Job Title&nbsp;</strong></p>
+<p>Oracle Procurement Lead</p>
 <p>&nbsp;</p>
-<p><strong>What you’ll do</strong></p>
-<ul>
-	<li>Lead Cloudflare through the CCCS CSP ITS Assessment process</li>
-	<li>Update and maintain CCCS requirements within Cloudflare’s Common Control Framework</li>
-	<li>Work cross-functionally with Engineering, Legal, Product, and operational teams to drive security control implementation for the organization</li>
-	<li>Improve the maturity of Cloudflare’s Security Compliance program</li>
-	<li>Help guide our overall security policy and governance architecture</li>
-	<li>Have input into the overall security compliance strategy</li>
-</ul>
+<p><strong>Role Summary</strong></p>
+<p>The Oracle Procurement Lead is a key Architect responsible for driving the strategy, solution architecture and execution of our global procurement technology ecosystem. Our architecture leverages Oracle Fusion Cloud as our procurement and financial system of record with Zip as the orchestration layer.</p>
+<p>The ideal candidate is a Procurement technologist and architect who understands the nuances of the entire ERP Source-to-Pay (S2P) lifecycle. You will bridge the gap between user-centric intake and rigorous financial controls, ensuring that complex business requirements from Legal, Finance, and Global Sourcing are translated into seamless, automated workflows that maintain data integrity across both Zip and Oracle</p>
 <p>&nbsp;</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Role Responsibilities:</strong></p>
 <ul>
-	<li>5+ years of experience working in Security Compliance</li>
-	<li>Led the pursuit of, or maintained a CCCS Medium / PBMM certification</li>
-	<li>Deep understanding of the CCCS CSP ITS assessment processes</li>
-	<li>Deep understanding of CCCS requirements</li>
-	<li>Familiarity with additional security standards and frameworks such as ISO 27000, SOC 2, PCI DSS, HITRUST, FedRAMP</li>
-	<li>Ability to work cross-functionally with internal stakeholders and strong communications skills</li>
-	<li>Ability to work closely with auditors and articulate technical concepts</li>
-	<li>Ability to work efficiently and independently in a fast-paced, high-volume environment</li>
-	<li>Willingness to travel occasionally to engage with regulators and auditors</li>
+	<li><strong>Solution Architecture:</strong> Define and maintain the long-term technical architecture for the procurement ecosystem, ensuring system scalability, security, and seamless interoperability between Zip and Oracle Fusion.</li>
+	<li><strong>End-to-End Process Architecture:</strong> Design and optimize the global S2P process, ensuring a frictionless hand-off between upstream sourcing/intake and downstream purchasing/payables (Oracle Fusion).</li>
+	<li><strong>Platform Configuration:</strong> Act as the functional lead for Oracle Fusion Procurement. Build complex intake workflows and configure Requisitioning, Purchasing, and Supplier Portals in Oracle to match.</li>
+	<li><strong>Integration Ecosystem Management:</strong> Own the functional health of the Oracle procurement systems integration. Monitor data flow for Requisitions, Purchase Orders, and Supplier Master Data, Compliance screening, ensuring that "In-Flight" changes in one system are accurately reflected in the other.</li>
+	<li><strong>Strategic Business Partnership:</strong> Lead discovery sessions with Global Procurement, Legal, and Accounting. Translate high-level business policies&nbsp; into precise logic within the tech stack.</li>
+	<li><strong>Data Governance &amp; Compliance:</strong> Ensure that the "System of Record" (Oracle) remains audit-ready. Manage the mapping of Category Codes, Cost Centers, and Tax attributes between the Zip and the Oracle GL.</li>
+	<li><strong>Release Management:</strong> Manage the quarterly update cycles for Oracle. Conduct impact assessments on new features to ensure no disruption to the integrated workflow.</li>
+	<li><strong>AI Procurement Agent Strategy &amp; Governance:</strong> Lead the adoption and functional governance of Oracle's embedded and custom AI agents (e.g., Procurement Policy Advisor), ensuring all AI-driven automation and outputs within the S2P process are compliant, auditable, and drive process efficiency.</li>
+	<li><strong>Oracle Fusion Lifecycle Management:</strong> Oversee the full lifecycle management within Oracle Fusion, including requisitioning, purchase orders, receipts, and invoice matching to ensure accurate financial reporting and spend visibility.</li>
+	<li><strong>Oracle Fusion Supplier &amp; Trade Configuration:</strong> Configure and maintain Oracle Fusion supplier master data, trade management workflows, and complex approval hierarchies to support global procurement needs.</li>
 </ul>
-<p><br><br></p>
+<p><strong>Role Requirements&nbsp;</strong></p>
+<p><strong>Must-Have Skills</strong></p>
+<ul>
+	<li>10+ years<strong> </strong>of hands-on experience in Oracle Procurement (Self-Service Procurement, Sourcing, Purchasing, Supplier Model, Contracts).&nbsp;</li>
+	<li>5+ years of experience in Oracle Fusion Procurement.</li>
+	<li>Deep understanding of the Source-to-Pay (S2P) lifecycle, including PR/PO lifecycle, Accounting, and Contract Lifecycle Management (CLM).</li>
+	<li>Proven experience managing API-based integrations between Intake-to-Procure tools and Tier-1 ERPs. You should understand how a requisition "Approval" translates into an Oracle "Approved Requisition."</li>
+	<li>Ability to map complex, cross-functional business processes and identify opportunities for automation or bottleneck removal.</li>
+	<li>Experience establishing technical standards and governing system changes in a live production environment.</li>
+	<li>Certifications in relevant Oracle Fusion Cloud Procurement module.</li>
+</ul>
+<p><strong>Nice-To-Have Skills</strong></p>
+<ul>
+	<li>Experience in an organization transitioning to Oracle Cloud Ecosystem.</li>
+	<li>Hands-on experience with Oracle Fusion Global Trade Management system..</li>
+	<li>Third-party supporting software experience like Ironclad, Navan, etc..</li>
+	<li>Exposure to the Data Center Infrastructure industry.</li>
+	<li>Working knowledge of AI Agent Studio for Oracle Fusion Cloud Applications.</li>
+</ul>
+<p><br><br><br></p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
