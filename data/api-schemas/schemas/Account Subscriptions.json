@@ -1336,7 +1336,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "accounts.subscriptions",
+		"x-fern-sdk-method-name": "getByIdentifier"
 	},
 	"GET /accounts/{account_id}/subscriptions/{subscription_identifier}/cancel-reason": {
 		"operationId": "account-subscriptions-get-cancel-reason",
@@ -1619,7 +1621,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "accounts.subscriptions",
+		"x-fern-sdk-method-name": "getCancelReason"
 	},
 	"POST /accounts/{account_id}/bulk/subscriptions": {
 		"operationId": "account-subscriptions-bulk-create-subscription",
@@ -2728,6 +2732,8 @@
 			"pro": true
 		},
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "accounts.subscriptions",
+		"x-fern-sdk-method-name": "createBulk",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/subscriptions": {
@@ -4444,6 +4450,8 @@
 			"pro": true
 		},
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "accounts.subscriptions",
+		"x-fern-sdk-method-name": "append",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/subscriptions/{subscription_identifier}/cancel-reason": {
@@ -4758,7 +4766,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "accounts.subscriptions",
+		"x-fern-sdk-method-name": "createCancelReason"
 	},
 	"POST /accounts/{account_id}/subscriptions/cancel-downgrade": {
 		"operationId": "account-subscriptions-cancel-delayed-downgrade",
@@ -5020,7 +5030,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "accounts.subscriptions",
+		"x-fern-sdk-method-name": "cancelDelayedDowngrade"
 	},
 	"PUT /accounts/{account_id}/subscriptions/{subscription_identifier}": {
 		"operationId": "account-subscriptions-update-subscription",

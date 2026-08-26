@@ -254,7 +254,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "accounts.billing.payment-methods",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/payment-methods": {
 		"operationId": "account-billing-list-payment-methods",
@@ -666,7 +668,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "accounts.billing.payment-methods",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/payment-methods/{payment_method_id}": {
 		"operationId": "account-billing-get-payment-method",
@@ -1051,7 +1055,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "accounts.billing.payment-methods",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/payment-methods": {
 		"operationId": "account-billing-create-payment-method",
@@ -1550,7 +1556,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "accounts.billing.payment-methods",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/payment-methods/{payment_method_id}/set-as-default": {
 		"operationId": "account-billing-set-default-payment-method",
@@ -1808,7 +1816,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "accounts.billing.payment-methods",
+		"x-fern-sdk-method-name": "setDefault"
 	},
 	"PUT /accounts/{account_id}/payment-methods/{payment_method_id}": {
 		"operationId": "account-billing-update-payment-method",
@@ -2321,6 +2331,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "accounts.billing.payment-methods",
+		"x-fern-sdk-method-name": "update"
 	}
 }

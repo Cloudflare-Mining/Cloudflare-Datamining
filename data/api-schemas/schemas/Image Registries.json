@@ -1690,15 +1690,16 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Specifies the configuration for the image registry credential to create.",
+						"description": "Specifies the configuration for the image registry credential to create. Cloudflare requires both fields for managed registries. For external registries, Cloudflare ignores both fields, and the registry provider determines the returned credentials' permissions and lifetime.",
 						"type": "object",
 						"properties": {
 							"expiration_minutes": {
-								"description": "The minimum number of minutes the token stays valid. Must remain positive. We make a best effort to respect this value, but some registry providers do not let us configure the token lifetime, so the token might stay valid for longer.",
+								"description": "The number of minutes Cloudflare managed registry credentials stay valid. Required for managed registries and must remain positive. Cloudflare ignores this value for external registries.",
 								"type": "integer",
 								"minimum": 1
 							},
 							"permissions": {
+								"description": "The permissions for Cloudflare managed registry credentials. Required for managed registries. Cloudflare ignores this value for external registries.",
 								"type": "array",
 								"items": {
 									"description": "Specifies what permissions the credentials carry.",
@@ -1710,11 +1711,7 @@
 									]
 								}
 							}
-						},
-						"required": [
-							"permissions",
-							"expiration_minutes"
-						]
+						}
 					}
 				}
 			}

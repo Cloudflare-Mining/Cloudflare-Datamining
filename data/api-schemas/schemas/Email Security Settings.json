@@ -252,7 +252,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.allow-policies",
+		"x-fern-sdk-group-name": "email-security.allow-policies",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -510,7 +510,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.block-senders",
+		"x-fern-sdk-group-name": "email-security.block-senders",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -768,7 +768,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.content-policies",
+		"x-fern-sdk-group-name": "email-security.content-policies",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -1057,7 +1057,7 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "email-security.settings.domains",
+		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "bulk-delete",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -1315,7 +1315,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.domains",
+		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -1574,7 +1574,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.impersonation-registry",
+		"x-fern-sdk-group-name": "email-security.impersonation-registry",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -1833,7 +1833,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.sending-domain-restrictions",
+		"x-fern-sdk-group-name": "email-security.sending-domain-restrictions",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -2091,7 +2091,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.trusted-domains",
+		"x-fern-sdk-group-name": "email-security.trusted-domains",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -2350,7 +2350,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.url-ignore-patterns",
+		"x-fern-sdk-group-name": "email-security.url-ignore-patterns",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -2881,7 +2881,7 @@
 			"Cloud Email Security: Read"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.allow-policies",
+		"x-fern-sdk-group-name": "email-security.allow-policies",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -3263,7 +3263,7 @@
 			"Cloud Email Security: Read"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.allow-policies",
+		"x-fern-sdk-group-name": "email-security.allow-policies",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -3711,7 +3711,7 @@
 			"Cloud Email Security: Read"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.block-senders",
+		"x-fern-sdk-group-name": "email-security.block-senders",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -4040,7 +4040,7 @@
 			"Cloud Email Security: Read"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.block-senders",
+		"x-fern-sdk-group-name": "email-security.block-senders",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -4472,7 +4472,7 @@
 			"Cloud Email Security: Read"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.content-policies",
+		"x-fern-sdk-group-name": "email-security.content-policies",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -4798,7 +4798,7 @@
 			"Cloud Email Security: Read"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.content-policies",
+		"x-fern-sdk-group-name": "email-security.content-policies",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -5437,7 +5437,7 @@
 			"Cloud Email Security: Read"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.domains",
+		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -5920,7 +5920,7 @@
 			"Cloud Email Security: Read"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.domains",
+		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -6203,7 +6203,7 @@
 			"Cloud Email Security: Read"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.domains.verification",
+		"x-fern-sdk-group-name": "email-security.domains.verification",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -6649,7 +6649,7 @@
 			"Cloud Email Security: Read"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.impersonation-registry",
+		"x-fern-sdk-group-name": "email-security.impersonation-registry",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -6991,7 +6991,7 @@
 			"Cloud Email Security: Read"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.impersonation-registry",
+		"x-fern-sdk-group-name": "email-security.impersonation-registry",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -7403,7 +7403,7 @@
 			"Cloud Email Security: Read"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.sending-domain-restrictions",
+		"x-fern-sdk-group-name": "email-security.sending-domain-restrictions",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -7725,7 +7725,7 @@
 			"Cloud Email Security: Read"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.sending-domain-restrictions",
+		"x-fern-sdk-group-name": "email-security.sending-domain-restrictions",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -8166,7 +8166,7 @@
 			"Cloud Email Security: Read"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.trusted-domains",
+		"x-fern-sdk-group-name": "email-security.trusted-domains",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -8494,7 +8494,7 @@
 			"Cloud Email Security: Read"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.trusted-domains",
+		"x-fern-sdk-group-name": "email-security.trusted-domains",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -8857,7 +8857,7 @@
 			"Cloud Email Security: Read"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.url-ignore-patterns",
+		"x-fern-sdk-group-name": "email-security.url-ignore-patterns",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -9162,7 +9162,7 @@
 			"Cloud Email Security: Read"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.url-ignore-patterns",
+		"x-fern-sdk-group-name": "email-security.url-ignore-patterns",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -9694,7 +9694,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.allow-policies",
+		"x-fern-sdk-group-name": "email-security.allow-policies",
 		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -10120,7 +10120,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.block-senders",
+		"x-fern-sdk-group-name": "email-security.block-senders",
 		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -10540,7 +10540,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.content-policies",
+		"x-fern-sdk-group-name": "email-security.content-policies",
 		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -11134,7 +11134,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.domains",
+		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -11586,7 +11586,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.impersonation-registry",
+		"x-fern-sdk-group-name": "email-security.impersonation-registry",
 		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -11998,7 +11998,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.sending-domain-restrictions",
+		"x-fern-sdk-group-name": "email-security.sending-domain-restrictions",
 		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -12422,7 +12422,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.trusted-domains",
+		"x-fern-sdk-group-name": "email-security.trusted-domains",
 		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -12757,7 +12757,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.url-ignore-patterns",
+		"x-fern-sdk-group-name": "email-security.url-ignore-patterns",
 		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -13297,7 +13297,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.allow-policies",
+		"x-fern-sdk-group-name": "email-security.allow-policies",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -14529,7 +14529,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.allow-policies",
+		"x-fern-sdk-group-name": "email-security.allow-policies",
 		"x-fern-sdk-method-name": "batch",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -14959,7 +14959,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.block-senders",
+		"x-fern-sdk-group-name": "email-security.block-senders",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -15865,7 +15865,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.block-senders",
+		"x-fern-sdk-group-name": "email-security.block-senders",
 		"x-fern-sdk-method-name": "batch",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -16290,7 +16290,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.content-policies",
+		"x-fern-sdk-group-name": "email-security.content-policies",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -17180,7 +17180,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.content-policies",
+		"x-fern-sdk-group-name": "email-security.content-policies",
 		"x-fern-sdk-method-name": "batch",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -17796,7 +17796,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.domains",
+		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -19235,7 +19235,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.domains",
+		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "batch",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -19691,7 +19691,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.impersonation-registry",
+		"x-fern-sdk-group-name": "email-security.impersonation-registry",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -20106,7 +20106,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.sending-domain-restrictions",
+		"x-fern-sdk-group-name": "email-security.sending-domain-restrictions",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -20411,7 +20411,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.sending-domain-restrictions",
+		"x-fern-sdk-group-name": "email-security.sending-domain-restrictions",
 		"x-fern-sdk-method-name": "batch",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -20840,7 +20840,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.trusted-domains",
+		"x-fern-sdk-group-name": "email-security.trusted-domains",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -21742,7 +21742,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.trusted-domains",
+		"x-fern-sdk-group-name": "email-security.trusted-domains",
 		"x-fern-sdk-method-name": "batch",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -22079,7 +22079,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.url-ignore-patterns",
+		"x-fern-sdk-group-name": "email-security.url-ignore-patterns",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -22716,7 +22716,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.url-ignore-patterns",
+		"x-fern-sdk-group-name": "email-security.url-ignore-patterns",
 		"x-fern-sdk-method-name": "batch",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -23253,7 +23253,7 @@
 			"Email Security Settings"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.allow-policies",
+		"x-fern-sdk-group-name": "email-security.allow-policies",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -23680,7 +23680,7 @@
 			"Email Security Settings"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.block-senders",
+		"x-fern-sdk-group-name": "email-security.block-senders",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -24288,7 +24288,7 @@
 			"Email Security Settings"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.domains",
+		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
@@ -24714,7 +24714,7 @@
 			"Email Security Settings"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.settings.trusted-domains",
+		"x-fern-sdk-group-name": "email-security.trusted-domains",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true,
 		"x-stability": "beta"

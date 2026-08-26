@@ -6540,7 +6540,7 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/live_view": {
-		"operationId": "brapi-post_LiveView",
+		"operationId": "brapi-post_DevtoolsLiveView",
 		"summary": "Mint live view URLs for a browser session",
 		"description": "Generates time-limited URLs to view a remote browser session. Set `guardrails: { mode: 'readonly' }` to create a view-only link.",
 		"parameters": [

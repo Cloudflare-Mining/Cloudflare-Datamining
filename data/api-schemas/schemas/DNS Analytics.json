@@ -642,6 +642,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -663,8 +664,10 @@
 			]
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "dns.analytics.reports",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-stainless-deprecation-message": "This endpoint is deprecated. See [the API deprecation notice](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-12-09)."
 	},
 	"GET /zones/{zone_id}/dns_analytics/report/bytime": {
 		"operationId": "dns-analytics-by-time",
@@ -1420,6 +1423,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -1441,7 +1445,9 @@
 			]
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "dns.analytics.reports.bytimes",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-stainless-deprecation-message": "This endpoint is deprecated. See [the API deprecation notice](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-12-09)."
 	}
 }

@@ -137,7 +137,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "billing.profiles",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/billing/profile": {
 		"operationId": "account-billing-profile-get-billing-profile",
@@ -1005,7 +1007,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "billing.profiles",
+		"x-fern-sdk-method-name": "updateEmail"
 	},
 	"POST /accounts/{account_id}/billing/profile": {
 		"operationId": "account-billing-profile-create-billing-profile",
@@ -1527,7 +1531,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "billing.profiles",
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/billing/profile": {
 		"operationId": "account-billing-profile-update-billing-profile",
@@ -2049,6 +2055,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "billing.profiles",
+		"x-fern-sdk-method-name": "update"
 	}
 }

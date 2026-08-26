@@ -336,7 +336,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "accounts.billing",
+		"x-fern-sdk-method-name": "getBadDebt"
 	},
 	"GET /accounts/{account_id}/billing/credits": {
 		"operationId": "account-billing-get-credits",
@@ -648,7 +650,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "accounts.billing",
+		"x-fern-sdk-method-name": "getCredits"
 	},
 	"GET /accounts/{account_id}/billing/unpaid-invoice": {
 		"operationId": "account-billing-get-unpaid-invoices",
@@ -972,7 +976,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "accounts.billing",
+		"x-fern-sdk-method-name": "getUnpaidInvoices"
 	},
 	"GET /accounts/{account_id}/receipts/{receipt_id}/pdf": {
 		"operationId": "account-billing-get-receipt-pdf",
@@ -1134,7 +1140,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "accounts.billing",
+		"x-fern-sdk-method-name": "getReceiptPdf"
 	},
 	"PATCH /accounts/{account_id}/invoices": {
 		"operationId": "account-billing-toggle-pdf-invoices",
@@ -1382,7 +1390,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "accounts.billing",
+		"x-fern-sdk-method-name": "togglePdfInvoices"
 	},
 	"POST /accounts/{account_id}/billing/profile/payment-method": {
 		"operationId": "account-billing-create-payment-intent",
@@ -1639,7 +1649,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "billing.profiles",
+		"x-fern-sdk-method-name": "createPaymentIntent"
 	},
 	"POST /accounts/{account_id}/client-secret": {
 		"operationId": "account-billing-create-setup-intent",
@@ -1889,7 +1901,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "accounts.billing",
+		"x-fern-sdk-method-name": "createSetupIntent"
 	},
 	"POST /accounts/{account_id}/pay-bad-debt": {
 		"operationId": "account-billing-pay-bad-debt",
@@ -2155,7 +2169,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "accounts.billing",
+		"x-fern-sdk-method-name": "payBadDebt"
 	},
 	"POST /accounts/{account_id}/pay-invoice": {
 		"operationId": "account-billing-pay-invoice",
@@ -2432,7 +2448,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "accounts.billing",
+		"x-fern-sdk-method-name": "payInvoice"
 	},
 	"POST /billing/address-validation": {
 		"operationId": "billing-validate-address",
@@ -2730,6 +2748,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "billing.addresses",
+		"x-fern-sdk-method-name": "validate"
 	}
 }

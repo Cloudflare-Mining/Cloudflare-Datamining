@@ -637,7 +637,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/rules": {
 		"operationId": "cloudforce-one-list-rules",
 		"summary": "List rules",
-		"description": "List all rules for an account with optional filtering.",
+		"description": "Returns all rules for an account with optional filtering.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -652,9 +652,9 @@
 			{
 				"name": "namespace",
 				"in": "query",
-				"description": "Filter by namespace. Repeat the parameter to filter by multiple namespaces (e.g. namespace=foo&namespace=bar).",
+				"description": "Selects namespaces. Repeat the parameter to select multiple namespaces (for example, namespace=foo&namespace=bar).",
 				"schema": {
-					"description": "Filter by namespace. Repeat the parameter to filter by multiple namespaces (e.g. namespace=foo&namespace=bar).",
+					"description": "Selects namespaces. Repeat the parameter to select multiple namespaces (for example, namespace=foo&namespace=bar).",
 					"example": [
 						"yara/workers",
 						"yara/dns_record"
@@ -676,9 +676,9 @@
 			{
 				"name": "path",
 				"in": "query",
-				"description": "Filter by path using exact-match semantics (no descendant matching). Omit the parameter to return rules from all paths. Pass an empty string (path=) to return only rules with an empty/uncategorized path. Pass a non-empty value (e.g. path=yara) for an exact match against that path. Repeat the parameter (e.g. path=yara&path=expr) to OR-match across multiple paths (SQL `IN (...)` semantics). Note: the `recursive` flag does NOT affect path filtering — it only affects namespace filtering for customer accounts.",
+				"description": "Selects paths with exact-match semantics. Omit the parameter to return rules from all paths. Pass an empty string (path=) to return only rules with an empty or uncategorized path. Pass a value (for example, path=yara) to match that exact path. Repeat the parameter (for example, path=yara&path=expr) to OR-match multiple paths with SQL `IN (...)` semantics. The `recursive` flag affects only customer-account namespace selection.",
 				"schema": {
-					"description": "Filter by path using exact-match semantics (no descendant matching). Omit the parameter to return rules from all paths. Pass an empty string (path=) to return only rules with an empty/uncategorized path. Pass a non-empty value (e.g. path=yara) for an exact match against that path. Repeat the parameter (e.g. path=yara&path=expr) to OR-match across multiple paths (SQL `IN (...)` semantics). Note: the `recursive` flag does NOT affect path filtering — it only affects namespace filtering for customer accounts.",
+					"description": "Selects paths with exact-match semantics. Omit the parameter to return rules from all paths. Pass an empty string (path=) to return only rules with an empty or uncategorized path. Pass a value (for example, path=yara) to match that exact path. Repeat the parameter (for example, path=yara&path=expr) to OR-match multiple paths with SQL `IN (...)` semantics. The `recursive` flag affects only customer-account namespace selection.",
 					"example": [
 						"yara/workers"
 					],
@@ -699,9 +699,9 @@
 			{
 				"name": "recursive",
 				"in": "query",
-				"description": "Customer accounts only: when true, namespace filtering matches descendants. Does NOT affect path filtering (paths are always exact-match).",
+				"description": "For customer accounts, true enables descendant matching for namespaces. Paths always use exact matching.",
 				"schema": {
-					"description": "Customer accounts only: when true, namespace filtering matches descendants. Does NOT affect path filtering (paths are always exact-match).",
+					"description": "For customer accounts, true enables descendant matching for namespaces. Paths always use exact matching.",
 					"type": "string",
 					"example": "true",
 					"enum": [
@@ -721,9 +721,9 @@
 			{
 				"name": "is_public",
 				"in": "query",
-				"description": "Filter by public visibility.",
+				"description": "Limits rules to the specified public visibility.",
 				"schema": {
-					"description": "Filter by public visibility.",
+					"description": "Limits rules to the specified public visibility.",
 					"type": "string",
 					"example": "true",
 					"enum": [
@@ -1493,9 +1493,9 @@
 			{
 				"name": "namespace",
 				"in": "query",
-				"description": "Filter by namespace. Repeat the parameter to filter by multiple namespaces (e.g. namespace=foo&namespace=bar).",
+				"description": "Selects namespaces. Repeat the parameter to select multiple namespaces (for example, namespace=foo&namespace=bar).",
 				"schema": {
-					"description": "Filter by namespace. Repeat the parameter to filter by multiple namespaces (e.g. namespace=foo&namespace=bar).",
+					"description": "Selects namespaces. Repeat the parameter to select multiple namespaces (for example, namespace=foo&namespace=bar).",
 					"example": [
 						"yara/workers",
 						"yara/dns_record"
@@ -1517,9 +1517,9 @@
 			{
 				"name": "path",
 				"in": "query",
-				"description": "Filter by path using exact-match semantics (no descendant matching). Omit the parameter to return rules from all paths. Pass an empty string (path=) to return only rules with an empty/uncategorized path. Pass a non-empty value (e.g. path=yara) for an exact match against that path. Repeat the parameter (e.g. path=yara&path=expr) to OR-match across multiple paths (SQL `IN (...)` semantics). Note: the `recursive` flag does NOT affect path filtering — it only affects namespace filtering for customer accounts.",
+				"description": "Selects paths with exact-match semantics. Omit the parameter to return rules from all paths. Pass an empty string (path=) to return only rules with an empty or uncategorized path. Pass a value (for example, path=yara) to match that exact path. Repeat the parameter (for example, path=yara&path=expr) to OR-match multiple paths with SQL `IN (...)` semantics. The `recursive` flag affects only customer-account namespace selection.",
 				"schema": {
-					"description": "Filter by path using exact-match semantics (no descendant matching). Omit the parameter to return rules from all paths. Pass an empty string (path=) to return only rules with an empty/uncategorized path. Pass a non-empty value (e.g. path=yara) for an exact match against that path. Repeat the parameter (e.g. path=yara&path=expr) to OR-match across multiple paths (SQL `IN (...)` semantics). Note: the `recursive` flag does NOT affect path filtering — it only affects namespace filtering for customer accounts.",
+					"description": "Selects paths with exact-match semantics. Omit the parameter to return rules from all paths. Pass an empty string (path=) to return only rules with an empty or uncategorized path. Pass a value (for example, path=yara) to match that exact path. Repeat the parameter (for example, path=yara&path=expr) to OR-match multiple paths with SQL `IN (...)` semantics. The `recursive` flag affects only customer-account namespace selection.",
 					"example": [
 						"yara/workers"
 					],
@@ -1540,9 +1540,9 @@
 			{
 				"name": "recursive",
 				"in": "query",
-				"description": "Customer accounts only: when true, namespace filtering matches descendants. Does NOT affect path filtering (paths are always exact-match).",
+				"description": "For customer accounts, true enables descendant matching for namespaces. Paths always use exact matching.",
 				"schema": {
-					"description": "Customer accounts only: when true, namespace filtering matches descendants. Does NOT affect path filtering (paths are always exact-match).",
+					"description": "For customer accounts, true enables descendant matching for namespaces. Paths always use exact matching.",
 					"type": "string",
 					"example": "true",
 					"enum": [
@@ -1562,9 +1562,9 @@
 			{
 				"name": "is_public",
 				"in": "query",
-				"description": "Filter by public visibility.",
+				"description": "Limits rules to the specified public visibility.",
 				"schema": {
-					"description": "Filter by public visibility.",
+					"description": "Limits rules to the specified public visibility.",
 					"type": "string",
 					"example": "true",
 					"enum": [
@@ -1628,9 +1628,9 @@
 			{
 				"name": "language",
 				"in": "query",
-				"description": "Filter results by rule language.",
+				"description": "Limits results to the specified rule language.",
 				"schema": {
-					"description": "Filter results by rule language.",
+					"description": "Limits results to the specified rule language.",
 					"type": "string",
 					"example": "yara",
 					"enum": [
@@ -1642,7 +1642,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Hybrid/semantic rule search results",
+				"description": "Hybrid and semantic rule search results.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1858,7 +1858,7 @@
 														"minimum": 0
 													},
 													"scoring_details": {
-														"description": "Per-component scoring breakdown returned by AI Search hybrid retrieval.",
+														"description": "AI Search hybrid retrieval returns this per-component scoring breakdown.",
 														"type": "object",
 														"properties": {
 															"fusion_method": {
@@ -1903,7 +1903,7 @@
 				}
 			},
 			"401": {
-				"description": "Unauthorized",
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1922,7 +1922,7 @@
 				}
 			},
 			"503": {
-				"description": "AI Search unavailable",
+				"description": "AI Search unavailable.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2048,7 +2048,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/rules/structured": {
 		"operationId": "cloudforce-one-list-email-rules",
 		"summary": "List email rules",
-		"description": "List structured email rules.",
+		"description": "Returns structured email rules.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -3050,10 +3050,10 @@
 								"x-auditable": true
 							},
 							"meta": {
-								"description": "Additional YARA meta entries appended to the rule's meta block (and stored in rule_meta alongside meta parsed from the content). Keys must be valid YARA identifiers and must not be 'name', 'enabled', or 'description'. Duplicate keys are allowed.",
+								"description": "Adds YARA meta entries to the rule's meta block and stores them in rule_meta alongside content metadata. Use valid YARA identifiers for keys; exclude 'name', 'enabled', and 'description'. You may repeat keys.",
 								"type": "array",
 								"items": {
-									"description": "A YARA meta entry. Value type is resolved server-side. Constrained keys: 'detection' must be one of MALICIOUS, SUSPICIOUS, SPAM, SPOOF.",
+									"description": "A YARA meta entry. The server resolves its value type. The 'detection' key accepts MALICIOUS, SUSPICIOUS, SPAM, or SPOOF.",
 									"type": "object",
 									"properties": {
 										"key": {
@@ -3799,7 +3799,7 @@
 							"meta": {
 								"type": "array",
 								"items": {
-									"description": "A YARA meta entry. Value type is resolved server-side. Constrained keys: 'detection' must be one of MALICIOUS, SUSPICIOUS, SPAM, SPOOF.",
+									"description": "A YARA meta entry. The server resolves its value type. The 'detection' key accepts MALICIOUS, SUSPICIOUS, SPAM, or SPOOF.",
 									"type": "object",
 									"properties": {
 										"key": {
@@ -4285,7 +4285,7 @@
 	"POST /accounts/{account_id}/cloudforce-one/rules/structured/approvals/{id}/resubmit": {
 		"operationId": "cloudforce-one-resubmit-email-rule-approval",
 		"summary": "Revise and resubmit a rejected structured email rule approval",
-		"description": "Validate and compile a complete structured email rule, then create an immutable pending revision of its rejected approval.",
+		"description": "Validates and compiles a complete structured email rule, then creates an immutable pending revision of its rejected approval.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -4562,7 +4562,7 @@
 							"meta": {
 								"type": "array",
 								"items": {
-									"description": "A YARA meta entry. Value type is resolved server-side. Constrained keys: 'detection' must be one of MALICIOUS, SUSPICIOUS, SPAM, SPOOF.",
+									"description": "A YARA meta entry. The server resolves its value type. The 'detection' key accepts MALICIOUS, SUSPICIOUS, SPAM, or SPOOF.",
 									"type": "object",
 									"properties": {
 										"key": {
@@ -4798,7 +4798,7 @@
 	"POST /accounts/{account_id}/cloudforce-one/rules/structured/validate": {
 		"operationId": "cloudforce-one-validate-email-rule",
 		"summary": "Validate an email rule",
-		"description": "Validate structured email rule syntax and metadata.",
+		"description": "Validates structured email rule syntax and metadata.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -5056,7 +5056,7 @@
 							"meta": {
 								"type": "array",
 								"items": {
-									"description": "A YARA meta entry. Value type is resolved server-side. Constrained keys: 'detection' must be one of MALICIOUS, SUSPICIOUS, SPAM, SPOOF.",
+									"description": "A YARA meta entry. The server resolves its value type. The 'detection' key accepts MALICIOUS, SUSPICIOUS, SPAM, or SPOOF.",
 									"type": "object",
 									"properties": {
 										"key": {
@@ -5219,7 +5219,7 @@
 	"POST /accounts/{account_id}/cloudforce-one/rules/validate": {
 		"operationId": "cloudforce-one-validate-rule",
 		"summary": "Validate rule with context",
-		"description": "Validate rule syntax, name uniqueness, namespace, and meta checks.",
+		"description": "Validates rule syntax, name uniqueness, namespace, and metadata.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -5336,7 +5336,7 @@
 	"PUT /accounts/{account_id}/cloudforce-one/rules/{id}": {
 		"operationId": "cloudforce-one-update-rule",
 		"summary": "Update a rule",
-		"description": "Update an existing rule.",
+		"description": "Updates an existing rule.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -5396,10 +5396,10 @@
 								"x-auditable": true
 							},
 							"meta": {
-								"description": "Additional YARA meta entries appended to the rule's meta block (and stored in rule_meta alongside meta parsed from the content). Keys must be valid YARA identifiers and must not be 'name', 'enabled', or 'description'. Duplicate keys are allowed.",
+								"description": "Adds YARA meta entries to the rule's meta block and stores them in rule_meta alongside content metadata. Use valid YARA identifiers for keys; exclude 'name', 'enabled', and 'description'. You may repeat keys.",
 								"type": "array",
 								"items": {
-									"description": "A YARA meta entry. Value type is resolved server-side. Constrained keys: 'detection' must be one of MALICIOUS, SUSPICIOUS, SPAM, SPOOF.",
+									"description": "A YARA meta entry. The server resolves its value type. The 'detection' key accepts MALICIOUS, SUSPICIOUS, SPAM, or SPOOF.",
 									"type": "object",
 									"properties": {
 										"key": {
@@ -6000,7 +6000,7 @@
 	"PUT /accounts/{account_id}/cloudforce-one/rules/structured/{id}": {
 		"operationId": "cloudforce-one-update-email-rule",
 		"summary": "Update an email rule",
-		"description": "Update an existing structured email rule.",
+		"description": "Updates an existing structured email rule.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -6263,7 +6263,7 @@
 							"meta": {
 								"type": "array",
 								"items": {
-									"description": "A YARA meta entry. Value type is resolved server-side. Constrained keys: 'detection' must be one of MALICIOUS, SUSPICIOUS, SPAM, SPOOF.",
+									"description": "A YARA meta entry. The server resolves its value type. The 'detection' key accepts MALICIOUS, SUSPICIOUS, SPAM, or SPOOF.",
 									"type": "object",
 									"properties": {
 										"key": {
@@ -6722,7 +6722,7 @@
 							"meta": {
 								"type": "array",
 								"items": {
-									"description": "A YARA meta entry. Value type is resolved server-side. Constrained keys: 'detection' must be one of MALICIOUS, SUSPICIOUS, SPAM, SPOOF.",
+									"description": "A YARA meta entry. The server resolves its value type. The 'detection' key accepts MALICIOUS, SUSPICIOUS, SPAM, or SPOOF.",
 									"type": "object",
 									"properties": {
 										"key": {
@@ -6871,7 +6871,7 @@
 													]
 												},
 												"commit_message": {
-													"description": "Human-readable justification supplied by the requester when the change was submitted. Required for internal-account mutations; optional for customer accounts and sync-originated changes.",
+													"description": "The requester supplies this human-readable justification with the change. Internal-account mutations require it; customer accounts and sync-originated changes may omit it.",
 													"type": "string",
 													"example": "Tighten regex to reduce false positives on legit CI workers.",
 													"nullable": true
@@ -6882,7 +6882,8 @@
 													"x-auditable": true
 												},
 												"proposed_changes": {
-													"description": "Structured proposed rule changes, or null when persisted data cannot be resolved.",
+													"description": "Contains structured proposed rule changes, or null for unresolved persisted data.",
+													"nullable": true,
 													"oneOf": [
 														{
 															"properties": {
@@ -7027,14 +7028,11 @@
 																"name"
 															],
 															"type": "object"
-														},
-														{
-															"nullable": true
 														}
 													]
 												},
 												"rejection_reason": {
-													"description": "Optional reason supplied by the reviewer when rejecting the change.",
+													"description": "The reviewer may supply a reason when rejecting the change.",
 													"type": "string",
 													"example": "Narrow the hostname match to avoid false positives.",
 													"nullable": true,
@@ -7113,7 +7111,7 @@
 													"nullable": true
 												},
 												"supersedes_approval_id": {
-													"description": "Previous approval revision replaced by this approval.",
+													"description": "This approval replaces the referenced approval revision.",
 													"type": "number",
 													"example": 12344,
 													"nullable": true
@@ -7312,11 +7310,9 @@
 																"pending_approval_id",
 																"pending_change"
 															]
-														},
-														{
-															"nullable": true
 														}
-													]
+													],
+													"nullable": true
 												}
 											},
 											"type": "object"

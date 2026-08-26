@@ -62,6 +62,14 @@
 					}
 				},
 				"style": "form"
+			},
+			{
+				"description": "Filter finding types by name or ID (case-insensitive substring match).",
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"type": "string"
+				}
 			}
 		],
 		"responses": {

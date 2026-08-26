@@ -351,7 +351,9 @@
 		],
 		"tags": [
 			"Container Instance Groups"
-		]
+		],
+		"x-fern-sdk-group-name": "containers.instance-groups",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/containers/instance-groups": {
 		"operationId": "listContainerInstanceGroups",
@@ -751,7 +753,9 @@
 		],
 		"tags": [
 			"Container Instance Groups"
-		]
+		],
+		"x-fern-sdk-group-name": "containers.instance-groups",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/containers/instance-groups/{namespace_id}": {
 		"operationId": "getContainerInstanceGroup",
@@ -1271,7 +1275,9 @@
 		],
 		"tags": [
 			"Container Instance Groups"
-		]
+		],
+		"x-fern-sdk-group-name": "containers.instance-groups",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PUT /accounts/{account_id}/containers/instance-groups/{namespace_id}": {
 		"operationId": "putContainerInstanceGroup",
@@ -2064,6 +2070,8 @@
 		],
 		"tags": [
 			"Container Instance Groups"
-		]
+		],
+		"x-fern-sdk-group-name": "containers.instance-groups",
+		"x-fern-sdk-method-name": "update"
 	}
 }

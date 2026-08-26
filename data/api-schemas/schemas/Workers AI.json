@@ -288,7 +288,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "ai",
+		"x-fern-sdk-method-name": "getModelSchema"
 	},
 	"GET /accounts/{account_id}/ai/models/search": {
 		"operationId": "workers-ai-search-model",
@@ -744,7 +746,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "ai",
+		"x-fern-sdk-method-name": "listMarkdownSupportedFormats"
 	},
 	"POST /accounts/{account_id}/ai/run": {
 		"operationId": "workers-ai-post-run-generic",
@@ -2225,7 +2229,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "ai",
+		"x-fern-sdk-method-name": "runModel"
 	},
 	"POST /accounts/{account_id}/ai/tomarkdown": {
 		"operationId": "workers-ai-post-to-markdown",
@@ -2383,6 +2389,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-sdk-group-name": "ai",
+		"x-fern-sdk-method-name": "toMarkdown"
 	}
 }

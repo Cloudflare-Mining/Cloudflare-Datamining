@@ -979,217 +979,473 @@
 								{
 									"properties": {
 										"result": {
-											"description": "A list of application objects.",
+											"description": "The public Containers API returns a list of applications.",
 											"type": "array",
 											"items": {
-												"description": "Describes an application and the parameters that govern how it places its instances.",
-												"type": "object",
-												"properties": {
-													"account_id": {
-														"description": "A unique identifier for the user's account.",
-														"type": "string"
-													},
-													"active_rollout_id": {
-														"description": "An identifier for a specific rollout within an application.",
-														"type": "string"
-													},
-													"configuration": {
-														"description": "User-specified container configuration.",
-														"type": "object",
-														"properties": {
-															"authorized_keys": {
-																"type": "array",
-																"items": {
-																	"description": "User-provided SSH public key.",
-																	"type": "object",
-																	"properties": {
-																		"name": {
-																			"description": "Optional human readable name for this key.",
-																			"type": "string"
-																		},
-																		"public_key": {
-																			"description": "An SSH public key.",
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"public_key"
-																	]
-																}
-															},
-															"command": {
-																"description": "The command that runs when the container starts, passed to the entrypoint.\nYou can override this at run-time. If you override only the command,\nit gets passed to the default entrypoint specified in the image.\n",
-																"type": "array",
-																"items": {
-																	"type": "string"
-																},
-																"example": [
-																	"myapp",
-																	"--default-option"
-																]
-															},
-															"dns": {
-																"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
+												"description": "The public Containers API returns an application.",
+												"oneOf": [
+													{
+														"description": "The Cloudchamber scheduler manages this application's instances.",
+														"allOf": [
+															{
+																"description": "Describes an application and the parameters that govern how it places its instances.",
 																"type": "object",
 																"properties": {
-																	"searches": {
-																		"description": "The container resolver appends these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it appends 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
-																		"type": "array",
-																		"items": {
-																			"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
-																			"type": "string",
-																			"example": "docker.io"
-																		}
-																	},
-																	"servers": {
-																		"description": "List of DNS servers the deployment uses to resolve domain names. You can only specify a maximum of 3.",
-																		"type": "array",
-																		"items": {
-																			"description": "A string representation of an IP, either v6 or v4.",
-																			"type": "string",
-																			"example": "192.1.1.1"
-																		}
-																	}
-																}
-															},
-															"entrypoint": {
-																"description": "The entry point for the container, specifying the executable to run when the container starts.\nYou can override this at run-time. If you do, the default command from the image is ignored.\nSpecify both entrypoint and command at run-time to completely replace the image defaults.\n",
-																"type": "array",
-																"items": {
-																	"type": "string"
-																},
-																"example": [
-																	"/bin/bash"
-																]
-															},
-															"environment_variables": {
-																"description": "Container environment variables.",
-																"type": "array",
-																"items": {
-																	"description": "An environment variable with a value set.",
-																	"type": "object",
-																	"properties": {
-																		"name": {
-																			"description": "An environment variable name.",
-																			"type": "string"
-																		},
-																		"value": {
-																			"description": "An environment variable value.",
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"name",
-																		"value"
-																	]
-																}
-															},
-															"image": {
-																"description": "Image url.",
-																"type": "string"
-															},
-															"instance_type": {
-																"description": "The instance type configures vCPU, memory, and disk.\n\n- \"lite\": 1/16 vCPU, 256 MiB memory, 2 GB disk\n- \"basic\": 1/4 vCPU, 1 GiB memory, 4 GB disk\n- \"standard-1\": 1/2 vCPU, 4 GiB memory, 8 GB disk\n- \"standard-2\": 1 vCPU, 6 GiB memory, 12 GB disk\n- \"standard-3\": 2 vCPU, 8 GiB memory, 16 GB disk\n- \"standard-4\": 4 vCPU, 12 GiB memory, 20 GB disk\n",
-																"type": "string",
-																"example": "lite",
-																"default": "lite",
-																"anyOf": [
-																	{
-																		"enum": [
-																			"lite",
-																			"basic",
-																			"standard-1",
-																			"standard-2",
-																			"standard-3",
-																			"standard-4"
-																		],
+																	"account_id": {
+																		"description": "A unique identifier for the user's account.",
 																		"type": "string"
-																	}
-																]
-															},
-															"observability": {
-																"description": "Settings for deployment observability such as logging.",
-																"type": "object",
-																"properties": {
-																	"logs": {
-																		"description": "Observability logging settings.",
+																	},
+																	"active_rollout_id": {
+																		"description": "An identifier for a specific rollout within an application.",
+																		"type": "string"
+																	},
+																	"configuration": {
+																		"description": "User-specified container configuration.",
 																		"type": "object",
 																		"properties": {
-																			"enabled": {
-																				"type": "boolean",
-																				"default": false
+																			"authorized_keys": {
+																				"type": "array",
+																				"items": {
+																					"description": "User-provided SSH public key.",
+																					"type": "object",
+																					"properties": {
+																						"name": {
+																							"description": "Optional human readable name for this key.",
+																							"type": "string"
+																						},
+																						"public_key": {
+																							"description": "An SSH public key.",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"public_key"
+																					]
+																				}
+																			},
+																			"command": {
+																				"description": "The command that runs when the container starts, passed to the entrypoint.\nYou can override this at run-time. If you override only the command,\nit gets passed to the default entrypoint specified in the image.\n",
+																				"type": "array",
+																				"items": {
+																					"type": "string"
+																				},
+																				"example": [
+																					"myapp",
+																					"--default-option"
+																				]
+																			},
+																			"dns": {
+																				"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
+																				"type": "object",
+																				"properties": {
+																					"searches": {
+																						"description": "The container resolver appends these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it appends 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
+																						"type": "array",
+																						"items": {
+																							"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
+																							"type": "string",
+																							"example": "docker.io"
+																						}
+																					},
+																					"servers": {
+																						"description": "List of DNS servers the deployment uses to resolve domain names. You can only specify a maximum of 3.",
+																						"type": "array",
+																						"items": {
+																							"description": "A string representation of an IP, either v6 or v4.",
+																							"type": "string",
+																							"example": "192.1.1.1"
+																						}
+																					}
+																				}
+																			},
+																			"entrypoint": {
+																				"description": "The entry point for the container, specifying the executable to run when the container starts.\nYou can override this at run-time. If you do, the default command from the image is ignored.\nSpecify both entrypoint and command at run-time to completely replace the image defaults.\n",
+																				"type": "array",
+																				"items": {
+																					"type": "string"
+																				},
+																				"example": [
+																					"/bin/bash"
+																				]
+																			},
+																			"environment_variables": {
+																				"description": "Container environment variables.",
+																				"type": "array",
+																				"items": {
+																					"description": "An environment variable with a value set.",
+																					"type": "object",
+																					"properties": {
+																						"name": {
+																							"description": "An environment variable name.",
+																							"type": "string"
+																						},
+																						"value": {
+																							"description": "An environment variable value.",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"name",
+																						"value"
+																					]
+																				}
+																			},
+																			"image": {
+																				"description": "Image url.",
+																				"type": "string"
+																			},
+																			"instance_type": {
+																				"description": "The instance type configures vCPU, memory, and disk.\n\n- \"lite\": 1/16 vCPU, 256 MiB memory, 2 GB disk\n- \"basic\": 1/4 vCPU, 1 GiB memory, 4 GB disk\n- \"standard-1\": 1/2 vCPU, 4 GiB memory, 8 GB disk\n- \"standard-2\": 1 vCPU, 6 GiB memory, 12 GB disk\n- \"standard-3\": 2 vCPU, 8 GiB memory, 16 GB disk\n- \"standard-4\": 4 vCPU, 12 GiB memory, 20 GB disk\n",
+																				"type": "string",
+																				"example": "lite",
+																				"default": "lite",
+																				"anyOf": [
+																					{
+																						"enum": [
+																							"lite",
+																							"basic",
+																							"standard-1",
+																							"standard-2",
+																							"standard-3",
+																							"standard-4"
+																						],
+																						"type": "string"
+																					}
+																				]
+																			},
+																			"observability": {
+																				"description": "Settings for deployment observability such as logging.",
+																				"type": "object",
+																				"properties": {
+																					"logs": {
+																						"description": "Observability logging settings.",
+																						"type": "object",
+																						"properties": {
+																							"enabled": {
+																								"type": "boolean",
+																								"default": false
+																							}
+																						}
+																					}
+																				}
+																			},
+																			"trusted_user_ca_keys": {
+																				"type": "array",
+																				"items": {
+																					"description": "User-provided SSH public key.",
+																					"type": "object",
+																					"properties": {
+																						"name": {
+																							"description": "Optional human readable name for this key.",
+																							"type": "string"
+																						},
+																						"public_key": {
+																							"description": "An SSH public key.",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"public_key"
+																					]
+																				}
+																			},
+																			"wrangler_ssh": {
+																				"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
+																				"type": "object",
+																				"properties": {
+																					"enabled": {
+																						"type": "boolean",
+																						"default": true
+																					},
+																					"port": {
+																						"type": "integer",
+																						"default": 22,
+																						"maximum": 65535,
+																						"minimum": 1
+																					}
+																				}
+																			}
+																		},
+																		"required": [
+																			"image"
+																		]
+																	},
+																	"constraints": {
+																		"type": "object",
+																		"properties": {
+																			"jurisdiction": {
+																				"description": "Currently supports only \"eu\" and \"fedramp\". Overlap between jurisdiction and region is allowed for ENAM, WNAM (FedRAMP) and EEUR, WEUR (EU).",
+																				"type": "string"
+																			},
+																			"regions": {
+																				"type": "array",
+																				"items": {
+																					"description": "Represents a group of datacenters. Choose one of \"AFR\", \"APAC\", \"EEUR\", \"ENAM\", \"WNAM\", \"ME\", \"OC\", \"SAM\", or \"WEUR\".\n",
+																					"type": "string",
+																					"example": "WNAM"
+																				}
 																			}
 																		}
-																	}
-																}
-															},
-															"trusted_user_ca_keys": {
-																"type": "array",
-																"items": {
-																	"description": "User-provided SSH public key.",
-																	"type": "object",
-																	"properties": {
-																		"name": {
-																			"description": "Optional human readable name for this key.",
-																			"type": "string"
+																	},
+																	"created_at": {
+																		"description": "UTC timestamp string in ISO 8601 format.",
+																		"type": "string",
+																		"example": "2021-04-01T12:32:41.488Z"
+																	},
+																	"durable_objects": {
+																		"description": "Durable object configuration stored on and returned from a Cloudchamber application.",
+																		"oneOf": [
+																			{
+																				"description": "Durable object configuration using a namespace ID.",
+																				"type": "object",
+																				"properties": {
+																					"namespace_id": {
+																						"description": "The namespace ID of the durable object namespace to use for this application.",
+																						"type": "string",
+																						"example": "14758f1afd44c09b7992073ccf00b43d"
+																					}
+																				},
+																				"required": [
+																					"namespace_id"
+																				]
+																			}
+																		]
+																	},
+																	"health": {
+																		"type": "object",
+																		"properties": {
+																			"errors": {
+																				"type": "array",
+																				"items": {
+																					"type": "object",
+																					"properties": {
+																						"event": {
+																							"description": "An event within a Placement or a Job.",
+																							"type": "object",
+																							"properties": {
+																								"details": {
+																									"type": "object",
+																									"additionalProperties": true
+																								},
+																								"id": {
+																									"type": "string"
+																								},
+																								"message": {
+																									"type": "string"
+																								},
+																								"name": {
+																									"description": "Name of the event that describes the kind event that happened.\n  - SchedulerPlaced: It's the first event that creates a container placement. It happens when the Containers runtime was able to retrieve deployment resources and start verifying everything is correct.\n  - NetworkingIPAssigned: It's sent when the Containers runtime maps the IP to the container.\n  - VMStarted: It's sent when the Containers runtime starts the VM. The container might remain unhealthy at this point.\n  - ImagePulled: It's sent when the Containers runtime pulls the image successfully.\n  - ImagePullError: It's sent when the Containers runtime is having issues pulling the image. The message and details have more information on what happened for debugging.\n  - VMFailedToStart: It's sent when the Containers runtime was unable to boot the VM.\n  - VMStopping: It's sent when the scheduler is stopping the VM.\n  - VMStopped: It's sent when the VM finally exits.\n  - VMFailed: It's sent when the scheduling of the VM failed in the current location.\n  - RuntimeStartFailed: It's sent when the runtime hits an internal error.\n  - SSHStarted: It's sent when the container gains network connectivity and opens the SSH port. Containers only send this event when SSH keys exist.\n  - CheckUpdate: Sent when the status of a health or readiness check changes. This may also affect the health status of the placement.\n  - DurableObjectConnected: Sent when a durable object instance connects and gains control of the deployment.\n    This event is only sent for durable object deployments. It is sent after VMStarted.\n  - ContainerStarted: It's sent when the container starts running.\n",
+																									"type": "string",
+																									"enum": [
+																										"SchedulerPlaced",
+																										"NetworkingIPAssigned",
+																										"VMStarted",
+																										"ImagePulled",
+																										"ImagePullError",
+																										"VMFailedToStart",
+																										"NetworkingIPAssignmentFailed",
+																										"VMRunning",
+																										"VMStopping",
+																										"VMStopped",
+																										"VMFailed",
+																										"RuntimeStartFailed",
+																										"SSHStarted",
+																										"ServiceHealthUpdates",
+																										"CheckUpdate",
+																										"DurableObjectConnected",
+																										"ContainerStarted"
+																									]
+																								},
+																								"statusChange": {
+																									"type": "object",
+																									"additionalProperties": true
+																								},
+																								"time": {
+																									"description": "UTC timestamp string in ISO 8601 format.",
+																									"type": "string",
+																									"example": "2021-04-01T12:32:41.488Z"
+																								},
+																								"type": {
+																									"type": "string",
+																									"enum": [
+																										"Info",
+																										"Error",
+																										"Warn",
+																										"UserError",
+																										"SystemError"
+																									]
+																								}
+																							},
+																							"required": [
+																								"id",
+																								"time",
+																								"type",
+																								"name",
+																								"message",
+																								"details",
+																								"statusChange"
+																							]
+																						},
+																						"instance_id": {
+																							"description": "An instance ID represents an identifier of an instance configuration that maintains an underlying placement.",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"instance_id",
+																						"event"
+																					]
+																				}
+																			},
+																			"instances": {
+																				"description": "Shows a count of application instance states.",
+																				"type": "object",
+																				"properties": {
+																					"active": {
+																						"description": "Number of instances whose runtime reports the container as running (container_status = \"running\"). This is a subset of the placements that remain up: an instance that is already bound to a Durable Object and serving traffic is counted under \"assigned\" until its container_status catches up to \"running\", so container_status can briefly lag Durable Object attachment under churn. To estimate running, Durable-Object-bound instances, sum \"active\" + \"assigned\" rather than reading \"active\" alone.\n",
+																						"type": "integer"
+																					},
+																					"assigned": {
+																						"description": "Number of instances bound to a Durable Object with a running placement whose container_status remains behind \"running\". These count as live, serving instances; \"active\" + \"assigned\" approximates the running, Durable-Object-bound count.\n",
+																						"type": "integer"
+																					}
+																				},
+																				"required": [
+																					"active",
+																					"assigned"
+																				]
+																			},
+																			"summary": {
+																				"description": "High-level health assessment. Only populated for \"new_instances\" strategy.\nBased on a sample of target-version instances rather than a full count.\n- \"pending\": Zero target-version instances exist yet.\n- \"healthy\": Every sampled target-version instance reports running or active.\n- \"degraded\": Some sampled instances remain starting or scheduling.\n- \"unhealthy\": One or more sampled instances have failed.\n",
+																				"type": "string",
+																				"enum": [
+																					"healthy",
+																					"degraded",
+																					"unhealthy",
+																					"pending"
+																				]
+																			}
 																		},
-																		"public_key": {
-																			"description": "An SSH public key.",
-																			"type": "string"
-																		}
+																		"required": [
+																			"instances",
+																			"errors"
+																		]
 																	},
-																	"required": [
-																		"public_key"
-																	]
-																}
-															},
-															"wrangler_ssh": {
-																"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
-																"type": "object",
-																"properties": {
-																	"enabled": {
-																		"type": "boolean",
-																		"default": true
+																	"id": {
+																		"description": "An Application ID represents an identifier of an application.",
+																		"type": "string"
 																	},
-																	"port": {
+																	"instances": {
+																		"description": "Number of deployments to create.",
+																		"type": "integer"
+																	},
+																	"max_instances": {
+																		"description": "Maximum number of instances the application allows. This is relevant for applications that auto-scale.",
+																		"type": "integer"
+																	},
+																	"name": {
+																		"description": "The application name.",
+																		"type": "string"
+																	},
+																	"observability": {
+																		"description": "Top-level observability settings for the application.\nThis field is mutually exclusive with configuration.observability.\n",
+																		"allOf": [
+																			{
+																				"description": "Settings for application observability such as logging.",
+																				"type": "object",
+																				"properties": {
+																					"logs": {
+																						"description": "Observability logging settings.",
+																						"type": "object",
+																						"properties": {
+																							"enabled": {
+																								"type": "boolean",
+																								"default": false
+																							}
+																						}
+																					},
+																					"target_instance_count": {
+																						"description": "Fixed number of instances that should receive the application-level observability overlay.\nMutually exclusive with `target_instance_percentage`.\n",
+																						"type": "integer",
+																						"minimum": 1
+																					},
+																					"target_instance_percentage": {
+																						"description": "Percentage of instances that should receive the application-level observability overlay.\nThis rounds up so at least this percentage of instances is targeted.\nMutually exclusive with `target_instance_count`.\n",
+																						"type": "integer",
+																						"maximum": 99,
+																						"minimum": 1
+																					}
+																				}
+																			}
+																		]
+																	},
+																	"rollout_active_grace_period": {
+																		"description": "Grace period for active instances to stay alive before becoming eligible for shutdown signal due to a rollout, in seconds.\nDefaults to 0.\n",
 																		"type": "integer",
-																		"default": 22,
-																		"maximum": 65535,
-																		"minimum": 1
+																		"default": 0,
+																		"maximum": 604800,
+																		"minimum": 0
+																	},
+																	"scheduling_policy": {
+																		"description": "The scheduling policy to use for an application.",
+																		"type": "string",
+																		"enum": [
+																			"default",
+																			"durable_object"
+																		]
+																	},
+																	"updated_at": {
+																		"description": "UTC timestamp string in ISO 8601 format.",
+																		"type": "string",
+																		"example": "2021-04-01T12:32:41.488Z"
+																	},
+																	"version": {
+																		"type": "integer"
 																	}
-																}
+																},
+																"required": [
+																	"id",
+																	"created_at",
+																	"updated_at",
+																	"account_id",
+																	"name",
+																	"version",
+																	"scheduling_policy",
+																	"instances",
+																	"configuration"
+																]
+															},
+															{
+																"properties": {
+																	"scheduling_policy": {
+																		"description": "The scheduling policy to use for a scheduler-backed application.",
+																		"type": "string",
+																		"enum": [
+																			"default"
+																		]
+																	}
+																},
+																"required": [
+																	"scheduling_policy"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"image"
 														]
 													},
-													"constraints": {
+													{
+														"description": "Durable Objects own and configure this namespace-backed application's instances.",
 														"type": "object",
 														"properties": {
-															"jurisdiction": {
-																"description": "Currently supports only \"eu\" and \"fedramp\". Overlap between jurisdiction and region is allowed for ENAM, WNAM (FedRAMP) and EEUR, WEUR (EU).",
+															"account_id": {
+																"description": "A unique identifier for the user's account.",
 																"type": "string"
 															},
-															"regions": {
-																"type": "array",
-																"items": {
-																	"description": "Represents a group of datacenters. Choose one of \"AFR\", \"APAC\", \"EEUR\", \"ENAM\", \"WNAM\", \"ME\", \"OC\", \"SAM\", or \"WEUR\".\n",
-																	"type": "string",
-																	"example": "WNAM"
-																}
-															}
-														}
-													},
-													"created_at": {
-														"description": "UTC timestamp string in ISO 8601 format.",
-														"type": "string",
-														"example": "2021-04-01T12:32:41.488Z"
-													},
-													"durable_objects": {
-														"description": "Durable object configuration stored on and returned from a Cloudchamber application.",
-														"oneOf": [
-															{
+															"created_at": {
+																"description": "UTC timestamp string in ISO 8601 format.",
+																"type": "string",
+																"example": "2021-04-01T12:32:41.488Z"
+															},
+															"durable_objects": {
 																"description": "Durable object configuration using a namespace ID.",
 																"type": "object",
 																"properties": {
@@ -1202,211 +1458,38 @@
 																"required": [
 																	"namespace_id"
 																]
-															}
-														]
-													},
-													"health": {
-														"type": "object",
-														"properties": {
-															"errors": {
-																"type": "array",
-																"items": {
-																	"type": "object",
-																	"properties": {
-																		"event": {
-																			"description": "An event within a Placement or a Job.",
-																			"type": "object",
-																			"properties": {
-																				"details": {
-																					"type": "object",
-																					"additionalProperties": true
-																				},
-																				"id": {
-																					"type": "string"
-																				},
-																				"message": {
-																					"type": "string"
-																				},
-																				"name": {
-																					"description": "Name of the event that describes the kind event that happened.\n  - SchedulerPlaced: It's the first event that creates a container placement. It happens when the Containers runtime was able to retrieve deployment resources and start verifying everything is correct.\n  - NetworkingIPAssigned: It's sent when the Containers runtime maps the IP to the container.\n  - VMStarted: It's sent when the Containers runtime starts the VM. The container might remain unhealthy at this point.\n  - ImagePulled: It's sent when the Containers runtime pulls the image successfully.\n  - ImagePullError: It's sent when the Containers runtime is having issues pulling the image. The message and details have more information on what happened for debugging.\n  - VMFailedToStart: It's sent when the Containers runtime was unable to boot the VM.\n  - VMStopping: It's sent when the scheduler is stopping the VM.\n  - VMStopped: It's sent when the VM finally exits.\n  - VMFailed: It's sent when the scheduling of the VM failed in the current location.\n  - RuntimeStartFailed: It's sent when the runtime hits an internal error.\n  - SSHStarted: It's sent when the container gains network connectivity and opens the SSH port. Containers only send this event when SSH keys exist.\n  - CheckUpdate: Sent when the status of a health or readiness check changes. This may also affect the health status of the placement.\n  - DurableObjectConnected: Sent when a durable object instance connects and gains control of the deployment.\n    This event is only sent for durable object deployments. It is sent after VMStarted.\n  - ContainerStarted: It's sent when the container starts running.\n",
-																					"type": "string",
-																					"enum": [
-																						"SchedulerPlaced",
-																						"NetworkingIPAssigned",
-																						"VMStarted",
-																						"ImagePulled",
-																						"ImagePullError",
-																						"VMFailedToStart",
-																						"NetworkingIPAssignmentFailed",
-																						"VMRunning",
-																						"VMStopping",
-																						"VMStopped",
-																						"VMFailed",
-																						"RuntimeStartFailed",
-																						"SSHStarted",
-																						"ServiceHealthUpdates",
-																						"CheckUpdate",
-																						"DurableObjectConnected",
-																						"ContainerStarted"
-																					]
-																				},
-																				"statusChange": {
-																					"type": "object",
-																					"additionalProperties": true
-																				},
-																				"time": {
-																					"description": "UTC timestamp string in ISO 8601 format.",
-																					"type": "string",
-																					"example": "2021-04-01T12:32:41.488Z"
-																				},
-																				"type": {
-																					"type": "string",
-																					"enum": [
-																						"Info",
-																						"Error",
-																						"Warn",
-																						"UserError",
-																						"SystemError"
-																					]
-																				}
-																			},
-																			"required": [
-																				"id",
-																				"time",
-																				"type",
-																				"name",
-																				"message",
-																				"details",
-																				"statusChange"
-																			]
-																		},
-																		"instance_id": {
-																			"description": "An instance ID represents an identifier of an instance configuration that maintains an underlying placement.",
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"instance_id",
-																		"event"
-																	]
-																}
 															},
-															"instances": {
-																"description": "Shows a count of application instance states.",
-																"type": "object",
-																"properties": {
-																	"active": {
-																		"description": "Number of instances whose runtime reports the container as running (container_status = \"running\"). This is a subset of the placements that remain up: an instance that is already bound to a Durable Object and serving traffic is counted under \"assigned\" until its container_status catches up to \"running\", so container_status can briefly lag Durable Object attachment under churn. To estimate running, Durable-Object-bound instances, sum \"active\" + \"assigned\" rather than reading \"active\" alone.\n",
-																		"type": "integer"
-																	},
-																	"assigned": {
-																		"description": "Number of instances bound to a Durable Object with a running placement whose container_status remains behind \"running\". These count as live, serving instances; \"active\" + \"assigned\" approximates the running, Durable-Object-bound count.\n",
-																		"type": "integer"
-																	}
-																},
-																"required": [
-																	"active",
-																	"assigned"
-																]
+															"id": {
+																"description": "An Application ID represents an identifier of an application.",
+																"type": "string"
 															},
-															"summary": {
-																"description": "High-level health assessment. Only populated for \"new_instances\" strategy.\nBased on a sample of target-version instances rather than a full count.\n- \"pending\": Zero target-version instances exist yet.\n- \"healthy\": Every sampled target-version instance reports running or active.\n- \"degraded\": Some sampled instances remain starting or scheduling.\n- \"unhealthy\": One or more sampled instances have failed.\n",
+															"name": {
+																"description": "The application name.",
+																"type": "string"
+															},
+															"scheduling_policy": {
+																"description": "Selects Durable Objects to own and schedule application instances.",
 																"type": "string",
 																"enum": [
-																	"healthy",
-																	"degraded",
-																	"unhealthy",
-																	"pending"
+																	"durable_object"
 																]
+															},
+															"updated_at": {
+																"description": "UTC timestamp string in ISO 8601 format.",
+																"type": "string",
+																"example": "2021-04-01T12:32:41.488Z"
 															}
 														},
 														"required": [
-															"instances",
-															"errors"
+															"id",
+															"created_at",
+															"updated_at",
+															"account_id",
+															"name",
+															"scheduling_policy",
+															"durable_objects"
 														]
-													},
-													"id": {
-														"description": "An Application ID represents an identifier of an application.",
-														"type": "string"
-													},
-													"instances": {
-														"description": "Number of deployments to create.",
-														"type": "integer"
-													},
-													"max_instances": {
-														"description": "Maximum number of instances the application allows. This is relevant for applications that auto-scale.",
-														"type": "integer"
-													},
-													"name": {
-														"description": "The application name.",
-														"type": "string"
-													},
-													"observability": {
-														"description": "Top-level observability settings for the application.\nThis field is mutually exclusive with configuration.observability.\n",
-														"allOf": [
-															{
-																"description": "Settings for application observability such as logging.",
-																"type": "object",
-																"properties": {
-																	"logs": {
-																		"description": "Observability logging settings.",
-																		"type": "object",
-																		"properties": {
-																			"enabled": {
-																				"type": "boolean",
-																				"default": false
-																			}
-																		}
-																	},
-																	"target_instance_count": {
-																		"description": "Fixed number of instances that should receive the application-level observability overlay.\nMutually exclusive with `target_instance_percentage`.\n",
-																		"type": "integer",
-																		"minimum": 1
-																	},
-																	"target_instance_percentage": {
-																		"description": "Percentage of instances that should receive the application-level observability overlay.\nThis rounds up so at least this percentage of instances is targeted.\nMutually exclusive with `target_instance_count`.\n",
-																		"type": "integer",
-																		"maximum": 99,
-																		"minimum": 1
-																	}
-																}
-															}
-														]
-													},
-													"rollout_active_grace_period": {
-														"description": "Grace period for active instances to stay alive before becoming eligible for shutdown signal due to a rollout, in seconds.\nDefaults to 0.\n",
-														"type": "integer",
-														"default": 0,
-														"maximum": 604800,
-														"minimum": 0
-													},
-													"scheduling_policy": {
-														"description": "The scheduling policy to use for an application.",
-														"type": "string",
-														"enum": [
-															"default",
-															"instance"
-														]
-													},
-													"updated_at": {
-														"description": "UTC timestamp string in ISO 8601 format.",
-														"type": "string",
-														"example": "2021-04-01T12:32:41.488Z"
-													},
-													"version": {
-														"type": "integer"
 													}
-												},
-												"required": [
-													"id",
-													"created_at",
-													"updated_at",
-													"account_id",
-													"name",
-													"version",
-													"scheduling_policy",
-													"instances",
-													"configuration"
 												]
 											}
 										}
@@ -1760,214 +1843,470 @@
 								{
 									"properties": {
 										"result": {
-											"description": "Describes an application and the parameters that govern how it places its instances.",
-											"type": "object",
-											"properties": {
-												"account_id": {
-													"description": "A unique identifier for the user's account.",
-													"type": "string"
-												},
-												"active_rollout_id": {
-													"description": "An identifier for a specific rollout within an application.",
-													"type": "string"
-												},
-												"configuration": {
-													"description": "User-specified container configuration.",
-													"type": "object",
-													"properties": {
-														"authorized_keys": {
-															"type": "array",
-															"items": {
-																"description": "User-provided SSH public key.",
-																"type": "object",
-																"properties": {
-																	"name": {
-																		"description": "Optional human readable name for this key.",
-																		"type": "string"
-																	},
-																	"public_key": {
-																		"description": "An SSH public key.",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"public_key"
-																]
-															}
-														},
-														"command": {
-															"description": "The command that runs when the container starts, passed to the entrypoint.\nYou can override this at run-time. If you override only the command,\nit gets passed to the default entrypoint specified in the image.\n",
-															"type": "array",
-															"items": {
-																"type": "string"
-															},
-															"example": [
-																"myapp",
-																"--default-option"
-															]
-														},
-														"dns": {
-															"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
+											"description": "The public Containers API returns an application.",
+											"oneOf": [
+												{
+													"description": "The Cloudchamber scheduler manages this application's instances.",
+													"allOf": [
+														{
+															"description": "Describes an application and the parameters that govern how it places its instances.",
 															"type": "object",
 															"properties": {
-																"searches": {
-																	"description": "The container resolver appends these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it appends 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
-																	"type": "array",
-																	"items": {
-																		"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
-																		"type": "string",
-																		"example": "docker.io"
-																	}
-																},
-																"servers": {
-																	"description": "List of DNS servers the deployment uses to resolve domain names. You can only specify a maximum of 3.",
-																	"type": "array",
-																	"items": {
-																		"description": "A string representation of an IP, either v6 or v4.",
-																		"type": "string",
-																		"example": "192.1.1.1"
-																	}
-																}
-															}
-														},
-														"entrypoint": {
-															"description": "The entry point for the container, specifying the executable to run when the container starts.\nYou can override this at run-time. If you do, the default command from the image is ignored.\nSpecify both entrypoint and command at run-time to completely replace the image defaults.\n",
-															"type": "array",
-															"items": {
-																"type": "string"
-															},
-															"example": [
-																"/bin/bash"
-															]
-														},
-														"environment_variables": {
-															"description": "Container environment variables.",
-															"type": "array",
-															"items": {
-																"description": "An environment variable with a value set.",
-																"type": "object",
-																"properties": {
-																	"name": {
-																		"description": "An environment variable name.",
-																		"type": "string"
-																	},
-																	"value": {
-																		"description": "An environment variable value.",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"name",
-																	"value"
-																]
-															}
-														},
-														"image": {
-															"description": "Image url.",
-															"type": "string"
-														},
-														"instance_type": {
-															"description": "The instance type configures vCPU, memory, and disk.\n\n- \"lite\": 1/16 vCPU, 256 MiB memory, 2 GB disk\n- \"basic\": 1/4 vCPU, 1 GiB memory, 4 GB disk\n- \"standard-1\": 1/2 vCPU, 4 GiB memory, 8 GB disk\n- \"standard-2\": 1 vCPU, 6 GiB memory, 12 GB disk\n- \"standard-3\": 2 vCPU, 8 GiB memory, 16 GB disk\n- \"standard-4\": 4 vCPU, 12 GiB memory, 20 GB disk\n",
-															"type": "string",
-															"example": "lite",
-															"default": "lite",
-															"anyOf": [
-																{
-																	"enum": [
-																		"lite",
-																		"basic",
-																		"standard-1",
-																		"standard-2",
-																		"standard-3",
-																		"standard-4"
-																	],
+																"account_id": {
+																	"description": "A unique identifier for the user's account.",
 																	"type": "string"
-																}
-															]
-														},
-														"observability": {
-															"description": "Settings for deployment observability such as logging.",
-															"type": "object",
-															"properties": {
-																"logs": {
-																	"description": "Observability logging settings.",
+																},
+																"active_rollout_id": {
+																	"description": "An identifier for a specific rollout within an application.",
+																	"type": "string"
+																},
+																"configuration": {
+																	"description": "User-specified container configuration.",
 																	"type": "object",
 																	"properties": {
-																		"enabled": {
-																			"type": "boolean",
-																			"default": false
+																		"authorized_keys": {
+																			"type": "array",
+																			"items": {
+																				"description": "User-provided SSH public key.",
+																				"type": "object",
+																				"properties": {
+																					"name": {
+																						"description": "Optional human readable name for this key.",
+																						"type": "string"
+																					},
+																					"public_key": {
+																						"description": "An SSH public key.",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"public_key"
+																				]
+																			}
+																		},
+																		"command": {
+																			"description": "The command that runs when the container starts, passed to the entrypoint.\nYou can override this at run-time. If you override only the command,\nit gets passed to the default entrypoint specified in the image.\n",
+																			"type": "array",
+																			"items": {
+																				"type": "string"
+																			},
+																			"example": [
+																				"myapp",
+																				"--default-option"
+																			]
+																		},
+																		"dns": {
+																			"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
+																			"type": "object",
+																			"properties": {
+																				"searches": {
+																					"description": "The container resolver appends these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it appends 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
+																					"type": "array",
+																					"items": {
+																						"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
+																						"type": "string",
+																						"example": "docker.io"
+																					}
+																				},
+																				"servers": {
+																					"description": "List of DNS servers the deployment uses to resolve domain names. You can only specify a maximum of 3.",
+																					"type": "array",
+																					"items": {
+																						"description": "A string representation of an IP, either v6 or v4.",
+																						"type": "string",
+																						"example": "192.1.1.1"
+																					}
+																				}
+																			}
+																		},
+																		"entrypoint": {
+																			"description": "The entry point for the container, specifying the executable to run when the container starts.\nYou can override this at run-time. If you do, the default command from the image is ignored.\nSpecify both entrypoint and command at run-time to completely replace the image defaults.\n",
+																			"type": "array",
+																			"items": {
+																				"type": "string"
+																			},
+																			"example": [
+																				"/bin/bash"
+																			]
+																		},
+																		"environment_variables": {
+																			"description": "Container environment variables.",
+																			"type": "array",
+																			"items": {
+																				"description": "An environment variable with a value set.",
+																				"type": "object",
+																				"properties": {
+																					"name": {
+																						"description": "An environment variable name.",
+																						"type": "string"
+																					},
+																					"value": {
+																						"description": "An environment variable value.",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"name",
+																					"value"
+																				]
+																			}
+																		},
+																		"image": {
+																			"description": "Image url.",
+																			"type": "string"
+																		},
+																		"instance_type": {
+																			"description": "The instance type configures vCPU, memory, and disk.\n\n- \"lite\": 1/16 vCPU, 256 MiB memory, 2 GB disk\n- \"basic\": 1/4 vCPU, 1 GiB memory, 4 GB disk\n- \"standard-1\": 1/2 vCPU, 4 GiB memory, 8 GB disk\n- \"standard-2\": 1 vCPU, 6 GiB memory, 12 GB disk\n- \"standard-3\": 2 vCPU, 8 GiB memory, 16 GB disk\n- \"standard-4\": 4 vCPU, 12 GiB memory, 20 GB disk\n",
+																			"type": "string",
+																			"example": "lite",
+																			"default": "lite",
+																			"anyOf": [
+																				{
+																					"enum": [
+																						"lite",
+																						"basic",
+																						"standard-1",
+																						"standard-2",
+																						"standard-3",
+																						"standard-4"
+																					],
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"observability": {
+																			"description": "Settings for deployment observability such as logging.",
+																			"type": "object",
+																			"properties": {
+																				"logs": {
+																					"description": "Observability logging settings.",
+																					"type": "object",
+																					"properties": {
+																						"enabled": {
+																							"type": "boolean",
+																							"default": false
+																						}
+																					}
+																				}
+																			}
+																		},
+																		"trusted_user_ca_keys": {
+																			"type": "array",
+																			"items": {
+																				"description": "User-provided SSH public key.",
+																				"type": "object",
+																				"properties": {
+																					"name": {
+																						"description": "Optional human readable name for this key.",
+																						"type": "string"
+																					},
+																					"public_key": {
+																						"description": "An SSH public key.",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"public_key"
+																				]
+																			}
+																		},
+																		"wrangler_ssh": {
+																			"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
+																			"type": "object",
+																			"properties": {
+																				"enabled": {
+																					"type": "boolean",
+																					"default": true
+																				},
+																				"port": {
+																					"type": "integer",
+																					"default": 22,
+																					"maximum": 65535,
+																					"minimum": 1
+																				}
+																			}
+																		}
+																	},
+																	"required": [
+																		"image"
+																	]
+																},
+																"constraints": {
+																	"type": "object",
+																	"properties": {
+																		"jurisdiction": {
+																			"description": "Currently supports only \"eu\" and \"fedramp\". Overlap between jurisdiction and region is allowed for ENAM, WNAM (FedRAMP) and EEUR, WEUR (EU).",
+																			"type": "string"
+																		},
+																		"regions": {
+																			"type": "array",
+																			"items": {
+																				"description": "Represents a group of datacenters. Choose one of \"AFR\", \"APAC\", \"EEUR\", \"ENAM\", \"WNAM\", \"ME\", \"OC\", \"SAM\", or \"WEUR\".\n",
+																				"type": "string",
+																				"example": "WNAM"
+																			}
 																		}
 																	}
-																}
-															}
-														},
-														"trusted_user_ca_keys": {
-															"type": "array",
-															"items": {
-																"description": "User-provided SSH public key.",
-																"type": "object",
-																"properties": {
-																	"name": {
-																		"description": "Optional human readable name for this key.",
-																		"type": "string"
+																},
+																"created_at": {
+																	"description": "UTC timestamp string in ISO 8601 format.",
+																	"type": "string",
+																	"example": "2021-04-01T12:32:41.488Z"
+																},
+																"durable_objects": {
+																	"description": "Durable object configuration stored on and returned from a Cloudchamber application.",
+																	"oneOf": [
+																		{
+																			"description": "Durable object configuration using a namespace ID.",
+																			"type": "object",
+																			"properties": {
+																				"namespace_id": {
+																					"description": "The namespace ID of the durable object namespace to use for this application.",
+																					"type": "string",
+																					"example": "14758f1afd44c09b7992073ccf00b43d"
+																				}
+																			},
+																			"required": [
+																				"namespace_id"
+																			]
+																		}
+																	]
+																},
+																"health": {
+																	"type": "object",
+																	"properties": {
+																		"errors": {
+																			"type": "array",
+																			"items": {
+																				"type": "object",
+																				"properties": {
+																					"event": {
+																						"description": "An event within a Placement or a Job.",
+																						"type": "object",
+																						"properties": {
+																							"details": {
+																								"type": "object",
+																								"additionalProperties": true
+																							},
+																							"id": {
+																								"type": "string"
+																							},
+																							"message": {
+																								"type": "string"
+																							},
+																							"name": {
+																								"description": "Name of the event that describes the kind event that happened.\n  - SchedulerPlaced: It's the first event that creates a container placement. It happens when the Containers runtime was able to retrieve deployment resources and start verifying everything is correct.\n  - NetworkingIPAssigned: It's sent when the Containers runtime maps the IP to the container.\n  - VMStarted: It's sent when the Containers runtime starts the VM. The container might remain unhealthy at this point.\n  - ImagePulled: It's sent when the Containers runtime pulls the image successfully.\n  - ImagePullError: It's sent when the Containers runtime is having issues pulling the image. The message and details have more information on what happened for debugging.\n  - VMFailedToStart: It's sent when the Containers runtime was unable to boot the VM.\n  - VMStopping: It's sent when the scheduler is stopping the VM.\n  - VMStopped: It's sent when the VM finally exits.\n  - VMFailed: It's sent when the scheduling of the VM failed in the current location.\n  - RuntimeStartFailed: It's sent when the runtime hits an internal error.\n  - SSHStarted: It's sent when the container gains network connectivity and opens the SSH port. Containers only send this event when SSH keys exist.\n  - CheckUpdate: Sent when the status of a health or readiness check changes. This may also affect the health status of the placement.\n  - DurableObjectConnected: Sent when a durable object instance connects and gains control of the deployment.\n    This event is only sent for durable object deployments. It is sent after VMStarted.\n  - ContainerStarted: It's sent when the container starts running.\n",
+																								"type": "string",
+																								"enum": [
+																									"SchedulerPlaced",
+																									"NetworkingIPAssigned",
+																									"VMStarted",
+																									"ImagePulled",
+																									"ImagePullError",
+																									"VMFailedToStart",
+																									"NetworkingIPAssignmentFailed",
+																									"VMRunning",
+																									"VMStopping",
+																									"VMStopped",
+																									"VMFailed",
+																									"RuntimeStartFailed",
+																									"SSHStarted",
+																									"ServiceHealthUpdates",
+																									"CheckUpdate",
+																									"DurableObjectConnected",
+																									"ContainerStarted"
+																								]
+																							},
+																							"statusChange": {
+																								"type": "object",
+																								"additionalProperties": true
+																							},
+																							"time": {
+																								"description": "UTC timestamp string in ISO 8601 format.",
+																								"type": "string",
+																								"example": "2021-04-01T12:32:41.488Z"
+																							},
+																							"type": {
+																								"type": "string",
+																								"enum": [
+																									"Info",
+																									"Error",
+																									"Warn",
+																									"UserError",
+																									"SystemError"
+																								]
+																							}
+																						},
+																						"required": [
+																							"id",
+																							"time",
+																							"type",
+																							"name",
+																							"message",
+																							"details",
+																							"statusChange"
+																						]
+																					},
+																					"instance_id": {
+																						"description": "An instance ID represents an identifier of an instance configuration that maintains an underlying placement.",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"instance_id",
+																					"event"
+																				]
+																			}
+																		},
+																		"instances": {
+																			"description": "Shows a count of application instance states.",
+																			"type": "object",
+																			"properties": {
+																				"active": {
+																					"description": "Number of instances whose runtime reports the container as running (container_status = \"running\"). This is a subset of the placements that remain up: an instance that is already bound to a Durable Object and serving traffic is counted under \"assigned\" until its container_status catches up to \"running\", so container_status can briefly lag Durable Object attachment under churn. To estimate running, Durable-Object-bound instances, sum \"active\" + \"assigned\" rather than reading \"active\" alone.\n",
+																					"type": "integer"
+																				},
+																				"assigned": {
+																					"description": "Number of instances bound to a Durable Object with a running placement whose container_status remains behind \"running\". These count as live, serving instances; \"active\" + \"assigned\" approximates the running, Durable-Object-bound count.\n",
+																					"type": "integer"
+																				}
+																			},
+																			"required": [
+																				"active",
+																				"assigned"
+																			]
+																		},
+																		"summary": {
+																			"description": "High-level health assessment. Only populated for \"new_instances\" strategy.\nBased on a sample of target-version instances rather than a full count.\n- \"pending\": Zero target-version instances exist yet.\n- \"healthy\": Every sampled target-version instance reports running or active.\n- \"degraded\": Some sampled instances remain starting or scheduling.\n- \"unhealthy\": One or more sampled instances have failed.\n",
+																			"type": "string",
+																			"enum": [
+																				"healthy",
+																				"degraded",
+																				"unhealthy",
+																				"pending"
+																			]
+																		}
 																	},
-																	"public_key": {
-																		"description": "An SSH public key.",
-																		"type": "string"
-																	}
+																	"required": [
+																		"instances",
+																		"errors"
+																	]
 																},
-																"required": [
-																	"public_key"
-																]
-															}
-														},
-														"wrangler_ssh": {
-															"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
-															"type": "object",
-															"properties": {
-																"enabled": {
-																	"type": "boolean",
-																	"default": true
+																"id": {
+																	"description": "An Application ID represents an identifier of an application.",
+																	"type": "string"
 																},
-																"port": {
+																"instances": {
+																	"description": "Number of deployments to create.",
+																	"type": "integer"
+																},
+																"max_instances": {
+																	"description": "Maximum number of instances the application allows. This is relevant for applications that auto-scale.",
+																	"type": "integer"
+																},
+																"name": {
+																	"description": "The application name.",
+																	"type": "string"
+																},
+																"observability": {
+																	"description": "Top-level observability settings for the application.\nThis field is mutually exclusive with configuration.observability.\n",
+																	"allOf": [
+																		{
+																			"description": "Settings for application observability such as logging.",
+																			"type": "object",
+																			"properties": {
+																				"logs": {
+																					"description": "Observability logging settings.",
+																					"type": "object",
+																					"properties": {
+																						"enabled": {
+																							"type": "boolean",
+																							"default": false
+																						}
+																					}
+																				},
+																				"target_instance_count": {
+																					"description": "Fixed number of instances that should receive the application-level observability overlay.\nMutually exclusive with `target_instance_percentage`.\n",
+																					"type": "integer",
+																					"minimum": 1
+																				},
+																				"target_instance_percentage": {
+																					"description": "Percentage of instances that should receive the application-level observability overlay.\nThis rounds up so at least this percentage of instances is targeted.\nMutually exclusive with `target_instance_count`.\n",
+																					"type": "integer",
+																					"maximum": 99,
+																					"minimum": 1
+																				}
+																			}
+																		}
+																	]
+																},
+																"rollout_active_grace_period": {
+																	"description": "Grace period for active instances to stay alive before becoming eligible for shutdown signal due to a rollout, in seconds.\nDefaults to 0.\n",
 																	"type": "integer",
-																	"default": 22,
-																	"maximum": 65535,
-																	"minimum": 1
+																	"default": 0,
+																	"maximum": 604800,
+																	"minimum": 0
+																},
+																"scheduling_policy": {
+																	"description": "The scheduling policy to use for an application.",
+																	"type": "string",
+																	"enum": [
+																		"default",
+																		"durable_object"
+																	]
+																},
+																"updated_at": {
+																	"description": "UTC timestamp string in ISO 8601 format.",
+																	"type": "string",
+																	"example": "2021-04-01T12:32:41.488Z"
+																},
+																"version": {
+																	"type": "integer"
 																}
-															}
+															},
+															"required": [
+																"id",
+																"created_at",
+																"updated_at",
+																"account_id",
+																"name",
+																"version",
+																"scheduling_policy",
+																"instances",
+																"configuration"
+															]
+														},
+														{
+															"properties": {
+																"scheduling_policy": {
+																	"description": "The scheduling policy to use for a scheduler-backed application.",
+																	"type": "string",
+																	"enum": [
+																		"default"
+																	]
+																}
+															},
+															"required": [
+																"scheduling_policy"
+															],
+															"type": "object"
 														}
-													},
-													"required": [
-														"image"
 													]
 												},
-												"constraints": {
+												{
+													"description": "Durable Objects own and configure this namespace-backed application's instances.",
 													"type": "object",
 													"properties": {
-														"jurisdiction": {
-															"description": "Currently supports only \"eu\" and \"fedramp\". Overlap between jurisdiction and region is allowed for ENAM, WNAM (FedRAMP) and EEUR, WEUR (EU).",
+														"account_id": {
+															"description": "A unique identifier for the user's account.",
 															"type": "string"
 														},
-														"regions": {
-															"type": "array",
-															"items": {
-																"description": "Represents a group of datacenters. Choose one of \"AFR\", \"APAC\", \"EEUR\", \"ENAM\", \"WNAM\", \"ME\", \"OC\", \"SAM\", or \"WEUR\".\n",
-																"type": "string",
-																"example": "WNAM"
-															}
-														}
-													}
-												},
-												"created_at": {
-													"description": "UTC timestamp string in ISO 8601 format.",
-													"type": "string",
-													"example": "2021-04-01T12:32:41.488Z"
-												},
-												"durable_objects": {
-													"description": "Durable object configuration stored on and returned from a Cloudchamber application.",
-													"oneOf": [
-														{
+														"created_at": {
+															"description": "UTC timestamp string in ISO 8601 format.",
+															"type": "string",
+															"example": "2021-04-01T12:32:41.488Z"
+														},
+														"durable_objects": {
 															"description": "Durable object configuration using a namespace ID.",
 															"type": "object",
 															"properties": {
@@ -1980,211 +2319,38 @@
 															"required": [
 																"namespace_id"
 															]
-														}
-													]
-												},
-												"health": {
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"event": {
-																		"description": "An event within a Placement or a Job.",
-																		"type": "object",
-																		"properties": {
-																			"details": {
-																				"type": "object",
-																				"additionalProperties": true
-																			},
-																			"id": {
-																				"type": "string"
-																			},
-																			"message": {
-																				"type": "string"
-																			},
-																			"name": {
-																				"description": "Name of the event that describes the kind event that happened.\n  - SchedulerPlaced: It's the first event that creates a container placement. It happens when the Containers runtime was able to retrieve deployment resources and start verifying everything is correct.\n  - NetworkingIPAssigned: It's sent when the Containers runtime maps the IP to the container.\n  - VMStarted: It's sent when the Containers runtime starts the VM. The container might remain unhealthy at this point.\n  - ImagePulled: It's sent when the Containers runtime pulls the image successfully.\n  - ImagePullError: It's sent when the Containers runtime is having issues pulling the image. The message and details have more information on what happened for debugging.\n  - VMFailedToStart: It's sent when the Containers runtime was unable to boot the VM.\n  - VMStopping: It's sent when the scheduler is stopping the VM.\n  - VMStopped: It's sent when the VM finally exits.\n  - VMFailed: It's sent when the scheduling of the VM failed in the current location.\n  - RuntimeStartFailed: It's sent when the runtime hits an internal error.\n  - SSHStarted: It's sent when the container gains network connectivity and opens the SSH port. Containers only send this event when SSH keys exist.\n  - CheckUpdate: Sent when the status of a health or readiness check changes. This may also affect the health status of the placement.\n  - DurableObjectConnected: Sent when a durable object instance connects and gains control of the deployment.\n    This event is only sent for durable object deployments. It is sent after VMStarted.\n  - ContainerStarted: It's sent when the container starts running.\n",
-																				"type": "string",
-																				"enum": [
-																					"SchedulerPlaced",
-																					"NetworkingIPAssigned",
-																					"VMStarted",
-																					"ImagePulled",
-																					"ImagePullError",
-																					"VMFailedToStart",
-																					"NetworkingIPAssignmentFailed",
-																					"VMRunning",
-																					"VMStopping",
-																					"VMStopped",
-																					"VMFailed",
-																					"RuntimeStartFailed",
-																					"SSHStarted",
-																					"ServiceHealthUpdates",
-																					"CheckUpdate",
-																					"DurableObjectConnected",
-																					"ContainerStarted"
-																				]
-																			},
-																			"statusChange": {
-																				"type": "object",
-																				"additionalProperties": true
-																			},
-																			"time": {
-																				"description": "UTC timestamp string in ISO 8601 format.",
-																				"type": "string",
-																				"example": "2021-04-01T12:32:41.488Z"
-																			},
-																			"type": {
-																				"type": "string",
-																				"enum": [
-																					"Info",
-																					"Error",
-																					"Warn",
-																					"UserError",
-																					"SystemError"
-																				]
-																			}
-																		},
-																		"required": [
-																			"id",
-																			"time",
-																			"type",
-																			"name",
-																			"message",
-																			"details",
-																			"statusChange"
-																		]
-																	},
-																	"instance_id": {
-																		"description": "An instance ID represents an identifier of an instance configuration that maintains an underlying placement.",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"instance_id",
-																	"event"
-																]
-															}
 														},
-														"instances": {
-															"description": "Shows a count of application instance states.",
-															"type": "object",
-															"properties": {
-																"active": {
-																	"description": "Number of instances whose runtime reports the container as running (container_status = \"running\"). This is a subset of the placements that remain up: an instance that is already bound to a Durable Object and serving traffic is counted under \"assigned\" until its container_status catches up to \"running\", so container_status can briefly lag Durable Object attachment under churn. To estimate running, Durable-Object-bound instances, sum \"active\" + \"assigned\" rather than reading \"active\" alone.\n",
-																	"type": "integer"
-																},
-																"assigned": {
-																	"description": "Number of instances bound to a Durable Object with a running placement whose container_status remains behind \"running\". These count as live, serving instances; \"active\" + \"assigned\" approximates the running, Durable-Object-bound count.\n",
-																	"type": "integer"
-																}
-															},
-															"required": [
-																"active",
-																"assigned"
-															]
+														"id": {
+															"description": "An Application ID represents an identifier of an application.",
+															"type": "string"
 														},
-														"summary": {
-															"description": "High-level health assessment. Only populated for \"new_instances\" strategy.\nBased on a sample of target-version instances rather than a full count.\n- \"pending\": Zero target-version instances exist yet.\n- \"healthy\": Every sampled target-version instance reports running or active.\n- \"degraded\": Some sampled instances remain starting or scheduling.\n- \"unhealthy\": One or more sampled instances have failed.\n",
+														"name": {
+															"description": "The application name.",
+															"type": "string"
+														},
+														"scheduling_policy": {
+															"description": "Selects Durable Objects to own and schedule application instances.",
 															"type": "string",
 															"enum": [
-																"healthy",
-																"degraded",
-																"unhealthy",
-																"pending"
+																"durable_object"
 															]
+														},
+														"updated_at": {
+															"description": "UTC timestamp string in ISO 8601 format.",
+															"type": "string",
+															"example": "2021-04-01T12:32:41.488Z"
 														}
 													},
 													"required": [
-														"instances",
-														"errors"
+														"id",
+														"created_at",
+														"updated_at",
+														"account_id",
+														"name",
+														"scheduling_policy",
+														"durable_objects"
 													]
-												},
-												"id": {
-													"description": "An Application ID represents an identifier of an application.",
-													"type": "string"
-												},
-												"instances": {
-													"description": "Number of deployments to create.",
-													"type": "integer"
-												},
-												"max_instances": {
-													"description": "Maximum number of instances the application allows. This is relevant for applications that auto-scale.",
-													"type": "integer"
-												},
-												"name": {
-													"description": "The application name.",
-													"type": "string"
-												},
-												"observability": {
-													"description": "Top-level observability settings for the application.\nThis field is mutually exclusive with configuration.observability.\n",
-													"allOf": [
-														{
-															"description": "Settings for application observability such as logging.",
-															"type": "object",
-															"properties": {
-																"logs": {
-																	"description": "Observability logging settings.",
-																	"type": "object",
-																	"properties": {
-																		"enabled": {
-																			"type": "boolean",
-																			"default": false
-																		}
-																	}
-																},
-																"target_instance_count": {
-																	"description": "Fixed number of instances that should receive the application-level observability overlay.\nMutually exclusive with `target_instance_percentage`.\n",
-																	"type": "integer",
-																	"minimum": 1
-																},
-																"target_instance_percentage": {
-																	"description": "Percentage of instances that should receive the application-level observability overlay.\nThis rounds up so at least this percentage of instances is targeted.\nMutually exclusive with `target_instance_count`.\n",
-																	"type": "integer",
-																	"maximum": 99,
-																	"minimum": 1
-																}
-															}
-														}
-													]
-												},
-												"rollout_active_grace_period": {
-													"description": "Grace period for active instances to stay alive before becoming eligible for shutdown signal due to a rollout, in seconds.\nDefaults to 0.\n",
-													"type": "integer",
-													"default": 0,
-													"maximum": 604800,
-													"minimum": 0
-												},
-												"scheduling_policy": {
-													"description": "The scheduling policy to use for an application.",
-													"type": "string",
-													"enum": [
-														"default",
-														"instance"
-													]
-												},
-												"updated_at": {
-													"description": "UTC timestamp string in ISO 8601 format.",
-													"type": "string",
-													"example": "2021-04-01T12:32:41.488Z"
-												},
-												"version": {
-													"type": "integer"
 												}
-											},
-											"required": [
-												"id",
-												"created_at",
-												"updated_at",
-												"account_id",
-												"name",
-												"version",
-												"scheduling_policy",
-												"instances",
-												"configuration"
 											]
 										}
 									},
@@ -6733,214 +6899,470 @@
 								{
 									"properties": {
 										"result": {
-											"description": "Describes an application and the parameters that govern how it places its instances.",
-											"type": "object",
-											"properties": {
-												"account_id": {
-													"description": "A unique identifier for the user's account.",
-													"type": "string"
-												},
-												"active_rollout_id": {
-													"description": "An identifier for a specific rollout within an application.",
-													"type": "string"
-												},
-												"configuration": {
-													"description": "User-specified container configuration.",
-													"type": "object",
-													"properties": {
-														"authorized_keys": {
-															"type": "array",
-															"items": {
-																"description": "User-provided SSH public key.",
-																"type": "object",
-																"properties": {
-																	"name": {
-																		"description": "Optional human readable name for this key.",
-																		"type": "string"
-																	},
-																	"public_key": {
-																		"description": "An SSH public key.",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"public_key"
-																]
-															}
-														},
-														"command": {
-															"description": "The command that runs when the container starts, passed to the entrypoint.\nYou can override this at run-time. If you override only the command,\nit gets passed to the default entrypoint specified in the image.\n",
-															"type": "array",
-															"items": {
-																"type": "string"
-															},
-															"example": [
-																"myapp",
-																"--default-option"
-															]
-														},
-														"dns": {
-															"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
+											"description": "The public Containers API returns an application.",
+											"oneOf": [
+												{
+													"description": "The Cloudchamber scheduler manages this application's instances.",
+													"allOf": [
+														{
+															"description": "Describes an application and the parameters that govern how it places its instances.",
 															"type": "object",
 															"properties": {
-																"searches": {
-																	"description": "The container resolver appends these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it appends 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
-																	"type": "array",
-																	"items": {
-																		"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
-																		"type": "string",
-																		"example": "docker.io"
-																	}
-																},
-																"servers": {
-																	"description": "List of DNS servers the deployment uses to resolve domain names. You can only specify a maximum of 3.",
-																	"type": "array",
-																	"items": {
-																		"description": "A string representation of an IP, either v6 or v4.",
-																		"type": "string",
-																		"example": "192.1.1.1"
-																	}
-																}
-															}
-														},
-														"entrypoint": {
-															"description": "The entry point for the container, specifying the executable to run when the container starts.\nYou can override this at run-time. If you do, the default command from the image is ignored.\nSpecify both entrypoint and command at run-time to completely replace the image defaults.\n",
-															"type": "array",
-															"items": {
-																"type": "string"
-															},
-															"example": [
-																"/bin/bash"
-															]
-														},
-														"environment_variables": {
-															"description": "Container environment variables.",
-															"type": "array",
-															"items": {
-																"description": "An environment variable with a value set.",
-																"type": "object",
-																"properties": {
-																	"name": {
-																		"description": "An environment variable name.",
-																		"type": "string"
-																	},
-																	"value": {
-																		"description": "An environment variable value.",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"name",
-																	"value"
-																]
-															}
-														},
-														"image": {
-															"description": "Image url.",
-															"type": "string"
-														},
-														"instance_type": {
-															"description": "The instance type configures vCPU, memory, and disk.\n\n- \"lite\": 1/16 vCPU, 256 MiB memory, 2 GB disk\n- \"basic\": 1/4 vCPU, 1 GiB memory, 4 GB disk\n- \"standard-1\": 1/2 vCPU, 4 GiB memory, 8 GB disk\n- \"standard-2\": 1 vCPU, 6 GiB memory, 12 GB disk\n- \"standard-3\": 2 vCPU, 8 GiB memory, 16 GB disk\n- \"standard-4\": 4 vCPU, 12 GiB memory, 20 GB disk\n",
-															"type": "string",
-															"example": "lite",
-															"default": "lite",
-															"anyOf": [
-																{
-																	"enum": [
-																		"lite",
-																		"basic",
-																		"standard-1",
-																		"standard-2",
-																		"standard-3",
-																		"standard-4"
-																	],
+																"account_id": {
+																	"description": "A unique identifier for the user's account.",
 																	"type": "string"
-																}
-															]
-														},
-														"observability": {
-															"description": "Settings for deployment observability such as logging.",
-															"type": "object",
-															"properties": {
-																"logs": {
-																	"description": "Observability logging settings.",
+																},
+																"active_rollout_id": {
+																	"description": "An identifier for a specific rollout within an application.",
+																	"type": "string"
+																},
+																"configuration": {
+																	"description": "User-specified container configuration.",
 																	"type": "object",
 																	"properties": {
-																		"enabled": {
-																			"type": "boolean",
-																			"default": false
+																		"authorized_keys": {
+																			"type": "array",
+																			"items": {
+																				"description": "User-provided SSH public key.",
+																				"type": "object",
+																				"properties": {
+																					"name": {
+																						"description": "Optional human readable name for this key.",
+																						"type": "string"
+																					},
+																					"public_key": {
+																						"description": "An SSH public key.",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"public_key"
+																				]
+																			}
+																		},
+																		"command": {
+																			"description": "The command that runs when the container starts, passed to the entrypoint.\nYou can override this at run-time. If you override only the command,\nit gets passed to the default entrypoint specified in the image.\n",
+																			"type": "array",
+																			"items": {
+																				"type": "string"
+																			},
+																			"example": [
+																				"myapp",
+																				"--default-option"
+																			]
+																		},
+																		"dns": {
+																			"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
+																			"type": "object",
+																			"properties": {
+																				"searches": {
+																					"description": "The container resolver appends these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it appends 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
+																					"type": "array",
+																					"items": {
+																						"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
+																						"type": "string",
+																						"example": "docker.io"
+																					}
+																				},
+																				"servers": {
+																					"description": "List of DNS servers the deployment uses to resolve domain names. You can only specify a maximum of 3.",
+																					"type": "array",
+																					"items": {
+																						"description": "A string representation of an IP, either v6 or v4.",
+																						"type": "string",
+																						"example": "192.1.1.1"
+																					}
+																				}
+																			}
+																		},
+																		"entrypoint": {
+																			"description": "The entry point for the container, specifying the executable to run when the container starts.\nYou can override this at run-time. If you do, the default command from the image is ignored.\nSpecify both entrypoint and command at run-time to completely replace the image defaults.\n",
+																			"type": "array",
+																			"items": {
+																				"type": "string"
+																			},
+																			"example": [
+																				"/bin/bash"
+																			]
+																		},
+																		"environment_variables": {
+																			"description": "Container environment variables.",
+																			"type": "array",
+																			"items": {
+																				"description": "An environment variable with a value set.",
+																				"type": "object",
+																				"properties": {
+																					"name": {
+																						"description": "An environment variable name.",
+																						"type": "string"
+																					},
+																					"value": {
+																						"description": "An environment variable value.",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"name",
+																					"value"
+																				]
+																			}
+																		},
+																		"image": {
+																			"description": "Image url.",
+																			"type": "string"
+																		},
+																		"instance_type": {
+																			"description": "The instance type configures vCPU, memory, and disk.\n\n- \"lite\": 1/16 vCPU, 256 MiB memory, 2 GB disk\n- \"basic\": 1/4 vCPU, 1 GiB memory, 4 GB disk\n- \"standard-1\": 1/2 vCPU, 4 GiB memory, 8 GB disk\n- \"standard-2\": 1 vCPU, 6 GiB memory, 12 GB disk\n- \"standard-3\": 2 vCPU, 8 GiB memory, 16 GB disk\n- \"standard-4\": 4 vCPU, 12 GiB memory, 20 GB disk\n",
+																			"type": "string",
+																			"example": "lite",
+																			"default": "lite",
+																			"anyOf": [
+																				{
+																					"enum": [
+																						"lite",
+																						"basic",
+																						"standard-1",
+																						"standard-2",
+																						"standard-3",
+																						"standard-4"
+																					],
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"observability": {
+																			"description": "Settings for deployment observability such as logging.",
+																			"type": "object",
+																			"properties": {
+																				"logs": {
+																					"description": "Observability logging settings.",
+																					"type": "object",
+																					"properties": {
+																						"enabled": {
+																							"type": "boolean",
+																							"default": false
+																						}
+																					}
+																				}
+																			}
+																		},
+																		"trusted_user_ca_keys": {
+																			"type": "array",
+																			"items": {
+																				"description": "User-provided SSH public key.",
+																				"type": "object",
+																				"properties": {
+																					"name": {
+																						"description": "Optional human readable name for this key.",
+																						"type": "string"
+																					},
+																					"public_key": {
+																						"description": "An SSH public key.",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"public_key"
+																				]
+																			}
+																		},
+																		"wrangler_ssh": {
+																			"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
+																			"type": "object",
+																			"properties": {
+																				"enabled": {
+																					"type": "boolean",
+																					"default": true
+																				},
+																				"port": {
+																					"type": "integer",
+																					"default": 22,
+																					"maximum": 65535,
+																					"minimum": 1
+																				}
+																			}
+																		}
+																	},
+																	"required": [
+																		"image"
+																	]
+																},
+																"constraints": {
+																	"type": "object",
+																	"properties": {
+																		"jurisdiction": {
+																			"description": "Currently supports only \"eu\" and \"fedramp\". Overlap between jurisdiction and region is allowed for ENAM, WNAM (FedRAMP) and EEUR, WEUR (EU).",
+																			"type": "string"
+																		},
+																		"regions": {
+																			"type": "array",
+																			"items": {
+																				"description": "Represents a group of datacenters. Choose one of \"AFR\", \"APAC\", \"EEUR\", \"ENAM\", \"WNAM\", \"ME\", \"OC\", \"SAM\", or \"WEUR\".\n",
+																				"type": "string",
+																				"example": "WNAM"
+																			}
 																		}
 																	}
-																}
-															}
-														},
-														"trusted_user_ca_keys": {
-															"type": "array",
-															"items": {
-																"description": "User-provided SSH public key.",
-																"type": "object",
-																"properties": {
-																	"name": {
-																		"description": "Optional human readable name for this key.",
-																		"type": "string"
+																},
+																"created_at": {
+																	"description": "UTC timestamp string in ISO 8601 format.",
+																	"type": "string",
+																	"example": "2021-04-01T12:32:41.488Z"
+																},
+																"durable_objects": {
+																	"description": "Durable object configuration stored on and returned from a Cloudchamber application.",
+																	"oneOf": [
+																		{
+																			"description": "Durable object configuration using a namespace ID.",
+																			"type": "object",
+																			"properties": {
+																				"namespace_id": {
+																					"description": "The namespace ID of the durable object namespace to use for this application.",
+																					"type": "string",
+																					"example": "14758f1afd44c09b7992073ccf00b43d"
+																				}
+																			},
+																			"required": [
+																				"namespace_id"
+																			]
+																		}
+																	]
+																},
+																"health": {
+																	"type": "object",
+																	"properties": {
+																		"errors": {
+																			"type": "array",
+																			"items": {
+																				"type": "object",
+																				"properties": {
+																					"event": {
+																						"description": "An event within a Placement or a Job.",
+																						"type": "object",
+																						"properties": {
+																							"details": {
+																								"type": "object",
+																								"additionalProperties": true
+																							},
+																							"id": {
+																								"type": "string"
+																							},
+																							"message": {
+																								"type": "string"
+																							},
+																							"name": {
+																								"description": "Name of the event that describes the kind event that happened.\n  - SchedulerPlaced: It's the first event that creates a container placement. It happens when the Containers runtime was able to retrieve deployment resources and start verifying everything is correct.\n  - NetworkingIPAssigned: It's sent when the Containers runtime maps the IP to the container.\n  - VMStarted: It's sent when the Containers runtime starts the VM. The container might remain unhealthy at this point.\n  - ImagePulled: It's sent when the Containers runtime pulls the image successfully.\n  - ImagePullError: It's sent when the Containers runtime is having issues pulling the image. The message and details have more information on what happened for debugging.\n  - VMFailedToStart: It's sent when the Containers runtime was unable to boot the VM.\n  - VMStopping: It's sent when the scheduler is stopping the VM.\n  - VMStopped: It's sent when the VM finally exits.\n  - VMFailed: It's sent when the scheduling of the VM failed in the current location.\n  - RuntimeStartFailed: It's sent when the runtime hits an internal error.\n  - SSHStarted: It's sent when the container gains network connectivity and opens the SSH port. Containers only send this event when SSH keys exist.\n  - CheckUpdate: Sent when the status of a health or readiness check changes. This may also affect the health status of the placement.\n  - DurableObjectConnected: Sent when a durable object instance connects and gains control of the deployment.\n    This event is only sent for durable object deployments. It is sent after VMStarted.\n  - ContainerStarted: It's sent when the container starts running.\n",
+																								"type": "string",
+																								"enum": [
+																									"SchedulerPlaced",
+																									"NetworkingIPAssigned",
+																									"VMStarted",
+																									"ImagePulled",
+																									"ImagePullError",
+																									"VMFailedToStart",
+																									"NetworkingIPAssignmentFailed",
+																									"VMRunning",
+																									"VMStopping",
+																									"VMStopped",
+																									"VMFailed",
+																									"RuntimeStartFailed",
+																									"SSHStarted",
+																									"ServiceHealthUpdates",
+																									"CheckUpdate",
+																									"DurableObjectConnected",
+																									"ContainerStarted"
+																								]
+																							},
+																							"statusChange": {
+																								"type": "object",
+																								"additionalProperties": true
+																							},
+																							"time": {
+																								"description": "UTC timestamp string in ISO 8601 format.",
+																								"type": "string",
+																								"example": "2021-04-01T12:32:41.488Z"
+																							},
+																							"type": {
+																								"type": "string",
+																								"enum": [
+																									"Info",
+																									"Error",
+																									"Warn",
+																									"UserError",
+																									"SystemError"
+																								]
+																							}
+																						},
+																						"required": [
+																							"id",
+																							"time",
+																							"type",
+																							"name",
+																							"message",
+																							"details",
+																							"statusChange"
+																						]
+																					},
+																					"instance_id": {
+																						"description": "An instance ID represents an identifier of an instance configuration that maintains an underlying placement.",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"instance_id",
+																					"event"
+																				]
+																			}
+																		},
+																		"instances": {
+																			"description": "Shows a count of application instance states.",
+																			"type": "object",
+																			"properties": {
+																				"active": {
+																					"description": "Number of instances whose runtime reports the container as running (container_status = \"running\"). This is a subset of the placements that remain up: an instance that is already bound to a Durable Object and serving traffic is counted under \"assigned\" until its container_status catches up to \"running\", so container_status can briefly lag Durable Object attachment under churn. To estimate running, Durable-Object-bound instances, sum \"active\" + \"assigned\" rather than reading \"active\" alone.\n",
+																					"type": "integer"
+																				},
+																				"assigned": {
+																					"description": "Number of instances bound to a Durable Object with a running placement whose container_status remains behind \"running\". These count as live, serving instances; \"active\" + \"assigned\" approximates the running, Durable-Object-bound count.\n",
+																					"type": "integer"
+																				}
+																			},
+																			"required": [
+																				"active",
+																				"assigned"
+																			]
+																		},
+																		"summary": {
+																			"description": "High-level health assessment. Only populated for \"new_instances\" strategy.\nBased on a sample of target-version instances rather than a full count.\n- \"pending\": Zero target-version instances exist yet.\n- \"healthy\": Every sampled target-version instance reports running or active.\n- \"degraded\": Some sampled instances remain starting or scheduling.\n- \"unhealthy\": One or more sampled instances have failed.\n",
+																			"type": "string",
+																			"enum": [
+																				"healthy",
+																				"degraded",
+																				"unhealthy",
+																				"pending"
+																			]
+																		}
 																	},
-																	"public_key": {
-																		"description": "An SSH public key.",
-																		"type": "string"
-																	}
+																	"required": [
+																		"instances",
+																		"errors"
+																	]
 																},
-																"required": [
-																	"public_key"
-																]
-															}
-														},
-														"wrangler_ssh": {
-															"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
-															"type": "object",
-															"properties": {
-																"enabled": {
-																	"type": "boolean",
-																	"default": true
+																"id": {
+																	"description": "An Application ID represents an identifier of an application.",
+																	"type": "string"
 																},
-																"port": {
+																"instances": {
+																	"description": "Number of deployments to create.",
+																	"type": "integer"
+																},
+																"max_instances": {
+																	"description": "Maximum number of instances the application allows. This is relevant for applications that auto-scale.",
+																	"type": "integer"
+																},
+																"name": {
+																	"description": "The application name.",
+																	"type": "string"
+																},
+																"observability": {
+																	"description": "Top-level observability settings for the application.\nThis field is mutually exclusive with configuration.observability.\n",
+																	"allOf": [
+																		{
+																			"description": "Settings for application observability such as logging.",
+																			"type": "object",
+																			"properties": {
+																				"logs": {
+																					"description": "Observability logging settings.",
+																					"type": "object",
+																					"properties": {
+																						"enabled": {
+																							"type": "boolean",
+																							"default": false
+																						}
+																					}
+																				},
+																				"target_instance_count": {
+																					"description": "Fixed number of instances that should receive the application-level observability overlay.\nMutually exclusive with `target_instance_percentage`.\n",
+																					"type": "integer",
+																					"minimum": 1
+																				},
+																				"target_instance_percentage": {
+																					"description": "Percentage of instances that should receive the application-level observability overlay.\nThis rounds up so at least this percentage of instances is targeted.\nMutually exclusive with `target_instance_count`.\n",
+																					"type": "integer",
+																					"maximum": 99,
+																					"minimum": 1
+																				}
+																			}
+																		}
+																	]
+																},
+																"rollout_active_grace_period": {
+																	"description": "Grace period for active instances to stay alive before becoming eligible for shutdown signal due to a rollout, in seconds.\nDefaults to 0.\n",
 																	"type": "integer",
-																	"default": 22,
-																	"maximum": 65535,
-																	"minimum": 1
+																	"default": 0,
+																	"maximum": 604800,
+																	"minimum": 0
+																},
+																"scheduling_policy": {
+																	"description": "The scheduling policy to use for an application.",
+																	"type": "string",
+																	"enum": [
+																		"default",
+																		"durable_object"
+																	]
+																},
+																"updated_at": {
+																	"description": "UTC timestamp string in ISO 8601 format.",
+																	"type": "string",
+																	"example": "2021-04-01T12:32:41.488Z"
+																},
+																"version": {
+																	"type": "integer"
 																}
-															}
+															},
+															"required": [
+																"id",
+																"created_at",
+																"updated_at",
+																"account_id",
+																"name",
+																"version",
+																"scheduling_policy",
+																"instances",
+																"configuration"
+															]
+														},
+														{
+															"properties": {
+																"scheduling_policy": {
+																	"description": "The scheduling policy to use for a scheduler-backed application.",
+																	"type": "string",
+																	"enum": [
+																		"default"
+																	]
+																}
+															},
+															"required": [
+																"scheduling_policy"
+															],
+															"type": "object"
 														}
-													},
-													"required": [
-														"image"
 													]
 												},
-												"constraints": {
+												{
+													"description": "Durable Objects own and configure this namespace-backed application's instances.",
 													"type": "object",
 													"properties": {
-														"jurisdiction": {
-															"description": "Currently supports only \"eu\" and \"fedramp\". Overlap between jurisdiction and region is allowed for ENAM, WNAM (FedRAMP) and EEUR, WEUR (EU).",
+														"account_id": {
+															"description": "A unique identifier for the user's account.",
 															"type": "string"
 														},
-														"regions": {
-															"type": "array",
-															"items": {
-																"description": "Represents a group of datacenters. Choose one of \"AFR\", \"APAC\", \"EEUR\", \"ENAM\", \"WNAM\", \"ME\", \"OC\", \"SAM\", or \"WEUR\".\n",
-																"type": "string",
-																"example": "WNAM"
-															}
-														}
-													}
-												},
-												"created_at": {
-													"description": "UTC timestamp string in ISO 8601 format.",
-													"type": "string",
-													"example": "2021-04-01T12:32:41.488Z"
-												},
-												"durable_objects": {
-													"description": "Durable object configuration stored on and returned from a Cloudchamber application.",
-													"oneOf": [
-														{
+														"created_at": {
+															"description": "UTC timestamp string in ISO 8601 format.",
+															"type": "string",
+															"example": "2021-04-01T12:32:41.488Z"
+														},
+														"durable_objects": {
 															"description": "Durable object configuration using a namespace ID.",
 															"type": "object",
 															"properties": {
@@ -6953,211 +7375,38 @@
 															"required": [
 																"namespace_id"
 															]
-														}
-													]
-												},
-												"health": {
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"event": {
-																		"description": "An event within a Placement or a Job.",
-																		"type": "object",
-																		"properties": {
-																			"details": {
-																				"type": "object",
-																				"additionalProperties": true
-																			},
-																			"id": {
-																				"type": "string"
-																			},
-																			"message": {
-																				"type": "string"
-																			},
-																			"name": {
-																				"description": "Name of the event that describes the kind event that happened.\n  - SchedulerPlaced: It's the first event that creates a container placement. It happens when the Containers runtime was able to retrieve deployment resources and start verifying everything is correct.\n  - NetworkingIPAssigned: It's sent when the Containers runtime maps the IP to the container.\n  - VMStarted: It's sent when the Containers runtime starts the VM. The container might remain unhealthy at this point.\n  - ImagePulled: It's sent when the Containers runtime pulls the image successfully.\n  - ImagePullError: It's sent when the Containers runtime is having issues pulling the image. The message and details have more information on what happened for debugging.\n  - VMFailedToStart: It's sent when the Containers runtime was unable to boot the VM.\n  - VMStopping: It's sent when the scheduler is stopping the VM.\n  - VMStopped: It's sent when the VM finally exits.\n  - VMFailed: It's sent when the scheduling of the VM failed in the current location.\n  - RuntimeStartFailed: It's sent when the runtime hits an internal error.\n  - SSHStarted: It's sent when the container gains network connectivity and opens the SSH port. Containers only send this event when SSH keys exist.\n  - CheckUpdate: Sent when the status of a health or readiness check changes. This may also affect the health status of the placement.\n  - DurableObjectConnected: Sent when a durable object instance connects and gains control of the deployment.\n    This event is only sent for durable object deployments. It is sent after VMStarted.\n  - ContainerStarted: It's sent when the container starts running.\n",
-																				"type": "string",
-																				"enum": [
-																					"SchedulerPlaced",
-																					"NetworkingIPAssigned",
-																					"VMStarted",
-																					"ImagePulled",
-																					"ImagePullError",
-																					"VMFailedToStart",
-																					"NetworkingIPAssignmentFailed",
-																					"VMRunning",
-																					"VMStopping",
-																					"VMStopped",
-																					"VMFailed",
-																					"RuntimeStartFailed",
-																					"SSHStarted",
-																					"ServiceHealthUpdates",
-																					"CheckUpdate",
-																					"DurableObjectConnected",
-																					"ContainerStarted"
-																				]
-																			},
-																			"statusChange": {
-																				"type": "object",
-																				"additionalProperties": true
-																			},
-																			"time": {
-																				"description": "UTC timestamp string in ISO 8601 format.",
-																				"type": "string",
-																				"example": "2021-04-01T12:32:41.488Z"
-																			},
-																			"type": {
-																				"type": "string",
-																				"enum": [
-																					"Info",
-																					"Error",
-																					"Warn",
-																					"UserError",
-																					"SystemError"
-																				]
-																			}
-																		},
-																		"required": [
-																			"id",
-																			"time",
-																			"type",
-																			"name",
-																			"message",
-																			"details",
-																			"statusChange"
-																		]
-																	},
-																	"instance_id": {
-																		"description": "An instance ID represents an identifier of an instance configuration that maintains an underlying placement.",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"instance_id",
-																	"event"
-																]
-															}
 														},
-														"instances": {
-															"description": "Shows a count of application instance states.",
-															"type": "object",
-															"properties": {
-																"active": {
-																	"description": "Number of instances whose runtime reports the container as running (container_status = \"running\"). This is a subset of the placements that remain up: an instance that is already bound to a Durable Object and serving traffic is counted under \"assigned\" until its container_status catches up to \"running\", so container_status can briefly lag Durable Object attachment under churn. To estimate running, Durable-Object-bound instances, sum \"active\" + \"assigned\" rather than reading \"active\" alone.\n",
-																	"type": "integer"
-																},
-																"assigned": {
-																	"description": "Number of instances bound to a Durable Object with a running placement whose container_status remains behind \"running\". These count as live, serving instances; \"active\" + \"assigned\" approximates the running, Durable-Object-bound count.\n",
-																	"type": "integer"
-																}
-															},
-															"required": [
-																"active",
-																"assigned"
-															]
+														"id": {
+															"description": "An Application ID represents an identifier of an application.",
+															"type": "string"
 														},
-														"summary": {
-															"description": "High-level health assessment. Only populated for \"new_instances\" strategy.\nBased on a sample of target-version instances rather than a full count.\n- \"pending\": Zero target-version instances exist yet.\n- \"healthy\": Every sampled target-version instance reports running or active.\n- \"degraded\": Some sampled instances remain starting or scheduling.\n- \"unhealthy\": One or more sampled instances have failed.\n",
+														"name": {
+															"description": "The application name.",
+															"type": "string"
+														},
+														"scheduling_policy": {
+															"description": "Selects Durable Objects to own and schedule application instances.",
 															"type": "string",
 															"enum": [
-																"healthy",
-																"degraded",
-																"unhealthy",
-																"pending"
+																"durable_object"
 															]
+														},
+														"updated_at": {
+															"description": "UTC timestamp string in ISO 8601 format.",
+															"type": "string",
+															"example": "2021-04-01T12:32:41.488Z"
 														}
 													},
 													"required": [
-														"instances",
-														"errors"
+														"id",
+														"created_at",
+														"updated_at",
+														"account_id",
+														"name",
+														"scheduling_policy",
+														"durable_objects"
 													]
-												},
-												"id": {
-													"description": "An Application ID represents an identifier of an application.",
-													"type": "string"
-												},
-												"instances": {
-													"description": "Number of deployments to create.",
-													"type": "integer"
-												},
-												"max_instances": {
-													"description": "Maximum number of instances the application allows. This is relevant for applications that auto-scale.",
-													"type": "integer"
-												},
-												"name": {
-													"description": "The application name.",
-													"type": "string"
-												},
-												"observability": {
-													"description": "Top-level observability settings for the application.\nThis field is mutually exclusive with configuration.observability.\n",
-													"allOf": [
-														{
-															"description": "Settings for application observability such as logging.",
-															"type": "object",
-															"properties": {
-																"logs": {
-																	"description": "Observability logging settings.",
-																	"type": "object",
-																	"properties": {
-																		"enabled": {
-																			"type": "boolean",
-																			"default": false
-																		}
-																	}
-																},
-																"target_instance_count": {
-																	"description": "Fixed number of instances that should receive the application-level observability overlay.\nMutually exclusive with `target_instance_percentage`.\n",
-																	"type": "integer",
-																	"minimum": 1
-																},
-																"target_instance_percentage": {
-																	"description": "Percentage of instances that should receive the application-level observability overlay.\nThis rounds up so at least this percentage of instances is targeted.\nMutually exclusive with `target_instance_count`.\n",
-																	"type": "integer",
-																	"maximum": 99,
-																	"minimum": 1
-																}
-															}
-														}
-													]
-												},
-												"rollout_active_grace_period": {
-													"description": "Grace period for active instances to stay alive before becoming eligible for shutdown signal due to a rollout, in seconds.\nDefaults to 0.\n",
-													"type": "integer",
-													"default": 0,
-													"maximum": 604800,
-													"minimum": 0
-												},
-												"scheduling_policy": {
-													"description": "The scheduling policy to use for an application.",
-													"type": "string",
-													"enum": [
-														"default",
-														"instance"
-													]
-												},
-												"updated_at": {
-													"description": "UTC timestamp string in ISO 8601 format.",
-													"type": "string",
-													"example": "2021-04-01T12:32:41.488Z"
-												},
-												"version": {
-													"type": "integer"
 												}
-											},
-											"required": [
-												"id",
-												"created_at",
-												"updated_at",
-												"account_id",
-												"name",
-												"version",
-												"scheduling_policy",
-												"instances",
-												"configuration"
 											]
 										}
 									},
@@ -8538,6 +8787,7 @@
 										]
 									}
 								},
+								"additionalProperties": false,
 								"required": [
 									"name",
 									"scheduling_policy",
@@ -8547,185 +8797,9 @@
 								]
 							},
 							{
-								"description": "Create a namespace-backed Containers application whose instances are owned by Durable Objects.",
+								"description": "Create a namespace-backed Containers application whose Durable Objects own its instances.",
 								"type": "object",
 								"properties": {
-									"configuration": {
-										"description": "Instance applications choose their image and runtime configuration when each Durable Object starts a container.\nSet image to an empty string and omit every other configuration field.\n",
-										"allOf": [
-											{
-												"description": "User-specified container configuration.",
-												"type": "object",
-												"properties": {
-													"authorized_keys": {
-														"type": "array",
-														"items": {
-															"description": "User-provided SSH public key.",
-															"type": "object",
-															"properties": {
-																"name": {
-																	"description": "Optional human readable name for this key.",
-																	"type": "string"
-																},
-																"public_key": {
-																	"description": "An SSH public key.",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"public_key"
-															]
-														}
-													},
-													"command": {
-														"description": "The command that runs when the container starts, passed to the entrypoint.\nYou can override this at run-time. If you override only the command,\nit gets passed to the default entrypoint specified in the image.\n",
-														"type": "array",
-														"items": {
-															"type": "string"
-														},
-														"example": [
-															"myapp",
-															"--default-option"
-														]
-													},
-													"dns": {
-														"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
-														"type": "object",
-														"properties": {
-															"searches": {
-																"description": "The container resolver appends these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it appends 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
-																"type": "array",
-																"items": {
-																	"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
-																	"type": "string",
-																	"example": "docker.io"
-																}
-															},
-															"servers": {
-																"description": "List of DNS servers the deployment uses to resolve domain names. You can only specify a maximum of 3.",
-																"type": "array",
-																"items": {
-																	"description": "A string representation of an IP, either v6 or v4.",
-																	"type": "string",
-																	"example": "192.1.1.1"
-																}
-															}
-														}
-													},
-													"entrypoint": {
-														"description": "The entry point for the container, specifying the executable to run when the container starts.\nYou can override this at run-time. If you do, the default command from the image is ignored.\nSpecify both entrypoint and command at run-time to completely replace the image defaults.\n",
-														"type": "array",
-														"items": {
-															"type": "string"
-														},
-														"example": [
-															"/bin/bash"
-														]
-													},
-													"environment_variables": {
-														"description": "Container environment variables.",
-														"type": "array",
-														"items": {
-															"description": "An environment variable with a value set.",
-															"type": "object",
-															"properties": {
-																"name": {
-																	"description": "An environment variable name.",
-																	"type": "string"
-																},
-																"value": {
-																	"description": "An environment variable value.",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"name",
-																"value"
-															]
-														}
-													},
-													"image": {
-														"description": "Image url.",
-														"type": "string"
-													},
-													"instance_type": {
-														"description": "The instance type configures vCPU, memory, and disk.\n\n- \"lite\": 1/16 vCPU, 256 MiB memory, 2 GB disk\n- \"basic\": 1/4 vCPU, 1 GiB memory, 4 GB disk\n- \"standard-1\": 1/2 vCPU, 4 GiB memory, 8 GB disk\n- \"standard-2\": 1 vCPU, 6 GiB memory, 12 GB disk\n- \"standard-3\": 2 vCPU, 8 GiB memory, 16 GB disk\n- \"standard-4\": 4 vCPU, 12 GiB memory, 20 GB disk\n",
-														"type": "string",
-														"example": "lite",
-														"default": "lite",
-														"anyOf": [
-															{
-																"enum": [
-																	"lite",
-																	"basic",
-																	"standard-1",
-																	"standard-2",
-																	"standard-3",
-																	"standard-4"
-																],
-																"type": "string"
-															}
-														]
-													},
-													"observability": {
-														"description": "Settings for deployment observability such as logging.",
-														"type": "object",
-														"properties": {
-															"logs": {
-																"description": "Observability logging settings.",
-																"type": "object",
-																"properties": {
-																	"enabled": {
-																		"type": "boolean",
-																		"default": false
-																	}
-																}
-															}
-														}
-													},
-													"trusted_user_ca_keys": {
-														"type": "array",
-														"items": {
-															"description": "User-provided SSH public key.",
-															"type": "object",
-															"properties": {
-																"name": {
-																	"description": "Optional human readable name for this key.",
-																	"type": "string"
-																},
-																"public_key": {
-																	"description": "An SSH public key.",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"public_key"
-															]
-														}
-													},
-													"wrangler_ssh": {
-														"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
-														"type": "object",
-														"properties": {
-															"enabled": {
-																"type": "boolean",
-																"default": true
-															},
-															"port": {
-																"type": "integer",
-																"default": 22,
-																"maximum": 65535,
-																"minimum": 1
-															}
-														}
-													}
-												},
-												"required": [
-													"image"
-												]
-											}
-										]
-									},
 									"durable_objects": {
 										"description": "The customer-owned Durable Object namespace that owns this application and its instances.",
 										"allOf": [
@@ -8768,29 +8842,22 @@
 											}
 										]
 									},
-									"instances": {
-										"description": "Instance applications do not pre-create deployments.",
-										"type": "integer",
-										"enum": [
-											0
-										]
-									},
 									"name": {
 										"description": "The name for this application",
 										"type": "string"
 									},
 									"scheduling_policy": {
+										"description": "Selects Durable Objects to own and schedule application instances.",
 										"type": "string",
 										"enum": [
-											"instance"
+											"durable_object"
 										]
 									}
 								},
+								"additionalProperties": false,
 								"required": [
 									"name",
 									"scheduling_policy",
-									"instances",
-									"configuration",
 									"durable_objects"
 								]
 							}
@@ -8888,214 +8955,470 @@
 								{
 									"properties": {
 										"result": {
-											"description": "Describes an application and the parameters that govern how it places its instances.",
-											"type": "object",
-											"properties": {
-												"account_id": {
-													"description": "A unique identifier for the user's account.",
-													"type": "string"
-												},
-												"active_rollout_id": {
-													"description": "An identifier for a specific rollout within an application.",
-													"type": "string"
-												},
-												"configuration": {
-													"description": "User-specified container configuration.",
-													"type": "object",
-													"properties": {
-														"authorized_keys": {
-															"type": "array",
-															"items": {
-																"description": "User-provided SSH public key.",
-																"type": "object",
-																"properties": {
-																	"name": {
-																		"description": "Optional human readable name for this key.",
-																		"type": "string"
-																	},
-																	"public_key": {
-																		"description": "An SSH public key.",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"public_key"
-																]
-															}
-														},
-														"command": {
-															"description": "The command that runs when the container starts, passed to the entrypoint.\nYou can override this at run-time. If you override only the command,\nit gets passed to the default entrypoint specified in the image.\n",
-															"type": "array",
-															"items": {
-																"type": "string"
-															},
-															"example": [
-																"myapp",
-																"--default-option"
-															]
-														},
-														"dns": {
-															"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
+											"description": "The public Containers API returns an application.",
+											"oneOf": [
+												{
+													"description": "The Cloudchamber scheduler manages this application's instances.",
+													"allOf": [
+														{
+															"description": "Describes an application and the parameters that govern how it places its instances.",
 															"type": "object",
 															"properties": {
-																"searches": {
-																	"description": "The container resolver appends these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it appends 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
-																	"type": "array",
-																	"items": {
-																		"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
-																		"type": "string",
-																		"example": "docker.io"
-																	}
-																},
-																"servers": {
-																	"description": "List of DNS servers the deployment uses to resolve domain names. You can only specify a maximum of 3.",
-																	"type": "array",
-																	"items": {
-																		"description": "A string representation of an IP, either v6 or v4.",
-																		"type": "string",
-																		"example": "192.1.1.1"
-																	}
-																}
-															}
-														},
-														"entrypoint": {
-															"description": "The entry point for the container, specifying the executable to run when the container starts.\nYou can override this at run-time. If you do, the default command from the image is ignored.\nSpecify both entrypoint and command at run-time to completely replace the image defaults.\n",
-															"type": "array",
-															"items": {
-																"type": "string"
-															},
-															"example": [
-																"/bin/bash"
-															]
-														},
-														"environment_variables": {
-															"description": "Container environment variables.",
-															"type": "array",
-															"items": {
-																"description": "An environment variable with a value set.",
-																"type": "object",
-																"properties": {
-																	"name": {
-																		"description": "An environment variable name.",
-																		"type": "string"
-																	},
-																	"value": {
-																		"description": "An environment variable value.",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"name",
-																	"value"
-																]
-															}
-														},
-														"image": {
-															"description": "Image url.",
-															"type": "string"
-														},
-														"instance_type": {
-															"description": "The instance type configures vCPU, memory, and disk.\n\n- \"lite\": 1/16 vCPU, 256 MiB memory, 2 GB disk\n- \"basic\": 1/4 vCPU, 1 GiB memory, 4 GB disk\n- \"standard-1\": 1/2 vCPU, 4 GiB memory, 8 GB disk\n- \"standard-2\": 1 vCPU, 6 GiB memory, 12 GB disk\n- \"standard-3\": 2 vCPU, 8 GiB memory, 16 GB disk\n- \"standard-4\": 4 vCPU, 12 GiB memory, 20 GB disk\n",
-															"type": "string",
-															"example": "lite",
-															"default": "lite",
-															"anyOf": [
-																{
-																	"enum": [
-																		"lite",
-																		"basic",
-																		"standard-1",
-																		"standard-2",
-																		"standard-3",
-																		"standard-4"
-																	],
+																"account_id": {
+																	"description": "A unique identifier for the user's account.",
 																	"type": "string"
-																}
-															]
-														},
-														"observability": {
-															"description": "Settings for deployment observability such as logging.",
-															"type": "object",
-															"properties": {
-																"logs": {
-																	"description": "Observability logging settings.",
+																},
+																"active_rollout_id": {
+																	"description": "An identifier for a specific rollout within an application.",
+																	"type": "string"
+																},
+																"configuration": {
+																	"description": "User-specified container configuration.",
 																	"type": "object",
 																	"properties": {
-																		"enabled": {
-																			"type": "boolean",
-																			"default": false
+																		"authorized_keys": {
+																			"type": "array",
+																			"items": {
+																				"description": "User-provided SSH public key.",
+																				"type": "object",
+																				"properties": {
+																					"name": {
+																						"description": "Optional human readable name for this key.",
+																						"type": "string"
+																					},
+																					"public_key": {
+																						"description": "An SSH public key.",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"public_key"
+																				]
+																			}
+																		},
+																		"command": {
+																			"description": "The command that runs when the container starts, passed to the entrypoint.\nYou can override this at run-time. If you override only the command,\nit gets passed to the default entrypoint specified in the image.\n",
+																			"type": "array",
+																			"items": {
+																				"type": "string"
+																			},
+																			"example": [
+																				"myapp",
+																				"--default-option"
+																			]
+																		},
+																		"dns": {
+																			"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
+																			"type": "object",
+																			"properties": {
+																				"searches": {
+																					"description": "The container resolver appends these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it appends 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
+																					"type": "array",
+																					"items": {
+																						"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
+																						"type": "string",
+																						"example": "docker.io"
+																					}
+																				},
+																				"servers": {
+																					"description": "List of DNS servers the deployment uses to resolve domain names. You can only specify a maximum of 3.",
+																					"type": "array",
+																					"items": {
+																						"description": "A string representation of an IP, either v6 or v4.",
+																						"type": "string",
+																						"example": "192.1.1.1"
+																					}
+																				}
+																			}
+																		},
+																		"entrypoint": {
+																			"description": "The entry point for the container, specifying the executable to run when the container starts.\nYou can override this at run-time. If you do, the default command from the image is ignored.\nSpecify both entrypoint and command at run-time to completely replace the image defaults.\n",
+																			"type": "array",
+																			"items": {
+																				"type": "string"
+																			},
+																			"example": [
+																				"/bin/bash"
+																			]
+																		},
+																		"environment_variables": {
+																			"description": "Container environment variables.",
+																			"type": "array",
+																			"items": {
+																				"description": "An environment variable with a value set.",
+																				"type": "object",
+																				"properties": {
+																					"name": {
+																						"description": "An environment variable name.",
+																						"type": "string"
+																					},
+																					"value": {
+																						"description": "An environment variable value.",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"name",
+																					"value"
+																				]
+																			}
+																		},
+																		"image": {
+																			"description": "Image url.",
+																			"type": "string"
+																		},
+																		"instance_type": {
+																			"description": "The instance type configures vCPU, memory, and disk.\n\n- \"lite\": 1/16 vCPU, 256 MiB memory, 2 GB disk\n- \"basic\": 1/4 vCPU, 1 GiB memory, 4 GB disk\n- \"standard-1\": 1/2 vCPU, 4 GiB memory, 8 GB disk\n- \"standard-2\": 1 vCPU, 6 GiB memory, 12 GB disk\n- \"standard-3\": 2 vCPU, 8 GiB memory, 16 GB disk\n- \"standard-4\": 4 vCPU, 12 GiB memory, 20 GB disk\n",
+																			"type": "string",
+																			"example": "lite",
+																			"default": "lite",
+																			"anyOf": [
+																				{
+																					"enum": [
+																						"lite",
+																						"basic",
+																						"standard-1",
+																						"standard-2",
+																						"standard-3",
+																						"standard-4"
+																					],
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"observability": {
+																			"description": "Settings for deployment observability such as logging.",
+																			"type": "object",
+																			"properties": {
+																				"logs": {
+																					"description": "Observability logging settings.",
+																					"type": "object",
+																					"properties": {
+																						"enabled": {
+																							"type": "boolean",
+																							"default": false
+																						}
+																					}
+																				}
+																			}
+																		},
+																		"trusted_user_ca_keys": {
+																			"type": "array",
+																			"items": {
+																				"description": "User-provided SSH public key.",
+																				"type": "object",
+																				"properties": {
+																					"name": {
+																						"description": "Optional human readable name for this key.",
+																						"type": "string"
+																					},
+																					"public_key": {
+																						"description": "An SSH public key.",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"public_key"
+																				]
+																			}
+																		},
+																		"wrangler_ssh": {
+																			"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
+																			"type": "object",
+																			"properties": {
+																				"enabled": {
+																					"type": "boolean",
+																					"default": true
+																				},
+																				"port": {
+																					"type": "integer",
+																					"default": 22,
+																					"maximum": 65535,
+																					"minimum": 1
+																				}
+																			}
+																		}
+																	},
+																	"required": [
+																		"image"
+																	]
+																},
+																"constraints": {
+																	"type": "object",
+																	"properties": {
+																		"jurisdiction": {
+																			"description": "Currently supports only \"eu\" and \"fedramp\". Overlap between jurisdiction and region is allowed for ENAM, WNAM (FedRAMP) and EEUR, WEUR (EU).",
+																			"type": "string"
+																		},
+																		"regions": {
+																			"type": "array",
+																			"items": {
+																				"description": "Represents a group of datacenters. Choose one of \"AFR\", \"APAC\", \"EEUR\", \"ENAM\", \"WNAM\", \"ME\", \"OC\", \"SAM\", or \"WEUR\".\n",
+																				"type": "string",
+																				"example": "WNAM"
+																			}
 																		}
 																	}
-																}
-															}
-														},
-														"trusted_user_ca_keys": {
-															"type": "array",
-															"items": {
-																"description": "User-provided SSH public key.",
-																"type": "object",
-																"properties": {
-																	"name": {
-																		"description": "Optional human readable name for this key.",
-																		"type": "string"
+																},
+																"created_at": {
+																	"description": "UTC timestamp string in ISO 8601 format.",
+																	"type": "string",
+																	"example": "2021-04-01T12:32:41.488Z"
+																},
+																"durable_objects": {
+																	"description": "Durable object configuration stored on and returned from a Cloudchamber application.",
+																	"oneOf": [
+																		{
+																			"description": "Durable object configuration using a namespace ID.",
+																			"type": "object",
+																			"properties": {
+																				"namespace_id": {
+																					"description": "The namespace ID of the durable object namespace to use for this application.",
+																					"type": "string",
+																					"example": "14758f1afd44c09b7992073ccf00b43d"
+																				}
+																			},
+																			"required": [
+																				"namespace_id"
+																			]
+																		}
+																	]
+																},
+																"health": {
+																	"type": "object",
+																	"properties": {
+																		"errors": {
+																			"type": "array",
+																			"items": {
+																				"type": "object",
+																				"properties": {
+																					"event": {
+																						"description": "An event within a Placement or a Job.",
+																						"type": "object",
+																						"properties": {
+																							"details": {
+																								"type": "object",
+																								"additionalProperties": true
+																							},
+																							"id": {
+																								"type": "string"
+																							},
+																							"message": {
+																								"type": "string"
+																							},
+																							"name": {
+																								"description": "Name of the event that describes the kind event that happened.\n  - SchedulerPlaced: It's the first event that creates a container placement. It happens when the Containers runtime was able to retrieve deployment resources and start verifying everything is correct.\n  - NetworkingIPAssigned: It's sent when the Containers runtime maps the IP to the container.\n  - VMStarted: It's sent when the Containers runtime starts the VM. The container might remain unhealthy at this point.\n  - ImagePulled: It's sent when the Containers runtime pulls the image successfully.\n  - ImagePullError: It's sent when the Containers runtime is having issues pulling the image. The message and details have more information on what happened for debugging.\n  - VMFailedToStart: It's sent when the Containers runtime was unable to boot the VM.\n  - VMStopping: It's sent when the scheduler is stopping the VM.\n  - VMStopped: It's sent when the VM finally exits.\n  - VMFailed: It's sent when the scheduling of the VM failed in the current location.\n  - RuntimeStartFailed: It's sent when the runtime hits an internal error.\n  - SSHStarted: It's sent when the container gains network connectivity and opens the SSH port. Containers only send this event when SSH keys exist.\n  - CheckUpdate: Sent when the status of a health or readiness check changes. This may also affect the health status of the placement.\n  - DurableObjectConnected: Sent when a durable object instance connects and gains control of the deployment.\n    This event is only sent for durable object deployments. It is sent after VMStarted.\n  - ContainerStarted: It's sent when the container starts running.\n",
+																								"type": "string",
+																								"enum": [
+																									"SchedulerPlaced",
+																									"NetworkingIPAssigned",
+																									"VMStarted",
+																									"ImagePulled",
+																									"ImagePullError",
+																									"VMFailedToStart",
+																									"NetworkingIPAssignmentFailed",
+																									"VMRunning",
+																									"VMStopping",
+																									"VMStopped",
+																									"VMFailed",
+																									"RuntimeStartFailed",
+																									"SSHStarted",
+																									"ServiceHealthUpdates",
+																									"CheckUpdate",
+																									"DurableObjectConnected",
+																									"ContainerStarted"
+																								]
+																							},
+																							"statusChange": {
+																								"type": "object",
+																								"additionalProperties": true
+																							},
+																							"time": {
+																								"description": "UTC timestamp string in ISO 8601 format.",
+																								"type": "string",
+																								"example": "2021-04-01T12:32:41.488Z"
+																							},
+																							"type": {
+																								"type": "string",
+																								"enum": [
+																									"Info",
+																									"Error",
+																									"Warn",
+																									"UserError",
+																									"SystemError"
+																								]
+																							}
+																						},
+																						"required": [
+																							"id",
+																							"time",
+																							"type",
+																							"name",
+																							"message",
+																							"details",
+																							"statusChange"
+																						]
+																					},
+																					"instance_id": {
+																						"description": "An instance ID represents an identifier of an instance configuration that maintains an underlying placement.",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"instance_id",
+																					"event"
+																				]
+																			}
+																		},
+																		"instances": {
+																			"description": "Shows a count of application instance states.",
+																			"type": "object",
+																			"properties": {
+																				"active": {
+																					"description": "Number of instances whose runtime reports the container as running (container_status = \"running\"). This is a subset of the placements that remain up: an instance that is already bound to a Durable Object and serving traffic is counted under \"assigned\" until its container_status catches up to \"running\", so container_status can briefly lag Durable Object attachment under churn. To estimate running, Durable-Object-bound instances, sum \"active\" + \"assigned\" rather than reading \"active\" alone.\n",
+																					"type": "integer"
+																				},
+																				"assigned": {
+																					"description": "Number of instances bound to a Durable Object with a running placement whose container_status remains behind \"running\". These count as live, serving instances; \"active\" + \"assigned\" approximates the running, Durable-Object-bound count.\n",
+																					"type": "integer"
+																				}
+																			},
+																			"required": [
+																				"active",
+																				"assigned"
+																			]
+																		},
+																		"summary": {
+																			"description": "High-level health assessment. Only populated for \"new_instances\" strategy.\nBased on a sample of target-version instances rather than a full count.\n- \"pending\": Zero target-version instances exist yet.\n- \"healthy\": Every sampled target-version instance reports running or active.\n- \"degraded\": Some sampled instances remain starting or scheduling.\n- \"unhealthy\": One or more sampled instances have failed.\n",
+																			"type": "string",
+																			"enum": [
+																				"healthy",
+																				"degraded",
+																				"unhealthy",
+																				"pending"
+																			]
+																		}
 																	},
-																	"public_key": {
-																		"description": "An SSH public key.",
-																		"type": "string"
-																	}
+																	"required": [
+																		"instances",
+																		"errors"
+																	]
 																},
-																"required": [
-																	"public_key"
-																]
-															}
-														},
-														"wrangler_ssh": {
-															"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
-															"type": "object",
-															"properties": {
-																"enabled": {
-																	"type": "boolean",
-																	"default": true
+																"id": {
+																	"description": "An Application ID represents an identifier of an application.",
+																	"type": "string"
 																},
-																"port": {
+																"instances": {
+																	"description": "Number of deployments to create.",
+																	"type": "integer"
+																},
+																"max_instances": {
+																	"description": "Maximum number of instances the application allows. This is relevant for applications that auto-scale.",
+																	"type": "integer"
+																},
+																"name": {
+																	"description": "The application name.",
+																	"type": "string"
+																},
+																"observability": {
+																	"description": "Top-level observability settings for the application.\nThis field is mutually exclusive with configuration.observability.\n",
+																	"allOf": [
+																		{
+																			"description": "Settings for application observability such as logging.",
+																			"type": "object",
+																			"properties": {
+																				"logs": {
+																					"description": "Observability logging settings.",
+																					"type": "object",
+																					"properties": {
+																						"enabled": {
+																							"type": "boolean",
+																							"default": false
+																						}
+																					}
+																				},
+																				"target_instance_count": {
+																					"description": "Fixed number of instances that should receive the application-level observability overlay.\nMutually exclusive with `target_instance_percentage`.\n",
+																					"type": "integer",
+																					"minimum": 1
+																				},
+																				"target_instance_percentage": {
+																					"description": "Percentage of instances that should receive the application-level observability overlay.\nThis rounds up so at least this percentage of instances is targeted.\nMutually exclusive with `target_instance_count`.\n",
+																					"type": "integer",
+																					"maximum": 99,
+																					"minimum": 1
+																				}
+																			}
+																		}
+																	]
+																},
+																"rollout_active_grace_period": {
+																	"description": "Grace period for active instances to stay alive before becoming eligible for shutdown signal due to a rollout, in seconds.\nDefaults to 0.\n",
 																	"type": "integer",
-																	"default": 22,
-																	"maximum": 65535,
-																	"minimum": 1
+																	"default": 0,
+																	"maximum": 604800,
+																	"minimum": 0
+																},
+																"scheduling_policy": {
+																	"description": "The scheduling policy to use for an application.",
+																	"type": "string",
+																	"enum": [
+																		"default",
+																		"durable_object"
+																	]
+																},
+																"updated_at": {
+																	"description": "UTC timestamp string in ISO 8601 format.",
+																	"type": "string",
+																	"example": "2021-04-01T12:32:41.488Z"
+																},
+																"version": {
+																	"type": "integer"
 																}
-															}
+															},
+															"required": [
+																"id",
+																"created_at",
+																"updated_at",
+																"account_id",
+																"name",
+																"version",
+																"scheduling_policy",
+																"instances",
+																"configuration"
+															]
+														},
+														{
+															"properties": {
+																"scheduling_policy": {
+																	"description": "The scheduling policy to use for a scheduler-backed application.",
+																	"type": "string",
+																	"enum": [
+																		"default"
+																	]
+																}
+															},
+															"required": [
+																"scheduling_policy"
+															],
+															"type": "object"
 														}
-													},
-													"required": [
-														"image"
 													]
 												},
-												"constraints": {
+												{
+													"description": "Durable Objects own and configure this namespace-backed application's instances.",
 													"type": "object",
 													"properties": {
-														"jurisdiction": {
-															"description": "Currently supports only \"eu\" and \"fedramp\". Overlap between jurisdiction and region is allowed for ENAM, WNAM (FedRAMP) and EEUR, WEUR (EU).",
+														"account_id": {
+															"description": "A unique identifier for the user's account.",
 															"type": "string"
 														},
-														"regions": {
-															"type": "array",
-															"items": {
-																"description": "Represents a group of datacenters. Choose one of \"AFR\", \"APAC\", \"EEUR\", \"ENAM\", \"WNAM\", \"ME\", \"OC\", \"SAM\", or \"WEUR\".\n",
-																"type": "string",
-																"example": "WNAM"
-															}
-														}
-													}
-												},
-												"created_at": {
-													"description": "UTC timestamp string in ISO 8601 format.",
-													"type": "string",
-													"example": "2021-04-01T12:32:41.488Z"
-												},
-												"durable_objects": {
-													"description": "Durable object configuration stored on and returned from a Cloudchamber application.",
-													"oneOf": [
-														{
+														"created_at": {
+															"description": "UTC timestamp string in ISO 8601 format.",
+															"type": "string",
+															"example": "2021-04-01T12:32:41.488Z"
+														},
+														"durable_objects": {
 															"description": "Durable object configuration using a namespace ID.",
 															"type": "object",
 															"properties": {
@@ -9108,211 +9431,38 @@
 															"required": [
 																"namespace_id"
 															]
-														}
-													]
-												},
-												"health": {
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"event": {
-																		"description": "An event within a Placement or a Job.",
-																		"type": "object",
-																		"properties": {
-																			"details": {
-																				"type": "object",
-																				"additionalProperties": true
-																			},
-																			"id": {
-																				"type": "string"
-																			},
-																			"message": {
-																				"type": "string"
-																			},
-																			"name": {
-																				"description": "Name of the event that describes the kind event that happened.\n  - SchedulerPlaced: It's the first event that creates a container placement. It happens when the Containers runtime was able to retrieve deployment resources and start verifying everything is correct.\n  - NetworkingIPAssigned: It's sent when the Containers runtime maps the IP to the container.\n  - VMStarted: It's sent when the Containers runtime starts the VM. The container might remain unhealthy at this point.\n  - ImagePulled: It's sent when the Containers runtime pulls the image successfully.\n  - ImagePullError: It's sent when the Containers runtime is having issues pulling the image. The message and details have more information on what happened for debugging.\n  - VMFailedToStart: It's sent when the Containers runtime was unable to boot the VM.\n  - VMStopping: It's sent when the scheduler is stopping the VM.\n  - VMStopped: It's sent when the VM finally exits.\n  - VMFailed: It's sent when the scheduling of the VM failed in the current location.\n  - RuntimeStartFailed: It's sent when the runtime hits an internal error.\n  - SSHStarted: It's sent when the container gains network connectivity and opens the SSH port. Containers only send this event when SSH keys exist.\n  - CheckUpdate: Sent when the status of a health or readiness check changes. This may also affect the health status of the placement.\n  - DurableObjectConnected: Sent when a durable object instance connects and gains control of the deployment.\n    This event is only sent for durable object deployments. It is sent after VMStarted.\n  - ContainerStarted: It's sent when the container starts running.\n",
-																				"type": "string",
-																				"enum": [
-																					"SchedulerPlaced",
-																					"NetworkingIPAssigned",
-																					"VMStarted",
-																					"ImagePulled",
-																					"ImagePullError",
-																					"VMFailedToStart",
-																					"NetworkingIPAssignmentFailed",
-																					"VMRunning",
-																					"VMStopping",
-																					"VMStopped",
-																					"VMFailed",
-																					"RuntimeStartFailed",
-																					"SSHStarted",
-																					"ServiceHealthUpdates",
-																					"CheckUpdate",
-																					"DurableObjectConnected",
-																					"ContainerStarted"
-																				]
-																			},
-																			"statusChange": {
-																				"type": "object",
-																				"additionalProperties": true
-																			},
-																			"time": {
-																				"description": "UTC timestamp string in ISO 8601 format.",
-																				"type": "string",
-																				"example": "2021-04-01T12:32:41.488Z"
-																			},
-																			"type": {
-																				"type": "string",
-																				"enum": [
-																					"Info",
-																					"Error",
-																					"Warn",
-																					"UserError",
-																					"SystemError"
-																				]
-																			}
-																		},
-																		"required": [
-																			"id",
-																			"time",
-																			"type",
-																			"name",
-																			"message",
-																			"details",
-																			"statusChange"
-																		]
-																	},
-																	"instance_id": {
-																		"description": "An instance ID represents an identifier of an instance configuration that maintains an underlying placement.",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"instance_id",
-																	"event"
-																]
-															}
 														},
-														"instances": {
-															"description": "Shows a count of application instance states.",
-															"type": "object",
-															"properties": {
-																"active": {
-																	"description": "Number of instances whose runtime reports the container as running (container_status = \"running\"). This is a subset of the placements that remain up: an instance that is already bound to a Durable Object and serving traffic is counted under \"assigned\" until its container_status catches up to \"running\", so container_status can briefly lag Durable Object attachment under churn. To estimate running, Durable-Object-bound instances, sum \"active\" + \"assigned\" rather than reading \"active\" alone.\n",
-																	"type": "integer"
-																},
-																"assigned": {
-																	"description": "Number of instances bound to a Durable Object with a running placement whose container_status remains behind \"running\". These count as live, serving instances; \"active\" + \"assigned\" approximates the running, Durable-Object-bound count.\n",
-																	"type": "integer"
-																}
-															},
-															"required": [
-																"active",
-																"assigned"
-															]
+														"id": {
+															"description": "An Application ID represents an identifier of an application.",
+															"type": "string"
 														},
-														"summary": {
-															"description": "High-level health assessment. Only populated for \"new_instances\" strategy.\nBased on a sample of target-version instances rather than a full count.\n- \"pending\": Zero target-version instances exist yet.\n- \"healthy\": Every sampled target-version instance reports running or active.\n- \"degraded\": Some sampled instances remain starting or scheduling.\n- \"unhealthy\": One or more sampled instances have failed.\n",
+														"name": {
+															"description": "The application name.",
+															"type": "string"
+														},
+														"scheduling_policy": {
+															"description": "Selects Durable Objects to own and schedule application instances.",
 															"type": "string",
 															"enum": [
-																"healthy",
-																"degraded",
-																"unhealthy",
-																"pending"
+																"durable_object"
 															]
+														},
+														"updated_at": {
+															"description": "UTC timestamp string in ISO 8601 format.",
+															"type": "string",
+															"example": "2021-04-01T12:32:41.488Z"
 														}
 													},
 													"required": [
-														"instances",
-														"errors"
+														"id",
+														"created_at",
+														"updated_at",
+														"account_id",
+														"name",
+														"scheduling_policy",
+														"durable_objects"
 													]
-												},
-												"id": {
-													"description": "An Application ID represents an identifier of an application.",
-													"type": "string"
-												},
-												"instances": {
-													"description": "Number of deployments to create.",
-													"type": "integer"
-												},
-												"max_instances": {
-													"description": "Maximum number of instances the application allows. This is relevant for applications that auto-scale.",
-													"type": "integer"
-												},
-												"name": {
-													"description": "The application name.",
-													"type": "string"
-												},
-												"observability": {
-													"description": "Top-level observability settings for the application.\nThis field is mutually exclusive with configuration.observability.\n",
-													"allOf": [
-														{
-															"description": "Settings for application observability such as logging.",
-															"type": "object",
-															"properties": {
-																"logs": {
-																	"description": "Observability logging settings.",
-																	"type": "object",
-																	"properties": {
-																		"enabled": {
-																			"type": "boolean",
-																			"default": false
-																		}
-																	}
-																},
-																"target_instance_count": {
-																	"description": "Fixed number of instances that should receive the application-level observability overlay.\nMutually exclusive with `target_instance_percentage`.\n",
-																	"type": "integer",
-																	"minimum": 1
-																},
-																"target_instance_percentage": {
-																	"description": "Percentage of instances that should receive the application-level observability overlay.\nThis rounds up so at least this percentage of instances is targeted.\nMutually exclusive with `target_instance_count`.\n",
-																	"type": "integer",
-																	"maximum": 99,
-																	"minimum": 1
-																}
-															}
-														}
-													]
-												},
-												"rollout_active_grace_period": {
-													"description": "Grace period for active instances to stay alive before becoming eligible for shutdown signal due to a rollout, in seconds.\nDefaults to 0.\n",
-													"type": "integer",
-													"default": 0,
-													"maximum": 604800,
-													"minimum": 0
-												},
-												"scheduling_policy": {
-													"description": "The scheduling policy to use for an application.",
-													"type": "string",
-													"enum": [
-														"default",
-														"instance"
-													]
-												},
-												"updated_at": {
-													"description": "UTC timestamp string in ISO 8601 format.",
-													"type": "string",
-													"example": "2021-04-01T12:32:41.488Z"
-												},
-												"version": {
-													"type": "integer"
 												}
-											},
-											"required": [
-												"id",
-												"created_at",
-												"updated_at",
-												"account_id",
-												"name",
-												"version",
-												"scheduling_policy",
-												"instances",
-												"configuration"
 											]
 										}
 									},

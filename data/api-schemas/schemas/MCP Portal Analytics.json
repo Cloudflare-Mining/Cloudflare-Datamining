@@ -53,6 +53,17 @@
 					"default": "utc",
 					"pattern": "^(utc|Z|\\+(?:(?:0\\d|1[0-3]):[0-5]\\d|14:00)|-(?:(?:0\\d|1[01]):[0-5]\\d|12:00))$"
 				}
+			},
+			{
+				"name": "days",
+				"in": "query",
+				"description": "Daily trailing-window size; defaults to 7 and is ignored for monthly",
+				"schema": {
+					"description": "Daily trailing-window size; defaults to 7 and is ignored for monthly",
+					"type": "integer",
+					"maximum": 179,
+					"minimum": 1
+				}
 			}
 		],
 		"responses": {
@@ -255,6 +266,17 @@
 					"default": "utc",
 					"pattern": "^(utc|Z|\\+(?:(?:0\\d|1[0-3]):[0-5]\\d|14:00)|-(?:(?:0\\d|1[01]):[0-5]\\d|12:00))$"
 				}
+			},
+			{
+				"name": "days",
+				"in": "query",
+				"description": "Daily trailing-window size; defaults to 7 and is ignored for monthly",
+				"schema": {
+					"description": "Daily trailing-window size; defaults to 7 and is ignored for monthly",
+					"type": "integer",
+					"maximum": 179,
+					"minimum": 1
+				}
 			}
 		],
 		"responses": {
@@ -448,6 +470,17 @@
 					"type": "string",
 					"default": "utc",
 					"pattern": "^(utc|Z|\\+(?:(?:0\\d|1[0-3]):[0-5]\\d|14:00)|-(?:(?:0\\d|1[01]):[0-5]\\d|12:00))$"
+				}
+			},
+			{
+				"name": "days",
+				"in": "query",
+				"description": "Daily trailing-window size; defaults to 7 and is ignored for monthly",
+				"schema": {
+					"description": "Daily trailing-window size; defaults to 7 and is ignored for monthly",
+					"type": "integer",
+					"maximum": 179,
+					"minimum": 1
 				}
 			}
 		],

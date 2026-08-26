@@ -767,6 +767,8 @@
 			"pro": true
 		},
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zones.subscriptions",
+		"x-fern-sdk-method-name": "deleteBulk",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/subscription": {
@@ -3076,6 +3078,8 @@
 			"pro": true
 		},
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zones.subscriptions",
+		"x-fern-sdk-method-name": "createBulk",
 		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/subscription": {
@@ -4881,6 +4885,8 @@
 			"pro": true
 		},
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zones.subscriptions",
+		"x-fern-sdk-method-name": "updateBulk",
 		"x-forge-hidden": true
 	}
 }

@@ -213,7 +213,8 @@
 										"prompts": {
 											"type": "array",
 											"items": {
-												"additionalProperties": {},
+												"additionalProperties": true,
+												"description": "Prompt definition synced from the upstream MCP server. It follows the MCP Prompt shape: name plus optional title, description, and arguments, with unknown fields passed through unchanged.",
 												"type": "object"
 											},
 											"readOnly": true
@@ -240,7 +241,8 @@
 										"tools": {
 											"type": "array",
 											"items": {
-												"additionalProperties": {},
+												"additionalProperties": true,
+												"description": "Tool definition synced from the upstream MCP server. It follows the MCP Tool shape: name plus optional title, description, inputSchema, outputSchema, and annotations, with unknown fields passed through unchanged.",
 												"type": "object"
 											},
 											"readOnly": true
@@ -633,7 +635,8 @@
 											"prompts": {
 												"type": "array",
 												"items": {
-													"additionalProperties": {},
+													"additionalProperties": true,
+													"description": "Prompt definition synced from the upstream MCP server. It follows the MCP Prompt shape: name plus optional title, description, and arguments, with unknown fields passed through unchanged.",
 													"type": "object"
 												},
 												"readOnly": true
@@ -660,7 +663,8 @@
 											"tools": {
 												"type": "array",
 												"items": {
-													"additionalProperties": {},
+													"additionalProperties": true,
+													"description": "Tool definition synced from the upstream MCP server. It follows the MCP Tool shape: name plus optional title, description, inputSchema, outputSchema, and annotations, with unknown fields passed through unchanged.",
 													"type": "object"
 												},
 												"readOnly": true
@@ -1036,7 +1040,8 @@
 										"prompts": {
 											"type": "array",
 											"items": {
-												"additionalProperties": {},
+												"additionalProperties": true,
+												"description": "Prompt definition synced from the upstream MCP server. It follows the MCP Prompt shape: name plus optional title, description, and arguments, with unknown fields passed through unchanged.",
 												"type": "object"
 											},
 											"readOnly": true
@@ -1063,7 +1068,8 @@
 										"tools": {
 											"type": "array",
 											"items": {
-												"additionalProperties": {},
+												"additionalProperties": true,
+												"description": "Tool definition synced from the upstream MCP server. It follows the MCP Tool shape: name plus optional title, description, inputSchema, outputSchema, and annotations, with unknown fields passed through unchanged.",
 												"type": "object"
 											},
 											"readOnly": true
@@ -1567,7 +1573,8 @@
 										"prompts": {
 											"type": "array",
 											"items": {
-												"additionalProperties": {},
+												"additionalProperties": true,
+												"description": "Prompt definition synced from the upstream MCP server. It follows the MCP Prompt shape: name plus optional title, description, and arguments, with unknown fields passed through unchanged.",
 												"type": "object"
 											},
 											"readOnly": true
@@ -1594,7 +1601,8 @@
 										"tools": {
 											"type": "array",
 											"items": {
-												"additionalProperties": {},
+												"additionalProperties": true,
+												"description": "Tool definition synced from the upstream MCP server. It follows the MCP Tool shape: name plus optional title, description, inputSchema, outputSchema, and annotations, with unknown fields passed through unchanged.",
 												"type": "object"
 											},
 											"readOnly": true
@@ -2253,7 +2261,8 @@
 										"prompts": {
 											"type": "array",
 											"items": {
-												"additionalProperties": {},
+												"additionalProperties": true,
+												"description": "Prompt definition synced from the upstream MCP server. It follows the MCP Prompt shape: name plus optional title, description, and arguments, with unknown fields passed through unchanged.",
 												"type": "object"
 											},
 											"readOnly": true
@@ -2280,7 +2289,8 @@
 										"tools": {
 											"type": "array",
 											"items": {
-												"additionalProperties": {},
+												"additionalProperties": true,
+												"description": "Tool definition synced from the upstream MCP server. It follows the MCP Tool shape: name plus optional title, description, inputSchema, outputSchema, and annotations, with unknown fields passed through unchanged.",
 												"type": "object"
 											},
 											"readOnly": true
