@@ -3,39 +3,38 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h4><strong>Available Locations: Lisbon</strong></h4>
-<p><strong>About the Role</strong></p>
-<p>The Field Marketing team at Cloudflare is at the forefront of sharing our mission to help build a better internet. We are a dynamic, data-driven team dedicated to showcasing Cloudflare's innovative connectivity cloud products to an enterprise audience. Through strategic field campaigns, high-impact hosted events, and scalable operational frameworks, we drive awareness, generate enterprise pipeline, and support our company's rapid growth. As an intern on this team, you will not just support events execution—you will gain hands-on experience working inside a cutting-edge, AI-driven automation ecosystem designed to scale marketing footprint with maximum efficiency.</p>
-<p>As a Marketing Events &amp; Campaigns Intern, you will play a crucial supporting role in both the tactical execution of Cloudflare’s international field initiatives and the rolling rollout of our modern platform tools. This is an exciting opportunity to gain hands-on experience across a variety of enterprise marketing formats, including intimate executive roundtables, deep-dive technical workshops, and flagship regional roadshows.</p>
-<p>You will contribute to the end-to-end event lifecycle, from logistical coordination and asset management to supporting our automated platform pipelines. Your work will directly insulate field &amp; event managers from operational drag, help maintain data hygiene across our data layers, and ensure our sales teams are fully enabled to accelerate pipeline conversion.</p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>Available Location: Singapore</strong></p>
+<p><strong>Role summary</strong></p>
+<p>We are seeking a People Operations Specialist for a 6-month contract to support day-to-day HR operations with a strong emphasis on process automation, AI-assisted workflows, and scalable service delivery. Partnering closely with People Operations Manager, Specialists and cross-functional teams, you will execute core administrative tasks while actively identifying, testing, and implementing efficiency gains to reduce manual effort and improve data quality across the team.</p>
+<p><strong>What this role will do</strong></p>
+<p>Core Operations &amp; Service Delivery</p>
 <ul>
-	<li><strong>Unified Ecosystem Support:</strong> Assist with managing and testing entries within the <strong>OneSource Core Hub</strong> and tracking incoming sales-led requests.</li>
-	<li><strong>Logistical Coordination:</strong> Help drive the logistical planning and execution of virtual events and in-person field activations across regions, including scheduling, vendor outreach, swag orders and asset preparation for events.</li>
-	<li><strong>Social Media Content &amp; Management:</strong> Draft, create, and schedule engaging social media posts (primarily for LinkedIn) to promote upcoming hosted events, amplify regional customer panels, and share post-event highlights. Support the coordination of content calendars to ensure consistent visibility before, during, and after key activations.</li>
-	<li><strong>Asset &amp; Playbook Readiness:</strong> Help compile on-demand digital playbooks, pre-approved content decks, and operational checklists, collaborating with cross-functional design and product marketing teams.</li>
-	<li><strong>Support Build of Event in a Box</strong> for sales-self serve motion - picking our best resources and templates to adjust and enable those programs.</li>
-	<li><strong>Performance Analysis:</strong> Contribute to post-event reporting and pipeline conversion tracking by gathering behavioral signals, post-event feedback, and attendance data to build clean summary dashboards.</li>
+	<li>Support end-to-end employee lifecycle processes, including onboarding, internal transfers, organizational changes, and offboarding, ensuring a positive experience for employees throughout the APJC region.</li>
+	<li>Maintain high data accuracy across HR systems, complete transactions with strict attention to detail, and escalate complex exceptions appropriately.</li>
+	<li>Collaborate with internal stakeholders across the regions to ensure consistent and timely execution of HR processes.</li>
 </ul>
-<p><strong>Desirable Skills, Knowledge and Experience</strong></p>
+<p>Automation &amp; Continuous Improvement</p>
 <ul>
-	<li><strong>Currently pursuing a Bachelor’s or Master's degree</strong> in Marketing, Communications, Management Information Systems (MIS), Business, or a related field.</li>
-	<li><strong>Available for a full-time 12-week </strong>internship, working from our Lisbon office 3–5 days a week.</li>
-	<li><strong>Exceptional organizational skills </strong>with a "systems-thinking" mindset—someone who naturally loves logic, templates, and figuring out how pieces of a puzzle snap together efficiently.</li>
-	<li><strong>Excellent written and verbal communication</strong> skills in English (additional European languages are a strong plus).</li>
-	<li><strong>The ability to thrive in a fast-paced</strong>, collaborative environment.</li>
-	<li><strong>A proactive, tech-savvy attitude </strong>with a strong desire to learn modern marketing automation platforms and AI-driven workflow tools.</li>
-	<li>Ability to collaborate effectively within a fast-paced environment and handle cross-functional handoffs smoothly.</li>
-	<li>Proficiency with standard productivity tools (e.g., Google Workspace, Microsoft Office).</li>
-	<li><strong>AI Platform Enablement &amp; Optimization:</strong> Support the team in testing, refining, and documenting our emerging AI platform features. This includes assisting with user-acceptance testing (UAT) for conversational AI triggers within the <strong>Marketing Concierge (Jojo)</strong> , auditing data outputs from our <strong>AI Registration Auditor skill</strong> , and compiling approved messaging libraries to optimize our automated AI executive copywriting and ghostwriting templates.</li>
+	<li>Identify repetitive, manual tasks across People Operations workflows and leverage AI tools, automation, and templates to improve turnaround times.</li>
+	<li>Assist in testing, validating, and refining new automation opportunities and AI-driven solutions.</li>
+	<li>Monitor, track, and analyze operational data to identify process bottlenecks and recommend continuous improvement initiatives.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p>Process Standardization &amp; Knowledge Management</p>
 <ul>
-	<li>Previous academic or professional experience with event coordination, digital campaign tracking, or project management.</li>
-	<li>Basic understanding of CRM systems (Salesforce), marketing automation software (Marketo), or relational data management.</li>
+	<li>Standardize and maintain SOPs, knowledge base content, templates, and onboarding checklists.</li>
+	<li>Develop self-service resources and clear communications that enhance the overall employee experience.</li>
 </ul>
-<h3 data-path-to-node="4"><strong data-path-to-node="4" data-index-in-node="0">Compensation</strong></h3>
-<p data-path-to-node="5">● For Portugal based hires: Estimated monthly pay range is between €1,500 - €2,000.</p>
+<h4><strong>Requirement</strong></h4>
+<ul>
+	<li>Relevant experience in HR operations, shared services, or similar administrative support roles.</li>
+	<li>Highly organized with strong attention to detail, excellent problem-solving abilities, and effective time management skills.</li>
+	<li>Proficient in working with data and skilled in Excel or Google Sheets for analysis and reporting.</li>
+	<li>Customer-focused mindset with a genuine passion for supporting colleagues and delivering exceptional service.</li>
+	<li>Effective communicator, able to clearly articulate information both verbally and in writing to employees across the APJC region.</li>
+	<li>Adaptable and thrives in a fast-paced, dynamic environment, with the ability to manage shifting priorities efficiently.</li>
+	<li>Familiarity with Workday or Zendesk would be an advantage.</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
