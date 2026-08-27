@@ -816,22 +816,6 @@
 							"ancestorIsLast": []
 						},
 						{
-							"id": "service_tier",
-							"name": "service_tier",
-							"type": "string | null",
-							"isArray": false,
-							"isObject": false,
-							"isOneOf": false,
-							"isOneOfChild": false,
-							"isFirstOneOfChild": false,
-							"isLastOneOfChild": false,
-							"required": false,
-							"description": "Specifies the processing type used for serving the request.",
-							"depth": 0,
-							"isLast": false,
-							"ancestorIsLast": []
-						},
-						{
 							"id": "stop",
 							"name": "stop",
 							"type": "one of",
@@ -4559,22 +4543,6 @@
 							"isLastOneOfChild": false,
 							"required": false,
 							"description": "If specified, the system will make a best effort to sample deterministically.",
-							"depth": 0,
-							"isLast": false,
-							"ancestorIsLast": []
-						},
-						{
-							"id": "service_tier",
-							"name": "service_tier",
-							"type": "string | null",
-							"isArray": false,
-							"isObject": false,
-							"isOneOf": false,
-							"isOneOfChild": false,
-							"isFirstOneOfChild": false,
-							"isLastOneOfChild": false,
-							"required": false,
-							"description": "Specifies the processing type used for serving the request.",
 							"depth": 0,
 							"isLast": false,
 							"ancestorIsLast": []
@@ -6900,21 +6868,6 @@
 					"isLastOneOfChild": false,
 					"required": false,
 					"depth": 0,
-					"isLast": false,
-					"ancestorIsLast": []
-				},
-				{
-					"id": "service_tier",
-					"name": "service_tier",
-					"type": "string | null",
-					"isArray": false,
-					"isObject": false,
-					"isOneOf": false,
-					"isOneOfChild": false,
-					"isFirstOneOfChild": false,
-					"isLastOneOfChild": false,
-					"required": false,
-					"depth": 0,
 					"isLast": true,
 					"ancestorIsLast": []
 				}
@@ -7729,22 +7682,6 @@
 							"isLastOneOfChild": false,
 							"required": false,
 							"description": "If specified, the system will make a best effort to sample deterministically.",
-							"depth": 0,
-							"isLast": false,
-							"ancestorIsLast": []
-						},
-						{
-							"id": "service_tier",
-							"name": "service_tier",
-							"type": "string | null",
-							"isArray": false,
-							"isObject": false,
-							"isOneOf": false,
-							"isOneOfChild": false,
-							"isFirstOneOfChild": false,
-							"isLastOneOfChild": false,
-							"required": false,
-							"description": "Specifies the processing type used for serving the request.",
 							"depth": 0,
 							"isLast": false,
 							"ancestorIsLast": []
@@ -11477,22 +11414,6 @@
 							"isLastOneOfChild": false,
 							"required": false,
 							"description": "If specified, the system will make a best effort to sample deterministically.",
-							"depth": 0,
-							"isLast": false,
-							"ancestorIsLast": []
-						},
-						{
-							"id": "service_tier",
-							"name": "service_tier",
-							"type": "string | null",
-							"isArray": false,
-							"isObject": false,
-							"isOneOf": false,
-							"isOneOfChild": false,
-							"isFirstOneOfChild": false,
-							"isLastOneOfChild": false,
-							"required": false,
-							"description": "Specifies the processing type used for serving the request.",
 							"depth": 0,
 							"isLast": false,
 							"ancestorIsLast": []
@@ -13829,25 +13750,6 @@
 									"isLastOneOfChild": false,
 									"required": false,
 									"description": "If specified, the system will make a best effort to sample deterministically.",
-									"depth": 2,
-									"isLast": false,
-									"ancestorIsLast": [
-										true,
-										false
-									]
-								},
-								{
-									"id": "requests.0.service_tier",
-									"name": "service_tier",
-									"type": "string | null",
-									"isArray": false,
-									"isObject": false,
-									"isOneOf": false,
-									"isOneOfChild": false,
-									"isFirstOneOfChild": false,
-									"isLastOneOfChild": false,
-									"required": false,
-									"description": "Specifies the processing type used for serving the request.",
 									"depth": 2,
 									"isLast": false,
 									"ancestorIsLast": [
@@ -18012,25 +17914,6 @@
 									]
 								},
 								{
-									"id": "requests.1.service_tier",
-									"name": "service_tier",
-									"type": "string | null",
-									"isArray": false,
-									"isObject": false,
-									"isOneOf": false,
-									"isOneOfChild": false,
-									"isFirstOneOfChild": false,
-									"isLastOneOfChild": false,
-									"required": false,
-									"description": "Specifies the processing type used for serving the request.",
-									"depth": 2,
-									"isLast": false,
-									"ancestorIsLast": [
-										true,
-										true
-									]
-								},
-								{
 									"id": "requests.1.stop",
 									"name": "stop",
 									"type": "one of",
@@ -20493,21 +20376,6 @@
 				{
 					"id": "system_fingerprint",
 					"name": "system_fingerprint",
-					"type": "string | null",
-					"isArray": false,
-					"isObject": false,
-					"isOneOf": false,
-					"isOneOfChild": false,
-					"isFirstOneOfChild": false,
-					"isLastOneOfChild": false,
-					"required": false,
-					"depth": 0,
-					"isLast": false,
-					"ancestorIsLast": []
-				},
-				{
-					"id": "service_tier",
-					"name": "service_tier",
 					"type": "string | null",
 					"isArray": false,
 					"isObject": false,

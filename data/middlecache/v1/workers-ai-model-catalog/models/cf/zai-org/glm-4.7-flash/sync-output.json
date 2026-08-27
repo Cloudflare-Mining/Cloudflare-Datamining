@@ -472,23 +472,6 @@
 					"type": "null"
 				}
 			]
-		},
-		"service_tier": {
-			"anyOf": [
-				{
-					"type": "string",
-					"enum": [
-						"auto",
-						"default",
-						"flex",
-						"scale",
-						"priority"
-					]
-				},
-				{
-					"type": "null"
-				}
-			]
 		}
 	},
 	"required": [
