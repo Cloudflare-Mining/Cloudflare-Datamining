@@ -2,7 +2,7 @@
 	"name": "@cloudflare/voice-plivo",
 	"dist-tags": {
 		"bootstrap": "0.0.0",
-		"latest": "0.1.0"
+		"latest": "0.1.1"
 	},
 	"versions": {
 		"0.0.0": {
@@ -29,13 +29,39 @@
 				"@cloudflare/voice": ">=0.3.3 <1.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-jg9xxROM0I3St2JPZEoTk35xIhDwVIT4KCQ84nkHfgCcfa0dPL4nIQAu7dZH+y7P+PyrBQiy47EERC2pMp9N4A==",
 				"shasum": "4f5366fd29f0db97b3934199c86c5159b52e061e",
 				"tarball": "https://registry.npmjs.org/@cloudflare/voice-plivo/-/voice-plivo-0.1.0.tgz",
 				"fileCount": 6,
-				"unpackedSize": 45960,
+				"integrity": "sha512-jg9xxROM0I3St2JPZEoTk35xIhDwVIT4KCQ84nkHfgCcfa0dPL4nIQAu7dZH+y7P+PyrBQiy47EERC2pMp9N4A==",
+				"signatures": [
+					{
+						"sig": "MEUCIDlNH/N+TkxOo/jJqM7IXHOKSrPlNZPqlyLoPcEbNHMOAiEA/wQBwZleeNSVyrBTXFMjrotgJY/pAoLhFgmoJpbIBNs=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvoice-plivo@0.1.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 45960
+			}
+		},
+		"0.1.1": {
+			"name": "@cloudflare/voice-plivo",
+			"version": "0.1.1",
+			"peerDependencies": {
+				"@cloudflare/voice": ">=0.3.3 <1.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-uFrAvLJMZf7UdIHoxumcwqGn7SDVz7VcF1QcfOJ/pjgxjl0HrLOPqCBqFGSYxFkaTK/1FvHwh30twua9G9PwnA==",
+				"shasum": "be0a94737589eb76fbd090d7f18971b0a85307fb",
+				"tarball": "https://registry.npmjs.org/@cloudflare/voice-plivo/-/voice-plivo-0.1.1.tgz",
+				"fileCount": 6,
+				"unpackedSize": 46829,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvoice-plivo@0.1.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -43,7 +69,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIDlNH/N+TkxOo/jJqM7IXHOKSrPlNZPqlyLoPcEbNHMOAiEA/wQBwZleeNSVyrBTXFMjrotgJY/pAoLhFgmoJpbIBNs="
+						"sig": "MEQCIDXf9ouenFv83QtMmXpjIPlUPaK4EJsLCWqM5vHC2u8sAiA0PT6/cQNSmwDUMKXa4U+JypH1jKoZPb9IpYfhiAX8ow=="
 					}
 				]
 			}
