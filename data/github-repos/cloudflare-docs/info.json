@@ -70,6 +70,7 @@
 		"docs/audit-logs-v2-cmb-compatibility",
 		"docs/automatic-configuration-supported-apps",
 		"docs/c4s-preserve-dcv-method",
+		"docs/c4s-rsa-4096-custom-certificates",
 		"docs/clarify-ai-gateway-cache-fallback",
 		"docs/d1-baseline-migration",
 		"docs/d1-drizzle-workflow",
@@ -106,7 +107,6 @@
 		"fix/route-collision-warnings",
 		"fix/rule-id-copy-changelog",
 		"fix/ruleset-engine-filters",
-		"fix/workers-ai-newer-starter-model",
 		"fix-broken-images",
 		"fix-catalog-schema-nullable",
 		"fix-cloudflare-cloudflare-typo",
@@ -127,8 +127,6 @@
 		"ncano/one-dash-migration",
 		"ncano/tunnel-live-logs-core-dashboard",
 		"ngayerie/sentinel-splunk-troubleshooting-dee-3780",
-		"opencode/issue31747-20260627205700",
-		"opencode/issue31749-20260627212539",
 		"opencode/issue31873-20260703142750",
 		"opencode/issue32329-20260727013740",
 		"opencode/issue32440-20260731000401",
@@ -181,7 +179,6 @@
 		"trust-anchors",
 		"tsmith/202607-mt-webrtc-updates",
 		"update-api-schemas-25d6032915197001c478b9df6f64994d8d6d79cd",
-		"update-api-schemas-97eb09700643aa951ccf90ecc3471fc2db423789",
 		"update-api-schemas-c92b9b0fde23ae00fece2025662f96dc8e2d6283",
 		"update-api-schemas-d3a1cc5218498a0c0be061d7fd925d4e8c7f9e3b",
 		"update-realtimekit-api-reference-20260717-043742",
@@ -197,8 +194,10 @@
 		"workers-recommend-vite-module-registry",
 		"workflows/changelog-updates",
 		"workflows/nested-steps-and-restarts-v2",
+		"workflows/retention-period-changelog",
 		"workflows/update-rollback-changelog",
 		"yomna/changelog-worker-size-limit",
-		"zein/dee-3647-managed-rules-troubleshooting"
+		"zein/dee-3647-managed-rules-troubleshooting",
+		"zeinjaber/docs-ai-labyrinth-actions"
 	]
 }
