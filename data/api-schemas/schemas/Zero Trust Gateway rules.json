@@ -8677,7 +8677,11 @@
 		],
 		"tags": [
 			"Zero Trust Gateway rules"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
+		"x-fern-sdk-method-name": "bulk-edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/gateway/rules/{rule_id}": {
 		"operationId": "zero-trust-gateway-rules-patch-zero-trust-gateway-rule",
@@ -10748,7 +10752,11 @@
 		],
 		"tags": [
 			"Zero Trust Gateway rules"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/gateway/rules": {
 		"operationId": "zero-trust-gateway-rules-create-zero-trust-gateway-rule",
@@ -15620,7 +15628,11 @@
 		],
 		"tags": [
 			"Zero Trust Gateway rules"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
+		"x-fern-sdk-method-name": "reset-expiration",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/gateway/rules/{rule_id}": {
 		"operationId": "zero-trust-gateway-rules-update-zero-trust-gateway-rule",
@@ -18465,6 +18477,10 @@
 		],
 		"tags": [
 			"Zero Trust Gateway rules"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

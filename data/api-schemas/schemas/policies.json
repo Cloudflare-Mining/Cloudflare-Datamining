@@ -1,0 +1,4672 @@
+{
+	"DELETE /accounts/{account_id}/data-security/posture/policies/{policy_id}": {
+		"operationId": "DeletePolicy",
+		"summary": "Delete a policy configuration",
+		"description": "Deletes a policy configuration.\n",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID for the user making the request.",
+				"example": "46148281d8a93d002ef242d8b0d5f9f6",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "A UUID identifying the policy.",
+				"in": "path",
+				"name": "policy_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK: Policy deleted successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"description": "Common response structure for all API endpoints.",
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error or message code.",
+														"type": "integer",
+														"example": 1000,
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"description": "Link to relevant documentation.",
+														"type": "string",
+														"format": "uri",
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
+													},
+													"message": {
+														"description": "Human-readable message.",
+														"type": "string",
+														"example": "Request processed successfully"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON pointer to the source of the error.",
+																"type": "string",
+																"example": "/data/attributes/name"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"example": [],
+											"uniqueItems": true
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error or message code.",
+														"type": "integer",
+														"example": 1000,
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"description": "Link to relevant documentation.",
+														"type": "string",
+														"format": "uri",
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
+													},
+													"message": {
+														"description": "Human-readable message.",
+														"type": "string",
+														"example": "Request processed successfully"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON pointer to the source of the error.",
+																"type": "string",
+																"example": "/data/attributes/name"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"example": [],
+											"uniqueItems": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Response from DeletePolicy operation.",
+											"type": "object",
+											"properties": {
+												"id": {
+													"description": "ID of the policy deleted.",
+													"type": "string",
+													"format": "uuid",
+													"example": "3f7b8c9d-6e5a-4f3b-9c2d-1e0a8b7c6d5e"
+												}
+											},
+											"required": [
+												"id"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request: Invalid request parameters",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized: Authentication required",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden: Insufficient permissions",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not Found: Policy not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"policies"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "delete"
+	},
+	"GET /accounts/{account_id}/data-security/posture/policies": {
+		"operationId": "ListPolicies",
+		"summary": "List policy configurations",
+		"description": "Returns a list of integration-scoped policy configurations for the given account. This endpoint supports cursor based pagination. By default, results are returned in sorted order based on created_at.\n",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID for the user making the request.",
+				"example": "46148281d8a93d002ef242d8b0d5f9f6",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "cursor",
+				"in": "query",
+				"description": "Cursor for pagination. Obtained from the `result_info.cursor` field of a previous response.",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK: Policies retrieved successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"description": "Response structure for paginated collections.",
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error or message code.",
+														"type": "integer",
+														"example": 1000,
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"description": "Link to relevant documentation.",
+														"type": "string",
+														"format": "uri",
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
+													},
+													"message": {
+														"description": "Human-readable message.",
+														"type": "string",
+														"example": "Request processed successfully"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON pointer to the source of the error.",
+																"type": "string",
+																"example": "/data/attributes/name"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"example": [],
+											"uniqueItems": true
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error or message code.",
+														"type": "integer",
+														"example": 1000,
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"description": "Link to relevant documentation.",
+														"type": "string",
+														"format": "uri",
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
+													},
+													"message": {
+														"description": "Human-readable message.",
+														"type": "string",
+														"example": "Request processed successfully"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON pointer to the source of the error.",
+																"type": "string",
+																"example": "/data/attributes/name"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"example": [],
+											"uniqueItems": true
+										},
+										"result_info": {
+											"description": "Pagination and result information.",
+											"type": "object",
+											"properties": {
+												"count": {
+													"description": "Total number of results for the requested service.",
+													"type": "integer",
+													"example": 1
+												},
+												"cursor": {
+													"description": "Cursor for cursor-based pagination.",
+													"type": "string",
+													"example": "eyJpZCI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCIsImFmZmxpY3Rpb25fZGF0ZSI6IjE5NzAtMDEtMDFUMDA6MDA6MDAuMDAwMDAwWiJ9",
+													"nullable": true
+												},
+												"next": {
+													"description": "URL to the next page of results.",
+													"type": "string",
+													"format": "uri",
+													"nullable": true
+												},
+												"page": {
+													"description": "Current page within paginated list of results.",
+													"type": "integer",
+													"example": 1
+												},
+												"per_page": {
+													"description": "Number of results per page of results.",
+													"type": "integer",
+													"example": 20
+												},
+												"previous": {
+													"description": "URL to the previous page of results.",
+													"type": "string",
+													"format": "uri",
+													"nullable": true
+												},
+												"total_count": {
+													"description": "Total results available without any search parameters.",
+													"type": "integer",
+													"example": 2000
+												}
+											}
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result_info"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"description": "Response body for a policy configuration.",
+												"type": "object",
+												"properties": {
+													"actions": {
+														"description": "The actions configured for this policy.",
+														"type": "object",
+														"properties": {
+															"remediation_types": {
+																"description": "List of remediation types that will be executed.",
+																"type": "array",
+																"items": {
+																	"description": "A remediation type configured for the policy.",
+																	"type": "object",
+																	"properties": {
+																		"display_name": {
+																			"description": "Display name/label of the remediation type.",
+																			"type": "string",
+																			"example": "Remove Public Access",
+																			"readOnly": true
+																		},
+																		"remediation_type": {
+																			"description": "The system name of the remediation type.",
+																			"type": "string",
+																			"example": "remove_public_access",
+																			"readOnly": true
+																		},
+																		"remediation_type_id": {
+																			"description": "Unique identifier for the remediation type.",
+																			"type": "string",
+																			"format": "uuid",
+																			"example": "5a7d9e2f-1b3c-4d5e-8f6a-7b8c9d0e1f2a"
+																		}
+																	},
+																	"required": [
+																		"remediation_type_id",
+																		"remediation_type",
+																		"display_name"
+																	]
+																}
+															},
+															"webhook_configs": {
+																"description": "List of webhook configurations that will be triggered.",
+																"type": "array",
+																"items": {
+																	"description": "A webhook configuration associated with the policy.",
+																	"type": "object",
+																	"properties": {
+																		"display_name": {
+																			"description": "Display name/label of the webhook configuration.",
+																			"type": "string",
+																			"example": "Send to Slack",
+																			"readOnly": true
+																		},
+																		"webhook_config_id": {
+																			"description": "Unique identifier for the webhook configuration.",
+																			"type": "string",
+																			"format": "uuid",
+																			"example": "3f7b8c9d-6e5a-4f3b-9c2d-1e0a8b7c6d5e"
+																		}
+																	},
+																	"required": [
+																		"webhook_config_id",
+																		"display_name"
+																	]
+																}
+															}
+														},
+														"required": [
+															"remediation_types",
+															"webhook_configs"
+														]
+													},
+													"applies_to_all_integrations": {
+														"description": "When true, the policy applies to all integrations for the account. When false, it applies only to the specified integration_ids.",
+														"type": "boolean",
+														"example": false
+													},
+													"created_at": {
+														"description": "Timestamp when the policy was created.",
+														"type": "string",
+														"format": "date-time",
+														"example": "2025-03-18T17:25:38.700541Z",
+														"readOnly": true
+													},
+													"description": {
+														"description": "User-set description of what this policy does. Limited to 1000 characters.",
+														"type": "string",
+														"example": "Automatically remove public access from files when detected"
+													},
+													"disabled_at": {
+														"description": "Timestamp when the policy was disabled. Omitted from the response when the policy\nis enabled.",
+														"type": "string",
+														"format": "date-time",
+														"example": "2025-03-18T17:25:38.700541Z",
+														"readOnly": true
+													},
+													"display_name": {
+														"description": "Display name for the policy configuration. Limited to 255 characters.",
+														"type": "string",
+														"example": "Auto-remediate public files"
+													},
+													"enabled": {
+														"description": "Whether the policy is enabled. Derived from disabled_at (enabled when disabled_at is unset).",
+														"type": "boolean",
+														"example": true
+													},
+													"finding_type_id": {
+														"description": "The finding type this policy is associated with. Immutable after creation; changing it replaces the policy.",
+														"type": "string",
+														"format": "uuid",
+														"example": "5a7d9e2f-1b3c-4d5e-8f6a-7b8c9d0e1f2a"
+													},
+													"id": {
+														"description": "Unique identifier for the policy configuration.",
+														"type": "string",
+														"format": "uuid",
+														"example": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+														"readOnly": true
+													},
+													"integration_ids": {
+														"description": "The integrations this policy applies to.",
+														"type": "array",
+														"items": {
+															"format": "uuid",
+															"type": "string"
+														},
+														"example": [
+															"497f6eca-6276-4993-bfeb-53cbbbba6f08"
+														]
+													},
+													"last_triggered_at": {
+														"description": "Timestamp of the most recent successful policy invocation. Omitted\nfrom the response when the policy has never been successfully\ntriggered. Only populated on GET responses; absent on responses from\ncreate/update endpoints.",
+														"type": "string",
+														"format": "date-time",
+														"example": "2025-03-18T17:25:38.700541Z",
+														"readOnly": true
+													},
+													"updated_at": {
+														"description": "Timestamp when the policy was last updated.",
+														"type": "string",
+														"format": "date-time",
+														"example": "2025-03-18T17:25:38.700541Z",
+														"readOnly": true
+													}
+												},
+												"required": [
+													"id",
+													"created_at",
+													"updated_at",
+													"integration_ids",
+													"applies_to_all_integrations",
+													"finding_type_id",
+													"display_name",
+													"description",
+													"enabled",
+													"actions"
+												]
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request: Invalid request parameters",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized: Authentication required",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden: Insufficient permissions",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"policies"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "list"
+	},
+	"GET /accounts/{account_id}/data-security/posture/policies/{policy_id}": {
+		"operationId": "GetPolicyByID",
+		"summary": "Get a policy configuration by ID",
+		"description": "Retrieves the details of a specific policy configuration, including its\nassociated remediation and webhook actions.\n",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID for the user making the request.",
+				"example": "46148281d8a93d002ef242d8b0d5f9f6",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "policy_id",
+				"in": "path",
+				"description": "The UUID of the policy configuration to retrieve.",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid",
+					"example": "497f6eca-6276-4993-bfeb-53cbbbba6f08"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK: Policy retrieved successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"description": "Common response structure for all API endpoints.",
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error or message code.",
+														"type": "integer",
+														"example": 1000,
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"description": "Link to relevant documentation.",
+														"type": "string",
+														"format": "uri",
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
+													},
+													"message": {
+														"description": "Human-readable message.",
+														"type": "string",
+														"example": "Request processed successfully"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON pointer to the source of the error.",
+																"type": "string",
+																"example": "/data/attributes/name"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"example": [],
+											"uniqueItems": true
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error or message code.",
+														"type": "integer",
+														"example": 1000,
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"description": "Link to relevant documentation.",
+														"type": "string",
+														"format": "uri",
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
+													},
+													"message": {
+														"description": "Human-readable message.",
+														"type": "string",
+														"example": "Request processed successfully"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON pointer to the source of the error.",
+																"type": "string",
+																"example": "/data/attributes/name"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"example": [],
+											"uniqueItems": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Response body for a policy configuration.",
+											"type": "object",
+											"properties": {
+												"actions": {
+													"description": "The actions configured for this policy.",
+													"type": "object",
+													"properties": {
+														"remediation_types": {
+															"description": "List of remediation types that will be executed.",
+															"type": "array",
+															"items": {
+																"description": "A remediation type configured for the policy.",
+																"type": "object",
+																"properties": {
+																	"display_name": {
+																		"description": "Display name/label of the remediation type.",
+																		"type": "string",
+																		"example": "Remove Public Access",
+																		"readOnly": true
+																	},
+																	"remediation_type": {
+																		"description": "The system name of the remediation type.",
+																		"type": "string",
+																		"example": "remove_public_access",
+																		"readOnly": true
+																	},
+																	"remediation_type_id": {
+																		"description": "Unique identifier for the remediation type.",
+																		"type": "string",
+																		"format": "uuid",
+																		"example": "5a7d9e2f-1b3c-4d5e-8f6a-7b8c9d0e1f2a"
+																	}
+																},
+																"required": [
+																	"remediation_type_id",
+																	"remediation_type",
+																	"display_name"
+																]
+															}
+														},
+														"webhook_configs": {
+															"description": "List of webhook configurations that will be triggered.",
+															"type": "array",
+															"items": {
+																"description": "A webhook configuration associated with the policy.",
+																"type": "object",
+																"properties": {
+																	"display_name": {
+																		"description": "Display name/label of the webhook configuration.",
+																		"type": "string",
+																		"example": "Send to Slack",
+																		"readOnly": true
+																	},
+																	"webhook_config_id": {
+																		"description": "Unique identifier for the webhook configuration.",
+																		"type": "string",
+																		"format": "uuid",
+																		"example": "3f7b8c9d-6e5a-4f3b-9c2d-1e0a8b7c6d5e"
+																	}
+																},
+																"required": [
+																	"webhook_config_id",
+																	"display_name"
+																]
+															}
+														}
+													},
+													"required": [
+														"remediation_types",
+														"webhook_configs"
+													]
+												},
+												"applies_to_all_integrations": {
+													"description": "When true, the policy applies to all integrations for the account. When false, it applies only to the specified integration_ids.",
+													"type": "boolean",
+													"example": false
+												},
+												"created_at": {
+													"description": "Timestamp when the policy was created.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2025-03-18T17:25:38.700541Z",
+													"readOnly": true
+												},
+												"description": {
+													"description": "User-set description of what this policy does. Limited to 1000 characters.",
+													"type": "string",
+													"example": "Automatically remove public access from files when detected"
+												},
+												"disabled_at": {
+													"description": "Timestamp when the policy was disabled. Omitted from the response when the policy\nis enabled.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2025-03-18T17:25:38.700541Z",
+													"readOnly": true
+												},
+												"display_name": {
+													"description": "Display name for the policy configuration. Limited to 255 characters.",
+													"type": "string",
+													"example": "Auto-remediate public files"
+												},
+												"enabled": {
+													"description": "Whether the policy is enabled. Derived from disabled_at (enabled when disabled_at is unset).",
+													"type": "boolean",
+													"example": true
+												},
+												"finding_type_id": {
+													"description": "The finding type this policy is associated with. Immutable after creation; changing it replaces the policy.",
+													"type": "string",
+													"format": "uuid",
+													"example": "5a7d9e2f-1b3c-4d5e-8f6a-7b8c9d0e1f2a"
+												},
+												"id": {
+													"description": "Unique identifier for the policy configuration.",
+													"type": "string",
+													"format": "uuid",
+													"example": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+													"readOnly": true
+												},
+												"integration_ids": {
+													"description": "The integrations this policy applies to.",
+													"type": "array",
+													"items": {
+														"format": "uuid",
+														"type": "string"
+													},
+													"example": [
+														"497f6eca-6276-4993-bfeb-53cbbbba6f08"
+													]
+												},
+												"last_triggered_at": {
+													"description": "Timestamp of the most recent successful policy invocation. Omitted\nfrom the response when the policy has never been successfully\ntriggered. Only populated on GET responses; absent on responses from\ncreate/update endpoints.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2025-03-18T17:25:38.700541Z",
+													"readOnly": true
+												},
+												"updated_at": {
+													"description": "Timestamp when the policy was last updated.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2025-03-18T17:25:38.700541Z",
+													"readOnly": true
+												}
+											},
+											"required": [
+												"id",
+												"created_at",
+												"updated_at",
+												"integration_ids",
+												"applies_to_all_integrations",
+												"finding_type_id",
+												"display_name",
+												"description",
+												"enabled",
+												"actions"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request: Invalid request parameters",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized: Authentication required",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden: Insufficient permissions",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not Found: Policy config not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"policies"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "get"
+	},
+	"GET /accounts/{account_id}/data-security/posture/policies/logs": {
+		"operationId": "ListPolicyLogs",
+		"summary": "List policy invocation logs",
+		"description": "Returns a list of policy invocation logs for the given account, sourced from ClickHouse via Ready Analytics. Each entry represents one execution of a policy against a finding instance, including the actions (remediation jobs and webhooks) it dispatched.\n\nResults are scoped to the requesting account's CASB integrations. The `integration_id` query parameter, when supplied, is intersected against the account's integration allowlist; values outside the allowlist are silently dropped.\n\nPagination is offset-based. The response does not include a total row count; clients should treat a result with fewer than `per_page` entries as the end of the list.\n",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID for the user making the request.",
+				"example": "46148281d8a93d002ef242d8b0d5f9f6",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "since",
+				"in": "query",
+				"description": "Lower bound on the log entry timestamp. Accepts ISO 8601 / RFC3339 or epoch seconds. Defaults to 7 days before `until`. The window between `since` and `until` cannot exceed 180 days.",
+				"schema": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"example": "2026-04-01T00:00:00Z"
+			},
+			{
+				"name": "until",
+				"in": "query",
+				"description": "Upper bound on the log entry timestamp. Accepts ISO 8601 / RFC3339 or epoch seconds. Defaults to the current time. Must be greater than or equal to `since`.",
+				"schema": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"example": "2026-04-08T00:00:00Z"
+			},
+			{
+				"name": "integration_id",
+				"in": "query",
+				"description": "Comma-separated list of CASB integration IDs to filter by. At most 100 values, each at most 128 characters. Values outside the account's tenancy allowlist are silently ignored. When omitted, results are scoped to the full allowlist.",
+				"schema": {
+					"type": "string"
+				},
+				"example": "497f6eca-6276-4993-bfeb-53cbbbba6f08"
+			},
+			{
+				"name": "policy_name",
+				"in": "query",
+				"description": "Comma-separated list of policy display names to filter by. At most 100 values, each at most 255 characters.",
+				"schema": {
+					"type": "string"
+				},
+				"example": "Auto-remediate publicly shared files"
+			},
+			{
+				"description": "A page number within the paginated result set.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Number of results to return per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK: Policy logs retrieved successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"description": "Response structure for paginated collections.",
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error or message code.",
+														"type": "integer",
+														"example": 1000,
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"description": "Link to relevant documentation.",
+														"type": "string",
+														"format": "uri",
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
+													},
+													"message": {
+														"description": "Human-readable message.",
+														"type": "string",
+														"example": "Request processed successfully"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON pointer to the source of the error.",
+																"type": "string",
+																"example": "/data/attributes/name"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"example": [],
+											"uniqueItems": true
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error or message code.",
+														"type": "integer",
+														"example": 1000,
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"description": "Link to relevant documentation.",
+														"type": "string",
+														"format": "uri",
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
+													},
+													"message": {
+														"description": "Human-readable message.",
+														"type": "string",
+														"example": "Request processed successfully"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON pointer to the source of the error.",
+																"type": "string",
+																"example": "/data/attributes/name"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"example": [],
+											"uniqueItems": true
+										},
+										"result_info": {
+											"description": "Pagination and result information.",
+											"type": "object",
+											"properties": {
+												"count": {
+													"description": "Total number of results for the requested service.",
+													"type": "integer",
+													"example": 1
+												},
+												"cursor": {
+													"description": "Cursor for cursor-based pagination.",
+													"type": "string",
+													"example": "eyJpZCI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCIsImFmZmxpY3Rpb25fZGF0ZSI6IjE5NzAtMDEtMDFUMDA6MDA6MDAuMDAwMDAwWiJ9",
+													"nullable": true
+												},
+												"next": {
+													"description": "URL to the next page of results.",
+													"type": "string",
+													"format": "uri",
+													"nullable": true
+												},
+												"page": {
+													"description": "Current page within paginated list of results.",
+													"type": "integer",
+													"example": 1
+												},
+												"per_page": {
+													"description": "Number of results per page of results.",
+													"type": "integer",
+													"example": 20
+												},
+												"previous": {
+													"description": "URL to the previous page of results.",
+													"type": "string",
+													"format": "uri",
+													"nullable": true
+												},
+												"total_count": {
+													"description": "Total results available without any search parameters.",
+													"type": "integer",
+													"example": 2000
+												}
+											}
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result_info"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"description": "A single policy invocation log entry. Each entry represents one execution of a policy against a finding instance.",
+												"type": "object",
+												"properties": {
+													"actions": {
+														"description": "Actions dispatched by the policy consumer for this invocation. Both arrays are always present and may be empty.",
+														"type": "object",
+														"properties": {
+															"remediations": {
+																"description": "Remediation jobs spawned by this policy invocation.",
+																"type": "array",
+																"items": {
+																	"description": "A remediation job dispatched during a policy invocation.",
+																	"type": "object",
+																	"properties": {
+																		"id": {
+																			"description": "Identifier of the remediation job, suitable for cross-referencing with the remediations API.",
+																			"type": "string",
+																			"example": "rj_001"
+																		},
+																		"type": {
+																			"description": "Display name of the remediation type that ran.",
+																			"type": "string",
+																			"example": "Revoke External Sharing"
+																		},
+																		"url": {
+																			"description": "Path to the remediation job in the dashboard.",
+																			"type": "string",
+																			"example": "/one/casb/remediations/rj_001"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"id",
+																		"url"
+																	]
+																}
+															},
+															"webhooks": {
+																"description": "Webhook jobs dispatched by this policy invocation.",
+																"type": "array",
+																"items": {
+																	"description": "A webhook job dispatched during a policy invocation.",
+																	"type": "object",
+																	"properties": {
+																		"nickname": {
+																			"description": "User-set nickname of the webhook configuration that fired.",
+																			"type": "string",
+																			"example": "SOC alerting"
+																		},
+																		"url": {
+																			"description": "Path to the webhook configuration in the dashboard.",
+																			"type": "string",
+																			"example": "/one/casb/webhooks/wh_001"
+																		}
+																	},
+																	"required": [
+																		"nickname",
+																		"url"
+																	]
+																}
+															}
+														},
+														"required": [
+															"remediations",
+															"webhooks"
+														]
+													},
+													"policy": {
+														"description": "The policy configuration that fired.",
+														"type": "object",
+														"properties": {
+															"name": {
+																"description": "Display name of the policy at the time it ran.",
+																"type": "string",
+																"example": "Auto-remediate publicly shared files"
+															},
+															"url": {
+																"description": "URL to the policy configuration in the dashboard. Currently always an empty string; populated in a future revision once the upstream view exposes the policy configuration ID.",
+																"type": "string",
+																"example": ""
+															}
+														},
+														"required": [
+															"name",
+															"url"
+														]
+													},
+													"timestamp": {
+														"description": "When the policy invocation was recorded by ClickHouse, in ClickHouse DateTime format (UTC).",
+														"type": "string",
+														"example": "2026-04-07T13:00:00Z"
+													},
+													"trigger": {
+														"description": "The finding instance that caused the policy to fire.",
+														"type": "object",
+														"properties": {
+															"date_detected": {
+																"description": "When the finding was first detected, in ISO 8601 / RFC3339 format.",
+																"type": "string",
+																"example": "2026-04-07T13:00:00Z"
+															},
+															"fields_of_interest": {
+																"description": "Free-form JSON object containing finding-type-specific context fields (e.g. file owner, sharing scope). Schema varies per finding type; consumers should treat unknown keys defensively. Null when the upstream row had no fields_of_interest.",
+																"type": "object",
+																"example": {
+																	"owner": "alice@company.com",
+																	"sharing": "public"
+																},
+																"additionalProperties": true,
+																"nullable": true
+															},
+															"finding_type_name": {
+																"description": "Display name of the finding type that triggered the policy.",
+																"type": "string",
+																"example": "GW: File publicly accessible"
+															},
+															"instance_asset": {
+																"description": "Name of the specific resource (file, drive item, etc.) the finding was raised against.",
+																"type": "string",
+																"example": "Q4_Financials.pdf"
+															},
+															"integration_name": {
+																"description": "Display name of the CASB integration that produced the finding.",
+																"type": "string",
+																"example": "Finance GW"
+															},
+															"integration_url": {
+																"description": "Path to the integration in the dashboard.",
+																"type": "string",
+																"example": "/one/casb/integrations/int_001"
+															}
+														},
+														"required": [
+															"finding_type_name",
+															"instance_asset",
+															"date_detected",
+															"integration_name",
+															"integration_url",
+															"fields_of_interest"
+														]
+													}
+												},
+												"required": [
+													"timestamp",
+													"policy",
+													"trigger",
+													"actions"
+												]
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request: Invalid query parameters",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized: Authentication required",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden: Insufficient permissions",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"502": {
+				"description": "Bad Gateway: Policy logs backend (ClickHouse) is unavailable",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"504": {
+				"description": "Gateway Timeout: Policy logs query timed out",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"policies"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "list"
+	},
+	"POST /accounts/{account_id}/data-security/posture/policies": {
+		"operationId": "CreatePolicy",
+		"summary": "Create a new policy configuration",
+		"description": "Creates a new policy configuration that defines automated actions to be executed \nwhen security findings are detected. A policy can include multiple remediation \nand/or webhook actions that will be triggered automatically.\n",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID for the user making the request.",
+				"example": "46148281d8a93d002ef242d8b0d5f9f6",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Request body for creating a new policy configuration.",
+						"type": "object",
+						"properties": {
+							"actions": {
+								"description": "Actions to execute when this policy is triggered, grouped by action type.\nA policy must contain at least one action across all groups and may include\nat most one remediation.",
+								"type": "object",
+								"properties": {
+									"remediation_types": {
+										"description": "Remediation actions to execute (at most one).",
+										"type": "array",
+										"items": {
+											"description": "A remediation action to be executed.",
+											"type": "object",
+											"properties": {
+												"remediation_type_id": {
+													"description": "The ID of the remediation type to execute.",
+													"type": "string",
+													"format": "uuid",
+													"example": "5a7d9e2f-1b3c-4d5e-8f6a-7b8c9d0e1f2a"
+												}
+											},
+											"required": [
+												"remediation_type_id"
+											]
+										},
+										"maxItems": 1
+									},
+									"webhook_configs": {
+										"description": "Webhook actions to execute.",
+										"type": "array",
+										"items": {
+											"description": "A webhook action to be executed.",
+											"type": "object",
+											"properties": {
+												"webhook_config_id": {
+													"description": "The ID of the webhook configuration to use.",
+													"type": "string",
+													"format": "uuid",
+													"example": "3f7b8c9d-6e5a-4f3b-9c2d-1e0a8b7c6d5e"
+												}
+											},
+											"required": [
+												"webhook_config_id"
+											]
+										}
+									}
+								},
+								"minProperties": 1
+							},
+							"applies_to_all_integrations": {
+								"description": "When true, the policy applies to all integrations for the account. When false, integration_ids must be provided.",
+								"type": "boolean",
+								"example": false
+							},
+							"description": {
+								"description": "Optional description of what this policy does.",
+								"type": "string",
+								"example": "Automatically remove public access from files when detected",
+								"maxLength": 1000
+							},
+							"display_name": {
+								"description": "Display name for the policy configuration.",
+								"type": "string",
+								"example": "Auto-remediate public files",
+								"maxLength": 255
+							},
+							"enabled": {
+								"description": "Boolean specifying if the policy is enabled or disabled.",
+								"type": "boolean",
+								"example": true
+							},
+							"finding_type_id": {
+								"description": "The finding type this policy is associated with. All remediation actions must match this finding type.",
+								"type": "string",
+								"format": "uuid",
+								"example": "5a7d9e2f-1b3c-4d5e-8f6a-7b8c9d0e1f2a"
+							},
+							"integration_ids": {
+								"description": "The integrations this policy applies to. Required when applies_to_all_integrations is false.",
+								"type": "array",
+								"items": {
+									"format": "uuid",
+									"type": "string"
+								},
+								"example": [
+									"497f6eca-6276-4993-bfeb-53cbbbba6f08"
+								]
+							}
+						},
+						"required": [
+							"display_name",
+							"enabled",
+							"applies_to_all_integrations",
+							"finding_type_id",
+							"actions"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "OK: Policy created successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"description": "Common response structure for all API endpoints.",
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error or message code.",
+														"type": "integer",
+														"example": 1000,
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"description": "Link to relevant documentation.",
+														"type": "string",
+														"format": "uri",
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
+													},
+													"message": {
+														"description": "Human-readable message.",
+														"type": "string",
+														"example": "Request processed successfully"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON pointer to the source of the error.",
+																"type": "string",
+																"example": "/data/attributes/name"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"example": [],
+											"uniqueItems": true
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error or message code.",
+														"type": "integer",
+														"example": 1000,
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"description": "Link to relevant documentation.",
+														"type": "string",
+														"format": "uri",
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
+													},
+													"message": {
+														"description": "Human-readable message.",
+														"type": "string",
+														"example": "Request processed successfully"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON pointer to the source of the error.",
+																"type": "string",
+																"example": "/data/attributes/name"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"example": [],
+											"uniqueItems": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Response body for a policy configuration.",
+											"type": "object",
+											"properties": {
+												"actions": {
+													"description": "The actions configured for this policy.",
+													"type": "object",
+													"properties": {
+														"remediation_types": {
+															"description": "List of remediation types that will be executed.",
+															"type": "array",
+															"items": {
+																"description": "A remediation type configured for the policy.",
+																"type": "object",
+																"properties": {
+																	"display_name": {
+																		"description": "Display name/label of the remediation type.",
+																		"type": "string",
+																		"example": "Remove Public Access",
+																		"readOnly": true
+																	},
+																	"remediation_type": {
+																		"description": "The system name of the remediation type.",
+																		"type": "string",
+																		"example": "remove_public_access",
+																		"readOnly": true
+																	},
+																	"remediation_type_id": {
+																		"description": "Unique identifier for the remediation type.",
+																		"type": "string",
+																		"format": "uuid",
+																		"example": "5a7d9e2f-1b3c-4d5e-8f6a-7b8c9d0e1f2a"
+																	}
+																},
+																"required": [
+																	"remediation_type_id",
+																	"remediation_type",
+																	"display_name"
+																]
+															}
+														},
+														"webhook_configs": {
+															"description": "List of webhook configurations that will be triggered.",
+															"type": "array",
+															"items": {
+																"description": "A webhook configuration associated with the policy.",
+																"type": "object",
+																"properties": {
+																	"display_name": {
+																		"description": "Display name/label of the webhook configuration.",
+																		"type": "string",
+																		"example": "Send to Slack",
+																		"readOnly": true
+																	},
+																	"webhook_config_id": {
+																		"description": "Unique identifier for the webhook configuration.",
+																		"type": "string",
+																		"format": "uuid",
+																		"example": "3f7b8c9d-6e5a-4f3b-9c2d-1e0a8b7c6d5e"
+																	}
+																},
+																"required": [
+																	"webhook_config_id",
+																	"display_name"
+																]
+															}
+														}
+													},
+													"required": [
+														"remediation_types",
+														"webhook_configs"
+													]
+												},
+												"applies_to_all_integrations": {
+													"description": "When true, the policy applies to all integrations for the account. When false, it applies only to the specified integration_ids.",
+													"type": "boolean",
+													"example": false
+												},
+												"created_at": {
+													"description": "Timestamp when the policy was created.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2025-03-18T17:25:38.700541Z",
+													"readOnly": true
+												},
+												"description": {
+													"description": "User-set description of what this policy does. Limited to 1000 characters.",
+													"type": "string",
+													"example": "Automatically remove public access from files when detected"
+												},
+												"disabled_at": {
+													"description": "Timestamp when the policy was disabled. Omitted from the response when the policy\nis enabled.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2025-03-18T17:25:38.700541Z",
+													"readOnly": true
+												},
+												"display_name": {
+													"description": "Display name for the policy configuration. Limited to 255 characters.",
+													"type": "string",
+													"example": "Auto-remediate public files"
+												},
+												"enabled": {
+													"description": "Whether the policy is enabled. Derived from disabled_at (enabled when disabled_at is unset).",
+													"type": "boolean",
+													"example": true
+												},
+												"finding_type_id": {
+													"description": "The finding type this policy is associated with. Immutable after creation; changing it replaces the policy.",
+													"type": "string",
+													"format": "uuid",
+													"example": "5a7d9e2f-1b3c-4d5e-8f6a-7b8c9d0e1f2a"
+												},
+												"id": {
+													"description": "Unique identifier for the policy configuration.",
+													"type": "string",
+													"format": "uuid",
+													"example": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+													"readOnly": true
+												},
+												"integration_ids": {
+													"description": "The integrations this policy applies to.",
+													"type": "array",
+													"items": {
+														"format": "uuid",
+														"type": "string"
+													},
+													"example": [
+														"497f6eca-6276-4993-bfeb-53cbbbba6f08"
+													]
+												},
+												"last_triggered_at": {
+													"description": "Timestamp of the most recent successful policy invocation. Omitted\nfrom the response when the policy has never been successfully\ntriggered. Only populated on GET responses; absent on responses from\ncreate/update endpoints.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2025-03-18T17:25:38.700541Z",
+													"readOnly": true
+												},
+												"updated_at": {
+													"description": "Timestamp when the policy was last updated.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2025-03-18T17:25:38.700541Z",
+													"readOnly": true
+												}
+											},
+											"required": [
+												"id",
+												"created_at",
+												"updated_at",
+												"integration_ids",
+												"applies_to_all_integrations",
+												"finding_type_id",
+												"display_name",
+												"description",
+												"enabled",
+												"actions"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request: Invalid request parameters",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized: Authentication required",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden: Insufficient permissions",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not Found: Integration, remediation type, or webhook config not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"policies"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "create"
+	},
+	"PUT /accounts/{account_id}/data-security/posture/policies/{policy_id}": {
+		"operationId": "UpdatePolicy",
+		"summary": "Update a policy configuration",
+		"description": "Updates an existing policy configuration and replaces its actions.\n",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID for the user making the request.",
+				"example": "46148281d8a93d002ef242d8b0d5f9f6",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "policy_id",
+				"in": "path",
+				"description": "Policy configuration ID",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Request body for updating an existing policy configuration.",
+						"type": "object",
+						"properties": {
+							"actions": {
+								"description": "Actions to execute when this policy is triggered, grouped by action type.\nA policy must contain at least one action across all groups and may include\nat most one remediation.",
+								"type": "object",
+								"properties": {
+									"remediation_types": {
+										"description": "Remediation actions to execute (at most one).",
+										"type": "array",
+										"items": {
+											"description": "A remediation action to be executed.",
+											"type": "object",
+											"properties": {
+												"remediation_type_id": {
+													"description": "The ID of the remediation type to execute.",
+													"type": "string",
+													"format": "uuid",
+													"example": "5a7d9e2f-1b3c-4d5e-8f6a-7b8c9d0e1f2a"
+												}
+											},
+											"required": [
+												"remediation_type_id"
+											]
+										},
+										"maxItems": 1
+									},
+									"webhook_configs": {
+										"description": "Webhook actions to execute.",
+										"type": "array",
+										"items": {
+											"description": "A webhook action to be executed.",
+											"type": "object",
+											"properties": {
+												"webhook_config_id": {
+													"description": "The ID of the webhook configuration to use.",
+													"type": "string",
+													"format": "uuid",
+													"example": "3f7b8c9d-6e5a-4f3b-9c2d-1e0a8b7c6d5e"
+												}
+											},
+											"required": [
+												"webhook_config_id"
+											]
+										}
+									}
+								},
+								"minProperties": 1
+							},
+							"applies_to_all_integrations": {
+								"description": "When true, the policy applies to all integrations for the account. When false, integration_ids must be provided.",
+								"type": "boolean",
+								"example": false
+							},
+							"description": {
+								"description": "Optional description of what this policy does.",
+								"type": "string",
+								"example": "Automatically remove public access from files when detected",
+								"maxLength": 1000
+							},
+							"display_name": {
+								"description": "Display name for the policy configuration.",
+								"type": "string",
+								"example": "Auto-remediate public files",
+								"maxLength": 255
+							},
+							"enabled": {
+								"description": "Boolean specifying if the policy is enabled or disabled.",
+								"type": "boolean",
+								"example": true
+							},
+							"integration_ids": {
+								"description": "The integrations this policy applies to. Required when applies_to_all_integrations is false.",
+								"type": "array",
+								"items": {
+									"format": "uuid",
+									"type": "string"
+								},
+								"example": [
+									"497f6eca-6276-4993-bfeb-53cbbbba6f08"
+								]
+							}
+						},
+						"required": [
+							"display_name",
+							"enabled",
+							"applies_to_all_integrations",
+							"actions"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "OK: Policy updated successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"description": "Common response structure for all API endpoints.",
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error or message code.",
+														"type": "integer",
+														"example": 1000,
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"description": "Link to relevant documentation.",
+														"type": "string",
+														"format": "uri",
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
+													},
+													"message": {
+														"description": "Human-readable message.",
+														"type": "string",
+														"example": "Request processed successfully"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON pointer to the source of the error.",
+																"type": "string",
+																"example": "/data/attributes/name"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"example": [],
+											"uniqueItems": true
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error or message code.",
+														"type": "integer",
+														"example": 1000,
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"description": "Link to relevant documentation.",
+														"type": "string",
+														"format": "uri",
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
+													},
+													"message": {
+														"description": "Human-readable message.",
+														"type": "string",
+														"example": "Request processed successfully"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON pointer to the source of the error.",
+																"type": "string",
+																"example": "/data/attributes/name"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"example": [],
+											"uniqueItems": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Response body for a policy configuration.",
+											"type": "object",
+											"properties": {
+												"actions": {
+													"description": "The actions configured for this policy.",
+													"type": "object",
+													"properties": {
+														"remediation_types": {
+															"description": "List of remediation types that will be executed.",
+															"type": "array",
+															"items": {
+																"description": "A remediation type configured for the policy.",
+																"type": "object",
+																"properties": {
+																	"display_name": {
+																		"description": "Display name/label of the remediation type.",
+																		"type": "string",
+																		"example": "Remove Public Access",
+																		"readOnly": true
+																	},
+																	"remediation_type": {
+																		"description": "The system name of the remediation type.",
+																		"type": "string",
+																		"example": "remove_public_access",
+																		"readOnly": true
+																	},
+																	"remediation_type_id": {
+																		"description": "Unique identifier for the remediation type.",
+																		"type": "string",
+																		"format": "uuid",
+																		"example": "5a7d9e2f-1b3c-4d5e-8f6a-7b8c9d0e1f2a"
+																	}
+																},
+																"required": [
+																	"remediation_type_id",
+																	"remediation_type",
+																	"display_name"
+																]
+															}
+														},
+														"webhook_configs": {
+															"description": "List of webhook configurations that will be triggered.",
+															"type": "array",
+															"items": {
+																"description": "A webhook configuration associated with the policy.",
+																"type": "object",
+																"properties": {
+																	"display_name": {
+																		"description": "Display name/label of the webhook configuration.",
+																		"type": "string",
+																		"example": "Send to Slack",
+																		"readOnly": true
+																	},
+																	"webhook_config_id": {
+																		"description": "Unique identifier for the webhook configuration.",
+																		"type": "string",
+																		"format": "uuid",
+																		"example": "3f7b8c9d-6e5a-4f3b-9c2d-1e0a8b7c6d5e"
+																	}
+																},
+																"required": [
+																	"webhook_config_id",
+																	"display_name"
+																]
+															}
+														}
+													},
+													"required": [
+														"remediation_types",
+														"webhook_configs"
+													]
+												},
+												"applies_to_all_integrations": {
+													"description": "When true, the policy applies to all integrations for the account. When false, it applies only to the specified integration_ids.",
+													"type": "boolean",
+													"example": false
+												},
+												"created_at": {
+													"description": "Timestamp when the policy was created.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2025-03-18T17:25:38.700541Z",
+													"readOnly": true
+												},
+												"description": {
+													"description": "User-set description of what this policy does. Limited to 1000 characters.",
+													"type": "string",
+													"example": "Automatically remove public access from files when detected"
+												},
+												"disabled_at": {
+													"description": "Timestamp when the policy was disabled. Omitted from the response when the policy\nis enabled.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2025-03-18T17:25:38.700541Z",
+													"readOnly": true
+												},
+												"display_name": {
+													"description": "Display name for the policy configuration. Limited to 255 characters.",
+													"type": "string",
+													"example": "Auto-remediate public files"
+												},
+												"enabled": {
+													"description": "Whether the policy is enabled. Derived from disabled_at (enabled when disabled_at is unset).",
+													"type": "boolean",
+													"example": true
+												},
+												"finding_type_id": {
+													"description": "The finding type this policy is associated with. Immutable after creation; changing it replaces the policy.",
+													"type": "string",
+													"format": "uuid",
+													"example": "5a7d9e2f-1b3c-4d5e-8f6a-7b8c9d0e1f2a"
+												},
+												"id": {
+													"description": "Unique identifier for the policy configuration.",
+													"type": "string",
+													"format": "uuid",
+													"example": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+													"readOnly": true
+												},
+												"integration_ids": {
+													"description": "The integrations this policy applies to.",
+													"type": "array",
+													"items": {
+														"format": "uuid",
+														"type": "string"
+													},
+													"example": [
+														"497f6eca-6276-4993-bfeb-53cbbbba6f08"
+													]
+												},
+												"last_triggered_at": {
+													"description": "Timestamp of the most recent successful policy invocation. Omitted\nfrom the response when the policy has never been successfully\ntriggered. Only populated on GET responses; absent on responses from\ncreate/update endpoints.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2025-03-18T17:25:38.700541Z",
+													"readOnly": true
+												},
+												"updated_at": {
+													"description": "Timestamp when the policy was last updated.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2025-03-18T17:25:38.700541Z",
+													"readOnly": true
+												}
+											},
+											"required": [
+												"id",
+												"created_at",
+												"updated_at",
+												"integration_ids",
+												"applies_to_all_integrations",
+												"finding_type_id",
+												"display_name",
+												"description",
+												"enabled",
+												"actions"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request: Invalid request parameters",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized: Authentication required",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden: Insufficient permissions",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not Found: Policy, integration, remediation type, or webhook config not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"policies"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "update"
+	}
+}

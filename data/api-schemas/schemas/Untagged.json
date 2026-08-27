@@ -894,42 +894,6 @@
 			}
 		}
 	],
-	"PARAMETERS /accounts/{account_id}/containers/instance-groups": [
-		{
-			"description": "Account identifier.",
-			"in": "path",
-			"name": "account_id",
-			"required": true,
-			"schema": {
-				"type": "string",
-				"example": "account-123"
-			}
-		}
-	],
-	"PARAMETERS /accounts/{account_id}/containers/instance-groups/{namespace_id}": [
-		{
-			"description": "Account identifier.",
-			"in": "path",
-			"name": "account_id",
-			"required": true,
-			"schema": {
-				"type": "string",
-				"example": "account-123"
-			}
-		}
-	],
-	"PARAMETERS /accounts/{account_id}/containers/instances/{instance_id}/ssh": [
-		{
-			"description": "Account identifier.",
-			"in": "path",
-			"name": "account_id",
-			"required": true,
-			"schema": {
-				"type": "string",
-				"example": "account-123"
-			}
-		}
-	],
 	"PARAMETERS /accounts/{account_id}/containers/registries": [
 		{
 			"description": "Account identifier.",

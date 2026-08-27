@@ -5091,7 +5091,11 @@
 													"message": "No route for the URI"
 												}
 											],
-											"minItems": 1
+											"items": {
+												"type": "object"
+											},
+											"minItems": 1,
+											"type": "array"
 										}
 									]
 								},

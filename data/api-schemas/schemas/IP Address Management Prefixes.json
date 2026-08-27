@@ -1183,7 +1183,11 @@
 			"IP Prefixes: Read",
 			"IP Prefixes: BGP On Demand Write",
 			"IP Prefixes: BGP On Demand Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.prefixes",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}": {
 		"operationId": "ip-address-management-prefixes-prefix-details",
@@ -3595,7 +3599,11 @@
 		"tags": [
 			"IP Address Management Prefixes"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": null,
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.prefixes",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/addressing/prefixes/{prefix_id}/validate": {
 		"operationId": "ip-address-management-prefixes-validate-prefix",

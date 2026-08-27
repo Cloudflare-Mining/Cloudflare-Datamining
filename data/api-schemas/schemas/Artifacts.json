@@ -30,7 +30,162 @@
 				"description": "Delete accepted.",
 				"content": {
 					"application/json": {
-						"schema": {}
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id"
+									]
+								},
+								"result_info": {
+									"anyOf": [
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"cursor": {
+													"type": "string"
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"cursor",
+												"per_page",
+												"count"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_pages": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"page",
+												"per_page",
+												"total_pages",
+												"count",
+												"total_count"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
 					}
 				}
 			},
@@ -514,7 +669,8 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	},
 	"DELETE /accounts/{account_id}/artifacts/namespaces/{namespace}/tokens/{id}": {
 		"operationId": "artifacts_tokens_revoke",
@@ -547,7 +703,162 @@
 				"description": "Token revoked.",
 				"content": {
 					"application/json": {
-						"schema": {}
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id"
+									]
+								},
+								"result_info": {
+									"anyOf": [
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"cursor": {
+													"type": "string"
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"cursor",
+												"per_page",
+												"count"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_pages": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"page",
+												"per_page",
+												"total_pages",
+												"count",
+												"total_count"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
 					}
 				}
 			},
@@ -938,7 +1249,8 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces": {
 		"operationId": "artifacts_namespaces_list",
@@ -968,7 +1280,193 @@
 				"description": "Namespaces.",
 				"content": {
 					"application/json": {
-						"schema": {}
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"created_at": {
+												"type": "string",
+												"format": "date-time",
+												"pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+											},
+											"jurisdiction": {
+												"type": "string",
+												"enum": [
+													"unrestricted",
+													"us",
+													"eu",
+													"fedramp"
+												]
+											},
+											"namespace": {
+												"type": "string"
+											},
+											"repo_count": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"updated_at": {
+												"type": "string",
+												"format": "date-time",
+												"pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+											}
+										},
+										"required": [
+											"namespace",
+											"jurisdiction",
+											"repo_count",
+											"created_at",
+											"updated_at"
+										],
+										"type": "object"
+									}
+								},
+								"result_info": {
+									"anyOf": [
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"cursor": {
+													"type": "string"
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"cursor",
+												"per_page",
+												"count"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_pages": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"page",
+												"per_page",
+												"total_pages",
+												"count",
+												"total_count"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
 					}
 				}
 			},
@@ -1359,7 +1857,8 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}": {
 		"operationId": "artifacts_namespaces_get",
@@ -1382,7 +1881,190 @@
 				"description": "Namespace.",
 				"content": {
 					"application/json": {
-						"schema": {}
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"type": "string",
+											"format": "date-time",
+											"pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+										},
+										"jurisdiction": {
+											"type": "string",
+											"enum": [
+												"unrestricted",
+												"us",
+												"eu",
+												"fedramp"
+											]
+										},
+										"namespace": {
+											"type": "string"
+										},
+										"repo_count": {
+											"type": "integer",
+											"maximum": 9007199254740991,
+											"minimum": -9007199254740991
+										},
+										"updated_at": {
+											"type": "string",
+											"format": "date-time",
+											"pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+										}
+									},
+									"required": [
+										"namespace",
+										"jurisdiction",
+										"repo_count",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"result_info": {
+									"anyOf": [
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"cursor": {
+													"type": "string"
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"cursor",
+												"per_page",
+												"count"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_pages": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"page",
+												"per_page",
+												"total_pages",
+												"count",
+												"total_count"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
 					}
 				}
 			},
@@ -1866,7 +2548,8 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos": {
 		"operationId": "artifacts_repos_list",
@@ -1939,7 +2622,211 @@
 				"description": "Repositories.",
 				"content": {
 					"application/json": {
-						"schema": {}
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"created_at": {
+												"type": "string",
+												"format": "date-time",
+												"pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+											},
+											"default_branch": {
+												"description": "Default branch name. Must not contain '..' and must not end with '/' or '.'.",
+												"type": "string"
+											},
+											"description": {
+												"type": "string",
+												"nullable": true
+											},
+											"id": {
+												"type": "string"
+											},
+											"last_push_at": {
+												"type": "string",
+												"format": "date-time",
+												"nullable": true,
+												"pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+											},
+											"name": {
+												"type": "string"
+											},
+											"read_only": {
+												"type": "boolean"
+											},
+											"remote": {
+												"type": "string"
+											},
+											"source": {
+												"type": "string",
+												"nullable": true
+											},
+											"updated_at": {
+												"type": "string",
+												"format": "date-time",
+												"pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+											}
+										},
+										"required": [
+											"id",
+											"name",
+											"description",
+											"default_branch",
+											"created_at",
+											"updated_at",
+											"last_push_at",
+											"source",
+											"read_only",
+											"remote"
+										],
+										"type": "object"
+									}
+								},
+								"result_info": {
+									"anyOf": [
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"cursor": {
+													"type": "string"
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"cursor",
+												"per_page",
+												"count"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_pages": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"page",
+												"per_page",
+												"total_pages",
+												"count",
+												"total_count"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
 					}
 				}
 			},
@@ -2330,7 +3217,8 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}": {
 		"operationId": "artifacts_repos_get",
@@ -2363,7 +3251,208 @@
 				"description": "Repository.",
 				"content": {
 					"application/json": {
-						"schema": {}
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"type": "string",
+											"format": "date-time",
+											"pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+										},
+										"default_branch": {
+											"description": "Default branch name. Must not contain '..' and must not end with '/' or '.'.",
+											"type": "string"
+										},
+										"description": {
+											"type": "string",
+											"nullable": true
+										},
+										"id": {
+											"type": "string"
+										},
+										"last_push_at": {
+											"type": "string",
+											"format": "date-time",
+											"nullable": true,
+											"pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+										},
+										"name": {
+											"type": "string"
+										},
+										"read_only": {
+											"type": "boolean"
+										},
+										"remote": {
+											"type": "string"
+										},
+										"source": {
+											"type": "string",
+											"nullable": true
+										},
+										"updated_at": {
+											"type": "string",
+											"format": "date-time",
+											"pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"description",
+										"default_branch",
+										"created_at",
+										"updated_at",
+										"last_push_at",
+										"source",
+										"read_only",
+										"remote"
+									]
+								},
+								"result_info": {
+									"anyOf": [
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"cursor": {
+													"type": "string"
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"cursor",
+												"per_page",
+												"count"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_pages": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"page",
+												"per_page",
+												"total_pages",
+												"count",
+												"total_count"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
 					}
 				}
 			},
@@ -2940,7 +4029,8 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/blob/{hash}": {
 		"operationId": "artifacts_repos_blob_get",
@@ -3577,7 +4667,8 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/commit/{hash}": {
 		"operationId": "artifacts_repos_commit_get",
@@ -3627,7 +4718,224 @@
 				},
 				"content": {
 					"application/json": {
-						"schema": {}
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"author": {
+											"type": "object",
+											"properties": {
+												"email": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"email"
+											]
+										},
+										"authoredAt": {
+											"type": "integer",
+											"maximum": 9007199254740991,
+											"minimum": -9007199254740991
+										},
+										"committedAt": {
+											"type": "integer",
+											"maximum": 9007199254740991,
+											"minimum": -9007199254740991
+										},
+										"committer": {
+											"type": "object",
+											"properties": {
+												"email": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"email"
+											]
+										},
+										"hash": {
+											"type": "string",
+											"pattern": "^[0-9a-f]{40}$"
+										},
+										"message": {
+											"type": "string"
+										},
+										"parents": {
+											"type": "array",
+											"items": {
+												"pattern": "^[0-9a-f]{40}$",
+												"type": "string"
+											}
+										},
+										"treeHash": {
+											"type": "string",
+											"pattern": "^[0-9a-f]{40}$"
+										}
+									},
+									"required": [
+										"hash",
+										"treeHash",
+										"message",
+										"author",
+										"committer",
+										"parents",
+										"authoredAt",
+										"committedAt"
+									]
+								},
+								"result_info": {
+									"anyOf": [
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"cursor": {
+													"type": "string"
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"cursor",
+												"per_page",
+												"count"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_pages": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"page",
+												"per_page",
+												"total_pages",
+												"count",
+												"total_count"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
 					}
 				}
 			},
@@ -4111,7 +5419,8 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/file": {
 		"operationId": "artifacts_repos_file_get",
@@ -4752,7 +6061,8 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/log": {
 		"operationId": "artifacts_repos_log_get",
@@ -4811,7 +6121,227 @@
 				"description": "Commits.",
 				"content": {
 					"application/json": {
-						"schema": {}
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"author": {
+												"type": "object",
+												"properties": {
+													"email": {
+														"type": "string"
+													},
+													"name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name",
+													"email"
+												]
+											},
+											"authoredAt": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"committedAt": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"committer": {
+												"type": "object",
+												"properties": {
+													"email": {
+														"type": "string"
+													},
+													"name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name",
+													"email"
+												]
+											},
+											"hash": {
+												"type": "string",
+												"pattern": "^[0-9a-f]{40}$"
+											},
+											"message": {
+												"type": "string"
+											},
+											"parents": {
+												"type": "array",
+												"items": {
+													"pattern": "^[0-9a-f]{40}$",
+													"type": "string"
+												}
+											},
+											"treeHash": {
+												"type": "string",
+												"pattern": "^[0-9a-f]{40}$"
+											}
+										},
+										"required": [
+											"hash",
+											"treeHash",
+											"message",
+											"author",
+											"committer",
+											"parents",
+											"authoredAt",
+											"committedAt"
+										],
+										"type": "object"
+									}
+								},
+								"result_info": {
+									"anyOf": [
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"cursor": {
+													"type": "string"
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"cursor",
+												"per_page",
+												"count"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_pages": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"page",
+												"per_page",
+												"total_pages",
+												"count",
+												"total_count"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
 					}
 				}
 			},
@@ -5295,7 +6825,8 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/raw/{ref}/{path}": {
 		"operationId": "artifacts_repos_raw_get",
@@ -5361,7 +6892,9 @@
 				},
 				"content": {
 					"application/json": {
-						"schema": {}
+						"schema": {
+							"type": "string"
+						}
 					},
 					"application/octet-stream": {
 						"schema": {
@@ -5954,7 +7487,8 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/tokens": {
 		"operationId": "artifacts_repo_tokens_list",
@@ -6020,7 +7554,194 @@
 				"description": "Tokens.",
 				"content": {
 					"application/json": {
-						"schema": {}
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"created_at": {
+												"type": "string",
+												"format": "date-time",
+												"pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+											},
+											"expires_at": {
+												"type": "string",
+												"format": "date-time",
+												"pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+											},
+											"id": {
+												"type": "string"
+											},
+											"scope": {
+												"type": "string",
+												"enum": [
+													"read",
+													"write"
+												]
+											},
+											"state": {
+												"type": "string",
+												"enum": [
+													"active",
+													"expired",
+													"revoked"
+												]
+											}
+										},
+										"required": [
+											"id",
+											"scope",
+											"state",
+											"created_at",
+											"expires_at"
+										],
+										"type": "object"
+									}
+								},
+								"result_info": {
+									"anyOf": [
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"cursor": {
+													"type": "string"
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"cursor",
+												"per_page",
+												"count"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_pages": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"page",
+												"per_page",
+												"total_pages",
+												"count",
+												"total_count"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
 					}
 				}
 			},
@@ -6597,7 +8318,8 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/tree/{hash}": {
 		"operationId": "artifacts_repos_tree_get",
@@ -6647,7 +8369,185 @@
 				},
 				"content": {
 					"application/json": {
-						"schema": {}
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"hash": {
+												"type": "string",
+												"pattern": "^[0-9a-f]{40}$"
+											},
+											"mode": {
+												"type": "string"
+											},
+											"name": {
+												"type": "string"
+											},
+											"type": {
+												"type": "string",
+												"enum": [
+													"tree",
+													"blob",
+													"symlink",
+													"gitlink",
+													"exec"
+												]
+											}
+										},
+										"required": [
+											"name",
+											"mode",
+											"hash",
+											"type"
+										],
+										"type": "object"
+									}
+								},
+								"result_info": {
+									"anyOf": [
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"cursor": {
+													"type": "string"
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"cursor",
+												"per_page",
+												"count"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_pages": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"page",
+												"per_page",
+												"total_pages",
+												"count",
+												"total_count"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
 					}
 				}
 			},
@@ -7131,7 +9031,8 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/artifacts/namespaces/{namespace}/repos": {
 		"operationId": "artifacts_repos_create",
@@ -7153,7 +9054,32 @@
 			"required": true,
 			"content": {
 				"application/json": {
-					"schema": {}
+					"schema": {
+						"type": "object",
+						"properties": {
+							"default_branch": {
+								"description": "Git branch name. Must match /^[a-zA-Z0-9][a-zA-Z0-9._/-]*$/, must not contain '..', and must not end with '/' or '.'.",
+								"type": "string",
+								"maxLength": 256,
+								"minLength": 1,
+								"pattern": "^[a-zA-Z0-9][a-zA-Z0-9._/-]*$"
+							},
+							"description": {
+								"type": "string",
+								"maxLength": 1024
+							},
+							"name": {
+								"type": "string",
+								"pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+							},
+							"read_only": {
+								"type": "boolean"
+							}
+						},
+						"required": [
+							"name"
+						]
+					}
 				}
 			}
 		},
@@ -7162,7 +9088,183 @@
 				"description": "Repository created.",
 				"content": {
 					"application/json": {
-						"schema": {}
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"default_branch": {
+											"type": "string"
+										},
+										"description": {
+											"type": "string",
+											"nullable": true
+										},
+										"id": {
+											"type": "string"
+										},
+										"name": {
+											"type": "string"
+										},
+										"remote": {
+											"type": "string"
+										},
+										"token": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"description",
+										"default_branch",
+										"remote",
+										"token"
+									]
+								},
+								"result_info": {
+									"anyOf": [
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"cursor": {
+													"type": "string"
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"cursor",
+												"per_page",
+												"count"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_pages": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"page",
+												"per_page",
+												"total_pages",
+												"count",
+												"total_count"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
 					}
 				}
 			},
@@ -7646,7 +9748,8 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/fork": {
 		"operationId": "artifacts_repos_fork",
@@ -7678,7 +9781,28 @@
 			"required": true,
 			"content": {
 				"application/json": {
-					"schema": {}
+					"schema": {
+						"type": "object",
+						"properties": {
+							"default_branch_only": {
+								"type": "boolean"
+							},
+							"description": {
+								"type": "string",
+								"maxLength": 1024
+							},
+							"name": {
+								"type": "string",
+								"pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+							},
+							"read_only": {
+								"type": "boolean"
+							}
+						},
+						"required": [
+							"name"
+						]
+					}
 				}
 			}
 		},
@@ -7687,7 +9811,189 @@
 				"description": "Repository forked.",
 				"content": {
 					"application/json": {
-						"schema": {}
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"default_branch": {
+											"type": "string"
+										},
+										"description": {
+											"type": "string",
+											"nullable": true
+										},
+										"id": {
+											"type": "string"
+										},
+										"name": {
+											"type": "string"
+										},
+										"objects": {
+											"type": "integer",
+											"maximum": 9007199254740991,
+											"minimum": -9007199254740991
+										},
+										"remote": {
+											"type": "string"
+										},
+										"token": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"description",
+										"default_branch",
+										"remote",
+										"token",
+										"objects"
+									]
+								},
+								"result_info": {
+									"anyOf": [
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"cursor": {
+													"type": "string"
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"cursor",
+												"per_page",
+												"count"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_pages": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"page",
+												"per_page",
+												"total_pages",
+												"count",
+												"total_count"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
 					}
 				}
 			},
@@ -8357,7 +10663,8 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/import": {
 		"operationId": "artifacts_repos_import",
@@ -8389,7 +10696,33 @@
 			"required": true,
 			"content": {
 				"application/json": {
-					"schema": {}
+					"schema": {
+						"type": "object",
+						"properties": {
+							"branch": {
+								"description": "Git branch name. Must match /^[a-zA-Z0-9][a-zA-Z0-9._/-]*$/, must not contain '..', and must not end with '/' or '.'.",
+								"type": "string",
+								"maxLength": 256,
+								"minLength": 1,
+								"pattern": "^[a-zA-Z0-9][a-zA-Z0-9._/-]*$"
+							},
+							"depth": {
+								"type": "integer",
+								"maximum": 9007199254740991,
+								"minimum": 1
+							},
+							"read_only": {
+								"type": "boolean"
+							},
+							"url": {
+								"type": "string",
+								"format": "uri"
+							}
+						},
+						"required": [
+							"url"
+						]
+					}
 				}
 			}
 		},
@@ -8398,7 +10731,183 @@
 				"description": "Repository import started.",
 				"content": {
 					"application/json": {
-						"schema": {}
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"default_branch": {
+											"type": "string"
+										},
+										"description": {
+											"type": "string",
+											"nullable": true
+										},
+										"id": {
+											"type": "string"
+										},
+										"name": {
+											"type": "string"
+										},
+										"remote": {
+											"type": "string"
+										},
+										"token": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"description",
+										"default_branch",
+										"remote",
+										"token"
+									]
+								},
+								"result_info": {
+									"anyOf": [
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"cursor": {
+													"type": "string"
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"cursor",
+												"per_page",
+												"count"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_pages": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"page",
+												"per_page",
+												"total_pages",
+												"count",
+												"total_count"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
 					}
 				}
 			},
@@ -9440,7 +11949,8 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/artifacts/namespaces/{namespace}/tokens": {
 		"operationId": "artifacts_tokens_create",
@@ -9462,7 +11972,30 @@
 			"required": true,
 			"content": {
 				"application/json": {
-					"schema": {}
+					"schema": {
+						"type": "object",
+						"properties": {
+							"repo": {
+								"type": "string",
+								"pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+							},
+							"scope": {
+								"type": "string",
+								"enum": [
+									"read",
+									"write"
+								]
+							},
+							"ttl": {
+								"type": "integer",
+								"maximum": 31536000,
+								"minimum": 60
+							}
+						},
+						"required": [
+							"repo"
+						]
+					}
 				}
 			}
 		},
@@ -9471,7 +12004,180 @@
 				"description": "Token created.",
 				"content": {
 					"application/json": {
-						"schema": {}
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"expires_at": {
+											"type": "string",
+											"format": "date-time",
+											"pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+										},
+										"id": {
+											"type": "string"
+										},
+										"plaintext": {
+											"type": "string"
+										},
+										"scope": {
+											"type": "string",
+											"enum": [
+												"read",
+												"write"
+											]
+										}
+									},
+									"required": [
+										"id",
+										"plaintext",
+										"scope",
+										"expires_at"
+									]
+								},
+								"result_info": {
+									"anyOf": [
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"cursor": {
+													"type": "string"
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"cursor",
+												"per_page",
+												"count"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"per_page": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_count": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												},
+												"total_pages": {
+													"type": "integer",
+													"maximum": 9007199254740991,
+													"minimum": -9007199254740991
+												}
+											},
+											"required": [
+												"page",
+												"per_page",
+												"total_pages",
+												"count",
+												"total_count"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
 					}
 				}
 			},
@@ -10048,6 +12754,7 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	}
 }

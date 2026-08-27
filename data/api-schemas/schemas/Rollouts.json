@@ -2,7 +2,7 @@
 	"POST /accounts/{account_id}/containers/applications/{application_id}/rollouts": {
 		"operationId": "createApplicationRollout",
 		"summary": "Create a new rollout for an application",
-		"description": "Creates a rollout to update the application's configuration across instances with minimal downtime.",
+		"description": "Creates a rollout to update the application's configuration across instances\nwith minimal downtime. Rollouts apply only to scheduler-backed applications\nwith `scheduling_policy: \"default\"`. Versions and rollouts do not apply to\napplications with `scheduling_policy: \"durable_object\"`.\n",
 		"parameters": [
 			{
 				"name": "application_id",
@@ -19,7 +19,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Request body to create a new rollout for an application.",
+						"description": "Request body to create a new rollout for a scheduler-backed application.",
 						"type": "object",
 						"properties": {
 							"description": {
@@ -27,8 +27,9 @@
 								"type": "string"
 							},
 							"kind": {
-								"description": "Kind of the rollout process.\n - \"full_auto\": For rolling rollouts, starts progressing steps upon rollout creation. For new_instances rollouts, advances percentage targets automatically after target-version health is observed.\n - \"full_manual\": Requires manually progressing each step in the rollout using the UpdateRollout's action paramater.\nFor \"new_instances\" strategy, omit \"kind\" to preserve manual percentage behavior, or set \"full_auto\" to start an automatic 10% health-gated ramp.\n",
+								"description": "Kind of the rollout process. Defaults to \"full_auto\".\n - \"full_auto\": For rolling rollouts, starts progressing steps upon rollout creation. For new_instances rollouts, advances percentage targets automatically after target-version health is observed.\n - \"full_manual\": Requires manually progressing each step in the rollout using the UpdateRollout's action parameter.\n",
 								"type": "string",
+								"default": "full_auto",
 								"enum": [
 									"full_auto",
 									"full_manual"
@@ -125,30 +126,6 @@
 											"--default-option"
 										]
 									},
-									"dns": {
-										"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
-										"type": "object",
-										"properties": {
-											"searches": {
-												"description": "The container resolver appends these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it appends 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
-												"type": "array",
-												"items": {
-													"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
-													"type": "string",
-													"example": "docker.io"
-												}
-											},
-											"servers": {
-												"description": "List of DNS servers the deployment uses to resolve domain names. You can only specify a maximum of 3.",
-												"type": "array",
-												"items": {
-													"description": "A string representation of an IP, either v6 or v4.",
-													"type": "string",
-													"example": "192.1.1.1"
-												}
-											}
-										}
-									},
 									"entrypoint": {
 										"description": "The entry point for the container, specifying the executable to run when the container starts.\nYou can override this at run-time. If you do, the default command from the image is ignored.\nSpecify both entrypoint and command at run-time to completely replace the image defaults.\n",
 										"type": "array",
@@ -217,42 +194,6 @@
 														"default": false
 													}
 												}
-											}
-										}
-									},
-									"trusted_user_ca_keys": {
-										"type": "array",
-										"items": {
-											"description": "User-provided SSH public key.",
-											"type": "object",
-											"properties": {
-												"name": {
-													"description": "Optional human readable name for this key.",
-													"type": "string"
-												},
-												"public_key": {
-													"description": "An SSH public key.",
-													"type": "string"
-												}
-											},
-											"required": [
-												"public_key"
-											]
-										}
-									},
-									"wrangler_ssh": {
-										"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
-										"type": "object",
-										"properties": {
-											"enabled": {
-												"type": "boolean",
-												"default": true
-											},
-											"port": {
-												"type": "integer",
-												"default": 22,
-												"maximum": 65535,
-												"minimum": 1
 											}
 										}
 									}
@@ -400,30 +341,6 @@
 																"--default-option"
 															]
 														},
-														"dns": {
-															"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
-															"type": "object",
-															"properties": {
-																"searches": {
-																	"description": "The container resolver appends these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it appends 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
-																	"type": "array",
-																	"items": {
-																		"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
-																		"type": "string",
-																		"example": "docker.io"
-																	}
-																},
-																"servers": {
-																	"description": "List of DNS servers the deployment uses to resolve domain names. You can only specify a maximum of 3.",
-																	"type": "array",
-																	"items": {
-																		"description": "A string representation of an IP, either v6 or v4.",
-																		"type": "string",
-																		"example": "192.1.1.1"
-																	}
-																}
-															}
-														},
 														"entrypoint": {
 															"description": "The entry point for the container, specifying the executable to run when the container starts.\nYou can override this at run-time. If you do, the default command from the image is ignored.\nSpecify both entrypoint and command at run-time to completely replace the image defaults.\n",
 															"type": "array",
@@ -492,42 +409,6 @@
 																			"default": false
 																		}
 																	}
-																}
-															}
-														},
-														"trusted_user_ca_keys": {
-															"type": "array",
-															"items": {
-																"description": "User-provided SSH public key.",
-																"type": "object",
-																"properties": {
-																	"name": {
-																		"description": "Optional human readable name for this key.",
-																		"type": "string"
-																	},
-																	"public_key": {
-																		"description": "An SSH public key.",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"public_key"
-																]
-															}
-														},
-														"wrangler_ssh": {
-															"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
-															"type": "object",
-															"properties": {
-																"enabled": {
-																	"type": "boolean",
-																	"default": true
-																},
-																"port": {
-																	"type": "integer",
-																	"default": 22,
-																	"maximum": 65535,
-																	"minimum": 1
 																}
 															}
 														}
@@ -856,30 +737,6 @@
 																"--default-option"
 															]
 														},
-														"dns": {
-															"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
-															"type": "object",
-															"properties": {
-																"searches": {
-																	"description": "The container resolver appends these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it appends 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
-																	"type": "array",
-																	"items": {
-																		"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
-																		"type": "string",
-																		"example": "docker.io"
-																	}
-																},
-																"servers": {
-																	"description": "List of DNS servers the deployment uses to resolve domain names. You can only specify a maximum of 3.",
-																	"type": "array",
-																	"items": {
-																		"description": "A string representation of an IP, either v6 or v4.",
-																		"type": "string",
-																		"example": "192.1.1.1"
-																	}
-																}
-															}
-														},
 														"entrypoint": {
 															"description": "The entry point for the container, specifying the executable to run when the container starts.\nYou can override this at run-time. If you do, the default command from the image is ignored.\nSpecify both entrypoint and command at run-time to completely replace the image defaults.\n",
 															"type": "array",
@@ -948,42 +805,6 @@
 																			"default": false
 																		}
 																	}
-																}
-															}
-														},
-														"trusted_user_ca_keys": {
-															"type": "array",
-															"items": {
-																"description": "User-provided SSH public key.",
-																"type": "object",
-																"properties": {
-																	"name": {
-																		"description": "Optional human readable name for this key.",
-																		"type": "string"
-																	},
-																	"public_key": {
-																		"description": "An SSH public key.",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"public_key"
-																]
-															}
-														},
-														"wrangler_ssh": {
-															"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
-															"type": "object",
-															"properties": {
-																"enabled": {
-																	"type": "boolean",
-																	"default": true
-																},
-																"port": {
-																	"type": "integer",
-																	"default": 22,
-																	"maximum": 65535,
-																	"minimum": 1
 																}
 															}
 														}

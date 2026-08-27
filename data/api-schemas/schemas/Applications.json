@@ -985,7 +985,7 @@
 												"description": "The public Containers API returns an application.",
 												"oneOf": [
 													{
-														"description": "The Cloudchamber scheduler manages this application's instances.",
+														"description": "The Containers scheduler manages this application's instances, configuration, versions, and rollouts.",
 														"allOf": [
 															{
 																"description": "Describes an application and the parameters that govern how it places its instances.",
@@ -1033,30 +1033,6 @@
 																					"myapp",
 																					"--default-option"
 																				]
-																			},
-																			"dns": {
-																				"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
-																				"type": "object",
-																				"properties": {
-																					"searches": {
-																						"description": "The container resolver appends these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it appends 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
-																						"type": "array",
-																						"items": {
-																							"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
-																							"type": "string",
-																							"example": "docker.io"
-																						}
-																					},
-																					"servers": {
-																						"description": "List of DNS servers the deployment uses to resolve domain names. You can only specify a maximum of 3.",
-																						"type": "array",
-																						"items": {
-																							"description": "A string representation of an IP, either v6 or v4.",
-																							"type": "string",
-																							"example": "192.1.1.1"
-																						}
-																					}
-																				}
 																			},
 																			"entrypoint": {
 																				"description": "The entry point for the container, specifying the executable to run when the container starts.\nYou can override this at run-time. If you do, the default command from the image is ignored.\nSpecify both entrypoint and command at run-time to completely replace the image defaults.\n",
@@ -1126,42 +1102,6 @@
 																								"default": false
 																							}
 																						}
-																					}
-																				}
-																			},
-																			"trusted_user_ca_keys": {
-																				"type": "array",
-																				"items": {
-																					"description": "User-provided SSH public key.",
-																					"type": "object",
-																					"properties": {
-																						"name": {
-																							"description": "Optional human readable name for this key.",
-																							"type": "string"
-																						},
-																						"public_key": {
-																							"description": "An SSH public key.",
-																							"type": "string"
-																						}
-																					},
-																					"required": [
-																						"public_key"
-																					]
-																				}
-																			},
-																			"wrangler_ssh": {
-																				"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
-																				"type": "object",
-																				"properties": {
-																					"enabled": {
-																						"type": "boolean",
-																						"default": true
-																					},
-																					"port": {
-																						"type": "integer",
-																						"default": 22,
-																						"maximum": 65535,
-																						"minimum": 1
 																					}
 																				}
 																			}
@@ -1363,17 +1303,6 @@
 																								"default": false
 																							}
 																						}
-																					},
-																					"target_instance_count": {
-																						"description": "Fixed number of instances that should receive the application-level observability overlay.\nMutually exclusive with `target_instance_percentage`.\n",
-																						"type": "integer",
-																						"minimum": 1
-																					},
-																					"target_instance_percentage": {
-																						"description": "Percentage of instances that should receive the application-level observability overlay.\nThis rounds up so at least this percentage of instances is targeted.\nMutually exclusive with `target_instance_count`.\n",
-																						"type": "integer",
-																						"maximum": 99,
-																						"minimum": 1
 																					}
 																				}
 																			}
@@ -1418,7 +1347,7 @@
 															{
 																"properties": {
 																	"scheduling_policy": {
-																		"description": "The scheduling policy to use for a scheduler-backed application.",
+																		"description": "Selects a scheduler-backed application. Use `default` when the Containers\nscheduler should maintain the requested number of instances and manage deployment\nconfiguration, placement, scaling, versions, and rollouts.\n",
 																		"type": "string",
 																		"enum": [
 																			"default"
@@ -1433,7 +1362,7 @@
 														]
 													},
 													{
-														"description": "Durable Objects own and configure this namespace-backed application's instances.",
+														"description": "Each Durable Object creates and manages the lifecycle of its container instance.",
 														"type": "object",
 														"properties": {
 															"account_id": {
@@ -1468,7 +1397,7 @@
 																"type": "string"
 															},
 															"scheduling_policy": {
-																"description": "Selects Durable Objects to own and schedule application instances.",
+																"description": "Selects a Durable Object-managed application. Each Durable Object creates and\nmanages the lifecycle of its container instance. Application-level deployment\nconfiguration, scaling, placement constraints, versions, and rollouts do not\napply.\n",
 																"type": "string",
 																"enum": [
 																	"durable_object"
@@ -1846,7 +1775,7 @@
 											"description": "The public Containers API returns an application.",
 											"oneOf": [
 												{
-													"description": "The Cloudchamber scheduler manages this application's instances.",
+													"description": "The Containers scheduler manages this application's instances, configuration, versions, and rollouts.",
 													"allOf": [
 														{
 															"description": "Describes an application and the parameters that govern how it places its instances.",
@@ -1894,30 +1823,6 @@
 																				"myapp",
 																				"--default-option"
 																			]
-																		},
-																		"dns": {
-																			"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
-																			"type": "object",
-																			"properties": {
-																				"searches": {
-																					"description": "The container resolver appends these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it appends 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
-																					"type": "array",
-																					"items": {
-																						"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
-																						"type": "string",
-																						"example": "docker.io"
-																					}
-																				},
-																				"servers": {
-																					"description": "List of DNS servers the deployment uses to resolve domain names. You can only specify a maximum of 3.",
-																					"type": "array",
-																					"items": {
-																						"description": "A string representation of an IP, either v6 or v4.",
-																						"type": "string",
-																						"example": "192.1.1.1"
-																					}
-																				}
-																			}
 																		},
 																		"entrypoint": {
 																			"description": "The entry point for the container, specifying the executable to run when the container starts.\nYou can override this at run-time. If you do, the default command from the image is ignored.\nSpecify both entrypoint and command at run-time to completely replace the image defaults.\n",
@@ -1987,42 +1892,6 @@
 																							"default": false
 																						}
 																					}
-																				}
-																			}
-																		},
-																		"trusted_user_ca_keys": {
-																			"type": "array",
-																			"items": {
-																				"description": "User-provided SSH public key.",
-																				"type": "object",
-																				"properties": {
-																					"name": {
-																						"description": "Optional human readable name for this key.",
-																						"type": "string"
-																					},
-																					"public_key": {
-																						"description": "An SSH public key.",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"public_key"
-																				]
-																			}
-																		},
-																		"wrangler_ssh": {
-																			"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
-																			"type": "object",
-																			"properties": {
-																				"enabled": {
-																					"type": "boolean",
-																					"default": true
-																				},
-																				"port": {
-																					"type": "integer",
-																					"default": 22,
-																					"maximum": 65535,
-																					"minimum": 1
 																				}
 																			}
 																		}
@@ -2224,17 +2093,6 @@
 																							"default": false
 																						}
 																					}
-																				},
-																				"target_instance_count": {
-																					"description": "Fixed number of instances that should receive the application-level observability overlay.\nMutually exclusive with `target_instance_percentage`.\n",
-																					"type": "integer",
-																					"minimum": 1
-																				},
-																				"target_instance_percentage": {
-																					"description": "Percentage of instances that should receive the application-level observability overlay.\nThis rounds up so at least this percentage of instances is targeted.\nMutually exclusive with `target_instance_count`.\n",
-																					"type": "integer",
-																					"maximum": 99,
-																					"minimum": 1
 																				}
 																			}
 																		}
@@ -2279,7 +2137,7 @@
 														{
 															"properties": {
 																"scheduling_policy": {
-																	"description": "The scheduling policy to use for a scheduler-backed application.",
+																	"description": "Selects a scheduler-backed application. Use `default` when the Containers\nscheduler should maintain the requested number of instances and manage deployment\nconfiguration, placement, scaling, versions, and rollouts.\n",
 																	"type": "string",
 																	"enum": [
 																		"default"
@@ -2294,7 +2152,7 @@
 													]
 												},
 												{
-													"description": "Durable Objects own and configure this namespace-backed application's instances.",
+													"description": "Each Durable Object creates and manages the lifecycle of its container instance.",
 													"type": "object",
 													"properties": {
 														"account_id": {
@@ -2329,7 +2187,7 @@
 															"type": "string"
 														},
 														"scheduling_policy": {
-															"description": "Selects Durable Objects to own and schedule application instances.",
+															"description": "Selects a Durable Object-managed application. Each Durable Object creates and\nmanages the lifecycle of its container instance. Application-level deployment\nconfiguration, scaling, placement constraints, versions, and rollouts do not\napply.\n",
 															"type": "string",
 															"enum": [
 																"durable_object"
@@ -2715,7 +2573,7 @@
 	"GET /accounts/{account_id}/containers/applications/{application_id}/versions": {
 		"operationId": "listApplicationVersions",
 		"summary": "List all application versions",
-		"description": "Returns all versions for this application.",
+		"description": "Returns all versions for a scheduler-backed application with\n`scheduling_policy: \"default\"`. Versions and rollouts do not apply to\napplications with `scheduling_policy: \"durable_object\"`.\n",
 		"parameters": [
 			{
 				"name": "application_id",
@@ -2856,30 +2714,6 @@
 																	"--default-option"
 																]
 															},
-															"dns": {
-																"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
-																"type": "object",
-																"properties": {
-																	"searches": {
-																		"description": "The container resolver appends these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it appends 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
-																		"type": "array",
-																		"items": {
-																			"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
-																			"type": "string",
-																			"example": "docker.io"
-																		}
-																	},
-																	"servers": {
-																		"description": "List of DNS servers the deployment uses to resolve domain names. You can only specify a maximum of 3.",
-																		"type": "array",
-																		"items": {
-																			"description": "A string representation of an IP, either v6 or v4.",
-																			"type": "string",
-																			"example": "192.1.1.1"
-																		}
-																	}
-																}
-															},
 															"entrypoint": {
 																"description": "The entry point for the container, specifying the executable to run when the container starts.\nYou can override this at run-time. If you do, the default command from the image is ignored.\nSpecify both entrypoint and command at run-time to completely replace the image defaults.\n",
 																"type": "array",
@@ -2948,42 +2782,6 @@
 																				"default": false
 																			}
 																		}
-																	}
-																}
-															},
-															"trusted_user_ca_keys": {
-																"type": "array",
-																"items": {
-																	"description": "User-provided SSH public key.",
-																	"type": "object",
-																	"properties": {
-																		"name": {
-																			"description": "Optional human readable name for this key.",
-																			"type": "string"
-																		},
-																		"public_key": {
-																			"description": "An SSH public key.",
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"public_key"
-																	]
-																}
-															},
-															"wrangler_ssh": {
-																"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
-																"type": "object",
-																"properties": {
-																	"enabled": {
-																		"type": "boolean",
-																		"default": true
-																	},
-																	"port": {
-																		"type": "integer",
-																		"default": 22,
-																		"maximum": 65535,
-																		"minimum": 1
 																	}
 																}
 															}
@@ -6705,42 +6503,6 @@
 												"public_key"
 											]
 										}
-									},
-									"trusted_user_ca_keys": {
-										"type": "array",
-										"items": {
-											"description": "User-provided SSH public key.",
-											"type": "object",
-											"properties": {
-												"name": {
-													"description": "Optional human readable name for this key.",
-													"type": "string"
-												},
-												"public_key": {
-													"description": "An SSH public key.",
-													"type": "string"
-												}
-											},
-											"required": [
-												"public_key"
-											]
-										}
-									},
-									"wrangler_ssh": {
-										"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
-										"type": "object",
-										"properties": {
-											"enabled": {
-												"type": "boolean",
-												"default": true
-											},
-											"port": {
-												"type": "integer",
-												"default": 22,
-												"maximum": 65535,
-												"minimum": 1
-											}
-										}
 									}
 								}
 							},
@@ -6782,17 +6544,6 @@
 														"default": false
 													}
 												}
-											},
-											"target_instance_count": {
-												"description": "Fixed number of instances that should receive the application-level observability overlay.\nMutually exclusive with `target_instance_percentage`.\n",
-												"type": "integer",
-												"minimum": 1
-											},
-											"target_instance_percentage": {
-												"description": "Percentage of instances that should receive the application-level observability overlay.\nThis rounds up so at least this percentage of instances is targeted.\nMutually exclusive with `target_instance_count`.\n",
-												"type": "integer",
-												"maximum": 99,
-												"minimum": 1
 											}
 										}
 									}
@@ -6902,7 +6653,7 @@
 											"description": "The public Containers API returns an application.",
 											"oneOf": [
 												{
-													"description": "The Cloudchamber scheduler manages this application's instances.",
+													"description": "The Containers scheduler manages this application's instances, configuration, versions, and rollouts.",
 													"allOf": [
 														{
 															"description": "Describes an application and the parameters that govern how it places its instances.",
@@ -6950,30 +6701,6 @@
 																				"myapp",
 																				"--default-option"
 																			]
-																		},
-																		"dns": {
-																			"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
-																			"type": "object",
-																			"properties": {
-																				"searches": {
-																					"description": "The container resolver appends these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it appends 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
-																					"type": "array",
-																					"items": {
-																						"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
-																						"type": "string",
-																						"example": "docker.io"
-																					}
-																				},
-																				"servers": {
-																					"description": "List of DNS servers the deployment uses to resolve domain names. You can only specify a maximum of 3.",
-																					"type": "array",
-																					"items": {
-																						"description": "A string representation of an IP, either v6 or v4.",
-																						"type": "string",
-																						"example": "192.1.1.1"
-																					}
-																				}
-																			}
 																		},
 																		"entrypoint": {
 																			"description": "The entry point for the container, specifying the executable to run when the container starts.\nYou can override this at run-time. If you do, the default command from the image is ignored.\nSpecify both entrypoint and command at run-time to completely replace the image defaults.\n",
@@ -7043,42 +6770,6 @@
 																							"default": false
 																						}
 																					}
-																				}
-																			}
-																		},
-																		"trusted_user_ca_keys": {
-																			"type": "array",
-																			"items": {
-																				"description": "User-provided SSH public key.",
-																				"type": "object",
-																				"properties": {
-																					"name": {
-																						"description": "Optional human readable name for this key.",
-																						"type": "string"
-																					},
-																					"public_key": {
-																						"description": "An SSH public key.",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"public_key"
-																				]
-																			}
-																		},
-																		"wrangler_ssh": {
-																			"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
-																			"type": "object",
-																			"properties": {
-																				"enabled": {
-																					"type": "boolean",
-																					"default": true
-																				},
-																				"port": {
-																					"type": "integer",
-																					"default": 22,
-																					"maximum": 65535,
-																					"minimum": 1
 																				}
 																			}
 																		}
@@ -7280,17 +6971,6 @@
 																							"default": false
 																						}
 																					}
-																				},
-																				"target_instance_count": {
-																					"description": "Fixed number of instances that should receive the application-level observability overlay.\nMutually exclusive with `target_instance_percentage`.\n",
-																					"type": "integer",
-																					"minimum": 1
-																				},
-																				"target_instance_percentage": {
-																					"description": "Percentage of instances that should receive the application-level observability overlay.\nThis rounds up so at least this percentage of instances is targeted.\nMutually exclusive with `target_instance_count`.\n",
-																					"type": "integer",
-																					"maximum": 99,
-																					"minimum": 1
 																				}
 																			}
 																		}
@@ -7335,7 +7015,7 @@
 														{
 															"properties": {
 																"scheduling_policy": {
-																	"description": "The scheduling policy to use for a scheduler-backed application.",
+																	"description": "Selects a scheduler-backed application. Use `default` when the Containers\nscheduler should maintain the requested number of instances and manage deployment\nconfiguration, placement, scaling, versions, and rollouts.\n",
 																	"type": "string",
 																	"enum": [
 																		"default"
@@ -7350,7 +7030,7 @@
 													]
 												},
 												{
-													"description": "Durable Objects own and configure this namespace-backed application's instances.",
+													"description": "Each Durable Object creates and manages the lifecycle of its container instance.",
 													"type": "object",
 													"properties": {
 														"account_id": {
@@ -7385,7 +7065,7 @@
 															"type": "string"
 														},
 														"scheduling_policy": {
-															"description": "Selects Durable Objects to own and schedule application instances.",
+															"description": "Selects a Durable Object-managed application. Each Durable Object creates and\nmanages the lifecycle of its container instance. Application-level deployment\nconfiguration, scaling, placement constraints, versions, and rollouts do not\napply.\n",
 															"type": "string",
 															"enum": [
 																"durable_object"
@@ -8479,20 +8159,20 @@
 	"POST /accounts/{account_id}/containers/applications": {
 		"operationId": "createApplication",
 		"summary": "Create a new application",
-		"description": "Create a new application. An Application represents an intent to run one or more containers, with the same image, dynamically scheduled based on constraints.",
+		"description": "Create a Containers application.\n\nUse `scheduling_policy: \"default\"` for a scheduler-backed application. The\nContainers scheduler maintains the requested instance count and manages\ndeployment configuration, placement, scaling, versions, and rollouts.\n\nUse `scheduling_policy: \"durable_object\"` for a Durable Object-managed\napplication. Each Durable Object creates and manages the lifecycle of its\ncontainer instance. This request accepts only `name`, `scheduling_policy`,\nand `durable_objects`. Application-level configuration, scaling, constraints,\nversions, and rollouts do not apply.\n",
 		"requestBody": {
 			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Create a new Containers application.",
+						"description": "Create a Containers application. Set `scheduling_policy` to `default` for a\nscheduler-backed application with deployment configuration, instance counts,\nconstraints, versions, and rollouts. Set it to `durable_object` for a\nDurable Object-managed application where each Durable Object creates and manages\nthe lifecycle of its container instance. For `durable_object` requests, supply\nonly `name`, `scheduling_policy`, and `durable_objects`.\n",
 						"oneOf": [
 							{
-								"description": "Create a new scheduler-backed Containers application.",
+								"description": "Create a scheduler-backed Containers application. The Containers scheduler\nmaintains the requested instance count and applies deployment configuration,\nplacement, scaling, versions, and rollouts.\n",
 								"type": "object",
 								"properties": {
 									"configuration": {
-										"description": "The deployment configuration of all deployments created by this application.\n",
+										"description": "Defines the deployment configuration for every deployment in this application.\n",
 										"allOf": [
 											{
 												"description": "User-specified container configuration.",
@@ -8528,30 +8208,6 @@
 															"myapp",
 															"--default-option"
 														]
-													},
-													"dns": {
-														"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
-														"type": "object",
-														"properties": {
-															"searches": {
-																"description": "The container resolver appends these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it appends 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
-																"type": "array",
-																"items": {
-																	"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
-																	"type": "string",
-																	"example": "docker.io"
-																}
-															},
-															"servers": {
-																"description": "List of DNS servers the deployment uses to resolve domain names. You can only specify a maximum of 3.",
-																"type": "array",
-																"items": {
-																	"description": "A string representation of an IP, either v6 or v4.",
-																	"type": "string",
-																	"example": "192.1.1.1"
-																}
-															}
-														}
 													},
 													"entrypoint": {
 														"description": "The entry point for the container, specifying the executable to run when the container starts.\nYou can override this at run-time. If you do, the default command from the image is ignored.\nSpecify both entrypoint and command at run-time to completely replace the image defaults.\n",
@@ -8623,42 +8279,6 @@
 																}
 															}
 														}
-													},
-													"trusted_user_ca_keys": {
-														"type": "array",
-														"items": {
-															"description": "User-provided SSH public key.",
-															"type": "object",
-															"properties": {
-																"name": {
-																	"description": "Optional human readable name for this key.",
-																	"type": "string"
-																},
-																"public_key": {
-																	"description": "An SSH public key.",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"public_key"
-															]
-														}
-													},
-													"wrangler_ssh": {
-														"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
-														"type": "object",
-														"properties": {
-															"enabled": {
-																"type": "boolean",
-																"default": true
-															},
-															"port": {
-																"type": "integer",
-																"default": 22,
-																"maximum": 65535,
-																"minimum": 1
-															}
-														}
 													}
 												},
 												"required": [
@@ -8685,7 +8305,7 @@
 										}
 									},
 									"durable_objects": {
-										"description": "If set, it will make the container application back a durable object namespace.",
+										"description": "Optionally associates this scheduler-backed application with a Durable Object namespace.",
 										"allOf": [
 											{
 												"description": "Set of properties to configure a Durable Object-backed application.",
@@ -8727,17 +8347,17 @@
 										]
 									},
 									"instances": {
-										"description": "Number of deployments to create",
+										"description": "The initial number of deployments to create.",
 										"type": "integer",
 										"minimum": 0
 									},
 									"max_instances": {
-										"description": "Maximum number of instances that the application will allow.",
+										"description": "Sets the maximum number of instances that the application can run.",
 										"type": "integer",
 										"minimum": 0
 									},
 									"name": {
-										"description": "The name for this application",
+										"description": "The name for this application.",
 										"type": "string"
 									},
 									"observability": {
@@ -8756,17 +8376,6 @@
 																"default": false
 															}
 														}
-													},
-													"target_instance_count": {
-														"description": "Fixed number of instances that should receive the application-level observability overlay.\nMutually exclusive with `target_instance_percentage`.\n",
-														"type": "integer",
-														"minimum": 1
-													},
-													"target_instance_percentage": {
-														"description": "Percentage of instances that should receive the application-level observability overlay.\nThis rounds up so at least this percentage of instances is targeted.\nMutually exclusive with `target_instance_count`.\n",
-														"type": "integer",
-														"maximum": 99,
-														"minimum": 1
 													}
 												}
 											}
@@ -8780,7 +8389,7 @@
 										"minimum": 0
 									},
 									"scheduling_policy": {
-										"description": "The scheduling policy to use for a scheduler-backed application.",
+										"description": "Selects a scheduler-backed application. Use `default` when the Containers\nscheduler should maintain the requested number of instances and manage deployment\nconfiguration, placement, scaling, versions, and rollouts.\n",
 										"type": "string",
 										"enum": [
 											"default"
@@ -8797,7 +8406,7 @@
 								]
 							},
 							{
-								"description": "Create a namespace-backed Containers application whose Durable Objects own its instances.",
+								"description": "Create a Durable Object-managed Containers application. Each Durable Object\ncreates and manages the lifecycle of its container instance. Supply only `name`,\n`scheduling_policy`, and `durable_objects`. Application-level deployment\nconfiguration, instance counts, scaling, constraints, versions, and rollouts do\nnot apply.\n",
 								"type": "object",
 								"properties": {
 									"durable_objects": {
@@ -8843,11 +8452,11 @@
 										]
 									},
 									"name": {
-										"description": "The name for this application",
+										"description": "The name for this application.",
 										"type": "string"
 									},
 									"scheduling_policy": {
-										"description": "Selects Durable Objects to own and schedule application instances.",
+										"description": "Selects a Durable Object-managed application. Each Durable Object creates and\nmanages the lifecycle of its container instance. Application-level deployment\nconfiguration, scaling, placement constraints, versions, and rollouts do not\napply.\n",
 										"type": "string",
 										"enum": [
 											"durable_object"
@@ -8958,7 +8567,7 @@
 											"description": "The public Containers API returns an application.",
 											"oneOf": [
 												{
-													"description": "The Cloudchamber scheduler manages this application's instances.",
+													"description": "The Containers scheduler manages this application's instances, configuration, versions, and rollouts.",
 													"allOf": [
 														{
 															"description": "Describes an application and the parameters that govern how it places its instances.",
@@ -9006,30 +8615,6 @@
 																				"myapp",
 																				"--default-option"
 																			]
-																		},
-																		"dns": {
-																			"description": "Represents the /etc/resolv.conf that appears in the deployment.\nSetting the 'dns' property, even to an empty object, overrides the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
-																			"type": "object",
-																			"properties": {
-																				"searches": {
-																					"description": "The container resolver appends these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it appends 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
-																					"type": "array",
-																					"items": {
-																						"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
-																						"type": "string",
-																						"example": "docker.io"
-																					}
-																				},
-																				"servers": {
-																					"description": "List of DNS servers the deployment uses to resolve domain names. You can only specify a maximum of 3.",
-																					"type": "array",
-																					"items": {
-																						"description": "A string representation of an IP, either v6 or v4.",
-																						"type": "string",
-																						"example": "192.1.1.1"
-																					}
-																				}
-																			}
 																		},
 																		"entrypoint": {
 																			"description": "The entry point for the container, specifying the executable to run when the container starts.\nYou can override this at run-time. If you do, the default command from the image is ignored.\nSpecify both entrypoint and command at run-time to completely replace the image defaults.\n",
@@ -9099,42 +8684,6 @@
 																							"default": false
 																						}
 																					}
-																				}
-																			}
-																		},
-																		"trusted_user_ca_keys": {
-																			"type": "array",
-																			"items": {
-																				"description": "User-provided SSH public key.",
-																				"type": "object",
-																				"properties": {
-																					"name": {
-																						"description": "Optional human readable name for this key.",
-																						"type": "string"
-																					},
-																					"public_key": {
-																						"description": "An SSH public key.",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"public_key"
-																				]
-																			}
-																		},
-																		"wrangler_ssh": {
-																			"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
-																			"type": "object",
-																			"properties": {
-																				"enabled": {
-																					"type": "boolean",
-																					"default": true
-																				},
-																				"port": {
-																					"type": "integer",
-																					"default": 22,
-																					"maximum": 65535,
-																					"minimum": 1
 																				}
 																			}
 																		}
@@ -9336,17 +8885,6 @@
 																							"default": false
 																						}
 																					}
-																				},
-																				"target_instance_count": {
-																					"description": "Fixed number of instances that should receive the application-level observability overlay.\nMutually exclusive with `target_instance_percentage`.\n",
-																					"type": "integer",
-																					"minimum": 1
-																				},
-																				"target_instance_percentage": {
-																					"description": "Percentage of instances that should receive the application-level observability overlay.\nThis rounds up so at least this percentage of instances is targeted.\nMutually exclusive with `target_instance_count`.\n",
-																					"type": "integer",
-																					"maximum": 99,
-																					"minimum": 1
 																				}
 																			}
 																		}
@@ -9391,7 +8929,7 @@
 														{
 															"properties": {
 																"scheduling_policy": {
-																	"description": "The scheduling policy to use for a scheduler-backed application.",
+																	"description": "Selects a scheduler-backed application. Use `default` when the Containers\nscheduler should maintain the requested number of instances and manage deployment\nconfiguration, placement, scaling, versions, and rollouts.\n",
 																	"type": "string",
 																	"enum": [
 																		"default"
@@ -9406,7 +8944,7 @@
 													]
 												},
 												{
-													"description": "Durable Objects own and configure this namespace-backed application's instances.",
+													"description": "Each Durable Object creates and manages the lifecycle of its container instance.",
 													"type": "object",
 													"properties": {
 														"account_id": {
@@ -9441,7 +8979,7 @@
 															"type": "string"
 														},
 														"scheduling_policy": {
-															"description": "Selects Durable Objects to own and schedule application instances.",
+															"description": "Selects a Durable Object-managed application. Each Durable Object creates and\nmanages the lifecycle of its container instance. Application-level deployment\nconfiguration, scaling, placement constraints, versions, and rollouts do not\napply.\n",
 															"type": "string",
 															"enum": [
 																"durable_object"

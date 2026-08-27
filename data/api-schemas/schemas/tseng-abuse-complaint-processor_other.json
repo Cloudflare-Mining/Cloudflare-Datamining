@@ -2514,12 +2514,14 @@
 							{
 								"required": [
 									"appeals"
-								]
+								],
+								"type": "object"
 							},
 							{
 								"required": [
 									"type"
-								]
+								],
+								"type": "object"
 							}
 						]
 					}
@@ -2968,6 +2970,7 @@
 									{
 										"properties": {
 											"act": {
+												"type": "string",
 												"enum": [
 													"abuse_dmca"
 												]
@@ -3046,7 +3049,8 @@
 											"signature",
 											"state"
 										],
-										"title": "DMCA Report"
+										"title": "DMCA Report",
+										"type": "object"
 									}
 								]
 							},
@@ -3126,6 +3130,7 @@
 									{
 										"properties": {
 											"act": {
+												"type": "string",
 												"enum": [
 													"abuse_trademark"
 												]
@@ -3177,7 +3182,8 @@
 											"trademark_office",
 											"trademark_symbol"
 										],
-										"title": "Trademark Report"
+										"title": "Trademark Report",
+										"type": "object"
 									}
 								]
 							},
@@ -3257,6 +3263,7 @@
 									{
 										"properties": {
 											"act": {
+												"type": "string",
 												"enum": [
 													"abuse_general"
 												]
@@ -3301,7 +3308,8 @@
 											"justification",
 											"owner_notification"
 										],
-										"title": "General Report"
+										"title": "General Report",
+										"type": "object"
 									}
 								]
 							},
@@ -3381,6 +3389,7 @@
 									{
 										"properties": {
 											"act": {
+												"type": "string",
 												"enum": [
 													"abuse_phishing"
 												]
@@ -3419,7 +3428,8 @@
 											"justification",
 											"owner_notification"
 										],
-										"title": "Phishing Report"
+										"title": "Phishing Report",
+										"type": "object"
 									}
 								]
 							},
@@ -3499,6 +3509,7 @@
 									{
 										"properties": {
 											"act": {
+												"type": "string",
 												"enum": [
 													"abuse_children"
 												]
@@ -3547,7 +3558,8 @@
 											"ncmec_notification",
 											"owner_notification"
 										],
-										"title": "Children Abuse Report"
+										"title": "Children Abuse Report",
+										"type": "object"
 									}
 								]
 							},
@@ -3627,6 +3639,7 @@
 									{
 										"properties": {
 											"act": {
+												"type": "string",
 												"enum": [
 													"abuse_threat"
 												]
@@ -3659,7 +3672,8 @@
 											"justification",
 											"owner_notification"
 										],
-										"title": "Threat Report"
+										"title": "Threat Report",
+										"type": "object"
 									}
 								]
 							},
@@ -3739,6 +3753,7 @@
 									{
 										"properties": {
 											"act": {
+												"type": "string",
 												"enum": [
 													"abuse_registrar_whois"
 												]
@@ -3832,7 +3847,8 @@
 										"required": [
 											"owner_notification"
 										],
-										"title": "Registrar Whois Report"
+										"title": "Registrar Whois Report",
+										"type": "object"
 									}
 								]
 							},
@@ -3912,6 +3928,7 @@
 									{
 										"properties": {
 											"act": {
+												"type": "string",
 												"enum": [
 													"abuse_ncsei"
 												]
@@ -3949,7 +3966,8 @@
 											"ncsei_subject_representation",
 											"owner_notification"
 										],
-										"title": "NCSEI Report"
+										"title": "NCSEI Report",
+										"type": "object"
 									}
 								]
 							}

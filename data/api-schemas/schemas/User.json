@@ -464,7 +464,8 @@
 														"type": "string",
 														"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
 														"pattern": "^[a-f0-9]{32}$",
-														"title": "Organization ID"
+														"title": "Organization ID",
+														"x-auditable": true
 													}
 												],
 												"readOnly": true
@@ -542,7 +543,8 @@
 														"type": "string",
 														"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
 														"pattern": "^[a-f0-9]{32}$",
-														"title": "Organization ID"
+														"title": "Organization ID",
+														"x-auditable": true
 													},
 													"name": {
 														"type": "string",

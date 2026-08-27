@@ -1,0 +1,294 @@
+{
+	"GET /zones/{zone_id}/ssl/recommendation": {
+		"operationId": "ssl/-tls-mode-recommendation-ssl/-tls-recommendation",
+		"summary": "SSL/TLS Recommendation",
+		"description": "Retrieve the SSL/TLS Recommender's recommendation for a zone.",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "SSL/TLS Recommendation response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"example": []
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"example": []
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"editable": {
+											"description": "Whether this setting can be updated or not.",
+											"type": "boolean",
+											"readOnly": true
+										},
+										"id": {
+											"type": "string",
+											"example": "ssl_automatic_mode",
+											"readOnly": true
+										},
+										"modified_on": {
+											"description": "Last time this setting was modified.",
+											"type": "string",
+											"format": "date-time",
+											"example": "2014-01-01T05:20:00.12345Z",
+											"readOnly": true
+										},
+										"next_scheduled_scan": {
+											"description": "Next time this zone will be scanned by the Automatic SSL/TLS.",
+											"type": "string",
+											"format": "date-time",
+											"example": "2014-01-01T05:20:00.12345Z",
+											"nullable": true,
+											"readOnly": true
+										},
+										"value": {
+											"description": "Current setting of the automatic SSL/TLS.",
+											"type": "string",
+											"example": "auto",
+											"enum": [
+												"auto",
+												"custom"
+											],
+											"readOnly": true
+										}
+									},
+									"required": [
+										"id",
+										"modified_on",
+										"value",
+										"editable"
+									]
+								},
+								"success": {
+									"description": "Indicates the API call's success or failure.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "SSL/TLS Recommendation response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"editable": {
+											"description": "Whether this setting can be updated or not.",
+											"type": "boolean",
+											"readOnly": true
+										},
+										"id": {
+											"type": "string",
+											"example": "ssl_automatic_mode",
+											"readOnly": true
+										},
+										"modified_on": {
+											"description": "Last time this setting was modified.",
+											"type": "string",
+											"format": "date-time",
+											"example": "2014-01-01T05:20:00.12345Z",
+											"readOnly": true
+										},
+										"next_scheduled_scan": {
+											"description": "Next time this zone will be scanned by the Automatic SSL/TLS.",
+											"type": "string",
+											"format": "date-time",
+											"example": "2014-01-01T05:20:00.12345Z",
+											"nullable": true,
+											"readOnly": true
+										},
+										"value": {
+											"description": "Current setting of the automatic SSL/TLS.",
+											"type": "string",
+											"example": "auto",
+											"enum": [
+												"auto",
+												"custom"
+											],
+											"readOnly": true
+										}
+									},
+									"required": [
+										"id",
+										"modified_on",
+										"value",
+										"editable"
+									]
+								},
+								"success": {
+									"description": "Indicates the API call's success or failure.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"deprecated": true,
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"SSL/TLS Mode Recommendation"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read",
+			"SSL and Certificates Write",
+			"SSL and Certificates Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ssl.recommendations",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
+		"x-stainless-deprecation-message": "SSL/TLS Recommender has been decommissioned in favor of Automatic SSL/TLS"
+	}
+}

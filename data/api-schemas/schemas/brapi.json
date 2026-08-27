@@ -2742,8 +2742,8 @@
 							"items": {
 								"properties": {
 									"closeReason": {
-										"description": "Reason for session closure.",
-										"type": "string"
+										"description": "Reason code for session closure.",
+										"type": "number"
 									},
 									"closeReasonText": {
 										"description": "Human-readable close reason.",
@@ -2867,8 +2867,8 @@
 							"type": "object",
 							"properties": {
 								"closeReason": {
-									"description": "Reason for session closure.",
-									"type": "string"
+									"description": "Reason code for session closure.",
+									"type": "number"
 								},
 								"closeReasonText": {
 									"description": "Human-readable close reason.",
