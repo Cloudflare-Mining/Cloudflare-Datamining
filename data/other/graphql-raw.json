@@ -33131,7 +33131,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Date of the conversation's last observed activity",
+							"description": "UTC date when the conversation analysis was published",
 							"isDeprecated": false,
 							"name": "date",
 							"type": {
@@ -33147,7 +33147,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Conversation's last observed activity",
+							"description": "UTC timestamp when the conversation analysis was published",
 							"isDeprecated": false,
 							"name": "datetime",
 							"type": {
@@ -33163,9 +33163,25 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "First observed activity. This field is not filterable because the dataset is partitioned by last activity; use date or datetime filters to constrain the scanned range",
+							"description": "First observed activity in the conversation",
 							"isDeprecated": false,
 							"name": "datetimeFirstActivity",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Last observed activity in the conversation",
+							"isDeprecated": false,
+							"name": "datetimeLastActivity",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -36017,7 +36033,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Date of the conversation's last observed activity",
+							"description": "UTC date when the conversation analysis was published",
 							"isDeprecated": false,
 							"name": "date",
 							"type": {
@@ -36033,7 +36049,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Conversation's last observed activity",
+							"description": "UTC timestamp when the conversation analysis was published",
 							"isDeprecated": false,
 							"name": "datetime",
 							"type": {
@@ -36049,9 +36065,41 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Conversation's last observed activity truncated to the hour",
+							"description": "First observed activity in the conversation",
+							"isDeprecated": false,
+							"name": "datetimeFirstActivity",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Conversation analysis publication time truncated to the hour",
 							"isDeprecated": false,
 							"name": "datetimeHour",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Last observed activity in the conversation",
+							"isDeprecated": false,
+							"name": "datetimeLastActivity",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -39139,7 +39187,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Date of the conversation's last observed activity",
+							"description": "UTC date when the conversation analysis was published",
 							"isDeprecated": false,
 							"name": "date",
 							"type": {
@@ -39155,7 +39203,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Conversation's last observed activity",
+							"description": "UTC timestamp when the conversation analysis was published",
 							"isDeprecated": false,
 							"name": "datetime",
 							"type": {
@@ -39171,9 +39219,25 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "First observed activity. This field is not filterable because the dataset is partitioned by last activity; use date or datetime filters to constrain the scanned range",
+							"description": "First observed activity in the conversation",
 							"isDeprecated": false,
 							"name": "datetimeFirstActivity",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Last observed activity in the conversation",
+							"isDeprecated": false,
+							"name": "datetimeLastActivity",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -42025,7 +42089,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Date of the conversation's last observed activity",
+							"description": "UTC date when the conversation analysis was published",
 							"isDeprecated": false,
 							"name": "date",
 							"type": {
@@ -42041,7 +42105,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Conversation's last observed activity",
+							"description": "UTC timestamp when the conversation analysis was published",
 							"isDeprecated": false,
 							"name": "datetime",
 							"type": {
@@ -42057,9 +42121,41 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Conversation's last observed activity truncated to the hour",
+							"description": "First observed activity in the conversation",
+							"isDeprecated": false,
+							"name": "datetimeFirstActivity",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Conversation analysis publication time truncated to the hour",
 							"isDeprecated": false,
 							"name": "datetimeHour",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Last observed activity in the conversation",
+							"isDeprecated": false,
+							"name": "datetimeLastActivity",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -227615,7 +227711,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "The name (slug) of the preview script",
+							"description": "The name (slug) of the preview script. Requires an exact scriptName filter.",
 							"isDeprecated": false,
 							"name": "previewSlug",
 							"type": {
@@ -630871,7 +630967,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "The name (slug) of the preview script",
+							"description": "The name (slug) of the preview script. Requires an exact scriptName filter.",
 							"isDeprecated": false,
 							"name": "previewSlug",
 							"type": {
@@ -633770,7 +633866,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "The name (slug) of the preview script",
+							"description": "The name (slug) of the preview script. Requires an exact scriptName filter.",
 							"isDeprecated": false,
 							"name": "previewSlug",
 							"type": {
@@ -643391,7 +643487,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "The name (slug) of the preview script",
+							"description": "The name (slug) of the preview script. Requires an exact scriptName filter.",
 							"isDeprecated": false,
 							"name": "previewSlug",
 							"type": {
@@ -878523,7 +878619,7 @@
 					"possibleTypes": []
 				},
 				{
-					"description": "Scalar type types.Float64",
+					"description": "Scalar type float64",
 					"enumValues": [],
 					"fields": [],
 					"inputFields": [],
