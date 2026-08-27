@@ -263,6 +263,9 @@
 	"dlp-pii-predefined-profile": {
 		"enabled": true
 	},
+	"dlp-proximity-words-q3-2026": {
+		"enabled": true
+	},
 	"dlp-scan-tester-2026-q3": {
 		"enabled": true
 	},
@@ -344,13 +347,16 @@
 	"mcp-managed-oauth-onboarding": {
 		"enabled": true
 	},
+	"mcp-oauth-migration-dcr-q3-2026": {
+		"enabled": false
+	},
+	"mcp-oauth-migration-manual-q3-2026": {
+		"enabled": false
+	},
 	"mcp-portals-codemode": {
 		"enabled": true
 	},
 	"mcp-portals-manual-oauth": {
-		"enabled": true
-	},
-	"mcp-use-agw-config-api-oauth-q3-2026": {
 		"enabled": true
 	},
 	"merged-diagnostics-experience": {
@@ -498,6 +504,9 @@
 	},
 	"zt-analytics-overview-kumo-q2-26": {
 		"enabled": true
+	},
+	"zt-app-library-object-details-q3-2026": {
+		"enabled": false
 	},
 	"zt-art-ai-dashboard-to-support-mcp-and-ai-q3-2026": {
 		"enabled": true
