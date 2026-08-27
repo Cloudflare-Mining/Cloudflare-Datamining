@@ -6,6 +6,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+August 27, 2026[How we saved 100 terabytes of memory by optimizing 1.1.1.1's DNS cache](https://blog.cloudflare.com/dns-cache-memory-optimization-1111/)
+
+Five Rust-level memory optimizations to the DNS cache layout of Big Pineapple cut per-entry memory by 56%, freeing approximately 100 TB of memory across Cloudflare's fleet.
+
+![Sebastiaan Neuteboom](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GH720TA5A2634QYMAXZR.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Sebastiaan Neuteboom](https://blog.cloudflare.com/author/sebastiaan-neuteboom/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M117Y6R8CDGVT4K2XX6VQ2YX.png&w=1200&h=675&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/dns-cache-memory-optimization-1111/)
+
 August 24, 2026[The Cloudflare Blog – Brought to you by EmDash](https://blog.cloudflare.com/cloudflare-blog-uses-emdash/)
 
 We migrated the Cloudflare Blog to EmDash to prove our stack at massive scale. Here is how we stress-tested performance, safely routed production traffic, and redesigned the frontend experience.
@@ -13,8 +23,6 @@ We migrated the Cloudflare Blog to EmDash to prove our stack at massive scale. H
 ![Kody Jackson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WYRNEDQXNFYKHFAH3WFJ.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Diogo Carneiro](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0TETGHBYR0R4NPWVRQS2TQK.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Amy Dutton](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0TE76JV4WWSR820WP54D0RW.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Kody Jackson](https://blog.cloudflare.com/author/kody/), [Diogo Carneiro](https://blog.cloudflare.com/author/diogo-carneiro/), and [Amy Dutton](https://blog.cloudflare.com/author/amy-dutton/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0TDC1Q5KWFS3GWEG7SHYMEP.png&w=1200&h=675&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/cloudflare-blog-uses-emdash/)
 
 August 21, 2026[Say it once: introducing Bot Preference Sync](https://blog.cloudflare.com/bot-preference-sync/)
 
@@ -151,14 +159,6 @@ The next version of MCP has a rewritten, stateless core that just works on Worke
 ![Matt Carey](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BHQSGCBKVGAAVQVS4V3E.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Matt Carey](https://blog.cloudflare.com/author/matt-carey/)
-
-August 6, 2026[From ranking to recommended: get your site ready to thrive in the age of AI agents](https://blog.cloudflare.com/aeo/)
-
-More than half of requests now come from machines, not people. Agent Readiness shows how well agents can discover and read your site, while Answer Engine Optimization tracks how often AI assistants recommend you.
-
-![Matthew Conroy](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW1QZW47KMHA09RY62FC.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Jack Galilee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA3MX64PMX25X6GHJWTCKYT.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Matthew Conroy](https://blog.cloudflare.com/author/matthew-conroy/) and [Jack Galilee](https://blog.cloudflare.com/author/jack-galilee/)
 
 Load more
 
