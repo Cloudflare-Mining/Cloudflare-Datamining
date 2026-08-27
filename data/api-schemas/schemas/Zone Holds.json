@@ -836,7 +836,11 @@
 			"Analytics Read",
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Read"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zones.holds",
+		"x-fern-sdk-method-name": "getByName",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/hold": {
 		"operationId": "zones-0-hold-patch",

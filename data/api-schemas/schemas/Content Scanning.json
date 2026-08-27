@@ -1104,6 +1104,455 @@
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
+	"PATCH /zones/{zone_id}/content-upload-scan/payloads/{expression_id}": {
+		"operationId": "waf-content-scanning-update-custom-scan-expression",
+		"summary": "Update a Content Scanning custom expression for a zone.",
+		"description": "Update the Content Scanning custom expression with the given identifier and return the updated list of expressions.",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Defines an identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "expression_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Defines the unique ID for this Content Scanning custom expression.",
+					"example": "a350a054caa840c9becd89c3b4f0195b",
+					"allOf": [
+						{
+							"description": "Defines an identifier.",
+							"type": "string",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"readOnly": true,
+							"x-auditable": true
+						}
+					]
+				}
+			}
+		],
+		"requestBody": {
+			"description": "Content Scanning custom expression to update.",
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"payload": {
+								"description": "Defines the custom content extraction expression used to reach content objects in the request.",
+								"type": "string",
+								"example": "lookup_json_string(http.request.body.raw, \"file\")",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"payload"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Update Content Scanning custom expression response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"type": "object"
+													},
+													"nullable": true
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"description": "Defines a Content Scanning custom expression.",
+												"type": "object",
+												"properties": {
+													"id": {
+														"description": "Defines the unique ID for this Content Scanning custom expression.",
+														"example": "a350a054caa840c9becd89c3b4f0195b",
+														"allOf": [
+															{
+																"description": "Defines an identifier.",
+																"type": "string",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"readOnly": true,
+																"x-auditable": true
+															}
+														]
+													},
+													"payload": {
+														"description": "Defines the custom content extraction expression used to reach content objects in the request.",
+														"type": "string",
+														"example": "lookup_json_string(http.request.body.raw, \"file\")",
+														"x-auditable": true
+													}
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Update Content Scanning custom expression failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"type": "object",
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													]
+												},
+												{
+													"properties": {
+														"result": {
+															"type": "array",
+															"items": {
+																"type": "object"
+															},
+															"nullable": true
+														}
+													},
+													"type": "object"
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"description": "Defines a Content Scanning custom expression.",
+														"type": "object",
+														"properties": {
+															"id": {
+																"description": "Defines the unique ID for this Content Scanning custom expression.",
+																"example": "a350a054caa840c9becd89c3b4f0195b",
+																"allOf": [
+																	{
+																		"description": "Defines an identifier.",
+																		"type": "string",
+																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"x-auditable": true
+																	}
+																]
+															},
+															"payload": {
+																"description": "Defines the custom content extraction expression used to reach content objects in the request.",
+																"type": "string",
+																"example": "lookup_json_string(http.request.body.raw, \"file\")",
+																"x-auditable": true
+															}
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 10000,
+													"message": "Authentication error"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Content Scanning"
+		],
+		"x-api-token-group": [
+			"Zone WAF Write",
+			"Account WAF Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "content-scan.expressions",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
+	},
 	"POST /zones/{zone_id}/content-upload-scan/disable": {
 		"operationId": "waf-content-scanning-disable",
 		"summary": "Disable Content Scanning for a zone.",
