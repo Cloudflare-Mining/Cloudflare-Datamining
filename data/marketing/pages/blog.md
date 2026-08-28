@@ -6,6 +6,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+August 28, 2026[BotBase for Operators: A clearer path to joining Cloudflare's directory of bots and agents](https://blog.cloudflare.com/botbase-for-operators/)
+
+Bot operators now have a home in the Cloudflare dashboard to manage submissions. This update adds submission status tracking, submission editing, and a behavior model so operators can accurately declare how their bots use content. 
+
+![Julian Laxman](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GDPQJQ1YTTDHRGZ3H2Y9TQ.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Julian Laxman](https://blog.cloudflare.com/author/julian-laxman/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GDDRDD6CY3JE6JJQGJM761.png&w=1200&h=674&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/botbase-for-operators/)
+
 August 27, 2026[How we saved 100 terabytes of memory by optimizing 1.1.1.1's DNS cache](https://blog.cloudflare.com/dns-cache-memory-optimization-1111/)
 
 Five Rust-level memory optimizations to the DNS cache layout of Big Pineapple cut per-entry memory by 56%, freeing approximately 100 TB of memory across Cloudflare's fleet.
@@ -13,8 +23,6 @@ Five Rust-level memory optimizations to the DNS cache layout of Big Pineapple cu
 ![Sebastiaan Neuteboom](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GH720TA5A2634QYMAXZR.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Sebastiaan Neuteboom](https://blog.cloudflare.com/author/sebastiaan-neuteboom/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M117Y6R8CDGVT4K2XX6VQ2YX.png&w=1200&h=675&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/dns-cache-memory-optimization-1111/)
 
 August 24, 2026[The Cloudflare Blog – Brought to you by EmDash](https://blog.cloudflare.com/cloudflare-blog-uses-emdash/)
 
@@ -151,14 +159,6 @@ AI Search makes search easier than ever, with no Cloudflare primitives to stitch
 ![Nelson Duarte](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49P72CGQX08FQC903Q0E4F.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Tiago Teles](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZAW99A81NNDP6P3SFH65HTE.webp&w=64&h=64&f=webp&fit=cover&position=center)![Anni Wang](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4618C573MJFB0RNKW6K68R.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Nelson Duarte](https://blog.cloudflare.com/author/nelson-duarte/), [Tiago Teles](https://blog.cloudflare.com/author/tiago-teles/), and [Anni Wang](https://blog.cloudflare.com/author/anni/)
-
-August 6, 2026[The next generation of MCP](https://blog.cloudflare.com/mcp-v2/)
-
-The next version of MCP has a rewritten, stateless core that just works on Workers. We cover upgrades to the protocol, the new feature lifecycle and SDK migration path, and hear from early adopters already running it in production. 
-
-![Matt Carey](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BHQSGCBKVGAAVQVS4V3E.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Matt Carey](https://blog.cloudflare.com/author/matt-carey/)
 
 Load more
 
