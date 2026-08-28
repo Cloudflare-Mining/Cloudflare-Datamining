@@ -12,7 +12,7 @@
 	],
 	"internal_job_id": 3187542,
 	"location": {
-		"name": "Distributed; Hybrid"
+		"name": "Distributed"
 	},
 	"metadata": [
 		{
@@ -29,6 +29,8 @@
 				"Austin, US",
 				"Denver, US",
 				"New York, US",
+				"San Francisco, US",
+				"Seattle, US",
 				"Toronto, Canada",
 				"Washington DC, US"
 			],
@@ -44,7 +46,7 @@
 		}
 	],
 	"id": 7053411,
-	"updated_at": "2026-08-25T20:10:18-04:00",
+	"updated_at": "2026-08-27T17:10:47-04:00",
 	"requisition_id": "626",
 	"title": "Staff/Principal Software Engineer - Security Platform",
 	"company_name": "Cloudflare",
@@ -71,6 +73,13 @@
 			"id": 19990,
 			"name": "New York, NY",
 			"location": "New York, New York, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19991,
+			"name": "San Francisco, CA",
+			"location": "San Francisco, CA, United States",
 			"child_ids": [],
 			"parent_id": 48752
 		},
@@ -103,11 +112,17 @@
 			"parent_id": 48752
 		},
 		{
-			"id": 73335,
-			"name": "Toronto, ON",
-			"location": "Toronto, Ontario, Canada",
-			"child_ids": [],
-			"parent_id": 75883
+			"id": 75883,
+			"name": "Canada",
+			"location": null,
+			"child_ids": [
+				75886,
+				75885,
+				75884,
+				75596,
+				73335
+			],
+			"parent_id": 48752
 		}
 	],
 	"ai_disclaimer": null,

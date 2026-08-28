@@ -3,34 +3,35 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3><strong>Available Locations: Austin, TX or London, UK (Hybrid)</strong></h3>
-<h3><strong>About the Role</strong></h3>
-<p>You’ll help define how machine learning models run across Cloudflare’s global network, from frontier open LLMs and real-time voice models to customer-deployed models served on heterogeneous GPUs and next-generation accelerators. You’ll work with systems engineers, product teams, hardware partners, and AI/ML engineers to bring models into production with low latency, strong reliability, and efficient resource use. This role combines applied ML, inference optimization, evaluation, and production engineering, with a focus on benchmarking models, improving serving performance, validating quality, and building tooling that helps Cloudflare and its customers ship AI applications at Internet scale.</p>
-<h3><strong>Responsibilities</strong></h3>
+<p><strong>Available Locations: London (Hybrid)</strong></p>
 <ul>
-	<li>Develop, optimize, and productionize machine learning models for Cloudflare’s serverless inference platform, with a focus on performance, reliability, and model quality.</li>
-	<li>Build benchmarking and evaluation frameworks to measure latency, throughput, cost efficiency, and model behavior across LLMs, speech, vision, and other model families.</li>
-	<li>Improve inference performance through quantization, batching, caching, model compilation, runtime tuning, and accelerator-aware optimization.</li>
-	<li>Partner with systems engineers to integrate models into Cloudflare’s distributed inference infrastructure across a heterogeneous fleet of GPUs and next-generation accelerators.</li>
-	<li>Drive improvements to model deployment workflows, including validation, rollout safety, observability, regression testing, and operational readiness.</li>
-	<li>Collaborate with product and engineering teams to translate customer requirements into scalable ML capabilities for Workers AI.</li>
-	<li>Mentor engineers, contribute to technical direction, and raise the quality bar for production ML engineering practices across the team.</li>
-</ul>
-<h3><strong>Desirable Skills, Knowledge, and Experience</strong></h3>
-<ul>
-	<li>Experience building, optimizing, and operating machine learning models in production environments.</li>
-	<li>Strong proficiency with Python and modern ML frameworks such as PyTorch, TensorFlow, JAX, or equivalent.</li>
-	<li>Hands-on experience with inference optimization techniques for large-scale models, including quantization, batching, caching, compilation, and serving runtime tuning.</li>
-	<li>Experience with large-scale inference serving frameworks or runtimes such as SGLang, vLLM, TensorRT-LLM, ONNX Runtime, Triton, llama.cpp, or similar.</li>
-	<li>Familiarity with LLMs, speech models, vision models, embeddings, multimodal models, retrieval-augmented generation, or other modern deep learning architectures.</li>
-	<li>Experience optimizing models for GPUs or specialized accelerators.</li>
-	<li>Strong understanding of production ML concerns, including evaluation, monitoring, model regressions, rollout safety, and reliability.</li>
-	<li>Ability to work across ML and systems boundaries, including familiarity with distributed systems, networking, or serverless platforms.</li>
-	<li>Track record of leading complex technical projects and mentoring other engineers.</li>
-</ul>
-<h3><strong>Bonus Points</strong></h3>
-<ul>
-	<li>Experience contributing to open source ML tooling, model serving frameworks, or inference runtimes.</li>
+	<li>
+		<h3><strong>About Engineering at Cloudflare</strong></h3>
+		<p>Cloudflare’s Engineering team is responsible for the software platform that serves 115 million HTTP requests per second on average. We also build and run the tools that empower our colleagues to rapidly deliver products to market, as well as monitor and deploy software updates across the globe to 350+ data centers. You’ll experience the full breadth of technologies needed to run one of the world’s largest networks serving the world's largest customers such as Shopify and VISA.</p>
+		<p><strong>About The Team</strong></p>
+		<p>Cloudflare’s Front Line (FL) group is responsible for maintaining and developing the main Cloudflare web server, processing over 100 million HTTP requests per second. In other words, we own the largest web server in the world.</p>
+		<p>The Product Team is responsible for creating new customer-facing features, improving efficiency &amp; safety, and building the next iteration of Cloudflare products. The platform is mostly in Rust, and most of our API is in Golang.</p>
+		<p><strong>What you'll do</strong></p>
+		<p>You will work with a team of talented engineers to create new features to increase the availability, safety &amp; reliability of the edge ecosystem. You will improve current features, create new systems from scratch, and collaborate with platform teams to help to build the best web server in the world, with a particular focus on the rules engine and associated control plane.</p>
+		<p>This is a unique opportunity to be at the nexus of Cloudflare edge applications and operations and to collaborate closely with most other product and engineering teams at Cloudflare.&nbsp;</p>
+		<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+		<ul>
+			<li>Solid competencies in practical computer science, applying the right algorithms, data structures, concurrency control systems to software design, and building large, distributed systems</li>
+			<li>Experience in performance engineering</li>
+			<li>Driving communication and consensus across teams</li>
+			<li>A drive for continuous improvement when it comes to both operations and new product development</li>
+		</ul>
+		<h4><strong>Bonus Points</strong></h4>
+		<p>These are things which the role is likely to require; we’re happy to help you learn on the job, but prior experience is beneficial</p>
+		<ul>
+			<li>Experience of languages: Rust, Go</li>
+			<li>Knowledge of web servers and web protocols</li>
+			<li>Distributed systems</li>
+			<li>Web security issues and industry standards</li>
+		</ul>
+		<p>Most importantly, we are looking for people who want to learn something new. We maintain the largest web server in the world, and we face unique challenges. You will be collaborating and designing innovative solutions to improve the life of millions of people around the globe, everywhere they are, whatever their needs are.</p>
+		<p>Join and help us build a better Internet!</p>
+	</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

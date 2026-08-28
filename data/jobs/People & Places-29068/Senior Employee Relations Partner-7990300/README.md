@@ -5,13 +5,7 @@
 </div>
 <h3>Available Locations</h3>
 <ul>
-	<li>Atlanta, US</li>
-	<li>Austin, US</li>
-	<li>Denver, US</li>
-	<li>New York, US</li>
-	<li>Seattle, US</li>
-	<li>Washington DC, US</li>
-	<li>US Remote</li>
+	<li>US</li>
 </ul>
 <p><strong>Applications will be accepted until September 07, 2026.</strong></p>
 <h2>About the Role</h2>
@@ -44,10 +38,18 @@
 	<li>You devote time and attention to supporting our employees, fostering strong relationships and sustaining the trust placed in you.</li>
 	<li>You uphold the highest standards of integrity, communicating honestly, treating others with respect, and leading with dignity.</li>
 </ul>
-<h3>Compensation</h3>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For Colorado based hires: Estimated annual salary of $121,000 - $166,000</li>
+<h3 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
+<p data-path-to-node="1,0,0">Compensation may be adjusted depending on work location.</p>
+<ul data-path-to-node="1">
+	<li>
+		<p data-path-to-node="1,1,0">For SF, SJ, and Bay Area Metro based hires: Estimated annual salary of $142,000 - $196,000.</p>
+	</li>
+	<li>
+		<p data-path-to-node="1,2,0">For Boston, California - Remote, Connecticut - Remote, DC Metro, Massachusetts - Remote, New Jersey - Remote, New York City, NY Metro, Remote - Washington, Washington (Kirkland), and Washington D.C. based hires: Estimated annual salary of $135,000 - $186,000.</p>
+	</li>
+	<li>
+		<p data-path-to-node="1,3,0">For Colorado - Remote, Illinois - Remote, Maryland - Remote, Minnesota - Remote, Nevada - Remote, New York - Remote, Rhode Island - Remote, and Vermont - Remote based hires: Estimated annual salary of $121,000 - $166,000.</p>
+	</li>
 </ul>
 <h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare's equity plan.</p>

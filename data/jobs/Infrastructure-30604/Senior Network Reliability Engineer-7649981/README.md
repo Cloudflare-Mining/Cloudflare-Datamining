@@ -3,52 +3,59 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3><strong>Available Location: This is a remote role but the location requirement is that you reside in Oregon<br></strong></h3>
-<p><strong>About the Department</strong></p>
-<p>Account Executives, Channel Account Managers, Business Development Representatives, Solution Engineers, Customer Success, and Sales Operations - all working together help our customers adopt Cloudflare and create great Internet-enabled experiences. The sales team at Cloudflare helps customers solve real, technical problems while creating the revenue streams that help the company provide free service to millions in our community.</p>
-<p><strong>About this Role</strong></p>
-<p>This role within the mid-market segment focuses on both the acquisition of new Territory accounts, as well as the expansion of existing customer accounts.&nbsp; Within the mid-market segment, you will work a set of accounts in the territory sub-segments. The ideal candidate will have both a sales and technical background that enables them to drive customer engagement from technical professionals through to senior executive levels, and across Security, Network, Development and Infrastructure teams.&nbsp;&nbsp;</p>
-<p><strong>Key Responsibilities</strong></p>
+<h2>Available Locations</h2>
 <ul>
-	<li>Develop and execute a comprehensive account/territory plan to achieve quarterly sales and annual revenue targets in a defined territory and/or account list.</li>
-	<li>Drive new business acquisition (new customer logos), customer expansion (upsell and cross sell Cloudflare solutions), and renewal within your territory.</li>
-	<li>Engage in account mapping sessions with partners, including training new partners on our technology and GTM strategies.</li>
-	<li>Developing scalable relationships with target partners, to expand partner ecosystem in a specific region.</li>
-	<li>Build a robust sales pipeline through continual engagement and nurturing of key prospect accounts.</li>
-	<li>Understand customer use-cases and how they pair with Cloudflare’s portfolio solutions in order to identify new sales opportunities.</li>
-	<li>Craft and communicate compelling value propositions for Cloudflare services. Drive awareness through regular outbound campaigns on product and feature roadmap updates.&nbsp;</li>
-	<li>Accurately forecast commercial outcomes by running a consistent sales process, including driving next step expectations and contract negotiations.</li>
-	<li>As a trusted advisor, build long-term strategic relationships with key accounts, to ensure customer adoption, retention and expansion. Regularly evaluate usage trends and articulate value to show Cloudflare impact and provide strategic recommendations during business reviews.&nbsp;</li>
-	<li>Network across different business units with each of your accounts, and multi-thread to identify and engage new divisional buyers.</li>
-	<li>Position Cloudflare's platform in each of your target customers, including Cloudflare One and the Connectivity Cloud to realize our full potential in every customer.</li>
-	<li>Operate internally as a liaison with cross-functional teams to share key customer feedback and insights to improve customer experience and further investments with Cloudflare.</li>
+	<li>Austin, TX</li>
+	<li>Atlanta, GA</li>
+	<li>Denver, CO</li>
 </ul>
-<p><strong>Requirements:</strong></p>
+<p><strong>Applications will be accepted until November 6, 2026.</strong></p>
+<h2>Responsibilities</h2>
 <ul>
-	<li>3+ years of direct B2B selling experience</li>
-	<li>Strong interpersonal communication (verbal and written) and organizational skills</li>
-	<li>Self-motivated; entrepreneurial spirit</li>
-	<li>Comfortable working in a fast paced dynamic environment</li>
-	<li>Bachelor's degree required</li>
-	<li>Demonstrated analytical and quantitative abilities</li>
-	<li>Software and system skills are a must (SFDC, Tableau, G-suite, MSFT suite)</li>
+	<li>Cloudflare operates a large global network spanning hundreds of cities (data centers). You will join a team of talented network engineers who are building software solutions to improve network resilience and reduce operational toil.</li>
+	<li>This position will be responsible for the technical operation and engineering of the Cloudflare's core data center network, including the planning, installation and management of the hardware and software as well as the day-to-day operations of the network. The core network supports our critical internal needs such as databases, high volume logging, and internal application clusters. This is an opportunity to be part of the team that is building a high­-performance network that is accessible to any web property online.</li>
+	<li>You will build tools to automate operational tasks, streamline deployment processes and provide a platform for other engineering teams to build upon. You will nurture a passion for an “automate everything” approach that makes systems failure-resistant and ready-to-scale. Furthermore, you will be required to play a key role in system design and demonstrate the ability to bring an idea from design all the way to production.</li>
 </ul>
-<h3><strong>Examples of desirable skills, knowledge and experience:</strong></h3>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
-	<li>5+ years in Software/SaaS/Security Sales &amp; Channel management.</li>
-	<li>Existing relationships and/or strong familiarity of the partner ecosystem in the region that they cover.</li>
-	<li>Understanding of cloud infrastructure ecosystem and cloud security is highly preferred.</li>
-	<li>Experience working in a start-up environment.</li>
-	<li>Ability to travel up to 25% of the time.</li>
-	<li>Technical competence strongly preferred.</li>
+	<li>3 years of relevant Network/Site Reliability Engineering experience</li>
+	<li>BA/BS in Computer Science or equivalent experience</li>
+	<li>Solid foundation on configuration management frameworks: Saltstack, Ansible, Chef</li>
+	<li>Experience with NX-OS, JUNOS, EOS, Cumulus, or Sonic Network Operating Systems</li>
+	<li>AI-native: being able to leverage LLM to:
+		<ul>
+			<li>build agentic deployment and troubleshooting tools on top of the Cloudflare stack</li>
+			<li>automate configurations (SaltStack + Temporal)</li>
+			<li>parse complex log files, and streamline documentation</li>
+		</ul>
+	</li>
+	<li>Solid Linux systems administration experience</li>
+	<li>Linux networking - iproute2, Traffic Control, Devlink, etc.</li>
+	<li>Strong software development skills in Go and Python</li>
 </ul>
-<p><strong>Compensation</strong></p>
+<h2>Bonus Points</h2>
+<ul>
+	<li>Deep knowledge of BGP and other routing protocols</li>
+	<li>Workflow Management (AirFlow, Temporal)</li>
+	<li>Open Source Routing Daemons (FRR, Bird, GoBGP)</li>
+	<li>Experience with bare metal switching</li>
+	<li>Experience with network programming in C, C++ or rust</li>
+	<li>Experience with the Linux kernel and Linux software packaging</li>
+	<li>Strong tooling and automations development experience</li>
+	<li>Time series databases (Prometheus, Grafana, Thanos, Clickhouse)</li>
+	<li>Other Tools - Kubernetes, Docker, Prometheus, Consul</li>
+</ul>
+<p>&nbsp;</p>
+<h3>Compensation</h3>
 <p>Compensation may be adjusted depending on work location.</p>
-<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
-<p><strong>Equity</strong><br>The role is eligible to participate in Cloudflare's equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>For Colorado based hires: Estimated annual salary of $150,000 - $206,000</li>
+</ul>
+<h3>Equity</h3>
+<p>This role is eligible to participate in Cloudflare's equity plan.</p>
+<h3>Benefits</h3>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>Health &amp; Welfare Benefits</p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -59,26 +66,18 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<p>Financial Benefits</p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<p>Time Off</p>
 <ul>
-	<li>
-		<ul>
-			<li>Flexible paid time off covering vacation and sick leave</li>
-			<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-		</ul>
-	</li>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

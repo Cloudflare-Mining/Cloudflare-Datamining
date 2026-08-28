@@ -3,51 +3,52 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3>Available Locations</h3>
+<p><strong>Available Locations:&nbsp;</strong></p>
 <ul>
-	<li>US</li>
+	<li>Austin, TX (Relocation Assistance provided to those willing to relocate)</li>
 </ul>
-<p><strong>Applications will be accepted until September 20, 2026.</strong></p>
-<h2>About the role</h2>
-<p>Cloudflare is growing our People team. Our focus is finding the best people to work at Cloudflare and then allowing them to do their best work. As we continue to scale our global organization, we are looking for a trusted Business Partner who is naturally curious about our technology, deeply invested in our business strategy, and driven to help our people thrive.In this role, you will report to the Senior Director, People Team Business Partners and serve as a heavy-hitting strategic partner to our senior leadership across Product, Engineering and Security.</p>
-<p>You won't just execute HR programs; you will actively architect them. You will focus on macro-level organizational design, sophisticated talent management strategies, systemic change leadership, and workforce planning that aligns directly with our aggressive business goals. Moving at our pace brings a lot of change, complexity, and ambiguity—and a little bit of chaos. Cloudflarians thrive on that and are comfortable being uncomfortable. You will bring critical thought, deep business acumen, and a strong point of view to help our leaders navigate this unrelenting pace, transforming potential friction into high-impact execution.</p>
-<h2>Responsibilities</h2>
+<p><strong>About the Role </strong></p>
+<p>Cloudflare is scaling its global connectivity and security platform while transforming into an AI-native organization powered by our own AI harness and developer infrastructure. As Senior Director, R&amp;D HR Business Partnering, you will lead a global team of embedded HRBPs supporting senior executives across Engineering, Product, Security, and Research.</p>
+<p>In this role, you serve as the strategic HR leader for R&amp;D and the primary conductor bridging business leadership with our Centers of Excellence (Total Rewards, Talent Acquisition, Talent Development, People Operations). You will challenge and champion the business—architecting an organization built for AI-augmented velocity while protecting and evaluating the essential human elements of work: character, critical judgment, empathy, and leadership trust.</p>
+<p><strong>Key Focus Areas &amp; Responsibilities</strong></p>
+<p>Business Acumen &amp; COE Conduction</p>
 <ul>
-	<li><strong>Strategic Advisory:</strong> Act as a trusted advisor to R&amp;D executive leadership, translating business objectives into long-term workforce strategies, organizational designs, and succession plans.</li>
-	<li><strong>Insight-Driven Problem Solving:</strong> Synthesize complex qualitative and quantitative data—leveraging AI-driven insights and engagement analytics—to proactively identify trends, mitigate risks, and design predictive people solutions.</li>
-	<li><strong>Change Leadership:</strong> Guide leadership and teams through structural evolutions, hyper-growth scaling, and shifting business priorities with minimal disruption to engagement and output.</li>
-	<li><strong>Talent &amp; Capability Building:</strong> Partner with business leaders and People team Centers of Excellence (COEs) to design high-impact initiatives around talent development, performance elevation, and total rewards.</li>
+	<li>Partner directly with the Head of R&amp;D and technical VPs to align talent strategy with Cloudflare’s product roadmap, platform architecture, and operational goals.</li>
+	<li>Act as the chief conductor across People Team COEs—synthesizing R&amp;D’s operational realities to push COEs for tailored, high-impact talent programs while challenging R&amp;D leaders to elevate their organizational standards.</li>
+	<li>Apply analytical rigor to people metrics, diagnosing organizational health, attrition trends, and productivity indicators to guide business decisions proactively.</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<p>Organizational Design &amp; AI Integration</p>
 <ul>
-	<li>Motivated by cultivating high-performance culture, building great businesses, and helping people do their best work, you are a seasoned, consultative People leader. You don't just adapt to the future of work—you actively leverage modern tools and a relentless curiosity to shape it.</li>
-	<li><strong>Experienced &amp; Proven:</strong> You have 12+ years of progressive experience on a People/HR team, with at least 3+ years operating as a principal business partner backing complex, fast-paced corporate functions.</li>
-	<li><strong>Business-First Strategist:</strong> You possess keen business acumen and effortlessly link HR strategy to commercial and operational outcomes. You think like a business leader who happens to specialize in people, always looking for ways to enable teams to hit their goals.</li>
-	<li><strong>Relentlessly Curious:</strong> You possess an innate curiosity about what we build, how our teams operate, and what makes our people tick. You dive deep into the data and the dynamics of your organizations to diagnose root causes rather than just treating symptoms.</li>
-	<li><strong>AI &amp; Tech Savvy:</strong> You embrace modern innovation, utilizing AI and advanced digital tooling as strategic force multipliers. You leverage AI to enhance your personal productivity, streamline operational efficiency, and uncover data-driven insights that solve complex organizational challenges. <em>(And yes, you still secretly love a sophisticated spreadsheet!)</em></li>
-	<li><strong>Architect of Change:</strong> You have a proven track record of leading large-scale change initiatives through highly ambiguous environments. You know what organizational complexity looks like and possess the resilience and resourcefulness to drive ideation into concrete action.</li>
-	<li><strong>Program Builder:</strong> You have built scalable, enterprise-grade programs from the ground up and have a demonstrated history of establishing immediate credibility and trust across all levels of a distributed, virtual organization.</li>
-	<li><strong>Empathic Influencer &amp; Communicator:</strong> You lead with empathy but do not shy away from radical candor. You are a masterful communicator—whether presenting to executives, writing strategic proposals, or delivering difficult feedback face-to-face.</li>
-	<li><strong>High Integrity:</strong> Uncompromising when it comes to your ethics, you speak truth to power, act with deep respect, and lead with dignity.</li>
+	<li>Architect agile, high-velocity R&amp;D structures designed for AI-native workflows, optimizing team size, spans of control, and cross-functional interfaces across platform and product teams.</li>
+	<li>Partner with engineering leadership to rethink operating rhythms and team structures as development shifts from traditional models to AI-assisted, agent-driven engineering.</li>
 </ul>
-<h3 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
-<p data-path-to-node="1,0,0">Compensation may be adjusted depending on work location.</p>
-<ul data-path-to-node="1">
-	<li>
-		<p data-path-to-node="1,1,0">For SF, SJ, and Bay Area Metro based hires: Estimated annual salary of $187,000 - $257,000.</p>
-	</li>
-	<li>
-		<p data-path-to-node="1,2,0">For Boston, California - Remote, Connecticut - Remote, DC Metro, Massachusetts - Remote, New Jersey - Remote, New York City, NY Metro, Remote - Washington, Washington (Kirkland), and Washington D.C. based hires: Estimated annual salary of $178,000 - $245,000.</p>
-	</li>
-	<li>
-		<p data-path-to-node="1,3,0">For Colorado - Remote, Illinois - Remote, Maryland - Remote, Minnesota - Remote, Nevada - Remote, New York - Remote, Rhode Island - Remote, and Vermont - Remote based hires: Estimated annual salary of $162,000 - $223,000.</p>
-	</li>
+<p>Talent Portfolio Management &amp; Human Judgment</p>
+<ul>
+	<li>Evolve technical career frameworks, leveling, and role definitions to reflect the higher leverage expected in AI-native engineering environments.</li>
+	<li>Drive succession planning, critical-role mapping, and retention strategies for specialized technical talent across Cloudflare’s global hubs.</li>
+	<li>Establish clear boundaries between work optimized by AI and decisions requiring human judgment, ethical clarity, nuance, and character.</li>
 </ul>
-<h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare's equity plan.</p>
-<h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p>Health &amp; Welfare Benefits</p>
+<p>Driving Change &amp; Strategic Initiatives</p>
+<ul>
+	<li>Drive complex, continuous change initiatives across global R&amp;D teams, equipping leaders to navigate structural evolution, technological pivots, and shifting priorities with clarity.</li>
+	<li>Deliver custom, service-oriented solutions tailored to business needs, providing high-trust coaching to senior technical leaders as they navigate complex team dynamics with empathy and results.</li>
+	<li>Team Leadership<br>Lead a global team of HRBPs, setting a high standard for strategic partnership, business fluency, and execution speed.</li>
+</ul>
+<p><strong>What You'll Bring</strong></p>
+<ul>
+	<li>Leadership &amp; Scale: 15+ years of progressive HR experience, including 5+ years leading an HRBP team supporting technical R&amp;D, Engineering, or Product orgs in high-growth environments.</li>
+	<li>Core Pillar Excellence: Demonstrated expertise across all four functional buckets: business acumen, organizational design, talent portfolio management, and driving change.</li>
+	<li>AI &amp; Human Acumen: Deep understanding of how AI tools reshape technical workflows, combined with strong character assessment and human judgment when evaluating leadership potential and organizational health.</li>
+	<li>COE Orchestration: Proven track record acting as an operational conductor between executive stakeholders and specialized People functions to deliver integrated talent solutions.</li>
+	<li>Executive Presence: Ability to advise, challenge, and coach VP+ technical leaders with confidence, empathy, and business fluency.</li>
+</ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -58,14 +59,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p>Financial Benefits</p>
+<p><strong>Financial Benefits</strong></p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p>Time Off</p>
+<p><strong>Time Off</strong></p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

@@ -3,35 +3,30 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3><strong>Available Locations: Austin, TX or London, UK (Hybrid)</strong></h3>
-<h3><strong>About the Role</strong></h3>
-<p>You’ll help define how machine learning models run across Cloudflare’s global network, from frontier open LLMs and real-time voice models to customer-deployed models served on heterogeneous GPUs and next-generation accelerators. You’ll work with systems engineers, product teams, hardware partners, and AI/ML engineers to bring models into production with low latency, strong reliability, and efficient resource use. This role combines applied ML, inference optimization, evaluation, and production engineering, with a focus on benchmarking models, improving serving performance, validating quality, and building tooling that helps Cloudflare and its customers ship AI applications at Internet scale.</p>
-<h3><strong>Responsibilities</strong></h3>
+<p><strong>Available Locations: Austin</strong></p>
+<p><strong>Role Summary</strong></p>
+<p>Back in 2014, Cloudflare launched Universal SSL to provide all of our customers with the security of encrypted traffic between visitors and Cloudflare’s network. On the day we flipped the switch, we doubled the amount of sites using SSL/TLS on the internet. Since then, we’ve been working on providing even more ways to encrypt traffic easier and more effectively. To better serve our customers, we’re constantly improving our systems for issuing, managing, and deploying TLS certificates. By joining Cloudflare’s SSL/TLS Team, you can help ensure that every site owner has the ability to provide their users with a secure connection.</p>
+<p>Your code will help ensure millions of websites have access to encryption. As such, the results of your code will be felt by millions of site owners and billions of visitors every day. We’re continuously providing technology to site owners that was previously only available to the largest organizations. Your contributions will help make the web a faster, safer, better, and more heavily encrypted place.</p>
+<p>Cloudflare is looking for a Systems Engineer to help us build services with RESTful APIs and their own datastores using Go and other languages. You will also write and maintain functional specifications for your service, so others know how it works. In this role you will integrate multiple services via message queue systems and evaluate 3rd party and open source tools. You will design and implement alerts, write procedures for ops to handle such alerts, or serve as an escalation point for unresolved operational issues. You will also need to read and understand code from a legacy codebase to migrate logic to a modern services architecture and review the code of fellow engineers via pull requests.&nbsp; We strive to build reliable, fault-tolerant systems that can operate at Cloudflare’s scale.</p>
+<p><strong>Role Requirements (Must-Have Skills)</strong></p>
 <ul>
-	<li>Develop, optimize, and productionize machine learning models for Cloudflare’s serverless inference platform, with a focus on performance, reliability, and model quality.</li>
-	<li>Build benchmarking and evaluation frameworks to measure latency, throughput, cost efficiency, and model behavior across LLMs, speech, vision, and other model families.</li>
-	<li>Improve inference performance through quantization, batching, caching, model compilation, runtime tuning, and accelerator-aware optimization.</li>
-	<li>Partner with systems engineers to integrate models into Cloudflare’s distributed inference infrastructure across a heterogeneous fleet of GPUs and next-generation accelerators.</li>
-	<li>Drive improvements to model deployment workflows, including validation, rollout safety, observability, regression testing, and operational readiness.</li>
-	<li>Collaborate with product and engineering teams to translate customer requirements into scalable ML capabilities for Workers AI.</li>
-	<li>Mentor engineers, contribute to technical direction, and raise the quality bar for production ML engineering practices across the team.</li>
+	<li>3+ years of professional experience building backend systems at a technology company</li>
+	<li>Experience writing production-quality code in Go (or other languages with a willingness to learn Go)</li>
+	<li>Proven experience building and operating distributed systems</li>
+	<li>Proficiency with modern Unix/Linux development and runtime environments</li>
+	<li>Strong debugging and troubleshooting skills with attention to detail</li>
+	<li>Track record of delivering well-tested, reliable code for production environments</li>
 </ul>
-<h3><strong>Desirable Skills, Knowledge, and Experience</strong></h3>
+<p><strong>Desirable Skills, Knowledge, and Experience</strong></p>
 <ul>
-	<li>Experience building, optimizing, and operating machine learning models in production environments.</li>
-	<li>Strong proficiency with Python and modern ML frameworks such as PyTorch, TensorFlow, JAX, or equivalent.</li>
-	<li>Hands-on experience with inference optimization techniques for large-scale models, including quantization, batching, caching, compilation, and serving runtime tuning.</li>
-	<li>Experience with large-scale inference serving frameworks or runtimes such as SGLang, vLLM, TensorRT-LLM, ONNX Runtime, Triton, llama.cpp, or similar.</li>
-	<li>Familiarity with LLMs, speech models, vision models, embeddings, multimodal models, retrieval-augmented generation, or other modern deep learning architectures.</li>
-	<li>Experience optimizing models for GPUs or specialized accelerators.</li>
-	<li>Strong understanding of production ML concerns, including evaluation, monitoring, model regressions, rollout safety, and reliability.</li>
-	<li>Ability to work across ML and systems boundaries, including familiarity with distributed systems, networking, or serverless platforms.</li>
-	<li>Track record of leading complex technical projects and mentoring other engineers.</li>
+	<li>Experience designing and building RESTful APIs and full-stack applications</li>
+	<li>Familiarity with PKI/TLS concepts and certificate management</li>
+	<li>Experience writing technical documentation and specifications</li>
+	<li>Working knowledge of SQL and relational databases such as PostgreSQL</li>
+	<li>Understanding of distributed systems constraints: performance, caching, data storage/retrieval</li>
+	<li>Experience with message queues (Kafka, RabbitMQ, etc)</li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
-<ul>
-	<li>Experience contributing to open source ML tooling, model serving frameworks, or inference runtimes.</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

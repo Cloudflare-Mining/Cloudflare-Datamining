@@ -3,35 +3,50 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Austin (US), London (UK)</p>
-<h4><strong>Role Summary</strong></h4>
-<p>As a Product Security Engineer, you will support security assessments and vulnerability operations for Cloudflare’s core software products. In this role, you will analyze system architecture, threat model new features, and ensure that product-related security findings are accurately triaged, routed to the correct engineering owners, and mitigated within our SLAs.</p>
-<p>On any given day, you might conduct a deep-dive security review on a new feature design, triage a complex bug bounty submission, or work directly with engineering teams to resolve vulnerabilities from different sources like bug bounties, SAST, fuzzing and penetration tests. You will also work autonomously to identify areas where our manual processes slow down. You will write code and integrate AI/LLM solutions to automate initial triage and data enrichment, building tools that help the team handle security findings at scale. In short, your work will sit at the intersection of Product Security, Vulnerability Operations, and internal AI Tooling. Ideally, you&nbsp;have experience in conducting academic/vulnerability research with a focus on systems security.</p>
-<p><strong>Responsibilities</strong></p>
+<h3><strong>Available Location: Greater Seattle area<br></strong></h3>
+<p><strong>About the Department</strong></p>
+<p>Account Executives, Channel Account Managers, Business Development Representatives, Solution Engineers, Customer Success, and Sales Operations - all working together help our customers adopt Cloudflare and create great Internet-enabled experiences. The sales team at Cloudflare helps customers solve real, technical problems while creating the revenue streams that help the company provide free service to millions in our community.</p>
+<p><strong>About this Role</strong></p>
+<p>This role within the mid-market segment focuses on both the acquisition of new Territory accounts, as well as the expansion of existing customer accounts.&nbsp; Within the mid-market segment, you will work a set of accounts in the territory sub-segments. The ideal candidate will have both a sales and technical background that enables them to drive customer engagement from technical professionals through to senior executive levels, and across Security, Network, Development and Infrastructure teams.&nbsp;&nbsp;</p>
+<p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li><strong>Implement AI Security Solutions:</strong> Identify process bottlenecks and build AI-driven tools or scripts to help automate code analysis, optimize triage, and streamline Product Security workflows.</li>
-	<li><strong>Security Reviews &amp; Threat Modeling:</strong> Conduct structured security reviews and threat modeling sessions (e.g., STRIDE) across product features, defining security requirements early in the development lifecycle.</li>
-	<li><strong>Product Vulnerability Management:</strong> Manage the operational lifecycle of product security findings. Ensure vulnerabilities are verified, mapped to the correct engineering owner, and tracked to mitigation in alignment with established SLAs.</li>
-	<li><strong>Bug Bounty Triage:</strong> Perform the technical triage and validation of Cloudflare’s external Bug Bounty submissions, verifying exploitability and evaluating business risk.</li>
-	<li><strong>Pentest Coordination:</strong> Support internal and external penetration testing engagements by reviewing findings, clarifying technical context, and assisting development teams with remediation strategies.</li>
-	<li><strong>Engineering Collaboration:</strong> Partner closely with DevOps and product teams, acting as a reliable security point of contact and helping developers implement secure coding practices.</li>
+	<li>Develop and execute a comprehensive account/territory plan to achieve quarterly sales and annual revenue targets in a defined territory and/or account list.</li>
+	<li>Drive new business acquisition (new customer logos), customer expansion (upsell and cross sell Cloudflare solutions), and renewal within your territory.</li>
+	<li>Engage in account mapping sessions with partners, including training new partners on our technology and GTM strategies.</li>
+	<li>Developing scalable relationships with target partners, to expand partner ecosystem in a specific region.</li>
+	<li>Build a robust sales pipeline through continual engagement and nurturing of key prospect accounts.</li>
+	<li>Understand customer use-cases and how they pair with Cloudflare’s portfolio solutions in order to identify new sales opportunities.</li>
+	<li>Craft and communicate compelling value propositions for Cloudflare services. Drive awareness through regular outbound campaigns on product and feature roadmap updates.&nbsp;</li>
+	<li>Accurately forecast commercial outcomes by running a consistent sales process, including driving next step expectations and contract negotiations.</li>
+	<li>As a trusted advisor, build long-term strategic relationships with key accounts, to ensure customer adoption, retention and expansion. Regularly evaluate usage trends and articulate value to show Cloudflare impact and provide strategic recommendations during business reviews.&nbsp;</li>
+	<li>Network across different business units with each of your accounts, and multi-thread to identify and engage new divisional buyers.</li>
+	<li>Position Cloudflare's platform in each of your target customers, including Cloudflare One and the Connectivity Cloud to realize our full potential in every customer.</li>
+	<li>Operate internally as a liaison with cross-functional teams to share key customer feedback and insights to improve customer experience and further investments with Cloudflare.</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience</strong></h4>
+<p><strong>Requirements:</strong></p>
 <ul>
-	<li><strong>Product/AppSec Expertise:</strong> 5+ years of experience in Product or Application Security within large-scale distributed cloud environments or SaaS platforms.</li>
-	<li><strong>Practical AI &amp; Automation Engineering:</strong> Demonstrated ability to build production-grade automation scripts and tools. Must possess hands-on engineering experience leveraging AI/LLMs to solve operational or technical challenges.</li>
-	<li><strong>Threat Modeling &amp; Risk Analysis:</strong> Competency in threat modeling methodologies and the ability to evaluate code flaws to determine their actual engineering and security impact.</li>
-	<li><strong>Vulnerability Lifecycle Operations:</strong> Experience tracking, routing, and driving the remediation of software vulnerabilities across engineering groups while working against defined SLAs.</li>
-	<li><strong>Strong Collaboration &amp; Communication:</strong> Ability to collaborate effectively across teams, clearly communicating technical security risks to software engineers and resolving ownership ambiguity constructively.</li>
+	<li>3+ years of direct B2B selling experience</li>
+	<li>Strong interpersonal communication (verbal and written) and organizational skills</li>
+	<li>Self-motivated; entrepreneurial spirit</li>
+	<li>Comfortable working in a fast paced dynamic environment</li>
+	<li>Bachelor's degree required</li>
+	<li>Demonstrated analytical and quantitative abilities</li>
+	<li>Software and system skills are a must (SFDC, Tableau, G-suite, MSFT suite)</li>
 </ul>
-<p><strong>Bonus points</strong></p>
+<h3><strong>Examples of desirable skills, knowledge and experience:</strong></h3>
 <ul>
-	<li><strong>Offensive Security Tooling:</strong> Familiarity with modern exploitation techniques, fuzzing frameworks, or automated scanning utilities.</li>
-	<li><strong>Program Management Experience:</strong> Experience scaling crowdsourced security programs (e.g., HackerOne, Bugcrowd) or optimizing agile project management workflows within JIRA.</li>
-	<li>Experience in integrating hardware security features into production code bases</li>
+	<li>5+ years in Software/SaaS/Security Sales &amp; Channel management.</li>
+	<li>Existing relationships and/or strong familiarity of the partner ecosystem in the region that they cover.</li>
+	<li>Understanding of cloud infrastructure ecosystem and cloud security is highly preferred.</li>
+	<li>Experience working in a start-up environment.</li>
+	<li>Ability to travel up to 25% of the time.</li>
+	<li>Technical competence strongly preferred.</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<p>For Washington Estimated annual salary of $269,000 - $370,000</p>
+<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
+<p><strong>Equity</strong><br>The role is eligible to participate in Cloudflare's equity plan.</p>
 <p><strong>Benefits</strong></p>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <p><strong>Health &amp; Welfare Benefits</strong></p>
@@ -54,9 +69,17 @@
 </ul>
 <p><strong>Time Off</strong></p>
 <ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>
+		<ul>
+			<li>Flexible paid time off covering vacation and sick leave</li>
+			<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+		</ul>
+	</li>
 </ul>
+<div id="te-floating-button-container"></div>
+<div id="te-floating-button-container"></div>
+<div id="te-floating-button-container"></div>
+<div id="te-floating-button-container"></div>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

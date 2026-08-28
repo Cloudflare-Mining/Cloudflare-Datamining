@@ -3,47 +3,76 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available location: Austin, TX</strong></p>
-<p><strong>About the Role</strong></p>
-<p>We are looking for a highly motivated and tech-savvy <strong>Controllership Operations Accounting Intern</strong> to join our Accounts Payable (AP) team. This isn’t your traditional data-entry internship. While you will gain hands-on experience with core accounting operations, your primary focus will be on the future of finance: <strong>process optimization and AI automation</strong>.</p>
-<p>You will help us modernize our Procure-to-Pay (P2P) lifecycle, acting as a bridge between operational accounting and technological innovation. If you are passionate about finding smarter ways to work and want to see how artificial intelligence is transforming corporate finance, this is the role for you.</p>
-<p>&nbsp;</p>
-<h3><strong>Key Responsibilities</strong></h3>
-<p><strong>Process Improvement &amp; P2P Optimization</strong></p>
+<h3>Available Locations</h3>
 <ul>
-	<li>Support analyzing and mapping current Procure-to-Pay (P2P) workflows to identify bottlenecks, manual touchpoints, and inefficiencies.</li>
-	<li>Collaborate with the controllership team to design and implement streamlined processes that reduce cycle times and improve accuracy.</li>
-	<li>Assist in developing standard operating procedures (SOPs) for newly optimized workflows.</li>
+	<li>New York, NY</li>
+	<li>Washington DC</li>
 </ul>
-<p><strong>AI &amp; Automation Projects</strong></p>
+<h3><strong>About the Role</strong></h3>
+<p>The Manager, Customer Experience is a strategic people leader responsible for building, coaching, and scaling a high-performing team of Customer Experience Managers (CXMs). In this role, you will empower your team to lead the post-sale journey, from onboarding to long-term retention and expansion. You will serve as a mentor and escalation point, guiding your team in building strategic stakeholder relationships and articulating business value. You will lead the operational strategy for your region, ensuring accurate forecasting and driving team-wide adoption of AI-driven workflows to automate routine tasks and uncover growth opportunities. Your focus is on developing talent, optimizing the customer journey, and scaling our CX organization to accelerate customer outcomes and maximize operational efficiency.</p>
+<h3><strong>Responsibilities</strong></h3>
+<p>Team Leadership &amp; Career Development</p>
 <ul>
-	<li>Support the rollout of AI initiatives within the AP function (e.g., automated invoice data extraction, intelligent workflow routing).</li>
-	<li>Act as a liaison between the accounting team and technical developers, helping to translate business needs into technical requirements.</li>
-	<li>Help test and validate new automation software, ensuring data integrity between our financial systems and new AI tools.</li>
+	<li>Directly manage and coach a team of CXMs, fostering a culture of high performance, accountability, and continuous learning.</li>
+	<li>Drive career development initiatives, including regular 1:1s, performance reviews, and skill-gap analysis to prepare team members for growth.</li>
 </ul>
-<p><strong>Core AP &amp; Employee Expense Operations</strong></p>
+<p>Operational Strategy &amp; Performance Management</p>
 <ul>
-	<li>Provide ad-hoc support for invoice processing and payment run workflows.</li>
-	<li>Assist with the auditing and compliance of employee Travel &amp; Expense (T&amp;E) transaction reports.</li>
-	<li>Assist with month-end close activities related to AP and general controllership duties.</li>
+	<li>Oversee regional forecasting and pipeline hygiene in Salesforce, ensuring accurate reporting to leadership.</li>
+	<li>Establish and optimize operational workflows, including the integration of AI tools for account quoting and automated lifecycle alerts.</li>
 </ul>
-<p>&nbsp;</p>
-<h3><strong>Qualifications &amp; Skills</strong></h3>
+<p>Cross-Functional Alignment &amp; Escalation</p>
 <ul>
-	<li><strong>Education:</strong> Currently pursuing a Bachelor’s or Master’s degree in Accounting, Finance, Management Information Systems (MIS), Data Analytics, or a related field.</li>
-	<li><strong>Technical Aptitude:</strong> A strong foundational understanding of technology, data analytics, or AI-related projects is highly preferred. While coding is not required for this role, you should possess the technical fluency to communicate effectively with developers, grasp complex system architectures, and understand how automation is built.</li>
-	<li><strong>Systems Experience:</strong> Familiarity with ERP systems (e.g., SAP, Oracle, NetSuite) or expense management platforms (e.g., Navan) is a plus.</li>
-	<li><strong>Analytical Mindset:</strong> A natural problem-solver who doesn't just ask "how" a process works, but "why" it works that way and how it can be improved through technology.</li>
-	<li><strong>Detail-Oriented:</strong> Ability to maintain high accuracy when dealing with financial data while simultaneously seeing the big picture of process design.</li>
+	<li>Act as the ultimate point of escalation for complex commercial negotiations, legal redlines, and commercial business issues.</li>
+	<li>Maintain strong alignment with Sales, Product, and Support leadership to resolve friction points in the customer journey.</li>
 </ul>
-<p>&nbsp;</p>
-<h3><strong>What You Will Learn</strong></h3>
+<p>AI Competencies</p>
 <ul>
-	<li>How a corporate controllership function operates at scale.</li>
-	<li>Practical, hands-on experience deploying AI and automation tools in a real-world financial environment.</li>
-	<li>Project management and cross-functional communication skills, specifically bridging the gap between business and IT.</li>
+	<li>Generative AI: Mastery of LLMs to rapidly draft renewal communications, synthesize quarterly review data, and prepare executive summaries.</li>
+	<li>Data Analysis: Proficiency in leveraging AI analytics tools to parse customer usage metrics and instantly highlight up-sell or cross-sell opportunities.</li>
+	<li>Workflow Automation: Ability to build automations to synchronize CRM data, update weekly forecasts, and trigger lifecycle alerts.</li>
+	<li>AI Problem Solving: The instinct to view AI as a partner in solving tough problems to keep the Internet moving forward.</li>
 </ul>
-<p><br><br></p>
+<h3><strong>Desirable Skills, Knowledge, and Experience</strong></h3>
+<ul>
+	<li>Minimum of 5 years of experience in Customer Success and Renewals Sales, with at least 2 years in a direct people management role.</li>
+	<li>Proven track record of scaling teams and managing organizational transitions in a high-growth SaaS environment.</li>
+	<li>Expertise in SaaS retention strategies, commercial negotiations, and value-driven sales leadership.</li>
+	<li>Strong proficiency in coaching teams on AI competencies, including LLM utilization and automated workflow building.</li>
+	<li>Deep understanding of cloud security and networking industries; ability to translate technical concepts into business strategy.</li>
+	<li>Exceptional mentorship and leadership skills with a focus on empathy, transparency, and results.</li>
+	<li>Excellent problem solving skills with the ability to creatively achieve resolutions.</li>
+</ul>
+<h3><strong>Compensation</strong></h3>
+<p>Compensation may be adjusted depending on work location. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
+<p>For New York and DC based hires: Estimated annual salary of $158,000 - $219,000.</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

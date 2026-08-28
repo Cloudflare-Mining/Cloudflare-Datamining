@@ -43,12 +43,18 @@
 	<li><strong>Technical &amp; Core HR Fluency:</strong> Solid foundational understanding of employment legal basics, high-growth compensation structures, and visa/immigration complexities (critical for international or highly technical talent).</li>
 	<li><strong>Influence Without Authority:</strong> Exceptional communication and relationship-building skills. Ability to earn the trust of elite technical founders and seamlessly align cross-functional internal executives.</li>
 </ul>
-<h3>Compensation</h3>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For San Francisco Bay Area based hires: Estimated annual salary of $187,000 - $257,000</li>
-	<li>For New York City, Washington, and California (excluding Bay Area) based hires. Estimated annual salary of $178,000 - $245,000</li>
-	<li>For Colorado based hires: Estimated annual salary of $162,000 - $223,000</li>
+<h3 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
+<p data-path-to-node="1,0,0">Compensation may be adjusted depending on work location.</p>
+<ul data-path-to-node="1">
+	<li>
+		<p data-path-to-node="1,1,0">For SF, SJ, and Bay Area Metro based hires: Estimated annual salary of $214,000 - $295,000.</p>
+	</li>
+	<li>
+		<p data-path-to-node="1,2,0">For Boston, California - Remote, Connecticut - Remote, DC Metro, Massachusetts - Remote, New Jersey - Remote, New York City, NY Metro, Remote - Washington, Washington (Kirkland), and Washington D.C. based hires: Estimated annual salary of $205,000 - $282,000.</p>
+	</li>
+	<li>
+		<p data-path-to-node="1,3,0">For Colorado - Remote, Illinois - Remote, Maryland - Remote, Minnesota - Remote, Nevada - Remote, New York - Remote, Rhode Island - Remote, and Vermont - Remote based hires: Estimated annual salary of $186,000 - $256,000</p>
+	</li>
 </ul>
 <h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare's equity plan.</p>

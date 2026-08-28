@@ -9,11 +9,11 @@
 	<li>Austin, US</li>
 	<li>Denver, US</li>
 	<li>New York, US</li>
-	<li>Toronto, Canada</li>
+	<li>San Francisco, US</li>
+	<li>Seattle, US</li>
 	<li>Washington DC, US</li>
-	<li>US</li>
+	<li>Canada</li>
 </ul>
-<p><strong>Applications will be accepted until November 23, 2026.</strong></p>
 <h2>About the Role</h2>
 <p>The Security Platform team is an infrastructure/developer tools group tasked with building and operating powerful, resilient, and secure infrastructure and systems that enable other engineering teams to deliver products to our customers efficiently and securely. We are responsible for secrets management, internal certificate authorities/PKI, machine and workload identity, and more. We are not a policy, audit, or compliance team, but rather an infrastructure engineering/software development one.</p>
 <h2>Responsibilities</h2>
@@ -40,8 +40,14 @@
 <h3>Compensation</h3>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
+	<li>For California based hires: Estimated annual salary of $220,000 - $303,000</li>
 	<li>For Colorado based hires: Estimated annual salary of $200,000 - $275,000</li>
+	<li>For New York based hires: Estimated annual salary of $220,000 - $303,000</li>
+	<li>For Washington based hires: Estimated annual salary of $220,000 - $303,000</li>
+	<li>For Washington DC based hires: Estimated annual salary of $220,000 - $303,000</li>
+	<li>For Canada based hires: Estimated annual salary of $192,000 - $264,000</li>
 </ul>
+<h3>Applications will be accepted until November 25, 2026.</h3>
 <h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare's equity plan.</p>
 <h3>Benefits</h3>

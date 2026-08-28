@@ -3,45 +3,35 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h2>Available Locations</h2>
+<p><strong>Available Location - </strong>Canada; Remote</p>
+<p><strong>Job Title - </strong>Senior Security Compliance Specialist</p>
+<p><strong>The Team</strong></p>
+<p>Security Compliance is a critical business function at Cloudflare. Compliance certifications allow our customers to be confident in the security and privacy of our products, while also providing frameworks for well-tuned information security management systems and programs. These standards provide clarity to Cloudflare’s teams on how to incorporate security principles in the management of systems, the development of products, and the expansion of our business footprint.</p>
+<p>This is an opportunity to join a world-class security organization within a billion-dollar business. You will join as a member focused on leading Cloudflare through the Canadian Centre for Cyber Security (CCCS) Cloud Service Provider (CSP) Information Technology (ITS) Assessment Process. This team is part of the Governance, Risk, and Compliance team and is part of the greater Security Team reporting to Cloudflare’s Chief Security Officer.</p>
+<p>&nbsp;</p>
+<p><strong>What you’ll do</strong></p>
 <ul>
-	<li>Austin, TX</li>
+	<li>Lead Cloudflare through the CCCS CSP ITS Assessment process</li>
+	<li>Update and maintain CCCS requirements within Cloudflare’s Common Control Framework</li>
+	<li>Work cross-functionally with Engineering, Legal, Product, and operational teams to drive security control implementation for the organization</li>
+	<li>Improve the maturity of Cloudflare’s Security Compliance program</li>
+	<li>Help guide our overall security policy and governance architecture</li>
+	<li>Have input into the overall security compliance strategy</li>
 </ul>
-<h2>Responsibilities</h2>
+<p>&nbsp;</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Cloudflare operates a large global network spanning hundreds of cities (data centers). You will join a team of talented network engineers who are building software solutions to improve network resilience and reduce operational toil.</li>
-	<li>This position will be responsible for the technical operation and engineering of the Cloudflare's core data center network, including the planning, installation and management of the hardware and software as well as the day-to-day operations of the network. The core network supports our critical internal needs such as databases, high volume logging, and internal application clusters. This is an opportunity to be part of the team that is building a high­-performance network that is accessible to any web property online.</li>
-	<li>You will build tools to automate operational tasks, streamline deployment processes and provide a platform for other engineering teams to build upon. You will nurture a passion for an “automate everything” approach that makes systems failure-resistant and ready-to-scale. Furthermore, you will be required to play a key role in system design and demonstrate the ability to bring an idea from design all the way to production.</li>
+	<li>5+ years of experience working in Security Compliance</li>
+	<li>Led the pursuit of, or maintained a CCCS Medium / PBMM certification</li>
+	<li>Deep understanding of the CCCS CSP ITS assessment processes</li>
+	<li>Deep understanding of CCCS requirements</li>
+	<li>Familiarity with additional security standards and frameworks such as ISO 27000, SOC 2, PCI DSS, HITRUST, FedRAMP</li>
+	<li>Ability to work cross-functionally with internal stakeholders and strong communications skills</li>
+	<li>Ability to work closely with auditors and articulate technical concepts</li>
+	<li>Ability to work efficiently and independently in a fast-paced, high-volume environment</li>
+	<li>Willingness to travel occasionally to engage with regulators and auditors</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
-<ul>
-	<li>3 years of relevant Network/Site Reliability Engineering experience</li>
-	<li>BA/BS in Computer Science or equivalent experience</li>
-	<li>Solid foundation on configuration management frameworks: Saltstack, Ansible, Chef</li>
-	<li>Experience with NX-OS, JUNOS, EOS, Cumulus, or Sonic Network Operating Systems</li>
-	<li>AI-native: being able to leverage LLM to:
-		<ul>
-			<li>build agentic deployment and troubleshooting tools on top of the Cloudflare stack</li>
-			<li>automate configurations (SaltStack + Temporal)</li>
-			<li>parse complex log files, and streamline documentation</li>
-		</ul>
-	</li>
-	<li>Solid Linux systems administration experience</li>
-	<li>Linux networking - iproute2, Traffic Control, Devlink, etc.</li>
-	<li>Strong software development skills in Go and Python</li>
-</ul>
-<h2>Bonus Points</h2>
-<ul>
-	<li>Deep knowledge of BGP and other routing protocols</li>
-	<li>Workflow Management (AirFlow, Temporal)</li>
-	<li>Open Source Routing Daemons (FRR, Bird, GoBGP)</li>
-	<li>Experience with bare metal switching</li>
-	<li>Experience with network programming in C, C++ or rust</li>
-	<li>Experience with the Linux kernel and Linux software packaging</li>
-	<li>Strong tooling and automations development experience</li>
-	<li>Time series databases (Prometheus, Grafana, Thanos, Clickhouse)</li>
-	<li>Other Tools - Kubernetes, Docker, Prometheus, Consul</li>
-</ul>
+<p><br><br></p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

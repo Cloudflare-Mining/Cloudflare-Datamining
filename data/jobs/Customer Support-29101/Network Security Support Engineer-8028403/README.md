@@ -3,35 +3,46 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3><strong>Available Locations: Austin, TX or London, UK (Hybrid)</strong></h3>
-<h3><strong>About the Role</strong></h3>
-<p>You’ll help define how machine learning models run across Cloudflare’s global network, from frontier open LLMs and real-time voice models to customer-deployed models served on heterogeneous GPUs and next-generation accelerators. You’ll work with systems engineers, product teams, hardware partners, and AI/ML engineers to bring models into production with low latency, strong reliability, and efficient resource use. This role combines applied ML, inference optimization, evaluation, and production engineering, with a focus on benchmarking models, improving serving performance, validating quality, and building tooling that helps Cloudflare and its customers ship AI applications at Internet scale.</p>
-<h3><strong>Responsibilities</strong></h3>
+<p><strong>Available Locations: </strong>Austin, TX</p>
+<h4><strong>About the Department</strong></h4>
+<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
+<h4><strong>About the Role</strong></h4>
+<p>Do you love solving complex technical problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking an experienced Network Security Engineer to join our team and support our largest and most technically sophisticated customers in resolving technical problems, threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare products from Magic Transit Infrastructure Protection, Argo Smart Routing, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum and Rate Limiting to help customers.</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Develop, optimize, and productionize machine learning models for Cloudflare’s serverless inference platform, with a focus on performance, reliability, and model quality.</li>
-	<li>Build benchmarking and evaluation frameworks to measure latency, throughput, cost efficiency, and model behavior across LLMs, speech, vision, and other model families.</li>
-	<li>Improve inference performance through quantization, batching, caching, model compilation, runtime tuning, and accelerator-aware optimization.</li>
-	<li>Partner with systems engineers to integrate models into Cloudflare’s distributed inference infrastructure across a heterogeneous fleet of GPUs and next-generation accelerators.</li>
-	<li>Drive improvements to model deployment workflows, including validation, rollout safety, observability, regression testing, and operational readiness.</li>
-	<li>Collaborate with product and engineering teams to translate customer requirements into scalable ML capabilities for Workers AI.</li>
-	<li>Mentor engineers, contribute to technical direction, and raise the quality bar for production ML engineering practices across the team.</li>
+	<li>Communicate with customers via chat, email, and phone&nbsp;</li>
+	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
+	<li>DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</li>
+	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation when applicable</li>
+	<li>Work with Engineering and Product teams to improve products and tools</li>
 </ul>
-<h3><strong>Desirable Skills, Knowledge, and Experience</strong></h3>
+<h4>Desirable Skills, Knowledge, and Experience</h4>
 <ul>
-	<li>Experience building, optimizing, and operating machine learning models in production environments.</li>
-	<li>Strong proficiency with Python and modern ML frameworks such as PyTorch, TensorFlow, JAX, or equivalent.</li>
-	<li>Hands-on experience with inference optimization techniques for large-scale models, including quantization, batching, caching, compilation, and serving runtime tuning.</li>
-	<li>Experience with large-scale inference serving frameworks or runtimes such as SGLang, vLLM, TensorRT-LLM, ONNX Runtime, Triton, llama.cpp, or similar.</li>
-	<li>Familiarity with LLMs, speech models, vision models, embeddings, multimodal models, retrieval-augmented generation, or other modern deep learning architectures.</li>
-	<li>Experience optimizing models for GPUs or specialized accelerators.</li>
-	<li>Strong understanding of production ML concerns, including evaluation, monitoring, model regressions, rollout safety, and reliability.</li>
-	<li>Ability to work across ML and systems boundaries, including familiarity with distributed systems, networking, or serverless platforms.</li>
-	<li>Track record of leading complex technical projects and mentoring other engineers.</li>
+	<li>Fluent English speaker is a requirement</li>
+	<li>Minimum 3 years working within a Technical Support team solving various technical issues&nbsp;</li>
+	<li>Self-driven and capable of learning new technologies / systems / features with little guidance</li>
+	<li>Fundamental understanding how the Internet works (OSI Model)</li>
+	<li>Advanced understanding of internet protocols like TCP and UDP</li>
+	<li>Computer Networking fundamentals, experience with iptables and looking glass</li>
+	<li>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</li>
+	<li>Packet capture analysis</li>
+	<li>Experience in command line and tools, including curl, dig, traceroute, openssl, git</li>
+	<li>Experience troubleshooting DNS, SSL / TLS, HTTP</li>
+	<li>Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</li>
+	<li>Experience writing scripts in Bash, Python, JavaScript or other scripting language</li>
+	<li>Experience in working as part of a team in a customer-facing role</li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
+<h4><strong>Bonus Points</strong></h4>
 <ul>
-	<li>Experience contributing to open source ML tooling, model serving frameworks, or inference runtimes.</li>
+	<li>You are familiar with Cloudflare and are actively using our platform</li>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</li>
+	<li>You are fluent and can troubleshoot in other languages beyond English and Spanish</li>
 </ul>
+<h4><strong>Availability and Schedule Requirements</strong></h4>
+<ul>
+	<li>Flexibility to work varying work schedules including: 8:30 AM - 5:30 PM Pacific Time Zone, Tuesday through Saturday, Sunday through Thursday, holidays, weekends, more than 5 days in a row, or additional hours on occasion.</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
