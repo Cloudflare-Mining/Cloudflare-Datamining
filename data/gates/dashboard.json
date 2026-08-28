@@ -1325,9 +1325,6 @@
 	"edgeworkerdb-maintenance-banner": {
 		"enabled": true
 	},
-	"email-consolidated-ui": {
-		"enabled": false
-	},
 	"email-deprecate-old-ui": {
 		"enabled": true
 	},
@@ -1338,13 +1335,10 @@
 		"enabled": false
 	},
 	"email-routing-subdomains": {
-		"enabled": false
-	},
-	"email-routing-suppressions": {
-		"enabled": false
+		"enabled": true
 	},
 	"email-sending-account-nav": {
-		"enabled": false
+		"enabled": true
 	},
 	"email-sending-preview": {
 		"enabled": true
@@ -1356,6 +1350,9 @@
 		"enabled": true
 	},
 	"email-services": {
+		"enabled": true
+	},
+	"email-suggestions-card": {
 		"enabled": true
 	},
 	"email-verify-login-interstitial": {
