@@ -443,7 +443,7 @@
 		"x-fern-sdk-group-name": "logexplorer.account.datasets",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
-		"x-forge-require-confirmation": true
+		"x-forge-require-confirmation": "This operation deletes a Log Explorer dataset for the account."
 	},
 	"DELETE /zones/{zone_id}/logs/explorer/datasets/{dataset_id}": {
 		"operationId": "zones-logs-explorer-datasets-delete",
@@ -889,7 +889,7 @@
 		"x-fern-sdk-group-name": "logexplorer.zone.datasets",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
-		"x-forge-require-confirmation": true
+		"x-forge-require-confirmation": "This operation deletes a Log Explorer dataset for the zone."
 	},
 	"GET /accounts/{account_id}/logs/explorer/datasets": {
 		"operationId": "accounts-logs-explorer-datasets-list",

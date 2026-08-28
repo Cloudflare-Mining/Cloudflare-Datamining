@@ -1150,6 +1150,15 @@
 				"explode": false
 			},
 			{
+				"name": "include_tags",
+				"in": "query",
+				"description": "Include Account tags from the resource tag mirror. Omit this parameter to preserve the existing Account response shape.",
+				"schema": {
+					"type": "boolean"
+				},
+				"explode": false
+			},
+			{
 				"description": "An opaque token returned from the last list response that when\nprovided will retrieve the next page.\n\nParameters used to filter the retrieved list must remain in subsequent\nrequests with a page token.",
 				"explode": false,
 				"in": "query",
@@ -1260,6 +1269,13 @@
 													"use_account_custom_ns_by_default",
 													"default_nameservers"
 												]
+											},
+											"tags": {
+												"description": "Account tags, present only when `include_tags=true` is requested.",
+												"type": "object",
+												"additionalProperties": {
+													"type": "string"
+												}
 											},
 											"type": {
 												"type": "string",

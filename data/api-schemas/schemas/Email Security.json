@@ -252,6 +252,7 @@
 		"x-fern-sdk-group-name": "email-security.investigate.bulk",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation permanently deletes the completed, cancelled, failed, or skipped bulk action job from all list and detail endpoints.",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate": {
@@ -5713,6 +5714,35 @@
 				"description": "When true, return only submissions that were escalated by an end user (vs. by the security team). When false, return only submissions that were not escalated by an end user. When omitted, no filter is applied.",
 				"schema": {
 					"type": "boolean"
+				}
+			},
+			{
+				"name": "order",
+				"in": "query",
+				"description": "Field to sort by.",
+				"schema": {
+					"type": "string",
+					"default": "requested_at",
+					"enum": [
+						"submission_id",
+						"subject",
+						"original_disposition",
+						"requested_disposition",
+						"outcome_disposition",
+						"requested_at"
+					]
+				}
+			},
+			{
+				"description": "The sorting direction.",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"asc",
+						"desc"
+					]
 				}
 			},
 			{

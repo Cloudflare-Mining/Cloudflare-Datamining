@@ -508,6 +508,13 @@
 													"default_nameservers"
 												]
 											},
+											"tags": {
+												"description": "Account tags, present only when `include_tags=true` is requested.",
+												"type": "object",
+												"additionalProperties": {
+													"type": "string"
+												}
+											},
 											"type": {
 												"type": "string",
 												"enum": [

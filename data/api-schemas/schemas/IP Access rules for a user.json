@@ -16,12 +16,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Delete an IP Access rule response.",
@@ -390,7 +384,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.firewall.access-rules",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes the user-level IP Access Rule and affects every zone owned by the user."
 	},
 	"GET /user/firewall/access_rules/rules": {
 		"operationId": "ip-access-rules-for-a-user-list-ip-access-rules",
@@ -1969,7 +1964,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.firewall.access-rules",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /user/firewall/access_rules/rules/{rule_id}": {
 		"operationId": "ip-access-rules-for-a-user-update-an-ip-access-rule",
@@ -2848,15 +2847,13 @@
 								"x-auditable": true
 							},
 							"notes": {
-								"allOf": [
+								"default": "",
+								"anyOf": [
 									{
 										"description": "An informative summary of the rule, typically used as a reminder or explanation.",
 										"type": "string",
 										"example": "This rule is enabled because of an event that occurred on date X.",
 										"x-auditable": true
-									},
-									{
-										"default": ""
 									}
 								]
 							}

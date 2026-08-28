@@ -418,7 +418,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "firewall.zone-access-rules",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes the zone-level IP Access Rule. If cascade is enabled, similar rules in other zones may also be deleted."
 	},
 	"GET /zones/{zone_id}/firewall/access_rules/rules": {
 		"operationId": "ip-access-rules-for-a-zone-list-ip-access-rules",
@@ -2198,15 +2199,13 @@
 								"x-auditable": true
 							},
 							"notes": {
-								"allOf": [
+								"default": "",
+								"anyOf": [
 									{
 										"description": "An informative summary of the rule, typically used as a reminder or explanation.",
 										"type": "string",
 										"example": "This rule is enabled because of an event that occurred on date X.",
 										"x-auditable": true
-									},
-									{
-										"default": ""
 									}
 								]
 							}

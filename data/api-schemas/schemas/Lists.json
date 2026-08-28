@@ -33,12 +33,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Delete a list response.",
@@ -367,7 +361,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes the custom list and every item it contains."
 	},
 	"DELETE /accounts/{account_id}/rules/lists/{list_id}/items": {
 		"operationId": "lists-delete-list-items",
@@ -794,7 +789,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists.items",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes the selected items from the custom list."
 	},
 	"GET /accounts/{account_id}/rules/lists": {
 		"operationId": "lists-get-lists",

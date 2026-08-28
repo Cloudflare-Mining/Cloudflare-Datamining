@@ -1,4 +1,173 @@
 {
+	"GET /accounts/{account_id}/ai-gateway/logging-state": {
+		"operationId": "aig-config-get-logging-state",
+		"summary": "Get AI Gateway logging state",
+		"description": "Returns the canonical logging platform and migration availability for an account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns the account logging state",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"migrated_at": {
+											"type": "integer",
+											"minimum": 0,
+											"nullable": true
+										},
+										"migration_available": {
+											"type": "boolean"
+										},
+										"platform": {
+											"type": "string",
+											"enum": [
+												"legacy",
+												"workers_observability"
+											]
+										}
+									},
+									"required": [
+										"platform",
+										"migrated_at",
+										"migration_available"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Logging state is temporarily unavailable",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Account"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write",
+			"AI Gateway Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-sdk-group-name": "ai-gateway.logging-state",
+		"x-fern-sdk-method-name": "get"
+	},
 	"GET /accounts/{account_id}/builds/account/limits": {
 		"operationId": "getAccountLimits",
 		"summary": "Get account limits",
@@ -135,5 +304,176 @@
 		"x-fern-sdk-group-name": "workers-builds",
 		"x-fern-sdk-method-name": "get-account-limits",
 		"x-forge-hidden": true
+	},
+	"PATCH /accounts/{account_id}/ai-gateway/logging-state": {
+		"operationId": "aig-config-patch-logging-state",
+		"summary": "Migrate AI Gateway logging to Workers Observability",
+		"description": "Irreversibly migrates an eligible account to Workers Observability logging.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns the migrated account logging state",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"migrated_at": {
+											"type": "integer",
+											"minimum": 0,
+											"nullable": true
+										},
+										"migration_available": {
+											"type": "boolean"
+										},
+										"platform": {
+											"type": "string",
+											"enum": [
+												"legacy",
+												"workers_observability"
+											]
+										}
+									},
+									"required": [
+										"platform",
+										"migrated_at",
+										"migration_available"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Migration is not available for this account",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Logging state is temporarily unavailable",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Account"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-sdk-group-name": "ai-gateway.logging-state",
+		"x-fern-sdk-method-name": "update"
 	}
 }

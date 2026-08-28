@@ -1951,9 +1951,7 @@
 											},
 											"index_method": {
 												"type": "object",
-												"additionalProperties": {
-													"nullable": true
-												},
+												"additionalProperties": true,
 												"properties": {
 													"keyword": {
 														"type": "boolean"
@@ -1969,9 +1967,7 @@
 											},
 											"indexing_options": {
 												"type": "object",
-												"additionalProperties": {
-													"nullable": true
-												},
+												"additionalProperties": true,
 												"nullable": true,
 												"properties": {
 													"keyword_tokenizer": {
@@ -1994,9 +1990,7 @@
 											},
 											"metadata": {
 												"type": "object",
-												"additionalProperties": {
-													"nullable": true
-												},
+												"additionalProperties": true,
 												"nullable": true,
 												"properties": {
 													"created_from_aisearch_wizard": {
@@ -2028,9 +2022,7 @@
 											},
 											"public_endpoint_params": {
 												"type": "object",
-												"additionalProperties": {
-													"nullable": true
-												},
+												"additionalProperties": true,
 												"nullable": true,
 												"properties": {
 													"authorized_hosts": {
@@ -2041,9 +2033,7 @@
 													},
 													"chat_completions_endpoint": {
 														"type": "object",
-														"additionalProperties": {
-															"nullable": true
-														},
+														"additionalProperties": true,
 														"properties": {
 															"disabled": {
 																"type": "boolean"
@@ -2069,9 +2059,7 @@
 													},
 													"mcp": {
 														"type": "object",
-														"additionalProperties": {
-															"nullable": true
-														},
+														"additionalProperties": true,
 														"properties": {
 															"description": {
 																"type": "string"
@@ -2083,9 +2071,7 @@
 													},
 													"rate_limit": {
 														"type": "object",
-														"additionalProperties": {
-															"nullable": true
-														},
+														"additionalProperties": true,
 														"properties": {
 															"period_ms": {
 																"type": "integer",
@@ -2107,9 +2093,7 @@
 													},
 													"search_endpoint": {
 														"type": "object",
-														"additionalProperties": {
-															"nullable": true
-														},
+														"additionalProperties": true,
 														"properties": {
 															"disabled": {
 																"type": "boolean"
@@ -2127,17 +2111,13 @@
 											},
 											"retrieval_options": {
 												"type": "object",
-												"additionalProperties": {
-													"nullable": true
-												},
+												"additionalProperties": true,
 												"nullable": true,
 												"properties": {
 													"boost_by": {
 														"type": "array",
 														"items": {
-															"additionalProperties": {
-																"nullable": true
-															},
+															"additionalProperties": true,
 															"properties": {
 																"dataType": {
 																	"type": "string",
@@ -2196,9 +2176,7 @@
 											},
 											"source_params": {
 												"type": "object",
-												"additionalProperties": {
-													"nullable": true
-												},
+												"additionalProperties": true,
 												"nullable": true,
 												"properties": {
 													"exclude_items": {
@@ -2221,15 +2199,11 @@
 													},
 													"web_crawler": {
 														"type": "object",
-														"additionalProperties": {
-															"nullable": true
-														},
+														"additionalProperties": true,
 														"properties": {
 															"discover_options": {
 																"type": "object",
-																"additionalProperties": {
-																	"nullable": true
-																},
+																"additionalProperties": true,
 																"properties": {
 																	"depth": {
 																		"type": "number",
@@ -2265,16 +2239,12 @@
 															},
 															"parse_options": {
 																"type": "object",
-																"additionalProperties": {
-																	"nullable": true
-																},
+																"additionalProperties": true,
 																"properties": {
 																	"content_selector": {
 																		"type": "array",
 																		"items": {
-																			"additionalProperties": {
-																				"nullable": true
-																			},
+																			"additionalProperties": true,
 																			"properties": {
 																				"path": {
 																					"type": "string",
@@ -3886,9 +3856,7 @@
 											},
 											"index_method": {
 												"type": "object",
-												"additionalProperties": {
-													"nullable": true
-												},
+												"additionalProperties": true,
 												"properties": {
 													"keyword": {
 														"type": "boolean"
@@ -3904,9 +3872,7 @@
 											},
 											"indexing_options": {
 												"type": "object",
-												"additionalProperties": {
-													"nullable": true
-												},
+												"additionalProperties": true,
 												"nullable": true,
 												"properties": {
 													"keyword_tokenizer": {
@@ -3929,9 +3895,7 @@
 											},
 											"metadata": {
 												"type": "object",
-												"additionalProperties": {
-													"nullable": true
-												},
+												"additionalProperties": true,
 												"nullable": true,
 												"properties": {
 													"created_from_aisearch_wizard": {
@@ -3963,9 +3927,7 @@
 											},
 											"public_endpoint_params": {
 												"type": "object",
-												"additionalProperties": {
-													"nullable": true
-												},
+												"additionalProperties": true,
 												"nullable": true,
 												"properties": {
 													"authorized_hosts": {
@@ -3976,9 +3938,7 @@
 													},
 													"chat_completions_endpoint": {
 														"type": "object",
-														"additionalProperties": {
-															"nullable": true
-														},
+														"additionalProperties": true,
 														"properties": {
 															"disabled": {
 																"type": "boolean"
@@ -4004,9 +3964,7 @@
 													},
 													"mcp": {
 														"type": "object",
-														"additionalProperties": {
-															"nullable": true
-														},
+														"additionalProperties": true,
 														"properties": {
 															"description": {
 																"type": "string"
@@ -4018,9 +3976,7 @@
 													},
 													"rate_limit": {
 														"type": "object",
-														"additionalProperties": {
-															"nullable": true
-														},
+														"additionalProperties": true,
 														"properties": {
 															"period_ms": {
 																"type": "integer",
@@ -4042,9 +3998,7 @@
 													},
 													"search_endpoint": {
 														"type": "object",
-														"additionalProperties": {
-															"nullable": true
-														},
+														"additionalProperties": true,
 														"properties": {
 															"disabled": {
 																"type": "boolean"
@@ -4062,17 +4016,13 @@
 											},
 											"retrieval_options": {
 												"type": "object",
-												"additionalProperties": {
-													"nullable": true
-												},
+												"additionalProperties": true,
 												"nullable": true,
 												"properties": {
 													"boost_by": {
 														"type": "array",
 														"items": {
-															"additionalProperties": {
-																"nullable": true
-															},
+															"additionalProperties": true,
 															"properties": {
 																"dataType": {
 																	"type": "string",
@@ -4131,9 +4081,7 @@
 											},
 											"source_params": {
 												"type": "object",
-												"additionalProperties": {
-													"nullable": true
-												},
+												"additionalProperties": true,
 												"nullable": true,
 												"properties": {
 													"exclude_items": {
@@ -4156,15 +4104,11 @@
 													},
 													"web_crawler": {
 														"type": "object",
-														"additionalProperties": {
-															"nullable": true
-														},
+														"additionalProperties": true,
 														"properties": {
 															"discover_options": {
 																"type": "object",
-																"additionalProperties": {
-																	"nullable": true
-																},
+																"additionalProperties": true,
 																"properties": {
 																	"depth": {
 																		"type": "number",
@@ -4200,16 +4144,12 @@
 															},
 															"parse_options": {
 																"type": "object",
-																"additionalProperties": {
-																	"nullable": true
-																},
+																"additionalProperties": true,
 																"properties": {
 																	"content_selector": {
 																		"type": "array",
 																		"items": {
-																			"additionalProperties": {
-																				"nullable": true
-																			},
+																			"additionalProperties": true,
 																			"properties": {
 																				"path": {
 																					"type": "string",
@@ -7429,7 +7369,11 @@
 													"type": "array"
 												},
 												{
-													"nullable": true
+													"enum": [
+														null
+													],
+													"nullable": true,
+													"type": "string"
 												}
 											]
 										},
@@ -7583,7 +7527,11 @@
 																"type": "array"
 															},
 															{
-																"nullable": true
+																"enum": [
+																	null
+																],
+																"nullable": true,
+																"type": "string"
 															}
 														]
 													},
@@ -8104,7 +8052,11 @@
 													"type": "array"
 												},
 												{
-													"nullable": true
+													"enum": [
+														null
+													],
+													"nullable": true,
+													"type": "string"
 												}
 											]
 										},
@@ -10235,7 +10187,11 @@
 													"type": "array"
 												},
 												{
-													"nullable": true
+													"enum": [
+														null
+													],
+													"nullable": true,
+													"type": "string"
 												}
 											]
 										},
@@ -10389,7 +10345,11 @@
 																"type": "array"
 															},
 															{
-																"nullable": true
+																"enum": [
+																	null
+																],
+																"nullable": true,
+																"type": "string"
 															}
 														]
 													},
@@ -11068,7 +11028,11 @@
 													"type": "array"
 												},
 												{
-													"nullable": true
+													"enum": [
+														null
+													],
+													"nullable": true,
+													"type": "string"
 												}
 											]
 										},

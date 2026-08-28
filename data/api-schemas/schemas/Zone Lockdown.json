@@ -30,12 +30,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Delete a Zone Lockdown rule response",
@@ -198,7 +192,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "firewall.lockdowns",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes the Zone Lockdown rule from the zone."
 	},
 	"GET /zones/{zone_id}/firewall/lockdowns": {
 		"operationId": "zone-lockdown-list-zone-lockdown-rules",

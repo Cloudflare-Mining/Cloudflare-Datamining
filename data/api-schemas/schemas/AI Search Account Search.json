@@ -291,7 +291,11 @@
 													"type": "array"
 												},
 												{
-													"nullable": true
+													"enum": [
+														null
+													],
+													"nullable": true,
+													"type": "string"
 												}
 											]
 										},
@@ -446,7 +450,11 @@
 																"type": "array"
 															},
 															{
-																"nullable": true
+																"enum": [
+																	null
+																],
+																"nullable": true,
+																"type": "string"
 															}
 														]
 													},
@@ -1007,7 +1015,11 @@
 													"type": "array"
 												},
 												{
-													"nullable": true
+													"enum": [
+														null
+													],
+													"nullable": true,
+													"type": "string"
 												}
 											]
 										},

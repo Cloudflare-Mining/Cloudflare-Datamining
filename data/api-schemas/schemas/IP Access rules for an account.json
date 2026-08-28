@@ -27,12 +27,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Delete an IP Access rule response.",
@@ -370,7 +364,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "firewall.access-rules",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes the account-level IP Access Rule and affects every zone in the account."
 	},
 	"GET /accounts/{account_id}/firewall/access_rules/rules": {
 		"operationId": "ip-access-rules-for-an-account-list-ip-access-rules",
@@ -3377,15 +3372,13 @@
 								"x-auditable": true
 							},
 							"notes": {
-								"allOf": [
+								"default": "",
+								"anyOf": [
 									{
 										"description": "An informative summary of the rule, typically used as a reminder or explanation.",
 										"type": "string",
 										"example": "This rule is enabled because of an event that occurred on date X.",
 										"x-auditable": true
-									},
-									{
-										"default": ""
 									}
 								]
 							}
