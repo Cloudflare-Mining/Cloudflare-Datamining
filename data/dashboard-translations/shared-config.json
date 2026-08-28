@@ -1,6 +1,7 @@
 {
 	"shared-config.page.title": "Shared configurations",
 	"shared-config.page.description": "Product configuration that is shared across accounts within your organization. Please visit individual product pages to create shared configurations.",
+	"shared-config.page.description_onboarding": "Review configurations shared across accounts in this organization. Manage each configuration in its source account; recipient accounts receive read-only updates.",
 	"shared-config.page.account_not_in_org": "This account is not in an organization. Accounts must be a member of an organization to create shared configurations.",
 	"shared-config.share_id": "Share ID",
 	"shared-config.create_button": "Create shared configuration",
@@ -14,6 +15,10 @@
 	"shared-config.share_status": "Share status",
 	"shared-config.product": "Product",
 	"shared-config.resource_type": "Resource type",
+	"shared-config.policy_sharing_guide": "View sharing guide",
+	"shared-config.column_explainers.resources": "Configurations included in this share.",
+	"shared-config.column_explainers.source_account": "The account where this configuration is managed. Updates automatically propagate to recipient accounts.",
+	"shared-config.column_explainers.recipients": "Accounts that receive a read-only copy of this configuration.",
 	"shared-config.recipient_accounts": "Recipient account(s)",
 	"shared-config.excluded_accounts": "Excluded account(s)",
 	"shared-config.tag_filter.placeholder": "Filter by tag (key or key=value)",
@@ -25,8 +30,13 @@
 	"shared-config.empty_state.description_sent": "Get started by visiting a product page to share configurations with other accounts in your organization.",
 	"shared-config.empty_state.description_received": "No configurations have been shared with this account yet.",
 	"shared-config.empty_state.description_org": "No configurations have been shared within this organization yet.",
+	"shared-config.empty_state.title_org_onboarding": "No shared configurations yet",
+	"shared-config.empty_state.description_org_onboarding": "Create a supported configuration in a source account, then share it with other accounts in this organization.",
 	"shared-config.empty_state.no_matching_title": "No matching configurations",
 	"shared-config.empty_state.no_matching_description": "No configurations match the selected filters. Try adjusting your filters.",
+	"shared-config.empty_state.error_title": "We couldn't load shared configurations",
+	"shared-config.empty_state.error_description": "Try again to load shared configurations.",
+	"shared-config.empty_state.retry": "Try again",
 	"shared-config.delete.confirm_title": "Are you sure you want to delete this shared configuration?",
 	"shared-config.delete.confirm_description": "Deleting this shared configuration will remove it from all accounts it is shared with."
 }
