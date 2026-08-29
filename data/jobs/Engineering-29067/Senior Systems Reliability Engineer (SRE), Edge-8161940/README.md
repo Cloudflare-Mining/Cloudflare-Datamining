@@ -3,36 +3,52 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h2 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Oracle ALM Lead</strong></h2>
-<p data-path-to-node="1"><strong data-path-to-node="1" data-index-in-node="0">Location:</strong> Austin, TX</p>
-<h3 data-path-to-node="8"><strong data-path-to-node="8" data-index-in-node="0">About the Role</strong></h3>
-<p data-path-to-node="9">We are seeking an <strong data-path-to-node="9" data-index-in-node="18">Oracle ALM Lead</strong> to spearhead the solution architecture, functional configuration, and deployment of our Oracle Fusion Cloud ERP financial modules—covering General Ledger, Accounts Payable, Lease Accounting, Fixed Assets, and Project Accounting.</p>
-<p data-path-to-node="10">As a key member of the ERP overhaul team transitioning our global infrastructure from NetSuite to Oracle, you will serve as the Subject Matter Expert (SME). You will be responsible for designing and implementing robust, scalable solutions for asset purchase, invoicing, capitalization, depreciation, project costing, billing, and seamless asset integration with the General Ledger.</p>
-<h3 data-path-to-node="12"><strong data-path-to-node="12" data-index-in-node="0">What You’ll Do</strong></h3>
+<p><strong>Available Locations:</strong> London, UK</p>
+<p><strong>About the Role</strong></p>
+<p>We are looking for talented Systems Reliability Engineers to build and operate our Edge platform running in more than 320 cities in over 120 countries. Our SREs come from diverse technical backgrounds and have built up their knowledge working in different environments, but common factors across all of our reliability-focused engineers include a passion for automation, scalability, and operational excellence. We support our services in a “follow the sun” model with offices in East Asia, Europe and North America.</p>
+<p>This is a superb opportunity to join a high-performing team and scale our high-growth network as Cloudflare’s business grows. We live at the boundary between systems, network, and software, and love improving the glue that holds them together. Working with us, you will build tools to constantly improve service availability, performance, and operational velocity. You will nurture a passion for an “automate everything” approach that makes systems failure resistant and ready to scale.</p>
+<p>SREs focus on the immediate state and functionality of the Cloudflare platform around the world, leveraging an array of monitoring, alerting and diagnostics tools while developing and enhancing the Cloudflare platform and its capabilities. We own a wide portfolio of applications and services, running a tight feedback loop of developer and operator patterns. The ideal SRE candidate has a passionate curiosity about how the Internet fundamentally works and has a strong knowledge of networking, Linux and TLS along with coding ability in Go or Python.</p>
+<p><strong>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</strong></p>
+<p><strong>Requisite Skills</strong></p>
 <ul>
-	<li data-path-to-node="13,0,0"><strong data-path-to-node="13,0,0" data-index-in-node="0">Solution Architecture &amp; Scalability:</strong> Govern the technical architecture and scalability of Oracle Fusion configurations and integrations. Proactively evaluate the performance impact of new customizations to ensure all technical designs adhere to long-term sustainability, security, and maintainability standards within the enterprise ecosystem.</li>
-	<li data-path-to-node="13,1,0"><strong data-path-to-node="13,1,0" data-index-in-node="0">Implementation &amp; Project Leadership:</strong> Serve as the functional lead for the Oracle Fusion implementation across General Ledger, Intercompany, Accounts Payable, Fixed Assets, and Project Accounting. Own the complete Asset Lifecycle Management (ALM) lifecycle from detailed requirements documentation through integration testing, data migration, and production support.</li>
-	<li data-path-to-node="13,2,0"><strong data-path-to-node="13,2,0" data-index-in-node="0">Solution Design &amp; Collaboration:</strong> Conduct comprehensive discovery sessions with Accounting, Project Management Offices (PMO), Engineering, and Operational teams to capture nuanced business requirements. Develop detailed functional specifications for reports, workflows, and integrations.</li>
-	<li data-path-to-node="13,3,0"><strong data-path-to-node="13,3,0" data-index-in-node="0">Governance &amp; Support:</strong> Maintain high-quality training documentation and conduct role-based training for end-users across Finance and Project Management. Provide Level 2/3 functional support, conducting root-cause analysis for issues related to asset valuation, depreciation runs, and project cost reporting.</li>
-	<li data-path-to-node="13,4,0"><strong data-path-to-node="13,4,0" data-index-in-node="0">Data Strategy:</strong> Direct the strategy for data quality, conversion, and ongoing master data governance across all financial entities (e.g., Customers, Customer Accounts, Suppliers, COA, and Payment History).</li>
-	<li data-path-to-node="13,5,0"><strong data-path-to-node="13,5,0" data-index-in-node="0">Domain Expertise:</strong> Act as the internal Subject Matter Expert for core Finance processes and their corresponding capabilities within the Oracle Fusion suite.</li>
+	<li>Aptitude for identifying problems, owning them and working with others to solve them</li>
+	<li>Linux systems experience</li>
+	<li>3 years experience in an SRE role or a role with similar functions</li>
+	<li>Software development skills in some programming language such as Go or Python</li>
+	<li>Understanding of distributed software systems and large scale system design tradeoffs</li>
+	<li>Intermediate experience of common network protocols like DNS and HTTP</li>
+	<li>Understanding of routing protocols and concepts such as BGP and IP anycast&nbsp;</li>
 </ul>
-<h3 data-path-to-node="15"><strong>Role Requirements&nbsp;</strong></h3>
-<h3 data-path-to-node="15"><strong>Must-Have Skills</strong><strong data-path-to-node="16" data-index-in-node="0">:</strong></h3>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li data-path-to-node="17,0,0">Bachelor's degree in Finance, Information Systems, or a related technical/functional field (or equivalent practical experience).</li>
-	<li data-path-to-node="17,1,0">10+ years of experience in an IT or functional role supporting enterprise-grade financial systems.</li>
-	<li data-path-to-node="17,2,0">4+ years of deep, hands-on implementation and configuration experience with Oracle Fusion Cloud ERP modules (specifically General Ledger, Payables, Cash Management, Fixed Assets, and Project Costing).</li>
-	<li data-path-to-node="17,3,0">Strong foundational knowledge of accounting principles related to capitalization, depreciation methodologies, asset subledger accounting, and project cost accounting.</li>
-	<li data-path-to-node="17,4,0">Demonstrated track record leading or significantly contributing to a major enterprise ERP implementation involving these core modules.</li>
+	<li>Experience with the Linux kernel and Linux software packaging</li>
+	<li>Performance analysis and debugging</li>
+	<li>Configuration management systems such as Saltstack, Chef, Puppet or Ansible</li>
+	<li>Load balancing and reverse proxies such as Nginx, Varnish, HAProxy, Squid or Apache</li>
+	<li>SQL databases</li>
+	<li>Time series databases such as OpenTSDB, Graphite, Prometheus or Grafana</li>
+	<li>Key/Value stores</li>
 </ul>
-<h3 data-path-to-node="15"><strong>Nice-to-Have Skills</strong><strong data-path-to-node="18" data-index-in-node="0">:</strong></h3>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li data-path-to-node="19,0,0">Direct experience leading or supporting a system migration from NetSuite to Oracle Fusion/PPM/FA.</li>
-	<li data-path-to-node="19,1,0">Functional knowledge of Oracle Fusion Revenue Management (RM) for complex contract and project revenue recognition.</li>
-	<li data-path-to-node="19,2,0">Experience integrating project and asset data with Oracle EPM.</li>
-	<li data-path-to-node="19,3,0">Professional certification in Oracle Fusion Cloud Project Management or Oracle Fusion Cloud Fixed Assets.</li>
+	<li>Experience with continuous / rapid release engineering</li>
+	<li>Strong tooling and automation development experience</li>
+	<li>Experience working in a 24/7/365 service environment</li>
+	<li>Experience working with large scale production distributed systems</li>
+	<li>A history of contributing to Open Source Software</li>
 </ul>
+<p><strong>Some tools that we use</strong></p>
+<ul>
+	<li>Nginx</li>
+	<li>PostgreSQL</li>
+	<li>Docker</li>
+	<li>Prometheus</li>
+	<li>Grafana</li>
+	<li>Consul</li>
+	<li>Nomad</li>
+	<li>Salt</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

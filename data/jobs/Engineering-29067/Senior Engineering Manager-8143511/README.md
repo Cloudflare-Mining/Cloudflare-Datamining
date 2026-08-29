@@ -3,50 +3,40 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h2>Available Locations</h2>
+<p><strong>About the department</strong></p>
+<p>Cloudflare’s Billing Engineering Team is at the heart of every product launch, campaign, and initiative that Cloudflare undertakes. We build and maintain critical systems for billing, payments, usage metering, aggregation, invoicing and revenue recognition — powering billions in revenue and serving millions of customers.</p>
+<p>Currently we're rebuilding our entire billing platform, designing a metering and aggregation layer that scales effortlessly while ensuring financial accuracy. This is high-impact, high-stakes work that touches all Cloudflare’s cutting-edge products like AI, Zero Trust, Edge Compute, Bot Management, DDoS Protection, etc.</p>
+<p>As a Senior Engineering Manager, you’ll lead a team of talented, collaborative engineers working across Cloudflare’s ecosystem. You’ll navigate multiple high-profile projects, foster a culture of proactive communication and continuous learning, and drive technical excellence.</p>
+<p>If you thrive on solving hard challenges at the intersection of financial infrastructure and distributed systems, this is your opportunity to make a massive impact while growing with us.</p>
+<p><strong>What you'll do </strong>You will lead a team of talented engineers responsible for building and maintaining Cloudflare’s billing and payments infrastructure. You will oversee the development of scalable, high-reliability financial infrastructure that handles everything related to Cloudflare’s revenue. Your work will directly support billions in revenue and millions of customers while enabling new product launches across Cloudflare.</p>
+<p>You will play a key role in rebuilding our entire billing platform, designing a next-generation financial infrastructure that ensures financial accuracy and seamless performance. Leading a team of skilled engineers, you will drive the execution of complex technical initiatives, ensuring our architecture is resilient, scalable, and future-proof.&nbsp;</p>
+<p>Beyond technical execution, you will focus on growing and mentoring a high-performing engineering team. You will set clear expectations, provide thoughtful feedback, and create an environment where engineers can thrive. You will collaborate closely with product, engineering, finance, data science, operations and support departments to align technical decisions with business objectives. Your ability to communicate effectively, manage priorities, and navigate a fast-paced environment will be critical in driving success.</p>
+<p>This role is an opportunity to make a lasting impact at the intersection of financial infrastructure and distributed systems. You will help shape the future of Cloudflare, ensuring it can support the company’s rapid growth and evolving product ecosystem.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Austin, US</li>
-	<li>Washington DC, US</li>
-	<li>San Francisco, CA</li>
+	<li>Experience leading a team or multiple teams of senior and staff engineers.</li>
+	<li>Experience working with cross-functional teams, driving alignment, and clearly creating and communicating technical direction for large cross-company efforts.</li>
+	<li>Comfortable leading and hiring a team that builds the backend systems and frontend parts of the product.</li>
+	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability.</li>
+	<li>Comfortable building developer-loved APIs that scale.</li>
+	<li>Demonstrate a track record of leading a team including hiring, on-boarding, and professional development.</li>
+	<li>You inspire your team to reach higher.</li>
+	<li>You’re as good as explaining “why” as you are “how”.</li>
+	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages.</li>
+	<li>Comfortable managing teams/projections with tight deadlines and short release cycles.</li>
 </ul>
-<h2>About the Role</h2>
-<p>Cloudflare is seeking a lawyer with a passion for new technologies to join the Product Counsel team. The Product Counsel team serves as the frontline legal contact and helps solve some of the company’s thorniest issues. As a member of the team, you’ll wear many hats and lead cross-functional projects with meaningful impact. The ideal candidate brings deep enthusiasm for innovative technology and the ability to collaborate closely with product, engineering, and business teams throughout the software development and commercialization lifecycle.</p>
-<p>This role requires drafting and negotiating the technology transactions that fuel our products, such as our AI inference offerings. Through this work, you will help evaluate novel legal questions and craft practical solutions at the frontier of law and technology.</p>
-<p>As a member of the Product Counsel team, you will also support privacy-by-design reviews, document data flows for responsible AI counseling, and partner with the commercial legal team to address complex customer inquiries.</p>
-<h2>Responsibilities</h2>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Translate complex legal analysis into clear, actionable guidance for fast-moving product and engineering teams.</li>
-	<li>Proactively assess legal risks and advise product, engineering and business teams building services that reshape how information moves across the Internet—and the laws that govern it.</li>
-	<li>Review and architect legal frameworks for technology transactions related agreements, such as, technology partner agreements, inbound IP licensing agreements, and marketplace arrangements for Cloudflare’s developer platform.</li>
-	<li>Review marketing event agreements and support Cloudflare’s team with promotions and sweepstakes.</li>
-	<li>Draft terms of service, disclosures, policies, and related processes.</li>
-	<li>Apply privacy-by-design principles and partner with the privacy team on data-flow reviews, PIAs, and other privacy deliverables.</li>
-	<li>Solicit invention disclosures, support patent strategy, and protect Cloudflare’s trade secrets.</li>
-	<li>Partner with product and marketing teams on product marketing collateral and claim substantiation.</li>
-	<li>Build and refine processes that enable the Legal team to scale effectively as Cloudflare continues to expand.</li>
-	<li>Engage externally on behalf of Cloudflare in areas where you are a subject matter expert.</li>
+	<li>Experience building massive distributed systems.</li>
+	<li>Experience leading teams working on areas of financial infrastructure, payments, billing, and data infrastructure.</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
-<ul>
-	<li>JD degree with strong academic credentials and admitted to practice law in at least one U.S. jurisdiction.</li>
-	<li>4+ years of law firm and/or in-house experience, preferably with technology companies. Prior experience with Internet security and infrastructure companies is desired.</li>
-	<li>Technical background / expertise is highly desired. While a science or technical degree is not a prerequisite for this job, a passion for technologies is.</li>
-	<li>Experience with copyright law and Internet law is desired (e.g., AI Act, Data Act, net neutrality, DMCA, CFAA).</li>
-	<li>Strong communication skills and cooperative team player. Lead with empathy and understanding while embracing diverse points of view. Flexibility to adapt and thrive in a fast paced environment.</li>
-	<li>Ability to work cross-functionally, with lawyers and non-lawyers, to establish effective solutions efficiently and in an amenable manner.</li>
-	<li>Ability to organize, prioritize, and manage many tasks on complex projects. Experience with Jira or other project management solutions is desired.</li>
-</ul>
-<h2>Compensation</h2>
+<p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For Washington D.C. based hires: Estimated annual salary of $150,000 - $$207,000</li>
-	<li>For Bay Area based hires: Estimated annual salary of $158,000 - $217,000</li>
-</ul>
-<h3>Equity</h3>
+<p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3>Benefits</h3>
+<p><strong>Benefits</strong></p>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h3>Health &amp; Welfare Benefits</h3>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -57,14 +47,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<h3>Financial Benefits</h3>
+<p><strong>Financial Benefits</strong></p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<h3>Time Off</h3>
+<p><strong>Time Off</strong></p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

@@ -69,6 +69,8 @@
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
 	<li>For Colorado based hires: Estimated annual salary of $98,000 - $135,000</li>
+	<li>For Remote - Washington and Washington (Kirkland) based hires: Estimated annual salary of $120,000 - $165,000</li>
+	<li>For Washington D.C. based hires: Estimated annual salary of $120,000 - $165,000</li>
 </ul>
 <h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare's equity plan.</p>

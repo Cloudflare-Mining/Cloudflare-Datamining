@@ -31,6 +31,19 @@
 	<li>Ability to work efficiently and independently in a fast-paced, high-volume environment</li>
 	<li>Willingness to travel occasionally to engage with regulators and auditors</li>
 </ul>
+<p></p>
+<h3 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
+<ul data-path-to-node="1">
+	<li>
+		<p data-path-to-node="1,0,0">For Toronto based hires: Estimated annual salary is between CAD $109,000 - $150,000.</p>
+	</li>
+</ul>
+<h3 data-path-to-node="2"><strong data-path-to-node="2" data-index-in-node="0">Equity</strong></h3>
+<ul data-path-to-node="3">
+	<li>
+		<p data-path-to-node="3,0,0">This role is eligible to participate in Cloudflare's equity plan.</p>
+	</li>
+</ul>
 <p><br><br></p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

@@ -66,10 +66,18 @@
 	</li>
 </ul>
 <h3>Compensation</h3>
-<p>Compensation may be adjusted depending on work location.</p>
+<p>&nbsp;</p>
+<p data-path-to-node="1,0,0">Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For Colorado based hires: Estimated annual salary of $132,000 - $182,000</li>
+	<li>
+		<p data-path-to-node="1,1,0">For Denver based hires: Estimated annual salary of $132,000 - $182,000.</p>
+	</li>
+	<li>
+		<p data-path-to-node="1,2,0">Application Deadline: November 23, 2026</p>
+	</li>
+	<li>For Washington D.C. or Seattle based hires: Estimated annual salary of $165,000 - $227,000</li>
 </ul>
+<p>&nbsp;</p>
 <h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare's equity plan.</p>
 <h3>Benefits</h3>

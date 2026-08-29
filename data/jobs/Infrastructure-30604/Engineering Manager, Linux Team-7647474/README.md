@@ -32,8 +32,8 @@
 <h4>Compensation</h4>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For New York City and California (excluding Bay Area) based hires: Estimated annual salary of $170,000 - $275,000.</li>
-	<li>For Bay Area based hires: Estimated annual salary of $190,000 - $303,000</li>
+	<li>For New York City and California (excluding Bay Area) based hires: Estimated annual salary of $220,000 - $303,000.</li>
+	<li>For Bay Area based hires: Estimated annual salary of $230,000 - $317,000</li>
 </ul>
 <h4>Equity</h4>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
