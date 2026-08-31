@@ -3168,7 +3168,12 @@
 			"enum": [
 				"#cache_purge:edit"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cache",
+		"x-fern-sdk-method-name": "purge-environment",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "Are you sure you want to purge cache for this environment?"
 	},
 	"POST /zones/{zone_id}/purge_cache": {
 		"operationId": "zone-purge",

@@ -34,7 +34,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Pre-signed download URL",
+				"description": "Pre-signed download URL.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -68,7 +68,7 @@
 				}
 			},
 			"404": {
-				"description": "Finetune or asset not found",
+				"description": "Finetune or asset not found.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -115,6 +115,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai.finetunes.assets",
+		"x-fern-sdk-method-name": "download",
+		"x-forge-hidden": true
 	}
 }

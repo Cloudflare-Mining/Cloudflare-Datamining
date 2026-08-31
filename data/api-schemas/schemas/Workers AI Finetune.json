@@ -25,7 +25,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Finetune deleted successfully",
+				"description": "Finetune deleted successfully.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -60,7 +60,7 @@
 				}
 			},
 			"404": {
-				"description": "Finetune not found",
+				"description": "Finetune not found.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -130,7 +130,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Returns all finetunes",
+				"description": "Returns all finetunes.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -185,7 +185,7 @@
 				}
 			},
 			"400": {
-				"description": "Bad Request",
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -272,9 +272,9 @@
 			{
 				"name": "limit",
 				"in": "query",
-				"description": "Pagination Limit",
+				"description": "Pagination Limit.",
 				"schema": {
-					"description": "Pagination Limit",
+					"description": "Pagination Limit.",
 					"type": "number",
 					"default": 20
 				}
@@ -282,9 +282,9 @@
 			{
 				"name": "offset",
 				"in": "query",
-				"description": "Pagination Offset",
+				"description": "Pagination Offset.",
 				"schema": {
-					"description": "Pagination Offset",
+					"description": "Pagination Offset.",
 					"type": "number",
 					"default": 0
 				}
@@ -292,16 +292,16 @@
 			{
 				"name": "orderBy",
 				"in": "query",
-				"description": "Order By Column Name",
+				"description": "Order By Column Name.",
 				"schema": {
-					"description": "Order By Column Name",
+					"description": "Order By Column Name.",
 					"type": "string"
 				}
 			}
 		],
 		"responses": {
 			"200": {
-				"description": "Returns all public finetunes",
+				"description": "Returns all public finetunes.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -364,7 +364,7 @@
 				}
 			},
 			"400": {
-				"description": "Bad Request",
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -428,7 +428,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai.finetunes.public",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/ai/finetunes": {
 		"operationId": "workers-ai-create-finetune",
@@ -478,7 +482,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Returns the created finetune",
+				"description": "Returns the created finetune.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -538,7 +542,7 @@
 				}
 			},
 			"400": {
-				"description": "Finetune creation failed",
+				"description": "Finetune creation failed.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -619,19 +623,19 @@
 			}
 		],
 		"requestBody": {
-			"description": "Finetune asset file upload",
+			"description": "Finetune asset file upload.",
 			"content": {
 				"multipart/form-data": {
 					"schema": {
 						"type": "object",
 						"properties": {
 							"file": {
-								"description": "File to upload",
+								"description": "File to upload.",
 								"type": "string",
 								"format": "binary"
 							},
 							"file_name": {
-								"description": "Name of the file (adapter_config.json or adapter_model.safetensors)",
+								"description": "Name of the file (adapter_config.json or adapter_model.safetensors).",
 								"type": "string"
 							}
 						},
@@ -645,7 +649,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Returns successfully if finetunes were uploaded",
+				"description": "Returns successfully if finetunes were uploaded.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -663,7 +667,7 @@
 				}
 			},
 			"400": {
-				"description": "Finetune creation failed",
+				"description": "Finetune creation failed.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -713,6 +717,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai.finetunes.assets",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

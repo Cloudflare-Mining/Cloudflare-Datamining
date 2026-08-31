@@ -841,6 +841,63 @@
 						}
 					}
 				}
+			},
+			"504": {
+				"description": "Gateway timeout",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Gateway timeout"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
 			}
 		},
 		"tags": [

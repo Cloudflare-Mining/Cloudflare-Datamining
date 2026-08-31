@@ -2706,6 +2706,10 @@
 												"type": "string",
 												"nullable": true
 											},
+											"display_name": {
+												"description": "Repository display name.",
+												"type": "string"
+											},
 											"id": {
 												"type": "string"
 											},
@@ -2737,6 +2741,7 @@
 										"required": [
 											"id",
 											"name",
+											"display_name",
 											"description",
 											"default_branch",
 											"created_at",
@@ -3334,6 +3339,10 @@
 											"type": "string",
 											"nullable": true
 										},
+										"display_name": {
+											"description": "Repository display name.",
+											"type": "string"
+										},
 										"id": {
 											"type": "string"
 										},
@@ -3365,6 +3374,7 @@
 									"required": [
 										"id",
 										"name",
+										"display_name",
 										"description",
 										"default_branch",
 										"created_at",
@@ -9165,6 +9175,10 @@
 											"type": "string",
 											"nullable": true
 										},
+										"display_name": {
+											"description": "Repository display name.",
+											"type": "string"
+										},
 										"id": {
 											"type": "string"
 										},
@@ -9181,6 +9195,7 @@
 									"required": [
 										"id",
 										"name",
+										"display_name",
 										"description",
 										"default_branch",
 										"remote",
@@ -9888,6 +9903,10 @@
 											"type": "string",
 											"nullable": true
 										},
+										"display_name": {
+											"description": "Repository display name.",
+											"type": "string"
+										},
 										"id": {
 											"type": "string"
 										},
@@ -9909,6 +9928,7 @@
 									"required": [
 										"id",
 										"name",
+										"display_name",
 										"description",
 										"default_branch",
 										"remote",
@@ -10808,6 +10828,10 @@
 											"type": "string",
 											"nullable": true
 										},
+										"display_name": {
+											"description": "Repository display name.",
+											"type": "string"
+										},
 										"id": {
 											"type": "string"
 										},
@@ -10824,6 +10848,7 @@
 									"required": [
 										"id",
 										"name",
+										"display_name",
 										"description",
 										"default_branch",
 										"remote",

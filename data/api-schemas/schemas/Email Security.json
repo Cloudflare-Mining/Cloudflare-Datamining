@@ -351,6 +351,15 @@
 				"example": "noreply@example.com"
 			},
 			{
+				"name": "smtp_helo_ip",
+				"in": "query",
+				"description": "Matches messages whose SMTP HELO server IP address equals this value.",
+				"schema": {
+					"type": "string"
+				},
+				"example": "192.0.2.1"
+			},
+			{
 				"name": "alert_id",
 				"in": "query",
 				"schema": {
@@ -3993,6 +4002,11 @@
 																"type": "string",
 																"nullable": true
 															},
+															"smtp_helo_ip": {
+																"description": "Matches messages whose SMTP HELO server IP address equals this value.",
+																"type": "string",
+																"nullable": true
+															},
 															"start": {
 																"description": "Beginning of search date range.",
 																"type": "string",
@@ -4524,6 +4538,11 @@
 															"nullable": true
 														},
 														"sender": {
+															"type": "string",
+															"nullable": true
+														},
+														"smtp_helo_ip": {
+															"description": "Matches messages whose SMTP HELO server IP address equals this value.",
 															"type": "string",
 															"nullable": true
 														},
@@ -6943,6 +6962,11 @@
 										"type": "string",
 										"nullable": true
 									},
+									"smtp_helo_ip": {
+										"description": "Matches messages whose SMTP HELO server IP address equals this value.",
+										"type": "string",
+										"nullable": true
+									},
 									"start": {
 										"description": "Beginning of search date range.",
 										"type": "string",
@@ -7248,6 +7272,11 @@
 															"nullable": true
 														},
 														"sender": {
+															"type": "string",
+															"nullable": true
+														},
+														"smtp_helo_ip": {
+															"description": "Matches messages whose SMTP HELO server IP address equals this value.",
 															"type": "string",
 															"nullable": true
 														},
@@ -7735,6 +7764,11 @@
 															"nullable": true
 														},
 														"sender": {
+															"type": "string",
+															"nullable": true
+														},
+														"smtp_helo_ip": {
+															"description": "Matches messages whose SMTP HELO server IP address equals this value.",
 															"type": "string",
 															"nullable": true
 														},

@@ -16,7 +16,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Returns a list of authors",
+				"description": "Returns a list of authors.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -55,7 +55,7 @@
 				}
 			},
 			"400": {
-				"description": "Bad Request",
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -325,9 +325,9 @@
 			{
 				"name": "task",
 				"in": "query",
-				"description": "Filter by Task Name",
+				"description": "Filter by Task Name.",
 				"schema": {
-					"description": "Filter by Task Name",
+					"description": "Filter by Task Name.",
 					"type": "string",
 					"example": "Text Generation",
 					"default": ""
@@ -336,9 +336,9 @@
 			{
 				"name": "author",
 				"in": "query",
-				"description": "Filter by Author",
+				"description": "Filter by Author.",
 				"schema": {
-					"description": "Filter by Author",
+					"description": "Filter by Author.",
 					"type": "string",
 					"default": ""
 				}
@@ -346,18 +346,18 @@
 			{
 				"name": "source",
 				"in": "query",
-				"description": "Filter by Source Id",
+				"description": "Filter by Source Id.",
 				"schema": {
-					"description": "Filter by Source Id",
+					"description": "Filter by Source Id.",
 					"type": "number"
 				}
 			},
 			{
 				"name": "hide_experimental",
 				"in": "query",
-				"description": "Filter to hide experimental models",
+				"description": "Filter to hide experimental models.",
 				"schema": {
-					"description": "Filter to hide experimental models",
+					"description": "Filter to hide experimental models.",
 					"type": "boolean",
 					"default": false
 				}
@@ -365,9 +365,9 @@
 			{
 				"name": "search",
 				"in": "query",
-				"description": "Search",
+				"description": "Search.",
 				"schema": {
-					"description": "Search",
+					"description": "Search.",
 					"type": "string",
 					"default": ""
 				}
@@ -375,9 +375,9 @@
 			{
 				"name": "include_deprecated",
 				"in": "query",
-				"description": "If true, include models whose planned_deprecation_date is in the past — but only within a three-month grace window after that date. Models whose planned_deprecation_date is more than three months in the past remain hidden regardless of this flag. Future planned-deprecation dates are always included regardless of this flag. Defaults to false, preserving the existing behavior of hiding all past-dated deprecations.",
+				"description": "If true, include models for up to three months after their deprecation date. Defaults to false.",
 				"schema": {
-					"description": "If true, include models whose planned_deprecation_date is in the past — but only within a three-month grace window after that date. Models whose planned_deprecation_date is more than three months in the past remain hidden regardless of this flag. Future planned-deprecation dates are always included regardless of this flag. Defaults to false, preserving the existing behavior of hiding all past-dated deprecations.",
+					"description": "If true, include models for up to three months after their deprecation date. Defaults to false.",
 					"type": "boolean",
 					"default": false
 				}
@@ -435,7 +435,7 @@
 									"type": "object"
 								},
 								{
-									"description": "Marketplace-format response. See https://openrouter.ai/docs/guides/get-started/for-providers",
+									"description": "Marketplace-format response. See https://openrouter.ai/docs/guides/get-started/for-providers.",
 									"properties": {
 										"data": {
 											"type": "array",
@@ -455,7 +455,7 @@
 				}
 			},
 			"404": {
-				"description": "Object not found",
+				"description": "Object not found.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -569,7 +569,7 @@
 				}
 			},
 			"404": {
-				"description": "Object not found",
+				"description": "Object not found.",
 				"content": {
 					"application/json": {
 						"schema": {
