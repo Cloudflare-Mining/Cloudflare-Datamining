@@ -4320,6 +4320,13 @@
 	},
 	"AccountDurableObjectsInvocationsAdaptiveGroupsQuantiles": {
 		"__description": "",
+		"cpuTimeP25": "CPU time 25th percentile - microseconds",
+		"cpuTimeP50": "CPU time 50th percentile - microseconds",
+		"cpuTimeP75": "CPU time 75th percentile - microseconds",
+		"cpuTimeP90": "CPU time 90th percentile - microseconds",
+		"cpuTimeP95": "CPU time 95th percentile - microseconds",
+		"cpuTimeP99": "CPU time 99th percentile - microseconds",
+		"cpuTimeP999": "CPU time 99.9th percentile - microseconds",
 		"responseBodySizeP25": "Response body size 25th percentile - bytes",
 		"responseBodySizeP50": "Response body size 50th percentile - bytes",
 		"responseBodySizeP75": "Response body size 75th percentile - bytes",
@@ -5877,7 +5884,7 @@
 		"originIP": "",
 		"originResponseDurationMs": "",
 		"originResponseHeaderReceiveDurationMs": "The time elapsed between completing the TLS handshake and receiving the origin response headers",
-		"originResponseStatus": "HTTP origin response status code returned to browser",
+		"originResponseStatus": "HTTP origin response status code returned to browser. Note: this may be 0 if requests are fronted by a worker.",
 		"originTcpHandshakeDurationMs": "The time elapsed between the start and completion of the TCP handshake with the origin",
 		"originTlsHandshakeDurationMs": "The time elapsed between the start and completion of the TLS handshake with the origin",
 		"payPerCrawlStatus": "Pay Per Crawl outcome, when applicable (e.g. request enabled for charging and not blocked by a WAF rule)",
@@ -5979,6 +5986,7 @@
 		"clientRequestReferer": "HTTP request referrer",
 		"clientRequestScheme": "HTTP request URI scheme (http/https)",
 		"clientSSLProtocol": "SSL protocol version",
+		"clientTLSKeyExchangeGroup": "TLS key exchange group negotiated between the client and Cloudflare",
 		"coloCode": "",
 		"contentScanHasFailed": "1 if not all contents for this request where successfully scanned, else 0",
 		"contentScanNumMaliciousObj": "Number of scannable content objects that are malicious",
@@ -6021,7 +6029,7 @@
 		"originIP": "",
 		"originResponseDurationMs": "",
 		"originResponseHeaderReceiveDurationMs": "The time elapsed between completing the TLS handshake and receiving the origin response headers",
-		"originResponseStatus": "HTTP response status code returned by the origin",
+		"originResponseStatus": "HTTP response status code returned by the origin. Note: this may be 0 if requests are fronted by a worker.",
 		"originTcpHandshakeDurationMs": "The time elapsed between the start and completion of the TCP handshake with the origin",
 		"originTlsHandshakeDurationMs": "The time elapsed between the start and completion of the TLS handshake with the origin",
 		"payPerCrawlStatus": "Pay Per Crawl outcome, when applicable (e.g. request enabled for charging and not blocked by a WAF rule)",
@@ -6224,6 +6232,7 @@
 		"clientCountryName": "Country from which request originated",
 		"clientRequestHTTPProtocol": "HTTP protocol version",
 		"clientSSLProtocol": "SSL protocol version",
+		"clientTLSKeyExchangeGroup": "TLS key exchange group negotiated between the client and Cloudflare",
 		"date": "The date the event occurred at the edge",
 		"datetime": "The date and time the event occurred at the edge",
 		"datetimeFifteenMinutes": "The date and time the event occurred at the edge truncated to a multiple of 15 minutes",
@@ -13289,7 +13298,7 @@
 		"originIP": "",
 		"originResponseDurationMs": "",
 		"originResponseHeaderReceiveDurationMs": "The time elapsed between completing the TLS handshake and receiving the origin response headers",
-		"originResponseStatus": "HTTP response status code returned by the origin",
+		"originResponseStatus": "HTTP response status code returned by the origin. Note: this may be 0 if requests are fronted by a worker.",
 		"originTcpHandshakeDurationMs": "The time elapsed between the start and completion of the TCP handshake with the origin",
 		"originTlsHandshakeDurationMs": "The time elapsed between the start and completion of the TLS handshake with the origin",
 		"payPerCrawlStatus": "Pay Per Crawl outcome, when applicable (e.g. request enabled for charging and not blocked by a WAF rule)",
@@ -14945,7 +14954,7 @@
 		"originIP": "",
 		"originResponseDurationMs": "",
 		"originResponseHeaderReceiveDurationMs": "The time elapsed between completing the TLS handshake and receiving the origin response headers",
-		"originResponseStatus": "HTTP origin response status code returned to browser",
+		"originResponseStatus": "HTTP origin response status code returned to browser. Note: this may be 0 if requests are fronted by a worker.",
 		"originTcpHandshakeDurationMs": "The time elapsed between the start and completion of the TCP handshake with the origin",
 		"originTlsHandshakeDurationMs": "The time elapsed between the start and completion of the TLS handshake with the origin",
 		"payPerCrawlStatus": "Pay Per Crawl outcome, when applicable (e.g. request enabled for charging and not blocked by a WAF rule)",
@@ -15046,6 +15055,7 @@
 		"clientRequestReferer": "HTTP request referrer",
 		"clientRequestScheme": "HTTP request URI scheme (http/https)",
 		"clientSSLProtocol": "SSL protocol version",
+		"clientTLSKeyExchangeGroup": "TLS key exchange group negotiated between the client and Cloudflare",
 		"coloCode": "",
 		"contentScanHasFailed": "1 if not all contents for this request where successfully scanned, else 0",
 		"contentScanNumMaliciousObj": "Number of scannable content objects that are malicious",
@@ -15088,7 +15098,7 @@
 		"originIP": "",
 		"originResponseDurationMs": "",
 		"originResponseHeaderReceiveDurationMs": "The time elapsed between completing the TLS handshake and receiving the origin response headers",
-		"originResponseStatus": "HTTP response status code returned by the origin",
+		"originResponseStatus": "HTTP response status code returned by the origin. Note: this may be 0 if requests are fronted by a worker.",
 		"originTcpHandshakeDurationMs": "The time elapsed between the start and completion of the TCP handshake with the origin",
 		"originTlsHandshakeDurationMs": "The time elapsed between the start and completion of the TLS handshake with the origin",
 		"payPerCrawlStatus": "Pay Per Crawl outcome, when applicable (e.g. request enabled for charging and not blocked by a WAF rule)",
@@ -15290,6 +15300,7 @@
 		"clientCountryName": "Country from which request originated",
 		"clientRequestHTTPProtocol": "HTTP protocol version",
 		"clientSSLProtocol": "SSL protocol version",
+		"clientTLSKeyExchangeGroup": "TLS key exchange group negotiated between the client and Cloudflare",
 		"date": "The date the event occurred at the edge",
 		"datetime": "The date and time the event occurred at the edge",
 		"datetimeFifteenMinutes": "The date and time the event occurred at the edge truncated to a multiple of 15 minutes",
@@ -15687,6 +15698,119 @@
 	"ZonePageShieldReportsAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"ZonePreRenderBotRequestsAdaptiveGroups": {
+		"__description": "Aggregated pre-render bot requests with adaptive sampling",
+		"avg": "The weighted average value for a metric per dimension",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Estimated number of bot requests",
+		"dimensions": "List of dimensions to group by",
+		"quantiles": "Weighted quantiles for a metric per dimension",
+		"sum": "The weighted sum of values for a metric per dimension"
+	},
+	"ZonePreRenderBotRequestsAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average adaptive sampling interval",
+		"serveLatencyMs": "Average bot serve latency in milliseconds"
+	},
+	"ZonePreRenderBotRequestsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Estimated number of bot requests, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "The weighted sum of values for a metric per dimension, with confidence intervals"
+	},
+	"ZonePreRenderBotRequestsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"botCategory": "The verified bot category",
+		"cacheStatus": "How the response was served: hit, stale, miss_render, or origin_fallback",
+		"date": "The date of the bot request",
+		"datetime": "The date and time of the bot request",
+		"datetimeFifteenMinutes": "The date and time of the bot request truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time of the bot request truncated to five minutes",
+		"datetimeHour": "The date and time of the bot request truncated to the hour",
+		"httpStatus": "The HTTP response status",
+		"verifiedBot": "Whether Bot Management verified the bot"
+	},
+	"ZonePreRenderBotRequestsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZonePreRenderBotRequestsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"ZonePreRenderBotRequestsAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"serveLatencyMsP25": "Bot serve latency in milliseconds at the 25th percentile",
+		"serveLatencyMsP50": "Bot serve latency in milliseconds at the 50th percentile",
+		"serveLatencyMsP75": "Bot serve latency in milliseconds at the 75th percentile",
+		"serveLatencyMsP90": "Bot serve latency in milliseconds at the 90th percentile",
+		"serveLatencyMsP95": "Bot serve latency in milliseconds at the 95th percentile",
+		"serveLatencyMsP99": "Bot serve latency in milliseconds at the 99th percentile",
+		"serveLatencyMsP999": "Bot serve latency in milliseconds at the 99.9th percentile"
+	},
+	"ZonePreRenderBotRequestsAdaptiveGroupsSum": {
+		"__description": "",
+		"bytesServed": "Estimated bytes served to bots"
+	},
+	"ZonePreRenderBotRequestsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"bytesServed": "Confidence interval for the corresponding point estimate"
+	},
+	"ZonePreRenderRenderAttemptsAdaptiveGroups": {
+		"__description": "Aggregated pre-render render attempts with adaptive sampling",
+		"avg": "The weighted average value for a metric per dimension",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Estimated number of render attempts",
+		"dimensions": "List of dimensions to group by",
+		"quantiles": "Weighted quantiles for a metric per dimension",
+		"sum": "The weighted sum of values for a metric per dimension"
+	},
+	"ZonePreRenderRenderAttemptsAdaptiveGroupsAvg": {
+		"__description": "",
+		"renderDurationMs": "Average render duration in milliseconds",
+		"sampleInterval": "Average adaptive sampling interval"
+	},
+	"ZonePreRenderRenderAttemptsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Estimated number of render attempts, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "The weighted sum of values for a metric per dimension, with confidence intervals"
+	},
+	"ZonePreRenderRenderAttemptsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "The date of the render attempt",
+		"datetime": "The date and time of the render attempt",
+		"datetimeFifteenMinutes": "The date and time of the render attempt truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time of the render attempt truncated to five minutes",
+		"datetimeHour": "The date and time of the render attempt truncated to the hour",
+		"errorClass": "The render error class",
+		"success": "Whether the render succeeded",
+		"trigger": "Why the render started"
+	},
+	"ZonePreRenderRenderAttemptsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZonePreRenderRenderAttemptsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"ZonePreRenderRenderAttemptsAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"renderDurationMsP25": "Render duration in milliseconds at the 25th percentile",
+		"renderDurationMsP50": "Render duration in milliseconds at the 50th percentile",
+		"renderDurationMsP75": "Render duration in milliseconds at the 75th percentile",
+		"renderDurationMsP90": "Render duration in milliseconds at the 90th percentile",
+		"renderDurationMsP95": "Render duration in milliseconds at the 95th percentile",
+		"renderDurationMsP99": "Render duration in milliseconds at the 99th percentile",
+		"renderDurationMsP999": "Render duration in milliseconds at the 99.9th percentile"
+	},
+	"ZonePreRenderRenderAttemptsAdaptiveGroupsSum": {
+		"__description": "",
+		"browserSecondsUsed": "Estimated browser seconds used",
+		"htmlBytes": "Estimated rendered HTML bytes"
+	},
+	"ZonePreRenderRenderAttemptsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"browserSecondsUsed": "Confidence interval for the corresponding point estimate",
+		"htmlBytes": "Confidence interval for the corresponding point estimate"
+	},
 	"ZoneSettings": {
 		"__description": "Access and limitations for a zone",
 		"apiGatewayGraphqlQueryAnalyticsGroups": "",
@@ -15725,6 +15849,8 @@
 		"logpushTransformersAdaptiveGroups": "",
 		"nelReportsAdaptiveGroups": "",
 		"pageShieldReportsAdaptiveGroups": "",
+		"preRenderBotRequestsAdaptiveGroups": "",
+		"preRenderRenderAttemptsAdaptiveGroups": "",
 		"userProfilesAdaptiveGroups": "",
 		"userProfilesPiiGroups": "",
 		"userProfilesRawEventsGroups": "",
@@ -16850,6 +16976,8 @@
 		"logpushTransformersAdaptiveGroups": "Beta. Logpush transformer health metrics",
 		"nelReportsAdaptiveGroups": "Data to visualize network error logs",
 		"pageShieldReportsAdaptiveGroups": "Page Shield CSP reports",
+		"preRenderBotRequestsAdaptiveGroups": "Aggregated pre-render bot requests with adaptive sampling",
+		"preRenderRenderAttemptsAdaptiveGroups": "Aggregated pre-render render attempts with adaptive sampling",
 		"settings": "",
 		"userProfilesAdaptiveGroups": "User ID profiles for login and sign up attempts",
 		"userProfilesPiiGroups": "Per-user PII attribute lookup for login and signup events. PII fields such as email require the com.cloudflare.api.account.zone.fraud-detection.pii.read permission; callers without it receive the literal REDACTED.",
