@@ -107,6 +107,119 @@
 						}
 					}
 				}
+			},
+			"4XX": {
+				"description": "Delete all DNS Protection rules failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -1401,7 +1514,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.prefixes",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters": {
 		"operationId": "deleteSynProtectionFiltersForAccount",
@@ -3696,7 +3813,8 @@
 												]
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -4035,7 +4153,8 @@
 												"modified_on"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -4421,7 +4540,8 @@
 												]
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -4736,7 +4856,8 @@
 												"modified_on"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -5124,7 +5245,8 @@
 												]
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -5440,7 +5562,8 @@
 												"modified_on"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -5832,7 +5955,8 @@
 												]
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -6142,7 +6266,8 @@
 												"modified_on"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -6547,7 +6672,8 @@
 												]
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -6880,7 +7006,8 @@
 												"modified_on"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -7272,7 +7399,8 @@
 												]
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -7582,7 +7710,8 @@
 												"modified_on"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -7981,7 +8110,8 @@
 												]
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -8308,7 +8438,8 @@
 												"modified_on"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -8577,7 +8708,8 @@
 												"enabled"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -8955,7 +9087,8 @@
 												"modified_on"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -9293,7 +9426,8 @@
 												"modified_on"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -9632,7 +9766,8 @@
 												"modified_on"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -9966,7 +10101,8 @@
 												"modified_on"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -10332,7 +10468,8 @@
 												"modified_on"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -10666,7 +10803,8 @@
 												"modified_on"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -11021,7 +11159,8 @@
 												"modified_on"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -11311,7 +11450,8 @@
 												"enabled"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -11693,7 +11833,8 @@
 												"modified_on"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -12028,7 +12169,8 @@
 												"modified_on"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -12365,7 +12507,8 @@
 												"modified_on"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -12748,7 +12891,8 @@
 												]
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -13073,7 +13217,8 @@
 												"modified_on"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -13443,7 +13588,8 @@
 												"modified_on"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -13768,7 +13914,8 @@
 												"modified_on"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -14127,7 +14274,8 @@
 												"modified_on"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}

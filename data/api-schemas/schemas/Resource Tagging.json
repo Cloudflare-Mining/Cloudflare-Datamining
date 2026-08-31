@@ -560,6 +560,7 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "account-tags",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"DELETE /zones/{zone_id}/tags": {
@@ -1080,6 +1081,7 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zone-tags",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/tags": {
@@ -3980,6 +3982,7 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "account-tags",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/tags/keys": {
@@ -4385,6 +4388,7 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "keys",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/tags/resources": {
@@ -7360,6 +7364,7 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "tags.resources",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/tags/summary": {
@@ -8262,6 +8267,7 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "values",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /zones/{zone_id}/tags": {
@@ -11149,6 +11155,7 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zone-tags",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/tags": {
@@ -14320,6 +14327,7 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "account-tags",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PUT /zones/{zone_id}/tags": {
@@ -17448,6 +17456,7 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zone-tags",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	}
 }

@@ -2,7 +2,7 @@
 	"GET /billing/rate_plans/{public_key}": {
 		"operationId": "billing-get-rate-plan",
 		"summary": "Get Rate Plan by Public Key",
-		"description": "Gets a rate plan's details by its public key (e.g., 'teams_free', 'cf_pro_20_20'). This is a public catalog endpoint and does not require authentication.",
+		"description": "Gets a rate plan's details by its public key (e.g., 'teams_free', 'cf_pro_20_20'). This is a public catalog endpoint, so authentication is not enforced and credentials are accepted but not required.",
 		"parameters": [
 			{
 				"name": "public_key",
@@ -76,7 +76,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -114,7 +116,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -248,7 +251,14 @@
 				}
 			}
 		},
-		"security": [],
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			},
+			{}
+		],
 		"tags": [
 			"Rate Plans"
 		],

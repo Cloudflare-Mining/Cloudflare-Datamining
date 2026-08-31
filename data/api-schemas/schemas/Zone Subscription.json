@@ -79,7 +79,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -117,7 +119,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -136,7 +139,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -205,7 +209,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -243,7 +249,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -262,7 +269,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -465,7 +473,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -503,7 +513,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -522,7 +533,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -591,7 +603,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -629,7 +643,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -648,7 +663,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -851,7 +867,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -889,7 +907,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -903,6 +922,7 @@
 													"properties": {
 														"app": {
 															"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+															"type": "object",
 															"deprecated": true,
 															"properties": {
 																"install_id": {
@@ -1303,6 +1323,7 @@
 						"properties": {
 							"app": {
 								"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+								"type": "object",
 								"deprecated": true,
 								"properties": {
 									"install_id": {
@@ -1574,7 +1595,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1612,7 +1635,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1626,6 +1650,7 @@
 													"properties": {
 														"app": {
 															"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+															"type": "object",
 															"deprecated": true,
 															"properties": {
 																"install_id": {
@@ -2026,6 +2051,7 @@
 						"properties": {
 							"app": {
 								"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+								"type": "object",
 								"deprecated": true,
 								"properties": {
 									"install_id": {
@@ -2297,7 +2323,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2335,7 +2363,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2349,6 +2378,7 @@
 													"properties": {
 														"app": {
 															"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+															"type": "object",
 															"deprecated": true,
 															"properties": {
 																"install_id": {
@@ -2662,7 +2692,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -2700,7 +2732,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -2714,6 +2747,7 @@
 															"properties": {
 																"app": {
 																	"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+																	"type": "object",
 																	"deprecated": true,
 																	"properties": {
 																		"install_id": {
@@ -3110,6 +3144,7 @@
 						"properties": {
 							"app": {
 								"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+								"type": "object",
 								"deprecated": true,
 								"properties": {
 									"install_id": {
@@ -3381,7 +3416,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -3419,7 +3456,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -3433,6 +3471,7 @@
 													"properties": {
 														"app": {
 															"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+															"type": "object",
 															"deprecated": true,
 															"properties": {
 																"install_id": {
@@ -3833,6 +3872,7 @@
 						"properties": {
 							"app": {
 								"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+								"type": "object",
 								"deprecated": true,
 								"properties": {
 									"install_id": {
@@ -4104,7 +4144,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -4142,7 +4184,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -4156,6 +4199,7 @@
 													"properties": {
 														"app": {
 															"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+															"type": "object",
 															"deprecated": true,
 															"properties": {
 																"install_id": {
@@ -4469,7 +4513,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -4507,7 +4553,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -4521,6 +4568,7 @@
 															"properties": {
 																"app": {
 																	"description": "Cloudflare Apps Marketplace is sunset. This field is retained for legacy grandfathered app subscriptions only.",
+																	"type": "object",
 																	"deprecated": true,
 																	"properties": {
 																		"install_id": {

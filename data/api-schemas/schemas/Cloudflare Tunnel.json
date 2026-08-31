@@ -32,16 +32,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {
-					"schema": {
-						"type": "object"
-					}
-				}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Delete a Cloudflare Tunnel response",
@@ -734,16 +724,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {
-					"schema": {
-						"type": "object"
-					}
-				}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Clean up Cloudflare Tunnel connections response",
@@ -1089,16 +1069,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {
-					"schema": {
-						"type": "object"
-					}
-				}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Delete a Warp Connector Tunnel response",

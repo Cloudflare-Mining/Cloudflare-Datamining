@@ -30,12 +30,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Delete Custom CSR response.",
@@ -408,7 +402,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-csrs",
-		"x-fern-sdk-method-name": "delete",
+		"x-fern-sdk-method-name": "customCsrsForAZoneDeleteCustomCsr",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/custom_csrs": {
@@ -1059,7 +1053,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-csrs",
-		"x-fern-sdk-method-name": "list",
+		"x-fern-sdk-method-name": "customCsrsForAZoneListCustomCsrs",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/custom_csrs/{custom_csr_id}": {
@@ -1626,7 +1620,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-csrs",
-		"x-fern-sdk-method-name": "get",
+		"x-fern-sdk-method-name": "customCsrsForAZoneCustomCsrDetails",
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/custom_csrs": {
@@ -2255,7 +2249,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-csrs",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-method-name": "customCsrsForAZoneCreateCustomCsr",
 		"x-forge-hidden": true
 	}
 }

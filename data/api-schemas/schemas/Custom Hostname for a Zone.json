@@ -29,12 +29,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Delete Custom Hostname (and any issued SSL certificates) response.",
@@ -270,12 +264,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"202": {
 				"description": "Delete Single Certificate and Key In a Custom Hostname response.",
@@ -665,7 +653,7 @@
 				"schema": {
 					"description": "Whether to filter hostnames based on if they have SSL enabled.",
 					"type": "integer",
-					"default": "0",
+					"default": 0,
 					"enum": [
 						0,
 						1
@@ -4908,7 +4896,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-hostnames",
-		"x-fern-sdk-method-name": "get",
+		"x-fern-sdk-method-name": "customHostnameForAZoneCustomHostnameDetails",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/custom_hostnames/quota": {
