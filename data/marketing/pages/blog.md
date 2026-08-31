@@ -6,7 +6,7 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
-August 31, 2026[Introducing Adaptive Intelligence: undermining the economics of every bot attack](https://blog.cloudflare.com/introducing-adaptive-intelligence/)
+August 31, 2026[Introducing Adaptive Intelligence: Undermining the economics of every bot attack](https://blog.cloudflare.com/introducing-adaptive-intelligence/)
 
 Bot operators have historically had the economic advantage, bypassing static, deterministic detection rules with cheap proxies and retooling. Cloudflare's new Adaptive Intelligence engine flips this dynamic by autonomously learning from the meta-signals of live traffic and deploying disposable rules, making automated attacks too expensive to sustain.
 
@@ -32,7 +32,7 @@ Five Rust-level memory optimizations to the DNS cache layout of Big Pineapple cu
 
 [Sebastiaan Neuteboom](https://blog.cloudflare.com/author/sebastiaan-neuteboom/)
 
-August 24, 2026[The Cloudflare Blog – Brought to you by EmDash](https://blog.cloudflare.com/cloudflare-blog-uses-emdash/)
+August 24, 2026[The Cloudflare Blog — brought to you by EmDash](https://blog.cloudflare.com/cloudflare-blog-uses-emdash/)
 
 We migrated the Cloudflare Blog to EmDash to prove our stack at massive scale. Here is how we stress-tested performance, safely routed production traffic, and redesigned the frontend experience.
 
@@ -40,7 +40,7 @@ We migrated the Cloudflare Blog to EmDash to prove our stack at massive scale. H
 
 [Kody Jackson](https://blog.cloudflare.com/author/kody/), [Diogo Carneiro](https://blog.cloudflare.com/author/diogo-carneiro/), and [Amy Dutton](https://blog.cloudflare.com/author/amy-dutton/)
 
-August 21, 2026[Say it once: introducing Bot Preference Sync](https://blog.cloudflare.com/bot-preference-sync/)
+August 21, 2026[Say it once: Introducing Bot Preference Sync](https://blog.cloudflare.com/bot-preference-sync/)
 
 Cloudflare's new Bot Preference Sync automatically aligns your robots.txt file with your AI bot policies for Search, Agent, and Training. Easily manage which bots access your content without maintaining static files.
 
