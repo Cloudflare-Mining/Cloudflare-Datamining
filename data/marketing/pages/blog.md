@@ -6,6 +6,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+August 31, 2026[Introducing Adaptive Intelligence: undermining the economics of every bot attack](https://blog.cloudflare.com/introducing-adaptive-intelligence/)
+
+Bot operators have historically had the economic advantage, bypassing static, deterministic detection rules with cheap proxies and retooling. Cloudflare's new Adaptive Intelligence engine flips this dynamic by autonomously learning from the meta-signals of live traffic and deploying disposable rules, making automated attacks too expensive to sustain.
+
+![Chris Pope](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M15H6N7RJ23M8YN909PRMY9R.01M15H6NS0ABKSYNF0FAJ3VT5B.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Chris Pope](https://blog.cloudflare.com/author/chris-pope/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M15GS9CV1VMMQCAPHYE4AFD2.01M15GSA31CJVHRJCPHH7FBX77.png&w=1200&h=675&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/introducing-adaptive-intelligence/)
+
 August 28, 2026[BotBase for Operators: A clearer path to joining Cloudflare's directory of bots and agents](https://blog.cloudflare.com/botbase-for-operators/)
 
 Bot operators now have a home in the Cloudflare dashboard to manage submissions. This update adds submission status tracking, submission editing, and a behavior model so operators can accurately declare how their bots use content. 
@@ -13,8 +23,6 @@ Bot operators now have a home in the Cloudflare dashboard to manage submissions.
 ![Julian Laxman](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GDPQJQ1YTTDHRGZ3H2Y9TQ.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Julian Laxman](https://blog.cloudflare.com/author/julian-laxman/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GDDRDD6CY3JE6JJQGJM761.png&w=1200&h=674&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/botbase-for-operators/)
 
 August 27, 2026[How we saved 100 terabytes of memory by optimizing 1.1.1.1's DNS cache](https://blog.cloudflare.com/dns-cache-memory-optimization-1111/)
 
@@ -151,14 +159,6 @@ Cloudflare is unifying AI Gateway and Workers AI into a single control plane, gi
 ![Michelle Chen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R95PPSQQ82Z92P51M550.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Ming Lu](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449KZ4869TJZZSHHFJXPTB.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Michelle Chen](https://blog.cloudflare.com/author/michelle/) and [Ming Lu](https://blog.cloudflare.com/author/ming-lu/)
-
-August 6, 2026[Cloudflare AI Search: give your agents a search engine for your data ](https://blog.cloudflare.com/ai-search-easier/)
-
-AI Search makes search easier than ever, with no Cloudflare primitives to stitch together. Point it at your data to create a search for your own files and websites. We're also sharing a preview of our new pricing model. 
-
-![Nelson Duarte](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49P72CGQX08FQC903Q0E4F.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Tiago Teles](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZAW99A81NNDP6P3SFH65HTE.webp&w=64&h=64&f=webp&fit=cover&position=center)![Anni Wang](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4618C573MJFB0RNKW6K68R.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Nelson Duarte](https://blog.cloudflare.com/author/nelson-duarte/), [Tiago Teles](https://blog.cloudflare.com/author/tiago-teles/), and [Anni Wang](https://blog.cloudflare.com/author/anni/)
 
 Load more
 
