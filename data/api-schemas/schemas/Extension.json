@@ -9,7 +9,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -101,6 +101,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -122,6 +135,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -150,7 +176,7 @@
 											]
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"type": "boolean",
 											"example": true,
 											"enum": [
@@ -174,15 +200,15 @@
 												"type": "object",
 												"properties": {
 													"metadata": {
-														"description": "Extension metadata",
+														"description": "Extension metadata.",
 														"type": "object",
 														"properties": {
 															"name": {
-																"description": "The full name of the extension. For example, \"co.uk\", or \"uk\"",
+																"description": "The full name of the extension. For example, \"co.uk\", or \"uk\".",
 																"type": "string"
 															},
 															"tld": {
-																"description": "The tld of the extension. For example, for \"co.uk\", it's \"uk\". For \"uk\", it's \"uk\"",
+																"description": "The TLD of the extension. For example, for \"co.uk\", it is \"uk\". For \"uk\", it is \"uk\".",
 																"type": "string"
 															}
 														},
@@ -256,6 +282,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -283,6 +322,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -304,7 +356,7 @@
 									"nullable": true
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"type": "boolean",
 									"example": false,
 									"enum": [
@@ -350,7 +402,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -396,6 +448,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -417,6 +482,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -445,7 +523,7 @@
 											]
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"type": "boolean",
 											"example": true,
 											"enum": [
@@ -467,15 +545,15 @@
 											"type": "object",
 											"properties": {
 												"metadata": {
-													"description": "Extension metadata",
+													"description": "Extension metadata.",
 													"type": "object",
 													"properties": {
 														"name": {
-															"description": "The full name of the extension. For example, \"co.uk\", or \"uk\"",
+															"description": "The full name of the extension. For example, \"co.uk\", or \"uk\".",
 															"type": "string"
 														},
 														"tld": {
-															"description": "The tld of the extension. For example, for \"co.uk\", it's \"uk\". For \"uk\", it's \"uk\"",
+															"description": "The TLD of the extension. For example, for \"co.uk\", it is \"uk\". For \"uk\", it is \"uk\".",
 															"type": "string"
 														}
 													},
@@ -530,6 +608,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -557,6 +648,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -578,7 +682,7 @@
 									"nullable": true
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"type": "boolean",
 									"example": false,
 									"enum": [
@@ -624,7 +728,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -716,6 +820,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -737,6 +854,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -765,7 +895,7 @@
 											]
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"type": "boolean",
 											"example": true,
 											"enum": [
@@ -789,15 +919,15 @@
 												"type": "object",
 												"properties": {
 													"metadata": {
-														"description": "Extension metadata",
+														"description": "Extension metadata.",
 														"type": "object",
 														"properties": {
 															"name": {
-																"description": "The full name of the extension. For example, \"co.uk\", or \"uk\"",
+																"description": "The full name of the extension. For example, \"co.uk\", or \"uk\".",
 																"type": "string"
 															},
 															"tld": {
-																"description": "The tld of the extension. For example, for \"co.uk\", it's \"uk\". For \"uk\", it's \"uk\"",
+																"description": "The TLD of the extension. For example, for \"co.uk\", it is \"uk\". For \"uk\", it is \"uk\".",
 																"type": "string"
 															}
 														},
@@ -871,6 +1001,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -898,6 +1041,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -919,7 +1075,7 @@
 									"nullable": true
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"type": "boolean",
 									"example": false,
 									"enum": [
@@ -965,7 +1121,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -1011,6 +1167,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -1032,6 +1201,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -1060,7 +1242,7 @@
 											]
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"type": "boolean",
 											"example": true,
 											"enum": [
@@ -1082,15 +1264,15 @@
 											"type": "object",
 											"properties": {
 												"metadata": {
-													"description": "Extension metadata",
+													"description": "Extension metadata.",
 													"type": "object",
 													"properties": {
 														"name": {
-															"description": "The full name of the extension. For example, \"co.uk\", or \"uk\"",
+															"description": "The full name of the extension. For example, \"co.uk\", or \"uk\".",
 															"type": "string"
 														},
 														"tld": {
-															"description": "The tld of the extension. For example, for \"co.uk\", it's \"uk\". For \"uk\", it's \"uk\"",
+															"description": "The TLD of the extension. For example, for \"co.uk\", it is \"uk\". For \"uk\", it is \"uk\".",
 															"type": "string"
 														}
 													},
@@ -1145,6 +1327,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -1172,6 +1367,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -1193,7 +1401,7 @@
 									"nullable": true
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"type": "boolean",
 									"example": false,
 									"enum": [

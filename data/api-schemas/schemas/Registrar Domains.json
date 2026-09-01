@@ -2,14 +2,14 @@
 	"GET /accounts/{account_id}/registrar/domains": {
 		"operationId": "registrar-domains-list-domains",
 		"summary": "List domains",
-		"description": "List domains handled by Registrar.",
+		"description": "Lists domains handled by Registrar.",
 		"parameters": [
 			{
 				"name": "account_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -19,7 +19,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "List domains response",
+				"description": "List domains response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -40,6 +40,19 @@
 															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"description": "Location of the invalid value that caused the error.",
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"description": "JSON Pointer to the invalid or missing request value.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"pointer"
+																]
 															}
 														},
 														"required": [
@@ -61,6 +74,19 @@
 															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"description": "Location of the invalid value that caused the error.",
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"description": "JSON Pointer to the invalid or missing request value.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"pointer"
+																]
 															}
 														},
 														"required": [
@@ -89,7 +115,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"type": "boolean",
 													"example": true,
 													"enum": [
@@ -108,35 +134,38 @@
 											"properties": {
 												"result": {
 													"type": "array",
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"nullable": true
 												},
 												"result_info": {
 													"type": "object",
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service",
+															"description": "Total number of results for the requested service.",
 															"type": "number",
 															"example": 1
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Current page within paginated list of results.",
 															"type": "number",
 															"example": 1
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Number of results per page of results.",
 															"type": "number",
 															"example": 20
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Total results available without any search parameters.",
 															"type": "number",
 															"example": 2000
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -156,7 +185,7 @@
 																"example": false
 															},
 															"can_register": {
-																"description": "Indicates if the domain can be registered as a new domain.",
+																"description": "Indicates eligibility to register the domain as a new domain.",
 																"type": "boolean",
 																"example": false
 															},
@@ -233,7 +262,7 @@
 																						"example": "123-867-5309"
 																					},
 																					"first_name": {
-																						"description": "User's first name",
+																						"description": "User's first name.",
 																						"type": "string",
 																						"example": "John",
 																						"maxLength": 60,
@@ -247,7 +276,7 @@
 																						"readOnly": true
 																					},
 																					"last_name": {
-																						"description": "User's last name",
+																						"description": "User's last name.",
 																						"type": "string",
 																						"example": "Appleseed",
 																						"maxLength": 60,
@@ -259,7 +288,7 @@
 																						"example": "Cloudflare, Inc."
 																					},
 																					"phone": {
-																						"description": "User's telephone number",
+																						"description": "User's telephone number.",
 																						"type": "string",
 																						"example": "+1 123-123-1234",
 																						"maxLength": 20,
@@ -295,12 +324,12 @@
 																]
 															},
 															"registry_statuses": {
-																"description": "A comma-separated list of registry status codes. A full list of status codes can be found at [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).",
+																"description": "A comma-separated list of registry status codes. Refer to [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en) for the full list.",
 																"type": "string",
 																"example": "ok,serverTransferProhibited"
 															},
 															"supported_tld": {
-																"description": "Whether a particular TLD is currently supported by Cloudflare Registrar. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.",
+																"description": "Indicates whether Cloudflare Registrar currently supports a particular TLD. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.",
 																"type": "boolean",
 																"example": true
 															},
@@ -308,7 +337,7 @@
 																"description": "Statuses for domain transfers into Cloudflare Registrar.",
 																"properties": {
 																	"accept_foa": {
-																		"description": "Form of authorization has been accepted by the registrant.",
+																		"description": "Status of the registrant authorization step.",
 																		"type": "string",
 																		"example": "needed",
 																		"enum": [
@@ -317,7 +346,7 @@
 																		]
 																	},
 																	"approve_transfer": {
-																		"description": "Shows transfer status with the registry.",
+																		"description": "Status of the registry transfer-approval step.",
 																		"type": "string",
 																		"example": "unknown",
 																		"enum": [
@@ -335,7 +364,7 @@
 																		"example": true
 																	},
 																	"disable_privacy": {
-																		"description": "Privacy guards are disabled at the foreign registrar.",
+																		"description": "Status of the privacy-guard disabling step at the foreign registrar.",
 																		"type": "string",
 																		"example": "ok",
 																		"enum": [
@@ -345,7 +374,7 @@
 																		]
 																	},
 																	"enter_auth_code": {
-																		"description": "Auth code has been entered and verified.",
+																		"description": "Status of the auth-code entry and verification step.",
 																		"type": "string",
 																		"example": "needed",
 																		"enum": [
@@ -357,7 +386,7 @@
 																		]
 																	},
 																	"unlock_domain": {
-																		"description": "Domain is unlocked at the foreign registrar.",
+																		"description": "Status of the domain-unlock step at the foreign registrar.",
 																		"type": "string",
 																		"example": "ok",
 																		"enum": [
@@ -381,7 +410,8 @@
 												]
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -389,7 +419,7 @@
 				}
 			},
 			"4XX": {
-				"description": "List domains response failure",
+				"description": "List domains response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -412,6 +442,19 @@
 																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"description": "Location of the invalid value that caused the error.",
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"description": "JSON Pointer to the invalid or missing request value.",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"pointer"
+																		]
 																	}
 																},
 																"required": [
@@ -433,6 +476,19 @@
 																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"description": "Location of the invalid value that caused the error.",
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"description": "JSON Pointer to the invalid or missing request value.",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"pointer"
+																		]
 																	}
 																},
 																"required": [
@@ -461,7 +517,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"type": "boolean",
 															"example": true,
 															"enum": [
@@ -480,35 +536,38 @@
 													"properties": {
 														"result": {
 															"type": "array",
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"nullable": true
 														},
 														"result_info": {
 															"type": "object",
 															"properties": {
 																"count": {
-																	"description": "Total number of results for the requested service",
+																	"description": "Total number of results for the requested service.",
 																	"type": "number",
 																	"example": 1
 																},
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Current page within paginated list of results.",
 																	"type": "number",
 																	"example": 1
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Number of results per page of results.",
 																	"type": "number",
 																	"example": 20
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Total results available without any search parameters.",
 																	"type": "number",
 																	"example": 2000
 																}
 															}
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -528,7 +587,7 @@
 																		"example": false
 																	},
 																	"can_register": {
-																		"description": "Indicates if the domain can be registered as a new domain.",
+																		"description": "Indicates eligibility to register the domain as a new domain.",
 																		"type": "boolean",
 																		"example": false
 																	},
@@ -605,7 +664,7 @@
 																								"example": "123-867-5309"
 																							},
 																							"first_name": {
-																								"description": "User's first name",
+																								"description": "User's first name.",
 																								"type": "string",
 																								"example": "John",
 																								"maxLength": 60,
@@ -619,7 +678,7 @@
 																								"readOnly": true
 																							},
 																							"last_name": {
-																								"description": "User's last name",
+																								"description": "User's last name.",
 																								"type": "string",
 																								"example": "Appleseed",
 																								"maxLength": 60,
@@ -631,7 +690,7 @@
 																								"example": "Cloudflare, Inc."
 																							},
 																							"phone": {
-																								"description": "User's telephone number",
+																								"description": "User's telephone number.",
 																								"type": "string",
 																								"example": "+1 123-123-1234",
 																								"maxLength": 20,
@@ -667,12 +726,12 @@
 																		]
 																	},
 																	"registry_statuses": {
-																		"description": "A comma-separated list of registry status codes. A full list of status codes can be found at [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).",
+																		"description": "A comma-separated list of registry status codes. Refer to [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en) for the full list.",
 																		"type": "string",
 																		"example": "ok,serverTransferProhibited"
 																	},
 																	"supported_tld": {
-																		"description": "Whether a particular TLD is currently supported by Cloudflare Registrar. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.",
+																		"description": "Indicates whether Cloudflare Registrar currently supports a particular TLD. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.",
 																		"type": "boolean",
 																		"example": true
 																	},
@@ -680,7 +739,7 @@
 																		"description": "Statuses for domain transfers into Cloudflare Registrar.",
 																		"properties": {
 																			"accept_foa": {
-																				"description": "Form of authorization has been accepted by the registrant.",
+																				"description": "Status of the registrant authorization step.",
 																				"type": "string",
 																				"example": "needed",
 																				"enum": [
@@ -689,7 +748,7 @@
 																				]
 																			},
 																			"approve_transfer": {
-																				"description": "Shows transfer status with the registry.",
+																				"description": "Status of the registry transfer-approval step.",
 																				"type": "string",
 																				"example": "unknown",
 																				"enum": [
@@ -707,7 +766,7 @@
 																				"example": true
 																			},
 																			"disable_privacy": {
-																				"description": "Privacy guards are disabled at the foreign registrar.",
+																				"description": "Status of the privacy-guard disabling step at the foreign registrar.",
 																				"type": "string",
 																				"example": "ok",
 																				"enum": [
@@ -717,7 +776,7 @@
 																				]
 																			},
 																			"enter_auth_code": {
-																				"description": "Auth code has been entered and verified.",
+																				"description": "Status of the auth-code entry and verification step.",
 																				"type": "string",
 																				"example": "needed",
 																				"enum": [
@@ -729,7 +788,7 @@
 																				]
 																			},
 																			"unlock_domain": {
-																				"description": "Domain is unlocked at the foreign registrar.",
+																				"description": "Status of the domain-unlock step at the foreign registrar.",
 																				"type": "string",
 																				"example": "ok",
 																				"enum": [
@@ -753,7 +812,8 @@
 														]
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -778,6 +838,19 @@
 															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"description": "Location of the invalid value that caused the error.",
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"description": "JSON Pointer to the invalid or missing request value.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"pointer"
+																]
 															}
 														},
 														"required": [
@@ -805,6 +878,19 @@
 															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"description": "Location of the invalid value that caused the error.",
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"description": "JSON Pointer to the invalid or missing request value.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"pointer"
+																]
 															}
 														},
 														"required": [
@@ -826,7 +912,7 @@
 											"nullable": true
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"type": "boolean",
 											"example": false,
 											"enum": [
@@ -874,7 +960,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Fully qualified domain name (FQDN) including the extension\n(e.g., `example.com`, `mybrand.app`). The domain name uniquely\nidentifies a registration — the same domain cannot be registered\ntwice, making it a natural idempotency key for registration requests.\n",
+					"description": "Provides a fully qualified domain name (FQDN), including the extension\n(e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies\na registration. Cloudflare permits only one registration per domain, making\nthe domain name a natural idempotency key for registration requests.\n",
 					"type": "string",
 					"example": "example.com",
 					"x-auditable": true
@@ -885,7 +971,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -895,7 +981,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Get domain response",
+				"description": "Get domain response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -916,6 +1002,19 @@
 															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"description": "Location of the invalid value that caused the error.",
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"description": "JSON Pointer to the invalid or missing request value.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"pointer"
+																]
 															}
 														},
 														"required": [
@@ -937,6 +1036,19 @@
 															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"description": "Location of the invalid value that caused the error.",
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"description": "JSON Pointer to the invalid or missing request value.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"pointer"
+																]
 															}
 														},
 														"required": [
@@ -965,7 +1077,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"type": "boolean",
 													"example": true,
 													"enum": [
@@ -986,7 +1098,8 @@
 													"type": "object",
 													"nullable": true
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -995,7 +1108,8 @@
 										"result": {
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1003,7 +1117,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Get domain response failure",
+				"description": "Get domain response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1026,6 +1140,19 @@
 																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"description": "Location of the invalid value that caused the error.",
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"description": "JSON Pointer to the invalid or missing request value.",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"pointer"
+																		]
 																	}
 																},
 																"required": [
@@ -1047,6 +1174,19 @@
 																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"description": "Location of the invalid value that caused the error.",
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"description": "JSON Pointer to the invalid or missing request value.",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"pointer"
+																		]
 																	}
 																},
 																"required": [
@@ -1075,7 +1215,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"type": "boolean",
 															"example": true,
 															"enum": [
@@ -1096,7 +1236,8 @@
 															"type": "object",
 															"nullable": true
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -1105,7 +1246,8 @@
 												"result": {
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1130,6 +1272,19 @@
 															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"description": "Location of the invalid value that caused the error.",
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"description": "JSON Pointer to the invalid or missing request value.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"pointer"
+																]
 															}
 														},
 														"required": [
@@ -1157,6 +1312,19 @@
 															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"description": "Location of the invalid value that caused the error.",
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"description": "JSON Pointer to the invalid or missing request value.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"pointer"
+																]
 															}
 														},
 														"required": [
@@ -1178,7 +1346,7 @@
 											"nullable": true
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"type": "boolean",
 											"example": false,
 											"enum": [
@@ -1219,14 +1387,14 @@
 	"PUT /accounts/{account_id}/registrar/domains/{domain_name}": {
 		"operationId": "registrar-domains-update-domain",
 		"summary": "Update domain",
-		"description": "Update individual domain.",
+		"description": "Updates an individual domain.",
 		"parameters": [
 			{
 				"name": "domain_name",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Fully qualified domain name (FQDN) including the extension\n(e.g., `example.com`, `mybrand.app`). The domain name uniquely\nidentifies a registration — the same domain cannot be registered\ntwice, making it a natural idempotency key for registration requests.\n",
+					"description": "Provides a fully qualified domain name (FQDN), including the extension\n(e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies\na registration. Cloudflare permits only one registration per domain, making\nthe domain name a natural idempotency key for registration requests.\n",
 					"type": "string",
 					"example": "example.com",
 					"x-auditable": true
@@ -1237,7 +1405,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -1281,7 +1449,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Update domain response",
+				"description": "Update domain response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1302,6 +1470,19 @@
 															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"description": "Location of the invalid value that caused the error.",
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"description": "JSON Pointer to the invalid or missing request value.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"pointer"
+																]
 															}
 														},
 														"required": [
@@ -1323,6 +1504,19 @@
 															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"description": "Location of the invalid value that caused the error.",
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"description": "JSON Pointer to the invalid or missing request value.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"pointer"
+																]
 															}
 														},
 														"required": [
@@ -1351,7 +1545,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"type": "boolean",
 													"example": true,
 													"enum": [
@@ -1372,7 +1566,8 @@
 													"type": "object",
 													"nullable": true
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1381,7 +1576,8 @@
 										"result": {
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1389,7 +1585,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Update domain response failure",
+				"description": "Update domain response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1412,6 +1608,19 @@
 																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"description": "Location of the invalid value that caused the error.",
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"description": "JSON Pointer to the invalid or missing request value.",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"pointer"
+																		]
 																	}
 																},
 																"required": [
@@ -1433,6 +1642,19 @@
 																	},
 																	"message": {
 																		"type": "string"
+																	},
+																	"source": {
+																		"description": "Location of the invalid value that caused the error.",
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"description": "JSON Pointer to the invalid or missing request value.",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"pointer"
+																		]
 																	}
 																},
 																"required": [
@@ -1461,7 +1683,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"type": "boolean",
 															"example": true,
 															"enum": [
@@ -1482,7 +1704,8 @@
 															"type": "object",
 															"nullable": true
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -1491,7 +1714,8 @@
 												"result": {
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1516,6 +1740,19 @@
 															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"description": "Location of the invalid value that caused the error.",
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"description": "JSON Pointer to the invalid or missing request value.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"pointer"
+																]
 															}
 														},
 														"required": [
@@ -1543,6 +1780,19 @@
 															},
 															"message": {
 																"type": "string"
+															},
+															"source": {
+																"description": "Location of the invalid value that caused the error.",
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"description": "JSON Pointer to the invalid or missing request value.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"pointer"
+																]
 															}
 														},
 														"required": [
@@ -1564,7 +1814,7 @@
 											"nullable": true
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"type": "boolean",
 											"example": false,
 											"enum": [

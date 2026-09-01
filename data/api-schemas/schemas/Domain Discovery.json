@@ -10,7 +10,7 @@
 				"description": "Cloudflare account ID. Required for all Registrar API operations.",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -69,7 +69,7 @@
 					"application/json": {
 						"examples": {
 							"brand_search": {
-								"description": "Searching for a brand or company name",
+								"description": "Searching for a brand or company name.",
 								"summary": "Brand name search - \"acme corp\"",
 								"value": {
 									"errors": [],
@@ -112,7 +112,7 @@
 								}
 							},
 							"extension_filtered_search": {
-								"description": "Searching with extensions=com,net limits results to those domain extensions",
+								"description": "Searching with extensions=com,net limits results to those domain extensions.",
 								"summary": "Search with domain extension filter",
 								"value": {
 									"errors": [],
@@ -155,7 +155,7 @@
 								}
 							},
 							"keyword_search": {
-								"description": "Searching for a keyword phrase returns relevant domain suggestions",
+								"description": "Searching for a keyword phrase returns relevant domain suggestions.",
 								"summary": "Keyword search - \"coffee shop\"",
 								"value": {
 									"errors": [],
@@ -208,7 +208,7 @@
 								}
 							},
 							"no_results": {
-								"description": "When no registrable domains match the search",
+								"description": "When no registrable domains match the search.",
 								"summary": "No available domains found",
 								"value": {
 									"errors": [],
@@ -278,6 +278,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -299,6 +312,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -327,7 +353,7 @@
 											]
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"type": "boolean",
 											"example": true,
 											"enum": [
@@ -349,10 +375,10 @@
 											"type": "object",
 											"properties": {
 												"domains": {
-													"description": "Array of domain suggestions sorted by relevance. May be empty if no domains match the search criteria.",
+													"description": "Lists domain suggestions in relevance order. An empty array indicates that the search criteria matched zero domains.",
 													"type": "array",
 													"items": {
-														"description": "Represents a single domain suggestion returned by the Search endpoint. Search results are non-authoritative and may be based on cached data. Use POST /domain-check to confirm real-time availability and pricing before registration.",
+														"description": "Describes a single domain suggestion from the Search endpoint. Search results use non-authoritative data that may come from a cache. Use POST /domain-check to confirm real-time availability and pricing before registration.",
 														"type": "object",
 														"properties": {
 															"name": {
@@ -361,7 +387,7 @@
 																"example": "example.com"
 															},
 															"pricing": {
-																"description": "Annual pricing information for a registrable domain. This object is only\npresent when `registrable` is `true`. All prices are per year and returned\nas strings to preserve decimal precision.\n\n`registration_cost` and `renewal_cost` are frequently the same value, but\nmay differ — especially for premium domains where registries set different\nrates for initial registration vs. renewal. For a multi-year registration\n(e.g., 4 years), the first year is charged at `registration_cost` and each\nsubsequent year at `renewal_cost`. Registry pricing may change over time;\nthe values returned here reflect the current registry rate. Premium pricing\nmay be surfaced by Search and Check, but premium registration is not currently\nsupported by this API.\n",
+																"description": "Provides annual pricing information for a registrable domain. This object\nappears only when `registrable` is `true`. The API returns all per-year\nprices as strings to preserve decimal precision.\n\n`registration_cost` and `renewal_cost` frequently have the same value, but\nmay differ, especially when registries set different premium rates for\ninitial registration and renewal. For a multi-year registration (e.g., 4\nyears), `registration_cost` applies to the first year and `renewal_cost`\napplies to each subsequent year. The values reflect the current registry\nrate, which may change over time. Search and Check may surface premium\npricing, but this API currently supports standard registrations only.\n",
 																"type": "object",
 																"properties": {
 																	"currency": {
@@ -370,7 +396,7 @@
 																		"example": "USD"
 																	},
 																	"registration_cost": {
-																		"description": "The first-year cost to register this domain. For premium domains\n(`tier: premium`), this price is set by the registry and may be\nsignificantly higher than standard pricing. For multi-year\nregistrations, this cost applies to the first year only; subsequent\nyears are charged at `renewal_cost`.\n",
+																		"description": "The first-year cost to register this domain. For premium domains\n(`tier: premium`), the registry sets this price, which may significantly\nexceed standard pricing. For multi-year registrations, this cost applies\nto the first year only; `renewal_cost` applies to subsequent years.\n",
 																		"type": "string",
 																		"example": "8.57"
 																	},
@@ -387,7 +413,7 @@
 																]
 															},
 															"reason": {
-																"description": "Present only when `registrable` is `false` on search results. Explains why the domain does not appear registrable through this API. These values are advisory; use POST /domain-check for authoritative status.\n- `extension_not_supported_via_api`: Cloudflare Registrar supports this extension in the dashboard but it is not yet available for programmatic registration via this API.\n- `extension_not_supported`: This extension is not supported by Cloudflare Registrar at all.\n- `extension_disallows_registration`: The extension's registry has temporarily or permanently frozen new registrations.\n- `domain_premium`: The domain is premium priced. Premium registration is not currently supported by this API.\n- `domain_unavailable`: The domain appears unavailable.",
+																"description": "Appears only when `registrable` is `false` and explains the advisory search result. Use POST /domain-check for authoritative status.\n- `extension_not_supported_via_api`: Cloudflare Registrar supports this extension in the dashboard but currently excludes it from programmatic registration through this API.\n- `extension_not_supported`: Cloudflare Registrar excludes this extension entirely.\n- `extension_disallows_registration`: The extension's registry temporarily or permanently freezes new registrations.\n- `domain_premium`: The domain carries premium pricing. This API currently supports standard registrations only.\n- `domain_unavailable`: The domain appears unavailable.",
 																"type": "string",
 																"example": "domain_unavailable",
 																"enum": [
@@ -399,12 +425,12 @@
 																]
 															},
 															"registrable": {
-																"description": "Indicates whether this domain appears available based on search data. Search results are non-authoritative and may be stale. - `true`: The domain appears available. Use POST /domain-check to confirm before registration.\n- `false`: The domain does not appear available in search results.",
+																"description": "Indicates domain availability according to potentially stale, non-authoritative search data.\n- `true`: The domain appears available. Use POST /domain-check to confirm before registration.\n- `false`: Search results mark the domain ineligible for registration through this API. See `reason` for details.",
 																"type": "boolean",
 																"example": true
 															},
 															"tier": {
-																"description": "The pricing tier for this domain. Always present when `registrable` is `true`;\ndefaults to `standard` for most domains. May be absent when `registrable`\nis `false`.\n- `standard`: Standard registry pricing\n- `premium`: Premium domain with higher pricing set by the registry\n",
+																"description": "The pricing tier for this domain.\nA `registrable` value of `true` always\nincludes this field, which defaults to `standard` for most domains. A\n`registrable` value of `false` may omit it.\n- `standard`: Standard registry pricing.\n- `premium`: Premium domain with higher pricing from the registry.\n",
 																"type": "string",
 																"example": "standard",
 																"enum": [
@@ -436,7 +462,7 @@
 				}
 			},
 			"400": {
-				"description": "Invalid request parameters. Common causes:\n- Missing required `q` parameter\n- Query exceeds 100 character limit\n- Invalid extension format\n",
+				"description": "Invalid request parameters.\nCommon causes include:\n- Missing required `q` parameter.\n- Query exceeds 100 character limit.\n- Invalid extension format.\n",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -492,6 +518,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -519,6 +558,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -540,7 +592,7 @@
 									"nullable": true
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"type": "boolean",
 									"example": false,
 									"enum": [
@@ -587,7 +639,7 @@
 				"description": "Cloudflare account ID. Required for all Registrar API operations.",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -646,7 +698,7 @@
 					"application/json": {
 						"examples": {
 							"brand_search": {
-								"description": "Searching for a brand or company name",
+								"description": "Searching for a brand or company name.",
 								"summary": "Brand name search - \"acme corp\"",
 								"value": {
 									"errors": [],
@@ -689,7 +741,7 @@
 								}
 							},
 							"extension_filtered_search": {
-								"description": "Searching with extensions=com,net limits results to those domain extensions",
+								"description": "Searching with extensions=com,net limits results to those domain extensions.",
 								"summary": "Search with domain extension filter",
 								"value": {
 									"errors": [],
@@ -732,7 +784,7 @@
 								}
 							},
 							"keyword_search": {
-								"description": "Searching for a keyword phrase returns relevant domain suggestions",
+								"description": "Searching for a keyword phrase returns relevant domain suggestions.",
 								"summary": "Keyword search - \"coffee shop\"",
 								"value": {
 									"errors": [],
@@ -785,7 +837,7 @@
 								}
 							},
 							"no_results": {
-								"description": "When no registrable domains match the search",
+								"description": "When no registrable domains match the search.",
 								"summary": "No available domains found",
 								"value": {
 									"errors": [],
@@ -855,6 +907,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -876,6 +941,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -904,7 +982,7 @@
 											]
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"type": "boolean",
 											"example": true,
 											"enum": [
@@ -926,10 +1004,10 @@
 											"type": "object",
 											"properties": {
 												"domains": {
-													"description": "Array of domain suggestions sorted by relevance. May be empty if no domains match the search criteria.",
+													"description": "Lists domain suggestions in relevance order. An empty array indicates that the search criteria matched zero domains.",
 													"type": "array",
 													"items": {
-														"description": "Represents a single domain suggestion returned by the Search endpoint. Search results are non-authoritative and may be based on cached data. Use POST /domain-check to confirm real-time availability and pricing before registration.",
+														"description": "Describes a single domain suggestion from the Search endpoint. Search results use non-authoritative data that may come from a cache. Use POST /domain-check to confirm real-time availability and pricing before registration.",
 														"type": "object",
 														"properties": {
 															"name": {
@@ -938,7 +1016,7 @@
 																"example": "example.com"
 															},
 															"pricing": {
-																"description": "Annual pricing information for a registrable domain. This object is only\npresent when `registrable` is `true`. All prices are per year and returned\nas strings to preserve decimal precision.\n\n`registration_cost` and `renewal_cost` are frequently the same value, but\nmay differ — especially for premium domains where registries set different\nrates for initial registration vs. renewal. For a multi-year registration\n(e.g., 4 years), the first year is charged at `registration_cost` and each\nsubsequent year at `renewal_cost`. Registry pricing may change over time;\nthe values returned here reflect the current registry rate. Premium pricing\nmay be surfaced by Search and Check, but premium registration is not currently\nsupported by this API.\n",
+																"description": "Provides annual pricing information for a registrable domain. This object\nappears only when `registrable` is `true`. The API returns all per-year\nprices as strings to preserve decimal precision.\n\n`registration_cost` and `renewal_cost` frequently have the same value, but\nmay differ, especially when registries set different premium rates for\ninitial registration and renewal. For a multi-year registration (e.g., 4\nyears), `registration_cost` applies to the first year and `renewal_cost`\napplies to each subsequent year. The values reflect the current registry\nrate, which may change over time. Search and Check may surface premium\npricing, but this API currently supports standard registrations only.\n",
 																"type": "object",
 																"properties": {
 																	"currency": {
@@ -947,7 +1025,7 @@
 																		"example": "USD"
 																	},
 																	"registration_cost": {
-																		"description": "The first-year cost to register this domain. For premium domains\n(`tier: premium`), this price is set by the registry and may be\nsignificantly higher than standard pricing. For multi-year\nregistrations, this cost applies to the first year only; subsequent\nyears are charged at `renewal_cost`.\n",
+																		"description": "The first-year cost to register this domain. For premium domains\n(`tier: premium`), the registry sets this price, which may significantly\nexceed standard pricing. For multi-year registrations, this cost applies\nto the first year only; `renewal_cost` applies to subsequent years.\n",
 																		"type": "string",
 																		"example": "8.57"
 																	},
@@ -964,7 +1042,7 @@
 																]
 															},
 															"reason": {
-																"description": "Present only when `registrable` is `false` on search results. Explains why the domain does not appear registrable through this API. These values are advisory; use POST /domain-check for authoritative status.\n- `extension_not_supported_via_api`: Cloudflare Registrar supports this extension in the dashboard but it is not yet available for programmatic registration via this API.\n- `extension_not_supported`: This extension is not supported by Cloudflare Registrar at all.\n- `extension_disallows_registration`: The extension's registry has temporarily or permanently frozen new registrations.\n- `domain_premium`: The domain is premium priced. Premium registration is not currently supported by this API.\n- `domain_unavailable`: The domain appears unavailable.",
+																"description": "Appears only when `registrable` is `false` and explains the advisory search result. Use POST /domain-check for authoritative status.\n- `extension_not_supported_via_api`: Cloudflare Registrar supports this extension in the dashboard but currently excludes it from programmatic registration through this API.\n- `extension_not_supported`: Cloudflare Registrar excludes this extension entirely.\n- `extension_disallows_registration`: The extension's registry temporarily or permanently freezes new registrations.\n- `domain_premium`: The domain carries premium pricing. This API currently supports standard registrations only.\n- `domain_unavailable`: The domain appears unavailable.",
 																"type": "string",
 																"example": "domain_unavailable",
 																"enum": [
@@ -976,12 +1054,12 @@
 																]
 															},
 															"registrable": {
-																"description": "Indicates whether this domain appears available based on search data. Search results are non-authoritative and may be stale. - `true`: The domain appears available. Use POST /domain-check to confirm before registration.\n- `false`: The domain does not appear available in search results.",
+																"description": "Indicates domain availability according to potentially stale, non-authoritative search data.\n- `true`: The domain appears available. Use POST /domain-check to confirm before registration.\n- `false`: Search results mark the domain ineligible for registration through this API. See `reason` for details.",
 																"type": "boolean",
 																"example": true
 															},
 															"tier": {
-																"description": "The pricing tier for this domain. Always present when `registrable` is `true`;\ndefaults to `standard` for most domains. May be absent when `registrable`\nis `false`.\n- `standard`: Standard registry pricing\n- `premium`: Premium domain with higher pricing set by the registry\n",
+																"description": "The pricing tier for this domain.\nA `registrable` value of `true` always\nincludes this field, which defaults to `standard` for most domains. A\n`registrable` value of `false` may omit it.\n- `standard`: Standard registry pricing.\n- `premium`: Premium domain with higher pricing from the registry.\n",
 																"type": "string",
 																"example": "standard",
 																"enum": [
@@ -1013,7 +1091,7 @@
 				}
 			},
 			"400": {
-				"description": "Invalid request parameters. Common causes:\n- Missing required `q` parameter\n- Query exceeds 100 character limit\n- Invalid extension format\n",
+				"description": "Invalid request parameters.\nCommon causes include:\n- Missing required `q` parameter.\n- Query exceeds 100 character limit.\n- Invalid extension format.\n",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -1069,6 +1147,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -1096,6 +1187,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -1117,7 +1221,7 @@
 									"nullable": true
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"type": "boolean",
 									"example": false,
 									"enum": [
@@ -1164,7 +1268,7 @@
 				"description": "Cloudflare account ID. Required for all Registrar API operations.",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -1179,7 +1283,7 @@
 				"application/json": {
 					"examples": {
 						"bulk_check": {
-							"description": "Check the same name across multiple supported extensions",
+							"description": "Check the same name across multiple supported extensions.",
 							"summary": "Bulk check across domain extensions",
 							"value": {
 								"domains": [
@@ -1215,7 +1319,7 @@
 						"type": "object",
 						"properties": {
 							"domains": {
-								"description": "List of fully qualified domain names (FQDNs) to check for availability. Each domain must include the extension.\n- Minimum: 1 domain\n- Maximum: 20 domains per request\n- Domains on unsupported extensions are returned with `registrable: false` and a `reason` field\n- Malformed domain names (e.g., missing extension) may be omitted from the response\n",
+								"description": "List of fully qualified domain names (FQDNs) to check for availability. Each domain must include the extension.\n- Minimum: 1 domain.\n- Maximum: 20 domains per request.\n- The response returns domains on unsupported extensions with `registrable: false` and a `reason` field.\n- The response may omit malformed domain names (e.g., names missing an extension).\n",
 								"type": "array",
 								"items": {
 									"type": "string"
@@ -1242,7 +1346,7 @@
 					"application/json": {
 						"examples": {
 							"all_available": {
-								"description": "Unique names may be available across domain extensions",
+								"description": "Unique names may remain available across domain extensions.",
 								"summary": "All domains available",
 								"value": {
 									"errors": [],
@@ -1275,7 +1379,7 @@
 								}
 							},
 							"all_unavailable": {
-								"description": "Common names are often already registered",
+								"description": "Every requested domain is unavailable.",
 								"summary": "All domains taken",
 								"value": {
 									"errors": [],
@@ -1303,7 +1407,7 @@
 								}
 							},
 							"mixed_availability": {
-								"description": "Some domains available, some taken",
+								"description": "The response includes both available and already-taken domains.",
 								"summary": "Mixed availability results",
 								"value": {
 									"errors": [],
@@ -1439,6 +1543,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -1460,6 +1577,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -1488,7 +1618,7 @@
 											]
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"type": "boolean",
 											"example": true,
 											"enum": [
@@ -1510,10 +1640,10 @@
 											"type": "object",
 											"properties": {
 												"domains": {
-													"description": "Array of domain availability results. Domains on unsupported\nextensions are included with `registrable: false` and a `reason`\nfield. Malformed domain names may be omitted.\n",
+													"description": "Array of domain availability results. Results for unsupported\nextensions contain `registrable: false` and a `reason`\nfield. The response may omit malformed domain names.\n",
 													"type": "array",
 													"items": {
-														"description": "Represents a single authoritative domain availability result returned by the Check endpoint. Check results reflect current registry status and should be used immediately before registration.",
+														"description": "Describes a single authoritative domain availability result from the Check endpoint. Check results reflect current registry status; use them immediately before registration.",
 														"type": "object",
 														"properties": {
 															"name": {
@@ -1522,7 +1652,7 @@
 																"example": "example.com"
 															},
 															"pricing": {
-																"description": "Annual pricing information for a registrable domain. This object is only\npresent when `registrable` is `true`. All prices are per year and returned\nas strings to preserve decimal precision.\n\n`registration_cost` and `renewal_cost` are frequently the same value, but\nmay differ — especially for premium domains where registries set different\nrates for initial registration vs. renewal. For a multi-year registration\n(e.g., 4 years), the first year is charged at `registration_cost` and each\nsubsequent year at `renewal_cost`. Registry pricing may change over time;\nthe values returned here reflect the current registry rate. Premium pricing\nmay be surfaced by Search and Check, but premium registration is not currently\nsupported by this API.\n",
+																"description": "Provides annual pricing information for a registrable domain. This object\nappears only when `registrable` is `true`. The API returns all per-year\nprices as strings to preserve decimal precision.\n\n`registration_cost` and `renewal_cost` frequently have the same value, but\nmay differ, especially when registries set different premium rates for\ninitial registration and renewal. For a multi-year registration (e.g., 4\nyears), `registration_cost` applies to the first year and `renewal_cost`\napplies to each subsequent year. The values reflect the current registry\nrate, which may change over time. Search and Check may surface premium\npricing, but this API currently supports standard registrations only.\n",
 																"type": "object",
 																"properties": {
 																	"currency": {
@@ -1531,7 +1661,7 @@
 																		"example": "USD"
 																	},
 																	"registration_cost": {
-																		"description": "The first-year cost to register this domain. For premium domains\n(`tier: premium`), this price is set by the registry and may be\nsignificantly higher than standard pricing. For multi-year\nregistrations, this cost applies to the first year only; subsequent\nyears are charged at `renewal_cost`.\n",
+																		"description": "The first-year cost to register this domain. For premium domains\n(`tier: premium`), the registry sets this price, which may significantly\nexceed standard pricing. For multi-year registrations, this cost applies\nto the first year only; `renewal_cost` applies to subsequent years.\n",
 																		"type": "string",
 																		"example": "8.57"
 																	},
@@ -1548,7 +1678,7 @@
 																]
 															},
 															"reason": {
-																"description": "Present only when `registrable` is `false`. Explains why the domain cannot be registered via this API.\n- `extension_not_supported_via_api`: Cloudflare Registrar supports this extension in the dashboard but it is not yet available for programmatic registration via this API. The user can register via `https://dash.cloudflare.com/{account_id}/domains/registrations`.\n- `extension_not_supported`: This extension is not supported by Cloudflare Registrar at all.\n- `extension_disallows_registration`: The extension's registry has temporarily or permanently frozen new registrations. No registrar can register domains on this extension at this time.\n- `domain_premium`: The domain is premium priced. Premium registration is not currently supported by this API.\n- `domain_unavailable`: The domain is already registered, reserved, or otherwise not available on a supported extension.",
+																"description": "Appears only when `registrable` is `false` and explains the result.\n- `extension_not_supported_via_api`: Cloudflare Registrar supports this extension in the dashboard but currently excludes it from programmatic registration through this API. The user can register via `https://dash.cloudflare.com/{account_id}/domains/registrations`.\n- `extension_not_supported`: Cloudflare Registrar excludes this extension entirely.\n- `extension_disallows_registration`: The extension's registry temporarily or permanently freezes new registrations. Registrars currently cannot register domains on this extension.\n- `domain_premium`: The domain carries premium pricing. This API currently supports standard registrations only.\n- `domain_unavailable`: An existing registration, reservation, or other registry restriction makes the domain unavailable on a supported extension.",
 																"type": "string",
 																"example": "domain_unavailable",
 																"enum": [
@@ -1560,12 +1690,12 @@
 																]
 															},
 															"registrable": {
-																"description": "Indicates whether this domain can be registered programmatically through this API based on a real-time registry check.\n- `true`: Domain is available for registration. The `pricing` object will be included.\n- `false`: Domain is not available. See the `reason` field for why. `tier` may still be present on some non-registrable results, such as premium domains.",
+																"description": "Indicates programmatic registration eligibility according to a real-time registry check.\n- `true`: The domain is available for registration. The response includes the `pricing` object.\n- `false`: A restriction prevents registration. See the `reason` field for details. Some results, such as premium domains, may still include `tier`.",
 																"type": "boolean",
 																"example": true
 															},
 															"tier": {
-																"description": "The pricing tier for this domain. Always present when `registrable` is `true`; defaults to `standard` for most domains. May be absent when `registrable` is `false`.\n- `standard`: Standard registry pricing\n- `premium`: Premium domain with higher pricing set by the registry",
+																"description": "The pricing tier for this domain. A `registrable` value of `true` always includes this field, which defaults to `standard` for most domains. A `registrable` value of `false` may omit it.\n- `standard`: Standard registry pricing.\n- `premium`: Premium domain with higher pricing from the registry.",
 																"type": "string",
 																"example": "standard",
 																"enum": [
@@ -1597,7 +1727,7 @@
 				}
 			},
 			"400": {
-				"description": "Invalid request parameters. Common causes:\n- Empty `domains` array\n- Exceeds maximum of 20 domains per request\n- Malformed request body\n- None of the provided domains are valid\n",
+				"description": "Invalid request parameters.\nCommon causes include:\n- Empty `domains` array.\n- More than 20 domains per request.\n- Malformed request body.\n- Zero valid domains after validation.\n",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -1668,6 +1798,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -1695,6 +1838,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -1716,7 +1872,7 @@
 									"nullable": true
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"type": "boolean",
 									"example": false,
 									"enum": [
@@ -1763,7 +1919,7 @@
 				"description": "Cloudflare account ID. Required for all Registrar API operations.",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "Identifier.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -1778,7 +1934,7 @@
 				"application/json": {
 					"examples": {
 						"bulk_check": {
-							"description": "Check the same name across multiple supported extensions",
+							"description": "Check the same name across multiple supported extensions.",
 							"summary": "Bulk check across domain extensions",
 							"value": {
 								"domains": [
@@ -1814,7 +1970,7 @@
 						"type": "object",
 						"properties": {
 							"domains": {
-								"description": "List of fully qualified domain names (FQDNs) to check for availability. Each domain must include the extension.\n- Minimum: 1 domain\n- Maximum: 20 domains per request\n- Domains on unsupported extensions are returned with `registrable: false` and a `reason` field\n- Malformed domain names (e.g., missing extension) may be omitted from the response\n",
+								"description": "List of fully qualified domain names (FQDNs) to check for availability. Each domain must include the extension.\n- Minimum: 1 domain.\n- Maximum: 20 domains per request.\n- The response returns domains on unsupported extensions with `registrable: false` and a `reason` field.\n- The response may omit malformed domain names (e.g., names missing an extension).\n",
 								"type": "array",
 								"items": {
 									"type": "string"
@@ -1841,7 +1997,7 @@
 					"application/json": {
 						"examples": {
 							"all_available": {
-								"description": "Unique names may be available across domain extensions",
+								"description": "Unique names may remain available across domain extensions.",
 								"summary": "All domains available",
 								"value": {
 									"errors": [],
@@ -1874,7 +2030,7 @@
 								}
 							},
 							"all_unavailable": {
-								"description": "Common names are often already registered",
+								"description": "Every requested domain is unavailable.",
 								"summary": "All domains taken",
 								"value": {
 									"errors": [],
@@ -1902,7 +2058,7 @@
 								}
 							},
 							"mixed_availability": {
-								"description": "Some domains available, some taken",
+								"description": "The response includes both available and already-taken domains.",
 								"summary": "Mixed availability results",
 								"value": {
 									"errors": [],
@@ -2038,6 +2194,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -2059,6 +2228,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -2087,7 +2269,7 @@
 											]
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"type": "boolean",
 											"example": true,
 											"enum": [
@@ -2109,10 +2291,10 @@
 											"type": "object",
 											"properties": {
 												"domains": {
-													"description": "Array of domain availability results. Domains on unsupported\nextensions are included with `registrable: false` and a `reason`\nfield. Malformed domain names may be omitted.\n",
+													"description": "Array of domain availability results. Results for unsupported\nextensions contain `registrable: false` and a `reason`\nfield. The response may omit malformed domain names.\n",
 													"type": "array",
 													"items": {
-														"description": "Represents a single authoritative domain availability result returned by the Check endpoint. Check results reflect current registry status and should be used immediately before registration.",
+														"description": "Describes a single authoritative domain availability result from the Check endpoint. Check results reflect current registry status; use them immediately before registration.",
 														"type": "object",
 														"properties": {
 															"name": {
@@ -2121,7 +2303,7 @@
 																"example": "example.com"
 															},
 															"pricing": {
-																"description": "Annual pricing information for a registrable domain. This object is only\npresent when `registrable` is `true`. All prices are per year and returned\nas strings to preserve decimal precision.\n\n`registration_cost` and `renewal_cost` are frequently the same value, but\nmay differ — especially for premium domains where registries set different\nrates for initial registration vs. renewal. For a multi-year registration\n(e.g., 4 years), the first year is charged at `registration_cost` and each\nsubsequent year at `renewal_cost`. Registry pricing may change over time;\nthe values returned here reflect the current registry rate. Premium pricing\nmay be surfaced by Search and Check, but premium registration is not currently\nsupported by this API.\n",
+																"description": "Provides annual pricing information for a registrable domain. This object\nappears only when `registrable` is `true`. The API returns all per-year\nprices as strings to preserve decimal precision.\n\n`registration_cost` and `renewal_cost` frequently have the same value, but\nmay differ, especially when registries set different premium rates for\ninitial registration and renewal. For a multi-year registration (e.g., 4\nyears), `registration_cost` applies to the first year and `renewal_cost`\napplies to each subsequent year. The values reflect the current registry\nrate, which may change over time. Search and Check may surface premium\npricing, but this API currently supports standard registrations only.\n",
 																"type": "object",
 																"properties": {
 																	"currency": {
@@ -2130,7 +2312,7 @@
 																		"example": "USD"
 																	},
 																	"registration_cost": {
-																		"description": "The first-year cost to register this domain. For premium domains\n(`tier: premium`), this price is set by the registry and may be\nsignificantly higher than standard pricing. For multi-year\nregistrations, this cost applies to the first year only; subsequent\nyears are charged at `renewal_cost`.\n",
+																		"description": "The first-year cost to register this domain. For premium domains\n(`tier: premium`), the registry sets this price, which may significantly\nexceed standard pricing. For multi-year registrations, this cost applies\nto the first year only; `renewal_cost` applies to subsequent years.\n",
 																		"type": "string",
 																		"example": "8.57"
 																	},
@@ -2147,7 +2329,7 @@
 																]
 															},
 															"reason": {
-																"description": "Present only when `registrable` is `false`. Explains why the domain cannot be registered via this API.\n- `extension_not_supported_via_api`: Cloudflare Registrar supports this extension in the dashboard but it is not yet available for programmatic registration via this API. The user can register via `https://dash.cloudflare.com/{account_id}/domains/registrations`.\n- `extension_not_supported`: This extension is not supported by Cloudflare Registrar at all.\n- `extension_disallows_registration`: The extension's registry has temporarily or permanently frozen new registrations. No registrar can register domains on this extension at this time.\n- `domain_premium`: The domain is premium priced. Premium registration is not currently supported by this API.\n- `domain_unavailable`: The domain is already registered, reserved, or otherwise not available on a supported extension.",
+																"description": "Appears only when `registrable` is `false` and explains the result.\n- `extension_not_supported_via_api`: Cloudflare Registrar supports this extension in the dashboard but currently excludes it from programmatic registration through this API. The user can register via `https://dash.cloudflare.com/{account_id}/domains/registrations`.\n- `extension_not_supported`: Cloudflare Registrar excludes this extension entirely.\n- `extension_disallows_registration`: The extension's registry temporarily or permanently freezes new registrations. Registrars currently cannot register domains on this extension.\n- `domain_premium`: The domain carries premium pricing. This API currently supports standard registrations only.\n- `domain_unavailable`: An existing registration, reservation, or other registry restriction makes the domain unavailable on a supported extension.",
 																"type": "string",
 																"example": "domain_unavailable",
 																"enum": [
@@ -2159,12 +2341,12 @@
 																]
 															},
 															"registrable": {
-																"description": "Indicates whether this domain can be registered programmatically through this API based on a real-time registry check.\n- `true`: Domain is available for registration. The `pricing` object will be included.\n- `false`: Domain is not available. See the `reason` field for why. `tier` may still be present on some non-registrable results, such as premium domains.",
+																"description": "Indicates programmatic registration eligibility according to a real-time registry check.\n- `true`: The domain is available for registration. The response includes the `pricing` object.\n- `false`: A restriction prevents registration. See the `reason` field for details. Some results, such as premium domains, may still include `tier`.",
 																"type": "boolean",
 																"example": true
 															},
 															"tier": {
-																"description": "The pricing tier for this domain. Always present when `registrable` is `true`; defaults to `standard` for most domains. May be absent when `registrable` is `false`.\n- `standard`: Standard registry pricing\n- `premium`: Premium domain with higher pricing set by the registry",
+																"description": "The pricing tier for this domain. A `registrable` value of `true` always includes this field, which defaults to `standard` for most domains. A `registrable` value of `false` may omit it.\n- `standard`: Standard registry pricing.\n- `premium`: Premium domain with higher pricing from the registry.",
 																"type": "string",
 																"example": "standard",
 																"enum": [
@@ -2196,7 +2378,7 @@
 				}
 			},
 			"400": {
-				"description": "Invalid request parameters. Common causes:\n- Empty `domains` array\n- Exceeds maximum of 20 domains per request\n- Malformed request body\n- None of the provided domains are valid\n",
+				"description": "Invalid request parameters.\nCommon causes include:\n- Empty `domains` array.\n- More than 20 domains per request.\n- Malformed request body.\n- Zero valid domains after validation.\n",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -2267,6 +2449,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -2294,6 +2489,19 @@
 													},
 													"message": {
 														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
 													}
 												},
 												"required": [
@@ -2315,7 +2523,7 @@
 									"nullable": true
 								},
 								"success": {
-									"description": "Whether the API call was successful",
+									"description": "Whether the API call was successful.",
 									"type": "boolean",
 									"example": false,
 									"enum": [
