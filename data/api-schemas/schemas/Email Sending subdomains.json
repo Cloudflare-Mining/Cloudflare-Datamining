@@ -1674,12 +1674,14 @@
 							"drop_suppressed_recipients": {
 								"description": "Whether a send request that includes a recipient suppressed on\nthis subdomain drops that recipient and still delivers to the\nrest, instead of failing the entire request.\n",
 								"type": "boolean",
-								"example": true
+								"example": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"preview_enabled": {
 								"description": "Whether sent messages from this subdomain can be previewed in the activity log.",
 								"type": "boolean",
-								"example": true
+								"example": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"anyOf": [

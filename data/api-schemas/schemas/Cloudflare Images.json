@@ -3040,6 +3040,259 @@
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": false
 	},
+	"GET /accounts/{account_id}/images/v2/metadata/keys": {
+		"operationId": "cloudflare-images-list-metadata-keys",
+		"summary": "List image metadata keys",
+		"description": "Lists filterable metadata keys used by images for an account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Metadata key list response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											],
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"keys": {
+													"type": "array",
+													"items": {
+														"maxLength": 100,
+														"type": "string"
+													},
+													"maxItems": 1000
+												},
+												"truncated": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"keys",
+												"truncated"
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Metadata key list response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									],
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Cloudflare Images"
+		],
+		"x-api-token-group": [
+			"Images Read",
+			"Images Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "images.metadata.keys",
+		"x-fern-sdk-method-name": "list"
+	},
 	"PATCH /accounts/{account_id}/images/v1/{image_id}": {
 		"operationId": "cloudflare-images-update-image",
 		"summary": "Update image",

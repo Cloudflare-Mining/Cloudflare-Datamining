@@ -2,6 +2,7 @@
 	"DELETE /accounts/{account_id}/cloudforce-one/scans/config/{config_id}": {
 		"operationId": "delete_DeleteScans",
 		"summary": "Delete a Scan Config",
+		"description": "Deletes a scan configuration from Cloudforce One's network scanning service.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -444,9 +445,230 @@
 		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation permanently deletes the completed or failed scan and all associated scan data."
 	},
+	"GET /accounts/{account_id}/cloudforce-one/banner/{config_id}": {
+		"operationId": "get_GetBanners",
+		"summary": "Get the Latest Banner Grab Result",
+		"description": "Retrieves the latest banner grab results for a Cloudforce One scan configuration, including service banners from open ports.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Defines the Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Defines the Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "config_id",
+				"in": "path",
+				"description": "Defines the Config ID.",
+				"required": true,
+				"schema": {
+					"description": "Defines the Config ID.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns Current Banner Grab Result.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"1.1.1.1": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"number": {
+														"type": "number",
+														"example": 8080
+													},
+													"proto": {
+														"type": "string",
+														"example": "tcp"
+													},
+													"status": {
+														"type": "string",
+														"example": "open"
+													}
+												},
+												"required": [
+													"account_id",
+													"ips",
+													"frequency"
+												],
+												"title": "Port"
+											}
+										}
+									},
+									"required": [
+										"1.1.1.1"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"messages",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get the Latest Banner Grab Result failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"type": "object",
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"type": "boolean",
+											"example": false
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Scans"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.scans.results",
+		"x-fern-sdk-method-name": "getBanners",
+		"x-forge-hidden": true
+	},
 	"GET /accounts/{account_id}/cloudforce-one/scans/config": {
 		"operationId": "get_ConfigFetch",
 		"summary": "List Scan Configs",
+		"description": "Lists scan configurations for Cloudforce One's network scanning service.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -746,6 +968,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/scans/results/{config_id}": {
 		"operationId": "get_GetOpenPorts",
 		"summary": "Get the Latest Scan Result",
+		"description": "Retrieves the latest scan results for a Cloudforce One scan configuration, including discovered open ports.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2573,6 +2796,7 @@
 	"PATCH /accounts/{account_id}/cloudforce-one/scans/config/{config_id}": {
 		"operationId": "post_ConfigUpdate",
 		"summary": "Update an existing Scan Config",
+		"description": "Updates an existing scan configuration in Cloudforce One's network scanning service.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2920,6 +3144,7 @@
 	"POST /accounts/{account_id}/cloudforce-one/scans/config": {
 		"operationId": "post_ConfigCreate",
 		"summary": "Create a new Scan Config",
+		"description": "Creates a new scan configuration for Cloudforce One's network scanning service.",
 		"parameters": [
 			{
 				"name": "account_id",

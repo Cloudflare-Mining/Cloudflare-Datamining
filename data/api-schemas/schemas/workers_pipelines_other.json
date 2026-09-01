@@ -1648,6 +1648,7 @@
 												"format": "date-time"
 											},
 											"format": {
+												"description": "Defines the data format of the events.",
 												"discriminator": {
 													"propertyName": "type"
 												},
@@ -1753,6 +1754,7 @@
 												"minLength": 1
 											},
 											"schema": {
+												"description": "Defines the schema of the events in the data stream.",
 												"type": "object",
 												"properties": {
 													"fields": {
@@ -2325,6 +2327,7 @@
 											"format": "date-time"
 										},
 										"format": {
+											"description": "Defines the data format of the events.",
 											"discriminator": {
 												"propertyName": "type"
 											},
@@ -2430,6 +2433,7 @@
 											"minLength": 1
 										},
 										"schema": {
+											"description": "Defines the schema of the events in the data stream.",
 											"type": "object",
 											"properties": {
 												"fields": {
@@ -2827,6 +2831,7 @@
 												"example": "https://01234567890123457689012345678901.ingest.cloudflare.com/v1"
 											},
 											"format": {
+												"description": "Defines the data format of the events.",
 												"discriminator": {
 													"propertyName": "type"
 												},
@@ -2965,6 +2970,7 @@
 												"minLength": 1
 											},
 											"schema": {
+												"description": "Defines the schema of the events in the data stream.",
 												"type": "object",
 												"properties": {
 													"fields": {
@@ -3382,6 +3388,7 @@
 											"example": "https://01234567890123457689012345678901.ingest.cloudflare.com/v1"
 										},
 										"format": {
+											"description": "Defines the data format of the events.",
 											"discriminator": {
 												"propertyName": "type"
 											},
@@ -3520,6 +3527,7 @@
 											"minLength": 1
 										},
 										"schema": {
+											"description": "Defines the schema of the events in the data stream.",
 											"type": "object",
 											"properties": {
 												"fields": {
@@ -3960,6 +3968,7 @@
 											"example": "https://01234567890123457689012345678901.ingest.cloudflare.com/v1"
 										},
 										"format": {
+											"description": "Defines the data format of the events.",
 											"discriminator": {
 												"propertyName": "type"
 											},
@@ -4096,6 +4105,267 @@
 											"example": "my_stream",
 											"maxLength": 128,
 											"minLength": 1
+										},
+										"schema": {
+											"description": "Defines the schema of the events in the data stream.",
+											"type": "object",
+											"properties": {
+												"fields": {
+													"type": "array",
+													"items": {
+														"allOf": [
+															{
+																"discriminator": {
+																	"propertyName": "type"
+																},
+																"oneOf": [
+																	{
+																		"properties": {
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"int32"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Int32",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"int64"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Int64",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"float32"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Float32",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"float64"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Float64",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"bool"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Bool",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"string"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "String",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"binary"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Binary",
+																		"type": "object"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"type": "object",
+																				"properties": {
+																					"unit": {
+																						"type": "string",
+																						"enum": [
+																							"second",
+																							"millisecond",
+																							"microsecond",
+																							"nanosecond"
+																						]
+																					}
+																				}
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"type": "string",
+																						"enum": [
+																							"timestamp"
+																						]
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"title": "Timestamp"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"json"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Json",
+																		"type": "object"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"type": "object",
+																				"properties": {
+																					"fields": {
+																						"type": "array",
+																						"items": "[Circular ~.PATCH /accounts/{account_id}/pipelines/v1/streams/{stream_id}.responses.200.content.application/json.schema.properties.result.properties.schema.properties.fields.items]"
+																					},
+																					"name": {
+																						"type": "string",
+																						"nullable": true
+																					}
+																				},
+																				"required": [
+																					"fields"
+																				]
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"type": "string",
+																						"enum": [
+																							"struct"
+																						]
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"title": "Struct"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"type": "object",
+																				"properties": {
+																					"items": "[Circular ~.PATCH /accounts/{account_id}/pipelines/v1/streams/{stream_id}.responses.200.content.application/json.schema.properties.result.properties.schema.properties.fields.items]"
+																				},
+																				"required": [
+																					"items"
+																				]
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"type": "string",
+																						"enum": [
+																							"list"
+																						]
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"title": "List"
+																	}
+																]
+															},
+															{
+																"properties": {
+																	"metadata_key": {
+																		"type": "string",
+																		"nullable": true
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"required": {
+																		"type": "boolean"
+																	},
+																	"sql_name": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name"
+																],
+																"type": "object"
+															}
+														]
+													}
+												},
+												"inferred": {
+													"type": "boolean",
+													"nullable": true
+												}
+											}
 										},
 										"version": {
 											"description": "Indicates the current version of this stream.",
@@ -5108,6 +5378,7 @@
 								]
 							},
 							"format": {
+								"description": "Defines the data format of the events.",
 								"discriminator": {
 									"propertyName": "type"
 								},
@@ -5204,6 +5475,7 @@
 								"minLength": 1
 							},
 							"schema": {
+								"description": "Defines the schema of the events in the data stream.",
 								"type": "object",
 								"properties": {
 									"fields": {
@@ -5700,6 +5972,7 @@
 											"format": "date-time"
 										},
 										"format": {
+											"description": "Defines the data format of the events.",
 											"discriminator": {
 												"propertyName": "type"
 											},
@@ -5805,6 +6078,7 @@
 											"minLength": 1
 										},
 										"schema": {
+											"description": "Defines the schema of the events in the data stream.",
 											"type": "object",
 											"properties": {
 												"fields": {
@@ -6149,6 +6423,7 @@
 						"type": "object",
 						"properties": {
 							"format": {
+								"description": "Defines the data format of the events.",
 								"discriminator": {
 									"propertyName": "type"
 								},
@@ -6282,6 +6557,7 @@
 								"minLength": 1
 							},
 							"schema": {
+								"description": "Defines the schema of the events in the data stream.",
 								"type": "object",
 								"properties": {
 									"fields": {
@@ -6587,6 +6863,7 @@
 											"example": "https://01234567890123457689012345678901.ingest.cloudflare.com/v1"
 										},
 										"format": {
+											"description": "Defines the data format of the events.",
 											"discriminator": {
 												"propertyName": "type"
 											},
@@ -6725,6 +7002,7 @@
 											"minLength": 1
 										},
 										"schema": {
+											"description": "Defines the schema of the events in the data stream.",
 											"type": "object",
 											"properties": {
 												"fields": {
@@ -7104,6 +7382,7 @@
 									"type": "object",
 									"properties": {
 										"graph": {
+											"description": "Indicates the processing flow to implement the SQL.",
 											"type": "object",
 											"properties": {
 												"edges": {
@@ -7306,6 +7585,7 @@
 									}
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
