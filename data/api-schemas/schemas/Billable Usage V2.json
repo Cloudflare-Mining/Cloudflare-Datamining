@@ -264,6 +264,26 @@
 												"type": "string",
 												"example": "My Subscription"
 											},
+											"Tags": {
+												"description": "Tag values for the requested `GroupBy` keys. Omitted when `GroupBy` is not provided. Missing keys are omitted, and key-only tags are returned as boolean `true`. All other tag values are strings.",
+												"type": "object",
+												"example": {
+													"team": "fintech"
+												},
+												"additionalProperties": {
+													"oneOf": [
+														{
+															"type": "string"
+														},
+														{
+															"enum": [
+																true
+															],
+															"type": "boolean"
+														}
+													]
+												}
+											},
 											"x_BillableMetricId": {
 												"description": "The unique identifier for the billable metric in the Cloudflare catalog. Cloudflare extension; replaces FOCUS SkuId.",
 												"type": "string",
@@ -709,6 +729,26 @@
 												"type": "string",
 												"example": "My Subscription"
 											},
+											"Tags": {
+												"description": "Tag values for the requested `GroupBy` keys. Omitted when `GroupBy` is not provided. Missing keys are omitted, and key-only tags are returned as boolean `true`. All other tag values are strings.",
+												"type": "object",
+												"example": {
+													"team": "fintech"
+												},
+												"additionalProperties": {
+													"oneOf": [
+														{
+															"type": "string"
+														},
+														{
+															"enum": [
+																true
+															],
+															"type": "boolean"
+														}
+													]
+												}
+											},
 											"x_BillableMetricId": {
 												"description": "The unique identifier for the billable metric in the Cloudflare catalog. Cloudflare extension; replaces FOCUS SkuId.",
 												"type": "string",
@@ -892,7 +932,7 @@
 	"POST /accounts/{account_id}/billable/usage": {
 		"operationId": "billable-usage-v2-query-account-usage",
 		"summary": "Query Account Usage (Version 2, Alpha, Restricted)",
-		"description": "Returns cost and usage data for a single Cloudflare account, aligned\nwith the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/)\nCost and Usage dataset specification.\n\nThis is the filterable counterpart to `GET` on the same path. It is a\nread-only operation and requires only the `#billing:read` permission;\n`POST` is used so that filter criteria can be supplied in a request body\nrather than in the query string.\n\nEach record represents one billable metric for one account on one day.\nThis includes all metered usage, including usage that falls within\nfree-tier allowances and may result in zero cost.\n\n**Note:** Cost and pricing fields are not yet populated and\nwill be absent from responses until billing integration is complete.\n\nThe request body is optional. When it is omitted, or when `TimePeriod`\nis omitted, the range defaults to the start of the current month through\ntoday. The maximum date range is 31 days.\n\nFilters are combined with AND. Filter values that do not match a known\nbillable metric or product family simply match no usage, and the\nresponse is an empty result set.\n",
+		"description": "Returns cost and usage data for a single Cloudflare account, aligned\nwith the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/)\nCost and Usage dataset specification.\n\nThis is the filterable counterpart to `GET` on the same path. It is a\nread-only operation and requires only the `#billing:read` permission;\n`POST` is used so that filter criteria can be supplied in a request body\nrather than in the query string.\n\nEach record represents one billable metric for one account on one day.\nThis includes all metered usage, including usage that falls within\nfree-tier allowances and may result in zero cost.\n\n**Note:** Cost and pricing fields are not yet populated and\nwill be absent from responses until billing integration is complete.\n\nThe request body is optional. When it is omitted, or when `TimePeriod`\nis omitted, the range defaults to the start of the current month through\ntoday. The maximum date range is 31 days.\n\nFilters of different kinds are combined with AND. Values within one tag\nfilter are combined with OR. Filter values that do not match usage\nproduce an empty result set.\n\nResults can be grouped by up to two customer resource-tag keys. Grouped\nvalues are returned in the `Tags` field. Usage without a requested tag\nremains in an untagged group, with that key omitted from `Tags`.\n\nRequests using tag filtering or grouping return HTTP 400 when tag-aware\nusage data is unavailable.\n",
 		"parameters": [
 			{
 				"description": "Identifies the Cloudflare account.",
@@ -945,9 +985,79 @@
 										],
 										"maxItems": 10,
 										"uniqueItems": true
+									},
+									"Tags": {
+										"description": "Restrict results by customer resource tags. Filters for different keys are combined with AND, while values within one filter are combined with OR. Keys must be unique and are case-sensitive.",
+										"type": "array",
+										"items": {
+											"description": "Values accepted for one customer resource-tag key.",
+											"type": "object",
+											"properties": {
+												"Key": {
+													"description": "Case-sensitive customer resource-tag key.",
+													"type": "string",
+													"example": "team",
+													"maxLength": 256,
+													"minLength": 1
+												},
+												"Values": {
+													"description": "Tag values to match. Values are combined with OR and must be unique. An empty string matches a key-only tag.",
+													"type": "array",
+													"items": {
+														"maxLength": 1024,
+														"type": "string"
+													},
+													"example": [
+														"fintech"
+													],
+													"maxItems": 20,
+													"minItems": 1,
+													"uniqueItems": true
+												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"Key",
+												"Values"
+											]
+										},
+										"maxItems": 10,
+										"uniqueItems": true
 									}
 								},
 								"additionalProperties": false
+							},
+							"GroupBy": {
+								"description": "Customer resource tags used to split result rows. At most two unique tag keys may be supplied.",
+								"type": "array",
+								"items": {
+									"description": "A customer resource-tag key used to split result rows.",
+									"type": "object",
+									"properties": {
+										"Key": {
+											"description": "Case-sensitive customer resource-tag key.",
+											"type": "string",
+											"example": "team",
+											"maxLength": 256,
+											"minLength": 1
+										},
+										"Type": {
+											"description": "Dimension category. Currently only customer resource tags are supported.",
+											"type": "string",
+											"example": "TAG",
+											"enum": [
+												"TAG"
+											]
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"Type",
+										"Key"
+									]
+								},
+								"maxItems": 2,
+								"uniqueItems": true
 							},
 							"TimePeriod": {
 								"description": "Charge period to query, i.e. when consumption happened, not when it was billed. `From` is inclusive and `To` is exclusive. `From` and `To` must be supplied together; supplying one without the other is an error. When both are omitted the range defaults to the start of the current month through today.",
@@ -1199,6 +1309,26 @@
 												"description": "Name assigned to a grouping of services. For Cloudflare, this is the subscription or contract display name.",
 												"type": "string",
 												"example": "My Subscription"
+											},
+											"Tags": {
+												"description": "Tag values for the requested `GroupBy` keys. Omitted when `GroupBy` is not provided. Missing keys are omitted, and key-only tags are returned as boolean `true`. All other tag values are strings.",
+												"type": "object",
+												"example": {
+													"team": "fintech"
+												},
+												"additionalProperties": {
+													"oneOf": [
+														{
+															"type": "string"
+														},
+														{
+															"enum": [
+																true
+															],
+															"type": "boolean"
+														}
+													]
+												}
 											},
 											"x_BillableMetricId": {
 												"description": "The unique identifier for the billable metric in the Cloudflare catalog. Cloudflare extension; replaces FOCUS SkuId.",

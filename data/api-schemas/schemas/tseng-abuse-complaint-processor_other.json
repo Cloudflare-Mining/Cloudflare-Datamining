@@ -2375,6 +2375,1328 @@
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
+	"GET /accounts/{account_id}/abuse-reports/submitted": {
+		"operationId": "ListSubmittedAbuseReports",
+		"summary": "List submitted abuse reports",
+		"description": "List abuse reports submitted by the account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare Account ID",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"description": "Page of submitted reports to return.",
+				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of submitted reports per page.",
+				"schema": {
+					"type": "integer",
+					"default": 100,
+					"maximum": 200,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "sort",
+				"in": "query",
+				"description": "A property and direction to sort by (id, cdate, domain, type, status).",
+				"schema": {
+					"type": "string"
+				},
+				"example": "cdate,desc"
+			},
+			{
+				"name": "id",
+				"in": "query",
+				"description": "Filter by report code.",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "domain",
+				"in": "query",
+				"description": "Filter by reported domain. This parameter can be specified multiple times.",
+				"schema": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"explode": true,
+				"style": "form"
+			},
+			{
+				"name": "created_before",
+				"in": "query",
+				"description": "Return reports submitted before this time.",
+				"schema": {
+					"type": "string",
+					"format": "date-time"
+				}
+			},
+			{
+				"name": "created_after",
+				"in": "query",
+				"description": "Return reports submitted after this time.",
+				"schema": {
+					"type": "string",
+					"format": "date-time"
+				}
+			},
+			{
+				"name": "status",
+				"in": "query",
+				"description": "Filter by submitter-facing status. This parameter can be specified multiple times.",
+				"schema": {
+					"type": "array",
+					"items": {
+						"description": "Status visible to the account that submitted the report.",
+						"type": "string",
+						"enum": [
+							"submitted",
+							"accepted",
+							"denied"
+						]
+					}
+				},
+				"explode": true,
+				"style": "form"
+			},
+			{
+				"name": "type",
+				"in": "query",
+				"description": "Filter by report type. This parameter can be specified multiple times.",
+				"schema": {
+					"type": "array",
+					"items": {
+						"description": "The abuse report type",
+						"type": "string",
+						"enum": [
+							"PHISH",
+							"GEN",
+							"THREAT",
+							"DMCA",
+							"EMER",
+							"TM",
+							"REG_WHO",
+							"NCSEI",
+							"NETWORK"
+						]
+					}
+				},
+				"explode": true,
+				"style": "form"
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Submitted abuse reports listed successfully.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"oneOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													}
+												]
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"reports": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"cdate": {
+														"description": "Time the report was submitted.",
+														"type": "string",
+														"format": "date-time"
+													},
+													"denial_reason": {
+														"description": "Submitter-safe reason for a denied report. Null when unavailable.",
+														"type": "string",
+														"allOf": [
+															{
+																"description": "Submitter-safe reason that a submitted report was denied.",
+																"type": "string",
+																"enum": [
+																	"unable_to_confirm",
+																	"incomplete_report",
+																	"not_on_cloudflare",
+																	"duplicate_report",
+																	"content_removed",
+																	"report_details_mismatch",
+																	"no_abuse_found",
+																	"missing_original_work",
+																	"direct_url_required",
+																	"wrong_report_category",
+																	"content_unavailable",
+																	"law_enforcement_referral_required",
+																	"domain_dispute_process_required"
+																]
+															}
+														],
+														"nullable": true
+													},
+													"domain": {
+														"description": "Domain identified in the report.",
+														"type": "string"
+													},
+													"id": {
+														"description": "Public report code.",
+														"type": "string"
+													},
+													"status": {
+														"description": "Status visible to the account that submitted the report.",
+														"type": "string",
+														"enum": [
+															"submitted",
+															"accepted",
+															"denied"
+														]
+													},
+													"submitter": {
+														"description": "Information about the submitter of the report.",
+														"type": "object",
+														"properties": {
+															"company": {
+																"type": "string"
+															},
+															"email": {
+																"type": "string"
+															},
+															"name": {
+																"type": "string"
+															},
+															"telephone": {
+																"type": "string"
+															}
+														}
+													},
+													"type": {
+														"description": "The abuse report type",
+														"type": "string",
+														"enum": [
+															"PHISH",
+															"GEN",
+															"THREAT",
+															"DMCA",
+															"EMER",
+															"TM",
+															"REG_WHO",
+															"NCSEI",
+															"NETWORK"
+														]
+													}
+												},
+												"required": [
+													"id",
+													"cdate",
+													"domain",
+													"type",
+													"status",
+													"denial_reason"
+												]
+											}
+										}
+									},
+									"required": [
+										"reports"
+									]
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count",
+										"total_pages"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid account or query parameters."
+			},
+			"401": {
+				"description": "The request is not authorized to read abuse reports for this account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Abuse Reports permission check or the submission entitlement check.",
+							"oneOf": [
+								{
+									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
+									"type": "object",
+									"properties": {
+										"errors": {
+											"description": "Cloudflare API error details.",
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"oneOf": [
+															{
+																"type": "string"
+															},
+															{
+																"type": "number"
+															}
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												]
+											},
+											"example": [
+												{
+													"code": 10000,
+													"message": "Authentication error"
+												}
+											]
+										},
+										"messages": {
+											"description": "Informational messages.",
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												]
+											},
+											"example": []
+										},
+										"result": {
+											"description": "Always null for this error response.",
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the request succeeded.",
+											"type": "boolean",
+											"example": false
+										}
+									},
+									"example": {
+										"errors": [
+											{
+												"code": 10000,
+												"message": "Authentication error"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"type": "object",
+									"properties": {
+										"err_code": {
+											"description": "Machine-readable error code.",
+											"type": "string",
+											"example": "unknown_err"
+										},
+										"error_code": {
+											"description": "Legacy alias for err_code.",
+											"type": "string",
+											"example": "unknown_err"
+										},
+										"msg": {
+											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
+											"type": "string",
+											"example": "Not entitled to use feature: Abuse Report API"
+										},
+										"result": {
+											"description": "The result is 'error' for an error response.",
+											"type": "string",
+											"example": "error"
+										}
+									},
+									"example": {
+										"err_code": "unknown_err",
+										"error_code": "unknown_err",
+										"msg": "Not entitled to use feature: Abuse Report API",
+										"result": "error"
+									},
+									"required": [
+										"result",
+										"msg",
+										"err_code",
+										"error_code"
+									]
+								}
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Failed to retrieve submitted abuse reports."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"tseng-abuse-complaint-processor_other"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write",
+			"Trust and Safety Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "abuse-reports",
+		"x-fern-sdk-method-name": "listSubmitted",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/abuse-reports/submitted/{report_id}": {
+		"operationId": "GetSubmittedAbuseReport",
+		"summary": "Get a submitted abuse report",
+		"description": "Retrieve a report submitted by the account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare Account ID",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			},
+			{
+				"name": "report_id",
+				"in": "path",
+				"description": "Public report code.",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Submitted abuse report found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"oneOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													}
+												]
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									}
+								},
+								"result": {
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"cdate": {
+													"description": "Time the report was submitted.",
+													"type": "string",
+													"format": "date-time"
+												},
+												"denial_reason": {
+													"description": "Submitter-safe reason for a denied report. Null when unavailable.",
+													"type": "string",
+													"allOf": [
+														{
+															"description": "Submitter-safe reason that a submitted report was denied.",
+															"type": "string",
+															"enum": [
+																"unable_to_confirm",
+																"incomplete_report",
+																"not_on_cloudflare",
+																"duplicate_report",
+																"content_removed",
+																"report_details_mismatch",
+																"no_abuse_found",
+																"missing_original_work",
+																"direct_url_required",
+																"wrong_report_category",
+																"content_unavailable",
+																"law_enforcement_referral_required",
+																"domain_dispute_process_required"
+															]
+														}
+													],
+													"nullable": true
+												},
+												"domain": {
+													"description": "Domain identified in the report.",
+													"type": "string"
+												},
+												"id": {
+													"description": "Public report code.",
+													"type": "string"
+												},
+												"status": {
+													"description": "Status visible to the account that submitted the report.",
+													"type": "string",
+													"enum": [
+														"submitted",
+														"accepted",
+														"denied"
+													]
+												},
+												"submitter": {
+													"description": "Information about the submitter of the report.",
+													"type": "object",
+													"properties": {
+														"company": {
+															"type": "string"
+														},
+														"email": {
+															"type": "string"
+														},
+														"name": {
+															"type": "string"
+														},
+														"telephone": {
+															"type": "string"
+														}
+													}
+												},
+												"type": {
+													"description": "The abuse report type",
+													"type": "string",
+													"enum": [
+														"PHISH",
+														"GEN",
+														"THREAT",
+														"DMCA",
+														"EMER",
+														"TM",
+														"REG_WHO",
+														"NCSEI",
+														"NETWORK"
+													]
+												}
+											},
+											"required": [
+												"id",
+												"cdate",
+												"domain",
+												"type",
+												"status",
+												"denial_reason"
+											]
+										},
+										{
+											"properties": {
+												"agent_name": {
+													"description": "Authorized agent name supplied with the report.",
+													"type": "string"
+												},
+												"comments": {
+													"description": "Additional comments supplied with the report.",
+													"type": "string"
+												},
+												"court": {
+													"description": "The string \"on\" when a court proceeding applies to the report; otherwise omitted.",
+													"type": "string"
+												},
+												"destination_ips": {
+													"description": "Destination IP addresses supplied with a network abuse report.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"dsa_attestation": {
+													"description": "Whether the submitter provided the Digital Services Act attestation.",
+													"type": "boolean"
+												},
+												"host_notification": {
+													"description": "Submitter preference for notifying the hosting provider.",
+													"type": "string"
+												},
+												"justification": {
+													"description": "Evidence supplied with the report.",
+													"type": "string"
+												},
+												"ncmec_notification": {
+													"description": "Submitter preference for notifying NCMEC.",
+													"type": "string"
+												},
+												"ncsei_subject_representation": {
+													"description": "Representation supplied for an NCSEI report.",
+													"type": "boolean"
+												},
+												"original_work": {
+													"description": "Original work or targeted brand supplied with the report.",
+													"type": "string"
+												},
+												"owner_notification": {
+													"description": "Submitter preference for notifying the content owner.",
+													"type": "string"
+												},
+												"ports_protocols": {
+													"description": "Ports and protocols supplied with a network abuse report.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"reg_who_request": {
+													"description": "RDP-mandated fields for registrar WHOIS data disclosure requests.",
+													"type": "object",
+													"properties": {
+														"reg_who_authorization_statement": {
+															"description": "Optional authorization statement or power of attorney per RDP 10.2.1.3.",
+															"type": "string",
+															"maxLength": 5000
+														},
+														"reg_who_good_faith_affirmation": {
+															"description": "Affirmation that the request is made in good faith per RDP 10.2.4. Must be true.",
+															"type": "boolean"
+														},
+														"reg_who_lawful_processing_agreement": {
+															"description": "Agreement to process data lawfully per RDP 10.2.5. Must be true.",
+															"type": "boolean"
+														},
+														"reg_who_legal_basis": {
+															"description": "Legal rights and rationale for the request per RDP 10.2.3. Required for all WHOIS requests.",
+															"type": "string",
+															"maxLength": 5000
+														},
+														"reg_who_request_type": {
+															"description": "The type of WHOIS data request per RDP procedure.",
+															"type": "string",
+															"enum": [
+																"disclosure",
+																"invalid_whois"
+															]
+														},
+														"reg_who_requested_data_elements": {
+															"description": "The specific WHOIS data elements being requested per RDP 10.2.2. Required for all WHOIS requests.",
+															"type": "array",
+															"items": {
+																"enum": [
+																	"registrant_name",
+																	"registrant_organization",
+																	"registrant_email",
+																	"registrant_phone",
+																	"registrant_address",
+																	"registrant_address_country",
+																	"registrant_address_postal_code",
+																	"admin_name",
+																	"admin_organization",
+																	"admin_email",
+																	"admin_phone",
+																	"admin_address",
+																	"tech_name",
+																	"tech_organization",
+																	"tech_email",
+																	"tech_phone",
+																	"tech_address"
+																],
+																"type": "string"
+															},
+															"maxItems": 17,
+															"minItems": 1
+														},
+														"reg_who_requestor_type": {
+															"description": "The nature of the requestor per RDP 10.2.1.2.",
+															"type": "string",
+															"enum": [
+																"government",
+																"corporation",
+																"individual"
+															]
+														}
+													},
+													"required": [
+														"reg_who_request_type",
+														"reg_who_requested_data_elements",
+														"reg_who_legal_basis",
+														"reg_who_good_faith_affirmation",
+														"reg_who_lawful_processing_agreement"
+													]
+												},
+												"reported_country": {
+													"description": "Country associated with the reported activity.",
+													"type": "string"
+												},
+												"reported_user_agent": {
+													"description": "User agent associated with the reported activity.",
+													"type": "string"
+												},
+												"source_ips": {
+													"description": "Source IP addresses supplied with a network abuse report.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"subtypes": {
+													"description": "Additional abuse classifications supplied with the report.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"title": {
+													"description": "Title supplied with the report.",
+													"type": "string"
+												},
+												"udrp": {
+													"description": "The string \"on\" when a UDRP proceeding applies to the report; otherwise omitted.",
+													"type": "string"
+												},
+												"urls": {
+													"description": "URLs supplied with the report.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"urs": {
+													"description": "The string \"on\" when a URS proceeding applies to the report; otherwise omitted.",
+													"type": "string"
+												}
+											},
+											"required": [
+												"urls",
+												"dsa_attestation"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid account or report code."
+			},
+			"401": {
+				"description": "The request is not authorized to read abuse reports for this account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Abuse Reports permission check or the submission entitlement check.",
+							"oneOf": [
+								{
+									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
+									"type": "object",
+									"properties": {
+										"errors": {
+											"description": "Cloudflare API error details.",
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"oneOf": [
+															{
+																"type": "string"
+															},
+															{
+																"type": "number"
+															}
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												]
+											},
+											"example": [
+												{
+													"code": 10000,
+													"message": "Authentication error"
+												}
+											]
+										},
+										"messages": {
+											"description": "Informational messages.",
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												]
+											},
+											"example": []
+										},
+										"result": {
+											"description": "Always null for this error response.",
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the request succeeded.",
+											"type": "boolean",
+											"example": false
+										}
+									},
+									"example": {
+										"errors": [
+											{
+												"code": 10000,
+												"message": "Authentication error"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"type": "object",
+									"properties": {
+										"err_code": {
+											"description": "Machine-readable error code.",
+											"type": "string",
+											"example": "unknown_err"
+										},
+										"error_code": {
+											"description": "Legacy alias for err_code.",
+											"type": "string",
+											"example": "unknown_err"
+										},
+										"msg": {
+											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
+											"type": "string",
+											"example": "Not entitled to use feature: Abuse Report API"
+										},
+										"result": {
+											"description": "The result is 'error' for an error response.",
+											"type": "string",
+											"example": "error"
+										}
+									},
+									"example": {
+										"err_code": "unknown_err",
+										"error_code": "unknown_err",
+										"msg": "Not entitled to use feature: Abuse Report API",
+										"result": "error"
+									},
+									"required": [
+										"result",
+										"msg",
+										"err_code",
+										"error_code"
+									]
+								}
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "No matching submitted report was found for the account."
+			},
+			"500": {
+				"description": "Failed to retrieve the submitted abuse report."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"tseng-abuse-complaint-processor_other"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write",
+			"Trust and Safety Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "abuse-reports",
+		"x-fern-sdk-method-name": "getSubmitted",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/abuse-reports/submitted/{report_id}/emails": {
+		"operationId": "ListSubmittedAbuseReportEmails",
+		"summary": "List emails sent to an abuse report submitter",
+		"description": "List successful emails sent to the submitter of a report submitted by the account. Does not include emails sent to customers or hosts.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare Account ID",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			},
+			{
+				"name": "report_id",
+				"in": "path",
+				"description": "Public report code.",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"description": "Page number to retrieve (default 1).",
+				"schema": {
+					"type": "integer"
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of emails per page (default 20, max 100).",
+				"schema": {
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Submitted abuse report emails listed successfully.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"oneOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													}
+												]
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"emails": {
+											"type": "array",
+											"items": {
+												"description": "An email sent to the customer for an abuse report.",
+												"type": "object",
+												"properties": {
+													"body": {
+														"description": "Body content of the email.",
+														"type": "string"
+													},
+													"id": {
+														"description": "Unique identifier of the email.",
+														"type": "string"
+													},
+													"recipient": {
+														"description": "Email address of the recipient.",
+														"type": "string"
+													},
+													"sent_at": {
+														"description": "When the email was sent. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html)",
+														"type": "string",
+														"example": "2009-11-10T23:00:00Z"
+													},
+													"subject": {
+														"description": "Subject line of the email.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"subject",
+													"body",
+													"recipient",
+													"sent_at"
+												]
+											}
+										}
+									},
+									"required": [
+										"emails"
+									]
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count",
+										"total_pages"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid account, report, or query parameters."
+			},
+			"401": {
+				"description": "The request is not authorized to read abuse reports for this account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Abuse Reports permission check or the submission entitlement check.",
+							"oneOf": [
+								{
+									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
+									"type": "object",
+									"properties": {
+										"errors": {
+											"description": "Cloudflare API error details.",
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"oneOf": [
+															{
+																"type": "string"
+															},
+															{
+																"type": "number"
+															}
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												]
+											},
+											"example": [
+												{
+													"code": 10000,
+													"message": "Authentication error"
+												}
+											]
+										},
+										"messages": {
+											"description": "Informational messages.",
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												]
+											},
+											"example": []
+										},
+										"result": {
+											"description": "Always null for this error response.",
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the request succeeded.",
+											"type": "boolean",
+											"example": false
+										}
+									},
+									"example": {
+										"errors": [
+											{
+												"code": 10000,
+												"message": "Authentication error"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"type": "object",
+									"properties": {
+										"err_code": {
+											"description": "Machine-readable error code.",
+											"type": "string",
+											"example": "unknown_err"
+										},
+										"error_code": {
+											"description": "Legacy alias for err_code.",
+											"type": "string",
+											"example": "unknown_err"
+										},
+										"msg": {
+											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
+											"type": "string",
+											"example": "Not entitled to use feature: Abuse Report API"
+										},
+										"result": {
+											"description": "The result is 'error' for an error response.",
+											"type": "string",
+											"example": "error"
+										}
+									},
+									"example": {
+										"err_code": "unknown_err",
+										"error_code": "unknown_err",
+										"msg": "Not entitled to use feature: Abuse Report API",
+										"result": "error"
+									},
+									"required": [
+										"result",
+										"msg",
+										"err_code",
+										"error_code"
+									]
+								}
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Submitted abuse report not found for the selected account."
+			},
+			"500": {
+				"description": "Failed to retrieve submitted abuse report emails."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"tseng-abuse-complaint-processor_other"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write",
+			"Trust and Safety Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "abuse-reports.emails",
+		"x-fern-sdk-method-name": "listSubmitted",
+		"x-forge-hidden": true
+	},
 	"POST /accounts/{account_id}/abuse-reports/{report_id}/mitigations/appeal": {
 		"operationId": "RequestReview",
 		"summary": "Request review on mitigations",
