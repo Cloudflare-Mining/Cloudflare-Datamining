@@ -3,69 +3,30 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3><strong>Available Locations: Lisbon | London | Hybrid</strong></h3>
-<h3 id="JD:EngineeringManagerWorkersKV-AbouttheDepartment"><strong>About the Department</strong></h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h3 id="JD:EngineeringManagerWorkersKV-AbouttheTeam">About the Team</h3>
-<p>The Workers KV team delivers Cloudflare's global, low-latency, key-value data storage. KV lets developers store and retrieve data globally. With Workers KV, you can build dynamic and performant APIs and websites that support high read volumes with low latency.</p>
-<p>KV is integrated with Cloudflare Workers but can also be used via our REST API. Here are a few example use-cases:</p>
-<ul>
-	<li><strong>Caching API responses</strong></li>
-	<li><strong>Storing user configurations and preferences</strong></li>
-	<li><strong>Storing user authentication details</strong></li>
-</ul>
-<p>The team is geographically distributed across Western Europe.</p>
-<h3 id="JD:EngineeringManagerWorkersKV-Whatyou'lldo"><strong>What you'll do</strong></h3>
-<p>We are looking for an experienced Senior Engineering Manager to join our team. You will work with a team of passionate, talented engineers that are building innovative products that bring security and speed to millions of internet users each day. You will play an active part in shaping product features and improving performance to make Workers KV the best it can be. You will make sure our company hits our ambitious goals from an engineering standpoint.&nbsp;You will change the way people build applications.</p>
-<p>You bring a passion for meeting business needs by building technical, innovative solutions. You excel to understand how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment and have experience in delivering scalable distributed systems. Most importantly, you have a track record of having past teams respect you as both a technical leader and manager.</p>
-<h3 id="JD:EngineeringManagerWorkersKV-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
-<ul>
-	<li>Strong communications skills - especially building a shared understanding of systems among a team's members.</li>
-	<li>Comfortable leading and hiring a team that builds distributed systems.</li>
-	<li>Navigate uncertainty and ambiguity - many of the things we build have never been built before anywhere and you are expected to find a way to deliver.</li>
-	<li>Excel at planning, creating teams, and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Comfortable building developer-loved APIs that scale</li>
-	<li>Demonstrate a track record of leading a team including hiring, on-boarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”.</li>
-	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
-	<li>At least 4 years of recent professional experience with TypeScript or Go.</li>
-	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
-	<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript and WebAssembly</li>
-</ul>
-<h3 id="JD:EngineeringManagerWorkersKV-BonusPoints"><strong>Bonus Points</strong></h3>
-<ul>
-	<li>Experience building high performance distributed systems</li>
-	<li>Experience delivering and operating critical infrastructure for cloud platforms, especially serverless platforms</li>
-	<li>Deep Linux/UNIX systems, kernel, or networking knowledge</li>
-	<li>Contributions to large open source projects</li>
-	<li>Experience working with distributed storage and cache architectures</li>
-	<li>Experience debugging, optimizing and identifying failure modes in a large-scale Linux-based distributed system</li>
-</ul>
-<p><strong>Compensation<br></strong>Compensation may be adjusted depending on work location.</p>
-<p><strong>Equity</strong><br>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<h3>About the Role</h3>
+<p>Cloudflare’s Billing Engineering team builds and operates the systems responsible for usage metering, aggregation, subscriptions, invoicing, payments, and revenue recognition. These systems power billions in revenue and support millions of customers across Cloudflare’s product portfolio.</p>
+<p>We are rebuilding key parts of our billing platform to scale with products including AI, Zero Trust, Workers, Bot Management, and DDoS Protection. As a Senior Software Engineer on the Fintech team, you will design reliable financial infrastructure, lead projects from requirements through production, and help ensure billing remains accurate as Cloudflare grows.</p>
+<h3>Responsibilities</h3>
+<p><strong>Build Billing Systems:</strong> Design, develop, and operate transactional microservices supporting metering, subscriptions, invoicing, payments, and financial workflows.</p>
+<p><strong>Own Projects End to End:</strong> Drive initiatives from requirements and technical design through implementation, testing, deployment, and ongoing operation.</p>
+<p><strong>Ensure Accuracy and Reliability:</strong> Build fault-tolerant systems that safely handle retries, failures, concurrency, and high transaction volumes while preserving financial correctness.</p>
+<p><strong>Maintain Operational Excellence:</strong> Monitor production services, investigate billing issues, improve observability, and address the underlying causes of recurring incidents.</p>
+<p><strong>Shape Technical Direction:</strong> Participate in architecture reviews, make pragmatic technical trade-offs, and help improve engineering standards across the billing platform.</p>
+<p><strong>Collaborate Cross-Functionally:</strong> Work with Product, Finance, Accounting, Support, and other engineering teams to turn complex business requirements into maintainable solutions.</p>
+<h3>Desirable Skills, Knowledge, and Experience</h3>
+<p>- Five or more years of professional software engineering experience, or equivalent practical experience.</p>
+<p>- Experience building and operating distributed systems or backend services in production.</p>
+<p>- Proficiency in Go or another modern programming language, with an interest in working extensively with Go.</p>
+<p>- Strong understanding of RESTful APIs, service security, and API standards such as OpenAPI, OAuth, or JWT.</p>
+<p>- Working knowledge of SQL, data modeling, and relational databases such as PostgreSQL or MySQL.</p>
+<p>- Experience designing secure, highly available microservices in Linux or Unix environments.</p>
+<p>- Familiarity with event-driven architectures and asynchronous processing.</p>
+<p>- Strong troubleshooting, communication, and project ownership skills.</p>
+<h3>Bonus Points</h3>
+<p>- Experience with billing, payments, subscriptions, usage metering, invoicing, financial ledgers, or revenue recognition.</p>
+<p>- Experience with technologies such as PostgreSQL, Redis, Kafka, Kubernetes, Docker, or Temporal.</p>
+<p>- Familiarity with reconciliation, idempotency, auditability, and financial data integrity.</p>
+<p>- Experience leading technically complex projects across multiple teams.</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

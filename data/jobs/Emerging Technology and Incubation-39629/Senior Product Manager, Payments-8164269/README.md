@@ -3,41 +3,64 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: Austin, Texas or San Francisco, California, US</strong></p>
-<p><strong>About the role</strong></p>
-<p>Cloudflare is seeking an intern to support the Strategic Events team. This role will help plan, coordinate, and execute high-visibility strategic events. The ideal candidate is highly organized, calm under pressure, and eager to step into the world of corporate event production including third party tradeshows, customer events, and special projects. They should have strong communication skills and an ability to work across multiple functions. The Strategic Events team creates high-impact experiences that help Cloudflare engage customers, prospects, partners, and internal stakeholders. The team delivers events that build relationships, support pipeline, and reinforce Cloudflare's leadership in the market.</p>
-<h4><strong>Responsibilities</strong></h4>
+<p><strong>Available Locations: Austin or San Francisco (Hybrid)</strong></p>
+<p><strong>About the team</strong></p>
+<p>For 30 years, the web has run on a simple economic bargain: trading content for human attention. That attention has been monetized through advertising, subscriptions, and e-commerce. This bargain funded the Internet as we know it.&nbsp;</p>
+<p>But as agents become the dominant Internet users, the model is breaking. An agent does not look at ads or need to maintain a monthly subscription to all the tools it wants to access. It reads a page or consumes a data feed once, takes what it needs, and moves on. Across the web, AI crawlers already request content anywhere from a hundred to tens of thousands of times for every visitor they <a href="https://blog.cloudflare.com/ai-crawler-traffic-by-purpose-and-industry/">send back</a>. We need new business models, fit for this new era.&nbsp;</p>
+<p>Cloudflare has spent years detecting bots, allowing domain owners to take control of whether bots can access them. What's been missing is the other half: how agents interact with those sites once they're let in. That's what our team, the Agentic Internet team is focused on: making the web readable, discoverable, callable, and <em>payable</em>. These four primitives are all built on open standards, so no single company owns the rails. Cloudflare believes in the open Internet, and we're in a position to help build the future where it thrives. Come help us make it happen!</p>
+<p>You can read more about some of our big bets <a href="https://blog.cloudflare.com/monetization-gateway/">here</a> and <a href="https://blog.cloudflare.com/wallets/">here</a>.&nbsp;</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li><strong>Assist with Event Planning:</strong> Provide operational and logistical support for <em>Connect</em>, <em>Connect on Tour</em>, SKO, and industry events.</li>
-	<li><strong>Track Timelines &amp; Deliverables:</strong> Help maintain event project plans, workback schedules, and team task trackers under the guidance of Event Managers.</li>
-	<li><strong>Support Cross-Functional Communication:</strong> Help draft status updates and gather information across marketing, creative, operations, and external vendor partners.</li>
-	<li><strong>Vendor &amp; Venue Logistics:</strong> Assist with vendor coordination, including inventory tracking, shipping/receiving event collateral, and organizing vendor contacts.</li>
-	<li><strong>Attendee &amp; Registration Management:</strong> Assist with registration platform setup, attendee check-in lists, housing, badging, and customer inquiry response.</li>
-	<li><strong>Documentation &amp; Recaps:</strong> Help compile event briefs, draft slide decks, and gather post-event survey data and metrics for recaps.</li>
-	<li><strong>Potential for on-Site Execution:</strong> Depending on timing, provide hands-on assistance during event setup, run-of-show execution, and post-event teardown/debriefs.</li>
-	<li><strong>Brand Alignment:</strong> Help ensure all event materials, signage, and digital assets align with Cloudflare’s brand guidelines.</li>
+	<li>Shape the product strategy for new Internet-scale business models</li>
+	<li>Deliver product specifications, prototypes, product positioning, and high-impact launches</li>
+	<li>Partner with Engineering, Design, Research, and GTM to ship at high velocity</li>
+	<li>Work with Partnerships and BD to define the new business models for the open web</li>
+	<li>Represent the product externally with users, customers, AI labs, developers, and more</li>
 </ul>
-<h4><strong>Skills and Qualifications</strong></h4>
+<p><strong>What we're looking for</strong></p>
 <ul>
-	<li>Currently pursuing or recently completed a Bachelor’s degree in Marketing, Communications, Hospitality, Event Management, Business, or a related field.</li>
-	<li>Available for a full-time 12-week internship, working from our Austin or San Francisco office 3-5 days a week during the fall (Sept-Dec).</li>
-	<li>Previous internship, student organization leadership, or campus event planning experience is a plus.</li>
-	<li>High level of organization, keen attention to detail, and ability to manage multiple small tasks simultaneously.</li>
-	<li>Clear verbal and written communication skills; comfortable interacting with cross-functional team members.</li>
-	<li>Familiarity with basic office productivity tools (Google Workspace/Microsoft Office); exposure to project management software (e.g., Asana, Jira) or event platforms is a bonus.</li>
-	<li>Strong desire to learn, quick problem-solving mindset, and willingness to dive into tactical event tasks in a fast-paced tech environment.</li>
-	<li>Proactive attitude with a readiness to collaborate and support team members wherever needed.</li>
+	<li>5+ years as a technical PM; developer-facing experience and AI/ML preferred</li>
+	<li>A builder: you get things done, can move quickly, and prefer ‘show’ over ‘tell’</li>
+	<li>A strong communicator who is comfortable with ambiguity</li>
+	<li>Technically literate — you don't need to write Rust, but you should be able to push back on a tech lead on the merits of a particular direction</li>
+	<li>Payments, FinTech, or blockchain experience is a plus</li>
+	<li>Team oriented - You’d rather get it right than be right</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
-<ul>
-	<li>Curiosity about B2B technology, enterprise marketing, or corporate event strategy.</li>
-	<li>Prior exposure to event registration tools, surveys, or database management.</li>
-	<li>Experience coordinating volunteers, campus events, or small-scale meetups.</li>
-</ul>
+<p><strong>How we work</strong></p>
+<p>At Cloudflare, performance is about outcomes (what you did) and behaviors (how you did it). We value curiosity, humility, empathy, and doing the principled thing. Learn more about our values on our <a href="https://www.cloudflare.com/en-gb/careers/">Careers page</a>.</p>
+<p><strong>Why this role</strong></p>
+<p>You’re joining a fast-moving team, breaking new ground. Read more about some of our big bets <a href="https://blog.cloudflare.com/monetization-gateway/">here</a> and <a href="https://blog.cloudflare.com/wallets/">here</a>.&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated hourly rate of $27/hr.</span></li>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $179,000 - $224,000</span></li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

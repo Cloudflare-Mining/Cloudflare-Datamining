@@ -109,6 +109,7 @@
 <ul>
 	<li><span data-sheets-root="1">For Seattle/NYC/California based hires - Estimated annual salary of: $273,000 - $341,000</span></li>
 	<li><span data-sheets-root="1">For SF/Bay Area based hires - Estimated annual salary of: $286,000 - $258,000</span></li>
+	<li><span data-sheets-root="1">For Lisbon based hires - Estimated annual salary of: €146,000 - €183,000&nbsp;</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>

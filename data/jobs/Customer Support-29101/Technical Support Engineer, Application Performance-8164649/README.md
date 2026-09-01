@@ -3,69 +3,44 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3><strong>Available Locations: Lisbon | London | Hybrid</strong></h3>
-<h3 id="JD:EngineeringManagerWorkersKV-AbouttheDepartment"><strong>About the Department</strong></h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h3 id="JD:EngineeringManagerWorkersKV-AbouttheTeam">About the Team</h3>
-<p>The Workers KV team delivers Cloudflare's global, low-latency, key-value data storage. KV lets developers store and retrieve data globally. With Workers KV, you can build dynamic and performant APIs and websites that support high read volumes with low latency.</p>
-<p>KV is integrated with Cloudflare Workers but can also be used via our REST API. Here are a few example use-cases:</p>
+<p><strong>Available Locations: </strong>Hybrid - Austin, TX</p>
+<p><strong>Schedule: </strong>This is a full-time, Tuesday-Saturday role requiring a firm start time of 11:00 AM Central Time to align with our global operations. This role requires you to be able to come into our Austin office twice a week.</p>
+<h4>About the Department</h4>
+<p>The Customer Support Team is dedicated to resolving complex issues and providing technical assistance across various channels, including phone, email, chat, and social media. Our team passionately advocates for all customers, from individual Wordpress bloggers to Fortune 500 customers handling millions of clients daily. By actively listening to real-world pain points and use cases, we serve as the vital link between our customers and the rest of Cloudflare and play a key role in building a better Internet every day!</p>
+<h4>What You’ll do</h4>
+<p>As a Technical Support Engineer at Cloudflare, you’ll work directly with customers and cross-functional teams to tackle a variety of technical challenges. You’ll gain hands-on experience with our products, learn the inner workings of Cloudflare’s offerings, and deepen your understanding of internet technologies. This role also provides opportunities to develop valuable technical and professional skills, as well as job shadowing experiences to explore different roles within the company. Join us to enhance your skill set while making a real impact!</p>
+<h4>Responsibilities&nbsp;</h4>
 <ul>
-	<li><strong>Caching API responses</strong></li>
-	<li><strong>Storing user configurations and preferences</strong></li>
-	<li><strong>Storing user authentication details</strong></li>
+	<li>Fulfill support requests by communicating with Cloudflare customers via chat, email, and phone</li>
+	<li>Collaborate with senior engineers to analyze and troubleshoot customer issues</li>
+	<li>Track support requests using our ticketing system</li>
+	<li>Participate in team meetings to discuss and share feedback</li>
+	<li>Help define and update AI skills and conversational journeys to ensure up-to-date knowledge is available in automated workflows, as well as updating other internal- and public-facing documentation as needed.</li>
+	<li>Provide feedback on our product and potential improvements based on customer interactions</li>
+	<li>Support the team in testing new releases and reporting bugs</li>
+	<li>Perform other duties/projects as assigned&nbsp;</li>
 </ul>
-<p>The team is geographically distributed across Western Europe.</p>
-<h3 id="JD:EngineeringManagerWorkersKV-Whatyou'lldo"><strong>What you'll do</strong></h3>
-<p>We are looking for an experienced Senior Engineering Manager to join our team. You will work with a team of passionate, talented engineers that are building innovative products that bring security and speed to millions of internet users each day. You will play an active part in shaping product features and improving performance to make Workers KV the best it can be. You will make sure our company hits our ambitious goals from an engineering standpoint.&nbsp;You will change the way people build applications.</p>
-<p>You bring a passion for meeting business needs by building technical, innovative solutions. You excel to understand how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment and have experience in delivering scalable distributed systems. Most importantly, you have a track record of having past teams respect you as both a technical leader and manager.</p>
-<h3 id="JD:EngineeringManagerWorkersKV-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>Strong communications skills - especially building a shared understanding of systems among a team's members.</li>
-	<li>Comfortable leading and hiring a team that builds distributed systems.</li>
-	<li>Navigate uncertainty and ambiguity - many of the things we build have never been built before anywhere and you are expected to find a way to deliver.</li>
-	<li>Excel at planning, creating teams, and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Comfortable building developer-loved APIs that scale</li>
-	<li>Demonstrate a track record of leading a team including hiring, on-boarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”.</li>
-	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
-	<li>At least 4 years of recent professional experience with TypeScript or Go.</li>
-	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
-	<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript and WebAssembly</li>
+	<li>3-5 years of experience working in a technical Customer Support role, preferably as part of a team working with large enterprise customers</li>
+	<li>Self-driven and comfortable learning new technologies and systems on an ongoing basis</li>
+	<li>Excellent written and verbal communication skills</li>
+	<li>Strong understanding of how the Internet works at OSI Model layers 3, 4, and 7</li>
+	<li>Strong understanding of DNS, SSL/TLS, and HTTP(S) protocols</li>
+	<li>General understanding of HTTP reverse proxying, caching, and load balancing</li>
+	<li>Experience using Linux and associated command line tools, including curl, dig, traceroute, openssl, git, etc.</li>
+	<li>Experience writing scripts in Bash, Python, JavaScript, or other scripting languages</li>
+	<li>Experience installing and configuring web servers like Apache, Nginx, and/or IIS</li>
 </ul>
-<h3 id="JD:EngineeringManagerWorkersKV-BonusPoints"><strong>Bonus Points</strong></h3>
+<h4>Bonus Points</h4>
 <ul>
-	<li>Experience building high performance distributed systems</li>
-	<li>Experience delivering and operating critical infrastructure for cloud platforms, especially serverless platforms</li>
-	<li>Deep Linux/UNIX systems, kernel, or networking knowledge</li>
-	<li>Contributions to large open source projects</li>
-	<li>Experience working with distributed storage and cache architectures</li>
-	<li>Experience debugging, optimizing and identifying failure modes in a large-scale Linux-based distributed system</li>
+	<li>Prior experience with the Cloudflare platform, especially for personal projects/websites</li>
+	<li>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</li>
+	<li>Experience configuring network or application firewalls</li>
+	<li>Degrees or certifications in Computer Science, Information Technology, and related fields</li>
+	<li>Fluency in Mandarin, Spanish, and/or Portuguese</li>
 </ul>
-<p><strong>Compensation<br></strong>Compensation may be adjusted depending on work location.</p>
-<p><strong>Equity</strong><br>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
