@@ -4233,6 +4233,15 @@
 						"compatEnableDate": "2026-09-15"
 					},
 					"type": "Bool"
+				},
+				{
+					"name": "autoInjectPythonWorkers",
+					"annotations": {
+						"compatEnableFlag": "auto_inject_python_workers",
+						"compatDisableFlag": "no_auto_inject_python_workers",
+						"experimental": true
+					},
+					"type": "Bool"
 				}
 			]
 		},
