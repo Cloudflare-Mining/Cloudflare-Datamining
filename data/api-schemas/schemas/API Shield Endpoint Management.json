@@ -606,7 +606,8 @@
 						"enum": [
 							"thresholds",
 							"parameter_schemas",
-							"schema_info"
+							"schema_info",
+							"confidence_intervals"
 						],
 						"example": "thresholds",
 						"type": "string"
@@ -1171,13 +1172,6 @@
 																											}
 																										]
 																									},
-																									"is_learned": {
-																										"description": "Deprecated. Always false.",
-																										"type": "boolean",
-																										"example": false,
-																										"deprecated": true,
-																										"x-auditable": true
-																									},
 																									"name": {
 																										"description": "Schema file name.",
 																										"type": "string",
@@ -1185,12 +1179,6 @@
 																										"x-auditable": true
 																									}
 																								}
-																							},
-																							"learned_available": {
-																								"description": "Deprecated. Always false.",
-																								"type": "boolean",
-																								"example": false,
-																								"x-auditable": true
 																							},
 																							"mitigation_action": {
 																								"description": "Action taken on requests failing validation.",
@@ -1381,7 +1369,8 @@
 						"enum": [
 							"thresholds",
 							"parameter_schemas",
-							"schema_info"
+							"schema_info",
+							"confidence_intervals"
 						],
 						"example": "thresholds",
 						"type": "string"
@@ -1913,13 +1902,6 @@
 																										}
 																									]
 																								},
-																								"is_learned": {
-																									"description": "Deprecated. Always false.",
-																									"type": "boolean",
-																									"example": false,
-																									"deprecated": true,
-																									"x-auditable": true
-																								},
 																								"name": {
 																									"description": "Schema file name.",
 																									"type": "string",
@@ -1927,12 +1909,6 @@
 																									"x-auditable": true
 																								}
 																							}
-																						},
-																						"learned_available": {
-																							"description": "Deprecated. Always false.",
-																							"type": "boolean",
-																							"example": false,
-																							"x-auditable": true
 																						},
 																						"mitigation_action": {
 																							"description": "Action taken on requests failing validation.",
@@ -2187,7 +2163,8 @@
 						"enum": [
 							"thresholds",
 							"parameter_schemas",
-							"schema_info"
+							"schema_info",
+							"confidence_intervals"
 						],
 						"example": "thresholds",
 						"type": "string"
@@ -3067,13 +3044,6 @@
 																									}
 																								]
 																							},
-																							"is_learned": {
-																								"description": "Deprecated. Always false.",
-																								"type": "boolean",
-																								"example": false,
-																								"deprecated": true,
-																								"x-auditable": true
-																							},
 																							"name": {
 																								"description": "Schema file name.",
 																								"type": "string",
@@ -3081,12 +3051,6 @@
 																								"x-auditable": true
 																							}
 																						}
-																					},
-																					"learned_available": {
-																						"description": "Deprecated. Always false.",
-																						"type": "boolean",
-																						"example": false,
-																						"x-auditable": true
 																					},
 																					"mitigation_action": {
 																						"description": "Action taken on requests failing validation.",
@@ -3824,13 +3788,6 @@
 																										}
 																									]
 																								},
-																								"is_learned": {
-																									"description": "Deprecated. Always false.",
-																									"type": "boolean",
-																									"example": false,
-																									"deprecated": true,
-																									"x-auditable": true
-																								},
 																								"name": {
 																									"description": "Schema file name.",
 																									"type": "string",
@@ -3838,12 +3795,6 @@
 																									"x-auditable": true
 																								}
 																							}
-																						},
-																						"learned_available": {
-																							"description": "Deprecated. Always false.",
-																							"type": "boolean",
-																							"example": false,
-																							"x-auditable": true
 																						},
 																						"mitigation_action": {
 																							"description": "Action taken on requests failing validation.",

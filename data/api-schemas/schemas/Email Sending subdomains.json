@@ -324,7 +324,8 @@
 																"description": "Whether a send request that includes a recipient suppressed on\nthis subdomain drops that recipient and still delivers to the\nrest, instead of failing the entire request.\n",
 																"type": "boolean",
 																"example": false,
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"enabled": {
 																"description": "Whether Email Sending is enabled on this subdomain.",
@@ -348,7 +349,8 @@
 																"description": "Whether sent messages from this subdomain can be previewed in the activity log.",
 																"type": "boolean",
 																"example": true,
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"return_path_domain": {
 																"description": "The return-path domain used for bounce handling. Wildcard rows use `cf-bounce.<base>`.",
@@ -556,7 +558,8 @@
 															"description": "Whether a send request that includes a recipient suppressed on\nthis subdomain drops that recipient and still delivers to the\nrest, instead of failing the entire request.\n",
 															"type": "boolean",
 															"example": false,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"enabled": {
 															"description": "Whether Email Sending is enabled on this subdomain.",
@@ -580,7 +583,8 @@
 															"description": "Whether sent messages from this subdomain can be previewed in the activity log.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"return_path_domain": {
 															"description": "The return-path domain used for bounce handling. Wildcard rows use `cf-bounce.<base>`.",
@@ -1812,7 +1816,8 @@
 															"description": "Whether a send request that includes a recipient suppressed on\nthis subdomain drops that recipient and still delivers to the\nrest, instead of failing the entire request.\n",
 															"type": "boolean",
 															"example": false,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"enabled": {
 															"description": "Whether Email Sending is enabled on this subdomain.",
@@ -1836,7 +1841,8 @@
 															"description": "Whether sent messages from this subdomain can be previewed in the activity log.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"return_path_domain": {
 															"description": "The return-path domain used for bounce handling. Wildcard rows use `cf-bounce.<base>`.",
@@ -2050,7 +2056,8 @@
 															"description": "Whether a send request that includes a recipient suppressed on\nthis subdomain drops that recipient and still delivers to the\nrest, instead of failing the entire request.\n",
 															"type": "boolean",
 															"example": false,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"enabled": {
 															"description": "Whether Email Sending is enabled on this subdomain.",
@@ -2074,7 +2081,8 @@
 															"description": "Whether sent messages from this subdomain can be previewed in the activity log.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"return_path_domain": {
 															"description": "The return-path domain used for bounce handling. Wildcard rows use `cf-bounce.<base>`.",
