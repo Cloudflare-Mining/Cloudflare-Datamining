@@ -4,44 +4,45 @@
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
 <h3><strong>Available Locations: Austin, Lisbon, or London (Hybrid)</strong></h3>
-<h3 id="EngineeringManagerWorkersRuntimeEdge-AbouttheDepartment"><strong>About the Department</strong></h3>
+<h3>About the Role</h3>
 <p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h3 id="EngineeringManagerWorkersRuntimeEdge-AbouttheTeam">About the Team</h3>
-<p>The Workers Runtime team delivers features and improvements to our Runtime which actually executes customer code at the edge. We care deeply about increasing performance, improving JS API surface area and compiled language support through WebAssembly, and optimizing to meet the next 10x increase in scale. The Runtime is a hostile environment - System resources such as memory, cpu, I/O, etc need to be managed extremely carefully and security must be foundational in everything we do.<br>Our work is deeply systems-oriented. We build and maintain the C++ and Rust codebase that embeds the JavaScript engine, manages isolate lifecycles, enforces resource limits (CPU, memory, I/O), and orchestrates how customer scripts are loaded, cached, and executed. We operate in a hostile multi-tenant environment where security must be foundational — from side-channel attack mitigations to isolate sandboxing — and performance is measured in microseconds.</p>
-<h3 id="EngineeringManagerWorkersRuntimeEdge-Whatyou'lldo"><strong>What you'll do</strong></h3>
-<p>We are looking for an Engineering Manager to lead the Workers Runtime - Edge team. You will own the team that keeps our runtime service running in production across Cloudflare's entire fleet and drives the architectural evolution of the platform.<br>You will:</p>
+<p>The Workers Runtime team delivers features and improvements to our Runtime which actually executes customer code at the edge. We care deeply about increasing performance, improving JS API surface area and compiled language support through WebAssembly, and optimizing to meet the next 10x increase in scale. The Runtime is a hostile environment - system resources such as memory, cpu, I/O, etc need to be managed extremely carefully and security must be foundational in everything we do.</p>
+<p>Our work is deeply systems-oriented. We build and maintain the C++ and Rust codebase that embeds the JavaScript engine, manages isolate lifecycles, enforces resource limits (CPU, memory, I/O), and orchestrates how customer scripts are loaded, cached, and executed. We operate in a hostile multi-tenant environment where security must be foundational — from side-channel attack mitigations to isolate sandboxing — and performance is measured in microseconds.</p>
+<h3>Responsibilities</h3>
+<p>You will lead the Workers Runtime - Edge team, owning the runtime service in production across Cloudflare’s fleet and driving the architectural evolution of the platform.</p>
 <ul>
-	<li data-uuid="5f495329-19c2-4578-91d7-069b78e47256">Lead a team of senior systems engineers working in C++ and Rust on one of the most performance-critical and security-sensitive services at Cloudflare.</li>
-	<li data-uuid="71383b55-0646-4b67-b8b8-637eaa4cb258">Drive major infrastructure initiatives — migrating legacy systems, redesigning core abstractions, and laying the groundwork for next-generation runtime architecture that will define the platform for years to come.</li>
-	<li data-uuid="d9d97d6a-a0a3-4a81-8233-ff23f9fa0654">Own reliability and release safety for a service handling tens of millions of requests per second. You will improve release processes, invest in health monitoring and automated rollback, and ensure the team can ship changes confidently at scale.</li>
-	<li data-uuid="6a66d754-af4e-477f-8e9e-944836c2168c">Make hard prioritisation calls between new feature work that unblocks customers and the ongoing investment in foundations, security, and developer velocity that the team needs to stay healthy long-term.</li>
-	<li data-uuid="38070735-ed79-4a2f-94a8-4475ae542a93">Partner closely with adjacent teams across the Developer Platform to ensure the runtime supports the broader product roadmap — including compute, storage, networking, and observability teams.</li>
-	<li data-uuid="8fbb6ff6-1e62-4462-8541-8d4920a257f2">Grow and develop the team Hire strong systems engineers, set clear expectations, provide technical mentorship, and create an environment where people do their best work.</li>
+	<li>Lead a team of senior systems engineers working in C++ and Rust on one of Cloudflare’s most performance-critical and security-sensitive services.</li>
+	<li>Drive major infrastructure initiatives, including migrating legacy systems, redesigning core abstractions, and laying the groundwork for next-generation runtime architecture.</li>
+	<li>Own reliability and release safety for a service handling tens of millions of requests per second.</li>
+	<li>Improve release processes, invest in health monitoring and automated rollback, and help the team ship changes confidently at scale.</li>
+	<li>Make prioritisation calls between customer-unblocking feature work and foundational investment in security, reliability, and developer velocity.</li>
+	<li>Partner closely with adjacent teams across the Developer Platform to ensure the runtime supports the broader product roadmap, including compute, storage, networking, and observability.</li>
+	<li>Hire, grow, and develop strong systems engineers; set clear expectations, provide technical mentorship, and create an environment where people do their best work.</li>
 </ul>
-<p>You bring a track record of leading teams that operate large-scale, low-latency distributed systems. You understand how to balance the urgency of production with the patience required for foundational improvement. You are technically credible enough to evaluate architectural proposals, weigh tradeoffs in C++/Rust systems, and earn the respect of a deeply technical team — while being a strong enough manager to build a healthy, high-performing engineering culture.</p>
-<h3 id="EngineeringManagerWorkersRuntimeEdge-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<h3>Desirable Skills, Knowledge &amp; Experience</h3>
 <ul>
-	<li>Experience leading a team</li>
-	<li>Comfortable leading and hiring a team that builds low level distributed systems.</li>
-	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Comfortable building developer-loved APIs that scale</li>
-	<li>Demonstrate a track record of leading a team including hiring, on-boarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”</li>
-	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
+	<li>Experience leading a team.</li>
+	<li>Comfortable leading and hiring a team that builds low-level distributed systems.</li>
+	<li>Strong planning skills, with experience creating teams and overseeing execution to meet commitments predictably.</li>
+	<li>Comfortable building developer-loved APIs that scale.</li>
+	<li>Track record of leading a team through hiring, onboarding, and professional development.</li>
+	<li>Ability to explain both the “why” and the “how.”</li>
+	<li>Experience implementing tools, process improvements, internal instrumentation, methodologies, and resolving blockages.</li>
 	<li>At least 4 years of recent professional experience with C++ or Rust.</li>
-	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
-	<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript and WebAssembly</li>
-	<li data-uuid="7803e3e3-598b-4b5c-86f3-1f0a58a3fce7">Strong understanding of Linux systems programming, process models, and networking.</li>
+	<li>Solid understanding of computer science fundamentals, including data structures, algorithms, and object-oriented or functional design.</li>
+	<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript, and WebAssembly.</li>
+	<li>Strong understanding of Linux systems programming, process models, and networking.</li>
 </ul>
-<h3 id="EngineeringManagerWorkersRuntimeEdge-BonusPoints"><strong>Bonus Points</strong></h3>
+<h3>Bonus Points</h3>
 <ul>
-	<li>Experience building high performance distributed systems.</li>
+	<li>Experience building high-performance distributed systems.</li>
 	<li>Experience working with cloud platforms, especially server-less platforms.</li>
-	<li>Experience with the internals of JS engines such as V8, SpiderMonkey, or JavaScriptCore</li>
-	<li>Experience with standalone WebAssembly runtimes such as Wasmtime, Wasmer, Lucet, etc</li>
-	<li>Deep Linux/UNIX systems, kernel, or networking knowledge</li>
-	<li>Contributions to large open source projects</li>
-	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems.</li>
-	<li>Experience debugging, optimizing and identifying failure modes in&nbsp;a large-scale Linux-based distributed system.</li>
+	<li>Experience with the internals of JS engines such as V8, SpiderMonkey, or JavaScriptCore.</li>
+	<li>Experience with standalone WebAssembly runtimes such as Wasmtime, Wasmer, Lucet, etc.</li>
+	<li>Deep Linux/UNIX systems, kernel, or networking knowledge.</li>
+	<li>Contributions to large open source projects.</li>
+	<li>Experience working in low-latency real-time environments such as game streaming, game engine architecture, high-frequency trading, or payment systems.</li>
+	<li>Experience debugging, optimizing, and identifying failure modes in a large-scale Linux-based distributed system.</li>
 </ul>
 <h3><strong>Compensation</strong></h3>
 <p><strong>Compensation may be adjusted depending on work location.</strong></p>
