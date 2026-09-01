@@ -6,7 +6,11 @@
 <h2>Available Locations</h2>
 <ul>
 	<li>Austin, US</li>
+	<li>Atlanta, GA</li>
+	<li>Denver, CO</li>
+	<li>Seattle, WA</li>
 </ul>
+<p><strong>Applications will be accepted until November 01, 2026.</strong></p>
 <h2>About the Role</h2>
 <p>Cloudflare operates one of the world's largest and most interconnected networks, spanning 335+ cities across every region of the globe. We are looking for a Senior Network Engineer to join our Edge Network &amp; Backbone team — someone who brings deep operational experience, an AI-first mindset, and the instinct to mentor and lift the engineers around them. In your first year, this role is deliberately hands-on: you'll be in the operational trenches, owning complex faults, driving capacity work, and setting the standard for how we run the network. Beyond that, you'll help shape how the team works — building AI-enabled tooling and agents that reduce toil, accelerate troubleshooting, and make the whole team more effective. This is a North American based role, but you'll be joining one global team: the sun never sets on Cloudflare, and our engineers hand off work across every time zone to keep the network running around the clock.</p>
 <h2>Responsibilities</h2>
@@ -39,6 +43,41 @@
 	<li>Experience with optical transport technologies such as CWDM and DWDM.</li>
 	<li>Linux system administration.</li>
 	<li>Experience writing network configuration and design documentation at an architectural level.</li>
+</ul>
+<p>&nbsp;</p>
+<h3>Compensation</h3>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For Colorado based hires: Estimated annual salary of $168,000 - $231,000</li>
+	<li>Washington, based hires: Estimated annual salary of $172,000 - $237,000.</li>
+</ul>
+<p>&nbsp;</p>
+<h3>Equity</h3>
+<p>This role is eligible to participate in Cloudflare's equity plan.</p>
+<h3>Benefits</h3>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>Health &amp; Welfare Benefits</p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p>Financial Benefits</p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p>Time Off</p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

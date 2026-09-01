@@ -3,6 +3,10 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
+<h3>Available Locations</h3>
+<ul>
+	<li>Austin, US</li>
+</ul>
 <h3><strong>About the Role</strong></h3>
 <p>Cloudflare runs one of the world's largest networks, and every API call that configures it, from any customer, integration, or internal service, starts by proving who is calling and what they're allowed to do. The IAM team owns the authentication and authorization systems behind that: the identity layer of the Control Plane operating at global scale. Our surface spans things like login and SSO, OAuth and API tokens, account membership, roles and permissions, and SCIM provisioning.</p>
 <p>We're hiring a hands-on senior engineer to work on correctness-critical, high-throughput, highly resilient services. You'll own surfaces end-to-end, chase down hard problems with high agency, and improve systems while they're serving production traffic.</p>
@@ -63,6 +67,34 @@
 	<li>
 		<p>Experience incrementally re-architecting a large, long-lived codebase under production traffic, and familiarity with containerized deployment (Docker, Kubernetes), infrastructure as code (Terraform), and observability tooling (Prometheus, Grafana, Kibana).</p>
 	</li>
+</ul>
+<p>&nbsp;</p>
+<h3>Equity</h3>
+<p>This role is eligible to participate in Cloudflare's equity plan.</p>
+<h3>Benefits</h3>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>Health &amp; Welfare Benefits</p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p>Financial Benefits</p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p>Time Off</p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

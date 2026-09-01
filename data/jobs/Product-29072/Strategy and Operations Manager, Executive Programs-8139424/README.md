@@ -3,76 +3,64 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong>New York</p>
-<p><strong>Applications will be accepted until November 01, 2026.</strong></p>
-<p><strong>What You’ll Do</strong></p>
-<p>As our Global Physical Security Intelligence Specialist, reporting to our Sr. Director of Physical Security you will take ownership of our physical security technologies across our office and data center footprint.&nbsp;</p>
-<p>We are looking for someone excited about solving physical world challenges with next-generation technology on a global scale. You will be leading the overall strategy &amp; implementation as well as partnering with other teams to unify physical and digital access into one cohesive security solution for Cloudflare’s global network powering our products.</p>
-<p>Continue to work as a member of a unique global physical security team and program in the following areas:&nbsp;</p>
-<p><strong>Physical security systems:</strong></p>
+<p><strong>Available Locations: </strong>San Francisco, CA</p>
+<p><strong><em>What you'll do</em></strong></p>
+<p>Cloudflare is looking for a Strategy and Operations Manager to lead high-priority, cross-functional initiatives that require strategic thinking, operational rigor, and strong execution. This role will support a dynamic portfolio of work that may include Executive Briefing programs, strategic events, business development initiatives, customer programs, and other company priorities.</p>
+<p>You will structure ambiguous opportunities, develop recommendations, align stakeholders, and move initiatives from concept through execution. You will also build the processes, tools, and operating rhythms needed to scale successful programs.</p>
+<p>Based in our San Francisco headquarters, this is a highly visible individual contributor role that works with Cloudflare executives, customers, external partners, and teams across Sales, Customer Success, Product, Marketing, Finance, Legal, Workplace, and IT.</p>
+<p><strong>Responsibilities will include:</strong></p>
+<p><strong>Executive Briefing and Event Programs</strong></p>
 <ul>
-	<li>Ability to work within a global physical security program focused on developing and deploying innovative physical security technology &amp; operations across our global network of data centers. This will require traveling to a variety of locations, building relationships with our partners and working in an agile environment.&nbsp;</li>
-	<li>Ability to assist and manage investigations working with Cloudflare’s People’s Team.&nbsp;</li>
-	<li>Work alongside our SIRT Team&nbsp; as required for physical Security related incidents.&nbsp;</li>
-	<li>Deploy and remediate access control and CCTV equipment with vendor support</li>
-	<li>Coordinate and provide facility and personnel safety practices, guidance, assistance, and response as required.</li>
+	<li>Act as the EBC Program representative in the San Francisco office and build strong relationships with all internal senior stakeholders in the United States, and other visitors. Promote and evangelize the EBC brand &amp; value proposition within the region.</li>
+	<li>Own the end-to-end planning and delivery of strategic Executive Briefings, aligning customer objectives, agendas, executive participation, logistics, and desired business outcomes.</li>
+	<li>Maintain accurate program records and operational data, including schedules, attendee information, agenda changes, feedback, and follow-up actions.</li>
+	<li>Deliver best-in-class executive experiences through hands-on coordination of registration, room setup, catering, gifting, surveys, and other briefing requirements.</li>
+	<li>Own relationships with catering, gifting, hotel, and transportation vendors; establish service standards, coordinate delivery, and manage spend against budget.</li>
+	<li>Partner with Workplace, IT, Sales, Customer Success, and other teams to deliver a seamless guest experience, resolve issues, and improve the broader office experience.</li>
+	<li>Develop reusable templates, training, playbooks, and personalized briefing materials that improve program quality and scalability.</li>
+	<li>Use feedback, program data, and stakeholder input to identify opportunities and lead improvements to the EBC operating model.</li>
+	<li>Define and report monthly success metrics, customer insights, program performance, and recommendations to leadership.</li>
 </ul>
-<p><strong>Audit and certifications:</strong></p>
+<p>&nbsp;</p>
+<p><strong>Strategy, Operations, and Special Projects</strong></p>
 <ul>
-	<li>Establish, implement, and automate our physical security standards, policies, and processes globally.&nbsp;</li>
-	<li>Support implementation of operational metrics, project tracking, and status/ blockers reporting as needed.</li>
-	<li>Work alongside our infrastructure partners to enhance their standard operating procedures ensuring compliance with physical security standards and controls, including Cloudflare Data Centers and partners.</li>
-	<li>Work with the security compliance and risk management team on developing and implementing physical security controls as it relates to various compliance requirements including but not limited to FedRAMP, ISO 27001 and SOC 2; and support internal and external audits of physical security controls.</li>
+	<li>Lead cross-functional special projects based on evolving company, customer, and executive priorities.</li>
+	<li>Develop and manage strategic events and programs from concept through execution, measurement, and improvement.</li>
+	<li>Support business development initiatives through opportunity research, partner evaluation, business-case development, and cross-functional coordination.</li>
+	<li>Build scalable processes, tools, and operating rhythms that improve visibility, accountability, and execution.</li>
+	<li>Step into high-priority initiatives where additional strategy, structure, or execution leadership is needed.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p>&nbsp;</p>
+<h5><strong>Desired Skills</strong></h5>
 <ul>
-	<li>Ability to make decisions on acceptable physical security risk and drive risk mitigation.&nbsp;</li>
-	<li>Experience managing a local physical security program and managing event security practices, preferably with experience of physical security controls.</li>
-	<li>Solid understanding of integrating and deploying access control and CCTV systems at scale, including networking and systems engineering.</li>
-	<li>Ability to coordinate with law enforcement and government agencies at every level</li>
-	<li>Understanding of networking security as it relates to physical security technology</li>
-	<li>Understanding of access control as it relates to granting logical access to systems</li>
-	<li>Previous experience working in Verkada Command and deploying Verkada cameras and access sensors</li>
-	<li>Ability to effectively prioritize and manage a large number of projects simultaneously</li>
-	<li>Equally adept at strategy formulation and tactical execution</li>
-	<li>Demonstrated success in earning trust across a broad variety of stakeholders and making principled decisions</li>
-	<li>Ability to influence and motivate people across a broad variety of job functions</li>
-	<li>Experience communicating physical security risk plans to the executive leadership</li>
-	<li>Experience performing site walk thoughts of data centers, corporate offices, and executive residences, including identification and measurement of risks and threats.</li>
-	<li>Experience in or desire to work with multiple time zones and ability to travel to all Cloudflare locations as required; roughly 35% travel required</li>
+	<li>5+ years of experience in strategy and operations, program management, business development, strategic events, consulting, customer programs, or another highly cross-functional role.</li>
+	<li>Very strong project management skills and can identify and solve problems quickly with minimal management guidance</li>
+	<li>Outstanding customer service mentality and attention to detail</li>
+	<li>Ability to engage up and down the organization (including SVP+) with confidence, poise and gravitas.</li>
+	<li>Highly organized and self-motivated to create and execute on new projects</li>
+	<li>Team player who can take on projects in various stages of completion and run</li>
+	<li>Comfort in ambiguity of changing priorities and flexibility to new ideas within a fast paced environment</li>
+	<li>Strong attention to detail and craftsmanship, with a knack for prioritization and scoping</li>
+	<li>Curiosity about how things work, with the ability to anticipate problems or spot areas for improvements.</li>
+	<li>Experience building trusted advisor relationships with senior management</li>
+	<li>Possesses exceptional written and interpersonal communication skills, and able explain your work clearly and concisely to stakeholders</li>
+</ul>
+<p><strong>Required Education And Experience</strong></p>
+<ul>
+	<li>Bachelor’s degree or equivalent</li>
+	<li>3-5 years experience in program coordination, executive events, events coordination, or customer-facing roles</li>
+	<li>Proven track record of strong project management skills, with the ability to scope, execute and report on projects throughout their lifecycle</li>
+	<li>Familiarity with CRM or briefing management platforms (e.g., Salesforce, Gainsight, or similar); ability to learn new tools quickly</li>
+	<li>Proven track record of working across global stakeholders and making strategic recommendations to evolve high-profile, high-impact programs.</li>
+	<li>Excellent spoken and written communication as well as receptive listening skills with ability to present to different audiences (Executives, Sales, and Customer Success).</li>
+	<li>Must be highly organized and possess exceptional time management skills, with the ability to effectively juggle multiple projects and deadlines</li>
+	<li>Sound business judgment, a proven ability to influence others, analytical skills, and a proven track record of taking ownership, leading data-driven analyses, and influencing results.</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li><span data-sheets-root="1">Estimated annual salary of $102,000-$141,000</span></li>
-</ul>
+<p>San Francisco Estimated Base salary $110,000 - $152,000.</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -3,52 +3,46 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Location:&nbsp;</strong>Austin, TX</p>
-<p><strong>Job Title&nbsp;</strong></p>
-<p>Oracle Operations Manager</p>
+<p><strong>Location: </strong>Austin&nbsp;</p>
 <p>&nbsp;</p>
-<p><strong>Role Summary</strong></p>
-<p>The Oracle Operations Manager will work with the Oracle IT team to plan, execute operations, and manage enterprise programs to successful completion. Our large-scale programs span multiple quarters and involve IT, various Business Verticals, and Technical Operations teams across the Oracle ecosystem.</p>
-<p>You bring a passion for matching complex business needs with technically innovative solutions, and excel at shifting between high-level strategy and technical execution. You are able to implement and drive standardized Oracle operational methodologies to ensure persistent progress. The ideal candidate is flexible and comfortable playing multiple roles—diplomat, moderator, negotiator, and coach - within a large-scale enterprise environment. Combined with deep technical expertise in cloud operations, you have the ability to build trust and strong partnerships with counterparts in Engineering, Development, and Business units.</p>
+<p><strong>Role Summary</strong><strong><br></strong>Cloudflare is seeking an Indirect Tax Analyst to join our collaborative team. This position will have a broad range of responsibilities with a primary focus on Indirect Tax (US &amp; International - VAT, GST, Sales Tax, Use Tax and Property Tax). This Indirect Tax Analyst will report to the Director of Tax and work with other members of the tax and finance teams, collaborating with cross-functional business partners from time-to-time. The right candidate will be detail-oriented, collaborative, and motivated by finding better, smarter ways to work through automation, standardization, and AI-enabled improvements.</p>
 <p>&nbsp;</p>
-<p><strong>Role Responsibilities:</strong></p>
+<p><strong>Role Responsibilities</strong><strong><br></strong></p>
 <ul>
-	<li>Build bridges across Oracle business units to ensure programs and projects are effectively planned, developed, and deployed with quality and on-time delivery into our production environments.</li>
-	<li>Drive the execution of tasks within cross-functional core teams to ensure the success of large-scale initiatives comprising the Oracle operations portfolio.</li>
-	<li>Build transparent communication channels to align enterprise stakeholders, IT, and third-party vendors, ensuring executive audiences receive appropriate updates on program status.</li>
-	<li>Manage program scope and execution to committed schedules, maintaining reporting for program deliverables across multiple global business units.</li>
-	<li>Ensure adherence to Oracle best practices and accountability throughout the program lifecycle when working with external vendors and partners.</li>
-	<li>Manage critical path timelines by proactively identifying risks and facilitating the resolution of blockers to ensure the success of enterprise-tier projects.</li>
-	<li>Collaborate on internal processes, tools, and workflows across Oracle functions in support of IT governance and standardized project management methodologies.</li>
+	<li>Prepare Indirect Tax compliance including the financial support information (VAT, GST, Sales Tax, Use Tax and Property Tax fillings)</li>
+	<li>Prepare monthly tax reconciliations and associated journal entries.</li>
+	<li>Maintain and add exemption/resale certificates and Tax ID information</li>
+	<li>Ensure timely and accurate filings to minimize assessments and penalties by maintaining the tax calendar</li>
+	<li>Assist on audit requests and special project needs</li>
+	<li>Prepare and ensure the payments requests and submissions.</li>
+	<li>Reconcile data between systems to ensure integrity and accuracy</li>
+	<li>Research various indirect tax matters/law updates and document conclusions</li>
+	<li>Participate in the calculation of indirect tax reserves and budgets.</li>
+	<li>Drive the digital transformation of our tax function, identifying and executing process improvements through technology, automation, and AI</li>
 </ul>
-<p><strong>Role Requirements&nbsp;</strong></p>
+<p>&nbsp;</p>
+<p><strong>Role Requirements</strong></p>
+<p>&nbsp;</p>
 <p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li>Minimum 5 years’ experience in program and project management</li>
-	<li>Minimum 3 years proven experience in leading highly complex, enterprise-wide initiatives.</li>
-	<li>Proficient in solutions that service global Finance and enterprise business capabilities.</li>
-	<li>Strong technical background in cloud operations to facilitate architecture and integration discussions within an Oracle environment.</li>
-	<li>Track record of delivering technical programs through the full end to end program management lifecycle, from conception to usability study.</li>
-	<li>Have a balance of people, organizational, and technical skills to deliver and guide decision making without authority.</li>
-	<li>Work independently in a dynamic and high-pressure environment with timely delivery despite ambiguous and changing business requirements.</li>
-	<li>Strong competency with project management tools (Confluence, JIRA, Smartsheets, etc.) and various methodologies (Waterfall, Scrum, etc).</li>
-	<li>Proven ability to clearly and concisely communicate with an executive audience in both written and verbal communications in English (writing sample will be requested).</li>
-	<li>Thrive in a fast-paced enterprise environment, with the ability to learn and deploy new Oracle technologies quickly.</li>
-	<li>Bachelor’s degree in computer science, Information Systems Management, Technology management, Business management or comparable work experience.</li>
-</ul>
-<p><strong>Nice-To-Have Skills</strong></p>
-<ul>
-	<li>Direct experience with Oracle implementation and management at an enterprise scale.</li>
-	<li>Experience with both waterfall and Agile development methodologies</li>
-	<li>PMP/PgMP and Agile certifications</li>
-	<li>Familiarity with Oracle-specific governance, risk, and compliance (GRC) frameworks.</li>
+	<li>Bachelors degree in Accounting, Finance or related field</li>
+	<li>2+ years of significant experience at a public accounting firm and/or corporate tax department of a multinational company</li>
+	<li>Proficient in Excel and AI technology</li>
+	<li>Strong attention to detail with analytical and problem-solving skills</li>
+	<li>Proactive and inquisitive</li>
+	<li>Strong written and verbal communication skills with the ability to interact effectively internally as well as with external service providers</li>
 </ul>
 <p>&nbsp;</p>
-<h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare's equity plan.</p>
-<h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p>Health &amp; Welfare Benefits</p>
+<p><strong>Nice-to-Have Skills</strong></p>
+<ul>
+	<li>International VAT knowledge is a plus</li>
+	<li>Both public accounting and technology industry experience</li>
+	<li>Experience with Oracle and AI</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -59,18 +53,19 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p>Financial Benefits</p>
+<p><strong>Financial Benefits</strong></p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p>Time Off</p>
+<p><strong>Time Off</strong></p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

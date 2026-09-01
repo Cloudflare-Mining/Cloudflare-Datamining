@@ -7,7 +7,6 @@
 <ul>
 	<li>Atlanta, US</li>
 	<li>Denver, US</li>
-	<li>Toronto, Canada</li>
 	<li>Washington DC, US</li>
 </ul>
 <p><strong>Applications will be accepted until November 23, 2026.</strong></p>

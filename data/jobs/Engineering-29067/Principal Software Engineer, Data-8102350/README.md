@@ -3,79 +3,73 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3>About the Team</h3>
+<h3>Available Locations</h3>
+<ul>
+	<li>Austin, US</li>
+</ul>
+<h3>&nbsp;</h3>
+<h3><strong>About the Team</strong></h3>
 <p>Cloudflare handles traffic for almost 25% of the Internet. That’s a lot of data. On the Town Lake team, our mission is to make that data accessible and valuable for users across the company. We connect data from dozens of source systems and make it available so that any user in the company can answer any question in 5 minutes or less, using SQL or plain english.&nbsp;</p>
 <p>We’re building a modern, agentic-first data lakehouse platform based on Trino and Apache Iceberg, and all the supporting services for ingestion, transformation access control, governance, dashboarding and agentic access are built on Cloudflare's own platform. R2 and R2 Data Catalog for storage, Workers and Workers AI for compute, Workflows for orchestration, Durable Objects and D1 for state, Cloudflare Access for authentication.&nbsp;</p>
 <p>This is a small but growing team already having an outsized and highly visible impact at the company. If you’re looking for an opportunity to make a splash, have a foundational say in a new, exciting and growing platform, and steer the direction on the frontier of data platforms, this team might be a good fit for you.</p>
 <p>Read more about our platform in the Cloudflare blog (https://blog.cloudflare.com/our-unified-data-platform/).&nbsp;</p>
-<h3>About the Role</h3>
+<h3><strong>What You’ll Do</strong></h3>
 <p>We are looking for an experienced, product-minded principal software engineer to help take Town Lake from a fast-growing internal platform into the foundational data infrastructure for the entire company.&nbsp;</p>
 <p>You’ll lead technical architecture and drive implementation for services across our whole stack, covering areas such as access control, an ingestion framework, AI-driven data classification, a semantic and governance layer, data product/ELT platform, a dashboarding and query tool, and more.</p>
 <p>We are an agentic first team: we leverage AI deeply and comprehensively to accelerate development and make things possible that wouldn’t be otherwise, and all our tools and services are agentic first for our users and the products they build on top of them.</p>
 <p>Town Lake is already used by dozens of teams across Cloudflare including Billing, Trust &amp; Safety, Developer Platform, GTM and Support organizations. This is a high-impact, high-visibility role where you’ll work with critical teams across the company to solve real and interesting problems.</p>
-<h3>What You’ll Do</h3>
+<h3><strong>What You’ll Do</strong></h3>
 <ul>
-	<li>
-		<p>Define, design and execute strategic technical architecture for highly visible, highly critical data infrastructure at the company.</p>
-	</li>
-	<li>
-		<p>Lead the design and development of tools and infrastructure to improve and scale our data infrastructure at Cloudflare.</p>
-	</li>
-	<li>
-		<p>Lead the design and development of data pipelines and data products to serve customers throughout the company, including tools to automate delivery of those services.</p>
-	</li>
-	<li>
-		<p>Become a subject matter expert across both our data platforms, tools and infrastructures as well as our data itself to guide and enable stakeholders with data needs.</p>
-	</li>
-	<li>
-		<p>Work across our tech stack, which includes Kubernetes, Trino, Iceberg, Clickhouse, and PostgreSQL, with software built using Go, Javascript/Typescript, Python, and others.</p>
-	</li>
-	<li>
-		<p>Mentor and support junior engineers on the team, reinforcing a culture of exceptional delivery and accountability on the team.</p>
-	</li>
+	<li>Define, design and execute strategic technical architecture for highly visible, highly critical data infrastructure at the company.</li>
+	<li>Lead the design and development of tools and infrastructure to improve and scale our data infrastructure at Cloudflare.</li>
+	<li>Lead the design and development of data pipelines and data products to serve customers throughout the company, including tools to automate delivery of those services.</li>
+	<li>Become a subject matter expert across both our data platforms, tools and infrastructures as well as our data itself to guide and enable stakeholders with data needs.</li>
+	<li>Work across our tech stack, which includes Kubernetes, Trino, Iceberg, Clickhouse, and PostgreSQL, with software built using Go, Javascript/Typescript, Python, and others.</li>
+	<li>Mentor and support junior engineers on the team, reinforcing a culture of exceptional delivery and accountability on the team.<br><br></li>
 </ul>
-<h3>Requirements</h3>
+<h3><strong>Must-Have Skills</strong></h3>
 <ul>
-	<li>
-		<p>8+ years of experience as a software engineer with a focus on designing, building and scaling data infrastructure</p>
-	</li>
-	<li>
-		<p>Proven experience leading technical initiatives in a cross-functional context, working with multiple stakeholders and driving value delivery.</p>
-	</li>
-	<li>
-		<p>Extensive experience with data infrastructure at scale, including tools like Trino, Spark, Iceberg/Delta Lake, Kafka, Clickhouse, PostgreSQL</p>
-	</li>
-	<li>
-		<p>Experience designing, building and debugging data pipelines at scale</p>
-	</li>
-	<li>
-		<p>Proficient using backend languages like Go, Python, Typescript, and Rust, along with SQL</p>
-	</li>
-	<li>
-		<p>Excellent analytical skills, with a focus on understanding data and how stakeholders use it to drive value</p>
-	</li>
-	<li>
-		<p>Strong communication skills, especially around articulating technical concepts for technical and non-technical audiences</p>
-	</li>
-	<li>
-		<p>Experience creating and using agentic development workflows and an AI-first mentality</p>
-	</li>
+	<li>8+ years of experience as a software engineer with a focus on designing, building and scaling data infrastructure</li>
+	<li>Proven experience leading technical initiatives in a cross-functional context, working with multiple stakeholders and driving value delivery.</li>
+	<li>Extensive experience with data infrastructure at scale, including tools like Trino, Spark, Iceberg/Delta Lake, Kafka, Clickhouse, PostgreSQL</li>
+	<li>Experience designing, building and debugging data pipelines at scale</li>
+	<li>Proficient using backend languages like Go, Python, Typescript, and Rust, along with SQL</li>
+	<li>Excellent analytical skills, with a focus on understanding data and how stakeholders use it to drive value</li>
+	<li>Strong communication skills, especially around articulating technical concepts for technical and non-technical audiences<br>Experience creating and using agentic development workflows and an AI-first mentality<br><br></li>
 </ul>
-<h3>Desirable Skills</h3>
+<h3><strong>Nice-to-Have Skills</strong></h3>
 <ul>
-	<li>
-		<p>Experience with data orchestration and infrastructure platforms like Airflow and DBT</p>
-	</li>
-	<li>
-		<p>Experience deploying and managing infrastructure in Kubernetes</p>
-	</li>
-	<li>
-		<p>Experience with data governance platforms and processes, with a focus on privacy and auditability</p>
-	</li>
-	<li>
-		<p>Knowledge about machine learning models and MLOps</p>
-	</li>
+	<li>Experience with data orchestration and infrastructure platforms like Airflow and DBT<br>Experience deploying and managing infrastructure in Kubernetes<br>Experience with data governance platforms and processes, with a focus on privacy and auditability<br>Knowledge about machine learning models and MLOps<br><br></li>
 </ul>
+<p>&nbsp;</p>
+<h3><strong>Equity</strong></h3>
+<p>This role is eligible to participate in Cloudflare's equity plan.</p>
+<h3><strong>Benefits</strong></h3>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>Health &amp; Welfare Benefits</p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p>Financial Benefits</p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p>Time Off</p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

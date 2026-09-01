@@ -4,7 +4,8 @@
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
 <p><strong>Available Location:&nbsp;</strong>Austin, TX</p>
-<p><strong>Job Title </strong></p>
+<p><strong>Applications will be accepted until November 01, 2026.</strong></p>
+<p><strong>Job Title&nbsp;</strong></p>
 <p>Network Hardware Engineer&nbsp;</p>
 <p>&nbsp;</p>
 <p><strong>Role Summary</strong></p>
@@ -43,6 +44,34 @@
 	<li>Experience with white-box network switches and open source projects</li>
 	<li>Proficient in using observability and monitoring tools like Prometheus and Grafana, with the ability to analyze and observe trends over time.</li>
 	<li>Hands-on experience with configuring and validating RoCEv2 (RDMA over Converged Ethernet) fabrics, specifically implementing Priority Flow Control (PFC) and Explicit Congestion Notification (ECN) on network devices.</li>
+</ul>
+<p>&nbsp;</p>
+<h3>Equity</h3>
+<p>This role is eligible to participate in Cloudflare's equity plan.</p>
+<h3>Benefits</h3>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>Health &amp; Welfare Benefits</p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p>Financial Benefits</p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p>Time Off</p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

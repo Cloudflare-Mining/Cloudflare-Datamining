@@ -17,14 +17,14 @@
 	<li>Act as a technical anchor for the Data Science team – enforcing rigorous engineering standards, leading design and security reviews, evaluating build-vs-buy decisions, and mapping business requirements to robust technical designs.</li>
 	<li>Evaluate trade-offs and drive adoption of modern AI infrastructure tools, optimized embedding pipelines, vector databases, and serverless compute paradigms (such as Workers AI).\</li>
 </ul>
-<h4><strong>What We Are Looking For</strong></h4>
+<h4><strong>Must-Have Skills</strong></h4>
 <ul>
 	<li>Extensive experience as a Senior or Lead ML Engineer, with a proven track record of architecting and operating production-grade ML platforms, services&nbsp; and distributed backends.</li>
 	<li>Strong competency in Traditional ML lifecycles (feature stores, training pipelines, model monitoring) alongside deep experience in Generative AI patterns (RAG pipelines, context engineering, fine-tuning, guardrailing, and agentic AI systems).</li>
 	<li>Mastery of Python and robust experience with modern backend ecosystems. Familiarity with (or willingness to collaborate on) full-stack technologies like React and TypeScript is highly valued.</li>
 	<li>A builder's mindset. You are comfortable navigating ambiguity, shaping your own technical roadmap, adapt as needed and taking extreme ownership of system reliability, costs, and model performance.</li>
 </ul>
-<h4><strong>Examples of desirable skills, knowledge and experience</strong></h4>
+<h4><strong>Nice-to-Have Skills</strong></h4>
 <h4><strong>Technical Leadership &amp; Systems Architecture</strong></h4>
 <ul>
 	<li>3+ years of dedicated ML Engineering experience within a large-scale, enterprise environment (handling petabyte-scale data and working across globally distributed teams).</li>
@@ -49,6 +49,34 @@
 <ul>
 	<li>M.S. or Ph.D. in Computer Science, Statistics, Mathematics, or a related quantitative field.</li>
 	<li>Exceptional written and verbal communication skills, with the ability to translate complex technical architectures into clear concepts for both engineering peers and business stakeholders.</li>
+</ul>
+<p>&nbsp;</p>
+<h3>Equity</h3>
+<p>This role is eligible to participate in Cloudflare's equity plan.</p>
+<h3>Benefits</h3>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>Health &amp; Welfare Benefits</p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p>Financial Benefits</p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p>Time Off</p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
