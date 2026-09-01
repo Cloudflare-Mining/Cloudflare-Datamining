@@ -13978,6 +13978,37 @@
 	"ZoneDnsAnalyticsAdaptiveOrderBy": {
 		"__description": ""
 	},
+	"ZoneEmailComplaintsAdaptiveGroups": {
+		"__description": "Aggregated email complaints with adaptive sampling",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Number of complaints",
+		"dimensions": "List of dimensions to group by"
+	},
+	"ZoneEmailComplaintsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Number of complaints, with confidence intervals",
+		"level": "Confidence level that was requested"
+	},
+	"ZoneEmailComplaintsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "The date the complaint event was recorded",
+		"datetime": "The date and time the complaint event was recorded",
+		"datetimeFifteenMinutes": "The date and time the complaint event was recorded truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time the complaint event was recorded truncated to five minutes",
+		"datetimeHour": "The date and time the complaint event was recorded truncated to the hour",
+		"datetimeMinute": "The date and time the complaint event was recorded truncated to the minute",
+		"deliveryTimestamp": "Time of the correlated email delivery",
+		"isEmailSending": "Whether the complaint is for Email Sending",
+		"provider": "Mailbox provider that sent the complaint",
+		"sendingDomain": "Email Sending domain associated with the complaint",
+		"source": "Complaint report format"
+	},
+	"ZoneEmailComplaintsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneEmailComplaintsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneEmailRoutingAdaptive": {
 		"__description": "Beta. Raw email routing logs with adaptive sampling",
 		"action": "Action routing rule apply into source email",
@@ -15825,6 +15856,7 @@
 		"dmarcReportsSourcesAdaptiveGroups": "",
 		"dnsAnalyticsAdaptive": "",
 		"dnsAnalyticsAdaptiveGroups": "",
+		"emailComplaintsAdaptiveGroups": "",
 		"emailRoutingAdaptive": "",
 		"emailRoutingAdaptiveGroups": "",
 		"emailSendingAdaptive": "",
@@ -16895,7 +16927,7 @@
 		"__description": "Scalar type types.Float32"
 	},
 	"float64": {
-		"__description": "Scalar type float64"
+		"__description": "Scalar type types.Float64"
 	},
 	"int16": {
 		"__description": "Scalar type int16"
@@ -16952,6 +16984,7 @@
 		"dmarcReportsSourcesAdaptiveGroups": "Aggregated dmarc reports by sources logs with adaptive sampling",
 		"dnsAnalyticsAdaptive": "Analytics data for DNS queries",
 		"dnsAnalyticsAdaptiveGroups": "Analytics data for DNS queries",
+		"emailComplaintsAdaptiveGroups": "Aggregated email complaints with adaptive sampling",
 		"emailRoutingAdaptive": "Beta. Raw email routing logs with adaptive sampling",
 		"emailRoutingAdaptiveGroups": "Beta. Aggregated email routing logs with adaptive sampling",
 		"emailSendingAdaptive": "Raw email sending logs with adaptive sampling",

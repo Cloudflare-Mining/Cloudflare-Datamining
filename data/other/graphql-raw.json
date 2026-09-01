@@ -713775,6 +713775,1608 @@
 					"possibleTypes": []
 				},
 				{
+					"description": "Aggregated email complaints with adaptive sampling",
+					"enumValues": [],
+					"fields": [
+						{
+							"args": [
+								{
+									"defaultValue": null,
+									"description": "",
+									"name": "level",
+									"type": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "float64",
+											"ofType": null
+										}
+									}
+								}
+							],
+							"deprecationReason": null,
+							"description": "ALPHA - DO NOT USE",
+							"isDeprecated": false,
+							"name": "confidence",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "ZoneEmailComplaintsAdaptiveGroupsConfidence",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Number of complaints",
+							"isDeprecated": false,
+							"name": "count",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "List of dimensions to group by",
+							"isDeprecated": false,
+							"name": "dimensions",
+							"type": {
+								"kind": "OBJECT",
+								"name": "ZoneEmailComplaintsAdaptiveGroupsDimensions",
+								"ofType": null
+							}
+						}
+					],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "OBJECT",
+					"name": "ZoneEmailComplaintsAdaptiveGroups",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
+					"enumValues": [],
+					"fields": [
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Number of complaints, with confidence intervals",
+							"isDeprecated": false,
+							"name": "count",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "Confidence",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Confidence level that was requested",
+							"isDeprecated": false,
+							"name": "level",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
+									"ofType": null
+								}
+							}
+						}
+					],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "OBJECT",
+					"name": "ZoneEmailComplaintsAdaptiveGroupsConfidence",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
+					"enumValues": [],
+					"fields": [
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "The date the complaint event was recorded",
+							"isDeprecated": false,
+							"name": "date",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Date",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "The date and time the complaint event was recorded",
+							"isDeprecated": false,
+							"name": "datetime",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "The date and time the complaint event was recorded truncated to fifteen minutes",
+							"isDeprecated": false,
+							"name": "datetimeFifteenMinutes",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "The date and time the complaint event was recorded truncated to five minutes",
+							"isDeprecated": false,
+							"name": "datetimeFiveMinutes",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "The date and time the complaint event was recorded truncated to the hour",
+							"isDeprecated": false,
+							"name": "datetimeHour",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "The date and time the complaint event was recorded truncated to the minute",
+							"isDeprecated": false,
+							"name": "datetimeMinute",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Time of the correlated email delivery",
+							"isDeprecated": false,
+							"name": "deliveryTimestamp",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Whether the complaint is for Email Sending",
+							"isDeprecated": false,
+							"name": "isEmailSending",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint8",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Mailbox provider that sent the complaint",
+							"isDeprecated": false,
+							"name": "provider",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Email Sending domain associated with the complaint",
+							"isDeprecated": false,
+							"name": "sendingDomain",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Complaint report format",
+							"isDeprecated": false,
+							"name": "source",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						}
+					],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "OBJECT",
+					"name": "ZoneEmailComplaintsAdaptiveGroupsDimensions",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
+					"enumValues": [],
+					"fields": [],
+					"inputFields": [
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "AND",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "INPUT_OBJECT",
+										"name": "ZoneEmailComplaintsAdaptiveGroupsFilter_InputObject",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "OR",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "INPUT_OBJECT",
+										"name": "ZoneEmailComplaintsAdaptiveGroupsFilter_InputObject",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Date",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Date",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetime",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetime_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetime_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetime_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetime_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetime_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetime_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetime_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "deliveryTimestamp",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "deliveryTimestamp_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "deliveryTimestamp_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "deliveryTimestamp_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "deliveryTimestamp_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "deliveryTimestamp_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "deliveryTimestamp_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "deliveryTimestamp_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "isEmailSending",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint8",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "isEmailSending_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint8",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "isEmailSending_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint8",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "isEmailSending_in",
+							"type": {
+								"kind": "SCALAR",
+								"name": "bytes",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "isEmailSending_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint8",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "isEmailSending_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint8",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "isEmailSending_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint8",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "isEmailSending_notin",
+							"type": {
+								"kind": "SCALAR",
+								"name": "bytes",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "provider",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "provider_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "provider_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "provider_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "provider_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "provider_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "provider_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "provider_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "provider_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "provider_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sendingDomain",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sendingDomain_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sendingDomain_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sendingDomain_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sendingDomain_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sendingDomain_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sendingDomain_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sendingDomain_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sendingDomain_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sendingDomain_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "source",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "source_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "source_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "source_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "source_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "source_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "source_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "source_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "source_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "source_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						}
+					],
+					"interfaces": [],
+					"kind": "INPUT_OBJECT",
+					"name": "ZoneEmailComplaintsAdaptiveGroupsFilter_InputObject",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
+					"enumValues": [
+						{
+							"deprecationReason": null,
+							"description": "count() ascending",
+							"isDeprecated": false,
+							"name": "count_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "count() descending",
+							"isDeprecated": false,
+							"name": "count_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "date ascending",
+							"isDeprecated": false,
+							"name": "date_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "date descending",
+							"isDeprecated": false,
+							"name": "date_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeFifteenMinutes ascending",
+							"isDeprecated": false,
+							"name": "datetimeFifteenMinutes_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeFifteenMinutes descending",
+							"isDeprecated": false,
+							"name": "datetimeFifteenMinutes_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeFiveMinutes ascending",
+							"isDeprecated": false,
+							"name": "datetimeFiveMinutes_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeFiveMinutes descending",
+							"isDeprecated": false,
+							"name": "datetimeFiveMinutes_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeHour ascending",
+							"isDeprecated": false,
+							"name": "datetimeHour_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeHour descending",
+							"isDeprecated": false,
+							"name": "datetimeHour_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeMinute ascending",
+							"isDeprecated": false,
+							"name": "datetimeMinute_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeMinute descending",
+							"isDeprecated": false,
+							"name": "datetimeMinute_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetime ascending",
+							"isDeprecated": false,
+							"name": "datetime_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetime descending",
+							"isDeprecated": false,
+							"name": "datetime_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "deliveryTimestamp ascending",
+							"isDeprecated": false,
+							"name": "deliveryTimestamp_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "deliveryTimestamp descending",
+							"isDeprecated": false,
+							"name": "deliveryTimestamp_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "isEmailSending ascending",
+							"isDeprecated": false,
+							"name": "isEmailSending_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "isEmailSending descending",
+							"isDeprecated": false,
+							"name": "isEmailSending_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "provider ascending",
+							"isDeprecated": false,
+							"name": "provider_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "provider descending",
+							"isDeprecated": false,
+							"name": "provider_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sendingDomain ascending",
+							"isDeprecated": false,
+							"name": "sendingDomain_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sendingDomain descending",
+							"isDeprecated": false,
+							"name": "sendingDomain_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "source ascending",
+							"isDeprecated": false,
+							"name": "source_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "source descending",
+							"isDeprecated": false,
+							"name": "source_DESC"
+						}
+					],
+					"fields": [],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "ENUM",
+					"name": "ZoneEmailComplaintsAdaptiveGroupsOrderBy",
+					"possibleTypes": []
+				},
+				{
 					"description": "Beta. Raw email routing logs with adaptive sampling",
 					"enumValues": [],
 					"fields": [
@@ -820940,6 +822542,22 @@
 							"deprecationReason": null,
 							"description": "",
 							"isDeprecated": false,
+							"name": "emailComplaintsAdaptiveGroups",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "Settings",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "",
+							"isDeprecated": false,
 							"name": "emailRoutingAdaptive",
 							"type": {
 								"kind": "NON_NULL",
@@ -882787,7 +884405,7 @@
 					"possibleTypes": []
 				},
 				{
-					"description": "Scalar type float64",
+					"description": "Scalar type types.Float64",
 					"enumValues": [],
 					"fields": [],
 					"inputFields": [],
@@ -884059,6 +885677,77 @@
 										"ofType": {
 											"kind": "OBJECT",
 											"name": "ZoneDnsAnalyticsAdaptiveGroups",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [
+								{
+									"defaultValue": null,
+									"description": "",
+									"name": "filter",
+									"type": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "INPUT_OBJECT",
+											"name": "ZoneEmailComplaintsAdaptiveGroupsFilter_InputObject",
+											"ofType": null
+										}
+									}
+								},
+								{
+									"defaultValue": null,
+									"description": "",
+									"name": "limit",
+									"type": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "uint64",
+											"ofType": null
+										}
+									}
+								},
+								{
+									"defaultValue": null,
+									"description": "",
+									"name": "orderBy",
+									"type": {
+										"kind": "LIST",
+										"name": "",
+										"ofType": {
+											"kind": "NON_NULL",
+											"name": "",
+											"ofType": {
+												"kind": "ENUM",
+												"name": "ZoneEmailComplaintsAdaptiveGroupsOrderBy",
+												"ofType": null
+											}
+										}
+									}
+								}
+							],
+							"deprecationReason": null,
+							"description": "Aggregated email complaints with adaptive sampling",
+							"isDeprecated": false,
+							"name": "emailComplaintsAdaptiveGroups",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "OBJECT",
+											"name": "ZoneEmailComplaintsAdaptiveGroups",
 											"ofType": null
 										}
 									}
