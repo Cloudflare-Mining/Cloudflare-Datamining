@@ -59,6 +59,9 @@
 	"agent-readiness-aeo": {
 		"false": 100
 	},
+	"agent-readiness-aeo-timeseries": {
+		"false": 100
+	},
 	"agent-readiness-labs": {
 		"true": 100
 	},
@@ -297,9 +300,6 @@
 		"true": 100
 	},
 	"cfone-cloudy-threat-events-enabled": {
-		"true": 100
-	},
-	"cfone-rfi-stakeout-v2": {
 		"true": 100
 	},
 	"cfone-vulnerability-intelligence-enabled": {
@@ -843,10 +843,6 @@
 	},
 	"pre-clearance-turnstile": {
 		"true": 100
-	},
-	"prg-729-workers-and-pages-plan-choice": {
-		"true": 50,
-		"false": 50
 	},
 	"prg-acm-value-props-video": {
 		"experiment": 50,

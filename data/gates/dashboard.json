@@ -73,6 +73,9 @@
 	"agent-readiness-aeo": {
 		"enabled": true
 	},
+	"agent-readiness-aeo-timeseries": {
+		"enabled": true
+	},
 	"agent-readiness-labs": {
 		"enabled": true
 	},
@@ -1988,7 +1991,7 @@
 		"enabled": true
 	},
 	"prg-729-workers-and-pages-plan-choice": {
-		"enabled": true
+		"enabled": false
 	},
 	"prg-acm-mult-sku-checkout": {
 		"enabled": true
@@ -2492,7 +2495,7 @@
 		"enabled": true
 	},
 	"rss-feeds": {
-		"enabled": false
+		"enabled": true
 	},
 	"rtk-dash-v2": {
 		"enabled": false
@@ -2687,6 +2690,9 @@
 	},
 	"speed-test-schedule": {
 		"enabled": true
+	},
+	"speed-test-settings": {
+		"enabled": false
 	},
 	"speed-test-trend": {
 		"enabled": true
