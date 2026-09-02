@@ -3991,22 +3991,16 @@ interface Container {
   setInactivityTimeout(durationMs: number | bigint): Promise<void>;
   interceptOutboundHttp(addr: string, binding: Fetcher): Promise<void>;
   interceptAllOutboundHttp(binding: Fetcher): Promise<void>;
-  snapshotDirectory(
-    options: ContainerDirectorySnapshotOptions,
-  ): Promise<ContainerDirectorySnapshot>;
   snapshotContainer(
     options: ContainerSnapshotOptions,
   ): Promise<ContainerSnapshot>;
   interceptOutboundHttps(addr: string, binding: Fetcher): Promise<void>;
   exec(cmd: string[], options?: ContainerExecOptions): Promise<ExecProcess>;
+  inspect(): Promise<ContainerInfo | null>;
 }
 interface ContainerDirectorySnapshot {
   id: string;
   size: number;
-  dir: string;
-  name?: string;
-}
-interface ContainerDirectorySnapshotOptions {
   dir: string;
   name?: string;
 }
@@ -4053,6 +4047,10 @@ type ContainerStartupOptions = {
       containerSnapshot?: ContainerSnapshotRestoreParams;
     }
 );
+interface ContainerInfo {
+  labels: Record<string, string>;
+  image: string;
+}
 interface ContainerStartResources {
   vcpu: number;
   memoryMib: number;

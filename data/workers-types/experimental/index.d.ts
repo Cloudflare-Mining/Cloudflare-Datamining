@@ -4078,16 +4078,16 @@ interface Container {
   setInactivityTimeout(durationMs: number | bigint): Promise<void>;
   interceptOutboundHttp(addr: string, binding: Fetcher): Promise<void>;
   interceptAllOutboundHttp(binding: Fetcher): Promise<void>;
-  snapshotDirectory(
-    options: ContainerDirectorySnapshotOptions,
-  ): Promise<ContainerDirectorySnapshot>;
   snapshotContainer(
     options: ContainerSnapshotOptions,
   ): Promise<ContainerSnapshot>;
   interceptOutboundHttps(addr: string, binding: Fetcher): Promise<void>;
   exec(cmd: string[], options?: ContainerExecOptions): Promise<ExecProcess>;
-  interceptOutboundTcp(addr: string, binding: Fetcher): Promise<void>;
   inspect(): Promise<ContainerInfo | null>;
+  interceptOutboundTcp(addr: string, binding: Fetcher): Promise<void>;
+  snapshotDirectory(
+    options: ContainerDirectorySnapshotOptions,
+  ): Promise<ContainerDirectorySnapshot>;
   setLabels(labels: Record<string, string>): Promise<void>;
 }
 interface ContainerDirectorySnapshot {
