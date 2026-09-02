@@ -40,6 +40,7 @@
 											"x-auditable": true
 										},
 										"ai_search_model": {
+											"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 											"type": "string",
 											"nullable": true,
 											"x-auditable": true
@@ -460,6 +461,7 @@
 											"x-auditable": true
 										},
 										"rewrite_model": {
+											"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 											"type": "string",
 											"nullable": true,
 											"x-auditable": true
@@ -888,6 +890,7 @@
 											"x-auditable": true
 										},
 										"ai_search_model": {
+											"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 											"type": "string",
 											"nullable": true,
 											"x-auditable": true
@@ -1308,6 +1311,7 @@
 											"x-auditable": true
 										},
 										"rewrite_model": {
+											"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 											"type": "string",
 											"nullable": true,
 											"x-auditable": true
@@ -2594,6 +2598,7 @@
 											"x-auditable": true
 										},
 										"ai_search_model": {
+											"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 											"type": "string",
 											"nullable": true,
 											"x-auditable": true
@@ -3014,6 +3019,7 @@
 											"x-auditable": true
 										},
 										"rewrite_model": {
+											"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 											"type": "string",
 											"nullable": true,
 											"x-auditable": true
@@ -4518,6 +4524,7 @@
 											"x-auditable": true
 										},
 										"ai_search_model": {
+											"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 											"type": "string",
 											"nullable": true,
 											"x-auditable": true
@@ -4938,6 +4945,7 @@
 											"x-auditable": true
 										},
 										"rewrite_model": {
+											"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 											"type": "string",
 											"nullable": true,
 											"x-auditable": true
@@ -5571,6 +5579,7 @@
 								"x-auditable": true
 							},
 							"ai_search_model": {
+								"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 								"type": "string",
 								"nullable": true,
 								"x-auditable": true
@@ -5944,6 +5953,7 @@
 								"x-auditable": true
 							},
 							"rewrite_model": {
+								"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 								"type": "string",
 								"nullable": true,
 								"x-auditable": true
@@ -6252,6 +6262,7 @@
 											"x-auditable": true
 										},
 										"ai_search_model": {
+											"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 											"type": "string",
 											"nullable": true,
 											"x-auditable": true
@@ -6672,6 +6683,7 @@
 											"x-auditable": true
 										},
 										"rewrite_model": {
+											"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 											"type": "string",
 											"nullable": true,
 											"x-auditable": true
@@ -7151,6 +7163,7 @@
 												"type": "boolean"
 											},
 											"model": {
+												"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 												"type": "string"
 											},
 											"rewrite_prompt": {
@@ -7397,6 +7410,7 @@
 								"minItems": 1
 							},
 							"model": {
+								"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 								"type": "string"
 							},
 							"stream": {
@@ -7833,6 +7847,7 @@
 												"type": "boolean"
 											},
 											"model": {
+												"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 												"type": "string"
 											},
 											"rewrite_prompt": {
@@ -8360,6 +8375,7 @@
 								"x-auditable": true
 							},
 							"ai_search_model": {
+								"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 								"type": "string",
 								"nullable": true,
 								"x-auditable": true
@@ -8733,6 +8749,7 @@
 								"x-auditable": true
 							},
 							"rewrite_model": {
+								"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 								"type": "string",
 								"nullable": true,
 								"x-auditable": true
@@ -9041,6 +9058,7 @@
 											"x-auditable": true
 										},
 										"ai_search_model": {
+											"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 											"type": "string",
 											"nullable": true,
 											"x-auditable": true
@@ -9461,6 +9479,7 @@
 											"x-auditable": true
 										},
 										"rewrite_model": {
+											"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 											"type": "string",
 											"nullable": true,
 											"x-auditable": true
@@ -9969,6 +9988,7 @@
 												"type": "boolean"
 											},
 											"model": {
+												"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 												"type": "string"
 											},
 											"rewrite_prompt": {
@@ -10215,6 +10235,7 @@
 								"minItems": 1
 							},
 							"model": {
+								"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 								"type": "string"
 							},
 							"stream": {
@@ -10809,6 +10830,7 @@
 												"type": "boolean"
 											},
 											"model": {
+												"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 												"type": "string"
 											},
 											"rewrite_prompt": {
@@ -11349,6 +11371,7 @@
 								"x-auditable": true
 							},
 							"ai_search_model": {
+								"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 								"type": "string",
 								"nullable": true,
 								"x-auditable": true
@@ -11711,6 +11734,7 @@
 								"x-auditable": true
 							},
 							"rewrite_model": {
+								"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 								"type": "string",
 								"nullable": true,
 								"x-auditable": true
@@ -12031,6 +12055,7 @@
 											"x-auditable": true
 										},
 										"ai_search_model": {
+											"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 											"type": "string",
 											"nullable": true,
 											"x-auditable": true
@@ -12451,6 +12476,7 @@
 											"x-auditable": true
 										},
 										"rewrite_model": {
+											"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 											"type": "string",
 											"nullable": true,
 											"x-auditable": true
@@ -12913,6 +12939,7 @@
 								"x-auditable": true
 							},
 							"ai_search_model": {
+								"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 								"type": "string",
 								"nullable": true,
 								"x-auditable": true
@@ -13275,6 +13302,7 @@
 								"x-auditable": true
 							},
 							"rewrite_model": {
+								"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 								"type": "string",
 								"nullable": true,
 								"x-auditable": true
@@ -13595,6 +13623,7 @@
 											"x-auditable": true
 										},
 										"ai_search_model": {
+											"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 											"type": "string",
 											"nullable": true,
 											"x-auditable": true
@@ -14015,6 +14044,7 @@
 											"x-auditable": true
 										},
 										"rewrite_model": {
+											"description": "A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.",
 											"type": "string",
 											"nullable": true,
 											"x-auditable": true
