@@ -3,43 +3,45 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Location:</strong> London, UK</p>
-<h3><strong>About the Team</strong></h3>
-<p>The Marketing team at Cloudflare is at the forefront of sharing our mission to help build a better Internet. We are a dynamic and fast-paced team dedicated to showcasing Cloudflare's innovative products and solutions to a global audience. Through strategic campaigns, engaging events, and compelling content, we drive awareness, generate demand, and support our company's rapid growth. As an intern, you'll gain hands-on experience leveraging cutting-edge marketing strategies and technologies to directly impact our success.</p>
-<h3><strong>About the Role</strong></h3>
-<p>As a Marketing Campaigns &amp; Account-Based Marketing (ABM) intern, you will play a crucial role in scaling Cloudflare's targeted marketing initiatives to generate engagement and pipeline across our EMEA target account base. This is an exciting opportunity to sit at the intersection of marketing, sales, and technology. You will help us modernize our approach by exploring AI adoption and developing new processes and tools to automate elements of our marketing campaigns. From analyzing audience segments to identifying productivity hacks, your work will directly support our EMEA campaign efforts and help deliver impactful, tailored experiences to our key accounts.</p>
-<h3><strong>Responsibilities</strong></h3>
+<p><strong>Available Locations: Lisbon, Portugal&nbsp;</strong></p>
+<p><strong>About the role</strong></p>
+<p>Do you love solving complex technical issues and interacting with people? Are you passionate about providing premium-level support to customers and are a standout colleague? Cloudflare is seeking an experienced Network Security Engineer to join our team and support our largest and most technically sophisticated customers in resolving technical problems, threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare products from Magic Transit Infrastructure Protection, Argo Smart Routing, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum and Rate Limiting to help customers.</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li><strong>Scale 1:Many Marketing Campaigns:</strong> Assist in the planning and execution of targeted 1:Many ABM campaigns, helping the team drive engagement and pipeline from our customer and prospect account segments across EMEA.</li>
-	<li><strong>Drive AI &amp; Automation:</strong> Research, test, and help implement AI tools and automated workflows to increase team productivity, streamline campaign creation, and personalize outreach at scale.</li>
-	<li><strong>Cross-Functional Collaboration:</strong> Partner with the broader marketing, design, and sales teams to coordinate and execute digital campaign tactics, such as webinars, customized email sequences, and direct mail campaigns.</li>
-	<li><strong>Data &amp; Engagement Tracking:</strong> Help manage and track account engagement and leads generated from targeted campaigns, ensuring data accuracy in our CRM and timely follow-ups from the sales team.</li>
-	<li><strong>Performance Analysis:</strong> Contribute to campaign analysis by gathering data, analyzing funnel metrics, and providing insights on how to continually optimize campaign efforts.</li>
-	<li><strong>Process Improvement:</strong> Actively participate in team meetings and bring a fresh perspective, contributing innovative ideas for improving our marketing processes and overall campaign effectiveness.</li>
-	<li><strong>Scale ABM Initiatives:</strong> Assist in the planning and execution of targeted 1:1 and 1:few ABM campaigns.</li>
-	<li><strong>Improve Systems &amp; Efficiency:</strong> Partner with team members to identify process gaps and help build or improve systems that make the team more efficient.</li>
-	<li><strong>Event &amp; Campaign Reporting:</strong> Analyze event and campaign performance data to surface trends, identify high-performing programs, and produce actionable recommendations for future investment.</li>
+	<li>Communicate with customers via chat, email, and phone&nbsp;</li>
+	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
+	<li>DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</li>
+	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation, when applicable</li>
+	<li>Work with Engineering and Product teams to improve the products and tools</li>
 </ul>
-<h3><strong>Desired skills &amp; qualifications</strong></h3>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>Currently pursuing a Bachelor's degree in Marketing, Communications, Business, Technology, or a related field.</li>
-	<li>Available for a full-time 12-week internship, working from our London office 3-5 days a week during the fall (Sept-Dec).</li>
-	<li>Strong organizational skills with a keen eye for detail and the ability to manage multiple targeted campaigns simultaneously.</li>
-	<li>Excellent written and verbal communication skills, with an understanding of account based marketing strategies.</li>
-	<li>A strong interest in marketing technology, AI adoption, and process automation.</li>
-	<li>Hands-on experience using AI tools in academic or professional work—you use it regularly, not just occasionally.</li>
-	<li>Proven ability to build tools, dashboards, or automated workflows to solve real-world problems (vibe coding is fine; no engineering degree required, but you need to have built something and be able to walk through it).</li>
-	<li>Strong analytical skills with experience working in spreadsheets, BI tools, or data visualization platforms.</li>
-	<li>Proactive attitude with a desire to learn, experiment, and contribute in a fast-paced environment.</li>
-	<li>Ability to collaborate effectively within a team and with cross-functional partners, particularly Sales.</li>
-	<li>Proficiency with standard office productivity tools (e.g., Google Workspace, Microsoft Office).</li>
+	<li>Self-driven and capable of learning new technologies / systems / features with little guidance</li>
+	<li>Fundamental understanding how the Internet works (OSI Model)</li>
+	<li>Advanced understanding of modern internet protocols like TCP and UDP</li>
+	<li>Computer Networking fundamentals, experience with iptables and looking glass</li>
+	<li>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</li>
+	<li>Packet capture analysis</li>
+	<li>Experience in command line and tools, including curl, dig, traceroute, openssl, git</li>
+	<li>Experience troubleshooting DNS, SSL / TLS, HTTP</li>
+	<li>Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</li>
+	<li>Experience writing scripts in Bash, Python, JavaScript or other scripting language</li>
+	<li>Experience in working as part of a team in a customer-facing role</li>
 </ul>
 <h3><strong>Bonus Points</strong></h3>
 <ul>
-	<li>Previous experience (academic or professional) with B2B marketing, lead generation, or Account-Based Marketing.</li>
-	<li>Familiarity with generative AI tools (e.g., Gemini, ChatGPT, Jasper) and how they can be applied to marketing.</li>
-	<li>Understanding of lead tracking, CRM systems (like Salesforce), or marketing automation platforms (like Marketo).</li>
+	<li>You are fluent in German, Japanese, French, Spanish, Portuguese, or Mandarin</li>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</li>
+	<li>You are familiar with Cloudflare and are actively using our platform</li>
 </ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For Lisbon based hires: Estimated annual salary of €<span class="cell-value">38,000-52,000. </span>&nbsp;</span></li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

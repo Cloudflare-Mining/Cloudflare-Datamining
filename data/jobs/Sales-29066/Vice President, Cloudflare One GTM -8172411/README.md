@@ -3,54 +3,42 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: &nbsp; &nbsp; Austin, Washington DC</strong></p>
-<p><strong>About the role</strong></p>
-<p>At Cloudflare, we are helping to build a better Internet, and part of that is making sure it’s easy to connect with anyone anywhere.&nbsp; We’re looking for a product manager who will help develop our Cloudflare Network Interconnect product line and make us easy to connect with while delivering unparalleled security and performance.&nbsp;</p>
-<p><strong>&nbsp;</strong></p>
-<p>As a Product Manager for Cloudflare Network Interconnect, you will champion a mature, high-impact product that powers seamless, secure, and performant connectivity for organizations globally. At Cloudflare, you'll join a mission-driven team dedicated to building a better Internet, with this role serving as the primary steward of our interconnect infrastructure's evolution and scale. You will own the strategic direction, prioritizing features that enhance performance, driving roadmap decisions based on deep customer insights, and collaborating across engineering and cross-functional teams to deliver an exceptional user experience. This is an opportunity to elevate a product that is already an industry staple, working in an environment where your decisions directly influence the stability and performance of the Internet itself.</p>
-<p><strong>&nbsp;</strong></p>
-<p>As a member of a growing team of infrastructure product managers your responsibilities include:</p>
+<p><strong>Available Locations:&nbsp; </strong>Austin, TX</p>
+<p><strong>About the Role</strong></p>
+<p>Cloudflare’s mission is to help build a better Internet - one that is more secure, faster, and more reliable for every organization on the planet. The Secure Access Service Edge (SASE) and Zero Trust market represents one of the most transformative growth opportunities in enterprise technology, reshaping how businesses connect, protect, and empower their global workforce.</p>
+<p>To lead this next chapter, Cloudflare has created the Cloudflare One (CF1) Speedboat - a dedicated, cross-functional organization designed to operate with the focus, agility, and autonomy of a startup, backed by the global scale and infrastructure of Cloudflare.</p>
+<p>We are seeking a visionary, entrepreneurial executive to serve as the Vice President, CF1 GTM. In this role, you will own and scale a high-growth global business, define the GTM strategy, and build a multi-billion-dollar business in one of the most dynamic markets of the decade. This is an extraordinary opportunity to lead a “company within a company,” shaping the future of how enterprises secure and connect to the Internet.</p>
+<p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li>Represent the customer, be it internal or external. Be the champion and voice of customers. Build intimate, personal customer relationships. Bring the customer's voice into the creation process.</li>
-	<li>Develop the product vision for your area. Ensure that your vision can work not just for your current set of customers, but for 10 or even 100 times your current set.&nbsp;</li>
-	<li>Evangelize the vision so that all stakeholders are aligned, have context and understand where we are going.</li>
-	<li>Make data-driven roadmap decisions.&nbsp; Make tough tactical prioritization decisions based off of data you collect, curate, and disseminate.&nbsp; Build trust with stakeholders by ensuring that your roadmap is understandable and sensible based on the data you present.</li>
-	<li>Measure success. Own the measures used to define success for your product. Success measures must be defined at the inception of a product and tracked throughout its lifecycle. Make measures visible to all stakeholders and interpret them into actionable conclusions and new hypotheses.</li>
-	<li>Author use cases and prioritize requirements. Translate observations and customer feedback into a prioritized product backlog.&nbsp; Author use cases based on specific real-world product applications and extrapolate detailed product requirements for the scenarios.</li>
-	<li>Collaborate across teams. We win or lose as a team. Product managers play a critical role in creating alignment between engineering teams and stakeholders. A collaborative attitude is essential to the job.</li>
+	<li><strong>Own and Scale the Business:</strong> Act as the general manager of Cloudflare One business unit, with full accountability for global GTM strategy, execution, and P&amp;L performance.</li>
+	<li><strong>Define the Market Strategy:</strong> Craft and execute a bold, differentiated strategy to establish Cloudflare as the world’s leading SASE and Zero Trust platform. Align product innovation, ecosystem partnerships, and field execution behind a unified vision.</li>
+	<li><strong>Build a World-Class Leadership Team:</strong> Recruit, develop, and lead a global organization across sales, solution engineering, success, operations, and GTM strategy - fostering a culture of speed, accountability, and innovation.</li>
+	<li><strong>Drive Operational Excellence:</strong> Establish and manage a high-velocity operating cadence, including forecasting, pipeline management, QBRs, and executive-level reporting grounded in data-driven insights.</li>
+	<li><strong>Champion the Partner-First Motion:</strong> Drive growth through deep collaboration with Cloudflare’s partner ecosystem - enabling global systems integrators, MSPs, and channel partners to scale Cloudflare One’s reach and impact.</li>
+	<li><strong>Be the Voice of the Field:</strong> Serve as the bridge between the market and the business. Translate customer and partner feedback into actionable insights for Product and Engineering to accelerate innovation and adoption.</li>
+	<li><strong>Lead the AI Security Motion</strong>: Own Cloudflare's GTM for AI-native enterprises - from Digital Native AI companies building on Cloudflare infrastructure to large enterprises securing AI workloads. Drive adoption of AI Gateway, Zero Trust for AI model access, and DLP for prompt-level data protection as the entry motion into this segment.</li>
+	<li><strong>Evangelize the Vision:</strong> Represent Cloudflare One as an executive spokesperson with customers, partners, industry analysts, and at major events. Position Cloudflare as the thought leader shaping the future of Zero Trust and network security..</li>
 </ul>
-<p><strong>&nbsp;</strong></p>
-<p>Examples of desirable skills, knowledge and experience</p>
-<p><strong>&nbsp;</strong></p>
-<p>The ideal candidate is customer-focused, data-driven, methodical and thrives in a goal-oriented and data-driven environment.&nbsp; You have a deep technical understanding of the observability space and outstanding communication and collaboration skills.&nbsp; You are able to work with a diverse group, get consensus, and drive the product forward.&nbsp; You are execution focused, you emphasize getting things done while paying attention to important details. You have a passion for building frameworks that scale massively and make it easy for all teams to get the most out of data as you.&nbsp;&nbsp;</p>
+<p><strong>Qualifications &amp; Experience</strong></p>
 <ul>
-	<li>4+ years of previous product management experience</li>
-	<li>Domain expertise in making deployment decisions based on data.&nbsp; You have been there, done that as either an architect or product owner for safe change or very closely related technology space</li>
-	<li>Distributed systems experience that allows you to drive the scaling strategy for deployment as our scale grows both on volume and number of internal customers supporting.</li>
-	<li>Experience presenting new products and features to customers – whether as a developer, analyst or product manager. You are enthusiastic about taking something you have helped build and sharing it with the world</li>
-	<li>Strong customer and stakeholder empathy. You must be the voice of engineering, customers, support, or ops at any given time. You must be able to channel many points of view into a strategic roadmap and deliverables that provide elegant solutions to all requirements.</li>
-	<li>Exceptional communication, presentation, organizational and analytical skills</li>
-	<li>Demonstrated ability to lead, drive consensus and deliver in a matrixed organization with multiple stakeholders</li>
-	<li>Experience working with large and complex data sets (SQL, Postgres, Prometheus, etc.).&nbsp; You are skilled at proving points with data and can quickly show others how to do so.</li>
-	<li>Experience with telemetry pipelines (Metrics/Traces) and a very good understanding of modern observability platforms&nbsp;</li>
-	<li>Ability to communicate complex technical concepts to all audiences</li>
+	<li><strong>Enterprise Builder:</strong> 15+ years leading large-scale enterprise SaaS or cybersecurity businesses, ideally with prior GM or P&amp;L ownership experience.</li>
+	<li><strong>Strategic Visionary:</strong> Deep understanding of cybersecurity, networking, and cloud ecosystems - including SASE, Zero Trust, SD-WAN, and network security.</li>
+	<li><strong>Partner-First Leader:</strong> Proven record of building and scaling partner-led GTM models and ecosystem-driven growth strategies.</li>
+	<li><strong>Competitive Depth: </strong>Track record of winning against entrenched security incumbents in enterprise accounts, with specific fluency in the SASE competitive landscape.</li>
+	<li><strong>AI Market Fluency</strong>: Working understanding of how enterprises are deploying AI infrastructure and the security, connectivity, and observability requirements that it creates.</li>
+	<li><strong>Operational Excellence: </strong>Demonstrated ability to design and execute rigorous operating frameworks that drive sustained, measurable growth.</li>
+	<li><strong>Inspirational Leadership:</strong> Known for building high-performance global teams and cultivating cultures of excellence, collaboration, and inclusion.</li>
+	<li><strong>Executive Presence:</strong> Exceptional communication and storytelling skills; comfortable engaging with customers, analysts, boards, and global audiences.</li>
 </ul>
-<p>Bonus Points</p>
-<ul>
-	<li>BS/MS in a technology- or business-related field</li>
-	<li>Hands-on experience with command-line tools used for interacting with APIs, debugging and testing (e.g. curl, dig, etc.)</li>
-	<li>Scripting/programming experience (Python, Go, etc.) and/or experience with web frameworks</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
-<ul>
-	<li>For Washington D.C. based hires:<span class="Apple-converted-space">&nbsp;</span>Estimated annual salary of $$172,000-237,000$$&nbsp;</li>
-</ul>
-<p><strong>Equity</strong></p>
+<p><strong>Why This Role</strong></p>
+<p>This is not a traditional GTM leadership role - it’s an opportunity to scale a generational business inside one of the world’s most innovative technology companies. The Vice President, CF1 GTM will define how enterprises secure, connect, and operate in the modern Internet era - and in doing so, shape the next chapter of Cloudflare’s growth story.</p>
+<h2>Compensation</h2>
+<p>Compensation may be adjusted depending on work location.</p>
+<h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h3>Benefits</h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3>Health &amp; Welfare Benefits</h3>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -61,18 +49,19 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h3>Financial Benefits</h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h3>Time Off</h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
