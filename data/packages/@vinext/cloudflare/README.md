@@ -45,6 +45,9 @@ export default defineConfig({
   "cache": {
     "enabled": true,
   },
+  "version_metadata": {
+    "binding": "CF_VERSION_METADATA",
+  },
 }
 ```
 
@@ -53,6 +56,20 @@ import { cdnAdapter } from "@vinext/cloudflare/cache/cdn-adapter";
 
 vinext({ cache: { cdn: cdnAdapter() } });
 ```
+
+The version metadata binding lets staged warmup prove that every discovery,
+probe, and fill request reached the uploaded Worker version. Wrangler named
+environments do not inherit `version_metadata`; repeat the binding inside every
+`env.<name>` used with CDN warming.
+
+Use `--experimental-warm-cdn-cache` for the two-stage deploy. The default flow
+makes one final fill request per admitted identity. Add `--warm-cdn-certify`
+only when you want an opt-in second, header-only request that must prove every
+planned entry reusable before promotion.
+
+Do not configure a Cache Rule that ignores or normalizes query strings for
+these responses. The two-stage cacheability manifest authorizes the full
+pathname + query identity, but an edge HIT happens before Worker admission.
 
 ## Deploy
 

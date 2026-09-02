@@ -517,6 +517,7 @@ These are deployed to Cloudflare Workers and updated on every push to `main`:
 | Nextra Docs            | Nextra docs site (MDX, App Router)                                                                               | [nextra-docs-template.vinext.workers.dev](https://nextra-docs-template.vinext.workers.dev)       |
 | App Router (minimal)   | Minimal App Router on Workers                                                                                    | [app-router-cloudflare.vinext.workers.dev](https://app-router-cloudflare.vinext.workers.dev)     |
 | Pages Router (minimal) | Minimal Pages Router on Workers                                                                                  | [pages-router-cloudflare.vinext.workers.dev](https://pages-router-cloudflare.vinext.workers.dev) |
+| Static export          | [Hybrid App/Pages Router site](examples/static-export) served as assets only                                     | [static-export.vinext.workers.dev](https://static-export.vinext.workers.dev)                     |
 | RealWorld API          | REST API routes example                                                                                          | [realworld-api-rest.vinext.workers.dev](https://realworld-api-rest.vinext.workers.dev)           |
 | Benchmarks Dashboard   | Build performance tracking over time (D1-backed)                                                                 | [vinext.dev/benchmarks](https://vinext.dev/benchmarks)                                           |
 | App Router + Nitro     | App Router deployed via Nitro (multi-platform)                                                                   | [examples/app-router-nitro](examples/app-router-nitro)                                           |
@@ -709,10 +710,25 @@ The KV data adapter reads `env[binding]` at runtime, so add the matching KV name
 ```jsonc
 {
   "cache": { "enabled": true },
+  "version_metadata": { "binding": "CF_VERSION_METADATA" },
 }
 ```
 
+The version metadata binding is required for staged discovery and warming to
+verify the uploaded Worker version. Wrangler named environments do not inherit
+`version_metadata`, so repeat it inside each `env.<name>` used for warming.
+
+`vinext-cloudflare deploy --experimental-warm-cdn-cache` performs the two-stage
+upload and makes one final cache-fill request per admitted identity by default.
+Add `--warm-cdn-certify` only to opt into a second, header-only request that
+must prove every planned entry reusable before promotion.
+
 While the data adapter can store entries and serve HIT/STALE itself, the CDN adapter delegates serving to Cloudflare's edge: the origin renders fresh responses and tags them with `Cache-Tag`, and `revalidateTag()` / `revalidatePath()` purge the edge through `ctx.cache.purge({ tags })`. See [examples/workers-cache](examples/workers-cache) for both adapters wired up together.
+
+Keep Cloudflare's incoming cache key query-sensitive when using `cdnAdapter()`.
+The two-stage cacheability manifest authorizes exact pathname + query
+identities, and a Cache Rule that ignores or normalizes query strings can serve
+an edge HIT before the Worker has a chance to enforce that identity.
 
 Each builder returns a plain, serializable `{ adapter, options }` descriptor — **it never touches the Workers runtime**, so nothing throws at build or dev time when bindings aren't available. The actual adapter (and its `env` binding lookup) is instantiated lazily on the first request.
 
