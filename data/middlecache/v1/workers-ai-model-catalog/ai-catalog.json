@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-09-01T04:34:00.612Z",
-	"model_count": 213,
+	"generated_at": "2026-09-02T04:33:54.276Z",
+	"model_count": 215,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -557,6 +557,46 @@
 			"zdr_comment": null
 		},
 		{
+			"model_id": "alibaba/wan-3.0-prime",
+			"slug": "alibaba/wan-3.0-prime",
+			"display_name": "Wan 3.0 Prime Video",
+			"description": "Alibaba's Wan 3.0 Prime text-to-video model. Generates cinematic videos from text prompts with adaptive aspect ratio, 480P, 720P, or 1080P resolution, and configurable duration.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Video",
+				"description": ""
+			},
+			"tags": [
+				"Text-to-Video",
+				"Video Generation"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://www.alibabacloud.com/help/en/legal"
+				},
+				{
+					"property_id": "info",
+					"value": "https://www.alibabacloud.com/help/en/model-studio/models"
+				}
+			],
+			"metadata": {
+				"Aspect Ratio": "Adaptive",
+				"Duration": "1-15 seconds",
+				"Resolutions": "480P, 720P, 1080P"
+			},
+			"external_info": "https://www.alibabacloud.com/help/en/model-studio/models",
+			"terms": "https://www.alibabacloud.com/help/en/legal",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/alibaba/wan-3.0-prime.png",
+			"created_at": "2026-09-01 22:50:21",
+			"zdr_comment": null
+		},
+		{
 			"model_id": "alibaba/wan-3.0",
 			"slug": "alibaba/wan-3.0",
 			"display_name": "Wan 3.0 Video",
@@ -594,6 +634,56 @@
 			"terms": "https://www.alibabacloud.com/help/en/legal",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/alibaba/wan-3.0.png",
 			"created_at": "2026-08-25 16:36:31",
+			"zdr_comment": null
+		},
+		{
+			"model_id": "anthropic/claude-fable-5.1",
+			"slug": "anthropic/claude-fable-5.1",
+			"display_name": "Claude Fable 5.1",
+			"description": "Claude Fable 5.1 is Anthropic's next model in the Fable family, with improvements in agentic coding, long-running agentic workflows, knowledge work, front-end and visual code generation, and finance and analysis tasks. It supports adaptive thinking and a 1M token context window.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Coding",
+				"Reasoning",
+				"Enterprise",
+				"Agentic"
+			],
+			"context_length": 1000000,
+			"max_output_tokens": 128000,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "1000000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "128000"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://www.anthropic.com/legal/commercial-terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://platform.claude.com/docs/en/about-claude/models/overview"
+				}
+			],
+			"metadata": {
+				"Adaptive Thinking": "Yes",
+				"Architecture": "Transformer"
+			},
+			"external_info": "https://platform.claude.com/docs/en/about-claude/models/overview",
+			"terms": "https://www.anthropic.com/legal/commercial-terms",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/anthropic/claude-fable-5.1.png",
+			"created_at": "2026-09-01 22:15:20",
 			"zdr_comment": null
 		},
 		{
