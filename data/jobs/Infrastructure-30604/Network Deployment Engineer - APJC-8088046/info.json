@@ -25,7 +25,8 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Singapore"
+				"Singapore",
+				"Sydney, Australia"
 			],
 			"value_type": "multi_select"
 		},
@@ -39,7 +40,7 @@
 		}
 	],
 	"id": 8088046,
-	"updated_at": "2026-08-31T00:56:49-04:00",
+	"updated_at": "2026-09-01T22:17:14-04:00",
 	"requisition_id": null,
 	"title": "Network Deployment Engineer - APJC",
 	"company_name": "Cloudflare",
@@ -59,6 +60,13 @@
 			"id": 19992,
 			"name": "Singapore",
 			"location": "Singapore",
+			"child_ids": [],
+			"parent_id": 74844
+		},
+		{
+			"id": 19993,
+			"name": "Sydney, Australia",
+			"location": "Sydney, New South Wales, Australia",
 			"child_ids": [],
 			"parent_id": 74844
 		}

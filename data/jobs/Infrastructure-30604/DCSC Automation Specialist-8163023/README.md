@@ -3,7 +3,14 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: Austin</strong></p>
+<p><strong>Available Locations: </strong></p>
+<ul>
+	<li><strong>Austin, TX</strong></li>
+	<li><strong>Atlanta, GA</strong></li>
+	<li><strong>Denver, CO</strong></li>
+	<li><strong>Seattle, WA</strong></li>
+	<li><strong>Washington, DC&nbsp;</strong></li>
+</ul>
 <p><strong>Position Overview</strong></p>
 <p>Cloudflare is looking for an Automation Specialist to transform how our global Data Center Security Compliance (DCSC) team operates. This critical role is part of the Infrastructure Operations organization, which is responsible for building, scaling, and running Cloudflare's data center and network infrastructure across 700+ sites worldwide.</p>
 <p>The DCSC team manages physical access control and compliance auditing across one of the most complex and distributed infrastructure footprints in the industry, spanning more than 105 vendor portals, hundreds of non-portal carrier-neutral and edge partner sites, and multiple regulatory frameworks including SOC 2, ISO 27001, FedRAMP, ISMAP, and IRAP. The operational burden of this work is substantial and largely manual: user lists are pulled by hand, access control lists are reconciled by eye, evidence packages are assembled ticket by ticket, and attestation cycles consume weeks of coordinator time every quarter.</p>
@@ -73,6 +80,7 @@
 	<li>Prior work in infrastructure operations, data center, or physical security environments</li>
 	<li>Experience building internal tooling or developer-facing portals (not just scripts)</li>
 </ul>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

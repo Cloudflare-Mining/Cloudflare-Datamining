@@ -3,7 +3,12 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Location:</strong> Austin, TX</p>
+<p><strong>Available Location:</strong></p>
+<ul>
+	<li>Austin, TX</li>
+	<li>Atlanta, GA</li>
+	<li>Denver, CO</li>
+</ul>
 <p><strong>Job Title: </strong>Senior Systems Engineer, Cloudflare Tunnel</p>
 <p><strong>Role Summary:</strong></p>
 <p>As a <strong>Senior Systems Engineer</strong> on the Cloudflare Tunnel team, you will drive the technical vision and architect for future scale, ensuring our product securely connects any machine to the Cloudflare network. You will be responsible for the strategic design of systems across our high-performance global edge network and microservice clusters, providing cross-functional influence to ensure long-term stability and performance. In this leadership role, you will guide capacity planning and the development of next-generation features for Cloudflare Tunnel, Mesh and Zero Trust Network.</p>
@@ -32,7 +37,35 @@
 	<li>Experience with containerization and orchestration technologies, such as Docker and Kubernetes.</li>
 	<li>Strong interpersonal and communication skills, demonstrating empathy, teamwork and a sense of ownership.</li>
 </ul>
-<p>&nbsp;</p>
+<p></p>
+<p><strong>Compensation</strong><br><strong>Compensation may be adjusted depending on work location.</strong></p>
+<p><strong>For Denver based hires: Estimated annual salary of $168,000 - $231,000.</strong></p>
+<p><strong>Application Deadline: December 1, 2026</strong></p>
+<p><strong>Equity</strong><br>This role is eligible to participate in Cloudflare's equity plan.</p>
+<p><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S. &nbsp;</p>
+<ul>
+	<li>Health &amp; Welfare Benefits &nbsp;</li>
+	<li>Medical/Rx Insurance &nbsp;</li>
+	<li>Dental Insurance &nbsp;</li>
+	<li>Vision Insurance &nbsp;</li>
+	<li>Flexible Spending Accounts &nbsp;</li>
+	<li>Commuter Spending Accounts &nbsp;</li>
+	<li>Fertility &amp; Family Forming Benefits &nbsp;</li>
+	<li>On-demand mental health support and Employee Assistance Program &nbsp;</li>
+	<li>Global Travel Medical Insurance &nbsp;</li>
+</ul>
+<p><strong>Financial Benefits &nbsp;</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance &nbsp;</li>
+	<li>Life &amp; Accident Insurance &nbsp;</li>
+	<li>401(k) Retirement Savings Plan &nbsp;</li>
+	<li>Employee Stock Participation Plan &nbsp;</li>
+</ul>
+<p><strong>Time Off </strong>&nbsp;</p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave &nbsp;</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
