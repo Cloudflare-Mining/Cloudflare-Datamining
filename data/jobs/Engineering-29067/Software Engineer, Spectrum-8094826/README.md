@@ -3,52 +3,51 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h2>Available Locations</h2>
+<p><strong>Available Locations: </strong>Austin, London</p>
+<h4>About the team</h4>
+<p>Cloudflare's&nbsp;<strong>Packet Processing</strong> team builds and operates the L3/L4 dataplane services that sit at the front door of our global network. We own the systems that receive, inspect, route, and forward every packet entering Cloudflare — from DDoS-scrubbed IP transit to TCP/UDP application traffic — across every colo in the world. Our work spans <strong>Unimog</strong> (Cloudflare's L4 load balancer that steers traffic to the right machine in every datacenter), <strong>Magic Transit</strong> and <strong>Cloudflare WAN</strong> (our IP-layer DDoS protection and private connectivity products), and <strong>Spectrum</strong> (our L4 reverse proxy for arbitrary TCP and UDP applications). Together, these systems form the packet-processing foundation of the <strong>Traffic Management</strong> organization.</p>
+<p>We are a team of engineers who obsess over performance, correctness, and reliability at massive scale. We work close to the metal, we own what we build in production, and we take pride in shipping systems that "just work" for a very large fraction of the internet.</p>
+<h4>About Spectrum</h4>
+<p>Spectrum is Cloudflare's Layer 4 reverse proxy — the front door for arbitrary TCP and UDP traffic. It gives customers Cloudflare's DDoS mitigation, anycast performance, TLS termination, and global footprint for any TCP or UDP application: gaming servers, SSH, MQTT, custom protocols, and TLS-terminated services of every shape. Spectrum's edge dataplane runs across every Cloudflare colo, terminating and forwarding a very large volume of concurrent connections per second, and its control plane manages configuration, provisioning, and integration with adjacent Cloudflare systems.</p>
+<h4>About the role</h4>
+<p>As a member of Spectrum in the Packet Processing team, we're looking for a Systems Engineer who wants to take shared ownership of a critical, high-scale L4 proxy and help evolve it into the next generation of Cloudflare's non-HTTP traffic platform. This is a rare opportunity to work on a product with massive existing scale while helping shape where it goes next as a first-class part of our L3/L4 dataplane story.</p>
+<h4><strong>Responsibilities</strong></h4>
+<p>Some of the things you'll work on:</p>
 <ul>
-	<li>Austin, US</li>
-	<li>New York, US</li>
-	<li>San Francisco, US</li>
+	<li>The <strong>Spectrum edge dataplane</strong> (Go): TCP/UDP connection acceptance and forwarding, TLS termination, PROXY protocol, connection accounting, and eBPF integrations</li>
+	<li>The <strong>Spectrum control plane</strong> (Go): application configuration APIs, provisioning, and the systems that push config globally to every edge machine</li>
+	<li><strong>Cross-dataplane integrations</strong>: how Spectrum fits together with Unimog for L4 load balancing, with Magic Transit for IP transit, with Argo Smart Routing for accelerated origin paths, etc</li>
+	<li><strong>Operational excellence</strong>: analytics pipelines, observability, on-call, incident response, and paying down technical debt in a product with a long production history</li>
+	<li><strong>Roadmap evolution</strong>: help shape where Spectrum goes next as the L4 counterpart to our HTTP proxy stack</li>
 </ul>
-<h2>About the Role</h2>
-<p>Cloudflare's Developer Platform (Workers, Pages, R2, D1, Durable Objects, AI, and more) is how the next generation of builders ships to the global Internet. Events are one of the most powerful levers we have to reach developers where they are — and to create the moments that turn curiosity into conviction.</p>
-<p>We're looking for a Director of Developer Events to own the end-to-end events strategy and execution for our Developer Platform. This person will be responsible for the full portfolio: flagship tentpole events, Cloudflare-owned developer experiences, sponsored and partnered events, executive dinners, pop-up activations, and field programs. You'll shape how Cloudflare shows up in real life.</p>
-<p>We’re looking for someone with taste — a point of view on what makes a developer event worth attending, a keen eye for design and experience details, and the creative ambition to build moments that developers actually remember and talk about. You'll partner closely with Developer Relations, Product, Sales, Marketing, and Communications to ensure our events strategy drives real developer acquisition, product adoption, and community growth.</p>
-<h2>Responsibilities</h2>
+<p>You'll partner closely with the rest of Packet Processing, other Traffic Management teams, DDoS, DNS, Core SRE, and Edge SRE to solve problems that span the entire Cloudflare stack.</p>
+<h4><strong>Desirable Skills, Knowledge, and Experience</strong></h4>
 <ul>
-	<li><strong>Own the developer events strategy</strong> — Define and execute a unified events portfolio for the Developer Platform, spanning flagship moments, owned events, sponsored/third-party events, executive dinners, pop-up experiences, and field activations.</li>
-	<li><strong>Set the creative bar</strong> — Bring a strong point of view on experience design, branding, and storytelling. Every touchpoint — from booth design to keynote content to swag — should reflect Cloudflare's developer-first identity and stand out in a sea of forgettable conference booths.</li>
-	<li><strong>Drive developer acquisition and adoption</strong> —You'll define the metrics that matter and hold the team accountable to them.</li>
-	<li><strong>Build and manage the events calendar</strong> — Evaluate, prioritize, and manage a global calendar of 50+ events per year. Make disciplined bets on where Cloudflare needs to show up and where it doesn't.</li>
-	<li><strong>Manage budget at scale</strong> — Own a significant events budget. Allocate spend across the portfolio with clear ROI frameworks and the ability to pivot mid-year based on performance data.</li>
-	<li><strong>Lead cross-functional execution</strong> — Partner with DevRel (for technical content and speakers), Product (for speakers, launches and demos), Sales (for executive dinners and field events), and Comms (for press and analyst moments) to ensure events are fully integrated into broader GTM motions.</li>
-	<li><strong>Manage vendors and agencies</strong> — Oversee relationships with event production agencies, venue partners, AV vendors, and creative contractors. Hold external partners to the same quality bar you set internally.</li>
-	<li><strong>Build and lead a team</strong> — Manage and grow a lean team of event professionals. Set the culture, operating cadence, and quality standards for the events function.</li>
-	<li><strong>Innovate the format</strong> — The best developer events in 2026 don't look like the best developer events in 2019. Bring fresh thinking on formats: hackathons, build-alongs, AI agent showcases, intimate roundtables, hybrid/digital experiences, and activations that meet developers in non-traditional settings.</li>
+	<li>Experience building and shipping large-scale, reliable, highly distributed systems</li>
+	<li>Strong programming experience in <strong>Go</strong>; familiarity with or willingness to work in <strong>Rust</strong> is a plus</li>
+	<li>Solid understanding of <strong>L3 and L4 networking</strong>: TCP, UDP, IP, connection state, NAT, anycast, and packet flows</li>
+	<li>Experience with <strong>Linux networking primitives</strong> — sockets, eBPF, network namespaces, netfilter/nftables, tc</li>
+	<li>Experience designing and integrating <strong>RESTful APIs</strong> and backend systems</li>
+	<li>Comfort with <strong>operating what you build</strong> in production — on-call rotations, incident response, and root-cause analysis</li>
+	<li>Ability to reason about <strong>existing systems at scale</strong>: reading unfamiliar code, understanding hidden dependencies, and safely evolving software that has been in production for years</li>
+	<li>Excellent debugging and optimization skills, particularly around performance and connection lifecycle issues</li>
+	<li>Focus on clarity in written and verbal communication; ability to work across teams to land shared solutions</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<h4>Bonus Points</h4>
 <ul>
-	<li>15+ years of experience in events, experiential marketing, or developer marketing, with at least 5 years in a leadership role managing teams and budgets.</li>
-	<li>Deep experience with developer or technical audiences. You understand what resonates with engineers and builders — and what doesn't. You've run events where the attendees are skeptical of marketing by default, and you've earned their attention anyway.</li>
-	<li>Taste and creative vision. You have a portfolio (formal or informal) of events you're proud of. You can articulate why specific design, content, and experience choices mattered. You sweat the details — signage, lighting, run-of-show, speaker prep, the food.</li>
-	<li>Strategic and analytical rigor. You can build a business case for an events portfolio, tie event investments to pipeline and developer acquisition metrics, and make data-informed trade-offs between reach and depth.</li>
-	<li>Proven ability to manage large budgets ($2M+) with financial discipline and transparency.</li>
-	<li>Cross-functional leadership skills. You thrive in matrixed organizations and can influence without authority across Product, Sales, DevRel, and Comms teams.</li>
-	<li>Experience scaling an events function — you've built calendars, playbooks, and teams, not just executed someone else's plan.</li>
-	<li>Comfort with ambiguity and speed. Cloudflare moves fast. You'll need to operate with a bias for action while maintaining quality.</li>
-	<li>Background in or strong exposure to product-led growth (PLG) motions</li>
-	<li>Experience producing hybrid or digital-first event formats</li>
+	<li>Experience with <strong>TLS termination</strong>, PROXY protocol, or L4/L7 proxies (Envoy, HAProxy, nginx stream, etc.)</li>
+	<li>Experience with <strong>ClickHouse</strong>, Kafka, or large-scale connection/flow analytics pipelines</li>
+	<li>Experience with globally-distributed KV or config-push systems</li>
+	<li>Prior work on DDoS mitigation, anycast routing, L4 load balancing, or high-throughput edge network daemons</li>
+	<li>Contributions to open-source networking or proxy projects</li>
 </ul>
-<h2>Compensation</h2>
+<p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For Bay Area based hires: Estimated annual salary of $198,000 - $273,000</li>
-	<li>For NYC based hires: Estimated annual salary of $189,000 - $260,000</li>
-</ul>
-<h3>Equity</h3>
+<p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3>Benefits</h3>
+<p><strong>Benefits</strong></p>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h3>Health &amp; Welfare Benefits</h3>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -59,18 +58,19 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<h3>Financial Benefits</h3>
+<p><strong>Financial Benefits</strong></p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<h3>Time Off</h3>
+<p><strong>Time Off</strong></p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -3,58 +3,32 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong>Austin, TX<strong><br></strong></p>
-<p><strong>About the role:</strong></p>
-<p>You’ll be part of a team pushing the envelope of global realtime communication over the Internet. We are using the power of Cloudflare’s network to build and operate systems and services for realtime video, voice and data across the world, building on WebRTC, MoQ and whatever new technologies emerge. We’re a team of researchers, experimenters and makers, who are all passionate about working together to create high-performance, resilient systems running at massive scale. Does this sound like you? If so, come join us!</p>
-<h4><strong>Responsibilities:</strong></h4>
+<h3><strong>Available Locations: Austin, TX or London, UK (Hybrid)</strong></h3>
+<h3>About the Role</h3>
+<p>R2 is Cloudflare's object storage platform, offering developers durable, reliable storage with zero egress fees that integrates seamlessly with Cloudflare's global network and Developer Platform. The R2 Gateway team owns the request-facing layer of R2 — the S3-compatible API gateway that every object put, get, list, and delete flows through. When a customer or application talks to R2, they talk to the systems we build and operate.</p>
+<p>R2 is growing rapidly, and the gateway must evolve to keep pace. The team is responsible for the API surface that handles authentication, request routing, rate limiting, and coordination between clients and R2's storage and metadata layers — all while maintaining strict compatibility with the S3 API and delivering low-latency, highly available access at global scale.</p>
+<p>You'll be joining a team that operates at the intersection of large-scale distributed systems, storage infrastructure, and edge computing — building request-path systems that need to be correct, fast, and reliable on every single call.</p>
+<h3>Responsibilities</h3>
 <ul>
-	<li>Working with Product Management and customers to understand requirements.</li>
-	<li>Designing and implementing large-scale distributed systems.</li>
-	<li>Instrumenting global realtime services, creating dashboards, and analyzing data.</li>
-	<li>Monitoring and tuning system performance.</li>
-	<li>Researching and implementing Internet standards.</li>
-	<li>Effectively using all tools at your disposal, including AI.</li>
+	<li>Design, implement, and operate the S3-compatible API gateway that serves every R2 operation, ensuring correctness, low latency, and compatibility with the S3 API surface.</li>
+	<li>Build and operate production services on Cloudflare Workers and Kubernetes that handle high-throughput request traffic with strong availability and durability guarantees.</li>
+	<li>Own the request path end to end — authentication, authorization, routing, rate limiting, and error handling — and the interfaces between the gateway and R2's storage and metadata layers.</li>
+	<li>Own projects end to end: from design docs through implementation, testing, deployment, and production monitoring.</li>
+	<li>Continuously improve the reliability, performance, and observability of the gateway; ramp quickly into unfamiliar and legacy code paths and reduce operational toil.</li>
+	<li>Participate in on-call rotations, drive incident resolution, and write postmortems that raise reliability standards.</li>
+	<li>Use AI tools extensively to accelerate development, debugging, and operational tasks. We expect engineers to leverage AI as a core part of their workflow.</li>
+	<li>Collaborate across teams (storage infrastructure, metadata, networking, other platform teams) to coordinate API contracts, capacity planning, and cross-cutting initiatives.</li>
 </ul>
-<h4><strong>Requirements:</strong></h4>
+<h3>Desirable Skills, Knowledge, and Experience</h3>
 <ul>
-	<li>Solid computer science and software engineering fundamentals.</li>
-	<li>Experience working with large-scale distributed systems.</li>
-	<li>Curiosity, initiative and a desire to collaborate closely with others.</li>
-	<li>Knowledge of a modern systems programming language such as Rust or Go.</li>
-</ul>
-<p><strong>Bonus Points:</strong></p>
-<ul>
-	<li>Experience working with realtime protocols such as WebRTC or MoQ.</li>
-	<li>Experience working with streaming media.</li>
-	<li>Relevant personal projects.</li>
-</ul>
-<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Strong programming skills in Rust, TypeScript, Go, or similar languages.</li>
+	<li>Experience building or operating large-scale distributed systems on the request path, with strong latency and reliability requirements.</li>
+	<li>Familiarity with cloud infrastructure concepts such as object storage, HTTP/API gateways, edge computing, or service-oriented architectures.</li>
+	<li>Experience designing and operating high-throughput APIs — authentication, routing, rate limiting, and backward-compatible API evolution.</li>
+	<li>Understanding of reliability and observability practices: monitoring, alerting, performance tuning, and incident response.</li>
+	<li>Strong written and verbal communication skills; ability to explain technical decisions clearly and coordinate across teams.</li>
+	<li>Comfortable working with AI coding tools as part of a daily development workflow.</li>
+	<li>Experience with the S3 API surface, or with Cloudflare Workers, Durable Objects, or edge computing platforms, is a strong plus.</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
