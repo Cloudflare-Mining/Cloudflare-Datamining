@@ -455,16 +455,9 @@
 									"properties": {
 										"result": {
 											"type": "object",
-											"items": {
-												"nullable": true,
-												"properties": {
-													"key": {
-														"type": "string",
-														"example": "value",
-														"x-auditable": true
-													}
-												},
-												"type": "object"
+											"additionalProperties": {
+												"type": "string",
+												"x-auditable": true
 											}
 										}
 									},
