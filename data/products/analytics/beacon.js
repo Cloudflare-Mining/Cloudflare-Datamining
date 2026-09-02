@@ -21,6 +21,8 @@
 						}
 						return n
 					}
+				}, e.roundWebVitalValue = function(t, e) {
+					return "cls" === t ? e : Math.ceil(e)
 				}
 			},
 			173: function(t, e) {
@@ -87,33 +89,33 @@
 								e.value >= 0 && (a || i) && (r = e.value - (o ?? 0), (r || void 0 === o) && (o = e.value, e.delta = r, e.rating = ((t, e) => t > e[1] ? "poor" : t > e[0] ? "needs-improvement" : "good")(e.value, n), t(e)))
 							}
 						},
-						g = t => {
-							requestAnimationFrame(() => requestAnimationFrame(t))
+						f = t => {
+							requestAnimationFrame(() => requestAnimationFrame(() => t()))
 						},
-						p = () => n()?.activationStart ?? 0;
-					let f = -1;
+						g = () => n()?.activationStart ?? 0;
+					let p = -1;
 					const v = new Set,
 						m = () => "hidden" !== document.visibilityState || document.prerendering ? 1 / 0 : 0,
 						y = t => {
 							if ("hidden" === document.visibilityState) {
 								if ("visibilitychange" === t.type)
 									for (const t of v) t();
-								isFinite(f) || (f = "visibilitychange" === t.type ? t.timeStamp : 0, removeEventListener("prerenderingchange", y, !0))
+								isFinite(p) || (p = "visibilitychange" === t.type ? t.timeStamp : 0, removeEventListener("prerenderingchange", y, !0))
 							}
 						},
 						h = (t = !1) => {
-							if (t && (f = 1 / 0), f < 0) {
-								const t = p(),
+							if (t && (p = 1 / 0), p < 0) {
+								const t = g(),
 									e = document.prerendering ? void 0 : globalThis.performance.getEntriesByType("visibility-state").find(e => "hidden" === e.name && e.startTime >= t)?.startTime;
-								f = e ?? m(), addEventListener("visibilitychange", y, !0), addEventListener("prerenderingchange", y, !0), d(() => {
+								p = e ?? m(), addEventListener("visibilitychange", y, !0), addEventListener("prerenderingchange", y, !0), d(() => {
 									setTimeout(() => {
-										f = m()
+										p = m()
 									})
 								})
 							}
 							return {
 								get firstHiddenTime() {
-									return f
+									return p
 								},
 								onHidden(t) {
 									v.add(t)
@@ -124,7 +126,7 @@
 							const c = n(),
 								d = c?.navigationId || 0;
 							let u = "navigate";
-							return i ? u = i : l() >= 0 ? u = "back-forward-cache" : c && (document.prerendering || p() > 0 ? u = "prerender" : document.wasDiscarded ? u = "restore" : c.type && (u = c.type.replace(/_/g, "-"))), {
+							return i ? u = i : l() >= 0 ? u = "back-forward-cache" : c && (document.prerendering || g() > 0 ? u = "prerender" : document.wasDiscarded ? u = "restore" : c.type && (u = c.type.replace(/_/g, "-"))), {
 								name: t,
 								value: e,
 								rating: "good",
@@ -157,8 +159,8 @@
 								}
 							} catch {}
 						},
-						w = t => globalThis.PerformanceObserver?.supportedEntryTypes.includes("soft-navigation") && "function" == typeof globalThis.PerformanceSoftNavigation?.prototype?.getLargestInteractionContentfulPaint && t && t.reportSoftNavs,
-						b = (t, e) => {
+						b = t => globalThis.PerformanceObserver?.supportedEntryTypes?.includes("soft-navigation") && "function" == typeof globalThis.PerformanceSoftNavigation?.prototype?.getLargestInteractionContentfulPaint && t && t.reportSoftNavs,
+						w = (t, e) => {
 							if (t.set(e.navigationId, e), t.size > 2) {
 								const e = t.keys().next().value;
 								void 0 !== e && t.delete(e)
@@ -176,75 +178,78 @@
 					const P = t => {
 							document.prerendering ? addEventListener("prerenderingchange", t, !0) : t()
 						},
-						L = [1800, 3e3],
-						M = (t, e = {}) => {
-							const n = w(e);
+						x = [1800, 3e3],
+						L = (t, e = {}) => {
+							const n = b(e);
 							P(() => {
 								const i = s(e, I),
 									o = h();
 								let r, a = T("FCP");
 								const c = S(["paint"], t => {
-									for (const e of t) "first-contentful-paint" === e.name && (c.disconnect(), e.startTime < o.firstHiddenTime && (a.value = Math.max(e.startTime - p(), 0), a.entries.push(e), a.navigationId = e.navigationId || a.navigationId, r(!0)))
+									for (const e of t) "first-contentful-paint" === e.name && (c.disconnect(), e.startTime < o.firstHiddenTime && (a.value = Math.max(e.startTime - g(), 0), a.entries.push(e), a.navigationId = e.navigationId || a.navigationId, r(!0)))
 								});
-								c && (r = u(t, a, L, e.reportAllChanges), d(n => {
-									a = T("FCP", -1, "back-forward-cache", a.navigationId, a.navigationInteractionId, a.navigationURL, l()), r = u(t, a, L, e.reportAllChanges), g(() => {
+								c && (r = u(t, a, x, e.reportAllChanges), d(n => {
+									a = T("FCP", -1, "back-forward-cache", a.navigationId, a.navigationInteractionId, a.navigationURL, l()), r = u(t, a, x, e.reportAllChanges), f(() => {
 										a.value = performance.now() - n.timeStamp, r(!0)
 									})
 								})), n && S(["soft-navigation"], n => {
 									n.forEach(n => {
-										i.u && n.navigationId && b(i.u, n);
+										i.u && n.navigationId && w(i.u, n);
 										const o = Math.max((n.presentationTime || n.paintTime || 0) - n.startTime, 0);
-										a = T("FCP", o, "soft-navigation", n.navigationId, n.interactionId, n.name, n.startTime), r = u(t, a, L, e.reportAllChanges), r(!0)
+										a = T("FCP", o, "soft-navigation", n.navigationId, n.interactionId, n.name, n.startTime), r = u(t, a, x, e.reportAllChanges), r(!0)
 									})
 								}, e)
 							})
 						},
 						C = [.1, .25],
-						x = t => t.find(t => 1 === t.node?.nodeType) || t[0];
-					let N = 0,
-						A = 1 / 0,
-						D = 0;
-					const O = t => {
-						for (const e of t) e.interactionId && (A = Math.min(A, e.interactionId), D = Math.max(D, e.interactionId), N = D ? (D - A) / 7 + 1 : 0)
+						M = t => t.find(t => 1 === t.node?.nodeType) || t[0];
+					let A = 0,
+						O = 1 / 0,
+						k = 0;
+					const N = t => {
+						for (const e of t) e.interactionId && (O = Math.min(O, e.interactionId), k = Math.max(k, e.interactionId), A = k ? (k - O) / 7 + 1 : 0)
 					};
-					let k;
-					const R = () => k ? N : performance.interactionCount ?? 0;
-					let B = 0;
-					class F {
-						h = [];
-						p = new Map;
-						v;
+					let D;
+					const R = () => D ? A : performance.interactionCount ?? 0;
+					class B {
+						h = 0;
+						p = [];
+						v = new Map;
 						m;
-						T() {
-							B = R(), this.h.length = 0, this.p.clear()
+						T;
+						M() {
+							return R() - this.h
 						}
-						M(t) {
-							const e = R() - B,
-								n = Math.min(this.h.length - 1, Math.floor(e / 50));
-							return !e || -1 !== n || "soft-navigation" !== t && "back-forward-cache" !== t ? this.h[n] : {
-								D: 8,
+						D() {
+							this.h = R(), this.p.length = 0, this.v.clear()
+						}
+						S(t) {
+							const e = this.M(),
+								n = Math.min(this.p.length - 1, Math.floor(e / 50));
+							return !e || -1 !== n || "soft-navigation" !== t && "back-forward-cache" !== t ? this.p[n] : {
+								k: 8,
 								id: -1,
 								entries: []
 							}
 						}
 						l(t) {
-							if (this.v?.(t), !t.interactionId && "first-input" !== t.entryType) return;
-							const e = this.h.at(-1);
-							let n = this.p.get(t.interactionId);
-							if (n || this.h.length < 10 || t.duration > e.D) {
-								if (n ? t.duration > n.D ? (n.entries = [t], n.D = t.duration) : t.duration === n.D && t.startTime === n.entries[0].startTime && n.entries.push(t) : (n = {
+							if (this.m?.(t), !t.interactionId) return;
+							const e = this.p.at(-1);
+							let n = this.v.get(t.interactionId);
+							if (n || this.p.length < 10 || t.duration > e.k) {
+								if (n ? t.duration > n.k ? (n.entries = [t], n.k = t.duration) : t.duration === n.k && t.startTime === n.entries[0].startTime && n.entries.push(t) : (n = {
 										id: t.interactionId,
 										entries: [t],
-										D: t.duration
-									}, this.p.set(n.id, n), this.h.push(n)), this.h.sort((t, e) => e.D - t.D), this.h.length > 10) {
-									const t = this.h.splice(10);
-									for (const e of t) this.p.delete(e.id)
+										k: t.duration
+									}, this.v.set(n.id, n), this.p.push(n)), this.p.sort((t, e) => e.k - t.k), this.p.length > 10) {
+									const t = this.p.splice(10);
+									for (const e of t) this.v.delete(e.id)
 								}
-								this.m?.(n)
+								this.T?.(n)
 							}
 						}
 					}
-					const j = t => {
+					const F = t => {
 							const e = "requestIdleCallback" in globalThis ? 1e3 : 0,
 								n = globalThis.requestIdleCallback || setTimeout,
 								i = globalThis.cancelIdleCallback || clearTimeout;
@@ -267,30 +272,30 @@
 								})
 							}
 						},
-						_ = [200, 500];
-					class H {
-						v;
+						j = [200, 500];
+					class _ {
+						m;
 						u;
 						l(t) {
-							this.v?.(t)
+							this.m?.(t)
 						}
 					}
-					const U = [2500, 4e3];
+					const H = [2500, 4e3];
 					let V = 50;
-					const q = [];
+					const U = [];
 					S(["resource"], t => {
-						for (const e of t) q.push(e), q.length > V && q.shift()
+						for (const e of t) U.push(e), U.length > V && U.shift()
 					});
 					const W = [800, 1800],
-						$ = t => {
-							document.prerendering ? P(() => $(t)) : "complete" !== document.readyState ? addEventListener("load", () => $(t), !0) : setTimeout(t)
+						q = t => {
+							document.prerendering ? P(() => q(t)) : "complete" !== document.readyState ? addEventListener("load", () => q(t), !0) : setTimeout(t)
 						};
-					t.CLSThresholds = C, t.FCPThresholds = L, t.INPThresholds = _, t.LCPThresholds = U, t.TTFBThresholds = W, t.onCLS = (t, n = {}) => {
+					t.CLSThresholds = C, t.FCPThresholds = x, t.INPThresholds = j, t.LCPThresholds = H, t.TTFBThresholds = W, t.onCLS = (t, n = {}) => {
 						const o = s(n = Object.assign({}, n), e),
 							a = new WeakMap;
 						o.t = t => {
 							if (t?.sources?.length) {
-								const e = x(t.sources),
+								const e = M(t.sources),
 									i = e?.node;
 								if (i) {
 									const t = n.generateTarget?.(i) ?? r(i);
@@ -299,29 +304,29 @@
 							}
 						}, ((t, n = {}) => {
 							const i = h();
-							M(E(() => {
+							L(E(() => {
 								let o, r = T("CLS", 0);
 								const a = s(n, e),
 									c = (e, i, s, c, l) => {
 										r = T("CLS", 0, e, i, s, c, l), a.o = 0, o = u(t, r, C, n.reportAllChanges)
 									},
-									p = (t = !1) => {
+									g = (t = !1) => {
 										a.o > r.value && (r.value = a.o, r.entries = a.i), o(t)
 									},
-									f = t => {
-										p(!0), c("soft-navigation", t.navigationId, t.interactionId, t.name, t.startTime)
+									p = t => {
+										g(!0), c("soft-navigation", t.navigationId, t.interactionId, t.name, t.startTime)
 									},
 									v = t => {
-										for (const e of t) "soft-navigation" !== e.entryType ? a.l(e) : f(e);
-										p()
+										for (const e of t) "soft-navigation" !== e.entryType ? a.l(e) : p(e);
+										g()
 									},
 									m = ["layout-shift"];
-								w(n) && m.push("soft-navigation");
+								b(n) && m.push("soft-navigation");
 								const y = S(m, v);
 								y && (o = u(t, r, C, n.reportAllChanges), i.onHidden(() => {
 									v(y.takeRecords()), o(!0)
 								}), d(() => {
-									c("back-forward-cache", r.navigationId, r.navigationInteractionId, r.navigationURL, l()), g(o)
+									c("back-forward-cache", r.navigationId, r.navigationInteractionId, r.navigationURL, l()), f(o)
 								}), setTimeout(o))
 							}))
 						})(e => {
@@ -330,7 +335,7 @@
 								if (t.entries.length) {
 									const n = t.entries.reduce((t, e) => t.value > e.value ? t : e);
 									if (n?.sources?.length) {
-										const t = x(n.sources);
+										const t = M(n.sources);
 										t && (e = {
 											largestShiftTarget: a.get(t),
 											largestShiftTime: n.startTime,
@@ -348,7 +353,7 @@
 						}, n)
 					}, t.onFCP = (t, e = {}) => {
 						const o = s(e = Object.assign({}, e), I);
-						w(e) && (o.u = new Map), M(e => {
+						b(e) && (o.u = new Map), L(e => {
 							t((t => {
 								let e = {
 									timeToFirstByte: 0,
@@ -387,18 +392,18 @@
 							})(e))
 						}, e)
 					}, t.onINP = (t, e = {}) => {
-						const n = s(e = Object.assign({}, e), F);
+						const n = s(e = Object.assign({}, e), B);
 						let o = [],
 							a = [],
 							c = 0;
-						const g = new WeakMap,
-							p = new WeakMap;
-						let f = !1;
+						const f = new WeakMap,
+							g = new WeakMap;
+						let p = !1;
 						const v = () => {
-								f || (j(m), f = !0)
+								p || (F(m), p = !0)
 							},
 							m = () => {
-								const t = new Set(n.h.map(t => g.get(t.entries[0]))),
+								const t = new Set(n.p.map(t => f.get(t.entries[0]))),
 									e = a.length - 10;
 								a = a.filter((n, i) => i >= e || t.has(n));
 								const i = new Set;
@@ -406,9 +411,9 @@
 									const e = y(t.startTime, t.processingEnd);
 									for (const t of e) i.add(t)
 								}
-								o = o.filter(t => t.startTime > c || i.has(t)), f = !1
+								o = o.filter(t => t.startTime > c || i.has(t)), p = !1
 							};
-						n.v = t => {
+						n.m = t => {
 							const n = t.startTime + t.duration;
 							let i;
 							c = Math.max(c, t.processingEnd);
@@ -425,16 +430,16 @@
 								processingEnd: t.processingEnd,
 								renderTime: n,
 								entries: e.includeProcessedEventEntries ? [t] : []
-							}, a.push(i)), (t.interactionId || "first-input" === t.entryType) && g.set(t, i), v()
-						}, n.m = t => {
-							if (!p.get(t)) {
+							}, a.push(i)), t.interactionId && f.set(t, i), v()
+						}, n.T = t => {
+							if (!g.get(t)) {
 								const n = t.entries.find(t => t.target)?.target;
 								if (n) {
 									const i = e.generateTarget?.(n) ?? r(n);
-									p.set(t, i)
+									g.set(t, i)
 								} else {
 									const e = t.entries.find(t => t.targetSelector)?.targetSelector;
-									e && p.set(t, e)
+									e && g.set(t, e)
 								}
 							}
 						};
@@ -452,35 +457,35 @@
 							if (!globalThis.PerformanceEventTiming || !("interactionId" in PerformanceEventTiming.prototype)) return;
 							const n = h();
 							P(() => {
-								"interactionCount" in performance || k || (k = S(["event"], O, {
+								"interactionCount" in performance || D || (D = S(["event"], N, {
 									durationThreshold: 0
 								}));
 								let i, o = T("INP");
-								const r = s(e, F),
+								const r = s(e, B),
 									a = (n, a, s, c, l) => {
-										r.T(), o = T("INP", -1, n, a, s, c, l), i = u(t, o, _, e.reportAllChanges)
+										r.D(), o = T("INP", -1, n, a, s, c, l), i = u(t, o, j, e.reportAllChanges)
 									},
 									c = () => {
-										const t = r.M(o.navigationType);
-										t && t.D !== o.value && (o.value = t.D, o.entries = t.entries, i())
+										const t = r.S(o.navigationType);
+										t && t.k !== o.value && (o.value = t.k, o.entries = t.entries, i())
 									},
-									g = t => {
+									f = t => {
 										c(), i(!0), a("soft-navigation", t.navigationId, t.interactionId, t.name, t.startTime)
 									},
-									p = (t, e = !1) => {
-										j(() => {
-											for (const e of t) "soft-navigation" !== e.entryType ? r.l(e) : g(e);
+									g = (t, e = !1) => {
+										F(() => {
+											for (const e of t) "soft-navigation" !== e.entryType ? r.l(e) : f(e);
 											c(), e && i(!0)
 										})
 									},
-									f = ["event", "first-input"];
-								w(e) && f.push("soft-navigation");
-								const v = S(f, p, {
+									p = ["event", "first-input"];
+								b(e) && p.push("soft-navigation");
+								const v = S(p, g, {
 									...e,
 									durationThreshold: e.durationThreshold ?? 40
 								});
-								i = u(t, o, _, e.reportAllChanges), v && (n.onHidden(() => {
-									p(v.takeRecords(), !0)
+								i = u(t, o, j, e.reportAllChanges), v && (n.onHidden(() => {
+									g(v.takeRecords(), !0)
 								}), d(() => {
 									a("back-forward-cache", o.navigationId, o.navigationInteractionId, o.navigationURL, l())
 								}))
@@ -502,15 +507,15 @@
 									})
 								}
 								const e = t.entries[0],
-									o = g.get(e),
-									r = o.processingStart,
+									o = f.get(e),
+									r = Math.max(o.processingStart, e.startTime),
 									a = Math.max(e.startTime + e.duration, r),
 									s = Math.min(o.processingEnd, a),
 									c = o.entries.sort((t, e) => t.processingStart - e.processingStart),
 									l = y(e.startTime, s),
-									d = n.p.get(e.interactionId),
+									d = n.v.get(e.interactionId),
 									u = {
-										interactionTarget: p.get(d),
+										interactionTarget: g.get(d),
 										interactionType: e.name.startsWith("key") ? "keyboard" : "pointer",
 										interactionTime: e.startTime,
 										nextPaintTime: a,
@@ -547,8 +552,8 @@
 										}
 									}
 									const u = t.longAnimationFrameEntries.at(-1),
-										g = u ? u.startTime + u.duration : 0;
-									g >= e + i + o && (l = n - g), r && a && (t.longestScript = {
+										f = u ? u.startTime + u.duration : 0;
+									f >= e + i + o && (l = n - f), r && a && (t.longestScript = {
 										entry: r,
 										subpart: a,
 										intersectingDuration: d
@@ -560,9 +565,9 @@
 						}, e)
 					}, t.onLCP = (t, e = {}) => {
 						null != (e = Object.assign({}, e)).resourceBufferSize && (V = e.resourceBufferSize);
-						const i = s(e, H),
+						const i = s(e, _),
 							o = new WeakMap;
-						w(e) && (i.u = new Map), i.v = t => {
+						b(e) && (i.u = new Map), i.m = t => {
 							const n = t.element;
 							if (n) {
 								const i = e.generateTarget?.(n) ?? r(n);
@@ -570,16 +575,16 @@
 							} else t.id && o.set(t, `#${t.id}`)
 						}, ((t, e = {}) => {
 							let n = !1;
-							const i = w(e);
+							const i = b(e);
 							P(() => {
 								let o, r = h(),
 									a = T("LCP");
-								const c = s(e, H),
-									f = (i, s, c, l, d) => {
-										a = T("LCP", -1, i, s, c, l, d), o = u(t, a, U, e.reportAllChanges), n = !1, "soft-navigation" === i && (r = h(!0))
+								const c = s(e, _),
+									p = (i, s, c, l, d) => {
+										a = T("LCP", -1, i, s, c, l, d), o = u(t, a, H, e.reportAllChanges), n = !1, "soft-navigation" === i && (r = h(!0))
 									},
 									v = t => {
-										c.u && t.navigationId && b(c.u, t), n || o(!0), f("soft-navigation", t.navigationId, t.interactionId, t.name, t.startTime);
+										c.u && t.navigationId && w(c.u, t), n || o(!0), p("soft-navigation", t.navigationId, t.interactionId, t.name, t.startTime);
 										const e = t.getLargestInteractionContentfulPaint?.();
 										e && m([e])
 									},
@@ -594,7 +599,7 @@
 											let t = 0,
 												n = [],
 												i = e.startTime;
-											if ("largest-contentful-paint" === e.entryType) t = Math.max(e.startTime - p(), 0), c.l(e), n = [e];
+											if ("largest-contentful-paint" === e.entryType) t = Math.max(e.startTime - g(), 0), c.l(e), n = [e];
 											else if ("interaction-contentful-paint" === e.entryType) {
 												const o = e;
 												if (!a.navigationId) continue;
@@ -606,17 +611,17 @@
 									},
 									y = ["largest-contentful-paint"];
 								i && y.push("interaction-contentful-paint", "soft-navigation");
-								const w = S(y, m);
-								if (w) {
-									o = u(t, a, U, e.reportAllChanges);
+								const b = S(y, m);
+								if (b) {
+									o = u(t, a, H, e.reportAllChanges);
 									const r = ["keydown", "click", "visibilitychange"],
 										s = t => {
 											if (t.isTrusted && !n) {
 												const t = a.id;
-												j(() => {
+												F(() => {
 													if (!n) {
 														if (!i) {
-															w.disconnect();
+															b.disconnect();
 															for (const t of r) removeEventListener(t, s, {
 																capture: !0
 															})
@@ -630,7 +635,7 @@
 										capture: !0
 									});
 									d(i => {
-										f("back-forward-cache", a.navigationId, a.navigationInteractionId, a.navigationURL, l()), o = u(t, a, U, e.reportAllChanges), g(() => {
+										p("back-forward-cache", a.navigationId, a.navigationInteractionId, a.navigationURL, l()), o = u(t, a, H, e.reportAllChanges), f(() => {
 											a.value = performance.now() - i.timeStamp, n = !0, o(!0)
 										})
 									})
@@ -646,7 +651,7 @@
 								};
 								if (t.entries.length) {
 									const r = t.entries.at(-1),
-										a = r.url && (q.findLast(t => t.name === r.url) || performance.getEntriesByType("resource").findLast(t => t.name === r.url));
+										a = r.url && (U.findLast(t => t.name === r.url) || performance.getEntriesByType("resource").findLast(t => t.name === r.url));
 									let s;
 									e.target = o.get(r), e.lcpEntry = r, r.url && (e.url = r.url), a && (e.lcpResourceEntry = a);
 									let c = 0,
@@ -672,14 +677,14 @@
 						}, e)
 					}, t.onTTFB = (t, e = {}) => {
 						((t, e = {}) => {
-							const i = w(e);
+							const i = b(e);
 							let o = T("TTFB"),
 								r = u(t, o, W, e.reportAllChanges);
-							$(() => {
+							q(() => {
 								const a = n();
 								if (a) {
 									const n = a.responseStart;
-									o.value = Math.max(n - p(), 0), o.entries = [a], r(!0), d(() => {
+									o.value = Math.max(n - g(), 0), o.entries = [a], r(!0), d(() => {
 										o = T("TTFB", 0, "back-forward-cache", o.navigationId, o.navigationInteractionId, o.navigationURL, l()), r = u(t, o, W, e.reportAllChanges), r(!0)
 									}), i && S(["soft-navigation"], n => {
 										n.forEach(n => {
@@ -771,7 +776,10 @@
 					if (void 0 !== n)
 						for (const r of i) {
 							const i = t[r];
-							"number" != typeof i && "string" != typeof i || (e.positiveOnlyFields.has(r) ? "number" == typeof i && i > o && (n[r] = Math.ceil(i)) : n[r] = i)
+							if ("number" == typeof i) {
+								if (e.positiveOnlyFields.has(r) && i <= o) continue;
+								n[r] = Math.ceil(i)
+							} else "string" == typeof i && (n[r] = i)
 						}
 				}, e.timingsTargetKeys = ["navigationStart", "domainLookupStart", "domainLookupEnd", "connectStart", "connectEnd", "secureConnectionStart", "redirectStart", "redirectEnd", "requestStart", "responseStart", "responseEnd", "domLoading", "domComplete", "loadEventStart", "loadEventEnd"], e.timingsV2TargetKeys = ["nextHopProtocol", "domainLookupStart", "domainLookupEnd", "connectStart", "connectEnd", "secureConnectionStart", "redirectStart", "redirectEnd", "requestStart", "responseStart", "responseEnd", "domInteractive", "domComplete", "loadEventStart", "loadEventEnd", "finalResponseHeadersStart", "firstInterimResponseStart", "transferSize", "decodedBodySize"], e.positiveOnlyFields = new Set(["secureConnectionStart", "redirectStart", "redirectEnd"])
 			},
@@ -796,6 +804,27 @@
 					function(t) {
 						t.Navigate = "navigate", t.Reload = "reload", t.BackForward = "back-forward", t.BackForwardCache = "back-forward-cache", t.Prerender = "prerender", t.Restore = "restore", t.SoftNavigation = "soft-navigation", t.RoutingApis = "routing-apis"
 					}(a || (e.NavigationType = a = {}))
+			},
+			969: () => {
+				"use strict";
+				"function" != typeof Array.prototype.findLast && Object.defineProperty(Array.prototype, "findLast", {
+					value: function(t, e) {
+						for (let n = this.length - 1; n >= 0; n--)
+							if (t.call(e, this[n], n, this)) return this[n]
+					},
+					writable: !0,
+					configurable: !0,
+					enumerable: !1
+				}), "function" != typeof Array.prototype.at && Object.defineProperty(Array.prototype, "at", {
+					value: function(t) {
+						const e = Math.trunc(t) || 0,
+							n = e >= 0 ? e : this.length + e;
+						if (!(n < 0 || n >= this.length)) return this[n]
+					},
+					writable: !0,
+					configurable: !0,
+					enumerable: !1
+				})
 			}
 		},
 		e = {};
@@ -809,6 +838,7 @@
 		return t[i].call(r.exports, r, r.exports, n), r.exports
 	}(() => {
 		"use strict";
+		n(969);
 		const t = n(696),
 			e = n(323),
 			i = n(173),
@@ -833,20 +863,20 @@
 					l = document.currentScript || ("function" == typeof document.querySelector ? document.querySelector(`script[${c}]`) : void 0),
 					d = ["lcp", "cls", "fcp", "ttfb", "inp"];
 				let u = (0, o.uuidv4)(),
-					g = [],
-					p = 0;
-				const f = (t, e = {}) => {
+					f = [],
+					g = 0;
+				const p = (t, e = {}) => {
 					var n;
 					const i = null !== (n = e.when) && void 0 !== n ? n : Math.ceil(s.now());
-					!e.referrer && g[g.length - 1] && (e.referrer = g[g.length - 1].url), g.push({
+					!e.referrer && f[f.length - 1] && (e.referrer = f[f.length - 1].url), f.push({
 						id: u,
 						url: t,
 						ts: i,
 						referrer: "" !== e.referrer ? e.referrer : void 0,
 						navigationType: e.navigationType
-					}), g.length > 3 && g.shift()
+					}), f.length > 3 && f.shift()
 				};
-				f(document.location.href, {
+				p(document.location.href, {
 					when: 0,
 					referrer: document.referrer,
 					navigationType: t.NavigationType.Navigate
@@ -876,71 +906,112 @@
 					h = y !== t.SpaMonitoringType.None;
 				let T = null,
 					S = null;
-				const w = v.send && v.send.to ? v.send.to : void 0 === v.version ? "https://cloudflareinsights.com/cdn-cgi/rum" : null;
-				let b, E = !1,
-					I = !1;
-				const P = {};
+				const b = v.send && v.send.to ? v.send.to : void 0 === v.version ? "https://cloudflareinsights.com/cdn-cgi/rum" : null,
+					w = /Chrome\/(\d+)/,
+					E = /Chromium\/(\d+)/,
+					I = /Firefox\/(\d+)/,
+					P = /Version\/(\d+(?:\.\d+)?)/,
+					x = /rv:(\d+(?:\.\d+)*)/,
+					L = /AppleWebKit\/(\d+(?:\.\d+)*)/,
+					C = function() {
+						const t = {};
+						if ("undefined" == typeof navigator || "string" != typeof navigator.userAgent) return t;
+						const e = navigator.userAgent;
+						if (-1 !== e.indexOf("Chrome/") || -1 !== e.indexOf("Chromium/")) {
+							t.be = "Blink";
+							const n = w.exec(e) || E.exec(e);
+							n && (t.bev = n[1], t.bv = n[1])
+						} else if (-1 !== e.indexOf("Firefox/") || -1 !== e.indexOf("Gecko/")) {
+							t.be = "Gecko";
+							const n = x.exec(e);
+							n && (t.bev = n[1]);
+							const i = I.exec(e);
+							i && (t.bv = i[1])
+						} else if (-1 !== e.indexOf("Safari/") && -1 !== e.indexOf("AppleWebKit/")) {
+							t.be = "WebKit";
+							const n = L.exec(e);
+							n && (t.bev = n[1]);
+							const i = P.exec(e);
+							i && (t.bv = i[1])
+						}
+						return t
+					}();
+				! function(t) {
+					try {
+						"undefined" != typeof navigator && navigator.userAgentData && "function" == typeof navigator.userAgentData.getHighEntropyValues && navigator.userAgentData.getHighEntropyValues(["platformVersion"]).then(function(e) {
+							var n;
+							e.platformVersion && (t.ov = function(t, e) {
+								const n = e.split("."),
+									i = parseInt(n[0], 10);
+								return "Windows" === t ? i >= 13 ? "11" : i >= 1 ? "10" : n[0] : ("iOS" === t || "macOS" === t) && n.length >= 2 ? n[0] + "." + n[1] : n[0]
+							}((null === (n = navigator.userAgentData) || void 0 === n ? void 0 : n.platform) || "", e.platformVersion))
+						}).catch(function() {})
+					} catch (t) {}
+				}(C);
+				let M, A = !1,
+					O = !1;
+				const k = {};
 
-				function L(t) {
+				function N(t) {
 					var e, n, i, o, r, a;
 					const s = window.location.pathname;
-					if (!I) {
-						const e = "string" == typeof(c = t.navigationType) && F.has(c) ? t.navigationType : void 0;
+					if (!O) {
+						const e = "string" == typeof(c = t.navigationType) && q.has(c) ? t.navigationType : void 0;
 						e && function(t, e) {
-							const n = k(t);
+							const n = V(t);
 							n && (n.navigationType = e)
-						}(u, e), I = !0
+						}(u, e), O = !0
 					}
 					var c;
 					let l;
-					switch ("INP" !== t.name && (P[t.name.toLowerCase()] = {
+					switch ("INP" !== t.name && (k[t.name.toLowerCase()] = {
 							value: t.value,
 							path: s
 						}), t.name) {
 						case "CLS":
-							l = t.attribution, l && P.cls && (P.cls.element = l.largestShiftTarget, P.cls.currentRect = null === (e = l.largestShiftSource) || void 0 === e ? void 0 : e.currentRect, P.cls.previousRect = null === (n = l.largestShiftSource) || void 0 === n ? void 0 : n.previousRect);
+							l = t.attribution, l && k.cls && (k.cls.element = l.largestShiftTarget, k.cls.currentRect = null === (e = l.largestShiftSource) || void 0 === e ? void 0 : e.currentRect, k.cls.previousRect = null === (n = l.largestShiftSource) || void 0 === n ? void 0 : n.previousRect);
 							break;
 						case "LCP":
-							l = t.attribution, l && P.lcp && (P.lcp.element = l.target, P.lcp.size = null === (i = l.lcpEntry) || void 0 === i ? void 0 : i.size, P.lcp.url = l.url, P.lcp.rld = Math.ceil(l.resourceLoadDelay), P.lcp.rlt = Math.ceil(l.resourceLoadDuration), P.lcp.erd = Math.ceil(l.elementRenderDelay), P.lcp.it = null === (o = l.lcpResourceEntry) || void 0 === o ? void 0 : o.initiatorType, P.lcp.fp = null === (a = null === (r = l.lcpEntry) || void 0 === r ? void 0 : r.element) || void 0 === a ? void 0 : a.getAttribute("fetchpriority"));
+							l = t.attribution, l && k.lcp && (k.lcp.element = l.target, k.lcp.size = null === (i = l.lcpEntry) || void 0 === i ? void 0 : i.size, k.lcp.url = l.url, k.lcp.rld = Math.ceil(l.resourceLoadDelay), k.lcp.rlt = Math.ceil(l.resourceLoadDuration), k.lcp.erd = Math.ceil(l.elementRenderDelay), k.lcp.it = null === (o = l.lcpResourceEntry) || void 0 === o ? void 0 : o.initiatorType, k.lcp.fp = null === (a = null === (r = l.lcpEntry) || void 0 === r ? void 0 : r.element) || void 0 === a ? void 0 : a.getAttribute("fetchpriority"));
 							break;
 						case "INP":
-							(null == P.inp || Number(P.inp.value) < Number(t.value)) && (P.inp = {
+							(null == k.inp || Number(k.inp.value) < Number(t.value)) && (k.inp = {
 								value: Number(t.value),
 								path: s
-							}, l = t.attribution, l && P.inp && (P.inp.element = l.interactionTarget, P.inp.name = l.interactionType, P.inp.idy = Math.ceil(l.inputDelay), P.inp.pdn = Math.ceil(l.processingDuration), P.inp.pdy = Math.ceil(l.presentationDelay)))
+							}, l = t.attribution, l && k.inp && (k.inp.element = l.interactionTarget, k.inp.name = l.interactionType, k.inp.idy = Math.ceil(l.inputDelay), k.inp.pdn = Math.ceil(l.processingDuration), k.inp.pdy = Math.ceil(l.presentationDelay)))
 					}
 				}
-				"PerformanceObserver" in window && "function" == typeof PerformanceObserver && PerformanceObserver.supportedEntryTypes && ((0, i.onLCP)(L, {
+				"PerformanceObserver" in window && "function" == typeof PerformanceObserver && PerformanceObserver.supportedEntryTypes && ((0, i.onLCP)(N, {
 					reportAllChanges: !0,
 					reportSoftNavs: !0
-				}), (0, i.onFCP)(L), (0, i.onINP)(L, {
+				}), (0, i.onFCP)(N), (0, i.onINP)(N, {
 					reportSoftNavs: !0
-				}), (0, i.onTTFB)(L), PerformanceObserver.supportedEntryTypes && PerformanceObserver.supportedEntryTypes.includes("layout-shift") && (0, i.onCLS)(L, {
+				}), (0, i.onTTFB)(N), PerformanceObserver.supportedEntryTypes && -1 !== PerformanceObserver.supportedEntryTypes.indexOf("layout-shift") && (0, i.onCLS)(N, {
 					reportAllChanges: !0,
 					reportSoftNavs: !0
 				})), document.addEventListener("visibilitychange", () => {
 					if ("hidden" === document.visibilityState) {
-						if (h && N()) {
+						if (h && F()) {
 							const t = n();
-							(null == b ? void 0 : b.url) == t && (null == b ? void 0 : b.triggered) || M(), f(t)
-						}!E && b && (E = !0, C())
+							(null == M ? void 0 : M.url) == t && (null == M ? void 0 : M.triggered) || D(), p(t)
+						}!A && M && (A = !0, R())
 					}
 				});
-				const M = i => {
-						p++;
+				const D = i => {
+						g++;
 						let o = function(e) {
-							const i = j(u) === t.NavigationType.RoutingApis || j(u) === t.NavigationType.SoftNavigation,
+							const i = K(u) === t.NavigationType.RoutingApis || K(u) === t.NavigationType.SoftNavigation,
 								o = !i,
 								a = s.timing,
 								c = e || n(),
-								l = Object.assign(Object.assign({}, H(t.EventType.Load, c)), {
+								l = Object.assign(Object.assign({}, z(t.EventType.Load, c)), {
 									memory: {},
 									timings: {},
 									firstPaint: 0,
 									firstContentfulPaint: 0,
 									versions: {
 										fl: v ? v.version : "",
-										js: "2026.8.4",
+										js: "2026.9.1",
 										timings: 1
 									}
 								});
@@ -962,69 +1033,69 @@
 										const i = t[n];
 										void 0 !== e && ("number" != typeof i && "string" != typeof i || (e[n] = i))
 									}
-								}(s.memory, l.memory) : delete l.memory, l.firstPaint = U("first-paint"), l.firstContentfulPaint = U("first-contentful-paint")
+								}(s.memory, l.memory) : delete l.memory, l.firstPaint = J("first-paint"), l.firstContentfulPaint = J("first-contentful-paint")
 							}
 							return v && (v.icTag && (l.icTag = v.icTag), l.siteToken = v.token), i && (delete l.timings, delete l.timingsV2, delete l.memory, delete l.firstPaint, delete l.firstContentfulPaint, delete l.serverTimings), l
 						}(i);
-						o && v && v && ((0, e.sendObjectBeacon)("", o, () => {}, !1, w), void 0 !== v.forward && void 0 !== v.forward.url && (0, e.sendObjectBeacon)("", o, () => {}, !1, v.forward.url))
+						o && v && v && ((0, e.sendObjectBeacon)("", o, () => {}, !1, b), void 0 !== v.forward && void 0 !== v.forward.url && (0, e.sendObjectBeacon)("", o, () => {}, !1, v.forward.url))
 					},
-					C = n => {
+					R = n => {
 						let i = function(e) {
-							const n = Object.assign({}, H(t.EventType.WebVitalsV2, e));
-							return v && (v.version && (n.versions.fl = v.version), v.icTag && (n.icTag = v.icTag), n.siteToken = v.token), P && d.forEach(t => {
-								P[t] && void 0 !== P[t].value && (n[t] = P[t], n[t] && n[t].value && (n[t].value = Math.ceil(n[t].value)))
+							const n = Object.assign({}, z(t.EventType.WebVitalsV2, e));
+							return v && (v.version && (n.versions.fl = v.version), v.icTag && (n.icTag = v.icTag), n.siteToken = v.token), k && d.forEach(t => {
+								k[t] && void 0 !== k[t].value && (n[t] = k[t], n[t] && n[t].value && (n[t].value = (0, a.roundWebVitalValue)(t, n[t].value)))
 							}), n
 						}(n);
 						d.forEach(t => {
-							delete P[t]
-						}), v && (0, e.sendObjectBeacon)("", i, () => {}, !0, w)
+							delete k[t]
+						}), v && (0, e.sendObjectBeacon)("", i, () => {}, !0, b)
 					},
-					x = () => {
+					B = () => {
 						const t = window.__cfRl && window.__cfRl.done || window.__cfQR && window.__cfQR.done;
-						t ? t.then(M) : M(), b = {
+						t ? t.then(D) : D(), M = {
 							id: u,
 							url: n(),
 							ts: (new Date).getTime(),
 							triggered: !0
 						}
 					};
-				"complete" === window.document.readyState ? x() : window.addEventListener("load", () => {
-					window.setTimeout(x)
+				"complete" === window.document.readyState ? B() : window.addEventListener("load", () => {
+					window.setTimeout(B)
 				});
-				const N = () => h && 0 === g.filter(t => t.id === u).length;
+				const F = () => h && 0 === f.filter(t => t.id === u).length;
 
-				function A() {
+				function j() {
 					u = (0, o.uuidv4)()
 				}
-				var D, O;
+				var _, H;
 
-				function k(t) {
-					for (let e = g.length - 1; e >= 0; e--)
-						if (g[e].id === t) return g[e]
+				function V(t) {
+					for (let e = f.length - 1; e >= 0; e--)
+						if (f[e].id === t) return f[e]
 				}
 
-				function R(t) {
+				function U(t) {
 					var e;
 					if (t) {
-						let n = null === (e = k(t)) || void 0 === e ? void 0 : e.ts;
+						let n = null === (e = V(t)) || void 0 === e ? void 0 : e.ts;
 						if (n) return Math.ceil(s.timeOrigin + n)
 					}
 					return Math.ceil(s.timeOrigin)
 				}
 
-				function B(t) {
+				function W(t) {
 					var e;
-					return null === (e = k(t)) || void 0 === e ? void 0 : e.referrer
+					return null === (e = V(t)) || void 0 === e ? void 0 : e.referrer
 				}
 				h && (y === t.SpaMonitoringType.SoftNavigationHeuristics && (T = function() {
 					var e, n;
-					if (!("PerformanceObserver" in window && PerformanceObserver.supportedEntryTypes && PerformanceObserver.supportedEntryTypes.includes && PerformanceObserver.supportedEntryTypes.includes("soft-navigation"))) return null;
+					if (!("PerformanceObserver" in window) || !PerformanceObserver.supportedEntryTypes || -1 === PerformanceObserver.supportedEntryTypes.indexOf("soft-navigation")) return null;
 					if ("function" != typeof(null === (n = null === (e = window.PerformanceSoftNavigation) || void 0 === e ? void 0 : e.prototype) || void 0 === n ? void 0 : n.getLargestInteractionContentfulPaint)) return null;
 					const i = new PerformanceObserver(e => {
-						for (const n of e.getEntries()) C(m), A(), m = n.name, f(n.name, {
+						for (const n of e.getEntries()) R(m), j(), m = n.name, p(n.name, {
 							navigationType: t.NavigationType.SoftNavigation,
 							when: n.startTime
-						}), M(n.name)
+						}), D(n.name)
 					});
 					if (!i || "function" != typeof i.observe) return null;
 					try {
@@ -1040,29 +1111,29 @@
 					if (!("navigation" in window) || !window.navigation) return null;
 					let e = function(e) {
 						var n, i;
-						e.canIntercept && (C(m), !e.destination || "boolean" != typeof e.destination.sameDocument || e.destination.sameDocument ? (A(), m = null !== (i = null === (n = null == e ? void 0 : e.destination) || void 0 === n ? void 0 : n.url) && void 0 !== i ? i : m, f(m, {
+						e.canIntercept && (R(m), !e.destination || "boolean" != typeof e.destination.sameDocument || e.destination.sameDocument ? (j(), m = null !== (i = null === (n = null == e ? void 0 : e.destination) || void 0 === n ? void 0 : n.url) && void 0 !== i ? i : m, p(m, {
 							navigationType: t.NavigationType.RoutingApis
-						}), M(m)) : E = !0)
+						}), D(m)) : A = !0)
 					};
 					return window.navigation.addEventListener("navigate", e), e
-				}(), S || (D = window.history, (O = D.pushState) && (D.pushState = function(e, i, o) {
+				}(), S || (_ = window.history, (H = _.pushState) && (_.pushState = function(e, i, o) {
 					const r = n(o);
-					return m != r && (C(m), A(), f(r, {
+					return m != r && (R(m), j(), p(r, {
 						navigationType: t.NavigationType.RoutingApis
-					}), M(r), m = r), O.apply(D, [e, i, o])
+					}), D(r), m = r), H.apply(_, [e, i, o])
 				}, window.addEventListener("popstate", function(e) {
-					m != n() && (C(m), A(), m = n(), f(m, {
+					m != n() && (R(m), j(), m = n(), p(m, {
 						navigationType: t.NavigationType.RoutingApis
-					}), M(m))
+					}), D(m))
 				})))));
-				const F = new Set(Object.keys(t.NavigationType).map(e => t.NavigationType[e]));
+				const q = new Set(Object.keys(t.NavigationType).map(e => t.NavigationType[e]));
 
-				function j(t) {
+				function K(t) {
 					var e;
-					return null === (e = k(t)) || void 0 === e ? void 0 : e.navigationType
+					return null === (e = V(t)) || void 0 === e ? void 0 : e.navigationType
 				}
 
-				function _() {
+				function $() {
 					if (!v || !v.serverTiming) return;
 					let t = [];
 					for (const e of ["navigation", "resource"])
@@ -1102,28 +1173,30 @@
 					return t
 				}
 
-				function H(e, i) {
-					const o = j(u),
+				function z(e, i) {
+					const o = K(u),
 						r = o === t.NavigationType.RoutingApis || o === t.NavigationType.SoftNavigation,
 						s = {
-							startTime: R(u),
+							startTime: U(u),
 							pageloadId: u,
-							n: p > 1 ? p : void 0,
+							n: g > 1 ? g : void 0,
 							eventType: e,
 							nt: o,
 							location: (0, a.cleanLocation)(i || n()) || "",
-							referrer: (0, a.cleanLocation)(B(u)),
-							serverTimings: r ? void 0 : _(),
+							referrer: (0, a.cleanLocation)(W(u)),
+							serverTimings: r ? void 0 : $(),
 							versions: {
-								js: "2026.8.4"
-							}
+								js: "2026.9.1"
+							},
+							bi: (c = C, c.bv || c.ov || c.be || c.bev ? C : void 0)
 						};
+					var c;
 					return S && s.nt === t.NavigationType.RoutingApis && (s.ntapi = 1), s
 				}
 
-				function U(t) {
+				function J(t) {
 					var e;
-					if ("first-contentful-paint" === t && P.fcp && P.fcp.value) return Math.ceil(P.fcp.value);
+					if ("first-contentful-paint" === t && k.fcp && k.fcp.value) return Math.ceil(k.fcp.value);
 					if ("function" == typeof s.getEntriesByType) {
 						const n = null === (e = s.getEntriesByType("paint")) || void 0 === e ? void 0 : e.filter(e => e.name === t)[0];
 						return n ? Math.ceil(n.startTime) : 0
