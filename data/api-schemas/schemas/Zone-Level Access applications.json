@@ -149,7 +149,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -271,6 +272,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -873,7 +877,9 @@
 																			"allowed_headers": {
 																				"description": "Allowed HTTP request headers.",
 																				"type": "array",
-																				"items": {}
+																				"items": {
+																					"type": "string"
+																				}
 																			},
 																			"allowed_methods": {
 																				"description": "Allowed HTTP request methods.",
@@ -899,7 +905,9 @@
 																			"allowed_origins": {
 																				"description": "Allowed origins.",
 																				"type": "array",
-																				"items": {},
+																				"items": {
+																					"type": "string"
+																				},
 																				"example": [
 																					"https://example.com"
 																				]
@@ -2176,7 +2184,9 @@
 																					"allowed_headers": {
 																						"description": "Allowed HTTP request headers.",
 																						"type": "array",
-																						"items": {}
+																						"items": {
+																							"type": "string"
+																						}
 																					},
 																					"allowed_methods": {
 																						"description": "Allowed HTTP request methods.",
@@ -2202,7 +2212,9 @@
 																					"allowed_origins": {
 																						"description": "Allowed origins.",
 																						"type": "array",
-																						"items": {},
+																						"items": {
+																							"type": "string"
+																						},
 																						"example": [
 																							"https://example.com"
 																						]
@@ -2308,7 +2320,8 @@
 																				"type": "string",
 																				"example": "ssh"
 																			}
-																		}
+																		},
+																		"type": "object"
 																	}
 																]
 															}
@@ -2748,7 +2761,9 @@
 																					"allowed_headers": {
 																						"description": "Allowed HTTP request headers.",
 																						"type": "array",
-																						"items": {}
+																						"items": {
+																							"type": "string"
+																						}
 																					},
 																					"allowed_methods": {
 																						"description": "Allowed HTTP request methods.",
@@ -2774,7 +2789,9 @@
 																					"allowed_origins": {
 																						"description": "Allowed origins.",
 																						"type": "array",
-																						"items": {},
+																						"items": {
+																							"type": "string"
+																						},
 																						"example": [
 																							"https://example.com"
 																						]
@@ -2880,7 +2897,8 @@
 																				"type": "string",
 																				"example": "vnc"
 																			}
-																		}
+																		},
+																		"type": "object"
 																	}
 																]
 															}
@@ -3326,10 +3344,12 @@
 																	{
 																		"properties": {
 																			"domain": {
+																				"type": "string",
 																				"example": "authdomain.cloudflareaccess.com",
 																				"readOnly": true
 																			},
 																			"name": {
+																				"type": "string",
 																				"example": "App Launcher",
 																				"default": "App Launcher",
 																				"readOnly": true
@@ -3339,7 +3359,8 @@
 																				"type": "string",
 																				"example": "app_launcher"
 																			}
-																		}
+																		},
+																		"type": "object"
 																	}
 																]
 															}
@@ -3785,10 +3806,12 @@
 																	{
 																		"properties": {
 																			"domain": {
+																				"type": "string",
 																				"example": "authdomain.cloudflareaccess.com/warp",
 																				"readOnly": true
 																			},
 																			"name": {
+																				"type": "string",
 																				"example": "Warp Login App",
 																				"default": "Warp Login App",
 																				"readOnly": true
@@ -3798,7 +3821,8 @@
 																				"type": "string",
 																				"example": "warp"
 																			}
-																		}
+																		},
+																		"type": "object"
 																	}
 																]
 															}
@@ -4244,10 +4268,12 @@
 																	{
 																		"properties": {
 																			"domain": {
+																				"type": "string",
 																				"example": "authdomain.cloudflareaccess.com/browser",
 																				"readOnly": true
 																			},
 																			"name": {
+																				"type": "string",
 																				"example": "Clientless Web Isolation",
 																				"default": "Clientless Web Isolation",
 																				"readOnly": true
@@ -4257,7 +4283,8 @@
 																				"type": "string",
 																				"example": "biso"
 																			}
-																		}
+																		},
+																		"type": "object"
 																	}
 																]
 															}
@@ -4648,10 +4675,12 @@
 																"type": "object",
 																"properties": {
 																	"app_launcher_visible": {
+																		"type": "boolean",
 																		"default": true
 																	},
 																	"domain": {
 																		"description": "The URL or domain of the bookmark.",
+																		"type": "string",
 																		"example": "https://mybookmark.com"
 																	},
 																	"logo_url": {
@@ -4683,7 +4712,8 @@
 												]
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -4805,6 +4835,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -5398,7 +5431,9 @@
 																		"allowed_headers": {
 																			"description": "Allowed HTTP request headers.",
 																			"type": "array",
-																			"items": {}
+																			"items": {
+																				"type": "string"
+																			}
 																		},
 																		"allowed_methods": {
 																			"description": "Allowed HTTP request methods.",
@@ -5424,7 +5459,9 @@
 																		"allowed_origins": {
 																			"description": "Allowed origins.",
 																			"type": "array",
-																			"items": {},
+																			"items": {
+																				"type": "string"
+																			},
 																			"example": [
 																				"https://example.com"
 																			]
@@ -6701,7 +6738,9 @@
 																				"allowed_headers": {
 																					"description": "Allowed HTTP request headers.",
 																					"type": "array",
-																					"items": {}
+																					"items": {
+																						"type": "string"
+																					}
 																				},
 																				"allowed_methods": {
 																					"description": "Allowed HTTP request methods.",
@@ -6727,7 +6766,9 @@
 																				"allowed_origins": {
 																					"description": "Allowed origins.",
 																					"type": "array",
-																					"items": {},
+																					"items": {
+																						"type": "string"
+																					},
 																					"example": [
 																						"https://example.com"
 																					]
@@ -6833,7 +6874,8 @@
 																			"type": "string",
 																			"example": "ssh"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														}
@@ -7273,7 +7315,9 @@
 																				"allowed_headers": {
 																					"description": "Allowed HTTP request headers.",
 																					"type": "array",
-																					"items": {}
+																					"items": {
+																						"type": "string"
+																					}
 																				},
 																				"allowed_methods": {
 																					"description": "Allowed HTTP request methods.",
@@ -7299,7 +7343,9 @@
 																				"allowed_origins": {
 																					"description": "Allowed origins.",
 																					"type": "array",
-																					"items": {},
+																					"items": {
+																						"type": "string"
+																					},
 																					"example": [
 																						"https://example.com"
 																					]
@@ -7405,7 +7451,8 @@
 																			"type": "string",
 																			"example": "vnc"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														}
@@ -7851,10 +7898,12 @@
 																{
 																	"properties": {
 																		"domain": {
+																			"type": "string",
 																			"example": "authdomain.cloudflareaccess.com",
 																			"readOnly": true
 																		},
 																		"name": {
+																			"type": "string",
 																			"example": "App Launcher",
 																			"default": "App Launcher",
 																			"readOnly": true
@@ -7864,7 +7913,8 @@
 																			"type": "string",
 																			"example": "app_launcher"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														}
@@ -8310,10 +8360,12 @@
 																{
 																	"properties": {
 																		"domain": {
+																			"type": "string",
 																			"example": "authdomain.cloudflareaccess.com/warp",
 																			"readOnly": true
 																		},
 																		"name": {
+																			"type": "string",
 																			"example": "Warp Login App",
 																			"default": "Warp Login App",
 																			"readOnly": true
@@ -8323,7 +8375,8 @@
 																			"type": "string",
 																			"example": "warp"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														}
@@ -8769,10 +8822,12 @@
 																{
 																	"properties": {
 																		"domain": {
+																			"type": "string",
 																			"example": "authdomain.cloudflareaccess.com/browser",
 																			"readOnly": true
 																		},
 																		"name": {
+																			"type": "string",
 																			"example": "Clientless Web Isolation",
 																			"default": "Clientless Web Isolation",
 																			"readOnly": true
@@ -8782,7 +8837,8 @@
 																			"type": "string",
 																			"example": "biso"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														}
@@ -9173,10 +9229,12 @@
 															"type": "object",
 															"properties": {
 																"app_launcher_visible": {
+																	"type": "boolean",
 																	"default": true
 																},
 																"domain": {
 																	"description": "The URL or domain of the bookmark.",
+																	"type": "string",
 																	"example": "https://mybookmark.com"
 																},
 																"logo_url": {
@@ -9207,7 +9265,8 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -9329,6 +9388,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -9514,7 +9576,9 @@
 														},
 														"policies": {
 															"type": "array",
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"example": [
 																{
 																	"decision": "allow",
@@ -9594,7 +9658,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -9716,6 +9781,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -9912,7 +9980,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								}
@@ -10036,6 +10105,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -10504,7 +10576,9 @@
 													"allowed_headers": {
 														"description": "Allowed HTTP request headers.",
 														"type": "array",
-														"items": {}
+														"items": {
+															"type": "string"
+														}
 													},
 													"allowed_methods": {
 														"description": "Allowed HTTP request methods.",
@@ -10530,7 +10604,9 @@
 													"allowed_origins": {
 														"description": "Allowed origins.",
 														"type": "array",
-														"items": {},
+														"items": {
+															"type": "string"
+														},
 														"example": [
 															"https://example.com"
 														]
@@ -11807,7 +11883,9 @@
 															"allowed_headers": {
 																"description": "Allowed HTTP request headers.",
 																"type": "array",
-																"items": {}
+																"items": {
+																	"type": "string"
+																}
 															},
 															"allowed_methods": {
 																"description": "Allowed HTTP request methods.",
@@ -11833,7 +11911,9 @@
 															"allowed_origins": {
 																"description": "Allowed origins.",
 																"type": "array",
-																"items": {},
+																"items": {
+																	"type": "string"
+																},
 																"example": [
 																	"https://example.com"
 																]
@@ -11939,7 +12019,8 @@
 														"type": "string",
 														"example": "ssh"
 													}
-												}
+												},
+												"type": "object"
 											}
 										]
 									}
@@ -12379,7 +12460,9 @@
 															"allowed_headers": {
 																"description": "Allowed HTTP request headers.",
 																"type": "array",
-																"items": {}
+																"items": {
+																	"type": "string"
+																}
 															},
 															"allowed_methods": {
 																"description": "Allowed HTTP request methods.",
@@ -12405,7 +12488,9 @@
 															"allowed_origins": {
 																"description": "Allowed origins.",
 																"type": "array",
-																"items": {},
+																"items": {
+																	"type": "string"
+																},
 																"example": [
 																	"https://example.com"
 																]
@@ -12511,7 +12596,8 @@
 														"type": "string",
 														"example": "vnc"
 													}
-												}
+												},
+												"type": "object"
 											}
 										]
 									}
@@ -12957,10 +13043,12 @@
 											{
 												"properties": {
 													"domain": {
+														"type": "string",
 														"example": "authdomain.cloudflareaccess.com",
 														"readOnly": true
 													},
 													"name": {
+														"type": "string",
 														"example": "App Launcher",
 														"default": "App Launcher",
 														"readOnly": true
@@ -12970,7 +13058,8 @@
 														"type": "string",
 														"example": "app_launcher"
 													}
-												}
+												},
+												"type": "object"
 											}
 										]
 									}
@@ -13416,10 +13505,12 @@
 											{
 												"properties": {
 													"domain": {
+														"type": "string",
 														"example": "authdomain.cloudflareaccess.com/warp",
 														"readOnly": true
 													},
 													"name": {
+														"type": "string",
 														"example": "Warp Login App",
 														"default": "Warp Login App",
 														"readOnly": true
@@ -13429,7 +13520,8 @@
 														"type": "string",
 														"example": "warp"
 													}
-												}
+												},
+												"type": "object"
 											}
 										]
 									}
@@ -13875,10 +13967,12 @@
 											{
 												"properties": {
 													"domain": {
+														"type": "string",
 														"example": "authdomain.cloudflareaccess.com/browser",
 														"readOnly": true
 													},
 													"name": {
+														"type": "string",
 														"example": "Clientless Web Isolation",
 														"default": "Clientless Web Isolation",
 														"readOnly": true
@@ -13888,7 +13982,8 @@
 														"type": "string",
 														"example": "biso"
 													}
-												}
+												},
+												"type": "object"
 											}
 										]
 									}
@@ -14279,10 +14374,12 @@
 										"type": "object",
 										"properties": {
 											"app_launcher_visible": {
+												"type": "boolean",
 												"default": true
 											},
 											"domain": {
 												"description": "The URL or domain of the bookmark.",
+												"type": "string",
 												"example": "https://mybookmark.com"
 											},
 											"logo_url": {
@@ -14848,7 +14945,9 @@
 																				"allowed_headers": {
 																					"description": "Allowed HTTP request headers.",
 																					"type": "array",
-																					"items": {}
+																					"items": {
+																						"type": "string"
+																					}
 																				},
 																				"allowed_methods": {
 																					"description": "Allowed HTTP request methods.",
@@ -14874,7 +14973,9 @@
 																				"allowed_origins": {
 																					"description": "Allowed origins.",
 																					"type": "array",
-																					"items": {},
+																					"items": {
+																						"type": "string"
+																					},
 																					"example": [
 																						"https://example.com"
 																					]
@@ -16151,7 +16252,9 @@
 																						"allowed_headers": {
 																							"description": "Allowed HTTP request headers.",
 																							"type": "array",
-																							"items": {}
+																							"items": {
+																								"type": "string"
+																							}
 																						},
 																						"allowed_methods": {
 																							"description": "Allowed HTTP request methods.",
@@ -16177,7 +16280,9 @@
 																						"allowed_origins": {
 																							"description": "Allowed origins.",
 																							"type": "array",
-																							"items": {},
+																							"items": {
+																								"type": "string"
+																							},
 																							"example": [
 																								"https://example.com"
 																							]
@@ -16283,7 +16388,8 @@
 																					"type": "string",
 																					"example": "ssh"
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																}
@@ -16723,7 +16829,9 @@
 																						"allowed_headers": {
 																							"description": "Allowed HTTP request headers.",
 																							"type": "array",
-																							"items": {}
+																							"items": {
+																								"type": "string"
+																							}
 																						},
 																						"allowed_methods": {
 																							"description": "Allowed HTTP request methods.",
@@ -16749,7 +16857,9 @@
 																						"allowed_origins": {
 																							"description": "Allowed origins.",
 																							"type": "array",
-																							"items": {},
+																							"items": {
+																								"type": "string"
+																							},
 																							"example": [
 																								"https://example.com"
 																							]
@@ -16855,7 +16965,8 @@
 																					"type": "string",
 																					"example": "vnc"
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																}
@@ -17301,10 +17412,12 @@
 																		{
 																			"properties": {
 																				"domain": {
+																					"type": "string",
 																					"example": "authdomain.cloudflareaccess.com",
 																					"readOnly": true
 																				},
 																				"name": {
+																					"type": "string",
 																					"example": "App Launcher",
 																					"default": "App Launcher",
 																					"readOnly": true
@@ -17314,7 +17427,8 @@
 																					"type": "string",
 																					"example": "app_launcher"
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																}
@@ -17760,10 +17874,12 @@
 																		{
 																			"properties": {
 																				"domain": {
+																					"type": "string",
 																					"example": "authdomain.cloudflareaccess.com/warp",
 																					"readOnly": true
 																				},
 																				"name": {
+																					"type": "string",
 																					"example": "Warp Login App",
 																					"default": "Warp Login App",
 																					"readOnly": true
@@ -17773,7 +17889,8 @@
 																					"type": "string",
 																					"example": "warp"
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																}
@@ -18219,10 +18336,12 @@
 																		{
 																			"properties": {
 																				"domain": {
+																					"type": "string",
 																					"example": "authdomain.cloudflareaccess.com/browser",
 																					"readOnly": true
 																				},
 																				"name": {
+																					"type": "string",
 																					"example": "Clientless Web Isolation",
 																					"default": "Clientless Web Isolation",
 																					"readOnly": true
@@ -18232,7 +18351,8 @@
 																					"type": "string",
 																					"example": "biso"
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																}
@@ -18623,10 +18743,12 @@
 																	"type": "object",
 																	"properties": {
 																		"app_launcher_visible": {
+																			"type": "boolean",
 																			"default": true
 																		},
 																		"domain": {
 																			"description": "The URL or domain of the bookmark.",
+																			"type": "string",
 																			"example": "https://mybookmark.com"
 																		},
 																		"logo_url": {
@@ -18657,7 +18779,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -19096,7 +19219,9 @@
 																		"allowed_headers": {
 																			"description": "Allowed HTTP request headers.",
 																			"type": "array",
-																			"items": {}
+																			"items": {
+																				"type": "string"
+																			}
 																		},
 																		"allowed_methods": {
 																			"description": "Allowed HTTP request methods.",
@@ -19122,7 +19247,9 @@
 																		"allowed_origins": {
 																			"description": "Allowed origins.",
 																			"type": "array",
-																			"items": {},
+																			"items": {
+																				"type": "string"
+																			},
 																			"example": [
 																				"https://example.com"
 																			]
@@ -20399,7 +20526,9 @@
 																				"allowed_headers": {
 																					"description": "Allowed HTTP request headers.",
 																					"type": "array",
-																					"items": {}
+																					"items": {
+																						"type": "string"
+																					}
 																				},
 																				"allowed_methods": {
 																					"description": "Allowed HTTP request methods.",
@@ -20425,7 +20554,9 @@
 																				"allowed_origins": {
 																					"description": "Allowed origins.",
 																					"type": "array",
-																					"items": {},
+																					"items": {
+																						"type": "string"
+																					},
 																					"example": [
 																						"https://example.com"
 																					]
@@ -20531,7 +20662,8 @@
 																			"type": "string",
 																			"example": "ssh"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														}
@@ -20971,7 +21103,9 @@
 																				"allowed_headers": {
 																					"description": "Allowed HTTP request headers.",
 																					"type": "array",
-																					"items": {}
+																					"items": {
+																						"type": "string"
+																					}
 																				},
 																				"allowed_methods": {
 																					"description": "Allowed HTTP request methods.",
@@ -20997,7 +21131,9 @@
 																				"allowed_origins": {
 																					"description": "Allowed origins.",
 																					"type": "array",
-																					"items": {},
+																					"items": {
+																						"type": "string"
+																					},
 																					"example": [
 																						"https://example.com"
 																					]
@@ -21103,7 +21239,8 @@
 																			"type": "string",
 																			"example": "vnc"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														}
@@ -21549,10 +21686,12 @@
 																{
 																	"properties": {
 																		"domain": {
+																			"type": "string",
 																			"example": "authdomain.cloudflareaccess.com",
 																			"readOnly": true
 																		},
 																		"name": {
+																			"type": "string",
 																			"example": "App Launcher",
 																			"default": "App Launcher",
 																			"readOnly": true
@@ -21562,7 +21701,8 @@
 																			"type": "string",
 																			"example": "app_launcher"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														}
@@ -22008,10 +22148,12 @@
 																{
 																	"properties": {
 																		"domain": {
+																			"type": "string",
 																			"example": "authdomain.cloudflareaccess.com/warp",
 																			"readOnly": true
 																		},
 																		"name": {
+																			"type": "string",
 																			"example": "Warp Login App",
 																			"default": "Warp Login App",
 																			"readOnly": true
@@ -22021,7 +22163,8 @@
 																			"type": "string",
 																			"example": "warp"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														}
@@ -22467,10 +22610,12 @@
 																{
 																	"properties": {
 																		"domain": {
+																			"type": "string",
 																			"example": "authdomain.cloudflareaccess.com/browser",
 																			"readOnly": true
 																		},
 																		"name": {
+																			"type": "string",
 																			"example": "Clientless Web Isolation",
 																			"default": "Clientless Web Isolation",
 																			"readOnly": true
@@ -22480,7 +22625,8 @@
 																			"type": "string",
 																			"example": "biso"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														}
@@ -22871,10 +23017,12 @@
 															"type": "object",
 															"properties": {
 																"app_launcher_visible": {
+																	"type": "boolean",
 																	"default": true
 																},
 																"domain": {
 																	"description": "The URL or domain of the bookmark.",
+																	"type": "string",
 																	"example": "https://mybookmark.com"
 																},
 																"logo_url": {
@@ -22905,7 +23053,8 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -23028,6 +23177,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -23108,7 +23260,8 @@
 												false
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -23230,6 +23383,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -23728,7 +23884,9 @@
 													"allowed_headers": {
 														"description": "Allowed HTTP request headers.",
 														"type": "array",
-														"items": {}
+														"items": {
+															"type": "string"
+														}
 													},
 													"allowed_methods": {
 														"description": "Allowed HTTP request methods.",
@@ -23754,7 +23912,9 @@
 													"allowed_origins": {
 														"description": "Allowed origins.",
 														"type": "array",
-														"items": {},
+														"items": {
+															"type": "string"
+														},
 														"example": [
 															"https://example.com"
 														]
@@ -25031,7 +25191,9 @@
 															"allowed_headers": {
 																"description": "Allowed HTTP request headers.",
 																"type": "array",
-																"items": {}
+																"items": {
+																	"type": "string"
+																}
 															},
 															"allowed_methods": {
 																"description": "Allowed HTTP request methods.",
@@ -25057,7 +25219,9 @@
 															"allowed_origins": {
 																"description": "Allowed origins.",
 																"type": "array",
-																"items": {},
+																"items": {
+																	"type": "string"
+																},
 																"example": [
 																	"https://example.com"
 																]
@@ -25163,7 +25327,8 @@
 														"type": "string",
 														"example": "ssh"
 													}
-												}
+												},
+												"type": "object"
 											}
 										]
 									}
@@ -25603,7 +25768,9 @@
 															"allowed_headers": {
 																"description": "Allowed HTTP request headers.",
 																"type": "array",
-																"items": {}
+																"items": {
+																	"type": "string"
+																}
 															},
 															"allowed_methods": {
 																"description": "Allowed HTTP request methods.",
@@ -25629,7 +25796,9 @@
 															"allowed_origins": {
 																"description": "Allowed origins.",
 																"type": "array",
-																"items": {},
+																"items": {
+																	"type": "string"
+																},
 																"example": [
 																	"https://example.com"
 																]
@@ -25735,7 +25904,8 @@
 														"type": "string",
 														"example": "vnc"
 													}
-												}
+												},
+												"type": "object"
 											}
 										]
 									}
@@ -26181,10 +26351,12 @@
 											{
 												"properties": {
 													"domain": {
+														"type": "string",
 														"example": "authdomain.cloudflareaccess.com",
 														"readOnly": true
 													},
 													"name": {
+														"type": "string",
 														"example": "App Launcher",
 														"default": "App Launcher",
 														"readOnly": true
@@ -26194,7 +26366,8 @@
 														"type": "string",
 														"example": "app_launcher"
 													}
-												}
+												},
+												"type": "object"
 											}
 										]
 									}
@@ -26640,10 +26813,12 @@
 											{
 												"properties": {
 													"domain": {
+														"type": "string",
 														"example": "authdomain.cloudflareaccess.com/warp",
 														"readOnly": true
 													},
 													"name": {
+														"type": "string",
 														"example": "Warp Login App",
 														"default": "Warp Login App",
 														"readOnly": true
@@ -26653,7 +26828,8 @@
 														"type": "string",
 														"example": "warp"
 													}
-												}
+												},
+												"type": "object"
 											}
 										]
 									}
@@ -27099,10 +27275,12 @@
 											{
 												"properties": {
 													"domain": {
+														"type": "string",
 														"example": "authdomain.cloudflareaccess.com/browser",
 														"readOnly": true
 													},
 													"name": {
+														"type": "string",
 														"example": "Clientless Web Isolation",
 														"default": "Clientless Web Isolation",
 														"readOnly": true
@@ -27112,7 +27290,8 @@
 														"type": "string",
 														"example": "biso"
 													}
-												}
+												},
+												"type": "object"
 											}
 										]
 									}
@@ -27503,10 +27682,12 @@
 										"type": "object",
 										"properties": {
 											"app_launcher_visible": {
+												"type": "boolean",
 												"default": true
 											},
 											"domain": {
 												"description": "The URL or domain of the bookmark.",
+												"type": "string",
 												"example": "https://mybookmark.com"
 											},
 											"logo_url": {
@@ -28072,7 +28253,9 @@
 																				"allowed_headers": {
 																					"description": "Allowed HTTP request headers.",
 																					"type": "array",
-																					"items": {}
+																					"items": {
+																						"type": "string"
+																					}
 																				},
 																				"allowed_methods": {
 																					"description": "Allowed HTTP request methods.",
@@ -28098,7 +28281,9 @@
 																				"allowed_origins": {
 																					"description": "Allowed origins.",
 																					"type": "array",
-																					"items": {},
+																					"items": {
+																						"type": "string"
+																					},
 																					"example": [
 																						"https://example.com"
 																					]
@@ -29375,7 +29560,9 @@
 																						"allowed_headers": {
 																							"description": "Allowed HTTP request headers.",
 																							"type": "array",
-																							"items": {}
+																							"items": {
+																								"type": "string"
+																							}
 																						},
 																						"allowed_methods": {
 																							"description": "Allowed HTTP request methods.",
@@ -29401,7 +29588,9 @@
 																						"allowed_origins": {
 																							"description": "Allowed origins.",
 																							"type": "array",
-																							"items": {},
+																							"items": {
+																								"type": "string"
+																							},
 																							"example": [
 																								"https://example.com"
 																							]
@@ -29507,7 +29696,8 @@
 																					"type": "string",
 																					"example": "ssh"
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																}
@@ -29947,7 +30137,9 @@
 																						"allowed_headers": {
 																							"description": "Allowed HTTP request headers.",
 																							"type": "array",
-																							"items": {}
+																							"items": {
+																								"type": "string"
+																							}
 																						},
 																						"allowed_methods": {
 																							"description": "Allowed HTTP request methods.",
@@ -29973,7 +30165,9 @@
 																						"allowed_origins": {
 																							"description": "Allowed origins.",
 																							"type": "array",
-																							"items": {},
+																							"items": {
+																								"type": "string"
+																							},
 																							"example": [
 																								"https://example.com"
 																							]
@@ -30079,7 +30273,8 @@
 																					"type": "string",
 																					"example": "vnc"
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																}
@@ -30525,10 +30720,12 @@
 																		{
 																			"properties": {
 																				"domain": {
+																					"type": "string",
 																					"example": "authdomain.cloudflareaccess.com",
 																					"readOnly": true
 																				},
 																				"name": {
+																					"type": "string",
 																					"example": "App Launcher",
 																					"default": "App Launcher",
 																					"readOnly": true
@@ -30538,7 +30735,8 @@
 																					"type": "string",
 																					"example": "app_launcher"
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																}
@@ -30984,10 +31182,12 @@
 																		{
 																			"properties": {
 																				"domain": {
+																					"type": "string",
 																					"example": "authdomain.cloudflareaccess.com/warp",
 																					"readOnly": true
 																				},
 																				"name": {
+																					"type": "string",
 																					"example": "Warp Login App",
 																					"default": "Warp Login App",
 																					"readOnly": true
@@ -30997,7 +31197,8 @@
 																					"type": "string",
 																					"example": "warp"
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																}
@@ -31443,10 +31644,12 @@
 																		{
 																			"properties": {
 																				"domain": {
+																					"type": "string",
 																					"example": "authdomain.cloudflareaccess.com/browser",
 																					"readOnly": true
 																				},
 																				"name": {
+																					"type": "string",
 																					"example": "Clientless Web Isolation",
 																					"default": "Clientless Web Isolation",
 																					"readOnly": true
@@ -31456,7 +31659,8 @@
 																					"type": "string",
 																					"example": "biso"
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																}
@@ -31847,10 +32051,12 @@
 																	"type": "object",
 																	"properties": {
 																		"app_launcher_visible": {
+																			"type": "boolean",
 																			"default": true
 																		},
 																		"domain": {
 																			"description": "The URL or domain of the bookmark.",
+																			"type": "string",
 																			"example": "https://mybookmark.com"
 																		},
 																		"logo_url": {
@@ -31881,7 +32087,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -32320,7 +32527,9 @@
 																		"allowed_headers": {
 																			"description": "Allowed HTTP request headers.",
 																			"type": "array",
-																			"items": {}
+																			"items": {
+																				"type": "string"
+																			}
 																		},
 																		"allowed_methods": {
 																			"description": "Allowed HTTP request methods.",
@@ -32346,7 +32555,9 @@
 																		"allowed_origins": {
 																			"description": "Allowed origins.",
 																			"type": "array",
-																			"items": {},
+																			"items": {
+																				"type": "string"
+																			},
 																			"example": [
 																				"https://example.com"
 																			]
@@ -33623,7 +33834,9 @@
 																				"allowed_headers": {
 																					"description": "Allowed HTTP request headers.",
 																					"type": "array",
-																					"items": {}
+																					"items": {
+																						"type": "string"
+																					}
 																				},
 																				"allowed_methods": {
 																					"description": "Allowed HTTP request methods.",
@@ -33649,7 +33862,9 @@
 																				"allowed_origins": {
 																					"description": "Allowed origins.",
 																					"type": "array",
-																					"items": {},
+																					"items": {
+																						"type": "string"
+																					},
 																					"example": [
 																						"https://example.com"
 																					]
@@ -33755,7 +33970,8 @@
 																			"type": "string",
 																			"example": "ssh"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														}
@@ -34195,7 +34411,9 @@
 																				"allowed_headers": {
 																					"description": "Allowed HTTP request headers.",
 																					"type": "array",
-																					"items": {}
+																					"items": {
+																						"type": "string"
+																					}
 																				},
 																				"allowed_methods": {
 																					"description": "Allowed HTTP request methods.",
@@ -34221,7 +34439,9 @@
 																				"allowed_origins": {
 																					"description": "Allowed origins.",
 																					"type": "array",
-																					"items": {},
+																					"items": {
+																						"type": "string"
+																					},
 																					"example": [
 																						"https://example.com"
 																					]
@@ -34327,7 +34547,8 @@
 																			"type": "string",
 																			"example": "vnc"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														}
@@ -34773,10 +34994,12 @@
 																{
 																	"properties": {
 																		"domain": {
+																			"type": "string",
 																			"example": "authdomain.cloudflareaccess.com",
 																			"readOnly": true
 																		},
 																		"name": {
+																			"type": "string",
 																			"example": "App Launcher",
 																			"default": "App Launcher",
 																			"readOnly": true
@@ -34786,7 +35009,8 @@
 																			"type": "string",
 																			"example": "app_launcher"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														}
@@ -35232,10 +35456,12 @@
 																{
 																	"properties": {
 																		"domain": {
+																			"type": "string",
 																			"example": "authdomain.cloudflareaccess.com/warp",
 																			"readOnly": true
 																		},
 																		"name": {
+																			"type": "string",
 																			"example": "Warp Login App",
 																			"default": "Warp Login App",
 																			"readOnly": true
@@ -35245,7 +35471,8 @@
 																			"type": "string",
 																			"example": "warp"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														}
@@ -35691,10 +35918,12 @@
 																{
 																	"properties": {
 																		"domain": {
+																			"type": "string",
 																			"example": "authdomain.cloudflareaccess.com/browser",
 																			"readOnly": true
 																		},
 																		"name": {
+																			"type": "string",
 																			"example": "Clientless Web Isolation",
 																			"default": "Clientless Web Isolation",
 																			"readOnly": true
@@ -35704,7 +35933,8 @@
 																			"type": "string",
 																			"example": "biso"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														}
@@ -36095,10 +36325,12 @@
 															"type": "object",
 															"properties": {
 																"app_launcher_visible": {
+																	"type": "boolean",
 																	"default": true
 																},
 																"domain": {
 																	"description": "The URL or domain of the bookmark.",
+																	"type": "string",
 																	"example": "https://mybookmark.com"
 																},
 																"logo_url": {
@@ -36129,7 +36361,8 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -36251,6 +36484,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -36446,7 +36682,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								}
@@ -36570,6 +36807,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

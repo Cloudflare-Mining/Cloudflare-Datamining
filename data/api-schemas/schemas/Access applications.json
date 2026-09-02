@@ -149,7 +149,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -272,9 +273,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -524,6 +527,7 @@
 																	"created_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -544,6 +548,7 @@
 																	"updated_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -1428,7 +1433,8 @@
 																				]
 																			},
 																			{
-																				"example": "self_hosted"
+																				"example": "self_hosted",
+																				"type": "string"
 																			}
 																		]
 																	},
@@ -3718,6 +3724,7 @@
 																	"created_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -3738,6 +3745,7 @@
 																	"updated_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -3815,6 +3823,7 @@
 																					"created_at": {
 																						"allOf": [
 																							{
+																								"type": "string",
 																								"x-stainless-skip": true
 																							},
 																							{
@@ -3937,6 +3946,7 @@
 																					"updated_at": {
 																						"allOf": [
 																							{
+																								"type": "string",
 																								"x-stainless-skip": true
 																							},
 																							{
@@ -3991,6 +4001,7 @@
 																					"created_at": {
 																						"allOf": [
 																							{
+																								"type": "string",
 																								"x-stainless-skip": true
 																							},
 																							{
@@ -4133,6 +4144,7 @@
 																					"updated_at": {
 																						"allOf": [
 																							{
+																								"type": "string",
 																								"x-stainless-skip": true
 																							},
 																							{
@@ -4531,7 +4543,8 @@
 																				]
 																			},
 																			{
-																				"example": "saas"
+																				"example": "saas",
+																				"type": "string"
 																			}
 																		]
 																	}
@@ -6811,6 +6824,7 @@
 																	"created_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -6831,6 +6845,7 @@
 																	"updated_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -7717,7 +7732,8 @@
 																						]
 																					},
 																					{
-																						"example": "self_hosted"
+																						"example": "self_hosted",
+																						"type": "string"
 																					}
 																				]
 																			},
@@ -7760,11 +7776,13 @@
 																						]
 																					},
 																					{
-																						"example": "ssh"
+																						"example": "ssh",
+																						"type": "string"
 																					}
 																				]
 																			}
-																		}
+																		},
+																		"type": "object"
 																	}
 																]
 															},
@@ -10041,6 +10059,7 @@
 																	"created_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -10061,6 +10080,7 @@
 																	"updated_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -10947,7 +10967,8 @@
 																						]
 																					},
 																					{
-																						"example": "self_hosted"
+																						"example": "self_hosted",
+																						"type": "string"
 																					}
 																				]
 																			},
@@ -10990,11 +11011,13 @@
 																						]
 																					},
 																					{
-																						"example": "vnc"
+																						"example": "vnc",
+																						"type": "string"
 																					}
 																				]
 																			}
-																		}
+																		},
+																		"type": "object"
 																	}
 																]
 															},
@@ -13271,6 +13294,7 @@
 																	"created_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -13291,6 +13315,7 @@
 																	"updated_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -13394,6 +13419,7 @@
 																				"example": "#ff0000"
 																			},
 																			"domain": {
+																				"type": "string",
 																				"example": "authdomain.cloudflareaccess.com",
 																				"readOnly": true
 																			},
@@ -13464,6 +13490,7 @@
 																				}
 																			},
 																			"name": {
+																				"type": "string",
 																				"example": "App Launcher",
 																				"default": "App Launcher",
 																				"readOnly": true
@@ -13498,11 +13525,13 @@
 																						]
 																					},
 																					{
-																						"example": "app_launcher"
+																						"example": "app_launcher",
+																						"type": "string"
 																					}
 																				]
 																			}
-																		}
+																		},
+																		"type": "object"
 																	}
 																]
 															},
@@ -15779,6 +15808,7 @@
 																	"created_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -15799,6 +15829,7 @@
 																	"updated_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -15892,10 +15923,12 @@
 																	{
 																		"properties": {
 																			"domain": {
+																				"type": "string",
 																				"example": "authdomain.cloudflareaccess.com/warp",
 																				"readOnly": true
 																			},
 																			"name": {
+																				"type": "string",
 																				"example": "Warp Login App",
 																				"default": "Warp Login App",
 																				"readOnly": true
@@ -15924,11 +15957,13 @@
 																						]
 																					},
 																					{
-																						"example": "warp"
+																						"example": "warp",
+																						"type": "string"
 																					}
 																				]
 																			}
-																		}
+																		},
+																		"type": "object"
 																	}
 																]
 															},
@@ -18205,6 +18240,7 @@
 																	"created_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -18225,6 +18261,7 @@
 																	"updated_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -18318,10 +18355,12 @@
 																	{
 																		"properties": {
 																			"domain": {
+																				"type": "string",
 																				"example": "authdomain.cloudflareaccess.com/browser",
 																				"readOnly": true
 																			},
 																			"name": {
+																				"type": "string",
 																				"example": "Clientless Web Isolation",
 																				"default": "Clientless Web Isolation",
 																				"readOnly": true
@@ -18350,11 +18389,13 @@
 																						]
 																					},
 																					{
-																						"example": "biso"
+																						"example": "biso",
+																						"type": "string"
 																					}
 																				]
 																			}
-																		}
+																		},
+																		"type": "object"
 																	}
 																]
 															},
@@ -20631,6 +20672,7 @@
 																	"created_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -20651,6 +20693,7 @@
 																	"updated_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -20745,10 +20788,12 @@
 																		"properties": {
 																			"domain": {
 																				"description": "The proxy endpoint domain in the format: 10 alphanumeric characters followed by .proxy.cloudflare-gateway.com",
+																				"type": "string",
 																				"example": "abcd123456.proxy.cloudflare-gateway.com",
 																				"pattern": "^[A-Za-z0-9]{10}\\.proxy\\.cloudflare-gateway\\.com$"
 																			},
 																			"name": {
+																				"type": "string",
 																				"example": "Gateway Proxy",
 																				"default": "Gateway Proxy"
 																			},
@@ -20776,11 +20821,13 @@
 																						]
 																					},
 																					{
-																						"example": "proxy_endpoint"
+																						"example": "proxy_endpoint",
+																						"type": "string"
 																					}
 																				]
 																			}
-																		}
+																		},
+																		"type": "object"
 																	}
 																]
 															},
@@ -23057,6 +23104,7 @@
 																	"created_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -23077,6 +23125,7 @@
 																	"updated_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -23148,7 +23197,8 @@
 																				]
 																			},
 																			{
-																				"example": "bookmark"
+																				"example": "bookmark",
+																				"type": "string"
 																			}
 																		]
 																	}
@@ -25428,6 +25478,7 @@
 																	"created_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -25448,6 +25499,7 @@
 																	"updated_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -25526,11 +25578,13 @@
 																						]
 																					},
 																					{
-																						"example": "infrastructure"
+																						"example": "infrastructure",
+																						"type": "string"
 																					}
 																				]
 																			}
-																		}
+																		},
+																		"type": "object"
 																	},
 																	{
 																		"description": "Contains the targets secured by the application.",
@@ -27764,6 +27818,7 @@
 																	"created_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -27784,6 +27839,7 @@
 																	"updated_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -28733,7 +28789,8 @@
 																						]
 																					},
 																					{
-																						"example": "self_hosted"
+																						"example": "self_hosted",
+																						"type": "string"
 																					}
 																				]
 																			},
@@ -28776,11 +28833,13 @@
 																						]
 																					},
 																					{
-																						"example": "rdp"
+																						"example": "rdp",
+																						"type": "string"
 																					}
 																				]
 																			}
-																		}
+																		},
+																		"type": "object"
 																	}
 																],
 																"required": [
@@ -31060,6 +31119,7 @@
 																	"created_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -31080,6 +31140,7 @@
 																	"updated_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -31801,7 +31862,8 @@
 																				]
 																			},
 																			{
-																				"example": "mcp"
+																				"example": "mcp",
+																				"type": "string"
 																			}
 																		]
 																	}
@@ -34084,6 +34146,7 @@
 																	"created_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -34104,6 +34167,7 @@
 																	"updated_at": {
 																		"allOf": [
 																			{
+																				"type": "string",
 																				"x-stainless-skip": true
 																			},
 																			{
@@ -34830,7 +34894,8 @@
 																				]
 																			},
 																			{
-																				"example": "mcp_portal"
+																				"example": "mcp_portal",
+																				"type": "string"
 																			}
 																		]
 																	}
@@ -37101,7 +37166,8 @@
 												]
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -37224,9 +37290,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -37398,6 +37466,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -37418,6 +37487,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -38302,7 +38372,8 @@
 																			]
 																		},
 																		{
-																			"example": "self_hosted"
+																			"example": "self_hosted",
+																			"type": "string"
 																		}
 																	]
 																},
@@ -40592,6 +40663,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -40612,6 +40684,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -40689,6 +40762,7 @@
 																				"created_at": {
 																					"allOf": [
 																						{
+																							"type": "string",
 																							"x-stainless-skip": true
 																						},
 																						{
@@ -40811,6 +40885,7 @@
 																				"updated_at": {
 																					"allOf": [
 																						{
+																							"type": "string",
 																							"x-stainless-skip": true
 																						},
 																						{
@@ -40865,6 +40940,7 @@
 																				"created_at": {
 																					"allOf": [
 																						{
+																							"type": "string",
 																							"x-stainless-skip": true
 																						},
 																						{
@@ -41007,6 +41083,7 @@
 																				"updated_at": {
 																					"allOf": [
 																						{
+																							"type": "string",
 																							"x-stainless-skip": true
 																						},
 																						{
@@ -41405,7 +41482,8 @@
 																			]
 																		},
 																		{
-																			"example": "saas"
+																			"example": "saas",
+																			"type": "string"
 																		}
 																	]
 																}
@@ -43685,6 +43763,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -43705,6 +43784,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -44591,7 +44671,8 @@
 																					]
 																				},
 																				{
-																					"example": "self_hosted"
+																					"example": "self_hosted",
+																					"type": "string"
 																				}
 																			]
 																		},
@@ -44634,11 +44715,13 @@
 																					]
 																				},
 																				{
-																					"example": "ssh"
+																					"example": "ssh",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -46915,6 +46998,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -46935,6 +47019,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -47821,7 +47906,8 @@
 																					]
 																				},
 																				{
-																					"example": "self_hosted"
+																					"example": "self_hosted",
+																					"type": "string"
 																				}
 																			]
 																		},
@@ -47864,11 +47950,13 @@
 																					]
 																				},
 																				{
-																					"example": "vnc"
+																					"example": "vnc",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -50145,6 +50233,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -50165,6 +50254,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -50268,6 +50358,7 @@
 																			"example": "#ff0000"
 																		},
 																		"domain": {
+																			"type": "string",
 																			"example": "authdomain.cloudflareaccess.com",
 																			"readOnly": true
 																		},
@@ -50338,6 +50429,7 @@
 																			}
 																		},
 																		"name": {
+																			"type": "string",
 																			"example": "App Launcher",
 																			"default": "App Launcher",
 																			"readOnly": true
@@ -50372,11 +50464,13 @@
 																					]
 																				},
 																				{
-																					"example": "app_launcher"
+																					"example": "app_launcher",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -52653,6 +52747,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -52673,6 +52768,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -52766,10 +52862,12 @@
 																{
 																	"properties": {
 																		"domain": {
+																			"type": "string",
 																			"example": "authdomain.cloudflareaccess.com/warp",
 																			"readOnly": true
 																		},
 																		"name": {
+																			"type": "string",
 																			"example": "Warp Login App",
 																			"default": "Warp Login App",
 																			"readOnly": true
@@ -52798,11 +52896,13 @@
 																					]
 																				},
 																				{
-																					"example": "warp"
+																					"example": "warp",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -55079,6 +55179,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -55099,6 +55200,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -55192,10 +55294,12 @@
 																{
 																	"properties": {
 																		"domain": {
+																			"type": "string",
 																			"example": "authdomain.cloudflareaccess.com/browser",
 																			"readOnly": true
 																		},
 																		"name": {
+																			"type": "string",
 																			"example": "Clientless Web Isolation",
 																			"default": "Clientless Web Isolation",
 																			"readOnly": true
@@ -55224,11 +55328,13 @@
 																					]
 																				},
 																				{
-																					"example": "biso"
+																					"example": "biso",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -57505,6 +57611,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -57525,6 +57632,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -57619,10 +57727,12 @@
 																	"properties": {
 																		"domain": {
 																			"description": "The proxy endpoint domain in the format: 10 alphanumeric characters followed by .proxy.cloudflare-gateway.com",
+																			"type": "string",
 																			"example": "abcd123456.proxy.cloudflare-gateway.com",
 																			"pattern": "^[A-Za-z0-9]{10}\\.proxy\\.cloudflare-gateway\\.com$"
 																		},
 																		"name": {
+																			"type": "string",
 																			"example": "Gateway Proxy",
 																			"default": "Gateway Proxy"
 																		},
@@ -57650,11 +57760,13 @@
 																					]
 																				},
 																				{
-																					"example": "proxy_endpoint"
+																					"example": "proxy_endpoint",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -59931,6 +60043,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -59951,6 +60064,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -60022,7 +60136,8 @@
 																			]
 																		},
 																		{
-																			"example": "bookmark"
+																			"example": "bookmark",
+																			"type": "string"
 																		}
 																	]
 																}
@@ -62302,6 +62417,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -62322,6 +62438,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -62400,11 +62517,13 @@
 																					]
 																				},
 																				{
-																					"example": "infrastructure"
+																					"example": "infrastructure",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"description": "Contains the targets secured by the application.",
@@ -64638,6 +64757,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -64658,6 +64778,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -65607,7 +65728,8 @@
 																					]
 																				},
 																				{
-																					"example": "self_hosted"
+																					"example": "self_hosted",
+																					"type": "string"
 																				}
 																			]
 																		},
@@ -65650,11 +65772,13 @@
 																					]
 																				},
 																				{
-																					"example": "rdp"
+																					"example": "rdp",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															],
 															"required": [
@@ -67934,6 +68058,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -67954,6 +68079,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -68675,7 +68801,8 @@
 																			]
 																		},
 																		{
-																			"example": "mcp"
+																			"example": "mcp",
+																			"type": "string"
 																		}
 																	]
 																}
@@ -70958,6 +71085,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -70978,6 +71106,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -71704,7 +71833,8 @@
 																			]
 																		},
 																		{
-																			"example": "mcp_portal"
+																			"example": "mcp_portal",
+																			"type": "string"
 																		}
 																	]
 																}
@@ -73974,7 +74104,8 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -74097,9 +74228,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -74362,7 +74495,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -74485,9 +74619,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -74679,7 +74815,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								}
@@ -74804,9 +74941,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -75715,7 +75854,8 @@
 														]
 													},
 													{
-														"example": "self_hosted"
+														"example": "self_hosted",
+														"type": "string"
 													}
 												]
 											},
@@ -75766,7 +75906,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -75790,7 +75931,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -78448,6 +78590,7 @@
 															"created_at": {
 																"allOf": [
 																	{
+																		"type": "string",
 																		"x-stainless-skip": true
 																	},
 																	{
@@ -78570,6 +78713,7 @@
 															"updated_at": {
 																"allOf": [
 																	{
+																		"type": "string",
 																		"x-stainless-skip": true
 																	},
 																	{
@@ -78624,6 +78768,7 @@
 															"created_at": {
 																"allOf": [
 																	{
+																		"type": "string",
 																		"x-stainless-skip": true
 																	},
 																	{
@@ -78766,6 +78911,7 @@
 															"updated_at": {
 																"allOf": [
 																	{
+																		"type": "string",
 																		"x-stainless-skip": true
 																	},
 																	{
@@ -79164,7 +79310,8 @@
 														]
 													},
 													{
-														"example": "saas"
+														"example": "saas",
+														"type": "string"
 													}
 												]
 											}
@@ -79205,7 +79352,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -79229,7 +79377,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -82696,7 +82845,8 @@
 																]
 															},
 															{
-																"example": "self_hosted"
+																"example": "self_hosted",
+																"type": "string"
 															}
 														]
 													},
@@ -82739,11 +82889,13 @@
 																]
 															},
 															{
-																"example": "ssh"
+																"example": "ssh",
+																"type": "string"
 															}
 														]
 													}
-												}
+												},
+												"type": "object"
 											}
 										]
 									},
@@ -82781,7 +82933,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -82805,7 +82958,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -86272,7 +86426,8 @@
 																]
 															},
 															{
-																"example": "self_hosted"
+																"example": "self_hosted",
+																"type": "string"
 															}
 														]
 													},
@@ -86315,11 +86470,13 @@
 																]
 															},
 															{
-																"example": "vnc"
+																"example": "vnc",
+																"type": "string"
 															}
 														]
 													}
-												}
+												},
+												"type": "object"
 											}
 										]
 									},
@@ -86357,7 +86514,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -86381,7 +86539,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -89065,6 +89224,7 @@
 														"example": "#ff0000"
 													},
 													"domain": {
+														"type": "string",
 														"example": "authdomain.cloudflareaccess.com",
 														"readOnly": true
 													},
@@ -89135,6 +89295,7 @@
 														}
 													},
 													"name": {
+														"type": "string",
 														"example": "App Launcher",
 														"default": "App Launcher",
 														"readOnly": true
@@ -89169,11 +89330,13 @@
 																]
 															},
 															{
-																"example": "app_launcher"
+																"example": "app_launcher",
+																"type": "string"
 															}
 														]
 													}
-												}
+												},
+												"type": "object"
 											}
 										]
 									},
@@ -89211,7 +89374,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -89235,7 +89399,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -91556,10 +91721,12 @@
 											{
 												"properties": {
 													"domain": {
+														"type": "string",
 														"example": "authdomain.cloudflareaccess.com/warp",
 														"readOnly": true
 													},
 													"name": {
+														"type": "string",
 														"example": "Warp Login App",
 														"default": "Warp Login App",
 														"readOnly": true
@@ -91588,11 +91755,13 @@
 																]
 															},
 															{
-																"example": "warp"
+																"example": "warp",
+																"type": "string"
 															}
 														]
 													}
-												}
+												},
+												"type": "object"
 											}
 										]
 									},
@@ -91630,7 +91799,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -91654,7 +91824,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -93975,10 +94146,12 @@
 											{
 												"properties": {
 													"domain": {
+														"type": "string",
 														"example": "authdomain.cloudflareaccess.com/browser",
 														"readOnly": true
 													},
 													"name": {
+														"type": "string",
 														"example": "Clientless Web Isolation",
 														"default": "Clientless Web Isolation",
 														"readOnly": true
@@ -94007,11 +94180,13 @@
 																]
 															},
 															{
-																"example": "biso"
+																"example": "biso",
+																"type": "string"
 															}
 														]
 													}
-												}
+												},
+												"type": "object"
 											}
 										]
 									},
@@ -94049,7 +94224,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -94073,7 +94249,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -96395,10 +96572,12 @@
 												"properties": {
 													"domain": {
 														"description": "The proxy endpoint domain in the format: 10 alphanumeric characters followed by .proxy.cloudflare-gateway.com",
+														"type": "string",
 														"example": "abcd123456.proxy.cloudflare-gateway.com",
 														"pattern": "^[A-Za-z0-9]{10}\\.proxy\\.cloudflare-gateway\\.com$"
 													},
 													"name": {
+														"type": "string",
 														"example": "Gateway Proxy",
 														"default": "Gateway Proxy"
 													},
@@ -96426,11 +96605,13 @@
 																]
 															},
 															{
-																"example": "proxy_endpoint"
+																"example": "proxy_endpoint",
+																"type": "string"
 															}
 														]
 													}
-												}
+												},
+												"type": "object"
 											}
 										]
 									},
@@ -96468,7 +96649,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -96492,7 +96674,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -98791,7 +98974,8 @@
 														]
 													},
 													{
-														"example": "bookmark"
+														"example": "bookmark",
+														"type": "string"
 													}
 												]
 											}
@@ -98832,7 +99016,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -98856,7 +99041,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -101162,11 +101348,13 @@
 																]
 															},
 															{
-																"example": "infrastructure"
+																"example": "infrastructure",
+																"type": "string"
 															}
 														]
 													}
-												}
+												},
+												"type": "object"
 											},
 											{
 												"description": "Contains the targets secured by the application.",
@@ -104311,7 +104499,8 @@
 																]
 															},
 															{
-																"example": "self_hosted"
+																"example": "self_hosted",
+																"type": "string"
 															}
 														]
 													},
@@ -104354,11 +104543,13 @@
 																]
 															},
 															{
-																"example": "rdp"
+																"example": "rdp",
+																"type": "string"
 															}
 														]
 													}
-												}
+												},
+												"type": "object"
 											}
 										],
 										"required": [
@@ -104399,7 +104590,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -104423,7 +104615,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -107372,7 +107565,8 @@
 														]
 													},
 													{
-														"example": "mcp"
+														"example": "mcp",
+														"type": "string"
 													}
 												]
 											}
@@ -107416,7 +107610,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -107440,7 +107635,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -110394,7 +110590,8 @@
 														]
 													},
 													{
-														"example": "mcp_portal"
+														"example": "mcp_portal",
+														"type": "string"
 													}
 												]
 											}
@@ -110438,7 +110635,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -110462,7 +110660,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -112821,6 +113020,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -112841,6 +113041,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -113725,7 +113926,8 @@
 																					]
 																				},
 																				{
-																					"example": "self_hosted"
+																					"example": "self_hosted",
+																					"type": "string"
 																				}
 																			]
 																		},
@@ -116015,6 +116217,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -116035,6 +116238,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -116112,6 +116316,7 @@
 																						"created_at": {
 																							"allOf": [
 																								{
+																									"type": "string",
 																									"x-stainless-skip": true
 																								},
 																								{
@@ -116234,6 +116439,7 @@
 																						"updated_at": {
 																							"allOf": [
 																								{
+																									"type": "string",
 																									"x-stainless-skip": true
 																								},
 																								{
@@ -116288,6 +116494,7 @@
 																						"created_at": {
 																							"allOf": [
 																								{
+																									"type": "string",
 																									"x-stainless-skip": true
 																								},
 																								{
@@ -116430,6 +116637,7 @@
 																						"updated_at": {
 																							"allOf": [
 																								{
+																									"type": "string",
 																									"x-stainless-skip": true
 																								},
 																								{
@@ -116828,7 +117036,8 @@
 																					]
 																				},
 																				{
-																					"example": "saas"
+																					"example": "saas",
+																					"type": "string"
 																				}
 																			]
 																		}
@@ -119108,6 +119317,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -119128,6 +119338,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -120014,7 +120225,8 @@
 																							]
 																						},
 																						{
-																							"example": "self_hosted"
+																							"example": "self_hosted",
+																							"type": "string"
 																						}
 																					]
 																				},
@@ -120057,11 +120269,13 @@
 																							]
 																						},
 																						{
-																							"example": "ssh"
+																							"example": "ssh",
+																							"type": "string"
 																						}
 																					]
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																},
@@ -122338,6 +122552,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -122358,6 +122573,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -123244,7 +123460,8 @@
 																							]
 																						},
 																						{
-																							"example": "self_hosted"
+																							"example": "self_hosted",
+																							"type": "string"
 																						}
 																					]
 																				},
@@ -123287,11 +123504,13 @@
 																							]
 																						},
 																						{
-																							"example": "vnc"
+																							"example": "vnc",
+																							"type": "string"
 																						}
 																					]
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																},
@@ -125568,6 +125787,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -125588,6 +125808,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -125691,6 +125912,7 @@
 																					"example": "#ff0000"
 																				},
 																				"domain": {
+																					"type": "string",
 																					"example": "authdomain.cloudflareaccess.com",
 																					"readOnly": true
 																				},
@@ -125761,6 +125983,7 @@
 																					}
 																				},
 																				"name": {
+																					"type": "string",
 																					"example": "App Launcher",
 																					"default": "App Launcher",
 																					"readOnly": true
@@ -125795,11 +126018,13 @@
 																							]
 																						},
 																						{
-																							"example": "app_launcher"
+																							"example": "app_launcher",
+																							"type": "string"
 																						}
 																					]
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																},
@@ -128076,6 +128301,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -128096,6 +128322,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -128189,10 +128416,12 @@
 																		{
 																			"properties": {
 																				"domain": {
+																					"type": "string",
 																					"example": "authdomain.cloudflareaccess.com/warp",
 																					"readOnly": true
 																				},
 																				"name": {
+																					"type": "string",
 																					"example": "Warp Login App",
 																					"default": "Warp Login App",
 																					"readOnly": true
@@ -128221,11 +128450,13 @@
 																							]
 																						},
 																						{
-																							"example": "warp"
+																							"example": "warp",
+																							"type": "string"
 																						}
 																					]
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																},
@@ -130502,6 +130733,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -130522,6 +130754,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -130615,10 +130848,12 @@
 																		{
 																			"properties": {
 																				"domain": {
+																					"type": "string",
 																					"example": "authdomain.cloudflareaccess.com/browser",
 																					"readOnly": true
 																				},
 																				"name": {
+																					"type": "string",
 																					"example": "Clientless Web Isolation",
 																					"default": "Clientless Web Isolation",
 																					"readOnly": true
@@ -130647,11 +130882,13 @@
 																							]
 																						},
 																						{
-																							"example": "biso"
+																							"example": "biso",
+																							"type": "string"
 																						}
 																					]
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																},
@@ -132928,6 +133165,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -132948,6 +133186,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -133042,10 +133281,12 @@
 																			"properties": {
 																				"domain": {
 																					"description": "The proxy endpoint domain in the format: 10 alphanumeric characters followed by .proxy.cloudflare-gateway.com",
+																					"type": "string",
 																					"example": "abcd123456.proxy.cloudflare-gateway.com",
 																					"pattern": "^[A-Za-z0-9]{10}\\.proxy\\.cloudflare-gateway\\.com$"
 																				},
 																				"name": {
+																					"type": "string",
 																					"example": "Gateway Proxy",
 																					"default": "Gateway Proxy"
 																				},
@@ -133073,11 +133314,13 @@
 																							]
 																						},
 																						{
-																							"example": "proxy_endpoint"
+																							"example": "proxy_endpoint",
+																							"type": "string"
 																						}
 																					]
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																},
@@ -135354,6 +135597,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -135374,6 +135618,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -135445,7 +135690,8 @@
 																					]
 																				},
 																				{
-																					"example": "bookmark"
+																					"example": "bookmark",
+																					"type": "string"
 																				}
 																			]
 																		}
@@ -137725,6 +137971,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -137745,6 +137992,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -137823,11 +138071,13 @@
 																							]
 																						},
 																						{
-																							"example": "infrastructure"
+																							"example": "infrastructure",
+																							"type": "string"
 																						}
 																					]
 																				}
-																			}
+																			},
+																			"type": "object"
 																		},
 																		{
 																			"description": "Contains the targets secured by the application.",
@@ -140061,6 +140311,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -140081,6 +140332,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -141030,7 +141282,8 @@
 																							]
 																						},
 																						{
-																							"example": "self_hosted"
+																							"example": "self_hosted",
+																							"type": "string"
 																						}
 																					]
 																				},
@@ -141073,11 +141326,13 @@
 																							]
 																						},
 																						{
-																							"example": "rdp"
+																							"example": "rdp",
+																							"type": "string"
 																						}
 																					]
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	],
 																	"required": [
@@ -143357,6 +143612,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -143377,6 +143633,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -144098,7 +144355,8 @@
 																					]
 																				},
 																				{
-																					"example": "mcp"
+																					"example": "mcp",
+																					"type": "string"
 																				}
 																			]
 																		}
@@ -146381,6 +146639,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -146401,6 +146660,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -147127,7 +147387,8 @@
 																					]
 																				},
 																				{
-																					"example": "mcp_portal"
+																					"example": "mcp_portal",
+																					"type": "string"
 																				}
 																			]
 																		}
@@ -149397,7 +149658,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -149420,6 +149682,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -149440,6 +149703,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -150324,7 +150588,8 @@
 																			]
 																		},
 																		{
-																			"example": "self_hosted"
+																			"example": "self_hosted",
+																			"type": "string"
 																		}
 																	]
 																},
@@ -152614,6 +152879,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -152634,6 +152900,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -152711,6 +152978,7 @@
 																				"created_at": {
 																					"allOf": [
 																						{
+																							"type": "string",
 																							"x-stainless-skip": true
 																						},
 																						{
@@ -152833,6 +153101,7 @@
 																				"updated_at": {
 																					"allOf": [
 																						{
+																							"type": "string",
 																							"x-stainless-skip": true
 																						},
 																						{
@@ -152887,6 +153156,7 @@
 																				"created_at": {
 																					"allOf": [
 																						{
+																							"type": "string",
 																							"x-stainless-skip": true
 																						},
 																						{
@@ -153029,6 +153299,7 @@
 																				"updated_at": {
 																					"allOf": [
 																						{
+																							"type": "string",
 																							"x-stainless-skip": true
 																						},
 																						{
@@ -153427,7 +153698,8 @@
 																			]
 																		},
 																		{
-																			"example": "saas"
+																			"example": "saas",
+																			"type": "string"
 																		}
 																	]
 																}
@@ -155707,6 +155979,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -155727,6 +156000,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -156613,7 +156887,8 @@
 																					]
 																				},
 																				{
-																					"example": "self_hosted"
+																					"example": "self_hosted",
+																					"type": "string"
 																				}
 																			]
 																		},
@@ -156656,11 +156931,13 @@
 																					]
 																				},
 																				{
-																					"example": "ssh"
+																					"example": "ssh",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -158937,6 +159214,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -158957,6 +159235,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -159843,7 +160122,8 @@
 																					]
 																				},
 																				{
-																					"example": "self_hosted"
+																					"example": "self_hosted",
+																					"type": "string"
 																				}
 																			]
 																		},
@@ -159886,11 +160166,13 @@
 																					]
 																				},
 																				{
-																					"example": "vnc"
+																					"example": "vnc",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -162167,6 +162449,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -162187,6 +162470,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -162290,6 +162574,7 @@
 																			"example": "#ff0000"
 																		},
 																		"domain": {
+																			"type": "string",
 																			"example": "authdomain.cloudflareaccess.com",
 																			"readOnly": true
 																		},
@@ -162360,6 +162645,7 @@
 																			}
 																		},
 																		"name": {
+																			"type": "string",
 																			"example": "App Launcher",
 																			"default": "App Launcher",
 																			"readOnly": true
@@ -162394,11 +162680,13 @@
 																					]
 																				},
 																				{
-																					"example": "app_launcher"
+																					"example": "app_launcher",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -164675,6 +164963,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -164695,6 +164984,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -164788,10 +165078,12 @@
 																{
 																	"properties": {
 																		"domain": {
+																			"type": "string",
 																			"example": "authdomain.cloudflareaccess.com/warp",
 																			"readOnly": true
 																		},
 																		"name": {
+																			"type": "string",
 																			"example": "Warp Login App",
 																			"default": "Warp Login App",
 																			"readOnly": true
@@ -164820,11 +165112,13 @@
 																					]
 																				},
 																				{
-																					"example": "warp"
+																					"example": "warp",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -167101,6 +167395,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -167121,6 +167416,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -167214,10 +167510,12 @@
 																{
 																	"properties": {
 																		"domain": {
+																			"type": "string",
 																			"example": "authdomain.cloudflareaccess.com/browser",
 																			"readOnly": true
 																		},
 																		"name": {
+																			"type": "string",
 																			"example": "Clientless Web Isolation",
 																			"default": "Clientless Web Isolation",
 																			"readOnly": true
@@ -167246,11 +167544,13 @@
 																					]
 																				},
 																				{
-																					"example": "biso"
+																					"example": "biso",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -169527,6 +169827,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -169547,6 +169848,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -169641,10 +169943,12 @@
 																	"properties": {
 																		"domain": {
 																			"description": "The proxy endpoint domain in the format: 10 alphanumeric characters followed by .proxy.cloudflare-gateway.com",
+																			"type": "string",
 																			"example": "abcd123456.proxy.cloudflare-gateway.com",
 																			"pattern": "^[A-Za-z0-9]{10}\\.proxy\\.cloudflare-gateway\\.com$"
 																		},
 																		"name": {
+																			"type": "string",
 																			"example": "Gateway Proxy",
 																			"default": "Gateway Proxy"
 																		},
@@ -169672,11 +169976,13 @@
 																					]
 																				},
 																				{
-																					"example": "proxy_endpoint"
+																					"example": "proxy_endpoint",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -171953,6 +172259,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -171973,6 +172280,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -172044,7 +172352,8 @@
 																			]
 																		},
 																		{
-																			"example": "bookmark"
+																			"example": "bookmark",
+																			"type": "string"
 																		}
 																	]
 																}
@@ -174324,6 +174633,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -174344,6 +174654,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -174422,11 +174733,13 @@
 																					]
 																				},
 																				{
-																					"example": "infrastructure"
+																					"example": "infrastructure",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"description": "Contains the targets secured by the application.",
@@ -176660,6 +176973,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -176680,6 +176994,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -177629,7 +177944,8 @@
 																					]
 																				},
 																				{
-																					"example": "self_hosted"
+																					"example": "self_hosted",
+																					"type": "string"
 																				}
 																			]
 																		},
@@ -177672,11 +177988,13 @@
 																					]
 																				},
 																				{
-																					"example": "rdp"
+																					"example": "rdp",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															],
 															"required": [
@@ -179956,6 +180274,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -179976,6 +180295,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -180697,7 +181017,8 @@
 																			]
 																		},
 																		{
-																			"example": "mcp"
+																			"example": "mcp",
+																			"type": "string"
 																		}
 																	]
 																}
@@ -182980,6 +183301,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -183000,6 +183322,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -183726,7 +184049,8 @@
 																			]
 																		},
 																		{
-																			"example": "mcp_portal"
+																			"example": "mcp_portal",
+																			"type": "string"
 																		}
 																	]
 																}
@@ -185996,7 +186320,8 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -186119,9 +186444,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -186199,7 +186526,8 @@
 												false
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -186322,9 +186650,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -187261,7 +187591,8 @@
 														]
 													},
 													{
-														"example": "self_hosted"
+														"example": "self_hosted",
+														"type": "string"
 													}
 												]
 											},
@@ -187312,7 +187643,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -187336,7 +187668,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -189994,6 +190327,7 @@
 															"created_at": {
 																"allOf": [
 																	{
+																		"type": "string",
 																		"x-stainless-skip": true
 																	},
 																	{
@@ -190116,6 +190450,7 @@
 															"updated_at": {
 																"allOf": [
 																	{
+																		"type": "string",
 																		"x-stainless-skip": true
 																	},
 																	{
@@ -190170,6 +190505,7 @@
 															"created_at": {
 																"allOf": [
 																	{
+																		"type": "string",
 																		"x-stainless-skip": true
 																	},
 																	{
@@ -190312,6 +190648,7 @@
 															"updated_at": {
 																"allOf": [
 																	{
+																		"type": "string",
 																		"x-stainless-skip": true
 																	},
 																	{
@@ -190710,7 +191047,8 @@
 														]
 													},
 													{
-														"example": "saas"
+														"example": "saas",
+														"type": "string"
 													}
 												]
 											}
@@ -190751,7 +191089,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -190775,7 +191114,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -194242,7 +194582,8 @@
 																]
 															},
 															{
-																"example": "self_hosted"
+																"example": "self_hosted",
+																"type": "string"
 															}
 														]
 													},
@@ -194285,11 +194626,13 @@
 																]
 															},
 															{
-																"example": "ssh"
+																"example": "ssh",
+																"type": "string"
 															}
 														]
 													}
-												}
+												},
+												"type": "object"
 											}
 										]
 									},
@@ -194327,7 +194670,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -194351,7 +194695,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -197818,7 +198163,8 @@
 																]
 															},
 															{
-																"example": "self_hosted"
+																"example": "self_hosted",
+																"type": "string"
 															}
 														]
 													},
@@ -197861,11 +198207,13 @@
 																]
 															},
 															{
-																"example": "vnc"
+																"example": "vnc",
+																"type": "string"
 															}
 														]
 													}
-												}
+												},
+												"type": "object"
 											}
 										]
 									},
@@ -197903,7 +198251,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -197927,7 +198276,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -200611,6 +200961,7 @@
 														"example": "#ff0000"
 													},
 													"domain": {
+														"type": "string",
 														"example": "authdomain.cloudflareaccess.com",
 														"readOnly": true
 													},
@@ -200681,6 +201032,7 @@
 														}
 													},
 													"name": {
+														"type": "string",
 														"example": "App Launcher",
 														"default": "App Launcher",
 														"readOnly": true
@@ -200715,11 +201067,13 @@
 																]
 															},
 															{
-																"example": "app_launcher"
+																"example": "app_launcher",
+																"type": "string"
 															}
 														]
 													}
-												}
+												},
+												"type": "object"
 											}
 										]
 									},
@@ -200757,7 +201111,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -200781,7 +201136,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -203102,10 +203458,12 @@
 											{
 												"properties": {
 													"domain": {
+														"type": "string",
 														"example": "authdomain.cloudflareaccess.com/warp",
 														"readOnly": true
 													},
 													"name": {
+														"type": "string",
 														"example": "Warp Login App",
 														"default": "Warp Login App",
 														"readOnly": true
@@ -203134,11 +203492,13 @@
 																]
 															},
 															{
-																"example": "warp"
+																"example": "warp",
+																"type": "string"
 															}
 														]
 													}
-												}
+												},
+												"type": "object"
 											}
 										]
 									},
@@ -203176,7 +203536,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -203200,7 +203561,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -205521,10 +205883,12 @@
 											{
 												"properties": {
 													"domain": {
+														"type": "string",
 														"example": "authdomain.cloudflareaccess.com/browser",
 														"readOnly": true
 													},
 													"name": {
+														"type": "string",
 														"example": "Clientless Web Isolation",
 														"default": "Clientless Web Isolation",
 														"readOnly": true
@@ -205553,11 +205917,13 @@
 																]
 															},
 															{
-																"example": "biso"
+																"example": "biso",
+																"type": "string"
 															}
 														]
 													}
-												}
+												},
+												"type": "object"
 											}
 										]
 									},
@@ -205595,7 +205961,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -205619,7 +205986,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -207941,10 +208309,12 @@
 												"properties": {
 													"domain": {
 														"description": "The proxy endpoint domain in the format: 10 alphanumeric characters followed by .proxy.cloudflare-gateway.com",
+														"type": "string",
 														"example": "abcd123456.proxy.cloudflare-gateway.com",
 														"pattern": "^[A-Za-z0-9]{10}\\.proxy\\.cloudflare-gateway\\.com$"
 													},
 													"name": {
+														"type": "string",
 														"example": "Gateway Proxy",
 														"default": "Gateway Proxy"
 													},
@@ -207972,11 +208342,13 @@
 																]
 															},
 															{
-																"example": "proxy_endpoint"
+																"example": "proxy_endpoint",
+																"type": "string"
 															}
 														]
 													}
-												}
+												},
+												"type": "object"
 											}
 										]
 									},
@@ -208014,7 +208386,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -208038,7 +208411,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -210337,7 +210711,8 @@
 														]
 													},
 													{
-														"example": "bookmark"
+														"example": "bookmark",
+														"type": "string"
 													}
 												]
 											}
@@ -210378,7 +210753,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -210402,7 +210778,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -212708,11 +213085,13 @@
 																]
 															},
 															{
-																"example": "infrastructure"
+																"example": "infrastructure",
+																"type": "string"
 															}
 														]
 													}
-												}
+												},
+												"type": "object"
 											},
 											{
 												"description": "Contains the targets secured by the application.",
@@ -215857,7 +216236,8 @@
 																]
 															},
 															{
-																"example": "self_hosted"
+																"example": "self_hosted",
+																"type": "string"
 															}
 														]
 													},
@@ -215900,11 +216280,13 @@
 																]
 															},
 															{
-																"example": "rdp"
+																"example": "rdp",
+																"type": "string"
 															}
 														]
 													}
-												}
+												},
+												"type": "object"
 											}
 										],
 										"required": [
@@ -215945,7 +216327,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -215969,7 +216352,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -218918,7 +219302,8 @@
 														]
 													},
 													{
-														"example": "mcp"
+														"example": "mcp",
+														"type": "string"
 													}
 												]
 											}
@@ -218962,7 +219347,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -218986,7 +219372,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -221940,7 +222327,8 @@
 														]
 													},
 													{
-														"example": "mcp_portal"
+														"example": "mcp_portal",
+														"type": "string"
 													}
 												]
 											}
@@ -221984,7 +222372,8 @@
 														{
 															"allOf": [
 																{
-																	"description": "A policy UID to link to this application."
+																	"description": "A policy UID to link to this application.",
+																	"type": "string"
 																},
 																{
 																	"description": "The UUID of the policy",
@@ -222008,7 +222397,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"type": "object",
@@ -224367,6 +224757,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -224387,6 +224778,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -225271,7 +225663,8 @@
 																					]
 																				},
 																				{
-																					"example": "self_hosted"
+																					"example": "self_hosted",
+																					"type": "string"
 																				}
 																			]
 																		},
@@ -227561,6 +227954,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -227581,6 +227975,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -227658,6 +228053,7 @@
 																						"created_at": {
 																							"allOf": [
 																								{
+																									"type": "string",
 																									"x-stainless-skip": true
 																								},
 																								{
@@ -227780,6 +228176,7 @@
 																						"updated_at": {
 																							"allOf": [
 																								{
+																									"type": "string",
 																									"x-stainless-skip": true
 																								},
 																								{
@@ -227834,6 +228231,7 @@
 																						"created_at": {
 																							"allOf": [
 																								{
+																									"type": "string",
 																									"x-stainless-skip": true
 																								},
 																								{
@@ -227976,6 +228374,7 @@
 																						"updated_at": {
 																							"allOf": [
 																								{
+																									"type": "string",
 																									"x-stainless-skip": true
 																								},
 																								{
@@ -228374,7 +228773,8 @@
 																					]
 																				},
 																				{
-																					"example": "saas"
+																					"example": "saas",
+																					"type": "string"
 																				}
 																			]
 																		}
@@ -230654,6 +231054,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -230674,6 +231075,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -231560,7 +231962,8 @@
 																							]
 																						},
 																						{
-																							"example": "self_hosted"
+																							"example": "self_hosted",
+																							"type": "string"
 																						}
 																					]
 																				},
@@ -231603,11 +232006,13 @@
 																							]
 																						},
 																						{
-																							"example": "ssh"
+																							"example": "ssh",
+																							"type": "string"
 																						}
 																					]
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																},
@@ -233884,6 +234289,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -233904,6 +234310,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -234790,7 +235197,8 @@
 																							]
 																						},
 																						{
-																							"example": "self_hosted"
+																							"example": "self_hosted",
+																							"type": "string"
 																						}
 																					]
 																				},
@@ -234833,11 +235241,13 @@
 																							]
 																						},
 																						{
-																							"example": "vnc"
+																							"example": "vnc",
+																							"type": "string"
 																						}
 																					]
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																},
@@ -237114,6 +237524,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -237134,6 +237545,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -237237,6 +237649,7 @@
 																					"example": "#ff0000"
 																				},
 																				"domain": {
+																					"type": "string",
 																					"example": "authdomain.cloudflareaccess.com",
 																					"readOnly": true
 																				},
@@ -237307,6 +237720,7 @@
 																					}
 																				},
 																				"name": {
+																					"type": "string",
 																					"example": "App Launcher",
 																					"default": "App Launcher",
 																					"readOnly": true
@@ -237341,11 +237755,13 @@
 																							]
 																						},
 																						{
-																							"example": "app_launcher"
+																							"example": "app_launcher",
+																							"type": "string"
 																						}
 																					]
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																},
@@ -239622,6 +240038,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -239642,6 +240059,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -239735,10 +240153,12 @@
 																		{
 																			"properties": {
 																				"domain": {
+																					"type": "string",
 																					"example": "authdomain.cloudflareaccess.com/warp",
 																					"readOnly": true
 																				},
 																				"name": {
+																					"type": "string",
 																					"example": "Warp Login App",
 																					"default": "Warp Login App",
 																					"readOnly": true
@@ -239767,11 +240187,13 @@
 																							]
 																						},
 																						{
-																							"example": "warp"
+																							"example": "warp",
+																							"type": "string"
 																						}
 																					]
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																},
@@ -242048,6 +242470,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -242068,6 +242491,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -242161,10 +242585,12 @@
 																		{
 																			"properties": {
 																				"domain": {
+																					"type": "string",
 																					"example": "authdomain.cloudflareaccess.com/browser",
 																					"readOnly": true
 																				},
 																				"name": {
+																					"type": "string",
 																					"example": "Clientless Web Isolation",
 																					"default": "Clientless Web Isolation",
 																					"readOnly": true
@@ -242193,11 +242619,13 @@
 																							]
 																						},
 																						{
-																							"example": "biso"
+																							"example": "biso",
+																							"type": "string"
 																						}
 																					]
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																},
@@ -244474,6 +244902,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -244494,6 +244923,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -244588,10 +245018,12 @@
 																			"properties": {
 																				"domain": {
 																					"description": "The proxy endpoint domain in the format: 10 alphanumeric characters followed by .proxy.cloudflare-gateway.com",
+																					"type": "string",
 																					"example": "abcd123456.proxy.cloudflare-gateway.com",
 																					"pattern": "^[A-Za-z0-9]{10}\\.proxy\\.cloudflare-gateway\\.com$"
 																				},
 																				"name": {
+																					"type": "string",
 																					"example": "Gateway Proxy",
 																					"default": "Gateway Proxy"
 																				},
@@ -244619,11 +245051,13 @@
 																							]
 																						},
 																						{
-																							"example": "proxy_endpoint"
+																							"example": "proxy_endpoint",
+																							"type": "string"
 																						}
 																					]
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																},
@@ -246900,6 +247334,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -246920,6 +247355,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -246991,7 +247427,8 @@
 																					]
 																				},
 																				{
-																					"example": "bookmark"
+																					"example": "bookmark",
+																					"type": "string"
 																				}
 																			]
 																		}
@@ -249271,6 +249708,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -249291,6 +249729,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -249369,11 +249808,13 @@
 																							]
 																						},
 																						{
-																							"example": "infrastructure"
+																							"example": "infrastructure",
+																							"type": "string"
 																						}
 																					]
 																				}
-																			}
+																			},
+																			"type": "object"
 																		},
 																		{
 																			"description": "Contains the targets secured by the application.",
@@ -251607,6 +252048,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -251627,6 +252069,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -252576,7 +253019,8 @@
 																							]
 																						},
 																						{
-																							"example": "self_hosted"
+																							"example": "self_hosted",
+																							"type": "string"
 																						}
 																					]
 																				},
@@ -252619,11 +253063,13 @@
 																							]
 																						},
 																						{
-																							"example": "rdp"
+																							"example": "rdp",
+																							"type": "string"
 																						}
 																					]
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	],
 																	"required": [
@@ -254903,6 +255349,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -254923,6 +255370,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -255644,7 +256092,8 @@
 																					]
 																				},
 																				{
-																					"example": "mcp"
+																					"example": "mcp",
+																					"type": "string"
 																				}
 																			]
 																		}
@@ -257927,6 +258376,7 @@
 																		"created_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -257947,6 +258397,7 @@
 																		"updated_at": {
 																			"allOf": [
 																				{
+																					"type": "string",
 																					"x-stainless-skip": true
 																				},
 																				{
@@ -258673,7 +259124,8 @@
 																					]
 																				},
 																				{
-																					"example": "mcp_portal"
+																					"example": "mcp_portal",
+																					"type": "string"
 																				}
 																			]
 																		}
@@ -260943,7 +261395,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -260966,6 +261419,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -260986,6 +261440,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -261870,7 +262325,8 @@
 																			]
 																		},
 																		{
-																			"example": "self_hosted"
+																			"example": "self_hosted",
+																			"type": "string"
 																		}
 																	]
 																},
@@ -264160,6 +264616,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -264180,6 +264637,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -264257,6 +264715,7 @@
 																				"created_at": {
 																					"allOf": [
 																						{
+																							"type": "string",
 																							"x-stainless-skip": true
 																						},
 																						{
@@ -264379,6 +264838,7 @@
 																				"updated_at": {
 																					"allOf": [
 																						{
+																							"type": "string",
 																							"x-stainless-skip": true
 																						},
 																						{
@@ -264433,6 +264893,7 @@
 																				"created_at": {
 																					"allOf": [
 																						{
+																							"type": "string",
 																							"x-stainless-skip": true
 																						},
 																						{
@@ -264575,6 +265036,7 @@
 																				"updated_at": {
 																					"allOf": [
 																						{
+																							"type": "string",
 																							"x-stainless-skip": true
 																						},
 																						{
@@ -264973,7 +265435,8 @@
 																			]
 																		},
 																		{
-																			"example": "saas"
+																			"example": "saas",
+																			"type": "string"
 																		}
 																	]
 																}
@@ -267253,6 +267716,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -267273,6 +267737,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -268159,7 +268624,8 @@
 																					]
 																				},
 																				{
-																					"example": "self_hosted"
+																					"example": "self_hosted",
+																					"type": "string"
 																				}
 																			]
 																		},
@@ -268202,11 +268668,13 @@
 																					]
 																				},
 																				{
-																					"example": "ssh"
+																					"example": "ssh",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -270483,6 +270951,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -270503,6 +270972,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -271389,7 +271859,8 @@
 																					]
 																				},
 																				{
-																					"example": "self_hosted"
+																					"example": "self_hosted",
+																					"type": "string"
 																				}
 																			]
 																		},
@@ -271432,11 +271903,13 @@
 																					]
 																				},
 																				{
-																					"example": "vnc"
+																					"example": "vnc",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -273713,6 +274186,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -273733,6 +274207,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -273836,6 +274311,7 @@
 																			"example": "#ff0000"
 																		},
 																		"domain": {
+																			"type": "string",
 																			"example": "authdomain.cloudflareaccess.com",
 																			"readOnly": true
 																		},
@@ -273906,6 +274382,7 @@
 																			}
 																		},
 																		"name": {
+																			"type": "string",
 																			"example": "App Launcher",
 																			"default": "App Launcher",
 																			"readOnly": true
@@ -273940,11 +274417,13 @@
 																					]
 																				},
 																				{
-																					"example": "app_launcher"
+																					"example": "app_launcher",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -276221,6 +276700,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -276241,6 +276721,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -276334,10 +276815,12 @@
 																{
 																	"properties": {
 																		"domain": {
+																			"type": "string",
 																			"example": "authdomain.cloudflareaccess.com/warp",
 																			"readOnly": true
 																		},
 																		"name": {
+																			"type": "string",
 																			"example": "Warp Login App",
 																			"default": "Warp Login App",
 																			"readOnly": true
@@ -276366,11 +276849,13 @@
 																					]
 																				},
 																				{
-																					"example": "warp"
+																					"example": "warp",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -278647,6 +279132,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -278667,6 +279153,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -278760,10 +279247,12 @@
 																{
 																	"properties": {
 																		"domain": {
+																			"type": "string",
 																			"example": "authdomain.cloudflareaccess.com/browser",
 																			"readOnly": true
 																		},
 																		"name": {
+																			"type": "string",
 																			"example": "Clientless Web Isolation",
 																			"default": "Clientless Web Isolation",
 																			"readOnly": true
@@ -278792,11 +279281,13 @@
 																					]
 																				},
 																				{
-																					"example": "biso"
+																					"example": "biso",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -281073,6 +281564,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -281093,6 +281585,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -281187,10 +281680,12 @@
 																	"properties": {
 																		"domain": {
 																			"description": "The proxy endpoint domain in the format: 10 alphanumeric characters followed by .proxy.cloudflare-gateway.com",
+																			"type": "string",
 																			"example": "abcd123456.proxy.cloudflare-gateway.com",
 																			"pattern": "^[A-Za-z0-9]{10}\\.proxy\\.cloudflare-gateway\\.com$"
 																		},
 																		"name": {
+																			"type": "string",
 																			"example": "Gateway Proxy",
 																			"default": "Gateway Proxy"
 																		},
@@ -281218,11 +281713,13 @@
 																					]
 																				},
 																				{
-																					"example": "proxy_endpoint"
+																					"example": "proxy_endpoint",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -283499,6 +283996,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -283519,6 +284017,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -283590,7 +284089,8 @@
 																			]
 																		},
 																		{
-																			"example": "bookmark"
+																			"example": "bookmark",
+																			"type": "string"
 																		}
 																	]
 																}
@@ -285870,6 +286370,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -285890,6 +286391,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -285968,11 +286470,13 @@
 																					]
 																				},
 																				{
-																					"example": "infrastructure"
+																					"example": "infrastructure",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																},
 																{
 																	"description": "Contains the targets secured by the application.",
@@ -288206,6 +288710,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -288226,6 +288731,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -289175,7 +289681,8 @@
 																					]
 																				},
 																				{
-																					"example": "self_hosted"
+																					"example": "self_hosted",
+																					"type": "string"
 																				}
 																			]
 																		},
@@ -289218,11 +289725,13 @@
 																					]
 																				},
 																				{
-																					"example": "rdp"
+																					"example": "rdp",
+																					"type": "string"
 																				}
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															],
 															"required": [
@@ -291502,6 +292011,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -291522,6 +292032,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -292243,7 +292754,8 @@
 																			]
 																		},
 																		{
-																			"example": "mcp"
+																			"example": "mcp",
+																			"type": "string"
 																		}
 																	]
 																}
@@ -294526,6 +295038,7 @@
 																"created_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -294546,6 +295059,7 @@
 																"updated_at": {
 																	"allOf": [
 																		{
+																			"type": "string",
 																			"x-stainless-skip": true
 																		},
 																		{
@@ -295272,7 +295786,8 @@
 																			]
 																		},
 																		{
-																			"example": "mcp_portal"
+																			"example": "mcp_portal",
+																			"type": "string"
 																		}
 																	]
 																}
@@ -297542,7 +298057,8 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -297665,9 +298181,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -297859,7 +298377,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								}
@@ -297984,9 +298503,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [

@@ -380,9 +380,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -550,6 +552,7 @@
 													"created_at": {
 														"allOf": [
 															{
+																"type": "string",
 																"x-stainless-skip": true
 															},
 															{
@@ -713,9 +716,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -860,6 +865,7 @@
 												"created_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -1135,9 +1141,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -1291,6 +1299,7 @@
 												"created_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -1453,9 +1462,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [

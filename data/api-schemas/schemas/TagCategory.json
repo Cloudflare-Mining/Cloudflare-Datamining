@@ -213,7 +213,14 @@
 																}
 															}
 														},
-														"element": "[Circular ~.GET /accounts/{account_id}/cloudforce-one/events/tags/categories.responses.200.content.application/json.schema.properties.categories.items.properties.schema.items]",
+														"element": {
+															"description": "Nested FieldDefinition describing the element type of an array field. Required when kind is 'array'. See FieldDefinition (recursive).",
+															"type": "object",
+															"additionalProperties": true,
+															"allOf": [
+																"[Circular ~.GET /accounts/{account_id}/cloudforce-one/events/tags/categories.responses.200.content.application/json.schema.properties.categories.items.properties.schema.items]"
+															]
+														},
 														"enforcement": {
 															"type": "string",
 															"enum": [
@@ -443,7 +450,14 @@
 													}
 												}
 											},
-											"element": "[Circular ~.GET /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}.responses.200.content.application/json.schema.properties.schema.items]",
+											"element": {
+												"description": "Nested FieldDefinition describing the element type of an array field. Required when kind is 'array'. See FieldDefinition (recursive).",
+												"type": "object",
+												"additionalProperties": true,
+												"allOf": [
+													"[Circular ~.GET /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}.responses.200.content.application/json.schema.properties.schema.items]"
+												]
+											},
 											"enforcement": {
 												"type": "string",
 												"enum": [
@@ -586,7 +600,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.tags.categories",
+		"x-fern-sdk-method-name": "get-by-id",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}": {
 		"operationId": "patch_TagCategoryUpdate",
@@ -656,7 +674,14 @@
 												}
 											}
 										},
-										"element": "[Circular ~.PATCH /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}.requestBody.content.application/json.schema.properties.schema.items]",
+										"element": {
+											"description": "Nested FieldDefinition describing the element type of an array field. Required when kind is 'array'. See FieldDefinition (recursive).",
+											"type": "object",
+											"additionalProperties": true,
+											"allOf": [
+												"[Circular ~.PATCH /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}.requestBody.content.application/json.schema.properties.schema.items]"
+											]
+										},
 										"enforcement": {
 											"type": "string",
 											"enum": [
@@ -785,7 +810,14 @@
 													}
 												}
 											},
-											"element": "[Circular ~.PATCH /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}.responses.200.content.application/json.schema.properties.schema.items]",
+											"element": {
+												"description": "Nested FieldDefinition describing the element type of an array field. Required when kind is 'array'. See FieldDefinition (recursive).",
+												"type": "object",
+												"additionalProperties": true,
+												"allOf": [
+													"[Circular ~.PATCH /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}.responses.200.content.application/json.schema.properties.schema.items]"
+												]
+											},
 											"enforcement": {
 												"type": "string",
 												"enum": [
@@ -1068,7 +1100,14 @@
 												}
 											}
 										},
-										"element": "[Circular ~.POST /accounts/{account_id}/cloudforce-one/events/tags/categories/create.requestBody.content.application/json.schema.properties.schema.items]",
+										"element": {
+											"description": "Nested FieldDefinition describing the element type of an array field. Required when kind is 'array'. See FieldDefinition (recursive).",
+											"type": "object",
+											"additionalProperties": true,
+											"allOf": [
+												"[Circular ~.POST /accounts/{account_id}/cloudforce-one/events/tags/categories/create.requestBody.content.application/json.schema.properties.schema.items]"
+											]
+										},
 										"enforcement": {
 											"type": "string",
 											"enum": [
@@ -1200,7 +1239,14 @@
 													}
 												}
 											},
-											"element": "[Circular ~.POST /accounts/{account_id}/cloudforce-one/events/tags/categories/create.responses.200.content.application/json.schema.properties.schema.items]",
+											"element": {
+												"description": "Nested FieldDefinition describing the element type of an array field. Required when kind is 'array'. See FieldDefinition (recursive).",
+												"type": "object",
+												"additionalProperties": true,
+												"allOf": [
+													"[Circular ~.POST /accounts/{account_id}/cloudforce-one/events/tags/categories/create.responses.200.content.application/json.schema.properties.schema.items]"
+												]
+											},
 											"enforcement": {
 												"type": "string",
 												"enum": [

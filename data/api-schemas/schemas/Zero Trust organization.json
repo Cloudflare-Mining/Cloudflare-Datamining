@@ -142,6 +142,7 @@
 												"created_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -357,6 +358,7 @@
 												"updated_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -388,7 +390,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -511,9 +514,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -657,6 +662,7 @@
 														"created_at": {
 															"allOf": [
 																{
+																	"type": "string",
 																	"x-stainless-skip": true
 																},
 																{
@@ -688,7 +694,8 @@
 														"id": {
 															"allOf": [
 																{
-																	"description": "The ID of the service token."
+																	"description": "The ID of the service token.",
+																	"type": "string"
 																},
 																{
 																	"description": "UUID.",
@@ -702,6 +709,7 @@
 														"last_seen_at": {
 															"allOf": [
 																{
+																	"type": "string",
 																	"x-stainless-skip": true
 																},
 																{
@@ -721,6 +729,7 @@
 														"updated_at": {
 															"allOf": [
 																{
+																	"type": "string",
 																	"x-stainless-skip": true
 																},
 																{
@@ -733,7 +742,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -749,7 +759,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -872,9 +883,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -913,6 +926,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"allow_authenticate_via_warp": {
 								"description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.",
@@ -1273,6 +1287,7 @@
 												"created_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -1488,6 +1503,7 @@
 												"updated_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -1519,7 +1535,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1642,9 +1659,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -1690,6 +1709,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"devices": {
 								"description": "When set to `true`, all devices associated with the user will be revoked.",
@@ -1745,14 +1765,15 @@
 												false
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
 			},
-			"4xx": {
+			"4XX": {
 				"description": "Revoke all Access tokens for a user response failure",
 				"content": {
 					"application/json": {
@@ -1868,9 +1889,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -1908,6 +1931,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"allow_authenticate_via_warp": {
 								"description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.",
@@ -2279,6 +2303,7 @@
 												"created_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -2494,6 +2519,7 @@
 												"updated_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -2525,7 +2551,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2648,9 +2675,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -2686,6 +2715,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"doh_jwt_duration": {
 								"description": "The duration the DoH JWT is valid for. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.  Note that the maximum duration for this setting is the same as the key rotation period on the account. Default expiration is 24h",
@@ -2813,6 +2843,7 @@
 														"created_at": {
 															"allOf": [
 																{
+																	"type": "string",
 																	"x-stainless-skip": true
 																},
 																{
@@ -2844,7 +2875,8 @@
 														"id": {
 															"allOf": [
 																{
-																	"description": "The ID of the service token."
+																	"description": "The ID of the service token.",
+																	"type": "string"
 																},
 																{
 																	"description": "UUID.",
@@ -2858,6 +2890,7 @@
 														"last_seen_at": {
 															"allOf": [
 																{
+																	"type": "string",
 																	"x-stainless-skip": true
 																},
 																{
@@ -2877,6 +2910,7 @@
 														"updated_at": {
 															"allOf": [
 																{
+																	"type": "string",
 																	"x-stainless-skip": true
 																},
 																{
@@ -2889,7 +2923,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2906,7 +2941,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3029,9 +3065,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [

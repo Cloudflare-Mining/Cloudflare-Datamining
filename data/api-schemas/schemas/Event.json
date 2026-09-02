@@ -492,61 +492,330 @@
 				"schema": {
 					"type": "array",
 					"items": {
-						"properties": {
-							"field": {
-								"description": "Event field to search on. Allowed: attacker, attackerCountry, category, createdAt, date, event, indicator, indicatorType, killChain, mitreAttack, tags, targetCountry, targetIndustry, tlp, uuid.",
-								"type": "string",
-								"example": "attackerCountry"
-							},
-							"op": {
-								"description": "Search operator. Use 'in' for bulk lookup of up to 100 values at once, e.g. {field:'tags', op:'in', value:['malware','apt']}.",
-								"type": "string",
-								"example": "equals",
-								"enum": [
-									"equals",
-									"not",
-									"gt",
-									"gte",
-									"lt",
-									"lte",
-									"like",
-									"contains",
-									"startsWith",
-									"endsWith",
-									"in",
-									"find"
-								]
-							},
-							"value": {
-								"description": "Search value. String or number for most operators. Array for 'in' operator (max 100 items).",
-								"anyOf": [
-									{
-										"example": "usa",
-										"type": "string"
+						"anyOf": [
+							{
+								"additionalProperties": false,
+								"properties": {
+									"field": {
+										"type": "string",
+										"enum": [
+											"attacker",
+											"attackerCountry",
+											"category",
+											"createdAt",
+											"date",
+											"event",
+											"indicator",
+											"indicatorType",
+											"mitreAttack",
+											"mitreCapec",
+											"tags",
+											"targetCountry",
+											"targetIndustry",
+											"tlp",
+											"uuid"
+										]
 									},
-									{
-										"example": 1,
-										"type": "number"
+									"op": {
+										"type": "string",
+										"enum": [
+											"equals",
+											"not",
+											"gt",
+											"gte",
+											"lt",
+											"lte",
+											"like",
+											"contains",
+											"startsWith",
+											"endsWith",
+											"find"
+										]
 									},
-									{
+									"value": {
+										"type": "string",
+										"maxLength": 512,
+										"minLength": 1
+									}
+								},
+								"required": [
+									"field",
+									"op",
+									"value"
+								],
+								"type": "object"
+							},
+							{
+								"additionalProperties": false,
+								"properties": {
+									"field": {
+										"type": "string",
+										"enum": [
+											"attacker",
+											"attackerCountry",
+											"category",
+											"createdAt",
+											"date",
+											"event",
+											"indicator",
+											"indicatorType",
+											"mitreAttack",
+											"mitreCapec",
+											"tags",
+											"targetCountry",
+											"targetIndustry",
+											"tlp",
+											"uuid"
+										]
+									},
+									"op": {
+										"type": "string",
+										"enum": [
+											"in"
+										]
+									},
+									"value": {
+										"type": "array",
+										"items": {
+											"maxLength": 512,
+											"minLength": 1,
+											"type": "string"
+										},
+										"maxItems": 100,
+										"minItems": 1
+									}
+								},
+								"required": [
+									"field",
+									"op",
+									"value"
+								],
+								"type": "object"
+							},
+							{
+								"additionalProperties": false,
+								"properties": {
+									"field": {
+										"type": "string",
+										"enum": [
+											"killChain"
+										]
+									},
+									"op": {
+										"type": "string",
+										"enum": [
+											"equals",
+											"not",
+											"gt",
+											"gte",
+											"lt",
+											"lte"
+										]
+									},
+									"value": {
+										"anyOf": [
+											{
+												"type": "number"
+											},
+											{
+												"pattern": "^-?(?:\\d+\\.?\\d*|\\.\\d+)$",
+												"type": "string"
+											}
+										]
+									}
+								},
+								"required": [
+									"field",
+									"op",
+									"value"
+								],
+								"type": "object"
+							},
+							{
+								"additionalProperties": false,
+								"properties": {
+									"field": {
+										"type": "string",
+										"enum": [
+											"killChain"
+										]
+									},
+									"op": {
+										"type": "string",
+										"enum": [
+											"in"
+										]
+									},
+									"value": {
+										"type": "array",
 										"items": {
 											"anyOf": [
 												{
-													"type": "string"
+													"type": "number"
 												},
 												{
-													"type": "number"
+													"pattern": "^-?(?:\\d+\\.?\\d*|\\.\\d+)$",
+													"type": "string"
 												}
 											]
 										},
-										"type": "array"
+										"maxItems": 100,
+										"minItems": 1
 									}
-								]
+								},
+								"required": [
+									"field",
+									"op",
+									"value"
+								],
+								"type": "object"
+							},
+							{
+								"additionalProperties": false,
+								"properties": {
+									"field": {
+										"type": "string",
+										"enum": [
+											"hasChildren"
+										]
+									},
+									"op": {
+										"type": "string",
+										"enum": [
+											"equals",
+											"not",
+											"gt",
+											"gte",
+											"lt",
+											"lte"
+										]
+									},
+									"value": {
+										"anyOf": [
+											{
+												"type": "boolean"
+											},
+											{
+												"enum": [
+													"true"
+												],
+												"type": "string"
+											},
+											{
+												"enum": [
+													"false"
+												],
+												"type": "string"
+											},
+											{
+												"enum": [
+													1
+												],
+												"type": "number"
+											},
+											{
+												"enum": [
+													0
+												],
+												"type": "number"
+											},
+											{
+												"enum": [
+													"1"
+												],
+												"type": "string"
+											},
+											{
+												"enum": [
+													"0"
+												],
+												"type": "string"
+											}
+										]
+									}
+								},
+								"required": [
+									"field",
+									"op",
+									"value"
+								],
+								"type": "object"
+							},
+							{
+								"additionalProperties": false,
+								"properties": {
+									"field": {
+										"type": "string",
+										"enum": [
+											"hasChildren"
+										]
+									},
+									"op": {
+										"type": "string",
+										"enum": [
+											"in"
+										]
+									},
+									"value": {
+										"type": "array",
+										"items": {
+											"anyOf": [
+												{
+													"type": "boolean"
+												},
+												{
+													"enum": [
+														"true"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"false"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														1
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														0
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														"1"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"0"
+													],
+													"type": "string"
+												}
+											]
+										},
+										"maxItems": 100,
+										"minItems": 1
+									}
+								},
+								"required": [
+									"field",
+									"op",
+									"value"
+								],
+								"type": "object"
 							}
-						},
-						"type": "object"
+						]
 					},
-					"default": []
+					"default": [],
+					"maxItems": 10
 				}
 			},
 			{
@@ -2187,6 +2456,9 @@
 						}
 					}
 				}
+			},
+			"4XX": {
+				"description": "Client error response."
 			}
 		},
 		"security": [

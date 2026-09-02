@@ -133,7 +133,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -255,6 +256,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -453,7 +457,8 @@
 														"example": "MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91"
 													},
 													"id": {
-														"description": "The ID of the application that will use this certificate."
+														"description": "The ID of the application that will use this certificate.",
+														"type": "string"
 													},
 													"name": {
 														"description": "The name of the certificate.",
@@ -469,7 +474,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -591,6 +597,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -765,7 +774,8 @@
 													"example": "MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91"
 												},
 												"id": {
-													"description": "The ID of the application that will use this certificate."
+													"description": "The ID of the application that will use this certificate.",
+													"type": "string"
 												},
 												"name": {
 													"description": "The name of the certificate.",
@@ -780,7 +790,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -902,6 +913,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1099,7 +1113,8 @@
 												"title": "Hostname Settings"
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1222,6 +1237,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1261,6 +1279,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"associated_hostnames": {
 								"description": "The hostnames of the applications that will use this certificate.",
@@ -1417,7 +1436,8 @@
 													"example": "MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91"
 												},
 												"id": {
-													"description": "The ID of the application that will use this certificate."
+													"description": "The ID of the application that will use this certificate.",
+													"type": "string"
 												},
 												"name": {
 													"description": "The name of the certificate.",
@@ -1432,7 +1452,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1555,6 +1576,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1605,6 +1629,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"associated_hostnames": {
 								"description": "The hostnames of the applications that will use this certificate.",
@@ -1755,7 +1780,8 @@
 													"example": "MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91"
 												},
 												"id": {
-													"description": "The ID of the application that will use this certificate."
+													"description": "The ID of the application that will use this certificate.",
+													"type": "string"
 												},
 												"name": {
 													"description": "The name of the certificate.",
@@ -1770,7 +1796,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1892,6 +1919,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -2133,7 +2163,8 @@
 												"title": "Hostname Settings"
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2255,6 +2286,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

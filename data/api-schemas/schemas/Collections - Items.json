@@ -250,7 +250,43 @@
 												]
 											},
 											"value": {
-												"description": "Value to compare against (not needed for is_empty/is_not_empty)"
+												"description": "Value to compare against (not needed for is_empty/is_not_empty)",
+												"oneOf": [
+													{
+														"nullable": true,
+														"type": "string"
+													},
+													{
+														"type": "number"
+													},
+													{
+														"type": "boolean"
+													},
+													{
+														"items": {
+															"oneOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																},
+																{
+																	"type": "boolean"
+																},
+																{
+																	"additionalProperties": true,
+																	"type": "object"
+																}
+															]
+														},
+														"type": "array"
+													},
+													{
+														"additionalProperties": true,
+														"type": "object"
+													}
+												]
 											}
 										},
 										"required": [

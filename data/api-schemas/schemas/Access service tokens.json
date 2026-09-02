@@ -137,6 +137,7 @@
 												"created_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -168,7 +169,8 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "The ID of the service token."
+															"description": "The ID of the service token.",
+															"type": "string"
 														},
 														{
 															"description": "UUID.",
@@ -182,6 +184,7 @@
 												"last_seen_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -201,6 +204,7 @@
 												"updated_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -213,7 +217,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -336,9 +341,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -550,6 +557,7 @@
 													"created_at": {
 														"allOf": [
 															{
+																"type": "string",
 																"x-stainless-skip": true
 															},
 															{
@@ -581,7 +589,8 @@
 													"id": {
 														"allOf": [
 															{
-																"description": "The ID of the service token."
+																"description": "The ID of the service token.",
+																"type": "string"
 															},
 															{
 																"description": "UUID.",
@@ -595,6 +604,7 @@
 													"last_seen_at": {
 														"allOf": [
 															{
+																"type": "string",
 																"x-stainless-skip": true
 															},
 															{
@@ -614,6 +624,7 @@
 													"updated_at": {
 														"allOf": [
 															{
+																"type": "string",
 																"x-stainless-skip": true
 															},
 															{
@@ -627,7 +638,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -750,9 +762,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -905,6 +919,7 @@
 												"created_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -936,7 +951,8 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "The ID of the service token."
+															"description": "The ID of the service token.",
+															"type": "string"
 														},
 														{
 															"description": "UUID.",
@@ -950,6 +966,7 @@
 												"last_seen_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -969,6 +986,7 @@
 												"updated_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -981,7 +999,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1104,9 +1123,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -1144,6 +1165,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"client_secret_version": {
 								"description": "A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.",
@@ -1298,6 +1320,7 @@
 												"created_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -1333,6 +1356,7 @@
 												"updated_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -1345,7 +1369,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1468,9 +1493,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -1622,6 +1649,7 @@
 												"created_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -1653,7 +1681,8 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "The ID of the service token."
+															"description": "The ID of the service token.",
+															"type": "string"
 														},
 														{
 															"description": "UUID.",
@@ -1667,6 +1696,7 @@
 												"last_seen_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -1686,6 +1716,7 @@
 												"updated_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -1698,7 +1729,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1821,9 +1853,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -1871,6 +1905,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"previous_client_secret_expires_at": {
 								"description": "The expiration of the previous `client_secret`. If not provided, it defaults to the current timestamp in order to immediately expire the previous secret.",
@@ -1998,6 +2033,7 @@
 												"created_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -2033,6 +2069,7 @@
 												"updated_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -2045,7 +2082,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2168,9 +2206,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -2216,6 +2256,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"client_secret_version": {
 								"description": "A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.",
@@ -2361,6 +2402,7 @@
 												"created_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -2392,7 +2434,8 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "The ID of the service token."
+															"description": "The ID of the service token.",
+															"type": "string"
 														},
 														{
 															"description": "UUID.",
@@ -2406,6 +2449,7 @@
 												"last_seen_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -2425,6 +2469,7 @@
 												"updated_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -2437,7 +2482,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2560,9 +2606,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [

@@ -230,7 +230,11 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.relationships",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators": {
 		"operationId": "get_IndicatorListLegacy",
@@ -357,6 +361,11 @@
 												"type": "array",
 												"items": {
 													"properties": {
+														"categoryId": {
+															"description": "The UUID of the tag category, or null when the tag is uncategorized.",
+															"type": "string",
+															"nullable": true
+														},
 														"categoryName": {
 															"type": "string"
 														},
@@ -369,6 +378,12 @@
 													},
 													"type": "object"
 												}
+											},
+											"tlp": {
+												"description": "Traffic Light Protocol designation. UPPERCASE. Possible values: CLEAR, GREEN, AMBER, AMBER-STRICT, RED, PURPLE. Null when not set.",
+												"type": "string",
+												"example": "AMBER",
+												"nullable": true
 											},
 											"updatedAt": {
 												"type": "string",
@@ -425,6 +440,9 @@
 						}
 					}
 				}
+			},
+			"4XX": {
+				"description": "Client error response."
 			}
 		},
 		"deprecated": true,
@@ -536,6 +554,11 @@
 									"type": "array",
 									"items": {
 										"properties": {
+											"categoryId": {
+												"description": "The UUID of the tag category, or null when the tag is uncategorized.",
+												"type": "string",
+												"nullable": true
+											},
 											"categoryName": {
 												"type": "string"
 											},
@@ -548,6 +571,12 @@
 										},
 										"type": "object"
 									}
+								},
+								"tlp": {
+									"description": "Traffic Light Protocol designation. UPPERCASE. Possible values: CLEAR, GREEN, AMBER, AMBER-STRICT, RED, PURPLE. Null when not set.",
+									"type": "string",
+									"example": "AMBER",
+									"nullable": true
 								},
 								"updatedAt": {
 									"type": "string",
@@ -784,7 +813,11 @@
 										},
 										"entities": {
 											"type": "array",
-											"items": {}
+											"items": {
+												"description": "Hydrated event, indicator, or tag entity.",
+												"type": "object",
+												"additionalProperties": true
+											}
 										},
 										"hasMore": {
 											"type": "boolean"
@@ -794,7 +827,69 @@
 										},
 										"relationships": {
 											"type": "array",
-											"items": {}
+											"items": {
+												"type": "object",
+												"properties": {
+													"confidence": {
+														"description": "Confidence score 0–100, or null.",
+														"type": "integer",
+														"maximum": 100,
+														"minimum": 0,
+														"nullable": true
+													},
+													"createdAt": {
+														"description": "ISO 8601 creation timestamp.",
+														"type": "string"
+													},
+													"datasetId": {
+														"description": "Dataset the relationship belongs to.",
+														"type": "string"
+													},
+													"entityId": {
+														"description": "UUID of the related entity (other end).",
+														"type": "string"
+													},
+													"entityType": {
+														"description": "Type of the related entity.",
+														"type": "string",
+														"enum": [
+															"event",
+															"indicator",
+															"tag"
+														]
+													},
+													"metadata": {
+														"description": "Arbitrary JSON metadata, or null.",
+														"type": "object",
+														"additionalProperties": true,
+														"nullable": true
+													},
+													"relationshipUuid": {
+														"description": "Relationship UUID (use for PATCH/DELETE).",
+														"type": "string",
+														"format": "uuid"
+													},
+													"type": {
+														"description": "Relationship type.",
+														"type": "string"
+													},
+													"updatedAt": {
+														"description": "ISO 8601 last-update timestamp.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"relationshipUuid",
+													"entityId",
+													"entityType",
+													"type",
+													"confidence",
+													"metadata",
+													"datasetId",
+													"createdAt",
+													"updatedAt"
+												]
+											}
 										}
 									}
 								},
@@ -856,7 +951,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.relationships",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/tags": {
 		"operationId": "get_IndicatorTagsList",
@@ -1547,6 +1646,11 @@
 															"type": "array",
 															"items": {
 																"properties": {
+																	"categoryId": {
+																		"description": "The UUID of the tag category, or null when the tag is uncategorized.",
+																		"type": "string",
+																		"nullable": true
+																	},
 																	"categoryName": {
 																		"type": "string"
 																	},
@@ -1559,6 +1663,12 @@
 																},
 																"type": "object"
 															}
+														},
+														"tlp": {
+															"description": "Traffic Light Protocol designation. UPPERCASE. Possible values: CLEAR, GREEN, AMBER, AMBER-STRICT, RED, PURPLE. Null when not set.",
+															"type": "string",
+															"example": "AMBER",
+															"nullable": true
 														},
 														"updatedAt": {
 															"type": "string",
@@ -1909,18 +2019,18 @@
 			{
 				"name": "eventDateAfter",
 				"in": "query",
-				"description": "For measure=relationships: only count event links whose eventDate is on/after this date (ISO 8601). Use to bound 'top indicator' to recent activity.",
+				"description": "For measure=relationships: only count indicator→event links whose relationship was created/observed on or after this date (ISO 8601). Bounds the activity view to recently-observed links. Note: this filters by the relationship's createdAt (link-observation time), not the underlying event's business date.",
 				"schema": {
-					"description": "For measure=relationships: only count event links whose eventDate is on/after this date (ISO 8601). Use to bound 'top indicator' to recent activity.",
+					"description": "For measure=relationships: only count indicator→event links whose relationship was created/observed on or after this date (ISO 8601). Bounds the activity view to recently-observed links. Note: this filters by the relationship's createdAt (link-observation time), not the underlying event's business date.",
 					"type": "string"
 				}
 			},
 			{
 				"name": "eventDateBefore",
 				"in": "query",
-				"description": "For measure=relationships: only count event links whose eventDate is on/before this date (ISO 8601).",
+				"description": "For measure=relationships: only count indicator→event links whose relationship was created/observed on or before this date (ISO 8601). Bounds the activity view by the relationship's createdAt (link-observation time), not the underlying event's business date.",
 				"schema": {
-					"description": "For measure=relationships: only count event links whose eventDate is on/before this date (ISO 8601).",
+					"description": "For measure=relationships: only count indicator→event links whose relationship was created/observed on or before this date (ISO 8601). Bounds the activity view by the relationship's createdAt (link-observation time), not the underlying event's business date.",
 					"type": "string"
 				}
 			},
@@ -2141,6 +2251,11 @@
 									]
 								}
 							},
+							"tlp": {
+								"description": "Traffic Light Protocol designation. Case-insensitive on input, stored and returned as UPPERCASE. Allowed values: clear, green, amber, amber-strict, red, purple.",
+								"type": "string",
+								"example": "RED"
+							},
 							"value": {
 								"type": "string",
 								"example": "updated-domain.com"
@@ -2202,6 +2317,11 @@
 									"type": "array",
 									"items": {
 										"properties": {
+											"categoryId": {
+												"description": "The UUID of the tag category, or null when the tag is uncategorized.",
+												"type": "string",
+												"nullable": true
+											},
 											"categoryName": {
 												"type": "string"
 											},
@@ -2214,6 +2334,12 @@
 										},
 										"type": "object"
 									}
+								},
+								"tlp": {
+									"description": "Traffic Light Protocol designation. UPPERCASE. Possible values: CLEAR, GREEN, AMBER, AMBER-STRICT, RED, PURPLE. Null when not set.",
+									"type": "string",
+									"example": "AMBER",
+									"nullable": true
 								},
 								"updatedAt": {
 									"type": "string",
@@ -2559,7 +2685,11 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.relationships",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}/relationships": {
 		"operationId": "post_IndicatorRelationshipCreate",
@@ -2753,7 +2883,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.relationships",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/bulk": {
 		"operationId": "post_IndicatorCreateBulk",
@@ -2847,6 +2981,11 @@
 													}
 												]
 											}
+										},
+										"tlp": {
+											"description": "Traffic Light Protocol designation. Case-insensitive on input, stored and returned as UPPERCASE. Allowed values: clear, green, amber, amber-strict, red, purple.",
+											"type": "string",
+											"example": "AMBER"
 										},
 										"value": {
 											"type": "string",
@@ -3021,6 +3160,11 @@
 									]
 								}
 							},
+							"tlp": {
+								"description": "Traffic Light Protocol designation. Case-insensitive on input, stored and returned as UPPERCASE. Allowed values: clear, green, amber, amber-strict, red, purple.",
+								"type": "string",
+								"example": "AMBER"
+							},
 							"value": {
 								"type": "string",
 								"example": "malicious-domain.com"
@@ -3086,6 +3230,11 @@
 									"type": "array",
 									"items": {
 										"properties": {
+											"categoryId": {
+												"description": "The UUID of the tag category, or null when the tag is uncategorized.",
+												"type": "string",
+												"nullable": true
+											},
 											"categoryName": {
 												"type": "string"
 											},
@@ -3098,6 +3247,12 @@
 										},
 										"type": "object"
 									}
+								},
+								"tlp": {
+									"description": "Traffic Light Protocol designation. UPPERCASE. Possible values: CLEAR, GREEN, AMBER, AMBER-STRICT, RED, PURPLE. Null when not set.",
+									"type": "string",
+									"example": "AMBER",
+									"nullable": true
 								},
 								"updatedAt": {
 									"type": "string",

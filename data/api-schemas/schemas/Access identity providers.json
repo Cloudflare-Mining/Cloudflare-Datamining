@@ -138,7 +138,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -261,9 +262,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -3909,7 +3912,8 @@
 																			"onetimepin"
 																		]
 																	}
-																}
+																},
+																"type": "object"
 															}
 														],
 														"title": "One Time Pin"
@@ -4129,7 +4133,8 @@
 																			"cloudflare"
 																		]
 																	}
-																}
+																},
+																"type": "object"
 															}
 														],
 														"title": "Cloudflare"
@@ -4261,9 +4266,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -7858,7 +7865,8 @@
 																		"onetimepin"
 																	]
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"title": "One Time Pin"
@@ -8078,14 +8086,16 @@
 																		"cloudflare"
 																	]
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"title": "Cloudflare"
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -8208,9 +8218,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -8623,9 +8635,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -9085,9 +9099,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -12577,7 +12593,8 @@
 													"onetimepin"
 												]
 											}
-										}
+										},
+										"type": "object"
 									}
 								],
 								"title": "One Time Pin"
@@ -12797,7 +12814,8 @@
 													"cloudflare"
 												]
 											}
-										}
+										},
+										"type": "object"
 									}
 								],
 								"title": "Cloudflare"
@@ -16357,7 +16375,8 @@
 																		"onetimepin"
 																	]
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"title": "One Time Pin"
@@ -16577,14 +16596,16 @@
 																		"cloudflare"
 																	]
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"title": "Cloudflare"
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -16707,9 +16728,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -17448,9 +17471,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -20948,7 +20973,8 @@
 													"onetimepin"
 												]
 											}
-										}
+										},
+										"type": "object"
 									}
 								],
 								"title": "One Time Pin"
@@ -21168,7 +21194,8 @@
 													"cloudflare"
 												]
 											}
-										}
+										},
+										"type": "object"
 									}
 								],
 								"title": "Cloudflare"
@@ -24728,7 +24755,8 @@
 																		"onetimepin"
 																	]
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"title": "One Time Pin"
@@ -24948,14 +24976,16 @@
 																		"cloudflare"
 																	]
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"title": "Cloudflare"
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -25078,9 +25108,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [

@@ -133,7 +133,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -256,9 +257,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -459,6 +462,7 @@
 													"created_at": {
 														"allOf": [
 															{
+																"type": "string",
 																"x-stainless-skip": true
 															},
 															{
@@ -494,6 +498,7 @@
 													"updated_at": {
 														"allOf": [
 															{
+																"type": "string",
 																"x-stainless-skip": true
 															},
 															{
@@ -507,7 +512,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -630,9 +636,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -790,6 +798,7 @@
 												"created_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -825,6 +834,7 @@
 												"updated_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -837,7 +847,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -960,9 +971,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -1160,7 +1173,8 @@
 												"title": "Hostname Settings"
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1283,9 +1297,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -1323,6 +1339,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"associated_hostnames": {
 								"description": "The hostnames of the applications that will use this certificate.",
@@ -1467,6 +1484,7 @@
 												"created_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -1502,6 +1520,7 @@
 												"updated_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -1514,7 +1533,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1637,9 +1657,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -1688,6 +1710,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"associated_hostnames": {
 								"description": "The hostnames of the applications that will use this certificate.",
@@ -1826,6 +1849,7 @@
 												"created_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -1861,6 +1885,7 @@
 												"updated_at": {
 													"allOf": [
 														{
+															"type": "string",
 															"x-stainless-skip": true
 														},
 														{
@@ -1873,7 +1898,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1996,9 +2022,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -2243,7 +2271,8 @@
 												"title": "Hostname Settings"
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2366,9 +2395,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [

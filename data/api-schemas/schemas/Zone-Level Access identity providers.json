@@ -138,7 +138,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -260,6 +261,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -2328,11 +2332,13 @@
 																		}
 																	},
 																	"type": {
+																		"type": "string",
 																		"enum": [
 																			"onetimepin"
 																		]
 																	}
-																}
+																},
+																"type": "object"
 															}
 														],
 														"title": "One Time Pin"
@@ -2456,7 +2462,8 @@
 																			"cloudflare"
 																		]
 																	}
-																}
+																},
+																"type": "object"
 															}
 														],
 														"title": "Cloudflare"
@@ -2587,6 +2594,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -4641,14 +4651,16 @@
 																		"cloudflare"
 																	]
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"title": "Cloudflare"
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -4770,6 +4782,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -6719,7 +6734,8 @@
 													"cloudflare"
 												]
 											}
-										}
+										},
+										"type": "object"
 									}
 								],
 								"title": "Cloudflare"
@@ -8736,14 +8752,16 @@
 																		"cloudflare"
 																	]
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"title": "Cloudflare"
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -8865,6 +8883,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -10826,7 +10847,8 @@
 													"cloudflare"
 												]
 											}
-										}
+										},
+										"type": "object"
 									}
 								],
 								"title": "Cloudflare"
@@ -12843,14 +12865,16 @@
 																		"cloudflare"
 																	]
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"title": "Cloudflare"
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -12972,6 +12996,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

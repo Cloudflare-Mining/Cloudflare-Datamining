@@ -9,6 +9,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -147,6 +148,7 @@
 													"example": "false"
 												},
 												"login_design": {
+													"type": "object",
 													"properties": {
 														"background_color": {
 															"description": "The background color on your login page.",
@@ -199,7 +201,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -322,6 +325,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -349,6 +355,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -358,6 +365,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"auth_domain": {
 								"description": "The unique subdomain assigned to your Zero Trust organization.",
@@ -370,6 +378,7 @@
 								"example": "false"
 							},
 							"login_design": {
+								"type": "object",
 								"properties": {
 									"background_color": {
 										"description": "The background color on your login page.",
@@ -557,6 +566,7 @@
 													"example": "false"
 												},
 												"login_design": {
+													"type": "object",
 													"properties": {
 														"background_color": {
 															"description": "The background color on your login page.",
@@ -609,7 +619,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -732,6 +743,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -757,6 +771,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -766,6 +781,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"email": {
 								"description": "The email of the user to revoke.",
@@ -806,14 +822,15 @@
 												false
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
 			},
-			"4xx": {
+			"4XX": {
 				"description": "Revoke all Access tokens for a user response failure",
 				"content": {
 					"application/json": {
@@ -929,6 +946,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -955,6 +975,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -964,6 +985,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"auth_domain": {
 								"description": "The unique subdomain assigned to your Zero Trust organization.",
@@ -976,6 +998,7 @@
 								"example": "false"
 							},
 							"login_design": {
+								"type": "object",
 								"properties": {
 									"background_color": {
 										"description": "The background color on your login page.",
@@ -1159,6 +1182,7 @@
 													"example": "false"
 												},
 												"login_design": {
+													"type": "object",
 													"properties": {
 														"background_color": {
 															"description": "The background color on your login page.",
@@ -1211,7 +1235,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1333,6 +1358,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

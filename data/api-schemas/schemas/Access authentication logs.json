@@ -31,6 +31,7 @@
 				"in": "query",
 				"description": "The chronological sorting order for the logs.",
 				"schema": {
+					"type": "string",
 					"default": "desc",
 					"enum": [
 						"desc",
@@ -386,7 +387,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -508,6 +510,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

@@ -258,7 +258,11 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.tags.relationships",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/tags/{tag_uuid}/indicators": {
 		"operationId": "get_DatasetTagIndicatorsList",
@@ -449,6 +453,11 @@
 												"type": "array",
 												"items": {
 													"properties": {
+														"categoryId": {
+															"description": "The UUID of the tag category, or null when the tag is uncategorized.",
+															"type": "string",
+															"nullable": true
+														},
 														"categoryName": {
 															"type": "string"
 														},
@@ -461,6 +470,12 @@
 													},
 													"type": "object"
 												}
+											},
+											"tlp": {
+												"description": "Traffic Light Protocol designation. UPPERCASE. Possible values: CLEAR, GREEN, AMBER, AMBER-STRICT, RED, PURPLE. Null when not set.",
+												"type": "string",
+												"example": "AMBER",
+												"nullable": true
 											},
 											"updatedAt": {
 												"type": "string",
@@ -824,10 +839,11 @@
 														"enum": [
 															"red",
 															"amber",
-															"amber+strict",
+															"amber-strict",
 															"green",
 															"clear",
-															"purple"
+															"purple",
+															"amber+strict"
 														]
 													},
 													"value": {
@@ -853,10 +869,11 @@
 														"enum": [
 															"red",
 															"amber",
-															"amber+strict",
+															"amber-strict",
 															"green",
 															"clear",
-															"purple"
+															"purple",
+															"amber+strict"
 														]
 													},
 													"value": {
@@ -880,7 +897,7 @@
 												}
 											},
 											"aliases": {
-												"description": "Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts.",
+												"description": "Structured aliases ({ value, confidence 1-10, tlp }). Public: returned to all accounts with per-entry TLP filtering (entries with tlp: purple are removed for non-CFONE accounts).",
 												"type": "array",
 												"items": {
 													"properties": {
@@ -897,10 +914,11 @@
 															"enum": [
 																"red",
 																"amber",
-																"amber+strict",
+																"amber-strict",
 																"green",
 																"clear",
-																"purple"
+																"purple",
+																"amber+strict"
 															],
 															"nullable": true
 														},
@@ -930,10 +948,11 @@
 														"enum": [
 															"red",
 															"amber",
-															"amber+strict",
+															"amber-strict",
 															"green",
 															"clear",
-															"purple"
+															"purple",
+															"amber+strict"
 														]
 													},
 													"value": {
@@ -1006,10 +1025,11 @@
 															"enum": [
 																"red",
 																"amber",
-																"amber+strict",
+																"amber-strict",
 																"green",
 																"clear",
-																"purple"
+																"purple",
+																"amber+strict"
 															]
 														},
 														"value": {
@@ -1041,10 +1061,11 @@
 															"enum": [
 																"red",
 																"amber",
-																"amber+strict",
+																"amber-strict",
 																"green",
 																"clear",
-																"purple"
+																"purple",
+																"amber+strict"
 															],
 															"nullable": true
 														},
@@ -1080,10 +1101,11 @@
 														"enum": [
 															"red",
 															"amber",
-															"amber+strict",
+															"amber-strict",
 															"green",
 															"clear",
-															"purple"
+															"purple",
+															"amber+strict"
 														]
 													},
 													"value": {
@@ -1109,10 +1131,11 @@
 														"enum": [
 															"red",
 															"amber",
-															"amber+strict",
+															"amber-strict",
 															"green",
 															"clear",
-															"purple"
+															"purple",
+															"amber+strict"
 														]
 													},
 													"value": {
@@ -1140,10 +1163,11 @@
 														"enum": [
 															"red",
 															"amber",
-															"amber+strict",
+															"amber-strict",
 															"green",
 															"clear",
-															"purple"
+															"purple",
+															"amber+strict"
 														]
 													},
 													"value": {
@@ -1167,10 +1191,11 @@
 														"enum": [
 															"red",
 															"amber",
-															"amber+strict",
+															"amber-strict",
 															"green",
 															"clear",
-															"purple"
+															"purple",
+															"amber+strict"
 														]
 													},
 													"value": {
@@ -1202,10 +1227,11 @@
 														"enum": [
 															"red",
 															"amber",
-															"amber+strict",
+															"amber-strict",
 															"green",
 															"clear",
-															"purple"
+															"purple",
+															"amber+strict"
 														]
 													},
 													"value": {
@@ -1223,10 +1249,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												],
 												"nullable": true
 											},
@@ -1363,10 +1390,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -1392,10 +1420,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -1419,7 +1448,7 @@
 									}
 								},
 								"aliases": {
-									"description": "Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts.",
+									"description": "Structured aliases ({ value, confidence 1-10, tlp }). Public: returned to all accounts with per-entry TLP filtering (entries with tlp: purple are removed for non-CFONE accounts).",
 									"type": "array",
 									"items": {
 										"properties": {
@@ -1436,10 +1465,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												],
 												"nullable": true
 											},
@@ -1469,10 +1499,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -1545,10 +1576,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												]
 											},
 											"value": {
@@ -1580,10 +1612,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												],
 												"nullable": true
 											},
@@ -1619,10 +1652,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -1648,10 +1682,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -1679,10 +1714,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -1706,10 +1742,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -1741,10 +1778,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -1762,10 +1800,11 @@
 									"enum": [
 										"red",
 										"amber",
-										"amber+strict",
+										"amber-strict",
 										"green",
 										"clear",
-										"purple"
+										"purple",
+										"amber+strict"
 									],
 									"nullable": true
 								},
@@ -1842,7 +1881,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.tags",
+		"x-fern-sdk-method-name": "get-by-id",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/indicators": {
 		"operationId": "get_TagIndicatorsList",
@@ -2034,6 +2077,11 @@
 												"type": "array",
 												"items": {
 													"properties": {
+														"categoryId": {
+															"description": "The UUID of the tag category, or null when the tag is uncategorized.",
+															"type": "string",
+															"nullable": true
+														},
 														"categoryName": {
 															"type": "string"
 														},
@@ -2046,6 +2094,12 @@
 													},
 													"type": "object"
 												}
+											},
+											"tlp": {
+												"description": "Traffic Light Protocol designation. UPPERCASE. Possible values: CLEAR, GREEN, AMBER, AMBER-STRICT, RED, PURPLE. Null when not set.",
+												"type": "string",
+												"example": "AMBER",
+												"nullable": true
 											},
 											"updatedAt": {
 												"type": "string",
@@ -2389,7 +2443,11 @@
 										},
 										"entities": {
 											"type": "array",
-											"items": {}
+											"items": {
+												"description": "Hydrated event, indicator, or tag entity.",
+												"type": "object",
+												"additionalProperties": true
+											}
 										},
 										"failedShardCount": {
 											"type": "number"
@@ -2405,7 +2463,69 @@
 										},
 										"relationships": {
 											"type": "array",
-											"items": {}
+											"items": {
+												"type": "object",
+												"properties": {
+													"confidence": {
+														"description": "Confidence score 0–100, or null.",
+														"type": "integer",
+														"maximum": 100,
+														"minimum": 0,
+														"nullable": true
+													},
+													"createdAt": {
+														"description": "ISO 8601 creation timestamp.",
+														"type": "string"
+													},
+													"datasetId": {
+														"description": "Dataset the relationship belongs to.",
+														"type": "string"
+													},
+													"entityId": {
+														"description": "UUID of the related entity (other end).",
+														"type": "string"
+													},
+													"entityType": {
+														"description": "Type of the related entity.",
+														"type": "string",
+														"enum": [
+															"event",
+															"indicator",
+															"tag"
+														]
+													},
+													"metadata": {
+														"description": "Arbitrary JSON metadata, or null.",
+														"type": "object",
+														"additionalProperties": true,
+														"nullable": true
+													},
+													"relationshipUuid": {
+														"description": "Relationship UUID (use for PATCH/DELETE).",
+														"type": "string",
+														"format": "uuid"
+													},
+													"type": {
+														"description": "Relationship type.",
+														"type": "string"
+													},
+													"updatedAt": {
+														"description": "ISO 8601 last-update timestamp.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"relationshipUuid",
+													"entityId",
+													"entityType",
+													"type",
+													"confidence",
+													"metadata",
+													"datasetId",
+													"createdAt",
+													"updatedAt"
+												]
+											}
 										}
 									}
 								},
@@ -2467,7 +2587,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.tags.relationships",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}": {
 		"operationId": "patch_TagUpdate",
@@ -2518,10 +2642,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												]
 											},
 											"value": {
@@ -2552,10 +2677,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												]
 											},
 											"value": {
@@ -2582,7 +2708,7 @@
 								}
 							},
 							"aliases": {
-								"description": "Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts.",
+								"description": "Structured aliases ({ value, confidence 1-10, tlp }). Public: returned to all accounts with per-entry TLP filtering (entries with tlp: purple are removed for non-CFONE accounts).",
 								"type": "array",
 								"items": {
 									"properties": {
@@ -2599,10 +2725,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											],
 											"nullable": true
 										},
@@ -2634,10 +2761,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												]
 											},
 											"value": {
@@ -2717,10 +2845,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											],
 											"nullable": true
 										},
@@ -2758,10 +2887,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												]
 											},
 											"value": {
@@ -2792,10 +2922,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												]
 											},
 											"value": {
@@ -2826,10 +2957,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												]
 											},
 											"value": {
@@ -2860,10 +2992,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												]
 											},
 											"value": {
@@ -2899,10 +3032,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												]
 											},
 											"value": {
@@ -2923,10 +3057,11 @@
 								"enum": [
 									"red",
 									"amber",
-									"amber+strict",
+									"amber-strict",
 									"green",
 									"clear",
-									"purple"
+									"purple",
+									"amber+strict"
 								]
 							},
 							"value": {
@@ -2958,10 +3093,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -2987,10 +3123,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -3014,7 +3151,7 @@
 									}
 								},
 								"aliases": {
-									"description": "Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts.",
+									"description": "Structured aliases ({ value, confidence 1-10, tlp }). Public: returned to all accounts with per-entry TLP filtering (entries with tlp: purple are removed for non-CFONE accounts).",
 									"type": "array",
 									"items": {
 										"properties": {
@@ -3031,10 +3168,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												],
 												"nullable": true
 											},
@@ -3064,10 +3202,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -3140,10 +3279,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												]
 											},
 											"value": {
@@ -3175,10 +3315,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												],
 												"nullable": true
 											},
@@ -3214,10 +3355,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -3243,10 +3385,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -3274,10 +3417,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -3301,10 +3445,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -3336,10 +3481,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -3357,10 +3503,11 @@
 									"enum": [
 										"red",
 										"amber",
-										"amber+strict",
+										"amber-strict",
 										"green",
 										"clear",
-										"purple"
+										"purple",
+										"amber+strict"
 									],
 									"nullable": true
 								},
@@ -3667,7 +3814,11 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.tags.relationships",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/relationships": {
 		"operationId": "post_TagRelationshipCreate",
@@ -3822,7 +3973,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.tags.relationships",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/tags/create": {
 		"operationId": "post_TagCreate",
@@ -3863,10 +4018,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												]
 											},
 											"value": {
@@ -3897,10 +4053,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												]
 											},
 											"value": {
@@ -3927,7 +4084,7 @@
 								}
 							},
 							"aliases": {
-								"description": "Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts.",
+								"description": "Structured aliases ({ value, confidence 1-10, tlp }). Public: returned to all accounts with per-entry TLP filtering (entries with tlp: purple are removed for non-CFONE accounts).",
 								"type": "array",
 								"items": {
 									"properties": {
@@ -3944,10 +4101,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											],
 											"nullable": true
 										},
@@ -3979,10 +4137,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												]
 											},
 											"value": {
@@ -4063,10 +4222,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											],
 											"nullable": true
 										},
@@ -4104,10 +4264,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												]
 											},
 											"value": {
@@ -4138,10 +4299,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												]
 											},
 											"value": {
@@ -4172,10 +4334,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												]
 											},
 											"value": {
@@ -4206,10 +4369,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												]
 											},
 											"value": {
@@ -4245,10 +4409,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												]
 											},
 											"value": {
@@ -4263,16 +4428,17 @@
 								]
 							},
 							"tlp": {
-								"description": "Tag-level TLP handling marking. Optional. Allowed values: red, amber, amber+strict, green, clear, purple.",
+								"description": "Tag-level TLP handling marking. Optional. Allowed values: red, amber, amber-strict, green, clear, purple, amber+strict.",
 								"type": "string",
 								"example": "amber",
 								"enum": [
 									"red",
 									"amber",
-									"amber+strict",
+									"amber-strict",
 									"green",
 									"clear",
-									"purple"
+									"purple",
+									"amber+strict"
 								]
 							},
 							"value": {
@@ -4307,10 +4473,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -4336,10 +4503,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -4363,7 +4531,7 @@
 									}
 								},
 								"aliases": {
-									"description": "Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts.",
+									"description": "Structured aliases ({ value, confidence 1-10, tlp }). Public: returned to all accounts with per-entry TLP filtering (entries with tlp: purple are removed for non-CFONE accounts).",
 									"type": "array",
 									"items": {
 										"properties": {
@@ -4380,10 +4548,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												],
 												"nullable": true
 											},
@@ -4413,10 +4582,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -4489,10 +4659,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												]
 											},
 											"value": {
@@ -4524,10 +4695,11 @@
 												"enum": [
 													"red",
 													"amber",
-													"amber+strict",
+													"amber-strict",
 													"green",
 													"clear",
-													"purple"
+													"purple",
+													"amber+strict"
 												],
 												"nullable": true
 											},
@@ -4563,10 +4735,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -4592,10 +4765,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -4623,10 +4797,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -4650,10 +4825,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -4685,10 +4861,11 @@
 											"enum": [
 												"red",
 												"amber",
-												"amber+strict",
+												"amber-strict",
 												"green",
 												"clear",
-												"purple"
+												"purple",
+												"amber+strict"
 											]
 										},
 										"value": {
@@ -4706,10 +4883,11 @@
 									"enum": [
 										"red",
 										"amber",
-										"amber+strict",
+										"amber-strict",
 										"green",
 										"clear",
-										"purple"
+										"purple",
+										"amber+strict"
 									],
 									"nullable": true
 								},

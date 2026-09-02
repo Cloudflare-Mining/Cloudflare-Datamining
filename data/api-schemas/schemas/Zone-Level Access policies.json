@@ -150,7 +150,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -272,6 +273,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -472,7 +476,9 @@
 																"email_addresses": {
 																	"description": "A list of emails that can approve the access request.",
 																	"type": "array",
-																	"items": {},
+																	"items": {
+																		"type": "string"
+																	},
 																	"example": [
 																		"test@cloudflare.com",
 																		"test2@cloudflare.com"
@@ -2582,7 +2588,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2704,6 +2711,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -2881,7 +2891,9 @@
 															"email_addresses": {
 																"description": "A list of emails that can approve the access request.",
 																"type": "array",
-																"items": {},
+																"items": {
+																	"type": "string"
+																},
 																"example": [
 																	"test@cloudflare.com",
 																	"test2@cloudflare.com"
@@ -4990,7 +5002,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -5113,6 +5126,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -5166,6 +5182,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"approval_groups": {
 								"description": "Administrators who can approve a temporary authentication request.",
@@ -5183,7 +5200,9 @@
 										"email_addresses": {
 											"description": "A list of emails that can approve the access request.",
 											"type": "array",
-											"items": {},
+											"items": {
+												"type": "string"
+											},
 											"example": [
 												"test@cloudflare.com",
 												"test2@cloudflare.com"
@@ -7397,7 +7416,9 @@
 															"email_addresses": {
 																"description": "A list of emails that can approve the access request.",
 																"type": "array",
-																"items": {},
+																"items": {
+																	"type": "string"
+																},
 																"example": [
 																	"test@cloudflare.com",
 																	"test2@cloudflare.com"
@@ -9506,7 +9527,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -9629,6 +9651,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -9692,6 +9717,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"approval_groups": {
 								"description": "Administrators who can approve a temporary authentication request.",
@@ -9709,7 +9735,9 @@
 										"email_addresses": {
 											"description": "A list of emails that can approve the access request.",
 											"type": "array",
-											"items": {},
+											"items": {
+												"type": "string"
+											},
 											"example": [
 												"test@cloudflare.com",
 												"test2@cloudflare.com"
@@ -11923,7 +11951,9 @@
 															"email_addresses": {
 																"description": "A list of emails that can approve the access request.",
 																"type": "array",
-																"items": {},
+																"items": {
+																	"type": "string"
+																},
 																"example": [
 																	"test@cloudflare.com",
 																	"test2@cloudflare.com"
@@ -14032,7 +14062,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -14154,6 +14185,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
