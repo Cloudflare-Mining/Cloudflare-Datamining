@@ -310,7 +310,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.silences",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes the notification silence."
 	},
 	"GET /accounts/{account_id}/alerting/v3/silences": {
 		"operationId": "notification-silences-list-silences",

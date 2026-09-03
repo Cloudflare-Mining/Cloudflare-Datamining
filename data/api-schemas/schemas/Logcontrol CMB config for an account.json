@@ -267,7 +267,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logs.control.cmb.config",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes the CMB config."
 	},
 	"GET /accounts/{account_id}/logs/control/cmb/config": {
 		"operationId": "get-accounts-account_id-logs-control-cmb-config",

@@ -289,7 +289,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logpush.jobs",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes the Logpush job."
 	},
 	"GET /zones/{zone_id}/logpush/datasets/{dataset_id}/fields": {
 		"operationId": "get-zones-zone_id-logpush-datasets-dataset_id-fields",

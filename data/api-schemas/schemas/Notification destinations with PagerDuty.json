@@ -189,7 +189,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.destinations.pagerduty",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes all PagerDuty services connected to the account."
 	},
 	"GET /accounts/{account_id}/alerting/v3/destinations/pagerduty": {
 		"operationId": "notification-destinations-with-pager-duty-list-pager-duty-services",

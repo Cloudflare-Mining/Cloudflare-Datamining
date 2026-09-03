@@ -207,7 +207,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.destinations.webhooks",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes the webhook destination."
 	},
 	"GET /accounts/{account_id}/alerting/v3/destinations/webhooks": {
 		"operationId": "notification-webhooks-list-webhooks",

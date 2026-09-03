@@ -962,6 +962,15 @@
 												"type": "string"
 											},
 											"example": []
+										},
+										"suppressed_recipients": {
+											"description": "Email addresses dropped because they are on the suppression list. Returned when suppressed-recipient dropping is enabled for the sending subdomain; otherwise the request fails instead.",
+											"type": "array",
+											"items": {
+												"pattern": "^[\\x20-\\x7E]+$",
+												"type": "string"
+											},
+											"example": []
 										}
 									},
 									"example": {
@@ -970,13 +979,15 @@
 										],
 										"message_id": "<aB3xK9mP2qR5sT8uV0wX1yZ4cD6fG7hJ9kL0@example.com>",
 										"permanent_bounces": [],
-										"queued": []
+										"queued": [],
+										"suppressed_recipients": []
 									},
 									"required": [
 										"message_id",
 										"delivered",
 										"queued",
-										"permanent_bounces"
+										"permanent_bounces",
+										"suppressed_recipients"
 									]
 								},
 								"result_info": {
@@ -1445,6 +1456,15 @@
 												"type": "string"
 											},
 											"example": []
+										},
+										"suppressed_recipients": {
+											"description": "Email addresses dropped because they are on the suppression list. Returned when suppressed-recipient dropping is enabled for the sending subdomain; otherwise the request fails instead.",
+											"type": "array",
+											"items": {
+												"pattern": "^[\\x20-\\x7E]+$",
+												"type": "string"
+											},
+											"example": []
 										}
 									},
 									"example": {
@@ -1453,13 +1473,15 @@
 										],
 										"message_id": "<aB3xK9mP2qR5sT8uV0wX1yZ4cD6fG7hJ9kL0@example.com>",
 										"permanent_bounces": [],
-										"queued": []
+										"queued": [],
+										"suppressed_recipients": []
 									},
 									"required": [
 										"message_id",
 										"delivered",
 										"queued",
-										"permanent_bounces"
+										"permanent_bounces",
+										"suppressed_recipients"
 									]
 								},
 								"result_info": {

@@ -9,7 +9,6 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account identifier",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -46,7 +45,8 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "number"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -77,7 +77,8 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "number"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -249,7 +250,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -280,7 +282,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -321,7 +324,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -352,7 +356,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -393,7 +398,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -424,7 +430,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -465,7 +472,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -496,7 +504,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -537,7 +546,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -568,7 +578,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -628,7 +639,6 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account identifier",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -668,7 +678,8 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "number"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -699,7 +710,8 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "number"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -874,7 +886,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -905,7 +918,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -946,7 +960,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -977,7 +992,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1018,7 +1034,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1049,7 +1066,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1090,7 +1108,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1121,7 +1140,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1182,7 +1202,6 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account identifier",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -1219,7 +1238,8 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "number"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1250,7 +1270,8 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "number"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1422,7 +1443,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1453,7 +1475,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1494,7 +1517,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1525,7 +1549,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1566,7 +1591,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1597,7 +1623,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1638,7 +1665,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1669,7 +1697,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1710,7 +1739,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1741,7 +1771,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1802,7 +1833,6 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account identifier",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -1839,7 +1869,8 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "number"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1870,7 +1901,8 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "number"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1978,7 +2010,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2009,7 +2042,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2050,7 +2084,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2081,7 +2116,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2122,7 +2158,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2153,7 +2190,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2194,7 +2232,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2225,7 +2264,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2266,7 +2306,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2297,7 +2338,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2925,7 +2967,7 @@
 											"type": "object",
 											"properties": {
 												"e": {
-													"description": "Event kind plus event-specific payload fields.\n\nEvent kinds:\n- `Init`: Initialized process\n- `Leave`: Stopped process\n- `StartAttestation`: Started attestation\n- `FinishAttestationSuccess`: Finished attestation\n- `FinishAttestationFailure`: Failed attestation\n- `StartRotateCryptKey`: Started crypt key rotation\n- `FinishRotateCryptKeySuccess`: Finished crypt key rotation\n- `FinishRotateCryptKeyFailure`: Failed crypt key rotation\n- `StartRotatePki`: Started PKI rotation\n- `FinishRotatePkiSuccess`: Finished PKI rotation\n- `FinishRotatePkiFailure`: Failed PKI rotation\n- `StartUpgrade`: Started upgrade\n- `FinishUpgradeSuccess`: Finished upgrade\n- `FinishUpgradeFailure`: Failed upgrade\n- `Reconcile`: Reconciled\n- `ConfigureCloudflaredTunnel`: Configured Cloudflared tunnel\n- `RekeyInstallBoth`: Installed initial inbound and outbound keys\n- `RekeyStart`: Installed new inbound key, kept old outbound\n- `RekeyRestart`: Restarted in-progress rekey with newer key material\n- `RekeyAdvance`: Confirmed traffic on new inbound key, swapped outbound to new\n- `RekeyComplete`: Deleted old keys\n- `RekeyReset`: Deleted all keys after receiving an unexpected key\n- `HaTransition`: Completed HA state transition\n- `HaError`: Received unexpected HA error\n- `HaInit`: Initialized HA subsystem\n- `HaLeave`: Stopped HA subsystem",
+													"description": "Event kind plus event-specific payload fields.\n\nEvent kinds:\n- `Init`: Initialized process\n- `Leave`: Stopped process\n- `StartAttestation`: Started attestation\n- `FinishAttestationSuccess`: Finished attestation\n- `FinishAttestationFailure`: Failed attestation\n- `StartRotateCryptKey`: Started crypt key rotation\n- `FinishRotateCryptKeySuccess`: Finished crypt key rotation\n- `FinishRotateCryptKeyFailure`: Failed crypt key rotation\n- `StartRotatePki`: Started PKI rotation\n- `FinishRotatePkiSuccess`: Finished PKI rotation\n- `FinishRotatePkiFailure`: Failed PKI rotation\n- `StartUpgrade`: Started upgrade\n- `FinishUpgradeSuccess`: Finished upgrade\n- `FinishUpgradeFailure`: Failed upgrade\n- `BlessSlotSuccess`: Blessed boot entry slot\n- `BlessSlotPending`: Boot entry slot is not yet blessed\n- `BlessSlotFailure`: Failed to bless boot entry slot\n- `Reconcile`: Reconciled\n- `ConfigureCloudflaredTunnel`: Configured Cloudflared tunnel\n- `RekeyInstallBoth`: Installed initial inbound and outbound keys\n- `RekeyStart`: Installed new inbound key, kept old outbound\n- `RekeyRestart`: Restarted in-progress rekey with newer key material\n- `RekeyAdvance`: Confirmed traffic on new inbound key, swapped outbound to new\n- `RekeyComplete`: Deleted old keys\n- `RekeyReset`: Deleted all keys after receiving an unexpected key\n- `HaTransition`: Completed HA state transition\n- `HaError`: Received unexpected HA error\n- `HaInit`: Initialized HA subsystem\n- `HaLeave`: Stopped HA subsystem",
 													"type": "object",
 													"properties": {
 														"k": {
@@ -2946,6 +2988,9 @@
 																"StartUpgrade",
 																"FinishUpgradeSuccess",
 																"FinishUpgradeFailure",
+																"BlessSlotSuccess",
+																"BlessSlotPending",
+																"BlessSlotFailure",
 																"Reconcile",
 																"ConfigureCloudflaredTunnel",
 																"RekeyInstallBoth",
@@ -3442,7 +3487,7 @@
 														"type": "object",
 														"properties": {
 															"e": {
-																"description": "Event kind plus event-specific payload fields.\n\nEvent kinds:\n- `Init`: Initialized process\n- `Leave`: Stopped process\n- `StartAttestation`: Started attestation\n- `FinishAttestationSuccess`: Finished attestation\n- `FinishAttestationFailure`: Failed attestation\n- `StartRotateCryptKey`: Started crypt key rotation\n- `FinishRotateCryptKeySuccess`: Finished crypt key rotation\n- `FinishRotateCryptKeyFailure`: Failed crypt key rotation\n- `StartRotatePki`: Started PKI rotation\n- `FinishRotatePkiSuccess`: Finished PKI rotation\n- `FinishRotatePkiFailure`: Failed PKI rotation\n- `StartUpgrade`: Started upgrade\n- `FinishUpgradeSuccess`: Finished upgrade\n- `FinishUpgradeFailure`: Failed upgrade\n- `Reconcile`: Reconciled\n- `ConfigureCloudflaredTunnel`: Configured Cloudflared tunnel\n- `RekeyInstallBoth`: Installed initial inbound and outbound keys\n- `RekeyStart`: Installed new inbound key, kept old outbound\n- `RekeyRestart`: Restarted in-progress rekey with newer key material\n- `RekeyAdvance`: Confirmed traffic on new inbound key, swapped outbound to new\n- `RekeyComplete`: Deleted old keys\n- `RekeyReset`: Deleted all keys after receiving an unexpected key\n- `HaTransition`: Completed HA state transition\n- `HaError`: Received unexpected HA error\n- `HaInit`: Initialized HA subsystem\n- `HaLeave`: Stopped HA subsystem",
+																"description": "Event kind plus event-specific payload fields.\n\nEvent kinds:\n- `Init`: Initialized process\n- `Leave`: Stopped process\n- `StartAttestation`: Started attestation\n- `FinishAttestationSuccess`: Finished attestation\n- `FinishAttestationFailure`: Failed attestation\n- `StartRotateCryptKey`: Started crypt key rotation\n- `FinishRotateCryptKeySuccess`: Finished crypt key rotation\n- `FinishRotateCryptKeyFailure`: Failed crypt key rotation\n- `StartRotatePki`: Started PKI rotation\n- `FinishRotatePkiSuccess`: Finished PKI rotation\n- `FinishRotatePkiFailure`: Failed PKI rotation\n- `StartUpgrade`: Started upgrade\n- `FinishUpgradeSuccess`: Finished upgrade\n- `FinishUpgradeFailure`: Failed upgrade\n- `BlessSlotSuccess`: Blessed boot entry slot\n- `BlessSlotPending`: Boot entry slot is not yet blessed\n- `BlessSlotFailure`: Failed to bless boot entry slot\n- `Reconcile`: Reconciled\n- `ConfigureCloudflaredTunnel`: Configured Cloudflared tunnel\n- `RekeyInstallBoth`: Installed initial inbound and outbound keys\n- `RekeyStart`: Installed new inbound key, kept old outbound\n- `RekeyRestart`: Restarted in-progress rekey with newer key material\n- `RekeyAdvance`: Confirmed traffic on new inbound key, swapped outbound to new\n- `RekeyComplete`: Deleted old keys\n- `RekeyReset`: Deleted all keys after receiving an unexpected key\n- `HaTransition`: Completed HA state transition\n- `HaError`: Received unexpected HA error\n- `HaInit`: Initialized HA subsystem\n- `HaLeave`: Stopped HA subsystem",
 																"type": "object",
 																"properties": {
 																	"k": {
@@ -3463,6 +3508,9 @@
 																			"StartUpgrade",
 																			"FinishUpgradeSuccess",
 																			"FinishUpgradeFailure",
+																			"BlessSlotSuccess",
+																			"BlessSlotPending",
+																			"BlessSlotFailure",
 																			"Reconcile",
 																			"ConfigureCloudflaredTunnel",
 																			"RekeyInstallBoth",
@@ -3866,6 +3914,8 @@
 			"pro": false
 		},
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "connector-telemetry-events-latest",
+		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/snapshots": {
@@ -5165,6 +5215,45 @@
 												"platform": {
 													"description": "Platform identifier",
 													"type": "string"
+												},
+												"routes": {
+													"type": "array",
+													"items": {
+														"description": "Snapshot Route",
+														"type": "object",
+														"properties": {
+															"destination": {
+																"description": "Route destination as default or an IPv4 CIDR",
+																"type": "string"
+															},
+															"gateway": {
+																"description": "Gateway address for the next hop",
+																"type": "string"
+															},
+															"interface_name": {
+																"description": "Interface used by the next hop",
+																"type": "string"
+															},
+															"kind": {
+																"description": "Routing decision type: tunnel, breakout, or lan",
+																"type": "string"
+															},
+															"metric": {
+																"description": "Route metric; lower metrics are preferred",
+																"type": "number"
+															},
+															"weight": {
+																"description": "Relative weight within an equal-cost route",
+																"type": "number"
+															}
+														},
+														"required": [
+															"kind",
+															"destination",
+															"metric",
+															"interface_name"
+														]
+													}
 												},
 												"site_id": {
 													"description": "Site identifier",
@@ -6751,6 +6840,45 @@
 																"description": "Platform identifier",
 																"type": "string"
 															},
+															"routes": {
+																"type": "array",
+																"items": {
+																	"description": "Snapshot Route",
+																	"type": "object",
+																	"properties": {
+																		"destination": {
+																			"description": "Route destination as default or an IPv4 CIDR",
+																			"type": "string"
+																		},
+																		"gateway": {
+																			"description": "Gateway address for the next hop",
+																			"type": "string"
+																		},
+																		"interface_name": {
+																			"description": "Interface used by the next hop",
+																			"type": "string"
+																		},
+																		"kind": {
+																			"description": "Routing decision type: tunnel, breakout, or lan",
+																			"type": "string"
+																		},
+																		"metric": {
+																			"description": "Route metric; lower metrics are preferred",
+																			"type": "number"
+																		},
+																		"weight": {
+																			"description": "Relative weight within an equal-cost route",
+																			"type": "number"
+																		}
+																	},
+																	"required": [
+																		"kind",
+																		"destination",
+																		"metric",
+																		"interface_name"
+																	]
+																}
+															},
 															"site_id": {
 																"description": "Site identifier",
 																"type": "string"
@@ -7496,6 +7624,8 @@
 			"pro": false
 		},
 		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "connector-telemetry-snapshots-latest",
+		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/magic/connectors/{connector_id}": {
@@ -7508,7 +7638,6 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account identifier",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -7638,7 +7767,8 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "number"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -7669,7 +7799,8 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "number"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -7841,7 +7972,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -7872,7 +8004,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -7913,7 +8046,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -7944,7 +8078,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -7985,7 +8120,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -8016,7 +8152,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -8057,7 +8194,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -8088,7 +8226,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -8129,7 +8268,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -8160,7 +8300,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -8220,7 +8361,6 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account identifier",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -8362,7 +8502,8 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "number"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -8393,7 +8534,8 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "number"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -8565,7 +8707,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -8596,7 +8739,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -8637,7 +8781,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -8668,7 +8813,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -8709,7 +8855,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -8740,7 +8887,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -8781,7 +8929,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -8812,7 +8961,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -8853,7 +9003,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -8884,7 +9035,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -8925,7 +9077,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -8956,7 +9109,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -9016,7 +9170,6 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account identifier",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -9102,7 +9255,8 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "number"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -9133,7 +9287,8 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "number"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -9238,7 +9393,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -9269,7 +9425,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -9310,7 +9467,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -9341,7 +9499,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -9382,7 +9541,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -9413,7 +9573,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -9454,7 +9615,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -9485,7 +9647,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -9526,7 +9689,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -9557,7 +9721,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -9598,7 +9763,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -9629,7 +9795,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -9686,7 +9853,6 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account identifier",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -9816,7 +9982,8 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "number"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -9847,7 +10014,8 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "number"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -10019,7 +10187,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -10050,7 +10219,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -10091,7 +10261,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -10122,7 +10293,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -10163,7 +10335,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -10194,7 +10367,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -10235,7 +10409,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -10266,7 +10441,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -10307,7 +10483,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -10338,7 +10515,8 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "number"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"

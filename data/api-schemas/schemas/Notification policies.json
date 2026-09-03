@@ -327,7 +327,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.policies",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes the notification policy."
 	},
 	"GET /accounts/{account_id}/alerting/v3/policies": {
 		"operationId": "notification-policies-list-notification-policies",
