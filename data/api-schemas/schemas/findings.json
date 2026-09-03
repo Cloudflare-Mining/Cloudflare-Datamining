@@ -421,6 +421,12 @@
 																			"type"
 																		]
 																	},
+																	"description": {
+																		"description": "Detailed description of the finding.",
+																		"type": "string",
+																		"example": "This finding indicates that a file in your Slack workspace is publicly accessible.",
+																		"nullable": true
+																	},
 																	"id": {
 																		"description": "The unique identifier of the finding.",
 																		"type": "string",
@@ -459,12 +465,6 @@
 															},
 															{
 																"properties": {
-																	"description": {
-																		"description": "Detailed description of the finding.",
-																		"type": "string",
-																		"example": "This finding indicates that a file in your Slack workspace is publicly accessible.",
-																		"nullable": true
-																	},
 																	"remediation": {
 																		"description": "Remediation guide information for a finding.",
 																		"type": "object",
@@ -1213,7 +1213,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "list",
+		"x-fern-sdk-method-name": "listFindings",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/findings/{finding_id}": {
@@ -1417,6 +1417,12 @@
 																		"type"
 																	]
 																},
+																"description": {
+																	"description": "Detailed description of the finding.",
+																	"type": "string",
+																	"example": "This finding indicates that a file in your Slack workspace is publicly accessible.",
+																	"nullable": true
+																},
 																"id": {
 																	"description": "The unique identifier of the finding.",
 																	"type": "string",
@@ -1455,12 +1461,6 @@
 														},
 														{
 															"properties": {
-																"description": {
-																	"description": "Detailed description of the finding.",
-																	"type": "string",
-																	"example": "This finding indicates that a file in your Slack workspace is publicly accessible.",
-																	"nullable": true
-																},
 																"remediation": {
 																	"description": "Remediation guide information for a finding.",
 																	"type": "object",
@@ -2316,7 +2316,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "get",
+		"x-fern-sdk-method-name": "getFinding",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances": {
@@ -3024,7 +3024,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "get",
+		"x-fern-sdk-method-name": "listFindingInstances",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances/{instance_id}": {
@@ -3552,7 +3552,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "get",
+		"x-fern-sdk-method-name": "getFindingInstance",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances/archive": {
@@ -4095,7 +4095,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-method-name": "archiveFindingInstance",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances/unarchive": {
@@ -4638,7 +4638,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-method-name": "unarchiveFindingInstance",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/reset_finding_severity": {
@@ -4842,6 +4842,12 @@
 																		"type"
 																	]
 																},
+																"description": {
+																	"description": "Detailed description of the finding.",
+																	"type": "string",
+																	"example": "This finding indicates that a file in your Slack workspace is publicly accessible.",
+																	"nullable": true
+																},
 																"id": {
 																	"description": "The unique identifier of the finding.",
 																	"type": "string",
@@ -4880,12 +4886,6 @@
 														},
 														{
 															"properties": {
-																"description": {
-																	"description": "Detailed description of the finding.",
-																	"type": "string",
-																	"example": "This finding indicates that a file in your Slack workspace is publicly accessible.",
-																	"nullable": true
-																},
 																"remediation": {
 																	"description": "Remediation guide information for a finding.",
 																	"type": "object",
@@ -5422,7 +5422,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-method-name": "resetFindingSeverity",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/tune_finding_severity": {
@@ -5652,6 +5652,12 @@
 																		"type"
 																	]
 																},
+																"description": {
+																	"description": "Detailed description of the finding.",
+																	"type": "string",
+																	"example": "This finding indicates that a file in your Slack workspace is publicly accessible.",
+																	"nullable": true
+																},
 																"id": {
 																	"description": "The unique identifier of the finding.",
 																	"type": "string",
@@ -5690,12 +5696,6 @@
 														},
 														{
 															"properties": {
-																"description": {
-																	"description": "Detailed description of the finding.",
-																	"type": "string",
-																	"example": "This finding indicates that a file in your Slack workspace is publicly accessible.",
-																	"nullable": true
-																},
 																"remediation": {
 																	"description": "Remediation guide information for a finding.",
 																	"type": "object",
@@ -6232,7 +6232,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-method-name": "changeFindingSeverity",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/ignore": {
@@ -6456,6 +6456,12 @@
 																		"type"
 																	]
 																},
+																"description": {
+																	"description": "Detailed description of the finding.",
+																	"type": "string",
+																	"example": "This finding indicates that a file in your Slack workspace is publicly accessible.",
+																	"nullable": true
+																},
 																"id": {
 																	"description": "The unique identifier of the finding.",
 																	"type": "string",
@@ -6494,12 +6500,6 @@
 														},
 														{
 															"properties": {
-																"description": {
-																	"description": "Detailed description of the finding.",
-																	"type": "string",
-																	"example": "This finding indicates that a file in your Slack workspace is publicly accessible.",
-																	"nullable": true
-																},
 																"remediation": {
 																	"description": "Remediation guide information for a finding.",
 																	"type": "object",
@@ -6925,7 +6925,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-method-name": "ignoreFinding",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/unignore": {
@@ -7149,6 +7149,12 @@
 																		"type"
 																	]
 																},
+																"description": {
+																	"description": "Detailed description of the finding.",
+																	"type": "string",
+																	"example": "This finding indicates that a file in your Slack workspace is publicly accessible.",
+																	"nullable": true
+																},
 																"id": {
 																	"description": "The unique identifier of the finding.",
 																	"type": "string",
@@ -7187,12 +7193,6 @@
 														},
 														{
 															"properties": {
-																"description": {
-																	"description": "Detailed description of the finding.",
-																	"type": "string",
-																	"example": "This finding indicates that a file in your Slack workspace is publicly accessible.",
-																	"nullable": true
-																},
 																"remediation": {
 																	"description": "Remediation guide information for a finding.",
 																	"type": "object",
@@ -7618,7 +7618,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-method-name": "unIgnoreFinding",
 		"x-forge-hidden": true
 	}
 }

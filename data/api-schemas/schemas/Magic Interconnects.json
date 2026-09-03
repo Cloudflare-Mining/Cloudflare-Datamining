@@ -86,7 +86,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -124,13 +126,15 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"interconnects": {
 													"type": "array",
@@ -226,7 +230,8 @@
 																		}
 																	},
 																	{
-																		"description": "Omitted in responses for version 1.5 interconnects."
+																		"description": "Omitted in responses for version 1.5 interconnects.",
+																		"type": "object"
 																	}
 																]
 															},
@@ -312,7 +317,8 @@
 																				"example": "198.41.199.225",
 																				"x-auditable": true
 																			}
-																		}
+																		},
+																		"type": "object"
 																	}
 																]
 															},
@@ -371,7 +377,8 @@
 																	},
 																	{
 																		"description": "An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource.",
-																		"readOnly": true
+																		"readOnly": true,
+																		"type": "string"
 																	}
 																]
 															}
@@ -380,7 +387,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -449,7 +457,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -487,13 +497,15 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"interconnects": {
 															"type": "array",
@@ -589,7 +601,8 @@
 																				}
 																			},
 																			{
-																				"description": "Omitted in responses for version 1.5 interconnects."
+																				"description": "Omitted in responses for version 1.5 interconnects.",
+																				"type": "object"
 																			}
 																		]
 																	},
@@ -675,7 +688,8 @@
 																						"example": "198.41.199.225",
 																						"x-auditable": true
 																					}
-																				}
+																				},
+																				"type": "object"
 																			}
 																		]
 																	},
@@ -734,7 +748,8 @@
 																			},
 																			{
 																				"description": "An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource.",
-																				"readOnly": true
+																				"readOnly": true,
+																				"type": "string"
 																			}
 																		]
 																	}
@@ -743,7 +758,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -963,7 +979,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1001,7 +1019,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1102,7 +1121,8 @@
 																	}
 																},
 																{
-																	"description": "Omitted in responses for version 1.5 interconnects."
+																	"description": "Omitted in responses for version 1.5 interconnects.",
+																	"type": "object"
 																}
 															]
 														},
@@ -1188,7 +1208,8 @@
 																			"example": "198.41.199.225",
 																			"x-auditable": true
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -1247,7 +1268,8 @@
 																},
 																{
 																	"description": "An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource.",
-																	"readOnly": true
+																	"readOnly": true,
+																	"type": "string"
 																}
 															]
 														}
@@ -1255,7 +1277,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1324,7 +1347,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -1362,7 +1387,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -1463,7 +1489,8 @@
 																			}
 																		},
 																		{
-																			"description": "Omitted in responses for version 1.5 interconnects."
+																			"description": "Omitted in responses for version 1.5 interconnects.",
+																			"type": "object"
 																		}
 																	]
 																},
@@ -1549,7 +1576,8 @@
 																					"example": "198.41.199.225",
 																					"x-auditable": true
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																},
@@ -1608,7 +1636,8 @@
 																		},
 																		{
 																			"description": "An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource.",
-																			"readOnly": true
+																			"readOnly": true,
+																			"type": "string"
 																		}
 																	]
 																}
@@ -1616,7 +1645,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1768,6 +1798,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"required": [
 							"id"
 						]
@@ -1836,7 +1867,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1874,13 +1907,15 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"modified": {
 													"type": "boolean",
@@ -1980,7 +2015,8 @@
 																		}
 																	},
 																	{
-																		"description": "Omitted in responses for version 1.5 interconnects."
+																		"description": "Omitted in responses for version 1.5 interconnects.",
+																		"type": "object"
 																	}
 																]
 															},
@@ -2066,7 +2102,8 @@
 																				"example": "198.41.199.225",
 																				"x-auditable": true
 																			}
-																		}
+																		},
+																		"type": "object"
 																	}
 																]
 															},
@@ -2125,7 +2162,8 @@
 																	},
 																	{
 																		"description": "An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource.",
-																		"readOnly": true
+																		"readOnly": true,
+																		"type": "string"
 																	}
 																]
 															}
@@ -2134,7 +2172,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2203,7 +2242,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -2241,13 +2282,15 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"modified": {
 															"type": "boolean",
@@ -2347,7 +2390,8 @@
 																				}
 																			},
 																			{
-																				"description": "Omitted in responses for version 1.5 interconnects."
+																				"description": "Omitted in responses for version 1.5 interconnects.",
+																				"type": "object"
 																			}
 																		]
 																	},
@@ -2433,7 +2477,8 @@
 																						"example": "198.41.199.225",
 																						"x-auditable": true
 																					}
-																				}
+																				},
+																				"type": "object"
 																			}
 																		]
 																	},
@@ -2492,7 +2537,8 @@
 																			},
 																			{
 																				"description": "An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource.",
-																				"readOnly": true
+																				"readOnly": true,
+																				"type": "string"
 																			}
 																		]
 																	}
@@ -2501,7 +2547,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2741,7 +2788,8 @@
 										}
 									},
 									{
-										"description": "Not configurable for version 1.5 interconnects; supplying it returns an error."
+										"description": "Not configurable for version 1.5 interconnects; supplying it returns an error.",
+										"type": "object"
 									}
 								]
 							},
@@ -2827,7 +2875,8 @@
 												"example": "198.41.199.225",
 												"x-auditable": true
 											}
-										}
+										},
+										"type": "object"
 									}
 								]
 							},
@@ -2919,7 +2968,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2957,7 +3008,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -3062,7 +3114,8 @@
 																	}
 																},
 																{
-																	"description": "Omitted in responses for version 1.5 interconnects."
+																	"description": "Omitted in responses for version 1.5 interconnects.",
+																	"type": "object"
 																}
 															]
 														},
@@ -3148,7 +3201,8 @@
 																			"example": "198.41.199.225",
 																			"x-auditable": true
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -3207,7 +3261,8 @@
 																},
 																{
 																	"description": "An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource.",
-																	"readOnly": true
+																	"readOnly": true,
+																	"type": "string"
 																}
 															]
 														}
@@ -3215,7 +3270,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3284,7 +3340,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -3322,7 +3380,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -3427,7 +3486,8 @@
 																			}
 																		},
 																		{
-																			"description": "Omitted in responses for version 1.5 interconnects."
+																			"description": "Omitted in responses for version 1.5 interconnects.",
+																			"type": "object"
 																		}
 																	]
 																},
@@ -3513,7 +3573,8 @@
 																					"example": "198.41.199.225",
 																					"x-auditable": true
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																},
@@ -3572,7 +3633,8 @@
 																		},
 																		{
 																			"description": "An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource.",
-																			"readOnly": true
+																			"readOnly": true,
+																			"type": "string"
 																		}
 																	]
 																}
@@ -3580,7 +3642,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},

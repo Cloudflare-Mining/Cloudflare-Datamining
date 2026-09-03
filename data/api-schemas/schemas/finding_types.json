@@ -31,7 +31,7 @@
 				}
 			},
 			{
-				"description": "Filter finding types by vendor. Supports multiple comma-separated values.",
+				"description": "Filter finding types by vendor. Supports multiple comma-separated values. Each value may be either the vendor enum (GOOGLE_WORKSPACE) or the friendly name returned by the read routes (Google Workspace).",
 				"explode": false,
 				"in": "query",
 				"name": "vendors",
@@ -276,6 +276,12 @@
 															"type"
 														]
 													},
+													"description": {
+														"description": "Detailed description of the finding.",
+														"type": "string",
+														"example": "This finding indicates that a file in your Slack workspace is publicly accessible.",
+														"nullable": true
+													},
 													"id": {
 														"description": "The unique identifier of the finding.",
 														"type": "string",
@@ -339,7 +345,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "get",
+		"x-fern-sdk-method-name": "listFindingTypes",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/finding_types/{finding_type_id}": {
@@ -524,6 +530,12 @@
 														"type"
 													]
 												},
+												"description": {
+													"description": "Detailed description of the finding.",
+													"type": "string",
+													"example": "This finding indicates that a file in your Slack workspace is publicly accessible.",
+													"nullable": true
+												},
 												"id": {
 													"description": "The unique identifier of the finding.",
 													"type": "string",
@@ -589,7 +601,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "get",
+		"x-fern-sdk-method-name": "getFindingType",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/finding_types/{finding_type_id}/remediation_types": {
@@ -877,7 +889,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "get",
+		"x-fern-sdk-method-name": "getRemediationTypesForFindingType",
 		"x-forge-hidden": true
 	}
 }

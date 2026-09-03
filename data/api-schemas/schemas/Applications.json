@@ -5783,12 +5783,13 @@
 				"description": "Application ID.",
 				"required": true,
 				"schema": {
+					"description": "Returns the application ID.",
 					"type": "integer",
 					"format": "int64",
+					"example": 498,
 					"maximum": 4294967295,
 					"minimum": 0
-				},
-				"example": 498
+				}
 			}
 		],
 		"responses": {

@@ -167,6 +167,33 @@
 																		"description": "An Application ID represents an identifier of an application.",
 																		"type": "string"
 																	},
+																	"configuration": {
+																		"description": "The resources allocated to the container instance.",
+																		"type": "object",
+																		"properties": {
+																			"disk": {
+																				"description": "Disk allocated to the container instance, in decimal MB.",
+																				"type": "integer",
+																				"minimum": 1
+																			},
+																			"memory": {
+																				"description": "Memory allocated to the container instance, in MiB.",
+																				"type": "integer",
+																				"minimum": 1
+																			},
+																			"vcpu": {
+																				"description": "Number of virtual CPUs allocated to the container instance.",
+																				"type": "number",
+																				"exclusiveMinimum": true,
+																				"minimum": 0
+																			}
+																		},
+																		"required": [
+																			"vcpu",
+																			"memory",
+																			"disk"
+																		]
+																	},
 																	"id": {
 																		"description": "A container instance ID (64-character hex Durable Object actor ID).",
 																		"type": "string",
@@ -878,6 +905,33 @@
 														"application_id": {
 															"description": "An Application ID represents an identifier of an application.",
 															"type": "string"
+														},
+														"configuration": {
+															"description": "The resources allocated to the container instance.",
+															"type": "object",
+															"properties": {
+																"disk": {
+																	"description": "Disk allocated to the container instance, in decimal MB.",
+																	"type": "integer",
+																	"minimum": 1
+																},
+																"memory": {
+																	"description": "Memory allocated to the container instance, in MiB.",
+																	"type": "integer",
+																	"minimum": 1
+																},
+																"vcpu": {
+																	"description": "Number of virtual CPUs allocated to the container instance.",
+																	"type": "number",
+																	"exclusiveMinimum": true,
+																	"minimum": 0
+																}
+															},
+															"required": [
+																"vcpu",
+																"memory",
+																"disk"
+															]
 														},
 														"id": {
 															"description": "A container instance ID (64-character hex Durable Object actor ID).",

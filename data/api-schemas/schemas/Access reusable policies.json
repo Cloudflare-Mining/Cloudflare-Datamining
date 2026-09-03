@@ -836,6 +836,18 @@
 																						"device_posture": {
 																							"type": "object",
 																							"properties": {
+																								"account_id": {
+																									"description": "The ID of the account that owns the device posture integration.",
+																									"allOf": [
+																										{
+																											"description": "Identifier.",
+																											"type": "string",
+																											"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																											"maxLength": 32,
+																											"x-auditable": true
+																										}
+																									]
+																								},
 																								"integration_uid": {
 																									"description": "The ID of a device posture integration.",
 																									"type": "string",
@@ -1516,6 +1528,18 @@
 																						"device_posture": {
 																							"type": "object",
 																							"properties": {
+																								"account_id": {
+																									"description": "The ID of the account that owns the device posture integration.",
+																									"allOf": [
+																										{
+																											"description": "Identifier.",
+																											"type": "string",
+																											"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																											"maxLength": 32,
+																											"x-auditable": true
+																										}
+																									]
+																								},
 																								"integration_uid": {
 																									"description": "The ID of a device posture integration.",
 																									"type": "string",
@@ -2195,6 +2219,18 @@
 																						"device_posture": {
 																							"type": "object",
 																							"properties": {
+																								"account_id": {
+																									"description": "The ID of the account that owns the device posture integration.",
+																									"allOf": [
+																										{
+																											"description": "Identifier.",
+																											"type": "string",
+																											"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																											"maxLength": 32,
+																											"x-auditable": true
+																										}
+																									]
+																								},
 																								"integration_uid": {
 																									"description": "The ID of a device posture integration.",
 																									"type": "string",
@@ -2678,6 +2714,13 @@
 													},
 													{
 														"properties": {
+															"account_id": {
+																"description": "Identifier.",
+																"type": "string",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"x-auditable": true
+															},
 															"app_count": {
 																"description": "Number of access applications currently using this policy.",
 																"type": "integer",
@@ -3352,6 +3395,18 @@
 																					"device_posture": {
 																						"type": "object",
 																						"properties": {
+																							"account_id": {
+																								"description": "The ID of the account that owns the device posture integration.",
+																								"allOf": [
+																									{
+																										"description": "Identifier.",
+																										"type": "string",
+																										"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																										"maxLength": 32,
+																										"x-auditable": true
+																									}
+																								]
+																							},
 																							"integration_uid": {
 																								"description": "The ID of a device posture integration.",
 																								"type": "string",
@@ -4032,6 +4087,18 @@
 																					"device_posture": {
 																						"type": "object",
 																						"properties": {
+																							"account_id": {
+																								"description": "The ID of the account that owns the device posture integration.",
+																								"allOf": [
+																									{
+																										"description": "Identifier.",
+																										"type": "string",
+																										"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																										"maxLength": 32,
+																										"x-auditable": true
+																									}
+																								]
+																							},
 																							"integration_uid": {
 																								"description": "The ID of a device posture integration.",
 																								"type": "string",
@@ -4711,6 +4778,18 @@
 																					"device_posture": {
 																						"type": "object",
 																						"properties": {
+																							"account_id": {
+																								"description": "The ID of the account that owns the device posture integration.",
+																								"allOf": [
+																									{
+																										"description": "Identifier.",
+																										"type": "string",
+																										"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																										"maxLength": 32,
+																										"x-auditable": true
+																									}
+																								]
+																							},
 																							"integration_uid": {
 																								"description": "The ID of a device posture integration.",
 																								"type": "string",
@@ -5194,6 +5273,13 @@
 												},
 												{
 													"properties": {
+														"account_id": {
+															"description": "Identifier.",
+															"type": "string",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"x-auditable": true
+														},
 														"app_count": {
 															"description": "Number of access applications currently using this policy.",
 															"type": "integer",
@@ -5754,6 +5840,18 @@
 														"device_posture": {
 															"type": "object",
 															"properties": {
+																"account_id": {
+																	"description": "The ID of the account that owns the device posture integration.",
+																	"allOf": [
+																		{
+																			"description": "Identifier.",
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"maxLength": 32,
+																			"x-auditable": true
+																		}
+																	]
+																},
 																"integration_uid": {
 																	"description": "The ID of a device posture integration.",
 																	"type": "string",
@@ -6428,6 +6526,18 @@
 														"device_posture": {
 															"type": "object",
 															"properties": {
+																"account_id": {
+																	"description": "The ID of the account that owns the device posture integration.",
+																	"allOf": [
+																		{
+																			"description": "Identifier.",
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"maxLength": 32,
+																			"x-auditable": true
+																		}
+																	]
+																},
 																"integration_uid": {
 																	"description": "The ID of a device posture integration.",
 																	"type": "string",
@@ -7107,6 +7217,18 @@
 														"device_posture": {
 															"type": "object",
 															"properties": {
+																"account_id": {
+																	"description": "The ID of the account that owns the device posture integration.",
+																	"allOf": [
+																		{
+																			"description": "Identifier.",
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"maxLength": 32,
+																			"x-auditable": true
+																		}
+																	]
+																},
 																"integration_uid": {
 																	"description": "The ID of a device posture integration.",
 																	"type": "string",
@@ -8074,6 +8196,18 @@
 																					"device_posture": {
 																						"type": "object",
 																						"properties": {
+																							"account_id": {
+																								"description": "The ID of the account that owns the device posture integration.",
+																								"allOf": [
+																									{
+																										"description": "Identifier.",
+																										"type": "string",
+																										"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																										"maxLength": 32,
+																										"x-auditable": true
+																									}
+																								]
+																							},
 																							"integration_uid": {
 																								"description": "The ID of a device posture integration.",
 																								"type": "string",
@@ -8754,6 +8888,18 @@
 																					"device_posture": {
 																						"type": "object",
 																						"properties": {
+																							"account_id": {
+																								"description": "The ID of the account that owns the device posture integration.",
+																								"allOf": [
+																									{
+																										"description": "Identifier.",
+																										"type": "string",
+																										"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																										"maxLength": 32,
+																										"x-auditable": true
+																									}
+																								]
+																							},
 																							"integration_uid": {
 																								"description": "The ID of a device posture integration.",
 																								"type": "string",
@@ -9433,6 +9579,18 @@
 																					"device_posture": {
 																						"type": "object",
 																						"properties": {
+																							"account_id": {
+																								"description": "The ID of the account that owns the device posture integration.",
+																								"allOf": [
+																									{
+																										"description": "Identifier.",
+																										"type": "string",
+																										"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																										"maxLength": 32,
+																										"x-auditable": true
+																									}
+																								]
+																							},
 																							"integration_uid": {
 																								"description": "The ID of a device posture integration.",
 																								"type": "string",
@@ -9916,6 +10074,13 @@
 												},
 												{
 													"properties": {
+														"account_id": {
+															"description": "Identifier.",
+															"type": "string",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"x-auditable": true
+														},
 														"app_count": {
 															"description": "Number of access applications currently using this policy.",
 															"type": "integer",
@@ -10486,6 +10651,18 @@
 														"device_posture": {
 															"type": "object",
 															"properties": {
+																"account_id": {
+																	"description": "The ID of the account that owns the device posture integration.",
+																	"allOf": [
+																		{
+																			"description": "Identifier.",
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"maxLength": 32,
+																			"x-auditable": true
+																		}
+																	]
+																},
 																"integration_uid": {
 																	"description": "The ID of a device posture integration.",
 																	"type": "string",
@@ -11160,6 +11337,18 @@
 														"device_posture": {
 															"type": "object",
 															"properties": {
+																"account_id": {
+																	"description": "The ID of the account that owns the device posture integration.",
+																	"allOf": [
+																		{
+																			"description": "Identifier.",
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"maxLength": 32,
+																			"x-auditable": true
+																		}
+																	]
+																},
 																"integration_uid": {
 																	"description": "The ID of a device posture integration.",
 																	"type": "string",
@@ -11839,6 +12028,18 @@
 														"device_posture": {
 															"type": "object",
 															"properties": {
+																"account_id": {
+																	"description": "The ID of the account that owns the device posture integration.",
+																	"allOf": [
+																		{
+																			"description": "Identifier.",
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"maxLength": 32,
+																			"x-auditable": true
+																		}
+																	]
+																},
 																"integration_uid": {
 																	"description": "The ID of a device posture integration.",
 																	"type": "string",
@@ -12806,6 +13007,18 @@
 																					"device_posture": {
 																						"type": "object",
 																						"properties": {
+																							"account_id": {
+																								"description": "The ID of the account that owns the device posture integration.",
+																								"allOf": [
+																									{
+																										"description": "Identifier.",
+																										"type": "string",
+																										"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																										"maxLength": 32,
+																										"x-auditable": true
+																									}
+																								]
+																							},
 																							"integration_uid": {
 																								"description": "The ID of a device posture integration.",
 																								"type": "string",
@@ -13486,6 +13699,18 @@
 																					"device_posture": {
 																						"type": "object",
 																						"properties": {
+																							"account_id": {
+																								"description": "The ID of the account that owns the device posture integration.",
+																								"allOf": [
+																									{
+																										"description": "Identifier.",
+																										"type": "string",
+																										"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																										"maxLength": 32,
+																										"x-auditable": true
+																									}
+																								]
+																							},
 																							"integration_uid": {
 																								"description": "The ID of a device posture integration.",
 																								"type": "string",
@@ -14165,6 +14390,18 @@
 																					"device_posture": {
 																						"type": "object",
 																						"properties": {
+																							"account_id": {
+																								"description": "The ID of the account that owns the device posture integration.",
+																								"allOf": [
+																									{
+																										"description": "Identifier.",
+																										"type": "string",
+																										"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																										"maxLength": 32,
+																										"x-auditable": true
+																									}
+																								]
+																							},
 																							"integration_uid": {
 																								"description": "The ID of a device posture integration.",
 																								"type": "string",
@@ -14648,6 +14885,13 @@
 												},
 												{
 													"properties": {
+														"account_id": {
+															"description": "Identifier.",
+															"type": "string",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"x-auditable": true
+														},
 														"app_count": {
 															"description": "Number of access applications currently using this policy.",
 															"type": "integer",

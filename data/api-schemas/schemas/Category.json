@@ -942,12 +942,13 @@
 				"description": "Application category ID.",
 				"required": true,
 				"schema": {
+					"description": "Returns the category ID.",
 					"type": "integer",
 					"format": "int64",
+					"example": 12,
 					"maximum": 4294967295,
 					"minimum": 1
-				},
-				"example": 12
+				}
 			}
 		],
 		"responses": {

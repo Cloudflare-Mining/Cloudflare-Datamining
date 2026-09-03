@@ -98,7 +98,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -136,7 +138,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -354,7 +357,8 @@
 																				"bidirectional"
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -421,7 +425,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -490,7 +495,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -528,7 +535,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -746,7 +754,8 @@
 																						"bidirectional"
 																					]
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																},
@@ -813,7 +822,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1019,7 +1029,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1057,13 +1069,15 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"ipsec_tunnels": {
 													"type": "array",
@@ -1272,7 +1286,8 @@
 																					"bidirectional"
 																				]
 																			}
-																		}
+																		},
+																		"type": "object"
 																	}
 																]
 															},
@@ -1340,7 +1355,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1409,7 +1425,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -1447,13 +1465,15 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"ipsec_tunnels": {
 															"type": "array",
@@ -1662,7 +1682,8 @@
 																							"bidirectional"
 																						]
 																					}
-																				}
+																				},
+																				"type": "object"
 																			}
 																		]
 																	},
@@ -1730,7 +1751,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1950,7 +1972,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1988,7 +2012,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2202,7 +2227,8 @@
 																				"bidirectional"
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -2269,7 +2295,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2338,7 +2365,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -2376,7 +2405,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -2590,7 +2620,8 @@
 																						"bidirectional"
 																					]
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																},
@@ -2657,7 +2688,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2956,7 +2988,8 @@
 															"bidirectional"
 														]
 													}
-												}
+												},
+												"type": "object"
 											}
 										]
 									},
@@ -3062,7 +3095,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -3100,7 +3135,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -3311,7 +3347,8 @@
 																		"bidirectional"
 																	]
 																}
-															}
+															},
+															"type": "object"
 														}
 													]
 												},
@@ -3376,7 +3413,8 @@
 												"interface_address"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3445,7 +3483,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -3483,7 +3523,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -3694,7 +3735,8 @@
 																				"bidirectional"
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -3759,7 +3801,8 @@
 														"interface_address"
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -3969,7 +4012,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -4007,13 +4052,15 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"ipsec_tunnel_id": {
 													"description": "Identifier",
@@ -4044,7 +4091,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -4113,7 +4161,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -4151,13 +4201,15 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"ipsec_tunnel_id": {
 															"description": "Identifier",
@@ -4188,7 +4240,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -4442,7 +4495,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -4480,7 +4535,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -4546,7 +4602,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -4701,6 +4758,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"required": [
 							"id"
 						]
@@ -4769,7 +4827,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -4807,13 +4867,15 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"modified": {
 													"type": "boolean",
@@ -5026,7 +5088,8 @@
 																					"bidirectional"
 																				]
 																			}
-																		}
+																		},
+																		"type": "object"
 																	}
 																]
 															},
@@ -5094,7 +5157,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -5163,7 +5227,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -5201,13 +5267,15 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"modified": {
 															"type": "boolean",
@@ -5420,7 +5488,8 @@
 																							"bidirectional"
 																						]
 																					}
-																				}
+																				},
+																				"type": "object"
 																			}
 																		]
 																	},
@@ -5488,7 +5557,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -5795,7 +5865,8 @@
 													"bidirectional"
 												]
 											}
-										}
+										},
+										"type": "object"
 									}
 								]
 							},
@@ -5899,7 +5970,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -5937,7 +6010,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -6155,7 +6229,8 @@
 																				"bidirectional"
 																			]
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															]
 														},
@@ -6222,7 +6297,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -6291,7 +6367,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -6329,7 +6407,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -6547,7 +6626,8 @@
 																						"bidirectional"
 																					]
 																				}
-																			}
+																			},
+																			"type": "object"
 																		}
 																	]
 																},
@@ -6614,7 +6694,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},

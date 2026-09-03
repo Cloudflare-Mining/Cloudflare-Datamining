@@ -40,7 +40,8 @@
 											},
 											"required": [
 												"id"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -114,7 +115,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -152,13 +155,15 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"deleted": {
 													"type": "boolean",
@@ -258,7 +263,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -327,7 +333,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -365,13 +373,15 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"deleted": {
 															"type": "boolean",
@@ -471,7 +481,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -686,7 +697,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -724,7 +737,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -828,7 +842,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -897,7 +912,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -935,7 +952,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -1039,7 +1057,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1242,7 +1261,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1280,13 +1301,15 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"routes": {
 													"type": "array",
@@ -1382,7 +1405,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1451,7 +1475,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -1489,13 +1515,15 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"routes": {
 															"type": "array",
@@ -1591,7 +1619,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1803,7 +1832,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1841,7 +1872,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1941,7 +1973,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2010,7 +2043,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -2048,7 +2083,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -2148,7 +2184,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2425,7 +2462,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2463,7 +2502,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2558,7 +2598,8 @@
 												"priority"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2627,7 +2668,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -2665,13 +2708,15 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"routes": {
 															"type": "array",
@@ -2767,7 +2812,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2932,7 +2978,8 @@
 											},
 											"required": [
 												"id"
-											]
+											],
+											"type": "object"
 										},
 										{
 											"type": "object",
@@ -3071,7 +3118,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -3109,13 +3158,15 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"modified": {
 													"type": "boolean",
@@ -3215,7 +3266,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3284,7 +3336,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -3322,13 +3376,15 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"modified": {
 															"type": "boolean",
@@ -3428,7 +3484,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -3719,7 +3776,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -3757,7 +3816,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -3861,7 +3921,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3930,7 +3991,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -3968,7 +4031,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -4072,7 +4136,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},

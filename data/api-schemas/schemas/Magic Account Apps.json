@@ -131,7 +131,8 @@
 																"example": "192.0.2.0/24"
 															},
 															{
-																"example": "1.1.1.1/32"
+																"example": "1.1.1.1/32",
+																"type": "string"
 															}
 														]
 													}
@@ -152,7 +153,8 @@
 																"example": "192.0.2.0/24"
 															},
 															{
-																"example": "1.1.1.1/32"
+																"example": "1.1.1.1/32",
+																"type": "string"
 															}
 														]
 													}
@@ -168,7 +170,8 @@
 											],
 											"title": "Account App"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -364,7 +367,9 @@
 										},
 										"result": {
 											"type": "array",
-											"items": {},
+											"items": {
+												"type": "object"
+											},
 											"nullable": true
 										},
 										"success": {
@@ -419,7 +424,8 @@
 																			"example": "192.0.2.0/24"
 																		},
 																		{
-																			"example": "1.1.1.1/32"
+																			"example": "1.1.1.1/32",
+																			"type": "string"
 																		}
 																	]
 																}
@@ -440,7 +446,8 @@
 																			"example": "192.0.2.0/24"
 																		},
 																		{
-																			"example": "1.1.1.1/32"
+																			"example": "1.1.1.1/32",
+																			"type": "string"
 																		}
 																	]
 																}
@@ -479,7 +486,8 @@
 																			"example": "192.0.2.0/24"
 																		},
 																		{
-																			"example": "1.1.1.1/32"
+																			"example": "1.1.1.1/32",
+																			"type": "string"
 																		}
 																	]
 																}
@@ -505,7 +513,8 @@
 																			"example": "192.0.2.0/24"
 																		},
 																		{
-																			"example": "1.1.1.1/32"
+																			"example": "1.1.1.1/32",
+																			"type": "string"
 																		}
 																	]
 																}
@@ -524,7 +533,8 @@
 												]
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -706,7 +716,8 @@
 											"example": "192.0.2.0/24"
 										},
 										{
-											"example": "1.1.1.1/32"
+											"example": "1.1.1.1/32",
+											"type": "string"
 										}
 									]
 								}
@@ -727,7 +738,8 @@
 											"example": "192.0.2.0/24"
 										},
 										{
-											"example": "1.1.1.1/32"
+											"example": "1.1.1.1/32",
+											"type": "string"
 										}
 									]
 								}
@@ -743,31 +755,36 @@
 								"required": [
 									"name"
 								],
-								"title": "Update App Name"
+								"title": "Update App Name",
+								"type": "object"
 							},
 							{
 								"required": [
 									"type"
 								],
-								"title": "Update App Type"
+								"title": "Update App Type",
+								"type": "object"
 							},
 							{
 								"required": [
 									"hostnames"
 								],
-								"title": "Update App Hostnames"
+								"title": "Update App Hostnames",
+								"type": "object"
 							},
 							{
 								"required": [
 									"ip_subnets"
 								],
-								"title": "Update App Subnets"
+								"title": "Update App Subnets",
+								"type": "object"
 							},
 							{
 								"required": [
 									"source_subnets"
 								],
-								"title": "Update App Source Subnets"
+								"title": "Update App Source Subnets",
+								"type": "object"
 							}
 						]
 					}
@@ -876,7 +893,8 @@
 																"example": "192.0.2.0/24"
 															},
 															{
-																"example": "1.1.1.1/32"
+																"example": "1.1.1.1/32",
+																"type": "string"
 															}
 														]
 													}
@@ -897,7 +915,8 @@
 																"example": "192.0.2.0/24"
 															},
 															{
-																"example": "1.1.1.1/32"
+																"example": "1.1.1.1/32",
+																"type": "string"
 															}
 														]
 													}
@@ -913,7 +932,8 @@
 											],
 											"title": "Account App"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1077,7 +1097,8 @@
 											"example": "192.0.2.0/24"
 										},
 										{
-											"example": "1.1.1.1/32"
+											"example": "1.1.1.1/32",
+											"type": "string"
 										}
 									]
 								}
@@ -1098,7 +1119,8 @@
 											"example": "192.0.2.0/24"
 										},
 										{
-											"example": "1.1.1.1/32"
+											"example": "1.1.1.1/32",
+											"type": "string"
 										}
 									]
 								}
@@ -1114,19 +1136,22 @@
 								"required": [
 									"hostnames"
 								],
-								"title": "Hostnames"
+								"title": "Hostnames",
+								"type": "object"
 							},
 							{
 								"required": [
 									"ip_subnets"
 								],
-								"title": "Subnets"
+								"title": "Subnets",
+								"type": "object"
 							},
 							{
 								"required": [
 									"source_subnets"
 								],
-								"title": "Source Subnets"
+								"title": "Source Subnets",
+								"type": "object"
 							}
 						],
 						"required": [
@@ -1239,7 +1264,8 @@
 																"example": "192.0.2.0/24"
 															},
 															{
-																"example": "1.1.1.1/32"
+																"example": "1.1.1.1/32",
+																"type": "string"
 															}
 														]
 													}
@@ -1260,7 +1286,8 @@
 																"example": "192.0.2.0/24"
 															},
 															{
-																"example": "1.1.1.1/32"
+																"example": "1.1.1.1/32",
+																"type": "string"
 															}
 														]
 													}
@@ -1276,7 +1303,8 @@
 											],
 											"title": "Account App"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1456,7 +1484,8 @@
 											"example": "192.0.2.0/24"
 										},
 										{
-											"example": "1.1.1.1/32"
+											"example": "1.1.1.1/32",
+											"type": "string"
 										}
 									]
 								}
@@ -1477,7 +1506,8 @@
 											"example": "192.0.2.0/24"
 										},
 										{
-											"example": "1.1.1.1/32"
+											"example": "1.1.1.1/32",
+											"type": "string"
 										}
 									]
 								}
@@ -1493,31 +1523,36 @@
 								"required": [
 									"name"
 								],
-								"title": "Update App Name"
+								"title": "Update App Name",
+								"type": "object"
 							},
 							{
 								"required": [
 									"type"
 								],
-								"title": "Update App Type"
+								"title": "Update App Type",
+								"type": "object"
 							},
 							{
 								"required": [
 									"hostnames"
 								],
-								"title": "Update App Hostnames"
+								"title": "Update App Hostnames",
+								"type": "object"
 							},
 							{
 								"required": [
 									"ip_subnets"
 								],
-								"title": "Update App Subnets"
+								"title": "Update App Subnets",
+								"type": "object"
 							},
 							{
 								"required": [
 									"source_subnets"
 								],
-								"title": "Update App Source Subnets"
+								"title": "Update App Source Subnets",
+								"type": "object"
 							}
 						]
 					}
@@ -1626,7 +1661,8 @@
 																"example": "192.0.2.0/24"
 															},
 															{
-																"example": "1.1.1.1/32"
+																"example": "1.1.1.1/32",
+																"type": "string"
 															}
 														]
 													}
@@ -1647,7 +1683,8 @@
 																"example": "192.0.2.0/24"
 															},
 															{
-																"example": "1.1.1.1/32"
+																"example": "1.1.1.1/32",
+																"type": "string"
 															}
 														]
 													}
@@ -1663,7 +1700,8 @@
 											],
 											"title": "Account App"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}

@@ -1218,6 +1218,14 @@
 																						"description": "Your companies TLD",
 																						"type": "string",
 																						"example": "mycompany.com"
+																					},
+																					"prompt": {
+																						"description": "Configures the Google account chooser prompt.",
+																						"type": "string",
+																						"example": "select_account",
+																						"enum": [
+																							"select_account"
+																						]
 																					}
 																				},
 																				"type": "object"
@@ -2047,6 +2055,11 @@
 																				"description": "The attribute name for email in the SAML response.",
 																				"type": "string",
 																				"example": "Email"
+																			},
+																			"force_authn": {
+																				"description": "Asks the IdP to reauthenticate the user for each SAML authentication request.",
+																				"type": "boolean",
+																				"default": false
 																			},
 																			"header_attributes": {
 																				"description": "Add a list of attribute names that will be returned in the response header from the Access callback.",
@@ -3527,6 +3540,14 @@
 																					"description": "Your companies TLD",
 																					"type": "string",
 																					"example": "mycompany.com"
+																				},
+																				"prompt": {
+																					"description": "Configures the Google account chooser prompt.",
+																					"type": "string",
+																					"example": "select_account",
+																					"enum": [
+																						"select_account"
+																					]
 																				}
 																			},
 																			"type": "object"
@@ -4356,6 +4377,11 @@
 																			"description": "The attribute name for email in the SAML response.",
 																			"type": "string",
 																			"example": "Email"
+																		},
+																		"force_authn": {
+																			"description": "Asks the IdP to reauthenticate the user for each SAML authentication request.",
+																			"type": "boolean",
+																			"default": false
 																		},
 																		"header_attributes": {
 																			"description": "Add a list of attribute names that will be returned in the response header from the Access callback.",
@@ -5610,6 +5636,14 @@
 																"description": "Your companies TLD",
 																"type": "string",
 																"example": "mycompany.com"
+															},
+															"prompt": {
+																"description": "Configures the Google account chooser prompt.",
+																"type": "string",
+																"example": "select_account",
+																"enum": [
+																	"select_account"
+																]
 															}
 														},
 														"type": "object"
@@ -6439,6 +6473,11 @@
 														"description": "The attribute name for email in the SAML response.",
 														"type": "string",
 														"example": "Email"
+													},
+													"force_authn": {
+														"description": "Asks the IdP to reauthenticate the user for each SAML authentication request.",
+														"type": "boolean",
+														"default": false
 													},
 													"header_attributes": {
 														"description": "Add a list of attribute names that will be returned in the response header from the Access callback.",
@@ -7628,6 +7667,14 @@
 																					"description": "Your companies TLD",
 																					"type": "string",
 																					"example": "mycompany.com"
+																				},
+																				"prompt": {
+																					"description": "Configures the Google account chooser prompt.",
+																					"type": "string",
+																					"example": "select_account",
+																					"enum": [
+																						"select_account"
+																					]
 																				}
 																			},
 																			"type": "object"
@@ -8457,6 +8504,11 @@
 																			"description": "The attribute name for email in the SAML response.",
 																			"type": "string",
 																			"example": "Email"
+																		},
+																		"force_authn": {
+																			"description": "Asks the IdP to reauthenticate the user for each SAML authentication request.",
+																			"type": "boolean",
+																			"default": false
 																		},
 																		"header_attributes": {
 																			"description": "Add a list of attribute names that will be returned in the response header from the Access callback.",
@@ -9723,6 +9775,14 @@
 																"description": "Your companies TLD",
 																"type": "string",
 																"example": "mycompany.com"
+															},
+															"prompt": {
+																"description": "Configures the Google account chooser prompt.",
+																"type": "string",
+																"example": "select_account",
+																"enum": [
+																	"select_account"
+																]
 															}
 														},
 														"type": "object"
@@ -10552,6 +10612,11 @@
 														"description": "The attribute name for email in the SAML response.",
 														"type": "string",
 														"example": "Email"
+													},
+													"force_authn": {
+														"description": "Asks the IdP to reauthenticate the user for each SAML authentication request.",
+														"type": "boolean",
+														"default": false
 													},
 													"header_attributes": {
 														"description": "Add a list of attribute names that will be returned in the response header from the Access callback.",
@@ -11741,6 +11806,14 @@
 																					"description": "Your companies TLD",
 																					"type": "string",
 																					"example": "mycompany.com"
+																				},
+																				"prompt": {
+																					"description": "Configures the Google account chooser prompt.",
+																					"type": "string",
+																					"example": "select_account",
+																					"enum": [
+																						"select_account"
+																					]
 																				}
 																			},
 																			"type": "object"
@@ -12570,6 +12643,11 @@
 																			"description": "The attribute name for email in the SAML response.",
 																			"type": "string",
 																			"example": "Email"
+																		},
+																		"force_authn": {
+																			"description": "Asks the IdP to reauthenticate the user for each SAML authentication request.",
+																			"type": "boolean",
+																			"default": false
 																		},
 																		"header_attributes": {
 																			"description": "Add a list of attribute names that will be returned in the response header from the Access callback.",

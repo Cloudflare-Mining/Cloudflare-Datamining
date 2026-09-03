@@ -161,7 +161,8 @@
 													"required": [
 														"id",
 														"site_id"
-													]
+													],
+													"type": "object"
 												},
 												{
 													"oneOf": [
@@ -176,7 +177,8 @@
 															"required": [
 																"account_app_id"
 															],
-															"title": "Account App"
+															"title": "Account App",
+															"type": "object"
 														},
 														{
 															"properties": {
@@ -189,13 +191,15 @@
 															"required": [
 																"managed_app_id"
 															],
-															"title": "Managed App"
+															"title": "Managed App",
+															"type": "object"
 														}
 													]
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -471,7 +475,8 @@
 														"required": [
 															"id",
 															"site_id"
-														]
+														],
+														"type": "object"
 													},
 													{
 														"oneOf": [
@@ -486,7 +491,8 @@
 																"required": [
 																	"account_app_id"
 																],
-																"title": "Account App"
+																"title": "Account App",
+																"type": "object"
 															},
 															{
 																"properties": {
@@ -499,14 +505,16 @@
 																"required": [
 																	"managed_app_id"
 																],
-																"title": "Managed App"
+																"title": "Managed App",
+																"type": "object"
 															}
 														]
 													}
 												]
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -838,7 +846,8 @@
 													"required": [
 														"id",
 														"site_id"
-													]
+													],
+													"type": "object"
 												},
 												{
 													"oneOf": [
@@ -853,7 +862,8 @@
 															"required": [
 																"account_app_id"
 															],
-															"title": "Account App"
+															"title": "Account App",
+															"type": "object"
 														},
 														{
 															"properties": {
@@ -866,13 +876,15 @@
 															"required": [
 																"managed_app_id"
 															],
-															"title": "Managed App"
+															"title": "Managed App",
+															"type": "object"
 														}
 													]
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1042,7 +1054,8 @@
 										"required": [
 											"account_app_id"
 										],
-										"title": "Account App"
+										"title": "Account App",
+										"type": "object"
 									},
 									{
 										"properties": {
@@ -1055,7 +1068,8 @@
 										"required": [
 											"managed_app_id"
 										],
-										"title": "Managed App"
+										"title": "Managed App",
+										"type": "object"
 									}
 								]
 							},
@@ -1065,13 +1079,15 @@
 										"required": [
 											"breakout"
 										],
-										"title": "Breakout"
+										"title": "Breakout",
+										"type": "object"
 									},
 									{
 										"required": [
 											"priority"
 										],
-										"title": "Prioritize"
+										"title": "Prioritize",
+										"type": "object"
 									}
 								]
 							},
@@ -1099,7 +1115,8 @@
 										"maximum": 1,
 										"minimum": 0
 									}
-								}
+								},
+								"type": "object"
 							}
 						]
 					}
@@ -1226,7 +1243,8 @@
 													"required": [
 														"id",
 														"site_id"
-													]
+													],
+													"type": "object"
 												},
 												{
 													"oneOf": [
@@ -1241,7 +1259,8 @@
 															"required": [
 																"account_app_id"
 															],
-															"title": "Account App"
+															"title": "Account App",
+															"type": "object"
 														},
 														{
 															"properties": {
@@ -1254,13 +1273,15 @@
 															"required": [
 																"managed_app_id"
 															],
-															"title": "Managed App"
+															"title": "Managed App",
+															"type": "object"
 														}
 													]
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1590,7 +1611,8 @@
 													"required": [
 														"id",
 														"site_id"
-													]
+													],
+													"type": "object"
 												},
 												{
 													"oneOf": [
@@ -1605,7 +1627,8 @@
 															"required": [
 																"account_app_id"
 															],
-															"title": "Account App"
+															"title": "Account App",
+															"type": "object"
 														},
 														{
 															"properties": {
@@ -1618,13 +1641,15 @@
 															"required": [
 																"managed_app_id"
 															],
-															"title": "Managed App"
+															"title": "Managed App",
+															"type": "object"
 														}
 													]
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}

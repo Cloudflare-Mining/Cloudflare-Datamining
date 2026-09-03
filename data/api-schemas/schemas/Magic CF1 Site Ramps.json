@@ -102,7 +102,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -140,7 +142,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -252,27 +255,32 @@
 												{
 													"required": [
 														"gre"
-													]
+													],
+													"type": "object"
 												},
 												{
 													"required": [
 														"ipsec"
-													]
+													],
+													"type": "object"
 												},
 												{
 													"required": [
 														"gre_interconnect"
-													]
+													],
+													"type": "object"
 												},
 												{
 													"required": [
 														"mpls_interconnect"
-													]
+													],
+													"type": "object"
 												},
 												{
 													"required": [
 														"mconn"
-													]
+													],
+													"type": "object"
 												}
 											],
 											"required": [
@@ -283,7 +291,8 @@
 												"modified_on"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -498,7 +507,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -536,7 +547,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -650,27 +662,32 @@
 													{
 														"required": [
 															"gre"
-														]
+														],
+														"type": "object"
 													},
 													{
 														"required": [
 															"ipsec"
-														]
+														],
+														"type": "object"
 													},
 													{
 														"required": [
 															"gre_interconnect"
-														]
+														],
+														"type": "object"
 													},
 													{
 														"required": [
 															"mpls_interconnect"
-														]
+														],
+														"type": "object"
 													},
 													{
 														"required": [
 															"mconn"
-														]
+														],
+														"type": "object"
 													}
 												],
 												"required": [
@@ -682,7 +699,8 @@
 												]
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -911,7 +929,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -949,7 +969,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1061,27 +1082,32 @@
 												{
 													"required": [
 														"gre"
-													]
+													],
+													"type": "object"
 												},
 												{
 													"required": [
 														"ipsec"
-													]
+													],
+													"type": "object"
 												},
 												{
 													"required": [
 														"gre_interconnect"
-													]
+													],
+													"type": "object"
 												},
 												{
 													"required": [
 														"mpls_interconnect"
-													]
+													],
+													"type": "object"
 												},
 												{
 													"required": [
 														"mconn"
-													]
+													],
+													"type": "object"
 												}
 											],
 											"required": [
@@ -1092,7 +1118,8 @@
 												"modified_on"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1352,7 +1379,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1390,7 +1419,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1504,27 +1534,32 @@
 													{
 														"required": [
 															"gre"
-														]
+														],
+														"type": "object"
 													},
 													{
 														"required": [
 															"ipsec"
-														]
+														],
+														"type": "object"
 													},
 													{
 														"required": [
 															"gre_interconnect"
-														]
+														],
+														"type": "object"
 													},
 													{
 														"required": [
 															"mpls_interconnect"
-														]
+														],
+														"type": "object"
 													},
 													{
 														"required": [
 															"mconn"
-														]
+														],
+														"type": "object"
 													}
 												],
 												"required": [
@@ -1536,7 +1571,8 @@
 												]
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}

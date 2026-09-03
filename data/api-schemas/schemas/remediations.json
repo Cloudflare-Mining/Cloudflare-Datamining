@@ -467,7 +467,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "list",
+		"x-fern-sdk-method-name": "listRemediationJobs",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/remediations/jobs": {
@@ -1134,6 +1134,114 @@
 						}
 					}
 				}
+			},
+			"409": {
+				"description": "Conflict: No supplied finding instances are currently eligible for remediation",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -1149,7 +1257,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-method-name": "createRemediationJobs",
 		"x-forge-hidden": true
 	}
 }

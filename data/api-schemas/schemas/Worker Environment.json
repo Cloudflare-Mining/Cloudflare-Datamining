@@ -1575,7 +1575,35 @@
 										},
 										"messages": {
 											"type": "array",
-											"items": {}
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										},
 										"result": {
 											"type": "object",
@@ -1823,6 +1851,7 @@
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"cache_options": {
 													"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",

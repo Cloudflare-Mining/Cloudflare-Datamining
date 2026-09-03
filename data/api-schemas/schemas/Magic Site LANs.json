@@ -102,7 +102,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -140,7 +142,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -307,9 +310,14 @@
 																	"example": "192.0.2.1"
 																},
 																"dns_server": {
-																	"description": "A valid IPv4 address.",
-																	"type": "string",
-																	"example": "192.0.2.1"
+																	"allOf": [
+																		{
+																			"description": "A valid IPv4 address.",
+																			"type": "string",
+																			"example": "192.0.2.1"
+																		}
+																	],
+																	"deprecated": true
 																},
 																"dns_servers": {
 																	"type": "array",
@@ -356,7 +364,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -576,7 +585,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -614,7 +625,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -783,9 +795,14 @@
 																		"example": "192.0.2.1"
 																	},
 																	"dns_server": {
-																		"description": "A valid IPv4 address.",
-																		"type": "string",
-																		"example": "192.0.2.1"
+																		"allOf": [
+																			{
+																				"description": "A valid IPv4 address.",
+																				"type": "string",
+																				"example": "192.0.2.1"
+																			}
+																		],
+																		"deprecated": true
 																	},
 																	"dns_servers": {
 																		"type": "array",
@@ -833,7 +850,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1062,7 +1080,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1100,7 +1120,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1267,9 +1288,14 @@
 																	"example": "192.0.2.1"
 																},
 																"dns_server": {
-																	"description": "A valid IPv4 address.",
-																	"type": "string",
-																	"example": "192.0.2.1"
+																	"allOf": [
+																		{
+																			"description": "A valid IPv4 address.",
+																			"type": "string",
+																			"example": "192.0.2.1"
+																		}
+																	],
+																	"deprecated": true
 																},
 																"dns_servers": {
 																	"type": "array",
@@ -1316,7 +1342,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1636,9 +1663,14 @@
 												"example": "192.0.2.1"
 											},
 											"dns_server": {
-												"description": "A valid IPv4 address.",
-												"type": "string",
-												"example": "192.0.2.1"
+												"allOf": [
+													{
+														"description": "A valid IPv4 address.",
+														"type": "string",
+														"example": "192.0.2.1"
+													}
+												],
+												"deprecated": true
 											},
 											"dns_servers": {
 												"type": "array",
@@ -1749,7 +1781,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1787,7 +1821,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1954,9 +1989,14 @@
 																	"example": "192.0.2.1"
 																},
 																"dns_server": {
-																	"description": "A valid IPv4 address.",
-																	"type": "string",
-																	"example": "192.0.2.1"
+																	"allOf": [
+																		{
+																			"description": "A valid IPv4 address.",
+																			"type": "string",
+																			"example": "192.0.2.1"
+																		}
+																	],
+																	"deprecated": true
 																},
 																"dns_servers": {
 																	"type": "array",
@@ -2003,7 +2043,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2313,9 +2354,14 @@
 												"example": "192.0.2.1"
 											},
 											"dns_server": {
-												"description": "A valid IPv4 address.",
-												"type": "string",
-												"example": "192.0.2.1"
+												"allOf": [
+													{
+														"description": "A valid IPv4 address.",
+														"type": "string",
+														"example": "192.0.2.1"
+													}
+												],
+												"deprecated": true
 											},
 											"dns_servers": {
 												"type": "array",
@@ -2426,7 +2472,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2464,7 +2512,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2633,9 +2682,14 @@
 																		"example": "192.0.2.1"
 																	},
 																	"dns_server": {
-																		"description": "A valid IPv4 address.",
-																		"type": "string",
-																		"example": "192.0.2.1"
+																		"allOf": [
+																			{
+																				"description": "A valid IPv4 address.",
+																				"type": "string",
+																				"example": "192.0.2.1"
+																			}
+																		],
+																		"deprecated": true
 																	},
 																	"dns_servers": {
 																		"type": "array",
@@ -2683,7 +2737,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2996,9 +3051,14 @@
 												"example": "192.0.2.1"
 											},
 											"dns_server": {
-												"description": "A valid IPv4 address.",
-												"type": "string",
-												"example": "192.0.2.1"
+												"allOf": [
+													{
+														"description": "A valid IPv4 address.",
+														"type": "string",
+														"example": "192.0.2.1"
+													}
+												],
+												"deprecated": true
 											},
 											"dns_servers": {
 												"type": "array",
@@ -3109,7 +3169,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -3147,7 +3209,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -3314,9 +3377,14 @@
 																	"example": "192.0.2.1"
 																},
 																"dns_server": {
-																	"description": "A valid IPv4 address.",
-																	"type": "string",
-																	"example": "192.0.2.1"
+																	"allOf": [
+																		{
+																			"description": "A valid IPv4 address.",
+																			"type": "string",
+																			"example": "192.0.2.1"
+																		}
+																	],
+																	"deprecated": true
 																},
 																"dns_servers": {
 																	"type": "array",
@@ -3363,7 +3431,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
