@@ -3,8 +3,8 @@
 	"type": "object",
 	"properties": {
 		"audio_url": {
-			"description": "The URL of the audio or video file to transcribe, or a data URI.",
-			"type": "string"
+			"type": "string",
+			"description": "The URL of the audio or video file to transcribe, or a data URI."
 		},
 		"audio_start_from": {
 			"description": "Timestamp in milliseconds at which to begin transcription.",
@@ -131,15 +131,15 @@
 				"type": "object",
 				"properties": {
 					"from": {
-						"description": "Words or phrases to replace.",
 						"type": "array",
 						"items": {
 							"type": "string"
-						}
+						},
+						"description": "Words or phrases to replace."
 					},
 					"to": {
-						"description": "Replacement word or phrase.",
-						"type": "string"
+						"type": "string",
+						"description": "Replacement word or phrase."
 					}
 				},
 				"required": [

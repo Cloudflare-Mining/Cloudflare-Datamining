@@ -3,9 +3,9 @@
 	"type": "object",
 	"properties": {
 		"video": {
-			"description": "Signed URL to the generated mp4 (24fps, with audio by default). Expires ~2 hours after ready — download promptly.",
 			"type": "string",
-			"format": "uri"
+			"format": "uri",
+			"description": "Signed URL to the generated mp4 (24fps, with audio by default). Expires ~2 hours after ready — download promptly."
 		},
 		"draft_cache": {
 			"description": "Draft-mode cache bundle URL, only present for draft: true requests.",

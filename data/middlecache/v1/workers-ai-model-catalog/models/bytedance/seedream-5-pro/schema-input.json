@@ -22,10 +22,16 @@
 		},
 		"size": {
 			"type": "string"
+		},
+		"watermark": {
+			"description": "Whether to add an AI-generated watermark to the output image",
+			"default": false,
+			"type": "boolean"
 		}
 	},
 	"required": [
-		"prompt"
+		"prompt",
+		"watermark"
 	],
 	"additionalProperties": false
 }

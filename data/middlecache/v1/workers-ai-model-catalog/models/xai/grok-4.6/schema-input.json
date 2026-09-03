@@ -7,7 +7,7 @@
 			"maxItems": 500,
 			"type": "array",
 			"items": {
-				"anyOf": [
+				"oneOf": [
 					{
 						"type": "object",
 						"properties": {
@@ -119,13 +119,9 @@
 								"const": "assistant"
 							},
 							"content": {
-								"anyOf": [
-									{
-										"type": "string"
-									},
-									{
-										"type": "null"
-									}
+								"type": [
+									"string",
+									"null"
 								]
 							},
 							"tool_calls": {
@@ -236,23 +232,15 @@
 			]
 		},
 		"parallel_tool_calls": {
-			"anyOf": [
-				{
-					"type": "boolean"
-				},
-				{
-					"type": "null"
-				}
+			"type": [
+				"boolean",
+				"null"
 			]
 		},
 		"prompt_cache_key": {
-			"anyOf": [
-				{
-					"type": "string"
-				},
-				{
-					"type": "null"
-				}
+			"type": [
+				"string",
+				"null"
 			]
 		},
 		"reasoning_effort": {
@@ -341,13 +329,9 @@
 			"type": "object",
 			"properties": {
 				"from_date": {
-					"anyOf": [
-						{
-							"type": "string"
-						},
-						{
-							"type": "null"
-						}
+					"type": [
+						"string",
+						"null"
 					]
 				},
 				"max_search_results": {
@@ -378,13 +362,9 @@
 					]
 				},
 				"return_citations": {
-					"anyOf": [
-						{
-							"type": "boolean"
-						},
-						{
-							"type": "null"
-						}
+					"type": [
+						"boolean",
+						"null"
 					]
 				},
 				"sources": {
@@ -400,13 +380,9 @@
 					]
 				},
 				"to_date": {
-					"anyOf": [
-						{
-							"type": "string"
-						},
-						{
-							"type": "null"
-						}
+					"type": [
+						"string",
+						"null"
 					]
 				}
 			},
@@ -432,13 +408,9 @@
 			]
 		},
 		"stream": {
-			"anyOf": [
-				{
-					"type": "boolean"
-				},
-				{
-					"type": "null"
-				}
+			"type": [
+				"boolean",
+				"null"
 			]
 		},
 		"stream_options": {
@@ -562,13 +534,9 @@
 			]
 		},
 		"user": {
-			"anyOf": [
-				{
-					"type": "string"
-				},
-				{
-					"type": "null"
-				}
+			"type": [
+				"string",
+				"null"
 			]
 		},
 		"web_search_options": {
@@ -582,13 +550,9 @@
 					"additionalProperties": {}
 				},
 				"search_context_size": {
-					"anyOf": [
-						{
-							"type": "string"
-						},
-						{
-							"type": "null"
-						}
+					"type": [
+						"string",
+						"null"
 					]
 				},
 				"user_location": {

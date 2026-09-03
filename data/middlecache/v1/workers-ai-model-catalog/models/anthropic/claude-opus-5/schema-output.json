@@ -35,13 +35,9 @@
 			"type": "string"
 		},
 		"stop_reason": {
-			"anyOf": [
-				{
-					"type": "string"
-				},
-				{
-					"type": "null"
-				}
+			"type": [
+				"string",
+				"null"
 			]
 		},
 		"usage": {

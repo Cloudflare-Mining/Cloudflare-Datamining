@@ -2,13 +2,24 @@
 	"flat": true,
 	"modes": null,
 	"input": {
-		"rows": [],
-		"variants": [
+		"rows": [
 			{
-				"title": "Text to Video",
-				"rows": [
+				"id": "0",
+				"name": "Option 1",
+				"type": "object",
+				"isArray": false,
+				"isObject": true,
+				"isOneOf": false,
+				"isOneOfChild": true,
+				"isFirstOneOfChild": true,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": [],
+				"children": [
 					{
-						"id": "mode",
+						"id": "0.mode",
 						"name": "mode",
 						"type": "string",
 						"isArray": false,
@@ -21,12 +32,14 @@
 						"metadata": {
 							"const": "t2v"
 						},
-						"depth": 0,
+						"depth": 1,
 						"isLast": false,
-						"ancestorIsLast": []
+						"ancestorIsLast": [
+							false
+						]
 					},
 					{
-						"id": "prompt",
+						"id": "0.prompt",
 						"name": "prompt",
 						"type": "string",
 						"isArray": false,
@@ -40,12 +53,14 @@
 						"metadata": {
 							"minLength": 1
 						},
-						"depth": 0,
+						"depth": 1,
 						"isLast": false,
-						"ancestorIsLast": []
+						"ancestorIsLast": [
+							false
+						]
 					},
 					{
-						"id": "aspect_ratio",
+						"id": "0.aspect_ratio",
 						"name": "aspect_ratio",
 						"type": "string",
 						"isArray": false,
@@ -66,12 +81,14 @@
 							"3:4",
 							"9:16"
 						],
-						"depth": 0,
+						"depth": 1,
 						"isLast": false,
-						"ancestorIsLast": []
+						"ancestorIsLast": [
+							false
+						]
 					},
 					{
-						"id": "duration",
+						"id": "0.duration",
 						"name": "duration",
 						"type": "one of",
 						"isArray": false,
@@ -81,12 +98,14 @@
 						"isFirstOneOfChild": false,
 						"isLastOneOfChild": false,
 						"required": false,
-						"depth": 0,
+						"depth": 1,
 						"isLast": false,
-						"ancestorIsLast": [],
+						"ancestorIsLast": [
+							false
+						],
 						"children": [
 							{
-								"id": "duration.0",
+								"id": "0.duration.0",
 								"name": "Option 1",
 								"type": "integer",
 								"isArray": false,
@@ -101,14 +120,15 @@
 									"minimum": 5,
 									"maximum": 20
 								},
-								"depth": 1,
+								"depth": 2,
 								"isLast": false,
 								"ancestorIsLast": [
+									false,
 									false
 								]
 							},
 							{
-								"id": "duration.1",
+								"id": "0.duration.1",
 								"name": "Option 2",
 								"type": "string",
 								"isArray": false,
@@ -122,16 +142,17 @@
 								"metadata": {
 									"const": "auto"
 								},
-								"depth": 1,
+								"depth": 2,
 								"isLast": true,
 								"ancestorIsLast": [
+									false,
 									false
 								]
 							}
 						]
 					},
 					{
-						"id": "resolution",
+						"id": "0.resolution",
 						"name": "resolution",
 						"type": "string",
 						"isArray": false,
@@ -146,12 +167,14 @@
 							"hd",
 							"fhd"
 						],
-						"depth": 0,
+						"depth": 1,
 						"isLast": false,
-						"ancestorIsLast": []
+						"ancestorIsLast": [
+							false
+						]
 					},
 					{
-						"id": "generate_audio",
+						"id": "0.generate_audio",
 						"name": "generate_audio",
 						"type": "boolean",
 						"isArray": false,
@@ -162,12 +185,14 @@
 						"isLastOneOfChild": false,
 						"required": false,
 						"description": "Generate synchronized audio alongside the video. Defaults to true.",
-						"depth": 0,
+						"depth": 1,
 						"isLast": false,
-						"ancestorIsLast": []
+						"ancestorIsLast": [
+							false
+						]
 					},
 					{
-						"id": "safety_tolerance",
+						"id": "0.safety_tolerance",
 						"name": "safety_tolerance",
 						"type": "integer",
 						"isArray": false,
@@ -182,12 +207,14 @@
 							"minimum": 0,
 							"maximum": 4
 						},
-						"depth": 0,
+						"depth": 1,
 						"isLast": false,
-						"ancestorIsLast": []
+						"ancestorIsLast": [
+							false
+						]
 					},
 					{
-						"id": "draft",
+						"id": "0.draft",
 						"name": "draft",
 						"type": "boolean",
 						"isArray": false,
@@ -198,17 +225,31 @@
 						"isLastOneOfChild": false,
 						"required": false,
 						"description": "Generate a fast, low-cost preview instead of a final render, at a reduced flat price. Only available at hd resolution.",
-						"depth": 0,
+						"depth": 1,
 						"isLast": true,
-						"ancestorIsLast": []
+						"ancestorIsLast": [
+							false
+						]
 					}
 				]
 			},
 			{
-				"title": "Image to Video",
-				"rows": [
+				"id": "1",
+				"name": "Option 2",
+				"type": "object",
+				"isArray": false,
+				"isObject": true,
+				"isOneOf": false,
+				"isOneOfChild": true,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": [],
+				"children": [
 					{
-						"id": "mode",
+						"id": "1.mode",
 						"name": "mode",
 						"type": "string",
 						"isArray": false,
@@ -221,12 +262,14 @@
 						"metadata": {
 							"const": "i2v"
 						},
-						"depth": 0,
+						"depth": 1,
 						"isLast": false,
-						"ancestorIsLast": []
+						"ancestorIsLast": [
+							false
+						]
 					},
 					{
-						"id": "prompt",
+						"id": "1.prompt",
 						"name": "prompt",
 						"type": "string",
 						"isArray": false,
@@ -240,12 +283,14 @@
 						"metadata": {
 							"minLength": 1
 						},
-						"depth": 0,
+						"depth": 1,
 						"isLast": false,
-						"ancestorIsLast": []
+						"ancestorIsLast": [
+							false
+						]
 					},
 					{
-						"id": "keyframes",
+						"id": "1.keyframes",
 						"name": "keyframes",
 						"type": "one of",
 						"isArray": false,
@@ -255,12 +300,14 @@
 						"isFirstOneOfChild": false,
 						"isLastOneOfChild": false,
 						"required": true,
-						"depth": 0,
+						"depth": 1,
 						"isLast": false,
-						"ancestorIsLast": [],
+						"ancestorIsLast": [
+							false
+						],
 						"children": [
 							{
-								"id": "keyframes.0",
+								"id": "1.keyframes.0",
 								"name": "Option 1",
 								"type": "string",
 								"isArray": false,
@@ -271,14 +318,15 @@
 								"isLastOneOfChild": false,
 								"required": false,
 								"description": "A single image (HTTPS URL or base64) as the opening frame.",
-								"depth": 1,
+								"depth": 2,
 								"isLast": false,
 								"ancestorIsLast": [
+									false,
 									false
 								]
 							},
 							{
-								"id": "keyframes.1",
+								"id": "1.keyframes.1",
 								"name": "Option 2",
 								"type": "array",
 								"isArray": true,
@@ -289,14 +337,19 @@
 								"isLastOneOfChild": false,
 								"required": false,
 								"description": "A single [seconds, image] pair.",
-								"depth": 1,
+								"metadata": {
+									"minItems": 2,
+									"maxItems": 2
+								},
+								"depth": 2,
 								"isLast": false,
 								"ancestorIsLast": [
+									false,
 									false
 								]
 							},
 							{
-								"id": "keyframes.2",
+								"id": "1.keyframes.2",
 								"name": "Option 3",
 								"type": "array",
 								"isArray": true,
@@ -311,14 +364,15 @@
 									"minItems": 1,
 									"maxItems": 10
 								},
-								"depth": 1,
+								"depth": 2,
 								"isLast": false,
 								"ancestorIsLast": [
+									false,
 									false
 								],
 								"children": [
 									{
-										"id": "keyframes.2.items",
+										"id": "1.keyframes.2.items",
 										"name": "items",
 										"type": "string",
 										"isArray": false,
@@ -328,9 +382,10 @@
 										"isFirstOneOfChild": false,
 										"isLastOneOfChild": false,
 										"required": false,
-										"depth": 2,
+										"depth": 3,
 										"isLast": true,
 										"ancestorIsLast": [
+											false,
 											false,
 											false
 										]
@@ -338,7 +393,7 @@
 								]
 							},
 							{
-								"id": "keyframes.3",
+								"id": "1.keyframes.3",
 								"name": "Option 4",
 								"type": "array",
 								"isArray": true,
@@ -353,14 +408,15 @@
 									"minItems": 1,
 									"maxItems": 10
 								},
-								"depth": 1,
+								"depth": 2,
 								"isLast": true,
 								"ancestorIsLast": [
+									false,
 									false
 								],
 								"children": [
 									{
-										"id": "keyframes.3.items",
+										"id": "1.keyframes.3.items",
 										"name": "items",
 										"type": "array",
 										"isArray": true,
@@ -370,9 +426,14 @@
 										"isFirstOneOfChild": false,
 										"isLastOneOfChild": false,
 										"required": false,
-										"depth": 2,
+										"metadata": {
+											"minItems": 2,
+											"maxItems": 2
+										},
+										"depth": 3,
 										"isLast": true,
 										"ancestorIsLast": [
+											false,
 											false,
 											true
 										]
@@ -382,7 +443,7 @@
 						]
 					},
 					{
-						"id": "aspect_ratio",
+						"id": "1.aspect_ratio",
 						"name": "aspect_ratio",
 						"type": "string",
 						"isArray": false,
@@ -403,12 +464,14 @@
 							"3:4",
 							"9:16"
 						],
-						"depth": 0,
+						"depth": 1,
 						"isLast": false,
-						"ancestorIsLast": []
+						"ancestorIsLast": [
+							false
+						]
 					},
 					{
-						"id": "duration",
+						"id": "1.duration",
 						"name": "duration",
 						"type": "one of",
 						"isArray": false,
@@ -418,12 +481,14 @@
 						"isFirstOneOfChild": false,
 						"isLastOneOfChild": false,
 						"required": false,
-						"depth": 0,
+						"depth": 1,
 						"isLast": false,
-						"ancestorIsLast": [],
+						"ancestorIsLast": [
+							false
+						],
 						"children": [
 							{
-								"id": "duration.0",
+								"id": "1.duration.0",
 								"name": "Option 1",
 								"type": "integer",
 								"isArray": false,
@@ -438,14 +503,15 @@
 									"minimum": 5,
 									"maximum": 20
 								},
-								"depth": 1,
+								"depth": 2,
 								"isLast": false,
 								"ancestorIsLast": [
+									false,
 									false
 								]
 							},
 							{
-								"id": "duration.1",
+								"id": "1.duration.1",
 								"name": "Option 2",
 								"type": "string",
 								"isArray": false,
@@ -459,16 +525,17 @@
 								"metadata": {
 									"const": "auto"
 								},
-								"depth": 1,
+								"depth": 2,
 								"isLast": true,
 								"ancestorIsLast": [
+									false,
 									false
 								]
 							}
 						]
 					},
 					{
-						"id": "resolution",
+						"id": "1.resolution",
 						"name": "resolution",
 						"type": "string",
 						"isArray": false,
@@ -483,12 +550,14 @@
 							"hd",
 							"fhd"
 						],
-						"depth": 0,
+						"depth": 1,
 						"isLast": false,
-						"ancestorIsLast": []
+						"ancestorIsLast": [
+							false
+						]
 					},
 					{
-						"id": "generate_audio",
+						"id": "1.generate_audio",
 						"name": "generate_audio",
 						"type": "boolean",
 						"isArray": false,
@@ -499,12 +568,14 @@
 						"isLastOneOfChild": false,
 						"required": false,
 						"description": "Generate synchronized audio alongside the video. Defaults to true.",
-						"depth": 0,
+						"depth": 1,
 						"isLast": false,
-						"ancestorIsLast": []
+						"ancestorIsLast": [
+							false
+						]
 					},
 					{
-						"id": "safety_tolerance",
+						"id": "1.safety_tolerance",
 						"name": "safety_tolerance",
 						"type": "integer",
 						"isArray": false,
@@ -519,12 +590,14 @@
 							"minimum": 0,
 							"maximum": 4
 						},
-						"depth": 0,
+						"depth": 1,
 						"isLast": false,
-						"ancestorIsLast": []
+						"ancestorIsLast": [
+							false
+						]
 					},
 					{
-						"id": "draft",
+						"id": "1.draft",
 						"name": "draft",
 						"type": "boolean",
 						"isArray": false,
@@ -535,17 +608,31 @@
 						"isLastOneOfChild": false,
 						"required": false,
 						"description": "Generate a fast, low-cost preview instead of a final render, at a reduced flat price. Only available at hd resolution.",
-						"depth": 0,
+						"depth": 1,
 						"isLast": true,
-						"ancestorIsLast": []
+						"ancestorIsLast": [
+							false
+						]
 					}
 				]
 			},
 			{
-				"title": "Video Continuation",
-				"rows": [
+				"id": "2",
+				"name": "Option 3",
+				"type": "object",
+				"isArray": false,
+				"isObject": true,
+				"isOneOf": false,
+				"isOneOfChild": true,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": true,
+				"required": false,
+				"depth": 0,
+				"isLast": true,
+				"ancestorIsLast": [],
+				"children": [
 					{
-						"id": "mode",
+						"id": "2.mode",
 						"name": "mode",
 						"type": "string",
 						"isArray": false,
@@ -558,12 +645,14 @@
 						"metadata": {
 							"const": "v2v"
 						},
-						"depth": 0,
+						"depth": 1,
 						"isLast": false,
-						"ancestorIsLast": []
+						"ancestorIsLast": [
+							true
+						]
 					},
 					{
-						"id": "prompt",
+						"id": "2.prompt",
 						"name": "prompt",
 						"type": "string",
 						"isArray": false,
@@ -577,12 +666,14 @@
 						"metadata": {
 							"minLength": 1
 						},
-						"depth": 0,
+						"depth": 1,
 						"isLast": false,
-						"ancestorIsLast": []
+						"ancestorIsLast": [
+							true
+						]
 					},
 					{
-						"id": "start_video",
+						"id": "2.start_video",
 						"name": "start_video",
 						"type": "string",
 						"isArray": false,
@@ -593,12 +684,14 @@
 						"isLastOneOfChild": false,
 						"required": true,
 						"description": "The video to continue: an HTTPS URL or base64 mp4 (<= 50MB, <= 15s). The generated clip carries on from its final frames.",
-						"depth": 0,
+						"depth": 1,
 						"isLast": false,
-						"ancestorIsLast": []
+						"ancestorIsLast": [
+							true
+						]
 					},
 					{
-						"id": "aspect_ratio",
+						"id": "2.aspect_ratio",
 						"name": "aspect_ratio",
 						"type": "string",
 						"isArray": false,
@@ -619,12 +712,14 @@
 							"3:4",
 							"9:16"
 						],
-						"depth": 0,
+						"depth": 1,
 						"isLast": false,
-						"ancestorIsLast": []
+						"ancestorIsLast": [
+							true
+						]
 					},
 					{
-						"id": "duration",
+						"id": "2.duration",
 						"name": "duration",
 						"type": "one of",
 						"isArray": false,
@@ -634,12 +729,14 @@
 						"isFirstOneOfChild": false,
 						"isLastOneOfChild": false,
 						"required": false,
-						"depth": 0,
+						"depth": 1,
 						"isLast": false,
-						"ancestorIsLast": [],
+						"ancestorIsLast": [
+							true
+						],
 						"children": [
 							{
-								"id": "duration.0",
+								"id": "2.duration.0",
 								"name": "Option 1",
 								"type": "integer",
 								"isArray": false,
@@ -654,14 +751,15 @@
 									"minimum": 5,
 									"maximum": 20
 								},
-								"depth": 1,
+								"depth": 2,
 								"isLast": false,
 								"ancestorIsLast": [
+									true,
 									false
 								]
 							},
 							{
-								"id": "duration.1",
+								"id": "2.duration.1",
 								"name": "Option 2",
 								"type": "string",
 								"isArray": false,
@@ -675,16 +773,17 @@
 								"metadata": {
 									"const": "auto"
 								},
-								"depth": 1,
+								"depth": 2,
 								"isLast": true,
 								"ancestorIsLast": [
+									true,
 									false
 								]
 							}
 						]
 					},
 					{
-						"id": "resolution",
+						"id": "2.resolution",
 						"name": "resolution",
 						"type": "string",
 						"isArray": false,
@@ -699,12 +798,14 @@
 							"hd",
 							"fhd"
 						],
-						"depth": 0,
+						"depth": 1,
 						"isLast": false,
-						"ancestorIsLast": []
+						"ancestorIsLast": [
+							true
+						]
 					},
 					{
-						"id": "generate_audio",
+						"id": "2.generate_audio",
 						"name": "generate_audio",
 						"type": "boolean",
 						"isArray": false,
@@ -715,12 +816,14 @@
 						"isLastOneOfChild": false,
 						"required": false,
 						"description": "Generate synchronized audio alongside the video. Defaults to true.",
-						"depth": 0,
+						"depth": 1,
 						"isLast": false,
-						"ancestorIsLast": []
+						"ancestorIsLast": [
+							true
+						]
 					},
 					{
-						"id": "safety_tolerance",
+						"id": "2.safety_tolerance",
 						"name": "safety_tolerance",
 						"type": "integer",
 						"isArray": false,
@@ -735,12 +838,14 @@
 							"minimum": 0,
 							"maximum": 4
 						},
-						"depth": 0,
+						"depth": 1,
 						"isLast": false,
-						"ancestorIsLast": []
+						"ancestorIsLast": [
+							true
+						]
 					},
 					{
-						"id": "draft",
+						"id": "2.draft",
 						"name": "draft",
 						"type": "boolean",
 						"isArray": false,
@@ -751,13 +856,16 @@
 						"isLastOneOfChild": false,
 						"required": false,
 						"description": "Generate a fast, low-cost preview instead of a final render, at a reduced flat price. Only available at hd resolution.",
-						"depth": 0,
+						"depth": 1,
 						"isLast": true,
-						"ancestorIsLast": []
+						"ancestorIsLast": [
+							true
+						]
 					}
 				]
 			}
 		],
+		"variants": null,
 		"isFlat": false
 	},
 	"output": {

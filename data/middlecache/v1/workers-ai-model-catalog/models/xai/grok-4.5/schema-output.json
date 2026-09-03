@@ -24,13 +24,9 @@
 						"type": "number"
 					},
 					"finish_reason": {
-						"anyOf": [
-							{
-								"type": "string"
-							},
-							{
-								"type": "null"
-							}
+						"type": [
+							"string",
+							"null"
 						]
 					},
 					"message": {
@@ -40,33 +36,21 @@
 								"type": "string"
 							},
 							"content": {
-								"anyOf": [
-									{
-										"type": "string"
-									},
-									{
-										"type": "null"
-									}
+								"type": [
+									"string",
+									"null"
 								]
 							},
 							"reasoning_content": {
-								"anyOf": [
-									{
-										"type": "string"
-									},
-									{
-										"type": "null"
-									}
+								"type": [
+									"string",
+									"null"
 								]
 							},
 							"refusal": {
-								"anyOf": [
-									{
-										"type": "string"
-									},
-									{
-										"type": "null"
-									}
+								"type": [
+									"string",
+									"null"
 								]
 							},
 							"tool_calls": {
@@ -185,13 +169,9 @@
 			]
 		},
 		"system_fingerprint": {
-			"anyOf": [
-				{
-					"type": "string"
-				},
-				{
-					"type": "null"
-				}
+			"type": [
+				"string",
+				"null"
 			]
 		},
 		"usage": {

@@ -446,7 +446,7 @@
 								"isOneOfChild": false,
 								"isFirstOneOfChild": false,
 								"isLastOneOfChild": false,
-								"required": true,
+								"required": false,
 								"depth": 1,
 								"isLast": true,
 								"ancestorIsLast": [
@@ -1126,7 +1126,7 @@
 									{
 										"id": "choices.message.content",
 										"name": "content",
-										"type": "string | null",
+										"type": "string",
 										"isArray": false,
 										"isObject": false,
 										"isOneOf": false,
@@ -1162,9 +1162,9 @@
 									{
 										"id": "choices.message.audio",
 										"name": "audio",
-										"type": "object",
+										"type": "object | null",
 										"isArray": false,
-										"isObject": true,
+										"isObject": false,
 										"isOneOf": false,
 										"isOneOfChild": false,
 										"isFirstOneOfChild": false,
@@ -1175,84 +1175,6 @@
 										"ancestorIsLast": [
 											false,
 											false
-										],
-										"children": [
-											{
-												"id": "choices.message.audio.id",
-												"name": "id",
-												"type": "string",
-												"isArray": false,
-												"isObject": false,
-												"isOneOf": false,
-												"isOneOfChild": false,
-												"isFirstOneOfChild": false,
-												"isLastOneOfChild": false,
-												"required": false,
-												"depth": 3,
-												"isLast": false,
-												"ancestorIsLast": [
-													false,
-													false,
-													true
-												]
-											},
-											{
-												"id": "choices.message.audio.data",
-												"name": "data",
-												"type": "string",
-												"isArray": false,
-												"isObject": false,
-												"isOneOf": false,
-												"isOneOfChild": false,
-												"isFirstOneOfChild": false,
-												"isLastOneOfChild": false,
-												"required": false,
-												"depth": 3,
-												"isLast": false,
-												"ancestorIsLast": [
-													false,
-													false,
-													true
-												]
-											},
-											{
-												"id": "choices.message.audio.expires_at",
-												"name": "expires_at",
-												"type": "number",
-												"isArray": false,
-												"isObject": false,
-												"isOneOf": false,
-												"isOneOfChild": false,
-												"isFirstOneOfChild": false,
-												"isLastOneOfChild": false,
-												"required": false,
-												"depth": 3,
-												"isLast": false,
-												"ancestorIsLast": [
-													false,
-													false,
-													true
-												]
-											},
-											{
-												"id": "choices.message.audio.transcript",
-												"name": "transcript",
-												"type": "string",
-												"isArray": false,
-												"isObject": false,
-												"isOneOf": false,
-												"isOneOfChild": false,
-												"isFirstOneOfChild": false,
-												"isLastOneOfChild": false,
-												"required": false,
-												"depth": 3,
-												"isLast": true,
-												"ancestorIsLast": [
-													false,
-													false,
-													true
-												]
-											}
 										]
 									}
 								]
@@ -1260,7 +1182,7 @@
 							{
 								"id": "choices.finish_reason",
 								"name": "finish_reason",
-								"type": "string | null",
+								"type": "string",
 								"isArray": false,
 								"isObject": false,
 								"isOneOf": false,

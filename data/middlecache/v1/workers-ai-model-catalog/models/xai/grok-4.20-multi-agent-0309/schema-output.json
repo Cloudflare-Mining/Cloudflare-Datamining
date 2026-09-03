@@ -13,13 +13,9 @@
 			"type": "number"
 		},
 		"completed_at": {
-			"anyOf": [
-				{
-					"type": "number"
-				},
-				{
-					"type": "null"
-				}
+			"type": [
+				"number",
+				"null"
 			]
 		},
 		"model": {
@@ -42,13 +38,9 @@
 			"type": "boolean"
 		},
 		"previous_response_id": {
-			"anyOf": [
-				{
-					"type": "string"
-				},
-				{
-					"type": "null"
-				}
+			"type": [
+				"string",
+				"null"
 			]
 		},
 		"reasoning": {
@@ -66,33 +58,21 @@
 			"items": {}
 		},
 		"top_p": {
-			"anyOf": [
-				{
-					"type": "number"
-				},
-				{
-					"type": "null"
-				}
+			"type": [
+				"number",
+				"null"
 			]
 		},
 		"temperature": {
-			"anyOf": [
-				{
-					"type": "number"
-				},
-				{
-					"type": "null"
-				}
+			"type": [
+				"number",
+				"null"
 			]
 		},
 		"instructions": {
-			"anyOf": [
-				{
-					"type": "string"
-				},
-				{
-					"type": "null"
-				}
+			"type": [
+				"string",
+				"null"
 			]
 		},
 		"incomplete_details": {
@@ -108,13 +88,9 @@
 			"type": "boolean"
 		},
 		"user": {
-			"anyOf": [
-				{
-					"type": "string"
-				},
-				{
-					"type": "null"
-				}
+			"type": [
+				"string",
+				"null"
 			]
 		},
 		"error": {
@@ -162,13 +138,9 @@
 					"additionalProperties": {}
 				},
 				"cost_in_usd_ticks": {
-					"anyOf": [
-						{
-							"type": "number"
-						},
-						{
-							"type": "null"
-						}
+					"type": [
+						"number",
+						"null"
 					]
 				},
 				"num_sources_used": {

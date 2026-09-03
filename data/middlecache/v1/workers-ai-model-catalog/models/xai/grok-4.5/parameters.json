@@ -445,7 +445,7 @@
 							{
 								"id": "messages.2.content",
 								"name": "content",
-								"type": "string | null",
+								"type": "string",
 								"isArray": false,
 								"isObject": false,
 								"isOneOf": false,
@@ -731,7 +731,7 @@
 			{
 				"id": "parallel_tool_calls",
 				"name": "parallel_tool_calls",
-				"type": "boolean | null",
+				"type": "boolean",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -746,7 +746,7 @@
 			{
 				"id": "prompt_cache_key",
 				"name": "prompt_cache_key",
-				"type": "string | null",
+				"type": "string",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -1027,7 +1027,7 @@
 					{
 						"id": "search_parameters.from_date",
 						"name": "from_date",
-						"type": "string | null",
+						"type": "string",
 						"isArray": false,
 						"isObject": false,
 						"isOneOf": false,
@@ -1078,7 +1078,7 @@
 					{
 						"id": "search_parameters.return_citations",
 						"name": "return_citations",
-						"type": "boolean | null",
+						"type": "boolean",
 						"isArray": false,
 						"isObject": false,
 						"isOneOf": false,
@@ -1112,7 +1112,7 @@
 					{
 						"id": "search_parameters.to_date",
 						"name": "to_date",
-						"type": "string | null",
+						"type": "string",
 						"isArray": false,
 						"isObject": false,
 						"isOneOf": false,
@@ -1165,7 +1165,7 @@
 			{
 				"id": "stream",
 				"name": "stream",
-				"type": "boolean | null",
+				"type": "boolean",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -1372,7 +1372,7 @@
 			{
 				"id": "user",
 				"name": "user",
-				"type": "string | null",
+				"type": "string",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -1439,7 +1439,7 @@
 					{
 						"id": "web_search_options.search_context_size",
 						"name": "search_context_size",
-						"type": "string | null",
+						"type": "string",
 						"isArray": false,
 						"isObject": false,
 						"isOneOf": false,
@@ -1596,7 +1596,7 @@
 					{
 						"id": "choices.finish_reason",
 						"name": "finish_reason",
-						"type": "string | null",
+						"type": "string",
 						"isArray": false,
 						"isObject": false,
 						"isOneOf": false,
@@ -1648,7 +1648,7 @@
 							{
 								"id": "choices.message.content",
 								"name": "content",
-								"type": "string | null",
+								"type": "string",
 								"isArray": false,
 								"isObject": false,
 								"isOneOf": false,
@@ -1666,7 +1666,7 @@
 							{
 								"id": "choices.message.reasoning_content",
 								"name": "reasoning_content",
-								"type": "string | null",
+								"type": "string",
 								"isArray": false,
 								"isObject": false,
 								"isOneOf": false,
@@ -1684,7 +1684,7 @@
 							{
 								"id": "choices.message.refusal",
 								"name": "refusal",
-								"type": "string | null",
+								"type": "string",
 								"isArray": false,
 								"isObject": false,
 								"isOneOf": false,
@@ -1790,7 +1790,7 @@
 			{
 				"id": "system_fingerprint",
 				"name": "system_fingerprint",
-				"type": "string | null",
+				"type": "string",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,

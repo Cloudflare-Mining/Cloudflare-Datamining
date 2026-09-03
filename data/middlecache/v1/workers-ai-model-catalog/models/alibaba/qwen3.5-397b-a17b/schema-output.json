@@ -31,13 +31,9 @@
 										"type": "string"
 									},
 									"content": {
-										"anyOf": [
-											{
-												"type": "string"
-											},
-											{
-												"type": "null"
-											}
+										"type": [
+											"string",
+											"null"
 										]
 									},
 									"tool_calls": {
@@ -52,22 +48,29 @@
 										]
 									},
 									"audio": {
-										"type": "object",
-										"properties": {
-											"id": {
-												"type": "string"
+										"anyOf": [
+											{
+												"type": "object",
+												"properties": {
+													"id": {
+														"type": "string"
+													},
+													"data": {
+														"type": "string"
+													},
+													"expires_at": {
+														"type": "number"
+													},
+													"transcript": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": {}
 											},
-											"data": {
-												"type": "string"
-											},
-											"expires_at": {
-												"type": "number"
-											},
-											"transcript": {
-												"type": "string"
+											{
+												"type": "null"
 											}
-										},
-										"additionalProperties": {}
+										]
 									}
 								},
 								"required": [
@@ -76,13 +79,9 @@
 								"additionalProperties": {}
 							},
 							"finish_reason": {
-								"anyOf": [
-									{
-										"type": "string"
-									},
-									{
-										"type": "null"
-									}
+								"type": [
+									"string",
+									"null"
 								]
 							}
 						},

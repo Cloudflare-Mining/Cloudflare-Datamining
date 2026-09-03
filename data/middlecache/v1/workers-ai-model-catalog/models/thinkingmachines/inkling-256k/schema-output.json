@@ -35,13 +35,9 @@
 			"type": "string"
 		},
 		"stop_reason": {
-			"anyOf": [
-				{
-					"type": "string"
-				},
-				{
-					"type": "null"
-				}
+			"type": [
+				"string",
+				"null"
 			]
 		},
 		"usage": {
@@ -51,6 +47,12 @@
 					"type": "number"
 				},
 				"output_tokens": {
+					"type": "number"
+				},
+				"cache_creation_input_tokens": {
+					"type": "number"
+				},
+				"cache_read_input_tokens": {
 					"type": "number"
 				}
 			},

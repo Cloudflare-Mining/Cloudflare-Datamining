@@ -80,7 +80,7 @@
 			{
 				"id": "instructions",
 				"name": "instructions",
-				"type": "string | null",
+				"type": "string",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -125,7 +125,7 @@
 			{
 				"id": "parallel_tool_calls",
 				"name": "parallel_tool_calls",
-				"type": "boolean | null",
+				"type": "boolean",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -140,7 +140,7 @@
 			{
 				"id": "previous_response_id",
 				"name": "previous_response_id",
-				"type": "string | null",
+				"type": "string",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -155,7 +155,7 @@
 			{
 				"id": "prompt_cache_key",
 				"name": "prompt_cache_key",
-				"type": "string | null",
+				"type": "string",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -202,7 +202,7 @@
 					{
 						"id": "reasoning.generate_summary",
 						"name": "generate_summary",
-						"type": "string | null",
+						"type": "string",
 						"isArray": false,
 						"isObject": false,
 						"isOneOf": false,
@@ -219,7 +219,7 @@
 					{
 						"id": "reasoning.summary",
 						"name": "summary",
-						"type": "string | null",
+						"type": "string",
 						"isArray": false,
 						"isObject": false,
 						"isOneOf": false,
@@ -253,7 +253,7 @@
 					{
 						"id": "search_parameters.from_date",
 						"name": "from_date",
-						"type": "string | null",
+						"type": "string",
 						"isArray": false,
 						"isObject": false,
 						"isOneOf": false,
@@ -304,7 +304,7 @@
 					{
 						"id": "search_parameters.return_citations",
 						"name": "return_citations",
-						"type": "boolean | null",
+						"type": "boolean",
 						"isArray": false,
 						"isObject": false,
 						"isOneOf": false,
@@ -338,7 +338,7 @@
 					{
 						"id": "search_parameters.to_date",
 						"name": "to_date",
-						"type": "string | null",
+						"type": "string",
 						"isArray": false,
 						"isObject": false,
 						"isOneOf": false,
@@ -357,7 +357,7 @@
 			{
 				"id": "store",
 				"name": "store",
-				"type": "boolean | null",
+				"type": "boolean",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -372,7 +372,7 @@
 			{
 				"id": "stream",
 				"name": "stream",
-				"type": "boolean | null",
+				"type": "boolean",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -579,7 +579,7 @@
 			{
 				"id": "logprobs",
 				"name": "logprobs",
-				"type": "boolean | null",
+				"type": "boolean",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -609,7 +609,7 @@
 			{
 				"id": "user",
 				"name": "user",
-				"type": "string | null",
+				"type": "string",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -708,7 +708,7 @@
 			{
 				"id": "completed_at",
 				"name": "completed_at",
-				"type": "number | null",
+				"type": "number",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -808,7 +808,7 @@
 			{
 				"id": "previous_response_id",
 				"name": "previous_response_id",
-				"type": "string | null",
+				"type": "string",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -902,7 +902,7 @@
 			{
 				"id": "top_p",
 				"name": "top_p",
-				"type": "number | null",
+				"type": "number",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -917,7 +917,7 @@
 			{
 				"id": "temperature",
 				"name": "temperature",
-				"type": "number | null",
+				"type": "number",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -932,7 +932,7 @@
 			{
 				"id": "instructions",
 				"name": "instructions",
-				"type": "string | null",
+				"type": "string",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -992,7 +992,7 @@
 			{
 				"id": "user",
 				"name": "user",
-				"type": "string | null",
+				"type": "string",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -1162,7 +1162,7 @@
 					{
 						"id": "usage.cost_in_usd_ticks",
 						"name": "cost_in_usd_ticks",
-						"type": "number | null",
+						"type": "number",
 						"isArray": false,
 						"isObject": false,
 						"isOneOf": false,

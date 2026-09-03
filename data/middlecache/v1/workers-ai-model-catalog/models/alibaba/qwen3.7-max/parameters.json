@@ -56,7 +56,7 @@
 								"isOneOfChild": false,
 								"isFirstOneOfChild": false,
 								"isLastOneOfChild": false,
-								"required": true,
+								"required": false,
 								"depth": 1,
 								"isLast": true,
 								"ancestorIsLast": [
@@ -899,7 +899,7 @@
 									{
 										"id": "choices.message.content",
 										"name": "content",
-										"type": "string | null",
+										"type": "string",
 										"isArray": false,
 										"isObject": false,
 										"isOneOf": false,
@@ -955,7 +955,7 @@
 							{
 								"id": "choices.finish_reason",
 								"name": "finish_reason",
-								"type": "string | null",
+								"type": "string",
 								"isArray": false,
 								"isObject": false,
 								"isOneOf": false,

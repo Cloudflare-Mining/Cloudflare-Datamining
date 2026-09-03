@@ -3,29 +3,21 @@
 	"type": "object",
 	"properties": {
 		"prompt": {
-			"description": "Text prompt for image generation or editing.",
-			"type": "string"
+			"type": "string",
+			"description": "Text prompt for image generation or editing."
 		},
 		"input_image": {
 			"description": "Optional base64 encoded image or URL to edit.",
-			"anyOf": [
-				{
-					"type": "string"
-				},
-				{
-					"type": "null"
-				}
+			"type": [
+				"string",
+				"null"
 			]
 		},
 		"aspect_ratio": {
 			"description": "Output aspect ratio, from 3:7 to 7:3. Defaults to 1:1.",
-			"anyOf": [
-				{
-					"type": "string"
-				},
-				{
-					"type": "null"
-				}
+			"type": [
+				"string",
+				"null"
 			]
 		},
 		"seed": {
