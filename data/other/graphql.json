@@ -6878,6 +6878,36 @@
 		"bytesOut": "Confidence interval for the corresponding point estimate",
 		"records": "Confidence interval for the corresponding point estimate"
 	},
+	"AccountLogpushUsageAdaptiveGroups": {
+		"__description": "Account-wide billable usage for successfully delivered customer-owned Logpush jobs",
+		"confidence": "ALPHA - DO NOT USE",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of billable Logpush bytes"
+	},
+	"AccountLogpushUsageAdaptiveGroupsConfidence": {
+		"__description": "",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of billable Logpush bytes, with confidence intervals"
+	},
+	"AccountLogpushUsageAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Delivery date",
+		"datetime": "Delivery time"
+	},
+	"AccountLogpushUsageAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountLogpushUsageAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountLogpushUsageAdaptiveGroupsSum": {
+		"__description": "",
+		"billableBytes": "Uncompressed bytes successfully delivered by customer-owned Logpush jobs"
+	},
+	"AccountLogpushUsageAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"billableBytes": "Confidence interval for the corresponding point estimate"
+	},
 	"AccountMagicEndpointHealthCheckAdaptiveGroups": {
 		"__description": "Magic Endpoint Healthcheck events with adaptive sampling.",
 		"avg": "The average value for a metric per dimension",
@@ -11022,6 +11052,7 @@
 		"logExplorerIngestionAdaptiveGroups": "",
 		"logpushHealthAdaptiveGroups": "",
 		"logpushTransformersAdaptiveGroups": "",
+		"logpushUsageAdaptiveGroups": "",
 		"magicEndpointHealthCheckAdaptiveGroups": "",
 		"magicFirewallNetworkAnalyticsAdaptiveGroups": "",
 		"magicFirewallRateLimitNetworkAnalyticsAdaptiveGroups": "",
@@ -16799,6 +16830,7 @@
 		"logExplorerIngestionAdaptiveGroups": "Ingestion metrics for Log Explorer",
 		"logpushHealthAdaptiveGroups": "Beta. Logpush job health metrics",
 		"logpushTransformersAdaptiveGroups": "Beta. Logpush transformer health metrics",
+		"logpushUsageAdaptiveGroups": "Account-wide billable usage for successfully delivered customer-owned Logpush jobs",
 		"magicEndpointHealthCheckAdaptiveGroups": "Magic Endpoint Healthcheck events with adaptive sampling.",
 		"magicFirewallNetworkAnalyticsAdaptiveGroups": "Network analytics data for Magic Firewall",
 		"magicFirewallRateLimitNetworkAnalyticsAdaptiveGroups": "Network analytics data for Magic Firewall Ratelimiting",
@@ -16927,7 +16959,7 @@
 		"__description": "Scalar type types.Float32"
 	},
 	"float64": {
-		"__description": "Scalar type float64"
+		"__description": "Scalar type types.Float64"
 	},
 	"int16": {
 		"__description": "Scalar type int16"
