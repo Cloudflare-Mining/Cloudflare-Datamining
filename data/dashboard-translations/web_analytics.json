@@ -307,5 +307,7 @@
 	"web_analytics.overview.banner.cta": "Go to Observatory",
 	"web_analytics.overview.banner.dismiss": "Not interested",
 	"web_analytics.overview.too_many_sites_error.title": "Queries for more than %{maxSites} sites are not supported",
-	"web_analytics.overview.too_many_sites_error.description": "Web Analytics cannot display data for more than %{maxSites} sites at once. Use the filter bar to select specific sites to view their analytics."
+	"web_analytics.overview.too_many_sites_error.description": "Web Analytics cannot display data for more than %{maxSites} sites at once. Use the filter bar to select specific sites to view their analytics.",
+	"web_analytics.overview.soft_navigations.title": "Soft Navigations Update",
+	"web_analytics.overview.soft_navigations.description": "We're currently rolling out accuracy improvements to client-side soft navigations. This change may alter the volume of reported pageviews, visits and aggregate Core Web Vital values in the dashboard and GraphQL API. For more information, see <0>the changelog</0>."
 }
