@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+September 3, 2026 [<h2>Introducing context-aware vulnerability discovery and remediation with Cloudflare Managed Defense and OpenAI Daybreak models</h2>](https://blog.cloudflare.com/vulnerability-discovery-remediation/)
+
+Use production traffic and security signals to prioritize findings, prepare edge mitigations when safe, and propose code patches. By combining WAF data with OpenAI Daybreak models, Vulnerability Discovery and Remediation helps teams identify and patch the most critical threats first.
+
+![Ken Sanderson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M1JE7VX5ZR53ECE5VV7K58MY.01M1JE7WM6ZH4TY3VPSRFW4HMZ.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+![Jacob Crisp](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468SZ92CTQZG9K5AR69G1E.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Dan Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NPTFNWGMZXQMX2WDPGJS.webp&w=64&h=64&f=webp&fit=cover&position=center)![Blake Darché](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VFGSFTVH9S7TKX7T5BAC.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Ken Sanderson](https://blog.cloudflare.com/author/ken-sanderson/),  [Jacob Crisp](https://blog.cloudflare.com/author/jacob-crisp/),  [Dan Jones](https://blog.cloudflare.com/author/dan-jones/), and  [Blake Darché](https://blog.cloudflare.com/author/blake/)
+
 September 1, 2026 [<h2>How we could save petabytes of cache storage with Zstandard and Pingora</h2>](https://blog.cloudflare.com/cache-transcoding/)
 
 Could we get more cache space with the same hardware? We prototyped compression inside Cloudflare's cache to find out.
@@ -153,14 +163,6 @@ Cloudflare Radar Researcher is a new AI-powered tool that lets you explore globa
 ![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=64&h=64&f=webp&fit=cover&position=center)![André Jesus](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SMWWWW1RG87RNZQH78V5.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/) and  [André Jesus](https://blog.cloudflare.com/author/andre-jesus/)
-
-August 7, 2026 [<h2>Announcing Cloudflare Ambassadors, Community Engineers, and another $1M in open-source funding</h2>](https://blog.cloudflare.com/community-program-refresh/)
-
-We are launching updated community programs, including Cloudflare Ambassadors and Community Engineers, backed by $1M in open-source funding. Learn how we are supporting maintainers and scaling our developer community.
-
-![Kristian Freeman](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462MJYGBGN7HVTSXBB8KW4.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Phil Hawksworth](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZCBH0CA3FX93V6XPK9HEK7W.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Marissa Phul](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZE22MPC0Q34D7CRRGJ2MA5X.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Kristian Freeman](https://blog.cloudflare.com/author/kristian/),  [Phil Hawksworth](https://blog.cloudflare.com/author/phil-hawksworth/), and  [Marissa Phul](https://blog.cloudflare.com/author/marissa-phul/)
 
 Load more
 

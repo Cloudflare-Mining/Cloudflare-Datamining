@@ -15,6 +15,8 @@
 			"examples": [
 				"https://www.cloudflare.com/index.md",
 				"https://www.cloudflare.com/plans.md",
+				"https://www.cloudflare.com/plans/network-cdn.md",
+				"https://www.cloudflare.com/plans/sase-zero-trust.md",
 				"https://www.cloudflare.com/products/workers.md",
 				"https://www.cloudflare.com/solutions/ai.md"
 			]
@@ -97,8 +99,22 @@
 		},
 		{
 			"name": "GetPricing",
-			"description": "Returns pricing information in markdown format",
+			"description": "Returns the pricing navigation hub and Compute & Storage usage pricing in markdown format",
 			"endpoint": "https://www.cloudflare.com/plans.md",
+			"method": "GET",
+			"contentType": "text/markdown"
+		},
+		{
+			"name": "GetNetworkCdnPricing",
+			"description": "Returns Network & CDN domain plan pricing, feature comparisons, and paid add-ons",
+			"endpoint": "https://www.cloudflare.com/plans/network-cdn.md",
+			"method": "GET",
+			"contentType": "text/markdown"
+		},
+		{
+			"name": "GetSasePricing",
+			"description": "Returns SASE and Zero Trust seat-based plan pricing and feature comparisons",
+			"endpoint": "https://www.cloudflare.com/plans/sase-zero-trust.md",
 			"method": "GET",
 			"contentType": "text/markdown"
 		}
