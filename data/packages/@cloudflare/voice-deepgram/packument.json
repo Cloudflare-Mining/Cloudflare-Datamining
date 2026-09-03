@@ -55,23 +55,23 @@
 				"@cloudflare/voice": ">=0.3.3 <1.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-I6T1/5W1SySUSapG+pP7b5d1pxwQaPSmhzTj73+xbIiTkshrJ5vtOAVH9JfLF/6w0fj7Fg+m6r9LUgOhtq9ukg==",
 				"shasum": "4a9c1731af4feba10e845618b9e62aad1c980c64",
 				"tarball": "https://registry.npmjs.org/@cloudflare/voice-deepgram/-/voice-deepgram-0.1.0.tgz",
 				"fileCount": 6,
-				"unpackedSize": 28915,
+				"integrity": "sha512-I6T1/5W1SySUSapG+pP7b5d1pxwQaPSmhzTj73+xbIiTkshrJ5vtOAVH9JfLF/6w0fj7Fg+m6r9LUgOhtq9ukg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCXiUMK0EkL3VNwC9lu6/d2ARlx/Mx1nlxuPyJDlDy9UgIhAKCcfYS7VxUy7czyBEFy9S2zZCjRs8keGWrsAtQ7GeJw",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvoice-deepgram@0.1.0",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
-				"signatures": [
-					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCXiUMK0EkL3VNwC9lu6/d2ARlx/Mx1nlxuPyJDlDy9UgIhAKCcfYS7VxUy7czyBEFy9S2zZCjRs8keGWrsAtQ7GeJw"
-					}
-				]
+				"unpackedSize": 28915
 			}
 		}
 	}

@@ -406,39 +406,39 @@
 				"lru-cache": "^11.5.2"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20260702.1",
-				"@openfeature/core": "^1.12.0",
-				"@openfeature/server-sdk": "^1.23.0",
-				"@openfeature/web-sdk": "^1.10.0",
-				"@types/node": "^24.13.3",
-				"@vitest/coverage-v8": "^4.1.10",
-				"tsdown": "^0.22.14",
 				"tsx": "^4.23.8",
+				"tsdown": "^0.22.14",
+				"vitest": "^4.1.10",
 				"typescript": "^5.9.3",
-				"vitest": "^4.1.10"
+				"@types/node": "^24.13.3",
+				"@openfeature/core": "^1.12.0",
+				"@vitest/coverage-v8": "^4.1.10",
+				"@openfeature/web-sdk": "^1.10.0",
+				"@openfeature/server-sdk": "^1.23.0",
+				"@cloudflare/workers-types": "^4.20260702.1"
 			},
 			"peerDependencies": {
-				"@openfeature/server-sdk": "^1.20.2",
-				"@openfeature/web-sdk": "^1.7.3"
+				"@openfeature/web-sdk": "^1.7.3",
+				"@openfeature/server-sdk": "^1.20.2"
 			},
 			"dist": {
-				"integrity": "sha512-z3gHf73SOuI2gy6fQ6QLaMDE7zMKMjCcfOjQYhZFUPCbDndUJMr/OON6TQrsETfNOrppTHEjE9f7d9FRjI/b/w==",
 				"shasum": "b0c903d66f070c7b4e0b2d4eeff9e00bbee4b82d",
 				"tarball": "https://registry.npmjs.org/@cloudflare/flagship/-/flagship-0.5.0.tgz",
 				"fileCount": 19,
-				"unpackedSize": 104387,
+				"integrity": "sha512-z3gHf73SOuI2gy6fQ6QLaMDE7zMKMjCcfOjQYhZFUPCbDndUJMr/OON6TQrsETfNOrppTHEjE9f7d9FRjI/b/w==",
+				"signatures": [
+					{
+						"sig": "MEQCIDYyb42ulDSiLuQ648Wj05MoyAgzz9bEGdVHA2QhD9y1AiB2q31YqnjBJ9sQHWyyfZoRXnGq/AksTWxzuvLWRXztbw==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fflagship@0.5.0",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
-				"signatures": [
-					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIDYyb42ulDSiLuQ648Wj05MoyAgzz9bEGdVHA2QhD9y1AiB2q31YqnjBJ9sQHWyyfZoRXnGq/AksTWxzuvLWRXztbw=="
-					}
-				]
+				"unpackedSize": 104387
 			}
 		}
 	}

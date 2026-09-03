@@ -25,23 +25,23 @@
 			"name": "@cloudflare/tlog-tiles-wasm",
 			"version": "0.2.0",
 			"dist": {
-				"integrity": "sha512-hZQG1E25LLFRIkz0RG/oIbByy+jvk2004iXVHm//HGgZ4tDfUcb7Rn7T3+mJRoyh7tXEdqtZMpe9k3ScQzONQQ==",
 				"shasum": "433ce6fee3b59e49e12a2836b9443365c64c250f",
 				"tarball": "https://registry.npmjs.org/@cloudflare/tlog-tiles-wasm/-/tlog-tiles-wasm-0.2.0.tgz",
 				"fileCount": 5,
-				"unpackedSize": 93170,
+				"integrity": "sha512-hZQG1E25LLFRIkz0RG/oIbByy+jvk2004iXVHm//HGgZ4tDfUcb7Rn7T3+mJRoyh7tXEdqtZMpe9k3ScQzONQQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCZVfqjUNnMDUuBwHoIHMJYv0jFHQXZCgPJcNb2TkCydgIhAJxVBft6ouGTATzvQ6mA6ncFIBEltDinG58E0kFEbzCG",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2ftlog-tiles-wasm@0.2.0",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
-				"signatures": [
-					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCZVfqjUNnMDUuBwHoIHMJYv0jFHQXZCgPJcNb2TkCydgIhAJxVBft6ouGTATzvQ6mA6ncFIBEltDinG58E0kFEbzCG"
-					}
-				]
+				"unpackedSize": 93170
 			}
 		}
 	}

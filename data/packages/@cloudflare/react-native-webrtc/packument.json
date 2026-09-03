@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/react-native-webrtc",
 	"dist-tags": {
-		"latest": "137.0.1",
-		"staging": "137.0.1-staging.4"
+		"staging": "137.0.1-staging.4",
+		"latest": "137.0.1"
 	},
 	"versions": {
 		"0.0.0": {
@@ -651,8 +651,8 @@
 			"name": "@cloudflare/react-native-webrtc",
 			"version": "137.0.1",
 			"dependencies": {
-				"base64-js": "1.5.1",
 				"debug": "4.3.4",
+				"base64-js": "1.5.1",
 				"event-target-shim": "6.0.2",
 				"expo-build-properties": "0.11.0"
 			},
@@ -661,17 +661,17 @@
 				"react-native": ">=0.84.0"
 			},
 			"dist": {
-				"integrity": "sha512-1qpstnW2KX+4+iP8MFeeLcdBP9KcVkbKZvE+vqTyt9hRcAhnY5lhfq5zSDzsC8PNoB07WgzBHTS1HUYPBj1W1w==",
 				"shasum": "d6a4771650a4d7e2516740c32ed49b35d937d0d1",
 				"tarball": "https://registry.npmjs.org/@cloudflare/react-native-webrtc/-/react-native-webrtc-137.0.1.tgz",
 				"fileCount": 320,
-				"unpackedSize": 821037,
+				"integrity": "sha512-1qpstnW2KX+4+iP8MFeeLcdBP9KcVkbKZvE+vqTyt9hRcAhnY5lhfq5zSDzsC8PNoB07WgzBHTS1HUYPBj1W1w==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQDwZt6M5PRUkrAJ2X8+UZGoQA2xtwX72cV9dOpvpuhv5wIhANZLP0S9hZfT4c2e+Tsoh4vHvSggjond6cLpYQZP49Mn"
+						"sig": "MEYCIQDwZt6M5PRUkrAJ2X8+UZGoQA2xtwX72cV9dOpvpuhv5wIhANZLP0S9hZfT4c2e+Tsoh4vHvSggjond6cLpYQZP49Mn",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 821037
 			}
 		}
 	}

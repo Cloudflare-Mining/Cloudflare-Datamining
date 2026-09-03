@@ -3,8 +3,8 @@
 	"dist-tags": {
 		"beta": "0.0.0-1558ec9",
 		"release-0-12-6": "0.12.6",
-		"latest": "0.12.9",
-		"next": "0.13.0-next.751.1"
+		"next": "0.13.0-next.751.1",
+		"latest": "0.12.9"
 	},
 	"versions": {
 		"0.0.0-1c0902c": {
@@ -7183,41 +7183,41 @@
 			"name": "@cloudflare/sandbox",
 			"version": "0.12.9",
 			"dependencies": {
-				"@cloudflare/containers": "^0.3.5",
-				"aws4fetch": "^1.0.20",
+				"hono": "^4.13.0",
 				"capnweb": "^0.8.0",
-				"hono": "^4.13.0"
+				"aws4fetch": "^1.0.20",
+				"@cloudflare/containers": "^0.3.5"
 			},
 			"devDependencies": {
-				"@openai/agents": "^0.3.3",
-				"@opencode-ai/sdk": "^1.1.40",
+				"wrangler": "^4.102.0",
 				"@repo/shared": "^0.0.0",
 				"@xterm/xterm": "^6.0.0",
-				"wrangler": "^4.102.0"
+				"@openai/agents": "^0.3.3",
+				"@opencode-ai/sdk": "^1.1.40"
 			},
 			"peerDependencies": {
+				"@xterm/xterm": ">=5.0.0",
 				"@openai/agents": "^0.3.3",
-				"@opencode-ai/sdk": "^1.1.40",
-				"@xterm/xterm": ">=5.0.0"
+				"@opencode-ai/sdk": "^1.1.40"
 			},
 			"dist": {
-				"integrity": "sha512-JlCQ8adVaHT3TrZO13X6US2LJTyQ4YvoEZpfh5EewRqcxPfMHZNJPB/1dsRdiFqmtzpz+lMxGazSUa2H/g2IKg==",
 				"shasum": "985dd08bac4c2457656c797e4afedeedb3449e6a",
 				"tarball": "https://registry.npmjs.org/@cloudflare/sandbox/-/sandbox-0.12.9.tgz",
 				"fileCount": 34,
-				"unpackedSize": 2215392,
+				"integrity": "sha512-JlCQ8adVaHT3TrZO13X6US2LJTyQ4YvoEZpfh5EewRqcxPfMHZNJPB/1dsRdiFqmtzpz+lMxGazSUa2H/g2IKg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCKBTGRgZqcnlF4E1w6R18HJ4XD3/mgi2cebJ/8DfUHjAIgIpjyeMrvqRpGaeFAYFxWeeHuHC61Skh7i4hr9ZVYuJI=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fsandbox@0.12.9",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
-				"signatures": [
-					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQCKBTGRgZqcnlF4E1w6R18HJ4XD3/mgi2cebJ/8DfUHjAIgIpjyeMrvqRpGaeFAYFxWeeHuHC61Skh7i4hr9ZVYuJI="
-					}
-				]
+				"unpackedSize": 2215392
 			}
 		}
 	}

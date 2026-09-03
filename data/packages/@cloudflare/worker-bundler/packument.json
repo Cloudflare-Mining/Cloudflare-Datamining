@@ -378,40 +378,40 @@
 			"name": "@cloudflare/worker-bundler",
 			"version": "0.2.3",
 			"dependencies": {
+				"fflate": "^0.8.2",
+				"semver": "^7.8.5",
+				"sucrase": "^3.35.1",
+				"smol-toml": "^1.7.0",
+				"typescript": "^6.0.3",
+				"esbuild-wasm": "0.28.1",
 				"@typescript/vfs": "^1.6.4",
 				"es-module-lexer": "^2.2.0",
-				"esbuild-wasm": "0.28.1",
-				"fflate": "^0.8.2",
-				"resolve.exports": "^2.0.3",
-				"semver": "^7.8.5",
-				"smol-toml": "^1.7.0",
-				"sucrase": "^3.35.1",
-				"typescript": "^6.0.3"
+				"resolve.exports": "^2.0.3"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^5.20260729.1",
-				"@types/semver": "^7.7.1",
+				"tsdown": "^0.22.3",
 				"esbuild": "^0.28.1",
-				"tsdown": "^0.22.3"
+				"@types/semver": "^7.7.1",
+				"@cloudflare/workers-types": "^5.20260729.1"
 			},
 			"dist": {
-				"integrity": "sha512-MdLpY8Ok4anlOTflZeyLlST1ajLje1lSPqehH+QrD9G8m8CZy1b2X+KgcoCm7TGg3HUZMvMZb2NFo0mWEewcvw==",
 				"shasum": "51e4d265d124381f94128789205daa85eadfa736",
 				"tarball": "https://registry.npmjs.org/@cloudflare/worker-bundler/-/worker-bundler-0.2.3.tgz",
 				"fileCount": 13,
-				"unpackedSize": 26041798,
+				"integrity": "sha512-MdLpY8Ok4anlOTflZeyLlST1ajLje1lSPqehH+QrD9G8m8CZy1b2X+KgcoCm7TGg3HUZMvMZb2NFo0mWEewcvw==",
+				"signatures": [
+					{
+						"sig": "MEQCIAWO2w9e5/lo0opfc+/CQYutHiYbLn+4zLFIe5UucxQrAiB+i/ht7c6HQCQxyjmWsrrUXtXt8AXx1NLIShiCPi+Nvw==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworker-bundler@0.2.3",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
-				"signatures": [
-					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIAWO2w9e5/lo0opfc+/CQYutHiYbLn+4zLFIe5UucxQrAiB+i/ht7c6HQCQxyjmWsrrUXtXt8AXx1NLIShiCPi+Nvw=="
-					}
-				]
+				"unpackedSize": 26041798
 			},
 			"engines": {
 				"node": ">=22"

@@ -55,23 +55,23 @@
 				"@cloudflare/voice": ">=0.3.3 <1.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-O8WRDifLRLA+rYLaa1uL3qRPtwdHKZymf4qfNpT9F8P+dXjDt6wBcZK9ll+dAiNDYb3iXqvhg15O/TteuazEGw==",
 				"shasum": "9cc1985c96a2ec46769e6da6e9bd784a8a7ced6b",
 				"tarball": "https://registry.npmjs.org/@cloudflare/voice-elevenlabs/-/voice-elevenlabs-0.1.0.tgz",
 				"fileCount": 6,
-				"unpackedSize": 46926,
+				"integrity": "sha512-O8WRDifLRLA+rYLaa1uL3qRPtwdHKZymf4qfNpT9F8P+dXjDt6wBcZK9ll+dAiNDYb3iXqvhg15O/TteuazEGw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCxYEKJ0WESYVCdGWAOnszU8/yzbc+sCIzzyMZaBnHxGgIhAP+ivo+j0ZMvHsnJ3PkkKO30BECNz+n+hfiQaGTfPNhU",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvoice-elevenlabs@0.1.0",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
-				"signatures": [
-					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCxYEKJ0WESYVCdGWAOnszU8/yzbc+sCIzzyMZaBnHxGgIhAP+ivo+j0ZMvHsnJ3PkkKO30BECNz+n+hfiQaGTfPNhU"
-					}
-				]
+				"unpackedSize": 46926
 			}
 		}
 	}

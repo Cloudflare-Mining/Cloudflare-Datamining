@@ -149,30 +149,30 @@
 			"name": "@cloudflare/polystella",
 			"version": "0.4.0",
 			"dependencies": {
+				"yaml": "^2.8.3",
 				"acorn": "^8.17.0",
+				"s3mini": "^0.9.4",
 				"p-retry": "^8.0.0",
+				"satteri": "^0.9.4",
+				"unified": "^11.0.5",
 				"picomatch": "^4.0.4",
-				"remark-frontmatter": "^5.0.0",
+				"smol-toml": "^1.6.1",
 				"remark-gfm": "^4.0.1",
 				"remark-mdx": "^3.1.1",
 				"remark-parse": "^11.0.0",
-				"s3mini": "^0.9.4",
-				"satteri": "^0.9.4",
-				"smol-toml": "^1.6.1",
-				"unified": "^11.0.5",
-				"yaml": "^2.8.3"
+				"remark-frontmatter": "^5.0.0"
 			},
 			"devDependencies": {
-				"@astrojs/sitemap": "^3.7.3",
-				"@changesets/changelog-github": "^0.7.0",
-				"@changesets/cli": "^2.27.0",
-				"@types/mdast": "^4.0.4",
-				"@types/picomatch": "^4.0.0",
-				"@types/react": "^19.2.14",
-				"pkg-pr-new": "^0.0.75",
+				"vitest": "^4.1.9",
 				"prettier": "3.9.4",
+				"pkg-pr-new": "^0.0.75",
 				"typescript": "^6.0.3",
-				"vitest": "^4.1.9"
+				"@types/mdast": "^4.0.4",
+				"@types/react": "^19.2.14",
+				"@changesets/cli": "^2.27.0",
+				"@astrojs/sitemap": "^3.7.3",
+				"@types/picomatch": "^4.0.0",
+				"@changesets/changelog-github": "^0.7.0"
 			},
 			"peerDependencies": {
 				"astro": "^7.0.0",
@@ -182,17 +182,17 @@
 				"polystella": "dist/cli.js"
 			},
 			"dist": {
-				"integrity": "sha512-EcpGO5u1NxIn0nh0nAWeippkK0PjCvpjP09cuAtmQDivKabwdQNs9HKPTO2NII0dlxuW5plPuBlzknb45y2iFw==",
 				"shasum": "744f740282792573074e21c39ff4b4a313ad44f9",
 				"tarball": "https://registry.npmjs.org/@cloudflare/polystella/-/polystella-0.4.0.tgz",
 				"fileCount": 399,
-				"unpackedSize": 1845633,
+				"integrity": "sha512-EcpGO5u1NxIn0nh0nAWeippkK0PjCvpjP09cuAtmQDivKabwdQNs9HKPTO2NII0dlxuW5plPuBlzknb45y2iFw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQC8bZX8bWBBqn1h+ZlV6Fk9WNezpn0GNuDukeJF/lCc+AIgR6SqC0F1QMyUvShgR66ZMjP+lqkdlG4C3CNVqx0eyco="
+						"sig": "MEUCIQC8bZX8bWBBqn1h+ZlV6Fk9WNezpn0GNuDukeJF/lCc+AIgR6SqC0F1QMyUvShgR66ZMjP+lqkdlG4C3CNVqx0eyco=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 1845633
 			}
 		}
 	}

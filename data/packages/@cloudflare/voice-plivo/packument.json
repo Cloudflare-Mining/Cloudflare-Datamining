@@ -55,23 +55,23 @@
 				"@cloudflare/voice": ">=0.3.3 <1.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-uFrAvLJMZf7UdIHoxumcwqGn7SDVz7VcF1QcfOJ/pjgxjl0HrLOPqCBqFGSYxFkaTK/1FvHwh30twua9G9PwnA==",
 				"shasum": "be0a94737589eb76fbd090d7f18971b0a85307fb",
 				"tarball": "https://registry.npmjs.org/@cloudflare/voice-plivo/-/voice-plivo-0.1.1.tgz",
 				"fileCount": 6,
-				"unpackedSize": 46829,
+				"integrity": "sha512-uFrAvLJMZf7UdIHoxumcwqGn7SDVz7VcF1QcfOJ/pjgxjl0HrLOPqCBqFGSYxFkaTK/1FvHwh30twua9G9PwnA==",
+				"signatures": [
+					{
+						"sig": "MEQCIDXf9ouenFv83QtMmXpjIPlUPaK4EJsLCWqM5vHC2u8sAiA0PT6/cQNSmwDUMKXa4U+JypH1jKoZPb9IpYfhiAX8ow==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvoice-plivo@0.1.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
-				"signatures": [
-					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIDXf9ouenFv83QtMmXpjIPlUPaK4EJsLCWqM5vHC2u8sAiA0PT6/cQNSmwDUMKXa4U+JypH1jKoZPb9IpYfhiAX8ow=="
-					}
-				]
+				"unpackedSize": 46829
 			}
 		}
 	}

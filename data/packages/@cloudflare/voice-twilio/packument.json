@@ -54,23 +54,23 @@
 				"@cloudflare/voice": ">=0.3.3 <1.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-Kee+TWJQXqUkfCXZR8rTxESa7Qoa+7/GmrKgF1deqjNy+mMJvsNGD04qvbMf6OcBuWlTs8mjJeZZqHCacxU+cg==",
 				"shasum": "dc5f4295e0404bae743bf81e12d8eb5f89c1f453",
 				"tarball": "https://registry.npmjs.org/@cloudflare/voice-twilio/-/voice-twilio-0.0.3.tgz",
 				"fileCount": 6,
-				"unpackedSize": 33714,
+				"integrity": "sha512-Kee+TWJQXqUkfCXZR8rTxESa7Qoa+7/GmrKgF1deqjNy+mMJvsNGD04qvbMf6OcBuWlTs8mjJeZZqHCacxU+cg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC4+FCdeWRG7mCBSIM0Hx+oNYkdks2yLbfjdpF20Kj10wIhAN+ASc2stCloyOy5o/6NsXewEN99jzwk/Zp2FKceon4g",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvoice-twilio@0.0.3",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
-				"signatures": [
-					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQC4+FCdeWRG7mCBSIM0Hx+oNYkdks2yLbfjdpF20Kj10wIhAN+ASc2stCloyOy5o/6NsXewEN99jzwk/Zp2FKceon4g"
-					}
-				]
+				"unpackedSize": 33714
 			}
 		}
 	}

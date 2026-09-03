@@ -55,23 +55,23 @@
 				"@cloudflare/voice": ">=0.3.3 <1.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-418oPq6kI65tnm2qDXBblhbEouMWVjndL6tTOTcP99TuBQ1ghePy9DCITbtSP963cd6C42wDAewSOGig+YiMag==",
 				"shasum": "fe7d5836b9edd322623d5b64b39620d4a6707621",
 				"tarball": "https://registry.npmjs.org/@cloudflare/voice-assemblyai/-/voice-assemblyai-0.1.0.tgz",
 				"fileCount": 6,
-				"unpackedSize": 66480,
+				"integrity": "sha512-418oPq6kI65tnm2qDXBblhbEouMWVjndL6tTOTcP99TuBQ1ghePy9DCITbtSP963cd6C42wDAewSOGig+YiMag==",
+				"signatures": [
+					{
+						"sig": "MEQCIFGZUX4xbs08HDdawJuZ0fsnOpM7ulXzH6XkZhAr16BbAiAoq+9iY+dnAJQRYHNPgPFr3lDZ3BYU8LzQ/v3dijTFoQ==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvoice-assemblyai@0.1.0",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
-				"signatures": [
-					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIFGZUX4xbs08HDdawJuZ0fsnOpM7ulXzH6XkZhAr16BbAiAoq+9iY+dnAJQRYHNPgPFr3lDZ3BYU8LzQ/v3dijTFoQ=="
-					}
-				]
+				"unpackedSize": 66480
 			}
 		}
 	}

@@ -235,46 +235,46 @@
 				"just-bash": "^3.0.1"
 			},
 			"devDependencies": {
-				"@cloudflare/computer-rpc": "*",
-				"@cloudflare/dofs": "*",
-				"@cloudflare/vitest-pool-workers": "^0.16.10",
-				"@cloudflare/workers-types": "^4.20260616.1",
-				"@platformatic/vfs": "^0.4.0",
 				"ai": "^7.0.0",
+				"zod": "^4.4.3",
 				"diff": "^9.0.0",
-				"esbuild": "^0.28.1",
-				"isomorphic-git": "^1.38.3",
 				"memfs": "^4.57.6",
-				"rolldown": "^1.0.2",
-				"rolldown-plugin-dts": "^0.25.2",
-				"typescript": "^6.0.3",
 				"vitest": "^4.1.7",
+				"esbuild": "^0.28.1",
+				"rolldown": "^1.0.2",
 				"wrangler": "^4.107.1",
-				"zod": "^4.4.3"
+				"typescript": "^6.0.3",
+				"isomorphic-git": "^1.38.3",
+				"@cloudflare/dofs": "*",
+				"@platformatic/vfs": "^0.4.0",
+				"rolldown-plugin-dts": "^0.25.2",
+				"@cloudflare/computer-rpc": "*",
+				"@cloudflare/workers-types": "^4.20260616.1",
+				"@cloudflare/vitest-pool-workers": "^0.16.10"
 			},
 			"peerDependencies": {
-				"@platformatic/vfs": "*",
 				"ai": "^6.0.196 || ^7.0.0",
-				"zod": "^4.4.3"
+				"zod": "^4.4.3",
+				"@platformatic/vfs": "*"
 			},
 			"dist": {
-				"integrity": "sha512-jh0pa1csAExPItUYzrzBrZO1vCBjsQ6jX+aunrnKe2VSC9i8mEziQYZUL3IZId4GpceRL+v8HIzVr4kjbmQXPw==",
 				"shasum": "de12dfecde8083cee2854247f88948df8b59c95a",
 				"tarball": "https://registry.npmjs.org/@cloudflare/computer/-/computer-0.2.1.tgz",
 				"fileCount": 80,
-				"unpackedSize": 10755639,
+				"integrity": "sha512-jh0pa1csAExPItUYzrzBrZO1vCBjsQ6jX+aunrnKe2VSC9i8mEziQYZUL3IZId4GpceRL+v8HIzVr4kjbmQXPw==",
+				"signatures": [
+					{
+						"sig": "MEUCIBG7TFkrhsgWTOH/jdPnSnMvbpPEAHsneZQc8SO6f46eAiEAxRfaYTNIUzi1QCY3lPXuS2LFKRVJ92z1L+quuGi6DhM=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcomputer@0.2.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
-				"signatures": [
-					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIBG7TFkrhsgWTOH/jdPnSnMvbpPEAHsneZQc8SO6f46eAiEAxRfaYTNIUzi1QCY3lPXuS2LFKRVJ92z1L+quuGi6DhM="
-					}
-				]
+				"unpackedSize": 10755639
 			}
 		}
 	}

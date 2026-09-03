@@ -1837,42 +1837,42 @@
 			"name": "@cloudflare/speedtest",
 			"version": "1.13.1",
 			"devDependencies": {
-				"@eslint/js": "^9.39.4",
-				"@vitest/browser-playwright": "^4.1.7",
-				"brace-expansion": "^5.0.7",
+				"vite": "^8.0.16",
+				"husky": "^9.1.7",
 				"eslint": "^9.27.0",
+				"tsdown": "^0.22.1",
+				"vitest": "^4.1.7",
+				"prettier": "^3.5.3",
+				"@eslint/js": "^9.39.4",
+				"playwright": "^1.60.0",
+				"typescript": "^5.8.3",
+				"lint-staged": "^16.0.0",
+				"brace-expansion": "^5.0.7",
+				"typescript-eslint": "^8.60.0",
+				"eslint-plugin-json": "^4.0.1",
 				"eslint-plugin-compat": "^6.0.2",
 				"eslint-plugin-import": "^2.31.0",
-				"eslint-plugin-json": "^4.0.1",
 				"eslint-plugin-prettier": "^5.4.0",
-				"husky": "^9.1.7",
-				"lint-staged": "^16.0.0",
-				"playwright": "^1.60.0",
-				"prettier": "^3.5.3",
-				"tsdown": "^0.22.1",
-				"typescript": "^5.8.3",
-				"typescript-eslint": "^8.60.0",
-				"vite": "^8.0.16",
-				"vitest": "^4.1.7"
+				"@vitest/browser-playwright": "^4.1.7"
 			},
 			"dist": {
-				"integrity": "sha512-PLk4OqbozJHEutX4xZs2Jg08JYr8ml2HEKbhpooZhYdZzgDy2Cc8RnKl20WewhzaOENZFC8/JQMF7ypw1R8Kaw==",
 				"shasum": "73c3e4f3a7ab0bff4d4b7662e529b95c701e169b",
 				"tarball": "https://registry.npmjs.org/@cloudflare/speedtest/-/speedtest-1.13.1.tgz",
 				"fileCount": 6,
-				"unpackedSize": 247860,
+				"integrity": "sha512-PLk4OqbozJHEutX4xZs2Jg08JYr8ml2HEKbhpooZhYdZzgDy2Cc8RnKl20WewhzaOENZFC8/JQMF7ypw1R8Kaw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCDOzX1/e+et8JbkVOUxJ3rz5JXqSqYhfCQCEiIqJDWqAIhAJvxif7jV220jVLyPhQVW3diWRyvUH28woH4ID2S4v81",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fspeedtest@1.13.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
-				"signatures": [
-					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCDOzX1/e+et8JbkVOUxJ3rz5JXqSqYhfCQCEiIqJDWqAIhAJvxif7jV220jVLyPhQVW3diWRyvUH28woH4ID2S4v81"
-					}
-				]
+				"unpackedSize": 247860
 			},
 			"engines": {
 				"node": ">=18"
