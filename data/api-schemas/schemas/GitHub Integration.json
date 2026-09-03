@@ -25,7 +25,8 @@
 					"enum": [
 						"github",
 						"gitlab",
-						"gitlab_internal"
+						"gitlab_internal",
+						"origin"
 					]
 				}
 			},
@@ -169,6 +170,7 @@
 													"nullable": true
 												},
 												"package_manager": {
+													"description": "Package manager inferred from repository lockfiles; defaults to npm when none is detected.",
 													"type": "string",
 													"allOf": [
 														{
@@ -182,8 +184,7 @@
 																"uv"
 															]
 														}
-													],
-													"nullable": true
+													]
 												},
 												"scripts": {
 													"type": "object",
@@ -201,6 +202,68 @@
 									},
 									"type": "object"
 								}
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication required",
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 12005,
+									"message": "Missing token from authorization header"
+								}
+							],
+							"messages": [],
+							"result": null,
+							"success": false
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"example": 12000
+											},
+											"message": {
+												"type": "string",
+												"example": "Not found"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}

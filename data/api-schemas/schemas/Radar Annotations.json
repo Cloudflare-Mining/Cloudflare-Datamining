@@ -100,9 +100,9 @@
 			{
 				"name": "eventType",
 				"in": "query",
-				"description": "Filters results by event type.",
+				"description": "Filters results by event type. EVENT is a legacy alias for GENERAL.",
 				"schema": {
-					"description": "Filters results by event type.",
+					"description": "Filters results by event type. EVENT is a legacy alias for GENERAL.",
 					"type": "string",
 					"example": "OUTAGE",
 					"enum": [
@@ -113,6 +113,171 @@
 						"PIPELINE",
 						"TRAFFIC_ANOMALY"
 					]
+				}
+			},
+			{
+				"name": "outageType",
+				"in": "query",
+				"description": "Filters results by outage type.",
+				"schema": {
+					"description": "Filters results by outage type.",
+					"type": "string",
+					"enum": [
+						"NATIONWIDE",
+						"REGIONAL",
+						"NETWORK",
+						"PLATFORM"
+					]
+				}
+			},
+			{
+				"name": "outageCause",
+				"in": "query",
+				"description": "Filters results by outage cause.",
+				"schema": {
+					"description": "Filters results by outage cause.",
+					"type": "string",
+					"enum": [
+						"BLOCKING",
+						"CABLE_CUT",
+						"CYBERATTACK",
+						"DNS",
+						"FIRE",
+						"GOVERNMENT_DIRECTED",
+						"MAINTENANCE",
+						"MECHANICAL",
+						"MILITARY_ACTION",
+						"MISCONFIGURATION",
+						"NATURAL_DISASTER",
+						"NETWORK_PROBLEM",
+						"POWER_OUTAGE",
+						"SOFTWARE",
+						"TECHNICAL_PROBLEM",
+						"UNKNOWN",
+						"WEATHER"
+					]
+				}
+			},
+			{
+				"name": "tags",
+				"in": "query",
+				"description": "Filters results by annotation tag. Matches annotations carrying at least one of the given tags.",
+				"schema": {
+					"description": "Filters results by annotation tag. Matches annotations carrying at least one of the given tags.",
+					"type": "array",
+					"items": {
+						"description": "Dimension tag an annotation applies to.",
+						"enum": [
+							"ADM1",
+							"ADM2",
+							"API_TRAFFIC",
+							"ARC",
+							"AS",
+							"ASN",
+							"ATTACKS",
+							"AUTHOR",
+							"BANDWIDTH",
+							"BITRATE",
+							"BOT",
+							"BOT_CATEGORY",
+							"BOT_CLASS",
+							"BOT_KIND",
+							"BOT_OPERATOR",
+							"BROWSER",
+							"BROWSER_FAMILY",
+							"BYTES",
+							"CA",
+							"CACHE_HIT",
+							"CA_OWNER",
+							"CHECK_RESULT",
+							"CLIENT_TYPE",
+							"COMPROMISED",
+							"CONTENT_TYPE",
+							"CRAWL_PURPOSE",
+							"CRAWL_REFER_RATIO",
+							"DEVICE_TYPE",
+							"DKIM",
+							"DMARC",
+							"DNS",
+							"DNSSEC",
+							"DNSSEC_AWARE",
+							"DNSSEC_E2E",
+							"DOMAIN_CATEGORY",
+							"DURATION",
+							"EDNS",
+							"ENCRYPTED",
+							"ENTRY_TYPE",
+							"EXPIRATION_STATUS",
+							"HAS_IPS",
+							"HAS_MATCHING_ANSWER",
+							"HAS_WILDCARDS",
+							"HTTP_METHOD",
+							"HTTP_PROTOCOL",
+							"HTTP_VERSION",
+							"INDUSTRY",
+							"IP_VERSION",
+							"JITTER",
+							"KEY_AGREEMENT",
+							"LATENCY",
+							"LOCATION",
+							"LOCATION_LATENCY",
+							"LOG",
+							"LOG_API",
+							"LOG_OPERATOR",
+							"MALICIOUS",
+							"MANAGED_RULES",
+							"MITIGATION_PRODUCT",
+							"MODEL",
+							"NAMESERVER_LATENCY",
+							"ORIGIN",
+							"ORIGIN_AS",
+							"ORIGIN_LOCATION",
+							"ORIGIN_TARGET_LOCATION_PAIR",
+							"OS",
+							"PERCENTILE",
+							"POST_QUANTUM",
+							"PREFIX",
+							"PRODUCT",
+							"PROTOCOL",
+							"PROVIDER",
+							"PUBLIC_KEY_ALGORITHM",
+							"QUERY_TYPE",
+							"REFERER",
+							"REGION",
+							"RESPONSE_CODE",
+							"RESPONSE_STATUS",
+							"RESPONSE_STATUS_CATEGORY",
+							"RESPONSE_TTL",
+							"SIGNATURE_ALGORITHM",
+							"SPAM",
+							"SPF",
+							"SPOOF",
+							"SUCCESS_RATE",
+							"TARGET_LOCATION",
+							"TASK",
+							"THREAT_CATEGORY",
+							"TLD",
+							"TLD_DNS_MAGNITUDE",
+							"TLS_VERSION",
+							"UPDATE_TYPE",
+							"USER_AGENT",
+							"VALIDATION_LEVEL",
+							"VECTOR",
+							"VERTICAL"
+						],
+						"type": "string"
+					}
+				}
+			},
+			{
+				"name": "query",
+				"in": "query",
+				"description": "Filters results by a free-text match on the annotation description, id, or linked entities (location, ASN, origin).",
+				"schema": {
+					"description": "Filters results by a free-text match on the annotation description, id, or linked entities (location, ASN, origin).",
+					"type": "string",
+					"example": "portugal",
+					"maxLength": 100
 				}
 			},
 			{
@@ -138,6 +303,17 @@
 				}
 			},
 			{
+				"name": "geoId",
+				"in": "query",
+				"description": "Filters results by geolocation. Refer to [GeoNames](https://download.geonames.org/export/dump/readme.txt).",
+				"schema": {
+					"description": "Filters results by geolocation. Refer to [GeoNames](https://download.geonames.org/export/dump/readme.txt).",
+					"type": "string",
+					"example": "3190509",
+					"maxLength": 100
+				}
+			},
+			{
 				"name": "origin",
 				"in": "query",
 				"description": "Filters results by origin.",
@@ -145,6 +321,50 @@
 					"description": "Filters results by origin.",
 					"type": "string",
 					"example": "amazon-us-east-1",
+					"maxLength": 100
+				}
+			},
+			{
+				"name": "tld",
+				"in": "query",
+				"description": "Filters results by top-level domain.",
+				"schema": {
+					"description": "Filters results by top-level domain.",
+					"type": "string",
+					"example": "com",
+					"maxLength": 63,
+					"minLength": 2,
+					"pattern": "^[a-z0-9](?:[a-z0-9-]*[a-z0-9])$"
+				}
+			},
+			{
+				"name": "ca",
+				"in": "query",
+				"description": "Filters results by certificate authority.",
+				"schema": {
+					"description": "Filters results by certificate authority.",
+					"type": "string",
+					"maxLength": 100
+				}
+			},
+			{
+				"name": "log",
+				"in": "query",
+				"description": "Filters results by certificate log.",
+				"schema": {
+					"description": "Filters results by certificate log.",
+					"type": "string",
+					"maxLength": 100
+				}
+			},
+			{
+				"name": "bot",
+				"in": "query",
+				"description": "Filters results by bot.",
+				"schema": {
+					"description": "Filters results by bot.",
+					"type": "string",
+					"example": "gptbot",
 					"maxLength": 100
 				}
 			},
@@ -193,8 +413,9 @@
 																	"type": "string",
 																	"example": "189"
 																},
-																"locations": {
+																"location": {
 																	"type": "object",
+																	"nullable": true,
 																	"properties": {
 																		"code": {
 																			"type": "string",
@@ -212,12 +433,14 @@
 																},
 																"name": {
 																	"type": "string",
-																	"example": "LUMEN-LEGACY-L3-PARTITION"
+																	"example": "LUMEN-LEGACY-L3-PARTITION",
+																	"nullable": true
 																}
 															},
 															"required": [
 																"asn",
-																"name"
+																"name",
+																"location"
 															],
 															"type": "object"
 														}
@@ -228,15 +451,50 @@
 													},
 													"description": {
 														"type": "string",
-														"example": "example"
+														"example": "example",
+														"nullable": true
 													},
 													"endDate": {
 														"type": "string",
-														"example": "2022-09-08T10:00:28Z"
+														"example": "2022-09-08T10:00:28Z",
+														"nullable": true
+													},
+													"entities": {
+														"type": "array",
+														"items": {
+															"properties": {
+																"entityName": {
+																	"type": "string",
+																	"example": "GPTBot",
+																	"nullable": true
+																},
+																"entityType": {
+																	"type": "string",
+																	"example": "BOT"
+																},
+																"entityValue": {
+																	"type": "string",
+																	"example": "gptbot"
+																}
+															},
+															"required": [
+																"entityType",
+																"entityValue",
+																"entityName"
+															],
+															"type": "object"
+														}
 													},
 													"eventType": {
 														"type": "string",
 														"example": "OUTAGE"
+													},
+													"geoIds": {
+														"type": "array",
+														"items": {
+															"example": "2267057",
+															"type": "string"
+														}
 													},
 													"id": {
 														"type": "string",
@@ -244,7 +502,8 @@
 													},
 													"linkedUrl": {
 														"type": "string",
-														"example": "http://example.com"
+														"example": "http://example.com",
+														"nullable": true
 													},
 													"locations": {
 														"type": "array",
@@ -286,7 +545,8 @@
 															"properties": {
 																"name": {
 																	"type": "string",
-																	"example": "us-east-1 Amazon Web Services"
+																	"example": "us-east-1 Amazon Web Services",
+																	"nullable": true
 																},
 																"origin": {
 																	"type": "string",
@@ -302,6 +562,7 @@
 													},
 													"outage": {
 														"type": "object",
+														"nullable": true,
 														"properties": {
 															"outageCause": {
 																"type": "string",
@@ -319,24 +580,38 @@
 													},
 													"scope": {
 														"type": "string",
-														"example": "Colima, Michoacán, México"
+														"example": "Colima, Michoacán, México",
+														"nullable": true
 													},
 													"startDate": {
 														"type": "string",
 														"example": "2022-09-06T10:00:28Z"
+													},
+													"tags": {
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
 													}
 												},
 												"required": [
 													"id",
 													"dataSource",
+													"description",
+													"scope",
 													"startDate",
+													"endDate",
 													"asns",
 													"asnsDetails",
 													"locations",
+													"geoIds",
+													"entities",
 													"locationsDetails",
 													"origins",
 													"originsDetails",
 													"eventType",
+													"tags",
+													"linkedUrl",
 													"outage"
 												],
 												"type": "object"
@@ -424,6 +699,332 @@
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
+	"GET /radar/annotations/{id}": {
+		"operationId": "radar-get-annotation-by-id",
+		"summary": "Get annotation by ID",
+		"description": "Retrieves a single annotation by ID.",
+		"parameters": [
+			{
+				"name": "id",
+				"in": "path",
+				"description": "Annotation ID.",
+				"required": true,
+				"schema": {
+					"description": "Annotation ID.",
+					"type": "string",
+					"example": "550",
+					"pattern": "^[1-9]\\d{0,18}$"
+				}
+			},
+			{
+				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
+					"enum": [
+						"JSON",
+						"CSV"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successful response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"annotation": {
+											"type": "object",
+											"properties": {
+												"asns": {
+													"type": "array",
+													"items": {
+														"example": 189,
+														"type": "integer"
+													}
+												},
+												"asnsDetails": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"asn": {
+																"type": "string",
+																"example": "189"
+															},
+															"location": {
+																"type": "object",
+																"nullable": true,
+																"properties": {
+																	"code": {
+																		"type": "string",
+																		"example": "US"
+																	},
+																	"name": {
+																		"type": "string",
+																		"example": "United States"
+																	}
+																},
+																"required": [
+																	"code",
+																	"name"
+																]
+															},
+															"name": {
+																"type": "string",
+																"example": "LUMEN-LEGACY-L3-PARTITION",
+																"nullable": true
+															}
+														},
+														"required": [
+															"asn",
+															"name",
+															"location"
+														],
+														"type": "object"
+													}
+												},
+												"dataSource": {
+													"type": "string",
+													"example": "ALL"
+												},
+												"description": {
+													"type": "string",
+													"example": "example",
+													"nullable": true
+												},
+												"endDate": {
+													"type": "string",
+													"format": "date-time",
+													"nullable": true
+												},
+												"entities": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"entityName": {
+																"type": "string",
+																"example": "GPTBot",
+																"nullable": true
+															},
+															"entityType": {
+																"type": "string",
+																"example": "BOT"
+															},
+															"entityValue": {
+																"type": "string",
+																"example": "gptbot"
+															}
+														},
+														"required": [
+															"entityType",
+															"entityValue",
+															"entityName"
+														],
+														"type": "object"
+													}
+												},
+												"eventType": {
+													"type": "string",
+													"example": "OUTAGE"
+												},
+												"geoIds": {
+													"type": "array",
+													"items": {
+														"example": "2267057",
+														"type": "string"
+													}
+												},
+												"id": {
+													"type": "string",
+													"example": "550"
+												},
+												"linkedUrl": {
+													"type": "string",
+													"example": "http://example.com",
+													"nullable": true
+												},
+												"locations": {
+													"type": "array",
+													"items": {
+														"example": "US",
+														"type": "string"
+													}
+												},
+												"locationsDetails": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "string",
+																"example": "US"
+															},
+															"name": {
+																"type": "string",
+																"example": "United States"
+															}
+														},
+														"required": [
+															"code",
+															"name"
+														],
+														"type": "object"
+													}
+												},
+												"origins": {
+													"type": "array",
+													"items": {
+														"example": "amazon-us-east-1",
+														"type": "string"
+													}
+												},
+												"originsDetails": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"name": {
+																"type": "string",
+																"example": "us-east-1 Amazon Web Services",
+																"nullable": true
+															},
+															"origin": {
+																"type": "string",
+																"example": "amazon-us-east-1"
+															}
+														},
+														"required": [
+															"origin",
+															"name"
+														],
+														"type": "object"
+													}
+												},
+												"outage": {
+													"type": "object",
+													"nullable": true,
+													"properties": {
+														"outageCause": {
+															"type": "string",
+															"example": "CABLE_CUT"
+														},
+														"outageType": {
+															"type": "string",
+															"example": "NATIONWIDE"
+														}
+													},
+													"required": [
+														"outageCause",
+														"outageType"
+													]
+												},
+												"scope": {
+													"type": "string",
+													"example": "Colima, Michoacán, México",
+													"nullable": true
+												},
+												"startDate": {
+													"type": "string",
+													"format": "date-time"
+												},
+												"tags": {
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												}
+											},
+											"required": [
+												"id",
+												"dataSource",
+												"description",
+												"scope",
+												"startDate",
+												"endDate",
+												"asns",
+												"asnsDetails",
+												"locations",
+												"geoIds",
+												"entities",
+												"locationsDetails",
+												"origins",
+												"originsDetails",
+												"eventType",
+												"tags",
+												"linkedUrl",
+												"outage"
+											]
+										}
+									},
+									"required": [
+										"annotation"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not Found."
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Radar Annotations"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "radar.annotations",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	},
 	"GET /radar/annotations/outages": {
 		"operationId": "radar-get-annotations-outages",
 		"summary": "Get latest Internet outages and anomalies",
@@ -486,6 +1087,208 @@
 				}
 			},
 			{
+				"name": "dataSource",
+				"in": "query",
+				"description": "Filters results by data source.",
+				"schema": {
+					"description": "Filters results by data source.",
+					"type": "string",
+					"example": "ALL",
+					"enum": [
+						"ALL",
+						"AI_BOTS",
+						"AI_GATEWAY",
+						"BGP",
+						"BOTS",
+						"CONNECTION_ANOMALY",
+						"CT",
+						"DNS",
+						"DNS_MAGNITUDE",
+						"DNS_AS112",
+						"DOS",
+						"EMAIL_ROUTING",
+						"EMAIL_SECURITY",
+						"FW",
+						"FW_PG",
+						"HTTP",
+						"HTTP_CONTROL",
+						"HTTP_CRAWLER_REFERER",
+						"HTTP_ORIGINS",
+						"IQI",
+						"LEAKED_CREDENTIALS",
+						"NET",
+						"ROBOTS_TXT",
+						"SPEED",
+						"WORKERS_AI"
+					]
+				}
+			},
+			{
+				"name": "outageType",
+				"in": "query",
+				"description": "Filters results by outage type.",
+				"schema": {
+					"description": "Filters results by outage type.",
+					"type": "string",
+					"enum": [
+						"NATIONWIDE",
+						"REGIONAL",
+						"NETWORK",
+						"PLATFORM"
+					]
+				}
+			},
+			{
+				"name": "outageCause",
+				"in": "query",
+				"description": "Filters results by outage cause.",
+				"schema": {
+					"description": "Filters results by outage cause.",
+					"type": "string",
+					"enum": [
+						"BLOCKING",
+						"CABLE_CUT",
+						"CYBERATTACK",
+						"DNS",
+						"FIRE",
+						"GOVERNMENT_DIRECTED",
+						"MAINTENANCE",
+						"MECHANICAL",
+						"MILITARY_ACTION",
+						"MISCONFIGURATION",
+						"NATURAL_DISASTER",
+						"NETWORK_PROBLEM",
+						"POWER_OUTAGE",
+						"SOFTWARE",
+						"TECHNICAL_PROBLEM",
+						"UNKNOWN",
+						"WEATHER"
+					]
+				}
+			},
+			{
+				"name": "tags",
+				"in": "query",
+				"description": "Filters results by annotation tag. Matches annotations carrying at least one of the given tags.",
+				"schema": {
+					"description": "Filters results by annotation tag. Matches annotations carrying at least one of the given tags.",
+					"type": "array",
+					"items": {
+						"description": "Dimension tag an annotation applies to.",
+						"enum": [
+							"ADM1",
+							"ADM2",
+							"API_TRAFFIC",
+							"ARC",
+							"AS",
+							"ASN",
+							"ATTACKS",
+							"AUTHOR",
+							"BANDWIDTH",
+							"BITRATE",
+							"BOT",
+							"BOT_CATEGORY",
+							"BOT_CLASS",
+							"BOT_KIND",
+							"BOT_OPERATOR",
+							"BROWSER",
+							"BROWSER_FAMILY",
+							"BYTES",
+							"CA",
+							"CACHE_HIT",
+							"CA_OWNER",
+							"CHECK_RESULT",
+							"CLIENT_TYPE",
+							"COMPROMISED",
+							"CONTENT_TYPE",
+							"CRAWL_PURPOSE",
+							"CRAWL_REFER_RATIO",
+							"DEVICE_TYPE",
+							"DKIM",
+							"DMARC",
+							"DNS",
+							"DNSSEC",
+							"DNSSEC_AWARE",
+							"DNSSEC_E2E",
+							"DOMAIN_CATEGORY",
+							"DURATION",
+							"EDNS",
+							"ENCRYPTED",
+							"ENTRY_TYPE",
+							"EXPIRATION_STATUS",
+							"HAS_IPS",
+							"HAS_MATCHING_ANSWER",
+							"HAS_WILDCARDS",
+							"HTTP_METHOD",
+							"HTTP_PROTOCOL",
+							"HTTP_VERSION",
+							"INDUSTRY",
+							"IP_VERSION",
+							"JITTER",
+							"KEY_AGREEMENT",
+							"LATENCY",
+							"LOCATION",
+							"LOCATION_LATENCY",
+							"LOG",
+							"LOG_API",
+							"LOG_OPERATOR",
+							"MALICIOUS",
+							"MANAGED_RULES",
+							"MITIGATION_PRODUCT",
+							"MODEL",
+							"NAMESERVER_LATENCY",
+							"ORIGIN",
+							"ORIGIN_AS",
+							"ORIGIN_LOCATION",
+							"ORIGIN_TARGET_LOCATION_PAIR",
+							"OS",
+							"PERCENTILE",
+							"POST_QUANTUM",
+							"PREFIX",
+							"PRODUCT",
+							"PROTOCOL",
+							"PROVIDER",
+							"PUBLIC_KEY_ALGORITHM",
+							"QUERY_TYPE",
+							"REFERER",
+							"REGION",
+							"RESPONSE_CODE",
+							"RESPONSE_STATUS",
+							"RESPONSE_STATUS_CATEGORY",
+							"RESPONSE_TTL",
+							"SIGNATURE_ALGORITHM",
+							"SPAM",
+							"SPF",
+							"SPOOF",
+							"SUCCESS_RATE",
+							"TARGET_LOCATION",
+							"TASK",
+							"THREAT_CATEGORY",
+							"TLD",
+							"TLD_DNS_MAGNITUDE",
+							"TLS_VERSION",
+							"UPDATE_TYPE",
+							"USER_AGENT",
+							"VALIDATION_LEVEL",
+							"VECTOR",
+							"VERTICAL"
+						],
+						"type": "string"
+					}
+				}
+			},
+			{
+				"name": "query",
+				"in": "query",
+				"description": "Filters results by a free-text match on the annotation description, id, or linked entities (location, ASN, origin).",
+				"schema": {
+					"description": "Filters results by a free-text match on the annotation description, id, or linked entities (location, ASN, origin).",
+					"type": "string",
+					"example": "portugal",
+					"maxLength": 100
+				}
+			},
+			{
 				"name": "asn",
 				"in": "query",
 				"description": "Filters results by Autonomous System. Specify a single Autonomous System Number (ASN) as integer.",
@@ -508,6 +1311,17 @@
 				}
 			},
 			{
+				"name": "geoId",
+				"in": "query",
+				"description": "Filters results by geolocation. Refer to [GeoNames](https://download.geonames.org/export/dump/readme.txt).",
+				"schema": {
+					"description": "Filters results by geolocation. Refer to [GeoNames](https://download.geonames.org/export/dump/readme.txt).",
+					"type": "string",
+					"example": "3190509",
+					"maxLength": 100
+				}
+			},
+			{
 				"name": "origin",
 				"in": "query",
 				"description": "Filters results by origin.",
@@ -515,6 +1329,50 @@
 					"description": "Filters results by origin.",
 					"type": "string",
 					"example": "amazon-us-east-1",
+					"maxLength": 100
+				}
+			},
+			{
+				"name": "tld",
+				"in": "query",
+				"description": "Filters results by top-level domain.",
+				"schema": {
+					"description": "Filters results by top-level domain.",
+					"type": "string",
+					"example": "com",
+					"maxLength": 63,
+					"minLength": 2,
+					"pattern": "^[a-z0-9](?:[a-z0-9-]*[a-z0-9])$"
+				}
+			},
+			{
+				"name": "ca",
+				"in": "query",
+				"description": "Filters results by certificate authority.",
+				"schema": {
+					"description": "Filters results by certificate authority.",
+					"type": "string",
+					"maxLength": 100
+				}
+			},
+			{
+				"name": "log",
+				"in": "query",
+				"description": "Filters results by certificate log.",
+				"schema": {
+					"description": "Filters results by certificate log.",
+					"type": "string",
+					"maxLength": 100
+				}
+			},
+			{
+				"name": "bot",
+				"in": "query",
+				"description": "Filters results by bot.",
+				"schema": {
+					"description": "Filters results by bot.",
+					"type": "string",
+					"example": "gptbot",
 					"maxLength": 100
 				}
 			},
@@ -563,8 +1421,9 @@
 																	"type": "string",
 																	"example": "189"
 																},
-																"locations": {
+																"location": {
 																	"type": "object",
+																	"nullable": true,
 																	"properties": {
 																		"code": {
 																			"type": "string",
@@ -582,12 +1441,14 @@
 																},
 																"name": {
 																	"type": "string",
-																	"example": "LUMEN-LEGACY-L3-PARTITION"
+																	"example": "LUMEN-LEGACY-L3-PARTITION",
+																	"nullable": true
 																}
 															},
 															"required": [
 																"asn",
-																"name"
+																"name",
+																"location"
 															],
 															"type": "object"
 														}
@@ -598,15 +1459,50 @@
 													},
 													"description": {
 														"type": "string",
-														"example": "example"
+														"example": "example",
+														"nullable": true
 													},
 													"endDate": {
 														"type": "string",
-														"format": "date-time"
+														"format": "date-time",
+														"nullable": true
+													},
+													"entities": {
+														"type": "array",
+														"items": {
+															"properties": {
+																"entityName": {
+																	"type": "string",
+																	"example": "GPTBot",
+																	"nullable": true
+																},
+																"entityType": {
+																	"type": "string",
+																	"example": "BOT"
+																},
+																"entityValue": {
+																	"type": "string",
+																	"example": "gptbot"
+																}
+															},
+															"required": [
+																"entityType",
+																"entityValue",
+																"entityName"
+															],
+															"type": "object"
+														}
 													},
 													"eventType": {
 														"type": "string",
 														"example": "OUTAGE"
+													},
+													"geoIds": {
+														"type": "array",
+														"items": {
+															"example": "2267057",
+															"type": "string"
+														}
 													},
 													"id": {
 														"type": "string",
@@ -614,7 +1510,8 @@
 													},
 													"linkedUrl": {
 														"type": "string",
-														"example": "http://example.com"
+														"example": "http://example.com",
+														"nullable": true
 													},
 													"locations": {
 														"type": "array",
@@ -656,7 +1553,8 @@
 															"properties": {
 																"name": {
 																	"type": "string",
-																	"example": "us-east-1 Amazon Web Services"
+																	"example": "us-east-1 Amazon Web Services",
+																	"nullable": true
 																},
 																"origin": {
 																	"type": "string",
@@ -672,6 +1570,7 @@
 													},
 													"outage": {
 														"type": "object",
+														"nullable": true,
 														"properties": {
 															"outageCause": {
 																"type": "string",
@@ -689,24 +1588,38 @@
 													},
 													"scope": {
 														"type": "string",
-														"example": "Colima, Michoacán, México"
+														"example": "Colima, Michoacán, México",
+														"nullable": true
 													},
 													"startDate": {
 														"type": "string",
 														"format": "date-time"
+													},
+													"tags": {
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
 													}
 												},
 												"required": [
 													"id",
 													"dataSource",
+													"description",
+													"scope",
 													"startDate",
+													"endDate",
 													"asns",
 													"asnsDetails",
 													"locations",
+													"geoIds",
+													"entities",
 													"locationsDetails",
 													"origins",
 													"originsDetails",
 													"eventType",
+													"tags",
+													"linkedUrl",
 													"outage"
 												],
 												"type": "object"

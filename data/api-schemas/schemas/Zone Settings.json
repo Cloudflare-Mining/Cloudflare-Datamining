@@ -2073,15 +2073,19 @@
 																		"description": "Value of the zone setting.",
 																		"type": "string",
 																		"default": "on",
+																		"deprecated": true,
 																		"enum": [
 																			"on",
 																			"off"
-																		]
+																		],
+																		"x-stainless-deprecation-message": "This setting is deprecated. Orange to Orange (O2O) is applied automatically for eligible zones and no longer requires configuration; this setting only controlled the legacy O2O v1 (Managed CNAME) path. More information at https://developers.cloudflare.com/fundamentals/api/reference/deprecations/"
 																	}
 																}
 															}
 														],
-														"title": "Orange to Orange"
+														"deprecated": true,
+														"title": "Orange to Orange",
+														"x-stainless-deprecation-message": "This setting is deprecated. Orange to Orange (O2O) is applied automatically for eligible zones and no longer requires configuration; this setting only controlled the legacy O2O v1 (Managed CNAME) path. More information at https://developers.cloudflare.com/fundamentals/api/reference/deprecations/"
 													},
 													{
 														"description": "Cloudflare will proxy customer error pages on any 502,504 errors on origin server instead of showing a default Cloudflare error page. This does not apply to 522 errors and is limited to Enterprise Zones.",
@@ -2368,6 +2372,66 @@
 															}
 														],
 														"title": "Prefetch preload"
+													},
+													{
+														"description": "When enabled, Cloudflare serves pre-rendered HTML to eligible search and\nAI crawlers instead of the origin's unrendered response.",
+														"allOf": [
+															{
+																"properties": {
+																	"editable": {
+																		"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																		"type": "boolean",
+																		"enum": [
+																			true,
+																			false
+																		],
+																		"readOnly": true
+																	},
+																	"id": {
+																		"description": "Identifier of the zone setting.",
+																		"type": "string",
+																		"example": "development_mode"
+																	},
+																	"modified_on": {
+																		"description": "last time this setting was modified.",
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"nullable": true,
+																		"readOnly": true
+																	},
+																	"value": {
+																		"description": "Current value of the zone setting.",
+																		"example": "on"
+																	}
+																},
+																"required": [
+																	"id",
+																	"value"
+																]
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "ID of the zone setting.",
+																		"example": "pre_render",
+																		"enum": [
+																			"pre_render"
+																		]
+																	},
+																	"value": {
+																		"description": "Value of the zone setting.",
+																		"type": "string",
+																		"default": "off",
+																		"enum": [
+																			"off",
+																			"on"
+																		]
+																	}
+																}
+															}
+														],
+														"title": "Pre-render"
 													},
 													{
 														"description": "Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors by allowing users to reduce the number of CAPTCHAs shown. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass).",
@@ -6318,15 +6382,19 @@
 																	"description": "Value of the zone setting.",
 																	"type": "string",
 																	"default": "on",
+																	"deprecated": true,
 																	"enum": [
 																		"on",
 																		"off"
-																	]
+																	],
+																	"x-stainless-deprecation-message": "This setting is deprecated. Orange to Orange (O2O) is applied automatically for eligible zones and no longer requires configuration; this setting only controlled the legacy O2O v1 (Managed CNAME) path. More information at https://developers.cloudflare.com/fundamentals/api/reference/deprecations/"
 																}
 															}
 														}
 													],
-													"title": "Orange to Orange"
+													"deprecated": true,
+													"title": "Orange to Orange",
+													"x-stainless-deprecation-message": "This setting is deprecated. Orange to Orange (O2O) is applied automatically for eligible zones and no longer requires configuration; this setting only controlled the legacy O2O v1 (Managed CNAME) path. More information at https://developers.cloudflare.com/fundamentals/api/reference/deprecations/"
 												},
 												{
 													"description": "Cloudflare will proxy customer error pages on any 502,504 errors on origin server instead of showing a default Cloudflare error page. This does not apply to 522 errors and is limited to Enterprise Zones.",
@@ -6613,6 +6681,66 @@
 														}
 													],
 													"title": "Prefetch preload"
+												},
+												{
+													"description": "When enabled, Cloudflare serves pre-rendered HTML to eligible search and\nAI crawlers instead of the origin's unrendered response.",
+													"allOf": [
+														{
+															"properties": {
+																"editable": {
+																	"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																	"type": "boolean",
+																	"enum": [
+																		true,
+																		false
+																	],
+																	"readOnly": true
+																},
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"type": "string",
+																	"example": "development_mode"
+																},
+																"modified_on": {
+																	"description": "last time this setting was modified.",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"nullable": true,
+																	"readOnly": true
+																},
+																"value": {
+																	"description": "Current value of the zone setting.",
+																	"example": "on"
+																}
+															},
+															"required": [
+																"id",
+																"value"
+															]
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"example": "pre_render",
+																	"enum": [
+																		"pre_render"
+																	]
+																},
+																"value": {
+																	"description": "Value of the zone setting.",
+																	"type": "string",
+																	"default": "off",
+																	"enum": [
+																		"off",
+																		"on"
+																	]
+																}
+															}
+														}
+													],
+													"title": "Pre-render"
 												},
 												{
 													"description": "Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors by allowing users to reduce the number of CAPTCHAs shown. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass).",
@@ -14029,15 +14157,19 @@
 													"description": "Value of the zone setting.",
 													"type": "string",
 													"default": "on",
+													"deprecated": true,
 													"enum": [
 														"on",
 														"off"
-													]
+													],
+													"x-stainless-deprecation-message": "This setting is deprecated. Orange to Orange (O2O) is applied automatically for eligible zones and no longer requires configuration; this setting only controlled the legacy O2O v1 (Managed CNAME) path. More information at https://developers.cloudflare.com/fundamentals/api/reference/deprecations/"
 												}
 											}
 										}
 									],
-									"title": "Orange to Orange"
+									"deprecated": true,
+									"title": "Orange to Orange",
+									"x-stainless-deprecation-message": "This setting is deprecated. Orange to Orange (O2O) is applied automatically for eligible zones and no longer requires configuration; this setting only controlled the legacy O2O v1 (Managed CNAME) path. More information at https://developers.cloudflare.com/fundamentals/api/reference/deprecations/"
 								},
 								{
 									"description": "Cloudflare will proxy customer error pages on any 502,504 errors on origin server instead of showing a default Cloudflare error page. This does not apply to 522 errors and is limited to Enterprise Zones.",
@@ -14324,6 +14456,66 @@
 										}
 									],
 									"title": "Prefetch preload"
+								},
+								{
+									"description": "When enabled, Cloudflare serves pre-rendered HTML to eligible search and\nAI crawlers instead of the origin's unrendered response.",
+									"allOf": [
+										{
+											"properties": {
+												"editable": {
+													"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+													"type": "boolean",
+													"enum": [
+														true,
+														false
+													],
+													"readOnly": true
+												},
+												"id": {
+													"description": "Identifier of the zone setting.",
+													"type": "string",
+													"example": "development_mode"
+												},
+												"modified_on": {
+													"description": "last time this setting was modified.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"nullable": true,
+													"readOnly": true
+												},
+												"value": {
+													"description": "Current value of the zone setting.",
+													"example": "on"
+												}
+											},
+											"required": [
+												"id",
+												"value"
+											]
+										},
+										{
+											"properties": {
+												"id": {
+													"description": "ID of the zone setting.",
+													"example": "pre_render",
+													"enum": [
+														"pre_render"
+													]
+												},
+												"value": {
+													"description": "Value of the zone setting.",
+													"type": "string",
+													"default": "off",
+													"enum": [
+														"off",
+														"on"
+													]
+												}
+											}
+										}
+									],
+									"title": "Pre-render"
 								},
 								{
 									"description": "Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors by allowing users to reduce the number of CAPTCHAs shown. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass).",
@@ -17945,15 +18137,19 @@
 																		"description": "Value of the zone setting.",
 																		"type": "string",
 																		"default": "on",
+																		"deprecated": true,
 																		"enum": [
 																			"on",
 																			"off"
-																		]
+																		],
+																		"x-stainless-deprecation-message": "This setting is deprecated. Orange to Orange (O2O) is applied automatically for eligible zones and no longer requires configuration; this setting only controlled the legacy O2O v1 (Managed CNAME) path. More information at https://developers.cloudflare.com/fundamentals/api/reference/deprecations/"
 																	}
 																}
 															}
 														],
-														"title": "Orange to Orange"
+														"deprecated": true,
+														"title": "Orange to Orange",
+														"x-stainless-deprecation-message": "This setting is deprecated. Orange to Orange (O2O) is applied automatically for eligible zones and no longer requires configuration; this setting only controlled the legacy O2O v1 (Managed CNAME) path. More information at https://developers.cloudflare.com/fundamentals/api/reference/deprecations/"
 													},
 													{
 														"description": "Cloudflare will proxy customer error pages on any 502,504 errors on origin server instead of showing a default Cloudflare error page. This does not apply to 522 errors and is limited to Enterprise Zones.",
@@ -18240,6 +18436,66 @@
 															}
 														],
 														"title": "Prefetch preload"
+													},
+													{
+														"description": "When enabled, Cloudflare serves pre-rendered HTML to eligible search and\nAI crawlers instead of the origin's unrendered response.",
+														"allOf": [
+															{
+																"properties": {
+																	"editable": {
+																		"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																		"type": "boolean",
+																		"enum": [
+																			true,
+																			false
+																		],
+																		"readOnly": true
+																	},
+																	"id": {
+																		"description": "Identifier of the zone setting.",
+																		"type": "string",
+																		"example": "development_mode"
+																	},
+																	"modified_on": {
+																		"description": "last time this setting was modified.",
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"nullable": true,
+																		"readOnly": true
+																	},
+																	"value": {
+																		"description": "Current value of the zone setting.",
+																		"example": "on"
+																	}
+																},
+																"required": [
+																	"id",
+																	"value"
+																]
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "ID of the zone setting.",
+																		"example": "pre_render",
+																		"enum": [
+																			"pre_render"
+																		]
+																	},
+																	"value": {
+																		"description": "Value of the zone setting.",
+																		"type": "string",
+																		"default": "off",
+																		"enum": [
+																			"off",
+																			"on"
+																		]
+																	}
+																}
+															}
+														],
+														"title": "Pre-render"
 													},
 													{
 														"description": "Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors by allowing users to reduce the number of CAPTCHAs shown. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass).",
@@ -20456,10 +20712,12 @@
 												"description": "Value of the zone setting.",
 												"type": "string",
 												"default": "on",
+												"deprecated": true,
 												"enum": [
 													"on",
 													"off"
-												]
+												],
+												"x-stainless-deprecation-message": "This setting is deprecated. Orange to Orange (O2O) is applied automatically for eligible zones and no longer requires configuration; this setting only controlled the legacy O2O v1 (Managed CNAME) path. More information at https://developers.cloudflare.com/fundamentals/api/reference/deprecations/"
 											},
 											{
 												"description": "Value of the zone setting.",
@@ -20504,6 +20762,15 @@
 												"enum": [
 													"on",
 													"off"
+												]
+											},
+											{
+												"description": "Value of the zone setting.",
+												"type": "string",
+												"default": "off",
+												"enum": [
+													"off",
+													"on"
 												]
 											},
 											{
@@ -22935,15 +23202,19 @@
 																	"description": "Value of the zone setting.",
 																	"type": "string",
 																	"default": "on",
+																	"deprecated": true,
 																	"enum": [
 																		"on",
 																		"off"
-																	]
+																	],
+																	"x-stainless-deprecation-message": "This setting is deprecated. Orange to Orange (O2O) is applied automatically for eligible zones and no longer requires configuration; this setting only controlled the legacy O2O v1 (Managed CNAME) path. More information at https://developers.cloudflare.com/fundamentals/api/reference/deprecations/"
 																}
 															}
 														}
 													],
-													"title": "Orange to Orange"
+													"deprecated": true,
+													"title": "Orange to Orange",
+													"x-stainless-deprecation-message": "This setting is deprecated. Orange to Orange (O2O) is applied automatically for eligible zones and no longer requires configuration; this setting only controlled the legacy O2O v1 (Managed CNAME) path. More information at https://developers.cloudflare.com/fundamentals/api/reference/deprecations/"
 												},
 												{
 													"description": "Cloudflare will proxy customer error pages on any 502,504 errors on origin server instead of showing a default Cloudflare error page. This does not apply to 522 errors and is limited to Enterprise Zones.",
@@ -23230,6 +23501,66 @@
 														}
 													],
 													"title": "Prefetch preload"
+												},
+												{
+													"description": "When enabled, Cloudflare serves pre-rendered HTML to eligible search and\nAI crawlers instead of the origin's unrendered response.",
+													"allOf": [
+														{
+															"properties": {
+																"editable": {
+																	"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																	"type": "boolean",
+																	"enum": [
+																		true,
+																		false
+																	],
+																	"readOnly": true
+																},
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"type": "string",
+																	"example": "development_mode"
+																},
+																"modified_on": {
+																	"description": "last time this setting was modified.",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"nullable": true,
+																	"readOnly": true
+																},
+																"value": {
+																	"description": "Current value of the zone setting.",
+																	"example": "on"
+																}
+															},
+															"required": [
+																"id",
+																"value"
+															]
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"example": "pre_render",
+																	"enum": [
+																		"pre_render"
+																	]
+																},
+																"value": {
+																	"description": "Value of the zone setting.",
+																	"type": "string",
+																	"default": "off",
+																	"enum": [
+																		"off",
+																		"on"
+																	]
+																}
+															}
+														}
+													],
+													"title": "Pre-render"
 												},
 												{
 													"description": "Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors by allowing users to reduce the number of CAPTCHAs shown. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass).",

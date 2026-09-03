@@ -399,6 +399,273 @@
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
+	"GET /accounts/{account_id}/email/sending/reputation": {
+		"operationId": "email-sending-get-reputation",
+		"summary": "Get account reputation",
+		"description": "Returns the authoritative Email Sending reputation state and active evaluation policy. Accounts without an evaluation are Healthy with null evaluation timestamps.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get account reputation response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"active_policy": {
+													"type": "object",
+													"properties": {
+														"complaint": {
+															"type": "object",
+															"properties": {
+																"at_risk_at": {
+																	"type": "number",
+																	"format": "double"
+																},
+																"minimum_denominator": {
+																	"type": "integer",
+																	"format": "int64"
+																},
+																"warning_at": {
+																	"type": "number",
+																	"format": "double"
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"warning_at",
+																"at_risk_at",
+																"minimum_denominator"
+															]
+														},
+														"customer_bounce": {
+															"type": "object",
+															"properties": {
+																"at_risk_at": {
+																	"type": "number",
+																	"format": "double"
+																},
+																"minimum_denominator": {
+																	"type": "integer",
+																	"format": "int64"
+																},
+																"warning_at": {
+																	"type": "number",
+																	"format": "double"
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"warning_at",
+																"at_risk_at",
+																"minimum_denominator"
+															]
+														},
+														"spam_rejection": {
+															"type": "object",
+															"properties": {
+																"at_risk_at": {
+																	"type": "number",
+																	"format": "double"
+																},
+																"minimum_denominator": {
+																	"type": "integer",
+																	"format": "int64"
+																},
+																"warning_at": {
+																	"type": "number",
+																	"format": "double"
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"warning_at",
+																"at_risk_at",
+																"minimum_denominator"
+															]
+														},
+														"suspension_after_hours": {
+															"description": "The grace period before suspension. The value must be a whole number of days.",
+															"type": "integer",
+															"format": "int64",
+															"example": 168,
+															"minimum": 24,
+															"multipleOf": 24
+														}
+													},
+													"additionalProperties": false,
+													"required": [
+														"customer_bounce",
+														"complaint",
+														"spam_rejection",
+														"suspension_after_hours"
+													]
+												},
+												"evaluated_at": {
+													"type": "string",
+													"format": "date-time",
+													"nullable": true
+												},
+												"status": {
+													"type": "string",
+													"enum": [
+														"healthy",
+														"warning",
+														"at_risk",
+														"suspended"
+													]
+												},
+												"status_since": {
+													"type": "string",
+													"format": "date-time",
+													"nullable": true
+												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"status",
+												"status_since",
+												"evaluated_at",
+												"active_policy"
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Email Sending"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.email.sending.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-sending.reputation",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	},
 	"POST /accounts/{account_id}/email/sending/send": {
 		"operationId": "email-sending-account-send-builder",
 		"summary": "Send an email",

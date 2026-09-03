@@ -1648,8 +1648,12 @@
 												"format": "date-time"
 											},
 											"format": {
-												"description": "Defines the data format of the events.",
+												"description": "Defines the output data format of a sink.",
 												"discriminator": {
+													"mapping": {
+														"json": "#/components/schemas/cloudflare-pipelines_SinkJsonFormat",
+														"parquet": "#/components/schemas/cloudflare-pipelines_SinkParquetFormat"
+													},
 													"propertyName": "type"
 												},
 												"oneOf": [
@@ -1680,6 +1684,15 @@
 															},
 															{
 																"properties": {
+																	"compression": {
+																		"description": "Specifies the compression applied to JSON sink output.",
+																		"type": "string",
+																		"default": "uncompressed",
+																		"enum": [
+																			"uncompressed",
+																			"gzip"
+																		]
+																	},
 																	"type": {
 																		"type": "string",
 																		"enum": [
@@ -2327,8 +2340,12 @@
 											"format": "date-time"
 										},
 										"format": {
-											"description": "Defines the data format of the events.",
+											"description": "Defines the output data format of a sink.",
 											"discriminator": {
+												"mapping": {
+													"json": "#/components/schemas/cloudflare-pipelines_SinkJsonFormat",
+													"parquet": "#/components/schemas/cloudflare-pipelines_SinkParquetFormat"
+												},
 												"propertyName": "type"
 											},
 											"oneOf": [
@@ -2359,6 +2376,15 @@
 														},
 														{
 															"properties": {
+																"compression": {
+																	"description": "Specifies the compression applied to JSON sink output.",
+																	"type": "string",
+																	"default": "uncompressed",
+																	"enum": [
+																		"uncompressed",
+																		"gzip"
+																	]
+																},
 																"type": {
 																	"type": "string",
 																	"enum": [
@@ -5378,8 +5404,12 @@
 								]
 							},
 							"format": {
-								"description": "Defines the data format of the events.",
+								"description": "Defines the output data format of a sink.",
 								"discriminator": {
+									"mapping": {
+										"json": "#/components/schemas/cloudflare-pipelines_SinkJsonFormat",
+										"parquet": "#/components/schemas/cloudflare-pipelines_SinkParquetFormat"
+									},
 									"propertyName": "type"
 								},
 								"oneOf": [
@@ -5410,6 +5440,15 @@
 											},
 											{
 												"properties": {
+													"compression": {
+														"description": "Specifies the compression applied to JSON sink output.",
+														"type": "string",
+														"default": "uncompressed",
+														"enum": [
+															"uncompressed",
+															"gzip"
+														]
+													},
 													"type": {
 														"type": "string",
 														"enum": [
@@ -5972,8 +6011,12 @@
 											"format": "date-time"
 										},
 										"format": {
-											"description": "Defines the data format of the events.",
+											"description": "Defines the output data format of a sink.",
 											"discriminator": {
+												"mapping": {
+													"json": "#/components/schemas/cloudflare-pipelines_SinkJsonFormat",
+													"parquet": "#/components/schemas/cloudflare-pipelines_SinkParquetFormat"
+												},
 												"propertyName": "type"
 											},
 											"oneOf": [
@@ -6004,6 +6047,15 @@
 														},
 														{
 															"properties": {
+																"compression": {
+																	"description": "Specifies the compression applied to JSON sink output.",
+																	"type": "string",
+																	"default": "uncompressed",
+																	"enum": [
+																		"uncompressed",
+																		"gzip"
+																	]
+																},
 																"type": {
 																	"type": "string",
 																	"enum": [

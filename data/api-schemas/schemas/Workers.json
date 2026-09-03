@@ -1128,14 +1128,20 @@
 												"properties": {
 													"build_outcome": {
 														"type": "string",
-														"example": "success",
-														"enum": [
-															"success",
-															"fail",
-															"skipped",
-															"cancelled",
-															"terminated"
-														]
+														"allOf": [
+															{
+																"type": "string",
+																"example": "success",
+																"enum": [
+																	"success",
+																	"fail",
+																	"skipped",
+																	"cancelled",
+																	"terminated"
+																]
+															}
+														],
+														"nullable": true
 													},
 													"build_trigger_metadata": {
 														"type": "object",
@@ -1201,7 +1207,8 @@
 																"enum": [
 																	"github",
 																	"gitlab",
-																	"gitlab_internal"
+																	"gitlab_internal",
+																	"origin"
 																]
 															},
 															"repo_name": {
@@ -1369,7 +1376,8 @@
 																		"enum": [
 																			"github",
 																			"gitlab",
-																			"gitlab_internal"
+																			"gitlab_internal",
+																			"origin"
 																		]
 																	},
 																	"repo_connection_uuid": {
@@ -1435,6 +1443,68 @@
 									},
 									"type": "object"
 								}
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication required",
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 12005,
+									"message": "Missing token from authorization header"
+								}
+							],
+							"messages": [],
+							"result": null,
+							"success": false
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"example": 12000
+											},
+											"message": {
+												"type": "string",
+												"example": "Not found"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1674,7 +1744,8 @@
 																"enum": [
 																	"github",
 																	"gitlab",
-																	"gitlab_internal"
+																	"gitlab_internal",
+																	"origin"
 																]
 															},
 															"repo_connection_uuid": {
@@ -1713,6 +1784,68 @@
 									},
 									"type": "object"
 								}
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication required",
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 12005,
+									"message": "Missing token from authorization header"
+								}
+							],
+							"messages": [],
+							"result": null,
+							"success": false
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"example": 12000
+											},
+											"message": {
+												"type": "string",
+												"example": "Not found"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1877,7 +2010,8 @@
 															"enum": [
 																"github",
 																"gitlab",
-																"gitlab_internal"
+																"gitlab_internal",
+																"origin"
 															]
 														},
 														"repo_id": {
@@ -4338,7 +4472,8 @@
 															"enum": [
 																"github",
 																"gitlab",
-																"gitlab_internal"
+																"gitlab_internal",
+																"origin"
 															]
 														},
 														"repo_id": {
@@ -7184,7 +7319,7 @@
 						"production_settings": {
 							"build_caching_enabled": true,
 							"build_command": "npm run build",
-							"build_token_uuid": "your-build-token-uuid",
+							"build_token_uuid": "4b1e4d0f-6f2a-4c9d-9a3b-7c5e2f8a1d64",
 							"deploy_command": "npx wrangler deploy",
 							"environment_variables": {},
 							"path_excludes": [
@@ -7206,7 +7341,8 @@
 									"mapping": {
 										"github": "#/components/schemas/builds_CreateWorkerGitRepositoryFunfettiInput",
 										"gitlab": "#/components/schemas/builds_CreateWorkerGitRepositoryFunfettiInput",
-										"gitlab_internal": "#/components/schemas/builds_CreateWorkerGitRepositoryGrantInput"
+										"gitlab_internal": "#/components/schemas/builds_CreateWorkerGitRepositoryGrantInput",
+										"origin": "#/components/schemas/builds_CreateWorkerGitRepositoryGrantInput"
 									},
 									"propertyName": "provider_type"
 								},
@@ -7259,7 +7395,7 @@
 										]
 									},
 									{
-										"description": "Internal GitLab repository input for creating a Worker build configuration",
+										"description": "Grant-backed repository input for creating a Worker build configuration",
 										"type": "object",
 										"properties": {
 											"branch": {
@@ -7270,7 +7406,7 @@
 												"minLength": 1
 											},
 											"grant_id": {
-												"description": "Grant ID required when provider_type is gitlab_internal",
+												"description": "Grant ID required for grant-backed providers",
 												"type": "string",
 												"example": "grant-123",
 												"minLength": 1
@@ -7288,7 +7424,8 @@
 												"type": "string",
 												"example": "gitlab_internal",
 												"enum": [
-													"gitlab_internal"
+													"gitlab_internal",
+													"origin"
 												]
 											},
 											"repo_id": {
@@ -7531,7 +7668,8 @@
 															"enum": [
 																"github",
 																"gitlab",
-																"gitlab_internal"
+																"gitlab_internal",
+																"origin"
 															]
 														},
 														"repo_id": {

@@ -298,7 +298,7 @@
 				"schema": {
 					"description": "Memory Identifier.",
 					"type": "string",
-					"example": "01JSGCEXAMPLE000000000000",
+					"example": "01JSGCEXAMP1E0000000000000",
 					"maxLength": 26,
 					"minLength": 26,
 					"pattern": "^[0-9A-HJKMNP-TV-Z]{26}$"
@@ -406,7 +406,7 @@
 										"id": {
 											"description": "Unique identifier of the memory.",
 											"type": "string",
-											"example": "01JSGCEXAMPLE000000000000"
+											"example": "01JSGCEXAMP1E0000000000000"
 										},
 										"sessionId": {
 											"description": "Identifier of the session this memory is associated with.",
@@ -862,6 +862,315 @@
 		"x-fern-sdk-method-name": "delete-session",
 		"x-forge-require-confirmation": "This operation deletes all memories and messages tagged with this session ID."
 	},
+	"GET /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles": {
+		"operationId": "agent-memory-profile-list",
+		"summary": "List profiles",
+		"description": "Lists the profiles of a namespace, ordered by name. A profile appears once it has been used.",
+		"parameters": [
+			{
+				"name": "namespace_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Namespace name.",
+					"type": "string",
+					"example": "support-agent",
+					"maxLength": 32,
+					"minLength": 1,
+					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$"
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"schema": {
+					"description": "Number of results per page.",
+					"type": "integer",
+					"example": 20,
+					"maximum": 500,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "cursor",
+				"in": "query",
+				"schema": {
+					"description": "Opaque continuation cursor returned by a previous list response.",
+					"type": "string",
+					"example": "eyJ2IjoxLCJuIjoibXktcHJvZmlsZSJ9",
+					"maxLength": 256,
+					"minLength": 1,
+					"pattern": "^[A-Za-z0-9_-]+$"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "A page of profiles.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Always empty for a successful response.",
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Machine-readable status code.",
+												"type": "number",
+												"example": 1003
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation, when available.",
+												"type": "string"
+											},
+											"message": {
+												"description": "Human-readable message describing the error or status.",
+												"type": "string",
+												"example": "namespace not found"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the request field that caused the error.",
+														"type": "string",
+														"example": "/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": []
+								},
+								"messages": {
+									"description": "Informational, non-error messages, if any.",
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Machine-readable status code.",
+												"type": "number",
+												"example": 1003
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation, when available.",
+												"type": "string"
+											},
+											"message": {
+												"description": "Human-readable message describing the error or status.",
+												"type": "string",
+												"example": "namespace not found"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the request field that caused the error.",
+														"type": "string",
+														"example": "/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": []
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"createdAt": {
+												"description": "Time the profile was first recorded in the namespace index.",
+												"type": "string",
+												"format": "date-time",
+												"example": "2025-09-21T14:30:00Z"
+											},
+											"name": {
+												"description": "Profile name.",
+												"type": "string",
+												"example": "my-profile"
+											}
+										},
+										"required": [
+											"name",
+											"createdAt"
+										],
+										"type": "object"
+									}
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"description": "Number of results returned in this page.",
+											"type": "integer",
+											"example": 1
+										},
+										"cursor": {
+											"description": "Opaque cursor for the next page; omitted on the last page.",
+											"type": "string",
+											"example": "eyJ2IjoxLCJuIjoibXktcHJvZmlsZSJ9"
+										},
+										"per_page": {
+											"description": "Page size used for this query.",
+											"type": "integer",
+											"example": 20
+										}
+									}
+								},
+								"success": {
+									"description": "Always true for a successful response.",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "One or more errors describing what went wrong.",
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Machine-readable status code.",
+												"type": "number",
+												"example": 1003
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation, when available.",
+												"type": "string"
+											},
+											"message": {
+												"description": "Human-readable message describing the error or status.",
+												"type": "string",
+												"example": "namespace not found"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the request field that caused the error.",
+														"type": "string",
+														"example": "/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [
+										{
+											"code": 1003,
+											"message": "namespace not found"
+										}
+									]
+								},
+								"messages": {
+									"description": "Informational, non-error messages, if any.",
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Machine-readable status code.",
+												"type": "number",
+												"example": 1003
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation, when available.",
+												"type": "string"
+											},
+											"message": {
+												"description": "Human-readable message describing the error or status.",
+												"type": "string",
+												"example": "namespace not found"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the request field that caused the error.",
+														"type": "string",
+														"example": "/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Always null for an error response.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Always false for an error response.",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Memory"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "agent-memory",
+		"x-fern-sdk-method-name": "list-profiles"
+	},
 	"GET /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/memories": {
 		"operationId": "agent-memory-memory-list",
 		"summary": "List memories",
@@ -910,7 +1219,7 @@
 				"schema": {
 					"description": "Continuation cursor for paginated results.",
 					"type": "string",
-					"example": "01JSGCEXAMPLE000000000000",
+					"example": "01JSGCEXAMP1E0000000000000",
 					"maxLength": 26,
 					"minLength": 26
 				}
@@ -1039,7 +1348,7 @@
 											"id": {
 												"description": "Unique identifier of the memory.",
 												"type": "string",
-												"example": "01JSGCEXAMPLE000000000000"
+												"example": "01JSGCEXAMP1E0000000000000"
 											},
 											"sessionId": {
 												"description": "Identifier of the session this memory is associated with.",
@@ -1092,7 +1401,7 @@
 										"cursor": {
 											"description": "Opaque cursor for the next page; omitted on the last page.",
 											"type": "string",
-											"example": "01JSGCEXAMPLE000000000000"
+											"example": "01JSGCEXAMP1E0000000000000"
 										},
 										"per_page": {
 											"description": "Page size used for this query.",
@@ -1279,7 +1588,7 @@
 				"schema": {
 					"description": "Memory Identifier.",
 					"type": "string",
-					"example": "01JSGCEXAMPLE000000000000",
+					"example": "01JSGCEXAMP1E0000000000000",
 					"maxLength": 26,
 					"minLength": 26,
 					"pattern": "^[0-9A-HJKMNP-TV-Z]{26}$"
@@ -1387,7 +1696,7 @@
 										"id": {
 											"description": "Unique identifier of the memory.",
 											"type": "string",
-											"example": "01JSGCEXAMPLE000000000000"
+											"example": "01JSGCEXAMP1E0000000000000"
 										},
 										"sessionId": {
 											"description": "Identifier of the session this memory is associated with.",
@@ -2062,7 +2371,7 @@
 													"id": {
 														"description": "Unique identifier of the memory.",
 														"type": "string",
-														"example": "01JSGCEXAMPLE000000000000"
+														"example": "01JSGCEXAMP1E0000000000000"
 													},
 													"score": {
 														"description": "Relevance score for the query; higher is more relevant.",
@@ -2401,7 +2710,7 @@
 										"id": {
 											"description": "Unique identifier of the memory.",
 											"type": "string",
-											"example": "01JSGCEXAMPLE000000000000"
+											"example": "01JSGCEXAMP1E0000000000000"
 										},
 										"sessionId": {
 											"description": "Identifier of the session this memory is associated with.",
@@ -2585,7 +2894,7 @@
 	"POST /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/summary": {
 		"operationId": "agent-memory-summary",
 		"summary": "Get a profile summary",
-		"description": "Generates a structured Markdown summary of everything stored in a memory profile.",
+		"description": "Generates a paste-ready prompt block summarizing everything stored in a memory profile.",
 		"parameters": [
 			{
 				"name": "namespace_name",
@@ -2720,9 +3029,9 @@
 									"type": "object",
 									"properties": {
 										"summary": {
-											"description": "Markdown summary of everything stored in the profile.",
+											"description": "Paste-ready prompt block summarizing everything stored in the profile.",
 											"type": "string",
-											"example": "## Preferences\n- Prefers dark mode\n\n## Tasks\n- Finish onboarding"
+											"example": "Profile context as of 2 January 2025.\n🔴 (fact) Prefers dark mode: The user prefers dark mode in all editors.\n🟡 (task) Finish onboarding: Complete the onboarding checklist."
 										}
 									},
 									"required": [

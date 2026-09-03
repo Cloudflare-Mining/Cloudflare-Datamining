@@ -267,7 +267,9 @@
 				"name": "order",
 				"in": "query",
 				"schema": {
+					"description": "Field to order the results by.",
 					"type": "string",
+					"example": "id",
 					"enum": [
 						"id",
 						"name"
@@ -278,7 +280,9 @@
 				"name": "direction",
 				"in": "query",
 				"schema": {
+					"description": "Direction to sort the results in.",
 					"type": "string",
+					"example": "asc",
 					"enum": [
 						"asc",
 						"desc"
@@ -289,6 +293,7 @@
 				"name": "cursor",
 				"in": "query",
 				"schema": {
+					"description": "Pagination cursor returned by a previous list response.",
 					"type": "string"
 				}
 			}
@@ -390,7 +395,7 @@
 											"id": {
 												"description": "Unique identifier of the namespace.",
 												"type": "string",
-												"example": "01JSGCEXAMPLE000000000000"
+												"example": "01JSGCEXAMP1E0000000000000"
 											},
 											"name": {
 												"description": "Namespace name.",
@@ -424,7 +429,7 @@
 										"cursor": {
 											"description": "Opaque cursor for the next page; omitted on the last page.",
 											"type": "string",
-											"example": "01JSGCEXAMPLE000000000000"
+											"example": "01JSGCEXAMP1E0000000000000"
 										},
 										"per_page": {
 											"description": "Page size used for this query.",
@@ -688,7 +693,7 @@
 										"id": {
 											"description": "Unique identifier of the namespace.",
 											"type": "string",
-											"example": "01JSGCEXAMPLE000000000000"
+											"example": "01JSGCEXAMP1E0000000000000"
 										},
 										"name": {
 											"description": "Namespace name.",
@@ -972,7 +977,7 @@
 										"id": {
 											"description": "Unique identifier of the namespace.",
 											"type": "string",
-											"example": "01JSGCEXAMPLE000000000000"
+											"example": "01JSGCEXAMP1E0000000000000"
 										},
 										"name": {
 											"description": "Namespace name.",

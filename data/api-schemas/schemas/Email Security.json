@@ -4976,6 +4976,430 @@
 														"type": "string",
 														"nullable": true
 													},
+													"message": {
+														"type": "object",
+														"properties": {
+															"action_log": {
+																"description": "Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026.",
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"completed_at": {
+																			"description": "Timestamp when action completed.",
+																			"type": "string",
+																			"format": "date-time",
+																			"readOnly": true
+																		},
+																		"completed_timestamp": {
+																			"description": "Deprecated, use `completed_at` instead. End of life: November 1, 2026.",
+																			"type": "string",
+																			"deprecated": true,
+																			"readOnly": true,
+																			"x-stainless-deprecation-message": "Use `completed_at` instead."
+																		},
+																		"operation": {
+																			"description": "Type of action performed.",
+																			"type": "string",
+																			"enum": [
+																				"MOVE",
+																				"RELEASE",
+																				"RECLASSIFY",
+																				"SUBMISSION",
+																				"QUARANTINE_RELEASE",
+																				"PREVIEW"
+																			]
+																		},
+																		"properties": {
+																			"description": "Additional properties for the action.",
+																			"type": "object",
+																			"properties": {
+																				"folder": {
+																					"description": "Target folder for move operations.",
+																					"type": "string"
+																				},
+																				"requested_by": {
+																					"description": "User who requested the action.",
+																					"type": "string"
+																				}
+																			}
+																		},
+																		"status": {
+																			"description": "Status of the action.",
+																			"type": "string",
+																			"nullable": true
+																		}
+																	},
+																	"required": [
+																		"completed_at",
+																		"operation"
+																	]
+																},
+																"deprecated": true,
+																"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead."
+															},
+															"alert_id": {
+																"type": "string",
+																"nullable": true
+															},
+															"client_recipients": {
+																"type": "array",
+																"items": {
+																	"type": "string"
+																}
+															},
+															"delivery_mode": {
+																"type": "string",
+																"enum": [
+																	"DIRECT",
+																	"BCC",
+																	"JOURNAL",
+																	"REVIEW_SUBMISSION",
+																	"DMARC_UNVERIFIED",
+																	"DMARC_FAILURE_REPORT",
+																	"DMARC_AGGREGATE_REPORT",
+																	"THREAT_INTEL_SUBMISSION",
+																	"SIMULATION_SUBMISSION",
+																	"API",
+																	"RETRO_SCAN"
+																]
+															},
+															"delivery_status": {
+																"type": "array",
+																"items": {
+																	"description": "Delivery status of the message.",
+																	"type": "string",
+																	"enum": [
+																		"delivered",
+																		"moved",
+																		"quarantined",
+																		"rejected",
+																		"deferred",
+																		"bounced",
+																		"queued",
+																		"move_failed"
+																	]
+																},
+																"nullable": true
+															},
+															"detection_reasons": {
+																"type": "array",
+																"items": {
+																	"type": "string"
+																}
+															},
+															"edf_hash": {
+																"type": "string",
+																"nullable": true
+															},
+															"envelope_from": {
+																"type": "string",
+																"nullable": true
+															},
+															"envelope_to": {
+																"type": "array",
+																"items": {
+																	"type": "string"
+																},
+																"nullable": true
+															},
+															"final_disposition": {
+																"type": "string",
+																"enum": [
+																	"MALICIOUS",
+																	"MALICIOUS-BEC",
+																	"SUSPICIOUS",
+																	"SPOOF",
+																	"SPAM",
+																	"BULK",
+																	"ENCRYPTED",
+																	"EXTERNAL",
+																	"UNKNOWN",
+																	"NONE"
+																]
+															},
+															"findings": {
+																"description": "Deprecated, use the `findings` field from `GET /investigate/{investigate_id}/detections` instead. End of life: November 1, 2026. Detection findings for this message.",
+																"type": "array",
+																"items": {
+																	"properties": {
+																		"attachment": {
+																			"type": "string",
+																			"nullable": true
+																		},
+																		"detail": {
+																			"type": "string",
+																			"nullable": true
+																		},
+																		"detection": {
+																			"type": "string",
+																			"enum": [
+																				"MALICIOUS",
+																				"MALICIOUS-BEC",
+																				"SUSPICIOUS",
+																				"SPOOF",
+																				"SPAM",
+																				"BULK",
+																				"ENCRYPTED",
+																				"EXTERNAL",
+																				"UNKNOWN",
+																				"NONE"
+																			]
+																		},
+																		"field": {
+																			"type": "string",
+																			"nullable": true
+																		},
+																		"name": {
+																			"type": "string",
+																			"nullable": true
+																		},
+																		"portion": {
+																			"type": "string",
+																			"nullable": true
+																		},
+																		"reason": {
+																			"type": "string",
+																			"nullable": true
+																		},
+																		"score": {
+																			"type": "number",
+																			"format": "double",
+																			"nullable": true
+																		},
+																		"value": {
+																			"type": "string",
+																			"nullable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"deprecated": true,
+																"nullable": true,
+																"x-stainless-deprecation-message": "Use the `findings` field from GET /investigate/{investigate_id}/detections instead."
+															},
+															"from": {
+																"type": "string",
+																"nullable": true
+															},
+															"from_name": {
+																"type": "string",
+																"nullable": true
+															},
+															"htmltext_structure_hash": {
+																"type": "string",
+																"nullable": true
+															},
+															"id": {
+																"allOf": [
+																	{
+																		"description": "Unique identifier for a message retrieved from investigation.",
+																		"type": "string",
+																		"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678"
+																	}
+																],
+																"x-auditable": true
+															},
+															"is_phish_submission": {
+																"type": "boolean"
+															},
+															"is_quarantined": {
+																"type": "boolean"
+															},
+															"message_id": {
+																"type": "string",
+																"nullable": true
+															},
+															"post_delivery_operations": {
+																"description": "Post-delivery operations performed on this message.",
+																"type": "array",
+																"items": {
+																	"enum": [
+																		"PREVIEW",
+																		"QUARANTINE_RELEASE",
+																		"SUBMISSION",
+																		"MOVE"
+																	],
+																	"type": "string"
+																},
+																"nullable": true
+															},
+															"postfix_id": {
+																"description": "The identifier of the message.",
+																"type": "string",
+																"example": "4Njp3P0STMz2c02Q"
+															},
+															"postfix_id_outbound": {
+																"type": "string",
+																"nullable": true
+															},
+															"properties": {
+																"description": "Message processing properties.",
+																"type": "object",
+																"properties": {
+																	"allowlisted_pattern": {
+																		"description": "Pattern that allowlisted this message.",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"allowlisted_pattern_type": {
+																		"description": "Type of allowlist pattern.",
+																		"enum": [
+																			"quarantine_release",
+																			"acceptable_sender",
+																			"allowed_sender",
+																			"allowed_recipient",
+																			"domain_similarity",
+																			"domain_recency",
+																			"managed_acceptable_sender",
+																			"outbound_ndr"
+																		],
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"blocklisted_message": {
+																		"description": "Whether message was blocklisted.",
+																		"nullable": true,
+																		"type": "boolean"
+																	},
+																	"blocklisted_pattern": {
+																		"description": "Pattern that blocklisted this message.",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"whitelisted_pattern_type": {
+																		"description": "Legacy field for allowlist pattern type.",
+																		"enum": [
+																			"quarantine_release",
+																			"acceptable_sender",
+																			"allowed_sender",
+																			"allowed_recipient",
+																			"domain_similarity",
+																			"domain_recency",
+																			"managed_acceptable_sender",
+																			"outbound_ndr"
+																		],
+																		"nullable": true,
+																		"type": "string"
+																	}
+																}
+															},
+															"replyto": {
+																"type": "string",
+																"nullable": true
+															},
+															"scanned_at": {
+																"description": "When the message was scanned (UTC).",
+																"type": "string",
+																"format": "date-time",
+																"nullable": true
+															},
+															"sent_at": {
+																"description": "When the message was sent (UTC).",
+																"type": "string",
+																"format": "date-time",
+																"nullable": true
+															},
+															"sent_date": {
+																"type": "string",
+																"nullable": true
+															},
+															"smtp_helo_server_ip": {
+																"type": "string",
+																"nullable": true
+															},
+															"smtp_previous_hop_ip": {
+																"type": "string",
+																"nullable": true
+															},
+															"subject": {
+																"type": "string",
+																"nullable": true
+															},
+															"threat_categories": {
+																"type": "array",
+																"items": {
+																	"type": "string"
+																},
+																"nullable": true
+															},
+															"to": {
+																"type": "array",
+																"items": {
+																	"type": "string"
+																},
+																"nullable": true
+															},
+															"to_name": {
+																"type": "array",
+																"items": {
+																	"type": "string"
+																},
+																"nullable": true
+															},
+															"ts": {
+																"description": "Deprecated, use `scanned_at` instead. End of life: November 1, 2026.",
+																"type": "string",
+																"deprecated": true,
+																"readOnly": true,
+																"x-stainless-deprecation-message": "Use `scanned_at` instead."
+															},
+															"validation": {
+																"type": "object",
+																"properties": {
+																	"comment": {
+																		"type": "string",
+																		"nullable": true
+																	},
+																	"dkim": {
+																		"type": "string",
+																		"enum": [
+																			"pass",
+																			"neutral",
+																			"fail",
+																			"error",
+																			"none"
+																		]
+																	},
+																	"dmarc": {
+																		"type": "string",
+																		"enum": [
+																			"pass",
+																			"neutral",
+																			"fail",
+																			"error",
+																			"none"
+																		]
+																	},
+																	"spf": {
+																		"type": "string",
+																		"enum": [
+																			"pass",
+																			"neutral",
+																			"fail",
+																			"error",
+																			"none"
+																		]
+																	}
+																}
+															},
+															"x_originating_ip": {
+																"type": "string",
+																"nullable": true
+															}
+														},
+														"required": [
+															"id",
+															"ts",
+															"client_recipients",
+															"postfix_id",
+															"detection_reasons",
+															"action_log",
+															"is_quarantined",
+															"is_phish_submission",
+															"properties"
+														]
+													},
 													"message_id": {
 														"type": "string",
 														"format": "uuid"

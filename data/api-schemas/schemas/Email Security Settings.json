@@ -4929,10 +4929,10 @@
 				"schema": {
 					"type": "string",
 					"enum": [
-						"pending",
-						"active",
-						"failed",
-						"timeout",
+						"PENDING",
+						"ACTIVE",
+						"FAILED",
+						"TIMEOUT",
 						null
 					],
 					"nullable": true
@@ -5292,10 +5292,10 @@
 													"status": {
 														"type": "string",
 														"enum": [
-															"pending",
-															"active",
-															"failed",
-															"timeout",
+															"PENDING",
+															"ACTIVE",
+															"FAILED",
+															"TIMEOUT",
 															null
 														],
 														"nullable": true
@@ -5776,10 +5776,10 @@
 												"status": {
 													"type": "string",
 													"enum": [
-														"pending",
-														"active",
-														"failed",
-														"timeout",
+														"PENDING",
+														"ACTIVE",
+														"FAILED",
+														"TIMEOUT",
 														null
 													],
 													"nullable": true
@@ -5937,7 +5937,7 @@
 	"GET /accounts/{account_id}/email-security/settings/domains/{domain_id}/verification": {
 		"operationId": "email_security_get_domain_verification",
 		"summary": "Get domain verification details",
-		"description": "Returns DNS TXT verification details for a domain created through the Terraform API.\nReturns `200 OK` with the TXT record name and value when the domain uses `dns_txt`\nverification. Returns `204 No Content` for pre-existing domains or domains verified\nby other means (Cloudflare zone ownership, CASB integration).\n",
+		"description": "Returns the DNS TXT record information when the domain ownership isn't\nverified through Cloudflare zone ownership or CASB integration.\n",
 		"responses": {
 			"200": {
 				"description": "DNS TXT verification details.",
@@ -6046,10 +6046,10 @@
 												"status": {
 													"type": "string",
 													"enum": [
-														"pending",
-														"active",
-														"failed",
-														"timeout",
+														"PENDING",
+														"ACTIVE",
+														"FAILED",
+														"TIMEOUT",
 														null
 													],
 													"nullable": true
@@ -6064,10 +6064,7 @@
 												}
 											},
 											"required": [
-												"status",
-												"txt_record_name",
-												"txt_record_value",
-												"last_checked_at"
+												"status"
 											]
 										}
 									},
@@ -6077,9 +6074,6 @@
 						}
 					}
 				}
-			},
-			"204": {
-				"description": "Domain is verified by other means; no TXT record required."
 			},
 			"4XX": {
 				"description": "Client error.",
@@ -10991,10 +10985,10 @@
 												"status": {
 													"type": "string",
 													"enum": [
-														"pending",
-														"active",
-														"failed",
-														"timeout",
+														"PENDING",
+														"ACTIVE",
+														"FAILED",
+														"TIMEOUT",
 														null
 													],
 													"nullable": true
@@ -17656,10 +17650,10 @@
 												"status": {
 													"type": "string",
 													"enum": [
-														"pending",
-														"active",
-														"failed",
-														"timeout",
+														"PENDING",
+														"ACTIVE",
+														"FAILED",
+														"TIMEOUT",
 														null
 													],
 													"nullable": true
@@ -18602,10 +18596,10 @@
 															"status": {
 																"type": "string",
 																"enum": [
-																	"pending",
-																	"active",
-																	"failed",
-																	"timeout",
+																	"PENDING",
+																	"ACTIVE",
+																	"FAILED",
+																	"TIMEOUT",
 																	null
 																],
 																"nullable": true
@@ -18844,10 +18838,10 @@
 															"status": {
 																"type": "string",
 																"enum": [
-																	"pending",
-																	"active",
-																	"failed",
-																	"timeout",
+																	"PENDING",
+																	"ACTIVE",
+																	"FAILED",
+																	"TIMEOUT",
 																	null
 																],
 																"nullable": true
@@ -19086,10 +19080,10 @@
 															"status": {
 																"type": "string",
 																"enum": [
-																	"pending",
-																	"active",
-																	"failed",
-																	"timeout",
+																	"PENDING",
+																	"ACTIVE",
+																	"FAILED",
+																	"TIMEOUT",
 																	null
 																],
 																"nullable": true
@@ -24156,10 +24150,10 @@
 												"status": {
 													"type": "string",
 													"enum": [
-														"pending",
-														"active",
-														"failed",
-														"timeout",
+														"PENDING",
+														"ACTIVE",
+														"FAILED",
+														"TIMEOUT",
 														null
 													],
 													"nullable": true

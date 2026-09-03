@@ -155,6 +155,68 @@
 					}
 				}
 			},
+			"401": {
+				"description": "Authentication required",
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 12005,
+									"message": "Missing token from authorization header"
+								}
+							],
+							"messages": [],
+							"result": null,
+							"success": false
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"example": 12000
+											},
+											"message": {
+												"type": "string",
+												"example": "Not found"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
 			"404": {
 				"description": "Resource not found",
 				"content": {
@@ -395,6 +457,68 @@
 						}
 					}
 				}
+			},
+			"401": {
+				"description": "Authentication required",
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 12005,
+									"message": "Missing token from authorization header"
+								}
+							],
+							"messages": [],
+							"result": null,
+							"success": false
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"example": 12000
+											},
+											"message": {
+												"type": "string",
+												"example": "Not found"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -569,6 +693,68 @@
 									},
 									"type": "object"
 								}
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication required",
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 12005,
+									"message": "Missing token from authorization header"
+								}
+							],
+							"messages": [],
+							"result": null,
+							"success": false
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"example": 12000
+											},
+											"message": {
+												"type": "string",
+												"example": "Not found"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -840,6 +1026,68 @@
 								{
 									"code": 12002,
 									"message": "Invalid request body"
+								}
+							],
+							"messages": [],
+							"result": null,
+							"success": false
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"example": 12000
+											},
+											"message": {
+												"type": "string",
+												"example": "Not found"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication required",
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 12005,
+									"message": "Missing token from authorization header"
 								}
 							],
 							"messages": [],
@@ -1292,7 +1540,12 @@
 				}
 			}
 		},
-		"security": [],
+		"security": [
+			{
+				"api_token": []
+			},
+			{}
+		],
 		"tags": [
 			"Deploy Hooks"
 		],
@@ -1494,6 +1747,68 @@
 								{
 									"code": 12002,
 									"message": "Invalid request body"
+								}
+							],
+							"messages": [],
+							"result": null,
+							"success": false
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"example": 12000
+											},
+											"message": {
+												"type": "string",
+												"example": "Not found"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication required",
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 12005,
+									"message": "Missing token from authorization header"
 								}
 							],
 							"messages": [],

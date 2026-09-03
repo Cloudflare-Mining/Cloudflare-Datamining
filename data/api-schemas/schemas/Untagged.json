@@ -25,6 +25,19 @@
 			}
 		}
 	],
+	"PARAMETERS /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles": [
+		{
+			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare Account ID.",
+			"required": true,
+			"schema": {
+				"type": "string",
+				"minLength": 1,
+				"pattern": "^\\d+$"
+			}
+		}
+	],
 	"PARAMETERS /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}": [
 		{
 			"name": "account_id",
