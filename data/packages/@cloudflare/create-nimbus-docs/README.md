@@ -8,7 +8,8 @@ npx @cloudflare/create-nimbus-docs@latest my-docs
 
 Flags:
 
-- `--deploy <cloudflare|other>` — deploy target (default: `cloudflare`).
+- `--deploy <cloudflare|other>` — static-output deploy target (default: `cloudflare`).
+- `--adapter <cloudflare|vercel|netlify|node>` — select server output and its Astro adapter.
 - `--content <starter|empty>` — docs content shape (default: `starter`, with example pages).
 - `--yes`, `-y` — accept defaults, skip prompts.
 - `--package-manager <npm|pnpm|yarn|bun>` — override auto-detection.

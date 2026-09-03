@@ -2,7 +2,7 @@
 	"name": "@cloudflare/kumo",
 	"dist-tags": {
 		"backport": "2.3.1",
-		"latest": "2.13.0"
+		"latest": "2.13.1"
 	},
 	"versions": {
 		"1.0.0": {
@@ -3849,6 +3849,84 @@
 			"name": "@cloudflare/kumo",
 			"version": "2.13.0",
 			"dependencies": {
+				"shiki": "^4.0.0",
+				"cnfast": "^0.0.8",
+				"d3-geo": "^3.1.1",
+				"motion": "^12.34.1",
+				"@base-ui/react": "^1.6.0",
+				"@shikijs/langs": "^4.0.0",
+				"@shikijs/themes": "^4.0.0",
+				"react-day-picker": "^9.13.2",
+				"use-sync-external-store": "^1.6.0"
+			},
+			"devDependencies": {
+				"tsx": "^4.19.2",
+				"zod": "^4.0.0",
+				"glob": "13.0.0",
+				"plop": "4.0.4",
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.2.6",
+				"vitest": "4.1.10",
+				"esbuild": "0.27.2",
+				"publint": "^0.3.21",
+				"wrangler": "4.87.0",
+				"happy-dom": "^20.8.8",
+				"vite-plus": "0.2.6",
+				"@vitest/ui": "4.1.10",
+				"playwright": "^1.57.0",
+				"typescript": "^5.9.2",
+				"@types/glob": "9.0.0",
+				"@types/node": "^22.10.2",
+				"tailwindcss": "^4.1.17",
+				"@types/react": "19.2.4",
+				"@types/d3-geo": "^3.1.0",
+				"@oxlint/plugins": "=1.73.0",
+				"svg-path-parser": "^1.1.0",
+				"@tailwindcss/cli": "^4.1.17",
+				"@types/react-dom": "19.2.3",
+				"@tailwindcss/vite": "^4.1.17",
+				"@vitejs/plugin-react": "~6.0.3",
+				"vitest-browser-react": "^2.0.5",
+				"@arethetypeswrong/core": "^0.18.5",
+				"@testing-library/react": "16.3.1",
+				"@types/svg-path-parser": "^1.1.6",
+				"ts-json-schema-generator": "2.4.0",
+				"@vitest/browser-playwright": "4.1.10",
+				"@testing-library/user-event": "14.6.1"
+			},
+			"peerDependencies": {
+				"zod": "^4.0.0",
+				"react": "^18.0.0 || ^19.0.0",
+				"echarts": "^6.0.0",
+				"react-dom": "^18.0.0 || ^19.0.0",
+				"@phosphor-icons/react": "^2.1.10"
+			},
+			"bin": {
+				"kumo": "bin/kumo.js"
+			},
+			"dist": {
+				"shasum": "4f90d7a22554e61594602078a4542251eb1e5a8e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-2.13.0.tgz",
+				"fileCount": 520,
+				"integrity": "sha512-dvxcQwPPTcp/BbqVSIjufLbcIxZjT+VuSyjiEe5R6HTiOCAJkrvkgskubVO8aQG0FLk//1X1d3rlco53k2ib4w==",
+				"signatures": [
+					{
+						"sig": "MEUCIGRU7s4kvZxbWHlJvejIKBFsUxCGinRSIZ1TXO17e4vBAiEArvzzlSTTu09UA7+VVQ71aSX3YqMSfpyMO9v75n3Mf9I=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fkumo@2.13.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 7084588
+			}
+		},
+		"2.13.1": {
+			"name": "@cloudflare/kumo",
+			"version": "2.13.1",
+			"dependencies": {
 				"@base-ui/react": "^1.6.0",
 				"@shikijs/langs": "^4.0.0",
 				"@shikijs/themes": "^4.0.0",
@@ -3890,7 +3968,7 @@
 				"vite-plus": "0.2.6",
 				"vitest": "4.1.10",
 				"vitest-browser-react": "^2.0.5",
-				"wrangler": "4.87.0",
+				"wrangler": "4.127.1",
 				"zod": "^4.0.0"
 			},
 			"peerDependencies": {
@@ -3904,13 +3982,13 @@
 				"kumo": "bin/kumo.js"
 			},
 			"dist": {
-				"integrity": "sha512-dvxcQwPPTcp/BbqVSIjufLbcIxZjT+VuSyjiEe5R6HTiOCAJkrvkgskubVO8aQG0FLk//1X1d3rlco53k2ib4w==",
-				"shasum": "4f90d7a22554e61594602078a4542251eb1e5a8e",
-				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-2.13.0.tgz",
-				"fileCount": 520,
-				"unpackedSize": 7084588,
+				"integrity": "sha512-vnrdNUPshk1hAyoR5klgTio8oiTdZtMHA9yG42Hy/5dqa1KsJTKt1Cu40PQ9QBzpvQI1/xuiYJIuo4Z94S//kw==",
+				"shasum": "73f496d0abac0d6dd0d33a9bae52c4aee42bb771",
+				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-2.13.1.tgz",
+				"fileCount": 519,
+				"unpackedSize": 7081344,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fkumo@2.13.0",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fkumo@2.13.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -3918,7 +3996,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIGRU7s4kvZxbWHlJvejIKBFsUxCGinRSIZ1TXO17e4vBAiEArvzzlSTTu09UA7+VVQ71aSX3YqMSfpyMO9v75n3Mf9I="
+						"sig": "MEUCIQCTkdLASasmBgBZORrJQMkIAD06O7pjuPVhUXtnOH1gDwIgcrhQZmZacZDzcCRe3dS65ExDY6khKLc4VBHQqCTpIUk="
 					}
 				]
 			}

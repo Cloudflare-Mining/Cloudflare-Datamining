@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/vitest-plugin",
 	"dist-tags": {
-		"latest": "1.1.3"
+		"latest": "1.1.4"
 	},
 	"versions": {
 		"0.0.0": {
@@ -333,6 +333,70 @@
 					}
 				},
 				"unpackedSize": 7751873
+			}
+		},
+		"1.1.4": {
+			"name": "@cloudflare/vitest-plugin",
+			"version": "1.1.4",
+			"dependencies": {
+				"zod": "4.4.3",
+				"esbuild": "0.28.1",
+				"wrangler": "4.129.0",
+				"miniflare": "5.20260903.0-alpha",
+				"cjs-module-lexer": "1.2.3"
+			},
+			"devDependencies": {
+				"birpc": "0.2.14",
+				"semver": "^7.7.1",
+				"tsdown": "0.16.3",
+				"undici": "7.29.0",
+				"vitest": "4.1.0",
+				"devalue": "^5.6.3",
+				"capnp-es": "0.0.16",
+				"get-port": "^7.1.0",
+				"tree-kill": "1.2.2",
+				"ts-dedent": "^2.2.0",
+				"typescript": "5.8.3",
+				"@types/node": "22.15.17",
+				"@types/semver": "^7.5.1",
+				"@vitest/runner": "4.1.0",
+				"es-module-lexer": "2.3.1",
+				"@vitest/snapshot": "4.1.0",
+				"@cloudflare/config": "0.10.0",
+				"@cloudflare/workers-types": "^5.20260903.1",
+				"@cloudflare/workers-utils": "0.36.0",
+				"@cloudflare/remote-bindings": "0.0.19",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/workflows-shared": "0.13.0",
+				"@cloudflare/mock-npm-registry": "0.0.0"
+			},
+			"peerDependencies": {
+				"vitest": "^4.1.0",
+				"@vitest/runner": "^4.1.0",
+				"@vitest/snapshot": "^4.1.0"
+			},
+			"dist": {
+				"shasum": "31a9e7a3389d21d9982e3d2664940b64ba2f3865",
+				"tarball": "https://registry.npmjs.org/@cloudflare/vitest-plugin/-/vitest-plugin-1.1.4.tgz",
+				"fileCount": 21,
+				"integrity": "sha512-fzZFMo8NUv1S2lMPDgZYq1jg+0FwnrkF28iYzjFuN/Z1c0Fsnp6xrjyxapLaqrTqjDO66fvKTgbHL0yV1tZnPQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDW5szIXeJ8LZX/3NfNfv/TSB8shk/xKvNM7t3pHlBF2QIgBvMk3bVfgk1pDTnfK3H85/v+1w5My9QJpcTuPKpXBk4=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQDY+xB0ZeU487b72FdLZEIdtzQwVt/3d5tS6wsNpCTl4QIhAM3OKHDDapxVCAvlBALPRbHY8M6pGiUO+1mMWgUv9hW0"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvitest-plugin@1.1.4",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 7752097
 			}
 		}
 	}
