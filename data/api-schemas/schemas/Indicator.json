@@ -1133,7 +1133,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/events/indicators": {
 		"operationId": "get_IndicatorList",
 		"summary": "Lists indicators across multiple datasets",
-		"description": "Retrieves indicators across specified datasets, ordered by createdAt descending then UUID, dataset ID, and shard ID ascending. Use datasetIds=all or datasetIds=* to query all datasets for the account. If no datasetIds provided, uses the default dataset.",
+		"description": "Retrieves indicators across specified datasets, ordered by createdAt descending then UUID, dataset ID, and shard ID ascending. Use the standalone datasetIds value 'all'/'*' for legacy all-datasets behavior, 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If no datasetIds are provided, uses the default dataset.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1148,9 +1148,9 @@
 			{
 				"name": "datasetIds",
 				"in": "query",
-				"description": "Dataset IDs to query indicators from (array of UUIDs), or special value 'all' or '*' to query all datasets. If not provided, uses the default dataset.",
+				"description": "Dataset UUIDs to query, or one standalone scope value: 'all'/'*' for legacy all-datasets behavior, 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, uses the default dataset.",
 				"schema": {
-					"description": "Dataset IDs to query indicators from (array of UUIDs), or special value 'all' or '*' to query all datasets. If not provided, uses the default dataset.",
+					"description": "Dataset UUIDs to query, or one standalone scope value: 'all'/'*' for legacy all-datasets behavior, 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, uses the default dataset.",
 					"type": "array",
 					"items": {
 						"type": "string"
@@ -1971,9 +1971,9 @@
 			{
 				"name": "datasetIds",
 				"in": "query",
-				"description": "Dataset ID(s) to filter by. Can be a single dataset ID or comma-separated list. If not provided, aggregates across all accessible datasets",
+				"description": "Dataset UUIDs to filter by, or one standalone scope value: 'all'/'*' for all accessible datasets, 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, aggregates across all accessible datasets.",
 				"schema": {
-					"description": "Dataset ID(s) to filter by. Can be a single dataset ID or comma-separated list. If not provided, aggregates across all accessible datasets",
+					"description": "Dataset UUIDs to filter by, or one standalone scope value: 'all'/'*' for all accessible datasets, 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, aggregates across all accessible datasets.",
 					"type": "array",
 					"items": {
 						"type": "string"

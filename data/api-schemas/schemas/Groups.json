@@ -774,7 +774,8 @@
 						"properties": {
 							"accountId": {
 								"type": "string",
-								"example": "123"
+								"example": "123",
+								"x-fern-property-name": "accountId_body"
 							},
 							"accountTag": {
 								"type": "string",

@@ -1890,7 +1890,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/indicators": {
 		"operationId": "get_TagIndicatorsList",
 		"summary": "List indicators related to a tag",
-		"description": "Returns indicators associated with the provided tag UUID, with pagination. By default fans out across every indicator dataset the account can read; pass datasetIds to scope to specific datasets.",
+		"description": "Returns indicators associated with the provided tag UUID, with pagination. By default fans out across every indicator dataset the account can read; pass datasetIds to scope to UUIDs, analytics datasets, or operational datasets. Analytics datasets do not expose tag associations, so the analytics scope returns an empty result.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1915,9 +1915,9 @@
 			{
 				"name": "datasetIds",
 				"in": "query",
-				"description": "Dataset UUIDs to scope to (repeat the param for multiple), or 'all' / '*' for every readable indicator dataset. Omit to search all readable datasets.",
+				"description": "Dataset UUIDs to scope to (repeat the param for multiple), or one standalone scope: 'all'/'*', 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. Analytics datasets do not expose tag associations, so 'analytics' returns an empty result. Omit to search all readable datasets.",
 				"schema": {
-					"description": "Dataset UUIDs to scope to (repeat the param for multiple), or 'all' / '*' for every readable indicator dataset. Omit to search all readable datasets.",
+					"description": "Dataset UUIDs to scope to (repeat the param for multiple), or one standalone scope: 'all'/'*', 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. Analytics datasets do not expose tag associations, so 'analytics' returns an empty result. Omit to search all readable datasets.",
 					"type": "array",
 					"items": {
 						"type": "string"
@@ -2292,7 +2292,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/relationships": {
 		"operationId": "get_TagRelationshipsList",
 		"summary": "List relationships for a tag",
-		"description": "Returns sparse relationship edges. Optionally hydrate related entities via `expand`. Fans out across all accessible indicator dataset shards.",
+		"description": "Returns sparse relationship edges. Optionally hydrate related entities via `expand`. Fans out across all accessible indicator dataset shards. Analytics datasets do not expose tag associations, so the analytics scope returns an empty result.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2318,7 +2318,7 @@
 				"name": "datasets",
 				"in": "query",
 				"schema": {
-					"description": "Comma-separated dataset UUIDs to scope to, or 'all'/'*' for every readable indicator dataset. Omit for all.",
+					"description": "Comma-separated dataset UUIDs to scope to, or one standalone scope: 'all'/'*', 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. Analytics datasets do not expose tag associations, so 'analytics' returns an empty result. Omit for all.",
 					"type": "array",
 					"items": {
 						"type": "string"

@@ -465,7 +465,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/events": {
 		"operationId": "get_EventListGet",
 		"summary": "Filter and list events",
-		"description": "Use `datasetId=all` or `datasetId=*` to query all event datasets for the account (limited to 50). When `datasetId` is unspecified, events are listed from the default Cloudforce One Threat Events dataset. To list existing datasets, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint.",
+		"description": "Use `datasetId=all` or `datasetId=*` for the legacy all-datasets scope, `datasetId=analytics` for datasets with `isAnalytics=true`, or `datasetId=operational` for datasets with `isAnalytics=false` (limited to 50). Scope values must be used alone. When `datasetId` is unspecified, events are listed from the default Cloudforce One Threat Events dataset. To list existing datasets, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -856,7 +856,7 @@
 				"name": "datasetId",
 				"in": "query",
 				"schema": {
-					"description": "Dataset IDs to query events from (array of UUIDs), or special value 'all' or '*' to query all event datasets for the account. If not provided, uses the default dataset.",
+					"description": "Dataset UUIDs to query, or one standalone scope value: 'all'/'*' for the legacy all-datasets behavior, 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, uses the default dataset.",
 					"type": "array",
 					"items": {
 						"type": "string"
@@ -1887,9 +1887,9 @@
 			{
 				"name": "datasetId",
 				"in": "query",
-				"description": "Dataset ID(s) to filter by. Can be a single dataset ID, comma-separated list, or array. If not provided, uses default dataset",
+				"description": "Dataset UUIDs to filter by, or one standalone scope value: 'all'/'*' for all accessible non-analytics event datasets (analytics datasets are silently excluded), 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, uses the default dataset.",
 				"schema": {
-					"description": "Dataset ID(s) to filter by. Can be a single dataset ID, comma-separated list, or array. If not provided, uses default dataset",
+					"description": "Dataset UUIDs to filter by, or one standalone scope value: 'all'/'*' for all accessible non-analytics event datasets (analytics datasets are silently excluded), 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, uses the default dataset.",
 					"type": "array",
 					"items": {
 						"type": "string"
@@ -4248,7 +4248,8 @@
 						"properties": {
 							"accountId": {
 								"type": "number",
-								"example": 123456
+								"example": 123456,
+								"x-fern-property-name": "accountId_body"
 							},
 							"attacker": {
 								"type": "string",

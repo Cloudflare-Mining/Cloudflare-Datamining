@@ -17,9 +17,9 @@
 			{
 				"name": "datasetIds",
 				"in": "query",
-				"description": "Array of dataset IDs to query indicator types from. If not provided, queries all datasets for the account.",
+				"description": "Dataset UUIDs to query, or one standalone scope value: 'all'/'*', 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, queries all accessible datasets.",
 				"schema": {
-					"description": "Array of dataset IDs to query indicator types from. If not provided, queries all datasets for the account.",
+					"description": "Dataset UUIDs to query, or one standalone scope value: 'all'/'*', 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, queries all accessible datasets.",
 					"type": "array",
 					"items": {
 						"type": "string"
