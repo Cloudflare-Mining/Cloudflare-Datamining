@@ -1,0 +1,68 @@
+<div class="content-intro">
+	<h3>About Us</h3>
+	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
+	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
+</div>
+<p><span style="color: rgb(230, 126, 35);"><strong>Available Locations</strong></span></p>
+<hr>
+<p><strong>London, UK OR Paris, France<br><br><span style="color: rgb(230, 126, 35);">About this Role</span></strong></p>
+<hr>
+<p>We are seeking an exceptionally accomplished Senior Partner Account Manager to join our Service Provider (SP) team. The role is based in EMEA and will report to the Senior Director, Global Service Provider Sales.&nbsp;&nbsp;</p>
+<p>In this&nbsp; role, you will be the driving force behind Cloudflare’s most strategic and high-value Service Provider partners. You will be responsible for: developing network, security and technology services producing new revenue streams, building business plans as well as establishing and strengthening executive relationships. This role will focus on developing and executing partnership strategies that enhance collaboration, drive significant revenue growth, and leverage the combined strengths of our networks to deliver exceptional value to clients.</p>
+<p>We are looking for an experienced Senior Partner Account Manager to lead and build out our EMEA Provider GTM. In this role, you’ll drive the strategy and execution for managing high-value, strategic Service Providers across different regions in EMEA. You will lead the development of joint business plans, work with senior sales and partner stakeholders to align on mutual growth objectives, and ensure partners have the resources and support needed to drive new Service Provider revenue.</p>
+<p>As a Senior Partner Account Manager, you will be responsible for developing, managing, and optimizing key partner relationships, including driving the full sales lifecycle from opportunity initiation to deal closure. You will influence partners’ go-to-market strategies, manage and optimize partner incentive programs, and collaborate closely with internal teams to achieve revenue and strategic goals.</p>
+<p>The ideal candidate will have strong executive presence, established executive relationships, and a proven track record in negotiating agreements and ensuring successful partnership execution within the telecommunications industry. This individual will have a strong background in business development with Service Providers and the ability to independently build and execute a strategy, leveraging internal and external stakeholders, while influencing decisions and investments. Key stakeholders include Cloudflare Leadership, Account Executives, Solution Engineering, Product Management, Partner Managers, Customer Success teams, Sales Operations, Marketing teams and external Partner executives.&nbsp; The candidate will be a thought leader in the Service Provider industry and have the ability to articulate how Cloudflare seamlessly integrates into modern cloud operating models.&nbsp;</p>
+<p>You will be expected to travel as required which is 30-40% of your time.&nbsp;</p>
+<p><span style="color: rgb(230, 126, 35);"><strong>Responsibilities&nbsp;</strong></span></p>
+<hr>
+<ul>
+	<li>Create and implement strategic partner account plans for EMEA Service Providers that align with overall business objectives and growth targets.</li>
+	<li>Identify opportunities for joint ventures, co-marketing initiatives, and solutions integration that leverage the strengths of each partner.</li>
+	<li>Build the joint go-to-market services and solution stack offerings.</li>
+	<li>Drive high-level engagement between Cloudflare leadership and the SP’s senior executives, industry leads, and delivery teams.</li>
+	<li>Partner with the SP team to support the creation of scalable implementation practices, including training, certifications, reusable solution assets, and reference architectures.</li>
+	<li>Act as the primary contact for all partner-related inquiries and ensure effective communication and collaboration.</li>
+	<li>Business planning, including account mapping, development and execution of the joint growth and customer acquisition strategies to expand into new verticals and new customer segments.</li>
+	<li>Own and run business and quarterly planning/reviews, both internally and externally</li>
+	<li>Track and analyze partner performance metrics, including targets, revenue attribution, and market impact.</li>
+	<li>Own the plan for ongoing training and support for SP leads and technical resources.</li>
+	<li>Accurately forecast SP business weekly.</li>
+	<li>Develop and drive pipeline development across multiple SP partners.&nbsp;</li>
+</ul>
+<p><span style="color: rgb(230, 126, 35);"><strong>Desirable Skills, Knowledge, and Experience</strong></span></p>
+<hr>
+<ul>
+	<li>10+ years experience working with Service Provider partnerships.</li>
+	<li>Existing relationships with top tier Telco.</li>
+	<li>Proven ability to drive GTM success with Service Provider partners.</li>
+	<li>Executive presence, negotiation skills, and ability to manage complex stakeholder environments with proven success in managing large enterprise partnerships, with demonstrated results in driving growth and innovation.</li>
+	<li>Experience working in the Technology sector: Network and/or cybersecurity experience a must.</li>
+	<li>Excellent communication, negotiation, and presentation skills, with the ability to influence stakeholders at all levels.</li>
+	<li>Strong analytical skills and experience in utilizing data to inform strategic decisions.</li>
+	<li>Ability to work independently and collaboratively across various teams in a fast-paced, matrixed environment.</li>
+</ul>
+<p><strong><span style="color: rgb(230, 126, 35);">Compensation</span></strong></p>
+<hr>
+<p data-path-to-node="1">For France, this role is labelled CSP Position 3-2 and has a coefficient of 210, as per the SYNTEC Collective Bargaining Agreement.</p>
+<ul data-path-to-node="3">
+	<li>
+		<p data-path-to-node="3,0,0">For France based hires: Estimated annual salary is between €160,000 - €220,000.</p>
+	</li>
+	<li>
+		<p data-path-to-node="3,0,1,0,0">This role is labelled CSP Position 3-2 and has a coefficient of 210, as per the SYNTEC Collective Bargaining Agreement.</p>
+	</li>
+</ul>
+<p data-path-to-node="4">Equity: This role is eligible to participate in Cloudflare's equity plan.</p>
+<p>&nbsp;</p>
+<div class="content-conclusion">
+	<h3>What Makes Cloudflare Special?</h3>
+	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
+	<p><a href="https://blog.cloudflare.com/protecting-free-expression-online/"><strong>Project Galileo</strong></a><span style="font-weight: 400;">: Since 2014, we've equipped more than 2,400 journalism and civil society organizations in 111 countries with powerful tools to defend themselves against attacks that would otherwise censor their work, technology already used by Cloudflare’s enterprise customers--at no cost.</span></p>
+	<p><strong><a href="https://www.cloudflare.com/athenian/">Athenian Project</a></strong><span style="font-weight: 400;">: In 2017, we created the Athenian Project to ensure that state and local governments have the highest level of protection and reliability for free, so that their constituents have access to election information and voter registration. Since the project, we've provided services to more than 425 local government election websites in 33 states.</span></p>
+	<p><a href="https://1.1.1.1/"><strong>1.1.1.1</strong></a><span style="font-weight: 400;">: We released</span><a href="https://1.1.1.1/"> <span style="font-weight: 400;">1.1.1.1</span></a><span style="font-weight: 400;"> to help fix the foundation of the Internet by building a faster, more secure and privacy-centric public DNS resolver. This is available publicly for everyone to use - it is the first consumer-focused service Cloudflare has ever released. Here’s the deal - we don’t store client IP addresses never, ever. We will continue to abide by our</span><a href="https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver"> privacy commitment</a><span style="font-weight: 400;"> and ensure that no user data is sold to advertisers or used to target consumers.</span></p>
+	<p><span style="font-weight: 400;">Sound like something you’d like to be a part of? We’d love to hear from you!</span></p>
+	<p><span style="font-weight: 400;">Please note that applicants who progress to the offer stage of the interview process may be asked to attend an in-person interview within one of the Cloudflare Offices or Cloudflare Hubs.&nbsp; More details about this will be available at that stage of the interview process.</span></p>
+	<p><span style="font-weight: 400;">This position may require access to information protected under U.S. export control laws, including the U.S. Export Administration Regulations. Please note that any offer of employment may be conditioned on your authorization to receive software or technology controlled under these U.S. export laws without sponsorship for an export license.</span></p>
+	<p><span style="font-weight: 400;">Cloudflare is proud to be an equal opportunity employer. &nbsp;We are committed to providing equal employment opportunity for all people and place great value in both diversity and inclusiveness. &nbsp;All qualified applicants will be considered for employment without regard to their, or any other person's, perceived or actual</span> <span style="font-weight: 400;">race, color, religion, sex, gender, gender identity, gender expression, sexual orientation, national origin, ancestry, citizenship, age, physical or mental disability, medical condition, family care status, or any other basis protected by law. </span><span style="font-weight: 400;">We are an AA/Veterans/Disabled Employer.</span></p>
+	<p><span style="font-weight: 400;">Cloudflare provides reasonable accommodations to qualified individuals with disabilities. &nbsp;Please tell us if you require a reasonable accommodation to apply for a job. Examples of reasonable accommodations include, but are not limited to, changing the application process, providing documents in an alternate format, using a sign language interpreter, or using specialized equipment. &nbsp;If you require a reasonable accommodation to apply for a job, please contact us via e-mail at </span><span style="font-weight: 400;">hr@cloudflare.com</span><span style="font-weight: 400;"> or via mail at 101 Townsend St. San Francisco, CA 94107.</span></p>
+</div>

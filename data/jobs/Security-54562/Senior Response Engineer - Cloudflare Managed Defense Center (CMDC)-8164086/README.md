@@ -1,0 +1,75 @@
+<div class="content-intro">
+	<h3>About Us</h3>
+	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
+	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
+</div>
+<p><strong>Available Locations: London, United Kingdom&nbsp;</strong></p>
+<p><strong>&nbsp;</strong></p>
+<p>&nbsp;</p>
+<hr>
+<p><strong>About the Department</strong></p>
+<p><strong>Cloudforce One</strong> is Cloudflare's threat operations and research team, responsible for identifying and disrupting cyber threats ranging from sophisticated cyber criminal activity to nation-state sponsored advanced persistent threats (APTs). Cloudforce One works in close partnership with external organizations and internal Cloudflare teams, continuously developing operational tradecraft and expanding ever-growing sources of threat intelligence to enable expedited threat hunting and remediation.</p>
+<p>Members of Cloudforce One are at the helm of leveraging an incredibly vast and varied set of data points that only one of the world's largest global networks can provide. The team analyzes these unique data points at massive scale and efficiency, synthesizing findings into actionable threat intelligence to better protect our customers.</p>
+<p><strong>&nbsp;</strong></p>
+<hr>
+<p><strong>About INTERDICT</strong></p>
+<p><strong>I.N.T.E.R.D.I.C.T.</strong> (Identify, Neutralize, Triage, Engage, Respond, Disrupt, Integrate, Contain, Threat Hunting) is Cloudforce One's unified operational security organization responsible for identifying, analyzing, and responding to threats targeting Cloudflare and its customers. INTERDICT encompasses three main sub-functions:</p>
+<ul>
+	<li><strong>PhishGuard:</strong> Email Managed Detection and Response (MDR) service.</li>
+	<li><strong>Cloudflare Managed Defense (CMD):</strong> 24/7 monitoring, detection, and mitigation of security events across Cloudflare products.</li>
+	<li><strong>Detection Engineering:</strong> Develops, maintains, and deploys Cloudflare’s threat detection logic across email, application, and network telemetry.</li>
+</ul>
+<p>Through the combined capabilities of CMD, PhishGuard, and Detection Engineering, INTERDICT delivers a cohesive operational security function that provides continuous, proactive protection against network, application, and email-based threats. This integrated structure ensures rapid detection, coordinated response, and improved security outcomes for Cloudflare and its customers.</p>
+<p>&nbsp;</p>
+<hr>
+<p><strong>About the role</strong></p>
+<p>The <strong>Senior Response Engineer </strong>(Network Security focused) within the Cloudflare Managed Defense Center (CMDC) serves as a core technical specialist within the proactive security team. This position is built for a network security practitioner who thrives at the intersection of deep routing protocol investigation, edge-network defense, and strategic technical partnership. The role is responsible for architecting responses to sophisticated infrastructure threats across OSI Layers 3, 4, and 7, ensuring global customers remain resilient against large-scale volumetric DDoS attacks and complex network-layer anomalies.</p>
+<h4><strong>What you'll do</strong></h4>
+<p>Acting as a primary technical anchor for network defense, you will provide advanced assistance and strategic intelligence across Cloudflare’s most sophisticated customer environments. This involves deep mastery of infrastructure protection components (spanning Cloudflare’s native services or industry-equivalent solutions), including BGP routing and advertisement control (managing prefix advertisement and de-advertisement), network protection like Magic Transit, IPFLOW-based Magic Network Monitoring, Advanced TCP/UDP protection, DDoS mitigation rulesets, firewall configurations, Layer 4 proxies such as Spectrum, DNS Firewall, and connectivity troubleshooting over GRE, IPsec, and CNI. A working knowledge of application security (including CDN technology and Web Application Firewalls) will allow you to extend support across broader Managed Defense activities.</p>
+<p>The role focuses on:</p>
+<ul>
+	<li><strong>Technical Mentorship: </strong>Elevating the team’s collective skill set by acting as a "player-coach" providing hands-on technical guidance during live incidents and reviewing complex mitigation strategies.</li>
+	<li><strong>Deep-Dive Investigation &amp; Mitigation:</strong> Analyzing infrastructure threats using advanced internal telemetry to engineer informed mitigation strategies—specifically focusing on DDoS vectors, BGP routing anomalies, and GRE encapsulation issues—implementing defenses directly on the edge for mission-critical traffic.</li>
+	<li><strong>Detection Engineering &amp; Tuning:</strong> Continuously designing and refining detection mechanisms, security controls, and alerting thresholds to ensure highly accurate, rapid identification of sophisticated network attacks with minimal false positives.</li>
+	<li><strong>Infrastructure &amp; Tooling Evolution (AI-Driven): </strong>Partnering closely with Product, Engineering, and AI teams to transform real-world DDoS attack data into AI-powered automated network defenses, dynamic mitigation models, and enhanced platform capabilities.</li>
+	<li><strong>Strategic Technical Communication:</strong> Serving as an authoritative technical voice during active volumetric attacks, providing clarity and architectural routing guidance to both internal stakeholders and external customer engineering teams.</li>
+</ul>
+<p>The ideal candidate moves beyond following static runbooks to engineering AI-assisted response workflows, transforming raw network flow telemetry into actionable mitigation strategies, tuned detections, and intelligent, automated edge defenses.</p>
+<h4><strong>Responsibilities</strong></h4>
+<ul>
+	<li>
+		<ul>
+			<li><strong>Technical Escalation &amp; Response:</strong> Acting as a subject matter expert for the Managed Defense Center during complex network security incidents, providing hands-on intervention for large-scale volumetric and protocol-based DDoS attacks when standard protocols are exceeded.</li>
+			<li><strong>Incident Architecture:</strong> Leading the technical response to sophisticated infrastructure threats, validating the efficacy of network mitigation rules, and ensuring stable, clean traffic delivery via BGP and GRE mechanisms.</li>
+			<li><strong>Detection Engineering:</strong> Designing, deploying, and tuning network attack detection logic, utilizing attack telemetry to stay consistently ahead of evolving DDoS methodologies and adversary tactics.</li>
+			<li><strong>Technical Communications:</strong> Driving high-touch technical dialogue with customer network teams during critical incidents, translating complex routing and attack flow data into actionable architectural advice.</li>
+			<li><strong>Operational Engineering &amp; AI Integration: </strong>Designing and refining technical Managed Defense workflows, building AI-driven automated troubleshooting playbooks (particularly around BGP/GRE), and tuning alerting thresholds to create self-healing infrastructure responses.</li>
+			<li><strong>Forensics &amp; Analysis:</strong> Utilizing internal telemetry, flow data, and specialized monitoring tools to perform deep-dive forensics on novel network attack vectors.</li>
+		</ul>
+		<ul>
+			<li><strong>Technical Coaching: </strong>Mentoring the Managed Defense team on advanced traffic analysis and security best practices, ensuring a high technical bar across the Managed Defense Center.</li>
+		</ul>
+	</li>
+</ul>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<ul>
+	<li><strong>Experience</strong>: A minimum of 8+ years of relevant hands-on experience specifically within the DDoS mitigation industry, Network Security Operations, or a highly technical infrastructure incident response environment.</li>
+	<li><strong>Protocol Sovereignty:</strong> A profound understanding of internet routing and encapsulation protocols. Expert-level knowledge of BGP (Border Gateway Protocol) and GRE (Generic Routing Encapsulation) reinjection, along with a deep ability to deconstruct TCP/IP, UDP, and ICMP traffic flows.</li>
+	<li><strong>Security Mastery: </strong>Proven ability to identify common network attacks and design robust mitigation strategies for complex volumetric DDoS, UDP/TCP based, and protocol exhaustion using edge-based security controls.</li>
+	<li><strong>Detection &amp; Tuning: </strong>Demonstrated expertise in detection engineering, including the continuous tuning of network security rules and alerts to optimize defense efficacy and operational signal-to-noise ratios.</li>
+	<li><strong>AI Tooling &amp; Automation: </strong>Proficiency in Python, Go, or Bash to automate network security workflows, with demonstrated experience leveraging AI/ML models or LLM APIs to build automated troubleshooting diagnostics and dynamic threat mitigations.&nbsp;&nbsp;</li>
+	<li><strong>System Literacy:</strong> Experience with monitoring platforms (e.g., Prometheus/Grafana) and querying large network datasets to operationalize contextual routing and security data.</li>
+	<li><strong>Certifications: </strong>Advanced networking and network security credentials such as Cisco CCNP, CCNP Security, or CCIE are highly valued.</li>
+</ul>
+<div class="content-conclusion">
+	<h3>What Makes Cloudflare Special?</h3>
+	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
+	<p><a href="https://blog.cloudflare.com/protecting-free-expression-online/"><strong>Project Galileo</strong></a><span style="font-weight: 400;">: Since 2014, we've equipped more than 2,400 journalism and civil society organizations in 111 countries with powerful tools to defend themselves against attacks that would otherwise censor their work, technology already used by Cloudflare’s enterprise customers--at no cost.</span></p>
+	<p><strong><a href="https://www.cloudflare.com/athenian/">Athenian Project</a></strong><span style="font-weight: 400;">: In 2017, we created the Athenian Project to ensure that state and local governments have the highest level of protection and reliability for free, so that their constituents have access to election information and voter registration. Since the project, we've provided services to more than 425 local government election websites in 33 states.</span></p>
+	<p><a href="https://1.1.1.1/"><strong>1.1.1.1</strong></a><span style="font-weight: 400;">: We released</span><a href="https://1.1.1.1/"> <span style="font-weight: 400;">1.1.1.1</span></a><span style="font-weight: 400;"> to help fix the foundation of the Internet by building a faster, more secure and privacy-centric public DNS resolver. This is available publicly for everyone to use - it is the first consumer-focused service Cloudflare has ever released. Here’s the deal - we don’t store client IP addresses never, ever. We will continue to abide by our</span><a href="https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver"> privacy commitment</a><span style="font-weight: 400;"> and ensure that no user data is sold to advertisers or used to target consumers.</span></p>
+	<p><span style="font-weight: 400;">Sound like something you’d like to be a part of? We’d love to hear from you!</span></p>
+	<p><span style="font-weight: 400;">Please note that applicants who progress to the offer stage of the interview process may be asked to attend an in-person interview within one of the Cloudflare Offices or Cloudflare Hubs.&nbsp; More details about this will be available at that stage of the interview process.</span></p>
+	<p><span style="font-weight: 400;">This position may require access to information protected under U.S. export control laws, including the U.S. Export Administration Regulations. Please note that any offer of employment may be conditioned on your authorization to receive software or technology controlled under these U.S. export laws without sponsorship for an export license.</span></p>
+	<p><span style="font-weight: 400;">Cloudflare is proud to be an equal opportunity employer. &nbsp;We are committed to providing equal employment opportunity for all people and place great value in both diversity and inclusiveness. &nbsp;All qualified applicants will be considered for employment without regard to their, or any other person's, perceived or actual</span> <span style="font-weight: 400;">race, color, religion, sex, gender, gender identity, gender expression, sexual orientation, national origin, ancestry, citizenship, age, physical or mental disability, medical condition, family care status, or any other basis protected by law. </span><span style="font-weight: 400;">We are an AA/Veterans/Disabled Employer.</span></p>
+	<p><span style="font-weight: 400;">Cloudflare provides reasonable accommodations to qualified individuals with disabilities. &nbsp;Please tell us if you require a reasonable accommodation to apply for a job. Examples of reasonable accommodations include, but are not limited to, changing the application process, providing documents in an alternate format, using a sign language interpreter, or using specialized equipment. &nbsp;If you require a reasonable accommodation to apply for a job, please contact us via e-mail at </span><span style="font-weight: 400;">hr@cloudflare.com</span><span style="font-weight: 400;"> or via mail at 101 Townsend St. San Francisco, CA 94107.</span></p>
+</div>

@@ -3,52 +3,44 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Location:&nbsp;</strong>Austin, TX</p>
-<p><strong>Job Title&nbsp;</strong></p>
-<p>Oracle Operations Manager</p>
-<p>&nbsp;</p>
-<p><strong>Role Summary</strong></p>
-<p>The Oracle Operations Manager will work with the Oracle IT team to plan, execute operations, and manage enterprise programs to successful completion. Our large-scale programs span multiple quarters and involve IT, various Business Verticals, and Technical Operations teams across the Oracle ecosystem.</p>
-<p>You bring a passion for matching complex business needs with technically innovative solutions, and excel at shifting between high-level strategy and technical execution. You are able to implement and drive standardized Oracle operational methodologies to ensure persistent progress. The ideal candidate is flexible and comfortable playing multiple roles—diplomat, moderator, negotiator, and coach - within a large-scale enterprise environment. Combined with deep technical expertise in cloud operations, you have the ability to build trust and strong partnerships with counterparts in Engineering, Development, and Business units.</p>
-<p>&nbsp;</p>
-<p><strong>Role Responsibilities:</strong></p>
+<p><strong>Available Locations: </strong>London (UK), Lisbon (Portugal)</p>
+<p><strong>About the role</strong></p>
+<p>Cloudflare’s Engineers build and operate the software that helps power 25+ million Internet properties and millions of businesses around the world. Across our engineering organizations, we have opportunities for high caliber, curious and empathetic people to take on big challenges and build some of the best skills in the industry. We’re looking for talented team members to help build high-growth products, help scale our expanding network, build tools to improve availability, performance, uptime, and response times, and make systems failure-resistant and ready-to-scale.</p>
+<p>We are looking for a talented Systems Engineer to join the Security Rules team. You will work on a range of microservices written mainly in Rust. Technologies we use include Docker, Go, PostgreSQL, Redis, Memcached, gRPC, Kafka, Clickhouse and the usual Unix/Linux tools and workflows. We strive to build reliable, fault-tolerant systems that can operate at Cloudflare’s scale. You will join a team of bright, hard-working, and supportive engineers who are passionate about their craft, and you will be comfortable operating in a fast-paced but sane work environment. This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li>Build bridges across Oracle business units to ensure programs and projects are effectively planned, developed, and deployed with quality and on-time delivery into our production environments.</li>
-	<li>Drive the execution of tasks within cross-functional core teams to ensure the success of large-scale initiatives comprising the Oracle operations portfolio.</li>
-	<li>Build transparent communication channels to align enterprise stakeholders, IT, and third-party vendors, ensuring executive audiences receive appropriate updates on program status.</li>
-	<li>Manage program scope and execution to committed schedules, maintaining reporting for program deliverables across multiple global business units.</li>
-	<li>Ensure adherence to Oracle best practices and accountability throughout the program lifecycle when working with external vendors and partners.</li>
-	<li>Manage critical path timelines by proactively identifying risks and facilitating the resolution of blockers to ensure the success of enterprise-tier projects.</li>
-	<li>Collaborate on internal processes, tools, and workflows across Oracle functions in support of IT governance and standardized project management methodologies.</li>
+	<li>Design, implement, and maintain the software systems that comprise Cloudflare’s Application Security Product Offering such as Rate Limiting, Web Application Firewall and more.</li>
+	<li>Participate in all stages of the software development lifecycle, from designing and documenting systems to writing code, automated tests, and monitoring production deployments.</li>
+	<li>Collaborate with internal teams, including security, network engineering, SRE, and product management, to design scalable solutions to difficult technical problems.</li>
+	<li>Review work from your peers throughout all stages of the development lifecycle to ensure high-quality, maintainable code.</li>
+	<li>Mentor team members and work with support teams to ensure customer delight and bring out the best in everyone.</li>
+	<li>Debug issues in complex systems and contribute to the maintenance and improvement of operational health.</li>
+	<li>Work with a wide range of technologies and programming languages, including Rust, Go, as well as various databases (SQL and No-SQL), Docker, and Kubernetes.</li>
 </ul>
-<p><strong>Role Requirements&nbsp;</strong></p>
-<p><strong>Must-Have Skills</strong></p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>Minimum 5 years’ experience in program and project management</li>
-	<li>Minimum 3 years proven experience in leading highly complex, enterprise-wide initiatives.</li>
-	<li>Proficient in solutions that service global Finance and enterprise business capabilities.</li>
-	<li>Strong technical background in cloud operations to facilitate architecture and integration discussions within an Oracle environment.</li>
-	<li>Track record of delivering technical programs through the full end to end program management lifecycle, from conception to usability study.</li>
-	<li>Have a balance of people, organizational, and technical skills to deliver and guide decision making without authority.</li>
-	<li>Work independently in a dynamic and high-pressure environment with timely delivery despite ambiguous and changing business requirements.</li>
-	<li>Strong competency with project management tools (Confluence, JIRA, Smartsheets, etc.) and various methodologies (Waterfall, Scrum, etc).</li>
-	<li>Proven ability to clearly and concisely communicate with an executive audience in both written and verbal communications in English (writing sample will be requested).</li>
-	<li>Thrive in a fast-paced enterprise environment, with the ability to learn and deploy new Oracle technologies quickly.</li>
-	<li>Bachelor’s degree in computer science, Information Systems Management, Technology management, Business management or comparable work experience.</li>
+	<li>First and foremost curiosity and critical thinking</li>
+	<li>3+ years of relevant professional experience with a technology company</li>
+	<li>Strong programming skills in Rust, Go, C++, or a similar systems-level language</li>
+	<li>Experience building and operating distributed systems</li>
+	<li>Experience with monitoring, alerting and debugging high volume production systems</li>
+	<li>Experience with databases (we use PostgreSQL, Clickhouse and Memcached)</li>
+	<li>Strong interpersonal and communication skills, demonstrating empathy, teamwork and a sense of ownership</li>
 </ul>
-<p><strong>Nice-To-Have Skills</strong></p>
+<p><strong>Bonus Points:</strong></p>
 <ul>
-	<li>Direct experience with Oracle implementation and management at an enterprise scale.</li>
-	<li>Experience with both waterfall and Agile development methodologies</li>
-	<li>PMP/PgMP and Agile certifications</li>
-	<li>Familiarity with Oracle-specific governance, risk, and compliance (GRC) frameworks.</li>
+	<li>Experience with modern Unix/Linux development and runtime environments</li>
+	<li>Experience with monitoring and logging tools like Prometheus and Grafana.</li>
+	<li>Experience with containerization and orchestration technologies, such as Docker and Kubernetes.</li>
 </ul>
-<p>&nbsp;</p>
-<h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare's equity plan.</p>
-<h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p>Health &amp; Welfare Benefits</p>
+<h4>Compensation</h4>
+<p data-path-to-node="1">For Portugal based hires: Estimated annual salary is between €54,000 - €91,000.</p>
+<p data-path-to-node="2,0,0">The final offer will be inclusive of time exemption, in alignment with the applicable law and collective bargaining agreements.</p>
+<h4><strong data-path-to-node="3" data-index-in-node="0">Equity</strong></h4>
+<p data-path-to-node="4">This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p data-path-to-node="4"><strong>Benefits</strong></p>
+<p data-path-to-node="4">Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p data-path-to-node="4"><br><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -59,14 +51,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p>Financial Benefits</p>
+<p data-path-to-node="4"><strong>Financial Benefits</strong></p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p>Time Off</p>
+<p data-path-to-node="4"><strong>Time Off</strong></p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
