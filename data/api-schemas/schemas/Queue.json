@@ -320,6 +320,64 @@
 						}
 					}
 				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000,
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"example": []
+								},
+								"success": {
+									"description": "Indicates if the API call was successful or not.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									],
+									"x-auditable": true
+								}
+							}
+						}
+					}
+				}
 			}
 		},
 		"security": [
