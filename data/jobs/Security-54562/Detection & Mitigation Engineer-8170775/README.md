@@ -3,58 +3,24 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3>Available Locations | Austin, US; Seattle, US or London, UK</h3>
-<h3>About the Role</h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p>ETI’s Storage Infrastructure team is responsible for the core storage layer that underpins many of ETI's stateful services. Our scope ranges from managing the physical hardware to operating the distributed databases and storage systems built upon it. We run this infrastructure globally across Cloudflare's network, which presents unique and complex engineering puzzles. We navigate efficiently expanding storage capacity, optimizing rebuild operations, and coordinating operations across failure domains to uphold durability. While other service teams focus on product development, our mission is to ensure the underlying storage is reliable, performant, and scalable.</p>
-<p>You’ll be joining a highly motivated team that is building the next generation of distributed storage services.</p>
-<h3>Responsibilities</h3>
+<p><strong>Available locations: </strong>Austin, TX</p>
+<p><strong>About the Department</strong></p>
+<p>Cloudforce One is Cloudflare’s threat operations and research team, responsible for identifying and disrupting cyber threats ranging from sophisticated cyber criminal activity to nation-state sponsored advanced persistent threats (APTs).&nbsp; Cloudforce One works in close partnership with external organizations and internal Cloudflare teams, continuously developing operational tradecraft and expanding ever-growing sources of threat intelligence to enable expedited threat hunting and remediation.&nbsp; Members of Cloudforce One are at the helm of leveraging an incredibly vast and varied set of data points that only one of the world’s largest global networks can provide.&nbsp; The team is able to analyze these unique data points, at massive scale and efficiency, synthesizing findings into actionable threat intelligence to better protect our customers.</p>
+<p><strong>About the Role</strong></p>
+<p>Cloudflare is a system spanning the globe, on a mission to make the internet better, safer, and more powerful everyday. To help fulfill this mission, we are seeking a talented Security Detections Engineer to identify, track, and defeat sophisticated threats and abuse across our platform. In this position, you will examine and mitigate threats in real-time, leveraging emerging technologies to build detections that protect millions of people from various forms of attacks and abuse. Your efforts will help us in our constant pursuit of reaching far beyond today’s security market.</p>
+<p>As a Detection and Mitigation Engineer, your analytical thinking and quick action will be the key to our success. You will identify Tactics, Techniques, and Procedures (TTPs) of ongoing and ever-evolving cyber attacks to protect our global customer base. You will work in close collaboration with team members to develop new and innovative ways to present and interact with our unique insights. You will stop the adversary.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>In this role, you will help build and operate the next generation of globally distributed storage systems. You will own your code from inception to release, delivering solutions at all layers of the stack. On any given day, you might write a design document for a new provisioning system, model failure domain dependencies across edge locations, benchmark new storage hardware, build standardized observability and runbooks for distributed database clusters, or automate operational toil through purpose-built tooling and intelligent automation. You can expect to interact with a variety of languages and technologies including Rust, Go, Saltstack, and Terraform.</li>
-</ul>
-<h3>Desirable Skills, Knowledge, and Experience</h3>
-<ul>
-	<li>Strong programming skills with languages like Rust, Go, or Python</li>
-	<li>A solid understanding of distributed systems concepts such as consistency, consensus, data replication, fault tolerance, and partition tolerance</li>
-	<li>Experience with distributed databases and storage systems</li>
-	<li>Experience with infrastructure configuration tooling and infrastructure as code</li>
-	<li>Familiarity with storage fundamentals: block devices, filesystems, SSD characteristics</li>
-	<li>Experience building and maintaining high-throughput, low-latency systems</li>
-	<li>Understanding of network fundamentals as they relate to distributed storage -- bandwidth constraints, latency tradeoffs, cross-datacenter replication</li>
-	<li>Strong written and verbal communication skills and ability to explain technical decisions clearly</li>
-	<li>Comfortable operating in fast-paced environments with tight deadlines and evolving priorities</li>
-</ul>
-<h3>Compensation</h3>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $185,000 - $254,000</li>
-</ul>
-<h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h3>Health &amp; Welfare Benefits</h3>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<h3>Financial Benefits</h3>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<h3>Time Off</h3>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Experience in one of the following: Data analysis, Metadata analysis, or Network Traffic analysis</li>
+	<li>A passion for analyzing attacker TTPs at varying levels</li>
+	<li>Ability to understand the latest security trends as they relate to platform threats and abuse</li>
+	<li>Experience using a comprehensive data analysis platform and rule configuration</li>
+	<li>Understanding of the cyber threat landscape, cyber intelligence, and working knowledge of threat actors and their techniques</li>
+	<li>Experience tracking and analyzing cyber campaigns utilizing technical Indicators of Compromise (IOCs)</li>
+	<li>Working knowledge of SQL and devising SQL queries</li>
+	<li>Python or other scripting experience</li>
+	<li>Ability to synthesize technical information and document it in a non-technical manner through both graphical and verbal representation</li>
+	<li>Capable and comfortable communicating actionable threat intelligence to both technical and executive-level stakeholders</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

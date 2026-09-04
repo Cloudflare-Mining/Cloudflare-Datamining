@@ -3,75 +3,34 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3>Available Locations</h3>
+<p>Job Location: Singapore</p>
+<p>We are looking for a thoughtful, detail-oriented Trust and Safety Platform Operations Investigator to work with our global Trust &amp; Safety team. In this role, you will address sensitive and escalated abuse, compliance tasks, and Trust and Safety issues that affect our customers. This is a position where you will also gain familiarity with the inner workings of Cloudflare's technology and policies. As an investigator you will carefully review abuse claims and financial fraud. This role is located in our Singapore office.</p>
+<p><strong>Responsibilities</strong><strong>:</strong></p>
 <ul>
-	<li>New York, NY</li>
-	<li>Washington DC</li>
+	<li>Be part of a world class globally-distributed team.</li>
+	<li>Help administer efficient and compliant handling of legal requests, including but not limited to requests for information, subpoenas, and court orders..</li>
+	<li>Be responsible for performing operations seamlessly and timely Service-Level Agreement (SLA) delivery along with maintaining high levels of stakeholder satisfaction.</li>
+	<li>Partner with other teams in the company, including Policy, Legal, and the Product teams to ensure our processes are carried out in a scalable fashion.</li>
+	<li>Deal with sensitive content and emotionally charged escalations with tact and a calm demeanor.</li>
+	<li>You may be part of the rotating weekend and off-hour coverage responsibilities.</li>
 </ul>
-<h3><strong>About the Role</strong></h3>
-<p>The Manager, Customer Experience is a strategic people leader responsible for building, coaching, and scaling a high-performing team of Customer Experience Managers (CXMs). In this role, you will empower your team to lead the post-sale journey, from onboarding to long-term retention and expansion. You will serve as a mentor and escalation point, guiding your team in building strategic stakeholder relationships and articulating business value. You will lead the operational strategy for your region, ensuring accurate forecasting and driving team-wide adoption of AI-driven workflows to automate routine tasks and uncover growth opportunities. Your focus is on developing talent, optimizing the customer journey, and scaling our CX organization to accelerate customer outcomes and maximize operational efficiency.</p>
-<h3><strong>Responsibilities</strong></h3>
-<p>Team Leadership &amp; Career Development</p>
+<p><strong>Requirements</strong><strong>:</strong></p>
 <ul>
-	<li>Directly manage and coach a team of CXMs, fostering a culture of high performance, accountability, and continuous learning.</li>
-	<li>Drive career development initiatives, including regular 1:1s, performance reviews, and skill-gap analysis to prepare team members for growth.</li>
+	<li>You have 3-5 years of anti-abuse or support escalations experience at an Internet Service Provider or hosting provider</li>
+	<li>Demonstrate working knowledge of DNS and how the Internet works</li>
+	<li>You’ve worked with lawyers, and legal teams on document production requests.</li>
+	<li>You’ve interacted with law enforcement individuals and agencies.</li>
+	<li>Experience managing sensitive content and emotionally charged escalations with tact and a calm demeanor</li>
+	<li>You have excellent written and verbal communication skills</li>
+	<li>You have a strong anti-abuse and/or support escalation background</li>
+	<li>Strong written and verbal communication skills, attention to detail and ability to manage multiple projects and tasks</li>
 </ul>
-<p>Operational Strategy &amp; Performance Management</p>
+<p><strong>Bonus Points:</strong></p>
 <ul>
-	<li>Oversee regional forecasting and pipeline hygiene in Salesforce, ensuring accurate reporting to leadership.</li>
-	<li>Establish and optimize operational workflows, including the integration of AI tools for account quoting and automated lifecycle alerts.</li>
-</ul>
-<p>Cross-Functional Alignment &amp; Escalation</p>
-<ul>
-	<li>Act as the ultimate point of escalation for complex commercial negotiations, legal redlines, and commercial business issues.</li>
-	<li>Maintain strong alignment with Sales, Product, and Support leadership to resolve friction points in the customer journey.</li>
-</ul>
-<p>AI Competencies</p>
-<ul>
-	<li>Generative AI: Mastery of LLMs to rapidly draft renewal communications, synthesize quarterly review data, and prepare executive summaries.</li>
-	<li>Data Analysis: Proficiency in leveraging AI analytics tools to parse customer usage metrics and instantly highlight up-sell or cross-sell opportunities.</li>
-	<li>Workflow Automation: Ability to build automations to synchronize CRM data, update weekly forecasts, and trigger lifecycle alerts.</li>
-	<li>AI Problem Solving: The instinct to view AI as a partner in solving tough problems to keep the Internet moving forward.</li>
-</ul>
-<h3><strong>Desirable Skills, Knowledge, and Experience</strong></h3>
-<ul>
-	<li>Minimum of 5 years of experience in Customer Success and Renewals Sales, with at least 2 years in a direct people management role.</li>
-	<li>Proven track record of scaling teams and managing organizational transitions in a high-growth SaaS environment.</li>
-	<li>Expertise in SaaS retention strategies, commercial negotiations, and value-driven sales leadership.</li>
-	<li>Strong proficiency in coaching teams on AI competencies, including LLM utilization and automated workflow building.</li>
-	<li>Deep understanding of cloud security and networking industries; ability to translate technical concepts into business strategy.</li>
-	<li>Exceptional mentorship and leadership skills with a focus on empathy, transparency, and results.</li>
-	<li>Excellent problem solving skills with the ability to creatively achieve resolutions.</li>
-</ul>
-<h3><strong>Compensation</strong></h3>
-<p>Compensation may be adjusted depending on work location. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
-<p>For New York and DC based hires: Estimated annual salary of $158,000 - $218,000.</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Experience with the legal considerations related to hosted material (notice &amp; takedown).</li>
+	<li>Familiarity with DMCA (Digital Millennium Copyright Act), copyright, and trademark issues.</li>
+	<li>Experience working with Security teams, specifically around threat identification and disruption.&nbsp;</li>
+	<li>Experience in compliance, sanctions, and similar regulatory regimes</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

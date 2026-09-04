@@ -3,7 +3,7 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong>Austin, TX</p>
+<p><strong>Available Locations: </strong>Austin</p>
 <p><strong>About the Role</strong></p>
 <p>The CNI team builds and operates the systems that let Cloudflare's enterprise customers connect their networks directly to Cloudflare through private, dedicated interconnects — rather than traversing the public Internet. The product, Cloudflare Network Interconnect (CNI), supports various interconnect types across hundreds of locations worldwide.These systems underpin Magic Transit, Cloudflare WAN, Zero Trust, and application security for some of Cloudflare's largest customers.</p>
 <h4><strong>What you'll do</strong></h4>
@@ -16,7 +16,7 @@
 	<li>Driving reliability and automation improvements across the team's systems and services.</li>
 	<li>Coordinating with partner and stakeholder teams on cross-functional initiatives.</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<h4><strong>Desirable Skills, Knowledge, and Experience</strong></h4>
 <ul>
 	<li>3+ years experience as an Engineering Manager for a team of Software and Systems Engineers.</li>
 	<li>Demonstrate a track record of managing a team including hiring, onboarding, and professional development. You inspire your team to reach higher. You're as good at explaining "why" as you are "how".</li>

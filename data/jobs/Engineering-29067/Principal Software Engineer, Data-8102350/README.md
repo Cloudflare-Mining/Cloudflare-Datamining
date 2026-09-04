@@ -7,7 +7,6 @@
 <ul>
 	<li>Austin, US</li>
 </ul>
-<h3>&nbsp;</h3>
 <h3><strong>About the Team</strong></h3>
 <p>Cloudflare handles traffic for almost 25% of the Internet. That’s a lot of data. On the Town Lake team, our mission is to make that data accessible and valuable for users across the company. We connect data from dozens of source systems and make it available so that any user in the company can answer any question in 5 minutes or less, using SQL or plain english.&nbsp;</p>
 <p>We’re building a modern, agentic-first data lakehouse platform based on Trino and Apache Iceberg, and all the supporting services for ingestion, transformation access control, governance, dashboarding and agentic access are built on Cloudflare's own platform. R2 and R2 Data Catalog for storage, Workers and Workers AI for compute, Workflows for orchestration, Durable Objects and D1 for state, Cloudflare Access for authentication.&nbsp;</p>
@@ -41,7 +40,6 @@
 <ul>
 	<li>Experience with data orchestration and infrastructure platforms like Airflow and DBT<br>Experience deploying and managing infrastructure in Kubernetes<br>Experience with data governance platforms and processes, with a focus on privacy and auditability<br>Knowledge about machine learning models and MLOps<br><br></li>
 </ul>
-<p>&nbsp;</p>
 <h3><strong>Equity</strong></h3>
 <p>This role is eligible to participate in Cloudflare's equity plan.</p>
 <h3><strong>Benefits</strong></h3>
