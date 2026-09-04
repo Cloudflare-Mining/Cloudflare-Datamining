@@ -1094,9 +1094,10 @@
 																"x-auditable": true
 															},
 															"sample_rate": {
-																"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+																"description": "Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
 																"type": "number",
 																"format": "float",
+																"exclusiveMinimum": true,
 																"maximum": 1,
 																"minimum": 0,
 																"nullable": true,
@@ -1703,9 +1704,10 @@
 																"x-auditable": true
 															},
 															"sample_rate": {
-																"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+																"description": "Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
 																"type": "number",
 																"format": "float",
+																"exclusiveMinimum": true,
 																"maximum": 1,
 																"minimum": 0,
 																"nullable": true,
@@ -2324,9 +2326,10 @@
 															"x-auditable": true
 														},
 														"sample_rate": {
-															"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+															"description": "Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
 															"type": "number",
 															"format": "float",
+															"exclusiveMinimum": true,
 															"maximum": 1,
 															"minimum": 0,
 															"nullable": true,
@@ -2813,9 +2816,10 @@
 										"x-auditable": true
 									},
 									"sample_rate": {
-										"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+										"description": "Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
 										"type": "number",
 										"format": "float",
+										"exclusiveMinimum": true,
 										"maximum": 1,
 										"minimum": 0,
 										"nullable": true,
@@ -3262,9 +3266,10 @@
 															"x-auditable": true
 														},
 														"sample_rate": {
-															"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+															"description": "Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
 															"type": "number",
 															"format": "float",
+															"exclusiveMinimum": true,
 															"maximum": 1,
 															"minimum": 0,
 															"nullable": true,
@@ -5234,9 +5239,10 @@
 										"x-auditable": true
 									},
 									"sample_rate": {
-										"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+										"description": "Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
 										"type": "number",
 										"format": "float",
+										"exclusiveMinimum": true,
 										"maximum": 1,
 										"minimum": 0,
 										"nullable": true,
@@ -5680,9 +5686,10 @@
 															"x-auditable": true
 														},
 														"sample_rate": {
-															"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+															"description": "Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
 															"type": "number",
 															"format": "float",
+															"exclusiveMinimum": true,
 															"maximum": 1,
 															"minimum": 0,
 															"nullable": true,
