@@ -24,7 +24,7 @@ image: https://www.cloudflare.com/preview.png
 
  Cloudflare for Startups gives early-stage companies up to $350k in credits to build the next big idea. Startups get access to our developer platform and global network to build fast, secure, and scalable applications. 
 
-[ Apply now! ](/lp/startups) 
+Apply now! 
 
 ![](/static/startups/Perplexity.png)
 
