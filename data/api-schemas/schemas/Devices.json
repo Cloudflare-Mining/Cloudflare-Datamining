@@ -24,12 +24,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Delete a device settings profile response.",
@@ -2127,8 +2121,9 @@
 		"tags": [
 			"Devices"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.devices.v1",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -2781,8 +2776,9 @@
 		"tags": [
 			"Devices"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.devices.v1",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -16499,9 +16495,10 @@
 		"x-api-token-group": [
 			"Zero Trust Write"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.revoke",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.devices.v1",
+		"x-fern-sdk-method-name": "revoke",
 		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation revokes sessions for a batch of devices destructively."
 	},
@@ -16854,9 +16851,10 @@
 		"x-api-token-group": [
 			"Zero Trust Write"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.unrevoke",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.devices.v1",
+		"x-fern-sdk-method-name": "unrevoke",
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/devices/policy/{policy_id}/exclude": {
