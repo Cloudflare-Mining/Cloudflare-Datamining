@@ -3,41 +3,37 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h2>Available Locations</h2>
+<h3><strong>Available Locations: Austin, TX</strong></h3>
+<h3>About the Role</h3>
+<p>Cloudflare’s Emerging Technologies &amp; Incubation team builds and launches bold new products on Cloudflare’s edge network. This role is on the Durable Objects team, which powers stateful serverless applications for Cloudflare customers. You’ll help evolve the runtime and the low-level routing and storage systems that support real-time chat, multiplayer games, AI agents, and other stateful workloads at scale.</p>
+<h3>Responsibilities</h3>
 <ul>
-	<li>Austin, US</li>
+	<li>Build and improve the Durable Objects runtime.</li>
+	<li>Design and develop the low-level routing and storage systems that power customer applications.</li>
+	<li>Improve reliability, scalability, performance, and feature depth.</li>
+	<li>Own code end-to-end from design through production.</li>
+	<li>Solve complex problems in production distributed systems.</li>
+	<li>Work across JavaScript, TypeScript, Rust, and C++.</li>
+	<li>Help drive the continued evolution of the system.</li>
 </ul>
-<h2>About the Role</h2>
-<p>Cloudflare's People team supports 5,000+ employees globally. To scale, we are building an AI-driven operating layer on the Cloudflare Developer Platform to automate workflows, ensure data integrity, and streamline employee support.</p>
-<p>You will ship production systems for hiring, onboarding, and self-service, using AI to create leverage while designing rigorous guardrails for sensitive employee data.</p>
-<p>Leveraging Cloudflare Dev Platform primitives like Workers, Workflows, Access, Hyperdrive (Postgres), R2, and Workers AI / AI Gateway for durable, secure, and observable automation.</p>
-<h2>Responsibilities</h2>
+<h3>Desirable Skills, Knowledge &amp; Experience</h3>
 <ul>
-	<li>AI-assisted intake for request classification, retrieval-augmented responses, and case routing.</li>
-	<li>Recruiting automation for Greenhouse job creation and management chain synchronization.</li>
-	<li>Self-service tools for policy guidance, approvals, and employee lifecycle changes.</li>
-	<li>Durable multi-step Workflows for onboarding, offboarding, and recurring audits.</li>
-	<li>AI copilots that summarize context and suggest next actions for human review.</li>
-	<li>Data reconciliation systems and exception queues for cross-system accuracy.</li>
-	<li>Observable audit pipelines for explainable decision-making.</li>
-	<li>Custom interview automation and internal technical assessment tooling.</li>
-	<li>Design and operate AI-assisted workflows using the full Cloudflare stack.</li>
-	<li>Integrate People systems via secure API, OAuth, and webhook patterns.</li>
-	<li>Collaborate with HR, IT, Legal, and Security to translate operational pain into technical solutions.</li>
-	<li>Implement robust authorization, audit logging, and error handling for high-trust data.</li>
+	<li>5+ years of experience writing systems software.</li>
+	<li>Operational mindset with experience owning code in production.</li>
+	<li>Strong foundation in data structures, algorithms, and system design.</li>
+	<li>Deep expertise in at least one systems programming language such as C/C++ or Rust.</li>
+	<li>Experience designing and architecting large-scale distributed systems.</li>
+	<li>Familiarity with cloud platforms, especially serverless architectures.</li>
+	<li>Experience as a technical leader or team lead, driving engineering decisions.</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<h3>Bonus Points</h3>
 <ul>
-	<li>Strong engineering background (TypeScript, Python, or Go) building internal tools or platform services.</li>
-	<li>Practical experience with LLMs, RAG, tool calling, and prompt evaluation.</li>
-	<li>Expertise in system-to-system integrations, identity, and event-driven workflows.</li>
-	<li>Exceptional judgment regarding privacy, data minimization, and operational risk.</li>
+	<li>Experience working on database internals, especially SQLite.</li>
+	<li>Deep understanding of web technologies such as browsers, HTTP, JavaScript, and WebAssembly.</li>
+	<li>Background in low-latency, real-time environments such as game streaming, high-frequency trading, or payment systems.</li>
+	<li>Experience debugging, optimizing, and identifying failure modes in large-scale Linux-based distributed systems.</li>
 </ul>
-<h2>Bonus Points</h2>
-<ul>
-	<li>Prior experience in internal platform engineering or compliance-heavy environments.</li>
-	<li>Proficiency with React, Drizzle, Zod, and Postgres.</li>
-</ul>
+<h3 id="SeniorSystemsEngineerDurableObjects(DO)andD1-AbouttheDepartment"></h3>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
