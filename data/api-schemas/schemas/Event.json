@@ -4333,6 +4333,34 @@
 									"data"
 								]
 							},
+							"source": {
+								"description": "Controlled provenance for an event and its indicators derived from a Threat Signals article.",
+								"type": "object",
+								"additionalProperties": false,
+								"properties": {
+									"resourceId": {
+										"type": "string",
+										"format": "uuid"
+									},
+									"resourceType": {
+										"type": "string",
+										"enum": [
+											"article"
+										]
+									},
+									"system": {
+										"type": "string",
+										"enum": [
+											"threat-signals"
+										]
+									}
+								},
+								"required": [
+									"system",
+									"resourceType",
+									"resourceId"
+								]
+							},
 							"tags": {
 								"type": "array",
 								"items": {

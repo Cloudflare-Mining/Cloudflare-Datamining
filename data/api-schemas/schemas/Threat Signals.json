@@ -235,6 +235,14 @@
 				}
 			},
 			{
+				"name": "article_id",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			},
+			{
 				"name": "read",
 				"in": "query",
 				"schema": {
@@ -1910,7 +1918,114 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Threat Signals response."
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"tag_skill_version": {
+											"type": "string"
+										},
+										"tags": {
+											"description": "Final hydrated assignment set; may be empty when no applicable tags are selected.",
+											"type": "array",
+											"items": {
+												"properties": {
+													"applied_by": {
+														"type": "string",
+														"enum": [
+															"ai",
+															"analyst"
+														]
+													},
+													"categoryId": {
+														"type": "string",
+														"format": "uuid",
+														"nullable": true
+													},
+													"uuid": {
+														"type": "string",
+														"format": "uuid"
+													},
+													"value": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"uuid",
+													"value",
+													"categoryId",
+													"applied_by"
+												],
+												"type": "object"
+											}
+										}
+									},
+									"required": [
+										"tags",
+										"tag_skill_version"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"messages",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."

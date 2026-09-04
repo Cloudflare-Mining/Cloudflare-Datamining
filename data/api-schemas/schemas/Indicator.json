@@ -357,6 +357,37 @@
 													"type": "object"
 												}
 											},
+											"sources": {
+												"description": "RSS article sources from which this indicator was extracted.",
+												"type": "array",
+												"items": {
+													"additionalProperties": false,
+													"properties": {
+														"resourceId": {
+															"type": "string",
+															"format": "uuid"
+														},
+														"resourceType": {
+															"type": "string",
+															"enum": [
+																"article"
+															]
+														},
+														"system": {
+															"type": "string",
+															"enum": [
+																"threat-signals"
+															]
+														}
+													},
+													"required": [
+														"system",
+														"resourceType",
+														"resourceId"
+													],
+													"type": "object"
+												}
+											},
 											"tags": {
 												"type": "array",
 												"items": {
@@ -404,7 +435,8 @@
 											"indicatorType",
 											"value",
 											"createdAt",
-											"updatedAt"
+											"updatedAt",
+											"sources"
 										],
 										"type": "object"
 									}
@@ -1642,6 +1674,37 @@
 																"type": "object"
 															}
 														},
+														"sources": {
+															"description": "RSS article sources from which this indicator was extracted.",
+															"type": "array",
+															"items": {
+																"additionalProperties": false,
+																"properties": {
+																	"resourceId": {
+																		"type": "string",
+																		"format": "uuid"
+																	},
+																	"resourceType": {
+																		"type": "string",
+																		"enum": [
+																			"article"
+																		]
+																	},
+																	"system": {
+																		"type": "string",
+																		"enum": [
+																			"threat-signals"
+																		]
+																	}
+																},
+																"required": [
+																	"system",
+																	"resourceType",
+																	"resourceId"
+																],
+																"type": "object"
+															}
+														},
 														"tags": {
 															"type": "array",
 															"items": {
@@ -1689,7 +1752,8 @@
 														"indicatorType",
 														"value",
 														"createdAt",
-														"updatedAt"
+														"updatedAt",
+														"sources"
 													]
 												},
 												"type": {
