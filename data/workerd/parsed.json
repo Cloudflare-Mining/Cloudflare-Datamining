@@ -7756,6 +7756,11 @@
 					"name": "privileges",
 					"annotations": {},
 					"type": "workerd/src/workerd/server/workerd.capnp:Worker.DurableObjectNamespace.ContainerOptions.ContainerPrivileges"
+				},
+				{
+					"name": "images",
+					"annotations": {},
+					"type": "List(workerd/src/workerd/server/workerd.capnp:Worker.DurableObjectNamespace.ContainerOptions.NamedImage)"
 				}
 			]
 		},
@@ -7776,6 +7781,21 @@
 					"name": "securityOpt",
 					"annotations": {},
 					"type": "List(Text)"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/workerd.capnp:Worker.DurableObjectNamespace.ContainerOptions.NamedImage",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "image",
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
