@@ -33061,7 +33061,7 @@
 					"possibleTypes": []
 				},
 				{
-					"description": "Individual analyzed AI Gateway conversations. This list is sampled: an aggregate may report more conversations than this node can list. A conversation re-analyzed after resuming appears as another row with its accumulated totals; conversationId identifies repeated conversations.",
+					"description": "Individual analyzed AI Gateway conversations. This list is a sample: adaptive sampling means not every conversation is retained as a row, and counts extrapolate through sampleInterval while listings do not - an aggregate may report more conversations than this node can list. A conversation active across several analysis periods appears once per period, each row with that period's usage; conversationId identifies repeats",
 					"enumValues": [],
 					"fields": [
 						{
@@ -33083,7 +33083,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Coding agent that held the conversation",
+							"description": "Coding agent that held the conversation; empty when no readable trajectory",
 							"isDeprecated": false,
 							"name": "client",
 							"type": {
@@ -33099,7 +33099,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Stable hash identifying the user and session conversation; evidence join key and marker for repeated rows of one conversation",
+							"description": "Stable hash identifying the (user, session) conversation; join key back to the analysis records, and the marker for repeated rows of one conversation",
 							"isDeprecated": false,
 							"name": "conversationId",
 							"type": {
@@ -33115,7 +33115,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Estimated conversation cost in USD; not a billing figure. 0 when unmeasured, and overlapping analysis periods can double-count it",
+							"description": "Estimated cost in USD of the requests this row's analysis period observed; not a billing figure, 0 when unmeasured (measuredCount = 0), and a re-covering run's rows (spansOverlap = 1) can double-count it",
 							"isDeprecated": false,
 							"name": "costEstimate",
 							"type": {
@@ -33131,7 +33131,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "UTC date when the conversation analysis was published",
+							"description": "Date the analysis settled and its row was published",
 							"isDeprecated": false,
 							"name": "date",
 							"type": {
@@ -33147,7 +33147,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "UTC timestamp when the conversation analysis was published",
+							"description": "When the analysis settled and its row was published",
 							"isDeprecated": false,
 							"name": "datetime",
 							"type": {
@@ -33163,25 +33163,9 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "First observed activity in the conversation",
+							"description": "Start of the row's analysis period. Filtering on it does not narrow the scanned window - pair it with a date or datetime filter (publish time), which is what partitioning follows",
 							"isDeprecated": false,
 							"name": "datetimeFirstActivity",
-							"type": {
-								"kind": "NON_NULL",
-								"name": "",
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "Time",
-									"ofType": null
-								}
-							}
-						},
-						{
-							"args": [],
-							"deprecationReason": null,
-							"description": "Last observed activity in the conversation",
-							"isDeprecated": false,
-							"name": "datetimeLastActivity",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -33211,7 +33195,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Number of analyses that measured usage; 0 means absent",
+							"description": "1 when this analysis measured usage; 0 means cost and token fields are absent, not zero",
 							"isDeprecated": false,
 							"name": "measuredCount",
 							"type": {
@@ -33227,7 +33211,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "'ok' when analyzed end to end and 'skip' when refused",
+							"description": "'ok' when analyzed end to end, 'skip' when refused",
 							"isDeprecated": false,
 							"name": "outcome",
 							"type": {
@@ -33243,7 +33227,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Cheapest tier judged sufficient; empty when unavailable",
+							"description": "Cheapest tier judged sufficient; empty when not classified or when verdict is 'skip'",
 							"isDeprecated": false,
 							"name": "requiredTier",
 							"type": {
@@ -33259,7 +33243,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Number of conversations this row represents under adaptive sampling; multiply when extrapolating from listed rows",
+							"description": "How many rows this row stands for under adaptive sampling; multiply when extrapolating from listed rows",
 							"isDeprecated": false,
 							"name": "sampleInterval",
 							"type": {
@@ -33275,7 +33259,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Provider and model that served the analyzed conversation",
+							"description": "The provider/model that served the analyzed part of the conversation; empty when not classified",
 							"isDeprecated": false,
 							"name": "servedModel",
 							"type": {
@@ -33291,7 +33275,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Tier of the served model; empty when unavailable",
+							"description": "Tier of the served model; empty when not classified or when verdict is 'skip'",
 							"isDeprecated": false,
 							"name": "servedTier",
 							"type": {
@@ -33307,7 +33291,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "1 when overlapping analysis periods double-count usage",
+							"description": "1 when this row's run re-covered a period another analysis also measured; sums that include it can double-count",
 							"isDeprecated": false,
 							"name": "spansOverlap",
 							"type": {
@@ -33315,7 +33299,7 @@
 								"name": "",
 								"ofType": {
 									"kind": "SCALAR",
-									"name": "uint8",
+									"name": "uint64",
 									"ofType": null
 								}
 							}
@@ -33323,7 +33307,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Task type assigned by the classifier; empty when unclassified",
+							"description": "Task type the classifier assigned; empty when not classified",
 							"isDeprecated": false,
 							"name": "taskLabel",
 							"type": {
@@ -33339,7 +33323,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Input tokens across the conversation's observed requests",
+							"description": "Input tokens across the period's observed requests",
 							"isDeprecated": false,
 							"name": "tokensIn",
 							"type": {
@@ -33355,7 +33339,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Output tokens across the conversation's observed requests",
+							"description": "Output tokens across the period's observed requests",
 							"isDeprecated": false,
 							"name": "tokensOut",
 							"type": {
@@ -33371,7 +33355,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Tool calls made by the assistant in the analyzed trajectory",
+							"description": "Tool calls the assistant made in the analyzed trajectory",
 							"isDeprecated": false,
 							"name": "toolCalls",
 							"type": {
@@ -33403,7 +33387,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "User turns in the analyzed trajectory",
+							"description": "User turns in the analyzed trajectory; 0 when no readable trajectory",
 							"isDeprecated": false,
 							"name": "userTurns",
 							"type": {
@@ -33419,7 +33403,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "'overkill', 'appropriate', 'underpowered', 'skip' when unjudgeable, or empty when unclassified",
+							"description": "'overkill', 'appropriate', 'underpowered', 'skip' when unjudgeable, empty when not classified",
 							"isDeprecated": false,
 							"name": "verdict",
 							"type": {
@@ -33435,7 +33419,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Generation of the verdict rule used for this conversation",
+							"description": "Generation of the verdict rule that judged this conversation",
 							"isDeprecated": false,
 							"name": "verdictVersion",
 							"type": {
@@ -34024,6 +34008,102 @@
 								"kind": "SCALAR",
 								"name": "Time",
 								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFirstActivity",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFirstActivity_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFirstActivity_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFirstActivity_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFirstActivity_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFirstActivity_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFirstActivity_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFirstActivity_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
 							}
 						},
 						{
@@ -34890,7 +34970,7 @@
 							"name": "spansOverlap",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -34900,7 +34980,7 @@
 							"name": "spansOverlap_geq",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -34910,7 +34990,7 @@
 							"name": "spansOverlap_gt",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -34919,9 +34999,17 @@
 							"description": "",
 							"name": "spansOverlap_in",
 							"type": {
-								"kind": "SCALAR",
-								"name": "bytes",
-								"ofType": null
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint64",
+										"ofType": null
+									}
+								}
 							}
 						},
 						{
@@ -34930,7 +35018,7 @@
 							"name": "spansOverlap_leq",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -34940,7 +35028,7 @@
 							"name": "spansOverlap_lt",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -34950,7 +35038,7 @@
 							"name": "spansOverlap_neq",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -34959,9 +35047,17 @@
 							"description": "",
 							"name": "spansOverlap_notin",
 							"type": {
-								"kind": "SCALAR",
-								"name": "bytes",
-								"ofType": null
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint64",
+										"ofType": null
+									}
+								}
 							}
 						},
 						{
@@ -35819,7 +35915,7 @@
 					"possibleTypes": []
 				},
 				{
-					"description": "Analyzed AI Gateway conversations, aggregated with adaptive sampling. One underlying row exists per analysis pick of a conversation; a conversation resumed and re-analyzed later contributes again with its accumulated totals.",
+					"description": "Analyzed AI Gateway conversations, aggregated with adaptive sampling. One underlying row per analysis of a conversation; a conversation active across several analysis periods contributes one row per period, each with that period's usage.",
 					"enumValues": [],
 					"fields": [
 						{
@@ -35868,7 +35964,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Number of analyzed conversations (canonical analysis picks; re-analyses of a resumed conversation count again)",
+							"description": "Number of analysis rows; a conversation active across several periods, or re-analyzed, counts once per row - uniq.conversationId is the distinct-conversation count",
 							"isDeprecated": false,
 							"name": "count",
 							"type": {
@@ -35904,6 +36000,18 @@
 								"name": "AccountAiGatewayConversationAnalysesAdaptiveGroupsSum",
 								"ofType": null
 							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "",
+							"isDeprecated": false,
+							"name": "uniq",
+							"type": {
+								"kind": "OBJECT",
+								"name": "AccountAiGatewayConversationAnalysesAdaptiveGroupsUniq",
+								"ofType": null
+							}
 						}
 					],
 					"inputFields": [],
@@ -35919,7 +36027,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Mean estimated cost in USD per conversation over conversations whose cost was measured; 0 when none in the group was measured. When recombining groups client-side, filter measuredCount greater than 0 and divide summed costEstimate by count rather than averaging these averages",
+							"description": "Mean estimated cost in USD per analysis row, over rows whose cost was measured; 0 when none in the group was measured. When recombining groups client-side, filter measuredCount greater than 0 and divide the summed costEstimate total by the summed count - never average these averages",
 							"isDeprecated": false,
 							"name": "costEstimate",
 							"type": {
@@ -35962,7 +36070,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Number of analyzed conversations (canonical analysis picks; re-analyses of a resumed conversation count again), with confidence intervals",
+							"description": "Number of analysis rows; a conversation active across several periods, or re-analyzed, counts once per row - uniq.conversationId is the distinct-conversation count, with confidence intervals",
 							"isDeprecated": false,
 							"name": "count",
 							"type": {
@@ -36017,7 +36125,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Coding agent that held the conversation (for example claude-code, codex, or opencode); empty when no readable trajectory existed",
+							"description": "Coding agent that held the conversation (e.g. claude-code, codex, opencode); empty when no readable trajectory existed",
 							"isDeprecated": false,
 							"name": "client",
 							"type": {
@@ -36033,7 +36141,23 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "UTC date when the conversation analysis was published",
+							"description": "Stable hash identifying the (user, session) conversation; the marker for repeated rows, and the evidence join key. Group by it only under a narrow filter (one gateway, one user) to total one conversation's rows - across many conversations the grouping goes coarse and rare rows vanish",
+							"isDeprecated": false,
+							"name": "conversationId",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Date the analysis settled and its row was published",
 							"isDeprecated": false,
 							"name": "date",
 							"type": {
@@ -36049,7 +36173,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "UTC timestamp when the conversation analysis was published",
+							"description": "When the analysis settled and its row was published; activity time rides the view's firstActivityMs / lastActivityMs (the view definition's timestamp comment)",
 							"isDeprecated": false,
 							"name": "datetime",
 							"type": {
@@ -36065,41 +36189,9 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "First observed activity in the conversation",
-							"isDeprecated": false,
-							"name": "datetimeFirstActivity",
-							"type": {
-								"kind": "NON_NULL",
-								"name": "",
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "Time",
-									"ofType": null
-								}
-							}
-						},
-						{
-							"args": [],
-							"deprecationReason": null,
-							"description": "Conversation analysis publication time truncated to the hour",
+							"description": "When the analysis settled and its row was published, truncated to the hour",
 							"isDeprecated": false,
 							"name": "datetimeHour",
-							"type": {
-								"kind": "NON_NULL",
-								"name": "",
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "Time",
-									"ofType": null
-								}
-							}
-						},
-						{
-							"args": [],
-							"deprecationReason": null,
-							"description": "Last observed activity in the conversation",
-							"isDeprecated": false,
-							"name": "datetimeLastActivity",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -36129,7 +36221,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "'ok' when the conversation was analyzed end to end and 'skip' when a stage refused it; skipped conversations still carry usage measures",
+							"description": "'ok' when the conversation was analyzed end to end, 'skip' when a stage refused it; skipped conversations still carry usage measures",
 							"isDeprecated": false,
 							"name": "outcome",
 							"type": {
@@ -36145,7 +36237,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Cheapest tier judged sufficient for the conversation's task; empty on unclassified conversations and when verdict is 'skip'",
+							"description": "Cheapest tier judged sufficient for the conversation's task by the verdict rule; empty on unclassified conversations and on classified conversations whose verdict is 'skip'",
 							"isDeprecated": false,
 							"name": "requiredTier",
 							"type": {
@@ -36161,7 +36253,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Provider and model that served the analyzed part of the conversation. A conversation that used several models is attributed to the model its picked analysis saw. Empty when outcome is not 'ok'",
+							"description": "The provider/model that served the analyzed part of the conversation, as the gateway logged it. A conversation that used several models is attributed to the one this analysis saw. Empty on conversations that were not classified - filter outcome to 'ok' before grouping",
 							"isDeprecated": false,
 							"name": "servedModel",
 							"type": {
@@ -36177,7 +36269,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Tier of the served model; empty on unclassified conversations and on classified conversations whose verdict is 'skip'",
+							"description": "Tier of the served model, as judged by the verdict rule; empty on unclassified conversations and on classified conversations whose verdict is 'skip'",
 							"isDeprecated": false,
 							"name": "servedTier",
 							"type": {
@@ -36193,7 +36285,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Why a skipped conversation was refused; read with skipStage",
+							"description": "Why a skipped conversation was refused; read together with skipStage",
 							"isDeprecated": false,
 							"name": "skipReason",
 							"type": {
@@ -36225,7 +36317,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Task type the classifier assigned to the conversation; an open vocabulary that can shift when the classifier changes. Empty on conversations that were not classified; filter outcome to 'ok'",
+							"description": "Task type the classifier assigned to the conversation; an open vocabulary that can shift when the classifier changes. Empty on conversations that were not classified - filter outcome to 'ok'",
 							"isDeprecated": false,
 							"name": "taskLabel",
 							"type": {
@@ -36241,7 +36333,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "CF Access user identity of the conversation's end user, as the gateway recorded it. Grouping is most accurate within a single gateway; across many gateways results become coarse",
+							"description": "CF Access user identity of the conversation's end user, as the gateway recorded it. Grouping is most accurate within a single gateway; across many gateways results go coarse",
 							"isDeprecated": false,
 							"name": "userId",
 							"type": {
@@ -36257,7 +36349,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "User turns in the analyzed trajectory (consecutive same-role messages count once). 0 can mean no readable trajectory or no user turn",
+							"description": "User turns in the analyzed trajectory (consecutive same-role messages count once). 0 on rows without a readable trajectory (client empty) and on trajectories with no user turn; bucket client-side, recombining averages per the costEstimate average's recipe",
 							"isDeprecated": false,
 							"name": "userTurns",
 							"type": {
@@ -36273,7 +36365,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Whether the served model's tier was above ('overkill'), at ('appropriate'), or below ('underpowered') what the conversation needed; 'skip' when it could not be judged and empty when unclassified",
+							"description": "Whether the served model's tier was above ('overkill'), at ('appropriate'), or below ('underpowered') what the conversation needed; 'skip' when the model could not be judged, empty when the conversation was not classified",
 							"isDeprecated": false,
 							"name": "verdict",
 							"type": {
@@ -36460,6 +36552,122 @@
 							"defaultValue": null,
 							"description": "",
 							"name": "client_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "conversationId",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "conversationId_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "conversationId_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "conversationId_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "conversationId_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "conversationId_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "conversationId_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "conversationId_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "conversationId_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "conversationId_notlike",
 							"type": {
 								"kind": "SCALAR",
 								"name": "string",
@@ -37764,7 +37972,7 @@
 							"name": "spansOverlap",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -37774,7 +37982,7 @@
 							"name": "spansOverlap_geq",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -37784,7 +37992,7 @@
 							"name": "spansOverlap_gt",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -37793,9 +38001,17 @@
 							"description": "",
 							"name": "spansOverlap_in",
 							"type": {
-								"kind": "SCALAR",
-								"name": "bytes",
-								"ofType": null
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint64",
+										"ofType": null
+									}
+								}
 							}
 						},
 						{
@@ -37804,7 +38020,7 @@
 							"name": "spansOverlap_leq",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -37814,7 +38030,7 @@
 							"name": "spansOverlap_lt",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -37824,7 +38040,7 @@
 							"name": "spansOverlap_neq",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -37833,9 +38049,17 @@
 							"description": "",
 							"name": "spansOverlap_notin",
 							"type": {
-								"kind": "SCALAR",
-								"name": "bytes",
-								"ofType": null
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint64",
+										"ofType": null
+									}
+								}
 							}
 						},
 						{
@@ -38445,6 +38669,18 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "conversationId ascending",
+							"isDeprecated": false,
+							"name": "conversationId_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "conversationId descending",
+							"isDeprecated": false,
+							"name": "conversationId_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "count() ascending",
 							"isDeprecated": false,
 							"name": "count_ASC"
@@ -38634,6 +38870,18 @@
 							"description": "taskLabel descending",
 							"isDeprecated": false,
 							"name": "taskLabel_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "uniq(conversationId) ascending",
+							"isDeprecated": false,
+							"name": "uniq_conversationId_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "uniq(conversationId) descending",
+							"isDeprecated": false,
+							"name": "uniq_conversationId_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -38843,6 +39091,33 @@
 				},
 				{
 					"description": "",
+					"enumValues": [],
+					"fields": [
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Distinct conversations behind the grouped rows. Approximate, and counted over surviving stored rows: exact where the finest resolution tier answers, an undercount at coarse tiers",
+							"isDeprecated": false,
+							"name": "conversationId",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						}
+					],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "OBJECT",
+					"name": "AccountAiGatewayConversationAnalysesAdaptiveGroupsUniq",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
 					"enumValues": [
 						{
 							"deprecationReason": null,
@@ -38903,6 +39178,18 @@
 							"description": "date descending",
 							"isDeprecated": false,
 							"name": "date_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeFirstActivity ascending",
+							"isDeprecated": false,
+							"name": "datetimeFirstActivity_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeFirstActivity descending",
+							"isDeprecated": false,
+							"name": "datetimeFirstActivity_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -39139,7 +39426,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Coding agent that held the conversation",
+							"description": "Coding agent that held the conversation; empty when no readable trajectory",
 							"isDeprecated": false,
 							"name": "client",
 							"type": {
@@ -39155,7 +39442,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Stable hash identifying the user and session conversation; evidence join key and marker for repeated rows of one conversation",
+							"description": "Stable hash identifying the (user, session) conversation; join key back to the analysis records, and the marker for repeated rows of one conversation",
 							"isDeprecated": false,
 							"name": "conversationId",
 							"type": {
@@ -39171,7 +39458,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Estimated conversation cost in USD; not a billing figure. 0 when unmeasured, and overlapping analysis periods can double-count it",
+							"description": "Estimated cost in USD of the requests this row's analysis period observed; not a billing figure, 0 when unmeasured (measuredCount = 0), and a re-covering run's rows (spansOverlap = 1) can double-count it",
 							"isDeprecated": false,
 							"name": "costEstimate",
 							"type": {
@@ -39187,7 +39474,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "UTC date when the conversation analysis was published",
+							"description": "Date the analysis settled and its row was published",
 							"isDeprecated": false,
 							"name": "date",
 							"type": {
@@ -39203,7 +39490,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "UTC timestamp when the conversation analysis was published",
+							"description": "When the analysis settled and its row was published",
 							"isDeprecated": false,
 							"name": "datetime",
 							"type": {
@@ -39219,25 +39506,9 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "First observed activity in the conversation",
+							"description": "Start of the row's analysis period. Filtering on it does not narrow the scanned window - pair it with a date or datetime filter (publish time), which is what partitioning follows",
 							"isDeprecated": false,
 							"name": "datetimeFirstActivity",
-							"type": {
-								"kind": "NON_NULL",
-								"name": "",
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "Time",
-									"ofType": null
-								}
-							}
-						},
-						{
-							"args": [],
-							"deprecationReason": null,
-							"description": "Last observed activity in the conversation",
-							"isDeprecated": false,
-							"name": "datetimeLastActivity",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -39267,7 +39538,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Number of analyses that measured usage; 0 means absent",
+							"description": "1 when this analysis measured usage; 0 means cost and token fields are absent, not zero",
 							"isDeprecated": false,
 							"name": "measuredCount",
 							"type": {
@@ -39283,7 +39554,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "'ok' when analyzed end to end and 'skip' when refused",
+							"description": "'ok' when analyzed end to end, 'skip' when refused",
 							"isDeprecated": false,
 							"name": "outcome",
 							"type": {
@@ -39299,7 +39570,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Cheapest tier judged sufficient; empty when unavailable",
+							"description": "Cheapest tier judged sufficient; empty when not classified or when verdict is 'skip'",
 							"isDeprecated": false,
 							"name": "requiredTier",
 							"type": {
@@ -39315,7 +39586,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Number of conversations this row represents under adaptive sampling; multiply when extrapolating from listed rows",
+							"description": "How many rows this row stands for under adaptive sampling; multiply when extrapolating from listed rows",
 							"isDeprecated": false,
 							"name": "sampleInterval",
 							"type": {
@@ -39331,7 +39602,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Provider and model that served the analyzed conversation",
+							"description": "The provider/model that served the analyzed part of the conversation; empty when not classified",
 							"isDeprecated": false,
 							"name": "servedModel",
 							"type": {
@@ -39347,7 +39618,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Tier of the served model; empty when unavailable",
+							"description": "Tier of the served model; empty when not classified or when verdict is 'skip'",
 							"isDeprecated": false,
 							"name": "servedTier",
 							"type": {
@@ -39363,7 +39634,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "1 when overlapping analysis periods double-count usage",
+							"description": "1 when this row's run re-covered a period another analysis also measured; sums that include it can double-count",
 							"isDeprecated": false,
 							"name": "spansOverlap",
 							"type": {
@@ -39371,7 +39642,7 @@
 								"name": "",
 								"ofType": {
 									"kind": "SCALAR",
-									"name": "uint8",
+									"name": "uint64",
 									"ofType": null
 								}
 							}
@@ -39379,7 +39650,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Task type assigned by the classifier; empty when unclassified",
+							"description": "Task type the classifier assigned; empty when not classified",
 							"isDeprecated": false,
 							"name": "taskLabel",
 							"type": {
@@ -39395,7 +39666,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Input tokens across the conversation's observed requests",
+							"description": "Input tokens across the period's observed requests",
 							"isDeprecated": false,
 							"name": "tokensIn",
 							"type": {
@@ -39411,7 +39682,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Output tokens across the conversation's observed requests",
+							"description": "Output tokens across the period's observed requests",
 							"isDeprecated": false,
 							"name": "tokensOut",
 							"type": {
@@ -39427,7 +39698,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Tool calls made by the assistant in the analyzed trajectory",
+							"description": "Tool calls the assistant made in the analyzed trajectory",
 							"isDeprecated": false,
 							"name": "toolCalls",
 							"type": {
@@ -39459,7 +39730,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "User turns in the analyzed trajectory",
+							"description": "User turns in the analyzed trajectory; 0 when no readable trajectory",
 							"isDeprecated": false,
 							"name": "userTurns",
 							"type": {
@@ -39475,7 +39746,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "'overkill', 'appropriate', 'underpowered', 'skip' when unjudgeable, or empty when unclassified",
+							"description": "'overkill', 'appropriate', 'underpowered', 'skip' when unjudgeable, empty when not classified",
 							"isDeprecated": false,
 							"name": "verdict",
 							"type": {
@@ -39491,7 +39762,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Generation of the verdict rule used for this conversation",
+							"description": "Generation of the verdict rule that judged this conversation",
 							"isDeprecated": false,
 							"name": "verdictVersion",
 							"type": {
@@ -40080,6 +40351,102 @@
 								"kind": "SCALAR",
 								"name": "Time",
 								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFirstActivity",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFirstActivity_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFirstActivity_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFirstActivity_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFirstActivity_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFirstActivity_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFirstActivity_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFirstActivity_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
 							}
 						},
 						{
@@ -40946,7 +41313,7 @@
 							"name": "spansOverlap",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -40956,7 +41323,7 @@
 							"name": "spansOverlap_geq",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -40966,7 +41333,7 @@
 							"name": "spansOverlap_gt",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -40975,9 +41342,17 @@
 							"description": "",
 							"name": "spansOverlap_in",
 							"type": {
-								"kind": "SCALAR",
-								"name": "bytes",
-								"ofType": null
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint64",
+										"ofType": null
+									}
+								}
 							}
 						},
 						{
@@ -40986,7 +41361,7 @@
 							"name": "spansOverlap_leq",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -40996,7 +41371,7 @@
 							"name": "spansOverlap_lt",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -41006,7 +41381,7 @@
 							"name": "spansOverlap_neq",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -41015,9 +41390,17 @@
 							"description": "",
 							"name": "spansOverlap_notin",
 							"type": {
-								"kind": "SCALAR",
-								"name": "bytes",
-								"ofType": null
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint64",
+										"ofType": null
+									}
+								}
 							}
 						},
 						{
@@ -41924,7 +42307,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Number of analyzed conversations (canonical analysis picks; re-analyses of a resumed conversation count again)",
+							"description": "Number of analysis rows; a conversation active across several periods, or re-analyzed, counts once per row - uniq.conversationId is the distinct-conversation count",
 							"isDeprecated": false,
 							"name": "count",
 							"type": {
@@ -41960,6 +42343,18 @@
 								"name": "AccountAiGatewayConversationAnalysesStagingAdaptiveGroupsSum",
 								"ofType": null
 							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "",
+							"isDeprecated": false,
+							"name": "uniq",
+							"type": {
+								"kind": "OBJECT",
+								"name": "AccountAiGatewayConversationAnalysesStagingAdaptiveGroupsUniq",
+								"ofType": null
+							}
 						}
 					],
 					"inputFields": [],
@@ -41975,7 +42370,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Mean estimated cost in USD per conversation over conversations whose cost was measured; 0 when none in the group was measured. When recombining groups client-side, filter measuredCount greater than 0 and divide summed costEstimate by count rather than averaging these averages",
+							"description": "Mean estimated cost in USD per analysis row, over rows whose cost was measured; 0 when none in the group was measured. When recombining groups client-side, filter measuredCount greater than 0 and divide the summed costEstimate total by the summed count - never average these averages",
 							"isDeprecated": false,
 							"name": "costEstimate",
 							"type": {
@@ -42018,7 +42413,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Number of analyzed conversations (canonical analysis picks; re-analyses of a resumed conversation count again), with confidence intervals",
+							"description": "Number of analysis rows; a conversation active across several periods, or re-analyzed, counts once per row - uniq.conversationId is the distinct-conversation count, with confidence intervals",
 							"isDeprecated": false,
 							"name": "count",
 							"type": {
@@ -42073,7 +42468,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Coding agent that held the conversation (for example claude-code, codex, or opencode); empty when no readable trajectory existed",
+							"description": "Coding agent that held the conversation (e.g. claude-code, codex, opencode); empty when no readable trajectory existed",
 							"isDeprecated": false,
 							"name": "client",
 							"type": {
@@ -42089,7 +42484,23 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "UTC date when the conversation analysis was published",
+							"description": "Stable hash identifying the (user, session) conversation; the marker for repeated rows, and the evidence join key. Group by it only under a narrow filter (one gateway, one user) to total one conversation's rows - across many conversations the grouping goes coarse and rare rows vanish",
+							"isDeprecated": false,
+							"name": "conversationId",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Date the analysis settled and its row was published",
 							"isDeprecated": false,
 							"name": "date",
 							"type": {
@@ -42105,7 +42516,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "UTC timestamp when the conversation analysis was published",
+							"description": "When the analysis settled and its row was published; activity time rides the view's firstActivityMs / lastActivityMs (the view definition's timestamp comment)",
 							"isDeprecated": false,
 							"name": "datetime",
 							"type": {
@@ -42121,41 +42532,9 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "First observed activity in the conversation",
-							"isDeprecated": false,
-							"name": "datetimeFirstActivity",
-							"type": {
-								"kind": "NON_NULL",
-								"name": "",
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "Time",
-									"ofType": null
-								}
-							}
-						},
-						{
-							"args": [],
-							"deprecationReason": null,
-							"description": "Conversation analysis publication time truncated to the hour",
+							"description": "When the analysis settled and its row was published, truncated to the hour",
 							"isDeprecated": false,
 							"name": "datetimeHour",
-							"type": {
-								"kind": "NON_NULL",
-								"name": "",
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "Time",
-									"ofType": null
-								}
-							}
-						},
-						{
-							"args": [],
-							"deprecationReason": null,
-							"description": "Last observed activity in the conversation",
-							"isDeprecated": false,
-							"name": "datetimeLastActivity",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -42185,7 +42564,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "'ok' when the conversation was analyzed end to end and 'skip' when a stage refused it; skipped conversations still carry usage measures",
+							"description": "'ok' when the conversation was analyzed end to end, 'skip' when a stage refused it; skipped conversations still carry usage measures",
 							"isDeprecated": false,
 							"name": "outcome",
 							"type": {
@@ -42201,7 +42580,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Cheapest tier judged sufficient for the conversation's task; empty on unclassified conversations and when verdict is 'skip'",
+							"description": "Cheapest tier judged sufficient for the conversation's task by the verdict rule; empty on unclassified conversations and on classified conversations whose verdict is 'skip'",
 							"isDeprecated": false,
 							"name": "requiredTier",
 							"type": {
@@ -42217,7 +42596,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Provider and model that served the analyzed part of the conversation. A conversation that used several models is attributed to the model its picked analysis saw. Empty when outcome is not 'ok'",
+							"description": "The provider/model that served the analyzed part of the conversation, as the gateway logged it. A conversation that used several models is attributed to the one this analysis saw. Empty on conversations that were not classified - filter outcome to 'ok' before grouping",
 							"isDeprecated": false,
 							"name": "servedModel",
 							"type": {
@@ -42233,7 +42612,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Tier of the served model; empty on unclassified conversations and on classified conversations whose verdict is 'skip'",
+							"description": "Tier of the served model, as judged by the verdict rule; empty on unclassified conversations and on classified conversations whose verdict is 'skip'",
 							"isDeprecated": false,
 							"name": "servedTier",
 							"type": {
@@ -42249,7 +42628,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Why a skipped conversation was refused; read with skipStage",
+							"description": "Why a skipped conversation was refused; read together with skipStage",
 							"isDeprecated": false,
 							"name": "skipReason",
 							"type": {
@@ -42281,7 +42660,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Task type the classifier assigned to the conversation; an open vocabulary that can shift when the classifier changes. Empty on conversations that were not classified; filter outcome to 'ok'",
+							"description": "Task type the classifier assigned to the conversation; an open vocabulary that can shift when the classifier changes. Empty on conversations that were not classified - filter outcome to 'ok'",
 							"isDeprecated": false,
 							"name": "taskLabel",
 							"type": {
@@ -42297,7 +42676,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "CF Access user identity of the conversation's end user, as the gateway recorded it. Grouping is most accurate within a single gateway; across many gateways results become coarse",
+							"description": "CF Access user identity of the conversation's end user, as the gateway recorded it. Grouping is most accurate within a single gateway; across many gateways results go coarse",
 							"isDeprecated": false,
 							"name": "userId",
 							"type": {
@@ -42313,7 +42692,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "User turns in the analyzed trajectory (consecutive same-role messages count once). 0 can mean no readable trajectory or no user turn",
+							"description": "User turns in the analyzed trajectory (consecutive same-role messages count once). 0 on rows without a readable trajectory (client empty) and on trajectories with no user turn; bucket client-side, recombining averages per the costEstimate average's recipe",
 							"isDeprecated": false,
 							"name": "userTurns",
 							"type": {
@@ -42329,7 +42708,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Whether the served model's tier was above ('overkill'), at ('appropriate'), or below ('underpowered') what the conversation needed; 'skip' when it could not be judged and empty when unclassified",
+							"description": "Whether the served model's tier was above ('overkill'), at ('appropriate'), or below ('underpowered') what the conversation needed; 'skip' when the model could not be judged, empty when the conversation was not classified",
 							"isDeprecated": false,
 							"name": "verdict",
 							"type": {
@@ -42516,6 +42895,122 @@
 							"defaultValue": null,
 							"description": "",
 							"name": "client_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "conversationId",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "conversationId_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "conversationId_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "conversationId_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "conversationId_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "conversationId_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "conversationId_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "conversationId_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "conversationId_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "conversationId_notlike",
 							"type": {
 								"kind": "SCALAR",
 								"name": "string",
@@ -43820,7 +44315,7 @@
 							"name": "spansOverlap",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -43830,7 +44325,7 @@
 							"name": "spansOverlap_geq",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -43840,7 +44335,7 @@
 							"name": "spansOverlap_gt",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -43849,9 +44344,17 @@
 							"description": "",
 							"name": "spansOverlap_in",
 							"type": {
-								"kind": "SCALAR",
-								"name": "bytes",
-								"ofType": null
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint64",
+										"ofType": null
+									}
+								}
 							}
 						},
 						{
@@ -43860,7 +44363,7 @@
 							"name": "spansOverlap_leq",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -43870,7 +44373,7 @@
 							"name": "spansOverlap_lt",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -43880,7 +44383,7 @@
 							"name": "spansOverlap_neq",
 							"type": {
 								"kind": "SCALAR",
-								"name": "uint8",
+								"name": "uint64",
 								"ofType": null
 							}
 						},
@@ -43889,9 +44392,17 @@
 							"description": "",
 							"name": "spansOverlap_notin",
 							"type": {
-								"kind": "SCALAR",
-								"name": "bytes",
-								"ofType": null
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint64",
+										"ofType": null
+									}
+								}
 							}
 						},
 						{
@@ -44501,6 +45012,18 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "conversationId ascending",
+							"isDeprecated": false,
+							"name": "conversationId_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "conversationId descending",
+							"isDeprecated": false,
+							"name": "conversationId_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "count() ascending",
 							"isDeprecated": false,
 							"name": "count_ASC"
@@ -44690,6 +45213,18 @@
 							"description": "taskLabel descending",
 							"isDeprecated": false,
 							"name": "taskLabel_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "uniq(conversationId) ascending",
+							"isDeprecated": false,
+							"name": "uniq_conversationId_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "uniq(conversationId) descending",
+							"isDeprecated": false,
+							"name": "uniq_conversationId_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -44899,6 +45434,33 @@
 				},
 				{
 					"description": "",
+					"enumValues": [],
+					"fields": [
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Distinct conversations behind the grouped rows. Approximate, and counted over surviving stored rows: exact where the finest resolution tier answers, an undercount at coarse tiers",
+							"isDeprecated": false,
+							"name": "conversationId",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						}
+					],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "OBJECT",
+					"name": "AccountAiGatewayConversationAnalysesStagingAdaptiveGroupsUniq",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
 					"enumValues": [
 						{
 							"deprecationReason": null,
@@ -44959,6 +45521,18 @@
 							"description": "date descending",
 							"isDeprecated": false,
 							"name": "date_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeFirstActivity ascending",
+							"isDeprecated": false,
+							"name": "datetimeFirstActivity_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeFirstActivity descending",
+							"isDeprecated": false,
+							"name": "datetimeFirstActivity_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -234926,6 +235500,30 @@
 									"ofType": null
 								}
 							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Durable Object namespace IDs",
+							"isDeprecated": false,
+							"name": "namespaceIds",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "string",
+											"ofType": null
+										}
+									}
+								}
+							}
 						}
 					],
 					"inputFields": [],
@@ -235550,6 +236148,72 @@
 									}
 								}
 							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "namespaceIds_has",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "namespaceIds_hasall",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "namespaceIds_hasany",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "namespaceIds_isempty",
+							"type": {
+								"kind": "SCALAR",
+								"name": "bool",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "namespaceIds_nothas",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
 						}
 					],
 					"interfaces": [],
@@ -235670,6 +236334,18 @@
 							"description": "max(storedBytes) descending",
 							"isDeprecated": false,
 							"name": "max_storedBytes_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "namespaceIds ascending",
+							"isDeprecated": false,
+							"name": "namespaceIds_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "namespaceIds descending",
+							"isDeprecated": false,
+							"name": "namespaceIds_DESC"
 						}
 					],
 					"fields": [],
@@ -869304,7 +869980,7 @@
 								}
 							],
 							"deprecationReason": null,
-							"description": "Individual analyzed AI Gateway conversations. This list is sampled: an aggregate may report more conversations than this node can list. A conversation re-analyzed after resuming appears as another row with its accumulated totals; conversationId identifies repeated conversations.",
+							"description": "Individual analyzed AI Gateway conversations. This list is a sample: adaptive sampling means not every conversation is retained as a row, and counts extrapolate through sampleInterval while listings do not - an aggregate may report more conversations than this node can list. A conversation active across several analysis periods appears once per period, each row with that period's usage; conversationId identifies repeats",
 							"isDeprecated": false,
 							"name": "aiGatewayConversationAnalysesAdaptive",
 							"type": {
@@ -869375,7 +870051,7 @@
 								}
 							],
 							"deprecationReason": null,
-							"description": "Analyzed AI Gateway conversations, aggregated with adaptive sampling. One underlying row exists per analysis pick of a conversation; a conversation resumed and re-analyzed later contributes again with its accumulated totals.",
+							"description": "Analyzed AI Gateway conversations, aggregated with adaptive sampling. One underlying row per analysis of a conversation; a conversation active across several analysis periods contributes one row per period, each with that period's usage.",
 							"isDeprecated": false,
 							"name": "aiGatewayConversationAnalysesAdaptiveGroups",
 							"type": {
@@ -885040,7 +885716,7 @@
 					"possibleTypes": []
 				},
 				{
-					"description": "Scalar type float64",
+					"description": "Scalar type types.Float64",
 					"enumValues": [],
 					"fields": [],
 					"inputFields": [],
