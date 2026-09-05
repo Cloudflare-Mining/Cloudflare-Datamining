@@ -20,6 +20,8 @@ Use production traffic and security signals to prioritize findings, prepare edge
 
 [Ken Sanderson](https://blog.cloudflare.com/author/ken-sanderson/),  [Jacob Crisp](https://blog.cloudflare.com/author/jacob-crisp/),  [Dan Jones](https://blog.cloudflare.com/author/dan-jones/), and  [Blake Darché](https://blog.cloudflare.com/author/blake/)
 
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M1JDYW2RHXMJDDXS13K6VESF.01M1JDYX370D7EV4BHCDQS4C6J.png&w=2048&h=1152&f=webp&fit=cover&position=center)![](data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAAWREmWBUrVhwyUx81UR4yURosUxYqVhQrVxosWCEzWys/XDBEWSw+ViQyVBsqVRgqVCAxWCk7XzZKYzxPYTdIWys4Vh8qVBwpUCAzVis+YDpPZkBVZTpMXS05Vh8qURspTRoyUyY9XTVNZDxSYzdJXCk2VBsoTxYpSwkuTxg4VypGXTFKXSxBWSAwUhEmSwsqSgAqTAAyUBk9VCE/Vx43VRMpTwMkSQArSgAoSgAvTQ05URg6VBYyUwslTgAjSAAr)](https://blog.cloudflare.com/vulnerability-discovery-remediation/)
+
 September 1, 2026 [<h2>How we could save petabytes of cache storage with Zstandard and Pingora</h2>](https://blog.cloudflare.com/cache-transcoding/)
 
 Could we get more cache space with the same hardware? We prototyped compression inside Cloudflare's cache to find out.
