@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-09-04T04:34:04.978Z",
-	"model_count": 215,
+	"generated_at": "2026-09-05T04:33:55.800Z",
+	"model_count": 216,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -2687,6 +2687,57 @@
 			"terms": "https://ai.google.dev/gemini-api/terms",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/gemini-3.7-flash.png",
 			"created_at": "2026-08-14 22:33:12",
+			"zdr_comment": null
+		},
+		{
+			"model_id": "google/gemini-3.8-flash",
+			"slug": "google/gemini-3.8-flash",
+			"display_name": "Gemini 3.8 Flash",
+			"description": "Our most intelligent Flash model, engineered for long-horizon software engineering, autonomous agents, and complex enterprise workflows.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Fast",
+				"Multimodal",
+				"Reasoning",
+				"Agentic",
+				"Coding"
+			],
+			"context_length": 1048576,
+			"max_output_tokens": 65536,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "1048576"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "65536"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://ai.google.dev/gemini-api/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash"
+				}
+			],
+			"metadata": {
+				"Architecture": "Transformer (multimodal)",
+				"Default thinking level": "medium"
+			},
+			"external_info": "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash",
+			"terms": "https://ai.google.dev/gemini-api/terms",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/gemini-3.8-flash.png",
+			"created_at": "2026-09-04 15:18:57",
 			"zdr_comment": null
 		},
 		{
