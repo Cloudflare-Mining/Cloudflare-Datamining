@@ -27,7 +27,7 @@ Opt an existing static scaffold into server output with an Astro adapter:
 pnpm exec nimbus-docs add adapter-cloudflare
 ```
 
-Fresh Cloudflare server scaffolds enable request rendering automatically. For an existing project, run the command inside a coding agent to hand off the full setup automatically. From a regular shell, pipe the runbook manually:
+Fresh Cloudflare server scaffolds enable request rendering automatically. For an existing project, run the command inside a coding agent to hand off the full setup automatically. From a regular shell, pipe the recipe manually:
 
 ```sh
 pnpm exec nimbus-docs add adapter-cloudflare --print | claude
