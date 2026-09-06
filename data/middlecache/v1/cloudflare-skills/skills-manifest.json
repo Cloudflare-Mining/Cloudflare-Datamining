@@ -2,7 +2,7 @@
 	"skills": [
 		{
 			"name": "agents-sdk",
-			"description": "Build AI agents on Cloudflare Workers using the Agents SDK. Load when creating stateful agents, durable workflows, real-time WebSocket apps, scheduled tasks, MCP servers, chat applications, voice agents, or browser automation. Covers Agent class, state management, callable RPC, Workflows, durable execution, queues, retries, observability, and React hooks. Biases towards retrieval from Cloudflare docs over pre-trained knowledge.",
+			"description": "Build, debug, or review Cloudflare Agents SDK applications using the agents package.",
 			"files": [
 				"SKILL.md",
 				"references/browse-the-web.md",
@@ -28,14 +28,9 @@
 		},
 		{
 			"name": "cloudflare",
-			"description": "Comprehensive Cloudflare platform skill covering Workers, Pages, storage (KV, D1, R2), AI (Workers AI, Vectorize, Agents SDK), feature flags (Flagship), networking (Tunnel, Spectrum), security (WAF, DDoS), and infrastructure-as-code (Terraform, Pulumi). Use for any Cloudflare development task. Biases towards retrieval from Cloudflare docs over pre-trained knowledge.",
+			"description": "Discover and choose Cloudflare products for apps, APIs, AI agents, storage, networking, and security. Use for architecture and product selection, including when the user describes a need without naming a Cloudflare product; then find the relevant skill or documentation.",
 			"files": [
 				"SKILL.md",
-				"references/agents-sdk/README.md",
-				"references/agents-sdk/api.md",
-				"references/agents-sdk/configuration.md",
-				"references/agents-sdk/gotchas.md",
-				"references/agents-sdk/patterns.md",
 				"references/ai-gateway/README.md",
 				"references/ai-gateway/configuration.md",
 				"references/ai-gateway/dynamic-routing.md",
@@ -121,11 +116,6 @@
 				"references/do-storage/gotchas.md",
 				"references/do-storage/patterns.md",
 				"references/do-storage/testing.md",
-				"references/durable-objects/README.md",
-				"references/durable-objects/api.md",
-				"references/durable-objects/configuration.md",
-				"references/durable-objects/gotchas.md",
-				"references/durable-objects/patterns.md",
 				"references/email-routing/README.md",
 				"references/email-routing/api.md",
 				"references/email-routing/configuration.md",
@@ -226,11 +216,6 @@
 				"references/realtimekit/configuration.md",
 				"references/realtimekit/gotchas.md",
 				"references/realtimekit/patterns.md",
-				"references/sandbox/README.md",
-				"references/sandbox/api.md",
-				"references/sandbox/configuration.md",
-				"references/sandbox/gotchas.md",
-				"references/sandbox/patterns.md",
 				"references/secrets-store/README.md",
 				"references/secrets-store/api.md",
 				"references/secrets-store/configuration.md",
@@ -283,11 +268,6 @@
 				"references/turn/configuration.md",
 				"references/turn/gotchas.md",
 				"references/turn/patterns.md",
-				"references/turnstile/README.md",
-				"references/turnstile/api.md",
-				"references/turnstile/configuration.md",
-				"references/turnstile/gotchas.md",
-				"references/turnstile/patterns.md",
 				"references/vectorize/README.md",
 				"references/vectorize/api.md",
 				"references/vectorize/configuration.md",
@@ -328,22 +308,11 @@
 				"references/workers-vpc/configuration.md",
 				"references/workers-vpc/gotchas.md",
 				"references/workers-vpc/patterns.md",
-				"references/workers/README.md",
-				"references/workers/api.md",
-				"references/workers/configuration.md",
-				"references/workers/frameworks.md",
-				"references/workers/gotchas.md",
-				"references/workers/patterns.md",
 				"references/workflows/README.md",
 				"references/workflows/api.md",
 				"references/workflows/configuration.md",
 				"references/workflows/gotchas.md",
 				"references/workflows/patterns.md",
-				"references/wrangler/README.md",
-				"references/wrangler/api.md",
-				"references/wrangler/configuration.md",
-				"references/wrangler/gotchas.md",
-				"references/wrangler/patterns.md",
 				"references/zaraz/IMPLEMENTATION_SUMMARY.md",
 				"references/zaraz/README.md",
 				"references/zaraz/api.md",
@@ -354,7 +323,7 @@
 		},
 		{
 			"name": "cloudflare-email-service",
-			"description": "Send and receive transactional emails with Cloudflare Email Service (Email Sending + Email Routing). Use when building email sending (Workers binding or REST API), email routing, Agents SDK email handling, or integrating email into any app — Workers, Node.js, Python, Go, etc. Also use for email deliverability, SPF/DKIM/DMARC, wrangler email setup, MCP email tools, or when a coding agent needs to send emails. Even for simple requests like \"add email to my Worker\" — this skill has critical config details.",
+			"description": "Implement or troubleshoot Cloudflare Email Sending and Email Routing integrations and their delivery configuration.",
 			"files": [
 				"SKILL.md",
 				"references/cli-and-mcp.md",
@@ -366,21 +335,21 @@
 		},
 		{
 			"name": "cloudflare-one",
-			"description": "\"Guides Cloudflare One Zero Trust and SASE work across Access, Gateway, WARP, Tunnel, Cloudflare WAN, DLP, CASB, device posture, and identity. Use when designing, configuring, troubleshooting, or reviewing Cloudflare One deployments. Retrieval-first: use current Cloudflare docs/API schemas instead of embedded product docs.\"",
+			"description": "Design, configure, troubleshoot, or review Cloudflare One Zero Trust and SASE deployments. Use cloudflare-one-migrations for migration planning from other vendors.",
 			"files": [
 				"SKILL.md"
 			]
 		},
 		{
 			"name": "cloudflare-one-migrations",
-			"description": "Plans migrations from Zscaler ZIA/ZPA, Palo Alto, legacy VPN, SWG, or SASE stacks to Cloudflare One. Use for migration assessments, policy mapping, rollout plans, and parity/gap analysis.",
+			"description": "Assess and plan migrations from existing VPN, SWG, or SASE platforms to Cloudflare One, including policy mapping, parity gaps, and rollout.",
 			"files": [
 				"SKILL.md"
 			]
 		},
 		{
 			"name": "durable-objects",
-			"description": "Create and review Cloudflare Durable Objects. Use when building stateful coordination (chat rooms, multiplayer games, booking systems), implementing RPC methods, SQLite storage, alarms, WebSockets, or reviewing DO code for best practices. Covers Workers integration, wrangler config, and testing with Vitest. Biases towards retrieval from Cloudflare docs over pre-trained knowledge.",
+			"description": "Build, debug, or review Cloudflare Durable Objects code for persistent state and coordination.",
 			"files": [
 				"SKILL.md",
 				"references/rules.md",
@@ -389,15 +358,22 @@
 			]
 		},
 		{
+			"name": "nextjs-on-cloudflare",
+			"description": "Build, migrate, and deploy Next.js apps on Cloudflare Workers with vinext. Use when starting a Next.js project on Cloudflare, moving an existing app to Workers, choosing between vinext and OpenNext, or setting up vinext for Workers. For setup, migration, or deployment, install vinext's upstream skills with `npx skills add cloudflare/vinext` if missing, then read and follow the applicable skill and docs.",
+			"files": [
+				"SKILL.md"
+			]
+		},
+		{
 			"name": "sandbox-migrate-to-next",
-			"description": "Use when porting a Cloudflare Sandbox app from stable @cloudflare/sandbox to @cloudflare/sandbox@next (Sandbox SDK 1.0 preview), or when the user asks to migrate or upgrade to Sandbox 1.0 / @next. Not for day-to-day stable work (sandbox-stable) or new @next apps (sandbox-next).",
+			"description": "Migrate Cloudflare Sandbox apps from stable @cloudflare/sandbox to @cloudflare/sandbox@next (SDK 1.0 preview). Use sandbox-next for apps already on the preview.",
 			"files": [
 				"SKILL.md"
 			]
 		},
 		{
 			"name": "sandbox-next",
-			"description": "Use when building or changing Cloudflare Sandbox apps on @cloudflare/sandbox@next (Sandbox SDK 1.0 preview)—code execution, AI runners, interpreters, CI-like jobs, terminals, files, mounts, tunnels, preview URLs, lifecycle, or errors. Not for the default stable package (use sandbox-stable) or for porting stable to @next (use sandbox-migrate-to-next).",
+			"description": "Build or maintain Cloudflare Sandbox apps on @cloudflare/sandbox@next (SDK 1.0 preview). Use sandbox-migrate-to-next when porting a stable app.",
 			"files": [
 				"SKILL.md",
 				"references/api-quick-ref.md",
@@ -406,14 +382,14 @@
 		},
 		{
 			"name": "sandbox-stable",
-			"description": "Use when building or changing Cloudflare Sandbox apps on the current stable @cloudflare/sandbox package (default npm tag)—commands, sessions, files, ports, tunnels, terminals, bridge, production, or deprecated-API cleanup while staying on stable. Not for @cloudflare/sandbox@next (use sandbox-next) or for porting to 1.0 (use sandbox-migrate-to-next).",
+			"description": "Build or maintain Cloudflare Sandbox apps on the stable @cloudflare/sandbox package. Use sandbox-next for preview apps and sandbox-migrate-to-next for stable-to-preview migrations.",
 			"files": [
 				"SKILL.md"
 			]
 		},
 		{
 			"name": "turnstile-spin",
-			"description": "Set up Cloudflare Turnstile end-to-end in a project. Scan the codebase, create the widget via the Cloudflare API, embed it where user requests need bot verification (form submissions, SPA actions, API endpoints, download links, comment or vote submissions, etc.), wire canonical server-side siteverify in the customer's existing backend, validate, and persist the skill. Load this when a user asks to add Turnstile, set up CAPTCHA, protect a form or endpoint from bots, or fix a Turnstile integration. Mirrors developers.cloudflare.com/turnstile/spin.",
+			"description": "Set up, repair, or migrate to Cloudflare Turnstile bot verification in an existing frontend and backend, including server-side Siteverify.",
 			"files": [
 				"README.md",
 				"SKILL.md",
@@ -432,23 +408,24 @@
 		},
 		{
 			"name": "web-perf",
-			"description": "Analyzes web performance using Chrome DevTools MCP. Measures Core Web Vitals (LCP, INP, CLS) and supplementary metrics (FCP, TBT, Speed Index), identifies render-blocking resources, network dependency chains, layout shifts, caching issues, and accessibility gaps. Use when asked to audit, profile, debug, or optimize page load performance, Lighthouse scores, or site speed. Biases towards retrieval from current documentation over pre-trained knowledge.",
+			"description": "Audit, diagnose, or optimize website loading and interaction performance, Core Web Vitals, and Lighthouse performance scores.",
 			"files": [
 				"SKILL.md"
 			]
 		},
 		{
 			"name": "workers-best-practices",
-			"description": "Reviews and authors Cloudflare Workers code against production best practices. Load when writing new Workers, reviewing Worker code, configuring wrangler.jsonc, or checking for common Workers anti-patterns (streaming, floating promises, global state, secrets, bindings, observability). Biases towards retrieval from Cloudflare docs over pre-trained knowledge.",
+			"description": "Cloudflare Workers best practices for production applications. Use when writing, reviewing, or configuring Workers.",
 			"files": [
 				"SKILL.md",
-				"references/review.md",
-				"references/rules.md"
+				"references/configuration.md",
+				"references/platform-apis.md",
+				"references/runtime-patterns.md"
 			]
 		},
 		{
 			"name": "wrangler",
-			"description": "Cloudflare Workers CLI for deploying, developing, and managing Workers, KV, R2, D1, Vectorize, Hyperdrive, Workers AI, Containers, Queues, Workflows, Pipelines, and Secrets Store. Load before running wrangler commands to ensure correct syntax and best practices. Biases towards retrieval from Cloudflare docs over pre-trained knowledge.",
+			"description": "Run or troubleshoot Wrangler CLI commands and configure Worker projects for local development, deployment, and Cloudflare resource management.",
 			"files": [
 				"SKILL.md"
 			]
