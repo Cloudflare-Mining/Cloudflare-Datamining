@@ -125,6 +125,25 @@
 										},
 										"result": {
 											"description": "A result.",
+											"oneOf": [
+												{
+													"nullable": true,
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											],
 											"title": "Result"
 										},
 										"success": {
@@ -144,16 +163,20 @@
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"enum": [
 												null
-											]
+											],
+											"nullable": true
 										},
 										"success": {
+											"type": "boolean",
 											"enum": [
 												false
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -334,6 +357,25 @@
 										},
 										"result": {
 											"description": "A result.",
+											"oneOf": [
+												{
+													"nullable": true,
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											],
 											"title": "Result"
 										},
 										"success": {
@@ -353,6 +395,8 @@
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
+											"items": {},
 											"enum": [
 												[]
 											]
@@ -382,7 +426,8 @@
 																					"title": "Transform ID"
 																				},
 																				{
-																					"example": "add_true_client_ip_headers"
+																					"example": "add_true_client_ip_headers",
+																					"type": "string"
 																				}
 																			]
 																		},
@@ -427,9 +472,11 @@
 															{
 																"properties": {
 																	"id": {
+																		"type": "string",
 																		"example": "add_bot_protection_headers"
 																	}
-																}
+																},
+																"type": "object"
 															}
 														]
 													},
@@ -457,7 +504,8 @@
 																					"title": "Transform ID"
 																				},
 																				{
-																					"example": "add_true_client_ip_headers"
+																					"example": "add_true_client_ip_headers",
+																					"type": "string"
 																				}
 																			]
 																		},
@@ -502,9 +550,11 @@
 															{
 																"properties": {
 																	"id": {
+																		"type": "string",
 																		"example": "add_security_headers"
 																	}
-																}
+																},
+																"type": "object"
 															}
 														]
 													},
@@ -519,11 +569,13 @@
 											"title": "Managed Transforms"
 										},
 										"success": {
+											"type": "boolean",
 											"enum": [
 												true
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -634,6 +686,25 @@
 										},
 										"result": {
 											"description": "A result.",
+											"oneOf": [
+												{
+													"nullable": true,
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											],
 											"title": "Result"
 										},
 										"success": {
@@ -653,16 +724,20 @@
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"enum": [
 												null
-											]
+											],
+											"nullable": true
 										},
 										"success": {
+											"type": "boolean",
 											"enum": [
 												false
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -787,7 +862,8 @@
 																"title": "Transform ID"
 															},
 															{
-																"example": "add_true_client_ip_headers"
+																"example": "add_true_client_ip_headers",
+																"type": "string"
 															}
 														]
 													},
@@ -832,9 +908,11 @@
 										{
 											"properties": {
 												"id": {
+													"type": "string",
 													"example": "add_bot_protection_headers"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -862,7 +940,8 @@
 																"title": "Transform ID"
 															},
 															{
-																"example": "add_true_client_ip_headers"
+																"example": "add_true_client_ip_headers",
+																"type": "string"
 															}
 														]
 													},
@@ -907,9 +986,11 @@
 										{
 											"properties": {
 												"id": {
+													"type": "string",
 													"example": "add_security_headers"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1028,6 +1109,25 @@
 										},
 										"result": {
 											"description": "A result.",
+											"oneOf": [
+												{
+													"nullable": true,
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											],
 											"title": "Result"
 										},
 										"success": {
@@ -1047,6 +1147,8 @@
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
+											"items": {},
 											"enum": [
 												[]
 											]
@@ -1076,7 +1178,8 @@
 																					"title": "Transform ID"
 																				},
 																				{
-																					"example": "add_true_client_ip_headers"
+																					"example": "add_true_client_ip_headers",
+																					"type": "string"
 																				}
 																			]
 																		},
@@ -1121,9 +1224,11 @@
 															{
 																"properties": {
 																	"id": {
+																		"type": "string",
 																		"example": "add_bot_protection_headers"
 																	}
-																}
+																},
+																"type": "object"
 															}
 														]
 													},
@@ -1151,7 +1256,8 @@
 																					"title": "Transform ID"
 																				},
 																				{
-																					"example": "add_true_client_ip_headers"
+																					"example": "add_true_client_ip_headers",
+																					"type": "string"
 																				}
 																			]
 																		},
@@ -1196,9 +1302,11 @@
 															{
 																"properties": {
 																	"id": {
+																		"type": "string",
 																		"example": "add_security_headers"
 																	}
-																}
+																},
+																"type": "object"
 															}
 														]
 													},
@@ -1213,11 +1321,13 @@
 											"title": "Managed Transforms"
 										},
 										"success": {
+											"type": "boolean",
 											"enum": [
 												true
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1328,6 +1438,25 @@
 										},
 										"result": {
 											"description": "A result.",
+											"oneOf": [
+												{
+													"nullable": true,
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											],
 											"title": "Result"
 										},
 										"success": {
@@ -1347,16 +1476,20 @@
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"enum": [
 												null
-											]
+											],
+											"nullable": true
 										},
 										"success": {
+											"type": "boolean",
 											"enum": [
 												false
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}

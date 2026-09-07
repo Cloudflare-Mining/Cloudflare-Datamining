@@ -125,6 +125,25 @@
 										},
 										"result": {
 											"description": "A result.",
+											"oneOf": [
+												{
+													"nullable": true,
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											],
 											"title": "Result"
 										},
 										"success": {
@@ -144,16 +163,20 @@
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"enum": [
 												null
-											]
+											],
+											"nullable": true
 										},
 										"success": {
+											"type": "boolean",
 											"enum": [
 												false
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -334,6 +357,25 @@
 										},
 										"result": {
 											"description": "A result.",
+											"oneOf": [
+												{
+													"nullable": true,
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											],
 											"title": "Result"
 										},
 										"success": {
@@ -353,6 +395,8 @@
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
+											"items": {},
 											"enum": [
 												[]
 											]
@@ -390,11 +434,13 @@
 											"title": "URL Normalization"
 										},
 										"success": {
+											"type": "boolean",
 											"enum": [
 												true
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -505,6 +551,25 @@
 										},
 										"result": {
 											"description": "A result.",
+											"oneOf": [
+												{
+													"nullable": true,
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											],
 											"title": "Result"
 										},
 										"success": {
@@ -524,16 +589,20 @@
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"enum": [
 												null
-											]
+											],
+											"nullable": true
 										},
 										"success": {
+											"type": "boolean",
 											"enum": [
 												false
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -774,6 +843,25 @@
 										},
 										"result": {
 											"description": "A result.",
+											"oneOf": [
+												{
+													"nullable": true,
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											],
 											"title": "Result"
 										},
 										"success": {
@@ -793,6 +881,8 @@
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
+											"items": {},
 											"enum": [
 												[]
 											]
@@ -830,11 +920,13 @@
 											"title": "URL Normalization"
 										},
 										"success": {
+											"type": "boolean",
 											"enum": [
 												true
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -945,6 +1037,25 @@
 										},
 										"result": {
 											"description": "A result.",
+											"oneOf": [
+												{
+													"nullable": true,
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											],
 											"title": "Result"
 										},
 										"success": {
@@ -964,16 +1075,20 @@
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"enum": [
 												null
-											]
+											],
+											"nullable": true
 										},
 										"success": {
+											"type": "boolean",
 											"enum": [
 												false
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}

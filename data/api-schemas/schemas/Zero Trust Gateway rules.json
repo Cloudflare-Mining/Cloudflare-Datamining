@@ -325,6 +325,79 @@
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
+			},
+			{
+				"name": "filter",
+				"in": "query",
+				"description": "Filter the returned rules by one or more `field:value` pairs. Repeat the\nparameter to combine filters with logical AND.\n\nSupported fields are `name`, `id`, `action`, `enabled`, `source_account`,\n`is_shared`, `filters`, and `expression` (max 1024 bytes). The `source_account`\nvalue is matched as a normalized UUID substring. The `filters` value must\nbe one of the rule filter names and matches a member of the rule's `filters`\narray. The `expression` filter performs a case-insensitive literal\nsubstring match across traffic, identity, and device posture expressions.",
+				"schema": {
+					"type": "array",
+					"items": {
+						"anyOf": [
+							{
+								"pattern": "^name:.*$"
+							},
+							{
+								"pattern": "^id:.*$"
+							},
+							{
+								"pattern": "^action:(on|off|allow|block|scan|noscan|safesearch|ytrestricted|isolate|noisolate|override|l4_override|audit_ssh|egress|resolve|quarantine|redirect|custom)$"
+							},
+							{
+								"pattern": "^enabled:(true|false)$"
+							},
+							{
+								"pattern": "^source_account:.*$"
+							},
+							{
+								"pattern": "^is_shared:(true|false)$"
+							},
+							{
+								"pattern": "^filters:(http|dns|dns_resolver|l4|egress)$"
+							},
+							{
+								"pattern": "^expression:.*$"
+							}
+						],
+						"type": "string"
+					}
+				},
+				"explode": true,
+				"style": "form"
+			},
+			{
+				"name": "search",
+				"in": "query",
+				"description": "Case-insensitive substring search across rule name and description.",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "order_by",
+				"in": "query",
+				"description": "Field to sort the returned rules by. Supported values are `name`,\n`created_at`, `updated_at`, and `precedence`.",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"name",
+						"created_at",
+						"updated_at",
+						"precedence"
+					]
+				}
+			},
+			{
+				"name": "direction",
+				"in": "query",
+				"description": "Sort direction. When `order_by` is omitted, this controls the direction\nof the existing precedence ordering. Shared rules remain first in either\ndirection. Accepted values are `asc` and `desc`.",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"asc",
+						"desc"
+					]
+				}
 			}
 		],
 		"responses": {
