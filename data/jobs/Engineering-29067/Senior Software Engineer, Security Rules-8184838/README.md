@@ -3,44 +3,49 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong>Austin, Atlanta, Denver, Toronto, Washington D.C.</p>
+<p><strong>Available Locations: </strong>London (UK), Lisbon (Portugal)</p>
 <p><strong>About the role</strong></p>
-<p>As a Senior Product Manager at Cloudflare, you will be responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, collaborate with marketing, conduct user research, prototype a new feature, iterate on a spec, analyze usage data, and pair with an engineer on implementation.</p>
-<h4><strong>Responsibilities</strong></h4>
-<p>As the product manager for Organization and Partner Experiences, you will be responsible for building the management plane that helps everyone, but especially enterprises and partners like resellers, MSSPs, and OEMs scale their use of Cloudflare across multiple accounts. This is a deeply collaborative role which requires a healthy blend of technical background, user experience, and business savvy. You will:</p>
+<p>Cloudflare’s Engineers build and operate the software that helps power 25+ million Internet properties and millions of businesses around the world. Across our engineering organizations, we have opportunities for high caliber, curious and empathetic people to take on big challenges and build some of the best skills in the industry. We’re looking for talented team members to help build high-growth products, help scale our expanding network, build tools to improve availability, performance, uptime, and response times, and make systems failure-resistant and ready-to-scale.</p>
+<p>We are looking for a talented Systems Engineer to join the Security Rules team. You will work on a range of microservices written mainly in Rust. Technologies we use include Docker, Go, PostgreSQL, Redis, Memcached, gRPC, Kafka, Clickhouse and the usual Unix/Linux tools and workflows. We strive to build reliable, fault-tolerant systems that can operate at Cloudflare’s scale. You will join a team of bright, hard-working, and supportive engineers who are passionate about their craft, and you will be comfortable operating in a fast-paced but sane work environment.</p>
+<p>As a senior engineer, you will take ownership of complex technical problems, lead projects from design through production operation, and help shape the architecture and reliability of systems that run at Cloudflare’s scale. You will also mentor other engineers, provide thoughtful technical guidance, and help raise the quality of engineering practices across the team. You will join a group of hard-working, and supportive engineers who care deeply about their craft and value a fast-paced but sane work environment.</p>
+<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li>Own your space. You will own the priorities and scope for a high performing engineering team focusing on building the Organizations management plane at Cloudflare.&nbsp;</li>
-	<li>Connect the pieces. Product managers are a nerve center at Cloudflare, responsible for connecting engineering, program management, marketing, revenue, and partners to make sure that our ships go out on time and with the maximum impact.&nbsp;</li>
-	<li>Excel across teams. Enterprise capabilities cut across all of our product verticals, so you should be comfortable working with product managers across the company to prioritize systemic improvements that our enterprise customers need.</li>
-	<li>Be customer obsessed. You will be responsible for directly engaging with customers and understanding how they use our products. You’ll bring these insights back to the team to build a great roadmap.&nbsp;</li>
-	<li>Be data driven. You should be comfortable working with data, and analyzing data to quantify the impact of problems and opportunities in your space.&nbsp;</li>
+	<li>Design, implement, and maintain the software systems that comprise Cloudflare’s Application Security Product Offering such as Rate Limiting, Web Application Firewall and more&nbsp;</li>
+	<li>Lead technical design and execution for complex projects, helping define architecture, tradeoffs, milestones, and delivery plans.</li>
+	<li>Collaborate with internal teams, including security, network engineering, SRE, and product management, to design scalable solutions to difficult technical problems.</li>
+	<li>Help raise the technical bar for the team by identifying systemic improvements, reducing operational toil, and influencing long-term engineering direction.</li>
+	<li>Review work from your peers throughout all stages of the development lifecycle to ensure high-quality, maintainable code.</li>
+	<li>Mentor engineers across the team by sharing technical context, providing thoughtful code and design feedback, and helping others grow in scope and ownership.</li>
+	<li>Work with a wide range of technologies and programming languages, including Rust, Go, as well as various databases (SQL and No-SQL), Docker, and Kubernetes.</li>
 </ul>
 <h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>6+ years of experience as a product manager, technical program manager, or equivalent delivering solutions in the cloud at scale for a technical audience&nbsp;</li>
-	<li>Customer focus. At Cloudflare, we serve the needs of customers large and small, and our product managers need to be comfortable understanding how to design for enterprises without compromising the experience for individuals and small businesses.&nbsp;</li>
-	<li>User experience sense. You’re comfortable working with product designers to translate the requirements into an elegant user experience.&nbsp;</li>
-	<li>Enterprise sense. You’ve worked on products that are for enterprises, and know what they need to be competitive in today’s environment.&nbsp;</li>
-	<li>Strong written and verbal communication skills for both an internal and external audience as appropriate.&nbsp;</li>
+	<li>6+ years of relevant professional experience with a technology company</li>
+	<li>Strong programming skills in Rust, Go, C++, or a similar systems-level language</li>
+	<li>Demonstrated ability to lead complex technical projects from ambiguity through delivery</li>
+	<li>Experience building and operating distributed systems</li>
+	<li>Strong interpersonal and communication skills, demonstrating empathy, teamwork and a sense of ownership.</li>
+	<li>Experience mentoring engineers, reviewing technical designs and providing high-quality code review.</li>
+	<li>Experience with monitoring, alerting and debugging high volume production systems</li>
+	<li>Experience with databases (we use PostgreSQL, Clickhouse and Memcached)</li>
 </ul>
-<h4>Bonus Points</h4>
+<p><strong>Bonus Points:</strong></p>
 <ul>
-	<li>You’ve enthusiastically adopted the latest generation of agentic coding tools, and you can use them effectively to navigate a codebase, or prototype the improvements you envision for your feature area.&nbsp;</li>
-	<li>Partners - You’ve worked closely with go to market partners or resellers and understand how to build products that make them more effective</li>
-	<li>Data-fluency - Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
-	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity. &nbsp;</li>
+	<li>Experience influencing technical direction across a team or product area</li>
+	<li>Experience improving engineering practices, operational processes, or reliability for production services</li>
+	<li>Experience with modern Unix/Linux development and runtime environments</li>
+	<li>Experience with monitoring and logging tools like Prometheus and Grafana</li>
+	<li>Experience with containerization and orchestration technologies, such as Docker and Kubernetes</li>
 </ul>
-<h3>&nbsp;</h3>
-<h3>Compensation</h3>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For Colorado based hires: Estimated annual salary of $156,000 - $215,000</li>
-</ul>
-<h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare's equity plan.</p>
-<h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p>Health &amp; Welfare Benefits</p>
+<h4>Compensation</h4>
+<p data-path-to-node="1">For Portugal based hires: Estimated annual salary is between €66,000 - €91,000.</p>
+<p data-path-to-node="2,0,0">The final offer will be inclusive of time exemption, in alignment with the applicable law and collective bargaining agreements.</p>
+<h4><strong data-path-to-node="3" data-index-in-node="0">Equity</strong></h4>
+<p data-path-to-node="4">This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p data-path-to-node="4"><strong>Benefits</strong></p>
+<p data-path-to-node="4">Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p data-path-to-node="4"><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -51,19 +56,18 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p>Financial Benefits</p>
+<p data-path-to-node="4"><strong>Financial Benefits</strong></p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p>Time Off</p>
+<p data-path-to-node="4"><strong>Time Off</strong></p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

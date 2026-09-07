@@ -6,7 +6,8 @@
 <p><strong>Available Locations: </strong>London (UK), Lisbon (Portugal)</p>
 <p><strong>About the role</strong></p>
 <p>Cloudflare’s Engineers build and operate the software that helps power 25+ million Internet properties and millions of businesses around the world. Across our engineering organizations, we have opportunities for high caliber, curious and empathetic people to take on big challenges and build some of the best skills in the industry. We’re looking for talented team members to help build high-growth products, help scale our expanding network, build tools to improve availability, performance, uptime, and response times, and make systems failure-resistant and ready-to-scale.</p>
-<p>We are looking for a talented Systems Engineer to join the Security Rules team. You will work on a range of microservices written mainly in Rust. Technologies we use include Docker, Go, PostgreSQL, Redis, Memcached, gRPC, Kafka, Clickhouse and the usual Unix/Linux tools and workflows. We strive to build reliable, fault-tolerant systems that can operate at Cloudflare’s scale. You will join a team of bright, hard-working, and supportive engineers who are passionate about their craft, and you will be comfortable operating in a fast-paced but sane work environment. This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
+<p>We are looking for a talented Systems Engineer to join the Security Rules team. You will work on a range of microservices written mainly in Rust. Technologies we use include Docker, Go, PostgreSQL, Redis, Memcached, gRPC, Kafka, Clickhouse and the usual Unix/Linux tools and workflows. We strive to build reliable, fault-tolerant systems that can operate at Cloudflare’s scale. You will join a team of bright, hard-working, and supportive engineers who are passionate about their craft, and you will be comfortable operating in a fast-paced but sane work environment.</p>
+<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
 <h4><strong>What you'll do</strong></h4>
 <ul>
 	<li>Design, implement, and maintain the software systems that comprise Cloudflare’s Application Security Product Offering such as Rate Limiting, Web Application Firewall and more.</li>
@@ -34,13 +35,13 @@
 	<li>Experience with containerization and orchestration technologies, such as Docker and Kubernetes.</li>
 </ul>
 <h4>Compensation</h4>
-<p data-path-to-node="1">For Portugal based hires: Estimated annual salary is between €54,000 - €91,000.</p>
+<p data-path-to-node="1">For Portugal based hires: Estimated annual salary is between €54,000 - €75,000.</p>
 <p data-path-to-node="2,0,0">The final offer will be inclusive of time exemption, in alignment with the applicable law and collective bargaining agreements.</p>
 <h4><strong data-path-to-node="3" data-index-in-node="0">Equity</strong></h4>
 <p data-path-to-node="4">This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p data-path-to-node="4"><strong>Benefits</strong></p>
 <p data-path-to-node="4">Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p data-path-to-node="4"><br><strong>Health &amp; Welfare Benefits</strong></p>
+<p data-path-to-node="4"><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>

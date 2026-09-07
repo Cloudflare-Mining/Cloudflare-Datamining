@@ -11,10 +11,13 @@
 	<li>New York, US</li>
 	<li>Seattle, US</li>
 	<li>Washington DC, US</li>
+	<li>Amsterdam, Netherlands</li>
+	<li>London, UK</li>
 </ul>
 <p><strong>Applications will be accepted until November 19, 2026.</strong></p>
 <p><strong>About the role</strong></p>
 <p>Quicksilver is Cloudflare’s globally distributed key-value store. It replicates our data all around the world, over tens of thousands of servers and over 500 data centers. It handles all kinds of network conditions and serves billions of keys per second. In this role, you can expect to see challenges like unexpected network issues, hardware failures, kernel bugs and still have to deliver the data to the edge in a fast and reliable way. Along with the rest of the team, you will own and support the whole stack: the code base, the unit and integration test, deployment and rollback plans, operations, monitoring, alerting, debugging and on-call. Quicksilver is written in Go and C. If working at this scale excites you and you are intrigued by very tricky bugs, rather than being scared by them, you might be a match for this role.</p>
+<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
 <h4><strong>What you'll do</strong></h4>
 <ul>
 	<li>Work on our distributed large scale key-value store, you will write new features in Go and reviewing pull request</li>
@@ -37,12 +40,14 @@
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
 	<li>For Colorado based hires: Estimated annual salary of $168,000 - $231,000</li>
+	<li>For Washington based hires: Estimated annual salary of $185,000 - $254,000</li>
+	<li>For Washington DC based hires: Estimated annual salary of $185,000 - $254,000</li>
 </ul>
 <h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare's equity plan.</p>
 <h3>Benefits</h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p>Health &amp; Welfare Benefits</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -53,14 +58,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p>Financial Benefits</p>
+<p><strong>Financial Benefits</strong></p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p>Time Off</p>
+<p><strong>Time Off</strong></p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
