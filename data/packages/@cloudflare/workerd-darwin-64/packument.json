@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workerd-darwin-64",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20260906.1"
+		"latest": "1.20260907.1"
 	},
 	"versions": {
 		"1.20220926.0": {
@@ -12244,12 +12244,42 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQCZfyMrzf3ZOZSo4+mMj/lt1noBon5vBd9M602Z9IraoQIgalNPwGZ3ayn7XFmBHvUWS4dNalixI9lY1qEdGxpx6+I="
+						"sig": "MEUCIQCZfyMrzf3ZOZSo4+mMj/lt1noBon5vBd9M602Z9IraoQIgalNPwGZ3ayn7XFmBHvUWS4dNalixI9lY1qEdGxpx6+I=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-darwin-64@1.20260906.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 155963959
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20260907.1": {
+			"name": "@cloudflare/workerd-darwin-64",
+			"version": "1.20260907.1",
+			"dist": {
+				"shasum": "cfc8cf905ac6c4ad0384211a4f8a1ac6c9ff135b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-darwin-64/-/workerd-darwin-64-1.20260907.1.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-Xaum46kviN8xixl0axXm7mfLTf2GAG+baotnEIv8M5EbvyHxHagvS5Z8bU5B/WJlTWwwvGzItFfKZvga78o3ew==",
+				"signatures": [
+					{
+						"sig": "MEUCIFSeFmWmi4THGdi7yUsugSo1UYLztLK6IHdjCHdIGkUDAiEAsK+/LJGYKLs/ApdC76xytJI5Hu09PiI69szqGebOOo8=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQChE2W/wtkwxCuaKVKcNttHQeqJbKOh32g96X900cntCwIhAK/EOyMjRIPxP7Mbg1h6LOcCjVnNkzYRCnBtHxZM2yWz"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-darwin-64@1.20260907.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
