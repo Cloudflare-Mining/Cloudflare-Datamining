@@ -92,6 +92,73 @@
 						}
 					}
 				}
+			},
+			"4XX": {
+				"description": "Client error response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -320,6 +387,73 @@
 						}
 					}
 				}
+			},
+			"4XX": {
+				"description": "Client error response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -481,6 +615,73 @@
 								"success": {
 									"description": "Indicates whether the API call was successful.",
 									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
 								}
 							},
 							"required": [
@@ -717,6 +918,73 @@
 						}
 					}
 				}
+			},
+			"4XX": {
+				"description": "Client error response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -929,6 +1197,73 @@
 								"success": {
 									"description": "Indicates whether the API call was successful.",
 									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
 								}
 							},
 							"required": [

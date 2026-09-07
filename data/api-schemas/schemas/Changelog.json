@@ -665,14 +665,15 @@
 																}
 															},
 															"type": {
-																"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
+																"description": "Server-inferred value type shared by all of the flag's variations.",
 																"type": "string",
 																"enum": [
 																	"boolean",
 																	"string",
 																	"number",
 																	"json"
-																]
+																],
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"updated_at": {
 																"type": "string"
@@ -710,6 +711,7 @@
 														"additionalProperties": false,
 														"required": [
 															"key",
+															"type",
 															"default_variation",
 															"variations",
 															"rules",
@@ -1305,14 +1307,15 @@
 																}
 															},
 															"type": {
-																"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
+																"description": "Server-inferred value type shared by all of the flag's variations.",
 																"type": "string",
 																"enum": [
 																	"boolean",
 																	"string",
 																	"number",
 																	"json"
-																]
+																],
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"updated_at": {
 																"type": "string"
@@ -1350,6 +1353,7 @@
 														"additionalProperties": false,
 														"required": [
 															"key",
+															"type",
 															"default_variation",
 															"variations",
 															"rules",
@@ -1945,14 +1949,15 @@
 																}
 															},
 															"type": {
-																"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
+																"description": "Server-inferred value type shared by all of the flag's variations.",
 																"type": "string",
 																"enum": [
 																	"boolean",
 																	"string",
 																	"number",
 																	"json"
-																]
+																],
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"updated_at": {
 																"type": "string"
@@ -1990,6 +1995,7 @@
 														"additionalProperties": false,
 														"required": [
 															"key",
+															"type",
 															"default_variation",
 															"variations",
 															"rules",

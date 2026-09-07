@@ -1116,14 +1116,15 @@
 												}
 											},
 											"type": {
-												"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
+												"description": "Server-inferred value type shared by all of the flag's variations.",
 												"type": "string",
 												"enum": [
 													"boolean",
 													"string",
 													"number",
 													"json"
-												]
+												],
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"updated_at": {
 												"type": "string"
@@ -1161,6 +1162,7 @@
 										"additionalProperties": false,
 										"required": [
 											"key",
+											"type",
 											"default_variation",
 											"variations",
 											"rules",
@@ -2213,14 +2215,15 @@
 											}
 										},
 										"type": {
-											"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
+											"description": "Server-inferred value type shared by all of the flag's variations.",
 											"type": "string",
 											"enum": [
 												"boolean",
 												"string",
 												"number",
 												"json"
-											]
+											],
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"updated_at": {
 											"type": "string"
@@ -2258,6 +2261,7 @@
 									"additionalProperties": false,
 									"required": [
 										"key",
+										"type",
 										"default_variation",
 										"variations",
 										"rules",
@@ -2650,7 +2654,7 @@
 	"POST /accounts/{account_id}/flagship/apps/{app_id}/flags": {
 		"operationId": "flagship_create_flag",
 		"summary": "Create flag",
-		"description": "Creates a flag. Returns 409 if the key already exists. `type` is inferred from variation values and may be omitted.",
+		"description": "Creates a flag. Returns 409 if the key already exists. `type` is always inferred from variation values; legacy request-side values are ignored.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3247,14 +3251,16 @@
 								}
 							},
 							"type": {
-								"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
+								"description": "Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.",
 								"type": "string",
 								"enum": [
 									"boolean",
 									"string",
 									"number",
 									"json"
-								]
+								],
+								"deprecated": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"variations": {
 								"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
@@ -3901,14 +3907,15 @@
 											}
 										},
 										"type": {
-											"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
+											"description": "Server-inferred value type shared by all of the flag's variations.",
 											"type": "string",
 											"enum": [
 												"boolean",
 												"string",
 												"number",
 												"json"
-											]
+											],
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"updated_at": {
 											"type": "string"
@@ -3946,6 +3953,7 @@
 									"additionalProperties": false,
 									"required": [
 										"key",
+										"type",
 										"default_variation",
 										"variations",
 										"rules",
@@ -4944,14 +4952,16 @@
 								}
 							},
 							"type": {
-								"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
+								"description": "Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.",
 								"type": "string",
 								"enum": [
 									"boolean",
 									"string",
 									"number",
 									"json"
-								]
+								],
+								"deprecated": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"variations": {
 								"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
@@ -5598,14 +5608,15 @@
 											}
 										},
 										"type": {
-											"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
+											"description": "Server-inferred value type shared by all of the flag's variations.",
 											"type": "string",
 											"enum": [
 												"boolean",
 												"string",
 												"number",
 												"json"
-											]
+											],
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"updated_at": {
 											"type": "string"
@@ -5643,6 +5654,7 @@
 									"additionalProperties": false,
 									"required": [
 										"key",
+										"type",
 										"default_variation",
 										"variations",
 										"rules",

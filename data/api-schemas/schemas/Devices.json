@@ -20,6 +20,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -635,6 +636,12 @@
 														"type": "string",
 														"example": "wireguard",
 														"default": ""
+													},
+													"uninstall_protection": {
+														"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
+														"type": "boolean",
+														"example": false,
+														"default": false
 													},
 													"virtual_networks": {
 														"description": "Virtual network access settings for the device.",
@@ -1290,6 +1297,12 @@
 																"example": "wireguard",
 																"default": ""
 															},
+															"uninstall_protection": {
+																"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
+																"type": "boolean",
+																"example": false,
+																"default": false
+															},
 															"virtual_networks": {
 																"description": "Virtual network access settings for the device.",
 																"type": "object",
@@ -1446,6 +1459,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -2149,6 +2163,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -2804,6 +2819,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -3268,6 +3284,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -3883,6 +3900,12 @@
 														"type": "string",
 														"example": "wireguard",
 														"default": ""
+													},
+													"uninstall_protection": {
+														"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
+														"type": "boolean",
+														"example": false,
+														"default": false
 													},
 													"virtual_networks": {
 														"description": "Virtual network access settings for the device.",
@@ -4538,6 +4561,12 @@
 																"example": "wireguard",
 																"default": ""
 															},
+															"uninstall_protection": {
+																"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
+																"type": "boolean",
+																"example": false,
+																"default": false
+															},
 															"virtual_networks": {
 																"description": "Virtual network access settings for the device.",
 																"type": "object",
@@ -4691,6 +4720,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -5235,6 +5265,12 @@
 													"type": "string",
 													"example": "wireguard",
 													"default": ""
+												},
+												"uninstall_protection": {
+													"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
+													"type": "boolean",
+													"example": false,
+													"default": false
 												},
 												"virtual_networks": {
 													"description": "Virtual network access settings for the device.",
@@ -5818,6 +5854,12 @@
 															"example": "wireguard",
 															"default": ""
 														},
+														"uninstall_protection": {
+															"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
+															"type": "boolean",
+															"example": false,
+															"default": false
+														},
 														"virtual_networks": {
 															"description": "Virtual network access settings for the device.",
 															"type": "object",
@@ -5981,6 +6023,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -6574,6 +6617,12 @@
 													"type": "string",
 													"example": "wireguard",
 													"default": ""
+												},
+												"uninstall_protection": {
+													"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
+													"type": "boolean",
+													"example": false,
+													"default": false
 												},
 												"virtual_networks": {
 													"description": "Virtual network access settings for the device.",
@@ -7206,6 +7255,12 @@
 															"example": "wireguard",
 															"default": ""
 														},
+														"uninstall_protection": {
+															"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
+															"type": "boolean",
+															"example": false,
+															"default": false
+														},
 														"virtual_networks": {
 															"description": "Virtual network access settings for the device.",
 															"type": "object",
@@ -7369,6 +7424,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -7869,6 +7925,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -8337,6 +8394,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -8826,6 +8884,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -9315,6 +9374,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -9772,6 +9832,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -10261,6 +10322,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -10640,6 +10702,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -10940,6 +11003,12 @@
 								"type": "string",
 								"example": "wireguard",
 								"default": ""
+							},
+							"uninstall_protection": {
+								"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
+								"type": "boolean",
+								"example": false,
+								"default": false
 							},
 							"virtual_networks": {
 								"description": "Virtual network access settings for the device.",
@@ -11516,6 +11585,12 @@
 													"type": "string",
 													"example": "wireguard",
 													"default": ""
+												},
+												"uninstall_protection": {
+													"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
+													"type": "boolean",
+													"example": false,
+													"default": false
 												},
 												"virtual_networks": {
 													"description": "Virtual network access settings for the device.",
@@ -12099,6 +12174,12 @@
 															"example": "wireguard",
 															"default": ""
 														},
+														"uninstall_protection": {
+															"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
+															"type": "boolean",
+															"example": false,
+															"default": false
+														},
 														"virtual_networks": {
 															"description": "Virtual network access settings for the device.",
 															"type": "object",
@@ -12265,6 +12346,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -12593,6 +12675,12 @@
 								"type": "string",
 								"example": "wireguard",
 								"default": ""
+							},
+							"uninstall_protection": {
+								"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
+								"type": "boolean",
+								"example": false,
+								"default": false
 							},
 							"virtual_networks": {
 								"description": "Virtual network access settings for the device.",
@@ -13218,6 +13306,12 @@
 													"type": "string",
 													"example": "wireguard",
 													"default": ""
+												},
+												"uninstall_protection": {
+													"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
+													"type": "boolean",
+													"example": false,
+													"default": false
 												},
 												"virtual_networks": {
 													"description": "Virtual network access settings for the device.",
@@ -13850,6 +13944,12 @@
 															"example": "wireguard",
 															"default": ""
 														},
+														"uninstall_protection": {
+															"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
+															"type": "boolean",
+															"example": false,
+															"default": false
+														},
 														"virtual_networks": {
 															"description": "Virtual network access settings for the device.",
 															"type": "object",
@@ -14005,6 +14105,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -14403,6 +14504,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -14453,7 +14555,8 @@
 										"maxLength": 500
 									},
 									{
-										"default": ""
+										"default": "",
+										"type": "string"
 									}
 								]
 							},
@@ -14739,6 +14842,12 @@
 								"type": "string",
 								"example": "wireguard",
 								"default": ""
+							},
+							"uninstall_protection": {
+								"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
+								"type": "boolean",
+								"example": false,
+								"default": false
 							},
 							"virtual_networks": {
 								"description": "Virtual network access settings for the device.",
@@ -15369,6 +15478,12 @@
 													"type": "string",
 													"example": "wireguard",
 													"default": ""
+												},
+												"uninstall_protection": {
+													"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
+													"type": "boolean",
+													"example": false,
+													"default": false
 												},
 												"virtual_networks": {
 													"description": "Virtual network access settings for the device.",
@@ -16001,6 +16116,12 @@
 															"example": "wireguard",
 															"default": ""
 														},
+														"uninstall_protection": {
+															"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
+															"type": "boolean",
+															"example": false,
+															"default": false
+														},
 														"virtual_networks": {
 															"description": "Virtual network access settings for the device.",
 															"type": "object",
@@ -16156,6 +16277,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -16512,6 +16634,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -16878,6 +17001,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -17438,6 +17562,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -17950,6 +18075,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -18499,6 +18625,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -19048,6 +19175,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}
@@ -19549,6 +19677,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
 			}

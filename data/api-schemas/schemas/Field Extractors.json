@@ -1,0 +1,871 @@
+{
+	"DELETE /accounts/{account_id}/field_extractors/{extractor}": {
+		"operationId": "deleteFieldExtractor",
+		"summary": "Delete Field Extractor",
+		"description": "Deletes all custom extraction rules for an extractor type.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID.",
+					"type": "string",
+					"example": "123456",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "extractor",
+				"in": "path",
+				"description": "Extractor type.",
+				"required": true,
+				"schema": {
+					"description": "Extractor type.",
+					"type": "string",
+					"example": "llm_prompts",
+					"minLength": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Rules deleted successfully.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"description": "Points to the offending input as a JSON Pointer into the request body.",
+												"type": "object",
+												"example": "/rules/0/fields/0/expression",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"description": "Additional informational messages.",
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"description": "Result is null.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Unknown extractor type.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"description": "Points to the offending input as a JSON Pointer into the request body.",
+												"type": "object",
+												"example": "/rules/0/fields/0/expression",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"description": "Additional informational messages.",
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"description": "Result is null.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Field Extractors"
+		],
+		"x-fern-availability": "alpha",
+		"x-fern-sdk-group-name": "fieldExtractors",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/field_extractors/{extractor}": {
+		"operationId": "getFieldExtractor",
+		"summary": "Get Field Extractor",
+		"description": "Retrieves the custom extraction rules configured for a given extractor type.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID.",
+					"type": "string",
+					"example": "123456",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "extractor",
+				"in": "path",
+				"description": "Extractor type.",
+				"required": true,
+				"schema": {
+					"description": "Extractor type.",
+					"type": "string",
+					"example": "llm_prompts",
+					"minLength": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Custom extraction rules for this extractor type.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"description": "Points to the offending input as a JSON Pointer into the request body.",
+												"type": "object",
+												"example": "/rules/0/fields/0/expression",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"description": "Additional informational messages.",
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"extractor": {
+											"description": "Extractor type.",
+											"type": "string",
+											"example": "llm_prompts",
+											"readOnly": true
+										},
+										"rules": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"description": {
+														"description": "Human-readable rule description.",
+														"type": "string"
+													},
+													"fields": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"expression": {
+																	"description": "Wirefilter value expression.",
+																	"type": "string",
+																	"example": "filter(http.request.body.json.strings.values, http.request.body.json.strings.pointers[*] matches \"^/messages/\\\\d+/content$\")"
+																},
+																"name": {
+																	"description": "Field name.",
+																	"type": "string",
+																	"example": "prompt"
+																}
+															},
+															"required": [
+																"name",
+																"expression"
+															]
+														}
+													},
+													"ref": {
+														"description": "Stable rule identifier.",
+														"type": "string",
+														"example": "openai-chat"
+													}
+												},
+												"required": [
+													"ref",
+													"fields"
+												]
+											},
+											"minItems": 1
+										}
+									},
+									"required": [
+										"extractor",
+										"rules"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Unknown extractor type or no rules configured.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"description": "Points to the offending input as a JSON Pointer into the request body.",
+												"type": "object",
+												"example": "/rules/0/fields/0/expression",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"description": "Additional informational messages.",
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"description": "Result is null.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Field Extractors"
+		],
+		"x-fern-availability": "alpha",
+		"x-fern-sdk-group-name": "fieldExtractors",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	},
+	"PUT /accounts/{account_id}/field_extractors/{extractor}": {
+		"operationId": "updateFieldExtractor",
+		"summary": "Update Field Extractor",
+		"description": "Replaces all custom extraction rules for an extractor type. Omitted rules are deleted.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID.",
+					"type": "string",
+					"example": "123456",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "extractor",
+				"in": "path",
+				"description": "Extractor type.",
+				"required": true,
+				"schema": {
+					"description": "Extractor type.",
+					"type": "string",
+					"example": "llm_prompts",
+					"minLength": 1
+				}
+			}
+		],
+		"requestBody": {
+			"description": "Desired-state replacement of all rules for this extractor type.",
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"rules": {
+								"type": "array",
+								"items": {
+									"properties": {
+										"description": {
+											"type": "string",
+											"maxLength": 4096
+										},
+										"fields": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"expression": {
+														"type": "string",
+														"maxLength": 4096,
+														"minLength": 1
+													},
+													"name": {
+														"type": "string",
+														"minLength": 1
+													}
+												},
+												"required": [
+													"name",
+													"expression"
+												],
+												"type": "object"
+											},
+											"minItems": 1
+										},
+										"ref": {
+											"type": "string",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-zA-Z0-9_-]+$"
+										}
+									},
+									"required": [
+										"ref",
+										"fields"
+									],
+									"type": "object"
+								},
+								"maxItems": 10,
+								"minItems": 1
+							}
+						},
+						"required": [
+							"rules"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Rules replaced successfully.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"description": "Points to the offending input as a JSON Pointer into the request body.",
+												"type": "object",
+												"example": "/rules/0/fields/0/expression",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"description": "Additional informational messages.",
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"extractor": {
+											"description": "Extractor type.",
+											"type": "string",
+											"example": "llm_prompts",
+											"readOnly": true
+										},
+										"rules": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"description": {
+														"description": "Human-readable rule description.",
+														"type": "string"
+													},
+													"fields": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"expression": {
+																	"description": "Wirefilter value expression.",
+																	"type": "string",
+																	"example": "filter(http.request.body.json.strings.values, http.request.body.json.strings.pointers[*] matches \"^/messages/\\\\d+/content$\")"
+																},
+																"name": {
+																	"description": "Field name.",
+																	"type": "string",
+																	"example": "prompt"
+																}
+															},
+															"required": [
+																"name",
+																"expression"
+															]
+														}
+													},
+													"ref": {
+														"description": "Stable rule identifier.",
+														"type": "string",
+														"example": "openai-chat"
+													}
+												},
+												"required": [
+													"ref",
+													"fields"
+												]
+											},
+											"minItems": 1
+										}
+									},
+									"required": [
+										"extractor",
+										"rules"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Validation error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"description": "Points to the offending input as a JSON Pointer into the request body.",
+												"type": "object",
+												"example": "/rules/0/fields/0/expression",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"description": "Additional informational messages.",
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"description": "Result is null.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Unknown extractor type.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"description": "Points to the offending input as a JSON Pointer into the request body.",
+												"type": "object",
+												"example": "/rules/0/fields/0/expression",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"description": "Additional informational messages.",
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"description": "Result is null.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Field Extractors"
+		],
+		"x-fern-availability": "alpha",
+		"x-fern-sdk-group-name": "fieldExtractors",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
+	}
+}
