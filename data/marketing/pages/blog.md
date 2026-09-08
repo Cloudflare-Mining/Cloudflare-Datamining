@@ -22,6 +22,14 @@ Use production traffic and security signals to prioritize findings, prepare edge
 
 [![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M1JDYW2RHXMJDDXS13K6VESF.01M1JDYX370D7EV4BHCDQS4C6J.png&w=2048&h=1152&f=webp&fit=cover&position=center)![](data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAAWREmWBUrVhwyUx81UR4yURosUxYqVhQrVxosWCEzWys/XDBEWSw+ViQyVBsqVRgqVCAxWCk7XzZKYzxPYTdIWys4Vh8qVBwpUCAzVis+YDpPZkBVZTpMXS05Vh8qURspTRoyUyY9XTVNZDxSYzdJXCk2VBsoTxYpSwkuTxg4VypGXTFKXSxBWSAwUhEmSwsqSgAqTAAyUBk9VCE/Vx43VRMpTwMkSQArSgAoSgAvTQ05URg6VBYyUwslTgAjSAAr)](https://blog.cloudflare.com/vulnerability-discovery-remediation/)
 
+September 8, 2026 [<h2>Automatic Key Exchange: faster, post-quantum secure origin handshakes for 45 billion daily connections (and counting)</h2>](https://blog.cloudflare.com/automatic-key-exchange-for-origins/)
+
+Automatic Key Exchange probes TLS 1.3-capable customer origins to learn which key agreement algorithms they support. We then lead with the most secure algorithm when connecting to the origin, preferring post-quantum connections wherever the origin supports it.
+
+![Suleman Ahmad](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MCC5WJ427B6XCV7Z59EV.png&w=64&h=64&f=webp&fit=cover&position=center)![Yawar Jamal](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M1PVVBNHNQWX6D1BK30VQW4X.01M1PVVCG30FCBAY7PS1R17190.png&w=64&h=64&f=webp&fit=cover&position=center)![Alex Krivit](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Q0QQ4YF44E63CZ5V25R6.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Suleman Ahmad](https://blog.cloudflare.com/author/suleman/),  [Yawar Jamal](https://blog.cloudflare.com/author/yawar/), and  [Alex Krivit](https://blog.cloudflare.com/author/alex/)
+
 September 1, 2026 [<h2>How we could save petabytes of cache storage with Zstandard and Pingora</h2>](https://blog.cloudflare.com/cache-transcoding/)
 
 Could we get more cache space with the same hardware? We prototyped compression inside Cloudflare's cache to find out.
@@ -157,14 +165,6 @@ Cloudflare is shifting bot mitigation from point-in-time Risk assessment to cont
 ![Jin-Hee Lee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GG1XJCDV61NM8YJGK6YN.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Marina Elmore](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477HVM8X1SKDG8ADKQJ9T3.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Jin-Hee Lee](https://blog.cloudflare.com/author/jin-hee-lee/) and  [Marina Elmore](https://blog.cloudflare.com/author/marina-elmore/)
-
-August 7, 2026 [<h2>Introducing Radar Researcher: An AI tool for exploring Internet data in plain language</h2>](https://blog.cloudflare.com/introducing-radar-researcher/)
-
-Cloudflare Radar Researcher is a new AI-powered tool that lets you explore global Internet trends and traffic data using plain language. Built entirely on Cloudflare's Developer Platform, it turns natural language queries into real, interactive charts.
-
-![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=64&h=64&f=webp&fit=cover&position=center)![André Jesus](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SMWWWW1RG87RNZQH78V5.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/) and  [André Jesus](https://blog.cloudflare.com/author/andre-jesus/)
 
 Load more
 
