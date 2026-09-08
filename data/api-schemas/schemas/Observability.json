@@ -1,14 +1,16 @@
 {
-	"DELETE /accounts/{account_id}/workers/observability/destinations/{slug}": {
-		"operationId": "destinations.delete",
-		"summary": "Delete Destination",
-		"description": "Delete a Workers Observability Telemetry Destination.",
+	"GET /accounts/{account_id}/workers/observability/zones/{zone_id}/observability/tracing/rules": {
+		"operationId": "zone.observability.tracing.rules.get",
+		"summary": "View zone trace rules",
+		"description": "Retrieve the ordered sampling overrides for a zone's managed Cloudflare Traces ruleset.",
 		"parameters": [
 			{
-				"name": "slug",
+				"name": "zone_id",
 				"in": "path",
+				"description": "Specify the zone ID.",
 				"required": true,
 				"schema": {
+					"description": "Specify the zone ID.",
 					"type": "string"
 				}
 			}
@@ -55,1348 +57,61 @@
 								"result": {
 									"type": "object",
 									"properties": {
-										"configuration": {
-											"type": "object",
-											"properties": {
-												"destination_conf": {
-													"type": "string"
-												},
-												"logpushDataset": {
-													"anyOf": [
-														{
-															"enum": [
-																"opentelemetry-traces"
-															],
-															"type": "string"
-														},
-														{
-															"enum": [
-																"opentelemetry-logs"
-															],
-															"type": "string"
-														},
-														{
-															"enum": [
-																"opentelemetry-metrics"
-															],
-															"type": "string"
-														}
-													]
-												},
-												"logpushJob": {
-													"type": "number"
-												},
-												"type": {
-													"type": "string",
-													"enum": [
-														"logpush"
-													]
-												},
-												"url": {
-													"type": "string"
-												}
-											},
-											"required": [
-												"type",
-												"logpushDataset",
-												"logpushJob",
-												"destination_conf",
-												"url"
-											]
-										},
-										"enabled": {
-											"type": "boolean"
-										},
-										"name": {
-											"type": "string",
-											"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$"
-										},
-										"scripts": {
+										"rules": {
+											"description": "Trace rules in evaluation order.",
 											"type": "array",
 											"items": {
-												"type": "string"
-											}
-										},
-										"slug": {
-											"type": "string"
-										}
-									},
-									"required": [
-										"slug",
-										"name",
-										"enabled",
-										"configuration",
-										"scripts"
-									]
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										true
-									]
-								}
-							},
-							"required": [
-								"messages",
-								"success",
-								"errors"
-							]
-						}
-					}
-				}
-			},
-			"401": {
-				"description": "Unauthorized",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"detail": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string",
-												"enum": [
-													"Unauthorized"
-												]
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										false
-									]
-								}
-							},
-							"required": [
-								"errors",
-								"success",
-								"messages"
-							]
-						}
-					}
-				}
-			},
-			"404": {
-				"description": "Not found",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"detail": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string",
-												"enum": [
-													"Not found"
-												]
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										false
-									]
-								}
-							},
-							"required": [
-								"errors",
-								"success",
-								"messages"
-							]
-						}
-					}
-				}
-			},
-			"409": {
-				"description": "Conflict",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"detail": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string",
-												"enum": [
-													"Conflict"
-												]
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										false
-									]
-								}
-							},
-							"required": [
-								"errors",
-								"success",
-								"messages"
-							]
-						}
-					}
-				}
-			},
-			"500": {
-				"description": "Internal error",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"detail": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string",
-												"enum": [
-													"Internal error"
-												]
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										false
-									]
-								}
-							},
-							"required": [
-								"errors",
-								"success",
-								"messages"
-							]
-						}
-					}
-				}
-			}
-		},
-		"tags": [
-			"Destinations"
-		],
-		"x-api-token-group": [
-			"Workers Observability Write"
-		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "observability.destinations",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-require-confirmation": "This operation deletes the destination."
-	},
-	"GET /accounts/{account_id}/workers/observability/destinations": {
-		"operationId": "destination.list",
-		"summary": "Get Destinations",
-		"description": "List your Workers Observability Telemetry Destinations.",
-		"parameters": [
-			{
-				"name": "page",
-				"in": "query",
-				"schema": {
-					"type": "number",
-					"default": 1,
-					"minimum": 1
-				}
-			},
-			{
-				"name": "perPage",
-				"in": "query",
-				"schema": {
-					"type": "number",
-					"default": 20,
-					"maximum": 50,
-					"minimum": 5
-				}
-			},
-			{
-				"name": "order",
-				"in": "query",
-				"schema": {
-					"type": "string",
-					"default": "desc",
-					"enum": [
-						"asc",
-						"desc"
-					]
-				}
-			},
-			{
-				"name": "orderBy",
-				"in": "query",
-				"schema": {
-					"type": "string",
-					"default": "updated",
-					"enum": [
-						"created",
-						"updated"
-					]
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"description": "Successful request",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string",
-												"enum": [
-													"Successful request"
-												]
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"result": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"configuration": {
-												"type": "object",
+												"additionalProperties": false,
 												"properties": {
-													"destination_conf": {
-														"type": "string"
+													"action": {
+														"type": "string",
+														"enum": [
+															"set_trace_settings"
+														]
 													},
-													"headers": {
+													"action_parameters": {
 														"type": "object",
-														"additionalProperties": {
-															"type": "string"
-														}
-													},
-													"jobStatus": {
-														"type": "object",
+														"additionalProperties": false,
 														"properties": {
-															"error_message": {
-																"type": "string"
-															},
-															"last_complete": {
-																"type": "string"
-															},
-															"last_error": {
-																"type": "string"
+															"sampling_ratio": {
+																"description": "The ratio of requests sampled for tracing, from 0 to 1.",
+																"type": "number",
+																"maximum": 1,
+																"minimum": 0
 															}
 														},
 														"required": [
-															"last_complete",
-															"last_error",
-															"error_message"
+															"sampling_ratio"
 														]
 													},
-													"logpushDataset": {
-														"anyOf": [
-															{
-																"enum": [
-																	"opentelemetry-traces"
-																],
-																"type": "string"
-															},
-															{
-																"enum": [
-																	"opentelemetry-logs"
-																],
-																"type": "string"
-															},
-															{
-																"enum": [
-																	"opentelemetry-metrics"
-																],
-																"type": "string"
-															}
-														]
-													},
-													"type": {
+													"description": {
 														"type": "string",
-														"enum": [
-															"logpush"
-														]
+														"maxLength": 1000
 													},
-													"url": {
-														"type": "string"
+													"enabled": {
+														"type": "boolean"
+													},
+													"expression": {
+														"description": "A Rules language expression that selects requests.",
+														"type": "string",
+														"maxLength": 4096,
+														"minLength": 1
 													}
 												},
 												"required": [
-													"type",
-													"logpushDataset",
-													"destination_conf",
-													"url",
-													"headers",
-													"jobStatus"
-												]
+													"action",
+													"action_parameters",
+													"expression",
+													"description",
+													"enabled"
+												],
+												"type": "object"
 											},
-											"enabled": {
-												"type": "boolean"
-											},
-											"name": {
-												"type": "string",
-												"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$"
-											},
-											"scripts": {
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											},
-											"slug": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"slug",
-											"name",
-											"enabled",
-											"configuration",
-											"scripts"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										true
-									]
-								}
-							},
-							"required": [
-								"messages",
-								"success",
-								"errors",
-								"result"
-							]
-						}
-					}
-				}
-			},
-			"401": {
-				"description": "Unauthorized",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"detail": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string",
-												"enum": [
-													"Unauthorized"
-												]
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										false
-									]
-								}
-							},
-							"required": [
-								"errors",
-								"success",
-								"messages"
-							]
-						}
-					}
-				}
-			},
-			"404": {
-				"description": "Not found",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"detail": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string",
-												"enum": [
-													"Not found"
-												]
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										false
-									]
-								}
-							},
-							"required": [
-								"errors",
-								"success",
-								"messages"
-							]
-						}
-					}
-				}
-			},
-			"500": {
-				"description": "Internal error",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"detail": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string",
-												"enum": [
-													"Internal error"
-												]
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										false
-									]
-								}
-							},
-							"required": [
-								"errors",
-								"success",
-								"messages"
-							]
-						}
-					}
-				}
-			}
-		},
-		"tags": [
-			"Destinations"
-		],
-		"x-api-token-group": [
-			"Workers Observability Write",
-			"Workers Observability Read"
-		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "observability.destinations",
-		"x-fern-sdk-method-name": "list"
-	},
-	"PATCH /accounts/{account_id}/workers/observability/destinations/{slug}": {
-		"operationId": "destination.update",
-		"summary": "Update Destination",
-		"description": "Update an existing Workers Observability Telemetry Destination.",
-		"parameters": [
-			{
-				"name": "slug",
-				"in": "path",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"type": "object",
-						"properties": {
-							"configuration": {
-								"type": "object",
-								"properties": {
-									"headers": {
-										"type": "object",
-										"additionalProperties": {
-											"type": "string"
-										}
-									},
-									"type": {
-										"type": "string",
-										"enum": [
-											"logpush"
-										]
-									},
-									"url": {
-										"type": "string"
-									}
-								},
-								"required": [
-									"type",
-									"url",
-									"headers"
-								]
-							},
-							"enabled": {
-								"type": "boolean"
-							}
-						},
-						"required": [
-							"enabled",
-							"configuration"
-						]
-					}
-				}
-			}
-		},
-		"responses": {
-			"200": {
-				"description": "Successful request",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string",
-												"enum": [
-													"Successful request"
-												]
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"result": {
-									"type": "object",
-									"properties": {
-										"configuration": {
-											"type": "object",
-											"properties": {
-												"destination_conf": {
-													"type": "string"
-												},
-												"logpushDataset": {
-													"anyOf": [
-														{
-															"enum": [
-																"opentelemetry-traces"
-															],
-															"type": "string"
-														},
-														{
-															"enum": [
-																"opentelemetry-logs"
-															],
-															"type": "string"
-														},
-														{
-															"enum": [
-																"opentelemetry-metrics"
-															],
-															"type": "string"
-														}
-													]
-												},
-												"logpushJob": {
-													"type": "number"
-												},
-												"type": {
-													"type": "string",
-													"enum": [
-														"logpush"
-													]
-												},
-												"url": {
-													"type": "string"
-												}
-											},
-											"required": [
-												"type",
-												"logpushDataset",
-												"logpushJob",
-												"destination_conf",
-												"url"
-											]
-										},
-										"enabled": {
-											"type": "boolean"
-										},
-										"name": {
-											"type": "string",
-											"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$"
-										},
-										"scripts": {
-											"type": "array",
-											"items": {
-												"type": "string"
-											}
-										},
-										"slug": {
-											"type": "string"
+											"maxItems": 1000
 										}
 									},
 									"required": [
-										"slug",
-										"name",
-										"enabled",
-										"configuration",
-										"scripts"
-									]
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										true
-									]
-								}
-							},
-							"required": [
-								"messages",
-								"success",
-								"errors",
-								"result"
-							]
-						}
-					}
-				}
-			},
-			"400": {
-				"description": "Bad Request",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"detail": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string",
-												"enum": [
-													"Bad Request"
-												]
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										false
-									]
-								}
-							},
-							"required": [
-								"errors",
-								"success",
-								"messages"
-							]
-						}
-					}
-				}
-			},
-			"401": {
-				"description": "Unauthorized",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"detail": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string",
-												"enum": [
-													"Unauthorized"
-												]
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										false
-									]
-								}
-							},
-							"required": [
-								"errors",
-								"success",
-								"messages"
-							]
-						}
-					}
-				}
-			},
-			"404": {
-				"description": "Not found",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"detail": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string",
-												"enum": [
-													"Not found"
-												]
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										false
-									]
-								}
-							},
-							"required": [
-								"errors",
-								"success",
-								"messages"
-							]
-						}
-					}
-				}
-			},
-			"500": {
-				"description": "Internal error",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"detail": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string",
-												"enum": [
-													"Internal error"
-												]
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										false
-									]
-								}
-							},
-							"required": [
-								"errors",
-								"success",
-								"messages"
-							]
-						}
-					}
-				}
-			}
-		},
-		"tags": [
-			"Destinations"
-		],
-		"x-api-token-group": [
-			"Workers Observability Write"
-		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "observability.destinations",
-		"x-fern-sdk-method-name": "update"
-	},
-	"POST /accounts/{account_id}/workers/observability/destinations": {
-		"operationId": "destination.create",
-		"summary": "Create Destination",
-		"description": "Create a new Workers Observability Telemetry Destination.",
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"type": "object",
-						"properties": {
-							"configuration": {
-								"type": "object",
-								"properties": {
-									"headers": {
-										"type": "object",
-										"additionalProperties": {
-											"type": "string"
-										}
-									},
-									"logpushDataset": {
-										"anyOf": [
-											{
-												"enum": [
-													"opentelemetry-traces"
-												],
-												"type": "string"
-											},
-											{
-												"enum": [
-													"opentelemetry-logs"
-												],
-												"type": "string"
-											},
-											{
-												"enum": [
-													"opentelemetry-metrics"
-												],
-												"type": "string"
-											}
-										]
-									},
-									"type": {
-										"type": "string",
-										"enum": [
-											"logpush"
-										]
-									},
-									"url": {
-										"type": "string"
-									}
-								},
-								"required": [
-									"type",
-									"logpushDataset",
-									"url",
-									"headers"
-								]
-							},
-							"enabled": {
-								"type": "boolean"
-							},
-							"name": {
-								"type": "string",
-								"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$"
-							},
-							"skipPreflightCheck": {
-								"type": "boolean"
-							}
-						},
-						"required": [
-							"name",
-							"enabled",
-							"configuration"
-						]
-					}
-				}
-			}
-		},
-		"responses": {
-			"201": {
-				"description": "Resource created",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string",
-												"enum": [
-													"Resource created"
-												]
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"result": {
-									"type": "object",
-									"properties": {
-										"configuration": {
-											"type": "object",
-											"properties": {
-												"destination_conf": {
-													"type": "string"
-												},
-												"logpushDataset": {
-													"anyOf": [
-														{
-															"enum": [
-																"opentelemetry-traces"
-															],
-															"type": "string"
-														},
-														{
-															"enum": [
-																"opentelemetry-logs"
-															],
-															"type": "string"
-														},
-														{
-															"enum": [
-																"opentelemetry-metrics"
-															],
-															"type": "string"
-														}
-													]
-												},
-												"logpushJob": {
-													"type": "number"
-												},
-												"type": {
-													"type": "string",
-													"enum": [
-														"logpush"
-													]
-												},
-												"url": {
-													"type": "string"
-												}
-											},
-											"required": [
-												"type",
-												"logpushDataset",
-												"logpushJob",
-												"destination_conf",
-												"url"
-											]
-										},
-										"enabled": {
-											"type": "boolean"
-										},
-										"name": {
-											"type": "string",
-											"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$"
-										},
-										"scripts": {
-											"type": "array",
-											"items": {
-												"type": "string"
-											}
-										},
-										"slug": {
-											"type": "string"
-										}
-									},
-									"required": [
-										"slug",
-										"name",
-										"enabled",
-										"configuration",
-										"scripts"
+										"rules"
 									]
 								},
 								"success": {
@@ -1646,13 +361,1231 @@
 			}
 		},
 		"tags": [
-			"Destinations"
+			"Observability"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write",
+			"Workers Observability Read"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.tracing.rules",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/workers/observability/zones/{zone_id}/observability/tracing/settings": {
+		"operationId": "zone.observability.tracing.settings.get",
+		"summary": "View zone tracing settings",
+		"description": "Retrieve the zone-level Cloudflare Traces settings.",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"description": "Specify the zone ID.",
+				"required": true,
+				"schema": {
+					"description": "Specify the zone ID.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"additionalProperties": false,
+									"properties": {
+										"destinations": {
+											"description": "OpenTelemetry destination identifiers that receive traces.",
+											"type": "array",
+											"items": {
+												"maxLength": 256,
+												"minLength": 1,
+												"type": "string"
+											},
+											"maxItems": 100
+										},
+										"enabled": {
+											"description": "Whether Cloudflare Traces is enabled for the zone.",
+											"type": "boolean"
+										},
+										"forward_context": {
+											"description": "Whether trace context is sent externally or across a zone boundary.",
+											"type": "boolean"
+										},
+										"persist": {
+											"description": "Whether traces are persisted in Cloudflare.",
+											"type": "boolean"
+										},
+										"propagation_policy": {
+											"description": "When inbound trace context may be continued.",
+											"type": "string",
+											"enum": [
+												"authenticated",
+												"unauthenticated"
+											]
+										},
+										"sampling_ratio": {
+											"description": "The ratio of requests sampled for tracing, from 0 to 1.",
+											"type": "number",
+											"maximum": 1,
+											"minimum": 0
+										}
+									},
+									"required": [
+										"enabled",
+										"persist",
+										"sampling_ratio",
+										"destinations",
+										"propagation_policy",
+										"forward_context"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Bad Request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"tags": [
+			"Observability"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write",
+			"Workers Observability Read"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.tracing.settings",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	},
+	"PATCH /accounts/{account_id}/workers/observability/zones/{zone_id}/observability/tracing/settings": {
+		"operationId": "zone.observability.tracing.settings.update",
+		"summary": "Update zone tracing settings",
+		"description": "Update the zone-level Cloudflare Traces settings.",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"description": "Specify the zone ID.",
+				"required": true,
+				"schema": {
+					"description": "Specify the zone ID.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"description": "Update zone tracing settings",
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"destinations": {
+								"description": "OpenTelemetry destination identifiers that receive traces.",
+								"type": "array",
+								"items": {
+									"maxLength": 256,
+									"minLength": 1,
+									"type": "string"
+								},
+								"maxItems": 100
+							},
+							"enabled": {
+								"description": "Whether Cloudflare Traces is enabled for the zone.",
+								"type": "boolean"
+							},
+							"forward_context": {
+								"description": "Whether trace context is sent externally or across a zone boundary.",
+								"type": "boolean"
+							},
+							"persist": {
+								"description": "Whether traces are persisted in Cloudflare.",
+								"type": "boolean"
+							},
+							"propagation_policy": {
+								"description": "When inbound trace context may be continued.",
+								"type": "string",
+								"enum": [
+									"authenticated",
+									"unauthenticated"
+								]
+							},
+							"sampling_ratio": {
+								"description": "The ratio of requests sampled for tracing, from 0 to 1.",
+								"type": "number",
+								"maximum": 1,
+								"minimum": 0
+							}
+						},
+						"additionalProperties": false,
+						"minProperties": 1
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"additionalProperties": false,
+									"properties": {
+										"destinations": {
+											"description": "OpenTelemetry destination identifiers that receive traces.",
+											"type": "array",
+											"items": {
+												"maxLength": 256,
+												"minLength": 1,
+												"type": "string"
+											},
+											"maxItems": 100
+										},
+										"enabled": {
+											"description": "Whether Cloudflare Traces is enabled for the zone.",
+											"type": "boolean"
+										},
+										"forward_context": {
+											"description": "Whether trace context is sent externally or across a zone boundary.",
+											"type": "boolean"
+										},
+										"persist": {
+											"description": "Whether traces are persisted in Cloudflare.",
+											"type": "boolean"
+										},
+										"propagation_policy": {
+											"description": "When inbound trace context may be continued.",
+											"type": "string",
+											"enum": [
+												"authenticated",
+												"unauthenticated"
+											]
+										},
+										"sampling_ratio": {
+											"description": "The ratio of requests sampled for tracing, from 0 to 1.",
+											"type": "number",
+											"maximum": 1,
+											"minimum": 0
+										}
+									},
+									"required": [
+										"enabled",
+										"persist",
+										"sampling_ratio",
+										"destinations",
+										"propagation_policy",
+										"forward_context"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Bad Request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"tags": [
+			"Observability"
 		],
 		"x-api-token-group": [
 			"Workers Observability Write"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "observability.destinations",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.tracing.settings",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
+	},
+	"PUT /accounts/{account_id}/workers/observability/zones/{zone_id}/observability/tracing/rules": {
+		"operationId": "zone.observability.tracing.rules.update",
+		"summary": "Replace zone trace rules",
+		"description": "Replace all sampling overrides in a zone's managed Cloudflare Traces ruleset. Rules are evaluated in the supplied order.",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"description": "Specify the zone ID.",
+				"required": true,
+				"schema": {
+					"description": "Specify the zone ID.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"description": "Replace the ordered trace rules",
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"rules": {
+								"description": "Trace rules in evaluation order.",
+								"type": "array",
+								"items": {
+									"additionalProperties": false,
+									"properties": {
+										"action": {
+											"type": "string",
+											"enum": [
+												"set_trace_settings"
+											]
+										},
+										"action_parameters": {
+											"type": "object",
+											"additionalProperties": false,
+											"properties": {
+												"sampling_ratio": {
+													"description": "The ratio of requests sampled for tracing, from 0 to 1.",
+													"type": "number",
+													"maximum": 1,
+													"minimum": 0
+												}
+											},
+											"required": [
+												"sampling_ratio"
+											]
+										},
+										"description": {
+											"type": "string",
+											"maxLength": 1000
+										},
+										"enabled": {
+											"type": "boolean"
+										},
+										"expression": {
+											"description": "A Rules language expression that selects requests.",
+											"type": "string",
+											"maxLength": 4096,
+											"minLength": 1
+										}
+									},
+									"required": [
+										"action",
+										"action_parameters",
+										"expression",
+										"description",
+										"enabled"
+									],
+									"type": "object"
+								},
+								"maxItems": 1000
+							}
+						},
+						"required": [
+							"rules"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"rules": {
+											"description": "Trace rules in evaluation order.",
+											"type": "array",
+											"items": {
+												"additionalProperties": false,
+												"properties": {
+													"action": {
+														"type": "string",
+														"enum": [
+															"set_trace_settings"
+														]
+													},
+													"action_parameters": {
+														"type": "object",
+														"additionalProperties": false,
+														"properties": {
+															"sampling_ratio": {
+																"description": "The ratio of requests sampled for tracing, from 0 to 1.",
+																"type": "number",
+																"maximum": 1,
+																"minimum": 0
+															}
+														},
+														"required": [
+															"sampling_ratio"
+														]
+													},
+													"description": {
+														"type": "string",
+														"maxLength": 1000
+													},
+													"enabled": {
+														"type": "boolean"
+													},
+													"expression": {
+														"description": "A Rules language expression that selects requests.",
+														"type": "string",
+														"maxLength": 4096,
+														"minLength": 1
+													}
+												},
+												"required": [
+													"action",
+													"action_parameters",
+													"expression",
+													"description",
+													"enabled"
+												],
+												"type": "object"
+											},
+											"maxItems": 1000
+										}
+									},
+									"required": [
+										"rules"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Bad Request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"tags": [
+			"Observability"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.tracing.rules",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

@@ -99,6 +99,20 @@
 													"example": "2014-01-01T05:20:00.123123Z",
 													"readOnly": true
 												},
+												"deployed_via": {
+													"description": "Origin that created this widget, recorded at creation time and\nimmutable afterward. Server-derived from the create request; not\nclient-settable. Omitted from the response for widgets created\nbefore this field existed.\n",
+													"type": "string",
+													"example": "wrangler",
+													"enum": [
+														"wrangler",
+														"dashboard",
+														"spin",
+														"api",
+														"unknown"
+													],
+													"readOnly": true,
+													"x-auditable": true
+												},
 												"domains": {
 													"type": "array",
 													"items": {
@@ -118,6 +132,20 @@
 													"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
 													"type": "boolean",
 													"example": false,
+													"x-auditable": true
+												},
+												"last_modified_via": {
+													"description": "Origin of the most recent mutation (create, update, delete, or\nsecret rotation). Server-derived; not client-settable. Omitted for\nwidgets last mutated before this field existed.\n",
+													"type": "string",
+													"example": "dashboard",
+													"enum": [
+														"wrangler",
+														"dashboard",
+														"spin",
+														"api",
+														"unknown"
+													],
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"mode": {
@@ -444,6 +472,20 @@
 														"example": "2014-01-01T05:20:00.123123Z",
 														"readOnly": true
 													},
+													"deployed_via": {
+														"description": "Origin that created this widget, recorded at creation time and\nimmutable afterward. Server-derived from the create request; not\nclient-settable. Omitted from the response for widgets created\nbefore this field existed.\n",
+														"type": "string",
+														"example": "wrangler",
+														"enum": [
+															"wrangler",
+															"dashboard",
+															"spin",
+															"api",
+															"unknown"
+														],
+														"readOnly": true,
+														"x-auditable": true
+													},
 													"domains": {
 														"type": "array",
 														"items": {
@@ -463,6 +505,20 @@
 														"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
 														"type": "boolean",
 														"example": false,
+														"x-auditable": true
+													},
+													"last_modified_via": {
+														"description": "Origin of the most recent mutation (create, update, delete, or\nsecret rotation). Server-derived; not client-settable. Omitted for\nwidgets last mutated before this field existed.\n",
+														"type": "string",
+														"example": "dashboard",
+														"enum": [
+															"wrangler",
+															"dashboard",
+															"spin",
+															"api",
+															"unknown"
+														],
+														"readOnly": true,
 														"x-auditable": true
 													},
 													"mode": {
@@ -747,6 +803,20 @@
 													"example": "2014-01-01T05:20:00.123123Z",
 													"readOnly": true
 												},
+												"deployed_via": {
+													"description": "Origin that created this widget, recorded at creation time and\nimmutable afterward. Server-derived from the create request; not\nclient-settable. Omitted from the response for widgets created\nbefore this field existed.\n",
+													"type": "string",
+													"example": "wrangler",
+													"enum": [
+														"wrangler",
+														"dashboard",
+														"spin",
+														"api",
+														"unknown"
+													],
+													"readOnly": true,
+													"x-auditable": true
+												},
 												"domains": {
 													"type": "array",
 													"items": {
@@ -766,6 +836,20 @@
 													"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
 													"type": "boolean",
 													"example": false,
+													"x-auditable": true
+												},
+												"last_modified_via": {
+													"description": "Origin of the most recent mutation (create, update, delete, or\nsecret rotation). Server-derived; not client-settable. Omitted for\nwidgets last mutated before this field existed.\n",
+													"type": "string",
+													"example": "dashboard",
+													"enum": [
+														"wrangler",
+														"dashboard",
+														"spin",
+														"api",
+														"unknown"
+													],
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"mode": {
@@ -1183,6 +1267,20 @@
 													"example": "2014-01-01T05:20:00.123123Z",
 													"readOnly": true
 												},
+												"deployed_via": {
+													"description": "Origin that created this widget, recorded at creation time and\nimmutable afterward. Server-derived from the create request; not\nclient-settable. Omitted from the response for widgets created\nbefore this field existed.\n",
+													"type": "string",
+													"example": "wrangler",
+													"enum": [
+														"wrangler",
+														"dashboard",
+														"spin",
+														"api",
+														"unknown"
+													],
+													"readOnly": true,
+													"x-auditable": true
+												},
 												"domains": {
 													"type": "array",
 													"items": {
@@ -1202,6 +1300,20 @@
 													"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
 													"type": "boolean",
 													"example": false,
+													"x-auditable": true
+												},
+												"last_modified_via": {
+													"description": "Origin of the most recent mutation (create, update, delete, or\nsecret rotation). Server-derived; not client-settable. Omitted for\nwidgets last mutated before this field existed.\n",
+													"type": "string",
+													"example": "dashboard",
+													"enum": [
+														"wrangler",
+														"dashboard",
+														"spin",
+														"api",
+														"unknown"
+													],
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"mode": {
@@ -1508,6 +1620,20 @@
 													"example": "2014-01-01T05:20:00.123123Z",
 													"readOnly": true
 												},
+												"deployed_via": {
+													"description": "Origin that created this widget, recorded at creation time and\nimmutable afterward. Server-derived from the create request; not\nclient-settable. Omitted from the response for widgets created\nbefore this field existed.\n",
+													"type": "string",
+													"example": "wrangler",
+													"enum": [
+														"wrangler",
+														"dashboard",
+														"spin",
+														"api",
+														"unknown"
+													],
+													"readOnly": true,
+													"x-auditable": true
+												},
 												"domains": {
 													"type": "array",
 													"items": {
@@ -1527,6 +1653,20 @@
 													"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
 													"type": "boolean",
 													"example": false,
+													"x-auditable": true
+												},
+												"last_modified_via": {
+													"description": "Origin of the most recent mutation (create, update, delete, or\nsecret rotation). Server-derived; not client-settable. Omitted for\nwidgets last mutated before this field existed.\n",
+													"type": "string",
+													"example": "dashboard",
+													"enum": [
+														"wrangler",
+														"dashboard",
+														"spin",
+														"api",
+														"unknown"
+													],
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"mode": {
@@ -1906,6 +2046,20 @@
 													"example": "2014-01-01T05:20:00.123123Z",
 													"readOnly": true
 												},
+												"deployed_via": {
+													"description": "Origin that created this widget, recorded at creation time and\nimmutable afterward. Server-derived from the create request; not\nclient-settable. Omitted from the response for widgets created\nbefore this field existed.\n",
+													"type": "string",
+													"example": "wrangler",
+													"enum": [
+														"wrangler",
+														"dashboard",
+														"spin",
+														"api",
+														"unknown"
+													],
+													"readOnly": true,
+													"x-auditable": true
+												},
 												"domains": {
 													"type": "array",
 													"items": {
@@ -1925,6 +2079,20 @@
 													"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
 													"type": "boolean",
 													"example": false,
+													"x-auditable": true
+												},
+												"last_modified_via": {
+													"description": "Origin of the most recent mutation (create, update, delete, or\nsecret rotation). Server-derived; not client-settable. Omitted for\nwidgets last mutated before this field existed.\n",
+													"type": "string",
+													"example": "dashboard",
+													"enum": [
+														"wrangler",
+														"dashboard",
+														"spin",
+														"api",
+														"unknown"
+													],
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"mode": {

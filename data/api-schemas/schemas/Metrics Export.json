@@ -1,343 +1,4 @@
 {
-	"DELETE /accounts/{account_id}/workers/observability/metricsexport": {
-		"operationId": "metricsExport.delete",
-		"summary": "Delete Metrics Export",
-		"description": "Delete one resource configured for Workers Observability metrics export.",
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"type": "object",
-						"properties": {
-							"resourceId": {
-								"type": "string",
-								"minLength": 1
-							},
-							"resourceType": {
-								"type": "string",
-								"enum": [
-									"workers",
-									"d1",
-									"r2"
-								]
-							}
-						},
-						"additionalProperties": false,
-						"required": [
-							"resourceType",
-							"resourceId"
-						]
-					}
-				}
-			}
-		},
-		"responses": {
-			"200": {
-				"description": "Successful request",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string",
-												"enum": [
-													"Successful request"
-												]
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"result": {
-									"type": "object",
-									"properties": {
-										"deleted": {
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"deleted"
-									]
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										true
-									]
-								}
-							},
-							"required": [
-								"messages",
-								"success",
-								"errors",
-								"result"
-							]
-						}
-					}
-				}
-			},
-			"400": {
-				"description": "Bad Request",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"detail": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string",
-												"enum": [
-													"Bad Request"
-												]
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										false
-									]
-								}
-							},
-							"required": [
-								"errors",
-								"success",
-								"messages"
-							]
-						}
-					}
-				}
-			},
-			"401": {
-				"description": "Unauthorized",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"detail": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string",
-												"enum": [
-													"Unauthorized"
-												]
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										false
-									]
-								}
-							},
-							"required": [
-								"errors",
-								"success",
-								"messages"
-							]
-						}
-					}
-				}
-			},
-			"404": {
-				"description": "Not found",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"detail": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string",
-												"enum": [
-													"Not found"
-												]
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										false
-									]
-								}
-							},
-							"required": [
-								"errors",
-								"success",
-								"messages"
-							]
-						}
-					}
-				}
-			},
-			"500": {
-				"description": "Internal error",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"detail": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string",
-												"enum": [
-													"Internal error"
-												]
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										false
-									]
-								}
-							},
-							"required": [
-								"errors",
-								"success",
-								"messages"
-							]
-						}
-					}
-				}
-			}
-		},
-		"tags": [
-			"Metrics Export"
-		],
-		"x-api-token-group": [
-			"Workers Observability Write"
-		],
-		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "observability.metrics-export",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
-	},
 	"GET /accounts/{account_id}/workers/observability/metricsexport": {
 		"operationId": "metricsExport.list",
 		"summary": "List Metrics Exports",
@@ -406,7 +67,8 @@
 												"enum": [
 													"workers",
 													"d1",
-													"r2"
+													"r2",
+													"containers"
 												]
 											},
 											"updatedAt": {
@@ -575,146 +237,68 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"anyOf": [
-							{
+						"type": "object",
+						"properties": {
+							"requester": {
+								"type": "object",
 								"additionalProperties": false,
 								"properties": {
-									"destinations": {
-										"type": "array",
-										"items": {
-											"minLength": 1,
-											"type": "string"
-										},
-										"minItems": 1
-									},
-									"resourceId": {
+									"requesterId": {
 										"type": "string",
 										"minLength": 1
 									},
-									"resourceType": {
+									"requesterType": {
 										"type": "string",
 										"enum": [
-											"workers",
-											"d1",
-											"r2"
+											"workers"
 										]
 									}
 								},
 								"required": [
-									"resourceType",
-									"resourceId",
-									"destinations"
-								],
-								"type": "object"
+									"requesterType",
+									"requesterId"
+								]
 							},
-							{
-								"additionalProperties": false,
-								"properties": {
-									"requester": {
-										"type": "object",
-										"additionalProperties": false,
-										"properties": {
-											"requesterId": {
-												"type": "string",
-												"minLength": 1
+							"resources": {
+								"type": "array",
+								"items": {
+									"additionalProperties": false,
+									"properties": {
+										"destinations": {
+											"type": "array",
+											"items": {
+												"minLength": 1,
+												"type": "string"
 											},
-											"requesterType": {
-												"type": "string",
-												"enum": [
-													"workers"
-												]
-											}
+											"minItems": 1
 										},
-										"required": [
-											"requesterType",
-											"requesterId"
-										]
-									},
-									"resources": {
-										"type": "array",
-										"items": {
-											"additionalProperties": false,
-											"properties": {
-												"destinations": {
-													"type": "array",
-													"items": {
-														"minLength": 1,
-														"type": "string"
-													},
-													"minItems": 1
-												},
-												"resourceId": {
-													"type": "string",
-													"minLength": 1
-												},
-												"resourceType": {
-													"type": "string",
-													"enum": [
-														"workers",
-														"d1",
-														"r2"
-													]
-												}
-											},
-											"required": [
-												"resourceType",
-												"resourceId",
-												"destinations"
-											],
-											"type": "object"
+										"resourceId": {
+											"type": "string",
+											"minLength": 1
+										},
+										"resourceType": {
+											"type": "string",
+											"enum": [
+												"workers",
+												"d1",
+												"r2",
+												"containers"
+											]
 										}
-									}
-								},
-								"required": [
-									"requester",
-									"resources"
-								],
-								"type": "object"
-							},
-							{
-								"additionalProperties": false,
-								"properties": {
-									"resources": {
-										"type": "array",
-										"items": {
-											"additionalProperties": false,
-											"properties": {
-												"destinations": {
-													"type": "array",
-													"items": {
-														"minLength": 1,
-														"type": "string"
-													},
-													"minItems": 1
-												},
-												"resourceId": {
-													"type": "string",
-													"minLength": 1
-												},
-												"resourceType": {
-													"type": "string",
-													"enum": [
-														"workers",
-														"d1",
-														"r2"
-													]
-												}
-											},
-											"required": [
-												"resourceType",
-												"resourceId",
-												"destinations"
-											],
-											"type": "object"
-										},
-										"minItems": 1
-									}
-								},
-								"required": [
-									"resources"
-								],
-								"type": "object"
+									},
+									"required": [
+										"resourceType",
+										"resourceId",
+										"destinations"
+									],
+									"type": "object"
+								}
 							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"requester",
+							"resources"
 						]
 					}
 				}
@@ -784,7 +368,8 @@
 												"enum": [
 													"workers",
 													"d1",
-													"r2"
+													"r2",
+													"containers"
 												]
 											},
 											"updatedAt": {
@@ -893,63 +478,6 @@
 												"type": "string",
 												"enum": [
 													"Unauthorized"
-												]
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										false
-									]
-								}
-							},
-							"required": [
-								"errors",
-								"success",
-								"messages"
-							]
-						}
-					}
-				}
-			},
-			"409": {
-				"description": "Conflict",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"detail": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string",
-												"enum": [
-													"Conflict"
 												]
 											}
 										},

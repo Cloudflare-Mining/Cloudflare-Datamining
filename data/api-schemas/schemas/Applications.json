@@ -1388,6 +1388,42 @@
 																	"namespace_id"
 																]
 															},
+															"health": {
+																"description": "Aggregate current activity for the latest observed placement of each instance.\nRuntime snapshots feed periodic background sweeps. Counts refresh after each\ncomplete sweep. Instance listings retain their separate three-month history\nfor failure discovery.\n",
+																"type": "object",
+																"properties": {
+																	"instances": {
+																		"description": "Counts of observed non-terminal instances.",
+																		"type": "object",
+																		"properties": {
+																			"active": {
+																				"description": "Number of instances whose runtime reports running or stopping.",
+																				"type": "integer",
+																				"minimum": 0
+																			},
+																			"starting": {
+																				"description": "Number of instances whose runtime reports starting.",
+																				"type": "integer",
+																				"minimum": 0
+																			}
+																		},
+																		"required": [
+																			"active",
+																			"starting"
+																		]
+																	},
+																	"summary": {
+																		"description": "Present as pending until the first activity sweep completes; omitted afterward.",
+																		"type": "string",
+																		"enum": [
+																			"pending"
+																		]
+																	}
+																},
+																"required": [
+																	"instances"
+																]
+															},
 															"id": {
 																"description": "An Application ID represents an identifier of an application.",
 																"type": "string"
@@ -2176,6 +2212,42 @@
 															},
 															"required": [
 																"namespace_id"
+															]
+														},
+														"health": {
+															"description": "Aggregate current activity for the latest observed placement of each instance.\nRuntime snapshots feed periodic background sweeps. Counts refresh after each\ncomplete sweep. Instance listings retain their separate three-month history\nfor failure discovery.\n",
+															"type": "object",
+															"properties": {
+																"instances": {
+																	"description": "Counts of observed non-terminal instances.",
+																	"type": "object",
+																	"properties": {
+																		"active": {
+																			"description": "Number of instances whose runtime reports running or stopping.",
+																			"type": "integer",
+																			"minimum": 0
+																		},
+																		"starting": {
+																			"description": "Number of instances whose runtime reports starting.",
+																			"type": "integer",
+																			"minimum": 0
+																		}
+																	},
+																	"required": [
+																		"active",
+																		"starting"
+																	]
+																},
+																"summary": {
+																	"description": "Present as pending until the first activity sweep completes; omitted afterward.",
+																	"type": "string",
+																	"enum": [
+																		"pending"
+																	]
+																}
+															},
+															"required": [
+																"instances"
 															]
 														},
 														"id": {
@@ -7057,6 +7129,42 @@
 																"namespace_id"
 															]
 														},
+														"health": {
+															"description": "Aggregate current activity for the latest observed placement of each instance.\nRuntime snapshots feed periodic background sweeps. Counts refresh after each\ncomplete sweep. Instance listings retain their separate three-month history\nfor failure discovery.\n",
+															"type": "object",
+															"properties": {
+																"instances": {
+																	"description": "Counts of observed non-terminal instances.",
+																	"type": "object",
+																	"properties": {
+																		"active": {
+																			"description": "Number of instances whose runtime reports running or stopping.",
+																			"type": "integer",
+																			"minimum": 0
+																		},
+																		"starting": {
+																			"description": "Number of instances whose runtime reports starting.",
+																			"type": "integer",
+																			"minimum": 0
+																		}
+																	},
+																	"required": [
+																		"active",
+																		"starting"
+																	]
+																},
+																"summary": {
+																	"description": "Present as pending until the first activity sweep completes; omitted afterward.",
+																	"type": "string",
+																	"enum": [
+																		"pending"
+																	]
+																}
+															},
+															"required": [
+																"instances"
+															]
+														},
 														"id": {
 															"description": "An Application ID represents an identifier of an application.",
 															"type": "string"
@@ -8969,6 +9077,42 @@
 															},
 															"required": [
 																"namespace_id"
+															]
+														},
+														"health": {
+															"description": "Aggregate current activity for the latest observed placement of each instance.\nRuntime snapshots feed periodic background sweeps. Counts refresh after each\ncomplete sweep. Instance listings retain their separate three-month history\nfor failure discovery.\n",
+															"type": "object",
+															"properties": {
+																"instances": {
+																	"description": "Counts of observed non-terminal instances.",
+																	"type": "object",
+																	"properties": {
+																		"active": {
+																			"description": "Number of instances whose runtime reports running or stopping.",
+																			"type": "integer",
+																			"minimum": 0
+																		},
+																		"starting": {
+																			"description": "Number of instances whose runtime reports starting.",
+																			"type": "integer",
+																			"minimum": 0
+																		}
+																	},
+																	"required": [
+																		"active",
+																		"starting"
+																	]
+																},
+																"summary": {
+																	"description": "Present as pending until the first activity sweep completes; omitted afterward.",
+																	"type": "string",
+																	"enum": [
+																		"pending"
+																	]
+																}
+															},
+															"required": [
+																"instances"
 															]
 														},
 														"id": {

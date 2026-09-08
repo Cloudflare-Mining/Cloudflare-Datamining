@@ -30,6 +30,26 @@
 				"schema": {
 					"type": "string"
 				}
+			},
+			{
+				"name": "state",
+				"in": "query",
+				"description": "Filters instances by lifecycle state. `active` includes provisioning, running, and stopping instances; `not-active` includes stopped and failed instances. When omitted, all instances are returned.\n",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"active",
+						"not-active"
+					]
+				}
+			},
+			{
+				"name": "name_prefix",
+				"in": "query",
+				"description": "Filter instances by a case-sensitive name prefix. Keep the same prefix when using a page token.\n",
+				"schema": {
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
