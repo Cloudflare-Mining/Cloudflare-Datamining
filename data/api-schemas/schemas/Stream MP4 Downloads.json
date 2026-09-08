@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/stream/{identifier}/downloads": {
-		"operationId": "stream-m-p-4-downloads-delete-downloads",
+		"operationId": "stream-mp4-downloads-delete-downloads",
 		"summary": "Delete downloads",
 		"description": "Delete the downloads for a video. Use `/downloads/{download_type}` instead for type-specific downloads. Available types are `default` and `audio`.",
 		"parameters": [
@@ -264,10 +264,11 @@
 		"x-api-token-group": [
 			"Stream Write"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "stream.downloads",
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "stream.videos.downloads-default",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "Remove this default download? It will need to be regenerated for future use."
 	},
 	"DELETE /accounts/{account_id}/stream/{identifier}/downloads/{download_type}": {
 		"operationId": "stream-downloads-delete-type-specific-downloads",
@@ -551,12 +552,12 @@
 			"Stream Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "stream.typed-downloads",
+		"x-fern-sdk-group-name": "stream.videos.downloads",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "Remove this download? It will need to be regenerated for future use."
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/downloads": {
-		"operationId": "stream-m-p-4-downloads-list-downloads",
+		"operationId": "stream-mp4-downloads-list-downloads",
 		"summary": "List downloads",
 		"description": "Lists the downloads created for a video.",
 		"parameters": [
@@ -899,13 +900,13 @@
 			"Stream Write",
 			"Stream Read"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "stream.downloads",
-		"x-fern-sdk-method-name": "get",
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "stream.videos.downloads-default",
+		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/stream/{identifier}/downloads": {
-		"operationId": "stream-m-p-4-downloads-create-downloads",
+		"operationId": "stream-mp4-downloads-create-downloads",
 		"summary": "Create downloads",
 		"description": "Creates a download for a video when a video is ready to view. Use `/downloads/{download_type}` instead for type-specific downloads. Available types are `default` and `audio`.",
 		"parameters": [
@@ -1244,8 +1245,8 @@
 		"tags": [
 			"Stream MP4 Downloads"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "stream.downloads",
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "stream.videos.downloads-default",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
@@ -1606,8 +1607,7 @@
 			"Stream MP4 Downloads"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "stream.typed-downloads",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "stream.videos.downloads",
+		"x-fern-sdk-method-name": "create"
 	}
 }

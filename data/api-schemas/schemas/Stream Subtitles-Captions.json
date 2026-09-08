@@ -272,9 +272,10 @@
 			"Stream Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "stream.captions.language",
+		"x-fern-sdk-group-name": "stream.videos.captions.language",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "Remove this caption?"
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/captions": {
 		"operationId": "stream-subtitles/-captions-list-captions-or-subtitles",
@@ -570,8 +571,8 @@
 			"Stream Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "stream.captions",
-		"x-fern-sdk-method-name": "get",
+		"x-fern-sdk-group-name": "stream.videos.captions",
+		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/captions/{language}": {
@@ -881,7 +882,7 @@
 			"Stream Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "stream.captions.language",
+		"x-fern-sdk-group-name": "stream.videos.captions.language",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -1067,7 +1068,7 @@
 			"Stream Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "stream.captions.language.vtt",
+		"x-fern-sdk-group-name": "stream.videos.captions.language.vtt",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -1374,8 +1375,8 @@
 			"Stream Subtitles/Captions"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "stream.captions.language",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-group-name": "stream.videos.captions.language",
+		"x-fern-sdk-method-name": "generate",
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/stream/{identifier}/captions/{language}": {
@@ -1705,8 +1706,8 @@
 			"Stream Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "stream.captions.language",
-		"x-fern-sdk-method-name": "update",
+		"x-fern-sdk-group-name": "stream.videos.captions.language",
+		"x-fern-sdk-method-name": "upload",
 		"x-forge-hidden": true
 	}
 }

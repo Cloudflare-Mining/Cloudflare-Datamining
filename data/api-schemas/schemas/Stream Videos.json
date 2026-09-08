@@ -161,9 +161,9 @@
 			"Stream Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "stream",
+		"x-fern-sdk-group-name": "stream.videos",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "Permanently delete this video?"
 	},
 	"GET /accounts/{account_id}/stream": {
 		"operationId": "stream-videos-list-videos",
@@ -909,9 +909,8 @@
 			"Stream Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "stream",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "stream.videos",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/stream/{identifier}": {
 		"operationId": "stream-videos-retrieve-video-details",
@@ -1503,14 +1502,13 @@
 			"Stream Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "stream",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "stream.videos",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/embed": {
 		"operationId": "stream-videos-retreieve-embed-code-html",
-		"summary": "Retrieve embed Code HTML",
-		"description": "Fetches an HTML code snippet to embed a video in a web page delivered through Cloudflare. On success, returns an HTML fragment for use on web pages to display a video. On failure, returns a JSON response body.",
+		"summary": "Deprecated: Retrieve legacy embed code HTML",
+		"description": "Fetches the legacy HTML code snippet to embed a video in a web page delivered through Cloudflare. On success, returns an HTML fragment for use on web pages to display a video. On failure, returns a JSON response body.",
 		"parameters": [
 			{
 				"name": "identifier",
@@ -1539,7 +1537,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Retreieve embed Code HTML response.",
+				"description": "Retrieve embed Code HTML response.",
 				"content": {
 					"text/html": {
 						"schema": {
@@ -1550,7 +1548,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Retreieve embed Code HTML response failure.",
+				"description": "Retrieve embed Code HTML response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1677,9 +1675,9 @@
 			"Stream Write",
 			"Stream Read"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "stream.embed",
-		"x-fern-sdk-method-name": "get",
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "stream.videos",
+		"x-fern-sdk-method-name": "embed",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/stream/storage-usage": {
@@ -1969,9 +1967,8 @@
 			"Stream Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "stream.videos",
-		"x-fern-sdk-method-name": "storage-usage",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "stream",
+		"x-fern-sdk-method-name": "storage-usage"
 	},
 	"POST /accounts/{account_id}/stream": {
 		"operationId": "stream-videos-initiate-video-uploads-using-tus",
@@ -2201,9 +2198,8 @@
 			"Stream Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "stream",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "stream.videos",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/stream/{identifier}": {
 		"operationId": "stream-videos-update-video-details",
@@ -2892,9 +2888,8 @@
 			"Stream Videos"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "stream",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "stream.videos",
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/stream/{identifier}/token": {
 		"operationId": "stream-videos-create-signed-url-tokens-for-videos",
@@ -3285,9 +3280,9 @@
 			"Stream Videos"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "stream.token",
+		"x-fern-sdk-group-name": "stream.videos.token",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "Provision temporary token? For use at scale, consider creating a signing key instead."
 	},
 	"POST /accounts/{account_id}/stream/copy": {
 		"operationId": "stream-videos-upload-videos-from-a-url",
@@ -3408,12 +3403,14 @@
 							{
 								"required": [
 									"input"
-								]
+								],
+								"type": "object"
 							},
 							{
 								"required": [
 									"url"
-								]
+								],
+								"type": "object"
 							}
 						]
 					}
@@ -3979,14 +3976,13 @@
 			"Stream Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "stream.copy",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "stream.videos",
+		"x-fern-sdk-method-name": "copy"
 	},
 	"POST /accounts/{account_id}/stream/direct_upload": {
 		"operationId": "stream-videos-upload-videos-via-direct-upload-ur-ls",
 		"summary": "Upload videos via direct upload URLs",
-		"description": "Creates a direct upload that allows video uploads without an API key.",
+		"description": "Creates a direct upload endpoint that allows an end-user to upload a video without an API key.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4440,8 +4436,7 @@
 			"Stream Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "stream.direct-upload",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "stream.videos.direct-upload",
+		"x-fern-sdk-method-name": "create"
 	}
 }

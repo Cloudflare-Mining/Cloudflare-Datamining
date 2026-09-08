@@ -267,7 +267,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.keys",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "Permanently delete signing key? All tokens created with this key will become unauthorized!"
 	},
 	"GET /accounts/{account_id}/stream/keys": {
 		"operationId": "stream-signing-keys-list-signing-keys",
@@ -543,8 +543,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.keys",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"POST /accounts/{account_id}/stream/keys": {
 		"operationId": "stream-signing-keys-create-signing-keys",
@@ -823,7 +822,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.keys",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

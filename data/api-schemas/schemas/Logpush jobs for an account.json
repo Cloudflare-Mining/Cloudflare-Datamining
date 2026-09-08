@@ -890,6 +890,12 @@
 														"nullable": true,
 														"x-auditable": true
 													},
+													"filter_attack_traffic": {
+														"description": "When true, excludes DDoS attack traffic from logs. This option is supported for the `http_requests`, `firewall_events`, and `network_analytics_logs` datasets.",
+														"type": "boolean",
+														"default": false,
+														"x-auditable": true
+													},
 													"frequency": {
 														"description": "This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 														"type": "string",
@@ -1498,6 +1504,12 @@
 														"description": "If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
 														"type": "string",
 														"nullable": true,
+														"x-auditable": true
+													},
+													"filter_attack_traffic": {
+														"description": "When true, excludes DDoS attack traffic from logs. This option is supported for the `http_requests`, `firewall_events`, and `network_analytics_logs` datasets.",
+														"type": "boolean",
+														"default": false,
 														"x-auditable": true
 													},
 													"frequency": {
@@ -2122,6 +2134,12 @@
 													"nullable": true,
 													"x-auditable": true
 												},
+												"filter_attack_traffic": {
+													"description": "When true, excludes DDoS attack traffic from logs. This option is supported for the `http_requests`, `firewall_events`, and `network_analytics_logs` datasets.",
+													"type": "boolean",
+													"default": false,
+													"x-auditable": true
+												},
 												"frequency": {
 													"description": "This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 													"type": "string",
@@ -2632,6 +2650,12 @@
 								"example": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
 								"nullable": true
 							},
+							"filter_attack_traffic": {
+								"description": "When true, excludes DDoS attack traffic from logs. This option is supported for the `http_requests`, `firewall_events`, and `network_analytics_logs` datasets.",
+								"type": "boolean",
+								"default": false,
+								"x-auditable": true
+							},
 							"frequency": {
 								"description": "This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 								"type": "string",
@@ -3060,6 +3084,12 @@
 													"description": "If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
 													"type": "string",
 													"nullable": true,
+													"x-auditable": true
+												},
+												"filter_attack_traffic": {
+													"description": "When true, excludes DDoS attack traffic from logs. This option is supported for the `http_requests`, `firewall_events`, and `network_analytics_logs` datasets.",
+													"type": "boolean",
+													"default": false,
 													"x-auditable": true
 												},
 												"frequency": {
@@ -5055,6 +5085,12 @@
 								"example": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
 								"nullable": true
 							},
+							"filter_attack_traffic": {
+								"description": "When true, excludes DDoS attack traffic from logs. This option is supported for the `http_requests`, `firewall_events`, and `network_analytics_logs` datasets.",
+								"type": "boolean",
+								"default": false,
+								"x-auditable": true
+							},
 							"frequency": {
 								"description": "This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 								"type": "string",
@@ -5480,6 +5516,12 @@
 													"description": "If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
 													"type": "string",
 													"nullable": true,
+													"x-auditable": true
+												},
+												"filter_attack_traffic": {
+													"description": "When true, excludes DDoS attack traffic from logs. This option is supported for the `http_requests`, `firewall_events`, and `network_analytics_logs` datasets.",
+													"type": "boolean",
+													"default": false,
 													"x-auditable": true
 												},
 												"frequency": {

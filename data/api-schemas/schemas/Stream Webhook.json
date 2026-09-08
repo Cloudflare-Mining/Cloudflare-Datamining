@@ -2,7 +2,7 @@
 	"DELETE /accounts/{account_id}/stream/webhook": {
 		"operationId": "stream-webhook-delete-webhooks",
 		"summary": "Delete webhooks",
-		"description": "Deletes a webhook.",
+		"description": "Deletes the on-demand video webhook.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -255,12 +255,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.webhooks",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "Delete this webhook? If recreated, the secret will change."
 	},
 	"GET /accounts/{account_id}/stream/webhook": {
 		"operationId": "stream-webhook-view-webhooks",
-		"summary": "View webhooks",
-		"description": "Retrieves a list of webhooks.",
+		"summary": "View webhook",
+		"description": "Retrieve current on-demand webhook information.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -537,13 +537,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.webhooks",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PUT /accounts/{account_id}/stream/webhook": {
 		"operationId": "stream-webhook-create-webhooks",
-		"summary": "Create webhooks",
-		"description": "Creates a webhook notification.",
+		"summary": "Create VOD webhooks",
+		"description": "Create a webhook for notifications about on-demand video uploads.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -584,12 +583,14 @@
 							{
 								"required": [
 									"notificationUrl"
-								]
+								],
+								"type": "object"
 							},
 							{
 								"required": [
 									"notification_url"
-								]
+								],
+								"type": "object"
 							}
 						]
 					}
@@ -858,6 +859,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.webhooks",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "Create a webhook for on-demand operations? Will replace previously configured webhook. Live input webhooks are handled via Notifications Service."
 	}
 }

@@ -268,7 +268,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.watermarks",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "Remove this watermark profile? New upload requests referencing this profile will fail."
 	},
 	"GET /accounts/{account_id}/stream/watermarks": {
 		"operationId": "stream-watermark-profile-list-watermark-profiles",
