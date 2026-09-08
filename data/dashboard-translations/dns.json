@@ -630,7 +630,7 @@
 	"dns.warnings.spf.ptr": "The PTR mechanism is deprecated for SPF records.",
 	"dns.warnings.invalid_hex_string": "Cloudflare will not serve this record because the %{fieldName} field contains an invalid hexadecimal string.",
 	"dns.warnings.invalid_base64_string": "Cloudflare will not serve this record because the %{fieldName} field contains an invalid Base64 string.",
-	"dns.warnings.not_covered_by_cert": "This hostname is not covered by a certificate. [View options to resolve](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/error-messages/).",
+	"dns.warnings.not_covered_by_cert": "This hostname is not covered by a certificate. Wildcard certificates only cover one subdomain level — for example, *.example.com covers www.example.com but not api.staging.example.com. [View options to resolve](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/error-messages/).",
 	"dns.warning.custom_nameservers.read_only_record": "This record maps <0>custom nameservers</0> to Cloudflare IPs, so you can use branded nameservers instead of Cloudflare's.",
 	"dns.warnings.unknown_types": "This record type is not supported and should be deleted.",
 	"dns.warnings.unknown_types.toast": "This record type is not supported and should be deleted. <0>Learn more about valid record types</0>.",
