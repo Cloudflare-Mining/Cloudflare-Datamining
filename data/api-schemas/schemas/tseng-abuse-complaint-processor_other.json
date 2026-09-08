@@ -3700,7 +3700,7 @@
 	"POST /accounts/{account_id}/abuse-reports/{report_id}/mitigations/appeal": {
 		"operationId": "RequestReview",
 		"summary": "Request review on mitigations",
-		"description": "Request a review for mitigations on an account.",
+		"description": "Request a review for mitigations on an account. Repeating a request for a mitigation with an unresolved appeal is idempotent and returns that mitigation in the in-review state.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3854,7 +3854,134 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Mitigation appeals received",
+				"description": "Mitigation appeals received, including idempotent replays of unresolved appeals.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									}
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"effective_date": {
+												"description": "Date when the mitigation will become active. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html)",
+												"type": "string",
+												"example": "2009-11-10T23:00:00Z"
+											},
+											"entity_id": {
+												"type": "string"
+											},
+											"entity_type": {
+												"description": "The type of entity targeted by a mitigation.",
+												"type": "string",
+												"enum": [
+													"url_pattern",
+													"account",
+													"zone",
+													"custom_expression"
+												]
+											},
+											"id": {
+												"description": "ID of remediation.",
+												"type": "string"
+											},
+											"status": {
+												"description": "The status of a mitigation",
+												"type": "string",
+												"enum": [
+													"pending",
+													"active",
+													"in_review",
+													"cancelled",
+													"removed"
+												]
+											},
+											"type": {
+												"description": "The type of mitigation applied to a reported entity.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"type",
+											"effective_date",
+											"status",
+											"entity_type",
+											"entity_id"
+										]
+									}
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count",
+										"total_pages"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result_info"
+							]
+						}
+					}
+				}
+			},
+			"207": {
+				"description": "Some mitigation appeals were accepted while others were invalid or cannot be appealed.",
 				"content": {
 					"application/json": {
 						"schema": {

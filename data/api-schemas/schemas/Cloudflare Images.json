@@ -102,7 +102,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -139,7 +141,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -149,7 +152,8 @@
 											"type": "object",
 											"example": {}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -222,7 +226,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -259,7 +265,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -269,7 +276,8 @@
 													"type": "object",
 													"example": {}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -500,7 +508,9 @@
 													"type": "object"
 												},
 												{
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"type": "array"
 												},
 												{
@@ -624,7 +634,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -694,7 +705,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -818,7 +831,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1036,7 +1050,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1073,7 +1089,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1168,7 +1185,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1241,7 +1259,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -1278,7 +1298,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -1373,7 +1394,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1754,7 +1776,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1791,7 +1815,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1821,7 +1846,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1894,7 +1920,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -1931,7 +1959,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -1961,7 +1990,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2221,7 +2251,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2262,7 +2294,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2365,7 +2398,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2407,304 +2441,92 @@
 							}
 						},
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000,
-																		"x-auditable": true
-																	},
-																	"message": {
-																		"type": "string",
-																		"x-auditable": true
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000,
-																		"x-auditable": true
-																	},
-																	"message": {
-																		"type": "string",
-																		"x-auditable": true
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															],
-															"x-auditable": true
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
 												},
-												{
-													"properties": {
-														"result": {
-															"type": "object",
-															"properties": {
-																"continuation_token": {
-																	"description": "Continuation token to fetch next page. Passed as a query param when requesting List V2 api endpoint.",
-																	"type": "string",
-																	"example": "iD0bxlWFSVUWsDHbzIqvDkgBW4otifAAuGXLz1n8BQA",
-																	"maxLength": 32,
-																	"nullable": true,
-																	"readOnly": true,
-																	"x-auditable": true
-																}
-															}
-														}
-													}
-												}
-											]
-										},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"images": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"creator": {
-																		"description": "Can set the creator field with an internal user ID.",
-																		"type": "string",
-																		"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
-																		"maxLength": 1024,
-																		"nullable": true,
-																		"x-auditable": true
-																	},
-																	"filename": {
-																		"description": "Image file name.",
-																		"type": "string",
-																		"example": "logo.png",
-																		"maxLength": 255,
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"id": {
-																		"description": "Image unique identifier.",
-																		"type": "string",
-																		"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
-																		"maxLength": 32,
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"meta": {
-																		"description": "User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.",
-																		"type": "object",
-																		"example": {
-																			"key": "value"
-																		}
-																	},
-																	"requireSignedURLs": {
-																		"description": "Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image.",
-																		"type": "boolean",
-																		"example": true,
-																		"default": false,
-																		"x-auditable": true
-																	},
-																	"uploaded": {
-																		"description": "When the media item was uploaded.",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-02T02:20:00.123Z",
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"variants": {
-																		"description": "Object specifying available variants for an image.",
-																		"type": "array",
-																		"items": {
-																			"anyOf": [
-																				{
-																					"description": "URI to thumbnail variant for an image.",
-																					"type": "string",
-																					"format": "uri",
-																					"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
-																					"readOnly": true,
-																					"x-auditable": true
-																				},
-																				{
-																					"description": "URI to hero variant for an image.",
-																					"type": "string",
-																					"format": "uri",
-																					"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
-																					"readOnly": true,
-																					"x-auditable": true
-																				},
-																				{
-																					"description": "URI to original variant for an image.",
-																					"type": "string",
-																					"format": "uri",
-																					"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original",
-																					"readOnly": true,
-																					"x-auditable": true
-																				}
-																			]
-																		},
-																		"example": [
-																			"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
-																			"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
-																			"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original"
-																		],
-																		"readOnly": true
-																	}
-																}
-															}
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
 													}
-												}
-											}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000,
-																"x-auditable": true
-															},
-															"message": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000,
-																"x-auditable": true
-															},
-															"message": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											],
-											"x-auditable": true
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									]
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									],
+									"x-auditable": true
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -2715,304 +2537,92 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000,
-																		"x-auditable": true
-																	},
-																	"message": {
-																		"type": "string",
-																		"x-auditable": true
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000,
-																		"x-auditable": true
-																	},
-																	"message": {
-																		"type": "string",
-																		"x-auditable": true
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															],
-															"x-auditable": true
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
 												},
-												{
-													"properties": {
-														"result": {
-															"type": "object",
-															"properties": {
-																"continuation_token": {
-																	"description": "Continuation token to fetch next page. Passed as a query param when requesting List V2 api endpoint.",
-																	"type": "string",
-																	"example": "iD0bxlWFSVUWsDHbzIqvDkgBW4otifAAuGXLz1n8BQA",
-																	"maxLength": 32,
-																	"nullable": true,
-																	"readOnly": true,
-																	"x-auditable": true
-																}
-															}
-														}
-													}
-												}
-											]
-										},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"images": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"creator": {
-																		"description": "Can set the creator field with an internal user ID.",
-																		"type": "string",
-																		"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
-																		"maxLength": 1024,
-																		"nullable": true,
-																		"x-auditable": true
-																	},
-																	"filename": {
-																		"description": "Image file name.",
-																		"type": "string",
-																		"example": "logo.png",
-																		"maxLength": 255,
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"id": {
-																		"description": "Image unique identifier.",
-																		"type": "string",
-																		"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
-																		"maxLength": 32,
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"meta": {
-																		"description": "User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.",
-																		"type": "object",
-																		"example": {
-																			"key": "value"
-																		}
-																	},
-																	"requireSignedURLs": {
-																		"description": "Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image.",
-																		"type": "boolean",
-																		"example": true,
-																		"default": false,
-																		"x-auditable": true
-																	},
-																	"uploaded": {
-																		"description": "When the media item was uploaded.",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-02T02:20:00.123Z",
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"variants": {
-																		"description": "Object specifying available variants for an image.",
-																		"type": "array",
-																		"items": {
-																			"anyOf": [
-																				{
-																					"description": "URI to thumbnail variant for an image.",
-																					"type": "string",
-																					"format": "uri",
-																					"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
-																					"readOnly": true,
-																					"x-auditable": true
-																				},
-																				{
-																					"description": "URI to hero variant for an image.",
-																					"type": "string",
-																					"format": "uri",
-																					"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
-																					"readOnly": true,
-																					"x-auditable": true
-																				},
-																				{
-																					"description": "URI to original variant for an image.",
-																					"type": "string",
-																					"format": "uri",
-																					"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original",
-																					"readOnly": true,
-																					"x-auditable": true
-																				}
-																			]
-																		},
-																		"example": [
-																			"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
-																			"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
-																			"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original"
-																		],
-																		"readOnly": true
-																	}
-																}
-															}
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
 													}
-												}
-											}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000,
-																"x-auditable": true
-															},
-															"message": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000,
-																"x-auditable": true
-															},
-															"message": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											],
-											"x-auditable": true
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									]
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									],
+									"x-auditable": true
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -3121,7 +2731,9 @@
 													"type": "object"
 												},
 												{
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"type": "array"
 												},
 												{
@@ -3168,7 +2780,8 @@
 												"truncated"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3416,7 +3029,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -3453,7 +3068,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -3548,7 +3164,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3621,7 +3238,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -3658,7 +3277,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -3753,7 +3373,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -4001,7 +3622,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -4038,7 +3661,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -4133,7 +3757,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -4206,7 +3831,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -4243,7 +3870,8 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -4338,7 +3966,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -4558,7 +4187,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -4595,13 +4226,15 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"id": {
 													"description": "Image unique identifier.",
@@ -4616,7 +4249,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -4689,7 +4323,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -4726,13 +4362,15 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"id": {
 															"description": "Image unique identifier.",
@@ -4747,7 +4385,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -4993,7 +4632,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -5030,13 +4671,15 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"id": {
 													"description": "Image unique identifier.",
@@ -5054,7 +4697,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -5127,7 +4771,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -5164,13 +4810,15 @@
 																}
 															]
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"id": {
 															"description": "Image unique identifier.",
@@ -5188,7 +4836,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},

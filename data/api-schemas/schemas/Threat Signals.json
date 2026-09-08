@@ -2406,7 +2406,87 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Threat Signals response."
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "number"
+										},
+										"feeds": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"feed_enabled": {
+														"type": "boolean"
+													},
+													"feed_id": {
+														"type": "string",
+														"format": "uuid"
+													},
+													"status": {
+														"type": "string",
+														"enum": [
+															"workflow_created",
+															"error"
+														]
+													},
+													"workflow_id": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"feed_id",
+													"workflow_id",
+													"status"
+												],
+												"type": "object"
+											}
+										},
+										"triggered": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"feeds",
+										"triggered",
+										"errors"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."

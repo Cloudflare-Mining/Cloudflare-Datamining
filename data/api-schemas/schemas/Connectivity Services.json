@@ -2,7 +2,7 @@
 	"DELETE /accounts/{account_id}/connectivity/directory/services/{service_id}": {
 		"operationId": "connectivity-services-delete",
 		"summary": "Delete Workers VPC connectivity service",
-		"description": "Removes a single Workers VPC connectivity service by its ID.",
+		"description": "Removes a single Workers VPC connectivity service by its ID. Any Worker\nbindings referencing this service will stop working.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -150,10 +150,11 @@
 		"tags": [
 			"Connectivity Services"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "directory.services",
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "workers-vpc.services",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation permanently deletes a Workers VPC connectivity service."
 	},
 	"GET /accounts/{account_id}/connectivity/directory/services": {
 		"operationId": "connectivity-services-list",
@@ -975,8 +976,8 @@
 		"tags": [
 			"Connectivity Services"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "directory.services",
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "workers-vpc.services",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -1727,8 +1728,8 @@
 		"tags": [
 			"Connectivity Services"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "directory.services",
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "workers-vpc.services",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -3099,8 +3100,8 @@
 		"tags": [
 			"Connectivity Services"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "directory.services",
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "workers-vpc.services",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
@@ -4385,8 +4386,8 @@
 		"tags": [
 			"Connectivity Services"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "directory.services",
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "workers-vpc.services",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	}
