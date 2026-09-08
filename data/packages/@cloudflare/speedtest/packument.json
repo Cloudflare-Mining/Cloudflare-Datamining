@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/speedtest",
 	"dist-tags": {
-		"latest": "1.13.1"
+		"latest": "1.14.0"
 	},
 	"versions": {
 		"0.0.1": {
@@ -1873,6 +1873,44 @@
 					}
 				},
 				"unpackedSize": 247860
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		},
+		"1.14.0": {
+			"name": "@cloudflare/speedtest",
+			"version": "1.14.0",
+			"devDependencies": {
+				"@vitest/browser-playwright": "^4.1.7",
+				"husky": "^9.1.7",
+				"lint-staged": "^16.0.0",
+				"oxfmt": "^0.64.0",
+				"oxlint": "^1.79.0",
+				"playwright": "^1.60.0",
+				"tsdown": "^0.22.1",
+				"typescript": "^5.8.3",
+				"vite": "^8.0.16",
+				"vitest": "^4.1.7"
+			},
+			"dist": {
+				"integrity": "sha512-cBx5TUNvb4LeGoFTyUo0KSFtU9WptqhPghAZFZZoGlKlsD87EVTgGsPj87E0/iR4mcM0eoPuRl5DrqVVPb7HSQ==",
+				"shasum": "4adb407f741e44c22612f101c48c19fc4a60b424",
+				"tarball": "https://registry.npmjs.org/@cloudflare/speedtest/-/speedtest-1.14.0.tgz",
+				"fileCount": 6,
+				"unpackedSize": 251783,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fspeedtest@1.14.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIFE0abdhw2b/DEv/EfYXVtizkw7t+6ywwnFDQH4Mh6CaAiBLJlGo4/i+nbYfm10MkHsaJsfzPkfFcGq20CW2VtFflw=="
+					}
+				]
 			},
 			"engines": {
 				"node": ">=18"
