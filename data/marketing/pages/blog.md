@@ -10,17 +10,17 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
-September 3, 2026 [<h2>Introducing context-aware vulnerability discovery and remediation with Cloudflare Managed Defense and OpenAI Daybreak models</h2>](https://blog.cloudflare.com/vulnerability-discovery-remediation/)
+September 9, 2026 [<h2>How we rebuilt Cloudflare Workers' module registry for Node.js compatibility</h2>](https://blog.cloudflare.com/workers-module-registry-nodejs/)
 
-Use production traffic and security signals to prioritize findings, prepare edge mitigations when safe, and propose code patches. By combining WAF data with OpenAI Daybreak models, Vulnerability Discovery and Remediation helps teams identify and patch the most critical threats first.
+Workers now enables Node.js compatibility by default, supports applications up to 64 mebibytes, and adds a URL-based module registry with import.meta, lazy compilation, shared code caches, and clearer errors.
 
-![Ken Sanderson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M1JE7VX5ZR53ECE5VV7K58MY.01M1JE7WM6ZH4TY3VPSRFW4HMZ.webp&w=64&h=64&f=webp&fit=cover&position=center)
+![Logan Gatlin](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MBZXTSY5013HEJC8611B.png&w=64&h=64&f=webp&fit=cover&position=center)
 
-![Jacob Crisp](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468SZ92CTQZG9K5AR69G1E.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Dan Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NPTFNWGMZXQMX2WDPGJS.webp&w=64&h=64&f=webp&fit=cover&position=center)![Blake Darché](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VFGSFTVH9S7TKX7T5BAC.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
+![James Snell](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M1WCHS0XTJB3PTN1JY2AVN1A.01M1WCHSTNBFPZBCFER3HC42GA.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
-[Ken Sanderson](https://blog.cloudflare.com/author/ken-sanderson/),  [Jacob Crisp](https://blog.cloudflare.com/author/jacob-crisp/),  [Dan Jones](https://blog.cloudflare.com/author/dan-jones/), and  [Blake Darché](https://blog.cloudflare.com/author/blake/)
+[Logan Gatlin](https://blog.cloudflare.com/author/logan-gatlin/) and  [James Snell](https://blog.cloudflare.com/author/james-snell/)
 
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M1JDYW2RHXMJDDXS13K6VESF.01M1JDYX370D7EV4BHCDQS4C6J.png&w=2048&h=1152&f=webp&fit=cover&position=center)![](data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAAWREmWBUrVhwyUx81UR4yURosUxYqVhQrVxosWCEzWys/XDBEWSw+ViQyVBsqVRgqVCAxWCk7XzZKYzxPYTdIWys4Vh8qVBwpUCAzVis+YDpPZkBVZTpMXS05Vh8qURspTRoyUyY9XTVNZDxSYzdJXCk2VBsoTxYpSwkuTxg4VypGXTFKXSxBWSAwUhEmSwsqSgAqTAAyUBk9VCE/Vx43VRMpTwMkSQArSgAoSgAvTQ05URg6VBYyUwslTgAjSAAr)](https://blog.cloudflare.com/vulnerability-discovery-remediation/)
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M1WCDP58M0ZWWK4EQ5Z60396.01M1WCDPYM384QTHNEZA0WQ8W8.png&w=1999&h=1066&f=webp&fit=cover&position=center)![](data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA/////Pz63OLvtcbqnrvurMbzzdnw6Ojn////+vv91t3zqrzukrDxpb71y9bz6ejr////+v3/0tv4obXzi6j2pbv6ztf36+vw////////1d/+pbr5lrD7s8T/19/98PH2////////4Or/ucv/ssb/y9j/5+3/9/r8////////7/j/0eD/0eD/5u//+P7/////////////+///4/H/5/T/+f//////////////////////6vj/7/v/////////////)](https://blog.cloudflare.com/workers-module-registry-nodejs/)
 
 September 8, 2026 [<h2>Automatic Key Exchange: faster, post-quantum secure origin handshakes for 45 billion daily connections (and counting)</h2>](https://blog.cloudflare.com/automatic-key-exchange-for-origins/)
 
@@ -29,6 +29,14 @@ Automatic Key Exchange probes TLS 1.3-capable customer origins to learn which ke
 ![Suleman Ahmad](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MCC5WJ427B6XCV7Z59EV.png&w=64&h=64&f=webp&fit=cover&position=center)![Yawar Jamal](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M1PVVBNHNQWX6D1BK30VQW4X.01M1PVVCG30FCBAY7PS1R17190.png&w=64&h=64&f=webp&fit=cover&position=center)![Alex Krivit](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Q0QQ4YF44E63CZ5V25R6.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Suleman Ahmad](https://blog.cloudflare.com/author/suleman/),  [Yawar Jamal](https://blog.cloudflare.com/author/yawar/), and  [Alex Krivit](https://blog.cloudflare.com/author/alex/)
+
+September 3, 2026 [<h2>Introducing context-aware vulnerability discovery and remediation with Cloudflare Managed Defense and OpenAI Daybreak models</h2>](https://blog.cloudflare.com/vulnerability-discovery-remediation/)
+
+Use production traffic and security signals to prioritize findings, prepare edge mitigations when safe, and propose code patches. By combining WAF data with OpenAI Daybreak models, Vulnerability Discovery and Remediation helps teams identify and patch the most critical threats first.
+
+![Ken Sanderson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M1JE7VX5ZR53ECE5VV7K58MY.01M1JE7WM6ZH4TY3VPSRFW4HMZ.webp&w=64&h=64&f=webp&fit=cover&position=center)![Jacob Crisp](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468SZ92CTQZG9K5AR69G1E.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Dan Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NPTFNWGMZXQMX2WDPGJS.webp&w=64&h=64&f=webp&fit=cover&position=center)![Blake Darché](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VFGSFTVH9S7TKX7T5BAC.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Ken Sanderson](https://blog.cloudflare.com/author/ken-sanderson/),  [Jacob Crisp](https://blog.cloudflare.com/author/jacob-crisp/),  [Dan Jones](https://blog.cloudflare.com/author/dan-jones/), and  [Blake Darché](https://blog.cloudflare.com/author/blake/)
 
 September 1, 2026 [<h2>How we could save petabytes of cache storage with Zstandard and Pingora</h2>](https://blog.cloudflare.com/cache-transcoding/)
 
@@ -158,14 +166,6 @@ Cloudflare for Government achieves FedRAMP Class D (High) Certified status. We a
 
 [Wesley Evans](https://blog.cloudflare.com/author/wesley/),  [Tom Lianza](https://blog.cloudflare.com/author/tom-lianza/), and  [Jake Schaeufele](https://blog.cloudflare.com/author/jake-schaeufele/)
 
-August 7, 2026 [<h2>Unveiling good and bad behaviors on the Agentic Internet</h2>](https://blog.cloudflare.com/good-and-bad-agentic-behaviors/)
-
-Cloudflare is shifting bot mitigation from point-in-time Risk assessment to continuous Trust evaluation. Learn how new good and bad behaviors from bots and agents are assessed by our systems, including BotBase and Precursor — and try out our Precursor Trace simulation to see how your own cursor movements would be assessed as human or bot.
-
-![Jin-Hee Lee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GG1XJCDV61NM8YJGK6YN.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Marina Elmore](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477HVM8X1SKDG8ADKQJ9T3.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Jin-Hee Lee](https://blog.cloudflare.com/author/jin-hee-lee/) and  [Marina Elmore](https://blog.cloudflare.com/author/marina-elmore/)
-
 Load more
 
 Search is temporarily unavailable.
@@ -182,16 +182,16 @@ All Categories
 
 </summary>
 
-- [AI](https://blog.cloudflare.com/tag/ai/)
-- [Developers](https://blog.cloudflare.com/tag/developers/)
-- [Radar](https://blog.cloudflare.com/tag/cloudflare-radar/)
-- [Product News](https://blog.cloudflare.com/tag/product-news/)
-- [Security](https://blog.cloudflare.com/tag/security/)
-- [Policy &amp; Legal](https://blog.cloudflare.com/tag/policy/)
-- [Zero Trust](https://blog.cloudflare.com/tag/zero-trust/)
-- [Speed &amp; Reliability](https://blog.cloudflare.com/tag/speed-and-reliability/)
-- [Life at Cloudflare](https://blog.cloudflare.com/tag/life-at-cloudflare/)
-- [Partners](https://blog.cloudflare.com/tag/partners/)
+- <a href="https://blog.cloudflare.com/tag/ai/">AI</a>
+- <a href="https://blog.cloudflare.com/tag/developers/">Developers</a>
+- <a href="https://blog.cloudflare.com/tag/cloudflare-radar/">Radar</a>
+- <a href="https://blog.cloudflare.com/tag/product-news/">Product News</a>
+- <a href="https://blog.cloudflare.com/tag/security/">Security</a>
+- <a href="https://blog.cloudflare.com/tag/policy/">Policy &amp; Legal</a>
+- <a href="https://blog.cloudflare.com/tag/zero-trust/">Zero Trust</a>
+- <a href="https://blog.cloudflare.com/tag/speed-and-reliability/">Speed &amp; Reliability</a>
+- <a href="https://blog.cloudflare.com/tag/life-at-cloudflare/">Life at Cloudflare</a>
+- <a href="https://blog.cloudflare.com/tag/partners/">Partners</a>
 
 </details>
 
@@ -204,27 +204,27 @@ English
 </summary>
 
 - Switch Site Language
-- [English](https://blog.cloudflare.com/)
-- [Deutsch](https://blog.cloudflare.com/de-de/)
-- [Español](https://blog.cloudflare.com/es-es/)
-- [Español (Latinoamérica)](https://blog.cloudflare.com/es-la/)
-- [Français](https://blog.cloudflare.com/fr-fr/)
-- [Italiano](https://blog.cloudflare.com/it-it/)
-- [日本語](https://blog.cloudflare.com/ja-jp/)
-- [한국어](https://blog.cloudflare.com/ko-kr/)
-- [繁體中文](https://blog.cloudflare.com/zh-tw/)
-- [简体中文](https://blog.cloudflare.com/zh-cn/)
-- [Português](https://blog.cloudflare.com/pt-br/)
-- [Русский](https://blog.cloudflare.com/ru-ru/)
-- [Bahasa Indonesia](https://blog.cloudflare.com/id-id/)
-- [ภาษาไทย](https://blog.cloudflare.com/th-th/)
-- [Tiếng Việt](https://blog.cloudflare.com/vi-vn/)
-- [Polski](https://blog.cloudflare.com/pl-pl/)
-- [العربية](https://blog.cloudflare.com/ar-ar/)
-- [עברית](https://blog.cloudflare.com/he-il/)
-- [Svenska](https://blog.cloudflare.com/sv-se/)
-- [Nederlands](https://blog.cloudflare.com/nl-nl/)
-- [Türkçe](https://blog.cloudflare.com/tr-tr/)
+- <a href="https://blog.cloudflare.com/">English</a>
+- <a href="https://blog.cloudflare.com/de-de/">Deutsch</a>
+- <a href="https://blog.cloudflare.com/es-es/">Español</a>
+- <a href="https://blog.cloudflare.com/es-la/">Español (Latinoamérica)</a>
+- <a href="https://blog.cloudflare.com/fr-fr/">Français</a>
+- <a href="https://blog.cloudflare.com/it-it/">Italiano</a>
+- <a href="https://blog.cloudflare.com/ja-jp/">日本語</a>
+- <a href="https://blog.cloudflare.com/ko-kr/">한국어</a>
+- <a href="https://blog.cloudflare.com/zh-tw/">繁體中文</a>
+- <a href="https://blog.cloudflare.com/zh-cn/">简体中文</a>
+- <a href="https://blog.cloudflare.com/pt-br/">Português</a>
+- <a href="https://blog.cloudflare.com/ru-ru/">Русский</a>
+- <a href="https://blog.cloudflare.com/id-id/">Bahasa Indonesia</a>
+- <a href="https://blog.cloudflare.com/th-th/">ภาษาไทย</a>
+- <a href="https://blog.cloudflare.com/vi-vn/">Tiếng Việt</a>
+- <a href="https://blog.cloudflare.com/pl-pl/">Polski</a>
+- <a href="https://blog.cloudflare.com/ar-ar/">العربية</a>
+- <a href="https://blog.cloudflare.com/he-il/">עברית</a>
+- <a href="https://blog.cloudflare.com/sv-se/">Svenska</a>
+- <a href="https://blog.cloudflare.com/nl-nl/">Nederlands</a>
+- <a href="https://blog.cloudflare.com/tr-tr/">Türkçe</a>
 
 </details>
 
