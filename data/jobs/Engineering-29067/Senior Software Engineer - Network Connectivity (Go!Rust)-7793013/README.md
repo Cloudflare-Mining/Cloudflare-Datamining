@@ -3,69 +3,58 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong>Austin, Colorado, Atlanta, Toronto, San Francisco, New York</p>
-<p><strong>About the role</strong></p>
-<p>As a Senior Product Manager at Cloudflare, you will be responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, collaborate with marketing, conduct user research, prototype a new feature, iterate on a spec, analyze usage data, and pair with an engineer on implementation.</p>
-<h4><strong>Responsibilities</strong></h4>
-<p>As the product manager for Organization and Partner Experiences, you will be responsible for building the management plane that helps everyone, but especially enterprises and partners like resellers, MSSPs, and OEMs scale their use of Cloudflare across multiple accounts. This is a deeply collaborative role which requires a healthy blend of technical background, user experience, and business savvy. You will:</p>
+<h2>Available Locations</h2>
 <ul>
-	<li>Own your space. You will own the priorities and scope for a high performing engineering team focusing on building the Organizations management plane at Cloudflare.&nbsp;</li>
-	<li>Connect the pieces. Product managers are a nerve center at Cloudflare, responsible for connecting engineering, program management, marketing, revenue, and partners to make sure that our ships go out on time and with the maximum impact.&nbsp;</li>
-	<li>Excel across teams. Enterprise capabilities cut across all of our product verticals, so you should be comfortable working with product managers across the company to prioritize systemic improvements that our enterprise customers need.</li>
-	<li>Be customer obsessed. You will be responsible for directly engaging with customers and understanding how they use our products. You’ll bring these insights back to the team to build a great roadmap.&nbsp;</li>
-	<li>Be data driven. You should be comfortable working with data, and analyzing data to quantify the impact of problems and opportunities in your space.&nbsp;</li>
+	<li>Austin, US</li>
+	<li>Lisbon, Portugal&nbsp;</li>
+	<li>London, UK&nbsp;</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<h2>About the Role</h2>
+<p>The Egress team was formed to own a very important aspect of Cloudflare's network-as-a-service: Egress connectivity for our vast portfolio of products.</p>
+<p>As a member of the Egress team, you will be a key technical contributor to a cutting edge network software infrastructure used by a growing number of Cloudflare products to connect to any destination from Cloudflare's network. Among the products powered by this technology is WARP, our Zero Trust platform, and Cloudflare's egress proxy for the <a href="https://blog.cloudflare.com/icloud-private-relay/">iCloud Private Relay</a> product.</p>
+<p>You will work closely with various Engineering teams to translate their requirements into new capabilities on the platform. Likewise you will partner with Network Engineering and SRE to ensure that the technology makes the best use of Cloudflare's world-class edge network.</p>
+<p>You will participate in all stages of the software development lifecycle, from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Rust, Go, Linux networking, ClickHouse, PostgreSQL, Grafana, Kubernetes, and more.</p>
+<p>Engineering teams at Cloudflare operate a Run What You Build model, including ours. We are responsible for the health of our system and participate in our team's on-call rotation as part of operational responsibilities.</p>
+<p>Because you’ll be solving problems of massive scale and significance, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
+<h2>Responsibilities</h2>
 <ul>
-	<li>6+ years of experience as a product manager, technical program manager, or equivalent delivering solutions in the cloud at scale for a technical audience&nbsp;</li>
-	<li>Customer focus. At Cloudflare, we serve the needs of customers large and small, and our product managers need to be comfortable understanding how to design for enterprises without compromising the experience for individuals and small businesses.&nbsp;</li>
-	<li>User experience sense. You’re comfortable working with product designers to translate the requirements into an elegant user experience.&nbsp;</li>
-	<li>Enterprise sense. You’ve worked on products that are for enterprises, and know what they need to be competitive in today’s environment.&nbsp;</li>
-	<li>Strong written and verbal communication skills for both an internal and external audience as appropriate.&nbsp;</li>
+	<li>Make daily progress on assigned engineering tasks, such as designing systems, writing specs, writing and pushing code via git, writing release plans for complex changes, rolling out production releases and working with other teams to coordinate system actions</li>
+	<li>Participate in daily and ad-hoc team meetings to share progress and collaborate</li>
+	<li>Participate in the team’s on-call schedule to ensure uptime of our production systems</li>
+	<li>Investigating customer issues that are escalated to the Egress team for triage and resolution</li>
+	<li>Responding to questions from other teams in the Egress team’s internal, public chat room</li>
+	<li>Using AI-powered tools and systems as part of your daily workflow to analyze and extend codebases, introspect production systems and datasets, and accelerate problem-solving</li>
 </ul>
-<h4>Bonus Points</h4>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
-	<li>You’ve enthusiastically adopted the latest generation of agentic coding tools, and you can use them effectively to navigate a codebase, or prototype the improvements you envision for your feature area.&nbsp;</li>
-	<li>Partners - You’ve worked closely with go to market partners or resellers and understand how to build products that make them more effective</li>
-	<li>Data-fluency - Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
-	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity. &nbsp;</li>
+	<li>Programming experience in <strong>Go or Rust</strong> and a desire to improve your skills in both.</li>
+	<li>A solid grasp of networking protocols in Layers 3 and 4 of the OSI Model.</li>
+	<li>Knowledge of HTTP, TLS, and CDN networks.</li>
+	<li>Experience in implementing secure and highly-available distributed systems.</li>
+	<li>Strong ability to debug issues in complex systems.</li>
+	<li>Strong collaboration and communication skills.</li>
+	<li>Experience/interest in HTTP networking and VPN technologies.</li>
+	<li>Experience/interest in network performance monitoring and tuning.</li>
+	<li>Willingness to adopt and integrate AI tools and systems into your engineering workflow.</li>
 </ul>
-<h3>&nbsp;</h3>
-<h3>Compensation</h3>
-<p>Compensation may be adjusted depending on work location.</p>
+<h2>Bonus Points</h2>
 <ul>
-	<li>For <strong>Colorado</strong> based hires: Estimated annual salary of $156,000 - $215,000</li>
-	<li>For <strong>San Francisco / Bay Area </strong>based hires: Estimated annual salary of $179,000 - $224,000</li>
-	<li>For <strong>New York City </strong>based hires: Estimated annual salary of $156,000 - $216,000</li>
+	<li>Knowledge of TCP/IP and Internet routing.</li>
+	<li>Professional systems-level programming experience in Rust.</li>
+	<li>Experience building tools and APIs.</li>
+	<li>Experience with monitoring, alerting, and debugging large-scale distributed systems</li>
+	<li>Experience participating in an on-call rotation.</li>
+	<li>Experience using AI-assisted development tools (e.g., code completion, codebase analysis, log/data exploration) in a professional setting.</li>
 </ul>
-<h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare's equity plan.</p>
-<h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p>Health &amp; Welfare Benefits</p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
+<h3 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
+<p data-path-to-node="1">● For Portugal based hires: Estimated annual salary is between €66,000 - €91,000.</p>
+<ul data-path-to-node="2">
+	<li>
+		<p data-path-to-node="2,0,0">The final offer will be inclusive of time exemption, in alignment with the applicable law and collective bargaining agreements.</p>
+	</li>
 </ul>
-<p>Financial Benefits</p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p>Time Off</p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<p>&nbsp;</p>
+<h3 data-path-to-node="3"><strong data-path-to-node="3" data-index-in-node="0">Equity</strong></h3>
+<p data-path-to-node="4">This role is eligible to participate in Cloudflare’s equity plan.</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

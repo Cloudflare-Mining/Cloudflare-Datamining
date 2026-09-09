@@ -3,59 +3,47 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3>Available Locations</h3>
+<p>Available Locations- New York, London</p>
+<p><strong>About Us</strong></p>
+<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers trillions of requests per month. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was recognized by the World Economic Forum as a Technology Pioneer and named to Entrepreneur Magazine’s Top Company Cultures list.</p>
+<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;&nbsp;</p>
+<p><strong>About the Role</strong></p>
+<p>Cloudflare’s Engineering Team is home to some of the industry’s top engineers, dedicated to building and scaling innovative software that handles a huge proportion of the Internet. Our Detection department sits at the heart of that mission: we identify automated, fraudulent, and malicious activity across the Internet and through our gateway. We develop advanced detection systems and machine learning models that operate at scale, collaborating with Product and Engineering teams across the company to protect our customers and stay ahead of the constantly evolving threat landscape.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>US</li>
+	<li>Lead the research, design, and evaluate detection models that identify automated, fraudulent, and malicious activity across Internet-scale data</li>
+	<li>Mentor others in how to uncover patterns and behaviors that distinguish adversaries from legitimate users.</li>
+	<li>Own the detection measurement framework, defining metrics and evaluation strategies for problems where ground truth is noisy, delayed, or contested.</li>
+	<li>Drive adoption of promising AI/ML techniques and represent Cloudflare in the broader research community.</li>
+	<li>Drive cross-functional partnerships with ML Engineers, Data Engineers, and Product; Influence roadmaps and align detection strategy with company priorities.</li>
+	<li>Shape long-term detection strategy, identifying gaps and opportunities that span multiple product areas.</li>
 </ul>
-<p><strong>Applications will be accepted until September 07, 2026.</strong></p>
-<h2>About the Role</h2>
-<p>We want to find the best people to join our team and then help you to do your best work. The Employee Relations Team is a new Center of Excellence within the People Team, with the mission to ensure our organization’s treatment of every employee is fair, respectful, and consistent with our Cloudflare Capabilities. To support that mission, this position’s responsibilities fall into proactive and reactive categories. Reactive responsibilities include handling complex investigations and partnering with business leaders on the performance management process. Proactive responsibilities include identifying and addressing trends to improve the overall employee experience at Cloudflare.</p>
-<h2>Responsibilities</h2>
-<p>In this role, you will report to the Sr. Director, Employee Relations and support our Americas People Team Business Partners (PTBPs). You will be partnering with key stakeholders across Cloudflare in various ways, including those listed below:</p>
+<p><strong>Desirable Skills, Knowledge, and Experience&nbsp;</strong></p>
 <ul>
-	<li>Operate as a trusted advisor, consulting with PTBPs and senior business leaders on complex organizational issues and challenging assumptions to create solutions that solve business problems.</li>
-	<li>Conduct complex and thorough investigations into employee relations matters, providing fair and objective recommendations for resolution.</li>
-	<li>Adhere to service level agreements for timely response and follow up to issues, including appropriate use of the case management system, effective and thorough documentation and reporting, and all associated processes.</li>
-	<li>Build, analyze, and maintain ER metrics and present data to People Team partners on a quarterly basis.</li>
-	<li>Conduct in-depth root cause analysis of ER trends, presenting data-driven stories in business language to influence talent decisions and advise on the productivity impact of attrition.</li>
-	<li>Provide advice and guidance to managers in assigned business units to address employee performance issues, including the administration of the PIP or Package process.</li>
-	<li>Partner with the Learning and Development Team to develop training workshops/classes/toolkits for leaders.</li>
-	<li>Assist with the updating of Company policies and responding to inquiries and concerns.</li>
-	<li>Lead and coordinate major global ER projects, requiring significant analysis and the development of innovative solutions that have a broad impact on the ER model and company policy.</li>
-	<li>Partner cross-functionally with key stakeholders, including Legal Compliance, Payroll, Benefits, and other departments to resolve employee issues in a timely manner.</li>
+	<li><strong>Fraud and bots at scale.</strong> You have experience across fraud, abuse, and/or bot detection on large, high-velocity traffic. You may focus on one, but you transfer instincts between them.</li>
+	<li><strong>Strong fundamentals, fluent in data.</strong> You have solid applied statistics, machine learning, and AI methodology fundamentals. You choose the right technique for the problem, and are fluent with large-scale data.</li>
+	<li>You have at least 8-10 years of experience professionally working in Data Science, ML Engineering, or Software Engineering.&nbsp;</li>
+	<li>Demonstrated ability to make ambiguous, high-stakes technical decisions with incomplete information.</li>
+	<li>You are very comfortable with Python &amp; SQL in production environments.</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<p><strong>Bonus points</strong></p>
 <ul>
-	<li>You have served on a People/HR team for a minimum of 8 years, 6 of which have been in an Employee Relations capacity.</li>
-	<li>You are motivated by cultivating company culture, building great businesses and helping people do their best work.</li>
-	<li>You possess strong knowledge of pertinent employment laws, as well as People Team management principles, practices and procedures.</li>
-	<li>You have outstanding judgment and the ability to balance the needs of the company, managers and employees.</li>
-	<li>You have a successful history of developing strong relationships and operating effectively through virtual support and in a distributed environment.</li>
-	<li>You approach challenges with a solution-focused mindset, viewing obstacles as opportunities for improvement and growth.</li>
-	<li>You have experience designing and leading change strategies for complex initiatives, partnering with stakeholders to co-create solutions and ensure buy-in.</li>
-	<li>You are strategic, have a keen business acumen, and a track record of partnering closely with business leaders. You can articulate how People Teams bring value to an organization.</li>
-	<li>You are a trusted partner who leads with empathy, building strong relationships through exceptional written and verbal communication. Your high emotional intelligence allows you to navigate sensitive situations with understanding and professionalism..</li>
-	<li>You devote time and attention to supporting our employees, fostering strong relationships and sustaining the trust placed in you.</li>
-	<li>You uphold the highest standards of integrity, communicating honestly, treating others with respect, and leading with dignity.</li>
+	<li><strong>At home in ground truth ambiguity.</strong> Building detections when ground truth is scarce is the heart of this job. You make real progress with weak, delayed, or absent labels and you're energized by adversaries that fight back.</li>
+	<li><strong>You don't burn signals.</strong> You understand (or are curious to learn) how to act on detections without tipping your hand, knowing that how you deploy and respond can erode your future visibility.</li>
+	<li><strong>Pragmatic about complexity.</strong> You know when a simple solution beats a complex one, and you don't chase small gains at disproportionate cost.</li>
+	<li><strong>Disciplined in code.</strong> You apply strong programming and engineering best practices in both research and production code.</li>
+	<li><strong>Impact-driven and clear.</strong> You connect your work to business impact and communicate clearly across technical and non-technical stakeholders.</li>
 </ul>
-<h3 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
-<p data-path-to-node="1,0,0">Compensation may be adjusted depending on work location.</p>
-<ul data-path-to-node="1">
-	<li>
-		<p data-path-to-node="1,1,0">For SF, SJ, and Bay Area Metro based hires: Estimated annual salary of $142,000 - $196,000.</p>
-	</li>
-	<li>
-		<p data-path-to-node="1,2,0">For Boston, California - Remote, Connecticut - Remote, DC Metro, Massachusetts - Remote, New Jersey - Remote, New York City, NY Metro, Remote - Washington, Washington (Kirkland), and Washington D.C. based hires: Estimated annual salary of $135,000 - $186,000.</p>
-	</li>
-	<li>
-		<p data-path-to-node="1,3,0">For Colorado - Remote, Illinois - Remote, Maryland - Remote, Minnesota - Remote, Nevada - Remote, New York - Remote, Rhode Island - Remote, and Vermont - Remote based hires: Estimated annual salary of $121,000 - $166,000.</p>
-	</li>
+<h3><strong>Compensation</strong></h3>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>&nbsp;For New York City based hires: Estimated annual salary of $215,000 - $270,000.</li>
 </ul>
-<h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare's equity plan.</p>
-<h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p>Health &amp; Welfare Benefits</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -66,18 +54,19 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p>Financial Benefits</p>
+<p><strong>Financial Benefits</strong></p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p>Time Off</p>
+<p><strong>Time Off</strong></p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

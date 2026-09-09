@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/8007326?gh_jid=8007326",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/8175615?gh_jid=8175615",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,7 +10,7 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3471915,
+	"internal_job_id": 3538229,
 	"location": {
 		"name": "Hybrid"
 	},
@@ -18,14 +18,15 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "4400 - Product",
+			"value": "4320 - Security Products Engineering",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, US"
+				"London, UK",
+				"New York, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -33,32 +34,39 @@
 			"id": 46546702,
 			"name": "Career Site Department",
 			"value": [
-				"Product"
+				"Engineering"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 8007326,
-	"updated_at": "2026-09-04T10:59:17-04:00",
+	"id": 8175615,
+	"updated_at": "2026-09-09T13:15:01-04:00",
 	"requisition_id": null,
-	"title": "Senior Product Manager - Ad Fraud and Identity Solutions",
+	"title": "Principal Data Scientist, Detection",
 	"company_name": "Cloudflare",
-	"first_published": "2026-06-16T11:31:25-04:00",
+	"first_published": "2026-09-09T13:15:01-04:00",
 	"language": "en",
 	"application_deadline": null,
 	"departments": [
 		{
-			"id": 29072,
-			"name": "Product",
+			"id": 29067,
+			"name": "Engineering",
 			"child_ids": [],
 			"parent_id": null
 		}
 	],
 	"offices": [
 		{
-			"id": 19983,
-			"name": "Austin, TX",
-			"location": "Austin, TX, United States",
+			"id": 19988,
+			"name": "London, United Kingdom",
+			"location": "London, United Kingdom",
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
+			"id": 19990,
+			"name": "New York, NY",
+			"location": "New York, New York, United States",
 			"child_ids": [],
 			"parent_id": 48752
 		}

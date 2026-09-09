@@ -3,70 +3,58 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3>Available Locations</h3>
+<h2>Available Locations</h2>
 <ul>
 	<li>Austin, US</li>
+	<li>Lisbon, Portugal&nbsp;</li>
+	<li>London, UK&nbsp;</li>
 </ul>
-<h3>About the Role</h3>
-<p>Ad Fraud is a pervasive threat on the Internet, and has been since programmatic advertising first started.&nbsp; However, the ways that Users and Consumers interact with the internet is changing, and the systems of the past to protect against fraud may no longer be optimal.</p>
-<p>At Cloudflare, we believe that it is time for the industry to rethink their approach to solving this problem.&nbsp; And with our visibility into 22.5% of the world’s websites supported with our best-in-class Application Security and Bot Management solutions, we have the visibility and technology to reinvent the way the industry solves this problem.</p>
-<p>In this role, you will own the product vision and roadmap for Cloudflare's next-gen IVT and Ad Fraud detection and data products for the advertising industry. You will help invent the future of how the industry looks at this space, and translate Cloudflare's massive network signals — bot scores, threat intelligence, traffic quality classifications — into data products that help advertisers, agencies, publishers, and verification vendors fight fraud and improve measurement accuracy. You will work at, and develop, the intersection of Cloudflare's security and performance platform and the ad tech ecosystem.</p>
-<h3>Responsibilities</h3>
-<h3>You will:</h3>
+<h2>About the Role</h2>
+<p>The Egress team was formed to own a very important aspect of Cloudflare's network-as-a-service: Egress connectivity for our vast portfolio of products.</p>
+<p>As a member of the Egress team, you will be a key technical contributor to a cutting edge network software infrastructure used by a growing number of Cloudflare products to connect to any destination from Cloudflare's network. Among the products powered by this technology is WARP, our Zero Trust platform, and Cloudflare's egress proxy for the <a href="https://blog.cloudflare.com/icloud-private-relay/">iCloud Private Relay</a> product.</p>
+<p>You will work closely with various Engineering teams to translate their requirements into new capabilities on the platform. Likewise you will partner with Network Engineering and SRE to ensure that the technology makes the best use of Cloudflare's world-class edge network.</p>
+<p>You will participate in all stages of the software development lifecycle, from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Rust, Go, Linux networking, ClickHouse, PostgreSQL, Grafana, Kubernetes, and more.</p>
+<p>Engineering teams at Cloudflare operate a Run What You Build model, including ours. We are responsible for the health of our system and participate in our team's on-call rotation as part of operational responsibilities.</p>
+<p>Because you’ll be solving problems of massive scale and significance, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
+<h2>Responsibilities</h2>
 <ul>
-	<li>Help build out the strategy, vision, and design for IVT and bot data products in the advertising space.</li>
-	<li>Be the domain expert. Deeply understand the IVT landscape, MRC accreditation standards, TAG certification requirements, and the programmatic advertising supply chain. Evangelize the vision constantly so all stakeholders are aligned and have context.</li>
-	<li>Work directly with some of the largest Enterprises in the world to build best-in-class solutions that solve real problems.</li>
-	<li>Collaborate across teams. Work closely with Cloudflare's Bot Management, Threat Intelligence, Data, Engineering, Legal, Privacy, and Business Development teams.</li>
-	<li>Coordinate with external industry bodies (MRC, TAG, IAB Tech Lab).</li>
+	<li>Make daily progress on assigned engineering tasks, such as designing systems, writing specs, writing and pushing code via git, writing release plans for complex changes, rolling out production releases and working with other teams to coordinate system actions</li>
+	<li>Participate in daily and ad-hoc team meetings to share progress and collaborate</li>
+	<li>Participate in the team’s on-call schedule to ensure uptime of our production systems</li>
+	<li>Investigating customer issues that are escalated to the Egress team for triage and resolution</li>
+	<li>Responding to questions from other teams in the Egress team’s internal, public chat room</li>
+	<li>Using AI-powered tools and systems as part of your daily workflow to analyze and extend codebases, introspect production systems and datasets, and accelerate problem-solving</li>
 </ul>
-<h3>Key Qualitifications</h3>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
-	<li>8+ years of experience as a Product Manager, Technical Program Manager, with significant time spent in ad tech, ad measurement, or ad verification</li>
-	<li>Deep understanding of Invalid Traffic (IVT) — GIVT, SIVT, MRC guidelines, TAG Certified Against Fraud standards, and how IVT data flows through the programmatic ecosystem</li>
-	<li>Experience working with or building products for DSPs, SSPs, ad exchanges, verification vendors (e.g., IAS, DoubleVerify, etc.), or measurement platforms</li>
-	<li>Exceptional communication, presentation, organizational, and analytical skills</li>
-	<li>Demonstrated ability to lead, drive consensus, and deliver in a matrix organization with multiple stakeholders</li>
+	<li>Programming experience in <strong>Go or Rust</strong> and a desire to improve your skills in both.</li>
+	<li>A solid grasp of networking protocols in Layers 3 and 4 of the OSI Model.</li>
+	<li>Knowledge of HTTP, TLS, and CDN networks.</li>
+	<li>Experience in implementing secure and highly-available distributed systems.</li>
+	<li>Strong ability to debug issues in complex systems.</li>
+	<li>Strong collaboration and communication skills.</li>
+	<li>Experience/interest in HTTP networking and VPN technologies.</li>
+	<li>Experience/interest in network performance monitoring and tuning.</li>
+	<li>Willingness to adopt and integrate AI tools and systems into your engineering workflow.</li>
 </ul>
-<h3>Desirable Skills, Knowledge, and Experience</h3>
+<h2>Bonus Points</h2>
 <ul>
-	<li>Experience with MRC accreditation processes or TAG certification</li>
-	<li>Hands-on familiarity with ads.txt, sellers.json, SCO (Supply Chain Object), and IAB Tech Lab standards</li>
-	<li>Working knowledge of privacy regulations (GDPR, CCPA, TCF) as they relate to ad measurement and data sharing</li>
-	<li>Experience with data licensing, data clean rooms, or privacy-preserving measurement approaches</li>
-	<li>Technical comfort with APIs, SQL, log analysis, and data pipeline concepts</li>
-	<li>Experience at a company that operated both a network/infrastructure platform and a data or advertising business</li>
-	<li>Pricing strategy and revenue forecasting experience for data products</li>
+	<li>Knowledge of TCP/IP and Internet routing.</li>
+	<li>Professional systems-level programming experience in Rust.</li>
+	<li>Experience building tools and APIs.</li>
+	<li>Experience with monitoring, alerting, and debugging large-scale distributed systems</li>
+	<li>Experience participating in an on-call rotation.</li>
+	<li>Experience using AI-assisted development tools (e.g., code completion, codebase analysis, log/data exploration) in a professional setting.</li>
 </ul>
-<h3>Compensation</h3>
-<p>Compensation may be adjusted depending on work location.</p>
-<h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h3>Health &amp; Welfare Benefits</h3>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
+<h3 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
+<p data-path-to-node="1">● For Portugal based hires: Estimated annual salary is between €66,000 - €91,000.</p>
+<ul data-path-to-node="2">
+	<li>
+		<p data-path-to-node="2,0,0">The final offer will be inclusive of time exemption, in alignment with the applicable law and collective bargaining agreements.</p>
+	</li>
 </ul>
-<h3>Financial Benefits</h3>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<h3>Time Off</h3>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<h3 data-path-to-node="3"><strong data-path-to-node="3" data-index-in-node="0">Equity</strong></h3>
+<p data-path-to-node="4">This role is eligible to participate in Cloudflare’s equity plan.</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

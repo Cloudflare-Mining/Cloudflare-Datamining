@@ -3,46 +3,41 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong>Austin, Colorado, Atlanta, Toronto, San Francisco, New York</p>
+<p><strong>Location: </strong>Austin, TX (US)</p>
+<p>Cloudflare’s Infrastructure Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. We ensure that all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing, global customer base.</p>
 <p><strong>About the role</strong></p>
-<p>As a Senior Product Manager at Cloudflare, you will be responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, collaborate with marketing, conduct user research, prototype a new feature, iterate on a spec, analyze usage data, and pair with an engineer on implementation.</p>
-<h4><strong>Responsibilities</strong></h4>
-<p>As the product manager for Organization and Partner Experiences, you will be responsible for building the management plane that helps everyone, but especially enterprises and partners like resellers, MSSPs, and OEMs scale their use of Cloudflare across multiple accounts. This is a deeply collaborative role which requires a healthy blend of technical background, user experience, and business savvy. You will:</p>
+<p>As a Senior Software Engineer in the Deploy@Scale team, you will provide technical leadership for the platform that powers safe, reliable, and automated deployments across Cloudflare. This is a senior IC role: you will set technical direction across multiple work streams, not just execute within one.&nbsp;</p>
+<p>You'll be expected to operate with significant autonomy - identifying the right problems to solve, driving architecture decisions that will hold up over multiple years, and influencing how dozens of engineering teams across Cloudflare think about safe change. You will partner directly with your EM and leadership to shape the multi-quarter roadmap, and you'll be a primary technical voice in cross-team design reviews, RFCs, and incident retrospectives that touch deployment safety.</p>
+<p>You'll spend meaningful time unblocking and elevating the rest of the team: reviewing designs before they become code, pairing on the hardest problems, and raising the technical bar through mentorship - without needing to be a people manager to do it. You'll be defining what the platform is, deciding what not to build, and making the tradeoffs which ensure the system is safe, fast, and scalable five years from now.</p>
+<p><strong>Where we're heading</strong></p>
 <ul>
-	<li>Own your space. You will own the priorities and scope for a high performing engineering team focusing on building the Organizations management plane at Cloudflare.&nbsp;</li>
-	<li>Connect the pieces. Product managers are a nerve center at Cloudflare, responsible for connecting engineering, program management, marketing, revenue, and partners to make sure that our ships go out on time and with the maximum impact.&nbsp;</li>
-	<li>Excel across teams. Enterprise capabilities cut across all of our product verticals, so you should be comfortable working with product managers across the company to prioritize systemic improvements that our enterprise customers need.</li>
-	<li>Be customer obsessed. You will be responsible for directly engaging with customers and understanding how they use our products. You’ll bring these insights back to the team to build a great roadmap.&nbsp;</li>
-	<li>Be data driven. You should be comfortable working with data, and analyzing data to quantify the impact of problems and opportunities in your space.&nbsp;</li>
+	<li><strong>From human-in-the-loop to machine-in-the-loop:</strong> fully automated, health-mediated deployments as the default, at hundreds of thousands of releases a day.</li>
+	<li><strong>Consolidating a fragmented landscape:&nbsp;</strong>unifying release orchestration, health mediation, feature flagging, and configuration rollback into one coherent platform.</li>
+	<li><strong>AI as a first-class part of the platform</strong>: you'll help define where and how AI assists both the platform and the humans operating it.</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<p>This is a unique opportunity to work on complex, globally distributed systems that underpin every Cloudflare product. You will play a key role in advancing the infrastructure that enables fast, safe delivery of changes to production, directly impacting the reliability and velocity of&nbsp;Cloudflare's global network.&nbsp;You will collaborate with the team to understand business needs and develop technical solutions, working closely with internal customers to turn their workflows into platform capabilities. You will thrive in a fast-paced iterative engineering environment with short release cycles.</p>
+<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
+<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
 <ul>
-	<li>6+ years of experience as a product manager, technical program manager, or equivalent delivering solutions in the cloud at scale for a technical audience&nbsp;</li>
-	<li>Customer focus. At Cloudflare, we serve the needs of customers large and small, and our product managers need to be comfortable understanding how to design for enterprises without compromising the experience for individuals and small businesses.&nbsp;</li>
-	<li>User experience sense. You’re comfortable working with product designers to translate the requirements into an elegant user experience.&nbsp;</li>
-	<li>Enterprise sense. You’ve worked on products that are for enterprises, and know what they need to be competitive in today’s environment.&nbsp;</li>
-	<li>Strong written and verbal communication skills for both an internal and external audience as appropriate.&nbsp;</li>
+	<li>8+ years of hands-on software engineering experience, including a track record of owning the architecture of complex, distributed, production-critical systems end to end.</li>
+	<li>Demonstrated technical leadership beyond your own code: driving RFCs and design reviews that other senior engineers and teams rely on, and being sought out as a technical escalation point.</li>
+	<li>Judgment for ambiguity — comfortable defining the problem and the roadmap, not just the solution, in an environment where requirements are not fully specified upfront.</li>
+	<li>Deep experience with safety, observability, and automation in production systems: designing rollback paths, health signals, and guardrails that other systems and teams build on top of.</li>
+	<li>Experience influencing technical direction across team boundaries — through architecture, mentorship, or platform APIs/contracts — without direct authority.</li>
+	<li>Comfort operating in a fast-moving environment with AI as a working tool: fluent use of AI-assisted development, critical evaluation of its output, and a point of view on where it should and shouldn't be trusted in a safety-critical system.</li>
+	<li>Experience with workflow orchestration, long-running/durable execution, or large-scale distributed systems is a strong plus.</li>
+	<li>Strong written and verbal communication — this role requires writing docs and RFCs that persuade and align, not just describe.</li>
 </ul>
-<h4>Bonus Points</h4>
+<p><strong>Bonus points</strong></p>
 <ul>
-	<li>You’ve enthusiastically adopted the latest generation of agentic coding tools, and you can use them effectively to navigate a codebase, or prototype the improvements you envision for your feature area.&nbsp;</li>
-	<li>Partners - You’ve worked closely with go to market partners or resellers and understand how to build products that make them more effective</li>
-	<li>Data-fluency - Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
-	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity. &nbsp;</li>
+	<li>Prior experience owning a deployment, progressive delivery, or change-management platform at scale.</li>
+	<li>Experience leading a technical migration across many independent teams (e.g., a platform sunset/replacement).</li>
 </ul>
-<h3>&nbsp;</h3>
-<h3>Compensation</h3>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For <strong>Colorado</strong> based hires: Estimated annual salary of $156,000 - $215,000</li>
-	<li>For <strong>San Francisco / Bay Area </strong>based hires: Estimated annual salary of $179,000 - $224,000</li>
-	<li>For <strong>New York City </strong>based hires: Estimated annual salary of $156,000 - $216,000</li>
-</ul>
-<h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare's equity plan.</p>
-<h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p>Health &amp; Welfare Benefits</p>
+<h4><strong data-path-to-node="3" data-index-in-node="0">Equity</strong></h4>
+<p data-path-to-node="4">This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p data-path-to-node="4"><strong>Benefits</strong></p>
+<p data-path-to-node="4">Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p data-path-to-node="4"><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -53,14 +48,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p>Financial Benefits</p>
+<p data-path-to-node="4"><strong>Financial Benefits</strong></p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p>Time Off</p>
+<p data-path-to-node="4"><strong>Time Off</strong></p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

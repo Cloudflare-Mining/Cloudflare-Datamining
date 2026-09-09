@@ -3,46 +3,48 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong>Austin, Colorado, Atlanta, Toronto, San Francisco, New York</p>
-<p><strong>About the role</strong></p>
-<p>As a Senior Product Manager at Cloudflare, you will be responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, collaborate with marketing, conduct user research, prototype a new feature, iterate on a spec, analyze usage data, and pair with an engineer on implementation.</p>
-<h4><strong>Responsibilities</strong></h4>
-<p>As the product manager for Organization and Partner Experiences, you will be responsible for building the management plane that helps everyone, but especially enterprises and partners like resellers, MSSPs, and OEMs scale their use of Cloudflare across multiple accounts. This is a deeply collaborative role which requires a healthy blend of technical background, user experience, and business savvy. You will:</p>
+<p><strong>Available Locations: </strong></p>
 <ul>
-	<li>Own your space. You will own the priorities and scope for a high performing engineering team focusing on building the Organizations management plane at Cloudflare.&nbsp;</li>
-	<li>Connect the pieces. Product managers are a nerve center at Cloudflare, responsible for connecting engineering, program management, marketing, revenue, and partners to make sure that our ships go out on time and with the maximum impact.&nbsp;</li>
-	<li>Excel across teams. Enterprise capabilities cut across all of our product verticals, so you should be comfortable working with product managers across the company to prioritize systemic improvements that our enterprise customers need.</li>
-	<li>Be customer obsessed. You will be responsible for directly engaging with customers and understanding how they use our products. You’ll bring these insights back to the team to build a great roadmap.&nbsp;</li>
-	<li>Be data driven. You should be comfortable working with data, and analyzing data to quantify the impact of problems and opportunities in your space.&nbsp;</li>
+	<li><strong>Austin, TX</strong></li>
+	<li><strong>San Francisco, CA</strong></li>
+	<li><strong>New York, NY</strong></li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<p><strong>Application Deadline</strong>: December 8, 2026</p>
+<h2><span style="font-size: 10pt;"><strong>About the Team</strong></span></h2>
+<p>The Strategy organization operates as a high-velocity engine at the intersection of business, technology, and go-to-market execution, driving enterprise growth, global expansion, market innovation, and strategic execution. Our multi-disciplinary team spans seven core strategic pillars: Network &amp; Infrastructure Strategy, Industry Solutions, Strategic Partnerships, International Expansion, Executive Customer Engagements, Corporate Development &amp; M&amp;A, and the new business model of the Internet. As primary connective tissue across the enterprise, we collaborate closely with Sales, Product &amp; Engineering, Finance, Legal, and Policy to translate corporate vision into measurable, real-world execution.</p>
+<p><strong>About the Role</strong></p>
+<p>We are looking for a talented individual who thrives in fast-paced, high-growth environments to join the Strategy team, focused primarily on M&amp;A with additional exposure to partnership efforts when needed. We are a small, high-agency team responsible for sourcing and executing on acquisitions and partnerships that help accelerate Cloudflare’s growth.&nbsp;</p>
+<p>In order to succeed in this role, candidates should demonstrate strong M&amp;A sourcing/evaluation/execution experience, ability to understand technical concepts and businesses, and ability to proactively drive cross-functional initiatives end-to-end with limited oversight.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>6+ years of experience as a product manager, technical program manager, or equivalent delivering solutions in the cloud at scale for a technical audience&nbsp;</li>
-	<li>Customer focus. At Cloudflare, we serve the needs of customers large and small, and our product managers need to be comfortable understanding how to design for enterprises without compromising the experience for individuals and small businesses.&nbsp;</li>
-	<li>User experience sense. You’re comfortable working with product designers to translate the requirements into an elegant user experience.&nbsp;</li>
-	<li>Enterprise sense. You’ve worked on products that are for enterprises, and know what they need to be competitive in today’s environment.&nbsp;</li>
-	<li>Strong written and verbal communication skills for both an internal and external audience as appropriate.&nbsp;</li>
+	<li>Play a key role on all phases of M&amp;A from ideation through execution.</li>
+	<li>Partner with M&amp;A team and with R&amp;D / GTM leaders to evaluate M&amp;A opportunities, with cross-functional teams to execute deals, and with the M&amp;A integration team to ensure post-close success.</li>
+	<li>Drive deal execution process end-to-end, including financial / strategic analysis of potential transactions, supporting negotiation processes, and leading internal deal teams.</li>
+	<li>Lead or support new partnership efforts and other strategy projects as needed.</li>
 </ul>
-<h4>Bonus Points</h4>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>You’ve enthusiastically adopted the latest generation of agentic coding tools, and you can use them effectively to navigate a codebase, or prototype the improvements you envision for your feature area.&nbsp;</li>
-	<li>Partners - You’ve worked closely with go to market partners or resellers and understand how to build products that make them more effective</li>
-	<li>Data-fluency - Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
-	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity. &nbsp;</li>
+	<li>7+ years of professional or military experience that includes <strong>investment banking/investing </strong>and <strong>corporate development </strong>at high-growth B2B technology companies.</li>
+	<li><strong>Technical aptitude &amp; product fluency</strong>: Deep familiarity with and excitement about the Internet infrastructure landscape, such as the AI, cybersecurity, infrastructure, developer tools, and other B2B SaaS markets.</li>
+	<li><strong>Ownership &amp; ability to execute</strong>: Experience leading or playing key role in M&amp;A processes end-to-end, from sourcing and strategic evaluation through closing.</li>
+	<li><strong>Intellectual curiosity &amp; analytical mindset</strong>: Naturally curious problem-solver who thrives on unraveling ambiguous technical and business challenges, distilling them into clear choices and actionable plans, and ensuring smooth execution on those plans.</li>
 </ul>
-<h3>&nbsp;</h3>
-<h3>Compensation</h3>
+<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For <strong>Colorado</strong> based hires: Estimated annual salary of $156,000 - $215,000</li>
-	<li>For <strong>San Francisco / Bay Area </strong>based hires: Estimated annual salary of $179,000 - $224,000</li>
-	<li>For <strong>New York City </strong>based hires: Estimated annual salary of $156,000 - $216,000</li>
+	<li>
+		<p data-path-to-node="1,1,0">For San Francisco Bay Area based hires: Estimated annual salary of $177,000 - $243,000.</p>
+	</li>
+	<li>
+		<p data-path-to-node="1,2,0">For New York City based hires: Estimated annual salary of $169,000 - $232,000.</p>
+	</li>
 </ul>
-<h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare's equity plan.</p>
-<h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p>Health &amp; Welfare Benefits</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -53,19 +55,18 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p>Financial Benefits</p>
+<p><strong>Financial Benefits</strong></p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p>Time Off</p>
+<p><strong>Time Off</strong></p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
