@@ -116,7 +116,7 @@
 		"enabled": false
 	},
 	"ai-auto-rag-skip-domain-verification": {
-		"enabled": false
+		"enabled": true
 	},
 	"ai-auto-rag-test-models": {
 		"enabled": true
@@ -1511,6 +1511,9 @@
 			"question",
 			"security-lead"
 		]
+	},
+	"hide-block-ai-bots": {
+		"enabled": false
 	},
 	"honest-invoice-test": {
 		"enabled": false
