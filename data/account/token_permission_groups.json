@@ -3447,6 +3447,24 @@
 		"category": "dns_and_zones"
 	},
 	{
+		"id": "69ca0c60ffc24f5386ccb38885112c44",
+		"name": "Zone Observability Read",
+		"description": "Grants read access to Cloudflare Zone Observability",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		],
+		"category": "analytics_and_logs"
+	},
+	{
+		"id": "6a70cfea8fe441a2b0caf820f8ade62d",
+		"name": "Zone Observability Write",
+		"description": "Grants read and write access to Cloudflare Zone Observability",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		],
+		"category": "analytics_and_logs"
+	},
+	{
 		"id": "c8fed203ed3043cba015a93ad1616f1f",
 		"name": "Zone Read",
 		"description": "Grants read access to zone management",
