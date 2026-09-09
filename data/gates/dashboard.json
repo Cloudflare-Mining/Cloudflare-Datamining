@@ -989,7 +989,7 @@
 		"enabled": true
 	},
 	"deseng-load-balancing-ui": {
-		"enabled": false
+		"enabled": true
 	},
 	"deseng-logout-on-403-from-must-succeed-endpoints": {
 		"enabled": false
@@ -1049,7 +1049,7 @@
 		"enabled": false
 	},
 	"deseng-visitor-risk-intel": {
-		"enabled": false
+		"enabled": true
 	},
 	"deseng-worker-domain-tab": {
 		"enabled": true
@@ -1414,6 +1414,9 @@
 	},
 	"event-hub-ui": {
 		"enabled": true
+	},
+	"experimental-edge-storage": {
+		"enabled": false
 	},
 	"expose-origin-ip": {
 		"enabled": false
@@ -2741,6 +2744,9 @@
 	},
 	"storage-and-databases-account-navigation": {
 		"enabled": true
+	},
+	"stratus-data-ga": {
+		"enabled": false
 	},
 	"stratus-universal-nav-q2-26": {
 		"enabled": true
