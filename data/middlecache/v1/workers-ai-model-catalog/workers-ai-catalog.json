@@ -1,5 +1,5 @@
 {
-	"generated_at": "2026-09-08T04:34:00.295Z",
+	"generated_at": "2026-09-09T04:33:57.314Z",
 	"model_count": 65,
 	"models": [
 		{
@@ -64,10 +64,14 @@
 			"tags": [],
 			"context_length": 128000,
 			"max_output_tokens": null,
-			"supports_async": false,
+			"supports_async": true,
 			"hosting": "hosted",
 			"data_source": "legacy",
 			"properties": [
+				{
+					"property_id": "async_queue",
+					"value": "true"
+				},
 				{
 					"property_id": "context_window",
 					"value": "128000"
@@ -3006,10 +3010,14 @@
 			"tags": [],
 			"context_length": 128000,
 			"max_output_tokens": null,
-			"supports_async": false,
+			"supports_async": true,
 			"hosting": "hosted",
 			"data_source": "legacy",
 			"properties": [
+				{
+					"property_id": "async_queue",
+					"value": "true"
+				},
 				{
 					"property_id": "context_window",
 					"value": "128000"
