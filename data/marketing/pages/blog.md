@@ -10,17 +10,25 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+September 10, 2026 [<h2>1.1.1.1 now supports post-quantum DNSSEC, all 2,420 bytes of it</h2>](https://blog.cloudflare.com/post-quantum-dnssec-1111/)
+
+1.1.1.1 now validates DNSSEC signatures using NIST's post-quantum ML-DSA-44 algorithm. Here is how we manage 2,420-byte signatures and downgrade risks at scale.
+
+![Sebastiaan Neuteboom](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GH720TA5A2634QYMAXZR.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+![Bas Westerbaan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N3BWJ6WS6790KRRJ4RWD.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Sebastiaan Neuteboom](https://blog.cloudflare.com/author/sebastiaan-neuteboom/) and  [Bas Westerbaan](https://blog.cloudflare.com/author/bas/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M25DK32HZ1WQH3H12JRZ8W35.01M25DK70WYHHWWR2VQYE94TNP.png&w=1999&h=1125&f=webp&fit=cover&position=center)![](data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA/////vz99/X07u7v5urz4+j35ejz6ujq//////7/9vb26+3y4ej23ub64uf26unt////////9vj65+323Of62ub+4un67Ovx////////9vr/5u/63On+3Or/5e7/7/D2////////+f7/6fP/4vD/5vP/7/b/9fb6/////////P//7vj/7Pj/9P3/+v//+/z+////////////8vz/9f//////////////////////////9P7/+P//////////////)](https://blog.cloudflare.com/post-quantum-dnssec-1111/)
+
 September 9, 2026 [<h2>How we rebuilt Cloudflare Workers' module registry for Node.js compatibility</h2>](https://blog.cloudflare.com/workers-module-registry-nodejs/)
 
 Workers now enables Node.js compatibility by default, supports applications up to 64 mebibytes, and adds a URL-based module registry with import.meta, lazy compilation, shared code caches, and clearer errors.
 
-![Logan Gatlin](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MBZXTSY5013HEJC8611B.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-![James Snell](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M1WCHS0XTJB3PTN1JY2AVN1A.01M1WCHSTNBFPZBCFER3HC42GA.webp&w=64&h=64&f=webp&fit=cover&position=center)
+![Logan Gatlin](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MBZXTSY5013HEJC8611B.png&w=64&h=64&f=webp&fit=cover&position=center)![James Snell](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M1WCHS0XTJB3PTN1JY2AVN1A.01M1WCHSTNBFPZBCFER3HC42GA.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Logan Gatlin](https://blog.cloudflare.com/author/logan-gatlin/) and  [James Snell](https://blog.cloudflare.com/author/james-snell/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M1WCDP58M0ZWWK4EQ5Z60396.01M1WCDPYM384QTHNEZA0WQ8W8.png&w=1999&h=1066&f=webp&fit=cover&position=center)![](data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA/////Pz63OLvtcbqnrvurMbzzdnw6Ojn////+vv91t3zqrzukrDxpb71y9bz6ejr////+v3/0tv4obXzi6j2pbv6ztf36+vw////////1d/+pbr5lrD7s8T/19/98PH2////////4Or/ucv/ssb/y9j/5+3/9/r8////////7/j/0eD/0eD/5u//+P7/////////////+///4/H/5/T/+f//////////////////////6vj/7/v/////////////)](https://blog.cloudflare.com/workers-module-registry-nodejs/)
 
 September 8, 2026 [<h2>Automatic Key Exchange: faster, post-quantum secure origin handshakes for 45 billion daily connections (and counting)</h2>](https://blog.cloudflare.com/automatic-key-exchange-for-origins/)
 
@@ -157,14 +165,6 @@ Our latest Agents Week has come to a close. Here's a recap of all the announceme
 ![Shelley Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48R153ZF4GWNZYC0QQPY6F.png&w=64&h=64&f=webp&fit=cover&position=center)![Ann Ming Samborski](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MY1PMDMM9JK9SM0E02KA.png&w=64&h=64&f=webp&fit=cover&position=center)![Kathy Liao](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CCSZ168NDHJPTF31M9JS.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Shelley Jones](https://blog.cloudflare.com/author/shelley/),  [Ann Ming Samborski](https://blog.cloudflare.com/author/ann-ming-samborski/), and  [Kathy Liao](https://blog.cloudflare.com/author/kathy/)
-
-August 10, 2026 [<h2>Serving the most critical missions: Cloudflare for Government achieves FedRAMP Class D (High) Certified status</h2>](https://blog.cloudflare.com/fedramp-class-d-certification/)
-
-Cloudflare for Government achieves FedRAMP Class D (High) Certified status. We also announce our commitment to pursue DoD IL4 authorization. Cloudflare brings world-class security, performance, and developer products to the public sector.
-
-![Wesley Evans](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NY89SHS2051YPQ8PN11B.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Tom Lianza](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47F5DZ4RQ7MZN8EVG2J7A4.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Jake Schaeufele](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWHPYY93PKDF2943PJ1P6JTH.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Wesley Evans](https://blog.cloudflare.com/author/wesley/),  [Tom Lianza](https://blog.cloudflare.com/author/tom-lianza/), and  [Jake Schaeufele](https://blog.cloudflare.com/author/jake-schaeufele/)
 
 Load more
 
