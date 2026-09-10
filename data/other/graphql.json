@@ -519,6 +519,7 @@
 		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of analysis rows; a conversation active across several periods, or re-analyzed, counts once per row - uniq.conversationId is the distinct-conversation count",
 		"dimensions": "List of dimensions to group by",
+		"max": "Latest activity values across grouped analysis rows",
 		"sum": "",
 		"uniq": ""
 	},
@@ -555,6 +556,10 @@
 	},
 	"AccountAiGatewayConversationAnalysesAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
+	},
+	"AccountAiGatewayConversationAnalysesAdaptiveGroupsMax": {
+		"__description": "",
+		"lastActivity": "Latest observed conversation activity across the grouped analysis rows. Exact at the finest resolution; adaptive sampling at coarser resolutions can move this value earlier"
 	},
 	"AccountAiGatewayConversationAnalysesAdaptiveGroupsOrderBy": {
 		"__description": ""
@@ -615,6 +620,7 @@
 		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of analysis rows; a conversation active across several periods, or re-analyzed, counts once per row - uniq.conversationId is the distinct-conversation count",
 		"dimensions": "List of dimensions to group by",
+		"max": "Latest activity values across grouped analysis rows",
 		"sum": "",
 		"uniq": ""
 	},
@@ -651,6 +657,10 @@
 	},
 	"AccountAiGatewayConversationAnalysesStagingAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
+	},
+	"AccountAiGatewayConversationAnalysesStagingAdaptiveGroupsMax": {
+		"__description": "",
+		"lastActivity": "Latest observed conversation activity across the grouped analysis rows. Exact at the finest resolution; adaptive sampling at coarser resolutions can move this value earlier"
 	},
 	"AccountAiGatewayConversationAnalysesStagingAdaptiveGroupsOrderBy": {
 		"__description": ""
@@ -11167,6 +11177,8 @@
 		"storageTraces": "",
 		"streamCMCDAdaptiveGroups": "",
 		"streamMinutesViewedAdaptiveGroups": "",
+		"streamWHIPBroadcastMetricsAdaptive": "",
+		"streamWHIPBroadcastMetricsAdaptiveGroups": "",
 		"toMarkdownConversionAdaptive": "",
 		"toMarkdownConversionAdaptiveGroups": "",
 		"turnstileAdaptiveGroups": "",
@@ -11631,6 +11643,91 @@
 	"AccountStreamMinutesViewedAdaptiveGroupsSum": {
 		"__description": "",
 		"minutesViewed": ""
+	},
+	"AccountStreamWHIPBroadcastMetricsAdaptive": {
+		"__description": "WHIP broadcast metrics for Cloudflare Stream.",
+		"bufferDropRate": "Rate of received packets being dropped from the ingest buffer",
+		"codecMimeType": "Media codec MIME type",
+		"codecName": "Media codec name",
+		"datetime": "Date and time when the metric was collected",
+		"droppedPackets": "RTP packets dropped from the ingest buffer during the observation period",
+		"iceConnectionState": "ICE connection state",
+		"inputId": "Live input ID",
+		"mediaKind": "Type of media, either audio or video",
+		"observationDurationSeconds": "Length of the observation period (time window) in seconds",
+		"peerConnectionId": "WebRTC peer connection ID",
+		"peerConnectionState": "WebRTC peer connection state",
+		"receivedBytes": "Bytes received during the observation period",
+		"receivedPackets": "RTP packets received during the observation period",
+		"sampleInterval": "ABR sample interval",
+		"trackId": "WebRTC media track ID",
+		"trackIngestState": "State of the track being ingested"
+	},
+	"AccountStreamWHIPBroadcastMetricsAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountStreamWHIPBroadcastMetricsAdaptiveGroups": {
+		"__description": "Aggregated WHIP broadcast metrics for Cloudflare Stream",
+		"avg": "Average value of each metric for the selected dimensions",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Estimated number of observations",
+		"dimensions": "List of dimensions to group by",
+		"sum": "Total value of each metric for the selected dimensions"
+	},
+	"AccountStreamWHIPBroadcastMetricsAdaptiveGroupsAvg": {
+		"__description": "",
+		"bufferDropRate": "Rate of received packets being dropped from the ingest buffer",
+		"ingestBitrate": "Average ingest bitrate measured in bits per second",
+		"ingestPacketRate": "Average ingest packet rate measured in packets per second",
+		"sampleInterval": "Average adaptive sampling interval"
+	},
+	"AccountStreamWHIPBroadcastMetricsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Estimated number of observations, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "Total value of each metric for the selected dimensions, with confidence intervals"
+	},
+	"AccountStreamWHIPBroadcastMetricsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"codecMimeType": "Media codec MIME type",
+		"codecName": "Media codec name",
+		"date": "Date when the metric was observed",
+		"datetime": "Date and time when the metric was collected",
+		"datetimeFifteenMinutes": "Date and time of the observation truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Date and time of the observation truncated to five minutes",
+		"datetimeHour": "Date and time of the observation truncated to the hour",
+		"datetimeMinute": "Date and time of the observation truncated to the minute",
+		"iceConnectionState": "ICE connection state",
+		"inputId": "Live input ID",
+		"mediaKind": "Type of media, either audio or video",
+		"peerConnectionId": "WebRTC peer connection ID",
+		"peerConnectionState": "WebRTC peer connection state",
+		"sampleInterval": "ABR sample interval",
+		"trackId": "WebRTC media track ID",
+		"trackIngestState": "State of the track being ingested"
+	},
+	"AccountStreamWHIPBroadcastMetricsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountStreamWHIPBroadcastMetricsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountStreamWHIPBroadcastMetricsAdaptiveGroupsSum": {
+		"__description": "",
+		"droppedPackets": "Estimated number of RTP packets dropped from the ingest buffer",
+		"observationDurationSeconds": "Estimated total observation time in seconds",
+		"receivedBytes": "Estimated total bytes received",
+		"receivedPackets": "Estimated total RTP packets received"
+	},
+	"AccountStreamWHIPBroadcastMetricsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"droppedPackets": "Confidence interval for the corresponding point estimate",
+		"observationDurationSeconds": "Confidence interval for the corresponding point estimate",
+		"receivedBytes": "Confidence interval for the corresponding point estimate",
+		"receivedPackets": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountStreamWHIPBroadcastMetricsAdaptiveOrderBy": {
+		"__description": ""
 	},
 	"AccountToMarkdownConversionAdaptive": {
 		"__description": "Markdown Conversion Metrics",
@@ -16946,6 +17043,8 @@
 		"storageTraces": "Storage Tracing Information",
 		"streamCMCDAdaptiveGroups": "Stream CMCD data",
 		"streamMinutesViewedAdaptiveGroups": "A high-level summary of Cloudflare Stream minutes viewed.",
+		"streamWHIPBroadcastMetricsAdaptive": "WHIP broadcast metrics for Cloudflare Stream.",
+		"streamWHIPBroadcastMetricsAdaptiveGroups": "Aggregated WHIP broadcast metrics for Cloudflare Stream",
 		"toMarkdownConversionAdaptive": "Markdown Conversion Metrics",
 		"toMarkdownConversionAdaptiveGroups": "Markdown Conversion Metrics",
 		"turnstileAdaptiveGroups": "Beta. Cloudflare Turnstile aggregated events with adaptive sampling",
