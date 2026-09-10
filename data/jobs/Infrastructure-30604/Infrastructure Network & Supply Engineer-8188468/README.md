@@ -3,42 +3,50 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Job Title&nbsp;</strong></p>
-<p>Technical Accounting Analyst (Infrastructure)</p>
-<p><strong>Role Summary</strong></p>
-<p>As a Technical Accounting Analyst (Infrastructure), you will play a critical role in ensuring the financial integrity of our global infrastructure through robust financial compliance, colocation contract reviews, and SOX controls. Working with an experienced accounting team, you will partner closely with our Infrastructure, FP&amp;A, and AP teams to provide technical accounting guidance and transform complex data into clear, actionable documentation. We are seeking a highly analytical and detail-oriented professional with 3+ years of accounting experience with a strong interest in optimizing or automating financial processes. If you are an agile problem-solver with a strong foundational knowledge of accounting standards looking to make an impact in a fast-growing business, we want to hear from you.</p>
-<p><strong>Role Responsibilities</strong></p>
+<p><strong>Available Locations: </strong>Lisbon, Portugal&nbsp;</p>
+<p><strong>About the role</strong></p>
+<p>Cloudflare is scaling one of the largest global networks on the Internet, and capacity planning is what keeps that growth ahead of demand. As an Infrastructure Network &amp; Supply Planner on our Infrastructure Capacity Planning team you'll build the products, tools, and AI agents that turn growth and demand forecasts into scalable, execution-ready infrastructure expansions, ensuring the right capacity is in the right place, at the right time and cost, in the shortest time possible.</p>
+<p>You'll design and ship internal products — forecasting models, planning systems, dashboards, and automated workflows — that make end-to-end infrastructure readiness faster, cheaper, and more reliable at global scale</p>
+<p>You'll refine and create new AI agents to model demand into supply, network, and capacity scenarios and surface risks early, producing force multipliers that let planners see the whole system and act quickly — shifting time from reactive task-processing to proactive strategy, and scaling impact. You'll partner across planning, operations, procurement, logistics, engineering, and finance to keep Cloudflare's global deployments moving smoothly.</p>
+<h4><strong>What you'll do</strong></h4>
+<p>I<strong>nfrastructure Capacity &amp; Expansion Planning</strong></p>
 <ul>
-	<li>Responsible for review of colocation service contracts and accurate reporting for month end close processes and SOX controls</li>
-	<li>Develop and maintain strong relationships with the internal Infrastructure Strategy team and Business Partners to understand business objectives, develop processes and provide accounting guidance and best practice recommendations to drive process improvements</li>
-	<li>Work closely with FP&amp;A and tax teams to ensure compliance with U.S. GAAP and internal policies through effective communications and execution</li>
-	<li>Research and apply accounting guidance to new and ongoing business initiatives in order to ensure accurate reporting</li>
-	<li>Reach conclusions with an adequate level of rationale and documentation for review and then communicate and present the accounting conclusions to the team</li>
-	<li>Own key SOX controls as well as gathering necessary audit documentation for internal and external auditors</li>
-	<li>Understand how systems work to drive improvements and automation</li>
-	<li>Manage multiple tasks under tight deadlines with strong attention to detail and accuracy</li>
-	<li>Prepare and book monthly infrastructure accruals</li>
+	<li>Translate demand forecasts into infrastructure capacity plans that support business growth, aligning hardware deployments with performance, cost, and timeline targets.</li>
+	<li>Ensure infrastructure readiness across space, power, connectivity, and hardware availability, identifying capacity constraints early and coordinating mitigation.&nbsp;</li>
+</ul>
+<p><strong>Deployment Planning &amp; Execution Coordination</strong></p>
+<ul>
+	<li>Build quarterly and weekly deployment plans that are realistic, balanced, and optimized for execution efficiency across operations, logistics, integration partners, and engineering teams.</li>
+	<li>Track progress, resolve blockers, and maintain deployment momentum across the global fleet.</li>
+</ul>
+<p><strong>Supply, Inventory &amp; Lifecycle Readiness</strong></p>
+<ul>
+	<li>Partner with Procurement and Data Center teams to ensure hardware and resources are available at the right time and locations, and manage inventory to balance availability, cost efficiency, and operational risk.</li>
+	<li>Support hardware refresh and asset lifecycle planning, and align infrastructure investments with budget and growth plans alongside Finance.</li>
+</ul>
+<p><strong>AI-First Products, Automation &amp; Continuous Improvement</strong></p>
+<ul>
+	<li>Design, build, and ship internal products — forecasting models, dashboards, planning systems, and automated workflows — using AI/agentic tooling to structure messy data, run scenario analyses, and improve planning accuracy.</li>
+	<li>Identify high-leverage opportunities to automate repetitive work, introduce new tools and methodologies, and continuously improve how planning and deployment operate at scale.</li>
 </ul>
 <p>&nbsp;</p>
-<p><strong>Role Requirements&nbsp;</strong></p>
-<p><strong>Must-Have Skills</strong></p>
+<p><strong>Cross-Functional Collaboration</strong></p>
 <ul>
-	<li>3+ years of relevant accounting experience</li>
-	<li>Bachelor's degree in Accounting</li>
-	<li>Technical knowledge of U.S. GAAP or IFRS</li>
-	<li>Good working knowledge of Microsoft Excel</li>
-	<li>Attention to detail</li>
-	<li>Ability to manage multiple deliverables and work well under pressure</li>
-	<li>Experience in designing and implementing new processes</li>
+	<li>Act as a central layer across planning, operations, engineering, logistics, procurement, and finance to keep Cloudflare's global deployments moving smoothly.</li>
 </ul>
-<p><strong>Nice-to-Have Skills</strong></p>
+<p>&nbsp;</p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>Experience working across multiple time zones</li>
-	<li>Experience accounting for infrastructure / data center activities</li>
-	<li>CPA/CA or equivalent qualification</li>
-	<li>Experience with ASC 842 or IFRS 16 accounting</li>
-	<li>Experience working in Oracle</li>
-	<li>Experience utilizing AI as part of process improvement and automation</li>
+	<li>Experience in capacity planning, infrastructure planning, production/operations planning, supply planning, or a related technical planning role.</li>
+	<li>Strong analytical and problem-solving skills, with experience across complex operational systems and managing multiple priorities in fast-paced environments.</li>
+	<li>Hands-on experience building tools, automation, or internal products</li>
+	<li>Fluency with AI tools in daily work, and a genuine appetite to use and create AI/agentic tooling to scale decision-making and eliminate manual toil.</li>
+	<li>Excellent communication and stakeholder-management skills.</li>
+</ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For Portugal based hires: Estimated annual salary of €36,000-50,000.&nbsp;</span></li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

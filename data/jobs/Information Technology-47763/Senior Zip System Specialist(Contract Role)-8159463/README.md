@@ -3,43 +3,15 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Job Title&nbsp;</strong></p>
-<p>Technical Accounting Analyst (Infrastructure)</p>
-<p><strong>Role Summary</strong></p>
-<p>As a Technical Accounting Analyst (Infrastructure), you will play a critical role in ensuring the financial integrity of our global infrastructure through robust financial compliance, colocation contract reviews, and SOX controls. Working with an experienced accounting team, you will partner closely with our Infrastructure, FP&amp;A, and AP teams to provide technical accounting guidance and transform complex data into clear, actionable documentation. We are seeking a highly analytical and detail-oriented professional with 3+ years of accounting experience with a strong interest in optimizing or automating financial processes. If you are an agile problem-solver with a strong foundational knowledge of accounting standards looking to make an impact in a fast-growing business, we want to hear from you.</p>
-<p><strong>Role Responsibilities</strong></p>
+<p>Location: Bengaluru, India</p>
+<p>About the department<br>The Oracle Team, part of Cloudflare's DIA and Enterprise systems organization, manages the complete end-to-end operation of our S2P processes. This ensures consistent processes across all functional areas, enabling Cloudflare's internal teams to work efficiently and facilitating business interactions with customers and partners.</p>
+<p>Position Overview<br>Drive the strategy and execution of our global procurement technology ecosystem. Our architecture leverages Zip (Zip HQ) as the premier intake and orchestration layer, integrated natively with Oracle Fusion Cloud as our financial system of record.The ideal candidate is a Procurement technologist who understands the nuances of the entire Source-to-Pay (S2P) lifecycle. You will bridge the gap between user-centric intake and rigorous financial controls, ensuring that complex business requirements from Legal, Finance, and Global Sourcing are translated into seamless, automated workflows that maintain data integrity<br>across both Zip and Oracle.</p>
+<p>What You Will Do<br>● End-to-End Process Architecture: Design and optimize the global S2P process,ensuring a frictionless hand-off between upstream sourcing/intake (Zip) and downstream purchasing/payables (Oracle Fusion).<br>● Dual-Platform Configuration: Act as the functional lead for both Zip and Oracle Fusion Procurement. Build complex intake workflows in Zip while simultaneously configuring Requisitioning, Purchasing, and Supplier Portals in Oracle to match.<br>● Integration Ecosystem Management: Own the functional health of the Zip-to-Oracle integration. Monitor data flow for Requisitions, Purchase Orders, and Supplier Master Data, ensuring that "In-Flight" changes in one system are accurately reflected in the other.<br>● Strategic Business Partnership: Lead discovery sessions with Global Procurement, Legal, and Accounting. Translate high-level business policies into precise logic within the tech stack.<br>● Data Governance &amp; Compliance: Ensure that the "System of Record" (Oracle) remains audit-ready. Manage the mapping of Category Codes, Cost Centers, and Tax attributes between the Zip UI and the Oracle GL.</p>
 <ul>
-	<li>Responsible for review of colocation service contracts and accurate reporting for month end close processes and SOX controls</li>
-	<li>Develop and maintain strong relationships with the internal Infrastructure Strategy team and Business Partners to understand business objectives, develop processes and provide accounting guidance and best practice recommendations to drive process improvements</li>
-	<li>Work closely with FP&amp;A and tax teams to ensure compliance with U.S. GAAP and internal policies through effective communications and execution</li>
-	<li>Research and apply accounting guidance to new and ongoing business initiatives in order to ensure accurate reporting</li>
-	<li>Reach conclusions with an adequate level of rationale and documentation for review and then communicate and present the accounting conclusions to the team</li>
-	<li>Own key SOX controls as well as gathering necessary audit documentation for internal and external auditors</li>
-	<li>Understand how systems work to drive improvements and automation</li>
-	<li>Manage multiple tasks under tight deadlines with strong attention to detail and accuracy</li>
-	<li>Prepare and book monthly infrastructure accruals</li>
+	<li>Release Management: Manage the quarterly update cycles for both Zip and Oracle.Conduct impact assessments on new features to ensure no disruption to the integrated<br>workflow.</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Role Requirements&nbsp;</strong></p>
-<p><strong>Must-Have Skills</strong></p>
-<ul>
-	<li>3+ years of relevant accounting experience</li>
-	<li>Bachelor's degree in Accounting</li>
-	<li>Technical knowledge of U.S. GAAP or IFRS</li>
-	<li>Good working knowledge of Microsoft Excel</li>
-	<li>Attention to detail</li>
-	<li>Ability to manage multiple deliverables and work well under pressure</li>
-	<li>Experience in designing and implementing new processes</li>
-</ul>
-<p><strong>Nice-to-Have Skills</strong></p>
-<ul>
-	<li>Experience working across multiple time zones</li>
-	<li>Experience accounting for infrastructure / data center activities</li>
-	<li>CPA/CA or equivalent qualification</li>
-	<li>Experience with ASC 842 or IFRS 16 accounting</li>
-	<li>Experience working in Oracle</li>
-	<li>Experience utilizing AI as part of process improvement and automation</li>
-</ul>
+<p>Required Qualifications<br>● Platform Proficiency: 3+ years of hands-on experience in Oracle Fusion Procurement (Self-Service Procurement, Purchasing, Supplier Model) and 2+ years of experience with Zip (Zip HQ).<br>● Procurement Subject Matter Expertise: Deep understanding of the Source-to-Pay (S2P) lifecycle, including PR/PO lifecycle, 3-way matching, Encumbrance Accounting,and Contract Lifecycle Management (CLM).<br>● Integration Fluency: Proven experience managing API-based integrations between Intake-to-Procure tools and Tier-1 ERPs. You should understand how a Zip "Approval translates into an Oracle "Approved Requisition."<br>● Process Engineering: Ability to map complex, cross-functional business processes and identify opportunities for automation or bottleneck removal.<br>● Systems Thinking: You don't just fix a field; you understand how changing a workflow in Zip impacts the General Ledger and AP downstream in Oracle.</p>
+<p>The Tech Stack<br>● Orchestration: Zip (Intake, Sourcing, Vendor Management)<br>● Core ERP / Financials: Oracle Fusion Cloud (Procurement, Payables, GL)<br>● Contracts (CLM): Ironclad</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
