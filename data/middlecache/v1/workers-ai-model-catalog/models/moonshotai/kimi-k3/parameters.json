@@ -413,7 +413,7 @@
 				"isLastOneOfChild": false,
 				"required": false,
 				"depth": 0,
-				"isLast": true,
+				"isLast": false,
 				"ancestorIsLast": [],
 				"children": [
 					{
@@ -440,7 +440,7 @@
 						"depth": 1,
 						"isLast": false,
 						"ancestorIsLast": [
-							true
+							false
 						]
 					},
 					{
@@ -464,10 +464,26 @@
 						"depth": 1,
 						"isLast": true,
 						"ancestorIsLast": [
-							true
+							false
 						]
 					}
 				]
+			},
+			{
+				"id": "reasoning_effort",
+				"name": "reasoning_effort",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Optional reasoning control; availability and accepted values are model-dependent.",
+				"depth": 0,
+				"isLast": true,
+				"ancestorIsLast": []
 			}
 		],
 		"variants": null,

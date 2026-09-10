@@ -192,6 +192,13 @@
 						}
 					},
 					"additionalProperties": false
+				},
+				"reasoning_effort": {
+					"description": "Optional reasoning control; availability and accepted values are model-dependent.",
+					"type": [
+						"string",
+						"null"
+					]
 				}
 			},
 			"required": [
