@@ -52,7 +52,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -257,7 +258,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -436,7 +438,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -630,7 +633,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -834,7 +838,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -1033,7 +1038,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -1404,15 +1410,17 @@
 				"name": "cf-r2-jurisdiction",
 				"in": "header",
 				"schema": {
-					"description": "The bucket jurisdiction.",
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
 					"type": "string",
 					"default": "default",
 					"enum": [
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
+					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			}
@@ -1809,7 +1817,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -1917,7 +1926,8 @@
 																	"default",
 																	"eu",
 																	"us",
-																	"fedramp"
+																	"fedramp",
+																	"fedramp-high"
 																],
 																"x-auditable": true,
 																"x-stainless-param": "jurisdiction"
@@ -2086,7 +2096,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -2165,7 +2176,8 @@
 														"default",
 														"eu",
 														"us",
-														"fedramp"
+														"fedramp",
+														"fedramp-high"
 													],
 													"x-auditable": true,
 													"x-stainless-param": "jurisdiction"
@@ -2332,7 +2344,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -2597,7 +2610,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -2916,7 +2930,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -3203,7 +3218,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -3424,7 +3440,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -3778,7 +3795,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -4058,7 +4076,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -4629,7 +4648,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -4916,7 +4936,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -5141,6 +5162,707 @@
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
+	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/storage-class-migration-jobs": {
+		"operationId": "r2-list-storage-class-migration-jobs",
+		"summary": "List Storage Class Migration Jobs",
+		"description": "Lists storage-class migration jobs for an R2 bucket.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			},
+			{
+				"name": "bucket_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket.",
+					"type": "string",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "cf-r2-jurisdiction",
+				"in": "header",
+				"schema": {
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
+					"type": "string",
+					"default": "default",
+					"enum": [
+						"default",
+						"eu",
+						"us",
+						"fedramp",
+						"fedramp-high"
+					],
+					"x-auditable": true,
+					"x-stainless-param": "jurisdiction"
+				}
+			},
+			{
+				"name": "status",
+				"in": "query",
+				"description": "Restricts results to jobs with the specified status.",
+				"schema": {
+					"description": "Lifecycle status of a bucket background job.",
+					"type": "string",
+					"enum": [
+						"ENQUEUED",
+						"RUNNING",
+						"COMPLETED",
+						"FAILED",
+						"CANCELLED"
+					]
+				}
+			},
+			{
+				"name": "maxKeys",
+				"in": "query",
+				"description": "Maximum number of jobs to return.",
+				"schema": {
+					"type": "integer",
+					"maximum": 1000,
+					"minimum": 0
+				}
+			},
+			{
+				"name": "continuationToken",
+				"in": "query",
+				"description": "Pagination token received as `nextContinuationToken` in the previous response.",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List Storage Class Migration Jobs response.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"running-job": {
+								"summary": "A storage-class migration job is still running",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"jobs": [
+											{
+												"id": "7f24658b-31d7-4b91-9a12-cb5a2c99b294",
+												"jobType": "storageClassMigration",
+												"startTime": "2026-09-04T12:00:00Z",
+												"status": "RUNNING",
+												"storageClassMigration": {
+													"destinationStorageClass": "Standard",
+													"migratedObjects": 1350,
+													"sourceStorageClass": "InfrequentAccess"
+												}
+											}
+										],
+										"nextContinuationToken": "eyJ2IjoxLCJzdGFydEFmdGVyIjoiLi4uIn0="
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"jobs": {
+													"description": "Storage-class migration jobs in the current page.",
+													"type": "array",
+													"items": {
+														"description": "Descriptor of a bucket-wide storage-class migration job.",
+														"type": "object",
+														"properties": {
+															"endTime": {
+																"description": "When the job finished. Absent while the job is still `ENQUEUED` or `RUNNING`.\n",
+																"type": "string",
+																"format": "date-time"
+															},
+															"id": {
+																"description": "Unique identifier used to poll the job.",
+																"type": "string"
+															},
+															"jobType": {
+																"description": "The job kind.",
+																"type": "string",
+																"enum": [
+																	"storageClassMigration"
+																]
+															},
+															"startTime": {
+																"description": "When the job was created.",
+																"type": "string",
+																"format": "date-time"
+															},
+															"status": {
+																"description": "Lifecycle status of a bucket background job.",
+																"type": "string",
+																"enum": [
+																	"ENQUEUED",
+																	"RUNNING",
+																	"COMPLETED",
+																	"FAILED",
+																	"CANCELLED"
+																]
+															},
+															"storageClassMigration": {
+																"type": "object",
+																"properties": {
+																	"destinationStorageClass": {
+																		"description": "The storage class objects are migrated to. The source and destination storage\nclasses always differ.\n",
+																		"type": "string",
+																		"enum": [
+																			"Standard",
+																			"InfrequentAccess"
+																		]
+																	},
+																	"failedBytes": {
+																		"description": "Payload bytes belonging to failed object versions.",
+																		"type": "integer",
+																		"minimum": 0
+																	},
+																	"failedObjects": {
+																		"description": "Number of object versions that failed migration.",
+																		"type": "integer",
+																		"minimum": 0
+																	},
+																	"migratedBytes": {
+																		"description": "Object payload bytes migrated successfully. Present for Metadata Worker jobs.",
+																		"type": "integer",
+																		"minimum": 0
+																	},
+																	"migratedMetadataBytes": {
+																		"description": "Object metadata bytes migrated successfully. Present for Metadata Worker jobs.",
+																		"type": "integer",
+																		"minimum": 0
+																	},
+																	"migratedObjects": {
+																		"description": "Number of object versions migrated successfully.",
+																		"type": "integer",
+																		"minimum": 0
+																	},
+																	"skippedBytes": {
+																		"description": "Payload bytes belonging to skipped object versions.",
+																		"type": "integer",
+																		"minimum": 0
+																	},
+																	"skippedObjects": {
+																		"description": "Number of object versions skipped.",
+																		"type": "integer",
+																		"minimum": 0
+																	},
+																	"sourceStorageClass": {
+																		"description": "The storage class objects are migrated from.",
+																		"type": "string",
+																		"enum": [
+																			"Standard",
+																			"InfrequentAccess"
+																		]
+																	}
+																},
+																"required": [
+																	"sourceStorageClass",
+																	"destinationStorageClass",
+																	"migratedObjects"
+																]
+															}
+														},
+														"required": [
+															"id",
+															"jobType",
+															"status",
+															"startTime",
+															"storageClassMigration"
+														]
+													}
+												},
+												"nextContinuationToken": {
+													"description": "Token to pass as `continuationToken` to retrieve the next page.",
+													"type": "string"
+												}
+											},
+											"required": [
+												"jobs"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "List Storage Class Migration Jobs response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"R2 Bucket"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.r2.bucket.read"
+			]
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "r2.buckets.storage-class-migration-jobs",
+		"x-fern-sdk-method-name": "list",
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/storage-class-migration-jobs/{job_id}": {
+		"operationId": "r2-get-storage-class-migration-job",
+		"summary": "Get Storage Class Migration Job",
+		"description": "Gets the current status of a storage-class migration job.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			},
+			{
+				"name": "bucket_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket.",
+					"type": "string",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "job_id",
+				"in": "path",
+				"description": "Identifier returned when the migration job was submitted.",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "cf-r2-jurisdiction",
+				"in": "header",
+				"schema": {
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
+					"type": "string",
+					"default": "default",
+					"enum": [
+						"default",
+						"eu",
+						"us",
+						"fedramp",
+						"fedramp-high"
+					],
+					"x-auditable": true,
+					"x-stainless-param": "jurisdiction"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get Storage Class Migration Job response.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"completed-job": {
+								"summary": "A storage-class migration job has completed",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"endTime": "2026-09-04T12:14:31Z",
+										"id": "7f24658b-31d7-4b91-9a12-cb5a2c99b294",
+										"jobType": "storageClassMigration",
+										"startTime": "2026-09-04T12:00:00Z",
+										"status": "COMPLETED",
+										"storageClassMigration": {
+											"destinationStorageClass": "Standard",
+											"migratedObjects": 2481,
+											"sourceStorageClass": "InfrequentAccess"
+										}
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Descriptor of a bucket-wide storage-class migration job.",
+											"type": "object",
+											"properties": {
+												"endTime": {
+													"description": "When the job finished. Absent while the job is still `ENQUEUED` or `RUNNING`.\n",
+													"type": "string",
+													"format": "date-time"
+												},
+												"id": {
+													"description": "Unique identifier used to poll the job.",
+													"type": "string"
+												},
+												"jobType": {
+													"description": "The job kind.",
+													"type": "string",
+													"enum": [
+														"storageClassMigration"
+													]
+												},
+												"startTime": {
+													"description": "When the job was created.",
+													"type": "string",
+													"format": "date-time"
+												},
+												"status": {
+													"description": "Lifecycle status of a bucket background job.",
+													"type": "string",
+													"enum": [
+														"ENQUEUED",
+														"RUNNING",
+														"COMPLETED",
+														"FAILED",
+														"CANCELLED"
+													]
+												},
+												"storageClassMigration": {
+													"type": "object",
+													"properties": {
+														"destinationStorageClass": {
+															"description": "The storage class objects are migrated to. The source and destination storage\nclasses always differ.\n",
+															"type": "string",
+															"enum": [
+																"Standard",
+																"InfrequentAccess"
+															]
+														},
+														"failedBytes": {
+															"description": "Payload bytes belonging to failed object versions.",
+															"type": "integer",
+															"minimum": 0
+														},
+														"failedObjects": {
+															"description": "Number of object versions that failed migration.",
+															"type": "integer",
+															"minimum": 0
+														},
+														"migratedBytes": {
+															"description": "Object payload bytes migrated successfully. Present for Metadata Worker jobs.",
+															"type": "integer",
+															"minimum": 0
+														},
+														"migratedMetadataBytes": {
+															"description": "Object metadata bytes migrated successfully. Present for Metadata Worker jobs.",
+															"type": "integer",
+															"minimum": 0
+														},
+														"migratedObjects": {
+															"description": "Number of object versions migrated successfully.",
+															"type": "integer",
+															"minimum": 0
+														},
+														"skippedBytes": {
+															"description": "Payload bytes belonging to skipped object versions.",
+															"type": "integer",
+															"minimum": 0
+														},
+														"skippedObjects": {
+															"description": "Number of object versions skipped.",
+															"type": "integer",
+															"minimum": 0
+														},
+														"sourceStorageClass": {
+															"description": "The storage class objects are migrated from.",
+															"type": "string",
+															"enum": [
+																"Standard",
+																"InfrequentAccess"
+															]
+														}
+													},
+													"required": [
+														"sourceStorageClass",
+														"destinationStorageClass",
+														"migratedObjects"
+													]
+												}
+											},
+											"required": [
+												"id",
+												"jobType",
+												"status",
+												"startTime",
+												"storageClassMigration"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get Storage Class Migration Job response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"R2 Bucket"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.r2.bucket.read"
+			]
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "r2.buckets.storage-class-migration-jobs",
+		"x-fern-sdk-method-name": "get",
+		"x-stability": "beta"
+	},
 	"PATCH /accounts/{account_id}/r2/buckets/{bucket_name}": {
 		"operationId": "r2-patch-bucket",
 		"summary": "Patch Bucket",
@@ -5182,7 +5904,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -5281,7 +6004,8 @@
 														"default",
 														"eu",
 														"us",
-														"fedramp"
+														"fedramp",
+														"fedramp-high"
 													],
 													"x-auditable": true,
 													"x-stainless-param": "jurisdiction"
@@ -5434,7 +6158,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -5562,7 +6287,8 @@
 														"default",
 														"eu",
 														"us",
-														"fedramp"
+														"fedramp",
+														"fedramp-high"
 													],
 													"x-auditable": true,
 													"x-stainless-param": "jurisdiction"
@@ -5727,7 +6453,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -5979,6 +6706,340 @@
 		"x-fern-sdk-group-name": "r2.buckets.domains.custom",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/r2/buckets/{bucket_name}/storage-class-migration-jobs": {
+		"operationId": "r2-create-storage-class-migration-job",
+		"summary": "Create a Storage Class Migration Job",
+		"description": "Creates a storage-class migration background job for an R2 bucket.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			},
+			{
+				"name": "bucket_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket.",
+					"type": "string",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "cf-r2-jurisdiction",
+				"in": "header",
+				"schema": {
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
+					"type": "string",
+					"default": "default",
+					"enum": [
+						"default",
+						"eu",
+						"us",
+						"fedramp",
+						"fedramp-high"
+					],
+					"x-auditable": true,
+					"x-stainless-param": "jurisdiction"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Creates a storage-class migration background job. Direction fields must be\nprovided together and must differ. Omitting both defaults to InfrequentAccess\nto Standard.\n",
+						"type": "object",
+						"properties": {
+							"destinationStorageClass": {
+								"type": "string",
+								"enum": [
+									"Standard",
+									"InfrequentAccess"
+								]
+							},
+							"jobType": {
+								"type": "string",
+								"enum": [
+									"storageClassMigration"
+								]
+							},
+							"sourceStorageClass": {
+								"type": "string",
+								"enum": [
+									"Standard",
+									"InfrequentAccess"
+								]
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"jobType"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "The enqueued storage-class migration job.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Descriptor of a bucket-wide storage-class migration job.",
+											"type": "object",
+											"properties": {
+												"endTime": {
+													"description": "When the job finished. Absent while the job is still `ENQUEUED` or `RUNNING`.\n",
+													"type": "string",
+													"format": "date-time"
+												},
+												"id": {
+													"description": "Unique identifier used to poll the job.",
+													"type": "string"
+												},
+												"jobType": {
+													"description": "The job kind.",
+													"type": "string",
+													"enum": [
+														"storageClassMigration"
+													]
+												},
+												"startTime": {
+													"description": "When the job was created.",
+													"type": "string",
+													"format": "date-time"
+												},
+												"status": {
+													"description": "Lifecycle status of a bucket background job.",
+													"type": "string",
+													"enum": [
+														"ENQUEUED",
+														"RUNNING",
+														"COMPLETED",
+														"FAILED",
+														"CANCELLED"
+													]
+												},
+												"storageClassMigration": {
+													"type": "object",
+													"properties": {
+														"destinationStorageClass": {
+															"description": "The storage class objects are migrated to. The source and destination storage\nclasses always differ.\n",
+															"type": "string",
+															"enum": [
+																"Standard",
+																"InfrequentAccess"
+															]
+														},
+														"failedBytes": {
+															"description": "Payload bytes belonging to failed object versions.",
+															"type": "integer",
+															"minimum": 0
+														},
+														"failedObjects": {
+															"description": "Number of object versions that failed migration.",
+															"type": "integer",
+															"minimum": 0
+														},
+														"migratedBytes": {
+															"description": "Object payload bytes migrated successfully. Present for Metadata Worker jobs.",
+															"type": "integer",
+															"minimum": 0
+														},
+														"migratedMetadataBytes": {
+															"description": "Object metadata bytes migrated successfully. Present for Metadata Worker jobs.",
+															"type": "integer",
+															"minimum": 0
+														},
+														"migratedObjects": {
+															"description": "Number of object versions migrated successfully.",
+															"type": "integer",
+															"minimum": 0
+														},
+														"skippedBytes": {
+															"description": "Payload bytes belonging to skipped object versions.",
+															"type": "integer",
+															"minimum": 0
+														},
+														"skippedObjects": {
+															"description": "Number of object versions skipped.",
+															"type": "integer",
+															"minimum": 0
+														},
+														"sourceStorageClass": {
+															"description": "The storage class objects are migrated from.",
+															"type": "string",
+															"enum": [
+																"Standard",
+																"InfrequentAccess"
+															]
+														}
+													},
+													"required": [
+														"sourceStorageClass",
+														"destinationStorageClass",
+														"migratedObjects"
+													]
+												}
+											},
+											"required": [
+												"id",
+												"jobType",
+												"status",
+												"startTime",
+												"storageClassMigration"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Create Storage Class Migration Job response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"R2 Bucket"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.r2.bucket.write"
+			]
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "r2.buckets.storage-class-migration-jobs",
+		"x-fern-sdk-method-name": "create",
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/r2/temp-access-credentials": {
 		"operationId": "r2-create-temp-access-credentials",
@@ -6284,7 +7345,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -6536,7 +7598,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -6634,7 +7697,8 @@
 														"default",
 														"eu",
 														"us",
-														"fedramp"
+														"fedramp",
+														"fedramp-high"
 													],
 													"x-auditable": true,
 													"x-stainless-param": "jurisdiction"
@@ -6799,7 +7863,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -7080,7 +8145,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -7355,7 +8421,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -7599,7 +8666,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -8178,7 +9246,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
@@ -8466,7 +9535,8 @@
 						"default",
 						"eu",
 						"us",
-						"fedramp"
+						"fedramp",
+						"fedramp-high"
 					],
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"

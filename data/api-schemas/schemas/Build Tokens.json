@@ -1,8 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/builds/tokens/{build_token_uuid}": {
 		"operationId": "deleteBuildToken",
-		"summary": "Delete build token",
-		"description": "Remove a build authentication token",
+		"summary": "Delete a build token",
+		"description": "Delete a stored build token owned by the current user.",
 		"parameters": [
 			{
 				"in": "path",
@@ -19,7 +19,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Build token UUID.",
+					"description": "UUID of the build token used when deploying the Worker.",
 					"type": "string",
 					"format": "uuid"
 				}
@@ -246,14 +246,14 @@
 			"Workers CI Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.tokens",
+		"x-fern-sdk-group-name": "builds.tokens",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/builds/tokens": {
 		"operationId": "listBuildTokens",
 		"summary": "List build tokens",
-		"description": "Get all build tokens with pagination",
+		"description": "List metadata for build tokens available to the current user without returning their secrets.",
 		"parameters": [
 			{
 				"in": "path",
@@ -372,7 +372,7 @@
 														"example": "My Build Token"
 													},
 													"build_token_uuid": {
-														"description": "Build token UUID.",
+														"description": "UUID of the build token used when deploying the Worker.",
 														"type": "string",
 														"format": "uuid"
 													},
@@ -500,9 +500,8 @@
 			"Workers CI Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.tokens",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "builds.tokens",
+		"x-fern-sdk-method-name": "list"
 	},
 	"POST /accounts/{account_id}/builds/tokens": {
 		"operationId": "createBuildToken",
@@ -632,7 +631,7 @@
 													"example": "My Build Token"
 												},
 												"build_token_uuid": {
-													"description": "Build token UUID.",
+													"description": "UUID of the build token used when deploying the Worker.",
 													"type": "string",
 													"format": "uuid"
 												},
@@ -733,7 +732,7 @@
 			"Workers CI Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.tokens",
+		"x-fern-sdk-group-name": "builds.tokens",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	}

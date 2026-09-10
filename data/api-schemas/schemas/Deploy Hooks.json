@@ -1,8 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/builds/workers/{script_name}/deploy_hooks/{deploy_hook_uuid}": {
 		"operationId": "deleteDeployHook",
-		"summary": "Delete deploy hook",
-		"description": "Delete a deploy hook.",
+		"summary": "Delete a deploy hook",
+		"description": "Delete a deploy hook so its UUID can no longer start builds.",
 		"parameters": [
 			{
 				"in": "path",
@@ -20,7 +20,7 @@
 				"name": "script_name",
 				"required": true,
 				"schema": {
-					"description": "Human-readable name of the worker.",
+					"description": "Human-readable name of the Worker.",
 					"type": "string",
 					"example": "my-worker"
 				}
@@ -137,7 +137,7 @@
 													"format": "uuid"
 												},
 												"external_script_id": {
-													"description": "System-generated worker script tag.",
+													"description": "System-generated tag of the Worker. This is not the Worker name.",
 													"type": "string",
 													"example": "dd7160bb9cef458093557736f4b9e75b"
 												},
@@ -296,14 +296,13 @@
 			"Workers CI Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.deploy-hooks",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "builds.deploy-hooks",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/builds/workers/{script_name}/deploy_hooks": {
 		"operationId": "listDeployHooks",
 		"summary": "List deploy hooks",
-		"description": "Get all deploy hooks for a specific worker script.",
+		"description": "List the branch-specific deploy hooks configured for a Worker.",
 		"parameters": [
 			{
 				"in": "path",
@@ -321,7 +320,7 @@
 				"name": "script_name",
 				"required": true,
 				"schema": {
-					"description": "Human-readable name of the worker.",
+					"description": "Human-readable name of the Worker.",
 					"type": "string",
 					"example": "my-worker"
 				}
@@ -429,7 +428,7 @@
 														"format": "uuid"
 													},
 													"external_script_id": {
-														"description": "System-generated worker script tag.",
+														"description": "System-generated tag of the Worker. This is not the Worker name.",
 														"type": "string",
 														"example": "dd7160bb9cef458093557736f4b9e75b"
 													},
@@ -538,14 +537,13 @@
 			"Workers CI Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.deploy-hooks",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "builds.deploy-hooks",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/builds/workers/{script_name}/deploy_hooks/{deploy_hook_uuid}": {
 		"operationId": "getDeployHook",
-		"summary": "Get deploy hook",
-		"description": "Get details of a specific deploy hook.",
+		"summary": "Get a deploy hook",
+		"description": "Retrieve the name, branch, Worker identifier, and timestamps for a deploy hook.",
 		"parameters": [
 			{
 				"in": "path",
@@ -563,7 +561,7 @@
 				"name": "script_name",
 				"required": true,
 				"schema": {
-					"description": "Human-readable name of the worker.",
+					"description": "Human-readable name of the Worker.",
 					"type": "string",
 					"example": "my-worker"
 				}
@@ -680,7 +678,7 @@
 													"format": "uuid"
 												},
 												"external_script_id": {
-													"description": "System-generated worker script tag.",
+													"description": "System-generated tag of the Worker. This is not the Worker name.",
 													"type": "string",
 													"example": "dd7160bb9cef458093557736f4b9e75b"
 												},
@@ -840,14 +838,13 @@
 			"Workers CI Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.deploy-hooks",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "builds.deploy-hooks",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/builds/workers/{script_name}/deploy_hooks": {
 		"operationId": "createDeployHook",
-		"summary": "Create deploy hook",
-		"description": "Create a new deploy hook for a worker script.",
+		"summary": "Create a deploy hook",
+		"description": "Create an HTTP hook that starts a build for a selected Worker branch.",
 		"parameters": [
 			{
 				"in": "path",
@@ -865,7 +862,7 @@
 				"name": "script_name",
 				"required": true,
 				"schema": {
-					"description": "Human-readable name of the worker.",
+					"description": "Human-readable name of the Worker.",
 					"type": "string",
 					"example": "my-worker"
 				}
@@ -999,7 +996,7 @@
 													"format": "uuid"
 												},
 												"external_script_id": {
-													"description": "System-generated worker script tag.",
+													"description": "System-generated tag of the Worker. This is not the Worker name.",
 													"type": "string",
 													"example": "dd7160bb9cef458093557736f4b9e75b"
 												},
@@ -1282,9 +1279,8 @@
 			"Workers CI Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.deploy-hooks",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "builds.deploy-hooks",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /workers/builds/deploy_hooks/{deploy_hook_uuid}": {
 		"operationId": "triggerDeployHook",
@@ -1550,14 +1546,14 @@
 			"Deploy Hooks"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.deploy-hooks",
+		"x-fern-sdk-group-name": "builds.deploy-hooks",
 		"x-fern-sdk-method-name": "trigger",
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/builds/workers/{script_name}/deploy_hooks/{deploy_hook_uuid}": {
 		"operationId": "updateDeployHook",
-		"summary": "Update deploy hook",
-		"description": "Update an existing deploy hook.",
+		"summary": "Update a deploy hook",
+		"description": "Replace the name and target branch for a deploy hook.",
 		"parameters": [
 			{
 				"in": "path",
@@ -1575,7 +1571,7 @@
 				"name": "script_name",
 				"required": true,
 				"schema": {
-					"description": "Human-readable name of the worker.",
+					"description": "Human-readable name of the Worker.",
 					"type": "string",
 					"example": "my-worker"
 				}
@@ -1720,7 +1716,7 @@
 													"format": "uuid"
 												},
 												"external_script_id": {
-													"description": "System-generated worker script tag.",
+													"description": "System-generated tag of the Worker. This is not the Worker name.",
 													"type": "string",
 													"example": "dd7160bb9cef458093557736f4b9e75b"
 												},
@@ -2003,8 +1999,7 @@
 			"Workers CI Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.deploy-hooks",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "builds.deploy-hooks",
+		"x-fern-sdk-method-name": "update"
 	}
 }

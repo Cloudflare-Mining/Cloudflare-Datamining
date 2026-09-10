@@ -1881,6 +1881,16 @@
 														"readOnly": true,
 														"x-auditable": true
 													},
+													"jurisdiction": {
+														"type": "string",
+														"example": "eu",
+														"enum": [
+															"eu",
+															"us",
+															"fedramp"
+														],
+														"x-auditable": true
+													},
 													"modified_on": {
 														"type": "string",
 														"readOnly": true,
@@ -2350,6 +2360,16 @@
 												"created_on": {
 													"type": "string",
 													"readOnly": true,
+													"x-auditable": true
+												},
+												"jurisdiction": {
+													"type": "string",
+													"example": "eu",
+													"enum": [
+														"eu",
+														"us",
+														"fedramp"
+													],
 													"x-auditable": true
 												},
 												"modified_on": {
@@ -4391,6 +4411,16 @@
 								"readOnly": true,
 								"x-auditable": true
 							},
+							"jurisdiction": {
+								"type": "string",
+								"example": "eu",
+								"enum": [
+									"eu",
+									"us",
+									"fedramp"
+								],
+								"x-auditable": true
+							},
 							"modified_on": {
 								"type": "string",
 								"readOnly": true,
@@ -4710,6 +4740,16 @@
 														"created_on": {
 															"type": "string",
 															"readOnly": true,
+															"x-auditable": true
+														},
+														"jurisdiction": {
+															"type": "string",
+															"example": "eu",
+															"enum": [
+																"eu",
+																"us",
+																"fedramp"
+															],
 															"x-auditable": true
 														},
 														"modified_on": {
@@ -5621,6 +5661,16 @@
 					"schema": {
 						"type": "object",
 						"properties": {
+							"jurisdiction": {
+								"type": "string",
+								"example": "eu",
+								"enum": [
+									"eu",
+									"us",
+									"fedramp"
+								],
+								"x-auditable": true
+							},
 							"queue_name": {
 								"type": "string",
 								"example": "example-queue",
@@ -5861,6 +5911,16 @@
 												"created_on": {
 													"type": "string",
 													"readOnly": true,
+													"x-auditable": true
+												},
+												"jurisdiction": {
+													"type": "string",
+													"example": "eu",
+													"enum": [
+														"eu",
+														"us",
+														"fedramp"
+													],
 													"x-auditable": true
 												},
 												"modified_on": {
@@ -9122,6 +9182,16 @@
 															"readOnly": true,
 															"x-auditable": true
 														},
+														"jurisdiction": {
+															"type": "string",
+															"example": "eu",
+															"enum": [
+																"eu",
+																"us",
+																"fedramp"
+															],
+															"x-auditable": true
+														},
 														"modified_on": {
 															"type": "string",
 															"readOnly": true,
@@ -9506,6 +9576,16 @@
 								"readOnly": true,
 								"x-auditable": true
 							},
+							"jurisdiction": {
+								"type": "string",
+								"example": "eu",
+								"enum": [
+									"eu",
+									"us",
+									"fedramp"
+								],
+								"x-auditable": true
+							},
 							"modified_on": {
 								"type": "string",
 								"readOnly": true,
@@ -9825,6 +9905,16 @@
 														"created_on": {
 															"type": "string",
 															"readOnly": true,
+															"x-auditable": true
+														},
+														"jurisdiction": {
+															"type": "string",
+															"example": "eu",
+															"enum": [
+																"eu",
+																"us",
+																"fedramp"
+															],
 															"x-auditable": true
 														},
 														"modified_on": {

@@ -121,6 +121,14 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"ai_bots_migration_opt_out": {
+																			"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
+																			"type": "boolean",
+																			"example": false,
+																			"default": false,
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"ai_bots_protection": {
 																			"description": "Enable rule to block AI Scrapers and Crawlers.",
 																			"type": "string",
@@ -128,6 +136,43 @@
 																			"enum": [
 																				"block",
 																				"disabled",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_search": {
+																			"description": "Configure robots.txt policy for AI search bots.",
+																			"type": "string",
+																			"example": "block",
+																			"enum": [
+																				"disabled",
+																				"block",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_training": {
+																			"description": "Configure robots.txt policy for AI model training bots.",
+																			"type": "string",
+																			"example": "disallow",
+																			"enum": [
+																				"disabled",
+																				"disallow",
+																				"block",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_user": {
+																			"description": "Configure robots.txt policy for AI assistant and agent bots.",
+																			"type": "string",
+																			"example": "only_on_ad_pages",
+																			"enum": [
+																				"disabled",
+																				"block",
 																				"only_on_ad_pages"
 																			],
 																			"x-auditable": true,
@@ -269,6 +314,14 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"ai_bots_migration_opt_out": {
+																			"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
+																			"type": "boolean",
+																			"example": false,
+																			"default": false,
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"ai_bots_protection": {
 																			"description": "Enable rule to block AI Scrapers and Crawlers.",
 																			"type": "string",
@@ -276,6 +329,43 @@
 																			"enum": [
 																				"block",
 																				"disabled",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_search": {
+																			"description": "Configure robots.txt policy for AI search bots.",
+																			"type": "string",
+																			"example": "block",
+																			"enum": [
+																				"disabled",
+																				"block",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_training": {
+																			"description": "Configure robots.txt policy for AI model training bots.",
+																			"type": "string",
+																			"example": "disallow",
+																			"enum": [
+																				"disabled",
+																				"disallow",
+																				"block",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_user": {
+																			"description": "Configure robots.txt policy for AI assistant and agent bots.",
+																			"type": "string",
+																			"example": "only_on_ad_pages",
+																			"enum": [
+																				"disabled",
+																				"block",
 																				"only_on_ad_pages"
 																			],
 																			"x-auditable": true,
@@ -421,6 +511,14 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"ai_bots_migration_opt_out": {
+																			"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
+																			"type": "boolean",
+																			"example": false,
+																			"default": false,
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"ai_bots_protection": {
 																			"description": "Enable rule to block AI Scrapers and Crawlers.",
 																			"type": "string",
@@ -428,6 +526,43 @@
 																			"enum": [
 																				"block",
 																				"disabled",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_search": {
+																			"description": "Configure robots.txt policy for AI search bots.",
+																			"type": "string",
+																			"example": "block",
+																			"enum": [
+																				"disabled",
+																				"block",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_training": {
+																			"description": "Configure robots.txt policy for AI model training bots.",
+																			"type": "string",
+																			"example": "disallow",
+																			"enum": [
+																				"disabled",
+																				"disallow",
+																				"block",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_user": {
+																			"description": "Configure robots.txt policy for AI assistant and agent bots.",
+																			"type": "string",
+																			"example": "only_on_ad_pages",
+																			"enum": [
+																				"disabled",
+																				"block",
 																				"only_on_ad_pages"
 																			],
 																			"x-auditable": true,
@@ -579,6 +714,14 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"ai_bots_migration_opt_out": {
+																			"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
+																			"type": "boolean",
+																			"example": false,
+																			"default": false,
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"ai_bots_protection": {
 																			"description": "Enable rule to block AI Scrapers and Crawlers.",
 																			"type": "string",
@@ -586,6 +729,43 @@
 																			"enum": [
 																				"block",
 																				"disabled",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_search": {
+																			"description": "Configure robots.txt policy for AI search bots.",
+																			"type": "string",
+																			"example": "block",
+																			"enum": [
+																				"disabled",
+																				"block",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_training": {
+																			"description": "Configure robots.txt policy for AI model training bots.",
+																			"type": "string",
+																			"example": "disallow",
+																			"enum": [
+																				"disabled",
+																				"disallow",
+																				"block",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_user": {
+																			"description": "Configure robots.txt policy for AI assistant and agent bots.",
+																			"type": "string",
+																			"example": "only_on_ad_pages",
+																			"enum": [
+																				"disabled",
+																				"block",
 																				"only_on_ad_pages"
 																			],
 																			"x-auditable": true,
@@ -850,6 +1030,14 @@
 																	"allOf": [
 																		{
 																			"properties": {
+																				"ai_bots_migration_opt_out": {
+																					"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
+																					"type": "boolean",
+																					"example": false,
+																					"default": false,
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
 																				"ai_bots_protection": {
 																					"description": "Enable rule to block AI Scrapers and Crawlers.",
 																					"type": "string",
@@ -857,6 +1045,43 @@
 																					"enum": [
 																						"block",
 																						"disabled",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_search": {
+																					"description": "Configure robots.txt policy for AI search bots.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_training": {
+																					"description": "Configure robots.txt policy for AI model training bots.",
+																					"type": "string",
+																					"example": "disallow",
+																					"enum": [
+																						"disabled",
+																						"disallow",
+																						"block",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_user": {
+																					"description": "Configure robots.txt policy for AI assistant and agent bots.",
+																					"type": "string",
+																					"example": "only_on_ad_pages",
+																					"enum": [
+																						"disabled",
+																						"block",
 																						"only_on_ad_pages"
 																					],
 																					"x-auditable": true,
@@ -998,6 +1223,14 @@
 																	"allOf": [
 																		{
 																			"properties": {
+																				"ai_bots_migration_opt_out": {
+																					"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
+																					"type": "boolean",
+																					"example": false,
+																					"default": false,
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
 																				"ai_bots_protection": {
 																					"description": "Enable rule to block AI Scrapers and Crawlers.",
 																					"type": "string",
@@ -1005,6 +1238,43 @@
 																					"enum": [
 																						"block",
 																						"disabled",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_search": {
+																					"description": "Configure robots.txt policy for AI search bots.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_training": {
+																					"description": "Configure robots.txt policy for AI model training bots.",
+																					"type": "string",
+																					"example": "disallow",
+																					"enum": [
+																						"disabled",
+																						"disallow",
+																						"block",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_user": {
+																					"description": "Configure robots.txt policy for AI assistant and agent bots.",
+																					"type": "string",
+																					"example": "only_on_ad_pages",
+																					"enum": [
+																						"disabled",
+																						"block",
 																						"only_on_ad_pages"
 																					],
 																					"x-auditable": true,
@@ -1150,6 +1420,14 @@
 																	"allOf": [
 																		{
 																			"properties": {
+																				"ai_bots_migration_opt_out": {
+																					"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
+																					"type": "boolean",
+																					"example": false,
+																					"default": false,
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
 																				"ai_bots_protection": {
 																					"description": "Enable rule to block AI Scrapers and Crawlers.",
 																					"type": "string",
@@ -1157,6 +1435,43 @@
 																					"enum": [
 																						"block",
 																						"disabled",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_search": {
+																					"description": "Configure robots.txt policy for AI search bots.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_training": {
+																					"description": "Configure robots.txt policy for AI model training bots.",
+																					"type": "string",
+																					"example": "disallow",
+																					"enum": [
+																						"disabled",
+																						"disallow",
+																						"block",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_user": {
+																					"description": "Configure robots.txt policy for AI assistant and agent bots.",
+																					"type": "string",
+																					"example": "only_on_ad_pages",
+																					"enum": [
+																						"disabled",
+																						"block",
 																						"only_on_ad_pages"
 																					],
 																					"x-auditable": true,
@@ -1308,6 +1623,14 @@
 																	"allOf": [
 																		{
 																			"properties": {
+																				"ai_bots_migration_opt_out": {
+																					"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
+																					"type": "boolean",
+																					"example": false,
+																					"default": false,
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
 																				"ai_bots_protection": {
 																					"description": "Enable rule to block AI Scrapers and Crawlers.",
 																					"type": "string",
@@ -1315,6 +1638,43 @@
 																					"enum": [
 																						"block",
 																						"disabled",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_search": {
+																					"description": "Configure robots.txt policy for AI search bots.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_training": {
+																					"description": "Configure robots.txt policy for AI model training bots.",
+																					"type": "string",
+																					"example": "disallow",
+																					"enum": [
+																						"disabled",
+																						"disallow",
+																						"block",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_user": {
+																					"description": "Configure robots.txt policy for AI assistant and agent bots.",
+																					"type": "string",
+																					"example": "only_on_ad_pages",
+																					"enum": [
+																						"disabled",
+																						"block",
 																						"only_on_ad_pages"
 																					],
 																					"x-auditable": true,
@@ -1632,100 +1992,6 @@
 			"required": true,
 			"content": {
 				"application/json": {
-					"examples": {
-						"example1": {
-							"summary": "Bot Fight Mode default example",
-							"value": {
-								"ai_bots_protection": "disabled",
-								"cf_robots_variant": "off",
-								"crawler_protection": "disabled",
-								"enable_js": true,
-								"fight_mode": true,
-								"is_robots_txt_managed": false
-							}
-						},
-						"example2": {
-							"summary": "SBFM Pro plan default example",
-							"value": {
-								"ai_bots_protection": "disabled",
-								"cf_robots_variant": "off",
-								"crawler_protection": "disabled",
-								"enable_js": true,
-								"is_robots_txt_managed": false,
-								"sbfm_definitely_automated": "block",
-								"sbfm_static_resource_protection": true,
-								"sbfm_verified_bots": "block"
-							}
-						},
-						"example3": {
-							"summary": "SBFM Biz plan default example",
-							"value": {
-								"ai_bots_protection": "disabled",
-								"cf_robots_variant": "off",
-								"crawler_protection": "disabled",
-								"enable_js": true,
-								"is_robots_txt_managed": false,
-								"sbfm_definitely_automated": "block",
-								"sbfm_likely_automated": "managed_challenge",
-								"sbfm_static_resource_protection": true,
-								"sbfm_verified_bots": "block"
-							}
-						},
-						"example4": {
-							"summary": "BM Enterprise Subscription default example",
-							"value": {
-								"ai_bots_protection": "disabled",
-								"auto_update_model": true,
-								"bm_cookie_enabled": true,
-								"cf_robots_variant": "off",
-								"crawler_protection": "disabled",
-								"enable_js": true,
-								"is_robots_txt_managed": false
-							}
-						},
-						"example5": {
-							"summary": "Clean up configuration for Bot Fight Mode plan",
-							"value": {
-								"bm_cookie_enabled": true,
-								"optimize_wordpress": false,
-								"sbfm_definitely_automated": "allow",
-								"sbfm_likely_automated": "allow",
-								"sbfm_static_resource_protection": false,
-								"sbfm_verified_bots": "allow",
-								"suppress_session_score": false
-							}
-						},
-						"example6": {
-							"summary": "Clean up configuration for SBFM Pro plan",
-							"value": {
-								"fight_mode": false,
-								"sbfm_likely_automated": "allow"
-							}
-						},
-						"example7": {
-							"summary": "Clean up configuration for SBFM Biz plan",
-							"value": {
-								"fight_mode": false
-							}
-						},
-						"example8": {
-							"summary": "Clean up configuration for BM Enterprise Subscription",
-							"value": {
-								"fight_mode": false,
-								"optimize_wordpress": false,
-								"sbfm_definitely_automated": "allow",
-								"sbfm_likely_automated": "allow",
-								"sbfm_static_resource_protection": false,
-								"sbfm_verified_bots": "allow"
-							}
-						},
-						"example9": {
-							"summary": "Block AI Bots on Ad pages only",
-							"value": {
-								"ai_bots_protection": "only_on_ad_pages"
-							}
-						}
-					},
 					"schema": {
 						"type": "object",
 						"oneOf": [
@@ -1735,6 +2001,14 @@
 										"allOf": [
 											{
 												"properties": {
+													"ai_bots_migration_opt_out": {
+														"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
+														"type": "boolean",
+														"example": false,
+														"default": false,
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
 													"ai_bots_protection": {
 														"description": "Enable rule to block AI Scrapers and Crawlers.",
 														"type": "string",
@@ -1742,6 +2016,43 @@
 														"enum": [
 															"block",
 															"disabled",
+															"only_on_ad_pages"
+														],
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"ai_search": {
+														"description": "Configure robots.txt policy for AI search bots.",
+														"type": "string",
+														"example": "block",
+														"enum": [
+															"disabled",
+															"block",
+															"only_on_ad_pages"
+														],
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"ai_training": {
+														"description": "Configure robots.txt policy for AI model training bots.",
+														"type": "string",
+														"example": "disallow",
+														"enum": [
+															"disabled",
+															"disallow",
+															"block",
+															"only_on_ad_pages"
+														],
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"ai_user": {
+														"description": "Configure robots.txt policy for AI assistant and agent bots.",
+														"type": "string",
+														"example": "only_on_ad_pages",
+														"enum": [
+															"disabled",
+															"block",
 															"only_on_ad_pages"
 														],
 														"x-auditable": true,
@@ -1883,6 +2194,14 @@
 										"allOf": [
 											{
 												"properties": {
+													"ai_bots_migration_opt_out": {
+														"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
+														"type": "boolean",
+														"example": false,
+														"default": false,
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
 													"ai_bots_protection": {
 														"description": "Enable rule to block AI Scrapers and Crawlers.",
 														"type": "string",
@@ -1890,6 +2209,43 @@
 														"enum": [
 															"block",
 															"disabled",
+															"only_on_ad_pages"
+														],
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"ai_search": {
+														"description": "Configure robots.txt policy for AI search bots.",
+														"type": "string",
+														"example": "block",
+														"enum": [
+															"disabled",
+															"block",
+															"only_on_ad_pages"
+														],
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"ai_training": {
+														"description": "Configure robots.txt policy for AI model training bots.",
+														"type": "string",
+														"example": "disallow",
+														"enum": [
+															"disabled",
+															"disallow",
+															"block",
+															"only_on_ad_pages"
+														],
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"ai_user": {
+														"description": "Configure robots.txt policy for AI assistant and agent bots.",
+														"type": "string",
+														"example": "only_on_ad_pages",
+														"enum": [
+															"disabled",
+															"block",
 															"only_on_ad_pages"
 														],
 														"x-auditable": true,
@@ -2035,6 +2391,14 @@
 										"allOf": [
 											{
 												"properties": {
+													"ai_bots_migration_opt_out": {
+														"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
+														"type": "boolean",
+														"example": false,
+														"default": false,
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
 													"ai_bots_protection": {
 														"description": "Enable rule to block AI Scrapers and Crawlers.",
 														"type": "string",
@@ -2042,6 +2406,43 @@
 														"enum": [
 															"block",
 															"disabled",
+															"only_on_ad_pages"
+														],
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"ai_search": {
+														"description": "Configure robots.txt policy for AI search bots.",
+														"type": "string",
+														"example": "block",
+														"enum": [
+															"disabled",
+															"block",
+															"only_on_ad_pages"
+														],
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"ai_training": {
+														"description": "Configure robots.txt policy for AI model training bots.",
+														"type": "string",
+														"example": "disallow",
+														"enum": [
+															"disabled",
+															"disallow",
+															"block",
+															"only_on_ad_pages"
+														],
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"ai_user": {
+														"description": "Configure robots.txt policy for AI assistant and agent bots.",
+														"type": "string",
+														"example": "only_on_ad_pages",
+														"enum": [
+															"disabled",
+															"block",
 															"only_on_ad_pages"
 														],
 														"x-auditable": true,
@@ -2193,6 +2594,14 @@
 										"allOf": [
 											{
 												"properties": {
+													"ai_bots_migration_opt_out": {
+														"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
+														"type": "boolean",
+														"example": false,
+														"default": false,
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
 													"ai_bots_protection": {
 														"description": "Enable rule to block AI Scrapers and Crawlers.",
 														"type": "string",
@@ -2200,6 +2609,43 @@
 														"enum": [
 															"block",
 															"disabled",
+															"only_on_ad_pages"
+														],
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"ai_search": {
+														"description": "Configure robots.txt policy for AI search bots.",
+														"type": "string",
+														"example": "block",
+														"enum": [
+															"disabled",
+															"block",
+															"only_on_ad_pages"
+														],
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"ai_training": {
+														"description": "Configure robots.txt policy for AI model training bots.",
+														"type": "string",
+														"example": "disallow",
+														"enum": [
+															"disabled",
+															"disallow",
+															"block",
+															"only_on_ad_pages"
+														],
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"ai_user": {
+														"description": "Configure robots.txt policy for AI assistant and agent bots.",
+														"type": "string",
+														"example": "only_on_ad_pages",
+														"enum": [
+															"disabled",
+															"block",
 															"only_on_ad_pages"
 														],
 														"x-auditable": true,
@@ -2458,6 +2904,14 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"ai_bots_migration_opt_out": {
+																			"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
+																			"type": "boolean",
+																			"example": false,
+																			"default": false,
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"ai_bots_protection": {
 																			"description": "Enable rule to block AI Scrapers and Crawlers.",
 																			"type": "string",
@@ -2465,6 +2919,43 @@
 																			"enum": [
 																				"block",
 																				"disabled",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_search": {
+																			"description": "Configure robots.txt policy for AI search bots.",
+																			"type": "string",
+																			"example": "block",
+																			"enum": [
+																				"disabled",
+																				"block",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_training": {
+																			"description": "Configure robots.txt policy for AI model training bots.",
+																			"type": "string",
+																			"example": "disallow",
+																			"enum": [
+																				"disabled",
+																				"disallow",
+																				"block",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_user": {
+																			"description": "Configure robots.txt policy for AI assistant and agent bots.",
+																			"type": "string",
+																			"example": "only_on_ad_pages",
+																			"enum": [
+																				"disabled",
+																				"block",
 																				"only_on_ad_pages"
 																			],
 																			"x-auditable": true,
@@ -2606,6 +3097,14 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"ai_bots_migration_opt_out": {
+																			"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
+																			"type": "boolean",
+																			"example": false,
+																			"default": false,
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"ai_bots_protection": {
 																			"description": "Enable rule to block AI Scrapers and Crawlers.",
 																			"type": "string",
@@ -2613,6 +3112,43 @@
 																			"enum": [
 																				"block",
 																				"disabled",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_search": {
+																			"description": "Configure robots.txt policy for AI search bots.",
+																			"type": "string",
+																			"example": "block",
+																			"enum": [
+																				"disabled",
+																				"block",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_training": {
+																			"description": "Configure robots.txt policy for AI model training bots.",
+																			"type": "string",
+																			"example": "disallow",
+																			"enum": [
+																				"disabled",
+																				"disallow",
+																				"block",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_user": {
+																			"description": "Configure robots.txt policy for AI assistant and agent bots.",
+																			"type": "string",
+																			"example": "only_on_ad_pages",
+																			"enum": [
+																				"disabled",
+																				"block",
 																				"only_on_ad_pages"
 																			],
 																			"x-auditable": true,
@@ -2758,6 +3294,14 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"ai_bots_migration_opt_out": {
+																			"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
+																			"type": "boolean",
+																			"example": false,
+																			"default": false,
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"ai_bots_protection": {
 																			"description": "Enable rule to block AI Scrapers and Crawlers.",
 																			"type": "string",
@@ -2765,6 +3309,43 @@
 																			"enum": [
 																				"block",
 																				"disabled",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_search": {
+																			"description": "Configure robots.txt policy for AI search bots.",
+																			"type": "string",
+																			"example": "block",
+																			"enum": [
+																				"disabled",
+																				"block",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_training": {
+																			"description": "Configure robots.txt policy for AI model training bots.",
+																			"type": "string",
+																			"example": "disallow",
+																			"enum": [
+																				"disabled",
+																				"disallow",
+																				"block",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_user": {
+																			"description": "Configure robots.txt policy for AI assistant and agent bots.",
+																			"type": "string",
+																			"example": "only_on_ad_pages",
+																			"enum": [
+																				"disabled",
+																				"block",
 																				"only_on_ad_pages"
 																			],
 																			"x-auditable": true,
@@ -2916,6 +3497,14 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"ai_bots_migration_opt_out": {
+																			"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
+																			"type": "boolean",
+																			"example": false,
+																			"default": false,
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"ai_bots_protection": {
 																			"description": "Enable rule to block AI Scrapers and Crawlers.",
 																			"type": "string",
@@ -2923,6 +3512,43 @@
 																			"enum": [
 																				"block",
 																				"disabled",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_search": {
+																			"description": "Configure robots.txt policy for AI search bots.",
+																			"type": "string",
+																			"example": "block",
+																			"enum": [
+																				"disabled",
+																				"block",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_training": {
+																			"description": "Configure robots.txt policy for AI model training bots.",
+																			"type": "string",
+																			"example": "disallow",
+																			"enum": [
+																				"disabled",
+																				"disallow",
+																				"block",
+																				"only_on_ad_pages"
+																			],
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"ai_user": {
+																			"description": "Configure robots.txt policy for AI assistant and agent bots.",
+																			"type": "string",
+																			"example": "only_on_ad_pages",
+																			"enum": [
+																				"disabled",
+																				"block",
 																				"only_on_ad_pages"
 																			],
 																			"x-auditable": true,
@@ -3187,6 +3813,14 @@
 																	"allOf": [
 																		{
 																			"properties": {
+																				"ai_bots_migration_opt_out": {
+																					"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
+																					"type": "boolean",
+																					"example": false,
+																					"default": false,
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
 																				"ai_bots_protection": {
 																					"description": "Enable rule to block AI Scrapers and Crawlers.",
 																					"type": "string",
@@ -3194,6 +3828,43 @@
 																					"enum": [
 																						"block",
 																						"disabled",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_search": {
+																					"description": "Configure robots.txt policy for AI search bots.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_training": {
+																					"description": "Configure robots.txt policy for AI model training bots.",
+																					"type": "string",
+																					"example": "disallow",
+																					"enum": [
+																						"disabled",
+																						"disallow",
+																						"block",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_user": {
+																					"description": "Configure robots.txt policy for AI assistant and agent bots.",
+																					"type": "string",
+																					"example": "only_on_ad_pages",
+																					"enum": [
+																						"disabled",
+																						"block",
 																						"only_on_ad_pages"
 																					],
 																					"x-auditable": true,
@@ -3335,6 +4006,14 @@
 																	"allOf": [
 																		{
 																			"properties": {
+																				"ai_bots_migration_opt_out": {
+																					"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
+																					"type": "boolean",
+																					"example": false,
+																					"default": false,
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
 																				"ai_bots_protection": {
 																					"description": "Enable rule to block AI Scrapers and Crawlers.",
 																					"type": "string",
@@ -3342,6 +4021,43 @@
 																					"enum": [
 																						"block",
 																						"disabled",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_search": {
+																					"description": "Configure robots.txt policy for AI search bots.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_training": {
+																					"description": "Configure robots.txt policy for AI model training bots.",
+																					"type": "string",
+																					"example": "disallow",
+																					"enum": [
+																						"disabled",
+																						"disallow",
+																						"block",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_user": {
+																					"description": "Configure robots.txt policy for AI assistant and agent bots.",
+																					"type": "string",
+																					"example": "only_on_ad_pages",
+																					"enum": [
+																						"disabled",
+																						"block",
 																						"only_on_ad_pages"
 																					],
 																					"x-auditable": true,
@@ -3487,6 +4203,14 @@
 																	"allOf": [
 																		{
 																			"properties": {
+																				"ai_bots_migration_opt_out": {
+																					"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
+																					"type": "boolean",
+																					"example": false,
+																					"default": false,
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
 																				"ai_bots_protection": {
 																					"description": "Enable rule to block AI Scrapers and Crawlers.",
 																					"type": "string",
@@ -3494,6 +4218,43 @@
 																					"enum": [
 																						"block",
 																						"disabled",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_search": {
+																					"description": "Configure robots.txt policy for AI search bots.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_training": {
+																					"description": "Configure robots.txt policy for AI model training bots.",
+																					"type": "string",
+																					"example": "disallow",
+																					"enum": [
+																						"disabled",
+																						"disallow",
+																						"block",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_user": {
+																					"description": "Configure robots.txt policy for AI assistant and agent bots.",
+																					"type": "string",
+																					"example": "only_on_ad_pages",
+																					"enum": [
+																						"disabled",
+																						"block",
 																						"only_on_ad_pages"
 																					],
 																					"x-auditable": true,
@@ -3645,6 +4406,14 @@
 																	"allOf": [
 																		{
 																			"properties": {
+																				"ai_bots_migration_opt_out": {
+																					"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
+																					"type": "boolean",
+																					"example": false,
+																					"default": false,
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
 																				"ai_bots_protection": {
 																					"description": "Enable rule to block AI Scrapers and Crawlers.",
 																					"type": "string",
@@ -3652,6 +4421,43 @@
 																					"enum": [
 																						"block",
 																						"disabled",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_search": {
+																					"description": "Configure robots.txt policy for AI search bots.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_training": {
+																					"description": "Configure robots.txt policy for AI model training bots.",
+																					"type": "string",
+																					"example": "disallow",
+																					"enum": [
+																						"disabled",
+																						"disallow",
+																						"block",
+																						"only_on_ad_pages"
+																					],
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"ai_user": {
+																					"description": "Configure robots.txt policy for AI assistant and agent bots.",
+																					"type": "string",
+																					"example": "only_on_ad_pages",
+																					"enum": [
+																						"disabled",
+																						"block",
 																						"only_on_ad_pages"
 																					],
 																					"x-auditable": true,

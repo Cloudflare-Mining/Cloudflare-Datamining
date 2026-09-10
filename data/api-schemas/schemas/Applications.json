@@ -3698,7 +3698,7 @@
 									"description": "List of errors.",
 									"type": "array",
 									"items": {
-										"additionalProperties": {},
+										"additionalProperties": true,
 										"type": "object"
 									},
 									"default": []
@@ -4139,13 +4139,13 @@
 											"payload_example": {
 												"description": "Example credentials payload with placeholder values.",
 												"type": "object",
-												"additionalProperties": {},
+												"additionalProperties": true,
 												"nullable": true
 											},
 											"payload_schema": {
 												"description": "JSON Schema for the credentials object in POST /v2/integrations request.",
 												"type": "object",
-												"additionalProperties": {},
+												"additionalProperties": true,
 												"nullable": true
 											},
 											"redirect_url": {
@@ -5409,409 +5409,109 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"documentation_url": {
-																		"type": "string"
-																	},
-																	"message": {
-																		"type": "string"
-																	},
-																	"source": {
-																		"type": "object",
-																		"properties": {
-																			"pointer": {
-																				"type": "string"
-																			}
-																		}
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"documentation_url": {
-																		"type": "string"
-																	},
-																	"message": {
-																		"type": "string"
-																	},
-																	"source": {
-																		"type": "object",
-																		"properties": {
-																			"pointer": {
-																				"type": "string"
-																			}
-																		}
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Indicates whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages"
-													]
-												},
-												{
-													"properties": {
-														"result_info": {
-															"type": "object",
-															"properties": {
-																"count": {
-																	"description": "Returns the total number of results for the requested service.",
-																	"type": "number",
-																	"example": 1
-																},
-																"page": {
-																	"description": "Returns the current page within paginated list of results.",
-																	"type": "number",
-																	"example": 1
-																},
-																"per_page": {
-																	"description": "Returns the number of results per page of results.",
-																	"type": "number",
-																	"example": 20
-																},
-																"total_count": {
-																	"description": "Returns the total results available without any search parameters.",
-																	"type": "number",
-																	"example": 2000
-																}
-															}
-														}
+													"documentation_url": {
+														"type": "string"
 													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"description": "Returns the list of applications.",
-													"type": "array",
-													"items": {
-														"description": "Describes one application in a list response. This endpoint returns every property below unless the `fields` query parameter narrows the response, so treat all of them except `id` as optional.",
+													"message": {
+														"type": "string"
+													},
+													"source": {
 														"type": "object",
 														"properties": {
-															"application_confidence_score": {
-																"description": "Confidence score for the application. Returns -1 when no score is available.",
-																"type": "number",
-																"format": "float",
-																"example": 0.92
-															},
-															"application_score_composition": {
-																"description": "Returns the score composition breakdown for the application.",
-																"type": "object",
-																"example": {
-																	"categories": [
-																		{
-																			"confidence": 0.95,
-																			"name": "Security"
-																		}
-																	],
-																	"plan": "free"
-																},
-																"nullable": true
-															},
-															"application_source": {
-																"description": "Returns the application source.",
-																"type": "string",
-																"example": "cloudflare"
-															},
-															"application_type": {
-																"description": "Returns the application type.",
-																"type": "string",
-																"example": "Human Resources"
-															},
-															"application_type_description": {
-																"description": "Returns the application type description.",
-																"type": "string",
-																"example": "Applications used to manage employees and workforce tools."
-															},
-															"category_id": {
-																"description": "Returns the category ID.",
-																"type": "integer",
-																"format": "int64",
-																"example": 12,
-																"maximum": 4294967295,
-																"minimum": 1
-															},
-															"created_at": {
-																"description": "Returns the application creation time.",
-																"type": "string",
-																"example": "2025-01-01T00:00:00Z"
-															},
-															"gen_ai_score": {
-																"description": "GenAI score for the application. Returns -1 when no score is available.",
-																"type": "number",
-																"format": "float",
-																"example": 1.5
-															},
-															"hostnames": {
-																"description": "Hostnames matched by the application.",
-																"type": "array",
-																"items": {
-																	"type": "string"
-																},
-																"example": [
-																	"example.com",
-																	"foo.com"
-																],
-																"x-stainless-collection-type": "set"
-															},
-															"human_id": {
-																"description": "Returns the human readable ID.",
-																"type": "string",
-																"example": "HR"
-															},
-															"id": {
-																"description": "Returns the application ID.",
-																"type": "integer",
-																"format": "int64",
-																"example": 498,
-																"maximum": 4294967295,
-																"minimum": 0
-															},
-															"ip_subnets": {
-																"description": "IP subnets matched by the application.",
-																"type": "array",
-																"items": {
-																	"type": "string"
-																},
-																"example": [
-																	"192.168.1.0/24",
-																	"10.0.0.0/8"
-																],
-																"x-stainless-collection-type": "set"
-															},
-															"name": {
-																"description": "Returns the application name.",
-																"type": "string",
-																"example": "HR"
-															},
-															"port_protocols": {
-																"description": "Port and protocol pairs matched by the application.",
-																"type": "array",
-																"items": {
-																	"type": "string"
-																},
-																"example": [
-																	"tcp/80",
-																	"tcp/443"
-																],
-																"x-stainless-collection-type": "set"
-															},
-															"review_status": {
-																"description": "The account-specific Gateway review status. Applications with no assigned review status are returned as `unreviewed`.",
-																"type": "string",
-																"enum": [
-																	"approved",
-																	"unapproved",
-																	"in_review",
-																	"unreviewed"
-																]
-															},
-															"support_domains": {
-																"description": "Support domains matched by the application.",
-																"type": "array",
-																"items": {
-																	"type": "string"
-																},
-																"example": [
-																	"example.com",
-																	"foo.com"
-																],
-																"x-stainless-collection-type": "set"
-															},
-															"supported": {
-																"description": "Cloudflare products that support this application.",
-																"type": "array",
-																"items": {
-																	"enum": [
-																		"GATEWAY",
-																		"ACCESS",
-																		"CASB"
-																	],
-																	"type": "string"
-																},
-																"example": [
-																	"GATEWAY",
-																	"ACCESS"
-																],
-																"x-stainless-collection-type": "set"
-															},
-															"updated_at": {
-																"description": "Returns the application update time.",
-																"type": "string",
-																"example": "2025-01-01T00:00:00Z"
-															},
-															"version": {
-																"description": "Returns the application version.",
-																"type": "string",
-																"example": "2025-01-01T00:00:00Z"
+															"pointer": {
+																"type": "string"
 															}
-														},
-														"required": [
-															"id"
-														]
+														}
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Indicates whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -6139,375 +5839,109 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": []
-												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+													"documentation_url": {
+														"type": "string"
 													},
-													"example": []
-												},
-												"success": {
-													"description": "Indicates whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"application_confidence_score": {
-															"description": "Confidence score for the application. Returns -1 when no score is available.",
-															"type": "number",
-															"format": "float",
-															"example": 0.92
-														},
-														"application_score_composition": {
-															"description": "Returns the score composition breakdown for the application.",
-															"type": "object",
-															"example": {
-																"categories": [
-																	{
-																		"confidence": 0.95,
-																		"name": "Security"
-																	}
-																],
-																"plan": "free"
-															},
-															"nullable": true
-														},
-														"application_source": {
-															"description": "Returns the application source.",
-															"type": "string",
-															"example": "cloudflare"
-														},
-														"application_type": {
-															"description": "Returns the application type.",
-															"type": "string",
-															"example": "Human Resources"
-														},
-														"application_type_description": {
-															"description": "Returns the application type description.",
-															"type": "string",
-															"example": "Applications used to manage employees and workforce tools."
-														},
-														"category_id": {
-															"description": "Returns the category ID.",
-															"type": "integer",
-															"format": "int64",
-															"example": 12,
-															"maximum": 4294967295,
-															"minimum": 1
-														},
-														"created_at": {
-															"description": "Returns the application creation time.",
-															"type": "string",
-															"example": "2025-01-01T00:00:00Z"
-														},
-														"gen_ai_score": {
-															"description": "GenAI score for the application. Returns -1 when no score is available.",
-															"type": "number",
-															"format": "float",
-															"example": 1.5
-														},
-														"hostnames": {
-															"description": "Hostnames matched by the application.",
-															"type": "array",
-															"items": {
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
 																"type": "string"
-															},
-															"example": [
-																"example.com",
-																"foo.com"
-															],
-															"x-stainless-collection-type": "set"
-														},
-														"human_id": {
-															"description": "Returns the human readable ID.",
-															"type": "string",
-															"example": "HR"
-														},
-														"id": {
-															"description": "Returns the application ID.",
-															"type": "integer",
-															"format": "int64",
-															"example": 498,
-															"maximum": 4294967295,
-															"minimum": 0
-														},
-														"ip_subnets": {
-															"description": "IP subnets matched by the application.",
-															"type": "array",
-															"items": {
-																"type": "string"
-															},
-															"example": [
-																"192.168.1.0/24",
-																"10.0.0.0/8"
-															],
-															"x-stainless-collection-type": "set"
-														},
-														"name": {
-															"description": "Returns the application name.",
-															"type": "string",
-															"example": "HR"
-														},
-														"port_protocols": {
-															"description": "Port and protocol pairs matched by the application.",
-															"type": "array",
-															"items": {
-																"type": "string"
-															},
-															"example": [
-																"tcp/80",
-																"tcp/443"
-															],
-															"x-stainless-collection-type": "set"
-														},
-														"support_domains": {
-															"description": "Support domains matched by the application.",
-															"type": "array",
-															"items": {
-																"type": "string"
-															},
-															"example": [
-																"example.com",
-																"foo.com"
-															],
-															"x-stainless-collection-type": "set"
-														},
-														"supported": {
-															"description": "Cloudflare products that support this application.",
-															"type": "array",
-															"items": {
-																"enum": [
-																	"GATEWAY",
-																	"ACCESS",
-																	"CASB"
-																],
-																"type": "string"
-															},
-															"example": [
-																"GATEWAY",
-																"ACCESS"
-															],
-															"x-stainless-collection-type": "set"
-														},
-														"updated_at": {
-															"description": "Returns the application update time.",
-															"type": "string",
-															"example": "2025-01-01T00:00:00Z"
-														},
-														"version": {
-															"description": "Returns the application version.",
-															"type": "string",
-															"example": "2025-01-01T00:00:00Z"
+															}
 														}
-													},
-													"required": [
-														"application_source",
-														"application_type",
-														"category_id",
-														"application_type_description",
-														"gen_ai_score",
-														"application_confidence_score",
-														"created_at",
-														"supported",
-														"hostnames",
-														"human_id",
-														"id",
-														"ip_subnets",
-														"name",
-														"port_protocols",
-														"support_domains",
-														"updated_at",
-														"version"
-													]
-												}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Indicates whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}

@@ -163,6 +163,12 @@
 																"target_size_mb"
 															]
 														},
+														"interval": {
+															"description": "Scheduling interval between normal table maintenance runs.",
+															"type": "string",
+															"example": "1h",
+															"pattern": "^\\d+(d|h|m|s)$"
+														},
 														"snapshot_expiration": {
 															"description": "Configures snapshot expiration settings.",
 															"type": "object",
@@ -672,6 +678,12 @@
 														"state",
 														"target_size_mb"
 													]
+												},
+												"interval": {
+													"description": "Scheduling interval between normal table maintenance runs.",
+													"type": "string",
+													"example": "1h",
+													"pattern": "^\\d+(d|h|m|s)$"
 												},
 												"snapshot_expiration": {
 													"description": "Configures snapshot expiration settings.",

@@ -43,6 +43,11 @@
 											"type": "boolean",
 											"x-auditable": true
 										},
+										"byok_only": {
+											"description": "Requires customer-provided provider credentials and prevents fallback to Unified Billing.",
+											"type": "boolean",
+											"x-auditable": true
+										},
 										"cache_invalidate_on_update": {
 											"type": "boolean",
 											"x-auditable": true
@@ -484,9 +489,9 @@
 											"x-auditable": true
 										},
 										"retry_delay": {
-											"description": "Delay between retry attempts in milliseconds (0-5000)",
+											"description": "Delay between retry attempts in milliseconds (0-60000)",
 											"type": "integer",
-											"maximum": 5000,
+											"maximum": 60000,
 											"minimum": 0,
 											"nullable": true,
 											"x-auditable": true
@@ -517,7 +522,7 @@
 															},
 															"id": {
 																"type": "string",
-																"default": "91cc05d8",
+																"default": "606973a2",
 																"minLength": 1,
 																"pattern": "^[a-zA-Z0-9_-]+$"
 															},
@@ -839,6 +844,11 @@
 									"items": {
 										"properties": {
 											"authentication": {
+												"type": "boolean",
+												"x-auditable": true
+											},
+											"byok_only": {
+												"description": "Requires customer-provided provider credentials and prevents fallback to Unified Billing.",
 												"type": "boolean",
 												"x-auditable": true
 											},
@@ -1283,9 +1293,9 @@
 												"x-auditable": true
 											},
 											"retry_delay": {
-												"description": "Delay between retry attempts in milliseconds (0-5000)",
+												"description": "Delay between retry attempts in milliseconds (0-60000)",
 												"type": "integer",
-												"maximum": 5000,
+												"maximum": 60000,
 												"minimum": 0,
 												"nullable": true,
 												"x-auditable": true
@@ -1316,7 +1326,7 @@
 																},
 																"id": {
 																	"type": "string",
-																	"default": "ecd9fd7b",
+																	"default": "906d8b20",
 																	"minLength": 1,
 																	"pattern": "^[a-zA-Z0-9_-]+$"
 																},
@@ -1761,6 +1771,11 @@
 											"type": "boolean",
 											"x-auditable": true
 										},
+										"byok_only": {
+											"description": "Requires customer-provided provider credentials and prevents fallback to Unified Billing.",
+											"type": "boolean",
+											"x-auditable": true
+										},
 										"cache_invalidate_on_update": {
 											"type": "boolean",
 											"x-auditable": true
@@ -2202,9 +2217,9 @@
 											"x-auditable": true
 										},
 										"retry_delay": {
-											"description": "Delay between retry attempts in milliseconds (0-5000)",
+											"description": "Delay between retry attempts in milliseconds (0-60000)",
 											"type": "integer",
-											"maximum": 5000,
+											"maximum": 60000,
 											"minimum": 0,
 											"nullable": true,
 											"x-auditable": true
@@ -2235,7 +2250,7 @@
 															},
 															"id": {
 																"type": "string",
-																"default": "b1430861",
+																"default": "0621f3c6",
 																"minLength": 1,
 																"pattern": "^[a-zA-Z0-9_-]+$"
 															},
@@ -2528,6 +2543,11 @@
 								"type": "boolean",
 								"x-auditable": true
 							},
+							"byok_only": {
+								"description": "Requires customer-provided provider credentials and prevents fallback to Unified Billing.",
+								"type": "boolean",
+								"x-auditable": true
+							},
 							"cache_invalidate_on_update": {
 								"type": "boolean",
 								"x-auditable": true
@@ -2611,9 +2631,9 @@
 								"x-auditable": true
 							},
 							"retry_delay": {
-								"description": "Delay between retry attempts in milliseconds (0-5000)",
+								"description": "Delay between retry attempts in milliseconds (0-60000)",
 								"type": "integer",
-								"maximum": 5000,
+								"maximum": 60000,
 								"minimum": 0,
 								"nullable": true,
 								"x-auditable": true
@@ -2669,6 +2689,11 @@
 									"type": "object",
 									"properties": {
 										"authentication": {
+											"type": "boolean",
+											"x-auditable": true
+										},
+										"byok_only": {
+											"description": "Requires customer-provided provider credentials and prevents fallback to Unified Billing.",
 											"type": "boolean",
 											"x-auditable": true
 										},
@@ -3113,9 +3138,9 @@
 											"x-auditable": true
 										},
 										"retry_delay": {
-											"description": "Delay between retry attempts in milliseconds (0-5000)",
+											"description": "Delay between retry attempts in milliseconds (0-60000)",
 											"type": "integer",
-											"maximum": 5000,
+											"maximum": 60000,
 											"minimum": 0,
 											"nullable": true,
 											"x-auditable": true
@@ -3146,7 +3171,7 @@
 															},
 															"id": {
 																"type": "string",
-																"default": "4a08df85",
+																"default": "915d6b52",
 																"minLength": 1,
 																"pattern": "^[a-zA-Z0-9_-]+$"
 															},
@@ -3457,6 +3482,11 @@
 						"type": "object",
 						"properties": {
 							"authentication": {
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"byok_only": {
+								"description": "Requires customer-provided provider credentials and prevents fallback to Unified Billing.",
 								"type": "boolean",
 								"x-auditable": true
 							},
@@ -3880,9 +3910,9 @@
 								"x-auditable": true
 							},
 							"retry_delay": {
-								"description": "Delay between retry attempts in milliseconds (0-5000)",
+								"description": "Delay between retry attempts in milliseconds (0-60000)",
 								"type": "integer",
-								"maximum": 5000,
+								"maximum": 60000,
 								"minimum": 0,
 								"nullable": true,
 								"x-auditable": true
@@ -3913,7 +3943,7 @@
 												},
 												"id": {
 													"type": "string",
-													"default": "bdd858ab",
+													"default": "91caa4d5",
 													"minLength": 1,
 													"pattern": "^[a-zA-Z0-9_-]+$"
 												},
@@ -4109,6 +4139,11 @@
 									"type": "object",
 									"properties": {
 										"authentication": {
+											"type": "boolean",
+											"x-auditable": true
+										},
+										"byok_only": {
+											"description": "Requires customer-provided provider credentials and prevents fallback to Unified Billing.",
 											"type": "boolean",
 											"x-auditable": true
 										},
@@ -4553,9 +4588,9 @@
 											"x-auditable": true
 										},
 										"retry_delay": {
-											"description": "Delay between retry attempts in milliseconds (0-5000)",
+											"description": "Delay between retry attempts in milliseconds (0-60000)",
 											"type": "integer",
-											"maximum": 5000,
+											"maximum": 60000,
 											"minimum": 0,
 											"nullable": true,
 											"x-auditable": true
@@ -4586,7 +4621,7 @@
 															},
 															"id": {
 																"type": "string",
-																"default": "f8a208a9",
+																"default": "e5855234",
 																"minLength": 1,
 																"pattern": "^[a-zA-Z0-9_-]+$"
 															},

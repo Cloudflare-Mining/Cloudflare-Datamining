@@ -50,6 +50,28 @@
 											}
 										}
 									},
+									"custom_metadata": {
+										"description": "Metadata added to AI Gateway logs for requests triggered by this operation. Accepts up to 2 string, number, or boolean entries. Keys 'ai-search', 'task', 'origin', and keys beginning with 'cf.' are reserved.",
+										"type": "object",
+										"example": {
+											"test": true,
+											"user_id": "user-123"
+										},
+										"additionalProperties": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											]
+										},
+										"maxProperties": 2
+									},
 									"instance_ids": {
 										"type": "array",
 										"items": {
@@ -774,6 +796,28 @@
 												"type": "boolean"
 											}
 										}
+									},
+									"custom_metadata": {
+										"description": "Metadata added to AI Gateway logs for requests triggered by this operation. Accepts up to 2 string, number, or boolean entries. Keys 'ai-search', 'task', 'origin', and keys beginning with 'cf.' are reserved.",
+										"type": "object",
+										"example": {
+											"test": true,
+											"user_id": "user-123"
+										},
+										"additionalProperties": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											]
+										},
+										"maxProperties": 2
 									},
 									"instance_ids": {
 										"type": "array",

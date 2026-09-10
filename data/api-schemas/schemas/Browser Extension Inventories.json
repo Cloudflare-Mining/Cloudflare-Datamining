@@ -1,0 +1,784 @@
+{
+	"GET /accounts/{account_id}/browser-extension/config/inventories": {
+		"operationId": "accounts-browser-extension-inventories-list",
+		"summary": "List browser extension inventories",
+		"description": "Returns the installed extension inventory for each registered browser\nextension device in the account. Each device reports its inventory\nperiodically; this endpoint returns the latest known snapshot per device.\n\nResults are paginated by cursor. Pass the `cursor` from a previous\nresponse to fetch the next page. `per_page` controls page size\n(default 50, max 200).\n",
+		"parameters": [
+			{
+				"name": "cursor",
+				"in": "query",
+				"description": "Opaque cursor from a previous response to fetch the next page.",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of results per page (default 50, max 200).",
+				"schema": {
+					"type": "integer",
+					"default": 50,
+					"maximum": 200,
+					"minimum": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Browser extension inventories response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"maxItems": 0
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"account_id": {
+												"description": "Cloudflare account internal ID.",
+												"type": "string"
+											},
+											"created_at": {
+												"description": "When the device state row was created.",
+												"type": "string",
+												"format": "date-time"
+											},
+											"installed_extensions": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"enabled": {
+															"description": "Whether the extension is enabled.",
+															"type": "boolean"
+														},
+														"hostPermissions": {
+															"description": "Browser extension host permissions (URL patterns).",
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"id": {
+															"description": "Browser extension ID.",
+															"type": "string"
+														},
+														"installType": {
+															"description": "How the extension was installed.",
+															"type": "string",
+															"enum": [
+																"development",
+																"normal",
+																"admin",
+																"sideload",
+																"other"
+															]
+														},
+														"name": {
+															"description": "Browser extension display name.",
+															"type": "string"
+														},
+														"permissions": {
+															"description": "Browser extension API permissions.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"version": {
+															"description": "Browser extension version string.",
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"version",
+														"enabled",
+														"installType",
+														"permissions",
+														"hostPermissions"
+													]
+												}
+											},
+											"observed_at": {
+												"description": "When the browser extension took the inventory snapshot.",
+												"type": "string",
+												"format": "date-time"
+											},
+											"physical_device_id": {
+												"description": "Physical device ID from trusted device identity.",
+												"type": "string",
+												"nullable": true
+											},
+											"registration_id": {
+												"description": "Browser extension registration ID.",
+												"type": "string"
+											},
+											"updated_at": {
+												"description": "When the device state row was last updated.",
+												"type": "string",
+												"format": "date-time"
+											}
+										},
+										"required": [
+											"account_id",
+											"registration_id",
+											"installed_extensions",
+											"observed_at",
+											"created_at",
+											"updated_at"
+										]
+									}
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"cursor": {
+											"description": "Opaque cursor for the next page. Null when there are no more results.",
+											"type": "string",
+											"nullable": true
+										},
+										"per_page": {
+											"description": "Number of results returned per page.",
+											"type": "integer"
+										}
+									},
+									"required": [
+										"per_page",
+										"cursor"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"result_info",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication failed.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "The authenticated user is not authorized to access this account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Browser Extension Inventories"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "browser-extension.inventories",
+		"x-fern-sdk-method-name": "list"
+	},
+	"GET /accounts/{account_id}/browser-extension/config/inventories/{registration_id}": {
+		"operationId": "accounts-browser-extension-inventories-get",
+		"summary": "Get a single browser extension inventory",
+		"description": "Returns the installed extension inventory for a single registered browser\nextension device.\n",
+		"responses": {
+			"200": {
+				"description": "Browser extension inventory response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"maxItems": 0
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"account_id": {
+											"description": "Cloudflare account internal ID.",
+											"type": "string"
+										},
+										"created_at": {
+											"description": "When the device state row was created.",
+											"type": "string",
+											"format": "date-time"
+										},
+										"installed_extensions": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"enabled": {
+														"description": "Whether the extension is enabled.",
+														"type": "boolean"
+													},
+													"hostPermissions": {
+														"description": "Browser extension host permissions (URL patterns).",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													},
+													"id": {
+														"description": "Browser extension ID.",
+														"type": "string"
+													},
+													"installType": {
+														"description": "How the extension was installed.",
+														"type": "string",
+														"enum": [
+															"development",
+															"normal",
+															"admin",
+															"sideload",
+															"other"
+														]
+													},
+													"name": {
+														"description": "Browser extension display name.",
+														"type": "string"
+													},
+													"permissions": {
+														"description": "Browser extension API permissions.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													},
+													"version": {
+														"description": "Browser extension version string.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"version",
+													"enabled",
+													"installType",
+													"permissions",
+													"hostPermissions"
+												]
+											}
+										},
+										"observed_at": {
+											"description": "When the browser extension took the inventory snapshot.",
+											"type": "string",
+											"format": "date-time"
+										},
+										"physical_device_id": {
+											"description": "Physical device ID from trusted device identity.",
+											"type": "string",
+											"nullable": true
+										},
+										"registration_id": {
+											"description": "Browser extension registration ID.",
+											"type": "string"
+										},
+										"updated_at": {
+											"description": "When the device state row was last updated.",
+											"type": "string",
+											"format": "date-time"
+										}
+									},
+									"required": [
+										"account_id",
+										"registration_id",
+										"installed_extensions",
+										"observed_at",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication failed.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "The authenticated user is not authorized to access this account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Resource not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Browser Extension Inventories"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "browser-extension.inventories",
+		"x-fern-sdk-method-name": "get"
+	}
+}

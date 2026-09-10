@@ -62,12 +62,15 @@
 							"result": {
 								"maintenance_config": {
 									"compaction": {
+										"next_eligible_at": "2026-09-01T12:00:00Z",
 										"state": "enabled",
 										"target_size_mb": "128"
 									},
+									"interval": "1h",
 									"snapshot_expiration": {
 										"max_snapshot_age": "7d",
 										"min_snapshots_to_keep": 100,
+										"next_eligible_at": "2026-09-01T12:00:00Z",
 										"state": "enabled"
 									}
 								}
@@ -147,6 +150,13 @@
 															"description": "Configures compaction settings for table optimization.",
 															"type": "object",
 															"properties": {
+																"next_eligible_at": {
+																	"description": "Earliest time when the scheduler can claim this operation. Null when disabled.",
+																	"type": "string",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true
+																},
 																"state": {
 																	"description": "Specifies the state of maintenance operations.",
 																	"type": "string",
@@ -173,12 +183,22 @@
 																"target_size_mb"
 															]
 														},
+														"interval": {
+															"allOf": [
+																{
+																	"description": "Scheduling interval between normal table maintenance runs.",
+																	"type": "string",
+																	"example": "1h",
+																	"pattern": "^\\d+(d|h|m|s)$"
+																}
+															],
+															"readOnly": true
+														},
 														"snapshot_expiration": {
-															"description": "Configures snapshot expiration settings.",
 															"type": "object",
 															"properties": {
 																"max_snapshot_age": {
-																	"description": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age.\nFormat: <number><unit> where unit is d (days), h (hours), m (minutes), or s (seconds).\nExamples: \"7d\" (7 days), \"48h\" (48 hours), \"2880m\" (2,880 minutes).\nDefaults to \"7d\".\n",
+																	"description": "Specifies the maximum age for snapshots.",
 																	"type": "string",
 																	"example": "7d",
 																	"pattern": "^\\d+(d|h|m|s)$"
@@ -189,6 +209,13 @@
 																	"format": "int64",
 																	"example": 100,
 																	"minimum": 1
+																},
+																"next_eligible_at": {
+																	"description": "Earliest time when the scheduler can claim this operation. Null when disabled.",
+																	"type": "string",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true
 																},
 																"state": {
 																	"description": "Specifies the state of maintenance operations.",
@@ -438,6 +465,436 @@
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
+	"GET /accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}/maintenance-runs": {
+		"operationId": "list-table-maintenance-runs",
+		"summary": "List table maintenance runs",
+		"description": "Retrieves recent table maintenance runs for the current table.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Use this to identify the account.",
+					"type": "string",
+					"example": "0123456789abcdef0123456789abcdef",
+					"pattern": "^[a-fA-F0-9]{32}$"
+				}
+			},
+			{
+				"name": "bucket_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the R2 bucket name.",
+					"type": "string",
+					"example": "my-data-bucket",
+					"maxLength": 63,
+					"minLength": 3,
+					"pattern": "^[a-z0-9]([a-z0-9\\-]*[a-z0-9])?$"
+				}
+			},
+			{
+				"name": "namespace",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "table_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "page_size",
+				"in": "query",
+				"schema": {
+					"type": "integer",
+					"maximum": 100,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "page_token",
+				"in": "query",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Maintenance runs retrieved successfully.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"description": "Contains errors if the API call was unsuccessful.",
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Specifies the error code.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"messages": {
+											"description": "Contains informational messages.",
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Specifies the message code.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Contains the message text.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"next_page_token": {
+													"type": "string",
+													"nullable": true
+												},
+												"runs": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"completed_at": {
+																"type": "string",
+																"format": "date-time",
+																"nullable": true
+															},
+															"configuration_type": {
+																"type": "string",
+																"enum": [
+																	"compaction",
+																	"snapshot_expiration"
+																]
+															},
+															"customer_message": {
+																"type": "string",
+																"nullable": true
+															},
+															"duration_ms": {
+																"type": "integer",
+																"format": "int64",
+																"nullable": true
+															},
+															"operation_results": {
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"duration_ms": {
+																			"type": "integer",
+																			"format": "int64"
+																		},
+																		"error_code": {
+																			"type": "integer",
+																			"format": "int32",
+																			"nullable": true
+																		},
+																		"metrics": {
+																			"type": "object",
+																			"additionalProperties": true,
+																			"nullable": true
+																		},
+																		"operation": {
+																			"type": "string",
+																			"enum": [
+																				"rewrite_manifests",
+																				"compaction",
+																				"snapshot_expiration"
+																			]
+																		},
+																		"status": {
+																			"type": "string",
+																			"enum": [
+																				"succeeded",
+																				"failed",
+																				"skipped",
+																				"not_run"
+																			]
+																		}
+																	},
+																	"required": [
+																		"operation",
+																		"status",
+																		"duration_ms"
+																	]
+																}
+															},
+															"outcome": {
+																"type": "string",
+																"nullable": true
+															},
+															"primary_error_code": {
+																"type": "integer",
+																"format": "int32",
+																"nullable": true
+															},
+															"run_id": {
+																"type": "integer",
+																"format": "int64"
+															},
+															"started_at": {
+																"type": "string",
+																"format": "date-time"
+															},
+															"status": {
+																"type": "string",
+																"enum": [
+																	"running",
+																	"succeeded",
+																	"failed",
+																	"interrupted",
+																	"timed_out",
+																	"cancelled"
+																]
+															}
+														},
+														"required": [
+															"run_id",
+															"configuration_type",
+															"status",
+															"started_at",
+															"operation_results"
+														]
+													}
+												}
+											},
+											"required": [
+												"runs",
+												"next_page_token"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							}
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication failed.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							}
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							}
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Table not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Table Maintenance Configuration"
+		],
+		"x-fern-sdk-group-name": "r2-data-catalog.namespaces.tables.maintenance-runs",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
+	},
 	"POST /accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}/maintenance-configs": {
 		"operationId": "update-table-maintenance-config",
 		"summary": "Update table maintenance configuration",
@@ -581,12 +1038,15 @@
 							"messages": [],
 							"result": {
 								"compaction": {
+									"next_eligible_at": "2026-09-01T12:00:00Z",
 									"state": "enabled",
 									"target_size_mb": "256"
 								},
+								"interval": "1h",
 								"snapshot_expiration": {
 									"max_snapshot_age": "14d",
 									"min_snapshots_to_keep": 5,
+									"next_eligible_at": "2026-09-01T12:00:00Z",
 									"state": "enabled"
 								}
 							},
@@ -661,6 +1121,13 @@
 													"description": "Configures compaction settings for table optimization.",
 													"type": "object",
 													"properties": {
+														"next_eligible_at": {
+															"description": "Earliest time when the scheduler can claim this operation. Null when disabled.",
+															"type": "string",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true
+														},
 														"state": {
 															"description": "Specifies the state of maintenance operations.",
 															"type": "string",
@@ -687,12 +1154,22 @@
 														"target_size_mb"
 													]
 												},
+												"interval": {
+													"allOf": [
+														{
+															"description": "Scheduling interval between normal table maintenance runs.",
+															"type": "string",
+															"example": "1h",
+															"pattern": "^\\d+(d|h|m|s)$"
+														}
+													],
+													"readOnly": true
+												},
 												"snapshot_expiration": {
-													"description": "Configures snapshot expiration settings.",
 													"type": "object",
 													"properties": {
 														"max_snapshot_age": {
-															"description": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age.\nFormat: <number><unit> where unit is d (days), h (hours), m (minutes), or s (seconds).\nExamples: \"7d\" (7 days), \"48h\" (48 hours), \"2880m\" (2,880 minutes).\nDefaults to \"7d\".\n",
+															"description": "Specifies the maximum age for snapshots.",
 															"type": "string",
 															"example": "7d",
 															"pattern": "^\\d+(d|h|m|s)$"
@@ -703,6 +1180,13 @@
 															"format": "int64",
 															"example": 100,
 															"minimum": 1
+														},
+														"next_eligible_at": {
+															"description": "Earliest time when the scheduler can claim this operation. Null when disabled.",
+															"type": "string",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true
 														},
 														"state": {
 															"description": "Specifies the state of maintenance operations.",
@@ -944,6 +1428,387 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2-data-catalog.namespaces.tables.maintenance-configs",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}/maintenance-configs/{configuration_type}/queue": {
+		"operationId": "queue-table-maintenance",
+		"summary": "Queue table maintenance",
+		"description": "Queue maintenance for normal polling. This request does not start a run.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Use this to identify the account.",
+					"type": "string",
+					"example": "0123456789abcdef0123456789abcdef",
+					"pattern": "^[a-fA-F0-9]{32}$"
+				}
+			},
+			{
+				"name": "bucket_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the R2 bucket name.",
+					"type": "string",
+					"example": "my-data-bucket",
+					"maxLength": 63,
+					"minLength": 3,
+					"pattern": "^[a-z0-9]([a-z0-9\\-]*[a-z0-9])?$"
+				}
+			},
+			{
+				"name": "namespace",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "table_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "configuration_type",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"compaction",
+						"snapshot_expiration"
+					]
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"request_id": {
+								"type": "string",
+								"format": "uuid",
+								"nullable": true
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"202": {
+				"description": "Maintenance was queued for normal polling.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"description": "Contains errors if the API call was unsuccessful.",
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Specifies the error code.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"messages": {
+											"description": "Contains informational messages.",
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Specifies the message code.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Contains the message text.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"message": {
+													"type": "string"
+												},
+												"queued": {
+													"type": "boolean"
+												},
+												"request_id": {
+													"type": "string",
+													"format": "uuid",
+													"nullable": true
+												}
+											},
+											"required": [
+												"queued",
+												"message"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							}
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							}
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Table or maintenance configuration not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							}
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Maintenance is currently assigned to an executor.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							}
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Manual queue request limit reached.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Table Maintenance Configuration"
+		],
+		"x-fern-sdk-group-name": "r2-data-catalog.namespaces.tables.maintenance-configs",
+		"x-fern-sdk-method-name": "queue",
 		"x-forge-hidden": true
 	}
 }

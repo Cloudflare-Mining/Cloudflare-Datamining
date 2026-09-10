@@ -1,8 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/builds/repos/connections/{repo_connection_uuid}": {
 		"operationId": "deleteRepoConnection",
-		"summary": "Delete repository connection",
-		"description": "Remove a repository connection",
+		"summary": "Delete a repository connection",
+		"description": "Delete a saved repository connection.",
 		"parameters": [
 			{
 				"in": "path",
@@ -246,14 +246,14 @@
 			"Workers CI Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.repos.connections",
+		"x-fern-sdk-group-name": "builds.repos.connections",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/builds/repos/connections": {
 		"operationId": "upsertRepoConnection",
-		"summary": "Create or update repository connection",
-		"description": "Upsert a repository connection for CI/CD integration",
+		"summary": "Create or update a repository connection",
+		"description": "Save the repository connection required by build triggers.",
 		"parameters": [
 			{
 				"in": "path",
@@ -274,15 +274,17 @@
 						"type": "object",
 						"properties": {
 							"provider_account_id": {
-								"description": "Provider account identifier.",
+								"description": "Provider-specific identifier of the account or namespace that owns the repository.",
 								"type": "string",
 								"example": "cloudflare"
 							},
 							"provider_account_name": {
+								"description": "Human-readable name of the account or namespace that owns the repository.",
 								"type": "string",
 								"example": "Cloudflare"
 							},
 							"provider_type": {
+								"description": "Source control provider.",
 								"type": "string",
 								"example": "github",
 								"enum": [
@@ -293,11 +295,12 @@
 								]
 							},
 							"repo_id": {
-								"description": "Repository identifier.",
+								"description": "Provider-specific repository identifier.",
 								"type": "string",
 								"example": "workers-sdk"
 							},
 							"repo_name": {
+								"description": "Human-readable repository name.",
 								"type": "string",
 								"example": "workers-sdk"
 							}
@@ -405,15 +408,17 @@
 													"format": "date-time"
 												},
 												"provider_account_id": {
-													"description": "Provider account identifier.",
+													"description": "Provider-specific identifier of the account or namespace that owns the repository.",
 													"type": "string",
 													"example": "cloudflare"
 												},
 												"provider_account_name": {
+													"description": "Human-readable name of the account or namespace that owns the repository.",
 													"type": "string",
 													"example": "Cloudflare"
 												},
 												"provider_type": {
+													"description": "Source control provider.",
 													"type": "string",
 													"example": "github",
 													"enum": [
@@ -429,11 +434,12 @@
 													"format": "uuid"
 												},
 												"repo_id": {
-													"description": "Repository identifier.",
+													"description": "Provider-specific repository identifier.",
 													"type": "string",
 													"example": "workers-sdk"
 												},
 												"repo_name": {
+													"description": "Human-readable repository name.",
 													"type": "string",
 													"example": "workers-sdk"
 												}
@@ -526,7 +532,7 @@
 			"Workers CI Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.repos.connections",
+		"x-fern-sdk-group-name": "builds.repos.connections",
 		"x-fern-sdk-method-name": "upsert",
 		"x-forge-hidden": true
 	}

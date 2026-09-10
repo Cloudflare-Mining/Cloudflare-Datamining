@@ -170,8 +170,8 @@
 	},
 	"GET /accounts/{account_id}/builds/account/limits": {
 		"operationId": "getAccountLimits",
-		"summary": "Get account limits",
-		"description": "Retrieve account limits and usage information",
+		"summary": "Get build-minute availability",
+		"description": "Return whether the account's build-minute allowance is exhausted and when it refreshes.",
 		"parameters": [
 			{
 				"in": "path",
@@ -363,9 +363,8 @@
 			"Workers CI Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds",
-		"x-fern-sdk-method-name": "get-account-limits",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "builds.limits",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/ai-gateway/logging-state": {
 		"operationId": "aig-config-patch-logging-state",

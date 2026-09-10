@@ -781,7 +781,7 @@
 	"DELETE /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets/{secret_name}": {
 		"operationId": "namespace-worker-delete-script-secret",
 		"summary": "Delete script secret",
-		"description": "Remove a secret from a script uploaded to a Workers for Platforms namespace.",
+		"description": "Remove a secret from a script by creating a new version without that\nsecret.\n\nWhen changing more than one secret at a time, prefer the \"Patch multiple\nscript secrets\" API instead of changing many secrets individually.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -12002,7 +12002,7 @@
 	"PATCH /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets-bulk": {
 		"operationId": "namespace-worker-patch-script-secrets-bulk",
 		"summary": "Patch multiple script secrets",
-		"description": "Create, update, or delete multiple secrets on a script in a single operation using JSON Merge Patch (RFC 7396).\n\nUsage:\n\n- To create or update a secret, set its value to a secret object.\n- To delete a secret, set its value to `null`.\n- Secrets not included in the request are left unchanged.\n",
+		"description": "Create, update, or delete multiple secrets on a script in a single operation using JSON Merge Patch (RFC 7396).\nThis operation creates a single version with all changes included.\nPrefer this API instead of changing many secrets individually.\n\nUsage:\n\n- To create or update a secret, set its value to a secret object.\n- To delete a secret, set its value to `null`.\n- Secrets not included in the request are left unchanged.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -27780,7 +27780,7 @@
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets": {
 		"operationId": "namespace-worker-put-script-secrets",
 		"summary": "Add script secret",
-		"description": "Add a secret to a script uploaded to a Workers for Platforms namespace.",
+		"description": "Add a secret to a script by creating a new version with that secret.\n\nWhen changing more than one secret at a time, prefer the \"Patch multiple\nscript secrets\" API instead of changing many secrets individually.\n",
 		"parameters": [
 			{
 				"name": "account_id",

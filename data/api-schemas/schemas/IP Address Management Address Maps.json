@@ -29,12 +29,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Delete Address Map response",
@@ -407,6 +401,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -422,7 +419,7 @@
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
 	},
-	"DELETE /accounts/{account_id}/addressing/address_maps/{address_map_id}/accounts/{account_id}": {
+	"DELETE /accounts/{account_id}/addressing/address_maps/{address_map_id}/accounts/{member_account_id}": {
 		"operationId": "ip-address-management-address-maps-remove-an-account-membership-from-an-address-map",
 		"summary": "Remove an account membership from an Address Map",
 		"description": "Remove an account as a member of a particular address map.",
@@ -450,14 +447,20 @@
 					"maxLength": 32,
 					"x-auditable": true
 				}
+			},
+			{
+				"name": "member_account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
+					"example": "258def64c72dae45f3e4c8516e2111f2",
+					"maxLength": 32,
+					"x-auditable": true
+				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Remove an account membership from an Address Map response",
@@ -830,6 +833,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -886,12 +892,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Remove an IP from an Address Map response",
@@ -1264,6 +1264,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1321,12 +1324,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Remove a zone membership from an Address Map response",
@@ -1699,6 +1696,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1926,7 +1926,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2128,7 +2129,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2245,6 +2247,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -2870,6 +2875,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -2921,6 +2929,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"default_sni": {
 								"description": "If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.",
@@ -3105,7 +3114,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3269,7 +3279,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -3387,6 +3398,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -3425,6 +3439,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
 								"description": "An optional description field which may be used to describe the types of IPs or zones on the map.",
@@ -4068,6 +4083,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -4083,7 +4101,7 @@
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
-	"PUT /accounts/{account_id}/addressing/address_maps/{address_map_id}/accounts/{account_id}": {
+	"PUT /accounts/{account_id}/addressing/address_maps/{address_map_id}/accounts/{member_account_id}": {
 		"operationId": "ip-address-management-address-maps-add-an-account-membership-to-an-address-map",
 		"summary": "Add an account membership to an Address Map",
 		"description": "Add an account as a member of a particular address map.",
@@ -4111,14 +4129,20 @@
 					"maxLength": 32,
 					"x-auditable": true
 				}
+			},
+			{
+				"name": "member_account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
+					"example": "258def64c72dae45f3e4c8516e2111f2",
+					"maxLength": 32,
+					"x-auditable": true
+				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Add an account membership to an Address Map response",
@@ -4491,6 +4515,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -4544,12 +4571,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Add an IP to an Address Map response",
@@ -4922,6 +4943,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -4979,12 +5003,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Add a zone membership to an Address Map response",
@@ -5356,6 +5374,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

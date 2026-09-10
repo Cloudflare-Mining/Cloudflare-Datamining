@@ -121,6 +121,7 @@
 								},
 								"success": {
 									"description": "Always true for a successful response.",
+									"type": "boolean",
 									"enum": [
 										true
 									]
@@ -231,6 +232,7 @@
 								},
 								"success": {
 									"description": "Always false for an error response.",
+									"type": "boolean",
 									"enum": [
 										false
 									]
@@ -449,6 +451,7 @@
 								},
 								"success": {
 									"description": "Always true for a successful response.",
+									"type": "boolean",
 									"enum": [
 										true
 									]
@@ -559,6 +562,7 @@
 								},
 								"success": {
 									"description": "Always false for an error response.",
+									"type": "boolean",
 									"enum": [
 										false
 									]
@@ -723,6 +727,7 @@
 								},
 								"success": {
 									"description": "Always true for a successful response.",
+									"type": "boolean",
 									"enum": [
 										true
 									]
@@ -833,6 +838,7 @@
 								},
 								"success": {
 									"description": "Always false for an error response.",
+									"type": "boolean",
 									"enum": [
 										false
 									]
@@ -1033,6 +1039,7 @@
 								},
 								"success": {
 									"description": "Always true for a successful response.",
+									"type": "boolean",
 									"enum": [
 										true
 									]
@@ -1143,6 +1150,7 @@
 								},
 								"success": {
 									"description": "Always false for an error response.",
+									"type": "boolean",
 									"enum": [
 										false
 									]
@@ -1412,6 +1420,7 @@
 								},
 								"success": {
 									"description": "Always true for a successful response.",
+									"type": "boolean",
 									"enum": [
 										true
 									]
@@ -1522,6 +1531,7 @@
 								},
 								"success": {
 									"description": "Always false for an error response.",
+									"type": "boolean",
 									"enum": [
 										false
 									]
@@ -1739,6 +1749,7 @@
 								},
 								"success": {
 									"description": "Always true for a successful response.",
+									"type": "boolean",
 									"enum": [
 										true
 									]
@@ -1849,6 +1860,7 @@
 								},
 								"success": {
 									"description": "Always false for an error response.",
+									"type": "boolean",
 									"enum": [
 										false
 									]
@@ -2055,6 +2067,7 @@
 								},
 								"success": {
 									"description": "Always true for a successful response.",
+									"type": "boolean",
 									"enum": [
 										true
 									]
@@ -2165,6 +2178,7 @@
 								},
 								"success": {
 									"description": "Always false for an error response.",
+									"type": "boolean",
 									"enum": [
 										false
 									]
@@ -2412,6 +2426,7 @@
 								},
 								"success": {
 									"description": "Always true for a successful response.",
+									"type": "boolean",
 									"enum": [
 										true
 									]
@@ -2522,6 +2537,7 @@
 								},
 								"success": {
 									"description": "Always false for an error response.",
+									"type": "boolean",
 									"enum": [
 										false
 									]
@@ -2753,6 +2769,7 @@
 								},
 								"success": {
 									"description": "Always true for a successful response.",
+									"type": "boolean",
 									"enum": [
 										true
 									]
@@ -2863,6 +2880,7 @@
 								},
 								"success": {
 									"description": "Always false for an error response.",
+									"type": "boolean",
 									"enum": [
 										false
 									]
@@ -3031,7 +3049,7 @@
 										"summary": {
 											"description": "Paste-ready prompt block summarizing everything stored in the profile.",
 											"type": "string",
-											"example": "Profile context as of 2 January 2025.\n🔴 (fact) Prefers dark mode: The user prefers dark mode in all editors.\n🟡 (task) Finish onboarding: Complete the onboarding checklist."
+											"example": "Profile context as of 2 January 2025.\n🔴 (fact) Prefers dark mode\n🟡 (task) Finish onboarding"
 										}
 									},
 									"required": [
@@ -3040,6 +3058,7 @@
 								},
 								"success": {
 									"description": "Always true for a successful response.",
+									"type": "boolean",
 									"enum": [
 										true
 									]
@@ -3150,6 +3169,7 @@
 								},
 								"success": {
 									"description": "Always false for an error response.",
+									"type": "boolean",
 									"enum": [
 										false
 									]

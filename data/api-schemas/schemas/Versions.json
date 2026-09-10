@@ -527,6 +527,21 @@
 															}
 														}
 													},
+													"author_email": {
+														"description": "Email of the user who created the version.",
+														"type": "string",
+														"format": "email",
+														"example": "user@example.com",
+														"readOnly": true,
+														"x-auditable": true
+													},
+													"author_id": {
+														"description": "Identifier of the user who created the version.",
+														"type": "string",
+														"example": "408cbcdfd4dda4617efef40b04d168a1",
+														"readOnly": true,
+														"x-auditable": true
+													},
 													"bindings": {
 														"description": "List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.",
 														"type": "array",
@@ -3456,6 +3471,21 @@
 														}
 													}
 												},
+												"author_email": {
+													"description": "Email of the user who created the version.",
+													"type": "string",
+													"format": "email",
+													"example": "user@example.com",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"author_id": {
+													"description": "Identifier of the user who created the version.",
+													"type": "string",
+													"example": "408cbcdfd4dda4617efef40b04d168a1",
+													"readOnly": true,
+													"x-auditable": true
+												},
 												"bindings": {
 													"description": "List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.",
 													"type": "array",
@@ -6287,6 +6317,21 @@
 											}
 										}
 									},
+									"author_email": {
+										"description": "Email of the user who created the version.",
+										"type": "string",
+										"format": "email",
+										"example": "user@example.com",
+										"readOnly": true,
+										"x-auditable": true
+									},
+									"author_id": {
+										"description": "Identifier of the user who created the version.",
+										"type": "string",
+										"example": "408cbcdfd4dda4617efef40b04d168a1",
+										"readOnly": true,
+										"x-auditable": true
+									},
 									"bindings": {
 										"description": "List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.",
 										"type": "array",
@@ -8938,6 +8983,21 @@
 												"x-sensitive": true
 											}
 										}
+									},
+									"author_email": {
+										"description": "Email of the user who created the version.",
+										"type": "string",
+										"format": "email",
+										"example": "user@example.com",
+										"readOnly": true,
+										"x-auditable": true
+									},
+									"author_id": {
+										"description": "Identifier of the user who created the version.",
+										"type": "string",
+										"example": "408cbcdfd4dda4617efef40b04d168a1",
+										"readOnly": true,
+										"x-auditable": true
 									},
 									"bindings": {
 										"description": "List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.",
@@ -11680,6 +11740,21 @@
 															"x-sensitive": true
 														}
 													}
+												},
+												"author_email": {
+													"description": "Email of the user who created the version.",
+													"type": "string",
+													"format": "email",
+													"example": "user@example.com",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"author_id": {
+													"description": "Identifier of the user who created the version.",
+													"type": "string",
+													"example": "408cbcdfd4dda4617efef40b04d168a1",
+													"readOnly": true,
+													"x-auditable": true
 												},
 												"bindings": {
 													"description": "List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.",
@@ -14678,6 +14753,21 @@
 									}
 								}
 							},
+							"author_email": {
+								"description": "Email of the user who created the version.",
+								"type": "string",
+								"format": "email",
+								"example": "user@example.com",
+								"readOnly": true,
+								"x-auditable": true
+							},
+							"author_id": {
+								"description": "Identifier of the user who created the version.",
+								"type": "string",
+								"example": "408cbcdfd4dda4617efef40b04d168a1",
+								"readOnly": true,
+								"x-auditable": true
+							},
 							"bindings": {
 								"description": "List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.",
 								"type": "array",
@@ -17414,6 +17504,21 @@
 															"x-sensitive": true
 														}
 													}
+												},
+												"author_email": {
+													"description": "Email of the user who created the version.",
+													"type": "string",
+													"format": "email",
+													"example": "user@example.com",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"author_id": {
+													"description": "Identifier of the user who created the version.",
+													"type": "string",
+													"example": "408cbcdfd4dda4617efef40b04d168a1",
+													"readOnly": true,
+													"x-auditable": true
 												},
 												"bindings": {
 													"description": "List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.",

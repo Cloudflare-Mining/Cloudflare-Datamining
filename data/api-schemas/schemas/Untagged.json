@@ -695,6 +695,40 @@
 			}
 		}
 	],
+	"PARAMETERS /accounts/{account_id}/browser-extension/config/inventories": [
+		{
+			"description": "Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string",
+				"minLength": 1
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/browser-extension/config/inventories/{registration_id}": [
+		{
+			"description": "Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string",
+				"minLength": 1
+			}
+		},
+		{
+			"name": "registration_id",
+			"in": "path",
+			"description": "Browser extension registration ID.",
+			"required": true,
+			"schema": {
+				"type": "string",
+				"minLength": 1
+			}
+		}
+	],
 	"PARAMETERS /accounts/{account_id}/challenges/widgets": [
 		{
 			"name": "account_id",
@@ -940,6 +974,21 @@
 			"schema": {
 				"type": "string",
 				"example": "account-123"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/analytics/monthly_report": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"type": "string",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"x-auditable": true
 			}
 		}
 	],

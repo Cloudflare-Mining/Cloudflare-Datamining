@@ -1,8 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/builds/triggers/{trigger_uuid}/environment_variables/{environment_variable_key}": {
 		"operationId": "deleteEnvironmentVariable",
-		"summary": "Delete environment variable",
-		"description": "Remove a specific environment variable from a trigger",
+		"summary": "Delete a build variable",
+		"description": "Delete one build-time variable or secret by key.",
 		"parameters": [
 			{
 				"in": "path",
@@ -256,14 +256,14 @@
 			"Workers CI Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.triggers.environment-variables",
+		"x-fern-sdk-group-name": "builds.triggers.environment-variables",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/builds/triggers/{trigger_uuid}/environment_variables": {
 		"operationId": "listEnvironmentVariables",
-		"summary": "List environment variables",
-		"description": "Get all environment variables for a trigger",
+		"summary": "List build variables",
+		"description": "List build-time variables configured for a trigger. Secret values are not returned.",
 		"parameters": [
 			{
 				"in": "path",
@@ -382,6 +382,7 @@
 														"format": "date-time"
 													},
 													"is_secret": {
+														"description": "Whether to hide the value after it is saved. Secret values remain available to builds but appear as `null` when you list variables; non-secret values remain visible.",
 														"type": "boolean",
 														"example": false
 													},
@@ -486,14 +487,14 @@
 			"Workers CI Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.triggers.environment-variables",
+		"x-fern-sdk-group-name": "builds.triggers.environment-variables",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/builds/triggers/{trigger_uuid}/environment_variables": {
 		"operationId": "upsertEnvironmentVariables",
-		"summary": "Upsert environment variables",
-		"description": "Create or update environment variables for a trigger",
+		"summary": "Set build variables",
+		"description": "Add or replace build-time variables and secrets without changing unspecified keys.",
 		"parameters": [
 			{
 				"in": "path",
@@ -521,6 +522,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"description": "Map of environment-variable names to build-time values. Names must begin with a letter or underscore and contain only letters, numbers, and underscores.",
 						"type": "object",
 						"example": {
 							"API_KEY": {
@@ -535,17 +537,20 @@
 						"additionalProperties": {
 							"properties": {
 								"is_secret": {
+									"description": "Whether to hide the value after it is saved. Secret values remain available to builds but appear as `null` when you list variables; non-secret values remain visible.",
 									"type": "boolean",
 									"example": false
 								},
 								"value": {
+									"description": "Value made available to the build. Maximum length is 5000 characters.",
 									"type": "string",
 									"example": "production",
-									"nullable": true
+									"maxLength": 5000
 								}
 							},
 							"required": [
-								"is_secret"
+								"is_secret",
+								"value"
 							],
 							"type": "object"
 						}
@@ -649,6 +654,7 @@
 														"format": "date-time"
 													},
 													"is_secret": {
+														"description": "Whether to hide the value after it is saved. Secret values remain available to builds but appear as `null` when you list variables; non-secret values remain visible.",
 														"type": "boolean",
 														"example": false
 													},
@@ -814,7 +820,7 @@
 			"Workers CI Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.triggers.environment-variables",
+		"x-fern-sdk-group-name": "builds.triggers.environment-variables",
 		"x-fern-sdk-method-name": "upsert",
 		"x-forge-hidden": true
 	}

@@ -1,8 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/builds/triggers/{trigger_uuid}": {
 		"operationId": "deleteTrigger",
-		"summary": "Delete trigger",
-		"description": "Remove a CI/CD trigger",
+		"summary": "Delete a build trigger",
+		"description": "Delete a trigger and cancel its unfinished builds.",
 		"parameters": [
 			{
 				"in": "path",
@@ -246,14 +246,15 @@
 			"Workers CI Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.triggers",
+		"x-fern-sdk-group-name": "builds.triggers",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes the build trigger and cancels its unfinished builds."
 	},
 	"PATCH /accounts/{account_id}/builds/triggers/{trigger_uuid}": {
 		"operationId": "updateTrigger",
-		"summary": "Update trigger",
-		"description": "Update an existing CI/CD trigger",
+		"summary": "Update a build trigger",
+		"description": "Update commands, cache settings, or branch and path filters for a trigger.",
 		"parameters": [
 			{
 				"in": "path",
@@ -284,6 +285,7 @@
 						"type": "object",
 						"properties": {
 							"branch_excludes": {
+								"description": "Branch patterns that must not start builds.",
 								"type": "array",
 								"items": {
 									"type": "string"
@@ -291,6 +293,7 @@
 								"example": []
 							},
 							"branch_includes": {
+								"description": "Branch patterns that can start builds.",
 								"type": "array",
 								"items": {
 									"type": "string"
@@ -300,24 +303,28 @@
 								]
 							},
 							"build_caching_enabled": {
+								"description": "Whether builds reuse cached dependencies and build artifacts.",
 								"type": "boolean",
 								"example": false,
 								"default": false
 							},
 							"build_command": {
+								"description": "Command to build the Worker.",
 								"type": "string",
 								"example": "npm run build"
 							},
 							"build_token_uuid": {
-								"description": "Build token UUID.",
+								"description": "UUID of the build token used when deploying the Worker.",
 								"type": "string",
 								"format": "uuid"
 							},
 							"deploy_command": {
+								"description": "Command to deploy the Worker.",
 								"type": "string",
 								"example": "npx wrangler deploy"
 							},
 							"path_excludes": {
+								"description": "Path patterns that must not start builds.",
 								"type": "array",
 								"items": {
 									"type": "string"
@@ -327,6 +334,7 @@
 								]
 							},
 							"path_includes": {
+								"description": "Path patterns that can start builds.",
 								"type": "array",
 								"items": {
 									"type": "string"
@@ -334,14 +342,17 @@
 								"example": [
 									"*"
 								],
-								"default": "*"
+								"default": [
+									"*"
+								]
 							},
 							"root_directory": {
-								"description": "Root directory path.",
+								"description": "Repository directory in which build and deploy commands run.",
 								"type": "string",
 								"example": "/"
 							},
 							"trigger_name": {
+								"description": "Human-readable name of the build trigger.",
 								"type": "string",
 								"example": "Production Deploy"
 							}
@@ -429,6 +440,7 @@
 											"type": "object",
 											"properties": {
 												"branch_excludes": {
+													"description": "Branch patterns that must not start builds.",
 													"type": "array",
 													"items": {
 														"type": "string"
@@ -436,6 +448,7 @@
 													"example": []
 												},
 												"branch_includes": {
+													"description": "Branch patterns that can start builds.",
 													"type": "array",
 													"items": {
 														"type": "string"
@@ -445,11 +458,13 @@
 													]
 												},
 												"build_caching_enabled": {
+													"description": "Whether builds reuse cached dependencies and build artifacts.",
 													"type": "boolean",
 													"example": false,
 													"default": false
 												},
 												"build_command": {
+													"description": "Command to build the Worker.",
 													"type": "string",
 													"example": "npm run build"
 												},
@@ -458,7 +473,7 @@
 													"example": "My Build Token"
 												},
 												"build_token_uuid": {
-													"description": "Build token UUID.",
+													"description": "UUID of the build token used when deploying the Worker.",
 													"type": "string",
 													"format": "uuid"
 												},
@@ -472,11 +487,12 @@
 													"nullable": true
 												},
 												"deploy_command": {
+													"description": "Command to deploy the Worker.",
 													"type": "string",
 													"example": "npx wrangler deploy"
 												},
 												"external_script_id": {
-													"description": "System-generated worker script tag.",
+													"description": "System-generated tag of the Worker. This is not the Worker name.",
 													"type": "string",
 													"example": "dd7160bb9cef458093557736f4b9e75b"
 												},
@@ -485,6 +501,7 @@
 													"format": "date-time"
 												},
 												"path_excludes": {
+													"description": "Path patterns that must not start builds.",
 													"type": "array",
 													"items": {
 														"type": "string"
@@ -494,6 +511,7 @@
 													]
 												},
 												"path_includes": {
+													"description": "Path patterns that can start builds.",
 													"type": "array",
 													"items": {
 														"type": "string"
@@ -501,7 +519,9 @@
 													"example": [
 														"*"
 													],
-													"default": "*"
+													"default": [
+														"*"
+													]
 												},
 												"repo_connection": {
 													"type": "object",
@@ -520,15 +540,17 @@
 															"format": "date-time"
 														},
 														"provider_account_id": {
-															"description": "Provider account identifier.",
+															"description": "Provider-specific identifier of the account or namespace that owns the repository.",
 															"type": "string",
 															"example": "cloudflare"
 														},
 														"provider_account_name": {
+															"description": "Human-readable name of the account or namespace that owns the repository.",
 															"type": "string",
 															"example": "Cloudflare"
 														},
 														"provider_type": {
+															"description": "Source control provider.",
 															"type": "string",
 															"example": "github",
 															"enum": [
@@ -544,22 +566,24 @@
 															"format": "uuid"
 														},
 														"repo_id": {
-															"description": "Repository identifier.",
+															"description": "Provider-specific repository identifier.",
 															"type": "string",
 															"example": "workers-sdk"
 														},
 														"repo_name": {
+															"description": "Human-readable repository name.",
 															"type": "string",
 															"example": "workers-sdk"
 														}
 													}
 												},
 												"root_directory": {
-													"description": "Root directory path.",
+													"description": "Repository directory in which build and deploy commands run.",
 													"type": "string",
 													"example": "/"
 												},
 												"trigger_name": {
+													"description": "Human-readable name of the build trigger.",
 													"type": "string",
 													"example": "Production Deploy"
 												},
@@ -719,14 +743,14 @@
 			"Workers CI Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.triggers",
+		"x-fern-sdk-group-name": "builds.triggers",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/builds/triggers": {
 		"operationId": "createTrigger",
-		"summary": "Create trigger",
-		"description": "Create a new CI/CD trigger",
+		"summary": "Create a build trigger",
+		"description": "Create a trigger defining the repository connection, Worker tag, commands, filters, cache setting, and build token.",
 		"parameters": [
 			{
 				"in": "path",
@@ -747,6 +771,7 @@
 						"type": "object",
 						"properties": {
 							"branch_excludes": {
+								"description": "Branch patterns that must not start builds.",
 								"type": "array",
 								"items": {
 									"type": "string"
@@ -754,6 +779,7 @@
 								"example": []
 							},
 							"branch_includes": {
+								"description": "Branch patterns that can start builds.",
 								"type": "array",
 								"items": {
 									"type": "string"
@@ -763,29 +789,33 @@
 								]
 							},
 							"build_caching_enabled": {
+								"description": "Whether builds reuse cached dependencies and build artifacts.",
 								"type": "boolean",
 								"example": false,
 								"default": false
 							},
 							"build_command": {
+								"description": "Command to build the Worker.",
 								"type": "string",
 								"example": "npm run build"
 							},
 							"build_token_uuid": {
-								"description": "Build token UUID.",
+								"description": "UUID of the build token used when deploying the Worker.",
 								"type": "string",
 								"format": "uuid"
 							},
 							"deploy_command": {
+								"description": "Command to deploy the Worker.",
 								"type": "string",
 								"example": "npx wrangler deploy"
 							},
 							"external_script_id": {
-								"description": "System-generated worker script tag.",
+								"description": "System-generated tag of the Worker. This is not the Worker name.",
 								"type": "string",
 								"example": "dd7160bb9cef458093557736f4b9e75b"
 							},
 							"path_excludes": {
+								"description": "Path patterns that must not start builds.",
 								"type": "array",
 								"items": {
 									"type": "string"
@@ -795,6 +825,7 @@
 								]
 							},
 							"path_includes": {
+								"description": "Path patterns that can start builds.",
 								"type": "array",
 								"items": {
 									"type": "string"
@@ -802,7 +833,9 @@
 								"example": [
 									"*"
 								],
-								"default": "*"
+								"default": [
+									"*"
+								]
 							},
 							"repo_connection_uuid": {
 								"description": "Repository connection UUID.",
@@ -810,11 +843,12 @@
 								"format": "uuid"
 							},
 							"root_directory": {
-								"description": "Root directory path.",
+								"description": "Repository directory in which build and deploy commands run.",
 								"type": "string",
 								"example": "/"
 							},
 							"trigger_name": {
+								"description": "Human-readable name of the build trigger.",
 								"type": "string",
 								"example": "Production Deploy"
 							}
@@ -915,6 +949,7 @@
 											"type": "object",
 											"properties": {
 												"branch_excludes": {
+													"description": "Branch patterns that must not start builds.",
 													"type": "array",
 													"items": {
 														"type": "string"
@@ -922,6 +957,7 @@
 													"example": []
 												},
 												"branch_includes": {
+													"description": "Branch patterns that can start builds.",
 													"type": "array",
 													"items": {
 														"type": "string"
@@ -931,11 +967,13 @@
 													]
 												},
 												"build_caching_enabled": {
+													"description": "Whether builds reuse cached dependencies and build artifacts.",
 													"type": "boolean",
 													"example": false,
 													"default": false
 												},
 												"build_command": {
+													"description": "Command to build the Worker.",
 													"type": "string",
 													"example": "npm run build"
 												},
@@ -944,7 +982,7 @@
 													"example": "My Build Token"
 												},
 												"build_token_uuid": {
-													"description": "Build token UUID.",
+													"description": "UUID of the build token used when deploying the Worker.",
 													"type": "string",
 													"format": "uuid"
 												},
@@ -958,11 +996,12 @@
 													"nullable": true
 												},
 												"deploy_command": {
+													"description": "Command to deploy the Worker.",
 													"type": "string",
 													"example": "npx wrangler deploy"
 												},
 												"external_script_id": {
-													"description": "System-generated worker script tag.",
+													"description": "System-generated tag of the Worker. This is not the Worker name.",
 													"type": "string",
 													"example": "dd7160bb9cef458093557736f4b9e75b"
 												},
@@ -971,6 +1010,7 @@
 													"format": "date-time"
 												},
 												"path_excludes": {
+													"description": "Path patterns that must not start builds.",
 													"type": "array",
 													"items": {
 														"type": "string"
@@ -980,6 +1020,7 @@
 													]
 												},
 												"path_includes": {
+													"description": "Path patterns that can start builds.",
 													"type": "array",
 													"items": {
 														"type": "string"
@@ -987,7 +1028,9 @@
 													"example": [
 														"*"
 													],
-													"default": "*"
+													"default": [
+														"*"
+													]
 												},
 												"repo_connection": {
 													"type": "object",
@@ -1006,15 +1049,17 @@
 															"format": "date-time"
 														},
 														"provider_account_id": {
-															"description": "Provider account identifier.",
+															"description": "Provider-specific identifier of the account or namespace that owns the repository.",
 															"type": "string",
 															"example": "cloudflare"
 														},
 														"provider_account_name": {
+															"description": "Human-readable name of the account or namespace that owns the repository.",
 															"type": "string",
 															"example": "Cloudflare"
 														},
 														"provider_type": {
+															"description": "Source control provider.",
 															"type": "string",
 															"example": "github",
 															"enum": [
@@ -1030,22 +1075,24 @@
 															"format": "uuid"
 														},
 														"repo_id": {
-															"description": "Repository identifier.",
+															"description": "Provider-specific repository identifier.",
 															"type": "string",
 															"example": "workers-sdk"
 														},
 														"repo_name": {
+															"description": "Human-readable repository name.",
 															"type": "string",
 															"example": "workers-sdk"
 														}
 													}
 												},
 												"root_directory": {
-													"description": "Root directory path.",
+													"description": "Repository directory in which build and deploy commands run.",
 													"type": "string",
 													"example": "/"
 												},
 												"trigger_name": {
+													"description": "Human-readable name of the build trigger.",
 													"type": "string",
 													"example": "Production Deploy"
 												},
@@ -1143,14 +1190,14 @@
 			"Workers CI Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.triggers",
+		"x-fern-sdk-group-name": "builds.triggers",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/builds/triggers/{trigger_uuid}/builds": {
 		"operationId": "createManualBuild",
-		"summary": "Create manual build",
-		"description": "Trigger a manual build for a specific trigger",
+		"summary": "Start a Workers build",
+		"description": "Start a build for a branch or commit using the selected trigger.",
 		"parameters": [
 			{
 				"in": "path",
@@ -1201,71 +1248,82 @@
 								]
 							},
 							"seed_repo": {
-								"type": "object",
-								"properties": {
-									"branch": {
-										"description": "Git branch name.",
-										"type": "string",
-										"example": "main"
-									},
-									"files": {
-										"type": "array",
-										"items": {
-											"type": "object",
-											"properties": {
-												"content": {
-													"example": "name = \"my-worker\"\nmain = \"src/index.js\"\n",
-													"type": "string"
-												},
-												"filename": {
-													"type": "string",
-													"example": "wrangler.toml"
-												},
-												"isBase64": {
-													"type": "boolean",
-													"default": false
-												},
-												"replace": {
-													"description": "Text to replace in the file",
-													"type": "string"
-												}
+								"description": "Optional repository and file overrides used to seed this build.",
+								"allOf": [
+									{
+										"type": "object",
+										"properties": {
+											"branch": {
+												"description": "Repository branch to seed.",
+												"allOf": [
+													{
+														"description": "Git branch name.",
+														"type": "string",
+														"example": "main"
+													}
+												]
 											},
-											"required": [
-												"filename",
-												"content"
-											]
+											"files": {
+												"description": "Files to add or replace for this build. Maximum 2.",
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"content": {
+															"example": "name = \"my-worker\"\nmain = \"src/index.js\"\n",
+															"type": "string"
+														},
+														"filename": {
+															"type": "string",
+															"example": "wrangler.toml"
+														},
+														"isBase64": {
+															"description": "Whether content is Base64-encoded.",
+															"type": "boolean",
+															"default": false
+														},
+														"replace": {
+															"description": "Existing text in the target file to replace with content.",
+															"type": "string"
+														}
+													},
+													"required": [
+														"filename",
+														"content"
+													]
+												},
+												"maxItems": 2
+											},
+											"owner": {
+												"description": "Repository owner or namespace.",
+												"type": "string",
+												"example": "cloudflare"
+											},
+											"path": {
+												"description": "Path within the repository to seed.",
+												"type": "string",
+												"example": "/"
+											},
+											"provider": {
+												"description": "Source control provider for the seed repository.",
+												"type": "string",
+												"enum": [
+													"github",
+													"gitlab"
+												]
+											},
+											"repository": {
+												"description": "Repository name.",
+												"type": "string",
+												"example": "workers-sdk"
+											}
 										},
-										"maxItems": 2
-									},
-									"owner": {
-										"type": "string",
-										"example": "cloudflare"
-									},
-									"path": {
-										"type": "string",
-										"example": "/"
-									},
-									"provider": {
-										"type": "string",
-										"example": "github",
-										"enum": [
-											"github",
-											"gitlab",
-											"gitlab_internal",
-											"origin"
+										"required": [
+											"provider",
+											"owner",
+											"repository"
 										]
-									},
-									"repository": {
-										"type": "string",
-										"example": "workers-sdk"
 									}
-								},
-								"required": [
-									"provider",
-									"owner",
-									"repository",
-									"branch",
-									"path"
 								]
 							}
 						},
@@ -1461,14 +1519,14 @@
 			"Workers CI Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.triggers",
-		"x-fern-sdk-method-name": "create-build",
+		"x-fern-sdk-group-name": "builds",
+		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/builds/triggers/{trigger_uuid}/purge_build_cache": {
 		"operationId": "purgeBuildCache",
-		"summary": "Purge build cache",
-		"description": "Clear the build cache for a specific trigger",
+		"summary": "Purge a trigger's build cache",
+		"description": "Delete cached dependencies and build artifacts associated with a trigger.",
 		"parameters": [
 			{
 				"in": "path",
@@ -1712,9 +1770,9 @@
 			"Workers CI Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.triggers",
-		"x-fern-sdk-method-name": "purge-cache",
+		"x-fern-sdk-group-name": "builds.triggers.cache",
+		"x-fern-sdk-method-name": "purge",
 		"x-forge-hidden": true,
-		"x-forge-require-confirmation": "This operation wipes the workers-build cache."
+		"x-forge-require-confirmation": "This operation purges the build cache for a Workers Builds trigger."
 	}
 }

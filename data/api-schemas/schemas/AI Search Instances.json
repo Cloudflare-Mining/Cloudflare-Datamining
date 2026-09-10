@@ -253,6 +253,11 @@
 														"porter",
 														"trigram"
 													]
+												},
+												"use_ocr": {
+													"description": "Accepted and propagated for future OCR processing. Currently inert. Changing this triggers a full re-index. Defaults to false.",
+													"type": "boolean",
+													"default": false
 												}
 											},
 											"x-auditable": true
@@ -1103,6 +1108,11 @@
 														"porter",
 														"trigram"
 													]
+												},
+												"use_ocr": {
+													"description": "Accepted and propagated for future OCR processing. Currently inert. Changing this triggers a full re-index. Defaults to false.",
+													"type": "boolean",
+													"default": false
 												}
 											},
 											"x-auditable": true
@@ -1980,6 +1990,9 @@
 															"porter",
 															"trigram"
 														]
+													},
+													"use_ocr": {
+														"type": "boolean"
 													}
 												}
 											},
@@ -2811,6 +2824,11 @@
 														"porter",
 														"trigram"
 													]
+												},
+												"use_ocr": {
+													"description": "Accepted and propagated for future OCR processing. Currently inert. Changing this triggers a full re-index. Defaults to false.",
+													"type": "boolean",
+													"default": false
 												}
 											},
 											"x-auditable": true
@@ -3887,6 +3905,9 @@
 															"porter",
 															"trigram"
 														]
+													},
+													"use_ocr": {
+														"type": "boolean"
 													}
 												}
 											},
@@ -4737,6 +4758,11 @@
 														"porter",
 														"trigram"
 													]
+												},
+												"use_ocr": {
+													"description": "Accepted and propagated for future OCR processing. Currently inert. Changing this triggers a full re-index. Defaults to false.",
+													"type": "boolean",
+													"default": false
 												}
 											},
 											"x-auditable": true
@@ -5777,6 +5803,11 @@
 											"porter",
 											"trigram"
 										]
+									},
+									"use_ocr": {
+										"description": "Accepted and propagated for future OCR processing. Currently inert. Changing this triggers a full re-index. Defaults to false.",
+										"type": "boolean",
+										"default": false
 									}
 								},
 								"x-auditable": true
@@ -6475,6 +6506,11 @@
 														"porter",
 														"trigram"
 													]
+												},
+												"use_ocr": {
+													"description": "Accepted and propagated for future OCR processing. Currently inert. Changing this triggers a full re-index. Defaults to false.",
+													"type": "boolean",
+													"default": false
 												}
 											},
 											"x-auditable": true
@@ -7155,6 +7191,28 @@
 												"type": "boolean"
 											}
 										}
+									},
+									"custom_metadata": {
+										"description": "Metadata added to AI Gateway logs for requests triggered by this operation. Accepts up to 2 string, number, or boolean entries. Keys 'ai-search', 'task', 'origin', and keys beginning with 'cf.' are reserved.",
+										"type": "object",
+										"example": {
+											"test": true,
+											"user_id": "user-123"
+										},
+										"additionalProperties": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											]
+										},
+										"maxProperties": 2
 									},
 									"query_rewrite": {
 										"type": "object",
@@ -7839,6 +7897,28 @@
 												"type": "boolean"
 											}
 										}
+									},
+									"custom_metadata": {
+										"description": "Metadata added to AI Gateway logs for requests triggered by this operation. Accepts up to 2 string, number, or boolean entries. Keys 'ai-search', 'task', 'origin', and keys beginning with 'cf.' are reserved.",
+										"type": "object",
+										"example": {
+											"test": true,
+											"user_id": "user-123"
+										},
+										"additionalProperties": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											]
+										},
+										"maxProperties": 2
 									},
 									"query_rewrite": {
 										"type": "object",
@@ -8573,6 +8653,11 @@
 											"porter",
 											"trigram"
 										]
+									},
+									"use_ocr": {
+										"description": "Accepted and propagated for future OCR processing. Currently inert. Changing this triggers a full re-index. Defaults to false.",
+										"type": "boolean",
+										"default": false
 									}
 								},
 								"x-auditable": true
@@ -9271,6 +9356,11 @@
 														"porter",
 														"trigram"
 													]
+												},
+												"use_ocr": {
+													"description": "Accepted and propagated for future OCR processing. Currently inert. Changing this triggers a full re-index. Defaults to false.",
+													"type": "boolean",
+													"default": false
 												}
 											},
 											"x-auditable": true
@@ -9980,6 +10070,28 @@
 												"type": "boolean"
 											}
 										}
+									},
+									"custom_metadata": {
+										"description": "Metadata added to AI Gateway logs for requests triggered by this operation. Accepts up to 2 string, number, or boolean entries. Keys 'ai-search', 'task', 'origin', and keys beginning with 'cf.' are reserved.",
+										"type": "object",
+										"example": {
+											"test": true,
+											"user_id": "user-123"
+										},
+										"additionalProperties": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											]
+										},
+										"maxProperties": 2
 									},
 									"query_rewrite": {
 										"type": "object",
@@ -10823,6 +10935,28 @@
 											}
 										}
 									},
+									"custom_metadata": {
+										"description": "Metadata added to AI Gateway logs for requests triggered by this operation. Accepts up to 2 string, number, or boolean entries. Keys 'ai-search', 'task', 'origin', and keys beginning with 'cf.' are reserved.",
+										"type": "object",
+										"example": {
+											"test": true,
+											"user_id": "user-123"
+										},
+										"additionalProperties": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											]
+										},
+										"maxProperties": 2
+									},
 									"query_rewrite": {
 										"type": "object",
 										"properties": {
@@ -11553,6 +11687,11 @@
 											"porter",
 											"trigram"
 										]
+									},
+									"use_ocr": {
+										"description": "Accepted and propagated for future OCR processing. Currently inert. Changing this triggers a full re-index. Defaults to false.",
+										"type": "boolean",
+										"default": false
 									}
 								},
 								"x-auditable": true
@@ -12268,6 +12407,11 @@
 														"porter",
 														"trigram"
 													]
+												},
+												"use_ocr": {
+													"description": "Accepted and propagated for future OCR processing. Currently inert. Changing this triggers a full re-index. Defaults to false.",
+													"type": "boolean",
+													"default": false
 												}
 											},
 											"x-auditable": true
@@ -13121,6 +13265,11 @@
 											"porter",
 											"trigram"
 										]
+									},
+									"use_ocr": {
+										"description": "Accepted and propagated for future OCR processing. Currently inert. Changing this triggers a full re-index. Defaults to false.",
+										"type": "boolean",
+										"default": false
 									}
 								},
 								"x-auditable": true
@@ -13836,6 +13985,11 @@
 														"porter",
 														"trigram"
 													]
+												},
+												"use_ocr": {
+													"description": "Accepted and propagated for future OCR processing. Currently inert. Changing this triggers a full re-index. Defaults to false.",
+													"type": "boolean",
+													"default": false
 												}
 											},
 											"x-auditable": true

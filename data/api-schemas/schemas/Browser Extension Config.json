@@ -41,6 +41,7 @@
 									}
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -97,6 +98,7 @@
 									}
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -153,6 +155,7 @@
 									}
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -209,6 +212,7 @@
 									}
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -265,6 +269,7 @@
 									}
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -321,6 +326,7 @@
 									}
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -403,25 +409,12 @@
 													"description": "Minimum required browser extension version.",
 													"type": "string"
 												},
-												"mode": {
-													"type": "string",
-													"default": "proxy",
-													"enum": [
-														"proxy"
-													]
-												},
-												"proxy_url": {
-													"description": "PAC script URL for proxy configuration.",
-													"type": "string",
-													"format": "uri"
-												},
 												"team_domain": {
 													"description": "Team domain for the browser extension.",
 													"type": "string"
 												}
 											},
 											"required": [
-												"proxy_url",
 												"team_domain"
 											]
 										},
@@ -500,6 +493,7 @@
 									}
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -556,6 +550,7 @@
 									}
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -612,6 +607,7 @@
 									}
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -668,6 +664,7 @@
 									}
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -696,9 +693,10 @@
 		"tags": [
 			"Browser Extension Config"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "browser-extension.config",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/browser-extension/config": {
 		"operationId": "accounts-browser-extension-config-post",
@@ -718,26 +716,14 @@
 										"description": "Minimum required browser extension version.",
 										"type": "string"
 									},
-									"mode": {
+									"team_name": {
+										"description": "Access team name. The service derives `team_domain` as `<team_name>.cloudflareaccess.com`.",
 										"type": "string",
-										"default": "proxy",
-										"enum": [
-											"proxy"
-										]
-									},
-									"proxy_url": {
-										"description": "PAC script URL for proxy configuration.",
-										"type": "string",
-										"format": "uri"
-									},
-									"team_domain": {
-										"description": "Team domain for the browser extension.",
-										"type": "string"
+										"pattern": "^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$"
 									}
 								},
 								"required": [
-									"proxy_url",
-									"team_domain"
+									"team_name"
 								]
 							}
 						},
@@ -794,25 +780,12 @@
 													"description": "Minimum required browser extension version.",
 													"type": "string"
 												},
-												"mode": {
-													"type": "string",
-													"default": "proxy",
-													"enum": [
-														"proxy"
-													]
-												},
-												"proxy_url": {
-													"description": "PAC script URL for proxy configuration.",
-													"type": "string",
-													"format": "uri"
-												},
 												"team_domain": {
 													"description": "Team domain for the browser extension.",
 													"type": "string"
 												}
 											},
 											"required": [
-												"proxy_url",
 												"team_domain"
 											]
 										},
@@ -891,6 +864,7 @@
 									}
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -947,6 +921,7 @@
 									}
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -1003,6 +978,7 @@
 									}
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -1059,6 +1035,7 @@
 									}
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -1115,6 +1092,7 @@
 									}
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -1143,9 +1121,10 @@
 		"tags": [
 			"Browser Extension Config"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "browser-extension.config",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/browser-extension/config": {
 		"operationId": "accounts-browser-extension-config-put",
@@ -1165,26 +1144,14 @@
 										"description": "Minimum required browser extension version.",
 										"type": "string"
 									},
-									"mode": {
+									"team_name": {
+										"description": "Access team name. The service derives `team_domain` as `<team_name>.cloudflareaccess.com`.",
 										"type": "string",
-										"default": "proxy",
-										"enum": [
-											"proxy"
-										]
-									},
-									"proxy_url": {
-										"description": "PAC script URL for proxy configuration.",
-										"type": "string",
-										"format": "uri"
-									},
-									"team_domain": {
-										"description": "Team domain for the browser extension.",
-										"type": "string"
+										"pattern": "^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$"
 									}
 								},
 								"required": [
-									"proxy_url",
-									"team_domain"
+									"team_name"
 								]
 							}
 						},
@@ -1241,25 +1208,12 @@
 													"description": "Minimum required browser extension version.",
 													"type": "string"
 												},
-												"mode": {
-													"type": "string",
-													"default": "proxy",
-													"enum": [
-														"proxy"
-													]
-												},
-												"proxy_url": {
-													"description": "PAC script URL for proxy configuration.",
-													"type": "string",
-													"format": "uri"
-												},
 												"team_domain": {
 													"description": "Team domain for the browser extension.",
 													"type": "string"
 												}
 											},
 											"required": [
-												"proxy_url",
 												"team_domain"
 											]
 										},
@@ -1338,6 +1292,7 @@
 									}
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -1394,6 +1349,7 @@
 									}
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -1450,6 +1406,7 @@
 									}
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -1506,6 +1463,7 @@
 									}
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -1562,6 +1520,7 @@
 									}
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -1590,8 +1549,9 @@
 		"tags": [
 			"Browser Extension Config"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "browser-extension.config",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-stability": "beta"
 	}
 }

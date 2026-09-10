@@ -247,6 +247,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -411,7 +414,8 @@
 																"example": "provisioning",
 																"enum": [
 																	"provisioning",
-																	"active"
+																	"active",
+																	"magic_transit_route_missing"
 																],
 																"x-auditable": true
 															}
@@ -433,7 +437,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -555,6 +560,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -731,7 +739,8 @@
 															"example": "provisioning",
 															"enum": [
 																"provisioning",
-																"active"
+																"active",
+																"magic_transit_route_missing"
 															],
 															"x-auditable": true
 														}
@@ -752,7 +761,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -874,6 +884,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1017,10 +1030,12 @@
 														"example": "Magic Transit",
 														"x-auditable": true
 													}
-												}
+												},
+												"type": "object"
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1142,6 +1157,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1334,7 +1352,8 @@
 															"example": "provisioning",
 															"enum": [
 																"provisioning",
-																"active"
+																"active",
+																"magic_transit_route_missing"
 															],
 															"x-auditable": true
 														}
@@ -1355,7 +1374,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1477,6 +1497,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

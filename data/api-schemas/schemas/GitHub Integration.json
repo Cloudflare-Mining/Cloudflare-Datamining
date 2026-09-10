@@ -20,6 +20,7 @@
 				"description": "SCM provider type",
 				"required": true,
 				"schema": {
+					"description": "Source control provider.",
 					"type": "string",
 					"example": "github",
 					"enum": [
@@ -35,7 +36,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Provider account identifier.",
+					"description": "Provider-specific identifier of the account or namespace that owns the repository.",
 					"type": "string",
 					"example": "cloudflare"
 				}
@@ -45,7 +46,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Repository identifier.",
+					"description": "Provider-specific repository identifier.",
 					"type": "string",
 					"example": "workers-sdk"
 				}
@@ -64,7 +65,7 @@
 				"name": "root_directory",
 				"in": "query",
 				"schema": {
-					"description": "Root directory path.",
+					"description": "Repository directory in which build and deploy commands run.",
 					"type": "string",
 					"example": "/"
 				}
@@ -287,7 +288,7 @@
 			"Workers CI Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.repos.config-autofill",
+		"x-fern-sdk-group-name": "builds.repos.config-autofill",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	}

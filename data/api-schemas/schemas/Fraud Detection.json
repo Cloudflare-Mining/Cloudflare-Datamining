@@ -997,27 +997,6 @@
 				"description": "Update Fraud Detection settings failure",
 				"content": {
 					"application/json": {
-						"examples": {
-							"invalid_username_expression": {
-								"summary": "Invalid username expression type",
-								"value": {
-									"errors": [
-										{
-											"code": 10400,
-											"message": "Bad Request"
-										}
-									],
-									"messages": [
-										{
-											"code": 10400,
-											"message": "'http.request.body.form[\"username\"]' is not a valid value for username because the expression has the wrong type: got array[bytes], want bytes"
-										}
-									],
-									"result": null,
-									"success": false
-								}
-							}
-						},
 						"schema": {
 							"allOf": [
 								{

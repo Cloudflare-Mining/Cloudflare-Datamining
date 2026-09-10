@@ -9,13 +9,9 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "App identifier.",
+					"type": "string",
 					"allOf": [
-						{
-							"description": "App identifier."
-						},
-						{
-							"readOnly": true
-						},
 						{
 							"description": "Identifier.",
 							"type": "string",
@@ -23,7 +19,8 @@
 							"maxLength": 32,
 							"x-auditable": true
 						}
-					]
+					],
+					"readOnly": true
 				}
 			},
 			{
@@ -31,13 +28,9 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Zone identifier.",
+					"type": "string",
 					"allOf": [
-						{
-							"description": "Zone identifier."
-						},
-						{
-							"readOnly": true
-						},
 						{
 							"description": "Identifier.",
 							"type": "string",
@@ -45,7 +38,8 @@
 							"maxLength": 32,
 							"x-auditable": true
 						}
-					]
+					],
+					"readOnly": true
 				}
 			}
 		],
@@ -309,13 +303,9 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Zone identifier.",
+					"type": "string",
 					"allOf": [
-						{
-							"description": "Zone identifier."
-						},
-						{
-							"readOnly": true
-						},
 						{
 							"description": "Identifier.",
 							"type": "string",
@@ -323,7 +313,8 @@
 							"maxLength": 32,
 							"x-auditable": true
 						}
-					]
+					],
+					"readOnly": true
 				}
 			},
 			{
@@ -519,29 +510,22 @@
 																"type": "object",
 																"properties": {
 																	"created_on": {
+																		"description": "When the Application was created.",
+																		"type": "string",
 																		"allOf": [
-																			{
-																				"description": "When the Application was created."
-																			},
-																			{
-																				"readOnly": true
-																			},
 																			{
 																				"type": "string",
 																				"format": "date-time",
 																				"example": "2014-01-01T05:20:00.12345Z",
 																				"x-auditable": true
 																			}
-																		]
+																		],
+																		"readOnly": true
 																	},
 																	"id": {
+																		"description": "App identifier.",
+																		"type": "string",
 																		"allOf": [
-																			{
-																				"description": "App identifier."
-																			},
-																			{
-																				"readOnly": true
-																			},
 																			{
 																				"description": "Identifier.",
 																				"type": "string",
@@ -549,23 +533,21 @@
 																				"maxLength": 32,
 																				"x-auditable": true
 																			}
-																		]
+																		],
+																		"readOnly": true
 																	},
 																	"modified_on": {
+																		"description": "When the Application was last modified.",
+																		"type": "string",
 																		"allOf": [
-																			{
-																				"description": "When the Application was last modified."
-																			},
-																			{
-																				"readOnly": true
-																			},
 																			{
 																				"type": "string",
 																				"format": "date-time",
 																				"example": "2014-01-01T05:20:00.12345Z",
 																				"x-auditable": true
 																			}
-																		]
+																		],
+																		"readOnly": true
 																	}
 																},
 																"required": [
@@ -782,29 +764,22 @@
 																"type": "object",
 																"properties": {
 																	"created_on": {
+																		"description": "When the Application was created.",
+																		"type": "string",
 																		"allOf": [
-																			{
-																				"description": "When the Application was created."
-																			},
-																			{
-																				"readOnly": true
-																			},
 																			{
 																				"type": "string",
 																				"format": "date-time",
 																				"example": "2014-01-01T05:20:00.12345Z",
 																				"x-auditable": true
 																			}
-																		]
+																		],
+																		"readOnly": true
 																	},
 																	"id": {
+																		"description": "App identifier.",
+																		"type": "string",
 																		"allOf": [
-																			{
-																				"description": "App identifier."
-																			},
-																			{
-																				"readOnly": true
-																			},
 																			{
 																				"description": "Identifier.",
 																				"type": "string",
@@ -812,23 +787,21 @@
 																				"maxLength": 32,
 																				"x-auditable": true
 																			}
-																		]
+																		],
+																		"readOnly": true
 																	},
 																	"modified_on": {
+																		"description": "When the Application was last modified.",
+																		"type": "string",
 																		"allOf": [
-																			{
-																				"description": "When the Application was last modified."
-																			},
-																			{
-																				"readOnly": true
-																			},
 																			{
 																				"type": "string",
 																				"format": "date-time",
 																				"example": "2014-01-01T05:20:00.12345Z",
 																				"x-auditable": true
 																			}
-																		]
+																		],
+																		"readOnly": true
 																	}
 																},
 																"required": [
@@ -887,7 +860,8 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1039,13 +1013,9 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "App identifier.",
+					"type": "string",
 					"allOf": [
-						{
-							"description": "App identifier."
-						},
-						{
-							"readOnly": true
-						},
 						{
 							"description": "Identifier.",
 							"type": "string",
@@ -1053,7 +1023,8 @@
 							"maxLength": 32,
 							"x-auditable": true
 						}
-					]
+					],
+					"readOnly": true
 				}
 			},
 			{
@@ -1061,13 +1032,9 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Zone identifier.",
+					"type": "string",
 					"allOf": [
-						{
-							"description": "Zone identifier."
-						},
-						{
-							"readOnly": true
-						},
 						{
 							"description": "Identifier.",
 							"type": "string",
@@ -1075,7 +1042,8 @@
 							"maxLength": 32,
 							"x-auditable": true
 						}
-					]
+					],
+					"readOnly": true
 				}
 			}
 		],
@@ -1183,29 +1151,22 @@
 															"type": "object",
 															"properties": {
 																"created_on": {
+																	"description": "When the Application was created.",
+																	"type": "string",
 																	"allOf": [
-																		{
-																			"description": "When the Application was created."
-																		},
-																		{
-																			"readOnly": true
-																		},
 																		{
 																			"type": "string",
 																			"format": "date-time",
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
-																	]
+																	],
+																	"readOnly": true
 																},
 																"id": {
+																	"description": "App identifier.",
+																	"type": "string",
 																	"allOf": [
-																		{
-																			"description": "App identifier."
-																		},
-																		{
-																			"readOnly": true
-																		},
 																		{
 																			"description": "Identifier.",
 																			"type": "string",
@@ -1213,23 +1174,21 @@
 																			"maxLength": 32,
 																			"x-auditable": true
 																		}
-																	]
+																	],
+																	"readOnly": true
 																},
 																"modified_on": {
+																	"description": "When the Application was last modified.",
+																	"type": "string",
 																	"allOf": [
-																		{
-																			"description": "When the Application was last modified."
-																		},
-																		{
-																			"readOnly": true
-																		},
 																		{
 																			"type": "string",
 																			"format": "date-time",
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
-																	]
+																	],
+																	"readOnly": true
 																}
 															},
 															"required": [
@@ -1443,29 +1402,22 @@
 															"type": "object",
 															"properties": {
 																"created_on": {
+																	"description": "When the Application was created.",
+																	"type": "string",
 																	"allOf": [
-																		{
-																			"description": "When the Application was created."
-																		},
-																		{
-																			"readOnly": true
-																		},
 																		{
 																			"type": "string",
 																			"format": "date-time",
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
-																	]
+																	],
+																	"readOnly": true
 																},
 																"id": {
+																	"description": "App identifier.",
+																	"type": "string",
 																	"allOf": [
-																		{
-																			"description": "App identifier."
-																		},
-																		{
-																			"readOnly": true
-																		},
 																		{
 																			"description": "Identifier.",
 																			"type": "string",
@@ -1473,23 +1425,21 @@
 																			"maxLength": 32,
 																			"x-auditable": true
 																		}
-																	]
+																	],
+																	"readOnly": true
 																},
 																"modified_on": {
+																	"description": "When the Application was last modified.",
+																	"type": "string",
 																	"allOf": [
-																		{
-																			"description": "When the Application was last modified."
-																		},
-																		{
-																			"readOnly": true
-																		},
 																		{
 																			"type": "string",
 																			"format": "date-time",
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
-																	]
+																	],
+																	"readOnly": true
 																}
 															},
 															"required": [
@@ -1546,7 +1496,8 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1698,13 +1649,9 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Zone identifier.",
+					"type": "string",
 					"allOf": [
-						{
-							"description": "Zone identifier."
-						},
-						{
-							"readOnly": true
-						},
 						{
 							"description": "Identifier.",
 							"type": "string",
@@ -1712,7 +1659,8 @@
 							"maxLength": 32,
 							"x-auditable": true
 						}
-					]
+					],
+					"readOnly": true
 				}
 			}
 		],
@@ -1888,7 +1836,8 @@
 												]
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2040,13 +1989,9 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Zone identifier.",
+					"type": "string",
 					"allOf": [
-						{
-							"description": "Zone identifier."
-						},
-						{
-							"readOnly": true
-						},
 						{
 							"description": "Identifier.",
 							"type": "string",
@@ -2054,7 +1999,8 @@
 							"maxLength": 32,
 							"x-auditable": true
 						}
-					]
+					],
+					"readOnly": true
 				}
 			}
 		],
@@ -2070,29 +2016,22 @@
 										"type": "object",
 										"properties": {
 											"created_on": {
+												"description": "When the Application was created.",
+												"type": "string",
 												"allOf": [
-													{
-														"description": "When the Application was created."
-													},
-													{
-														"readOnly": true
-													},
 													{
 														"type": "string",
 														"format": "date-time",
 														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													}
-												]
+												],
+												"readOnly": true
 											},
 											"id": {
+												"description": "App identifier.",
+												"type": "string",
 												"allOf": [
-													{
-														"description": "App identifier."
-													},
-													{
-														"readOnly": true
-													},
 													{
 														"description": "Identifier.",
 														"type": "string",
@@ -2100,23 +2039,21 @@
 														"maxLength": 32,
 														"x-auditable": true
 													}
-												]
+												],
+												"readOnly": true
 											},
 											"modified_on": {
+												"description": "When the Application was last modified.",
+												"type": "string",
 												"allOf": [
-													{
-														"description": "When the Application was last modified."
-													},
-													{
-														"readOnly": true
-													},
 													{
 														"type": "string",
 														"format": "date-time",
 														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													}
-												]
+												],
+												"readOnly": true
 											}
 										},
 										"required": [
@@ -2330,29 +2267,22 @@
 										"type": "object",
 										"properties": {
 											"created_on": {
+												"description": "When the Application was created.",
+												"type": "string",
 												"allOf": [
-													{
-														"description": "When the Application was created."
-													},
-													{
-														"readOnly": true
-													},
 													{
 														"type": "string",
 														"format": "date-time",
 														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													}
-												]
+												],
+												"readOnly": true
 											},
 											"id": {
+												"description": "App identifier.",
+												"type": "string",
 												"allOf": [
-													{
-														"description": "App identifier."
-													},
-													{
-														"readOnly": true
-													},
 													{
 														"description": "Identifier.",
 														"type": "string",
@@ -2360,23 +2290,21 @@
 														"maxLength": 32,
 														"x-auditable": true
 													}
-												]
+												],
+												"readOnly": true
 											},
 											"modified_on": {
+												"description": "When the Application was last modified.",
+												"type": "string",
 												"allOf": [
-													{
-														"description": "When the Application was last modified."
-													},
-													{
-														"readOnly": true
-													},
 													{
 														"type": "string",
 														"format": "date-time",
 														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													}
-												]
+												],
+												"readOnly": true
 											}
 										},
 										"required": [
@@ -2540,29 +2468,22 @@
 															"type": "object",
 															"properties": {
 																"created_on": {
+																	"description": "When the Application was created.",
+																	"type": "string",
 																	"allOf": [
-																		{
-																			"description": "When the Application was created."
-																		},
-																		{
-																			"readOnly": true
-																		},
 																		{
 																			"type": "string",
 																			"format": "date-time",
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
-																	]
+																	],
+																	"readOnly": true
 																},
 																"id": {
+																	"description": "App identifier.",
+																	"type": "string",
 																	"allOf": [
-																		{
-																			"description": "App identifier."
-																		},
-																		{
-																			"readOnly": true
-																		},
 																		{
 																			"description": "Identifier.",
 																			"type": "string",
@@ -2570,23 +2491,21 @@
 																			"maxLength": 32,
 																			"x-auditable": true
 																		}
-																	]
+																	],
+																	"readOnly": true
 																},
 																"modified_on": {
+																	"description": "When the Application was last modified.",
+																	"type": "string",
 																	"allOf": [
-																		{
-																			"description": "When the Application was last modified."
-																		},
-																		{
-																			"readOnly": true
-																		},
 																		{
 																			"type": "string",
 																			"format": "date-time",
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
-																	]
+																	],
+																	"readOnly": true
 																}
 															},
 															"required": [
@@ -2800,29 +2719,22 @@
 															"type": "object",
 															"properties": {
 																"created_on": {
+																	"description": "When the Application was created.",
+																	"type": "string",
 																	"allOf": [
-																		{
-																			"description": "When the Application was created."
-																		},
-																		{
-																			"readOnly": true
-																		},
 																		{
 																			"type": "string",
 																			"format": "date-time",
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
-																	]
+																	],
+																	"readOnly": true
 																},
 																"id": {
+																	"description": "App identifier.",
+																	"type": "string",
 																	"allOf": [
-																		{
-																			"description": "App identifier."
-																		},
-																		{
-																			"readOnly": true
-																		},
 																		{
 																			"description": "Identifier.",
 																			"type": "string",
@@ -2830,23 +2742,21 @@
 																			"maxLength": 32,
 																			"x-auditable": true
 																		}
-																	]
+																	],
+																	"readOnly": true
 																},
 																"modified_on": {
+																	"description": "When the Application was last modified.",
+																	"type": "string",
 																	"allOf": [
-																		{
-																			"description": "When the Application was last modified."
-																		},
-																		{
-																			"readOnly": true
-																		},
 																		{
 																			"type": "string",
 																			"format": "date-time",
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
-																	]
+																	],
+																	"readOnly": true
 																}
 															},
 															"required": [
@@ -2903,7 +2813,8 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3054,13 +2965,9 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "App identifier.",
+					"type": "string",
 					"allOf": [
-						{
-							"description": "App identifier."
-						},
-						{
-							"readOnly": true
-						},
 						{
 							"description": "Identifier.",
 							"type": "string",
@@ -3068,7 +2975,8 @@
 							"maxLength": 32,
 							"x-auditable": true
 						}
-					]
+					],
+					"readOnly": true
 				}
 			},
 			{
@@ -3076,13 +2984,9 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Zone identifier.",
+					"type": "string",
 					"allOf": [
-						{
-							"description": "Zone identifier."
-						},
-						{
-							"readOnly": true
-						},
 						{
 							"description": "Identifier.",
 							"type": "string",
@@ -3090,7 +2994,8 @@
 							"maxLength": 32,
 							"x-auditable": true
 						}
-					]
+					],
+					"readOnly": true
 				}
 			}
 		],
@@ -3106,29 +3011,22 @@
 										"type": "object",
 										"properties": {
 											"created_on": {
+												"description": "When the Application was created.",
+												"type": "string",
 												"allOf": [
-													{
-														"description": "When the Application was created."
-													},
-													{
-														"readOnly": true
-													},
 													{
 														"type": "string",
 														"format": "date-time",
 														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													}
-												]
+												],
+												"readOnly": true
 											},
 											"id": {
+												"description": "App identifier.",
+												"type": "string",
 												"allOf": [
-													{
-														"description": "App identifier."
-													},
-													{
-														"readOnly": true
-													},
 													{
 														"description": "Identifier.",
 														"type": "string",
@@ -3136,23 +3034,21 @@
 														"maxLength": 32,
 														"x-auditable": true
 													}
-												]
+												],
+												"readOnly": true
 											},
 											"modified_on": {
+												"description": "When the Application was last modified.",
+												"type": "string",
 												"allOf": [
-													{
-														"description": "When the Application was last modified."
-													},
-													{
-														"readOnly": true
-													},
 													{
 														"type": "string",
 														"format": "date-time",
 														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													}
-												]
+												],
+												"readOnly": true
 											}
 										},
 										"required": [
@@ -3366,29 +3262,22 @@
 										"type": "object",
 										"properties": {
 											"created_on": {
+												"description": "When the Application was created.",
+												"type": "string",
 												"allOf": [
-													{
-														"description": "When the Application was created."
-													},
-													{
-														"readOnly": true
-													},
 													{
 														"type": "string",
 														"format": "date-time",
 														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													}
-												]
+												],
+												"readOnly": true
 											},
 											"id": {
+												"description": "App identifier.",
+												"type": "string",
 												"allOf": [
-													{
-														"description": "App identifier."
-													},
-													{
-														"readOnly": true
-													},
 													{
 														"description": "Identifier.",
 														"type": "string",
@@ -3396,23 +3285,21 @@
 														"maxLength": 32,
 														"x-auditable": true
 													}
-												]
+												],
+												"readOnly": true
 											},
 											"modified_on": {
+												"description": "When the Application was last modified.",
+												"type": "string",
 												"allOf": [
-													{
-														"description": "When the Application was last modified."
-													},
-													{
-														"readOnly": true
-													},
 													{
 														"type": "string",
 														"format": "date-time",
 														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													}
-												]
+												],
+												"readOnly": true
 											}
 										},
 										"required": [
@@ -3576,29 +3463,22 @@
 															"type": "object",
 															"properties": {
 																"created_on": {
+																	"description": "When the Application was created.",
+																	"type": "string",
 																	"allOf": [
-																		{
-																			"description": "When the Application was created."
-																		},
-																		{
-																			"readOnly": true
-																		},
 																		{
 																			"type": "string",
 																			"format": "date-time",
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
-																	]
+																	],
+																	"readOnly": true
 																},
 																"id": {
+																	"description": "App identifier.",
+																	"type": "string",
 																	"allOf": [
-																		{
-																			"description": "App identifier."
-																		},
-																		{
-																			"readOnly": true
-																		},
 																		{
 																			"description": "Identifier.",
 																			"type": "string",
@@ -3606,23 +3486,21 @@
 																			"maxLength": 32,
 																			"x-auditable": true
 																		}
-																	]
+																	],
+																	"readOnly": true
 																},
 																"modified_on": {
+																	"description": "When the Application was last modified.",
+																	"type": "string",
 																	"allOf": [
-																		{
-																			"description": "When the Application was last modified."
-																		},
-																		{
-																			"readOnly": true
-																		},
 																		{
 																			"type": "string",
 																			"format": "date-time",
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
-																	]
+																	],
+																	"readOnly": true
 																}
 															},
 															"required": [
@@ -3836,29 +3714,22 @@
 															"type": "object",
 															"properties": {
 																"created_on": {
+																	"description": "When the Application was created.",
+																	"type": "string",
 																	"allOf": [
-																		{
-																			"description": "When the Application was created."
-																		},
-																		{
-																			"readOnly": true
-																		},
 																		{
 																			"type": "string",
 																			"format": "date-time",
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
-																	]
+																	],
+																	"readOnly": true
 																},
 																"id": {
+																	"description": "App identifier.",
+																	"type": "string",
 																	"allOf": [
-																		{
-																			"description": "App identifier."
-																		},
-																		{
-																			"readOnly": true
-																		},
 																		{
 																			"description": "Identifier.",
 																			"type": "string",
@@ -3866,23 +3737,21 @@
 																			"maxLength": 32,
 																			"x-auditable": true
 																		}
-																	]
+																	],
+																	"readOnly": true
 																},
 																"modified_on": {
+																	"description": "When the Application was last modified.",
+																	"type": "string",
 																	"allOf": [
-																		{
-																			"description": "When the Application was last modified."
-																		},
-																		{
-																			"readOnly": true
-																		},
 																		{
 																			"type": "string",
 																			"format": "date-time",
 																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
-																	]
+																	],
+																	"readOnly": true
 																}
 															},
 															"required": [
@@ -3939,7 +3808,8 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
