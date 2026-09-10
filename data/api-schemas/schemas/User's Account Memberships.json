@@ -18,12 +18,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Delete Membership response",
@@ -3278,7 +3272,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.memberships",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PUT /memberships/{membership_id}": {
 		"operationId": "user'-s-account-memberships-update-membership",

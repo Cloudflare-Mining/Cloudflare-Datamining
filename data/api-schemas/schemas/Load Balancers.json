@@ -25,12 +25,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Delete Load Balancer response.",
@@ -1175,7 +1169,7 @@
 																						"type": "string",
 																						"x-auditable": true
 																					},
-																					"default": "none",
+																					"default": [],
 																					"uniqueItems": true
 																				},
 																				"require_all_headers": {
@@ -1305,7 +1299,7 @@
 																	"type": "string",
 																	"x-auditable": true
 																},
-																"default": "none",
+																"default": [],
 																"uniqueItems": true
 															},
 															"require_all_headers": {
@@ -2201,7 +2195,7 @@
 																								"type": "string",
 																								"x-auditable": true
 																							},
-																							"default": "none",
+																							"default": [],
 																							"uniqueItems": true
 																						},
 																						"require_all_headers": {
@@ -2331,7 +2325,7 @@
 																			"type": "string",
 																			"x-auditable": true
 																		},
-																		"default": "none",
+																		"default": [],
 																		"uniqueItems": true
 																	},
 																	"require_all_headers": {
@@ -3335,7 +3329,7 @@
 																					"type": "string",
 																					"x-auditable": true
 																				},
-																				"default": "none",
+																				"default": [],
 																				"uniqueItems": true
 																			},
 																			"require_all_headers": {
@@ -3465,7 +3459,7 @@
 																"type": "string",
 																"x-auditable": true
 															},
-															"default": "none",
+															"default": [],
 															"uniqueItems": true
 														},
 														"require_all_headers": {
@@ -4337,7 +4331,7 @@
 																							"type": "string",
 																							"x-auditable": true
 																						},
-																						"default": "none",
+																						"default": [],
 																						"uniqueItems": true
 																					},
 																					"require_all_headers": {
@@ -4467,7 +4461,7 @@
 																		"type": "string",
 																		"x-auditable": true
 																	},
-																	"default": "none",
+																	"default": [],
 																	"uniqueItems": true
 																},
 																"require_all_headers": {
@@ -5166,7 +5160,7 @@
 																"type": "string",
 																"x-auditable": true
 															},
-															"default": "none",
+															"default": [],
 															"uniqueItems": true
 														},
 														"require_all_headers": {
@@ -5296,7 +5290,7 @@
 											"type": "string",
 											"x-auditable": true
 										},
-										"default": "none",
+										"default": [],
 										"uniqueItems": true
 									},
 									"require_all_headers": {
@@ -6157,7 +6151,7 @@
 																					"type": "string",
 																					"x-auditable": true
 																				},
-																				"default": "none",
+																				"default": [],
 																				"uniqueItems": true
 																			},
 																			"require_all_headers": {
@@ -6287,7 +6281,7 @@
 																"type": "string",
 																"x-auditable": true
 															},
-															"default": "none",
+															"default": [],
 															"uniqueItems": true
 														},
 														"require_all_headers": {
@@ -7159,7 +7153,7 @@
 																							"type": "string",
 																							"x-auditable": true
 																						},
-																						"default": "none",
+																						"default": [],
 																						"uniqueItems": true
 																					},
 																					"require_all_headers": {
@@ -7289,7 +7283,7 @@
 																		"type": "string",
 																		"x-auditable": true
 																	},
-																	"default": "none",
+																	"default": [],
 																	"uniqueItems": true
 																},
 																"require_all_headers": {
@@ -7983,7 +7977,7 @@
 																"type": "string",
 																"x-auditable": true
 															},
-															"default": "none",
+															"default": [],
 															"uniqueItems": true
 														},
 														"require_all_headers": {
@@ -8113,7 +8107,7 @@
 											"type": "string",
 											"x-auditable": true
 										},
-										"default": "none",
+										"default": [],
 										"uniqueItems": true
 									},
 									"require_all_headers": {
@@ -8979,7 +8973,7 @@
 																					"type": "string",
 																					"x-auditable": true
 																				},
-																				"default": "none",
+																				"default": [],
 																				"uniqueItems": true
 																			},
 																			"require_all_headers": {
@@ -9109,7 +9103,7 @@
 																"type": "string",
 																"x-auditable": true
 															},
-															"default": "none",
+															"default": [],
 															"uniqueItems": true
 														},
 														"require_all_headers": {
@@ -9981,7 +9975,7 @@
 																							"type": "string",
 																							"x-auditable": true
 																						},
-																						"default": "none",
+																						"default": [],
 																						"uniqueItems": true
 																					},
 																					"require_all_headers": {
@@ -10111,7 +10105,7 @@
 																		"type": "string",
 																		"x-auditable": true
 																	},
-																	"default": "none",
+																	"default": [],
 																	"uniqueItems": true
 																},
 																"require_all_headers": {
@@ -10822,7 +10816,7 @@
 																"type": "string",
 																"x-auditable": true
 															},
-															"default": "none",
+															"default": [],
 															"uniqueItems": true
 														},
 														"require_all_headers": {
@@ -10952,7 +10946,7 @@
 											"type": "string",
 											"x-auditable": true
 										},
-										"default": "none",
+										"default": [],
 										"uniqueItems": true
 									},
 									"require_all_headers": {
@@ -11818,7 +11812,7 @@
 																					"type": "string",
 																					"x-auditable": true
 																				},
-																				"default": "none",
+																				"default": [],
 																				"uniqueItems": true
 																			},
 																			"require_all_headers": {
@@ -11948,7 +11942,7 @@
 																"type": "string",
 																"x-auditable": true
 															},
-															"default": "none",
+															"default": [],
 															"uniqueItems": true
 														},
 														"require_all_headers": {
@@ -12820,7 +12814,7 @@
 																							"type": "string",
 																							"x-auditable": true
 																						},
-																						"default": "none",
+																						"default": [],
 																						"uniqueItems": true
 																					},
 																					"require_all_headers": {
@@ -12950,7 +12944,7 @@
 																		"type": "string",
 																		"x-auditable": true
 																	},
-																	"default": "none",
+																	"default": [],
 																	"uniqueItems": true
 																},
 																"require_all_headers": {

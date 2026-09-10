@@ -18,12 +18,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Delete Token response",
@@ -3644,16 +3638,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {
-					"schema": {
-						"type": "object"
-					}
-				}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Roll Token response",
