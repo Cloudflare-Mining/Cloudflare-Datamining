@@ -47560,6 +47560,22 @@
 						{
 							"args": [],
 							"deprecationReason": null,
+							"description": "Whether log classification was enabled for this request",
+							"isDeprecated": false,
+							"name": "logClassificationEnabled",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint8",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
 							"description": "MCP server count from request metadata",
 							"isDeprecated": false,
 							"name": "mcpServerCount",
@@ -49441,6 +49457,86 @@
 							"type": {
 								"kind": "SCALAR",
 								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "logClassificationEnabled",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint8",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "logClassificationEnabled_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint8",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "logClassificationEnabled_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint8",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "logClassificationEnabled_in",
+							"type": {
+								"kind": "SCALAR",
+								"name": "bytes",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "logClassificationEnabled_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint8",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "logClassificationEnabled_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint8",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "logClassificationEnabled_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint8",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "logClassificationEnabled_notin",
+							"type": {
+								"kind": "SCALAR",
+								"name": "bytes",
 								"ofType": null
 							}
 						},
@@ -51909,6 +52005,18 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "logClassificationEnabled ascending",
+							"isDeprecated": false,
+							"name": "logClassificationEnabled_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "logClassificationEnabled descending",
+							"isDeprecated": false,
+							"name": "logClassificationEnabled_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "max(mcpServerCount) ascending",
 							"isDeprecated": false,
 							"name": "max_mcpServerCount_ASC"
@@ -54162,6 +54270,22 @@
 						{
 							"args": [],
 							"deprecationReason": null,
+							"description": "Whether log classification was enabled for this request",
+							"isDeprecated": false,
+							"name": "logClassificationEnabled",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint8",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
 							"description": "MCP server count from request metadata",
 							"isDeprecated": false,
 							"name": "mcpServerCount",
@@ -56043,6 +56167,86 @@
 							"type": {
 								"kind": "SCALAR",
 								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "logClassificationEnabled",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint8",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "logClassificationEnabled_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint8",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "logClassificationEnabled_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint8",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "logClassificationEnabled_in",
+							"type": {
+								"kind": "SCALAR",
+								"name": "bytes",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "logClassificationEnabled_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint8",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "logClassificationEnabled_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint8",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "logClassificationEnabled_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint8",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "logClassificationEnabled_notin",
+							"type": {
+								"kind": "SCALAR",
+								"name": "bytes",
 								"ofType": null
 							}
 						},
@@ -58508,6 +58712,18 @@
 							"description": "gateway descending",
 							"isDeprecated": false,
 							"name": "gateway_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "logClassificationEnabled ascending",
+							"isDeprecated": false,
+							"name": "logClassificationEnabled_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "logClassificationEnabled descending",
+							"isDeprecated": false,
+							"name": "logClassificationEnabled_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -550411,6 +550627,22 @@
 						{
 							"args": [],
 							"deprecationReason": null,
+							"description": "Connection time excluding the TLS handshake",
+							"isDeprecated": false,
+							"name": "connectionTimeWithoutTLS",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
 							"description": "Domain lookup time",
 							"isDeprecated": false,
 							"name": "dnsTime",
@@ -550507,6 +550739,22 @@
 						{
 							"args": [],
 							"deprecationReason": null,
+							"description": "Redirect time",
+							"isDeprecated": false,
+							"name": "redirectTime",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
 							"description": "The time between initiating the request and receiving the first byte of the response",
 							"isDeprecated": false,
 							"name": "requestTime",
@@ -550548,6 +550796,22 @@
 								"ofType": {
 									"kind": "SCALAR",
 									"name": "float64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "TLS handshake time",
+							"isDeprecated": false,
+							"name": "tlsTime",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
 									"ofType": null
 								}
 							}
@@ -553389,6 +553653,18 @@
 					"enumValues": [
 						{
 							"deprecationReason": null,
+							"description": "avg(connectionTimeWithoutTLS) ascending",
+							"isDeprecated": false,
+							"name": "avg_connectionTimeWithoutTLS_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "avg(connectionTimeWithoutTLS) descending",
+							"isDeprecated": false,
+							"name": "avg_connectionTimeWithoutTLS_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "avg(connectionTime) ascending",
 							"isDeprecated": false,
 							"name": "avg_connectionTime_ASC"
@@ -553473,6 +553749,18 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "avg(redirectTime) ascending",
+							"isDeprecated": false,
+							"name": "avg_redirectTime_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "avg(redirectTime) descending",
+							"isDeprecated": false,
+							"name": "avg_redirectTime_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "avg(requestTime) ascending",
 							"isDeprecated": false,
 							"name": "avg_requestTime_ASC"
@@ -553506,6 +553794,18 @@
 							"description": "avg(sampleInterval) descending",
 							"isDeprecated": false,
 							"name": "avg_sampleInterval_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "avg(tlsTime) ascending",
+							"isDeprecated": false,
+							"name": "avg_tlsTime_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "avg(tlsTime) descending",
+							"isDeprecated": false,
+							"name": "avg_tlsTime_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -553746,6 +554046,90 @@
 							"description": "quantiles(connectionTimeP99) descending",
 							"isDeprecated": false,
 							"name": "quantiles_connectionTimeP99_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(connectionTimeWithoutTLSP25) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_connectionTimeWithoutTLSP25_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(connectionTimeWithoutTLSP25) descending",
+							"isDeprecated": false,
+							"name": "quantiles_connectionTimeWithoutTLSP25_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(connectionTimeWithoutTLSP50) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_connectionTimeWithoutTLSP50_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(connectionTimeWithoutTLSP50) descending",
+							"isDeprecated": false,
+							"name": "quantiles_connectionTimeWithoutTLSP50_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(connectionTimeWithoutTLSP75) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_connectionTimeWithoutTLSP75_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(connectionTimeWithoutTLSP75) descending",
+							"isDeprecated": false,
+							"name": "quantiles_connectionTimeWithoutTLSP75_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(connectionTimeWithoutTLSP90) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_connectionTimeWithoutTLSP90_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(connectionTimeWithoutTLSP90) descending",
+							"isDeprecated": false,
+							"name": "quantiles_connectionTimeWithoutTLSP90_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(connectionTimeWithoutTLSP95) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_connectionTimeWithoutTLSP95_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(connectionTimeWithoutTLSP95) descending",
+							"isDeprecated": false,
+							"name": "quantiles_connectionTimeWithoutTLSP95_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(connectionTimeWithoutTLSP999) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_connectionTimeWithoutTLSP999_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(connectionTimeWithoutTLSP999) descending",
+							"isDeprecated": false,
+							"name": "quantiles_connectionTimeWithoutTLSP999_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(connectionTimeWithoutTLSP99) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_connectionTimeWithoutTLSP99_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(connectionTimeWithoutTLSP99) descending",
+							"isDeprecated": false,
+							"name": "quantiles_connectionTimeWithoutTLSP99_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -554253,6 +554637,90 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "quantiles(redirectTimeP25) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_redirectTimeP25_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(redirectTimeP25) descending",
+							"isDeprecated": false,
+							"name": "quantiles_redirectTimeP25_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(redirectTimeP50) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_redirectTimeP50_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(redirectTimeP50) descending",
+							"isDeprecated": false,
+							"name": "quantiles_redirectTimeP50_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(redirectTimeP75) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_redirectTimeP75_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(redirectTimeP75) descending",
+							"isDeprecated": false,
+							"name": "quantiles_redirectTimeP75_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(redirectTimeP90) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_redirectTimeP90_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(redirectTimeP90) descending",
+							"isDeprecated": false,
+							"name": "quantiles_redirectTimeP90_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(redirectTimeP95) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_redirectTimeP95_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(redirectTimeP95) descending",
+							"isDeprecated": false,
+							"name": "quantiles_redirectTimeP95_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(redirectTimeP999) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_redirectTimeP999_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(redirectTimeP999) descending",
+							"isDeprecated": false,
+							"name": "quantiles_redirectTimeP999_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(redirectTimeP99) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_redirectTimeP99_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(redirectTimeP99) descending",
+							"isDeprecated": false,
+							"name": "quantiles_redirectTimeP99_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "quantiles(requestTimeP25) ascending",
 							"isDeprecated": false,
 							"name": "quantiles_requestTimeP25_ASC"
@@ -554418,6 +554886,90 @@
 							"description": "quantiles(responseTimeP99) descending",
 							"isDeprecated": false,
 							"name": "quantiles_responseTimeP99_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(tlsTimeP25) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_tlsTimeP25_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(tlsTimeP25) descending",
+							"isDeprecated": false,
+							"name": "quantiles_tlsTimeP25_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(tlsTimeP50) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_tlsTimeP50_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(tlsTimeP50) descending",
+							"isDeprecated": false,
+							"name": "quantiles_tlsTimeP50_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(tlsTimeP75) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_tlsTimeP75_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(tlsTimeP75) descending",
+							"isDeprecated": false,
+							"name": "quantiles_tlsTimeP75_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(tlsTimeP90) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_tlsTimeP90_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(tlsTimeP90) descending",
+							"isDeprecated": false,
+							"name": "quantiles_tlsTimeP90_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(tlsTimeP95) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_tlsTimeP95_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(tlsTimeP95) descending",
+							"isDeprecated": false,
+							"name": "quantiles_tlsTimeP95_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(tlsTimeP999) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_tlsTimeP999_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(tlsTimeP999) descending",
+							"isDeprecated": false,
+							"name": "quantiles_tlsTimeP999_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(tlsTimeP99) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_tlsTimeP99_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(tlsTimeP99) descending",
+							"isDeprecated": false,
+							"name": "quantiles_tlsTimeP99_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -554653,6 +555205,118 @@
 							"description": "Connection time",
 							"isDeprecated": false,
 							"name": "connectionTimeP999",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Connection time excluding the TLS handshake",
+							"isDeprecated": false,
+							"name": "connectionTimeWithoutTLSP25",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Connection time excluding the TLS handshake",
+							"isDeprecated": false,
+							"name": "connectionTimeWithoutTLSP50",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Connection time excluding the TLS handshake",
+							"isDeprecated": false,
+							"name": "connectionTimeWithoutTLSP75",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Connection time excluding the TLS handshake",
+							"isDeprecated": false,
+							"name": "connectionTimeWithoutTLSP90",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Connection time excluding the TLS handshake",
+							"isDeprecated": false,
+							"name": "connectionTimeWithoutTLSP95",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Connection time excluding the TLS handshake",
+							"isDeprecated": false,
+							"name": "connectionTimeWithoutTLSP99",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Connection time excluding the TLS handshake",
+							"isDeprecated": false,
+							"name": "connectionTimeWithoutTLSP999",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -555338,6 +556002,118 @@
 						{
 							"args": [],
 							"deprecationReason": null,
+							"description": "Redirect time",
+							"isDeprecated": false,
+							"name": "redirectTimeP25",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Redirect time",
+							"isDeprecated": false,
+							"name": "redirectTimeP50",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Redirect time",
+							"isDeprecated": false,
+							"name": "redirectTimeP75",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Redirect time",
+							"isDeprecated": false,
+							"name": "redirectTimeP90",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Redirect time",
+							"isDeprecated": false,
+							"name": "redirectTimeP95",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Redirect time",
+							"isDeprecated": false,
+							"name": "redirectTimeP99",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Redirect time",
+							"isDeprecated": false,
+							"name": "redirectTimeP999",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
 							"description": "The time between initiating the request and receiving the first byte of the response",
 							"isDeprecated": false,
 							"name": "requestTimeP25",
@@ -555549,6 +556325,118 @@
 							"description": "The time between receiving the first byte and the last byte of the response",
 							"isDeprecated": false,
 							"name": "responseTimeP999",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "TLS handshake time",
+							"isDeprecated": false,
+							"name": "tlsTimeP25",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "TLS handshake time",
+							"isDeprecated": false,
+							"name": "tlsTimeP50",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "TLS handshake time",
+							"isDeprecated": false,
+							"name": "tlsTimeP75",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "TLS handshake time",
+							"isDeprecated": false,
+							"name": "tlsTimeP90",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "TLS handshake time",
+							"isDeprecated": false,
+							"name": "tlsTimeP95",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "TLS handshake time",
+							"isDeprecated": false,
+							"name": "tlsTimeP99",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "TLS handshake time",
+							"isDeprecated": false,
+							"name": "tlsTimeP999",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
