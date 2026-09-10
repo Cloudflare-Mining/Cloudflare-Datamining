@@ -5,12 +5,12 @@
 </div>
 <p><strong>Available Locations: </strong>Austin, TX (US),<strong> </strong>Lisbon (Portugal)</p>
 <p><strong>About the Role</strong></p>
-<p>We are seeking a Global Commodity Sourcing Manager to lead our commercial hardware engagement and strategic silicon procurement for Cloudflare's 200+ data centers. You will drive ambitious goals around technology cost, quality, and supply while partnering with key internal stakeholders. Complementing this strategic focus, you will also bridge the gap between procurement and physical deployment. By guiding infrastructure processes and remote contractors, you will ensure the cutting-edge hardware you source seamlessly integrates into our rapidly expanding global network.</p>
+<p>We are seeking a Technical Sourcing Manager for Network Hardware to lead commercial engagement and oversee the supply chain for Cloudflare's 200+ data centers. You will drive ambitious goals around technology, cost, quality, and supply while partnering with key internal stakeholders. Complementing this strategic focus, you will also bridge the gap between procurement and physical deployment. By guiding infrastructure processes, you will ensure the cutting-edge hardware you source seamlessly integrates into our rapidly expanding global network.</p>
 <p><strong>Key Responsibilities</strong></p>
 <ul>
 	<li>Strategic Sourcing: Own procurement efforts across network hardware, including routers, switches and interconnect commodities.</li>
-	<li>Vendor Negotiation: Develop long-term Total Cost of Ownership targets and lead complex, multi-party negotiations to hit vital supply goals.</li>
-	<li>Supplier Quality: Oversee adherence to delivery terms of network maintenance and support contracts — manage yearly contracts with most up to date asset inventory lists</li>
+	<li>Vendor Negotiation: Develop long-term Total Cost of Ownership (TCO) targets and lead complex, multi-party negotiations to hit vital supply goals.</li>
+	<li>Supplier Quality: Oversee adherence to delivery terms of network maintenance and support contracts - manage yearly contracts with most up to date asset inventory lists</li>
 	<li>Cross-Functional Leadership: Introduce robust evaluation processes (e.g., RFX, QBR) for vendors and partner closely with hardware engineering on new technologies.</li>
 	<li>Deployment Oversight: Coordinate global infrastructure installations by managing inflow of supply from hardware manufacturers against latest worldwide deployment schedules.</li>
 	<li>Process Optimization: Aggressively seek automation opportunities and assist with the definition of consistent physical deployment processes across all datacenter regions.</li>
@@ -23,7 +23,7 @@
 	<li><strong>Communication:</strong> Excellent verbal and written communication skills with the ability to translate complex details to both technical and non-technical, internal and external stakeholders.</li>
 	<li><strong>Innovative Mindset:</strong> Demonstrated "AI-native curiosity" with an instinct to spot normalized problems and create solutions using the latest tools.</li>
 	<li><strong>AI Tool Proficiency:</strong> Basic experience leveraging AI tools (e.g., generative AI, LLMs, or AI-driven data analytics) to optimize daily workflows, summarize vendor contracts, or accelerate data analysis.</li>
-	<li><strong>Analytical Background: </strong>An engineering or heavy analytical background to support deep-dive Total Cost of Ownership (TCO) modeling.</li>
+	<li><strong>Analytical Background: </strong>An engineering or heavy analytical background to support deep-dive TCO modeling.</li>
 </ul>
 <p><strong>Bonus points</strong></p>
 <ul>

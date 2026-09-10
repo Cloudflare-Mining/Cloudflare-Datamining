@@ -3,52 +3,45 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h2>Available Locations</h2>
+<p><strong>Available Locations: </strong>Austin, Colorado, Atlanta, Toronto, San Francisco, New York</p>
+<p><strong>About the role</strong></p>
+<p>As a Senior Product Manager at Cloudflare, you will be responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, collaborate with marketing, conduct user research, prototype a new feature, iterate on a spec, analyze usage data, and pair with an engineer on implementation.</p>
+<h4><strong>Responsibilities</strong></h4>
+<p>As the product manager for Organization and Partner Experiences, you will be responsible for building the management plane that helps everyone, but especially enterprises and partners like resellers, MSSPs, and OEMs scale their use of Cloudflare across multiple accounts. This is a deeply collaborative role which requires a healthy blend of technical background, user experience, and business savvy. You will:</p>
 <ul>
-	<li>Austin, US</li>
-	<li>London, UK</li>
+	<li>Own your space. You will own the priorities and scope for a high performing engineering team focusing on building the Organizations management plane at Cloudflare.&nbsp;</li>
+	<li>Connect the pieces. Product managers are a nerve center at Cloudflare, responsible for connecting engineering, program management, marketing, revenue, and partners to make sure that our ships go out on time and with the maximum impact.&nbsp;</li>
+	<li>Excel across teams. Enterprise capabilities cut across all of our product verticals, so you should be comfortable working with product managers across the company to prioritize systemic improvements that our enterprise customers need.</li>
+	<li>Be customer obsessed. You will be responsible for directly engaging with customers and understanding how they use our products. You’ll bring these insights back to the team to build a great roadmap.&nbsp;</li>
+	<li>Be data driven. You should be comfortable working with data, and analyzing data to quantify the impact of problems and opportunities in your space.&nbsp;</li>
 </ul>
-<h2>About the Role</h2>
-<p>Cloudforce One is Cloudflare’s threat operations and research team, responsible for identifying and disrupting cyber threats ranging from sophisticated cyber criminal activity to nation-state sponsored advanced persistent threats (APTs).&nbsp; Cloudforce One works in close partnership with external organizations and internal Cloudflare teams, continuously developing operational tradecraft and expanding ever-growing sources of threat intelligence to enable expedited threat hunting and remediation.&nbsp; Members of Cloudforce One are at the helm of leveraging an incredibly vast and varied set of data points that only one of the world’s largest global networks can provide.&nbsp; The team is able to analyze these unique data points, at massive scale and efficiency, synthesizing findings into actionable threat intelligence to better protect our customers.</p>
-<p>As a Software Engineer on this team, you will own the entire software development lifecycle—from design and architecture to deployment and monitoring—for systems that serve both threat disruption and legal response efforts. You will be responsible for translating complex legal and security requirements into robust, scalable, and high-performance applications that have a direct impact on making the internet better, safer, and more powerful every day.</p>
-<h2>Responsibilities</h2>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>While the majority of our services are now written in Golang and TypeScript, you will also work with technologies such as Rust, Kafka, Redis, Kubernetes, Terraform, Temporal and PostgresSQL. We also pride ourselves in dogfooding our own products and services so you will be extensively working with Cloudflare’s developer platform as well. We are looking for great engineers regardless of experience with any of these specific technologies.</li>
-	<li>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</li>
-	<li>Design, build, run, and scale distributed tools and services that support both cyber threat disruption and platform abuse efforts.</li>
-	<li>Develop critical data pipelines and services to collect, analyze, and expose threat intelligence data for Cloudforce One analysts and Cloudflare customers, helping to identify Tactics, Techniques, and Procedures (TTPs) and Indicators of Compromise (IOCs).</li>
-	<li>Collaborate closely with Threat Intelligence, Trust &amp; Safety, Legal, and Product teams to understand goals and translate complex technical requirements into elegant, scalable solutions.</li>
-	<li>Improve system design and architecture to ensure stability, performance, and maintainability of both internal and customer-facing compliance and security services.</li>
-	<li>Analyze, communicate, and help prioritize complex technical concepts across teams.</li>
-	<li>Ongoing monitoring and maintenance of production services, including participation in on-call rotations.</li>
-	<li>Mentor and guide other developers in the team, helping to build collective technical expertise and promote best practices for writing well-tested, modular, and reusable code.</li>
+	<li>6+ years of experience as a product manager, technical program manager, or equivalent delivering solutions in the cloud at scale for a technical audience&nbsp;</li>
+	<li>Customer focus. At Cloudflare, we serve the needs of customers large and small, and our product managers need to be comfortable understanding how to design for enterprises without compromising the experience for individuals and small businesses.&nbsp;</li>
+	<li>User experience sense. You’re comfortable working with product designers to translate the requirements into an elegant user experience.&nbsp;</li>
+	<li>Enterprise sense. You’ve worked on products that are for enterprises, and know what they need to be competitive in today’s environment.&nbsp;</li>
+	<li>Strong written and verbal communication skills for both an internal and external audience as appropriate.&nbsp;</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<h4>Bonus Points</h4>
 <ul>
-	<li>Experience with AI-assisted development and agentic AI workflows</li>
-	<li>At least 5 years of experience building large-scale software applications, preferably distributed systems</li>
-	<li>At least 3 years of experience working with Threat Intelligence or in support of a Threat Intelligence platform</li>
-	<li>Experience designing and integrating RESTful APIs and/or gRPC services</li>
-	<li>Knowledge of SQL and common relational database systems such as PostgreSQL</li>
-	<li>Prior experience writing production ready code in Go and/or Typescript</li>
-	<li>Familiarity with Rust</li>
-	<li>Excellent debugging and optimization skills</li>
-	<li>Expertise in writing well tested code</li>
-	<li>Interest in opportunities to be a technical mentor for teammates</li>
+	<li>You’ve enthusiastically adopted the latest generation of agentic coding tools, and you can use them effectively to navigate a codebase, or prototype the improvements you envision for your feature area.&nbsp;</li>
+	<li>Partners - You’ve worked closely with go to market partners or resellers and understand how to build products that make them more effective</li>
+	<li>Data-fluency - Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
+	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity. &nbsp;</li>
 </ul>
-<h2>Bonus Points</h2>
+<h4>Compensation</h4>
+<p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>Deep understanding of DNS, TLS/SSL and HTTP</li>
-	<li>Expertise in web security issues and industry standards for access control</li>
-	<li>Experience with Kafka</li>
-	<li>Experience building web applications using React</li>
-	<li>Experience with Kubernetes</li>
-	<li>Experience with Redis</li>
+	<li>For <strong>Colorado</strong> based hires: Estimated annual salary of $156,000 - $215,000</li>
+	<li>For <strong>San Francisco / Bay Area </strong>based hires: Estimated annual salary of $179,000 - $224,000</li>
+	<li>For <strong>New York City </strong>based hires: Estimated annual salary of $156,000 - $216,000</li>
+	<li>Application Deadline: December 09, 2026</li>
 </ul>
-<h3>Equity:</h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<h4>Equity</h4>
+<p>This role is eligible to participate in Cloudflare's equity plan.</p>
+<h4>Benefits</h4>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
@@ -72,6 +65,7 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

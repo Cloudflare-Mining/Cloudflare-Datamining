@@ -22,7 +22,7 @@
 <h3>Desirable Skills, Knowledge, and Experience</h3>
 <ul>
 	<li>Strong programming skills in Rust, TypeScript, Go, or similar languages.</li>
-	<li>Experience building or operating large-scale distributed systems on the request path, with strong latency and reliability requirements.</li>
+	<li>5+ years of experience building or operating large-scale distributed systems on the request path, with strong latency and reliability requirements.</li>
 	<li>Familiarity with cloud infrastructure concepts such as object storage, HTTP/API gateways, edge computing, or service-oriented architectures.</li>
 	<li>Experience designing and operating high-throughput APIs — authentication, routing, rate limiting, and backward-compatible API evolution.</li>
 	<li>Understanding of reliability and observability practices: monitoring, alerting, performance tuning, and incident response.</li>
