@@ -313,8 +313,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "get",
+		"x-fern-sdk-group-name": "data-security.posture.exports",
+		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/exports/{id}": {
@@ -992,7 +992,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-group-name": "data-security.posture.content.export",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},

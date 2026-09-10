@@ -1291,7 +1291,7 @@
 																		"description": "Top-level observability settings for the application.\nThis field is mutually exclusive with configuration.observability.\n",
 																		"allOf": [
 																			{
-																				"description": "Settings for application observability such as logging.",
+																				"description": "Settings for application observability such as logging. Supported fields depend\non the application's scheduling policy. Durable Object-managed applications\naccept only `logs.enabled`.\n",
 																				"type": "object",
 																				"properties": {
 																					"logs": {
@@ -1432,8 +1432,26 @@
 																"description": "The application name.",
 																"type": "string"
 															},
+															"observability": {
+																"description": "Application-wide logging settings for a Durable Object-managed application.\nThe application publishes these settings to its runtime metadata. Updating\nthem does not create a deployment or rollout.\n",
+																"type": "object",
+																"properties": {
+																	"logs": {
+																		"description": "Application-wide logging settings.",
+																		"type": "object",
+																		"additionalProperties": false,
+																		"properties": {
+																			"enabled": {
+																				"type": "boolean",
+																				"default": false
+																			}
+																		}
+																	}
+																},
+																"additionalProperties": false
+															},
 															"scheduling_policy": {
-																"description": "Selects a Durable Object-managed application. Each Durable Object creates and\nmanages the lifecycle of its container instance. Application-level deployment\nconfiguration, scaling, placement constraints, versions, and rollouts do not\napply.\n",
+																"description": "Selects a Durable Object-managed application. Each Durable Object creates and\nmanages the lifecycle of its container instance. Configure application-wide\nobservability settings here. Deployment configuration, scaling, placement\nconstraints, versions, and rollouts do not apply.\n",
 																"type": "string",
 																"enum": [
 																	"durable_object"
@@ -2117,7 +2135,7 @@
 																	"description": "Top-level observability settings for the application.\nThis field is mutually exclusive with configuration.observability.\n",
 																	"allOf": [
 																		{
-																			"description": "Settings for application observability such as logging.",
+																			"description": "Settings for application observability such as logging. Supported fields depend\non the application's scheduling policy. Durable Object-managed applications\naccept only `logs.enabled`.\n",
 																			"type": "object",
 																			"properties": {
 																				"logs": {
@@ -2258,8 +2276,26 @@
 															"description": "The application name.",
 															"type": "string"
 														},
+														"observability": {
+															"description": "Application-wide logging settings for a Durable Object-managed application.\nThe application publishes these settings to its runtime metadata. Updating\nthem does not create a deployment or rollout.\n",
+															"type": "object",
+															"properties": {
+																"logs": {
+																	"description": "Application-wide logging settings.",
+																	"type": "object",
+																	"additionalProperties": false,
+																	"properties": {
+																		"enabled": {
+																			"type": "boolean",
+																			"default": false
+																		}
+																	}
+																}
+															},
+															"additionalProperties": false
+														},
 														"scheduling_policy": {
-															"description": "Selects a Durable Object-managed application. Each Durable Object creates and\nmanages the lifecycle of its container instance. Application-level deployment\nconfiguration, scaling, placement constraints, versions, and rollouts do not\napply.\n",
+															"description": "Selects a Durable Object-managed application. Each Durable Object creates and\nmanages the lifecycle of its container instance. Configure application-wide\nobservability settings here. Deployment configuration, scaling, placement\nconstraints, versions, and rollouts do not apply.\n",
 															"type": "string",
 															"enum": [
 																"durable_object"
@@ -5967,7 +6003,7 @@
 	"PATCH /accounts/{account_id}/containers/applications/{application_id}": {
 		"operationId": "modifyApplication",
 		"summary": "Modify an application",
-		"description": "Modifies a single application by id. Changes that replace instance deployment\nconfiguration, including the image, must be applied with a rollout.\n",
+		"description": "Modifies a single application by id. Durable Object-managed application settings are\npublished to runtime metadata without creating deployments or rollouts. Top-level\n`observability` for these applications supports only `logs.enabled`.\nThe supported fields depend on the existing\napplication's scheduling policy. For scheduler-backed applications, changes that\nreplace instance deployment configuration, including the image, require a rollout.\n",
 		"parameters": [
 			{
 				"name": "application_id",
@@ -5984,7 +6020,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Request body for modifying a Containers application without replacing its instances.\nDeployment configuration changes such as image, resource allocation, command, and\nenvironment variables require an application rollout.\n",
+						"description": "Request body for modifying a Containers application without replacing its instances.\nDurable Object-managed applications support only top-level observability.logs.enabled.\nThe other fields apply to scheduler-backed applications, where deployment configuration\nchanges such as image, resource allocation, command, and environment variables require\nan application rollout.\n",
 						"type": "object",
 						"properties": {
 							"configuration": {
@@ -6036,10 +6072,10 @@
 								"minimum": 0
 							},
 							"observability": {
-								"description": "Top-level observability settings to hot-reload across existing instances.\n",
+								"description": "Top-level application observability settings. Scheduler-backed applications\nhot-reload these settings across existing instances. An existing Durable\nObject-managed application accepts only `logs.enabled` and publishes these settings\nto runtime metadata without creating deployments or rollouts.\n",
 								"allOf": [
 									{
-										"description": "Settings for application observability such as logging.",
+										"description": "Settings for application observability such as logging. Supported fields depend\non the application's scheduling policy. Durable Object-managed applications\naccept only `logs.enabled`.\n",
 										"type": "object",
 										"properties": {
 											"logs": {
@@ -6466,7 +6502,7 @@
 																	"description": "Top-level observability settings for the application.\nThis field is mutually exclusive with configuration.observability.\n",
 																	"allOf": [
 																		{
-																			"description": "Settings for application observability such as logging.",
+																			"description": "Settings for application observability such as logging. Supported fields depend\non the application's scheduling policy. Durable Object-managed applications\naccept only `logs.enabled`.\n",
 																			"type": "object",
 																			"properties": {
 																				"logs": {
@@ -6607,8 +6643,26 @@
 															"description": "The application name.",
 															"type": "string"
 														},
+														"observability": {
+															"description": "Application-wide logging settings for a Durable Object-managed application.\nThe application publishes these settings to its runtime metadata. Updating\nthem does not create a deployment or rollout.\n",
+															"type": "object",
+															"properties": {
+																"logs": {
+																	"description": "Application-wide logging settings.",
+																	"type": "object",
+																	"additionalProperties": false,
+																	"properties": {
+																		"enabled": {
+																			"type": "boolean",
+																			"default": false
+																		}
+																	}
+																}
+															},
+															"additionalProperties": false
+														},
 														"scheduling_policy": {
-															"description": "Selects a Durable Object-managed application. Each Durable Object creates and\nmanages the lifecycle of its container instance. Application-level deployment\nconfiguration, scaling, placement constraints, versions, and rollouts do not\napply.\n",
+															"description": "Selects a Durable Object-managed application. Each Durable Object creates and\nmanages the lifecycle of its container instance. Configure application-wide\nobservability settings here. Deployment configuration, scaling, placement\nconstraints, versions, and rollouts do not apply.\n",
 															"type": "string",
 															"enum": [
 																"durable_object"
@@ -7702,13 +7756,13 @@
 	"POST /accounts/{account_id}/containers/applications": {
 		"operationId": "createApplication",
 		"summary": "Create a new application",
-		"description": "Create a Containers application.\n\nUse `scheduling_policy: \"default\"` for a scheduler-backed application. The\nContainers scheduler maintains the requested instance count and manages\ndeployment configuration, placement, scaling, versions, and rollouts.\n\nUse `scheduling_policy: \"durable_object\"` for a Durable Object-managed\napplication. Each Durable Object creates and manages the lifecycle of its\ncontainer instance. This request accepts only `name`, `scheduling_policy`,\nand `durable_objects`. Application-level configuration, scaling, constraints,\nversions, and rollouts do not apply.\n",
+		"description": "Create a Containers application.\n\nUse `scheduling_policy: \"default\"` for a scheduler-backed application. The\nContainers scheduler maintains the requested instance count and manages\ndeployment configuration, placement, scaling, versions, and rollouts.\n\nUse `scheduling_policy: \"durable_object\"` for a Durable Object-managed\napplication. Each Durable Object creates and manages the lifecycle of its\ncontainer instance. Supply `name`, `scheduling_policy`, and `durable_objects`,\nwith optional top-level `observability` settings. Deployment configuration,\nscaling, constraints, versions, and rollouts do not apply.\n",
 		"requestBody": {
 			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Create a Containers application. Set `scheduling_policy` to `default` for a\nscheduler-backed application with deployment configuration, instance counts,\nconstraints, versions, and rollouts. Set it to `durable_object` for a\nDurable Object-managed application where each Durable Object creates and manages\nthe lifecycle of its container instance. For `durable_object` requests, supply\nonly `name`, `scheduling_policy`, and `durable_objects`.\n",
+						"description": "Create a Containers application.\nSet `scheduling_policy` to `default` for a\nscheduler-backed application with deployment configuration, instance counts,\nconstraints, versions, and rollouts. Set it to `durable_object` for a\nDurable Object-managed application where each Durable Object creates and manages\nthe lifecycle of its container instance. For `durable_object` requests, supply\n`name`, `scheduling_policy`, and `durable_objects`, with optional top-level\n`observability` settings.\n",
 						"oneOf": [
 							{
 								"description": "Create a scheduler-backed Containers application. The Containers scheduler\nmaintains the requested instance count and applies deployment configuration,\nplacement, scaling, versions, and rollouts.\n",
@@ -7907,7 +7961,7 @@
 										"description": "Top-level observability settings for the application.\nThis field is mutually exclusive with configuration.observability.\n",
 										"allOf": [
 											{
-												"description": "Settings for application observability such as logging.",
+												"description": "Settings for application observability such as logging. Supported fields depend\non the application's scheduling policy. Durable Object-managed applications\naccept only `logs.enabled`.\n",
 												"type": "object",
 												"properties": {
 													"logs": {
@@ -7949,7 +8003,7 @@
 								]
 							},
 							{
-								"description": "Create a Durable Object-managed Containers application. Each Durable Object\ncreates and manages the lifecycle of its container instance. Supply only `name`,\n`scheduling_policy`, and `durable_objects`. Application-level deployment\nconfiguration, instance counts, scaling, constraints, versions, and rollouts do\nnot apply.\n",
+								"description": "Create a Durable Object-managed Containers application. Each Durable Object\ncreates and manages the lifecycle of its container instance. Supply `name`,\n`scheduling_policy`, and `durable_objects`, with optional top-level `observability`\nsettings. Deployment configuration, instance counts, scaling, constraints,\nversions, and rollouts do not apply.\n",
 								"type": "object",
 								"properties": {
 									"durable_objects": {
@@ -7998,8 +8052,26 @@
 										"description": "The name for this application.",
 										"type": "string"
 									},
+									"observability": {
+										"description": "Application-wide logging settings for a Durable Object-managed application.\nThe application publishes these settings to its runtime metadata. Updating\nthem does not create a deployment or rollout.\n",
+										"type": "object",
+										"properties": {
+											"logs": {
+												"description": "Application-wide logging settings.",
+												"type": "object",
+												"additionalProperties": false,
+												"properties": {
+													"enabled": {
+														"type": "boolean",
+														"default": false
+													}
+												}
+											}
+										},
+										"additionalProperties": false
+									},
 									"scheduling_policy": {
-										"description": "Selects a Durable Object-managed application. Each Durable Object creates and\nmanages the lifecycle of its container instance. Application-level deployment\nconfiguration, scaling, placement constraints, versions, and rollouts do not\napply.\n",
+										"description": "Selects a Durable Object-managed application. Each Durable Object creates and\nmanages the lifecycle of its container instance. Configure application-wide\nobservability settings here. Deployment configuration, scaling, placement\nconstraints, versions, and rollouts do not apply.\n",
 										"type": "string",
 										"enum": [
 											"durable_object"
@@ -8416,7 +8488,7 @@
 																	"description": "Top-level observability settings for the application.\nThis field is mutually exclusive with configuration.observability.\n",
 																	"allOf": [
 																		{
-																			"description": "Settings for application observability such as logging.",
+																			"description": "Settings for application observability such as logging. Supported fields depend\non the application's scheduling policy. Durable Object-managed applications\naccept only `logs.enabled`.\n",
 																			"type": "object",
 																			"properties": {
 																				"logs": {
@@ -8557,8 +8629,26 @@
 															"description": "The application name.",
 															"type": "string"
 														},
+														"observability": {
+															"description": "Application-wide logging settings for a Durable Object-managed application.\nThe application publishes these settings to its runtime metadata. Updating\nthem does not create a deployment or rollout.\n",
+															"type": "object",
+															"properties": {
+																"logs": {
+																	"description": "Application-wide logging settings.",
+																	"type": "object",
+																	"additionalProperties": false,
+																	"properties": {
+																		"enabled": {
+																			"type": "boolean",
+																			"default": false
+																		}
+																	}
+																}
+															},
+															"additionalProperties": false
+														},
 														"scheduling_policy": {
-															"description": "Selects a Durable Object-managed application. Each Durable Object creates and\nmanages the lifecycle of its container instance. Application-level deployment\nconfiguration, scaling, placement constraints, versions, and rollouts do not\napply.\n",
+															"description": "Selects a Durable Object-managed application. Each Durable Object creates and\nmanages the lifecycle of its container instance. Configure application-wide\nobservability settings here. Deployment configuration, scaling, placement\nconstraints, versions, and rollouts do not apply.\n",
 															"type": "string",
 															"enum": [
 																"durable_object"

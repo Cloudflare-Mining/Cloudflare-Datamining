@@ -600,7 +600,7 @@
 		"x-api-token-group": [
 			"Zero Trust Write"
 		],
-		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-group-name": "data-security.posture.policies",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/data-security/posture/policies": {
@@ -1287,7 +1287,7 @@
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
-		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-group-name": "data-security.posture.policies",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/data-security/posture/policies/{policy_id}": {
@@ -2037,7 +2037,7 @@
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
-		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-group-name": "data-security.posture.policies",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/data-security/posture/policies/logs": {
@@ -2977,7 +2977,7 @@
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
-		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-group-name": "data-security.posture.policies.logs",
 		"x-fern-sdk-method-name": "list"
 	},
 	"POST /accounts/{account_id}/data-security/posture/policies": {
@@ -3059,7 +3059,8 @@
 								"description": "Optional description of what this policy does.",
 								"type": "string",
 								"example": "Automatically remove public access from files when detected",
-								"maxLength": 1000
+								"maxLength": 1000,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"display_name": {
 								"description": "Display name for the policy configuration.",
@@ -3087,7 +3088,8 @@
 								},
 								"example": [
 									"497f6eca-6276-4993-bfeb-53cbbbba6f08"
-								]
+								],
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"required": [
@@ -3820,7 +3822,7 @@
 		"x-api-token-group": [
 			"Zero Trust Write"
 		],
-		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-group-name": "data-security.posture.policies",
 		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/data-security/posture/policies/{policy_id}": {
@@ -3912,7 +3914,8 @@
 								"description": "Optional description of what this policy does.",
 								"type": "string",
 								"example": "Automatically remove public access from files when detected",
-								"maxLength": 1000
+								"maxLength": 1000,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"display_name": {
 								"description": "Display name for the policy configuration.",
@@ -3934,7 +3937,8 @@
 								},
 								"example": [
 									"497f6eca-6276-4993-bfeb-53cbbbba6f08"
-								]
+								],
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"required": [
@@ -4666,7 +4670,7 @@
 		"x-api-token-group": [
 			"Zero Trust Write"
 		],
-		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-group-name": "data-security.posture.policies",
 		"x-fern-sdk-method-name": "update"
 	}
 }

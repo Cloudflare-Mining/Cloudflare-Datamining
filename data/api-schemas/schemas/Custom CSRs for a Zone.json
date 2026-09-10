@@ -402,7 +402,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-csrs",
-		"x-fern-sdk-method-name": "customCsrsForAZoneDeleteCustomCsr",
+		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/custom_csrs": {
@@ -1053,7 +1053,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-csrs",
-		"x-fern-sdk-method-name": "customCsrsForAZoneListCustomCsrs",
+		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/custom_csrs/{custom_csr_id}": {
@@ -1620,7 +1620,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-csrs",
-		"x-fern-sdk-method-name": "customCsrsForAZoneCustomCsrDetails",
+		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/custom_csrs": {
@@ -2249,7 +2249,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-csrs",
-		"x-fern-sdk-method-name": "customCsrsForAZoneCreateCustomCsr",
+		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	}
 }

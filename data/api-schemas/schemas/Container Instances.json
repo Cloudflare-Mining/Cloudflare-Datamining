@@ -46,7 +46,7 @@
 			{
 				"name": "name_prefix",
 				"in": "query",
-				"description": "Filter instances by a case-sensitive name prefix. Keep the same prefix when using a page token.\n",
+				"description": "Filter instances by a case-sensitive name prefix, falling back to the actor ID when no name is known. Keep the same prefix when using a page token.\n",
 				"schema": {
 					"type": "string"
 				}

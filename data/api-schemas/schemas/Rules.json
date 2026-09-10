@@ -3121,7 +3121,7 @@
 		},
 		"responses": {
 			"201": {
-				"description": "Rule created (non-email customer accounts).",
+				"description": "Rule created (non-email customer accounts, or silent warning-free customer email rules).",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3295,7 +3295,7 @@
 				}
 			},
 			"202": {
-				"description": "Rule pending approval (internal accounts and customer email rules).",
+				"description": "Rule pending approval (internal accounts, blocking customer email rules, and customer email rules with compiler warnings).",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3835,6 +3835,15 @@
 								"maxLength": 255,
 								"minLength": 1
 							},
+							"status": {
+								"description": "Disposition for matching email. This emits status metadata with the selected value.",
+								"type": "string",
+								"default": "silent",
+								"enum": [
+									"silent",
+									"blocking"
+								]
+							},
 							"strings": {
 								"type": "array",
 								"items": {
@@ -3900,7 +3909,7 @@
 		},
 		"responses": {
 			"201": {
-				"description": "Email rule created.",
+				"description": "Email rule created immediately when submitted by a customer with silent status and no compiler warnings.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4073,7 +4082,7 @@
 				}
 			},
 			"202": {
-				"description": "Rule pending approval (internal accounts and customer email rules).",
+				"description": "Rule pending approval (internal accounts, blocking customer rules, and customer rules with compiler warnings).",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4598,6 +4607,15 @@
 								"maxLength": 255,
 								"minLength": 1
 							},
+							"status": {
+								"description": "Disposition for matching email. This emits status metadata with the selected value.",
+								"type": "string",
+								"default": "silent",
+								"enum": [
+									"silent",
+									"blocking"
+								]
+							},
 							"strings": {
 								"type": "array",
 								"items": {
@@ -5092,6 +5110,15 @@
 								"maxLength": 255,
 								"minLength": 1
 							},
+							"status": {
+								"description": "Disposition for matching email. This emits status metadata with the selected value.",
+								"type": "string",
+								"default": "silent",
+								"enum": [
+									"silent",
+									"blocking"
+								]
+							},
 							"strings": {
 								"type": "array",
 								"items": {
@@ -5463,7 +5490,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Rule updated (customer accounts).",
+				"description": "Rule updated (non-email customer accounts, or silent warning-free customer email rules).",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -5636,7 +5663,7 @@
 				}
 			},
 			"202": {
-				"description": "Update pending approval (internal accounts and customer email rules).",
+				"description": "Update pending approval (internal accounts, blocking customer email rules, and customer email rules with compiler warnings).",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -6299,6 +6326,14 @@
 								"maxLength": 255,
 								"minLength": 1
 							},
+							"status": {
+								"description": "Disposition for matching email. This emits status metadata with the selected value.",
+								"type": "string",
+								"enum": [
+									"silent",
+									"blocking"
+								]
+							},
 							"strings": {
 								"type": "array",
 								"items": {
@@ -6359,7 +6394,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Rule updated (customer accounts).",
+				"description": "Rule updated immediately when submitted by a customer with silent status and no compiler warnings.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -6532,7 +6567,7 @@
 				}
 			},
 			"202": {
-				"description": "Update pending approval (internal accounts and customer email rules).",
+				"description": "Update pending approval (internal accounts, blocking customer rules, and customer rules with compiler warnings).",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -6709,7 +6744,226 @@
 						"type": "object",
 						"properties": {
 							"condition": {
-								"nullable": true
+								"description": "Nested condition groups support up to 10 levels of depth.",
+								"type": "object",
+								"properties": {
+									"conditions": {
+										"type": "array",
+										"items": {
+											"discriminator": {
+												"mapping": {
+													"array": "#/components/schemas/cloudforce-one_EmailRuleArrayCondition",
+													"group": "#/components/schemas/cloudforce-one_EmailRuleConditionGroup",
+													"header": "#/components/schemas/cloudforce-one_EmailRuleHeaderCondition",
+													"scalar": "#/components/schemas/cloudforce-one_EmailRuleScalarCondition"
+												},
+												"propertyName": "type"
+											},
+											"oneOf": [
+												{
+													"type": "object",
+													"properties": {
+														"field": {
+															"type": "string",
+															"maxLength": 256,
+															"minLength": 1
+														},
+														"operator": {
+															"type": "string",
+															"enum": [
+																"==",
+																"!=",
+																">",
+																">=",
+																"<",
+																"<=",
+																"contains",
+																"matches"
+															]
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"scalar"
+															]
+														},
+														"value": {
+															"oneOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																},
+																{
+																	"type": "boolean"
+																}
+															]
+														}
+													},
+													"required": [
+														"type",
+														"field",
+														"operator",
+														"value"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"conditions": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"operator": {
+																		"type": "string",
+																		"enum": [
+																			"==",
+																			"!=",
+																			">",
+																			">=",
+																			"<",
+																			"<=",
+																			"contains",
+																			"matches"
+																		]
+																	},
+																	"subfield": {
+																		"type": "string",
+																		"maxLength": 128,
+																		"minLength": 1
+																	},
+																	"value": {
+																		"oneOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "number"
+																			},
+																			{
+																				"type": "boolean"
+																			}
+																		]
+																	}
+																},
+																"required": [
+																	"subfield",
+																	"operator",
+																	"value"
+																],
+																"type": "object"
+															},
+															"maxItems": 20,
+															"minItems": 1
+														},
+														"field": {
+															"type": "string",
+															"maxLength": 256,
+															"minLength": 1
+														},
+														"quantifier": {
+															"type": "string",
+															"default": "any",
+															"enum": [
+																"any",
+																"all"
+															]
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"array"
+															]
+														}
+													},
+													"required": [
+														"type",
+														"field",
+														"conditions"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"header_name": {
+															"type": "string",
+															"maxLength": 256,
+															"minLength": 1
+														},
+														"match_type": {
+															"type": "string",
+															"enum": [
+																"any",
+																"all",
+																"first",
+																"last",
+																"count"
+															]
+														},
+														"operator": {
+															"type": "string",
+															"enum": [
+																"==",
+																"!=",
+																">",
+																">=",
+																"<",
+																"<=",
+																"contains",
+																"matches"
+															]
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"header"
+															]
+														},
+														"value": {
+															"oneOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																}
+															]
+														}
+													},
+													"required": [
+														"type",
+														"header_name",
+														"match_type",
+														"operator",
+														"value"
+													]
+												},
+												"[Circular ~.PUT /accounts/{account_id}/cloudforce-one/rules/structured/approvals/{id}.requestBody.content.application/json.schema.properties.condition]"
+											]
+										},
+										"maxItems": 50,
+										"minItems": 1
+									},
+									"operator": {
+										"type": "string",
+										"enum": [
+											"and",
+											"or"
+										]
+									},
+									"type": {
+										"type": "string",
+										"enum": [
+											"group"
+										]
+									}
+								},
+								"required": [
+									"type",
+									"operator",
+									"conditions"
+								]
 							},
 							"description": {
 								"type": "string",
@@ -6757,6 +7011,15 @@
 								"type": "string",
 								"maxLength": 255,
 								"minLength": 1
+							},
+							"status": {
+								"description": "Disposition for matching email. This emits status metadata with the selected value.",
+								"type": "string",
+								"default": "silent",
+								"enum": [
+									"silent",
+									"blocking"
+								]
 							},
 							"strings": {
 								"type": "array",
@@ -6814,7 +7077,8 @@
 							}
 						},
 						"required": [
-							"name"
+							"name",
+							"condition"
 						]
 					}
 				}
