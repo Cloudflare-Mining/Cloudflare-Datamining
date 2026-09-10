@@ -30,7 +30,7 @@ image: https://www.cloudflare.com/preview.png
 * Access to Cloudflare expertise at events
 * Recognition and exclusive swag
 
-[  Apply as an Ambassador ](#community-application) 
+ Applications closed 
 
 ####  Community Engineers 
 
