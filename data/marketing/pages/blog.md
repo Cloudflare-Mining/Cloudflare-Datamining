@@ -10,17 +10,25 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+September 11, 2026 [<h2>Introducing automatic remediation policies with Cloudflare CASB</h2>](https://blog.cloudflare.com/casb-policies/)
+
+Cloudflare CASB policies introduce a native automation engine built directly on the Cloudflare developer platform to remediate SaaS risks automatically. Security teams can now design event-driven logic to revoke risky file shares and send webhooks without manual intervention.
+
+![Michael Leslie](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M65VVHB2G78QVANEZKFM.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+![Abe Carryl](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JJ6YPQY3M4A69P72QXE8.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Michael Leslie](https://blog.cloudflare.com/author/michael-leslie/) and  [Abe Carryl](https://blog.cloudflare.com/author/abe/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2842WCZ10Q81ZNG6FHF2FAJ.01M2842X2Z3B513P6VHC1SXMTC.png&w=1999&h=1125&f=webp&fit=cover&position=center)![](data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA/////Pv96evx2N/q1t7u3uT05ujx6efn//////7/7O/z3OLt2ODx4Ob26Orz7Orq////////8vT44ufx3uX15er67O738O/v////////+fv96+/36O367fL/8/X99fX0////////////9fj98/f/+Pz/+/3/+/z6/////////////f///v/////////////+////////////////////////////////////////////////////////////////)](https://blog.cloudflare.com/casb-policies/)
+
 September 10, 2026 [<h2>1.1.1.1 now supports post-quantum DNSSEC, all 2,420 bytes of it</h2>](https://blog.cloudflare.com/post-quantum-dnssec-1111/)
 
 1.1.1.1 now validates DNSSEC signatures using NIST's post-quantum ML-DSA-44 algorithm. Here is how we manage 2,420-byte signatures and downgrade risks at scale.
 
-![Sebastiaan Neuteboom](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GH720TA5A2634QYMAXZR.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-![Bas Westerbaan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N3BWJ6WS6790KRRJ4RWD.png&w=64&h=64&f=webp&fit=cover&position=center)
+![Sebastiaan Neuteboom](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GH720TA5A2634QYMAXZR.png&w=64&h=64&f=webp&fit=cover&position=center)![Bas Westerbaan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N3BWJ6WS6790KRRJ4RWD.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Sebastiaan Neuteboom](https://blog.cloudflare.com/author/sebastiaan-neuteboom/) and  [Bas Westerbaan](https://blog.cloudflare.com/author/bas/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M25DK32HZ1WQH3H12JRZ8W35.01M25DK70WYHHWWR2VQYE94TNP.png&w=1999&h=1125&f=webp&fit=cover&position=center)![](data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA/////vz99/X07u7v5urz4+j35ejz6ujq//////7/9vb26+3y4ej23ub64uf26unt////////9vj65+323Of62ub+4un67Ovx////////9vr/5u/63On+3Or/5e7/7/D2////////+f7/6fP/4vD/5vP/7/b/9fb6/////////P//7vj/7Pj/9P3/+v//+/z+////////////8vz/9f//////////////////////////9P7/+P//////////////)](https://blog.cloudflare.com/post-quantum-dnssec-1111/)
 
 September 9, 2026 [<h2>How we rebuilt Cloudflare Workers' module registry for Node.js compatibility</h2>](https://blog.cloudflare.com/workers-module-registry-nodejs/)
 
@@ -157,14 +165,6 @@ In the first half of 2026, Cloudflare detected a 519% surge in hyper-volumetric 
 ![Cloudforce One](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F4NKW3JJWXAED2MVFY7Y.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Cloudforce One](https://blog.cloudflare.com/author/cloudforce/)
-
-August 10, 2026 [<h2>Everything we launched during Agents Week</h2>](https://blog.cloudflare.com/agents-week-review-august-2026/)
-
-Our latest Agents Week has come to a close. Here's a recap of all the announcements we made from Wallets to Radar.
-
-![Shelley Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48R153ZF4GWNZYC0QQPY6F.png&w=64&h=64&f=webp&fit=cover&position=center)![Ann Ming Samborski](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MY1PMDMM9JK9SM0E02KA.png&w=64&h=64&f=webp&fit=cover&position=center)![Kathy Liao](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CCSZ168NDHJPTF31M9JS.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Shelley Jones](https://blog.cloudflare.com/author/shelley/),  [Ann Ming Samborski](https://blog.cloudflare.com/author/ann-ming-samborski/), and  [Kathy Liao](https://blog.cloudflare.com/author/kathy/)
 
 Load more
 
