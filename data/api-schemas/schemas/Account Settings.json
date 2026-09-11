@@ -250,7 +250,10 @@
 			"enum": [
 				"#zone_settings:read"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts.transformations",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/settings/ut-billing": {
 		"operationId": "account-settings-get-ut-billing-setting",
@@ -527,7 +530,10 @@
 			"enum": [
 				"#zone_settings:read"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts.ut-billing",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/settings/ut-billing": {
 		"operationId": "account-settings-change-ut-billing-setting",
@@ -826,6 +832,9 @@
 			"enum": [
 				"#zone_settings:edit"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts.ut-billing",
+		"x-fern-sdk-method-name": "edit"
 	}
 }

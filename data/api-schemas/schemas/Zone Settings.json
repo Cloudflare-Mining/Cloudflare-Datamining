@@ -9225,7 +9225,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.automatic-platform-optimization",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/settings/binary_ast": {
 		"operationId": "zone-settings-get-binary-ast-setting",
@@ -9510,7 +9513,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.binary-ast",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/settings/fonts": {
 		"operationId": "zone-settings-get-fonts-setting",
@@ -10083,7 +10089,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.h2-prioritization",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/settings/image_resizing": {
 		"operationId": "zone-settings-get-image-resizing-setting",
@@ -10369,7 +10378,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.image-resizing",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/settings/origin_h2_max_streams": {
 		"operationId": "zone-cache-settings-get-origin-h2-max-streams-setting",
@@ -11578,7 +11590,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.transformations-allowed-origins",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/settings/transformations_c2pa": {
 		"operationId": "zone-settings-get-transformations-c2pa-setting",
@@ -11857,7 +11872,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.transformations-c2pa",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/settings/transformations_config": {
 		"operationId": "zone-settings-get-transformations-config",
@@ -12159,7 +12177,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.transformations-config",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/settings": {
 		"operationId": "zone-settings-edit-zone-settings-info",
@@ -26184,7 +26205,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.automatic-platform-optimization",
+		"x-fern-sdk-method-name": "edit"
 	},
 	"PATCH /zones/{zone_id}/settings/binary_ast": {
 		"operationId": "zone-settings-change-binary-ast-setting",
@@ -26493,7 +26517,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.binary-ast",
+		"x-fern-sdk-method-name": "edit"
 	},
 	"PATCH /zones/{zone_id}/settings/fonts": {
 		"operationId": "zone-settings-change-fonts-setting",
@@ -27114,7 +27141,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.h2-prioritization",
+		"x-fern-sdk-method-name": "edit"
 	},
 	"PATCH /zones/{zone_id}/settings/image_resizing": {
 		"operationId": "zone-settings-change-image-resizing-setting",
@@ -27425,7 +27455,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.image-resizing",
+		"x-fern-sdk-method-name": "edit"
 	},
 	"PATCH /zones/{zone_id}/settings/origin_h2_max_streams": {
 		"operationId": "zone-cache-settings-change-origin-h2-max-streams-setting",
@@ -28719,7 +28752,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.transformations-allowed-origins",
+		"x-fern-sdk-method-name": "edit"
 	},
 	"PATCH /zones/{zone_id}/settings/transformations_c2pa": {
 		"operationId": "zone-settings-change-transformations-c2pa-setting",
@@ -29021,7 +29057,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.transformations-c2pa",
+		"x-fern-sdk-method-name": "edit"
 	},
 	"PATCH /zones/{zone_id}/settings/transformations_config": {
 		"operationId": "zone-settings-change-transformations-config",
@@ -29369,6 +29408,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.transformations-config",
+		"x-fern-sdk-method-name": "edit"
 	}
 }

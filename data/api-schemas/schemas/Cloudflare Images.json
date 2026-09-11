@@ -31,12 +31,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Delete image response",
@@ -948,7 +942,7 @@
 			"Images Read",
 			"Images Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "images.v1",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
