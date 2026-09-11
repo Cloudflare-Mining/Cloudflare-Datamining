@@ -31,6 +31,7 @@
 	"queues.metrics.lagTime.tooltip": "Average time to process a message, starting when it is ingested, and ending when a Consumer acknowledges it",
 	"queues.create.title": "Create Queue",
 	"queues.create.description": "Choose a name for your Queue. Once created, you can attach message producers and consumers from the dashboard or using Wrangler CLI.",
+	"queues.create.errors.permissions": "You do not have permissions to create Queues. Contact this account's Super Administrator.",
 	"queues.create.errors.entitlement": "To start using Queues, enable Workers first.",
 	"queues.create.errors.maxLength": "Queue names must be less than %{maxLength} characters in length",
 	"queues.create.errors.invalidCharacters": "Queue names can only contain hyphens & alphanumeric lowercase letters",
