@@ -13603,6 +13603,50 @@
 	"Time": {
 		"__description": "Scalar type time.Time"
 	},
+	"ZoneAccountAbuseProtectionAdaptiveGroups": {
+		"__description": "Hourly Account Abuse Protection aggregates.",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"ZoneAccountAbuseProtectionAdaptiveGroupsDimensions": {
+		"__description": "",
+		"datetimeHour": "Start of the UTC hourly aggregate bucket.",
+		"eventSource": "Event ingestion source. Possible values are cdn or api.",
+		"eventType": "Canonical account-activity category used to partition hourly aggregates."
+	},
+	"ZoneAccountAbuseProtectionAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneAccountAbuseProtectionAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"ZoneAccountAbuseProtectionAdaptiveGroupsSum": {
+		"__description": "",
+		"eventCount": "Number of events.",
+		"failedLoginCount": "Number of failed login events.",
+		"lccCleanCount": "Number of events with an explicit clean Leaked Credential Check result.",
+		"lccNotCheckedCount": "Number of events with no Leaked Credential Check result.",
+		"lccPasswordLeakedCount": "Number of events whose Leaked Credential Check result indicates a leaked password.",
+		"lccUsernameAndPasswordLeakedCount": "Number of events whose Leaked Credential Check result indicates a leaked username and password.",
+		"lccUsernameLeakedCount": "Number of events whose Leaked Credential Check result indicates a leaked username or similar password.",
+		"successfulLoginCount": "Number of successful login events.",
+		"topASNCounts": "Approximate event counts for topASNs.",
+		"topASNs": "Top 10 client ASNs, positionally aligned with topASNCounts.",
+		"topCountries": "Top 10 country codes, positionally aligned with topCountryCounts.",
+		"topCountryCounts": "Approximate event counts for topCountries.",
+		"topDeviceCounts": "Approximate event counts for topDevices.",
+		"topDevices": "Top 10 Turnstile ephemeral IDs, positionally aligned with topDeviceCounts.",
+		"topIPCounts": "Approximate event counts for topIPs.",
+		"topIPs": "Top 10 client IPs, positionally aligned with topIPCounts."
+	},
+	"ZoneAccountAbuseProtectionAdaptiveGroupsUniq": {
+		"__description": "",
+		"signupUsers": "Approximate number of unique users with signup activity.",
+		"uniqueDevices": "Approximate number of unique non-empty Turnstile ephemeral IDs.",
+		"uniqueIPs": "Approximate number of unique non-empty client IPs.",
+		"uniqueUsers": "Approximate number of unique non-empty user IDs."
+	},
 	"ZoneApiGatewayGraphqlQueryAnalyticsGroups": {
 		"__description": "GraphQL query attributes and trends",
 		"avg": "",
@@ -16005,6 +16049,7 @@
 	},
 	"ZoneSettings": {
 		"__description": "Access and limitations for a zone",
+		"accountAbuseProtectionAdaptiveGroups": "",
 		"apiGatewayGraphqlQueryAnalyticsGroups": "",
 		"apiGatewayMatchedSessionIDsAdaptiveGroups": "",
 		"apiGatewayMatchedSessionIDsPerEndpointAdaptiveGroups": "",
@@ -16073,15 +16118,17 @@
 	"ZoneUserProfilesAdaptiveGroupsDimensions": {
 		"__description": "",
 		"date": "Profile aggregates for a given date.",
-		"eventType": "Type of the event. Possible values are login or signup.",
-		"userId": "Unique identifier for a user. 128-bit hash."
+		"eventSource": "Event ingestion source. Possible values are cdn or api.",
+		"eventType": "Canonical account-activity category used to partition profile aggregates.",
+		"userId": "Hex-encoded identifier for a user."
 	},
 	"ZoneUserProfilesAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
 	},
 	"ZoneUserProfilesAdaptiveGroupsMax": {
 		"__description": "",
-		"lastSeen": "Timestamp of the most recent event for a user id."
+		"lastSeen": "Timestamp of the most recent event for a user id.",
+		"mostRecentIP": "Most recent non-empty client IP for a user id in the selected range."
 	},
 	"ZoneUserProfilesAdaptiveGroupsOrderBy": {
 		"__description": ""
@@ -16090,8 +16137,14 @@
 		"__description": "",
 		"eventCount": "Total number of events for a user id.",
 		"failedLoginCount": "Number of failed login attempts for a user id.",
+		"lccCleanCount": "Number of events with an explicit clean Leaked Credential Check result.",
+		"lccNotCheckedCount": "Number of events with no Leaked Credential Check result.",
+		"lccPasswordLeakedCount": "Number of events whose Leaked Credential Check result indicates a leaked password.",
+		"lccUsernameAndPasswordLeakedCount": "Number of events whose Leaked Credential Check result indicates a leaked username and password.",
+		"lccUsernameLeakedCount": "Number of events whose Leaked Credential Check result indicates a leaked username or similar password.",
 		"leakedCredentialHitCount": "Number of events with any leaked credential check hit (username leaked, password leaked, or username/password similar) for a user id. Broader than passwordLeakedCount, which counts password-leaked results only.",
 		"passwordLeakedCount": "Number of leaked credential check results where the password was leaked (username_and_password_leaked or password_leaked) for a user id.",
+		"successfulLoginCount": "Number of successful login attempts for a user id.",
 		"topASNs": "Array of top 5 ASNs for a user id.",
 		"topCities": "Array of top 5 city names for a user id.",
 		"topCountries": "Array of top 5 country codes (alpha2) for a user id.",
@@ -16101,6 +16154,7 @@
 	"ZoneUserProfilesAdaptiveGroupsUniq": {
 		"__description": "",
 		"browserCount": "Number of unique browser families for a user id.",
+		"ephemeralIdCount": "Approximate number of unique non-empty Turnstile ephemeral IDs for a user id.",
 		"ipCount": "Number of unique IPs for a user id.",
 		"osCount": "Number of unique operating system families for a user id."
 	},
@@ -16119,6 +16173,7 @@
 		"__description": "",
 		"date": "Date of the event.",
 		"email": "The email address associated with the user. Requires the com.cloudflare.api.account.zone.fraud-detection.pii.read permission; otherwise returned as REDACTED.",
+		"emailDomain": "The email domain associated with the user. Requires the com.cloudflare.api.account.zone.fraud-detection.pii.read permission; otherwise returned as REDACTED.",
 		"userId": "Unique identifier for a user. 128-bit hash."
 	},
 	"ZoneUserProfilesPiiGroupsFilter_InputObject": {
@@ -16145,8 +16200,9 @@
 		"deviceOS": "Device OS name.",
 		"deviceType": "The type of device associated with the event. Possible values are Mobile, Desktop, Tablet, Bot, Other, Unknown.",
 		"ephemeralId": "The Turnstile ephemeral device ID associated with the event. Returns an empty string if not present.",
+		"eventSource": "Event ingestion source. Possible values are cdn or api.",
 		"eventTimestamp": "When the event happened.",
-		"eventType": "Type of the event. Possible values are signup or login.",
+		"eventType": "Canonical account-activity category recorded for the event.",
 		"fraudEmailRisk": "Risk level of the email address in the event.",
 		"ja4": "JA4 TLS fingerprint associated with the event.",
 		"leakedCredentialCheckResult": "The distinct result of checking for leaked credentials. Possible values are clean, username_leaked, username_password_similar, username_and_password_leaked, password_leaked, none.",
@@ -17091,7 +17147,7 @@
 		"__description": "Scalar type types.Float32"
 	},
 	"float64": {
-		"__description": "Scalar type types.Float64"
+		"__description": "Scalar type float64"
 	},
 	"int16": {
 		"__description": "Scalar type int16"
@@ -17136,6 +17192,7 @@
 	},
 	"zone": {
 		"__description": "",
+		"accountAbuseProtectionAdaptiveGroups": "Hourly Account Abuse Protection aggregates.",
 		"apiGatewayGraphqlQueryAnalyticsGroups": "GraphQL query attributes and trends",
 		"apiGatewayMatchedSessionIDsAdaptiveGroups": "Beta. Aggregated count of Session Identifier matches",
 		"apiGatewayMatchedSessionIDsPerEndpointAdaptiveGroups": "Beta. Aggregated count of Session Identifier matches per endpoint",

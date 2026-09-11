@@ -693348,6 +693348,1180 @@
 					"possibleTypes": []
 				},
 				{
+					"description": "Hourly Account Abuse Protection aggregates.",
+					"enumValues": [],
+					"fields": [
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "List of dimensions to group by",
+							"isDeprecated": false,
+							"name": "dimensions",
+							"type": {
+								"kind": "OBJECT",
+								"name": "ZoneAccountAbuseProtectionAdaptiveGroupsDimensions",
+								"ofType": null
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "",
+							"isDeprecated": false,
+							"name": "sum",
+							"type": {
+								"kind": "OBJECT",
+								"name": "ZoneAccountAbuseProtectionAdaptiveGroupsSum",
+								"ofType": null
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "",
+							"isDeprecated": false,
+							"name": "uniq",
+							"type": {
+								"kind": "OBJECT",
+								"name": "ZoneAccountAbuseProtectionAdaptiveGroupsUniq",
+								"ofType": null
+							}
+						}
+					],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "OBJECT",
+					"name": "ZoneAccountAbuseProtectionAdaptiveGroups",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
+					"enumValues": [],
+					"fields": [
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Start of the UTC hourly aggregate bucket.",
+							"isDeprecated": false,
+							"name": "datetimeHour",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Event ingestion source. Possible values are cdn or api.",
+							"isDeprecated": false,
+							"name": "eventSource",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Canonical account-activity category used to partition hourly aggregates.",
+							"isDeprecated": false,
+							"name": "eventType",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						}
+					],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "OBJECT",
+					"name": "ZoneAccountAbuseProtectionAdaptiveGroupsDimensions",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
+					"enumValues": [],
+					"fields": [],
+					"inputFields": [
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "AND",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "INPUT_OBJECT",
+										"name": "ZoneAccountAbuseProtectionAdaptiveGroupsFilter_InputObject",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "OR",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "INPUT_OBJECT",
+										"name": "ZoneAccountAbuseProtectionAdaptiveGroupsFilter_InputObject",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventType",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventType_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventType_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventType_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventType_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventType_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventType_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventType_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventType_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventType_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						}
+					],
+					"interfaces": [],
+					"kind": "INPUT_OBJECT",
+					"name": "ZoneAccountAbuseProtectionAdaptiveGroupsFilter_InputObject",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
+					"enumValues": [
+						{
+							"deprecationReason": null,
+							"description": "datetimeHour ascending",
+							"isDeprecated": false,
+							"name": "datetimeHour_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeHour descending",
+							"isDeprecated": false,
+							"name": "datetimeHour_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "eventSource ascending",
+							"isDeprecated": false,
+							"name": "eventSource_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "eventSource descending",
+							"isDeprecated": false,
+							"name": "eventSource_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "eventType ascending",
+							"isDeprecated": false,
+							"name": "eventType_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "eventType descending",
+							"isDeprecated": false,
+							"name": "eventType_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(eventCount) ascending",
+							"isDeprecated": false,
+							"name": "sum_eventCount_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(eventCount) descending",
+							"isDeprecated": false,
+							"name": "sum_eventCount_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(failedLoginCount) ascending",
+							"isDeprecated": false,
+							"name": "sum_failedLoginCount_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(failedLoginCount) descending",
+							"isDeprecated": false,
+							"name": "sum_failedLoginCount_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(lccCleanCount) ascending",
+							"isDeprecated": false,
+							"name": "sum_lccCleanCount_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(lccCleanCount) descending",
+							"isDeprecated": false,
+							"name": "sum_lccCleanCount_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(lccNotCheckedCount) ascending",
+							"isDeprecated": false,
+							"name": "sum_lccNotCheckedCount_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(lccNotCheckedCount) descending",
+							"isDeprecated": false,
+							"name": "sum_lccNotCheckedCount_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(lccPasswordLeakedCount) ascending",
+							"isDeprecated": false,
+							"name": "sum_lccPasswordLeakedCount_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(lccPasswordLeakedCount) descending",
+							"isDeprecated": false,
+							"name": "sum_lccPasswordLeakedCount_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(lccUsernameAndPasswordLeakedCount) ascending",
+							"isDeprecated": false,
+							"name": "sum_lccUsernameAndPasswordLeakedCount_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(lccUsernameAndPasswordLeakedCount) descending",
+							"isDeprecated": false,
+							"name": "sum_lccUsernameAndPasswordLeakedCount_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(lccUsernameLeakedCount) ascending",
+							"isDeprecated": false,
+							"name": "sum_lccUsernameLeakedCount_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(lccUsernameLeakedCount) descending",
+							"isDeprecated": false,
+							"name": "sum_lccUsernameLeakedCount_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(successfulLoginCount) ascending",
+							"isDeprecated": false,
+							"name": "sum_successfulLoginCount_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(successfulLoginCount) descending",
+							"isDeprecated": false,
+							"name": "sum_successfulLoginCount_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(topASNCounts) ascending",
+							"isDeprecated": false,
+							"name": "sum_topASNCounts_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(topASNCounts) descending",
+							"isDeprecated": false,
+							"name": "sum_topASNCounts_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(topASNs) ascending",
+							"isDeprecated": false,
+							"name": "sum_topASNs_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(topASNs) descending",
+							"isDeprecated": false,
+							"name": "sum_topASNs_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(topCountries) ascending",
+							"isDeprecated": false,
+							"name": "sum_topCountries_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(topCountries) descending",
+							"isDeprecated": false,
+							"name": "sum_topCountries_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(topCountryCounts) ascending",
+							"isDeprecated": false,
+							"name": "sum_topCountryCounts_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(topCountryCounts) descending",
+							"isDeprecated": false,
+							"name": "sum_topCountryCounts_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(topDeviceCounts) ascending",
+							"isDeprecated": false,
+							"name": "sum_topDeviceCounts_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(topDeviceCounts) descending",
+							"isDeprecated": false,
+							"name": "sum_topDeviceCounts_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(topDevices) ascending",
+							"isDeprecated": false,
+							"name": "sum_topDevices_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(topDevices) descending",
+							"isDeprecated": false,
+							"name": "sum_topDevices_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(topIPCounts) ascending",
+							"isDeprecated": false,
+							"name": "sum_topIPCounts_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(topIPCounts) descending",
+							"isDeprecated": false,
+							"name": "sum_topIPCounts_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(topIPs) ascending",
+							"isDeprecated": false,
+							"name": "sum_topIPs_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(topIPs) descending",
+							"isDeprecated": false,
+							"name": "sum_topIPs_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "uniq(signupUsers) ascending",
+							"isDeprecated": false,
+							"name": "uniq_signupUsers_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "uniq(signupUsers) descending",
+							"isDeprecated": false,
+							"name": "uniq_signupUsers_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "uniq(uniqueDevices) ascending",
+							"isDeprecated": false,
+							"name": "uniq_uniqueDevices_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "uniq(uniqueDevices) descending",
+							"isDeprecated": false,
+							"name": "uniq_uniqueDevices_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "uniq(uniqueIPs) ascending",
+							"isDeprecated": false,
+							"name": "uniq_uniqueIPs_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "uniq(uniqueIPs) descending",
+							"isDeprecated": false,
+							"name": "uniq_uniqueIPs_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "uniq(uniqueUsers) ascending",
+							"isDeprecated": false,
+							"name": "uniq_uniqueUsers_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "uniq(uniqueUsers) descending",
+							"isDeprecated": false,
+							"name": "uniq_uniqueUsers_DESC"
+						}
+					],
+					"fields": [],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "ENUM",
+					"name": "ZoneAccountAbuseProtectionAdaptiveGroupsOrderBy",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
+					"enumValues": [],
+					"fields": [
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Number of events.",
+							"isDeprecated": false,
+							"name": "eventCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Number of failed login events.",
+							"isDeprecated": false,
+							"name": "failedLoginCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Number of events with an explicit clean Leaked Credential Check result.",
+							"isDeprecated": false,
+							"name": "lccCleanCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Number of events with no Leaked Credential Check result.",
+							"isDeprecated": false,
+							"name": "lccNotCheckedCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Number of events whose Leaked Credential Check result indicates a leaked password.",
+							"isDeprecated": false,
+							"name": "lccPasswordLeakedCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Number of events whose Leaked Credential Check result indicates a leaked username and password.",
+							"isDeprecated": false,
+							"name": "lccUsernameAndPasswordLeakedCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Number of events whose Leaked Credential Check result indicates a leaked username or similar password.",
+							"isDeprecated": false,
+							"name": "lccUsernameLeakedCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Number of successful login events.",
+							"isDeprecated": false,
+							"name": "successfulLoginCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Approximate event counts for topASNs.",
+							"isDeprecated": false,
+							"name": "topASNCounts",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "uint64",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Top 10 client ASNs, positionally aligned with topASNCounts.",
+							"isDeprecated": false,
+							"name": "topASNs",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "uint32",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Top 10 country codes, positionally aligned with topCountryCounts.",
+							"isDeprecated": false,
+							"name": "topCountries",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "string",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Approximate event counts for topCountries.",
+							"isDeprecated": false,
+							"name": "topCountryCounts",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "uint64",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Approximate event counts for topDevices.",
+							"isDeprecated": false,
+							"name": "topDeviceCounts",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "uint64",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Top 10 Turnstile ephemeral IDs, positionally aligned with topDeviceCounts.",
+							"isDeprecated": false,
+							"name": "topDevices",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "string",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Approximate event counts for topIPs.",
+							"isDeprecated": false,
+							"name": "topIPCounts",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "uint64",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Top 10 client IPs, positionally aligned with topIPCounts.",
+							"isDeprecated": false,
+							"name": "topIPs",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "string",
+											"ofType": null
+										}
+									}
+								}
+							}
+						}
+					],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "OBJECT",
+					"name": "ZoneAccountAbuseProtectionAdaptiveGroupsSum",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
+					"enumValues": [],
+					"fields": [
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Approximate number of unique users with signup activity.",
+							"isDeprecated": false,
+							"name": "signupUsers",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Approximate number of unique non-empty Turnstile ephemeral IDs.",
+							"isDeprecated": false,
+							"name": "uniqueDevices",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Approximate number of unique non-empty client IPs.",
+							"isDeprecated": false,
+							"name": "uniqueIPs",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Approximate number of unique non-empty user IDs.",
+							"isDeprecated": false,
+							"name": "uniqueUsers",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						}
+					],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "OBJECT",
+					"name": "ZoneAccountAbuseProtectionAdaptiveGroupsUniq",
+					"possibleTypes": []
+				},
+				{
 					"description": "GraphQL query attributes and trends",
 					"enumValues": [],
 					"fields": [
@@ -829560,6 +830734,22 @@
 							"deprecationReason": null,
 							"description": "",
 							"isDeprecated": false,
+							"name": "accountAbuseProtectionAdaptiveGroups",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "Settings",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "",
+							"isDeprecated": false,
 							"name": "apiGatewayGraphqlQueryAnalyticsGroups",
 							"type": {
 								"kind": "NON_NULL",
@@ -830556,7 +831746,23 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Type of the event. Possible values are login or signup.",
+							"description": "Event ingestion source. Possible values are cdn or api.",
+							"isDeprecated": false,
+							"name": "eventSource",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Canonical account-activity category used to partition profile aggregates.",
 							"isDeprecated": false,
 							"name": "eventType",
 							"type": {
@@ -830572,7 +831778,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Unique identifier for a user. 128-bit hash.",
+							"description": "Hex-encoded identifier for a user.",
 							"isDeprecated": false,
 							"name": "userId",
 							"type": {
@@ -830727,6 +831933,122 @@
 										"ofType": null
 									}
 								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
 							}
 						},
 						{
@@ -830986,6 +832308,22 @@
 									"ofType": null
 								}
 							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Most recent non-empty client IP for a user id in the selected range.",
+							"isDeprecated": false,
+							"name": "mostRecentIP",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
 						}
 					],
 					"inputFields": [],
@@ -831008,6 +832346,18 @@
 							"description": "date descending",
 							"isDeprecated": false,
 							"name": "date_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "eventSource ascending",
+							"isDeprecated": false,
+							"name": "eventSource_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "eventSource descending",
+							"isDeprecated": false,
+							"name": "eventSource_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -831035,6 +832385,18 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "max(mostRecentIP) ascending",
+							"isDeprecated": false,
+							"name": "max_mostRecentIP_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "max(mostRecentIP) descending",
+							"isDeprecated": false,
+							"name": "max_mostRecentIP_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "sum(eventCount) ascending",
 							"isDeprecated": false,
 							"name": "sum_eventCount_ASC"
@@ -831059,6 +832421,66 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "sum(lccCleanCount) ascending",
+							"isDeprecated": false,
+							"name": "sum_lccCleanCount_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(lccCleanCount) descending",
+							"isDeprecated": false,
+							"name": "sum_lccCleanCount_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(lccNotCheckedCount) ascending",
+							"isDeprecated": false,
+							"name": "sum_lccNotCheckedCount_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(lccNotCheckedCount) descending",
+							"isDeprecated": false,
+							"name": "sum_lccNotCheckedCount_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(lccPasswordLeakedCount) ascending",
+							"isDeprecated": false,
+							"name": "sum_lccPasswordLeakedCount_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(lccPasswordLeakedCount) descending",
+							"isDeprecated": false,
+							"name": "sum_lccPasswordLeakedCount_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(lccUsernameAndPasswordLeakedCount) ascending",
+							"isDeprecated": false,
+							"name": "sum_lccUsernameAndPasswordLeakedCount_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(lccUsernameAndPasswordLeakedCount) descending",
+							"isDeprecated": false,
+							"name": "sum_lccUsernameAndPasswordLeakedCount_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(lccUsernameLeakedCount) ascending",
+							"isDeprecated": false,
+							"name": "sum_lccUsernameLeakedCount_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(lccUsernameLeakedCount) descending",
+							"isDeprecated": false,
+							"name": "sum_lccUsernameLeakedCount_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "sum(leakedCredentialHitCount) ascending",
 							"isDeprecated": false,
 							"name": "sum_leakedCredentialHitCount_ASC"
@@ -831080,6 +832502,18 @@
 							"description": "sum(passwordLeakedCount) descending",
 							"isDeprecated": false,
 							"name": "sum_passwordLeakedCount_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(successfulLoginCount) ascending",
+							"isDeprecated": false,
+							"name": "sum_successfulLoginCount_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(successfulLoginCount) descending",
+							"isDeprecated": false,
+							"name": "sum_successfulLoginCount_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -831152,6 +832586,18 @@
 							"description": "uniq(browserCount) descending",
 							"isDeprecated": false,
 							"name": "uniq_browserCount_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "uniq(ephemeralIdCount) ascending",
+							"isDeprecated": false,
+							"name": "uniq_ephemeralIdCount_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "uniq(ephemeralIdCount) descending",
+							"isDeprecated": false,
+							"name": "uniq_ephemeralIdCount_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -831236,6 +832682,86 @@
 						{
 							"args": [],
 							"deprecationReason": null,
+							"description": "Number of events with an explicit clean Leaked Credential Check result.",
+							"isDeprecated": false,
+							"name": "lccCleanCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Number of events with no Leaked Credential Check result.",
+							"isDeprecated": false,
+							"name": "lccNotCheckedCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Number of events whose Leaked Credential Check result indicates a leaked password.",
+							"isDeprecated": false,
+							"name": "lccPasswordLeakedCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Number of events whose Leaked Credential Check result indicates a leaked username and password.",
+							"isDeprecated": false,
+							"name": "lccUsernameAndPasswordLeakedCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Number of events whose Leaked Credential Check result indicates a leaked username or similar password.",
+							"isDeprecated": false,
+							"name": "lccUsernameLeakedCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
 							"description": "Number of events with any leaked credential check hit (username leaked, password leaked, or username/password similar) for a user id. Broader than passwordLeakedCount, which counts password-leaked results only.",
 							"isDeprecated": false,
 							"name": "leakedCredentialHitCount",
@@ -831255,6 +832781,22 @@
 							"description": "Number of leaked credential check results where the password was leaked (username_and_password_leaked or password_leaked) for a user id.",
 							"isDeprecated": false,
 							"name": "passwordLeakedCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Number of successful login attempts for a user id.",
+							"isDeprecated": false,
+							"name": "successfulLoginCount",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -831402,6 +832944,22 @@
 							"description": "Number of unique browser families for a user id.",
 							"isDeprecated": false,
 							"name": "browserCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Approximate number of unique non-empty Turnstile ephemeral IDs for a user id.",
+							"isDeprecated": false,
+							"name": "ephemeralIdCount",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -831603,6 +833161,22 @@
 						{
 							"args": [],
 							"deprecationReason": null,
+							"description": "The email domain associated with the user. Requires the com.cloudflare.api.account.zone.fraud-detection.pii.read permission; otherwise returned as REDACTED.",
+							"isDeprecated": false,
+							"name": "emailDomain",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
 							"description": "Unique identifier for a user. 128-bit hash.",
 							"isDeprecated": false,
 							"name": "userId",
@@ -831764,6 +833338,122 @@
 							"defaultValue": null,
 							"description": "",
 							"name": "email",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "emailDomain",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "emailDomain_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "emailDomain_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "emailDomain_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "emailDomain_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "emailDomain_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "emailDomain_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "emailDomain_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "emailDomain_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "emailDomain_notlike",
 							"type": {
 								"kind": "SCALAR",
 								"name": "string",
@@ -832024,6 +833714,18 @@
 							"description": "date descending",
 							"isDeprecated": false,
 							"name": "date_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "emailDomain ascending",
+							"isDeprecated": false,
+							"name": "emailDomain_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "emailDomain descending",
+							"isDeprecated": false,
+							"name": "emailDomain_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -832336,6 +834038,22 @@
 						{
 							"args": [],
 							"deprecationReason": null,
+							"description": "Event ingestion source. Possible values are cdn or api.",
+							"isDeprecated": false,
+							"name": "eventSource",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
 							"description": "When the event happened.",
 							"isDeprecated": false,
 							"name": "eventTimestamp",
@@ -832352,7 +834070,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Type of the event. Possible values are signup or login.",
+							"description": "Canonical account-activity category recorded for the event.",
 							"isDeprecated": false,
 							"name": "eventType",
 							"type": {
@@ -834208,6 +835926,122 @@
 						{
 							"defaultValue": null,
 							"description": "",
+							"name": "eventSource",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventSource_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
 							"name": "eventTimestamp",
 							"type": {
 								"kind": "SCALAR",
@@ -835409,6 +837243,18 @@
 							"description": "ephemeralId descending",
 							"isDeprecated": false,
 							"name": "ephemeralId_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "eventSource ascending",
+							"isDeprecated": false,
+							"name": "eventSource_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "eventSource descending",
+							"isDeprecated": false,
+							"name": "eventSource_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -891828,7 +893674,7 @@
 					"possibleTypes": []
 				},
 				{
-					"description": "Scalar type float64",
+					"description": "Scalar type types.Float64",
 					"enumValues": [],
 					"fields": [],
 					"inputFields": [],
@@ -892254,6 +894100,77 @@
 					"description": "",
 					"enumValues": [],
 					"fields": [
+						{
+							"args": [
+								{
+									"defaultValue": null,
+									"description": "",
+									"name": "filter",
+									"type": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "INPUT_OBJECT",
+											"name": "ZoneAccountAbuseProtectionAdaptiveGroupsFilter_InputObject",
+											"ofType": null
+										}
+									}
+								},
+								{
+									"defaultValue": null,
+									"description": "",
+									"name": "limit",
+									"type": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "uint64",
+											"ofType": null
+										}
+									}
+								},
+								{
+									"defaultValue": null,
+									"description": "",
+									"name": "orderBy",
+									"type": {
+										"kind": "LIST",
+										"name": "",
+										"ofType": {
+											"kind": "NON_NULL",
+											"name": "",
+											"ofType": {
+												"kind": "ENUM",
+												"name": "ZoneAccountAbuseProtectionAdaptiveGroupsOrderBy",
+												"ofType": null
+											}
+										}
+									}
+								}
+							],
+							"deprecationReason": null,
+							"description": "Hourly Account Abuse Protection aggregates.",
+							"isDeprecated": false,
+							"name": "accountAbuseProtectionAdaptiveGroups",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "OBJECT",
+											"name": "ZoneAccountAbuseProtectionAdaptiveGroups",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
 						{
 							"args": [
 								{
