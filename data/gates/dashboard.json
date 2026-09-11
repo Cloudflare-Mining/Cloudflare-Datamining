@@ -208,13 +208,7 @@
 	"aig-catalog-multi-provider-spike": {
 		"enabled": false
 	},
-	"aig-fake-domains": {
-		"enabled": false
-	},
 	"aig-insights-custom-attribution": {
-		"enabled": true
-	},
-	"aig-opencode-setup": {
 		"enabled": true
 	},
 	"aig-policies": {
@@ -224,7 +218,7 @@
 		"enabled": false
 	},
 	"aig-route-builder-undo": {
-		"enabled": false
+		"enabled": true
 	},
 	"aig-stardust": {
 		"enabled": true
@@ -618,7 +612,13 @@
 	"cfone-threat-events-visualizations-enabled": {
 		"enabled": true
 	},
+	"cfone-threat-intelligence-all-users": {
+		"enabled": false
+	},
 	"cfone-threat-intelligence-overview-enabled": {
+		"enabled": false
+	},
+	"cfone-threats-tag-management": {
 		"enabled": false
 	},
 	"cfone-top-level-nav-group": {
@@ -2947,7 +2947,7 @@
 		"enabled": false
 	},
 	"turnstile-widgets-china-region": {
-		"enabled": false
+		"enabled": true
 	},
 	"two-factor-login-interstitial": {
 		"enabled": true
