@@ -2,7 +2,7 @@
 	"name": "@cloudflare/voice-deepgram",
 	"dist-tags": {
 		"bootstrap": "0.0.0",
-		"latest": "0.1.0"
+		"latest": "0.2.0"
 	},
 	"versions": {
 		"0.0.0": {
@@ -72,6 +72,39 @@
 					}
 				},
 				"unpackedSize": 28915
+			}
+		},
+		"0.2.0": {
+			"name": "@cloudflare/voice-deepgram",
+			"version": "0.2.0",
+			"devDependencies": {
+				"agents": "0.23.0"
+			},
+			"peerDependencies": {
+				"agents": ">=0.23.0 <2.0.0"
+			},
+			"dist": {
+				"shasum": "8801cf72a2fbee70731ace1c174a21a8979acb65",
+				"tarball": "https://registry.npmjs.org/@cloudflare/voice-deepgram/-/voice-deepgram-0.2.0.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-hRwAI+uBGKm8HieXllWZwSUg/Z7HQAQTXx18jZzVZ7NsCFvs/Ho8L4mcRxlgSyz54WMZc+Me11bDaqQeL5JFsA==",
+				"signatures": [
+					{
+						"sig": "MEQCIFiJRo8dFNpAx7OxDc3lqNlJLj7QifjzOU5LEEOYA1cmAiA0gOh+BFY6G2PIOGgopsHXhN9oLcOw3hz5IfnzM2YVHQ==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQCtaFXOQQylL7CER0jVbeNvVrN6rGKWzYrLlW2ErXLVVQIhAI0RlHZ0zi1/cikH9npky7h0h2QW0DVOIer6NrCxIS7A"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvoice-deepgram@0.2.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 28912
 			}
 		}
 	}

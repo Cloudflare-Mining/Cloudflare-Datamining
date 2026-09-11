@@ -2,7 +2,7 @@
 	"name": "@cloudflare/voice-plivo",
 	"dist-tags": {
 		"bootstrap": "0.0.0",
-		"latest": "0.1.1"
+		"latest": "0.2.0"
 	},
 	"versions": {
 		"0.0.0": {
@@ -72,6 +72,39 @@
 					}
 				},
 				"unpackedSize": 46829
+			}
+		},
+		"0.2.0": {
+			"name": "@cloudflare/voice-plivo",
+			"version": "0.2.0",
+			"devDependencies": {
+				"agents": "0.23.0"
+			},
+			"peerDependencies": {
+				"agents": ">=0.23.0 <2.0.0"
+			},
+			"dist": {
+				"shasum": "ec032c74932d5f15f32b1e1db537bf029e1adbaa",
+				"tarball": "https://registry.npmjs.org/@cloudflare/voice-plivo/-/voice-plivo-0.2.0.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-TDPKgzfAlOcCN/zjJIeXliLAjE25B96S/cO/aF6WnoeKZGLo2XAeIvFOF5E32qMXl73u3RCMSz/VKQjI1vt+Dg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCYKKiVGnZbkCRPQ3UGRbTnAzWsLB6h8YMrqPm3ScXCmgIgEdkroOtusrMRykSHVZoThsxq/WG2WFtSso/YOhhbN6A=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIQDOwslV7/LT/gPbdQ/N7DhPqR5yu93G+EGuNDB34TqVXwIgPIzQuw0l3O7EV5hpaeiRcfwf8apEg2LwNFlsidhtWSc="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvoice-plivo@0.2.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 46842
 			}
 		}
 	}
