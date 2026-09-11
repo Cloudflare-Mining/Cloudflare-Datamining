@@ -295,9 +295,11 @@ next call to avoid transferring the same bytes again. Eligible image and
 PDF bytes are captured once during the bounded tool execution and returned
 as AI SDK `file` model output without re-reading the file. SVG source remains
 text. `ls`, `find`, and `grep` pass pagination through to the storage layer
-and return `nextOffset` when more results exist. File mutations share
-locks across tool sets for the same workspace, and recursive deletion
-excludes mutations throughout its subtree. See
+and return `nextOffset` when more results exist. `edit` falls back to
+Unicode- and whitespace-tolerant matching while splicing replacements into
+the original text, so untargeted content stays byte-for-byte unchanged. File
+mutations share locks across tool sets for the same workspace, and recursive
+deletion excludes mutations throughout its subtree. See
 [`docs/09_tool_interface.md`](../../docs/09_tool_interface.md).
 
 ## Git
@@ -341,10 +343,12 @@ Two ways to get a file out of the workspace and into the world:
   `assets publish <path> [<expiry>]` command. See
   [`docs/14_assets_interface.md`](../../docs/14_assets_interface.md).
 - **Artifacts** (`@cloudflare/computer/artifacts`):
-  `createArtifact(binding, sessionId)` is a session-scoped facade over
+  `createArtifact(binding, sessionId)` is a wrapper over
   the [Cloudflare Artifacts](https://developers.cloudflare.com/artifacts/)
   binding. Every repository name is implicitly prefixed with the session
-  id, so one namespace hosts many isolated sessions.
+  id, so one namespace hosts many isolated sessions. The session id is
+  optional: leave it off and the client spans the namespace, listing and
+  reaching every repository including those other sessions own.
 
 ```ts
 import { createArtifact } from "@cloudflare/computer/artifacts";
@@ -353,6 +357,9 @@ const artifacts = createArtifact(env.ARTIFACTS, agentId);
 const repo = await artifacts.create("build-cache", { description: "CI artifacts" });
 const token = await artifacts.createToken("build-cache", "read", 3600);
 const mine = await artifacts.list(); // only this session's repos
+
+const all = createArtifact(env.ARTIFACTS);
+await all.list(); // every repo in the namespace, under its stored name
 ```
 
 Artifacts also offers an argv CLI (`artifacts.cli({ argv })`), and when
@@ -407,14 +414,14 @@ on a computerd instance.
 
 | Entrypoint | Purpose |
 | --- | --- |
-| `@cloudflare/computer` | The `Workspace` facade, `workspace.runtime`, stub types, the R2 mount, and proxy classes. |
+| `@cloudflare/computer` | The `Workspace` wrapper, `workspace.runtime`, stub types, the R2 mount, and proxy classes. |
 | `@cloudflare/computer/backends/container` | `CloudflareContainerBackend` and `withWorkspaceContainer`. Pulls in the computerd / capnweb sync plumbing. |
 | `@cloudflare/computer/backends/worker-shell` | `WorkerShellBackend` and the bundled just-bash runtime. |
 | `@cloudflare/computer/backends/worker-javascript` | `WorkerJavaScriptBackend`, configured libraries, durable imports, `node:fs/promises`, and trusted `ws:git` / `ws:artifacts`. |
 | `@cloudflare/computer/tools` | AI SDK tools for agents: `read`, `ls`, `find`, `grep`, `write`, `edit`, `delete`, and optional `exec` and `publish`. |
 | `@cloudflare/computer/git` | Opt-in `isomorphic-git` glue for checkouts inside the workspace. |
 | `@cloudflare/computer/assets` | `createAssets` — share a workspace file to R2 as a presigned URL. |
-| `@cloudflare/computer/artifacts` | `createArtifact` and its CLI, a session-scoped facade over the Cloudflare Artifacts binding. |
+| `@cloudflare/computer/artifacts` | `createArtifact` and its CLI, an optionally session-scoped wrapper over the Cloudflare Artifacts binding. |
 | `@cloudflare/computer/observe/cloudflare` | Cloudflare-runtime adapter for the observability hook. |
 
 A consumer that only uses the container backend never imports the worker
@@ -469,17 +476,18 @@ When assigning a workspace to a Think agent's `workspace`, pass
 `useThink: true` so Think's compatibility methods are added alongside
 `workspace.fs` and `workspace.runtime`.
 
-### Durable pending-sync retries
+### Resuming an incomplete sync
 
 A command can change backend files and then have its post-command pull
-fail; the result exposes `sync: { status: "pending", ... }`. Configure a
-`SyncRetryScheduler` on `Workspace` to persist one coalesced retry per
-backend, then call `workspace.retryPendingSync(backend)` from your DO's
-alarm. Retries use bounded exponential backoff and return `"exhausted"`
-after the configured maximum. A container replacement returns `"lost"`
-and clears the unrecoverable intent so new work is not blocked. The library
-does not own your DO's alarm. See `SyncRetryScheduler`, `SyncRetryIntent`,
-and `SyncRetryOptions` in the package exports.
+fail; the result exposes `sync: { status: "pending", ... }`. Nothing
+further is required to recover it. The sync operation and its watermark
+hold the progress durably, so the next `pull()` resumes from where the
+failed one stopped and drains the rest of the fixed target.
+
+A deferred exec fixes that target when the command finishes, which pins
+the command's changes rather than capturing a newer target that could
+have raced ahead. Attempt counts, backoff, and exhaustion are not part
+of the API: a caller that wants to stop trying stops iterating.
 
 ### Observability
 

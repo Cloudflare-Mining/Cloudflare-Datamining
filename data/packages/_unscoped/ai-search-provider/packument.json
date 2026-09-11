@@ -1,7 +1,7 @@
 {
 	"name": "ai-search-provider",
 	"dist-tags": {
-		"latest": "0.1.1"
+		"latest": "0.1.2"
 	},
 	"versions": {
 		"0.1.0": {
@@ -61,6 +61,45 @@
 				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/ai-search-provider@0.1.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 88741
+			}
+		},
+		"0.1.2": {
+			"name": "ai-search-provider",
+			"version": "0.1.2",
+			"devDependencies": {
+				"ai": "^6.0.204",
+				"tsdown": "^0.22.3",
+				"vitest": "~4.1.9",
+				"typescript": "6.0.3",
+				"@ai-sdk/provider": "^3.0.10",
+				"@cloudflare/workers-types": "^4.20260628.1"
+			},
+			"peerDependencies": {
+				"ai": "^6.0.0",
+				"@ai-sdk/provider": "^3.0.0"
+			},
+			"dist": {
+				"shasum": "b05f69bad6d3332fc98728a08aad3a5693d9b0fb",
+				"tarball": "https://registry.npmjs.org/ai-search-provider/-/ai-search-provider-0.1.2.tgz",
+				"fileCount": 14,
+				"integrity": "sha512-aH0CVpCO/a2GLmvharcsNsnMTvr2kJxbWhVyUA5HyaGAFNXShfZCR210EjBVVGNkt1x7eVUeKFiYIea+BhyGuw==",
+				"signatures": [
+					{
+						"sig": "MEQCIH4HqEw1LsByLouZ7bW5RRtYuCwnWnSKzbefiXIaIWujAiAwFSJ2ikjNVnCwNy4aKkaZzoh0U7xRga1WxNfKohI5TA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQCTjfFW9fRmxbQAEVSVdXmV8t2rhLCpL6EatgToN8rmiAIhAMMHFKQww1A3Mvb3+qfX6WSQBTlDp81bdHfvdEcuRfey"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/ai-search-provider@0.1.2",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
