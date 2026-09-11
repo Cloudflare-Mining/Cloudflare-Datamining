@@ -3,44 +3,35 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong>Hybrid - Austin, TX</p>
-<p><strong>Schedule: </strong>This is a full-time, Tuesday-Saturday role requiring a firm start time of 11:00 AM Central Time to align with our global operations. This role requires you to be able to come into our Austin office twice a week.</p>
-<h4>About the Department</h4>
-<p>The Customer Support Team is dedicated to resolving complex issues and providing technical assistance across various channels, including phone, email, chat, and social media. Our team passionately advocates for all customers, from individual Wordpress bloggers to Fortune 500 customers handling millions of clients daily. By actively listening to real-world pain points and use cases, we serve as the vital link between our customers and the rest of Cloudflare and play a key role in building a better Internet every day!</p>
-<h4>What You’ll do</h4>
-<p>As a Technical Support Engineer at Cloudflare, you’ll work directly with customers and cross-functional teams to tackle a variety of technical challenges. You’ll gain hands-on experience with our products, learn the inner workings of Cloudflare’s offerings, and deepen your understanding of internet technologies. This role also provides opportunities to develop valuable technical and professional skills, as well as job shadowing experiences to explore different roles within the company. Join us to enhance your skill set while making a real impact!</p>
-<h4>Responsibilities&nbsp;</h4>
+<p><strong>Available Locations:&nbsp;</strong>Hybrid from Austin, TX</p>
+<p><strong>About the Department</strong><strong><br></strong>The Identity and Access Management (IAM) team is dedicated to ensuring the secure and efficient management of user identities, access privileges, and authentication mechanisms across internal systems, applications, and data. Our mission is to safeguard the organization against unauthorized access, protect sensitive information, and enable seamless user experiences while adhering to industry best practices and compliance standards.</p>
+<h4><strong>About the Role</strong></h4>
+<p>As an Identity and Access Management (IAM) Security Engineer, you will play a crucial role in designing, implementing, and scaling identity and access management solutions for Cloudflare’s internal workforce and workloads. You will be responsible for safeguarding our systems, applications, and data by ensuring secure user access, authentication, and authorization mechanisms.</p>
+<p><strong>What You’ll Do</strong></p>
 <ul>
-	<li>Fulfill support requests by communicating with Cloudflare customers via chat, email, and phone</li>
-	<li>Collaborate with senior engineers to analyze and troubleshoot customer issues</li>
-	<li>Track support requests using our ticketing system</li>
-	<li>Participate in team meetings to discuss and share feedback</li>
-	<li>Help define and update AI skills and conversational journeys to ensure up-to-date knowledge is available in automated workflows, as well as updating other internal- and public-facing documentation as needed.</li>
-	<li>Provide feedback on our product and potential improvements based on customer interactions</li>
-	<li>Support the team in testing new releases and reporting bugs</li>
-	<li>Perform other duties/projects as assigned&nbsp;</li>
+	<li>Design, build, test, and deploy IAM solutions across authentication, authorization, and accounting&nbsp;</li>
+	<li>Leverage Cloudflare products to secure our identities</li>
+	<li>Build SSO integrations leveraging SAML, OIDC, OAuth, and SCIM</li>
+	<li>Build and manage the Identity Governance and Administration platform</li>
+	<li>Develop automated roles leveraging RBAC and ABAC</li>
+	<li>Build and manage an access certification platform&nbsp;</li>
+	<li>Build and manage a Privileged Access Management (PAM) platform</li>
+	<li>Provide operational support of IAM systems including an on-call rotation that may include after hours calls</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<p><strong>Desirable skills, knowledge and experience</strong></p>
+<p>Security engineers take part in a wide variety of tasks and projects in the team. One individual is not expected to know everything, but a working knowledge in several of the following areas is required:&nbsp;</p>
 <ul>
-	<li>3-5 years of experience working in a technical Customer Support role, preferably as part of a team working with large enterprise customers</li>
-	<li>Self-driven and comfortable learning new technologies and systems on an ongoing basis</li>
-	<li>Excellent written and verbal communication skills</li>
-	<li>Strong understanding of how the Internet works at OSI Model layers 3, 4, and 7</li>
-	<li>Strong understanding of DNS, SSL/TLS, and HTTP(S) protocols</li>
-	<li>General understanding of HTTP reverse proxying, caching, and load balancing</li>
-	<li>Experience using Linux and associated command line tools, including curl, dig, traceroute, openssl, git, etc.</li>
-	<li>Experience writing scripts in Bash, Python, JavaScript, or other scripting languages</li>
-	<li>Experience installing and configuring web servers like Apache, Nginx, and/or IIS</li>
+	<li>Strong understanding of identity federation (SAML, OAuth, OpenID Connect, etc.)</li>
+	<li>Experience implementing Identity Governance and Administration (IGA) solutions including lifecycle management, SCIM, birthright access (RBAC, ABAC), and access certifications</li>
+	<li>Demonstrated ability to build production-grade automation scripts and tools. Must possess hands-on engineering experience leveraging AI/LLMs to solve operational or technical challenges.</li>
+	<li>Experience with secure configuration of containerized application platforms (e.g. Kubernetes)</li>
+	<li>Advanced scripting experience (Python, TypeScript, Bash, etc.)</li>
+	<li>Experience implementing Zero Trust controls</li>
+	<li>Experience integrating with applications and SaaS solutions&nbsp;</li>
+	<li>Experience with Identity and Access Management policy application and enforcement</li>
+	<li>Experience working with Identity Threat Detection &amp; Response (ITDR)</li>
+	<li>Experience working with infrastructure as code and configuration management tools like Terraform, Ansible, etc.</li>
 </ul>
-<h4>Bonus Points</h4>
-<ul>
-	<li>Prior experience with the Cloudflare platform, especially for personal projects/websites</li>
-	<li>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</li>
-	<li>Experience configuring network or application firewalls</li>
-	<li>Degrees or certifications in Computer Science, Information Technology, and related fields</li>
-	<li>Fluency in Mandarin, Spanish, and/or Portuguese</li>
-</ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

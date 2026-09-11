@@ -3,46 +3,29 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
-<p><strong>About Cloudflare's Security Team</strong></p>
-<p>Security is at the heart of Cloudflare’s mission to help build a better Internet. Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world, spanning over 330 cities in more than 125 countries, and operating within 50 milliseconds of 95% of the Internet-connected population.</p>
-<p>The Enterprise Identity &amp; Access Management (IAM) Business Enablement team plans strategic alignment by optimizing IAM processes - such as user provisioning and access controls - to enhance overall efficiency and improve the user experience. Ultimately, the team ensures that security measures actively accelerate business operations while maintaining full regulatory compliance.</p>
-<p><strong>About the Internship Program</strong></p>
-<p>The ideal Security intern is passionate about making the Internet a more secure place. You will work alongside experienced security team members to partner with them in planning, executing and overseeing initiatives that help improve Cloudflare’s security posture. We are looking for interns who are curious, proactive, and able to approach problems with a "security-first" mindset. This is a unique opportunity for candidates who want to learn how to defend systems at a scale that few other companies can offer.</p>
-<h4><strong>What you'll do</strong></h4>
+<p><strong>Location:</strong> London</p>
+<p><strong>About the Role:</strong></p>
+<p>We are looking for a Senior Talent Acquisition Business Partner – GTM to join our London-based EMEA team. Acting as a strategic talent advisor and go-to-market specialist, you will drive the expansion of our sales and technical GTM teams across the broader EMEA region. You will leverage your deep market expertise, extensive network, and AI-driven strategies to identify and secure top-tier talent for Cloudflare across EMEA, while maintaining the agility to pivot your support as business needs evolve.</p>
+<p><strong>Core Responsibilities</strong></p>
 <ul>
-	<li>
-		<ul>
-			<li>Execute a specialized security project over 12 weeks that directly improves Cloudflare’s defensive posture.</li>
-			<li>High-level job responsibilities includes but not limited to -&nbsp;
-				<ul>
-					<li>Contribute to the development and maintenance of the user access review dashboard and associated metrics.</li>
-					<li>Execute comprehensive group analysis to precisely determine and document organizational group descriptions and ownership mandates.</li>
-					<li>Provide analytical support pertaining to the implementation and strategic application of Role-Based Access Control (RBAC).</li>
-				</ul>
-			</li>
-			<li>Work cross-functionally with Legal, People, Engineering, and Finance teams to integrate security into the fabric of the company.</li>
-			<li>Work closely with a mentor who will provide hands-on guidance in your specific security domain.</li>
-			<li>Present your security project to the entire company at the end of the internship.</li>
-			<li>Connect and learn from our executives and leadership team including our co-founders.</li>
-			<li>Write for our Cloudflare blog and be featured on Cloudflare.tv sessions.</li>
-		</ul>
-	</li>
+	<li><strong>End-to-End Recruitment &amp; Talent Strategy:</strong> Build and execute comprehensive talent strategies to help hiring leaders build high-performing teams, functioning similarly to how a salesperson puts together a go-to-market plan.</li>
+	<li><strong>Proactive Pipeline &amp; Passive Candidate Outreach:</strong> Draw upon an extensive network of industry contacts to build proactive pipeline strategies for a variety of GTM and technical GTM roles across EMEA.</li>
+	<li><strong>Stakeholder Management &amp; Advising:</strong> Build and maintain solid relationships with the GEO VP and cross-functional stakeholders, including Finance, HRBPs, and compensation teams.</li>
+	<li><strong>AI-Agent Integration &amp; Process Optimisation:</strong> Partner with internal automated AI agents and generative tools to eliminate legacy manual tasks, optimise administrative outreach workflows at scale, and synthesise complex market data to inform regional talent strategies.</li>
+	<li><strong>Data Utilization &amp; Analytics:</strong> Leverage foundational data layers and recruitment analytics to inform talent strategies, actively analysing metrics such as time-to-hire and source efficiency to drive optimal operational decisions.</li>
+	<li><strong>Employer Branding &amp; Market Awareness:</strong> Lead and execute strategic employer branding initiatives tailored to the EMEA market to elevate Cloudflare's profile as a top destination for GTM talent.</li>
 </ul>
-<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
-<p><strong>Desirable skills, knowledge and experience</strong></p>
+<p><strong>Desirable Skills</strong></p>
 <ul>
-	<li>Proficiency with Google Sheets for filtering, sorting, VLOOKUP, and basic data manipulation to support review efforts.</li>
-	<li>Familiarity with SQL is a significant plus, as IGA analysis often involves querying access logs or user tables to support metrics and dashboards.</li>
-	<li>Understanding of roles, groups, and permissions, and how they relate to the concept of "least privilege."</li>
-	<li>Ability to use tools like Google Docs, Wiki to create clear, organized documentation for processes, roles, and review evidence.</li>
-	<li>Clear and professional verbal and written communication skills for interacting with application owners and stakeholders to gather information during access reviews.</li>
-	<li>Demonstrated critical thinking skills and drive to learn and adapt new technologies.</li>
-	<li>Curiosity, empathy and ability to get things done.</li>
-	<li>Ability to commit to a minimum 12 week summer internship.</li>
-	<li>In office 3-5 days a week in our Austin office</li>
+	<li><strong>GTM Recruiting Expertise:</strong> A proven track record of success as a Senior Recruiter with deep experience hiring for technical GTM roles, including Customer Engineering, Forward Deployed Engineers, Customer Experience and Solutions Architects, as well as core sales GTM organisations.</li>
+	<li><strong>Strategic Problem Solving:</strong> Ability to operate two "plays" ahead, anticipating potential bottlenecks before they materialize, and resolving complex organisational issues.</li>
+	<li><strong>Negotiation &amp; Closing Skills:</strong> Effective negotiation capabilities to secure top-tier candidates, driven by a deep understanding of Cloudflare’s unique value proposition.</li>
+	<li><strong>AI &amp; Ecosystem Proficiency:</strong> Demonstrated capability to leverage automated workflows, AI-powered sourcing environments, and LLMs for complex boolean logic, market mapping, and productivity multiplication.</li>
+	<li><strong>Candidate Experience Focus:</strong> Strong organizational skills to eliminate operational friction, ensuring clear communication and proactive engagement throughout the interview lifecycle.</li>
+	<li><strong>Communication &amp; Influencing:</strong> Exceptional written and verbal English skills, with the ability to communicate transparently, foster alignment across teams and stakeholders and leverage data and market insights to influence.</li>
+	<li><strong>Adaptability &amp; Self-Direction:</strong> Comfort thriving in ever-changing environments, taking complete responsibility for outcomes while seamlessly navigating an evolving technological and organisational landscape.</li>
 </ul>
-<p><strong>Bonus:</strong> Demonstrated passion for security &amp; software development, such as personal projects, open-source contributions, or experience with our developer platform using <a href="https://www.cloudflare.com/students/">Cloudflare for Students.</a></p>
+<p><br><br></p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -27,9 +27,8 @@
 </ul>
 <h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
-	<li>Programming experience in <strong>Go or Rust</strong> and a desire to improve your skills in both.</li>
-	<li>8+ years of hands-on software engineering experience, including a track record of owning the architecture of complex, distributed, production-critical systems end to end.</li>
-	<li>Demonstrated technical leadership beyond your own code: driving RFCs and design reviews that other senior engineers and teams rely on, and being sought out as a technical escalation point.</li>
+	<li>3+ years of hands-on software engineering experience, including a track record of owning the architecture of complex, distributed, production-critical systems end to end.</li>
+	<li>Programming experience in&nbsp;<strong>Go or Rust</strong> and a desire to improve your skills in both.</li>
 	<li>A solid grasp of networking protocols in Layers 3 and 4 of the OSI Model.</li>
 	<li>Knowledge of HTTP, TLS, and CDN networks.</li>
 	<li>Experience in implementing secure and highly-available distributed systems.</li>
@@ -49,7 +48,7 @@
 	<li>Experience using AI-assisted development tools (e.g., code completion, codebase analysis, log/data exploration) in a professional setting.</li>
 </ul>
 <h3 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
-<p data-path-to-node="1">● For Portugal based hires: Estimated annual salary is between €66,000 - €91,000.</p>
+<p data-path-to-node="1">● For Portugal based hires: Estimated annual salary is between €54,000 - €75,000.</p>
 <ul data-path-to-node="2">
 	<li>
 		<p data-path-to-node="2,0,0">The final offer will be inclusive of time exemption, in alignment with the applicable law and collective bargaining agreements.</p>
