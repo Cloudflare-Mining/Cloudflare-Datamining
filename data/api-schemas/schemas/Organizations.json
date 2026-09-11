@@ -11,7 +11,7 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+					"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 					"pattern": "^[a-f0-9]{32}$",
 					"title": "Organization ID",
 					"x-auditable": true
@@ -335,7 +335,7 @@
 					"type": "array",
 					"items": {
 						"type": "string",
-						"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+						"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 						"pattern": "^[a-f0-9]{32}$",
 						"title": "Organization ID",
 						"x-auditable": true
@@ -414,7 +414,7 @@
 					"anyOf": [
 						{
 							"type": "string",
-							"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+							"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 							"pattern": "^[a-f0-9]{32}$",
 							"title": "Organization ID",
 							"x-auditable": true
@@ -497,7 +497,7 @@
 												"allOf": [
 													{
 														"type": "string",
-														"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+														"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 														"pattern": "^[a-f0-9]{32}$",
 														"title": "Organization ID",
 														"x-auditable": true
@@ -576,7 +576,7 @@
 												"properties": {
 													"id": {
 														"type": "string",
-														"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+														"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 														"pattern": "^[a-f0-9]{32}$",
 														"title": "Organization ID",
 														"x-auditable": true
@@ -754,7 +754,7 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+					"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 					"pattern": "^[a-f0-9]{32}$",
 					"title": "Organization ID",
 					"x-auditable": true
@@ -807,7 +807,7 @@
 											"allOf": [
 												{
 													"type": "string",
-													"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+													"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 													"pattern": "^[a-f0-9]{32}$",
 													"title": "Organization ID",
 													"x-auditable": true
@@ -886,7 +886,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+													"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 													"pattern": "^[a-f0-9]{32}$",
 													"title": "Organization ID",
 													"x-auditable": true
@@ -1042,7 +1042,7 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+					"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 					"pattern": "^[a-f0-9]{32}$",
 					"title": "Organization ID",
 					"x-auditable": true
@@ -1155,6 +1155,16 @@
 				"description": "Include Account tags from the resource tag mirror. Omit this parameter to preserve the existing Account response shape.",
 				"schema": {
 					"type": "boolean"
+				},
+				"explode": false
+			},
+			{
+				"name": "include_total",
+				"in": "query",
+				"description": "Whether to calculate and return the exact result_info.total_size for cursor\npagination. Defaults to true. When false, total_size is omitted. page_size and\ninclude_total may change between pages; next_page_token remains the authoritative\ncontinuation signal.\nLegacy page/per_page requests always calculate total_count.",
+				"schema": {
+					"type": "boolean",
+					"default": true
 				},
 				"explode": false
 			},
@@ -1414,7 +1424,7 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+					"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 					"pattern": "^[a-f0-9]{32}$",
 					"title": "Organization ID",
 					"x-auditable": true
@@ -1596,7 +1606,7 @@
 								"allOf": [
 									{
 										"type": "string",
-										"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+										"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 										"pattern": "^[a-f0-9]{32}$",
 										"title": "Organization ID",
 										"x-auditable": true
@@ -1675,7 +1685,7 @@
 								"properties": {
 									"id": {
 										"type": "string",
-										"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+										"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 										"pattern": "^[a-f0-9]{32}$",
 										"title": "Organization ID",
 										"x-auditable": true
@@ -1774,7 +1784,7 @@
 											"allOf": [
 												{
 													"type": "string",
-													"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+													"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 													"pattern": "^[a-f0-9]{32}$",
 													"title": "Organization ID",
 													"x-auditable": true
@@ -1853,7 +1863,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+													"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 													"pattern": "^[a-f0-9]{32}$",
 													"title": "Organization ID",
 													"x-auditable": true
@@ -2012,7 +2022,7 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+					"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 					"pattern": "^[a-f0-9]{32}$",
 					"title": "Organization ID",
 					"x-auditable": true
@@ -2037,7 +2047,7 @@
 								"allOf": [
 									{
 										"type": "string",
-										"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+										"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 										"pattern": "^[a-f0-9]{32}$",
 										"title": "Organization ID",
 										"x-auditable": true
@@ -2116,7 +2126,7 @@
 								"properties": {
 									"id": {
 										"type": "string",
-										"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+										"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 										"pattern": "^[a-f0-9]{32}$",
 										"title": "Organization ID",
 										"x-auditable": true
@@ -2215,7 +2225,7 @@
 											"allOf": [
 												{
 													"type": "string",
-													"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+													"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 													"pattern": "^[a-f0-9]{32}$",
 													"title": "Organization ID",
 													"x-auditable": true
@@ -2294,7 +2304,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+													"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 													"pattern": "^[a-f0-9]{32}$",
 													"title": "Organization ID",
 													"x-auditable": true
@@ -2449,7 +2459,7 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+					"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 					"pattern": "^[a-f0-9]{32}$",
 					"title": "Organization ID",
 					"x-auditable": true

@@ -3366,9 +3366,43 @@
 			{
 				"name": "filter",
 				"in": "query",
-				"description": "Comma-separated workflow event types to include.",
+				"description": "Workflow event types to include. Send multiple event types by repeating the filter query parameter.",
 				"schema": {
-					"type": "string"
+					"type": "array",
+					"items": {
+						"enum": [
+							"workflow_queued",
+							"workflow_started",
+							"workflow_running",
+							"workflow_paused",
+							"workflow_waiting_for_pause",
+							"workflow_waiting",
+							"workflow_completed",
+							"workflow_errored",
+							"workflow_terminated",
+							"step_started",
+							"step_completed",
+							"step_errored",
+							"attempt_started",
+							"attempt_completed",
+							"attempt_errored",
+							"sleep_started",
+							"sleep_completed",
+							"wait_started",
+							"wait_completed",
+							"wait_timed_out",
+							"rollback_started",
+							"rollback_step_started",
+							"rollback_step_completed",
+							"rollback_step_errored",
+							"rollback_attempt_started",
+							"rollback_attempt_completed",
+							"rollback_attempt_errored",
+							"rollback_completed",
+							"rollback_errored"
+						],
+						"type": "string"
+					}
 				}
 			},
 			{
@@ -3522,7 +3556,7 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true,
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workflows.instances",
 		"x-fern-sdk-method-name": "subscribe"
 	},

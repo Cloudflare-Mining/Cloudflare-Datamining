@@ -516,6 +516,17 @@
 				}
 			},
 			{
+				"name": "tag",
+				"in": "query",
+				"description": "Filter by tag key:value pairs. Multiple `tag` params are AND'd.\nFormat: `tag=key:value` (e.g., `tag=environment:production`).\nKey and value must both be non-empty; `tag=:value` and `tag=key:` return 400.",
+				"schema": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			{
 				"name": "page",
 				"in": "query",
 				"description": "Current page in the response",
@@ -774,6 +785,15 @@
 														"type": "string",
 														"format": "date-time",
 														"example": "2019-08-24T14:15:22Z"
+													},
+													"tags": {
+														"description": "Tags assigned to the target. Empty when no tags are assigned.",
+														"type": "object",
+														"additionalProperties": {
+															"type": "string"
+														},
+														"nullable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													}
 												},
 												"required": [
@@ -1124,6 +1144,15 @@
 													"type": "string",
 													"format": "date-time",
 													"example": "2019-08-24T14:15:22Z"
+												},
+												"tags": {
+													"description": "Tags assigned to the target. Empty when no tags are assigned.",
+													"type": "object",
+													"additionalProperties": {
+														"type": "string"
+													},
+													"nullable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -1347,6 +1376,15 @@
 										}
 									}
 								}
+							},
+							"tags": {
+								"description": "Optional tags to associate with the target. Keys and values are\nuser-defined strings.",
+								"type": "object",
+								"additionalProperties": {
+									"type": "string"
+								},
+								"nullable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"required": [
@@ -1527,6 +1565,15 @@
 													"type": "string",
 													"format": "date-time",
 													"example": "2019-08-24T14:15:22Z"
+												},
+												"tags": {
+													"description": "Tags assigned to the target. Empty when no tags are assigned.",
+													"type": "object",
+													"additionalProperties": {
+														"type": "string"
+													},
+													"nullable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -1853,6 +1900,398 @@
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
 	},
+	"POST /accounts/{account_id}/infrastructure/targets/batch_tags": {
+		"operationId": "infra-targets-post-batch-tags",
+		"summary": "Replace tags on existing targets",
+		"description": "Replaces tags for one or more existing infrastructure access targets.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account identifier",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"title": "account_id"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"items": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"tags": {
+											"type": "object",
+											"additionalProperties": {
+												"type": "string"
+											}
+										},
+										"target_id": {
+											"description": "Target identifier",
+											"type": "string",
+											"format": "uuid",
+											"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+											"maxLength": 36,
+											"title": "target_id",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"target_id",
+										"tags"
+									]
+								}
+							}
+						},
+						"required": [
+							"items"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Successfully replaced the targets' tags.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"created_at": {
+														"description": "Date and time at which the target was created",
+														"type": "string",
+														"format": "date-time",
+														"example": "2019-08-24T14:15:22Z"
+													},
+													"hostname": {
+														"description": "A non-unique field that refers to a target",
+														"type": "string",
+														"example": "infra-access-target"
+													},
+													"id": {
+														"description": "Target identifier",
+														"type": "string",
+														"format": "uuid",
+														"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+														"maxLength": 36,
+														"title": "target_id",
+														"x-auditable": true
+													},
+													"ip": {
+														"description": "The IPv4/IPv6 address that identifies where to reach a target",
+														"type": "object",
+														"properties": {
+															"ipv4": {
+																"description": "The target's IPv4 address",
+																"type": "object",
+																"properties": {
+																	"ip_addr": {
+																		"description": "IP address of the target",
+																		"type": "string",
+																		"example": "187.26.29.249",
+																		"x-auditable": true
+																	},
+																	"virtual_network_id": {
+																		"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
+																		"type": "string",
+																		"format": "uuid",
+																		"example": "c77b744e-acc8-428f-9257-6878c046ed55",
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
+																	}
+																}
+															},
+															"ipv6": {
+																"description": "The target's IPv6 address",
+																"type": "object",
+																"properties": {
+																	"ip_addr": {
+																		"description": "IP address of the target",
+																		"type": "string",
+																		"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
+																		"x-auditable": true
+																	},
+																	"virtual_network_id": {
+																		"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
+																		"type": "string",
+																		"format": "uuid",
+																		"example": "c77b744e-acc8-428f-9257-6878c046ed55",
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
+																	}
+																}
+															}
+														}
+													},
+													"modified_at": {
+														"description": "Date and time at which the target was modified",
+														"type": "string",
+														"format": "date-time",
+														"example": "2019-08-24T14:15:22Z"
+													},
+													"tags": {
+														"description": "Tags assigned to the target. Empty when no tags are assigned.",
+														"type": "object",
+														"additionalProperties": {
+															"type": "string"
+														},
+														"nullable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													}
+												},
+												"required": [
+													"id",
+													"hostname",
+													"ip",
+													"created_at",
+													"modified_at"
+												]
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failed to replace the targets' tags.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Infrastructure Access Targets"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "access.targets.bulk",
+		"x-fern-sdk-method-name": "replace-tags",
+		"x-forge-hidden": true,
+		"x-stainless-skip": [
+			"terraform"
+		]
+	},
 	"PUT /accounts/{account_id}/infrastructure/targets/{target_id}": {
 		"operationId": "infra-targets-put",
 		"summary": "Update target",
@@ -1943,6 +2382,15 @@
 										}
 									}
 								}
+							},
+							"tags": {
+								"description": "Optional tags to associate with the target. Keys and values are\nuser-defined strings.",
+								"type": "object",
+								"additionalProperties": {
+									"type": "string"
+								},
+								"nullable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"required": [
@@ -2123,6 +2571,15 @@
 													"type": "string",
 													"format": "date-time",
 													"example": "2019-08-24T14:15:22Z"
+												},
+												"tags": {
+													"description": "Tags assigned to the target. Empty when no tags are assigned.",
+													"type": "object",
+													"additionalProperties": {
+														"type": "string"
+													},
+													"nullable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -2347,6 +2804,15 @@
 											}
 										}
 									}
+								},
+								"tags": {
+									"description": "Optional tags to associate with the target. Keys and values are\nuser-defined strings.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "string"
+									},
+									"nullable": true,
+									"x-stainless-terraform-configurability": "computed_optional"
 								}
 							},
 							"required": [
@@ -2531,6 +2997,15 @@
 														"type": "string",
 														"format": "date-time",
 														"example": "2019-08-24T14:15:22Z"
+													},
+													"tags": {
+														"description": "Tags assigned to the target. Empty when no tags are assigned.",
+														"type": "object",
+														"additionalProperties": {
+															"type": "string"
+														},
+														"nullable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													}
 												},
 												"required": [
@@ -2677,6 +3152,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "access.targets.bulk",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stainless-skip": [
+			"terraform"
+		]
 	}
 }

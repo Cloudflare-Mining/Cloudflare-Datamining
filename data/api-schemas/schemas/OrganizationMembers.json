@@ -10,7 +10,7 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+					"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 					"pattern": "^[a-f0-9]{32}$",
 					"title": "Organization ID",
 					"x-auditable": true
@@ -23,32 +23,11 @@
 				"schema": {
 					"description": "Organization Member ID",
 					"type": "string",
-					"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+					"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 					"pattern": "^[a-f0-9]{32}$"
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {
-					"schema": {
-						"type": "object",
-						"properties": {
-							"member_id": {
-								"description": "Organization Member ID",
-								"type": "string",
-								"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
-								"pattern": "^[a-f0-9]{32}$"
-							}
-						},
-						"required": [
-							"member_id"
-						]
-					}
-				}
-			}
-		},
 		"responses": {
 			"204": {
 				"description": "There is no content to send for this request, but the headers may be useful."
@@ -142,7 +121,7 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+					"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 					"pattern": "^[a-f0-9]{32}$",
 					"title": "Organization ID",
 					"x-auditable": true
@@ -267,7 +246,7 @@
 											"id": {
 												"description": "Organization Member ID",
 												"type": "string",
-												"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+												"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 												"pattern": "^[a-f0-9]{32}$"
 											},
 											"meta": {
@@ -442,7 +421,7 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+					"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 					"pattern": "^[a-f0-9]{32}$",
 					"title": "Organization ID",
 					"x-auditable": true
@@ -455,7 +434,7 @@
 				"schema": {
 					"description": "Organization Member ID",
 					"type": "string",
-					"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+					"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 					"pattern": "^[a-f0-9]{32}$"
 				}
 			}
@@ -503,7 +482,7 @@
 										"id": {
 											"description": "Organization Member ID",
 											"type": "string",
-											"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+											"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 											"pattern": "^[a-f0-9]{32}$"
 										},
 										"meta": {
@@ -663,7 +642,7 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+					"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 					"pattern": "^[a-f0-9]{32}$",
 					"title": "Organization ID",
 					"x-auditable": true
@@ -754,7 +733,7 @@
 										"id": {
 											"description": "Organization Member ID",
 											"type": "string",
-											"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+											"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 											"pattern": "^[a-f0-9]{32}$"
 										},
 										"meta": {
@@ -914,7 +893,7 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+					"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 					"pattern": "^[a-f0-9]{32}$",
 					"title": "Organization ID",
 					"x-auditable": true
@@ -1011,7 +990,7 @@
 											"id": {
 												"description": "Organization Member ID",
 												"type": "string",
-												"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+												"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 												"pattern": "^[a-f0-9]{32}$"
 											},
 											"meta": {
