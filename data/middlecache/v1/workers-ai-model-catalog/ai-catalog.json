@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-09-10T04:33:54.206Z",
-	"model_count": 217,
+	"generated_at": "2026-09-11T04:33:54.544Z",
+	"model_count": 219,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -4754,6 +4754,90 @@
 			"terms": "https://openai.com/policies/",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-image-1.5.png",
 			"created_at": "2026-05-22 17:53:38",
+			"zdr_comment": null
+		},
+		{
+			"model_id": "openai/gpt-image-2.5-flare",
+			"slug": "openai/gpt-image-2.5-flare",
+			"display_name": "GPT Image 2.5 Flare",
+			"description": "OpenAI's fastest high-quality everyday image generation model. It accepts text and image inputs and produces images with low, medium, high, xhigh, max, and auto quality settings.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Image Generation",
+				"Image Editing",
+				"Multimodal"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://openai.com/policies/"
+				},
+				{
+					"property_id": "info",
+					"value": "https://developers.openai.com/api/docs/models/gpt-image-2.5-flare"
+				}
+			],
+			"metadata": {
+				"Image Editing": "Yes",
+				"Output Formats": "png, webp, jpeg",
+				"Quality": "low, medium, high, xhigh, max, auto",
+				"Sizes": "1024x1024, 1024x1536, 1536x1024, auto"
+			},
+			"external_info": "https://developers.openai.com/api/docs/models/gpt-image-2.5-flare",
+			"terms": "https://openai.com/policies/",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-image-2.5-flare.png",
+			"created_at": "2026-09-10 23:35:14",
+			"zdr_comment": null
+		},
+		{
+			"model_id": "openai/gpt-image-2.5-sunburst",
+			"slug": "openai/gpt-image-2.5-sunburst",
+			"display_name": "GPT Image 2.5 Sunburst",
+			"description": "OpenAI's most capable image generation and editing model. It accepts text and image inputs and produces images with low, medium, high, xhigh, max, and auto quality settings.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Image Generation",
+				"Image Editing",
+				"Multimodal"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://openai.com/policies/"
+				},
+				{
+					"property_id": "info",
+					"value": "https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst"
+				}
+			],
+			"metadata": {
+				"Image Editing": "Yes",
+				"Output Formats": "png, webp, jpeg",
+				"Quality": "low, medium, high, xhigh, max, auto",
+				"Sizes": "1024x1024, 1024x1536, 1536x1024, auto"
+			},
+			"external_info": "https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst",
+			"terms": "https://openai.com/policies/",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-image-2.5-sunburst.png",
+			"created_at": "2026-09-10 23:35:47",
 			"zdr_comment": null
 		},
 		{
