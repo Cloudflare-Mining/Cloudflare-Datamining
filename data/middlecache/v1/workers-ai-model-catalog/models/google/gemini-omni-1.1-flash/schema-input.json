@@ -1,0 +1,53 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"text": {
+			"description": "Text prompt or editing instruction",
+			"type": "string"
+		},
+		"image": {
+			"description": "First-frame or primary reference image",
+			"type": "string"
+		},
+		"last_frame": {
+			"description": "Last-frame reference image",
+			"type": "string"
+		},
+		"reference_images": {
+			"maxItems": 10,
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"video": {
+			"description": "Reference video for editing or extension",
+			"type": "string"
+		},
+		"audio": {
+			"description": "Reference audio input",
+			"type": "string"
+		},
+		"previous_interaction_id": {
+			"type": "string"
+		},
+		"aspect_ratio": {
+			"type": "string",
+			"enum": [
+				"16:9",
+				"9:16"
+			]
+		},
+		"resolution": {
+			"type": "string",
+			"enum": [
+				"360p",
+				"720p",
+				"1080p",
+				"4k"
+			]
+		}
+	},
+	"additionalProperties": false
+}

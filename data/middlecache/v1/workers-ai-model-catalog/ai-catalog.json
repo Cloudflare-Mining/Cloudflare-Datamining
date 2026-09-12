@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-09-11T04:33:54.544Z",
-	"model_count": 219,
+	"generated_at": "2026-09-12T04:33:55.843Z",
+	"model_count": 220,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -2738,6 +2738,43 @@
 			"terms": "https://ai.google.dev/gemini-api/terms",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/gemini-3.8-flash.png",
 			"created_at": "2026-09-04 15:18:57",
+			"zdr_comment": null
+		},
+		{
+			"model_id": "google/gemini-omni-1.1-flash",
+			"slug": "google/gemini-omni-1.1-flash",
+			"display_name": "Gemini Omni Flash 1.1",
+			"description": "High-performance multimodal video generation and editing model with conversational controls and generated audio.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Video",
+				"description": ""
+			},
+			"tags": [
+				"Video Generation",
+				"Audio",
+				"Multimodal"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://ai.google.dev/gemini-api/terms"
+				}
+			],
+			"metadata": {
+				"Audio Generation": "Yes",
+				"Input Modalities": "Text, image, audio, video",
+				"Resolutions": "360p, 720p, 1080p, 4k"
+			},
+			"external_info": null,
+			"terms": "https://ai.google.dev/gemini-api/terms",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/gemini-omni-1.1-flash.png",
+			"created_at": "2026-09-11 15:09:32",
 			"zdr_comment": null
 		},
 		{
