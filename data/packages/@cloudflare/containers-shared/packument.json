@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/containers-shared",
 	"dist-tags": {
-		"latest": "0.16.1"
+		"latest": "0.16.2"
 	},
 	"versions": {
 		"0.16.0": {
@@ -60,8 +60,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIDripSeFymtZj6coPVuFzMJW2Yz7Jt9nv0ochvtsEGhPAiEAzysFNKpiaNLy63CP6LUhqll8mkuOMKY/NqyASXGeZds="
+						"sig": "MEUCIDripSeFymtZj6coPVuFzMJW2Yz7Jt9nv0ochvtsEGhPAiEAzysFNKpiaNLy63CP6LUhqll8mkuOMKY/NqyASXGeZds=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -71,6 +71,47 @@
 					}
 				},
 				"unpackedSize": 334847
+			},
+			"engines": {
+				"node": ">=22.0.0"
+			}
+		},
+		"0.16.2": {
+			"name": "@cloudflare/containers-shared",
+			"version": "0.16.2",
+			"dependencies": {
+				"@cloudflare/workers-utils": "0.38.1",
+				"@cloudflare/cli-shared-helpers": "0.1.30"
+			},
+			"devDependencies": {
+				"tsup": "8.3.0",
+				"vitest": "4.1.0",
+				"typescript": "5.8.3",
+				"@types/node": "22.15.17",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"dist": {
+				"shasum": "a79ef615ceaac89ad58ed7af3f8b76917c12a570",
+				"tarball": "https://registry.npmjs.org/@cloudflare/containers-shared/-/containers-shared-0.16.2.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-nFYv2XDFnH3Ijj0d7GrlL7XXLN9Jnb8yDMGD7TqRcwOb7sxQIpzUTF/Cdz4uAx03l3Gv2y6ik5JxQnSi0usm9A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDzpIbwiUl60JbwdFIi7V6CwO94unj/rN5DKGIzqByqsAIgOYyqIfjwvXONnz5lnxSEsY199qHFHNLNydEmGKigCiI=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQDj2IxTB6sgTQVxjulGtDMeijUgixsXSILlzfsgJM+GuAIhAOX7AvNXDMOhmGV9fkKl6ZJjfYH38Q3k8RDsKXi9NIq0"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcontainers-shared@0.16.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 335064
 			},
 			"engines": {
 				"node": ">=22.0.0"
