@@ -3841,7 +3841,7 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "workflows.instances",
-		"x-fern-sdk-method-name": "subscribeToken"
+		"x-fern-sdk-method-name": "subscribe-token"
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances/terminate": {
 		"operationId": "wor-status-terminate-workflow-instances",
@@ -4113,7 +4113,7 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "workflows.instances.batch",
-		"x-fern-sdk-method-name": "terminationStatus"
+		"x-fern-sdk-method-name": "termination-status"
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/versions": {
 		"operationId": "wor-list-workflow-versions",

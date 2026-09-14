@@ -112,94 +112,114 @@
 								{
 									"properties": {
 										"result": {
-											"type": "object",
-											"properties": {
-												"auth_domain": {
-													"description": "The unique subdomain assigned to your Zero Trust organization.",
-													"type": "string",
-													"example": "test.cloudflareaccess.com"
-												},
-												"created_at": {
-													"type": "string",
-													"format": "date-time",
-													"example": "2014-01-01T05:20:00.12345Z",
-													"x-auditable": true
-												},
-												"deny_unmatched_requests": {
-													"description": "Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.",
-													"type": "boolean",
-													"example": "true",
-													"x-auditable": true
-												},
-												"deny_unmatched_requests_exempted_zone_names": {
-													"description": "Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.",
-													"type": "array",
-													"items": {
-														"type": "string"
-													},
-													"example": [
-														"example.com"
-													],
-													"x-auditable": true
-												},
-												"is_ui_read_only": {
-													"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
-													"type": "boolean",
-													"example": "false"
-												},
-												"login_design": {
+											"allOf": [
+												{
 													"type": "object",
 													"properties": {
-														"background_color": {
-															"description": "The background color on your login page.",
+														"auth_domain": {
+															"description": "The unique subdomain assigned to your Zero Trust organization.",
 															"type": "string",
-															"example": "#c5ed1b"
+															"example": "test.cloudflareaccess.com"
 														},
-														"footer_text": {
-															"description": "The text at the bottom of your login page.",
+														"created_at": {
 															"type": "string",
-															"example": "This is an example description."
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
 														},
-														"header_text": {
-															"description": "The text at the top of your login page.",
-															"type": "string",
-															"example": "This is an example description."
+														"deny_unmatched_requests": {
+															"description": "Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.",
+															"type": "boolean",
+															"example": "true",
+															"x-auditable": true
 														},
-														"logo_path": {
-															"description": "The URL of the logo on your login page.",
-															"type": "string",
-															"example": "https://example.com/logo.png"
+														"deny_unmatched_requests_exempted_zone_names": {
+															"description": "Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
+															"example": [
+																"example.com"
+															],
+															"x-auditable": true
 														},
-														"text_color": {
-															"description": "The text color on your login page.",
+														"is_ui_read_only": {
+															"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
+															"type": "boolean",
+															"example": "false"
+														},
+														"login_design": {
+															"type": "object",
+															"properties": {
+																"background_color": {
+																	"description": "The background color on your login page.",
+																	"type": "string",
+																	"example": "#c5ed1b"
+																},
+																"footer_text": {
+																	"description": "The text at the bottom of your login page.",
+																	"type": "string",
+																	"example": "This is an example description."
+																},
+																"header_text": {
+																	"description": "The text at the top of your login page.",
+																	"type": "string",
+																	"example": "This is an example description."
+																},
+																"logo_path": {
+																	"description": "The URL of the logo on your login page.",
+																	"type": "string",
+																	"example": "https://example.com/logo.png"
+																},
+																"text_color": {
+																	"description": "The text color on your login page.",
+																	"type": "string",
+																	"example": "#c5ed1b"
+																}
+															}
+														},
+														"name": {
+															"description": "The name of your Zero Trust organization.",
 															"type": "string",
-															"example": "#c5ed1b"
+															"example": "Widget Corps Internal Applications"
+														},
+														"ui_read_only_toggle_reason": {
+															"description": "A description of the reason why the UI read only field is being toggled.",
+															"type": "string",
+															"example": "Temporarily turn off the UI read only lock to make a change via the UI",
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"updated_at": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														},
+														"user_seat_expiration_inactive_time": {
+															"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
+															"type": "string",
+															"example": "720h"
 														}
 													}
 												},
-												"name": {
-													"description": "The name of your Zero Trust organization.",
-													"type": "string",
-													"example": "Widget Corps Internal Applications"
-												},
-												"ui_read_only_toggle_reason": {
-													"description": "A description of the reason why the UI read only field is being toggled.",
-													"type": "string",
-													"example": "Temporarily turn off the UI read only lock to make a change via the UI",
-													"x-stainless-terraform-configurability": "computed_optional"
-												},
-												"updated_at": {
-													"type": "string",
-													"format": "date-time",
-													"example": "2014-01-01T05:20:00.12345Z",
-													"x-auditable": true
-												},
-												"user_seat_expiration_inactive_time": {
-													"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
-													"type": "string",
-													"example": "720h"
+												{
+													"properties": {
+														"trusted_accounts": {
+															"description": "The account tags of organizations trusted by this organization for policy and device posture sharing.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
+															"example": [
+																"023e105f4ecef8ad9ca31a8372d0c353"
+															],
+															"readOnly": true
+														}
+													},
+													"type": "object"
 												}
-											}
+											]
 										}
 									},
 									"type": "object"

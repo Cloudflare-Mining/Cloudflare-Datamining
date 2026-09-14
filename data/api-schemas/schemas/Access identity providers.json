@@ -1925,12 +1925,20 @@
 																						"example": "mycompany.com"
 																					},
 																					"prompt": {
-																						"description": "Configures the Google account chooser prompt.",
+																						"description": "Configures the prompt behavior for Google authentication.",
 																						"type": "string",
 																						"example": "select_account",
 																						"enum": [
+																							"none",
+																							"consent",
 																							"select_account"
 																						],
+																						"x-auditable": true
+																					},
+																					"use_login_hint": {
+																						"description": "Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.",
+																						"type": "boolean",
+																						"example": true,
 																						"x-auditable": true
 																					}
 																				},
@@ -5893,12 +5901,20 @@
 																					"example": "mycompany.com"
 																				},
 																				"prompt": {
-																					"description": "Configures the Google account chooser prompt.",
+																					"description": "Configures the prompt behavior for Google authentication.",
 																					"type": "string",
 																					"example": "select_account",
 																					"enum": [
+																						"none",
+																						"consent",
 																						"select_account"
 																					],
+																					"x-auditable": true
+																				},
+																				"use_login_hint": {
+																					"description": "Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.",
+																					"type": "boolean",
+																					"example": true,
 																					"x-auditable": true
 																				}
 																			},
@@ -10636,12 +10652,20 @@
 																"example": "mycompany.com"
 															},
 															"prompt": {
-																"description": "Configures the Google account chooser prompt.",
+																"description": "Configures the prompt behavior for Google authentication.",
 																"type": "string",
 																"example": "select_account",
 																"enum": [
+																	"none",
+																	"consent",
 																	"select_account"
 																],
+																"x-auditable": true
+															},
+															"use_login_hint": {
+																"description": "Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.",
+																"type": "boolean",
+																"example": true,
 																"x-auditable": true
 															}
 														},
@@ -14433,12 +14457,20 @@
 																					"example": "mycompany.com"
 																				},
 																				"prompt": {
-																					"description": "Configures the Google account chooser prompt.",
+																					"description": "Configures the prompt behavior for Google authentication.",
 																					"type": "string",
 																					"example": "select_account",
 																					"enum": [
+																						"none",
+																						"consent",
 																						"select_account"
 																					],
+																					"x-auditable": true
+																				},
+																				"use_login_hint": {
+																					"description": "Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.",
+																					"type": "boolean",
+																					"example": true,
 																					"x-auditable": true
 																				}
 																			},
@@ -19046,12 +19078,20 @@
 																"example": "mycompany.com"
 															},
 															"prompt": {
-																"description": "Configures the Google account chooser prompt.",
+																"description": "Configures the prompt behavior for Google authentication.",
 																"type": "string",
 																"example": "select_account",
 																"enum": [
+																	"none",
+																	"consent",
 																	"select_account"
 																],
+																"x-auditable": true
+															},
+															"use_login_hint": {
+																"description": "Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.",
+																"type": "boolean",
+																"example": true,
 																"x-auditable": true
 															}
 														},
@@ -22843,12 +22883,20 @@
 																					"example": "mycompany.com"
 																				},
 																				"prompt": {
-																					"description": "Configures the Google account chooser prompt.",
+																					"description": "Configures the prompt behavior for Google authentication.",
 																					"type": "string",
 																					"example": "select_account",
 																					"enum": [
+																						"none",
+																						"consent",
 																						"select_account"
 																					],
+																					"x-auditable": true
+																				},
+																				"use_login_hint": {
+																					"description": "Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.",
+																					"type": "boolean",
+																					"example": true,
 																					"x-auditable": true
 																				}
 																			},
