@@ -4,11 +4,11 @@ description: Learn more about Cloudflare, the team we are building and how we wo
 image: https://www.cloudflare.com/preview.png
 ---
 
-##  Cloudflare Careers 
+## Cloudflare Careers
 
-###  We believe that with our talented team, smart technology and engaged users we can join in helping build a better Internet 
+### We believe that with our talented team, smart technology and engaged users we can join in helping build a better Internet
 
-[  See Open Positions ](https://www.cloudflare.com/careers/jobs/) 
+[See Open Positions](https://www.cloudflare.com/careers/jobs/)
 
 ###### 3,800+
 
@@ -30,17 +30,17 @@ Engineering, product, and go-to-market teams — building for the world's larges
 
 The sun never sets on Cloudflare — teams hand off work across every time zone.
 
-###  Principled 
+### Principled
 
- Our mission to help build a better Internet is bold, and we take it seriously. We build with a global mindset and democratize sophisticated technology so everyone can benefit. 
+Our mission to help build a better Internet is bold, and we take it seriously. We build with a global mindset and democratize sophisticated technology so everyone can benefit.
 
-###  Curious 
+### Curious
 
- We're pioneering innovators who tackle the Internet's toughest challenges with a desire to learn. We stay curious and empathetic to deliver exceptional experiences. 
+We're pioneering innovators who tackle the Internet's toughest challenges with a desire to learn. We stay curious and empathetic to deliver exceptional experiences.
 
-###  Transparent 
+### Transparent
 
- We prioritize clear, open communication and never withhold vital information. We hold ourselves accountable for our actions, whether internal or public-facing. 
+We prioritize clear, open communication and never withhold vital information. We hold ourselves accountable for our actions, whether internal or public-facing.
 
 RoleTeam and locationDate posted
 
@@ -48,57 +48,67 @@ RoleTeam and locationDate posted
 
 The behaviors we value and reference when measuring success, giving feedback, and rewarding performance. They serve as the building blocks of an inclusive company culture.
 
-**Be curious to learn and grow** 
+**Be curious to learn and grow**
 
-Approach every challenge with a desire to learn. Stay curious, ask questions, and seek out new ways to improve. 
+Approach every challenge with a desire to learn. Stay curious, ask questions, and seek out new ways to improve.
 
-**Communicate clearly and transparently** 
+**Communicate clearly and transparently**
 
-Share information openly, give direct feedback, and keep your team in the loop. 
+Share information openly, give direct feedback, and keep your team in the loop.
 
-**Do the right thing** 
+**Do the right thing**
 
-Act with integrity, make principled decisions, and hold yourself accountable. 
+Act with integrity, make principled decisions, and hold yourself accountable.
 
-**Embrace diversity** 
+**Embrace diversity**
 
-Value different perspectives and experiences to make Cloudflare and our products better. 
+Value different perspectives and experiences to make Cloudflare and our products better.
 
-**Get your work across the finish line** 
+**Get your work across the finish line**
 
-Take ownership, follow through on commitments, and deliver results that matter. 
+Take ownership, follow through on commitments, and deliver results that matter.
 
-**Lead with empathy** 
+**Lead with empathy**
 
-Assume good intentions, support your teammates, and create a welcoming environment. 
+Assume good intentions, support your teammates, and create a welcoming environment.
 
 ### Our Hiring Process
 
-![Background Pattern](https://www.cloudflare.com/static/pattern.png)1
+![Background Pattern](https://www.cloudflare.com/static/pattern.png)
+
+1
 
 ### Initial Conversations
 
 Connect with a recruiter to discuss your background, interests, and the role. We want to understand what excites you and make sure there's a strong mutual fit.
 
-![Background Pattern](https://www.cloudflare.com/static/pattern.png)2
+![Background Pattern](https://www.cloudflare.com/static/pattern.png)
+
+2
 
 ### Team Panel Interviews
 
 Meet with your prospective manager and peers. These conversations focus on how you think, your problem-solving approach, and the skills you bring to the table.
 
-![Background Pattern](https://www.cloudflare.com/static/pattern.png)3
+![Background Pattern](https://www.cloudflare.com/static/pattern.png)
+
+3
 
 ### Executive Calls
 
 A conversation with senior leadership to align on vision, values, and long-term goals. This includes our Orange Cloud Interview focused on the behaviors we value.
 
-![Background Pattern](https://www.cloudflare.com/static/pattern.png)4
+![Background Pattern](https://www.cloudflare.com/static/pattern.png)
+
+4
 
 ### Offer
 
 We move quickly once we've found the right person. You'll receive a competitive offer that reflects your experience and the impact we expect you to make.
 
-![Background Pattern](https://www.cloudflare.com/static/pattern.png)5
+![Background Pattern](https://www.cloudflare.com/static/pattern.png)
+
+5
 
 ### Orientation
 
@@ -108,61 +118,59 @@ Your first weeks are designed to set you up for success — meet your team, lear
 
 We empower our employees to do their best work, wherever they are. Our flexible approach ensures equitable and inclusive working arrangements across the globe.
 
-**In-Hub** 
+**In-Hub**
 
- Split your time between home and your local Cloudflare office. Each team determines the cadence that works best. 
+Split your time between home and your local Cloudflare office. Each team determines the cadence that works best.
 
-**Hybrid** 
+**Hybrid**
 
- Work from a Cloudflare Hub a few days per week with the flexibility to work remotely the rest of the time. 
+Work from a Cloudflare Hub a few days per week with the flexibility to work remotely the rest of the time.
 
-**Distributed** 
+**Distributed**
 
- Work from anywhere in your country of employment. No Hub location required — some roles are fully remote. 
+Work from anywhere in your country of employment. No Hub location required — some roles are fully remote.
 
-![Collage of Cloudflare employees](https://cf-assets.www.cloudflare.com/slt3lc6tev37/4I9hrpzknsMCWT0d5tQOyJ/3823253559ca7acc3621f96f44418898/BDES-6293_Career-Page-Employee-Collage.jpg) 
+![Collage of Cloudflare employees](https://cf-assets.www.cloudflare.com/slt3lc6tev37/4I9hrpzknsMCWT0d5tQOyJ/3823253559ca7acc3621f96f44418898/BDES-6293_Career-Page-Employee-Collage.jpg)
 
-####  Life at Cloudflare 
+#### Life at Cloudflare
 
-Cloudflare employees come from all walks of life. Our team is energized by a **collaborative**, **creative** environment that celebrates our differences and fosters new ways to **grow together.** 
+Cloudflare employees come from all walks of life. Our team is energized by a **collaborative**, **creative** environment that celebrates our differences and fosters new ways to **grow together.**
 
-[  Explore Life at Cloudflare ](https://www.cloudflare.com/careers/life-at-cloudflare/) 
+[Explore Life at Cloudflare](https://www.cloudflare.com/careers/life-at-cloudflare/)
 
 ### Benefits & Perks
 
 We want to empower and inspire our team members to do their best work every day - making sure they feel happy, healthy and fulfilled both inside and outside of the workplace.
 
-**Competitive pay** 
+**Competitive pay**
 
-We offer a competitive total rewards package, where every employee is an owner of our stock. 
+We offer a competitive total rewards package, where every employee is an owner of our stock.
 
-**Take-what-you-need vacation** 
+**Take-what-you-need vacation**
 
-We encourage employees to find a comfortable work-life balance by taking as many days off as they need while still being able to perform their jobs satisfactorily. (We really mean it!) 
+We encourage employees to find a comfortable work-life balance by taking as many days off as they need while still being able to perform their jobs satisfactorily. (We really mean it!)
 
-**Paid maternity & paternity leave** 
+**Paid maternity & paternity leave**
 
-Our global parental leave policy allows up to sixteen paid weeks of bonding leave time for all qualifying new parents. 
+Our global parental leave policy allows up to sixteen paid weeks of bonding leave time for all qualifying new parents.
 
-**Employee benefits** 
+**Employee benefits**
 
-We offer a comprehensive benefits package including healthcare, life insurance, short- and long-term disability, pension plans in accordance with the market practice in our locations. 
+We offer a comprehensive benefits package including healthcare, life insurance, short- and long-term disability, pension plans in accordance with the market practice in our locations.
 
-**Commuter program** 
+**Commuter program**
 
-We are flexible about where we work and value connecting at the office. Our commuter benefits program is in place to support team members' commute to work via public transportation without the extra cost. 
+We are flexible about where we work and value connecting at the office. Our commuter benefits program is in place to support team members' commute to work via public transportation without the extra cost.
 
-**Wellbeing** 
+**Wellbeing**
 
-Global offerings that provide mental health, childcare and family forming support to our employees across our offices. 
+Global offerings that provide mental health, childcare and family forming support to our employees across our offices.
 
 # Build without boundaries
 
- Join thousands of developers who've eliminated infrastructure complexity and deployed globally with Cloudflare. Start building for free — no credit card required. 
+Join thousands of developers who've eliminated infrastructure complexity and deployed globally with Cloudflare. Start building for free — no credit card required.
 
-[  Start building for free ](https://dash.cloudflare.com/sign-up) [  View docs ](https://developers.cloudflare.com/) 
-
- No cold starts or region complexity  SASE and Zero Trust without the complexity  Deploy to 330+ cities instantly  Defend against the Internet's biggest DDoS attacks  Predictable pricing without surprises  Identity-aware Zero Trust access that retires your VPN  Battle-tested infrastructure powering millions  CDN, WAF, and DNS faster than the public Internet  No cold starts or region complexity  SASE and Zero Trust without the complexity  Deploy to 330+ cities instantly  Defend against the Internet's biggest DDoS attacks  Predictable pricing without surprises  Identity-aware Zero Trust access that retires your VPN  Battle-tested infrastructure powering millions  CDN, WAF, and DNS faster than the public Internet
+[Start building for free](https://dash.cloudflare.com/sign-up) [View docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com","logo":"https://www.cloudflare.com/logo.svg","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"]}

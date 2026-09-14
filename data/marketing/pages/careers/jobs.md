@@ -4,13 +4,13 @@ description: Browse open positions at Cloudflare and help us build a better Inte
 image: https://www.cloudflare.com/preview.png
 ---
 
-#  Help Us Build a Better Internet 
+# Help Us Build a Better Internet
 
- At Cloudflare, we want you to have the career of your dreams. We invest in and support curious, mission-minded people who are committed to solving the Internet's toughest challenges. 
+At Cloudflare, we want you to have the career of your dreams. We invest in and support curious, mission-minded people who are committed to solving the Internet's toughest challenges.
 
- Cloudflare has historically been an in-office, yet globally distributed, company. We are now evolving into a hybrid model that is even more distributed, with a commitment to maintaining an equitable and inclusive workplace for all. 
+Cloudflare has historically been an in-office, yet globally distributed, company. We are now evolving into a hybrid model that is even more distributed, with a commitment to maintaining an equitable and inclusive workplace for all.
 
-![Cloudflare employees collaborating](https://cf-assets.www.cloudflare.com/slt3lc6tev37/1jtKoee0b6TGY2PE0ZrAE1/a5c40be9e79d51bbe30e2c99cff92c0f/Untitled_design__10_.png) 
+![Cloudflare employees collaborating](https://cf-assets.www.cloudflare.com/slt3lc6tev37/1jtKoee0b6TGY2PE0ZrAE1/a5c40be9e79d51bbe30e2c99cff92c0f/Untitled_design__10_.png)
 
 All departments
 
