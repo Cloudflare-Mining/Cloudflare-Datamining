@@ -213,6 +213,17 @@
 																}
 															}
 														},
+														"deprecated": {
+															"description": "Marks a field as unavailable for new values while retaining its definition for historical values.",
+															"type": "boolean"
+														},
+														"deprecatedValues": {
+															"description": "Enum values unavailable for new writes but retained in allowedValues for historical display.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
 														"element": {
 															"description": "Nested FieldDefinition describing the element type of an array field. Required when kind is 'array'. See FieldDefinition (recursive).",
 															"type": "object",
@@ -290,6 +301,7 @@
 															"type": "boolean"
 														}
 													},
+													"additionalProperties": false,
 													"required": [
 														"key",
 														"kind"
@@ -450,6 +462,17 @@
 													}
 												}
 											},
+											"deprecated": {
+												"description": "Marks a field as unavailable for new values while retaining its definition for historical values.",
+												"type": "boolean"
+											},
+											"deprecatedValues": {
+												"description": "Enum values unavailable for new writes but retained in allowedValues for historical display.",
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
 											"element": {
 												"description": "Nested FieldDefinition describing the element type of an array field. Required when kind is 'array'. See FieldDefinition (recursive).",
 												"type": "object",
@@ -527,6 +550,7 @@
 												"type": "boolean"
 											}
 										},
+										"additionalProperties": false,
 										"required": [
 											"key",
 											"kind"
@@ -674,6 +698,17 @@
 												}
 											}
 										},
+										"deprecated": {
+											"description": "Marks a field as unavailable for new values while retaining its definition for historical values.",
+											"type": "boolean"
+										},
+										"deprecatedValues": {
+											"description": "Enum values unavailable for new writes but retained in allowedValues for historical display.",
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
 										"element": {
 											"description": "Nested FieldDefinition describing the element type of an array field. Required when kind is 'array'. See FieldDefinition (recursive).",
 											"type": "object",
@@ -751,6 +786,7 @@
 											"type": "boolean"
 										}
 									},
+									"additionalProperties": false,
 									"required": [
 										"key",
 										"kind"
@@ -808,6 +844,17 @@
 													"tlp": {
 														"type": "boolean"
 													}
+												}
+											},
+											"deprecated": {
+												"description": "Marks a field as unavailable for new values while retaining its definition for historical values.",
+												"type": "boolean"
+											},
+											"deprecatedValues": {
+												"description": "Enum values unavailable for new writes but retained in allowedValues for historical display.",
+												"type": "array",
+												"items": {
+													"type": "string"
 												}
 											},
 											"element": {
@@ -887,6 +934,7 @@
 												"type": "boolean"
 											}
 										},
+										"additionalProperties": false,
 										"required": [
 											"key",
 											"kind"
@@ -1100,6 +1148,17 @@
 												}
 											}
 										},
+										"deprecated": {
+											"description": "Marks a field as unavailable for new values while retaining its definition for historical values.",
+											"type": "boolean"
+										},
+										"deprecatedValues": {
+											"description": "Enum values unavailable for new writes but retained in allowedValues for historical display.",
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
 										"element": {
 											"description": "Nested FieldDefinition describing the element type of an array field. Required when kind is 'array'. See FieldDefinition (recursive).",
 											"type": "object",
@@ -1177,6 +1236,7 @@
 											"type": "boolean"
 										}
 									},
+									"additionalProperties": false,
 									"required": [
 										"key",
 										"kind"
@@ -1237,6 +1297,17 @@
 													"tlp": {
 														"type": "boolean"
 													}
+												}
+											},
+											"deprecated": {
+												"description": "Marks a field as unavailable for new values while retaining its definition for historical values.",
+												"type": "boolean"
+											},
+											"deprecatedValues": {
+												"description": "Enum values unavailable for new writes but retained in allowedValues for historical display.",
+												"type": "array",
+												"items": {
+													"type": "string"
 												}
 											},
 											"element": {
@@ -1316,6 +1387,7 @@
 												"type": "boolean"
 											}
 										},
+										"additionalProperties": false,
 										"required": [
 											"key",
 											"kind"

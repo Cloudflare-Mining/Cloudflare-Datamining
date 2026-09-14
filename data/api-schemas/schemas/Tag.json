@@ -662,6 +662,7 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.dataset-tags",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
@@ -2590,6 +2591,397 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.tags.relationships",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/tags/categories/actors": {
+		"operationId": "get_TaggedActorList",
+		"summary": "Lists all Actors",
+		"description": "Returns all known Actors from the shared CFONE catalog. Non-CFONE accounts receive a redacted public projection: identity (`uuid`, `value`, `categoryUuid`, `categoryName`), metadata (`description`, `dateOfDiscovery`, `tlp`, `confidence`, `properties`), origin (`originCountryISO`, `originCountryISO_annotated`), and public aliases/references (`aliasGroupNames`, `aliases`, `externalReferences`, `externalReferences_annotated`). CFONE-internal fields (internal aliases, attribution, motive, opsec level, etc.) are stripped from the response.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"name": "pageSize",
+				"in": "query",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"name": "value",
+				"in": "query",
+				"description": "Free-text substring match on actor name (Tag.value).",
+				"schema": {
+					"description": "Free-text substring match on actor name (Tag.value).",
+					"type": "string"
+				}
+			},
+			{
+				"name": "filters",
+				"in": "query",
+				"description": "Structured filters as a JSON array of {field, op, value} objects. Same shape as the events search API. Common use: filter actors by country with filters=[{\"field\":\"originCountryISO\",\"op\":\"in\",\"value\":[\"IR\",\"CN\"]}]. Country values may be passed as alpha-2, alpha-3, name, or alias (e.g. \"iran\"). Max 10 entries per request, max 100 values per 'in'. Non-CFONE callers may only filter on fields that are also public-readable (`value`, `categoryName`, `aliasGroupNames`, `originCountryISO`); filtering on a redacted field returns 400. Performance notes: `originCountryISO` uses its B-tree index for equals/in. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on JSON-encoded text, so substrings can cross alias boundaries (\"apt28\" also matches \"apt280\" when both appear in the same tag's alias list).",
+				"schema": {
+					"description": "Structured filters as a JSON array of {field, op, value} objects. Same shape as the events search API. Common use: filter actors by country with filters=[{\"field\":\"originCountryISO\",\"op\":\"in\",\"value\":[\"IR\",\"CN\"]}]. Country values may be passed as alpha-2, alpha-3, name, or alias (e.g. \"iran\"). Max 10 entries per request, max 100 values per 'in'. Non-CFONE callers may only filter on fields that are also public-readable (`value`, `categoryName`, `aliasGroupNames`, `originCountryISO`); filtering on a redacted field returns 400. Performance notes: `originCountryISO` uses its B-tree index for equals/in. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on JSON-encoded text, so substrings can cross alias boundaries (\"apt28\" also matches \"apt280\" when both appear in the same tag's alias list).",
+					"type": "array",
+					"items": {
+						"properties": {
+							"field": {
+								"description": "Tag field to search on. Allowed first-class fields: uuid, value, categoryName, description, dateOfDiscovery, tlp, confidence, actorCategory, motive, attributionOrganization, originCountryISO, aliases, externalReferences, opsecLevel, sophisticationLevel, activeDuration, priority, lastSeen, aliasGroupNames. Also supports properties.<key> to filter on custom field values (matches both raw values and annotated {value,confidence,tlp} shapes via COALESCE), and properties.<key>.tlp / properties.<key>.confidence to filter directly on annotation sub-fields.",
+								"type": "string",
+								"example": "value"
+							},
+							"op": {
+								"description": "Search operator. Use 'in' for bulk OR within a single field.",
+								"type": "string",
+								"example": "in",
+								"enum": [
+									"equals",
+									"not",
+									"gt",
+									"gte",
+									"lt",
+									"lte",
+									"like",
+									"contains",
+									"startsWith",
+									"endsWith",
+									"in",
+									"find"
+								]
+							},
+							"value": {
+								"description": "Search value. String or number for most operators. Array for 'in' (max 100 items).",
+								"anyOf": [
+									{
+										"example": "APT28",
+										"type": "string"
+									},
+									{
+										"example": 5,
+										"type": "number"
+									},
+									{
+										"items": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												}
+											]
+										},
+										"type": "array"
+									}
+								]
+							}
+						},
+						"required": [
+							"field",
+							"op"
+						],
+						"type": "object"
+					}
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns a paginated list of known Actors. Non-CFONE callers receive the public projection documented by this schema.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"pagination": {
+									"type": "object",
+									"properties": {
+										"page": {
+											"type": "number"
+										},
+										"pageSize": {
+											"type": "number"
+										},
+										"totalCount": {
+											"type": "number"
+										},
+										"totalPages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"pageSize",
+										"totalCount",
+										"totalPages"
+									]
+								},
+								"tags": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"aliasGroupNames": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"aliases": {
+												"description": "Structured aliases ({ value, confidence 1-10, tlp }). Public: returned to all accounts with per-entry TLP filtering (entries with tlp: purple are removed for non-CFONE accounts).",
+												"type": "array",
+												"items": {
+													"properties": {
+														"confidence": {
+															"type": "integer",
+															"example": 8,
+															"maximum": 10,
+															"minimum": 1,
+															"nullable": true
+														},
+														"tlp": {
+															"type": "string",
+															"example": "amber",
+															"enum": [
+																"red",
+																"amber",
+																"amber-strict",
+																"green",
+																"clear",
+																"purple",
+																"amber+strict"
+															],
+															"nullable": true
+														},
+														"value": {
+															"type": "string",
+															"example": "Fancy Bear"
+														}
+													},
+													"required": [
+														"value"
+													],
+													"type": "object"
+												}
+											},
+											"categoryName": {
+												"type": "string",
+												"example": "Actor"
+											},
+											"categoryUuid": {
+												"type": "string",
+												"example": "12345678-1234-1234-1234-1234567890ab"
+											},
+											"confidence": {
+												"description": "Overall tag confidence (1-10).",
+												"type": "integer",
+												"example": 8,
+												"maximum": 10,
+												"minimum": 1,
+												"nullable": true
+											},
+											"dateOfDiscovery": {
+												"type": "string",
+												"example": "2024-01-15T00:00:00Z"
+											},
+											"description": {
+												"type": "string"
+											},
+											"externalReferences": {
+												"description": "Structured external references ({ url, description }). Public: returned to all accounts.",
+												"type": "array",
+												"items": {
+													"properties": {
+														"description": {
+															"type": "string",
+															"example": "Vendor threat report",
+															"nullable": true
+														},
+														"url": {
+															"type": "string",
+															"example": "https://example.com/report"
+														}
+													},
+													"required": [
+														"url"
+													],
+													"type": "object"
+												}
+											},
+											"externalReferences_annotated": {
+												"type": "array",
+												"items": {
+													"properties": {
+														"tlp": {
+															"type": "string",
+															"enum": [
+																"red",
+																"amber",
+																"amber-strict",
+																"green",
+																"clear",
+																"purple",
+																"amber+strict"
+															]
+														},
+														"value": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"value"
+													],
+													"type": "object"
+												},
+												"nullable": true
+											},
+											"originCountryISO": {
+												"description": "ISO country code (alpha-2 or alpha-3). Normalized to uppercase on read. Null when stored value is blank/whitespace.",
+												"type": "string",
+												"nullable": true
+											},
+											"originCountryISO_annotated": {
+												"type": "object",
+												"nullable": true,
+												"properties": {
+													"confidence": {
+														"type": "number"
+													},
+													"tlp": {
+														"type": "string",
+														"enum": [
+															"red",
+															"amber",
+															"amber-strict",
+															"green",
+															"clear",
+															"purple",
+															"amber+strict"
+														]
+													},
+													"value": {
+														"type": "string",
+														"nullable": true
+													}
+												},
+												"required": [
+													"value"
+												]
+											},
+											"properties": {
+												"description": "Parsed custom field values. Null when the tag has no custom fields.",
+												"type": "object",
+												"additionalProperties": true,
+												"nullable": true
+											},
+											"tlp": {
+												"description": "Tag-level TLP handling marking.",
+												"type": "string",
+												"example": "amber",
+												"enum": [
+													"red",
+													"amber",
+													"amber-strict",
+													"green",
+													"clear",
+													"purple",
+													"amber+strict"
+												],
+												"nullable": true
+											},
+											"uuid": {
+												"type": "string",
+												"example": "12345678-1234-1234-1234-1234567890ab"
+											},
+											"value": {
+												"type": "string",
+												"example": "APT28"
+											}
+										},
+										"required": [
+											"uuid",
+											"value"
+										],
+										"type": "object"
+									}
+								}
+							},
+							"required": [
+								"tags",
+								"pagination"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Tag"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.tags.categories.actors",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},

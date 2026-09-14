@@ -1,0 +1,1483 @@
+{
+	"GET /accounts/{account_id}/cloudforce-one/v2/requests/{project_type}": {
+		"operationId": "get_RequestList",
+		"summary": "List RFIs",
+		"description": "Retrieves a paginated list of RFIs with filtering and sorting options.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "project_type",
+				"in": "path",
+				"description": "RFI project type",
+				"required": true,
+				"schema": {
+					"description": "RFI project type",
+					"type": "string",
+					"example": "threat-intelligence",
+					"enum": [
+						"threat-intelligence",
+						"incident-response",
+						"ir-emergency-response",
+						"table-top",
+						"pentest",
+						"irp",
+						"threat-hunting",
+						"cybersecurity-assessment",
+						"react-general",
+						"legal-response",
+						"soc-alerts",
+						"demo"
+					]
+				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"name": "pageSize",
+				"in": "query",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"name": "status",
+				"in": "query",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "search",
+				"in": "query",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "createdBy",
+				"in": "query",
+				"description": "Filter by creator email. NOTE: For the `legal-response` project type this query parameter is **rejected with HTTP 400** — the server derives the filter from the authenticated user's JWT automatically and does not accept a client-supplied value. Requests to `legal-response` with no valid JWT identity are rejected with HTTP 401.",
+				"schema": {
+					"description": "Filter by creator email. NOTE: For the `legal-response` project type this query parameter is **rejected with HTTP 400** — the server derives the filter from the authenticated user's JWT automatically and does not accept a client-supplied value. Requests to `legal-response` with no valid JWT identity are rejected with HTTP 401.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "assignee",
+				"in": "query",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "requestType",
+				"in": "query",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "priority",
+				"in": "query",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "tlp",
+				"in": "query",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "id",
+				"in": "query",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "readableId",
+				"in": "query",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "summary",
+				"in": "query",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "accountId",
+				"in": "query",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "metadata",
+				"in": "query",
+				"description": "JSON string object of metadata filters. Supports two formats: 1) Simple values for exact match (backward compatible): {\"status\": \"open\"} 2) Operator objects for advanced filtering: {\"identifiers\": {\"operator\": \"contains_line\", \"value\": \"blah.com\"}}. Available operators: 'eq' (exact match, default), 'contains' (substring match), 'contains_line' (match complete line in newline-separated text). Date fields are automatically normalized to YYYY-MM-DD format.",
+				"schema": {
+					"description": "JSON string object of metadata filters. Supports two formats: 1) Simple values for exact match (backward compatible): {\"status\": \"open\"} 2) Operator objects for advanced filtering: {\"identifiers\": {\"operator\": \"contains_line\", \"value\": \"blah.com\"}}. Available operators: 'eq' (exact match, default), 'contains' (substring match), 'contains_line' (match complete line in newline-separated text). Date fields are automatically normalized to YYYY-MM-DD format.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "orderBy",
+				"in": "query",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "order",
+				"in": "query",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns a paginated list of RFIs.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"pagination": {
+									"type": "object",
+									"properties": {
+										"page": {
+											"description": "Current page",
+											"type": "number"
+										},
+										"pageSize": {
+											"description": "Items per page",
+											"type": "number"
+										},
+										"total": {
+											"description": "Total items",
+											"type": "number"
+										},
+										"totalPages": {
+											"description": "Total pages",
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"pageSize",
+										"total",
+										"totalPages"
+									]
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"accountId": {
+												"description": "Account ID",
+												"type": "string"
+											},
+											"createdAt": {
+												"description": "ISO timestamp",
+												"type": "string"
+											},
+											"createdBy": {
+												"description": "Creator email",
+												"type": "string"
+											},
+											"description": {
+												"description": "RFI description",
+												"type": "string"
+											},
+											"id": {
+												"description": "RFI UUID",
+												"type": "string"
+											},
+											"projectType": {
+												"description": "Project type",
+												"type": "string"
+											},
+											"status": {
+												"description": "RFI status",
+												"type": "string"
+											},
+											"title": {
+												"description": "RFI title",
+												"type": "string"
+											},
+											"updatedAt": {
+												"description": "ISO timestamp",
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"accountId",
+											"projectType",
+											"title",
+											"description",
+											"status",
+											"createdBy",
+											"createdAt",
+											"updatedAt"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "string",
+									"example": "true"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"pagination"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"RFI"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.requests",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/requests/{project_type}/{request_id}": {
+		"operationId": "get_RequestRead",
+		"summary": "Get an RFI by ID",
+		"description": "Retrieves a specific RFI by its UUID with related data.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "project_type",
+				"in": "path",
+				"description": "RFI project type. Valid values: threat-intelligence, incident-response, ir-emergency-response, table-top, pentest, irp, threat-hunting, cybersecurity-assessment, react-general, legal-response, soc-alerts, demo",
+				"required": true,
+				"schema": {
+					"description": "RFI project type. Valid values: threat-intelligence, incident-response, ir-emergency-response, table-top, pentest, irp, threat-hunting, cybersecurity-assessment, react-general, legal-response, soc-alerts, demo",
+					"type": "string",
+					"example": "threat-intelligence",
+					"enum": [
+						"threat-intelligence",
+						"incident-response",
+						"ir-emergency-response",
+						"table-top",
+						"pentest",
+						"irp",
+						"threat-hunting",
+						"cybersecurity-assessment",
+						"react-general",
+						"legal-response",
+						"soc-alerts",
+						"demo"
+					]
+				}
+			},
+			{
+				"name": "request_id",
+				"in": "path",
+				"description": "RFI UUID",
+				"required": true,
+				"schema": {
+					"description": "RFI UUID",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns the RFI details with related data.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"account": {
+									"type": "object",
+									"properties": {
+										"anniversary": {
+											"description": "Account anniversary",
+											"type": "string",
+											"format": "date-time",
+											"example": "2024-12-30T17:31:04.914016Z"
+										},
+										"id": {
+											"description": "Account UUID",
+											"type": "string",
+											"example": "ab6b12f7ff92ba7a4d00c306ea7361aa"
+										},
+										"name": {
+											"description": "Account name",
+											"type": "string",
+											"example": "JPMC"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"anniversary"
+									]
+								},
+								"assignee": {
+									"description": "Assignee email",
+									"type": "string",
+									"example": "juliette@cloudflare.com",
+									"nullable": true
+								},
+								"completed": {
+									"description": "Completion timestamp",
+									"type": "string",
+									"format": "date-time",
+									"nullable": true
+								},
+								"created": {
+									"description": "Creation timestamp",
+									"type": "string",
+									"format": "date-time",
+									"example": "2025-09-03T00:35:11.194629Z"
+								},
+								"id": {
+									"description": "RFI UUID",
+									"type": "string",
+									"example": "4c27f9a8-6050-41a7-bc8a-b417641e646d"
+								},
+								"investigation_id": {
+									"description": "Investigation UUID",
+									"type": "string",
+									"example": "75a73d09-5938-4544-aeba-ab791dcdb445"
+								},
+								"is_free_request": {
+									"description": "Whether this is a free request",
+									"type": "boolean"
+								},
+								"message_tokens": {
+									"description": "Total message tokens",
+									"type": "number"
+								},
+								"priority": {
+									"description": "Request priority",
+									"type": "string",
+									"example": "high",
+									"enum": [
+										"unknown",
+										"low",
+										"routine",
+										"medium",
+										"high",
+										"urgent",
+										"critical"
+									]
+								},
+								"readable_id": {
+									"description": "Human-readable ID",
+									"type": "string",
+									"example": "RFI-2025-000014"
+								},
+								"release_entitlements": {
+									"description": "Release entitlements",
+									"type": "string",
+									"nullable": true
+								},
+								"report_id": {
+									"description": "Report UUID",
+									"type": "string",
+									"example": "00000000-0000-0000-0000-000000000000"
+								},
+								"request": {
+									"type": "object",
+									"properties": {
+										"category": {
+											"description": "Request category",
+											"type": "string",
+											"example": "Threat Research"
+										},
+										"message_tokens": {
+											"description": "Message tokens used",
+											"type": "number",
+											"example": 2
+										},
+										"name": {
+											"description": "Request type name",
+											"type": "string",
+											"example": "Traffic Analysis - IOCs"
+										},
+										"request_tokens": {
+											"description": "Request tokens used",
+											"type": "number",
+											"example": 6
+										},
+										"response_tokens": {
+											"description": "Response tokens used",
+											"type": "number",
+											"example": 3
+										},
+										"result": {
+											"description": "Expected result type",
+											"type": "string",
+											"example": "Indicators of Compromise"
+										},
+										"source": {
+											"description": "Request source",
+											"type": "string"
+										}
+									},
+									"required": [
+										"category",
+										"name",
+										"result",
+										"source",
+										"request_tokens",
+										"response_tokens",
+										"message_tokens"
+									]
+								},
+								"status": {
+									"description": "RFI status",
+									"type": "string",
+									"example": "accepted",
+									"enum": [
+										"draft",
+										"submitted",
+										"accepted",
+										"in_progress",
+										"awaiting_customer",
+										"awaiting_external",
+										"completed",
+										"closed"
+									]
+								},
+								"summary": {
+									"description": "RFI summary",
+									"type": "string",
+									"example": "RFI on jpmorgan-access[.]com"
+								},
+								"tlp": {
+									"description": "TLP classification",
+									"type": "string",
+									"example": "red",
+									"enum": [
+										"clear",
+										"green",
+										"amber",
+										"red"
+									]
+								},
+								"tokens": {
+									"description": "Total tokens used",
+									"type": "number",
+									"example": 9
+								},
+								"updated": {
+									"description": "Last update timestamp",
+									"type": "string",
+									"format": "date-time",
+									"example": "2025-09-03T19:45:47.412319Z"
+								}
+							},
+							"required": [
+								"id",
+								"created",
+								"updated",
+								"completed",
+								"account",
+								"assignee",
+								"investigation_id",
+								"is_free_request",
+								"message_tokens",
+								"priority",
+								"readable_id",
+								"release_entitlements",
+								"report_id",
+								"request",
+								"status",
+								"summary",
+								"tlp",
+								"tokens"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"RFI"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.requests",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/requests/{project_type}": {
+		"operationId": "post_RequestCreate",
+		"summary": "Creates a new RFI",
+		"description": "Creates a new Request for Information with the specified project type and details.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "project_type",
+				"in": "path",
+				"description": "RFI project type",
+				"required": true,
+				"schema": {
+					"description": "RFI project type",
+					"type": "string",
+					"example": "threat-intelligence",
+					"enum": [
+						"threat-intelligence",
+						"incident-response",
+						"ir-emergency-response",
+						"table-top",
+						"pentest",
+						"irp",
+						"threat-hunting",
+						"cybersecurity-assessment",
+						"react-general",
+						"legal-response",
+						"soc-alerts",
+						"demo"
+					]
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"description": {
+								"description": "RFI description (optional). Defaults to an empty string when omitted.",
+								"type": "string",
+								"example": "We need analysis of domain patterns observed in recent security events"
+							},
+							"eventId": {
+								"description": "Optional related event ID",
+								"type": "string",
+								"example": "event-456",
+								"nullable": true
+							},
+							"metadata": {
+								"description": "Optional metadata fields specific to the RFI type",
+								"type": "object",
+								"additionalProperties": true
+							},
+							"priority": {
+								"description": "RFI priority. Four-level projects use `low`, `routine`, `high`, `urgent`; existing projects retain legacy `low`->routine compatibility. `medium`, `critical`, and `unknown` remain accepted legacy aliases. Defaults to `routine`.",
+								"type": "string",
+								"example": "routine",
+								"enum": [
+									"low",
+									"routine",
+									"high",
+									"urgent",
+									"unknown",
+									"medium",
+									"critical"
+								]
+							},
+							"request_type": {
+								"description": "Optional request type for the request",
+								"type": "string",
+								"nullable": true
+							},
+							"subtypeId": {
+								"description": "Optional subtype ID",
+								"type": "string",
+								"example": "subtype-123",
+								"nullable": true
+							},
+							"title": {
+								"description": "RFI title (optional). When omitted, the server generates a summary from the request type and readable ID.",
+								"type": "string",
+								"example": "Investigation into suspicious domain activity"
+							},
+							"tlp": {
+								"description": "Traffic Light Protocol level. Canonical values are `clear`, `green`, `amber`, `amber-strict`, `red`, `purple`. `white` and `amber+strict` are accepted input aliases; responses always use the canonical spelling.",
+								"type": "string",
+								"example": "amber",
+								"enum": [
+									"clear",
+									"green",
+									"amber",
+									"amber-strict",
+									"red",
+									"purple",
+									"white",
+									"amber+strict"
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"description": "Returns the created RFI.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"account": {
+									"type": "object",
+									"properties": {
+										"anniversary": {
+											"description": "Account anniversary",
+											"type": "string",
+											"format": "date-time",
+											"example": "2024-12-30T17:31:04.914016Z"
+										},
+										"id": {
+											"description": "Account UUID",
+											"type": "string",
+											"example": "ab6b12f7ff92ba7a4d00c306ea7361aa"
+										},
+										"name": {
+											"description": "Account name",
+											"type": "string",
+											"example": "JPMC"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"anniversary"
+									]
+								},
+								"assignee": {
+									"description": "Assignee email",
+									"type": "string",
+									"example": "juliette@cloudflare.com",
+									"nullable": true
+								},
+								"completed": {
+									"description": "Completion timestamp",
+									"type": "string",
+									"format": "date-time",
+									"nullable": true
+								},
+								"created": {
+									"description": "Creation timestamp",
+									"type": "string",
+									"format": "date-time",
+									"example": "2025-09-03T00:35:11.194629Z"
+								},
+								"id": {
+									"description": "RFI UUID",
+									"type": "string",
+									"example": "4c27f9a8-6050-41a7-bc8a-b417641e646d"
+								},
+								"investigation_id": {
+									"description": "Investigation UUID",
+									"type": "string",
+									"example": "75a73d09-5938-4544-aeba-ab791dcdb445"
+								},
+								"is_free_request": {
+									"description": "Whether this is a free request",
+									"type": "boolean"
+								},
+								"message_tokens": {
+									"description": "Total message tokens",
+									"type": "number"
+								},
+								"priority": {
+									"description": "Request priority",
+									"type": "string",
+									"example": "high",
+									"enum": [
+										"unknown",
+										"low",
+										"routine",
+										"medium",
+										"high",
+										"urgent",
+										"critical"
+									]
+								},
+								"readable_id": {
+									"description": "Human-readable ID",
+									"type": "string",
+									"example": "RFI-2025-000014"
+								},
+								"release_entitlements": {
+									"description": "Release entitlements",
+									"type": "string",
+									"nullable": true
+								},
+								"report_id": {
+									"description": "Report UUID",
+									"type": "string",
+									"example": "00000000-0000-0000-0000-000000000000"
+								},
+								"request": {
+									"type": "object",
+									"properties": {
+										"category": {
+											"description": "Request category",
+											"type": "string",
+											"example": "Threat Research"
+										},
+										"message_tokens": {
+											"description": "Message tokens used",
+											"type": "number",
+											"example": 2
+										},
+										"name": {
+											"description": "Request type name",
+											"type": "string",
+											"example": "Traffic Analysis - IOCs"
+										},
+										"request_tokens": {
+											"description": "Request tokens used",
+											"type": "number",
+											"example": 6
+										},
+										"response_tokens": {
+											"description": "Response tokens used",
+											"type": "number",
+											"example": 3
+										},
+										"result": {
+											"description": "Expected result type",
+											"type": "string",
+											"example": "Indicators of Compromise"
+										},
+										"source": {
+											"description": "Request source",
+											"type": "string"
+										}
+									},
+									"required": [
+										"category",
+										"name",
+										"result",
+										"source",
+										"request_tokens",
+										"response_tokens",
+										"message_tokens"
+									]
+								},
+								"status": {
+									"description": "RFI status",
+									"type": "string",
+									"example": "accepted",
+									"enum": [
+										"draft",
+										"submitted",
+										"accepted",
+										"in_progress",
+										"awaiting_customer",
+										"awaiting_external",
+										"completed",
+										"closed"
+									]
+								},
+								"summary": {
+									"description": "RFI summary",
+									"type": "string",
+									"example": "RFI on jpmorgan-access[.]com"
+								},
+								"tlp": {
+									"description": "TLP classification",
+									"type": "string",
+									"example": "red",
+									"enum": [
+										"clear",
+										"green",
+										"amber",
+										"red"
+									]
+								},
+								"tokens": {
+									"description": "Total tokens used",
+									"type": "number",
+									"example": 9
+								},
+								"updated": {
+									"description": "Last update timestamp",
+									"type": "string",
+									"format": "date-time",
+									"example": "2025-09-03T19:45:47.412319Z"
+								}
+							},
+							"required": [
+								"id",
+								"created",
+								"updated",
+								"completed",
+								"account",
+								"assignee",
+								"investigation_id",
+								"is_free_request",
+								"message_tokens",
+								"priority",
+								"readable_id",
+								"release_entitlements",
+								"report_id",
+								"request",
+								"status",
+								"summary",
+								"tlp",
+								"tokens"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"RFI"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.requests",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
+	},
+	"PUT /accounts/{account_id}/cloudforce-one/v2/requests/{project_type}/{request_id}": {
+		"operationId": "put_RequestUpdate",
+		"summary": "Update an RFI",
+		"description": "Updates an existing RFI with the provided fields. Only provided fields will be updated.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "project_type",
+				"in": "path",
+				"description": "RFI project type. Valid values: threat-intelligence, incident-response, ir-emergency-response, table-top, pentest, irp, threat-hunting, cybersecurity-assessment, react-general, legal-response, soc-alerts, demo",
+				"required": true,
+				"schema": {
+					"description": "RFI project type. Valid values: threat-intelligence, incident-response, ir-emergency-response, table-top, pentest, irp, threat-hunting, cybersecurity-assessment, react-general, legal-response, soc-alerts, demo",
+					"type": "string",
+					"example": "threat-intelligence",
+					"enum": [
+						"threat-intelligence",
+						"incident-response",
+						"ir-emergency-response",
+						"table-top",
+						"pentest",
+						"irp",
+						"threat-hunting",
+						"cybersecurity-assessment",
+						"react-general",
+						"legal-response",
+						"soc-alerts",
+						"demo"
+					]
+				}
+			},
+			{
+				"name": "request_id",
+				"in": "path",
+				"description": "RFI UUID",
+				"required": true,
+				"schema": {
+					"description": "RFI UUID",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"description": {
+								"description": "RFI description",
+								"type": "string"
+							},
+							"eventId": {
+								"description": "Optional related event ID",
+								"type": "string"
+							},
+							"priority": {
+								"description": "RFI priority. Four-level projects use a distinct `low` level; existing projects retain legacy `low`->routine compatibility. `medium`, `critical`, and `unknown` remain accepted legacy aliases.",
+								"type": "string",
+								"enum": [
+									"low",
+									"routine",
+									"high",
+									"urgent",
+									"unknown",
+									"medium",
+									"critical"
+								]
+							},
+							"request_type": {
+								"description": "Request type. May only be changed while the request is still open; changing it recalculates the request's token cost.",
+								"type": "string"
+							},
+							"subtypeId": {
+								"description": "Optional subtype ID",
+								"type": "string"
+							},
+							"summary": {
+								"description": "RFI summary",
+								"type": "string"
+							},
+							"title": {
+								"description": "RFI title (alias for summary field)",
+								"type": "string"
+							},
+							"tlp": {
+								"description": "Traffic Light Protocol level. `white` and `amber+strict` are accepted input aliases; responses always use the canonical spelling.",
+								"type": "string",
+								"enum": [
+									"clear",
+									"green",
+									"amber",
+									"amber-strict",
+									"red",
+									"purple",
+									"white",
+									"amber+strict"
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Returns the updated RFI.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"account": {
+									"type": "object",
+									"properties": {
+										"anniversary": {
+											"description": "Account anniversary",
+											"type": "string",
+											"format": "date-time",
+											"example": "2024-12-30T17:31:04.914016Z"
+										},
+										"id": {
+											"description": "Account UUID",
+											"type": "string",
+											"example": "ab6b12f7ff92ba7a4d00c306ea7361aa"
+										},
+										"name": {
+											"description": "Account name",
+											"type": "string",
+											"example": "JPMC"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"anniversary"
+									]
+								},
+								"assignee": {
+									"description": "Assignee email",
+									"type": "string",
+									"example": "juliette@cloudflare.com",
+									"nullable": true
+								},
+								"completed": {
+									"description": "Completion timestamp",
+									"type": "string",
+									"format": "date-time",
+									"nullable": true
+								},
+								"created": {
+									"description": "Creation timestamp",
+									"type": "string",
+									"format": "date-time",
+									"example": "2025-09-03T00:35:11.194629Z"
+								},
+								"id": {
+									"description": "RFI UUID",
+									"type": "string",
+									"example": "4c27f9a8-6050-41a7-bc8a-b417641e646d"
+								},
+								"investigation_id": {
+									"description": "Investigation UUID",
+									"type": "string",
+									"example": "75a73d09-5938-4544-aeba-ab791dcdb445"
+								},
+								"is_free_request": {
+									"description": "Whether this is a free request",
+									"type": "boolean"
+								},
+								"message_tokens": {
+									"description": "Total message tokens",
+									"type": "number"
+								},
+								"priority": {
+									"description": "Request priority",
+									"type": "string",
+									"example": "high",
+									"enum": [
+										"unknown",
+										"low",
+										"routine",
+										"medium",
+										"high",
+										"urgent",
+										"critical"
+									]
+								},
+								"readable_id": {
+									"description": "Human-readable ID",
+									"type": "string",
+									"example": "RFI-2025-000014"
+								},
+								"release_entitlements": {
+									"description": "Release entitlements",
+									"type": "string",
+									"nullable": true
+								},
+								"report_id": {
+									"description": "Report UUID",
+									"type": "string",
+									"example": "00000000-0000-0000-0000-000000000000"
+								},
+								"request": {
+									"type": "object",
+									"properties": {
+										"category": {
+											"description": "Request category",
+											"type": "string",
+											"example": "Threat Research"
+										},
+										"message_tokens": {
+											"description": "Message tokens used",
+											"type": "number",
+											"example": 2
+										},
+										"name": {
+											"description": "Request type name",
+											"type": "string",
+											"example": "Traffic Analysis - IOCs"
+										},
+										"request_tokens": {
+											"description": "Request tokens used",
+											"type": "number",
+											"example": 6
+										},
+										"response_tokens": {
+											"description": "Response tokens used",
+											"type": "number",
+											"example": 3
+										},
+										"result": {
+											"description": "Expected result type",
+											"type": "string",
+											"example": "Indicators of Compromise"
+										},
+										"source": {
+											"description": "Request source",
+											"type": "string"
+										}
+									},
+									"required": [
+										"category",
+										"name",
+										"result",
+										"source",
+										"request_tokens",
+										"response_tokens",
+										"message_tokens"
+									]
+								},
+								"status": {
+									"description": "RFI status",
+									"type": "string",
+									"example": "accepted",
+									"enum": [
+										"draft",
+										"submitted",
+										"accepted",
+										"in_progress",
+										"awaiting_customer",
+										"awaiting_external",
+										"completed",
+										"closed"
+									]
+								},
+								"summary": {
+									"description": "RFI summary",
+									"type": "string",
+									"example": "RFI on jpmorgan-access[.]com"
+								},
+								"tlp": {
+									"description": "TLP classification",
+									"type": "string",
+									"example": "red",
+									"enum": [
+										"clear",
+										"green",
+										"amber",
+										"red"
+									]
+								},
+								"tokens": {
+									"description": "Total tokens used",
+									"type": "number",
+									"example": 9
+								},
+								"updated": {
+									"description": "Last update timestamp",
+									"type": "string",
+									"format": "date-time",
+									"example": "2025-09-03T19:45:47.412319Z"
+								}
+							},
+							"required": [
+								"id",
+								"created",
+								"updated",
+								"completed",
+								"account",
+								"assignee",
+								"investigation_id",
+								"is_free_request",
+								"message_tokens",
+								"priority",
+								"readable_id",
+								"release_entitlements",
+								"report_id",
+								"request",
+								"status",
+								"summary",
+								"tlp",
+								"tokens"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"RFI"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.requests",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
+	}
+}

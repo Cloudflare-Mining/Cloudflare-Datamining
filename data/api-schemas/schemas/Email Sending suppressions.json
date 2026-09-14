@@ -53,7 +53,8 @@
 									"type": "string"
 								},
 								"success": {
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -93,8 +94,9 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Cloudflare account ID.",
 					"type": "string",
-					"example": "54442216"
+					"example": "12345678"
 				}
 			},
 			{
@@ -102,6 +104,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "The suppression's identifier.",
 					"type": "string",
 					"format": "uuid",
 					"example": "396a5436-d4b0-42a6-b3fc-48e8fa522321"
@@ -132,8 +135,10 @@
 									"type": "object",
 									"properties": {
 										"id": {
+											"description": "The suppression's identifier.",
 											"type": "string",
-											"format": "uuid"
+											"format": "uuid",
+											"example": "396a5436-d4b0-42a6-b3fc-48e8fa522321"
 										}
 									},
 									"required": [
@@ -187,7 +192,8 @@
 									"type": "object"
 								},
 								"success": {
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -232,7 +238,8 @@
 									"type": "object"
 								},
 								"success": {
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -277,7 +284,8 @@
 									"type": "object"
 								},
 								"success": {
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -322,7 +330,8 @@
 									"type": "object"
 								},
 								"success": {
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -407,7 +416,8 @@
 									"type": "string"
 								},
 								"success": {
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -505,7 +515,8 @@
 							"type": "object",
 							"properties": {
 								"page": {
-									"type": "integer"
+									"type": "integer",
+									"example": 0
 								},
 								"per_page": {
 									"type": "integer",
@@ -584,7 +595,8 @@
 									}
 								},
 								"success": {
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -706,7 +718,8 @@
 									"type": "string"
 								},
 								"success": {
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -746,15 +759,18 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Cloudflare account ID.",
 					"type": "string",
-					"example": "54442216"
+					"example": "12345678"
 				}
 			},
 			{
 				"name": "per_page",
 				"in": "query",
 				"schema": {
+					"description": "Maximum number of suppressions to return per page.",
 					"type": "integer",
+					"example": 100,
 					"default": 100,
 					"maximum": 1000,
 					"minimum": 1
@@ -795,7 +811,9 @@
 				"name": "reason",
 				"in": "query",
 				"schema": {
+					"description": "Filter to suppressions with this reason.",
 					"type": "string",
+					"example": "hard_bounce",
 					"enum": [
 						"manual",
 						"complaint",
@@ -831,33 +849,43 @@
 									"items": {
 										"properties": {
 											"created_at": {
+												"description": "When the suppression was created.",
 												"type": "string",
-												"format": "date-time"
+												"format": "date-time",
+												"example": "2026-01-02T02:20:00Z"
 											},
 											"email": {
+												"description": "The suppressed email address.",
 												"type": "string",
 												"format": "email",
 												"example": "user@example.com"
 											},
 											"expires_at": {
+												"description": "When the suppression expires. Null for a permanent suppression.",
 												"type": "string",
 												"format": "date-time",
+												"example": "2027-01-01T00:00:00Z",
 												"nullable": true
 											},
 											"id": {
+												"description": "Unique identifier for this suppression.",
 												"type": "string",
-												"format": "uuid"
+												"format": "uuid",
+												"example": "396a5436-d4b0-42a6-b3fc-48e8fa522321"
 											},
 											"note": {
+												"description": "Advisory note for this suppression, if any.",
 												"type": "string",
 												"example": "Imported from CRM",
 												"nullable": true
 											},
 											"read_only": {
 												"description": "Whether clients may mutate this suppression. This is determined by the server and must not be inferred from `reason`.",
-												"type": "boolean"
+												"type": "boolean",
+												"example": false
 											},
 											"reason": {
+												"description": "Why the address is suppressed: `manual`, `complaint`, `hard_bounce`, `soft_bounce`, or `policy`.",
 												"type": "string",
 												"example": "hard_bounce"
 											}
@@ -874,9 +902,16 @@
 									}
 								},
 								"result_info": {
+									"description": "Pagination metadata.",
 									"type": "object",
+									"example": {
+										"count": 1,
+										"next_cursor": null,
+										"per_page": 100
+									},
 									"properties": {
 										"count": {
+											"description": "Number of suppressions in this page.",
 											"type": "integer",
 											"example": 1
 										},
@@ -887,6 +922,7 @@
 											"nullable": true
 										},
 										"per_page": {
+											"description": "Maximum number of suppressions requested per page.",
 											"type": "integer",
 											"example": 100
 										}
@@ -945,7 +981,8 @@
 									"type": "object"
 								},
 								"success": {
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -985,8 +1022,9 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Cloudflare account ID.",
 					"type": "string",
-					"example": "54442216"
+					"example": "12345678"
 				}
 			},
 			{
@@ -994,6 +1032,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "The suppression's identifier.",
 					"type": "string",
 					"format": "uuid",
 					"example": "396a5436-d4b0-42a6-b3fc-48e8fa522321"
@@ -1024,33 +1063,43 @@
 									"type": "object",
 									"properties": {
 										"created_at": {
+											"description": "When the suppression was created.",
 											"type": "string",
-											"format": "date-time"
+											"format": "date-time",
+											"example": "2026-01-02T02:20:00Z"
 										},
 										"email": {
+											"description": "The suppressed email address.",
 											"type": "string",
 											"format": "email",
 											"example": "user@example.com"
 										},
 										"expires_at": {
+											"description": "When the suppression expires. Null for a permanent suppression.",
 											"type": "string",
 											"format": "date-time",
+											"example": "2027-01-01T00:00:00Z",
 											"nullable": true
 										},
 										"id": {
+											"description": "Unique identifier for this suppression.",
 											"type": "string",
-											"format": "uuid"
+											"format": "uuid",
+											"example": "396a5436-d4b0-42a6-b3fc-48e8fa522321"
 										},
 										"note": {
+											"description": "Advisory note for this suppression, if any.",
 											"type": "string",
 											"example": "Imported from CRM",
 											"nullable": true
 										},
 										"read_only": {
 											"description": "Whether clients may mutate this suppression. This is determined by the server and must not be inferred from `reason`.",
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										},
 										"reason": {
+											"description": "Why the address is suppressed: `manual`, `complaint`, `hard_bounce`, `soft_bounce`, or `policy`.",
 											"type": "string",
 											"example": "hard_bounce"
 										}
@@ -1111,7 +1160,8 @@
 									"type": "object"
 								},
 								"success": {
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -1209,7 +1259,8 @@
 							"type": "object",
 							"properties": {
 								"page": {
-									"type": "integer"
+									"type": "integer",
+									"example": 0
 								},
 								"per_page": {
 									"type": "integer",
@@ -1288,7 +1339,8 @@
 									}
 								},
 								"success": {
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -1410,7 +1462,8 @@
 									"type": "string"
 								},
 								"success": {
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -1450,8 +1503,9 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Cloudflare account ID.",
 					"type": "string",
-					"example": "54442216"
+					"example": "12345678"
 				}
 			},
 			{
@@ -1459,6 +1513,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "The suppression's identifier.",
 					"type": "string",
 					"format": "uuid",
 					"example": "396a5436-d4b0-42a6-b3fc-48e8fa522321"
@@ -1475,6 +1530,7 @@
 								"description": "New expiry. Send `null` to make the suppression permanent; omit to leave it unchanged.",
 								"type": "string",
 								"format": "date-time",
+								"example": "2027-01-01T00:00:00Z",
 								"nullable": true
 							},
 							"note": {
@@ -1512,33 +1568,43 @@
 									"type": "object",
 									"properties": {
 										"created_at": {
+											"description": "When the suppression was created.",
 											"type": "string",
-											"format": "date-time"
+											"format": "date-time",
+											"example": "2026-01-02T02:20:00Z"
 										},
 										"email": {
+											"description": "The suppressed email address.",
 											"type": "string",
 											"format": "email",
 											"example": "user@example.com"
 										},
 										"expires_at": {
+											"description": "When the suppression expires. Null for a permanent suppression.",
 											"type": "string",
 											"format": "date-time",
+											"example": "2027-01-01T00:00:00Z",
 											"nullable": true
 										},
 										"id": {
+											"description": "Unique identifier for this suppression.",
 											"type": "string",
-											"format": "uuid"
+											"format": "uuid",
+											"example": "396a5436-d4b0-42a6-b3fc-48e8fa522321"
 										},
 										"note": {
+											"description": "Advisory note for this suppression, if any.",
 											"type": "string",
 											"example": "Imported from CRM",
 											"nullable": true
 										},
 										"read_only": {
 											"description": "Whether clients may mutate this suppression. This is determined by the server and must not be inferred from `reason`.",
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										},
 										"reason": {
+											"description": "Why the address is suppressed: `manual`, `complaint`, `hard_bounce`, `soft_bounce`, or `policy`.",
 											"type": "string",
 											"example": "hard_bounce"
 										}
@@ -1599,7 +1665,8 @@
 									"type": "object"
 								},
 								"success": {
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -1644,7 +1711,8 @@
 									"type": "object"
 								},
 								"success": {
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -1689,7 +1757,8 @@
 									"type": "object"
 								},
 								"success": {
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -1800,7 +1869,8 @@
 									}
 								},
 								"success": {
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -1840,8 +1910,9 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Cloudflare account ID.",
 					"type": "string",
-					"example": "54442216"
+					"example": "12345678"
 				}
 			}
 		],
@@ -1852,16 +1923,20 @@
 						"type": "object",
 						"properties": {
 							"email": {
+								"description": "The email address to suppress.",
 								"type": "string",
 								"format": "email",
 								"example": "user@example.com"
 							},
 							"expires_at": {
+								"description": "Expiration timestamp for the suppression. Omit or set to null for a permanent suppression that never expires.",
 								"type": "string",
 								"format": "date-time",
+								"example": "2027-01-01T00:00:00Z",
 								"nullable": true
 							},
 							"note": {
+								"description": "Advisory note for this suppression. Not enforced or validated beyond length.",
 								"type": "string",
 								"example": "Imported from CRM",
 								"maxLength": 1000
@@ -1898,8 +1973,10 @@
 									"type": "object",
 									"properties": {
 										"id": {
+											"description": "The suppression's identifier.",
 											"type": "string",
-											"format": "uuid"
+											"format": "uuid",
+											"example": "396a5436-d4b0-42a6-b3fc-48e8fa522321"
 										}
 									},
 									"required": [
@@ -1953,7 +2030,8 @@
 									"type": "object"
 								},
 								"success": {
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -1998,7 +2076,8 @@
 									"type": "object"
 								},
 								"success": {
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -2043,7 +2122,8 @@
 									"type": "object"
 								},
 								"success": {
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -2088,7 +2168,8 @@
 									"type": "object"
 								},
 								"success": {
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -2128,8 +2209,9 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Cloudflare account ID.",
 					"type": "string",
-					"example": "54442216"
+					"example": "12345678"
 				}
 			}
 		],
@@ -2140,19 +2222,26 @@
 						"type": "object",
 						"properties": {
 							"items": {
+								"description": "Suppressions to import. Items with a duplicate email address are deduplicated before processing.",
 								"type": "array",
 								"items": {
 									"properties": {
 										"email": {
-											"type": "string"
+											"description": "The email address to suppress.",
+											"type": "string",
+											"example": "user@example.com"
 										},
 										"expires_at": {
+											"description": "Expiration timestamp for the suppression. Omit or set to null for a permanent suppression that never expires.",
 											"type": "string",
 											"format": "date-time",
+											"example": "2027-01-01T00:00:00Z",
 											"nullable": true
 										},
 										"note": {
+											"description": "Advisory note for this suppression. Not enforced or validated beyond length.",
 											"type": "string",
+											"example": "Imported from CRM",
 											"maxLength": 1000
 										}
 									},
@@ -2161,6 +2250,16 @@
 									],
 									"type": "object"
 								},
+								"example": [
+									{
+										"email": "user@example.com"
+									},
+									{
+										"email": "other@example.com",
+										"expires_at": "2027-01-01T00:00:00Z",
+										"note": "Imported from CRM"
+									}
+								],
 								"maxItems": 1000
 							}
 						},
@@ -2195,38 +2294,51 @@
 									"type": "object",
 									"properties": {
 										"deduplicated": {
+											"description": "Number of items dropped because their email address repeated an earlier item in this request. Counted once and excluded from `items`.",
 											"type": "integer",
 											"example": 1
 										},
 										"errors": {
-											"type": "integer"
+											"description": "Number of items that failed to import due to an unexpected error.",
+											"type": "integer",
+											"example": 0
 										},
 										"invalid": {
+											"description": "Number of items with an invalid email address.",
 											"type": "integer",
 											"example": 1
 										},
 										"items": {
+											"description": "Per-item results, in the same order as the request body.",
 											"type": "array",
 											"items": {
 												"properties": {
 													"email": {
+														"description": "The submitted email address for this item.",
 														"type": "string",
 														"format": "email",
 														"example": "user@example.com"
 													},
 													"error": {
+														"description": "Human-readable error message. Present when `status` is `invalid`, `error`, or `skipped`.",
 														"type": "string",
 														"example": "Invalid email"
 													},
 													"id": {
+														"description": "The created or promoted suppression's identifier. Present when `status` is `processed`.",
 														"type": "string",
-														"format": "uuid"
+														"format": "uuid",
+														"example": "396a5436-d4b0-42a6-b3fc-48e8fa522321"
 													},
 													"index": {
-														"type": "integer"
+														"description": "Zero-based index of this item in the request body.",
+														"type": "integer",
+														"example": 0
 													},
 													"status": {
+														"description": "Outcome for this item.",
 														"type": "string",
+														"example": "processed",
 														"enum": [
 															"processed",
 															"invalid",
@@ -2243,13 +2355,17 @@
 											}
 										},
 										"processed": {
+											"description": "Number of items successfully created or promoted.",
 											"type": "integer",
 											"example": 2
 										},
 										"skipped": {
-											"type": "integer"
+											"description": "Number of items skipped because the existing suppression is not customer-managed (for example, a read-only policy suppression).",
+											"type": "integer",
+											"example": 0
 										},
 										"total": {
+											"description": "Total number of items in the request body, including duplicates.",
 											"type": "integer",
 											"example": 4
 										}
@@ -2311,7 +2427,8 @@
 									"type": "object"
 								},
 								"success": {
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -2422,7 +2539,8 @@
 									}
 								},
 								"success": {
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [

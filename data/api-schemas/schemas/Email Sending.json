@@ -787,16 +787,20 @@
 											]
 										}
 									]
-								}
+								},
+								"example": [
+									{
+										"content": "JVBERi0xLjQK...",
+										"disposition": "attachment",
+										"filename": "report.pdf",
+										"type": "application/pdf"
+									}
+								]
 							},
 							"bcc": {
-								"description": "Recipient(s). Optional if cc or bcc is provided. A single email string, a named address object, or an array of either.",
+								"description": "Blind carbon copy recipient(s). Optional. A single email string, a named address object, or an array of either.",
 								"example": [
-									"recipient-a@example.com",
-									{
-										"address": "recipient-b@example.com",
-										"name": "Recipient B"
-									}
+									"bcc-recipient@example.com"
 								],
 								"oneOf": [
 									{
@@ -869,13 +873,9 @@
 								]
 							},
 							"cc": {
-								"description": "Recipient(s). Optional if cc or bcc is provided. A single email string, a named address object, or an array of either.",
+								"description": "Carbon copy recipient(s). Optional. A single email string, a named address object, or an array of either.",
 								"example": [
-									"recipient-a@example.com",
-									{
-										"address": "recipient-b@example.com",
-										"name": "Recipient B"
-									}
+									"cc-recipient@example.com"
 								],
 								"oneOf": [
 									{
@@ -949,6 +949,7 @@
 							},
 							"from": {
 								"description": "Sender email address. Either a plain string or an object with address and name.",
+								"example": "sender@example.com",
 								"oneOf": [
 									{
 										"description": "An email address as a plain string.",
@@ -999,6 +1000,7 @@
 							},
 							"reply_to": {
 								"description": "Reply-to address. Either a plain string or an object with address and name.",
+								"example": "replies@example.com",
 								"oneOf": [
 									{
 										"description": "An email address as a plain string.",
@@ -1045,11 +1047,7 @@
 							"to": {
 								"description": "Recipient(s). Optional if cc or bcc is provided. A single email string, a named address object, or an array of either.",
 								"example": [
-									"recipient-a@example.com",
-									{
-										"address": "recipient-b@example.com",
-										"name": "Recipient B"
-									}
+									"recipient@example.com"
 								],
 								"oneOf": [
 									{

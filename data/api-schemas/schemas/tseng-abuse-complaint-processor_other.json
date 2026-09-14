@@ -2846,7 +2846,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "abuse-reports",
-		"x-fern-sdk-method-name": "listSubmitted",
+		"x-fern-sdk-method-name": "list-submitted",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/abuse-reports/submitted/{report_id}": {
@@ -3365,7 +3365,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "abuse-reports",
-		"x-fern-sdk-method-name": "getSubmitted",
+		"x-fern-sdk-method-name": "get-submitted",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/abuse-reports/submitted/{report_id}/emails": {
@@ -3694,7 +3694,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "abuse-reports.emails",
-		"x-fern-sdk-method-name": "listSubmitted",
+		"x-fern-sdk-method-name": "list-submitted",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/abuse-reports/{report_id}/mitigations/appeal": {

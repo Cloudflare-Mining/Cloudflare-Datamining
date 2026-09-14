@@ -1,0 +1,791 @@
+{
+	"GET /accounts/{account_id}/cloudforce-one/v2/requests/{project_type}/{request_id}/messages": {
+		"operationId": "get_MessageList",
+		"summary": "List messages for an RFI request",
+		"description": "Retrieves the published, non-deleted messages visible to the agent for an RFI request, with pagination.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "project_type",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "request_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"default": "1"
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"default": "10"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Messages retrieved successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"attachments": {
+												"type": "array",
+												"items": {
+													"properties": {
+														"contentType": {
+															"type": "string"
+														},
+														"downloadable": {
+															"type": "boolean"
+														},
+														"fileName": {
+															"type": "string"
+														},
+														"fileSize": {
+															"type": "integer"
+														},
+														"id": {
+															"type": "string"
+														},
+														"is_cloudflare_team": {
+															"type": "boolean"
+														},
+														"origin": {
+															"type": "string",
+															"enum": [
+																"cloudflare",
+																"self"
+															]
+														},
+														"state": {
+															"type": "string",
+															"enum": [
+																"active",
+																"expired",
+																"revoked"
+															]
+														}
+													},
+													"required": [
+														"id",
+														"fileName",
+														"fileSize",
+														"contentType",
+														"state",
+														"origin",
+														"is_cloudflare_team",
+														"downloadable"
+													],
+													"type": "object"
+												}
+											},
+											"content": {
+												"type": "string"
+											},
+											"created": {
+												"type": "string"
+											},
+											"id": {
+												"type": "integer"
+											},
+											"is_cloudflare_team": {
+												"type": "boolean"
+											},
+											"is_published": {
+												"type": "boolean"
+											},
+											"published": {
+												"type": "string",
+												"nullable": true
+											},
+											"updated": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"content",
+											"created",
+											"updated",
+											"published",
+											"is_cloudflare_team",
+											"is_published",
+											"attachments"
+										],
+										"type": "object"
+									}
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"has_more": {
+											"type": "boolean"
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"type": "integer"
+										},
+										"total_count": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"total_count",
+										"has_more"
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"result_info"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "RFI request not found"
+			},
+			"500": {
+				"description": "Internal server error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"RFI Messages"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.requests.messages",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/requests/{project_type}/{request_id}/messages/{message_id}": {
+		"operationId": "get_MessageRead",
+		"summary": "Read a single message for an RFI request",
+		"description": "Returns the details for a specific message belonging to an RFI request.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "project_type",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "request_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "message_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Message retrieved successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"attachments": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"contentType": {
+												"type": "string"
+											},
+											"downloadable": {
+												"type": "boolean"
+											},
+											"fileName": {
+												"type": "string"
+											},
+											"fileSize": {
+												"type": "integer"
+											},
+											"id": {
+												"type": "string"
+											},
+											"is_cloudflare_team": {
+												"type": "boolean"
+											},
+											"origin": {
+												"type": "string",
+												"enum": [
+													"cloudflare",
+													"self"
+												]
+											},
+											"state": {
+												"type": "string",
+												"enum": [
+													"active",
+													"expired",
+													"revoked"
+												]
+											}
+										},
+										"required": [
+											"id",
+											"fileName",
+											"fileSize",
+											"contentType",
+											"state",
+											"origin",
+											"is_cloudflare_team",
+											"downloadable"
+										],
+										"type": "object"
+									}
+								},
+								"content": {
+									"type": "string"
+								},
+								"created": {
+									"type": "string"
+								},
+								"id": {
+									"type": "integer"
+								},
+								"is_cloudflare_team": {
+									"type": "boolean"
+								},
+								"is_published": {
+									"type": "boolean"
+								},
+								"published": {
+									"type": "string",
+									"nullable": true
+								},
+								"updated": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"content",
+								"created",
+								"updated",
+								"published",
+								"is_cloudflare_team",
+								"is_published",
+								"attachments"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Message not found"
+			},
+			"500": {
+				"description": "Internal server error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"RFI Messages"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.requests.messages",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/requests/{project_type}/{request_id}/messages/new": {
+		"operationId": "post_MessageCreate",
+		"summary": "Create a customer follow-on message on an RFI request",
+		"description": "Creates a customer dashboard message on an RFI request. Messages are always published on send. Workflow-enabled projects require Idempotency-Key and atomically record message activity and any policy transition. For token-billed project types, substantive follow-on messages consume message tokens and are subject to quarterly quota enforcement.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "project_type",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "request_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "Idempotency-Key",
+				"in": "header",
+				"description": "Client command key. Required when publishing a message for a workflow-enabled project; trimmed and limited to 255 characters.",
+				"schema": {
+					"description": "Client command key. Required when publishing a message for a workflow-enabled project; trimmed and limited to 255 characters.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"attachment_asset_ids": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"author_id": {
+								"type": "string"
+							},
+							"author_name": {
+								"type": "string"
+							},
+							"content": {
+								"minLength": 1,
+								"type": "string"
+							},
+							"publish": {
+								"type": "boolean",
+								"default": false
+							},
+							"tlp": {
+								"type": "string",
+								"default": "red",
+								"enum": [
+									"clear",
+									"green",
+									"amber",
+									"amber-strict",
+									"red",
+									"white"
+								]
+							}
+						},
+						"required": [
+							"content"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Message created and published. Returns the created message with its embedded attachments[], filtered to the dashboard's visible origins.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"attachments": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"contentType": {
+												"type": "string"
+											},
+											"downloadable": {
+												"type": "boolean"
+											},
+											"fileName": {
+												"type": "string"
+											},
+											"fileSize": {
+												"type": "integer"
+											},
+											"id": {
+												"type": "string"
+											},
+											"is_cloudflare_team": {
+												"type": "boolean"
+											},
+											"origin": {
+												"type": "string",
+												"enum": [
+													"cloudflare",
+													"self"
+												]
+											},
+											"state": {
+												"type": "string",
+												"enum": [
+													"active",
+													"expired",
+													"revoked"
+												]
+											}
+										},
+										"required": [
+											"id",
+											"fileName",
+											"fileSize",
+											"contentType",
+											"state",
+											"origin",
+											"is_cloudflare_team",
+											"downloadable"
+										],
+										"type": "object"
+									}
+								},
+								"content": {
+									"type": "string"
+								},
+								"created": {
+									"type": "string"
+								},
+								"id": {
+									"type": "integer"
+								},
+								"is_cloudflare_team": {
+									"type": "boolean"
+								},
+								"is_published": {
+									"type": "boolean"
+								},
+								"published": {
+									"type": "string",
+									"nullable": true
+								},
+								"updated": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"content",
+								"created",
+								"updated",
+								"published",
+								"is_cloudflare_team",
+								"is_published",
+								"attachments"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid request body, missing/invalid publication command key, or one or more attachment_asset_ids are invalid (not on this request, deleted, or already attached to another message)."
+			},
+			"404": {
+				"description": "RFI request not found for this account."
+			},
+			"409": {
+				"description": "The publication command key was reused for different intent, or a legacy attachment was concurrently attached to another message."
+			},
+			"500": {
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"RFI Messages"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.requests.messages",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
+	},
+	"PUT /accounts/{account_id}/cloudforce-one/v2/requests/{project_type}/{request_id}/messages/{message_id}": {
+		"operationId": "put_MessageUpdate",
+		"summary": "Update/publish a message for an RFI request",
+		"description": "Updates an existing message, typically to publish a draft by setting publish=true. Workflow-enabled publication requires Idempotency-Key and atomically records message activity and any policy transition.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "project_type",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "request_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "message_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "Idempotency-Key",
+				"in": "header",
+				"description": "Client command key. Required when publishing a message for a workflow-enabled project; trimmed and limited to 255 characters.",
+				"schema": {
+					"description": "Client command key. Required when publishing a message for a workflow-enabled project; trimmed and limited to 255 characters.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"attachment_asset_ids": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"content": {
+								"minLength": 1,
+								"type": "string"
+							},
+							"publish": {
+								"type": "boolean"
+							},
+							"tlp": {
+								"type": "string",
+								"enum": [
+									"clear",
+									"green",
+									"amber",
+									"amber-strict",
+									"red",
+									"white"
+								]
+							}
+						},
+						"required": [
+							"content",
+							"publish",
+							"tlp"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Message updated. Returns the updated message (under `message`) with its embedded attachments[], filtered to the dashboard's visible origins.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"message": {
+									"type": "object",
+									"properties": {
+										"attachments": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"contentType": {
+														"type": "string"
+													},
+													"downloadable": {
+														"type": "boolean"
+													},
+													"fileName": {
+														"type": "string"
+													},
+													"fileSize": {
+														"type": "integer"
+													},
+													"id": {
+														"type": "string"
+													},
+													"is_cloudflare_team": {
+														"type": "boolean"
+													},
+													"origin": {
+														"type": "string",
+														"enum": [
+															"cloudflare",
+															"self"
+														]
+													},
+													"state": {
+														"type": "string",
+														"enum": [
+															"active",
+															"expired",
+															"revoked"
+														]
+													}
+												},
+												"required": [
+													"id",
+													"fileName",
+													"fileSize",
+													"contentType",
+													"state",
+													"origin",
+													"is_cloudflare_team",
+													"downloadable"
+												],
+												"type": "object"
+											}
+										},
+										"content": {
+											"type": "string"
+										},
+										"created": {
+											"type": "string"
+										},
+										"id": {
+											"type": "integer"
+										},
+										"is_cloudflare_team": {
+											"type": "boolean"
+										},
+										"is_published": {
+											"type": "boolean"
+										},
+										"published": {
+											"type": "string",
+											"nullable": true
+										},
+										"updated": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"content",
+										"created",
+										"updated",
+										"published",
+										"is_cloudflare_team",
+										"is_published",
+										"attachments"
+									]
+								}
+							},
+							"required": [
+								"message"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid request body, an attempt to update or modify attachments on an already-published message, or one or more attachment_asset_ids are invalid (not on this request, deleted, or already attached)."
+			},
+			"404": {
+				"description": "Message or RFI request not found for this account."
+			},
+			"409": {
+				"description": "The publication command key was reused for different intent or the target draft was already published."
+			},
+			"500": {
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"RFI Messages"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.requests.messages",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
+	}
+}

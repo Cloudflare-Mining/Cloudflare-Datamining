@@ -2,7 +2,7 @@
 	"DELETE /zones/{zone_id}/firewall/rules": {
 		"operationId": "firewall-rules-delete-firewall-rules",
 		"summary": "Delete firewall rules",
-		"description": "Deletes existing firewall rules.",
+		"description": "**This endpoint has been deprecated and returns 410 Gone. Please use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/) instead.**\n\nDeletes existing firewall rules.\n",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -711,7 +711,7 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "firewall.rules",
 		"x-fern-sdk-method-name": "bulk-delete",
 		"x-forge-hidden": true
@@ -719,7 +719,7 @@
 	"DELETE /zones/{zone_id}/firewall/rules/{rule_id}": {
 		"operationId": "firewall-rules-delete-a-firewall-rule",
 		"summary": "Delete a firewall rule",
-		"description": "Deletes an existing firewall rule.",
+		"description": "**This endpoint has been deprecated and returns 410 Gone. Please use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/) instead.**\n\nDeletes an existing firewall rule.\n",
 		"parameters": [
 			{
 				"name": "rule_id",
@@ -1388,7 +1388,7 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "firewall.rules",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
@@ -1396,7 +1396,7 @@
 	"GET /zones/{zone_id}/firewall/rules": {
 		"operationId": "firewall-rules-list-firewall-rules",
 		"summary": "List firewall rules",
-		"description": "Fetches firewall rules in a zone. You can filter the results using several optional parameters.",
+		"description": "**This endpoint has been deprecated and returns 410 Gone. Please use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/) instead.**\n\nFetches firewall rules in a zone. You can filter the results using several optional parameters.\n",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -2143,7 +2143,7 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "firewall.rules",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
@@ -2151,7 +2151,7 @@
 	"GET /zones/{zone_id}/firewall/rules/{rule_id}": {
 		"operationId": "firewall-rules-get-a-firewall-rule",
 		"summary": "Get a firewall rule",
-		"description": "Fetches the details of a firewall rule.",
+		"description": "**This endpoint has been deprecated and returns 410 Gone. Please use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/) instead.**\n\nFetches the details of a firewall rule.\n",
 		"parameters": [
 			{
 				"name": "rule_id",
@@ -2820,7 +2820,7 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "firewall.rules",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
@@ -2828,7 +2828,7 @@
 	"PATCH /zones/{zone_id}/firewall/rules": {
 		"operationId": "firewall-rules-update-priority-of-firewall-rules",
 		"summary": "Update priority of firewall rules",
-		"description": "Updates the priority of existing firewall rules.",
+		"description": "**This endpoint has been deprecated and returns 410 Gone. Please use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/) instead.**\n\nUpdates the priority of existing firewall rules.\n",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -3527,7 +3527,7 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "firewall.rules",
 		"x-fern-sdk-method-name": "bulk-edit",
 		"x-forge-hidden": true
@@ -3535,7 +3535,7 @@
 	"PATCH /zones/{zone_id}/firewall/rules/{rule_id}": {
 		"operationId": "firewall-rules-update-priority-of-a-firewall-rule",
 		"summary": "Update priority of a firewall rule",
-		"description": "Updates the priority of an existing firewall rule.",
+		"description": "**This endpoint has been deprecated and returns 410 Gone. Please use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/) instead.**\n\nUpdates the priority of an existing firewall rule.\n",
 		"parameters": [
 			{
 				"name": "rule_id",
@@ -4256,7 +4256,7 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "firewall.rules",
 		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true
@@ -4264,7 +4264,7 @@
 	"POST /zones/{zone_id}/firewall/rules": {
 		"operationId": "firewall-rules-create-firewall-rules",
 		"summary": "Create firewall rules",
-		"description": "Create one or more firewall rules.",
+		"description": "**This endpoint has been deprecated and returns 410 Gone. Please use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/) instead.**\n\nCreate one or more firewall rules.\n",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -5059,7 +5059,7 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "firewall.rules",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
@@ -5067,7 +5067,7 @@
 	"PUT /zones/{zone_id}/firewall/rules": {
 		"operationId": "firewall-rules-update-firewall-rules",
 		"summary": "Update firewall rules",
-		"description": "Updates one or more existing firewall rules.",
+		"description": "**This endpoint has been deprecated and returns 410 Gone. Please use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/) instead.**\n\nUpdates one or more existing firewall rules.\n",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -5766,7 +5766,7 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "firewall.rules",
 		"x-fern-sdk-method-name": "bulk-update",
 		"x-forge-hidden": true
@@ -5774,7 +5774,7 @@
 	"PUT /zones/{zone_id}/firewall/rules/{rule_id}": {
 		"operationId": "firewall-rules-update-a-firewall-rule",
 		"summary": "Update a firewall rule",
-		"description": "Updates an existing firewall rule.",
+		"description": "**This endpoint has been deprecated and returns 410 Gone. Please use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/) instead.**\n\nUpdates an existing firewall rule.\n",
 		"parameters": [
 			{
 				"name": "rule_id",
@@ -6543,7 +6543,7 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "firewall.rules",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true

@@ -1,0 +1,840 @@
+{
+	"GET /accounts/{account_id}/cloudforce-one/v2/requests/{project_type}/constants": {
+		"operationId": "get_RequestConstants",
+		"summary": "Get request constants",
+		"description": "Returns available priorities, statuses, and TLP levels for request workflows",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "string"
+				}
+			},
+			{
+				"name": "project_type",
+				"in": "path",
+				"description": "Project type",
+				"required": true,
+				"schema": {
+					"description": "Project type",
+					"type": "string",
+					"enum": [
+						"threat-intelligence",
+						"incident-response",
+						"ir-emergency-response",
+						"table-top",
+						"pentest",
+						"irp",
+						"threat-hunting",
+						"cybersecurity-assessment",
+						"react-general",
+						"legal-response",
+						"soc-alerts",
+						"demo"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Request constants retrieved successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"properties": {
+									"type": "object",
+									"properties": {
+										"result": {
+											"properties": {
+												"properties": {
+													"type": "object",
+													"properties": {
+														"priority": {
+															"properties": {
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"example": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	]
+																},
+																"type": {
+																	"type": "string",
+																	"example": "array"
+																}
+															},
+															"required": [
+																"type",
+																"items"
+															],
+															"type": "object"
+														},
+														"priority_token_surcharge": {
+															"properties": {
+																"additionalProperties": {
+																	"type": "object",
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"example": "integer"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	]
+																},
+																"type": {
+																	"type": "string",
+																	"example": "object"
+																}
+															},
+															"required": [
+																"type",
+																"additionalProperties"
+															],
+															"type": "object"
+														},
+														"status": {
+															"properties": {
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"example": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	]
+																},
+																"type": {
+																	"type": "string",
+																	"example": "array"
+																}
+															},
+															"required": [
+																"type",
+																"items"
+															],
+															"type": "object"
+														},
+														"tlp": {
+															"properties": {
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"example": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	]
+																},
+																"type": {
+																	"type": "string",
+																	"example": "array"
+																}
+															},
+															"required": [
+																"type",
+																"items"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"priority",
+														"status",
+														"tlp",
+														"priority_token_surcharge"
+													]
+												},
+												"type": {
+													"type": "string",
+													"example": "object"
+												}
+											},
+											"required": [
+												"type",
+												"properties"
+											],
+											"type": "object"
+										},
+										"success": {
+											"properties": {
+												"type": {
+													"type": "string",
+													"example": "boolean"
+												}
+											},
+											"required": [
+												"type"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"success",
+										"result"
+									]
+								},
+								"type": {
+									"type": "string",
+									"example": "object"
+								}
+							},
+							"required": [
+								"type",
+								"properties"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Requests - Dashboard"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.requests.constants",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/requests/{project_type}/metadata": {
+		"operationId": "get_DashboardMetadataFieldList",
+		"summary": "List metadata fields for an RFI type",
+		"description": "Get custom metadata fields available for the specified project type",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "string"
+				}
+			},
+			{
+				"name": "project_type",
+				"in": "path",
+				"description": "Project type",
+				"required": true,
+				"schema": {
+					"description": "Project type",
+					"type": "string",
+					"enum": [
+						"threat-intelligence",
+						"incident-response",
+						"ir-emergency-response",
+						"table-top",
+						"pentest",
+						"irp",
+						"threat-hunting",
+						"cybersecurity-assessment",
+						"react-general",
+						"legal-response",
+						"soc-alerts",
+						"demo"
+					]
+				}
+			},
+			{
+				"name": "request_type",
+				"in": "query",
+				"description": "Filter fields to those applicable to this request type. Fields without request type restrictions are always included.",
+				"schema": {
+					"description": "Filter fields to those applicable to this request type. Fields without request type restrictions are always included.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "country",
+				"in": "query",
+				"description": "Exclude fields restricted for this alpha-2 country code",
+				"schema": {
+					"description": "Exclude fields restricted for this alpha-2 country code",
+					"type": "string",
+					"maxLength": 2,
+					"minLength": 2,
+					"pattern": "^[A-Z]{2}$"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Metadata fields retrieved successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"data": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"created": {
+												"type": "string"
+											},
+											"defaultValue": {
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													},
+													{
+														"type": "boolean"
+													}
+												]
+											},
+											"description": {
+												"type": "string"
+											},
+											"displayOrder": {
+												"type": "number"
+											},
+											"fieldLabel": {
+												"type": "string"
+											},
+											"fieldName": {
+												"type": "string"
+											},
+											"fieldType": {
+												"type": "string"
+											},
+											"id": {
+												"type": "string"
+											},
+											"options": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"projectType": {
+												"type": "string"
+											},
+											"public": {
+												"type": "boolean"
+											},
+											"required": {
+												"type": "boolean"
+											},
+											"sectionID": {
+												"type": "string"
+											},
+											"sectionLabel": {
+												"type": "string"
+											},
+											"updated": {
+												"type": "string"
+											},
+											"validation": {
+												"type": "object",
+												"properties": {
+													"max": {
+														"type": "number"
+													},
+													"maxLength": {
+														"type": "number"
+													},
+													"min": {
+														"type": "number"
+													},
+													"minLength": {
+														"type": "number"
+													},
+													"pattern": {
+														"type": "string"
+													},
+													"requiredWhen": {
+														"description": "Require this field only when the predicate matches sibling values.",
+														"type": "object",
+														"additionalProperties": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																},
+																{
+																	"type": "boolean"
+																},
+																{
+																	"items": {
+																		"anyOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "number"
+																			},
+																			{
+																				"type": "boolean"
+																			}
+																		]
+																	},
+																	"type": "array"
+																}
+															]
+														}
+													},
+													"visibility": {
+														"description": "Controls which request types and countries this field is shown for.",
+														"type": "object",
+														"properties": {
+															"exclude_countries": {
+																"description": "Hide this field for these alpha-2 country codes. If absent or empty, applies to all countries.",
+																"type": "array",
+																"items": {
+																	"maxLength": 2,
+																	"minLength": 2,
+																	"pattern": "^[A-Z]{2}$",
+																	"type": "string"
+																}
+															},
+															"include_request_types": {
+																"description": "Show this field only for these request types. If absent or empty, applies to all request types.",
+																"type": "array",
+																"items": {
+																	"type": "string"
+																}
+															}
+														}
+													},
+													"visibleWhen": {
+														"description": "Show this field only when the predicate matches sibling values.",
+														"type": "object",
+														"additionalProperties": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																},
+																{
+																	"type": "boolean"
+																},
+																{
+																	"items": {
+																		"anyOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "number"
+																			},
+																			{
+																				"type": "boolean"
+																			}
+																		]
+																	},
+																	"type": "array"
+																}
+															]
+														}
+													}
+												}
+											}
+										},
+										"required": [
+											"id",
+											"projectType",
+											"fieldName",
+											"fieldLabel",
+											"fieldType",
+											"required",
+											"public",
+											"displayOrder",
+											"created",
+											"updated"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"data"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Requests - Dashboard"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.requests.metadata",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/requests/{project_type}/quota": {
+		"operationId": "get_RequestQuota",
+		"summary": "Get request token quota",
+		"description": "Returns the account's token quota for the current anniversary quarter: total granted, used, remaining, and the quarter/anniversary boundaries.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "project_type",
+				"in": "path",
+				"description": "RFI project type",
+				"required": true,
+				"schema": {
+					"description": "RFI project type",
+					"type": "string",
+					"example": "threat-intelligence",
+					"enum": [
+						"threat-intelligence",
+						"incident-response",
+						"ir-emergency-response",
+						"table-top",
+						"pentest",
+						"irp",
+						"threat-hunting",
+						"cybersecurity-assessment",
+						"react-general",
+						"legal-response",
+						"soc-alerts",
+						"demo"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Quota information"
+			},
+			"404": {
+				"description": "Project type does not use token billing, or account not found"
+			},
+			"422": {
+				"description": "Account has an invalid anniversary date"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Requests - Dashboard"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.requests.quota",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/requests/{project_type}/types": {
+		"operationId": "get_DashboardRequestTypesList",
+		"summary": "List visible request types for a project (dashboard)",
+		"description": "Returns request types available to dashboard (external) callers. For restricted project types (e.g. legal-response), only the allowlisted subset is returned.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "project_type",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Request types listed successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"project_type": {
+											"type": "string"
+										},
+										"request_types": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"category": {
+														"type": "string",
+														"nullable": true
+													},
+													"description": {
+														"type": "string"
+													},
+													"id": {
+														"type": "string"
+													},
+													"message_tokens": {
+														"type": "integer",
+														"minimum": 0
+													},
+													"name": {
+														"type": "string"
+													},
+													"request_tokens": {
+														"type": "integer",
+														"minimum": 0
+													},
+													"response_tokens": {
+														"type": "integer",
+														"minimum": 0
+													},
+													"result": {
+														"type": "string",
+														"nullable": true
+													},
+													"source": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"description",
+													"category",
+													"result",
+													"request_tokens",
+													"response_tokens",
+													"message_tokens",
+													"source"
+												],
+												"type": "object"
+											}
+										},
+										"total": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"request_types",
+										"total",
+										"project_type"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Requests - Dashboard"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.requests.types",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/requests/legal-response/access-check": {
+		"operationId": "get_LegalResponseAccessCheck",
+		"summary": "Check if current user is allowlisted for Legal Response",
+		"description": "Returns whether the JWT-authenticated user's email is on the legal-response allowlist. This endpoint is purely informational for UI gating; actual access enforcement is performed by `legalResponseMiddleware` on real legal-response endpoints. Read-only — no Durable Object writes are performed.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID (used for JWT validation only)",
+				"required": true,
+				"schema": {
+					"description": "Account ID (used for JWT validation only)",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Access decision for the JWT user",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Always empty on success",
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"messages": {
+									"description": "Always empty on success",
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"allowed": {
+											"description": "True if the JWT user's email is on the legal-response allowlist",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"allowed"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Requests - Dashboard"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.requests.legal-response",
+		"x-fern-sdk-method-name": "access-check",
+		"x-forge-hidden": true
+	}
+}

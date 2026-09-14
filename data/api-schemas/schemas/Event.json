@@ -3745,6 +3745,657 @@
 		"x-fern-sdk-method-name": "patch",
 		"x-forge-hidden": true
 	},
+	"POST /accounts/{account_id}/cloudforce-one/events": {
+		"operationId": "post_EventList",
+		"summary": "Filter and list events",
+		"description": "Use `datasetId: [\"all\"]` or `datasetId: [\"*\"]` for the legacy all-datasets scope, `datasetId: [\"analytics\"]` for datasets with `isAnalytics=true`, or `datasetId: [\"operational\"]` for datasets with `isAnalytics=false` (limited to 50). Scope values must be used alone. When `datasetId` is unspecified, events are listed from the default Cloudforce One Threat Events dataset. To list existing datasets, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "forceRefresh",
+				"in": "query",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			{
+				"name": "format",
+				"in": "query",
+				"description": "Output format for event data. 'json' returns the default format, 'stix2' returns STIX 2.1 Sighting SROs with linked Indicator SDOs, Observed Data SDOs, and SCOs, 'taxii' returns a TAXII 2.1 Envelope with Content-Type application/taxii+json;version=2.1.",
+				"schema": {
+					"description": "Output format for event data. 'json' returns the default format, 'stix2' returns STIX 2.1 Sighting SROs with linked Indicator SDOs, Observed Data SDOs, and SCOs, 'taxii' returns a TAXII 2.1 Envelope with Content-Type application/taxii+json;version=2.1.",
+					"type": "string",
+					"example": "json",
+					"enum": [
+						"json",
+						"stix2",
+						"taxii"
+					]
+				}
+			},
+			{
+				"name": "cache",
+				"in": "query",
+				"description": "Cache strategy. 'from-graph' serves results from the graph-node KV cache when all requested UUIDs are cached; falls back to normal path on partial/zero hit.",
+				"schema": {
+					"description": "Cache strategy. 'from-graph' serves results from the graph-node KV cache when all requested UUIDs are cached; falls back to normal path on partial/zero hit.",
+					"type": "string",
+					"enum": [
+						"from-graph"
+					]
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"cursor": {
+								"description": "Cursor for pagination. When provided, filters are embedded in the cursor so you only need to pass cursor and pageSize.",
+								"type": "string",
+								"example": "eyJ2ZXJzaW9uIjoxLCJwb3NpdGlvbiI6eyJkYXRlIjoiMjAyNC0wMS0xMlQxMDowMDowMFoiLCJ1dWlkIjoiYWJjMTIzIn19"
+							},
+							"datasetId": {
+								"description": "Dataset UUIDs to query, or one standalone scope value: 'all'/'*' for the legacy all-datasets behavior, 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, uses the default dataset.",
+								"type": "array",
+								"items": {
+									"example": "7632a037-fdef-4899-9b12-148470aae772",
+									"type": "string"
+								}
+							},
+							"order": {
+								"type": "string",
+								"enum": [
+									"asc",
+									"desc"
+								]
+							},
+							"orderBy": {
+								"type": "string",
+								"example": "created"
+							},
+							"page": {
+								"type": "number",
+								"example": 1
+							},
+							"pageSize": {
+								"type": "number",
+								"example": 100
+							},
+							"search": {
+								"description": "Structured search as a JSON array of {field, op, value} objects. Use the 'in' operator with an array value to bulk-check up to 100 values. Multiple conditions are AND'd together. Max 10 conditions per request.",
+								"type": "array",
+								"items": {
+									"anyOf": [
+										{
+											"additionalProperties": false,
+											"properties": {
+												"field": {
+													"type": "string",
+													"enum": [
+														"attacker",
+														"attackerCountry",
+														"category",
+														"createdAt",
+														"date",
+														"event",
+														"indicator",
+														"indicatorType",
+														"mitreAttack",
+														"mitreCapec",
+														"tags",
+														"targetCountry",
+														"targetIndustry",
+														"tlp",
+														"uuid"
+													]
+												},
+												"op": {
+													"type": "string",
+													"enum": [
+														"equals",
+														"not",
+														"gt",
+														"gte",
+														"lt",
+														"lte",
+														"like",
+														"contains",
+														"startsWith",
+														"endsWith",
+														"find"
+													]
+												},
+												"value": {
+													"type": "string",
+													"maxLength": 512,
+													"minLength": 1
+												}
+											},
+											"required": [
+												"field",
+												"op",
+												"value"
+											],
+											"type": "object"
+										},
+										{
+											"additionalProperties": false,
+											"properties": {
+												"field": {
+													"type": "string",
+													"enum": [
+														"attacker",
+														"attackerCountry",
+														"category",
+														"createdAt",
+														"date",
+														"event",
+														"indicator",
+														"indicatorType",
+														"mitreAttack",
+														"mitreCapec",
+														"tags",
+														"targetCountry",
+														"targetIndustry",
+														"tlp",
+														"uuid"
+													]
+												},
+												"op": {
+													"type": "string",
+													"enum": [
+														"in"
+													]
+												},
+												"value": {
+													"type": "array",
+													"items": {
+														"maxLength": 512,
+														"minLength": 1,
+														"type": "string"
+													},
+													"maxItems": 100,
+													"minItems": 1
+												}
+											},
+											"required": [
+												"field",
+												"op",
+												"value"
+											],
+											"type": "object"
+										},
+										{
+											"additionalProperties": false,
+											"properties": {
+												"field": {
+													"type": "string",
+													"enum": [
+														"killChain"
+													]
+												},
+												"op": {
+													"type": "string",
+													"enum": [
+														"equals",
+														"not",
+														"gt",
+														"gte",
+														"lt",
+														"lte"
+													]
+												},
+												"value": {
+													"anyOf": [
+														{
+															"type": "number"
+														},
+														{
+															"pattern": "^-?(?:\\d+\\.?\\d*|\\.\\d+)$",
+															"type": "string"
+														}
+													]
+												}
+											},
+											"required": [
+												"field",
+												"op",
+												"value"
+											],
+											"type": "object"
+										},
+										{
+											"additionalProperties": false,
+											"properties": {
+												"field": {
+													"type": "string",
+													"enum": [
+														"killChain"
+													]
+												},
+												"op": {
+													"type": "string",
+													"enum": [
+														"in"
+													]
+												},
+												"value": {
+													"type": "array",
+													"items": {
+														"anyOf": [
+															{
+																"type": "number"
+															},
+															{
+																"pattern": "^-?(?:\\d+\\.?\\d*|\\.\\d+)$",
+																"type": "string"
+															}
+														]
+													},
+													"maxItems": 100,
+													"minItems": 1
+												}
+											},
+											"required": [
+												"field",
+												"op",
+												"value"
+											],
+											"type": "object"
+										},
+										{
+											"additionalProperties": false,
+											"properties": {
+												"field": {
+													"type": "string",
+													"enum": [
+														"hasChildren"
+													]
+												},
+												"op": {
+													"type": "string",
+													"enum": [
+														"equals",
+														"not",
+														"gt",
+														"gte",
+														"lt",
+														"lte"
+													]
+												},
+												"value": {
+													"anyOf": [
+														{
+															"type": "boolean"
+														},
+														{
+															"enum": [
+																"true"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"false"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																1
+															],
+															"type": "number"
+														},
+														{
+															"enum": [
+																0
+															],
+															"type": "number"
+														},
+														{
+															"enum": [
+																"1"
+															],
+															"type": "string"
+														},
+														{
+															"enum": [
+																"0"
+															],
+															"type": "string"
+														}
+													]
+												}
+											},
+											"required": [
+												"field",
+												"op",
+												"value"
+											],
+											"type": "object"
+										},
+										{
+											"additionalProperties": false,
+											"properties": {
+												"field": {
+													"type": "string",
+													"enum": [
+														"hasChildren"
+													]
+												},
+												"op": {
+													"type": "string",
+													"enum": [
+														"in"
+													]
+												},
+												"value": {
+													"type": "array",
+													"items": {
+														"anyOf": [
+															{
+																"type": "boolean"
+															},
+															{
+																"enum": [
+																	"true"
+																],
+																"type": "string"
+															},
+															{
+																"enum": [
+																	"false"
+																],
+																"type": "string"
+															},
+															{
+																"enum": [
+																	1
+																],
+																"type": "number"
+															},
+															{
+																"enum": [
+																	0
+																],
+																"type": "number"
+															},
+															{
+																"enum": [
+																	"1"
+																],
+																"type": "string"
+															},
+															{
+																"enum": [
+																	"0"
+																],
+																"type": "string"
+															}
+														]
+													},
+													"maxItems": 100,
+													"minItems": 1
+												}
+											},
+											"required": [
+												"field",
+												"op",
+												"value"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"maxItems": 10
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Returns a list of events.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "array",
+							"items": {
+								"properties": {
+									"attacker": {
+										"type": "string",
+										"example": "Flying Yeti"
+									},
+									"attackerCountry": {
+										"type": "string",
+										"example": "CN"
+									},
+									"attackerCountryAlpha3": {
+										"type": "string",
+										"example": "CHN"
+									},
+									"category": {
+										"type": "string",
+										"example": "Domain Resolution"
+									},
+									"datasetId": {
+										"type": "string",
+										"example": "dataset-example-id"
+									},
+									"date": {
+										"type": "string",
+										"example": "2022-04-01T00:00:00Z"
+									},
+									"event": {
+										"type": "string",
+										"example": "An attacker registered the domain domain.com"
+									},
+									"hasChildren": {
+										"type": "boolean"
+									},
+									"indicator": {
+										"type": "string",
+										"example": "domain.com"
+									},
+									"indicatorType": {
+										"type": "string",
+										"example": "domain"
+									},
+									"indicatorTypeId": {
+										"type": "number",
+										"example": 5
+									},
+									"insight": {
+										"type": "string"
+									},
+									"killChain": {
+										"type": "number"
+									},
+									"mitreAttack": {
+										"type": "array",
+										"items": {
+											"example": " ",
+											"type": "string"
+										}
+									},
+									"mitreCapec": {
+										"type": "array",
+										"items": {
+											"example": " ",
+											"type": "string"
+										}
+									},
+									"numReferenced": {
+										"type": "number"
+									},
+									"numReferences": {
+										"type": "number"
+									},
+									"rawId": {
+										"type": "string",
+										"example": "453gw34w3"
+									},
+									"referenced": {
+										"type": "array",
+										"items": {
+											"example": " ",
+											"type": "string"
+										}
+									},
+									"referencedIds": {
+										"type": "array",
+										"items": {
+											"type": "number"
+										}
+									},
+									"references": {
+										"type": "array",
+										"items": {
+											"example": " ",
+											"type": "string"
+										}
+									},
+									"referencesIds": {
+										"type": "array",
+										"items": {
+											"type": "number"
+										}
+									},
+									"releasabilityId": {
+										"type": "string"
+									},
+									"tags": {
+										"type": "array",
+										"items": {
+											"example": "malware",
+											"type": "string"
+										}
+									},
+									"targetCountry": {
+										"type": "string",
+										"example": "US"
+									},
+									"targetCountryAlpha3": {
+										"type": "string",
+										"example": "USA"
+									},
+									"targetIndustry": {
+										"type": "string",
+										"example": "Agriculture"
+									},
+									"tlp": {
+										"type": "string",
+										"example": "amber"
+									},
+									"uuid": {
+										"type": "string",
+										"example": "12345678-1234-1234-1234-1234567890ab"
+									}
+								},
+								"required": [
+									"uuid",
+									"date",
+									"targetCountry",
+									"targetCountryAlpha3",
+									"attacker",
+									"attackerCountry",
+									"attackerCountryAlpha3",
+									"targetIndustry",
+									"rawId",
+									"indicatorTypeId",
+									"indicator",
+									"event",
+									"numReferenced",
+									"numReferences",
+									"tlp",
+									"category",
+									"indicatorType",
+									"referenced",
+									"references",
+									"tags",
+									"killChain",
+									"mitreAttack",
+									"mitreCapec",
+									"referencedIds",
+									"referencesIds",
+									"hasChildren",
+									"datasetId"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events",
+		"x-fern-sdk-method-name": "search",
+		"x-forge-hidden": true
+	},
 	"POST /accounts/{account_id}/cloudforce-one/events/{event_id}": {
 		"operationId": "post_EventUpdate",
 		"summary": "Updates an event",

@@ -1,0 +1,799 @@
+{
+	"GET /accounts/{account_id}/cloudforce-one/v2/requests/{project_type}/{request_id}/assets/{asset_id}/download": {
+		"operationId": "get_DashboardAssetDownload",
+		"summary": "Download asset (Customer)",
+		"description": "Download a file asset from R2 storage. Customer can only download from their own account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "project_type",
+				"in": "path",
+				"description": "RFI project type. Valid values: threat-intelligence, incident-response, ir-emergency-response, table-top, pentest, irp, threat-hunting, cybersecurity-assessment, react-general, legal-response, soc-alerts, demo",
+				"required": true,
+				"schema": {
+					"description": "RFI project type. Valid values: threat-intelligence, incident-response, ir-emergency-response, table-top, pentest, irp, threat-hunting, cybersecurity-assessment, react-general, legal-response, soc-alerts, demo",
+					"type": "string",
+					"example": "threat-intelligence",
+					"enum": [
+						"threat-intelligence",
+						"incident-response",
+						"ir-emergency-response",
+						"table-top",
+						"pentest",
+						"irp",
+						"threat-hunting",
+						"cybersecurity-assessment",
+						"react-general",
+						"legal-response",
+						"soc-alerts",
+						"demo"
+					]
+				}
+			},
+			{
+				"name": "request_id",
+				"in": "path",
+				"description": "RFI UUID",
+				"required": true,
+				"schema": {
+					"description": "RFI UUID",
+					"type": "string"
+				}
+			},
+			{
+				"name": "asset_id",
+				"in": "path",
+				"description": "Asset UUID",
+				"required": true,
+				"schema": {
+					"description": "Asset UUID",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Asset file content",
+				"content": {
+					"application/octet-stream": {
+						"schema": {
+							"type": "string",
+							"format": "binary"
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Asset not found or not downloadable: deleted, revoked, never shared, its origin is outside the dashboard visibility policy, or (for an attachment) its parent message is unpublished or deleted."
+			},
+			"410": {
+				"description": "The asset's share window has expired."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Dashboard Assets"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.requests.assets",
+		"x-fern-sdk-method-name": "download",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/requests/{project_type}/{request_id}/assets/list": {
+		"operationId": "get_DashboardAssetList",
+		"summary": "List assets in request (Customer)",
+		"description": "List all file assets for a request. Customer can only list assets from their own account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "project_type",
+				"in": "path",
+				"description": "RFI project type. Valid values: threat-intelligence, incident-response, ir-emergency-response, table-top, pentest, irp, threat-hunting, cybersecurity-assessment, react-general, legal-response, soc-alerts, demo",
+				"required": true,
+				"schema": {
+					"description": "RFI project type. Valid values: threat-intelligence, incident-response, ir-emergency-response, table-top, pentest, irp, threat-hunting, cybersecurity-assessment, react-general, legal-response, soc-alerts, demo",
+					"type": "string",
+					"example": "threat-intelligence",
+					"enum": [
+						"threat-intelligence",
+						"incident-response",
+						"ir-emergency-response",
+						"table-top",
+						"pentest",
+						"irp",
+						"threat-hunting",
+						"cybersecurity-assessment",
+						"react-general",
+						"legal-response",
+						"soc-alerts",
+						"demo"
+					]
+				}
+			},
+			{
+				"name": "request_id",
+				"in": "path",
+				"description": "RFI UUID",
+				"required": true,
+				"schema": {
+					"description": "RFI UUID",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Assets listed successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"properties": {
+									"type": "object",
+									"properties": {
+										"assets": {
+											"properties": {
+												"items": {
+													"type": "object",
+													"properties": {
+														"properties": {
+															"type": "object",
+															"properties": {
+																"description": {
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"example": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																"contentType": {
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"example": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																"downloadable": {
+																	"properties": {
+																		"description": {
+																			"type": "string",
+																			"example": "Whether the agent may download this asset under the current policy (DASHBOARD_DOWNLOADABLE_ORIGINS)"
+																		},
+																		"type": {
+																			"type": "string",
+																			"example": "boolean"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"description"
+																	],
+																	"type": "object"
+																},
+																"expiresAt": {
+																	"properties": {
+																		"nullable": {
+																			"type": "boolean",
+																			"example": true
+																		},
+																		"type": {
+																			"type": "string",
+																			"example": "string"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"nullable"
+																	],
+																	"type": "object"
+																},
+																"fileName": {
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"example": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																"fileSize": {
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"example": "number"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																"id": {
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"example": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																"is_cloudflare_team": {
+																	"properties": {
+																		"description": {
+																			"type": "string",
+																			"example": "Whether the asset was shared by the Cloudflare team (mirrors the message is_cloudflare_team flag); consistent with origin"
+																		},
+																		"type": {
+																			"type": "string",
+																			"example": "boolean"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"description"
+																	],
+																	"type": "object"
+																},
+																"metadata": {
+																	"properties": {
+																		"additionalProperties": {
+																			"type": "object",
+																			"properties": {
+																				"type": {
+																					"type": "string",
+																					"example": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			]
+																		},
+																		"nullable": {
+																			"type": "boolean",
+																			"example": true
+																		},
+																		"type": {
+																			"type": "string",
+																			"example": "object"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"additionalProperties",
+																		"nullable"
+																	],
+																	"type": "object"
+																},
+																"origin": {
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"example": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																"state": {
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"example": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																"tlp": {
+																	"properties": {
+																		"enum": {
+																			"type": "array",
+																			"items": {
+																				"example": "clear",
+																				"type": "string"
+																			}
+																		},
+																		"type": {
+																			"type": "string",
+																			"example": "string"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"enum"
+																	],
+																	"type": "object"
+																},
+																"uploadedAt": {
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"example": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																"uploadedBy": {
+																	"properties": {
+																		"description": {
+																			"type": "string",
+																			"example": "Email of uploader (only shown for customer-uploaded assets, not admin uploads)"
+																		},
+																		"type": {
+																			"type": "string",
+																			"example": "string"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"description"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"id",
+																"fileName",
+																"fileSize",
+																"contentType",
+																"uploadedAt",
+																"tlp",
+																"state",
+																"origin",
+																"is_cloudflare_team",
+																"downloadable",
+																"expiresAt",
+																"uploadedBy",
+																"description",
+																"metadata"
+															]
+														},
+														"type": {
+															"type": "string",
+															"example": "object"
+														}
+													},
+													"required": [
+														"type",
+														"properties"
+													]
+												},
+												"type": {
+													"type": "string",
+													"example": "array"
+												}
+											},
+											"required": [
+												"type",
+												"items"
+											],
+											"type": "object"
+										},
+										"count": {
+											"properties": {
+												"type": {
+													"type": "string",
+													"example": "number"
+												}
+											},
+											"required": [
+												"type"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"assets",
+										"count"
+									]
+								},
+								"type": {
+									"type": "string",
+									"example": "object"
+								}
+							},
+							"required": [
+								"type",
+								"properties"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Dashboard Assets"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.requests.assets",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/requests/{project_type}/{request_id}/assets/upload": {
+		"operationId": "post_DashboardAssetUpload",
+		"summary": "Upload asset to request (Customer)",
+		"description": "Upload a file asset to R2 storage and associate it with a request. Customer can only upload to their own account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "project_type",
+				"in": "path",
+				"description": "RFI project type. Valid values: threat-intelligence, incident-response, ir-emergency-response, table-top, pentest, irp, threat-hunting, cybersecurity-assessment, react-general, legal-response, soc-alerts, demo",
+				"required": true,
+				"schema": {
+					"description": "RFI project type. Valid values: threat-intelligence, incident-response, ir-emergency-response, table-top, pentest, irp, threat-hunting, cybersecurity-assessment, react-general, legal-response, soc-alerts, demo",
+					"type": "string",
+					"example": "threat-intelligence",
+					"enum": [
+						"threat-intelligence",
+						"incident-response",
+						"ir-emergency-response",
+						"table-top",
+						"pentest",
+						"irp",
+						"threat-hunting",
+						"cybersecurity-assessment",
+						"react-general",
+						"legal-response",
+						"soc-alerts",
+						"demo"
+					]
+				}
+			},
+			{
+				"name": "request_id",
+				"in": "path",
+				"description": "RFI UUID",
+				"required": true,
+				"schema": {
+					"description": "RFI UUID",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"multipart/form-data": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"description": {
+								"description": "Optional description of the asset",
+								"type": "string"
+							},
+							"file": {
+								"description": "The file to upload (can also use 'source')",
+								"type": "string",
+								"format": "binary"
+							},
+							"metadata": {
+								"description": "Optional JSON string of key-value pairs (e.g., '{\"key1\":\"value1\"}')",
+								"type": "string"
+							},
+							"source": {
+								"description": "The file to upload (can also use 'file')",
+								"type": "string",
+								"format": "binary"
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Asset uploaded successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"properties": {
+									"type": "object",
+									"properties": {
+										"contentType": {
+											"properties": {
+												"type": {
+													"type": "string",
+													"example": "string"
+												}
+											},
+											"required": [
+												"type"
+											],
+											"type": "object"
+										},
+										"downloadable": {
+											"properties": {
+												"description": {
+													"type": "string",
+													"example": "Whether the agent may download this asset under the current policy"
+												},
+												"type": {
+													"type": "string",
+													"example": "boolean"
+												}
+											},
+											"required": [
+												"type",
+												"description"
+											],
+											"type": "object"
+										},
+										"expiresAt": {
+											"properties": {
+												"nullable": {
+													"type": "boolean",
+													"example": true
+												},
+												"type": {
+													"type": "string",
+													"example": "string"
+												}
+											},
+											"required": [
+												"type",
+												"nullable"
+											],
+											"type": "object"
+										},
+										"fileName": {
+											"properties": {
+												"type": {
+													"type": "string",
+													"example": "string"
+												}
+											},
+											"required": [
+												"type"
+											],
+											"type": "object"
+										},
+										"fileSize": {
+											"properties": {
+												"type": {
+													"type": "string",
+													"example": "number"
+												}
+											},
+											"required": [
+												"type"
+											],
+											"type": "object"
+										},
+										"id": {
+											"properties": {
+												"type": {
+													"type": "string",
+													"example": "string"
+												}
+											},
+											"required": [
+												"type"
+											],
+											"type": "object"
+										},
+										"is_cloudflare_team": {
+											"properties": {
+												"description": {
+													"type": "string",
+													"example": "Whether the asset was shared by the Cloudflare team (mirrors the message is_cloudflare_team flag); consistent with origin"
+												},
+												"type": {
+													"type": "string",
+													"example": "boolean"
+												}
+											},
+											"required": [
+												"type",
+												"description"
+											],
+											"type": "object"
+										},
+										"metadata": {
+											"properties": {
+												"additionalProperties": {
+													"type": "object",
+													"properties": {
+														"type": {
+															"type": "string",
+															"example": "string"
+														}
+													},
+													"required": [
+														"type"
+													]
+												},
+												"nullable": {
+													"type": "boolean",
+													"example": true
+												},
+												"type": {
+													"type": "string",
+													"example": "object"
+												}
+											},
+											"required": [
+												"type",
+												"additionalProperties",
+												"nullable"
+											],
+											"type": "object"
+										},
+										"origin": {
+											"properties": {
+												"type": {
+													"type": "string",
+													"example": "string"
+												}
+											},
+											"required": [
+												"type"
+											],
+											"type": "object"
+										},
+										"state": {
+											"properties": {
+												"type": {
+													"type": "string",
+													"example": "string"
+												}
+											},
+											"required": [
+												"type"
+											],
+											"type": "object"
+										},
+										"tlp": {
+											"properties": {
+												"enum": {
+													"type": "array",
+													"items": {
+														"example": "clear",
+														"type": "string"
+													}
+												},
+												"type": {
+													"type": "string",
+													"example": "string"
+												}
+											},
+											"required": [
+												"type",
+												"enum"
+											],
+											"type": "object"
+										},
+										"uploadedAt": {
+											"properties": {
+												"type": {
+													"type": "string",
+													"example": "string"
+												}
+											},
+											"required": [
+												"type"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"id",
+										"fileName",
+										"fileSize",
+										"contentType",
+										"uploadedAt",
+										"tlp",
+										"state",
+										"origin",
+										"is_cloudflare_team",
+										"downloadable",
+										"expiresAt",
+										"metadata"
+									]
+								},
+								"type": {
+									"type": "string",
+									"example": "object"
+								}
+							},
+							"required": [
+								"type",
+								"properties"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Dashboard Assets"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.requests.assets",
+		"x-fern-sdk-method-name": "upload",
+		"x-forge-hidden": true
+	}
+}

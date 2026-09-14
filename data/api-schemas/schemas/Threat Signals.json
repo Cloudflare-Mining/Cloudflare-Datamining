@@ -211,7 +211,9 @@
 			{
 				"name": "cursor",
 				"in": "query",
+				"description": "Opaque cursor from a previous response's `next_cursor`. When provided, pagination, ordering, totals, and article filters come from the cursor. Sending `per_page`, `sort`, `include_total`, or any article filter alongside it returns a 400 `CursorFilterConflictError`.",
 				"schema": {
+					"description": "Opaque cursor from a previous response's `next_cursor`. When provided, pagination, ordering, totals, and article filters come from the cursor. Sending `per_page`, `sort`, `include_total`, or any article filter alongside it returns a 400 `CursorFilterConflictError`.",
 					"type": "string",
 					"minLength": 1
 				}
@@ -1891,6 +1893,327 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.skills",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/skills/{skill_id}/diagnostic": {
+		"operationId": "rssArticleTagDiagnostic",
+		"summary": "Diagnose Threat Signals default tag skill",
+		"description": "Diagnose Threat Signals default tag skill.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "article_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			},
+			{
+				"name": "skill_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"default-tagging-skill"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"batches": {
+											"type": "array",
+											"items": {
+												"oneOf": [
+													{
+														"properties": {
+															"batchIndex": {
+																"type": "integer",
+																"exclusiveMinimum": true,
+																"minimum": 0
+															},
+															"outcome": {
+																"type": "string",
+																"enum": [
+																	"success"
+																]
+															},
+															"prompt": {
+																"type": "string"
+															},
+															"rawResponse": {
+																"description": "Unparsed response returned by the AI provider.",
+																"oneOf": [
+																	{
+																		"additionalProperties": true,
+																		"type": "object"
+																	},
+																	{
+																		"items": {
+																			"oneOf": [
+																				{
+																					"additionalProperties": "[Circular ~.POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/skills/{skill_id}/diagnostic.responses.200.content.application/json.schema.properties.result.properties.batches.items.oneOf.0.properties.rawResponse.oneOf.1.items]",
+																					"type": "object"
+																				},
+																				{
+																					"items": "[Circular ~.POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/skills/{skill_id}/diagnostic.responses.200.content.application/json.schema.properties.result.properties.batches.items.oneOf.0.properties.rawResponse.oneOf.1.items]",
+																					"type": "array"
+																				},
+																				{
+																					"nullable": true,
+																					"type": "string"
+																				},
+																				{
+																					"type": "number"
+																				},
+																				{
+																					"type": "boolean"
+																				}
+																			]
+																		},
+																		"type": "array"
+																	},
+																	{
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	{
+																		"type": "number"
+																	},
+																	{
+																		"type": "boolean"
+																	}
+																]
+															}
+														},
+														"required": [
+															"batchIndex",
+															"prompt",
+															"outcome",
+															"rawResponse"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"batchIndex": {
+																"type": "integer",
+																"exclusiveMinimum": true,
+																"minimum": 0
+															},
+															"error": {
+																"type": "object",
+																"properties": {
+																	"aiDurationMs": {
+																		"type": "number",
+																		"minimum": 0
+																	},
+																	"batchCount": {
+																		"type": "integer",
+																		"exclusiveMinimum": true,
+																		"minimum": 0
+																	},
+																	"batchIndex": {
+																		"type": "integer",
+																		"exclusiveMinimum": true,
+																		"minimum": 0
+																	},
+																	"failureKind": {
+																		"type": "string",
+																		"enum": [
+																			"timeout",
+																			"rate_limited",
+																			"invalid_request",
+																			"unavailable",
+																			"aborted",
+																			"binding_error",
+																			"unknown"
+																		]
+																	},
+																	"failureStage": {
+																		"type": "string",
+																		"enum": [
+																			"ai_run"
+																		]
+																	},
+																	"providerErrorName": {
+																		"type": "string",
+																		"enum": [
+																			"AbortError",
+																			"TypeError",
+																			"unknown"
+																		]
+																	},
+																	"providerStatus": {
+																		"type": "string",
+																		"enum": [
+																			"400",
+																			"401",
+																			"403",
+																			"408",
+																			"413",
+																			"422",
+																			"429",
+																			"5xx",
+																			"unknown"
+																		]
+																	},
+																	"timeoutMs": {
+																		"type": "number",
+																		"exclusiveMinimum": true,
+																		"minimum": 0
+																	}
+																},
+																"required": [
+																	"failureStage",
+																	"failureKind",
+																	"aiDurationMs",
+																	"batchIndex",
+																	"batchCount",
+																	"providerStatus",
+																	"providerErrorName"
+																]
+															},
+															"outcome": {
+																"type": "string",
+																"enum": [
+																	"failed"
+																]
+															},
+															"prompt": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"batchIndex",
+															"prompt",
+															"outcome",
+															"error"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"minItems": 1
+										},
+										"executedBatchCount": {
+											"type": "integer",
+											"exclusiveMinimum": true,
+											"minimum": 0
+										},
+										"plannedBatchCount": {
+											"type": "integer",
+											"exclusiveMinimum": true,
+											"minimum": 0
+										},
+										"skillId": {
+											"type": "string",
+											"enum": [
+												"default-tagging-skill"
+											]
+										}
+									},
+									"required": [
+										"skillId",
+										"plannedBatchCount",
+										"executedBatchCount",
+										"batches"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"messages",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Threat Signals"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles.skills",
+		"x-fern-sdk-method-name": "diagnostic",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/tag": {

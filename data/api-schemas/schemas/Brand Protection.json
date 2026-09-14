@@ -62,6 +62,7 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.domain-queries",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
@@ -129,6 +130,7 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.letter-templates",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
@@ -264,6 +266,7 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-notices",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
@@ -342,6 +345,7 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-letters",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
@@ -946,6 +950,7 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.letter-templates",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
@@ -1045,6 +1050,7 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.letter-templates",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
@@ -1146,6 +1152,7 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.letter-templates",
 		"x-fern-sdk-method-name": "examples",
 		"x-forge-hidden": true
@@ -1519,6 +1526,7 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-notices",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
@@ -1627,6 +1635,7 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-notices",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
@@ -1720,6 +1729,7 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-letters",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
@@ -1816,6 +1826,7 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-letters",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
@@ -1884,6 +1895,7 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-letters",
 		"x-fern-sdk-method-name": "get-pdf",
 		"x-forge-hidden": true
@@ -2067,8 +2079,197 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.domain-queries",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/matches/bulk-dismiss": {
+		"operationId": "post_BulkDismissMatches",
+		"summary": "Bulk dismiss or undismiss matches",
+		"description": "Dismiss or undismiss multiple matches in a single request. Accepts either the new format (matches: [{query_id, domain_id}]) for per-query control, or the legacy format (match_ids: [number]) which dismisses for all queries sharing each match's hash. Returns per-item success/error results.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"action": {
+								"type": "string",
+								"enum": [
+									"dismiss",
+									"undismiss"
+								]
+							},
+							"match_ids": {
+								"type": "array",
+								"items": {
+									"exclusiveMinimum": true,
+									"minimum": 0,
+									"type": "integer"
+								},
+								"maxItems": 100,
+								"minItems": 1
+							},
+							"matches": {
+								"type": "array",
+								"items": {
+									"properties": {
+										"domain_id": {
+											"type": "integer",
+											"exclusiveMinimum": true,
+											"minimum": 0
+										},
+										"query_id": {
+											"type": "integer",
+											"exclusiveMinimum": true,
+											"minimum": 0
+										}
+									},
+									"required": [
+										"query_id",
+										"domain_id"
+									],
+									"type": "object"
+								},
+								"maxItems": 100,
+								"minItems": 1
+							}
+						},
+						"required": [
+							"action"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Bulk dismiss/undismiss results",
+				"content": {
+					"application/json": {
+						"schema": {
+							"anyOf": [
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"results": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"domain_id": {
+																"type": "integer"
+															},
+															"error": {
+																"type": "string"
+															},
+															"query_id": {
+																"type": "integer"
+															},
+															"success": {
+																"type": "boolean"
+															}
+														},
+														"required": [
+															"query_id",
+															"domain_id",
+															"success"
+														],
+														"type": "object"
+													}
+												}
+											},
+											"required": [
+												"results"
+											]
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"results": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"error": {
+																"type": "string"
+															},
+															"match_id": {
+																"type": "integer"
+															},
+															"success": {
+																"type": "boolean"
+															}
+														},
+														"required": [
+															"match_id",
+															"success"
+														],
+														"type": "object"
+													}
+												}
+											},
+											"required": [
+												"results"
+											]
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "brand-protection.matches",
+		"x-fern-sdk-method-name": "bulk-dismiss",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries": {
@@ -2182,7 +2383,132 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.domain-queries",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/trial": {
+		"operationId": "post_DomainTrial",
+		"summary": "Analyze domains for brand impersonation",
+		"description": "Uses AI to scan all domains in the lookback table and identify potential phishing or impersonation attempts against the given brand string.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"brand": {
+								"type": "string",
+								"maxLength": 200,
+								"minLength": 1,
+								"pattern": "^[\\w\\s.-]+$"
+							}
+						},
+						"required": [
+							"brand"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Domain analysis results",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"matches": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"confidence": {
+												"type": "number",
+												"maximum": 1,
+												"minimum": 0
+											},
+											"domain": {
+												"type": "string"
+											},
+											"domain_id": {
+												"type": "integer",
+												"minimum": 0
+											},
+											"first_seen": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"reason": {
+												"type": "string",
+												"maxLength": 500
+											}
+										},
+										"required": [
+											"domain",
+											"domain_id",
+											"first_seen",
+											"confidence",
+											"reason"
+										],
+										"type": "object"
+									}
+								},
+								"total_analyzed": {
+									"type": "number"
+								},
+								"total_matches": {
+									"type": "number"
+								},
+								"truncated": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"matches",
+								"total_analyzed",
+								"total_matches",
+								"truncated"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Brand is not a zone belonging to this account"
+			},
+			"502": {
+				"description": "Zone ownership check failed (upstream error)"
+			},
+			"503": {
+				"description": "Zone ownership check is not configured"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "brand-protection.trial",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
@@ -2425,6 +2751,7 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-letters",
 		"x-fern-sdk-method-name": "generate",
 		"x-forge-hidden": true
@@ -2548,6 +2875,7 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.letter-templates",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
@@ -2802,6 +3130,194 @@
 		"x-fern-sdk-method-name": "submit",
 		"x-forge-hidden": true
 	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/queries/{query_id}/matches/{domain_id}/dismiss": {
+		"operationId": "post_DismissMatch",
+		"summary": "Dismiss a match",
+		"description": "Mark a specific domain as dismissed for a given query. Dismissals are per-query — dismissing a domain in one query does not affect other queries.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "query_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "integer",
+					"exclusiveMinimum": true,
+					"minimum": 0
+				}
+			},
+			{
+				"name": "domain_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "integer",
+					"exclusiveMinimum": true,
+					"minimum": 0
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Match dismissed successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"dismissed": {
+											"type": "boolean"
+										},
+										"domain_id": {
+											"type": "integer"
+										},
+										"query_id": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"query_id",
+										"domain_id",
+										"dismissed"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "brand-protection.queries",
+		"x-fern-sdk-method-name": "dismiss",
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/queries/{query_id}/matches/{domain_id}/undismiss": {
+		"operationId": "post_UndismissMatch",
+		"summary": "Undismiss a match",
+		"description": "Remove the dismissed status from a specific domain for a given query. Undismissals are per-query — undismissing a domain in one query does not affect other queries.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "query_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "integer",
+					"exclusiveMinimum": true,
+					"minimum": 0
+				}
+			},
+			{
+				"name": "domain_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "integer",
+					"exclusiveMinimum": true,
+					"minimum": 0
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Match undismissed successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"dismissed": {
+											"type": "boolean"
+										},
+										"domain_id": {
+											"type": "integer"
+										},
+										"query_id": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"query_id",
+										"domain_id",
+										"dismissed"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "brand-protection.queries",
+		"x-fern-sdk-method-name": "undismiss",
+		"x-forge-hidden": true
+	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices": {
 		"operationId": "post_TakedownNoticeCreate",
 		"summary": "Create takedown notice",
@@ -2941,6 +3457,7 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-notices",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
@@ -3110,6 +3627,7 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-letters",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
@@ -3274,6 +3792,7 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-notices",
 		"x-fern-sdk-method-name": "lookup",
 		"x-forge-hidden": true
@@ -3402,6 +3921,7 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.letter-templates",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
@@ -3554,6 +4074,7 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-notices",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true

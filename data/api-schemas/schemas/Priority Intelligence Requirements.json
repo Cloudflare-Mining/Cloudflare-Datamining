@@ -1,0 +1,969 @@
+{
+	"DELETE /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/{priority_id}": {
+		"operationId": "delete_PirDelete",
+		"summary": "Delete a priority intelligence requirement",
+		"description": "Soft-deletes a PIR. The PIR will no longer count against quota.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "priority_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "PIR deleted successfully"
+			},
+			"404": {
+				"description": "PIR not found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
+	},
+	"DELETE /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/interests/{interest_id}": {
+		"operationId": "delete_PirInterestDelete",
+		"summary": "Delete an account interest for PIR Option 2",
+		"description": "Deletes a structured account interest so later Priority Intelligence Option 2 evaluations no longer include it.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "interest_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Interest UUID",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Interest deleted"
+			},
+			"404": {
+				"description": "Interest not found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.interests",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence": {
+		"operationId": "get_PirList",
+		"summary": "List priority intelligence requirements for an account",
+		"description": "Lists free-form Priority Intelligence Requirements for the account. Results are scoped to the authenticated account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"schema": {
+					"type": "integer",
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List of PIRs"
+			},
+			"4XX": {
+				"description": "Client error response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/{priority_id}": {
+		"operationId": "get_PirGet",
+		"summary": "Get a priority intelligence requirement by ID",
+		"description": "Returns a single free-form Priority Intelligence Requirement for the authenticated account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "priority_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "PIR details"
+			},
+			"404": {
+				"description": "PIR not found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/constants": {
+		"operationId": "get_PirConstants",
+		"summary": "Get PIR constants (methods, dimensions, and TLP values)",
+		"description": "Requirements is the existing free-form PIR method. Interests is the experimental structured-interest method, evaluated independently from requirements.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "PIR constants"
+			},
+			"4XX": {
+				"description": "Client error response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.constants",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/interests": {
+		"operationId": "get_PirInterestList",
+		"summary": "List account interests for PIR Option 2",
+		"description": "Lists structured account interests for Priority Intelligence Option 2. Filter by enabled state and paginate results.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"schema": {
+					"type": "integer",
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "enabled",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"true",
+						"false"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Interest list"
+			},
+			"4XX": {
+				"description": "Client error response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.interests",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/interests/backtests/{backtest_id}": {
+		"operationId": "get_PirInterestBacktestGet",
+		"summary": "Get a persisted account-interest backtest",
+		"description": "Returns a previously completed account-interest backtest by ID. The backtest must belong to this account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "backtest_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Backtest UUID",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Persisted evaluation"
+			},
+			"404": {
+				"description": "Evaluation not found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.interests.backtests",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/interests/evaluations/{evaluation_id}": {
+		"operationId": "get_PirInterestEvaluationGet",
+		"summary": "Get a persisted account-interest evaluation",
+		"description": "Returns a previously completed live account-interest evaluation by ID. The evaluation must belong to this account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "evaluation_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Evaluation UUID",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Persisted evaluation"
+			},
+			"404": {
+				"description": "Evaluation not found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.interests.evaluations",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	},
+	"PATCH /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/interests/{interest_id}": {
+		"operationId": "patch_PirInterestUpdate",
+		"summary": "Update an account interest for PIR Option 2",
+		"description": "Updates a structured account interest used by Priority Intelligence Option 2 evaluations. Changing the value re-resolves the interest against the current catalog.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "interest_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Interest UUID",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"enabled": {
+								"type": "boolean"
+							},
+							"value": {
+								"type": "string",
+								"maxLength": 255,
+								"minLength": 1
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Interest updated"
+			},
+			"404": {
+				"description": "Interest not found"
+			},
+			"409": {
+				"description": "Interest already exists"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.interests",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/priority-intelligence": {
+		"operationId": "post_PirCreate",
+		"summary": "Create a priority intelligence requirement",
+		"description": "Creates a new PIR for the account. Subject to the account's annual PIR quota from the cfone.priority_intelligence_requirement_limit entitlement.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"labels": {
+								"type": "array",
+								"items": {
+									"maxLength": 100,
+									"type": "string"
+								},
+								"default": [],
+								"maxItems": 50
+							},
+							"priority": {
+								"type": "integer",
+								"default": 0,
+								"minimum": 0
+							},
+							"requirement": {
+								"type": "string",
+								"maxLength": 4000,
+								"minLength": 1
+							},
+							"tlp": {
+								"type": "string",
+								"default": "amber"
+							}
+						},
+						"required": [
+							"requirement"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "PIR created successfully"
+			},
+			"403": {
+				"description": "Account not entitled to create PIRs"
+			},
+			"429": {
+				"description": "PIR quota exceeded"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/interests": {
+		"operationId": "post_PirInterestCreate",
+		"summary": "Create an account interest for PIR Option 2",
+		"description": "Creates a structured account interest used by Priority Intelligence Option 2 evaluations. Interests are evaluated independently from free-form PIR requirements.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"dimension": {
+								"type": "string",
+								"enum": [
+									"actor",
+									"targetIndustry",
+									"category",
+									"country",
+									"attackerCountry",
+									"targetCountry",
+									"mitreAttack",
+									"killChain",
+									"mitreCapec"
+								]
+							},
+							"enabled": {
+								"type": "boolean",
+								"default": true
+							},
+							"value": {
+								"type": "string",
+								"maxLength": 255,
+								"minLength": 1
+							}
+						},
+						"required": [
+							"dimension",
+							"value"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Interest created"
+			},
+			"400": {
+				"description": "Invalid interest"
+			},
+			"409": {
+				"description": "Interest already exists"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.interests",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/interests/backtests": {
+		"operationId": "post_PirInterestBacktestCreate",
+		"summary": "Backtest account-interest change detection",
+		"description": "Uses bounded full-span top-N candidates and daily event-date buckets. Results are conservative rather than an exact historical replay.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"as_of": {
+								"type": "string",
+								"format": "date-time"
+							},
+							"backtest_days": {
+								"type": "integer",
+								"default": 30,
+								"maximum": 90,
+								"minimum": 1
+							},
+							"candidate_limit": {
+								"type": "integer",
+								"maximum": 100,
+								"minimum": 1
+							},
+							"dataset_ids": {
+								"type": "array",
+								"items": {
+									"minLength": 1,
+									"type": "string"
+								},
+								"maxItems": 50,
+								"minItems": 1
+							},
+							"emerging_min_current_count": {
+								"type": "integer",
+								"maximum": 100000,
+								"minimum": 1
+							},
+							"established_min_absolute_delta": {
+								"type": "integer",
+								"maximum": 100000,
+								"minimum": 1
+							},
+							"established_min_prior_count": {
+								"type": "integer",
+								"maximum": 100000,
+								"minimum": 1
+							},
+							"established_min_relative_delta": {
+								"type": "number",
+								"maximum": 100,
+								"minimum": 0,
+								"nullable": true
+							},
+							"window_days": {
+								"type": "integer",
+								"default": 7,
+								"maximum": 30,
+								"minimum": 1
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Completed account-interest backtest"
+			},
+			"400": {
+				"description": "Invalid or over-limit backtest parameters"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.interests.backtests",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/interests/evaluations": {
+		"operationId": "post_PirInterestEvaluationCreate",
+		"summary": "Evaluate recent event-dated changes for account interests",
+		"description": "Compares the trailing event-date window with the preceding window. Results are precision-gated to enabled account interests. Late ingestion can cause an older event to appear in a later evaluation, so results describe changes in event-dated intelligence rather than exact adversary-activity timing.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"as_of": {
+								"type": "string",
+								"format": "date-time"
+							},
+							"candidate_limit": {
+								"type": "integer",
+								"maximum": 100,
+								"minimum": 1
+							},
+							"dataset_ids": {
+								"type": "array",
+								"items": {
+									"minLength": 1,
+									"type": "string"
+								},
+								"maxItems": 50,
+								"minItems": 1
+							},
+							"emerging_min_current_count": {
+								"type": "integer",
+								"maximum": 100000,
+								"minimum": 1
+							},
+							"established_min_absolute_delta": {
+								"type": "integer",
+								"maximum": 100000,
+								"minimum": 1
+							},
+							"established_min_prior_count": {
+								"type": "integer",
+								"maximum": 100000,
+								"minimum": 1
+							},
+							"established_min_relative_delta": {
+								"type": "number",
+								"maximum": 100,
+								"minimum": 0,
+								"nullable": true
+							},
+							"window_days": {
+								"type": "integer",
+								"default": 7,
+								"maximum": 30,
+								"minimum": 1
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Completed account-interest evaluation"
+			},
+			"400": {
+				"description": "Invalid evaluation parameters"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.interests.evaluations",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/quota": {
+		"operationId": "post_PirQuota",
+		"summary": "Get PIR quota for an account",
+		"description": "Returns the account's annual PIR quota including total allowed, remaining, and anniversary dates.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "PIR quota information"
+			},
+			"4XX": {
+				"description": "Client error response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.quota",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
+	},
+	"PUT /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/{priority_id}": {
+		"operationId": "put_PirUpdate",
+		"summary": "Update a priority intelligence requirement",
+		"description": "Updates a free-form Priority Intelligence Requirement for the authenticated account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "priority_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"labels": {
+								"type": "array",
+								"items": {
+									"maxLength": 100,
+									"type": "string"
+								},
+								"maxItems": 50
+							},
+							"priority": {
+								"type": "integer",
+								"minimum": 0
+							},
+							"requirement": {
+								"type": "string",
+								"maxLength": 4000,
+								"minLength": 1
+							},
+							"tlp": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "PIR updated successfully"
+			},
+			"404": {
+				"description": "PIR not found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
+	}
+}

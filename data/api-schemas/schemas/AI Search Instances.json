@@ -813,6 +813,46 @@
 						}
 					}
 				}
+			},
+			"409": {
+				"description": "Instance status modified concurrently please retry.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -1631,6 +1671,46 @@
 			},
 			"404": {
 				"description": "Ai search not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Instance status modified concurrently please retry.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -13007,6 +13087,46 @@
 						}
 					}
 				}
+			},
+			"409": {
+				"description": "Instance status modified concurrently please retry.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -14548,6 +14668,46 @@
 			},
 			"404": {
 				"description": "Ai search not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Instance status modified concurrently please retry.",
 				"content": {
 					"application/json": {
 						"schema": {
