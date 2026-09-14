@@ -3,59 +3,81 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h2>Available Locations</h2>
+<h3><strong>About the Role</strong></h3>
+<p>Cloudflare's Internal Fraud Platform team is focused on protecting Cloudflare from fraud and abuse: fraudulent signups, promo and trial abuse, payment fraud, chargebacks, and account takeover that cost the company revenue and support overhead. Today the team is built around data science, developing the signals and models that detect this activity. We're hiring our first software engineer to build the platform around that work: ingesting events from the internal systems where fraud shows up (billing, signup, support), evaluating and routing them, and getting decisions and case data in front of the people who act on them.</p>
+<p>As the founding engineer on this team, you'll be the connective tissue between Cloudflare's internal systems and our fraud detection capabilities. You'll instrument the systems that generate fraud signals, build the pipelines and services that deliver those signals for evaluation, and create the tools our analysts use to investigate and resolve cases. You'll partner closely with data scientists to take models and heuristics from notebook to production, and have meaningful influence over the architecture, tooling, and engineering practices it's built on.</p>
+<h3><strong>Responsibilities</strong></h3>
 <ul>
-	<li>Austin, TX</li>
-	<li>Atlanta, GA</li>
-	<li>Denver, CO</li>
-</ul>
-<p><strong>Applications will be accepted until November 6, 2026.</strong></p>
-<h2>Responsibilities</h2>
-<ul>
-	<li>Cloudflare operates a large global network spanning hundreds of cities (data centers). You will join a team of talented network engineers who are building software solutions to improve network resilience and reduce operational toil.</li>
-	<li>This position will be responsible for the technical operation and engineering of the Cloudflare's core data center network, including the planning, installation and management of the hardware and software as well as the day-to-day operations of the network. The core network supports our critical internal needs such as databases, high volume logging, and internal application clusters. This is an opportunity to be part of the team that is building a high­-performance network that is accessible to any web property online.</li>
-	<li>You will build tools to automate operational tasks, streamline deployment processes and provide a platform for other engineering teams to build upon. You will nurture a passion for an “automate everything” approach that makes systems failure-resistant and ready-to-scale. Furthermore, you will be required to play a key role in system design and demonstrate the ability to bring an idea from design all the way to production.</li>
-</ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
-<ul>
-	<li>3 years of relevant Network/Site Reliability Engineering experience</li>
-	<li>BA/BS in Computer Science or equivalent experience</li>
-	<li>Solid foundation on configuration management frameworks: Saltstack, Ansible, Chef</li>
-	<li>Experience with NX-OS, JUNOS, EOS, Cumulus, or Sonic Network Operating Systems</li>
-	<li>AI-native: being able to leverage LLM to:
-		<ul>
-			<li>build agentic deployment and troubleshooting tools on top of the Cloudflare stack</li>
-			<li>automate configurations (SaltStack + Temporal)</li>
-			<li>parse complex log files, and streamline documentation</li>
-		</ul>
+	<li>
+		<p><strong>Build the Platform:</strong> Design, build, and operate the services and pipelines that ingest fraud-relevant events from internal systems (billing, signup, support, and others), evaluate them, and route decisions and case data to the right destinations.</p>
 	</li>
-	<li>Solid Linux systems administration experience</li>
-	<li>Linux networking - iproute2, Traffic Control, Devlink, etc.</li>
-	<li>Strong software development skills in Go and Python</li>
+	<li>
+		<p><strong>Deliver Signals for Scoring:</strong> Partner with the team's Data Scientists and Machine Learning Engineer to expose the event data and contextual features their models need, and integrate model decisions back into the pipelines and tools that act on them.</p>
+	</li>
+	<li>
+		<p><strong>Build Investigation Tooling:</strong> Create the internal tools and workflows that let Trust &amp; Safety, Support, and Finance analysts investigate flagged accounts and events and take action.</p>
+	</li>
+	<li>
+		<p><strong>Own Projects End to End: </strong>Drive initiatives from problem definition through design, implementation, rollout, and operation with minimal oversight. In many ways this is a 0-to-1 team, and you'll be expected to fill in the gaps.</p>
+	</li>
+	<li>
+		<p><strong>Ensure Accuracy and Reliability: </strong>Build fault-tolerant systems that handle retries, failures, and high event volumes without silently dropping or duplicating fraud signals, and maintain the operational health of what you ship, including addressing the root cause of recurring issues.</p>
+	</li>
+	<li>
+		<p><strong>Shape Technical Direction: </strong>As one of the team's first engineers, help establish the architecture patterns, tooling choices, and engineering standards that will scale as the team grows.</p>
+	</li>
+	<li>
+		<p><strong>Collaborate Cross-Functionally: </strong>Work with Trust &amp; Safety, Data Science, Billing/Fintech, Support, and Product teams to understand fraud vectors and turn them into engineering requirements.</p>
+	</li>
 </ul>
-<h2>Bonus Points</h2>
+<h3><strong>Desirable Skills, Knowledge, and Experience</strong></h3>
 <ul>
-	<li>Deep knowledge of BGP and other routing protocols</li>
-	<li>Workflow Management (AirFlow, Temporal)</li>
-	<li>Open Source Routing Daemons (FRR, Bird, GoBGP)</li>
-	<li>Experience with bare metal switching</li>
-	<li>Experience with network programming in C, C++ or rust</li>
-	<li>Experience with the Linux kernel and Linux software packaging</li>
-	<li>Strong tooling and automations development experience</li>
-	<li>Time series databases (Prometheus, Grafana, Thanos, Clickhouse)</li>
-	<li>Other Tools - Kubernetes, Docker, Prometheus, Consul</li>
+	<li>
+		<p>Five or more years of professional software engineering experience, or equivalent practical experience.</p>
+	</li>
+	<li>
+		<p>Experience building and operating distributed systems or backend services in production.</p>
+	</li>
+	<li>
+		<p>Experience designing and building data or event pipelines (e.g., Kafka, Pub/Sub, or similar).</p>
+	</li>
+	<li>
+		<p>Strong understanding of RESTful APIs, service security, and API standards such as OpenAPI, OAuth, or JWT.</p>
+	</li>
+	<li>
+		<p>Working knowledge of SQL, data modeling, and relational databases such as PostgreSQL or MySQL.</p>
+	</li>
+	<li>
+		<p>Comfort owning ambiguous, 0-to-1 problems with limited existing infrastructure or precedent.</p>
+	</li>
+	<li>
+		<p>Strong troubleshooting, cross-functional communication, and project ownership skills.</p>
+	</li>
+</ul>
+<h3><strong>Bonus Points</strong></h3>
+<ul>
+	<li>
+		<p>Experience in fraud, risk, trust &amp; safety, or payments engineering.</p>
+	</li>
+	<li>
+		<p>Familiarity with ML serving and feature engineering concepts&nbsp;</p>
+	</li>
+	<li>
+		<p>Experience with billing, subscriptions, or other financial/transactional systems.</p>
+	</li>
+	<li>
+		<p>Experience building internal tools or dashboards for non-engineering stakeholders (analysts, support, finance).</p>
+	</li>
 </ul>
 <p>&nbsp;</p>
-<h3>Compensation</h3>
+<h4>Compensation</h4>
 <p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For Colorado based hires: Estimated annual salary of $150,000 - $206,000</li>
-</ul>
-<h3>Equity</h3>
+<p>&nbsp;</p>
+<h4>Equity</h4>
 <p>This role is eligible to participate in Cloudflare's equity plan.</p>
-<h3>Benefits</h3>
+<h4>Benefits</h4>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p>Health &amp; Welfare Benefits</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -66,14 +88,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p>Financial Benefits</p>
+<p><strong>Financial Benefits</strong></p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p>Time Off</p>
+<p><strong>Time Off</strong></p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

@@ -15,7 +15,7 @@
 		<p><strong>Ensure BOM Accuracy:</strong> Review and validate complex BOMs prior to release to integration partners, proactively identifying part substitutions, spec mismatches, and potential build blockers.</p>
 	</li>
 	<li>
-		<p><strong>Bridge Engineering &amp; Production:</strong> Partner closely with hardware design engineers to resolve design change requests (DCRs) and BOM discrepancies throughout the build lifecycle.</p>
+		<p><strong>Bridge Engineering &amp; Production:</strong> Partner closely with data center engineers to resolve design change requests (DCRs) and BOM discrepancies throughout the build lifecycle.</p>
 	</li>
 	<li>
 		<p><strong>Maintain Technical Quality Standards:</strong> Leverage functional expertise across rack-level power, networking, server, and firmware architectures to evaluate build compliance against Cloudflare specifications.</p>

@@ -4,41 +4,47 @@
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
 <h4>Location: Austin, US</h4>
-<h4>About the department</h4>
-<p><span style="font-weight: 400;">Cloudflare’s Enterprise Applications team builds and manages our enterprise systems that&nbsp; enable Cloudflare internal teams to operate efficiently and enable our customers and partners to do business with us. The Enterprise Applications team is part of the CIO organization. This team is responsible for our employee tech stack which includes Workday, ADP along with integrations with multiple vendor platforms.&nbsp; </span></p>
-<p><strong>About the role</strong></p>
-<p><span style="font-weight: 400;">The Workday Consultant serves as a technical point of contact for assigned projects, including solution design, technical documentation, implementation and production support. Knowledge of XML and XSLT are essential as they are the primary development skills to interact with SOAP and ReST based web services, while Java, MVEL, NodeJS, Python, Linux and AWS are secondary technical skills.</span></p>
-<h4>What you'll do</h4>
-<p><span style="font-weight: 400;">We are looking for an engineer to join our People &amp; Payroll Systems team;&nbsp; an energetic team focused on finding robust, pragmatic and elegant solutions to difficult problems. You will work on a range of system integration initiatives involving Workday, </span><span style="font-weight: 400;">Dell Boomi and other systems. Technologies we use include Workday, Dell Boomi, MySQL,&nbsp; PostgreSQL, Kafka and the usual Unix/Linux tools and workflows. We strive to build reliable, fau</span><span style="font-weight: 400;">lt tolerant systems that can operate at Cloudflare’s scale.</span></p>
-<p><span style="font-weight: 400;">You will help design, build, test and support our internal and external Workday integrations. The Engineer requires proficient technical knowledge of Workday HCM System. Experience supporting Workday HCM and the associated functional business area owners within People Teams. Duties include integrating Workday HCM with third party global payroll and benefit providers, integration configurable security,</span></p>
-<p><span style="font-weight: 400;">business processes and custom report development (including BIRT)</span></p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>About the Department</strong></p>
+<h4>&nbsp;</h4>
+<p>Cloudflare’s Enterprise Applications Team is responsible for running and maintaining the essential systems that enable internal teams to operate efficiently. Within the Enterprise Applications Team is a technical group responsible for the HR tech suite and associated integrations with various platforms.</p>
+<p><strong>About the Role</strong></p>
+<p>We are looking for a Workday Integration Specialist to join our People &amp; Payroll Systems team, an energetic team focused on building resilient and efficient solutions to difficult problems. The Workday Integration Specialist serves as a technical point of contact for production support issues and assigned projects, including solution design, technical documentation, and implementation. We strive to build reliable, fault-tolerant systems that can operate at Cloudflare’s scale.</p>
+<p><strong>What You’ll Do</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">6+ years of Software Development experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">4+ years of experience developing Workday inbound and outbound Integrations</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">4+ years of experience developing Workday custom reports, dashboards and calculated fields</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">4+ years of experience developing Workday EIBs, Core Connectors, RaaS and Web Services</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">4+ years of experience working with Workday Studio</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">4+ years of experience developing XML, XSD, and XSLT transformations</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">2+ years of experience with Workday OX</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience monitoring and maintaining interfaces between Workday and internal/external vendor systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience working with Workday HCM,&nbsp; Benefits, Compensation, Talent Management modules</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Workday Business Process Configuration and Configurable Security</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent communication skills and should have experience in working along with business teams</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Comfortable working as part of a connected team, but self-motivated</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Exceptionally detail-oriented</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">System design documentation</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Public API’s</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Security surrounding integrations – X509, PGP, SSH</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Document transformation – XSLT</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">BIRT Development</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">1+ years of experience working in the Agile methodology</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">1+ years of experience development using Java</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Workday Integration Certifications (past or present)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Highly organized with the ability to multi-task and prioritize effectively while demonstrating a sense of urgency</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Creative and resourceful approach to the business</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to think and deliver creative value-added solutions to business through self-initiative and ownership</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Prism or Adaptive Insights</span></li>
+	<li>Work on a range of system integration support, technical debt and HR initiatives involving Workday, Greenhouse, middleware, data lakes and other systems.</li>
+	<li>Help design, build, test, and support inbound and outbound Workday integrations.</li>
+	<li>Integrate Workday HCM with third-party global payroll and benefits providers.</li>
+	<li>Configure integration security.</li>
+	<li>Troubleshoot and fix production support issues.</li>
+	<li>Develop Workday custom reports, including BIRT.</li>
+	<li>Create and launch EIBs.</li>
+	<li>Work with teams to communicate, verify, and test desired functionality changes.</li>
+	<li>Leverage AI to build solutions, document solutions and streamline processes.</li>
+	<li>Work with internal business users to demonstrate changes to the system and ensure all relevant business needs are addressed.</li>
+	<li>Create and maintain system design documentation.</li>
+	<li>Enforce Workday integration best practices and standards.</li>
+	<li>Manage multiple competing priorities through effective organization and communication.</li>
+	<li>Work on other assigned projects and tasks as needed.</li>
+</ul>
+<p><strong>Examples of Desirable Skills, Knowledge and Experience</strong></p>
+<ul>
+	<li>Bachelor’s degree or higher in a technology-related field, or relevant experience implementing business systems.</li>
+	<li>Proficient technical knowledge of Workday HCM, Benefits, Compensation, Talent Management, and third-party payroll vendors such as ADP, CloudPay, Safeguard, and TMF.</li>
+	<li>Workday integration certifications preferred.</li>
+	<li>2–3 years of experience in software development.</li>
+	<li>Experience developing Workday inbound and outbound integrations.</li>
+	<li>Experience developing Workday custom reports, dashboards, and calculated fields.</li>
+	<li>Experience developing Workday EIBs, Core Connectors, RaaS, and web services.</li>
+	<li>Experience working with Workday Studio.</li>
+	<li>Experience working with Workday Object Transporter (OX).</li>
+	<li>Experience leveraging AI tools to help build solutions and build documentation.</li>
+	<li>Knowledge of XML and XSLT; Java and MVEL are secondary technical skills.</li>
+	<li>Experience monitoring and maintaining interfaces between Workday and internal or external vendor systems.</li>
+	<li>Self-motivated and exceptionally detail-oriented.</li>
+	<li>Highly organized with the ability to multitask and prioritize effectively while demonstrating a sense of urgency.</li>
+	<li>Ability to think through and deliver creative, value-added solutions through self-initiative and ownership.</li>
+	<li>Experience with Jira and Google Suite.</li>
+	<li>Experience building strong working relationships with business partners, application users, project managers, internal IT teams, and external application consultants.</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
