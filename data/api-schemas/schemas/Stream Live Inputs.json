@@ -1300,6 +1300,15 @@
 					"maxLength": 32,
 					"x-auditable": true
 				}
+			},
+			{
+				"name": "Idempotency-Key",
+				"in": "header",
+				"description": "Prevents duplicate live inputs from being created when retrying this request. The key is scoped to the account, may contain up to 255 bytes, and expires six hours after the live input is created. Reusing a key for a deleted input before expiry returns a 409 Conflict response.",
+				"schema": {
+					"type": "string",
+					"maxLength": 255
+				}
 			}
 		],
 		"requestBody": {

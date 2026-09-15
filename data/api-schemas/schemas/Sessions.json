@@ -574,13 +574,14 @@
 				}
 			},
 			{
-				"allowEmptyValue": true,
-				"description": "Number of results per page",
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
+				"description": "Number of results per page.",
 				"schema": {
-					"type": "number",
-					"minimum": 0
+					"type": "integer",
+					"default": 25,
+					"maximum": 200,
+					"minimum": 1
 				}
 			},
 			{
@@ -905,7 +906,7 @@
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/participants/{participant_id}": {
 		"operationId": "GetParticipantDetails",
 		"summary": "Fetch details of a participant",
-		"description": "Returns details of the given participant ID along with call statistics for the given session ID.",
+		"description": "Returns details of the given participant ID for the given session ID. Use the peer report endpoint to retrieve call statistics.",
 		"parameters": [
 			{
 				"name": "account_id",

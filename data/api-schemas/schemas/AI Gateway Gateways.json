@@ -41,12 +41,14 @@
 									"properties": {
 										"authentication": {
 											"type": "boolean",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"byok_only": {
 											"description": "Requires customer-provided provider credentials and prevents fallback to Unified Billing.",
 											"type": "boolean",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"cache_invalidate_on_update": {
 											"type": "boolean",
@@ -384,14 +386,16 @@
 										},
 										"log_classification": {
 											"type": "boolean",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"log_management": {
 											"type": "integer",
 											"maximum": 10000000,
 											"minimum": 10000,
 											"nullable": true,
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"log_management_strategy": {
 											"type": "string",
@@ -400,11 +404,13 @@
 												"DELETE_OLDEST"
 											],
 											"nullable": true,
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"logpush": {
 											"type": "boolean",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"logpush_public_key": {
 											"type": "string",
@@ -522,7 +528,7 @@
 															},
 															"id": {
 																"type": "string",
-																"default": "606973a2",
+																"default": "3ff971af",
 																"minLength": 1,
 																"pattern": "^[a-zA-Z0-9_-]+$"
 															},
@@ -650,7 +656,8 @@
 										},
 										"store_id": {
 											"type": "string",
-											"nullable": true
+											"nullable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"stripe": {
 											"type": "object",
@@ -692,7 +699,8 @@
 										},
 										"zdr": {
 											"type": "boolean",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
 									"required": [
@@ -845,12 +853,14 @@
 										"properties": {
 											"authentication": {
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"byok_only": {
 												"description": "Requires customer-provided provider credentials and prevents fallback to Unified Billing.",
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"cache_invalidate_on_update": {
 												"type": "boolean",
@@ -1188,14 +1198,16 @@
 											},
 											"log_classification": {
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"log_management": {
 												"type": "integer",
 												"maximum": 10000000,
 												"minimum": 10000,
 												"nullable": true,
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"log_management_strategy": {
 												"type": "string",
@@ -1204,11 +1216,13 @@
 													"DELETE_OLDEST"
 												],
 												"nullable": true,
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"logpush": {
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"logpush_public_key": {
 												"type": "string",
@@ -1326,7 +1340,7 @@
 																},
 																"id": {
 																	"type": "string",
-																	"default": "906d8b20",
+																	"default": "9fddbed5",
 																	"minLength": 1,
 																	"pattern": "^[a-zA-Z0-9_-]+$"
 																},
@@ -1454,7 +1468,8 @@
 											},
 											"store_id": {
 												"type": "string",
-												"nullable": true
+												"nullable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"stripe": {
 												"type": "object",
@@ -1496,7 +1511,8 @@
 											},
 											"zdr": {
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											}
 										},
 										"required": [
@@ -1769,12 +1785,14 @@
 									"properties": {
 										"authentication": {
 											"type": "boolean",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"byok_only": {
 											"description": "Requires customer-provided provider credentials and prevents fallback to Unified Billing.",
 											"type": "boolean",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"cache_invalidate_on_update": {
 											"type": "boolean",
@@ -2112,14 +2130,16 @@
 										},
 										"log_classification": {
 											"type": "boolean",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"log_management": {
 											"type": "integer",
 											"maximum": 10000000,
 											"minimum": 10000,
 											"nullable": true,
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"log_management_strategy": {
 											"type": "string",
@@ -2128,11 +2148,13 @@
 												"DELETE_OLDEST"
 											],
 											"nullable": true,
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"logpush": {
 											"type": "boolean",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"logpush_public_key": {
 											"type": "string",
@@ -2250,7 +2272,7 @@
 															},
 															"id": {
 																"type": "string",
-																"default": "0621f3c6",
+																"default": "6742dc54",
 																"minLength": 1,
 																"pattern": "^[a-zA-Z0-9_-]+$"
 															},
@@ -2378,7 +2400,8 @@
 										},
 										"store_id": {
 											"type": "string",
-											"nullable": true
+											"nullable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"stripe": {
 											"type": "object",
@@ -2420,7 +2443,8 @@
 										},
 										"zdr": {
 											"type": "boolean",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
 									"required": [
@@ -2541,12 +2565,14 @@
 						"properties": {
 							"authentication": {
 								"type": "boolean",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"byok_only": {
 								"description": "Requires customer-provided provider credentials and prevents fallback to Unified Billing.",
 								"type": "boolean",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"cache_invalidate_on_update": {
 								"type": "boolean",
@@ -2576,7 +2602,8 @@
 								"maximum": 10000000,
 								"minimum": 10000,
 								"nullable": true,
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"log_management_strategy": {
 								"type": "string",
@@ -2585,11 +2612,13 @@
 									"DELETE_OLDEST"
 								],
 								"nullable": true,
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"logpush": {
 								"type": "boolean",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"logpush_public_key": {
 								"type": "string",
@@ -2648,7 +2677,8 @@
 							},
 							"store_id": {
 								"type": "string",
-								"nullable": true
+								"nullable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"workers_ai_billing_mode": {
 								"description": "Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.",
@@ -2662,7 +2692,8 @@
 							},
 							"zdr": {
 								"type": "boolean",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"required": [
@@ -2690,12 +2721,14 @@
 									"properties": {
 										"authentication": {
 											"type": "boolean",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"byok_only": {
 											"description": "Requires customer-provided provider credentials and prevents fallback to Unified Billing.",
 											"type": "boolean",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"cache_invalidate_on_update": {
 											"type": "boolean",
@@ -3033,14 +3066,16 @@
 										},
 										"log_classification": {
 											"type": "boolean",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"log_management": {
 											"type": "integer",
 											"maximum": 10000000,
 											"minimum": 10000,
 											"nullable": true,
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"log_management_strategy": {
 											"type": "string",
@@ -3049,11 +3084,13 @@
 												"DELETE_OLDEST"
 											],
 											"nullable": true,
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"logpush": {
 											"type": "boolean",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"logpush_public_key": {
 											"type": "string",
@@ -3171,7 +3208,7 @@
 															},
 															"id": {
 																"type": "string",
-																"default": "915d6b52",
+																"default": "d9beb1a8",
 																"minLength": 1,
 																"pattern": "^[a-zA-Z0-9_-]+$"
 															},
@@ -3299,7 +3336,8 @@
 										},
 										"store_id": {
 											"type": "string",
-											"nullable": true
+											"nullable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"stripe": {
 											"type": "object",
@@ -3341,7 +3379,8 @@
 										},
 										"zdr": {
 											"type": "boolean",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
 									"required": [
@@ -3483,12 +3522,14 @@
 						"properties": {
 							"authentication": {
 								"type": "boolean",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"byok_only": {
 								"description": "Requires customer-provided provider credentials and prevents fallback to Unified Billing.",
 								"type": "boolean",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"cache_invalidate_on_update": {
 								"type": "boolean",
@@ -3809,14 +3850,16 @@
 							},
 							"log_classification": {
 								"type": "boolean",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"log_management": {
 								"type": "integer",
 								"maximum": 10000000,
 								"minimum": 10000,
 								"nullable": true,
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"log_management_strategy": {
 								"type": "string",
@@ -3825,11 +3868,13 @@
 									"DELETE_OLDEST"
 								],
 								"nullable": true,
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"logpush": {
 								"type": "boolean",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"logpush_public_key": {
 								"type": "string",
@@ -3943,7 +3988,7 @@
 												},
 												"id": {
 													"type": "string",
-													"default": "91caa4d5",
+													"default": "19898f99",
 													"minLength": 1,
 													"pattern": "^[a-zA-Z0-9_-]+$"
 												},
@@ -4071,7 +4116,8 @@
 							},
 							"store_id": {
 								"type": "string",
-								"nullable": true
+								"nullable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"stripe": {
 								"type": "object",
@@ -4113,7 +4159,8 @@
 							},
 							"zdr": {
 								"type": "boolean",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"required": [
@@ -4140,12 +4187,14 @@
 									"properties": {
 										"authentication": {
 											"type": "boolean",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"byok_only": {
 											"description": "Requires customer-provided provider credentials and prevents fallback to Unified Billing.",
 											"type": "boolean",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"cache_invalidate_on_update": {
 											"type": "boolean",
@@ -4483,14 +4532,16 @@
 										},
 										"log_classification": {
 											"type": "boolean",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"log_management": {
 											"type": "integer",
 											"maximum": 10000000,
 											"minimum": 10000,
 											"nullable": true,
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"log_management_strategy": {
 											"type": "string",
@@ -4499,11 +4550,13 @@
 												"DELETE_OLDEST"
 											],
 											"nullable": true,
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"logpush": {
 											"type": "boolean",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"logpush_public_key": {
 											"type": "string",
@@ -4621,7 +4674,7 @@
 															},
 															"id": {
 																"type": "string",
-																"default": "e5855234",
+																"default": "3cfdbef8",
 																"minLength": 1,
 																"pattern": "^[a-zA-Z0-9_-]+$"
 															},
@@ -4749,7 +4802,8 @@
 										},
 										"store_id": {
 											"type": "string",
-											"nullable": true
+											"nullable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"stripe": {
 											"type": "object",
@@ -4791,7 +4845,8 @@
 										},
 										"zdr": {
 											"type": "boolean",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
 									"required": [

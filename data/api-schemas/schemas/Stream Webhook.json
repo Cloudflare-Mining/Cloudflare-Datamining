@@ -384,13 +384,19 @@
 													"description": "The URL where webhooks will be sent.",
 													"type": "string",
 													"format": "uri",
-													"example": "https://example.com"
+													"example": "https://example.com",
+													"x-stainless-naming": {
+														"go": {
+															"property_name": "NotificationURL"
+														}
+													}
 												},
 												"notification_url": {
 													"description": "The URL where webhooks will be sent.",
 													"type": "string",
 													"format": "uri",
-													"example": "https://example.com"
+													"example": "https://example.com",
+													"x-stainless-skip": true
 												},
 												"secret": {
 													"description": "The secret used to verify webhook signatures.",
@@ -706,13 +712,19 @@
 													"description": "The URL where webhooks will be sent.",
 													"type": "string",
 													"format": "uri",
-													"example": "https://example.com"
+													"example": "https://example.com",
+													"x-stainless-naming": {
+														"go": {
+															"property_name": "NotificationURL"
+														}
+													}
 												},
 												"notification_url": {
 													"description": "The URL where webhooks will be sent.",
 													"type": "string",
 													"format": "uri",
-													"example": "https://example.com"
+													"example": "https://example.com",
+													"x-stainless-skip": true
 												},
 												"secret": {
 													"description": "The secret used to verify webhook signatures.",

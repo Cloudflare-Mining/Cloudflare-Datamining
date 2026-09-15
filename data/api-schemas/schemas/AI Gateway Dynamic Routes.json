@@ -380,7 +380,8 @@
 											"format": "date-time"
 										},
 										"name": {
-											"type": "string"
+											"type": "string",
+											"minLength": 1
 										}
 									},
 									"required": [
@@ -904,7 +905,8 @@
 														"format": "date-time"
 													},
 													"name": {
-														"type": "string"
+														"type": "string",
+														"minLength": 1
 													},
 													"version": {
 														"type": "object",
@@ -1443,7 +1445,8 @@
 											"format": "date-time"
 										},
 										"name": {
-											"type": "string"
+											"type": "string",
+											"minLength": 1
 										},
 										"version": {
 											"type": "object",
@@ -2323,7 +2326,8 @@
 											"format": "date-time"
 										},
 										"name": {
-											"type": "string"
+											"type": "string",
+											"minLength": 1
 										},
 										"version_id": {
 											"type": "string"
@@ -2465,7 +2469,8 @@
 						"properties": {
 							"name": {
 								"type": "string",
-								"example": "Route Name"
+								"example": "Route Name",
+								"minLength": 1
 							}
 						},
 						"required": [
@@ -2845,7 +2850,8 @@
 											"format": "date-time"
 										},
 										"name": {
-											"type": "string"
+											"type": "string",
+											"minLength": 1
 										},
 										"version": {
 											"type": "object",
@@ -3252,7 +3258,8 @@
 											"format": "date-time"
 										},
 										"name": {
-											"type": "string"
+											"type": "string",
+											"minLength": 1
 										}
 									},
 									"required": [
@@ -3662,7 +3669,8 @@
 								}
 							},
 							"name": {
-								"type": "string"
+								"type": "string",
+								"minLength": 1
 							}
 						},
 						"required": [
@@ -4040,7 +4048,8 @@
 											"format": "date-time"
 										},
 										"name": {
-											"type": "string"
+											"type": "string",
+											"minLength": 1
 										},
 										"version": {
 											"type": "object",
@@ -4565,7 +4574,8 @@
 											"format": "date-time"
 										},
 										"name": {
-											"type": "string"
+											"type": "string",
+											"minLength": 1
 										}
 									},
 									"required": [
@@ -5376,7 +5386,8 @@
 											"format": "date-time"
 										},
 										"name": {
-											"type": "string"
+											"type": "string",
+											"minLength": 1
 										}
 									},
 									"required": [
