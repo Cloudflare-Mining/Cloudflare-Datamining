@@ -432,7 +432,7 @@
 									"additionalProperties": false,
 									"properties": {
 										"destinations": {
-											"description": "OpenTelemetry destination identifiers that receive traces.",
+											"description": "Up to 100 OpenTelemetry destination identifiers that receive traces.",
 											"type": "array",
 											"items": {
 												"maxLength": 256,
@@ -760,7 +760,7 @@
 						"type": "object",
 						"properties": {
 							"destinations": {
-								"description": "OpenTelemetry destination identifiers that receive traces.",
+								"description": "Up to 100 OpenTelemetry destination identifiers that receive traces.",
 								"type": "array",
 								"items": {
 									"maxLength": 256,
@@ -846,7 +846,7 @@
 									"additionalProperties": false,
 									"properties": {
 										"destinations": {
-											"description": "OpenTelemetry destination identifiers that receive traces.",
+											"description": "Up to 100 OpenTelemetry destination identifiers that receive traces.",
 											"type": "array",
 											"items": {
 												"maxLength": 256,
