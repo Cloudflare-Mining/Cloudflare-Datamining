@@ -546,6 +546,7 @@
 		"requiredTier": "Cheapest tier judged sufficient for the conversation's task by the verdict rule; empty on unclassified conversations and on classified conversations whose verdict is 'skip'",
 		"servedModel": "The provider/model that served the analyzed part of the conversation, as the gateway logged it. A conversation that used several models is attributed to the one this analysis saw. Empty on conversations that were not classified - filter outcome to 'ok' before grouping",
 		"servedTier": "Tier of the served model, as judged by the verdict rule; empty on unclassified conversations and on classified conversations whose verdict is 'skip'",
+		"sessionId": "Application or framework session identifier. Use together with userId as the conversation join key; session IDs are not globally unique.",
 		"skipReason": "Why a skipped conversation was refused; read together with skipStage",
 		"skipStage": "Pipeline stage that refused a skipped conversation",
 		"taskLabel": "Task type the classifier assigned to the conversation; an open vocabulary that can shift when the classifier changes. Empty on conversations that were not classified - filter outcome to 'ok'",
@@ -601,6 +602,7 @@
 		"sampleInterval": "How many rows this row stands for under adaptive sampling; multiply when extrapolating from listed rows",
 		"servedModel": "The provider/model that served the analyzed part of the conversation; empty when not classified",
 		"servedTier": "Tier of the served model; empty when not classified or when verdict is 'skip'",
+		"sessionId": "Application or framework session identifier",
 		"spansOverlap": "1 when this row's run re-covered a period another analysis also measured; sums that include it can double-count",
 		"taskLabel": "Task type the classifier assigned; empty when not classified",
 		"tokensIn": "Input tokens across the period's observed requests",
@@ -647,6 +649,7 @@
 		"requiredTier": "Cheapest tier judged sufficient for the conversation's task by the verdict rule; empty on unclassified conversations and on classified conversations whose verdict is 'skip'",
 		"servedModel": "The provider/model that served the analyzed part of the conversation, as the gateway logged it. A conversation that used several models is attributed to the one this analysis saw. Empty on conversations that were not classified - filter outcome to 'ok' before grouping",
 		"servedTier": "Tier of the served model, as judged by the verdict rule; empty on unclassified conversations and on classified conversations whose verdict is 'skip'",
+		"sessionId": "Application or framework session identifier. Use together with userId as the conversation join key; session IDs are not globally unique.",
 		"skipReason": "Why a skipped conversation was refused; read together with skipStage",
 		"skipStage": "Pipeline stage that refused a skipped conversation",
 		"taskLabel": "Task type the classifier assigned to the conversation; an open vocabulary that can shift when the classifier changes. Empty on conversations that were not classified - filter outcome to 'ok'",
@@ -17147,7 +17150,7 @@
 		"__description": "Scalar type types.Float32"
 	},
 	"float64": {
-		"__description": "Scalar type float64"
+		"__description": "Scalar type types.Float64"
 	},
 	"int16": {
 		"__description": "Scalar type int16"
