@@ -2,7 +2,7 @@
 	"name": "create-vinext-app",
 	"dist-tags": {
 		"beta": "1.0.0-beta.0",
-		"latest": "1.0.0-beta.2"
+		"latest": "1.0.0-beta.3"
 	},
 	"versions": {
 		"0.0.1": {
@@ -97,33 +97,73 @@
 			"name": "create-vinext-app",
 			"version": "1.0.0-beta.2",
 			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.2.6",
+				"vite-plus": "0.2.6",
 				"@types/node": "^25.9.2",
 				"am-i-vibing": "^0.5.0",
-				"magic-string": "^0.30.21",
-				"vite": "npm:@voidzero-dev/vite-plus-core@0.2.6",
-				"vite-plus": "0.2.6"
+				"magic-string": "^0.30.21"
 			},
 			"bin": {
 				"create-vinext-app": "dist/cli.js"
 			},
 			"dist": {
-				"integrity": "sha512-yMZeLy5fATMowr8GQ2bWwPKo+FCN4wscYwdeQ+O4ywutSjUE7LpEFsJK2xzpDHbnNvEugTiXxGHAMkHgU83r/A==",
 				"shasum": "dadde4246e4da45f347e02b33c61d61ae50f0a75",
 				"tarball": "https://registry.npmjs.org/create-vinext-app/-/create-vinext-app-1.0.0-beta.2.tgz",
 				"fileCount": 17,
-				"unpackedSize": 189011,
+				"integrity": "sha512-yMZeLy5fATMowr8GQ2bWwPKo+FCN4wscYwdeQ+O4ywutSjUE7LpEFsJK2xzpDHbnNvEugTiXxGHAMkHgU83r/A==",
+				"signatures": [
+					{
+						"sig": "MEUCIHFRFAlAOeOobLna49VE2xrnOjrOkhV9PZ3dqxP6lrmNAiEAqYp/NVH8bkIBD23FX0wpgoZtxzQjUublYzJGZfRnZiQ=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/create-vinext-app@1.0.0-beta.2",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
+				"unpackedSize": 189011
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"1.0.0-beta.3": {
+			"name": "create-vinext-app",
+			"version": "1.0.0-beta.3",
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.3.2",
+				"vite-plus": "0.3.2",
+				"@types/node": "^25.9.2",
+				"am-i-vibing": "^0.5.0",
+				"magic-string": "^0.30.21"
+			},
+			"bin": {
+				"create-vinext-app": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "b3b80b2ec0ae9dd0dfe204bb6c963fe6f67518a4",
+				"tarball": "https://registry.npmjs.org/create-vinext-app/-/create-vinext-app-1.0.0-beta.3.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-kabbIPYlGBptQerCEdAaeKO4lGlsOhO1khr1naYoo+0xF5xow1JZGD4Nkx/DkvTfpiDiFjg2D4YCKjEEAho4wQ==",
 				"signatures": [
 					{
+						"sig": "MEUCIQDHXoJG2/sEH/LA5ssAh+JgoCAx8MdcDdtTOnpVyxC90QIgW6oN1gW7OacQNjj3Q82Xny6oSqW1bGrAtxQlhSqlWyw=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIHFRFAlAOeOobLna49VE2xrnOjrOkhV9PZ3dqxP6lrmNAiEAqYp/NVH8bkIBD23FX0wpgoZtxzQjUublYzJGZfRnZiQ="
+						"sig": "MEUCIAUKp1kc8m0C6jk2prhwzMjMXNP1WSKFicMC7g2/8ecaAiEA+mCSuls/N0uBTkWXIb+Rj3grz0vRyJqw+yNHubZzX74="
 					}
-				]
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/create-vinext-app@1.0.0-beta.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 218253
 			},
 			"engines": {
 				"node": ">=22"
