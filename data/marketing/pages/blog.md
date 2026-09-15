@@ -10,17 +10,31 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+September 15, 2026 [<h2>Have it both ways: stay discoverable in search while disallowing AI training</h2>](https://blog.cloudflare.com/accountable-mixed-use-ai-crawlers/)
+
+Cloudflare is giving site owners a way to stay discoverable while disallowing AI training. New controls and an Accountable designation establish a shared model with Apple, Google, and Microsoft.
+
+![Bryan Becker](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PPX6Y9F64M9HHDMGBP2Q.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Bryan Becker](https://blog.cloudflare.com/author/bryan-becker/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9EEQXN77GRVF484P66A.01M2H2ZAMANYA3DTBA92G3WQ5X.png&w=1999&h=1125&f=webp&fit=cover&position=center)![](data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA///////78/Xx6+7t7fDy8fP38fL07ezr///////98vTy6Ozs6O3x7fH37/H17O3t////////8fT05uvt5evx6vD47vL47e/x////////9Pf56O3x5+317PL88PX88PL2////////+v3/7vP47fP88vj/9vr/9ff7////////////9/v/9/v//P///v//+/z//////////////v//////////////////////////////////////////////////)](https://blog.cloudflare.com/accountable-mixed-use-ai-crawlers/)
+
+September 15, 2026 [<h2>Give every teammate and agent the right level of access to your Workers</h2>](https://blog.cloudflare.com/workers-granular-authorization/)
+
+You can now scope access to individual Workers and assign narrower Developer Platform roles, so teammates, CI tokens, and agents get only the access they need to debug, deploy, or monitor safely.
+
+![Dina Kozlov](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DZ20ZY95S71GB0FPG6GC.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Anthony Oreglia](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2FPT3Z3K2863VB1YT41PSSZ.01M2FPT4MEBD6E6KSGMWZPQQA0.webp&w=64&h=64&f=webp&fit=cover&position=center)![Visal In](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2FPVS926WFD9QF74SP330QK.01M2FPVSW4YQJD57Q54T6HW9RE.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Dina Kozlov](https://blog.cloudflare.com/author/dina/),  [Anthony Oreglia](https://blog.cloudflare.com/author/anthony-oreglia/), and  [Visal In](https://blog.cloudflare.com/author/visal-in/)
+
 September 11, 2026 [<h2>Introducing automatic remediation policies with Cloudflare CASB</h2>](https://blog.cloudflare.com/casb-policies/)
 
 Cloudflare CASB policies introduce a native automation engine built directly on the Cloudflare developer platform to remediate SaaS risks automatically. Security teams can now design event-driven logic to revoke risky file shares and send webhooks without manual intervention.
 
-![Michael Leslie](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M65VVHB2G78QVANEZKFM.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-![Abe Carryl](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JJ6YPQY3M4A69P72QXE8.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
+![Michael Leslie](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M65VVHB2G78QVANEZKFM.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Abe Carryl](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JJ6YPQY3M4A69P72QXE8.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Michael Leslie](https://blog.cloudflare.com/author/michael-leslie/) and  [Abe Carryl](https://blog.cloudflare.com/author/abe/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2842WCZ10Q81ZNG6FHF2FAJ.01M2842X2Z3B513P6VHC1SXMTC.png&w=1999&h=1125&f=webp&fit=cover&position=center)![](data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA/////Pv96evx2N/q1t7u3uT05ujx6efn//////7/7O/z3OLt2ODx4Ob26Orz7Orq////////8vT44ufx3uX15er67O738O/v////////+fv96+/36O367fL/8/X99fX0////////////9fj98/f/+Pz/+/3/+/z6/////////////f///v/////////////+////////////////////////////////////////////////////////////////)](https://blog.cloudflare.com/casb-policies/)
 
 September 10, 2026 [<h2>1.1.1.1 now supports post-quantum DNSSEC, all 2,420 bytes of it</h2>](https://blog.cloudflare.com/post-quantum-dnssec-1111/)
 
@@ -94,7 +108,7 @@ We migrated the Cloudflare Blog to EmDash to prove our stack at massive scale. H
 
 [Kody Jackson](https://blog.cloudflare.com/author/kody/),  [Diogo Carneiro](https://blog.cloudflare.com/author/diogo-carneiro/), and  [Amy Dutton](https://blog.cloudflare.com/author/amy-dutton/)
 
-August 21, 2026 [<h2>Say it once: Introducing Bot Preference Sync</h2>](https://blog.cloudflare.com/bot-preference-sync/)
+August 21, 2026 [<h2>Say it once: introducing Bot Preference Sync</h2>](https://blog.cloudflare.com/bot-preference-sync/)
 
 Cloudflare's new Bot Preference Sync automatically aligns your robots.txt file with your AI bot policies for Search, Agent, and Training. Easily manage which bots access your content without maintaining static files.
 
@@ -149,22 +163,6 @@ Cloudflare's data shows a clear impact on Internet traffic from Iceland to Spain
 ![Sabina Zejnilovic](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49B114HP8HRQ7MA3FAFRSN.JPG&w=64&h=64&f=webp&fit=cover&position=center)![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Sabina Zejnilovic](https://blog.cloudflare.com/author/sabina/) and  [Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/)
-
-August 13, 2026 [<h2>Certificate Transparency Monitoring is now generally available</h2>](https://blog.cloudflare.com/certificate-transparency-monitoring-ga/)
-
-Cloudflare's Certificate Transparency Monitoring is now generally available. The biggest change: we no longer email you about certificates Cloudflare issued for your domain, so when an alert lands in your inbox, it's worth a look.
-
-![Jenny Yang](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZQQ26VN8E4P561X998FKQ9H.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Pravallika Nakarikanti](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZQQ34PPYQF64Q3WFAPX7W5S.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Jenny Yang](https://blog.cloudflare.com/author/jenny-yang/) and  [Pravallika Nakarikanti](https://blog.cloudflare.com/author/pravallika-nakarikanti/)
-
-August 11, 2026 [<h2>Cloudflare DDoS Threat Report H1 2026: 1 Tbps attacks soar as DNS floods and geopolitical tensions drive a new wave</h2>](https://blog.cloudflare.com/ddos-threat-report-2026-h1/)
-
-In the first half of 2026, Cloudflare detected a 519% surge in hyper-volumetric DDos attacks across its network. These attacks were driven heavily by DNS and CLDAP reflection vectors. This report breaks down how major geopolitical conflicts reshaped the global cyber threat landscape.
-
-![Cloudforce One](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F4NKW3JJWXAED2MVFY7Y.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Cloudforce One](https://blog.cloudflare.com/author/cloudforce/)
 
 Load more
 
