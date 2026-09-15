@@ -500,6 +500,7 @@
 		"sampleInterval": "How many rows this row stands for under adaptive sampling; multiply when extrapolating from listed rows",
 		"servedModel": "The provider/model that served the analyzed part of the conversation; empty when not classified",
 		"servedTier": "Tier of the served model; empty when not classified or when verdict is 'skip'",
+		"sessionId": "Application or framework session identifier",
 		"spansOverlap": "1 when this row's run re-covered a period another analysis also measured; sums that include it can double-count",
 		"taskLabel": "Task type the classifier assigned; empty when not classified",
 		"tokensIn": "Input tokens across the period's observed requests",
@@ -17150,7 +17151,7 @@
 		"__description": "Scalar type types.Float32"
 	},
 	"float64": {
-		"__description": "Scalar type types.Float64"
+		"__description": "Scalar type float64"
 	},
 	"int16": {
 		"__description": "Scalar type int16"
