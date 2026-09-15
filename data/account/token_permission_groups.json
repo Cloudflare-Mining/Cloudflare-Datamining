@@ -1989,6 +1989,42 @@
 		"category": "media"
 	},
 	{
+		"id": "1ef41180fdf74cf7b67415d2708167ac",
+		"name": "Individual Workers Admin",
+		"description": "Full access to a single Worker, including content, versions, deployments, previews, and delete.",
+		"scopes": [
+			"com.cloudflare.edge.worker.script"
+		],
+		"category": "developer_platform"
+	},
+	{
+		"id": "1b68681d11f443a4979c6d08c3211f13",
+		"name": "Individual Workers Content Read-Only",
+		"description": "Grants read access to a single Cloudflare Worker resource.",
+		"scopes": [
+			"com.cloudflare.edge.worker.script"
+		],
+		"category": "developer_platform"
+	},
+	{
+		"id": "7e79ec33834341f28dd431ab73884400",
+		"name": "Individual Workers Editor",
+		"description": "Grants write access to a single Cloudflare Worker resource.",
+		"scopes": [
+			"com.cloudflare.edge.worker.script"
+		],
+		"category": "developer_platform"
+	},
+	{
+		"id": "afa629b86102452b8b744a5485b870e1",
+		"name": "Individual Workers Metadata Read-Only",
+		"description": "View metadata and settings for a single Worker without access to script source content.",
+		"scopes": [
+			"com.cloudflare.edge.worker.script"
+		],
+		"category": "developer_platform"
+	},
+	{
 		"id": "c6f97eeee13345db8cc00af0953a42de",
 		"name": "Integration Write",
 		"description": "Grants write access to integrations",
@@ -2392,6 +2428,24 @@
 			"com.cloudflare.api.account"
 		],
 		"category": "media"
+	},
+	{
+		"id": "9903141175024a20a4aced2a7cbf6a2c",
+		"name": "Network Quality Read",
+		"description": "Grants read access to Network Quality API.",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "developer_platform"
+	},
+	{
+		"id": "15e7cd45787d49cc876260fd61b1ec3d",
+		"name": "Network Quality Write",
+		"description": "Grants access to manage Network Quality and issue Network Quality authorization tokens.",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "developer_platform"
 	},
 	{
 		"id": "ce18edbdcebf465e9d6d1d2fc80ffd42",
@@ -3087,6 +3141,15 @@
 		"category": "ai_and_machine_learning"
 	},
 	{
+		"id": "98d78cd2433d4c3687191bc0244ef948",
+		"name": "Workers Admin",
+		"description": "Full create, read, update, and delete access to all Workers resources. Previously named Workers Scripts Write.",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "developer_platform"
+	},
+	{
 		"id": "c3149113b86a4aebafe59e5bac3b6690",
 		"name": "Workers AI Metadata Read",
 		"description": "Grants read-only access to Workers AI metadata (model catalog, finetune list, tasks, authors) without access to inference or mutation endpoints.",
@@ -3150,6 +3213,24 @@
 		"category": "developer_platform"
 	},
 	{
+		"id": "3517fad527464d8bbba2c2a9a6eefaa9",
+		"name": "Workers Content Read-Only",
+		"description": "Grants read access to Cloudflare Workers scripts",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "developer_platform"
+	},
+	{
+		"id": "d7ba8d4dce414197a3efab21b2f87eb8",
+		"name": "Workers Editor",
+		"description": "Read, update, and deploy Workers. Includes script content,\nsettings, versions, deployments, and previews. Cannot create\nor delete Workers — use Workers Admin for that. Routes and\nobservability require separate per-feature token roles.\n",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "developer_platform"
+	},
+	{
 		"id": "96800ebd1a004f5b92266eed9e3dcf13",
 		"name": "Workers KV Storage Metadata Read",
 		"description": "Grants read access to Workers KV configuration and analytics",
@@ -3171,6 +3252,15 @@
 		"id": "f7f0eda5697f475c90846e879bab8666",
 		"name": "Workers KV Storage Write",
 		"description": "Grants write access to Cloudflare Workers KV Storage",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "developer_platform"
+	},
+	{
+		"id": "da1261c3d38544a4bba805b22566f8b6",
+		"name": "Workers Metadata Read-Only",
+		"description": "View Workers metadata, settings, and observability without access to script source content.",
 		"scopes": [
 			"com.cloudflare.api.account"
 		],
