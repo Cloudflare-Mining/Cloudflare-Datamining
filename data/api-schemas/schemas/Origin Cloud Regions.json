@@ -334,7 +334,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
+		"x-fern-sdk-method-name": "delete-v1",
+		"x-forge-hidden": true
 	},
 	"DELETE /zones/{zone_id}/cache/origin_cloud_regions/batch": {
 		"operationId": "origin-cloud-regions-batch-delete",
@@ -826,7 +830,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
+		"x-fern-sdk-method-name": "bulk-delete-v1",
+		"x-forge-hidden": true
 	},
 	"DELETE /zones/{zone_id}/origin/cloud_regions/{origin_ip}": {
 		"operationId": "origin-cloud-regions-v2-delete",
@@ -1093,7 +1101,12 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "Are you sure you want to delete this Origin Cloud Region configuration?"
 	},
 	"DELETE /zones/{zone_id}/origin/cloud_regions/batch": {
 		"operationId": "origin-cloud-regions-v2-batch-delete",
@@ -1430,7 +1443,12 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
+		"x-fern-sdk-method-name": "bulk-delete",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "Are you sure you want to delete these Origin Cloud Region configurations?"
 	},
 	"GET /zones/{zone_id}/cache/origin_cloud_regions": {
 		"operationId": "origin-cloud-regions-list",
@@ -1767,7 +1785,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
+		"x-fern-sdk-method-name": "list-v1",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/cache/origin_cloud_regions/{origin_ip}": {
 		"operationId": "origin-cloud-regions-get",
@@ -2104,7 +2126,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
+		"x-fern-sdk-method-name": "get-v1",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/cache/origin_cloud_regions/supported_regions": {
 		"operationId": "origin-cloud-regions-supported-regions",
@@ -2410,7 +2436,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
+		"x-fern-sdk-method-name": "supported-regions-v1",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/origin/cloud_regions": {
 		"operationId": "origin-cloud-regions-v2-list",
@@ -2792,7 +2822,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/origin/cloud_regions/{origin_ip}": {
 		"operationId": "origin-cloud-regions-v2-get",
@@ -3088,7 +3122,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/origin/cloud_regions/supported_regions": {
 		"operationId": "origin-cloud-regions-v2-supported-regions",
@@ -3387,7 +3425,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
+		"x-fern-sdk-method-name": "supported-regions",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/cache/origin_cloud_regions": {
 		"operationId": "origin-cloud-regions-upsert",
@@ -3790,7 +3832,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
+		"x-fern-sdk-method-name": "edit-v1",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/cache/origin_cloud_regions/batch": {
 		"operationId": "origin-cloud-regions-batch-upsert",
@@ -4348,7 +4394,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
+		"x-fern-sdk-method-name": "bulk-edit-v1",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/cache/origin_cloud_regions": {
 		"operationId": "origin-cloud-regions-create",
@@ -4752,7 +4802,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
+		"x-fern-sdk-method-name": "create-v1",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/origin/cloud_regions/{origin_ip}": {
 		"operationId": "origin-cloud-regions-v2-upsert",
@@ -5125,7 +5179,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/origin/cloud_regions/batch": {
 		"operationId": "origin-cloud-regions-v2-batch-upsert",
@@ -5515,6 +5573,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
+		"x-fern-sdk-method-name": "bulk-update",
+		"x-forge-hidden": true
 	}
 }

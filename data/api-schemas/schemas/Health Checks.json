@@ -835,12 +835,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Delete Health Check response.",
@@ -4088,7 +4082,9 @@
 																	"2xx",
 																	"302"
 																],
-																"default": "200",
+																"default": [
+																	"200"
+																],
 																"nullable": true,
 																"x-auditable": true
 															},
@@ -4464,7 +4460,9 @@
 																			"2xx",
 																			"302"
 																		],
-																		"default": "200",
+																		"default": [
+																			"200"
+																		],
 																		"nullable": true,
 																		"x-auditable": true
 																	},
@@ -4964,7 +4962,9 @@
 																"2xx",
 																"302"
 															],
-															"default": "200",
+															"default": [
+																"200"
+															],
 															"nullable": true,
 															"x-auditable": true
 														},
@@ -5319,7 +5319,9 @@
 																		"2xx",
 																		"302"
 																	],
-																	"default": "200",
+																	"default": [
+																		"200"
+																	],
 																	"nullable": true,
 																	"x-auditable": true
 																},
@@ -6773,7 +6775,9 @@
 											"2xx",
 											"302"
 										],
-										"default": "200",
+										"default": [
+											"200"
+										],
 										"nullable": true,
 										"x-auditable": true
 									},
@@ -7098,7 +7102,9 @@
 																"2xx",
 																"302"
 															],
-															"default": "200",
+															"default": [
+																"200"
+															],
 															"nullable": true,
 															"x-auditable": true
 														},
@@ -7453,7 +7459,9 @@
 																		"2xx",
 																		"302"
 																	],
-																	"default": "200",
+																	"default": [
+																		"200"
+																	],
 																	"nullable": true,
 																	"x-auditable": true
 																},
@@ -9935,7 +9943,9 @@
 											"2xx",
 											"302"
 										],
-										"default": "200",
+										"default": [
+											"200"
+										],
 										"nullable": true,
 										"x-auditable": true
 									},
@@ -10260,7 +10270,9 @@
 																"2xx",
 																"302"
 															],
-															"default": "200",
+															"default": [
+																"200"
+															],
 															"nullable": true,
 															"x-auditable": true
 														},
@@ -10615,7 +10627,9 @@
 																		"2xx",
 																		"302"
 																	],
-																	"default": "200",
+																	"default": [
+																		"200"
+																	],
 																	"nullable": true,
 																	"x-auditable": true
 																},
@@ -12181,7 +12195,9 @@
 															"2xx",
 															"302"
 														],
-														"default": "200",
+														"default": [
+															"200"
+														],
 														"nullable": true,
 														"x-auditable": true
 													},
@@ -12535,7 +12551,9 @@
 																"2xx",
 																"302"
 															],
-															"default": "200",
+															"default": [
+																"200"
+															],
 															"nullable": true,
 															"x-auditable": true
 														},
@@ -12890,7 +12908,9 @@
 																		"2xx",
 																		"302"
 																	],
-																	"default": "200",
+																	"default": [
+																		"200"
+																	],
 																	"nullable": true,
 																	"x-auditable": true
 																},

@@ -1,0 +1,701 @@
+{
+	"GET /analytics/sql": {
+		"operationId": "sql-api-query-get",
+		"summary": "Query analytics datasets",
+		"description": "Executes a SQL query against the analytics datasets available to the caller. SQL placeholders can be bound with query parameters named `param_<name>`, such as `param_status=404` for `$status`.\n",
+		"parameters": [
+			{
+				"name": "query",
+				"in": "query",
+				"description": "SQL query to execute.",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"example": "SELECT edgeResponseStatus FROM events.httpRequests WHERE accountTag = '0123456789abcdef0123456789abcdef' AND datetime > '2026-01-01' LIMIT 10"
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Query executed successfully.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"data": {
+									"description": "Query result rows keyed by the selected column names.",
+									"type": "array",
+									"items": {
+										"additionalProperties": true,
+										"type": "object"
+									}
+								},
+								"rows": {
+									"description": "Number of rows in `data`.",
+									"type": "integer",
+									"format": "int64",
+									"minimum": 0
+								},
+								"statistics": {
+									"type": "object",
+									"properties": {
+										"bytes_read": {
+											"description": "Number of source bytes read while executing the query.",
+											"type": "integer",
+											"format": "int64",
+											"minimum": 0
+										},
+										"elapsed_ms": {
+											"description": "Backend execution time in milliseconds.",
+											"type": "integer",
+											"format": "int64",
+											"minimum": 0
+										},
+										"rows_read": {
+											"description": "Number of source rows read while executing the query.",
+											"type": "integer",
+											"format": "int64",
+											"minimum": 0
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"elapsed_ms",
+										"rows_read",
+										"bytes_read"
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"data",
+								"rows",
+								"statistics"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "The request is malformed.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Machine-readable error code.",
+									"type": "integer",
+									"format": "int64",
+									"minimum": 0
+								},
+								"error_chain": {
+									"description": "Additional errors that caused this error.",
+									"type": "array",
+									"items": "[Circular ~.GET /analytics/sql.responses.400.content.application/json.schema]"
+								},
+								"message": {
+									"description": "Human-readable error message.",
+									"type": "string"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"code",
+								"message"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Authentication failed or the caller is not authorized.",
+				"content": {
+					"text/plain": {
+						"example": "Authorization error",
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"422": {
+				"description": "The SQL query or its parameters are invalid.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "The query exceeded a resource or request-rate limit.",
+				"headers": {
+					"Retry-After": {
+						"description": "Seconds to wait before retrying. Present when the account request rate limit is exceeded; omitted for query resource limits.\n",
+						"schema": {
+							"type": "integer",
+							"format": "int64",
+							"minimum": 0
+						}
+					}
+				},
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "An internal error occurred.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"501": {
+				"description": "The query uses a SQL feature that is not implemented.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "A required service is temporarily unavailable.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"507": {
+				"description": "The query exhausted available resources.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Analytics SQL"
+		],
+		"x-api-token-group": [
+			"Account Analytics Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "analytics.sql",
+		"x-fern-sdk-method-name": "get"
+	},
+	"GET /analytics/sql/introspection": {
+		"operationId": "sql-api-introspection",
+		"summary": "List available analytics datasets",
+		"description": "Returns the analytics dataset catalogue. By default, the response contains dataset names and descriptions. Set `include_columns` to include each dataset's column names, descriptions, and data types. The caller must have Account Analytics Read permission on the account identified by `account_tag`. The account tag authorizes the request; it does not filter the catalogue, which is the same for every authorized account.\n",
+		"parameters": [
+			{
+				"name": "account_tag",
+				"in": "query",
+				"description": "Account whose available analytics datasets are returned.",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"example": "0123456789abcdef0123456789abcdef"
+			},
+			{
+				"name": "include_columns",
+				"in": "query",
+				"description": "Include column metadata for each returned dataset.",
+				"schema": {
+					"type": "boolean",
+					"default": false
+				}
+			},
+			{
+				"name": "dataset_name",
+				"in": "query",
+				"description": "Return only the dataset with this exact name. An empty value does not filter the catalogue. An unknown name returns a successful response with an empty `datasets` array.\n",
+				"schema": {
+					"type": "string"
+				},
+				"example": "events.httpRequests"
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Dataset catalogue returned successfully.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"datasets": {
+									"description": "Datasets visible through the Analytics SQL API.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"columns": {
+												"description": "Present when `include_columns` is true.",
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"data_type": {
+															"description": "SQL data type of the column.",
+															"type": "string",
+															"example": "String"
+														},
+														"description": {
+															"description": "Human-readable description of the column.",
+															"type": "string"
+														},
+														"name": {
+															"description": "Column name used in SQL queries.",
+															"type": "string",
+															"example": "clientRequestPath"
+														}
+													},
+													"additionalProperties": false,
+													"required": [
+														"name",
+														"description",
+														"data_type"
+													]
+												}
+											},
+											"description": {
+												"description": "Human-readable description of the dataset.",
+												"type": "string"
+											},
+											"name": {
+												"description": "Dataset name used in SQL queries.",
+												"type": "string",
+												"example": "events.httpRequests"
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"name",
+											"description"
+										]
+									}
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"datasets"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "The request is malformed.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Machine-readable error code.",
+									"type": "integer",
+									"format": "int64",
+									"minimum": 0
+								},
+								"error_chain": {
+									"description": "Additional errors that caused this error.",
+									"type": "array",
+									"items": "[Circular ~.GET /analytics/sql/introspection.responses.400.content.application/json.schema]"
+								},
+								"message": {
+									"description": "Human-readable error message.",
+									"type": "string"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"code",
+								"message"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Authentication failed or the caller does not have Account Analytics Read permission on the specified account.\n",
+				"content": {
+					"text/plain": {
+						"example": "Authorization error",
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"422": {
+				"description": "The account tag is invalid or unknown.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "An internal error occurred.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "The authorization service is temporarily unavailable.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Analytics SQL"
+		],
+		"x-api-token-group": [
+			"Account Analytics Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "analytics.sql.introspection",
+		"x-fern-sdk-method-name": "get"
+	},
+	"POST /analytics/sql": {
+		"operationId": "sql-api-query-post",
+		"summary": "Query analytics datasets",
+		"description": "Executes a SQL query against the analytics datasets available to the caller. Send either raw SQL or a JSON object containing the query and optional positional or named parameters, time range, and account or zone scope. Raw SQL placeholders can also be bound with query parameters named `param_<name>`.\n",
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"params": {
+								"description": "Positional array values for `$1`, `$2`, and similar placeholders, or named object values for placeholders such as `$status`.\n",
+								"oneOf": [
+									{
+										"items": {},
+										"type": "array"
+									},
+									{
+										"additionalProperties": true,
+										"type": "object"
+									}
+								]
+							},
+							"query": {
+								"description": "SQL query to execute.",
+								"type": "string"
+							},
+							"scope": {
+								"description": "Account or zone scope applied to the query. Include exactly one scope tag. Do not include account or zone tenancy predicates in the SQL query when this field is present.\n",
+								"oneOf": [
+									{
+										"type": "object",
+										"properties": {
+											"accountTag": {
+												"description": "Account tag used to authorize and scope the query.",
+												"type": "string",
+												"example": "0123456789abcdef0123456789abcdef"
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"accountTag"
+										]
+									},
+									{
+										"type": "object",
+										"properties": {
+											"zoneTag": {
+												"description": "Zone tag used to authorize and scope the query.",
+												"type": "string",
+												"example": "023e105f-2fd3-4989-9d76-34a245f8ca0f"
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"zoneTag"
+										]
+									}
+								]
+							},
+							"time_range": {
+								"description": "Time bounds applied to the dataset's timestamp column. Do not include timestamp predicates in the SQL query when this field is present.\n",
+								"type": "object",
+								"properties": {
+									"end": {
+										"description": "Inclusive upper bound for the dataset's timestamp column.",
+										"type": "string",
+										"example": "2026-01-02T00:00:00Z"
+									},
+									"start": {
+										"description": "Inclusive lower bound for the dataset's timestamp column.",
+										"type": "string",
+										"example": "2026-01-01T00:00:00Z"
+									}
+								},
+								"additionalProperties": false,
+								"required": [
+									"start"
+								]
+							}
+						},
+						"example": {
+							"params": {
+								"status": 404
+							},
+							"query": "SELECT edgeResponseStatus FROM events.httpRequests WHERE edgeResponseStatus = $status LIMIT 10",
+							"scope": {
+								"accountTag": "0123456789abcdef0123456789abcdef"
+							},
+							"time_range": {
+								"end": "2026-01-02T00:00:00Z",
+								"start": "2026-01-01T00:00:00Z"
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"query"
+						]
+					}
+				},
+				"text/plain": {
+					"example": "SELECT edgeResponseStatus FROM events.httpRequests WHERE accountTag = '0123456789abcdef0123456789abcdef' AND datetime > '2026-01-01' LIMIT 10",
+					"schema": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Query executed successfully.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"data": {
+									"description": "Query result rows keyed by the selected column names.",
+									"type": "array",
+									"items": {
+										"additionalProperties": true,
+										"type": "object"
+									}
+								},
+								"rows": {
+									"description": "Number of rows in `data`.",
+									"type": "integer",
+									"format": "int64",
+									"minimum": 0
+								},
+								"statistics": {
+									"type": "object",
+									"properties": {
+										"bytes_read": {
+											"description": "Number of source bytes read while executing the query.",
+											"type": "integer",
+											"format": "int64",
+											"minimum": 0
+										},
+										"elapsed_ms": {
+											"description": "Backend execution time in milliseconds.",
+											"type": "integer",
+											"format": "int64",
+											"minimum": 0
+										},
+										"rows_read": {
+											"description": "Number of source rows read while executing the query.",
+											"type": "integer",
+											"format": "int64",
+											"minimum": 0
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"elapsed_ms",
+										"rows_read",
+										"bytes_read"
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"data",
+								"rows",
+								"statistics"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "The request is malformed.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Machine-readable error code.",
+									"type": "integer",
+									"format": "int64",
+									"minimum": 0
+								},
+								"error_chain": {
+									"description": "Additional errors that caused this error.",
+									"type": "array",
+									"items": "[Circular ~.POST /analytics/sql.responses.400.content.application/json.schema]"
+								},
+								"message": {
+									"description": "Human-readable error message.",
+									"type": "string"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"code",
+								"message"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Authentication failed or the caller is not authorized.",
+				"content": {
+					"text/plain": {
+						"example": "Authorization error",
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"422": {
+				"description": "The SQL query or its parameters are invalid.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "The query exceeded a resource or request-rate limit.",
+				"headers": {
+					"Retry-After": {
+						"description": "Seconds to wait before retrying. Present when the account request rate limit is exceeded; omitted for query resource limits.\n",
+						"schema": {
+							"type": "integer",
+							"format": "int64",
+							"minimum": 0
+						}
+					}
+				},
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "An internal error occurred.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"501": {
+				"description": "The query uses a SQL feature that is not implemented.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "A required service is temporarily unavailable.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"507": {
+				"description": "The query exhausted available resources.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Analytics SQL"
+		],
+		"x-api-token-group": [
+			"Account Analytics Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "analytics.sql",
+		"x-fern-sdk-method-name": "post"
+	}
+}

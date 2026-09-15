@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}": {
+	"DELETE /accounts/{account_id}/cloudforce-one/events/tag-categories/{category_uuid}": {
 		"operationId": "delete_TagCategoryDelete",
 		"summary": "Deletes a tag category (SoT)",
 		"description": "Deletes a Source-of-Truth tag category by UUID.",
@@ -136,6 +136,392 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.tags.categories",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
+	},
+	"DELETE /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}": {
+		"operationId": "delete_LegacyTagCategoryDelete",
+		"summary": "Deletes a tag category (SoT)",
+		"description": "Deprecated; use DELETE /events/tag-categories/{category_uuid}. Available through 2026-11-28.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "category_uuid",
+				"in": "path",
+				"description": "Tag Category UUID.",
+				"required": true,
+				"schema": {
+					"description": "Tag Category UUID.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns the uuid of the deleted tag category.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"uuid": {
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
+								}
+							},
+							"required": [
+								"uuid"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"deprecated": true,
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"TagCategory"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "cloudforce-one.events.tag-categories.legacy",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2026-11-28T00:00:00Z"
+		},
+		"x-stainless-deprecation-message": "Use DELETE /events/tag-categories/{category_uuid} before 2026-11-28."
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/tag-categories/{category_uuid}": {
+		"operationId": "get_TagCategoryDetail",
+		"summary": "Gets a tag category by UUID (SoT)",
+		"description": "Returns a single Source-of-Truth tag category by UUID, including its full schema.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "category_uuid",
+				"in": "path",
+				"description": "Tag Category UUID.",
+				"required": true,
+				"schema": {
+					"description": "Tag Category UUID.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns the tag category.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"createdAt": {
+									"type": "string"
+								},
+								"description": {
+									"type": "string"
+								},
+								"name": {
+									"type": "string",
+									"example": "Actor"
+								},
+								"schema": {
+									"description": "Parsed FieldDefinition[] defining custom fields for this category, or null if none.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"allowedValues": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												},
+												"example": [
+													"low",
+													"medium",
+													"high",
+													"critical"
+												]
+											},
+											"annotations": {
+												"type": "object",
+												"additionalProperties": false,
+												"properties": {
+													"confidence": {
+														"type": "boolean"
+													},
+													"tlp": {
+														"type": "boolean"
+													}
+												}
+											},
+											"deprecated": {
+												"description": "Marks a field as unavailable for new values while retaining its definition for historical values.",
+												"type": "boolean"
+											},
+											"deprecatedValues": {
+												"description": "Enum values unavailable for new writes but retained in allowedValues for historical display.",
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"element": {
+												"description": "Nested FieldDefinition describing the element type of an array field. Required when kind is 'array'. See FieldDefinition (recursive).",
+												"type": "object",
+												"additionalProperties": true,
+												"allOf": [
+													"[Circular ~.GET /accounts/{account_id}/cloudforce-one/events/tag-categories/{category_uuid}.responses.200.content.application/json.schema.properties.schema.items]"
+												]
+											},
+											"enforcement": {
+												"type": "string",
+												"enum": [
+													"error",
+													"warn",
+													"off"
+												]
+											},
+											"format": {
+												"type": "string",
+												"enum": [
+													"date",
+													"url",
+													"duration",
+													"country"
+												]
+											},
+											"key": {
+												"type": "string",
+												"example": "family",
+												"pattern": "^[a-zA-Z][a-zA-Z0-9_]{0,63}$"
+											},
+											"kind": {
+												"type": "string",
+												"example": "string",
+												"enum": [
+													"string",
+													"number",
+													"enum",
+													"date",
+													"array",
+													"object"
+												]
+											},
+											"label": {
+												"type": "string",
+												"example": "Attacker Name",
+												"maxLength": 128,
+												"minLength": 1
+											},
+											"maxLength": {
+												"type": "integer",
+												"exclusiveMinimum": true,
+												"minimum": 0
+											},
+											"numberConstraint": {
+												"type": "object",
+												"additionalProperties": false,
+												"properties": {
+													"integer": {
+														"type": "boolean"
+													},
+													"max": {
+														"type": "number"
+													},
+													"min": {
+														"type": "number"
+													}
+												}
+											},
+											"properties": {
+												"description": "Map of property key to FieldDefinition for object fields. Required when kind is 'object'. See FieldDefinition (recursive).",
+												"type": "object",
+												"additionalProperties": "[Circular ~.GET /accounts/{account_id}/cloudforce-one/events/tag-categories/{category_uuid}.responses.200.content.application/json.schema.properties.schema.items]"
+											},
+											"required": {
+												"type": "boolean"
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"key",
+											"kind"
+										]
+									},
+									"nullable": true
+								},
+								"updatedAt": {
+									"type": "string"
+								},
+								"uuid": {
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
+								}
+							},
+							"required": [
+								"uuid",
+								"name"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"TagCategory"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.tags.categories",
+		"x-fern-sdk-method-name": "get-by-id",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags/categories": {
@@ -389,9 +775,9 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}": {
-		"operationId": "get_TagCategoryDetail",
+		"operationId": "get_LegacyTagCategoryDetail",
 		"summary": "Gets a tag category by UUID (SoT)",
-		"description": "Returns a single Source-of-Truth tag category by UUID, including its full schema.",
+		"description": "Deprecated; use GET /events/tag-categories/{category_uuid}. Available through 2026-11-28.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -613,6 +999,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -625,15 +1012,478 @@
 			"Cloudforce One Write",
 			"Cloudforce One Read"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.tags.categories",
-		"x-fern-sdk-method-name": "get-by-id",
-		"x-forge-hidden": true
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "cloudforce-one.events.tag-categories.legacy",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2026-11-28T00:00:00Z"
+		},
+		"x-stainless-deprecation-message": "Use GET /events/tag-categories/{category_uuid} before 2026-11-28."
 	},
-	"PATCH /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}": {
+	"PATCH /accounts/{account_id}/cloudforce-one/events/tag-categories/{category_uuid}": {
 		"operationId": "patch_TagCategoryUpdate",
 		"summary": "Updates a tag category (SoT)",
 		"description": "Updates a Source-of-Truth tag category by UUID.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "category_uuid",
+				"in": "path",
+				"description": "Tag Category UUID.",
+				"required": true,
+				"schema": {
+					"description": "Tag Category UUID.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"description": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							},
+							"schema": {
+								"description": "Optional array of FieldDefinition objects. When provided, replaces the existing field schema. When omitted, the existing schema is preserved.",
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"allowedValues": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"example": [
+												"low",
+												"medium",
+												"high",
+												"critical"
+											]
+										},
+										"annotations": {
+											"type": "object",
+											"additionalProperties": false,
+											"properties": {
+												"confidence": {
+													"type": "boolean"
+												},
+												"tlp": {
+													"type": "boolean"
+												}
+											}
+										},
+										"deprecated": {
+											"description": "Marks a field as unavailable for new values while retaining its definition for historical values.",
+											"type": "boolean"
+										},
+										"deprecatedValues": {
+											"description": "Enum values unavailable for new writes but retained in allowedValues for historical display.",
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"element": {
+											"description": "Nested FieldDefinition describing the element type of an array field. Required when kind is 'array'. See FieldDefinition (recursive).",
+											"type": "object",
+											"additionalProperties": true,
+											"allOf": [
+												"[Circular ~.PATCH /accounts/{account_id}/cloudforce-one/events/tag-categories/{category_uuid}.requestBody.content.application/json.schema.properties.schema.items]"
+											]
+										},
+										"enforcement": {
+											"type": "string",
+											"enum": [
+												"error",
+												"warn",
+												"off"
+											]
+										},
+										"format": {
+											"type": "string",
+											"enum": [
+												"date",
+												"url",
+												"duration",
+												"country"
+											]
+										},
+										"key": {
+											"type": "string",
+											"example": "family",
+											"pattern": "^[a-zA-Z][a-zA-Z0-9_]{0,63}$"
+										},
+										"kind": {
+											"type": "string",
+											"example": "string",
+											"enum": [
+												"string",
+												"number",
+												"enum",
+												"date",
+												"array",
+												"object"
+											]
+										},
+										"label": {
+											"type": "string",
+											"example": "Attacker Name",
+											"maxLength": 128,
+											"minLength": 1
+										},
+										"maxLength": {
+											"type": "integer",
+											"exclusiveMinimum": true,
+											"minimum": 0
+										},
+										"numberConstraint": {
+											"type": "object",
+											"additionalProperties": false,
+											"properties": {
+												"integer": {
+													"type": "boolean"
+												},
+												"max": {
+													"type": "number"
+												},
+												"min": {
+													"type": "number"
+												}
+											}
+										},
+										"properties": {
+											"description": "Map of property key to FieldDefinition for object fields. Required when kind is 'object'. See FieldDefinition (recursive).",
+											"type": "object",
+											"additionalProperties": "[Circular ~.PATCH /accounts/{account_id}/cloudforce-one/events/tag-categories/{category_uuid}.requestBody.content.application/json.schema.properties.schema.items]"
+										},
+										"required": {
+											"type": "boolean"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"key",
+										"kind"
+									]
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Returns the updated tag category.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"createdAt": {
+									"type": "string"
+								},
+								"description": {
+									"type": "string"
+								},
+								"name": {
+									"type": "string",
+									"example": "Actor"
+								},
+								"schema": {
+									"description": "Parsed FieldDefinition[] defining custom fields for this category, or null if none.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"allowedValues": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												},
+												"example": [
+													"low",
+													"medium",
+													"high",
+													"critical"
+												]
+											},
+											"annotations": {
+												"type": "object",
+												"additionalProperties": false,
+												"properties": {
+													"confidence": {
+														"type": "boolean"
+													},
+													"tlp": {
+														"type": "boolean"
+													}
+												}
+											},
+											"deprecated": {
+												"description": "Marks a field as unavailable for new values while retaining its definition for historical values.",
+												"type": "boolean"
+											},
+											"deprecatedValues": {
+												"description": "Enum values unavailable for new writes but retained in allowedValues for historical display.",
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"element": {
+												"description": "Nested FieldDefinition describing the element type of an array field. Required when kind is 'array'. See FieldDefinition (recursive).",
+												"type": "object",
+												"additionalProperties": true,
+												"allOf": [
+													"[Circular ~.PATCH /accounts/{account_id}/cloudforce-one/events/tag-categories/{category_uuid}.responses.200.content.application/json.schema.properties.schema.items]"
+												]
+											},
+											"enforcement": {
+												"type": "string",
+												"enum": [
+													"error",
+													"warn",
+													"off"
+												]
+											},
+											"format": {
+												"type": "string",
+												"enum": [
+													"date",
+													"url",
+													"duration",
+													"country"
+												]
+											},
+											"key": {
+												"type": "string",
+												"example": "family",
+												"pattern": "^[a-zA-Z][a-zA-Z0-9_]{0,63}$"
+											},
+											"kind": {
+												"type": "string",
+												"example": "string",
+												"enum": [
+													"string",
+													"number",
+													"enum",
+													"date",
+													"array",
+													"object"
+												]
+											},
+											"label": {
+												"type": "string",
+												"example": "Attacker Name",
+												"maxLength": 128,
+												"minLength": 1
+											},
+											"maxLength": {
+												"type": "integer",
+												"exclusiveMinimum": true,
+												"minimum": 0
+											},
+											"numberConstraint": {
+												"type": "object",
+												"additionalProperties": false,
+												"properties": {
+													"integer": {
+														"type": "boolean"
+													},
+													"max": {
+														"type": "number"
+													},
+													"min": {
+														"type": "number"
+													}
+												}
+											},
+											"properties": {
+												"description": "Map of property key to FieldDefinition for object fields. Required when kind is 'object'. See FieldDefinition (recursive).",
+												"type": "object",
+												"additionalProperties": "[Circular ~.PATCH /accounts/{account_id}/cloudforce-one/events/tag-categories/{category_uuid}.responses.200.content.application/json.schema.properties.schema.items]"
+											},
+											"required": {
+												"type": "boolean"
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"key",
+											"kind"
+										]
+									},
+									"nullable": true
+								},
+								"updatedAt": {
+									"type": "string"
+								},
+								"uuid": {
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
+								}
+							},
+							"required": [
+								"uuid",
+								"name"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"TagCategory"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.tags.categories",
+		"x-fern-sdk-method-name": "patch",
+		"x-forge-hidden": true
+	},
+	"PATCH /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}": {
+		"operationId": "patch_LegacyTagCategoryUpdate",
+		"summary": "Updates a tag category (SoT)",
+		"description": "Deprecated; use PATCH /events/tag-categories/{category_uuid}. Available through 2026-11-28.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1073,6 +1923,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -1084,10 +1935,14 @@
 		"x-api-token-group": [
 			"Cloudforce One Write"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.tags.categories",
-		"x-fern-sdk-method-name": "patch",
-		"x-forge-hidden": true
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "cloudforce-one.events.tag-categories.legacy",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2026-11-28T00:00:00Z"
+		},
+		"x-stainless-deprecation-message": "Use PATCH /events/tag-categories/{category_uuid} before 2026-11-28."
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/tags/categories/create": {
 		"operationId": "post_TagCategoryCreate",

@@ -1,5 +1,112 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
+		"operationId": "delete_LegacyCategoryDelete",
+		"summary": "Deletes a category",
+		"description": "Deprecated; use DELETE /events/event-categories/by-id/{category_id}. Available through 2026-11-28.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "category_id",
+				"in": "path",
+				"description": "Category UUID.",
+				"required": true,
+				"schema": {
+					"description": "Category UUID.",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns the uuid of the deleted category.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"uuid": {
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
+								}
+							},
+							"required": [
+								"uuid"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"deprecated": true,
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Category"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "cloudforce-one.events.categories.legacy",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2026-11-28T00:00:00Z"
+		},
+		"x-stainless-deprecation-message": "Use DELETE /events/event-categories/by-id/{category_id} before 2026-11-28."
+	},
+	"DELETE /accounts/{account_id}/cloudforce-one/events/event-categories/by-id/{category_id}": {
 		"operationId": "delete_CategoryDelete",
 		"summary": "Deletes a category",
 		"description": "Removes a threat event category from Cloudforce One.",
@@ -236,6 +343,263 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
+		"operationId": "get_LegacyCategoryRead",
+		"summary": "Reads a category",
+		"description": "Deprecated; use GET /events/event-categories/by-id/{category_id}. Available through 2026-11-28.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "category_id",
+				"in": "path",
+				"description": "Category UUID.",
+				"required": true,
+				"schema": {
+					"description": "Category UUID.",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns a category.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"killChain": {
+									"type": "number"
+								},
+								"mitreAttack": {
+									"type": "array",
+									"items": {
+										"example": "T1234",
+										"type": "string"
+									}
+								},
+								"mitreCapec": {
+									"type": "array",
+									"items": {
+										"example": "123",
+										"type": "string"
+									}
+								},
+								"name": {
+									"type": "string",
+									"example": "name"
+								},
+								"shortname": {
+									"type": "string",
+									"example": "shortname"
+								},
+								"uuid": {
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
+								}
+							},
+							"required": [
+								"uuid",
+								"name",
+								"killChain"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"deprecated": true,
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Category"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "cloudforce-one.events.categories.legacy",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2026-11-28T00:00:00Z"
+		},
+		"x-stainless-deprecation-message": "Use GET /events/event-categories/by-id/{category_id} before 2026-11-28."
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/categories/catalog": {
+		"operationId": "get_CategoryListComplete",
+		"summary": "Lists categories",
+		"description": "Lists categories",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns a list of categories.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "array",
+							"items": {
+								"properties": {
+									"killChain": {
+										"type": "number"
+									},
+									"mitreAttack": {
+										"type": "array",
+										"items": {
+											"example": "T1234",
+											"type": "string"
+										}
+									},
+									"mitreCapec": {
+										"type": "array",
+										"items": {
+											"example": "123",
+											"type": "string"
+										}
+									},
+									"name": {
+										"type": "string",
+										"example": "name"
+									},
+									"shortname": {
+										"type": "string",
+										"example": "shortname"
+									},
+									"uuid": {
+										"type": "string",
+										"example": "12345678-1234-1234-1234-1234567890ab"
+									}
+								},
+								"required": [
+									"uuid",
+									"name",
+									"killChain"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Category"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.categories.catalog",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/event-categories/by-id/{category_id}": {
 		"operationId": "get_CategoryRead",
 		"summary": "Reads a category",
 		"description": "Retrieves details for a specific threat event category.",
@@ -362,128 +726,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events.categories",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
-	},
-	"GET /accounts/{account_id}/cloudforce-one/events/categories/catalog": {
-		"operationId": "get_CategoryListComplete",
-		"summary": "Lists categories",
-		"description": "Lists categories",
-		"parameters": [
-			{
-				"name": "account_id",
-				"in": "path",
-				"description": "Account ID.",
-				"required": true,
-				"schema": {
-					"description": "Account ID.",
-					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"description": "Returns a list of categories.",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "array",
-							"items": {
-								"properties": {
-									"killChain": {
-										"type": "number"
-									},
-									"mitreAttack": {
-										"type": "array",
-										"items": {
-											"example": "T1234",
-											"type": "string"
-										}
-									},
-									"mitreCapec": {
-										"type": "array",
-										"items": {
-											"example": "123",
-											"type": "string"
-										}
-									},
-									"name": {
-										"type": "string",
-										"example": "name"
-									},
-									"shortname": {
-										"type": "string",
-										"example": "shortname"
-									},
-									"uuid": {
-										"type": "string",
-										"example": "12345678-1234-1234-1234-1234567890ab"
-									}
-								},
-								"required": [
-									"uuid",
-									"name",
-									"killChain"
-								],
-								"type": "object"
-							}
-						}
-					}
-				}
-			},
-			"400": {
-				"description": "Bad Request.",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string",
-												"example": "An error occurred."
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							]
-						}
-					}
-				}
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"tags": [
-			"Category"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
-		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.categories.catalog",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -1082,6 +1324,176 @@
 		"x-fern-sdk-method-name": "id"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
+		"operationId": "patch_LegacyCategoryUpdate",
+		"summary": "Updates a category",
+		"description": "Deprecated; use PATCH /events/event-categories/by-id/{category_id}. Available through 2026-11-28.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "category_id",
+				"in": "path",
+				"description": "Category UUID.",
+				"required": true,
+				"schema": {
+					"description": "Category UUID.",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"killChain": {
+								"type": "number"
+							},
+							"mitreAttack": {
+								"type": "array",
+								"items": {
+									"example": "T1234",
+									"type": "string"
+								}
+							},
+							"mitreCapec": {
+								"type": "array",
+								"items": {
+									"example": "123",
+									"type": "string"
+								}
+							},
+							"name": {
+								"type": "string",
+								"example": "name"
+							},
+							"shortname": {
+								"type": "string",
+								"example": "shortname"
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Returns the updated category.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"killChain": {
+									"type": "number"
+								},
+								"mitreAttack": {
+									"type": "array",
+									"items": {
+										"example": "T1234",
+										"type": "string"
+									}
+								},
+								"mitreCapec": {
+									"type": "array",
+									"items": {
+										"example": "123",
+										"type": "string"
+									}
+								},
+								"name": {
+									"type": "string",
+									"example": "name"
+								},
+								"shortname": {
+									"type": "string",
+									"example": "shortname"
+								},
+								"uuid": {
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
+								}
+							},
+							"required": [
+								"uuid",
+								"name",
+								"killChain"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"deprecated": true,
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Category"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "cloudforce-one.events.categories.legacy",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2026-11-28T00:00:00Z"
+		},
+		"x-stainless-deprecation-message": "Use PATCH /events/event-categories/by-id/{category_id} before 2026-11-28."
+	},
+	"PATCH /accounts/{account_id}/cloudforce-one/events/event-categories/by-id/{category_id}": {
 		"operationId": "patch_CategoryUpdate",
 		"summary": "Updates a category",
 		"description": "Partially updates a threat event category in Cloudforce One, modifying specific fields without replacing the entire category.",
@@ -1247,6 +1659,336 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
+		"operationId": "post_LegacyCategoryUpdate",
+		"summary": "Updates a category",
+		"description": "Deprecated; use POST /events/event-categories/by-id/{category_id}. Available through 2026-11-28.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "category_id",
+				"in": "path",
+				"description": "Category UUID.",
+				"required": true,
+				"schema": {
+					"description": "Category UUID.",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"killChain": {
+								"type": "number"
+							},
+							"mitreAttack": {
+								"type": "array",
+								"items": {
+									"example": "T1234",
+									"type": "string"
+								}
+							},
+							"mitreCapec": {
+								"type": "array",
+								"items": {
+									"example": "123",
+									"type": "string"
+								}
+							},
+							"name": {
+								"type": "string",
+								"example": "name"
+							},
+							"shortname": {
+								"type": "string",
+								"example": "shortname"
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Returns the updated category.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"killChain": {
+									"type": "number"
+								},
+								"mitreAttack": {
+									"type": "array",
+									"items": {
+										"example": "T1234",
+										"type": "string"
+									}
+								},
+								"mitreCapec": {
+									"type": "array",
+									"items": {
+										"example": "123",
+										"type": "string"
+									}
+								},
+								"name": {
+									"type": "string",
+									"example": "name"
+								},
+								"shortname": {
+									"type": "string",
+									"example": "shortname"
+								},
+								"uuid": {
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
+								}
+							},
+							"required": [
+								"uuid",
+								"name",
+								"killChain"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"deprecated": true,
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Category"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "cloudforce-one.events.categories.legacy",
+		"x-fern-sdk-method-name": "replace",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2026-11-28T00:00:00Z"
+		},
+		"x-stainless-deprecation-message": "Use POST /events/event-categories/by-id/{category_id} before 2026-11-28."
+	},
+	"POST /accounts/{account_id}/cloudforce-one/events/categories/create": {
+		"operationId": "post_CategoryCreate",
+		"summary": "Creates a new category",
+		"description": "Creates a new threat event category in Cloudforce One for organizing and classifying threat events.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"killChain": {
+								"type": "number"
+							},
+							"mitreAttack": {
+								"type": "array",
+								"items": {
+									"example": "T1234",
+									"type": "string"
+								}
+							},
+							"mitreCapec": {
+								"type": "array",
+								"items": {
+									"example": "123",
+									"type": "string"
+								}
+							},
+							"name": {
+								"type": "string",
+								"example": "name"
+							},
+							"shortname": {
+								"type": "string",
+								"example": "shortname"
+							}
+						},
+						"required": [
+							"name",
+							"killChain"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Returns the created category.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"killChain": {
+									"type": "number"
+								},
+								"mitreAttack": {
+									"type": "array",
+									"items": {
+										"example": "T1234",
+										"type": "string"
+									}
+								},
+								"mitreCapec": {
+									"type": "array",
+									"items": {
+										"example": "123",
+										"type": "string"
+									}
+								},
+								"name": {
+									"type": "string",
+									"example": "name"
+								},
+								"shortname": {
+									"type": "string",
+									"example": "shortname"
+								},
+								"uuid": {
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
+								}
+							},
+							"required": [
+								"uuid",
+								"name",
+								"killChain"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Category"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events.categories",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/cloudforce-one/events/event-categories/by-id/{category_id}": {
 		"operationId": "post_CategoryUpdate",
 		"summary": "Updates a category",
 		"description": "Updates a category",
@@ -1409,165 +2151,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.categories",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
-	},
-	"POST /accounts/{account_id}/cloudforce-one/events/categories/create": {
-		"operationId": "post_CategoryCreate",
-		"summary": "Creates a new category",
-		"description": "Creates a new threat event category in Cloudforce One for organizing and classifying threat events.",
-		"parameters": [
-			{
-				"name": "account_id",
-				"in": "path",
-				"description": "Account ID.",
-				"required": true,
-				"schema": {
-					"description": "Account ID.",
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"type": "object",
-						"properties": {
-							"killChain": {
-								"type": "number"
-							},
-							"mitreAttack": {
-								"type": "array",
-								"items": {
-									"example": "T1234",
-									"type": "string"
-								}
-							},
-							"mitreCapec": {
-								"type": "array",
-								"items": {
-									"example": "123",
-									"type": "string"
-								}
-							},
-							"name": {
-								"type": "string",
-								"example": "name"
-							},
-							"shortname": {
-								"type": "string",
-								"example": "shortname"
-							}
-						},
-						"required": [
-							"name",
-							"killChain"
-						]
-					}
-				}
-			}
-		},
-		"responses": {
-			"200": {
-				"description": "Returns the created category.",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"killChain": {
-									"type": "number"
-								},
-								"mitreAttack": {
-									"type": "array",
-									"items": {
-										"example": "T1234",
-										"type": "string"
-									}
-								},
-								"mitreCapec": {
-									"type": "array",
-									"items": {
-										"example": "123",
-										"type": "string"
-									}
-								},
-								"name": {
-									"type": "string",
-									"example": "name"
-								},
-								"shortname": {
-									"type": "string",
-									"example": "shortname"
-								},
-								"uuid": {
-									"type": "string",
-									"example": "12345678-1234-1234-1234-1234567890ab"
-								}
-							},
-							"required": [
-								"uuid",
-								"name",
-								"killChain"
-							]
-						}
-					}
-				}
-			},
-			"400": {
-				"description": "Bad Request.",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string",
-												"example": "An error occurred."
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							]
-						}
-					}
-				}
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"tags": [
-			"Category"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
-		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events.categories",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	}

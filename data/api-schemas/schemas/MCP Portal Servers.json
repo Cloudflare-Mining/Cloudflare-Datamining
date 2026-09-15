@@ -403,7 +403,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "mcp.servers",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation permanently deletes the MCP server, removes it from every portal, and deletes its stored OAuth secrets."
 	},
 	"GET /accounts/{account_id}/access/ai-controls/mcp/servers": {
@@ -823,8 +822,7 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "mcp.servers",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/access/ai-controls/mcp/servers/{id}": {
 		"operationId": "mcp-portals-api-fetch-servers",
@@ -1230,8 +1228,7 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "mcp.servers",
-		"x-fern-sdk-method-name": "read",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "read"
 	},
 	"POST /accounts/{account_id}/access/ai-controls/mcp/servers": {
 		"operationId": "mcp-portals-api-create-servers",
@@ -1770,8 +1767,7 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "mcp.servers",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/access/ai-controls/mcp/servers/{id}/sync": {
 		"operationId": "mcp-portals-api-sync-server",
@@ -1935,8 +1931,7 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "mcp.servers",
-		"x-fern-sdk-method-name": "sync",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "sync"
 	},
 	"PUT /accounts/{account_id}/access/ai-controls/mcp/servers/{id}": {
 		"operationId": "mcp-portals-api-update-servers",
@@ -2501,7 +2496,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "mcp.servers",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true,
 		"x-forge-params": {
 			"is_shared_oauth_callback_enabled": {
 				"default": null

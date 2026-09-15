@@ -1415,6 +1415,19 @@
 																		"nullable": true,
 																		"x-auditable": true
 																	},
+																	"issues": {
+																		"description": "Real-time Issues settings for the Worker.",
+																		"type": "object",
+																		"nullable": true,
+																		"properties": {
+																			"enabled": {
+																				"description": "Whether real-time Issues are enabled for the Worker.",
+																				"type": "boolean",
+																				"example": true,
+																				"x-auditable": true
+																			}
+																		}
+																	},
 																	"logs": {
 																		"description": "Log settings for the Worker.",
 																		"type": "object",
@@ -2980,6 +2993,19 @@
 																	"example": 0.1,
 																	"nullable": true,
 																	"x-auditable": true
+																},
+																"issues": {
+																	"description": "Real-time Issues settings for the Worker.",
+																	"type": "object",
+																	"nullable": true,
+																	"properties": {
+																		"enabled": {
+																			"description": "Whether real-time Issues are enabled for the Worker.",
+																			"type": "boolean",
+																			"example": true,
+																			"x-auditable": true
+																		}
+																	}
 																},
 																"logs": {
 																	"description": "Log settings for the Worker.",
@@ -7834,6 +7860,19 @@
 															"nullable": true,
 															"x-auditable": true
 														},
+														"issues": {
+															"description": "Real-time Issues settings for the Worker.",
+															"type": "object",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "Whether real-time Issues are enabled for the Worker.",
+																	"type": "boolean",
+																	"example": true,
+																	"x-auditable": true
+																}
+															}
+														},
 														"logs": {
 															"description": "Log settings for the Worker.",
 															"type": "object",
@@ -9078,6 +9117,19 @@
 												"nullable": true,
 												"x-auditable": true
 											},
+											"issues": {
+												"description": "Real-time Issues settings for the Worker.",
+												"type": "object",
+												"nullable": true,
+												"properties": {
+													"enabled": {
+														"description": "Whether real-time Issues are enabled for the Worker.",
+														"type": "boolean",
+														"example": true,
+														"x-auditable": true
+													}
+												}
+											},
 											"logs": {
 												"description": "Log settings for the Worker.",
 												"type": "object",
@@ -9384,6 +9436,19 @@
 																	"example": 0.1,
 																	"nullable": true,
 																	"x-auditable": true
+																},
+																"issues": {
+																	"description": "Real-time Issues settings for the Worker.",
+																	"type": "object",
+																	"nullable": true,
+																	"properties": {
+																		"enabled": {
+																			"description": "Whether real-time Issues are enabled for the Worker.",
+																			"type": "boolean",
+																			"example": true,
+																			"x-auditable": true
+																		}
+																	}
 																},
 																"logs": {
 																	"description": "Log settings for the Worker.",
@@ -14328,6 +14393,19 @@
 												"nullable": true,
 												"x-auditable": true
 											},
+											"issues": {
+												"description": "Real-time Issues settings for the Worker.",
+												"type": "object",
+												"nullable": true,
+												"properties": {
+													"enabled": {
+														"description": "Whether real-time Issues are enabled for the Worker.",
+														"type": "boolean",
+														"example": true,
+														"x-auditable": true
+													}
+												}
+											},
 											"logs": {
 												"description": "Log settings for the Worker.",
 												"type": "object",
@@ -18473,6 +18551,19 @@
 															"example": 0.1,
 															"nullable": true,
 															"x-auditable": true
+														},
+														"issues": {
+															"description": "Real-time Issues settings for the Worker.",
+															"type": "object",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "Whether real-time Issues are enabled for the Worker.",
+																	"type": "boolean",
+																	"example": true,
+																	"x-auditable": true
+																}
+															}
 														},
 														"logs": {
 															"description": "Log settings for the Worker.",
@@ -22757,6 +22848,19 @@
 														"nullable": true,
 														"x-auditable": true
 													},
+													"issues": {
+														"description": "Real-time Issues settings for the Worker.",
+														"type": "object",
+														"nullable": true,
+														"properties": {
+															"enabled": {
+																"description": "Whether real-time Issues are enabled for the Worker.",
+																"type": "boolean",
+																"example": true,
+																"x-auditable": true
+															}
+														}
+													},
 													"logs": {
 														"description": "Log settings for the Worker.",
 														"type": "object",
@@ -23768,6 +23872,19 @@
 																			"example": 0.1,
 																			"nullable": true,
 																			"x-auditable": true
+																		},
+																		"issues": {
+																			"description": "Real-time Issues settings for the Worker.",
+																			"type": "object",
+																			"nullable": true,
+																			"properties": {
+																				"enabled": {
+																					"description": "Whether real-time Issues are enabled for the Worker.",
+																					"type": "boolean",
+																					"example": true,
+																					"x-auditable": true
+																				}
+																			}
 																		},
 																		"logs": {
 																			"description": "Log settings for the Worker.",
@@ -25223,6 +25340,19 @@
 															"example": 0.1,
 															"nullable": true,
 															"x-auditable": true
+														},
+														"issues": {
+															"description": "Real-time Issues settings for the Worker.",
+															"type": "object",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "Whether real-time Issues are enabled for the Worker.",
+																	"type": "boolean",
+																	"example": true,
+																	"x-auditable": true
+																}
+															}
 														},
 														"logs": {
 															"description": "Log settings for the Worker.",

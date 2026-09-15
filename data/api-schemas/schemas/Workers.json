@@ -2565,6 +2565,19 @@
 																"default": 1,
 																"x-auditable": true
 															},
+															"issues": {
+																"description": "Real-time Issues settings for the Worker.",
+																"type": "object",
+																"nullable": true,
+																"properties": {
+																	"enabled": {
+																		"description": "Whether real-time Issues are enabled for the Worker.",
+																		"type": "boolean",
+																		"default": false,
+																		"x-auditable": true
+																	}
+																}
+															},
 															"logs": {
 																"description": "Log settings for the Worker.",
 																"type": "object",
@@ -3424,6 +3437,19 @@
 															"example": 1,
 															"default": 1,
 															"x-auditable": true
+														},
+														"issues": {
+															"description": "Real-time Issues settings for the Worker.",
+															"type": "object",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "Whether real-time Issues are enabled for the Worker.",
+																	"type": "boolean",
+																	"default": false,
+																	"x-auditable": true
+																}
+															}
 														},
 														"logs": {
 															"description": "Log settings for the Worker.",
@@ -4942,6 +4968,19 @@
 												"default": 1,
 												"x-auditable": true
 											},
+											"issues": {
+												"description": "Real-time Issues settings for the Worker.",
+												"type": "object",
+												"nullable": true,
+												"properties": {
+													"enabled": {
+														"description": "Whether real-time Issues are enabled for the Worker.",
+														"type": "boolean",
+														"default": false,
+														"x-auditable": true
+													}
+												}
+											},
 											"logs": {
 												"description": "Log settings for the Worker.",
 												"type": "object",
@@ -5361,6 +5400,19 @@
 												"example": 1,
 												"default": 1,
 												"x-auditable": true
+											},
+											"issues": {
+												"description": "Real-time Issues settings for the Worker.",
+												"type": "object",
+												"nullable": true,
+												"properties": {
+													"enabled": {
+														"description": "Whether real-time Issues are enabled for the Worker.",
+														"type": "boolean",
+														"default": false,
+														"x-auditable": true
+													}
+												}
 											},
 											"logs": {
 												"description": "Log settings for the Worker.",
@@ -5871,6 +5923,19 @@
 															"example": 1,
 															"default": 1,
 															"x-auditable": true
+														},
+														"issues": {
+															"description": "Real-time Issues settings for the Worker.",
+															"type": "object",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "Whether real-time Issues are enabled for the Worker.",
+																	"type": "boolean",
+																	"default": false,
+																	"x-auditable": true
+																}
+															}
 														},
 														"logs": {
 															"description": "Log settings for the Worker.",
@@ -8216,6 +8281,19 @@
 												"default": 1,
 												"x-auditable": true
 											},
+											"issues": {
+												"description": "Real-time Issues settings for the Worker.",
+												"type": "object",
+												"nullable": true,
+												"properties": {
+													"enabled": {
+														"description": "Whether real-time Issues are enabled for the Worker.",
+														"type": "boolean",
+														"default": false,
+														"x-auditable": true
+													}
+												}
+											},
 											"logs": {
 												"description": "Log settings for the Worker.",
 												"type": "object",
@@ -8728,6 +8806,19 @@
 															"example": 1,
 															"default": 1,
 															"x-auditable": true
+														},
+														"issues": {
+															"description": "Real-time Issues settings for the Worker.",
+															"type": "object",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "Whether real-time Issues are enabled for the Worker.",
+																	"type": "boolean",
+																	"default": false,
+																	"x-auditable": true
+																}
+															}
 														},
 														"logs": {
 															"description": "Log settings for the Worker.",
@@ -10126,6 +10217,19 @@
 												"default": 1,
 												"x-auditable": true
 											},
+											"issues": {
+												"description": "Real-time Issues settings for the Worker.",
+												"type": "object",
+												"nullable": true,
+												"properties": {
+													"enabled": {
+														"description": "Whether real-time Issues are enabled for the Worker.",
+														"type": "boolean",
+														"default": false,
+														"x-auditable": true
+													}
+												}
+											},
 											"logs": {
 												"description": "Log settings for the Worker.",
 												"type": "object",
@@ -10638,6 +10742,19 @@
 															"example": 1,
 															"default": 1,
 															"x-auditable": true
+														},
+														"issues": {
+															"description": "Real-time Issues settings for the Worker.",
+															"type": "object",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "Whether real-time Issues are enabled for the Worker.",
+																	"type": "boolean",
+																	"default": false,
+																	"x-auditable": true
+																}
+															}
 														},
 														"logs": {
 															"description": "Log settings for the Worker.",

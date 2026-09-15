@@ -379,15 +379,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"description": "The request body is currently not used.",
-			"required": true,
-			"content": {
-				"application/json": {
-					"example": "{}"
-				}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Start Cache Reserve Clear response.",

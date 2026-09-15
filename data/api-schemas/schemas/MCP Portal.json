@@ -196,7 +196,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "mcp.portals",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation permanently deletes the MCP portal."
 	},
 	"GET /accounts/{account_id}/access/ai-controls/mcp/portals": {
@@ -717,8 +716,7 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "mcp.portals",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/access/ai-controls/mcp/portals/{id}": {
 		"operationId": "mcp-portals-api-fetch-gateways",
@@ -1225,8 +1223,7 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "mcp.portals",
-		"x-fern-sdk-method-name": "read",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "read"
 	},
 	"GET /accounts/{account_id}/access/ai-controls/mcp/portals/{portal_id}/servers/{server_id}/effective-redirect-uri": {
 		"operationId": "mcp-portals-api-effective-redirect-uri",
@@ -2040,8 +2037,7 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "mcp.portals",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/access/ai-controls/mcp/portals/{id}": {
 		"operationId": "mcp-portals-api-update-portals",
@@ -2742,7 +2738,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "mcp.portals",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true,
 		"x-forge-params": {
 			"allow_code_mode": {
 				"default": null

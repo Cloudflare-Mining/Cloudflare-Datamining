@@ -1,5 +1,118 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/events/{dataset_id}/delete": {
+		"operationId": "delete_LegacyEventDelete",
+		"summary": "Deletes one or more events",
+		"description": "Deprecated; use DELETE /events/datasets/{dataset_id}/events. Available through 2026-11-28.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset UUID.",
+				"required": true,
+				"schema": {
+					"description": "Dataset UUID.",
+					"type": "string",
+					"format": "uuid"
+				}
+			},
+			{
+				"name": "eventIds",
+				"in": "query",
+				"description": "Array of Event IDs to delete.",
+				"required": true,
+				"schema": {
+					"description": "Array of Event IDs to delete.",
+					"type": "array",
+					"items": {
+						"minLength": 1,
+						"type": "string"
+					}
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns the number of deleted events.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Number of deleted events",
+							"type": "number"
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"deprecated": true,
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "cloudforce-one.events.legacy",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2026-11-28T00:00:00Z"
+		},
+		"x-stainless-deprecation-message": "Use DELETE /events/datasets/{dataset_id}/events before 2026-11-28."
+	},
+	"DELETE /accounts/{account_id}/cloudforce-one/events/datasets/{dataset_id}/events": {
 		"operationId": "delete_EventDelete",
 		"summary": "Deletes one or more events",
 		"description": "Deletes one or more events",
@@ -1515,6 +1628,556 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/{event_id}/relationships": {
+		"operationId": "get_LegacyEventRelationships",
+		"summary": "Filter and list events related to specific event",
+		"description": "Deprecated; use GET /events/by-id/{event_id}/relationships. Available through 2026-11-28.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "event_id",
+				"in": "path",
+				"description": "Event UUID.",
+				"required": true,
+				"schema": {
+					"description": "Event UUID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "direction",
+				"in": "query",
+				"description": "The direction to traverse the graph. Defaults to 'both' to search all.",
+				"schema": {
+					"description": "The direction to traverse the graph. Defaults to 'both' to search all.",
+					"type": "string",
+					"default": "both",
+					"enum": [
+						"ancestors",
+						"descendants",
+						"both"
+					]
+				}
+			},
+			{
+				"name": "maxDepth",
+				"in": "query",
+				"description": "The maximum depth to traverse. Defaults to 5.",
+				"schema": {
+					"description": "The maximum depth to traverse. Defaults to 5.",
+					"type": "number"
+				}
+			},
+			{
+				"name": "relationshipTypes",
+				"in": "query",
+				"description": "An optional array of relationship types to filter by.",
+				"schema": {
+					"description": "An optional array of relationship types to filter by.",
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"items": {
+								"type": "string"
+							},
+							"type": "array"
+						}
+					]
+				}
+			},
+			{
+				"name": "indicatorTypeIds",
+				"in": "query",
+				"description": "An optional array of indicator type IDs to filter the results by.",
+				"schema": {
+					"description": "An optional array of indicator type IDs to filter the results by.",
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			{
+				"name": "datasetId",
+				"in": "query",
+				"description": "The dataset ID to search within.",
+				"required": true,
+				"schema": {
+					"description": "The dataset ID to search within.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "includeParent",
+				"in": "query",
+				"description": "Whether to include the starting event in the results. Defaults to true.",
+				"schema": {
+					"description": "Whether to include the starting event in the results. Defaults to true.",
+					"type": "boolean",
+					"default": true
+				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"name": "pageSize",
+				"in": "query",
+				"schema": {
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns a list of events related to the specified starting event.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "array",
+							"items": {
+								"properties": {
+									"attacker": {
+										"type": "string",
+										"example": "Flying Yeti"
+									},
+									"attackerCountry": {
+										"type": "string",
+										"example": "CN"
+									},
+									"attackerCountryAlpha3": {
+										"type": "string",
+										"example": "CHN"
+									},
+									"category": {
+										"type": "string",
+										"example": "Domain Resolution"
+									},
+									"datasetId": {
+										"type": "string",
+										"example": "dataset-example-id"
+									},
+									"date": {
+										"type": "string",
+										"example": "2022-04-01T00:00:00Z"
+									},
+									"event": {
+										"type": "string",
+										"example": "An attacker registered the domain domain.com"
+									},
+									"hasChildren": {
+										"type": "boolean"
+									},
+									"indicator": {
+										"type": "string",
+										"example": "domain.com"
+									},
+									"indicatorType": {
+										"type": "string",
+										"example": "domain"
+									},
+									"indicatorTypeId": {
+										"type": "number",
+										"example": 5
+									},
+									"insight": {
+										"type": "string"
+									},
+									"killChain": {
+										"type": "number"
+									},
+									"mitreAttack": {
+										"type": "array",
+										"items": {
+											"example": " ",
+											"type": "string"
+										}
+									},
+									"mitreCapec": {
+										"type": "array",
+										"items": {
+											"example": " ",
+											"type": "string"
+										}
+									},
+									"numReferenced": {
+										"type": "number"
+									},
+									"numReferences": {
+										"type": "number"
+									},
+									"rawId": {
+										"type": "string",
+										"example": "453gw34w3"
+									},
+									"referenced": {
+										"type": "array",
+										"items": {
+											"example": " ",
+											"type": "string"
+										}
+									},
+									"referencedIds": {
+										"type": "array",
+										"items": {
+											"type": "number"
+										}
+									},
+									"references": {
+										"type": "array",
+										"items": {
+											"example": " ",
+											"type": "string"
+										}
+									},
+									"referencesIds": {
+										"type": "array",
+										"items": {
+											"type": "number"
+										}
+									},
+									"releasabilityId": {
+										"type": "string"
+									},
+									"tags": {
+										"type": "array",
+										"items": {
+											"example": "malware",
+											"type": "string"
+										}
+									},
+									"targetCountry": {
+										"type": "string",
+										"example": "US"
+									},
+									"targetCountryAlpha3": {
+										"type": "string",
+										"example": "USA"
+									},
+									"targetIndustry": {
+										"type": "string",
+										"example": "Agriculture"
+									},
+									"tlp": {
+										"type": "string",
+										"example": "amber"
+									},
+									"uuid": {
+										"type": "string",
+										"example": "12345678-1234-1234-1234-1234567890ab"
+									}
+								},
+								"required": [
+									"uuid",
+									"date",
+									"targetCountry",
+									"targetCountryAlpha3",
+									"attacker",
+									"attackerCountry",
+									"attackerCountryAlpha3",
+									"targetIndustry",
+									"rawId",
+									"indicatorTypeId",
+									"indicator",
+									"event",
+									"numReferenced",
+									"numReferences",
+									"tlp",
+									"category",
+									"indicatorType",
+									"referenced",
+									"references",
+									"tags",
+									"killChain",
+									"mitreAttack",
+									"mitreCapec",
+									"referencedIds",
+									"referencesIds",
+									"hasChildren",
+									"datasetId"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"deprecated": true,
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "cloudforce-one.events.relationships.legacy",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2026-11-28T00:00:00Z"
+		},
+		"x-stainless-deprecation-message": "Use GET /events/by-id/{event_id}/relationships before 2026-11-28."
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/aggregate": {
+		"operationId": "get_EventAggregate",
+		"summary": "Aggregate events by single or multiple columns with optional date filtering",
+		"description": "Aggregate threat events by one or more columns (e.g., attacker, targetIndustry) with optional date filtering and daily grouping. Supports multi-dimensional aggregation for cross-analysis.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "aggregateBy",
+				"in": "query",
+				"description": "Column(s) to aggregate by - single column or comma-separated list (e.g., 'attacker', 'targetIndustry', 'attacker,targetIndustry')",
+				"required": true,
+				"schema": {
+					"description": "Column(s) to aggregate by - single column or comma-separated list (e.g., 'attacker', 'targetIndustry', 'attacker,targetIndustry')",
+					"type": "string"
+				}
+			},
+			{
+				"name": "datasetId",
+				"in": "query",
+				"description": "Dataset UUIDs to filter by, or one standalone scope value: 'all'/'*' for all accessible non-analytics event datasets (analytics datasets are silently excluded), 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, uses the default dataset.",
+				"schema": {
+					"description": "Dataset UUIDs to filter by, or one standalone scope value: 'all'/'*' for all accessible non-analytics event datasets (analytics datasets are silently excluded), 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, uses the default dataset.",
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			{
+				"name": "startDate",
+				"in": "query",
+				"description": "Start date for filtering (ISO 8601 format, e.g., '2024-01-01')",
+				"schema": {
+					"description": "Start date for filtering (ISO 8601 format, e.g., '2024-01-01')",
+					"type": "string"
+				}
+			},
+			{
+				"name": "endDate",
+				"in": "query",
+				"description": "End date for filtering (ISO 8601 format, e.g., '2024-12-31')",
+				"schema": {
+					"description": "End date for filtering (ISO 8601 format, e.g., '2024-12-31')",
+					"type": "string"
+				}
+			},
+			{
+				"name": "groupByDate",
+				"in": "query",
+				"description": "Whether to group results by date (daily aggregation)",
+				"schema": {
+					"description": "Whether to group results by date (daily aggregation)",
+					"type": "boolean"
+				}
+			},
+			{
+				"name": "limit",
+				"in": "query",
+				"description": "Maximum number of results to return",
+				"schema": {
+					"description": "Maximum number of results to return",
+					"type": "number",
+					"default": 100
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns aggregated event data.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"aggregateBy": {
+									"description": "Column(s) that were aggregated by",
+									"type": "string"
+								},
+								"aggregations": {
+									"description": "Array of aggregation results with dynamic fields based on aggregateBy columns",
+									"type": "array",
+									"items": {
+										"allOf": [
+											{
+												"additionalProperties": {
+													"nullable": true,
+													"type": "string"
+												},
+												"type": "object"
+											},
+											{
+												"properties": {
+													"count": {
+														"description": "Number of events for this aggregation",
+														"type": "number"
+													},
+													"date": {
+														"description": "Date (if groupByDate is true)",
+														"type": "string"
+													}
+												},
+												"required": [
+													"count"
+												],
+												"type": "object"
+											}
+										]
+									}
+								},
+								"dateRange": {
+									"description": "Date range used for filtering",
+									"type": "object",
+									"properties": {
+										"endDate": {
+											"type": "string"
+										},
+										"startDate": {
+											"type": "string"
+										}
+									}
+								},
+								"total": {
+									"description": "Total number of events in the aggregation",
+									"type": "number"
+								}
+							},
+							"required": [
+								"aggregations",
+								"total",
+								"aggregateBy"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.aggregate",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/by-id/{event_id}/relationships": {
 		"operationId": "get_EventRelationships",
 		"summary": "Filter and list events related to specific event",
 		"description": "The `event_id` must be defined (to list existing events (and their IDs), use the [`Filter and List Events`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/methods/list/) endpoint). Also, must provide query parameters.",
@@ -1859,206 +2522,6 @@
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
-	"GET /accounts/{account_id}/cloudforce-one/events/aggregate": {
-		"operationId": "get_EventAggregate",
-		"summary": "Aggregate events by single or multiple columns with optional date filtering",
-		"description": "Aggregate threat events by one or more columns (e.g., attacker, targetIndustry) with optional date filtering and daily grouping. Supports multi-dimensional aggregation for cross-analysis.",
-		"parameters": [
-			{
-				"name": "account_id",
-				"in": "path",
-				"description": "Account ID.",
-				"required": true,
-				"schema": {
-					"description": "Account ID.",
-					"type": "string"
-				}
-			},
-			{
-				"name": "aggregateBy",
-				"in": "query",
-				"description": "Column(s) to aggregate by - single column or comma-separated list (e.g., 'attacker', 'targetIndustry', 'attacker,targetIndustry')",
-				"required": true,
-				"schema": {
-					"description": "Column(s) to aggregate by - single column or comma-separated list (e.g., 'attacker', 'targetIndustry', 'attacker,targetIndustry')",
-					"type": "string"
-				}
-			},
-			{
-				"name": "datasetId",
-				"in": "query",
-				"description": "Dataset UUIDs to filter by, or one standalone scope value: 'all'/'*' for all accessible non-analytics event datasets (analytics datasets are silently excluded), 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, uses the default dataset.",
-				"schema": {
-					"description": "Dataset UUIDs to filter by, or one standalone scope value: 'all'/'*' for all accessible non-analytics event datasets (analytics datasets are silently excluded), 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, uses the default dataset.",
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				}
-			},
-			{
-				"name": "startDate",
-				"in": "query",
-				"description": "Start date for filtering (ISO 8601 format, e.g., '2024-01-01')",
-				"schema": {
-					"description": "Start date for filtering (ISO 8601 format, e.g., '2024-01-01')",
-					"type": "string"
-				}
-			},
-			{
-				"name": "endDate",
-				"in": "query",
-				"description": "End date for filtering (ISO 8601 format, e.g., '2024-12-31')",
-				"schema": {
-					"description": "End date for filtering (ISO 8601 format, e.g., '2024-12-31')",
-					"type": "string"
-				}
-			},
-			{
-				"name": "groupByDate",
-				"in": "query",
-				"description": "Whether to group results by date (daily aggregation)",
-				"schema": {
-					"description": "Whether to group results by date (daily aggregation)",
-					"type": "boolean"
-				}
-			},
-			{
-				"name": "limit",
-				"in": "query",
-				"description": "Maximum number of results to return",
-				"schema": {
-					"description": "Maximum number of results to return",
-					"type": "number",
-					"default": 100
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"description": "Returns aggregated event data.",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"aggregateBy": {
-									"description": "Column(s) that were aggregated by",
-									"type": "string"
-								},
-								"aggregations": {
-									"description": "Array of aggregation results with dynamic fields based on aggregateBy columns",
-									"type": "array",
-									"items": {
-										"allOf": [
-											{
-												"additionalProperties": {
-													"nullable": true,
-													"type": "string"
-												},
-												"type": "object"
-											},
-											{
-												"properties": {
-													"count": {
-														"description": "Number of events for this aggregation",
-														"type": "number"
-													},
-													"date": {
-														"description": "Date (if groupByDate is true)",
-														"type": "string"
-													}
-												},
-												"required": [
-													"count"
-												],
-												"type": "object"
-											}
-										]
-									}
-								},
-								"dateRange": {
-									"description": "Date range used for filtering",
-									"type": "object",
-									"properties": {
-										"endDate": {
-											"type": "string"
-										},
-										"startDate": {
-											"type": "string"
-										}
-									}
-								},
-								"total": {
-									"description": "Total number of events in the aggregation",
-									"type": "number"
-								}
-							},
-							"required": [
-								"aggregations",
-								"total",
-								"aggregateBy"
-							]
-						}
-					}
-				}
-			},
-			"400": {
-				"description": "Bad Request.",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string",
-												"example": "An error occurred."
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							]
-						}
-					}
-				}
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"tags": [
-			"Event"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
-		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.aggregate",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
-	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/events/{event_id}": {
 		"operationId": "get_EventRead",
 		"summary": "Reads an event",
@@ -2320,6 +2783,181 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.events",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/datasets/{dataset_id}/events/{event_id}/raw": {
+		"operationId": "get_EventRawReadDS",
+		"summary": "Reads raw data for an event by UUID",
+		"description": "Retrieves the raw data associated with an event. Searches across all shards in the dataset.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "event_id",
+				"in": "path",
+				"description": "Event ID.",
+				"required": true,
+				"schema": {
+					"description": "Event ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset ID.",
+				"required": true,
+				"schema": {
+					"description": "Dataset ID.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns the raw event data.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"accountId": {
+									"type": "number",
+									"example": 1234
+								},
+								"created": {
+									"type": "string",
+									"example": "1970-01-01T00:00:00Z"
+								},
+								"data": {
+									"type": "string",
+									"example": "{\"foo\": \"bar\"}"
+								},
+								"id": {
+									"type": "number",
+									"example": 1
+								},
+								"source": {
+									"type": "string",
+									"example": "https://example.com"
+								},
+								"tlp": {
+									"type": "string",
+									"example": "amber"
+								}
+							},
+							"required": [
+								"id",
+								"accountId",
+								"created",
+								"data",
+								"source",
+								"tlp"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events.datasets",
+		"x-fern-sdk-method-name": "raw",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/queries": {
@@ -2639,9 +3277,9 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/raw/{dataset_id}/{event_id}": {
-		"operationId": "get_EventRawReadDS",
+		"operationId": "get_LegacyEventRawReadDS",
 		"summary": "Reads raw data for an event by UUID",
-		"description": "Retrieves the raw data associated with an event. Searches across all shards in the dataset.",
+		"description": "Deprecated; use GET /events/datasets/{dataset_id}/events/{event_id}/raw. Available through 2026-11-28.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2796,6 +3434,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -2808,10 +3447,14 @@
 			"Cloudforce One Write",
 			"Cloudforce One Read"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events.datasets",
-		"x-fern-sdk-method-name": "raw",
-		"x-forge-hidden": true
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "cloudforce-one.events.raw.legacy",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2026-11-28T00:00:00Z"
+		},
+		"x-stainless-deprecation-message": "Use GET /events/datasets/{dataset_id}/events/{event_id}/raw before 2026-11-28."
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/{event_id}": {
 		"operationId": "patch_EventUpdate",

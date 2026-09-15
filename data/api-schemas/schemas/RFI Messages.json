@@ -127,6 +127,16 @@
 												"type": "string",
 												"nullable": true
 											},
+											"tlp": {
+												"type": "string",
+												"enum": [
+													"clear",
+													"green",
+													"amber",
+													"amber-strict",
+													"red"
+												]
+											},
 											"updated": {
 												"type": "string"
 											}
@@ -137,6 +147,7 @@
 											"created",
 											"updated",
 											"published",
+											"tlp",
 											"is_cloudflare_team",
 											"is_published",
 											"attachments"
@@ -316,6 +327,16 @@
 									"type": "string",
 									"nullable": true
 								},
+								"tlp": {
+									"type": "string",
+									"enum": [
+										"clear",
+										"green",
+										"amber",
+										"amber-strict",
+										"red"
+									]
+								},
 								"updated": {
 									"type": "string"
 								}
@@ -326,6 +347,7 @@
 								"created",
 								"updated",
 								"published",
+								"tlp",
 								"is_cloudflare_team",
 								"is_published",
 								"attachments"
@@ -393,7 +415,8 @@
 				"description": "Client command key. Required when publishing a message for a workflow-enabled project; trimmed and limited to 255 characters.",
 				"schema": {
 					"description": "Client command key. Required when publishing a message for a workflow-enabled project; trimmed and limited to 255 characters.",
-					"type": "string"
+					"type": "string",
+					"nullable": true
 				}
 			}
 		],
@@ -521,6 +544,16 @@
 									"type": "string",
 									"nullable": true
 								},
+								"tlp": {
+									"type": "string",
+									"enum": [
+										"clear",
+										"green",
+										"amber",
+										"amber-strict",
+										"red"
+									]
+								},
 								"updated": {
 									"type": "string"
 								}
@@ -531,6 +564,7 @@
 								"created",
 								"updated",
 								"published",
+								"tlp",
 								"is_cloudflare_team",
 								"is_published",
 								"attachments"
@@ -611,7 +645,8 @@
 				"description": "Client command key. Required when publishing a message for a workflow-enabled project; trimmed and limited to 255 characters.",
 				"schema": {
 					"description": "Client command key. Required when publishing a message for a workflow-enabled project; trimmed and limited to 255 characters.",
-					"type": "string"
+					"type": "string",
+					"nullable": true
 				}
 			}
 		],
@@ -736,6 +771,16 @@
 											"type": "string",
 											"nullable": true
 										},
+										"tlp": {
+											"type": "string",
+											"enum": [
+												"clear",
+												"green",
+												"amber",
+												"amber-strict",
+												"red"
+											]
+										},
 										"updated": {
 											"type": "string"
 										}
@@ -746,6 +791,7 @@
 										"created",
 										"updated",
 										"published",
+										"tlp",
 										"is_cloudflare_team",
 										"is_published",
 										"attachments"

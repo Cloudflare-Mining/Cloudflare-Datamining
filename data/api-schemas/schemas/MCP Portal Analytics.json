@@ -209,8 +209,7 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "mcp.portals",
-		"x-fern-sdk-method-name": "portal-tool-call-timeseries",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "tool-call-analytics"
 	},
 	"GET /accounts/{account_id}/access/ai-controls/mcp/analytics/servers/{server_id}/tool-calls/timeseries": {
 		"operationId": "mcp-portals-api-server-tool-call-timeseries",
@@ -422,8 +421,7 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "mcp.servers",
-		"x-fern-sdk-method-name": "server-tool-call-timeseries",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "tool-call-analytics"
 	},
 	"GET /accounts/{account_id}/access/ai-controls/mcp/analytics/tool-calls/timeseries": {
 		"operationId": "mcp-portals-api-account-tool-call-timeseries",
@@ -627,7 +625,6 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "mcp.portals",
-		"x-fern-sdk-method-name": "account-tool-call-timeseries",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "account-tool-call-analytics"
 	}
 }

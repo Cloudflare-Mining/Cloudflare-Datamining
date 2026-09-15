@@ -291,7 +291,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.origin-tls-compliance-modes",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/settings/auto_origin_tls_kex": {
 		"operationId": "ssl-detector-auto-origin-tls-kex-get-enrollment",
@@ -907,7 +911,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.origin-tls-compliance-modes",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/settings/auto_origin_tls_kex": {
 		"operationId": "ssl-detector-auto-origin-tls-kex-patch-enrollment",
@@ -1575,7 +1583,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.origin-tls-compliance-modes",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/settings/origin_tls_compliance_modes": {
 		"operationId": "zone-cache-settings-replace-origin-tls-compliance-modes-setting",
@@ -1935,6 +1947,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.origin-tls-compliance-modes",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }
