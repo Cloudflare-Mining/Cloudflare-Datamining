@@ -9,8 +9,8 @@
 			"maxLength": 15000
 		},
 		"language": {
-			"description": "BCP-47 language code (e.g. \"en\", \"zh\", \"pt-BR\") or \"auto\" for automatic language detection. Required for both REST and WebSocket modes. Supported codes: auto, en, ar-EG, ar-SA, ar-AE, bn, zh, fr, de, hi, id, it, ja, ko, pt-BR, pt-PT, ru, es-MX, es-ES, tr, vi.",
-			"type": "string"
+			"type": "string",
+			"description": "BCP-47 language code (e.g. \"en\", \"zh\", \"pt-BR\") or \"auto\" for automatic language detection. Required for both REST and WebSocket modes. Supported codes: auto, en, ar-EG, ar-SA, ar-AE, bn, zh, fr, de, hi, id, it, ja, ko, pt-BR, pt-PT, ru, es-MX, es-ES, tr, vi."
 		},
 		"websocket": {
 			"description": "Enable WebSocket streaming for text-to-speech. When true, establishes a bidirectional WebSocket connection. Mutually exclusive with text.",

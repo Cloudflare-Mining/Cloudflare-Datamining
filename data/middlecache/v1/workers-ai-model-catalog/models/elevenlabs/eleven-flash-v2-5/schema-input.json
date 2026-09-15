@@ -3,15 +3,15 @@
 	"type": "object",
 	"properties": {
 		"text": {
-			"description": "The text to convert into speech.",
 			"type": "string",
 			"minLength": 1,
-			"maxLength": 10000
+			"maxLength": 10000,
+			"description": "The text to convert into speech."
 		},
 		"voice_id": {
-			"description": "The ElevenLabs voice ID to use for generation.",
 			"type": "string",
-			"minLength": 1
+			"minLength": 1,
+			"description": "The ElevenLabs voice ID to use for generation."
 		},
 		"output_format": {
 			"type": "string",

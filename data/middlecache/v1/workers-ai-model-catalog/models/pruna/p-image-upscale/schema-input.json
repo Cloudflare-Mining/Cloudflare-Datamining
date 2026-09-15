@@ -3,19 +3,19 @@
 	"type": "object",
 	"properties": {
 		"image": {
-			"description": "Input image to upscale. A publicly reachable HTTP(S) URL or a base64 data URI (data:image/...;base64,...).",
-			"type": "string"
+			"type": "string",
+			"description": "Input image to upscale. A publicly reachable HTTP(S) URL or a base64 data URI (data:image/...;base64,...)."
 		},
 		"target": {
-			"description": "Target resolution in megapixels (1-128). Output is capped at 128 MP.",
 			"default": 4,
+			"description": "Target resolution in megapixels (1-128). Output is capped at 128 MP.",
 			"type": "integer",
 			"minimum": 1,
 			"maximum": 128
 		},
 		"output_format": {
-			"description": "Format of the output image.",
 			"default": "jpg",
+			"description": "Format of the output image.",
 			"type": "string",
 			"enum": [
 				"webp",
@@ -24,25 +24,25 @@
 			]
 		},
 		"output_quality": {
-			"description": "Quality when saving the output image (0-100). Not relevant for .png outputs.",
 			"default": 80,
+			"description": "Quality when saving the output image (0-100). Not relevant for .png outputs.",
 			"type": "integer",
 			"minimum": 0,
 			"maximum": 100
 		},
 		"enhance_details": {
-			"description": "Enhance fine textures and small details.",
 			"default": false,
+			"description": "Enhance fine textures and small details.",
 			"type": "boolean"
 		},
 		"enhance_realism": {
-			"description": "Improve realism. Recommended for AI-generated images.",
 			"default": false,
+			"description": "Improve realism. Recommended for AI-generated images.",
 			"type": "boolean"
 		},
 		"disable_safety_checker": {
-			"description": "Disable safety checker for generated images.",
 			"default": false,
+			"description": "Disable safety checker for generated images.",
 			"type": "boolean"
 		}
 	},

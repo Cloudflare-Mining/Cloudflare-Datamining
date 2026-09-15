@@ -40,8 +40,8 @@
 			}
 		},
 		"duration": {
-			"description": "Generated video duration in seconds. Supported range: 4-30, or -1 for automatic selection. For multimodal reference-to-video requests that edit an input reference video, only -1 is supported and the output duration is kept close to the input.",
 			"default": 5,
+			"description": "Generated video duration in seconds. Supported range: 4-30, or -1 for automatic selection. For multimodal reference-to-video requests that edit an input reference video, only -1 is supported and the output duration is kept close to the input.",
 			"anyOf": [
 				{
 					"type": "number",
@@ -55,8 +55,8 @@
 			]
 		},
 		"resolution": {
-			"description": "Video resolution",
 			"default": "720p",
+			"description": "Video resolution",
 			"type": "string",
 			"enum": [
 				"480p",
@@ -64,8 +64,8 @@
 			]
 		},
 		"aspect_ratio": {
-			"description": "Video aspect ratio. \"adaptive\" automatically matches the aspect ratio of the provided reference image or video when applicable. First/last-frame generation always uses \"adaptive\"; any supplied value is overridden.",
 			"default": "adaptive",
+			"description": "Video aspect ratio. \"adaptive\" automatically matches the aspect ratio of the provided reference image or video when applicable. First/last-frame generation always uses \"adaptive\"; any supplied value is overridden.",
 			"type": "string",
 			"enum": [
 				"16:9",
@@ -78,14 +78,14 @@
 			]
 		},
 		"fps": {
-			"description": "Frame rate (frames per second)",
 			"default": 24,
+			"description": "Frame rate (frames per second)",
 			"type": "number",
 			"const": 24
 		},
 		"camera_fixed": {
-			"description": "Whether to fix camera position. Not currently supported by the provider; has no effect.",
 			"default": false,
+			"description": "Whether to fix camera position. Not currently supported by the provider; has no effect.",
 			"type": "boolean"
 		},
 		"generate_audio": {
@@ -93,8 +93,8 @@
 			"type": "boolean"
 		},
 		"watermark": {
-			"description": "Whether to add a watermark to the output video",
 			"default": false,
+			"description": "Whether to add a watermark to the output video",
 			"type": "boolean"
 		},
 		"seed": {
@@ -104,8 +104,8 @@
 			"maximum": 9007199254740991
 		},
 		"output_format": {
-			"description": "Output video container format. \"mp4\" offers the best compatibility and smaller file size; \"mov\" preserves higher color fidelity for professional post-production workflows at the cost of a larger file.",
 			"default": "mp4",
+			"description": "Output video container format. \"mp4\" offers the best compatibility and smaller file size; \"mov\" preserves higher color fidelity for professional post-production workflows at the cost of a larger file.",
 			"type": "string",
 			"enum": [
 				"mp4",
@@ -113,8 +113,8 @@
 			]
 		},
 		"use_virtual_avatar": {
-			"description": "Route image reference inputs (image, reference_images, last_frame_image) through ByteDance's trusted virtual avatar asset library before generation. Intended for AI-generated/virtual character avatars that would otherwise be blocked by face or deepfake detection",
 			"default": false,
+			"description": "Route image reference inputs (image, reference_images, last_frame_image) through ByteDance's trusted virtual avatar asset library before generation. Intended for AI-generated/virtual character avatars that would otherwise be blocked by face or deepfake detection",
 			"type": "boolean"
 		}
 	},

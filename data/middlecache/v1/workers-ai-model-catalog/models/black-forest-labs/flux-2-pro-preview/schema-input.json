@@ -3,8 +3,8 @@
 	"type": "object",
 	"properties": {
 		"prompt": {
-			"description": "Text prompt for image generation or editing.",
-			"type": "string"
+			"type": "string",
+			"description": "Text prompt for image generation or editing."
 		},
 		"seed": {
 			"description": "Optional seed for reproducible generation.",

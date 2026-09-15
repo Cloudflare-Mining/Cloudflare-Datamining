@@ -3,9 +3,9 @@
 	"type": "object",
 	"properties": {
 		"video": {
-			"description": "Signed URL to the upscaled MP4. Download promptly before it expires.",
 			"type": "string",
-			"format": "uri"
+			"format": "uri",
+			"description": "Signed URL to the upscaled MP4. Download promptly before it expires."
 		}
 	},
 	"required": [

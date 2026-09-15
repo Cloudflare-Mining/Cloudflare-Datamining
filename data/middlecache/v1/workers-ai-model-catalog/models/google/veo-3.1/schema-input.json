@@ -3,16 +3,16 @@
 	"type": "object",
 	"properties": {
 		"prompt": {
-			"description": "Text prompt describing the video to generate",
-			"type": "string"
+			"type": "string",
+			"description": "Text prompt describing the video to generate"
 		},
 		"image_input": {
 			"description": "Base64-encoded reference image for i2v",
 			"type": "string"
 		},
 		"duration": {
-			"description": "Video duration",
 			"default": "6s",
+			"description": "Video duration",
 			"type": "string",
 			"enum": [
 				"4s",
@@ -21,8 +21,8 @@
 			]
 		},
 		"aspect_ratio": {
-			"description": "Video aspect ratio",
 			"default": "16:9",
+			"description": "Video aspect ratio",
 			"type": "string",
 			"enum": [
 				"16:9",
@@ -31,8 +31,8 @@
 			]
 		},
 		"resolution": {
-			"description": "Video resolution",
 			"default": "720p",
+			"description": "Video resolution",
 			"type": "string",
 			"enum": [
 				"720p",
@@ -40,8 +40,8 @@
 			]
 		},
 		"generate_audio": {
-			"description": "Whether to generate audio with the video",
 			"default": true,
+			"description": "Whether to generate audio with the video",
 			"type": "boolean"
 		}
 	},

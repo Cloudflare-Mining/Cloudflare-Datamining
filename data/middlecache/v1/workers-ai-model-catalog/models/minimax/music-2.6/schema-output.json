@@ -3,9 +3,9 @@
 	"type": "object",
 	"properties": {
 		"audio": {
-			"description": "URL to the generated audio file",
 			"type": "string",
-			"format": "uri"
+			"format": "uri",
+			"description": "URL to the generated audio file"
 		}
 	},
 	"required": [

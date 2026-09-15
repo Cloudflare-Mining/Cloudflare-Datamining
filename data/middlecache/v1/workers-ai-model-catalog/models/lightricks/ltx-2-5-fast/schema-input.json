@@ -3,10 +3,10 @@
 	"type": "object",
 	"properties": {
 		"prompt": {
-			"description": "Text prompt describing the video",
 			"type": "string",
 			"minLength": 1,
-			"maxLength": 10000
+			"maxLength": 10000,
+			"description": "Text prompt describing the video"
 		},
 		"image_uri": {
 			"description": "HTTPS URI for the first frame",
@@ -19,8 +19,8 @@
 			"format": "uri"
 		},
 		"duration": {
-			"description": "Video duration in seconds",
 			"default": 8,
+			"description": "Video duration in seconds",
 			"anyOf": [
 				{
 					"type": "number",

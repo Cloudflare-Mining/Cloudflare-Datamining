@@ -3,9 +3,9 @@
 	"type": "object",
 	"properties": {
 		"prompt": {
-			"description": "Description of the music style, mood, and scenario",
 			"type": "string",
-			"maxLength": 2000
+			"maxLength": 2000,
+			"description": "Description of the music style, mood, and scenario"
 		},
 		"lyrics": {
 			"description": "Song lyrics, using \\n to separate lines",
@@ -64,13 +64,13 @@
 			]
 		},
 		"lyrics_optimizer": {
-			"description": "Automatically generate lyrics based on the prompt description",
 			"default": false,
+			"description": "Automatically generate lyrics based on the prompt description",
 			"type": "boolean"
 		},
 		"is_instrumental": {
-			"description": "Generate instrumental music (no vocals)",
 			"default": false,
+			"description": "Generate instrumental music (no vocals)",
 			"type": "boolean"
 		}
 	},

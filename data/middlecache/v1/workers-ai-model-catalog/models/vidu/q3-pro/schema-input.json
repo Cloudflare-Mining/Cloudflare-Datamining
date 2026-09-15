@@ -16,15 +16,15 @@
 			"type": "string"
 		},
 		"duration": {
-			"description": "Video duration in seconds (1-16)",
 			"default": 5,
+			"description": "Video duration in seconds (1-16)",
 			"type": "integer",
 			"minimum": 1,
 			"maximum": 16
 		},
 		"resolution": {
-			"description": "Video resolution",
 			"default": "720p",
+			"description": "Video resolution",
 			"type": "string",
 			"enum": [
 				"540p",

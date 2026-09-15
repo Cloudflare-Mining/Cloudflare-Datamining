@@ -3,8 +3,8 @@
 	"type": "object",
 	"properties": {
 		"audio": {
-			"description": "Base64-encoded audio data (WAV format)",
-			"type": "string"
+			"type": "string",
+			"description": "Base64-encoded audio data (WAV format)"
 		}
 	},
 	"required": [

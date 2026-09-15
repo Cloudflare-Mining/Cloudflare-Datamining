@@ -3,9 +3,9 @@
 	"type": "object",
 	"properties": {
 		"video": {
-			"description": "URL to the generated video",
 			"type": "string",
-			"format": "uri"
+			"format": "uri",
+			"description": "URL to the generated video"
 		}
 	},
 	"required": [

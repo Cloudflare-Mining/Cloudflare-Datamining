@@ -1,5 +1,5 @@
 {
-	"generated_at": "2026-09-14T04:34:00.621Z",
+	"generated_at": "2026-09-15T04:34:07.631Z",
 	"model_count": 220,
 	"models": {
 		"alibaba/hh1-i2v": {
@@ -39986,9 +39986,9 @@
 			"metadata": {
 				"Aspect Ratios": "16:9, 4:3, 1:1, 3:4, 9:16, 21:9, adaptive",
 				"Max Duration": "30 seconds",
+				"Max Reference Audio Clips": "10",
 				"Max Reference Images": "30",
 				"Max Reference Videos": "10",
-				"Max Reference Audio Clips": "10",
 				"Native Audio": "Yes",
 				"Resolutions": "480p, 720p"
 			},
@@ -56708,190 +56708,6 @@
 				]
 			}
 		},
-		"google/gemini-omni-1.1-flash": {
-			"model_id": "google/gemini-omni-1.1-flash",
-			"slug": "google/gemini-omni-1.1-flash",
-			"display_name": "Gemini Omni Flash 1.1",
-			"description": "High-performance multimodal video generation and editing model with conversational controls and generated audio.",
-			"task": {
-				"id": "",
-				"name": "Text-to-Video",
-				"description": ""
-			},
-			"tags": [
-				"Video Generation",
-				"Audio",
-				"Multimodal"
-			],
-			"context_length": null,
-			"max_output_tokens": null,
-			"supports_async": false,
-			"hosting": "proxied",
-			"data_source": "catalog",
-			"properties": [
-				{
-					"property_id": "terms",
-					"value": "https://ai.google.dev/gemini-api/terms"
-				}
-			],
-			"metadata": {
-				"Audio Generation": "Yes",
-				"Input Modalities": "Text, image, audio, video",
-				"Resolutions": "360p, 720p, 1080p, 4k"
-			},
-			"external_info": null,
-			"terms": "https://ai.google.dev/gemini-api/terms",
-			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/gemini-omni-1.1-flash.png",
-			"schema_version": "1.0.0",
-			"created_at": "2026-09-11 15:09:32",
-			"updated_at": null,
-			"zdr_comment": null,
-			"banner": null,
-			"request_formats": null,
-			"examples": [
-				{
-					"name": "Text to video",
-					"description": "Generate a landscape video from a text prompt",
-					"input": {
-						"text": "A marble rolling fast on a chain reaction style track, continuous smooth shot.",
-						"aspect_ratio": "16:9",
-						"resolution": "720p"
-					},
-					"output": {
-						"video": "https://examples.aig.cloudflare.com/google/gemini-omni-1.1-flash/text-to-video.mp4"
-					},
-					"raw_response": {
-						"state": "Completed",
-						"result": {
-							"video": "https://examples.aig.cloudflare.com/google/gemini-omni-1.1-flash/text-to-video.mp4"
-						},
-						"gatewayMetadata": {
-							"keySource": "Unified"
-						}
-					},
-					"code_snippets": [
-						{
-							"label": "typescript",
-							"language": "typescript",
-							"code": "const response = await env.AI.run(\n  'google/gemini-omni-1.1-flash',\n  {\n    text: 'A marble rolling fast on a chain reaction style track, continuous smooth shot.',\n    aspect_ratio: '16:9',\n    resolution: '720p',\n  },\n)\nconsole.log(response)"
-						},
-						{
-							"label": "curl",
-							"language": "bash",
-							"code": "curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \\\n  --header \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" \\\n  --header \"Content-Type: application/json\" \\\n  --data '{\n  \"model\": \"google/gemini-omni-1.1-flash\",\n  \"input\": {\n    \"text\": \"A marble rolling fast on a chain reaction style track, continuous smooth shot.\",\n    \"aspect_ratio\": \"16:9\",\n    \"resolution\": \"720p\"\n  }\n}'"
-						}
-					]
-				},
-				{
-					"name": "Portrait city",
-					"description": "Generate a portrait-format cinematic city scene",
-					"input": {
-						"text": "A futuristic city with neon lights and flying cars, cinematic camera movement and atmospheric haze.",
-						"aspect_ratio": "9:16",
-						"resolution": "720p"
-					},
-					"output": {
-						"video": "https://examples.aig.cloudflare.com/google/gemini-omni-1.1-flash/portrait-city.mp4"
-					},
-					"raw_response": {
-						"state": "Completed",
-						"result": {
-							"video": "https://examples.aig.cloudflare.com/google/gemini-omni-1.1-flash/portrait-city.mp4"
-						},
-						"gatewayMetadata": {
-							"keySource": "Unified"
-						}
-					},
-					"code_snippets": [
-						{
-							"label": "typescript",
-							"language": "typescript",
-							"code": "const response = await env.AI.run(\n  'google/gemini-omni-1.1-flash',\n  {\n    text: 'A futuristic city with neon lights and flying cars, cinematic camera movement and atmospheric haze.',\n    aspect_ratio: '9:16',\n    resolution: '720p',\n  },\n)\nconsole.log(response)"
-						},
-						{
-							"label": "curl",
-							"language": "bash",
-							"code": "curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \\\n  --header \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" \\\n  --header \"Content-Type: application/json\" \\\n  --data '{\n  \"model\": \"google/gemini-omni-1.1-flash\",\n  \"input\": {\n    \"text\": \"A futuristic city with neon lights and flying cars, cinematic camera movement and atmospheric haze.\",\n    \"aspect_ratio\": \"9:16\",\n    \"resolution\": \"720p\"\n  }\n}'"
-						}
-					]
-				},
-				{
-					"name": "Mountain sunrise",
-					"description": "Generate a high-resolution landscape nature scene",
-					"input": {
-						"text": "A drone shot flying over a mountain landscape at sunrise, golden light reflecting across a misty valley.",
-						"aspect_ratio": "16:9",
-						"resolution": "1080p"
-					},
-					"output": {
-						"video": "https://examples.aig.cloudflare.com/google/gemini-omni-1.1-flash/mountain-sunrise.mp4"
-					},
-					"raw_response": {
-						"state": "Completed",
-						"result": {
-							"video": "https://examples.aig.cloudflare.com/google/gemini-omni-1.1-flash/mountain-sunrise.mp4"
-						},
-						"gatewayMetadata": {
-							"keySource": "Unified"
-						}
-					},
-					"code_snippets": [
-						{
-							"label": "typescript",
-							"language": "typescript",
-							"code": "const response = await env.AI.run(\n  'google/gemini-omni-1.1-flash',\n  {\n    text: 'A drone shot flying over a mountain landscape at sunrise, golden light reflecting across a misty valley.',\n    aspect_ratio: '16:9',\n    resolution: '1080p',\n  },\n)\nconsole.log(response)"
-						},
-						{
-							"label": "curl",
-							"language": "bash",
-							"code": "curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \\\n  --header \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" \\\n  --header \"Content-Type: application/json\" \\\n  --data '{\n  \"model\": \"google/gemini-omni-1.1-flash\",\n  \"input\": {\n    \"text\": \"A drone shot flying over a mountain landscape at sunrise, golden light reflecting across a misty valley.\",\n    \"aspect_ratio\": \"16:9\",\n    \"resolution\": \"1080p\"\n  }\n}'"
-						}
-					]
-				},
-				{
-					"name": "Chain reaction",
-					"description": "Generate a low-resolution landscape action scene",
-					"input": {
-						"text": "A marble rolling quickly along a wooden track, knocking through a playful chain reaction in one continuous shot.",
-						"aspect_ratio": "16:9",
-						"resolution": "360p"
-					},
-					"output": {
-						"video": "https://examples.aig.cloudflare.com/google/gemini-omni-1.1-flash/chain-reaction.mp4"
-					},
-					"raw_response": {
-						"state": "Completed",
-						"result": {
-							"video": "https://examples.aig.cloudflare.com/google/gemini-omni-1.1-flash/chain-reaction.mp4"
-						},
-						"gatewayMetadata": {
-							"keySource": "Unified"
-						}
-					},
-					"code_snippets": [
-						{
-							"label": "typescript",
-							"language": "typescript",
-							"code": "const response = await env.AI.run(\n  'google/gemini-omni-1.1-flash',\n  {\n    text: 'A marble rolling quickly along a wooden track, knocking through a playful chain reaction in one continuous shot.',\n    aspect_ratio: '16:9',\n    resolution: '360p',\n  },\n)\nconsole.log(response)"
-						},
-						{
-							"label": "curl",
-							"language": "bash",
-							"code": "curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \\\n  --header \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" \\\n  --header \"Content-Type: application/json\" \\\n  --data '{\n  \"model\": \"google/gemini-omni-1.1-flash\",\n  \"input\": {\n    \"text\": \"A marble rolling quickly along a wooden track, knocking through a playful chain reaction in one continuous shot.\",\n    \"aspect_ratio\": \"16:9\",\n    \"resolution\": \"360p\"\n  }\n}'"
-						}
-					]
-				}
-			],
-			"default_example": null,
-			"code_snippets": [],
-			"schema_manifest": {
-				"parameters_json": "v1/workers-ai-model-catalog/models/google/gemini-omni-1.1-flash/parameters.json",
-				"raw_files": [
-					"schema-input.json",
-					"schema-output.json"
-				]
-			}
-		},
 		"google/gemini-omni-flash": {
 			"model_id": "google/gemini-omni-flash",
 			"slug": "google/gemini-omni-flash",
@@ -59126,8 +58942,8 @@
 				}
 			],
 			"metadata": {
-				"Image-to-Video": "Yes",
 				"Audio Generation": "Yes",
+				"Image-to-Video": "Yes",
 				"Max Duration": "20 seconds",
 				"Resolutions": "1280x720, 720x1280, 1920x1080, 1080x1920, 2560x1440, 1440x2560, 3840x2160, 2160x3840"
 			},
@@ -183896,6 +183712,276 @@
 			"code_snippets": [],
 			"schema_manifest": {
 				"parameters_json": "v1/workers-ai-model-catalog/models/openai/gpt-5/parameters.json",
+				"raw_files": [
+					"schema-input.json",
+					"schema-output.json"
+				]
+			}
+		},
+		"openai/gpt-6-astra": {
+			"model_id": "openai/gpt-6-astra",
+			"slug": "openai/gpt-6-astra",
+			"display_name": "GPT-6 Astra",
+			"description": "GPT-6 Astra is OpenAI's most capable model, built for complex reasoning, coding, computer use, research, and document creation.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Coding",
+				"Reasoning",
+				"Multimodal",
+				"Computer Use"
+			],
+			"context_length": 1050000,
+			"max_output_tokens": 128000,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "1050000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "128000"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://openai.com/policies/"
+				},
+				{
+					"property_id": "info",
+					"value": "https://developers.openai.com/api/docs/models/gpt-6-astra"
+				}
+			],
+			"metadata": {
+				"API": "Responses, Chat Completions",
+				"Architecture": "Transformer",
+				"Input modalities": "Text, image",
+				"Knowledge cutoff": "April 30, 2026"
+			},
+			"external_info": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+			"terms": "https://openai.com/policies/",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-6-astra.png",
+			"schema_version": "1.0.0",
+			"created_at": "2026-09-10 20:01:11",
+			"updated_at": null,
+			"zdr_comment": null,
+			"banner": null,
+			"request_formats": [
+				"responses",
+				"chat-completions"
+			],
+			"examples": [
+				{
+					"name": "Operational Reasoning",
+					"description": "Use reasoning effort for a complex operational decision",
+					"input": {
+						"input": "A service has 99.9% monthly availability and just had 31 minutes of downtime. Has it exceeded the monthly error budget for a 30-day month? Show the calculation briefly.",
+						"max_output_tokens": 512,
+						"reasoning": {
+							"effort": "high"
+						}
+					},
+					"output": {
+						"text": "No. For a 30-day month:\n\n- Total time: \\(30 \\times 24 \\times 60 = 43{,}200\\) minutes\n- Error budget: \\(43{,}200 \\times (1 - 0.999) = 43.2\\) minutes\n- Remaining budget: \\(43.2 - 31 = 12.2\\) minutes\n\nAssuming 31 minutes is the total downtime this month, it is **within the error budget**."
+					},
+					"raw_response": {
+						"id": "resp_0f4dd4f38f19eb60016a99d9b6aaec87d1ab6bb0c344527fbc",
+						"object": "response",
+						"created_at": 1788467638,
+						"model": "gpt-6-astra",
+						"output": [
+							{
+								"id": "rs_0f4dd4f38f19eb60016a99d9b77c6087d1ab41b79ccdf5a833",
+								"type": "reasoning",
+								"content": [],
+								"encrypted_content": "gAAAAABqmdm5bNo3TE240J65AqELJf45m_Forsch1ik0e0iiz5B-XZsvljWjY5PfmKXyel-6WvdoKmKulsRo3PX0fCqdNQFUaSYufMITZh61KSdsWBeeKRAwczgj8ihQBEbSF95MmTwkoQzsHX5SBitcf0n7CrMhXt8-LcE2tXqY309dnpgzAtjeI8H318LR1JyAWKsbver3s30gE1TRh0GC3YisTLrfACSclHB8_cOPA5QvEwKJNljm8R7eVDJx7LTFoB2Av93eaSD7l4fbAJzR_afL8K_Akj5NsjYaZVrsbPPxTYlYpqRhE0c-3C2U0oJ31-4UVa6_nT94QYtnDJ9YNjEdRC8sMkq6DwLhkbIIJGVNJGqHmWP3vQu3JCq9VDUtC3ss3FCkgWwhIV5tAFTFOtppnHenz1Xi2UYwaBNwaHWYJdrTBidNcpEQwPcIdSRAfOHv2r-ueFywhAZmj8Rx_GcJO_5_RWjvglhuNRBTbC92icwLx6wt4LWYBpLW-0itkHNtdy2cqsiKYSxWyMRzaEwyhW3wQo6jC9w9MRUG35wT3drTsuvnMDV5yhtzCtxq57eTRpIpCM9343ITl5DUwS-d7vouI7QH2MAIkZknxTO-_vVPYVQrQ4Th0g6Cb8CrGd-nHQ39xYKnPG7oUmvRobLSaGpKmQREzp-uoQeVK8dypZCl3Xd1uHSUO7w-HKsob-t5whmpE-ziHFaqciWh9YcssC0YE1ztbq0f9tGRy386ZzkkihD23sGR0khZukCdiGSw3Njakpe4AMWujU-t2BtomDJa6pdtLEuvG7p3MbIbHRoXkyK-9h74NgBY2jO7fk0BgItjpmqhcPHelCtMxIhP_OroanM0rCUjfQdqcSBVxwOd_hJ5wcNHmWdyf3gVvKEO83M4cj-sVljJ1afzFfhFsAQH5Zw-JTeBI1udknm3oy5lDwEzRoZpTcQs2Ix8lyUBtZ4MypqRLTnKLXzyij8G8XdgTIqwUkOHhMrm8Zc0_ndcrwPoVjwTq0NugRGJMDAxPKl-aqg6XvEfCYCUF2WYIu8jGo3KK6An8GJ5HFLyidgUslKGJtN2TJmKBOPwc0fXoiW4qyUQdVi2Hz23KBMOQE77jIF0cccZAWDToq67zPLVw9I4j-VKRpti-tOfcg9tz0wr4zJRi49uOqTw038Xn03VXzTolhb3GwwQkMZxWLjam3buEX6SLuS1A7XXZn3aKeLu6KhUin6_aR3jP0s2_Y50Mjv3x0EouaIKQJEINqYRgi9K2SKAxzRSKjGksdNGNcNRGs6cydkHSJF-f60p9HRBbBsN7duP8qm0K2URSJ1DX30=",
+								"summary": []
+							},
+							{
+								"id": "msg_0f4dd4f38f19eb60016a99d9b7d7f087d191f17156c41c2f32",
+								"type": "message",
+								"status": "completed",
+								"content": [
+									{
+										"type": "output_text",
+										"annotations": [],
+										"logprobs": [],
+										"text": "No. For a 30-day month:\n\n- Total time: \\(30 \\times 24 \\times 60 = 43{,}200\\) minutes\n- Error budget: \\(43{,}200 \\times (1 - 0.999) = 43.2\\) minutes\n- Remaining budget: \\(43.2 - 31 = 12.2\\) minutes\n\nAssuming 31 minutes is the total downtime this month, it is **within the error budget**."
+									}
+								],
+								"phase": "final_answer",
+								"role": "assistant"
+							}
+						],
+						"status": "completed",
+						"usage": {
+							"input_tokens": 44,
+							"output_tokens": 151,
+							"total_tokens": 195,
+							"input_tokens_details": {
+								"cache_write_tokens": 0,
+								"cached_tokens": 0
+							},
+							"output_tokens_details": {
+								"reasoning_tokens": 41
+							}
+						},
+						"access_programs": {
+							"cyber": "standard"
+						},
+						"background": false,
+						"billing": {
+							"payer": "developer"
+						},
+						"completed_at": 1788467641,
+						"error": null,
+						"frequency_penalty": 0,
+						"incomplete_details": null,
+						"instructions": null,
+						"max_output_tokens": 512,
+						"max_tool_calls": null,
+						"moderation": null,
+						"parallel_tool_calls": true,
+						"presence_penalty": 0,
+						"previous_response_id": null,
+						"prompt_cache_key": null,
+						"prompt_cache_retention": "24h",
+						"reasoning": {
+							"context": "all_turns",
+							"effort": "high",
+							"mode": "standard",
+							"summary": null
+						},
+						"safety_identifier": null,
+						"service_tier": "default",
+						"store": false,
+						"temperature": 1,
+						"text": {
+							"format": {
+								"type": "text"
+							},
+							"verbosity": "medium"
+						},
+						"tool_choice": "auto",
+						"tool_usage": {
+							"image_gen": {
+								"input_tokens": 0,
+								"input_tokens_details": {
+									"image_tokens": 0,
+									"text_tokens": 0
+								},
+								"output_tokens": 0,
+								"output_tokens_details": {
+									"image_tokens": 0,
+									"text_tokens": 0
+								},
+								"total_tokens": 0
+							},
+							"web_search": {
+								"num_requests": 0
+							}
+						},
+						"tools": [],
+						"top_logprobs": 0,
+						"top_p": 0.98,
+						"truncation": "disabled",
+						"user": null,
+						"metadata": {},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"language": "typescript",
+							"code": "const response = await env.AI.run(\n  'openai/gpt-6-astra',\n  {\n    input:\n      'A service has 99.9% monthly availability and just had 31 minutes of downtime. Has it exceeded the monthly error budget for a 30-day month? Show the calculation briefly.',\n    max_output_tokens: 512,\n    reasoning: { effort: 'high' },\n  },\n)\nconsole.log(response)"
+						},
+						{
+							"label": "curl",
+							"language": "bash",
+							"code": "curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses \\\n  --header \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" \\\n  --header \"Content-Type: application/json\" \\\n  --data '{\n  \"model\": \"openai/gpt-6-astra\",\n  \"input\": \"A service has 99.9% monthly availability and just had 31 minutes of downtime. Has it exceeded the monthly error budget for a 30-day month? Show the calculation briefly.\",\n  \"max_output_tokens\": 512,\n  \"reasoning\": {\n    \"effort\": \"high\"\n  }\n}'"
+						}
+					]
+				},
+				{
+					"name": "Migration Safeguards",
+					"description": "Generate a concise answer through Chat Completions",
+					"input": {
+						"messages": [
+							{
+								"role": "user",
+								"content": "List three practical safeguards for a production API migration."
+							}
+						],
+						"max_completion_tokens": 256
+					},
+					"output": {
+						"text": "1. **Validate compatibility before rollout.** Run contract and integration tests against real client behaviors. Keep breaking changes behind a new API version, and verify authentication, error formats, and data schemas.\n\n2. **Roll out gradually with monitoring.** Start with internal traffic or a small canary group. Track error rates, latency, and critical business metrics; pause expansion if predefined thresholds are exceeded.\n\n3. **Prepare and test rollback.** Keep the old API available and use a feature flag or traffic switch to revert quickly. Ensure database changes remain backward-compatible, and rehearse the rollback procedure."
+					},
+					"raw_response": {
+						"id": "chatcmpl-EK8QDqH1XsfW6m8nEHXxUkrKGcWG5",
+						"object": "chat.completion",
+						"created": 1788467641,
+						"model": "gpt-6-astra",
+						"choices": [
+							{
+								"index": 0,
+								"message": {
+									"role": "assistant",
+									"content": "1. **Validate compatibility before rollout.** Run contract and integration tests against real client behaviors. Keep breaking changes behind a new API version, and verify authentication, error formats, and data schemas.\n\n2. **Roll out gradually with monitoring.** Start with internal traffic or a small canary group. Track error rates, latency, and critical business metrics; pause expansion if predefined thresholds are exceeded.\n\n3. **Prepare and test rollback.** Keep the old API available and use a feature flag or traffic switch to revert quickly. Ensure database changes remain backward-compatible, and rehearse the rollback procedure.",
+									"refusal": null,
+									"annotations": []
+								},
+								"finish_reason": "stop"
+							}
+						],
+						"usage": {
+							"prompt_tokens": 16,
+							"completion_tokens": 151,
+							"total_tokens": 167,
+							"prompt_tokens_details": {
+								"cached_tokens": 0,
+								"cache_write_tokens": 0,
+								"audio_tokens": 0
+							},
+							"completion_tokens_details": {
+								"reasoning_tokens": 23,
+								"audio_tokens": 0,
+								"accepted_prediction_tokens": 0,
+								"rejected_prediction_tokens": 0
+							}
+						},
+						"service_tier": "default",
+						"system_fingerprint": null,
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"language": "typescript",
+							"code": "const response = await env.AI.run(\n  'openai/gpt-6-astra',\n  {\n    messages: [\n      { role: 'user', content: 'List three practical safeguards for a production API migration.' },\n    ],\n    max_completion_tokens: 256,\n  },\n)\nconsole.log(response)"
+						},
+						{
+							"label": "curl",
+							"language": "bash",
+							"code": "curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions \\\n  --header \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" \\\n  --header \"Content-Type: application/json\" \\\n  --data '{\n  \"model\": \"openai/gpt-6-astra\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"List three practical safeguards for a production API migration.\"\n    }\n  ],\n  \"max_completion_tokens\": 256\n}'"
+						}
+					]
+				}
+			],
+			"default_example": null,
+			"code_snippets": [],
+			"schema_manifest": {
+				"parameters_json": "v1/workers-ai-model-catalog/models/openai/gpt-6-astra/parameters.json",
 				"raw_files": [
 					"schema-input.json",
 					"schema-output.json"

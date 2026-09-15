@@ -3,8 +3,8 @@
 	"type": "object",
 	"properties": {
 		"file": {
-			"description": "The audio file as a data URI (data:audio/...;base64,...) or HTTPS URL. Supported formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, webm.",
-			"type": "string"
+			"type": "string",
+			"description": "The audio file as a data URI (data:audio/...;base64,...) or HTTPS URL. Supported formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, webm."
 		},
 		"language": {
 			"description": "The language of the input audio. Supplying the input language in ISO-639-1 format will improve accuracy and latency.",

@@ -3,8 +3,8 @@
 	"type": "object",
 	"properties": {
 		"text": {
-			"description": "Full transcript text.",
-			"type": "string"
+			"type": "string",
+			"description": "Full transcript text."
 		},
 		"language": {
 			"description": "Detected language name (e.g. \"English\", \"French\").",

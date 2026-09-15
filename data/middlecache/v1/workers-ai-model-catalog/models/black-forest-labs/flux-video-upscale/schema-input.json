@@ -3,8 +3,8 @@
 	"type": "object",
 	"properties": {
 		"input_video": {
-			"description": "HTTP(S) URL or base64-encoded MP4 video, up to 20 seconds and 50MB.",
-			"type": "string"
+			"type": "string",
+			"description": "HTTP(S) URL or base64-encoded MP4 video, up to 20 seconds and 50MB."
 		},
 		"upscale_factor": {
 			"description": "Output scale relative to the source resolution, from 1.5x to 3x.",

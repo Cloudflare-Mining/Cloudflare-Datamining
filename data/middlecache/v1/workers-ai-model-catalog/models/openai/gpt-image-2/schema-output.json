@@ -3,9 +3,9 @@
 	"type": "object",
 	"properties": {
 		"image": {
-			"description": "URL to the generated image",
 			"type": "string",
-			"format": "uri"
+			"format": "uri",
+			"description": "URL to the generated image"
 		}
 	},
 	"required": [

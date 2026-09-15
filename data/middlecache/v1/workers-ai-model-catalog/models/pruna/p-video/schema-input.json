@@ -3,8 +3,8 @@
 	"type": "object",
 	"properties": {
 		"prompt": {
-			"description": "Text prompt for video generation.",
-			"type": "string"
+			"type": "string",
+			"description": "Text prompt for video generation."
 		},
 		"image": {
 			"description": "Input image to generate video from (image-to-video). HTTP(S) URL or data URI. Supports jpg, jpeg, png, webp. When provided, aspect_ratio is ignored.",
@@ -15,15 +15,15 @@
 			"type": "string"
 		},
 		"duration": {
-			"description": "Duration of the video in seconds (1-20). Ignored when audio is provided.",
 			"default": 5,
+			"description": "Duration of the video in seconds (1-20). Ignored when audio is provided.",
 			"type": "integer",
 			"minimum": 1,
 			"maximum": 20
 		},
 		"resolution": {
-			"description": "Video resolution.",
 			"default": "720p",
+			"description": "Video resolution.",
 			"type": "string",
 			"enum": [
 				"720p",
@@ -31,8 +31,8 @@
 			]
 		},
 		"fps": {
-			"description": "Frames per second: 24 or 48.",
 			"default": 24,
+			"description": "Frames per second: 24 or 48.",
 			"anyOf": [
 				{
 					"type": "number",
@@ -45,8 +45,8 @@
 			]
 		},
 		"aspect_ratio": {
-			"description": "Aspect ratio of the video. Ignored when an input image is provided.",
 			"default": "16:9",
+			"description": "Aspect ratio of the video. Ignored when an input image is provided.",
 			"type": "string",
 			"enum": [
 				"16:9",
@@ -65,13 +65,13 @@
 			"maximum": 9007199254740991
 		},
 		"draft": {
-			"description": "Draft mode. Generates a lower-quality preview of the video.",
 			"default": false,
+			"description": "Draft mode. Generates a lower-quality preview of the video.",
 			"type": "boolean"
 		},
 		"save_audio": {
-			"description": "Save the video with audio.",
 			"default": true,
+			"description": "Save the video with audio.",
 			"type": "boolean"
 		},
 		"last_frame_image": {
@@ -79,13 +79,13 @@
 			"type": "string"
 		},
 		"prompt_upsampling": {
-			"description": "Use prompt upsampling to enhance the prompt.",
 			"default": true,
+			"description": "Use prompt upsampling to enhance the prompt.",
 			"type": "boolean"
 		},
 		"disable_safety_filter": {
-			"description": "Disable safety filter for prompts and input images.",
 			"default": true,
+			"description": "Disable safety filter for prompts and input images.",
 			"type": "boolean"
 		}
 	},

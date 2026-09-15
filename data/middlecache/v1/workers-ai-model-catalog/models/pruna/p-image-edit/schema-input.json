@@ -3,26 +3,26 @@
 	"type": "object",
 	"properties": {
 		"prompt": {
-			"description": "Text instruction describing the desired edit or composition.",
-			"type": "string"
+			"type": "string",
+			"description": "Text instruction describing the desired edit or composition."
 		},
 		"images": {
-			"description": "Array of 1-5 reference images. Each entry is an HTTP(S) URL or a base64 data URI (data:image/...;base64,...).",
 			"minItems": 1,
 			"maxItems": 5,
 			"type": "array",
 			"items": {
 				"type": "string"
-			}
+			},
+			"description": "Array of 1-5 reference images. Each entry is an HTTP(S) URL or a base64 data URI (data:image/...;base64,...)."
 		},
 		"turbo": {
-			"description": "Run faster with additional optimizations. For complicated tasks, it is recommended to turn this off.",
 			"default": true,
+			"description": "Run faster with additional optimizations. For complicated tasks, it is recommended to turn this off.",
 			"type": "boolean"
 		},
 		"aspect_ratio": {
-			"description": "Output aspect ratio.",
 			"default": "match_input_image",
+			"description": "Output aspect ratio.",
 			"type": "string",
 			"enum": [
 				"match_input_image",
@@ -42,8 +42,8 @@
 			"maximum": 9007199254740991
 		},
 		"disable_safety_checker": {
-			"description": "Disable safety checker for generated images.",
 			"default": false,
+			"description": "Disable safety checker for generated images.",
 			"type": "boolean"
 		}
 	},

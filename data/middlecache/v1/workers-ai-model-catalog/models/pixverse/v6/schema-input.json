@@ -3,9 +3,9 @@
 	"type": "object",
 	"properties": {
 		"prompt": {
-			"description": "Text prompt describing the video to generate",
 			"type": "string",
-			"maxLength": 2048
+			"maxLength": 2048,
+			"description": "Text prompt describing the video to generate"
 		},
 		"negative_prompt": {
 			"description": "Negative text prompt",
@@ -17,15 +17,15 @@
 			"type": "string"
 		},
 		"duration": {
-			"description": "Video duration in seconds (1 to 15)",
 			"default": 5,
+			"description": "Video duration in seconds (1 to 15)",
 			"type": "integer",
 			"minimum": 1,
 			"maximum": 15
 		},
 		"aspect_ratio": {
-			"description": "Video aspect ratio",
 			"default": "16:9",
+			"description": "Video aspect ratio",
 			"type": "string",
 			"enum": [
 				"16:9",
@@ -39,8 +39,8 @@
 			]
 		},
 		"quality": {
-			"description": "Video quality",
 			"default": "720p",
+			"description": "Video quality",
 			"type": "string",
 			"enum": [
 				"360p",
@@ -56,8 +56,8 @@
 			"maximum": 2147483647
 		},
 		"generate_audio": {
-			"description": "Whether to generate audio with the video",
 			"default": true,
+			"description": "Whether to generate audio with the video",
 			"type": "boolean"
 		}
 	},

@@ -3,8 +3,8 @@
 	"type": "object",
 	"properties": {
 		"prompt": {
-			"description": "Text prompt describing the image to generate or edit",
-			"type": "string"
+			"type": "string",
+			"description": "Text prompt describing the image to generate or edit"
 		},
 		"images": {
 			"description": "Input images for image editing, 1-16 entries. Each entry is base64-encoded (raw string or data:image/{png|jpeg|webp};base64,... URI).",

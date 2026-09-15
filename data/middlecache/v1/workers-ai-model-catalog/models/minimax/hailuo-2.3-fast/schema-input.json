@@ -3,8 +3,8 @@
 	"type": "object",
 	"properties": {
 		"first_frame_image": {
-			"description": "URL or base64 data URI of the first frame image",
-			"type": "string"
+			"type": "string",
+			"description": "URL or base64 data URI of the first frame image"
 		},
 		"prompt": {
 			"type": "string",
