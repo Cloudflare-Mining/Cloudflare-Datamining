@@ -18,7 +18,7 @@ Cloudflare is giving site owners a way to stay discoverable while disallowing AI
 
 [Bryan Becker](https://blog.cloudflare.com/author/bryan-becker/)
 
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9EEQXN77GRVF484P66A.01M2H2ZAMANYA3DTBA92G3WQ5X.png&w=1999&h=1125&f=webp&fit=cover&position=center)![](data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA///////78/Xx6+7t7fDy8fP38fL07ezr///////98vTy6Ozs6O3x7fH37/H17O3t////////8fT05uvt5evx6vD47vL47e/x////////9Pf56O3x5+317PL88PX88PL2////////+v3/7vP47fP88vj/9vr/9ff7////////////9/v/9/v//P///v//+/z//////////////v//////////////////////////////////////////////////)](https://blog.cloudflare.com/accountable-mixed-use-ai-crawlers/)
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9EEQXN77GRVF484P66A.01M2H2ZAMANYA3DTBA92G3WQ5X.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/accountable-mixed-use-ai-crawlers/)
 
 September 15, 2026 [<h2>Give every teammate and agent the right level of access to your Workers</h2>](https://blog.cloudflare.com/workers-granular-authorization/)
 
