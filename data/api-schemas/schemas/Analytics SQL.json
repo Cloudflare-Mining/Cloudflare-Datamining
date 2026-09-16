@@ -291,11 +291,17 @@
 												"description": "Dataset name used in SQL queries.",
 												"type": "string",
 												"example": "events.httpRequests"
+											},
+											"title": {
+												"description": "Human-readable title of the dataset.",
+												"type": "string",
+												"example": "HTTP Requests"
 											}
 										},
 										"additionalProperties": false,
 										"required": [
 											"name",
+											"title",
 											"description"
 										]
 									}

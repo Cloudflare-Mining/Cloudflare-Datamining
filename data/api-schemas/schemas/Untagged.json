@@ -729,6 +729,18 @@
 			}
 		}
 	],
+	"PARAMETERS /accounts/{account_id}/browser-extension/config/logs/extension-events/search": [
+		{
+			"description": "Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string",
+				"minLength": 1
+			}
+		}
+	],
 	"PARAMETERS /accounts/{account_id}/challenges/widgets": [
 		{
 			"name": "account_id",

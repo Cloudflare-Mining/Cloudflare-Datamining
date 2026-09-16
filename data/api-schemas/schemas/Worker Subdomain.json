@@ -1,7 +1,7 @@
 {
 	"DELETE /accounts/{account_id}/workers/subdomain": {
 		"operationId": "worker-subdomain-delete-subdomain",
-		"summary": "Delete Subdomain",
+		"summary": "Delete Workers Subdomain",
 		"description": "Deletes a Workers subdomain for an account.",
 		"parameters": [
 			{
@@ -150,14 +150,17 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.subdomains",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This will permanently delete the Workers subdomain."
 	},
 	"GET /accounts/{account_id}/workers/subdomain": {
 		"operationId": "worker-subdomain-get-subdomain",
-		"summary": "Get Subdomain",
+		"summary": "Get a Workers Subdomain",
 		"description": "Returns a Workers subdomain for an account.",
 		"parameters": [
 			{
@@ -418,14 +421,16 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.subdomains",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PUT /accounts/{account_id}/workers/subdomain": {
 		"operationId": "worker-subdomain-create-subdomain",
-		"summary": "Create Subdomain",
+		"summary": "Create a Workers Subdomain",
 		"description": "Creates a Workers subdomain for an account.",
 		"parameters": [
 			{
@@ -705,9 +710,11 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.subdomains",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

@@ -1,7 +1,7 @@
 {
 	"DELETE /accounts/{account_id}/workers/domains/{domain_id}": {
 		"operationId": "workers.domains.delete",
-		"summary": "Detach Domain",
+		"summary": "Detach Worker Domain",
 		"description": "Detaches a domain from a Worker. Both the Worker and all of its previews are no longer routable using this domain.",
 		"parameters": [
 			{
@@ -246,15 +246,18 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.domains",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This will stop routing traffic on this domain to the Worker."
 	},
 	"GET /accounts/{account_id}/workers/domains": {
 		"operationId": "workers.domains.list",
-		"summary": "List Domains",
-		"description": "Lists all domains for an account.",
+		"summary": "List Worker Domains",
+		"description": "Lists all Worker domains for an account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -653,15 +656,17 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.domains",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/workers/domains/{domain_id}": {
 		"operationId": "workers.domains.get",
-		"summary": "Get Domain",
-		"description": "Gets information about a domain.",
+		"summary": "Get Worker Domain",
+		"description": "Gets information about a Worker domain.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -981,14 +986,16 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.domains",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PUT /accounts/{account_id}/workers/domains": {
 		"operationId": "workers.domains.update",
-		"summary": "Attach Domain",
+		"summary": "Attach Worker Domain",
 		"description": "Attaches a domain that routes traffic to a Worker.",
 		"parameters": [
 			{
@@ -1379,9 +1386,11 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.domains",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

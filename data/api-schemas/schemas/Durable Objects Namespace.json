@@ -1,7 +1,7 @@
 {
 	"GET /accounts/{account_id}/workers/durable_objects/namespaces": {
 		"operationId": "durable-objects-namespace-list-namespaces",
-		"summary": "List Namespaces",
+		"summary": "List Durable Object Namespaces",
 		"description": "Returns the Durable Object namespaces owned by an account.",
 		"parameters": [
 			{
@@ -491,14 +491,13 @@
 			"Workers Scripts Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "durable-objects.namespaces",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "durableObjects.namespaces",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/workers/durable_objects/namespaces/{id}/objects": {
 		"operationId": "durable-objects-namespace-list-objects",
-		"summary": "List Objects",
-		"description": "Returns the Durable Objects in a given namespace.",
+		"summary": "List Objects in a Durable Object namespace",
+		"description": "Returns the Durable Objects in a given Durable Object namespace.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1018,8 +1017,7 @@
 			"Workers Scripts Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "durable-objects.namespaces.objects",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "durableObjects.namespaces.objects",
+		"x-fern-sdk-method-name": "list"
 	}
 }

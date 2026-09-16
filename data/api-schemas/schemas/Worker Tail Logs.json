@@ -1,7 +1,7 @@
 {
 	"DELETE /accounts/{account_id}/workers/scripts/{script_name}/tails/{id}": {
 		"operationId": "worker-tail-logs-delete-tail",
-		"summary": "Delete Tail",
+		"summary": "Delete Worker Tail",
 		"description": "Deletes a tail from a Worker.",
 		"parameters": [
 			{
@@ -261,15 +261,18 @@
 			"Workers Tail Read",
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.scripts.tail",
+		"x-fern-sdk-group-name": "workers.tail",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This will permanently delete the Worker tail session."
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/tails": {
 		"operationId": "worker-tail-logs-list-tails",
-		"summary": "List Tails",
-		"description": "Get list of tails currently deployed on a Worker.",
+		"summary": "List Worker Tails",
+		"description": "Get a list of tails currently deployed on a Worker.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -560,15 +563,17 @@
 			"Workers Tail Read",
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.scripts.tail",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "workers.tail",
+		"x-fern-sdk-method-name": "list"
 	},
 	"POST /accounts/{account_id}/workers/scripts/{script_name}/tails": {
 		"operationId": "worker-tail-logs-start-tail",
-		"summary": "Start Tail",
-		"description": "Starts a tail that receives logs and exception from a Worker.",
+		"summary": "Start Worker Tail",
+		"description": "Starts a tail that receives logs and exceptions from a Worker.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -859,9 +864,12 @@
 			"Workers Tail Read",
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.scripts.tail",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-group-name": "workers.tail",
+		"x-fern-sdk-method-name": "start",
 		"x-forge-hidden": true
 	}
 }

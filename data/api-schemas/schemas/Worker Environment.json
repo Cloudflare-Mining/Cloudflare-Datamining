@@ -1,8 +1,8 @@
 {
 	"GET /accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/content": {
 		"operationId": "worker-environment-get-script-content",
-		"summary": "Get script content",
-		"description": "Get script content from a worker with an environment.",
+		"summary": "Get Worker Environment Script Content",
+		"description": "Get Worker script content for an environment.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -182,6 +182,9 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.services.environments.content",
 		"x-fern-sdk-method-name": "get",
@@ -189,8 +192,8 @@
 	},
 	"GET /accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/settings": {
 		"operationId": "worker-script-environment-get-settings",
-		"summary": "Get Script Settings",
-		"description": "Get script settings from a worker with an environment.",
+		"summary": "Get Worker Environment Settings",
+		"description": "Get Worker script settings for an environment.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -686,6 +689,9 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.services.environments.settings",
 		"x-fern-sdk-method-name": "get",
@@ -693,8 +699,8 @@
 	},
 	"PATCH /accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/settings": {
 		"operationId": "worker-script-environment-patch-settings",
-		"summary": "Patch Script Settings",
-		"description": "Patch script metadata, such as bindings.",
+		"summary": "Patch Worker Environment Settings",
+		"description": "Patch Worker script metadata for an environment, such as bindings.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1684,6 +1690,9 @@
 		"tags": [
 			"Worker Environment"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.services.environments.settings",
 		"x-fern-sdk-method-name": "edit",
@@ -1691,8 +1700,8 @@
 	},
 	"PUT /accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/content": {
 		"operationId": "worker-environment-put-script-content",
-		"summary": "Put script content",
-		"description": "Put script content from a worker with an environment.",
+		"summary": "Replace Worker Environment Script Content",
+		"description": "Replace Worker script content for an environment.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2936,6 +2945,9 @@
 		],
 		"x-api-token-group": [
 			"Workers Scripts Write"
+		],
+		"x-fern-audiences": [
+			"sdk"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.services.environments.content",

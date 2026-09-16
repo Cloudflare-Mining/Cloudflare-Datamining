@@ -227,6 +227,22 @@
 				}
 			},
 			{
+				"description": "Filter by registration client type.",
+				"explode": false,
+				"in": "query",
+				"name": "registration_type",
+				"schema": {
+					"description": "The registration client type, derived from device_type.",
+					"type": "string",
+					"example": "warp",
+					"enum": [
+						"warp",
+						"browser_extension"
+					],
+					"x-auditable": true
+				}
+			},
+			{
 				"description": "The maximum number of devices to return in a single response.",
 				"explode": false,
 				"in": "query",

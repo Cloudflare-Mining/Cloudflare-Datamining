@@ -176,7 +176,7 @@
 				}
 			},
 			"403": {
-				"description": "The authenticated user is not authorized to access this account.",
+				"description": "The authenticated user is not authorized to access this account, the Browser Extension service is not enabled for this account, or service availability could not be verified for this account.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -291,6 +291,63 @@
 			},
 			"500": {
 				"description": "Internal server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Browser Extension service availability could not be verified.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -514,7 +571,7 @@
 				}
 			},
 			"403": {
-				"description": "The authenticated user is not authorized to access this account.",
+				"description": "The authenticated user is not authorized to access this account, the Browser Extension service is not enabled for this account, or service availability could not be verified for this account.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -629,6 +686,63 @@
 			},
 			"500": {
 				"description": "Internal server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Browser Extension service availability could not be verified.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -942,7 +1056,7 @@
 				}
 			},
 			"403": {
-				"description": "The authenticated user is not authorized to access this account.",
+				"description": "The authenticated user is not authorized to access this account, the Browser Extension service is not enabled for this account, or service availability could not be verified for this account.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1111,6 +1225,63 @@
 						}
 					}
 				}
+			},
+			"503": {
+				"description": "Browser Extension service availability could not be verified.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -1124,6 +1295,690 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "browser-extension.config",
 		"x-fern-sdk-method-name": "create",
+		"x-stability": "beta"
+	},
+	"POST /accounts/{account_id}/browser-extension/config/logs/extension-events/search": {
+		"operationId": "accounts-browser-extension-config-extension-events-search",
+		"summary": "Search browser extension event logs",
+		"description": "Searches browser extension event logs for an account. The request accepts\nonly supported fields and filters; raw SQL is not accepted.\n",
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"fields": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"enum": [
+										"timestamp",
+										"durationMs",
+										"eventName",
+										"action",
+										"userEmail",
+										"registrationId",
+										"policyId",
+										"url",
+										"matchedDlpProfiles",
+										"inventoryExtensionId",
+										"inventoryExtensionName",
+										"inventoryExtensionVersion"
+									]
+								},
+								"maxItems": 12,
+								"minItems": 1
+							},
+							"filters": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"field": {
+											"type": "string",
+											"enum": [
+												"timestamp",
+												"durationMs",
+												"eventName",
+												"action",
+												"userEmail",
+												"registrationId",
+												"policyId",
+												"url",
+												"matchedDlpProfiles",
+												"inventoryExtensionId",
+												"inventoryExtensionName",
+												"inventoryExtensionVersion"
+											]
+										},
+										"op": {
+											"type": "string",
+											"enum": [
+												"eq",
+												"neq",
+												"in",
+												"notIn",
+												"contains",
+												"notContains",
+												"includes",
+												"notIncludes",
+												"gte",
+												"lte"
+											]
+										},
+										"value": {
+											"oneOf": [
+												{
+													"maxLength": 2048,
+													"minLength": 1,
+													"type": "string"
+												},
+												{
+													"format": "int64",
+													"minimum": 0,
+													"type": "integer"
+												},
+												{
+													"items": {
+														"maxLength": 2048,
+														"minLength": 1,
+														"type": "string"
+													},
+													"maxItems": 20,
+													"minItems": 1,
+													"type": "array"
+												},
+												{
+													"items": {
+														"format": "int64",
+														"minimum": 0,
+														"type": "integer"
+													},
+													"maxItems": 20,
+													"minItems": 1,
+													"type": "array"
+												}
+											]
+										}
+									},
+									"required": [
+										"field",
+										"op",
+										"value"
+									]
+								},
+								"maxItems": 20
+							},
+							"from": {
+								"type": "string",
+								"format": "date-time",
+								"maxLength": 64
+							},
+							"includeTotal": {
+								"type": "boolean",
+								"default": false
+							},
+							"limit": {
+								"type": "integer",
+								"default": 50,
+								"maximum": 200,
+								"minimum": 1
+							},
+							"page": {
+								"type": "integer",
+								"default": 1,
+								"minimum": 1
+							},
+							"to": {
+								"type": "string",
+								"format": "date-time",
+								"maxLength": 64
+							}
+						},
+						"required": [
+							"from",
+							"to"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Browser extension event log search response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"maxItems": 0
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"action": {
+												"type": "string"
+											},
+											"durationMs": {
+												"type": "number"
+											},
+											"eventName": {
+												"type": "string"
+											},
+											"inventoryExtensionId": {
+												"type": "string"
+											},
+											"inventoryExtensionName": {
+												"type": "string"
+											},
+											"inventoryExtensionVersion": {
+												"type": "string"
+											},
+											"matchedDlpProfiles": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"policyId": {
+												"type": "string"
+											},
+											"registrationId": {
+												"type": "string"
+											},
+											"timestamp": {
+												"type": "string"
+											},
+											"url": {
+												"type": "string"
+											},
+											"userEmail": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer"
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"type": "integer"
+										},
+										"total_count": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"result_info",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid request body or account ID.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication failed.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "The authenticated user is not authorized to access this account, the Browser Extension service is not enabled for this account, or service availability could not be verified for this account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"413": {
+				"description": "Invalid request body or account ID.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"502": {
+				"description": "Internal server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Internal server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Browser Extension Config"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "browser-extension.config.logs.extension-events",
+		"x-fern-sdk-method-name": "search",
 		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/browser-extension/config": {
@@ -1370,7 +2225,7 @@
 				}
 			},
 			"403": {
-				"description": "The authenticated user is not authorized to access this account.",
+				"description": "The authenticated user is not authorized to access this account, the Browser Extension service is not enabled for this account, or service availability could not be verified for this account.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1485,6 +2340,63 @@
 			},
 			"500": {
 				"description": "Internal server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Browser Extension service availability could not be verified.",
 				"content": {
 					"application/json": {
 						"schema": {

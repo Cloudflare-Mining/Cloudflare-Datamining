@@ -1,8 +1,8 @@
 {
 	"GET /accounts/{account_id}/workers/account-settings": {
 		"operationId": "worker-account-settings-fetch-worker-account-settings",
-		"summary": "Fetch Worker Account Settings",
-		"description": "Fetches Worker account settings for an account.",
+		"summary": "Fetch Workers Account Settings",
+		"description": "Fetches Workers account settings for an account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -19,7 +19,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Fetch Worker Account Settings response.",
+				"description": "Fetch Workers Account Settings response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -133,7 +133,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Fetch Worker Account Settings response failure.",
+				"description": "Fetch Workers Account Settings response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -256,7 +256,7 @@
 			}
 		],
 		"tags": [
-			"Worker Account Settings"
+			"Workers Account Settings"
 		],
 		"x-api-token-group": [
 			"Trust and Safety Write",
@@ -289,15 +289,18 @@
 			"Account Settings Write",
 			"Account Settings Read"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.account-settings",
+		"x-fern-sdk-group-name": "workers.accountSettings",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/workers/account-settings": {
 		"operationId": "worker-account-settings-create-worker-account-settings",
-		"summary": "Create Worker Account Settings",
-		"description": "Creates Worker account settings for an account.",
+		"summary": "Configure Workers Account Settings",
+		"description": "Configure Workers account settings for an account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -334,7 +337,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Create Worker Account Settings response.",
+				"description": "Create Workers Account Settings response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -448,7 +451,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Create Worker Account Settings response failure.",
+				"description": "Create Workers Account Settings response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -571,13 +574,16 @@
 			}
 		],
 		"tags": [
-			"Worker Account Settings"
+			"Workers Account Settings"
 		],
 		"x-api-token-group": [
 			"Account Settings Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.account-settings",
+		"x-fern-sdk-group-name": "workers.accountSettings",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	}

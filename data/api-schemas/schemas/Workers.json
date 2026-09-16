@@ -995,9 +995,9 @@
 			"Workers Scripts Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.beta.workers",
+		"x-fern-sdk-group-name": "workers",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This will permanently delete the Worker and its associated versions and deployments."
 	},
 	"GET /accounts/{account_id}/builds/workers/{external_script_id}/builds": {
 		"operationId": "listBuildsByScript",
@@ -3262,9 +3262,8 @@
 			"Workers Scripts Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.beta.workers",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "workers",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/workers/workers/{worker_id}": {
 		"operationId": "getWorker",
@@ -4293,9 +4292,8 @@
 			"Workers Scripts Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.beta.workers",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "workers",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/builds/workers/{script_tag}": {
 		"operationId": "updateWorkerBuild",
@@ -7407,10 +7405,12 @@
 		"tags": [
 			"Workers"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.beta.workers",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "workers",
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/builds/workers": {
 		"operationId": "createWorkerBuild",
@@ -10124,10 +10124,12 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.beta.workers",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "workers",
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/workers/workers/{worker_id}": {
 		"operationId": "updateWorker",
@@ -12229,9 +12231,11 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.beta.workers",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "workers",
+		"x-fern-sdk-method-name": "update"
 	}
 }

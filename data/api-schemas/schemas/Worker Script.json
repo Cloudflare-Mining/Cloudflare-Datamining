@@ -272,15 +272,18 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.scripts",
+		"x-fern-audiences": [
+			"sdk"
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "workers.legacy.scripts",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This will permanently delete the Worker script."
 	},
 	"DELETE /accounts/{account_id}/workers/scripts/{script_name}/secrets/{secret_name}": {
 		"operationId": "worker-delete-script-secret",
-		"summary": "Delete script secret",
-		"description": "Remove a secret from a script by creating a new version without that\nsecret.\n\nWhen changing more than one secret at a time, prefer the \"Patch multiple\nscript secrets\" API instead of changing many secrets individually.\n",
+		"summary": "Delete Worker script secret",
+		"description": "Remove a secret from a Worker script by creating a new version without that\nsecret.\n\nWhen changing more than one secret at a time, prefer the \"Patch multiple\nscript secrets\" API instead of changing many secrets individually.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -568,12 +571,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.secrets",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This will permanently delete the Worker script secret."
 	},
 	"DELETE /accounts/{account_id}/workers/scripts/{script_name}/subdomain": {
 		"operationId": "worker-script-delete-subdomain",
-		"summary": "Delete Worker subdomain",
-		"description": "Disable all workers.dev subdomains for a Worker.",
+		"summary": "Delete Worker Script Subdomain",
+		"description": "Disable all workers.dev subdomains for a Worker script.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -855,15 +858,19 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.scripts.subdomain",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This will disable all workers.dev subdomains for the Worker script."
 	},
 	"GET /accounts/{account_id}/workers/scripts": {
 		"operationId": "worker-script-list-workers",
-		"summary": "List Workers",
-		"description": "Fetch a list of uploaded workers.",
+		"summary": "List Worker Scripts",
+		"description": "Fetch a list of uploaded Worker scripts.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2064,15 +2071,17 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.scripts",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-audiences": [
+			"sdk"
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "workers.legacy.scripts",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/workers/scripts-search": {
 		"operationId": "worker-script-search-workers",
-		"summary": "Search Workers",
-		"description": "Search for Workers in an account.",
+		"summary": "Search Worker Scripts",
+		"description": "Search for Worker scripts in an account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2475,13 +2484,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.scripts",
-		"x-fern-sdk-method-name": "search",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "search"
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}": {
 		"operationId": "worker-script-download-worker",
-		"summary": "Download Worker",
-		"description": "Fetch raw script content for your worker. Note this is the original script content, not JSON encoded.",
+		"summary": "Download Worker Script",
+		"description": "Fetch raw content for a Worker script. Note this is the original script content, not JSON encoded.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2661,15 +2669,17 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.scripts",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-audiences": [
+			"sdk"
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "workers.legacy.scripts",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/content/v2": {
 		"operationId": "worker-script-get-content",
-		"summary": "Get script content",
-		"description": "Fetch script content only.",
+		"summary": "Get Worker Script Content",
+		"description": "Fetch Worker script content only.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2839,6 +2849,9 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.scripts.content",
 		"x-fern-sdk-method-name": "get",
@@ -2846,8 +2859,8 @@
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/script-settings": {
 		"operationId": "worker-script-settings-get-settings",
-		"summary": "Get Script Settings",
-		"description": "Get script-level settings when using [Worker Versions](https://developers.cloudflare.com/api/operations/worker-versions-list-versions). Includes Logpush and Tail Consumers.",
+		"summary": "Get Worker Script Settings",
+		"description": "Get Worker script-level settings when using [Worker Versions](https://developers.cloudflare.com/api/operations/worker-versions-list-versions). Includes Logpush and Tail Consumers.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3333,15 +3346,17 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.scripts.settings",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/secrets": {
 		"operationId": "worker-list-script-secrets",
-		"summary": "List script secrets",
-		"description": "List secrets bound to a script.",
+		"summary": "List secrets bound to a Worker script",
+		"description": "List the names of secrets bound to a Worker script.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3725,13 +3740,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.secrets",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/secrets/{secret_name}": {
 		"operationId": "worker-get-script-secret",
-		"summary": "Get secret binding",
-		"description": "Get a given secret binding (value omitted) on a script.",
+		"summary": "Get a secret binding",
+		"description": "Get a given secret binding (value omitted) on a Worker script.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4130,13 +4144,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.secrets",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/settings": {
 		"operationId": "worker-script-get-settings",
-		"summary": "Get Settings",
-		"description": "Get metadata and config, such as bindings or usage model.",
+		"summary": "Get Worker Script and Version Settings",
+		"description": "Get Worker script metadata and config, such as bindings or usage model.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -8459,15 +8472,17 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.scripts.script-and-version-settings",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "workers.scripts.scriptAndVersionSettings",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/subdomain": {
 		"operationId": "worker-script-get-subdomain",
-		"summary": "Get Worker subdomain",
-		"description": "Get if the Worker is available on the workers.dev subdomain.",
+		"summary": "Get Worker Script Subdomain",
+		"description": "Get whether a Worker script is available on the workers.dev subdomain.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -8751,6 +8766,9 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.scripts.subdomain",
 		"x-fern-sdk-method-name": "get",
@@ -8758,8 +8776,8 @@
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/usage-model": {
 		"operationId": "worker-script-fetch-usage-model",
-		"summary": "Fetch Usage Model",
-		"description": "Fetches the Usage Model for a given Worker.",
+		"summary": "Get Worker Script Usage Model",
+		"description": "Fetches the usage model for a Worker script.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -9049,15 +9067,17 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.scripts.usage-model",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "workers.scripts.usageModel",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/workers/scripts/{script_name}/script-settings": {
 		"operationId": "worker-script-settings-patch-settings",
-		"summary": "Patch Script Settings",
-		"description": "Patch script-level settings when using [Worker Versions](https://developers.cloudflare.com/api/operations/worker-versions-list-versions). Including but not limited to Logpush and Tail Consumers.",
+		"summary": "Patch Worker Script Settings",
+		"description": "Patch Worker script-level settings when using [Worker Versions](https://developers.cloudflare.com/api/operations/worker-versions-list-versions). Including but not limited to Logpush and Tail Consumers.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -9946,15 +9966,17 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.scripts.settings",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"PATCH /accounts/{account_id}/workers/scripts/{script_name}/secrets-bulk": {
 		"operationId": "worker-patch-script-secrets-bulk",
-		"summary": "Patch multiple script secrets",
-		"description": "Create, update, or delete multiple secrets on a script in a single operation using JSON Merge Patch (RFC 7396).\nThis operation creates a single version with all changes included.\nPrefer this API instead of changing many secrets individually.\n\nUsage:\n\n- To create or update a secret, set its value to a secret object.\n- To delete a secret, set its value to `null`.\n- Secrets not included in the request are left unchanged.\n",
+		"summary": "Patch multiple Worker script secrets",
+		"description": "Create, update, or delete multiple secrets on a Worker script in a single operation using JSON Merge Patch (RFC 7396).\nThis operation creates a single version with all changes included.\nPrefer this API instead of changing many secrets individually.\n\nUsage:\n\n- To create or update a secret, set its value to a secret object.\n- To delete a secret, set its value to `null`.\n- Secrets not included in the request are left unchanged.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -10740,15 +10762,18 @@
 		"tags": [
 			"Worker Script"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.secrets",
-		"x-fern-sdk-method-name": "bulk-edit",
+		"x-fern-sdk-method-name": "bulkEdit",
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/workers/scripts/{script_name}/settings": {
 		"operationId": "worker-script-patch-settings",
-		"summary": "Patch Settings",
-		"description": "Patch metadata or config, such as bindings or usage model.",
+		"summary": "Patch Worker Script and Version Settings",
+		"description": "Patch Worker script metadata or config, such as bindings or usage model.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -19321,15 +19346,17 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.scripts.script-and-version-settings",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "workers.scripts.scriptAndVersionSettings",
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/workers/assets/upload": {
 		"operationId": "worker-assets-upload",
-		"summary": "Upload Assets",
-		"description": "Upload assets ahead of creating a Worker version.  To learn more about the direct uploads of assets, see https://developers.cloudflare.com/workers/static-assets/direct-upload/.",
+		"summary": "Upload Worker Assets",
+		"description": "Upload Worker assets ahead of creating a Worker version. To learn more about the direct uploads of assets, see https://developers.cloudflare.com/workers/static-assets/direct-upload/.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -19709,6 +19736,9 @@
 		"tags": [
 			"Worker Script"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.assets.upload",
 		"x-fern-sdk-method-name": "create",
@@ -19716,7 +19746,7 @@
 	},
 	"POST /accounts/{account_id}/workers/scripts/{script_name}/assets-upload-session": {
 		"operationId": "worker-script-update-create-assets-upload-session",
-		"summary": "Create Assets Upload Session",
+		"summary": "Create Worker Assets Upload Session",
 		"description": "Start uploading a collection of assets for use in a Worker version. To learn more about the direct uploads of assets, see https://developers.cloudflare.com/workers/static-assets/direct-upload/.",
 		"parameters": [
 			{
@@ -20151,15 +20181,18 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.scripts.assets.upload",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-group-name": "workers.assets.upload",
+		"x-fern-sdk-method-name": "createSession",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/workers/scripts/{script_name}/subdomain": {
 		"operationId": "worker-script-post-subdomain",
-		"summary": "Post Worker subdomain",
-		"description": "Enable or disable the Worker on the workers.dev subdomain.",
+		"summary": "Update Worker Script Subdomain",
+		"description": "Enable or disable a Worker script on the workers.dev subdomain.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -20468,6 +20501,9 @@
 		],
 		"x-api-token-group": [
 			"Workers Scripts Write"
+		],
+		"x-fern-audiences": [
+			"sdk"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.scripts.subdomain",
@@ -24713,15 +24749,17 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.scripts",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-audiences": [
+			"sdk"
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "workers.legacy.scripts",
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/workers/scripts/{script_name}/content": {
 		"operationId": "worker-script-put-content",
-		"summary": "Put script content",
-		"description": "Put script content without touching config or metadata.",
+		"summary": "Replace Worker Script Content",
+		"description": "Replace Worker script content without touching config or metadata.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -25956,6 +25994,9 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.scripts.content",
 		"x-fern-sdk-method-name": "update",
@@ -25963,8 +26004,8 @@
 	},
 	"PUT /accounts/{account_id}/workers/scripts/{script_name}/secrets": {
 		"operationId": "worker-put-script-secret",
-		"summary": "Add script secret",
-		"description": "Add a secret to a script by creating a new version with that secret.\n\nWhen changing more than one secret at a time, prefer the \"Patch multiple\nscript secrets\" API instead of changing many secrets individually.\n",
+		"summary": "Add a secret to a Worker script",
+		"description": "Add a secret to a Worker script by creating a new version with that secret.\n\nWhen changing more than one secret at a time, prefer the \"Patch multiple\nscript secrets\" API instead of changing many secrets individually.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -26583,6 +26624,9 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.secrets",
 		"x-fern-sdk-method-name": "update",
@@ -26596,8 +26640,8 @@
 	},
 	"PUT /accounts/{account_id}/workers/scripts/{script_name}/usage-model": {
 		"operationId": "worker-script-update-usage-model",
-		"summary": "Update Usage Model",
-		"description": "Updates the Usage Model for a given Worker. Requires a Workers Paid subscription.",
+		"summary": "Replace Worker Script Usage Model",
+		"description": "Replaces the usage model for a Worker script. Requires a Workers Paid subscription.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -26922,9 +26966,11 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.scripts.usage-model",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "workers.scripts.usageModel",
+		"x-fern-sdk-method-name": "update"
 	}
 }

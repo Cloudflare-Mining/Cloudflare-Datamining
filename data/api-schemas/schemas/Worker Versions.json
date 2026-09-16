@@ -571,15 +571,17 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.versions",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-audiences": [
+			"sdk"
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "workers.legacy.scripts.versions",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/versions/{version_id}": {
 		"operationId": "worker-versions-get-version-detail",
-		"summary": "Get Version Detail",
-		"description": "Retrieves detailed information about a specific version of a Workers script.",
+		"summary": "Get Worker Script Version",
+		"description": "Retrieves detailed information about a specific version of a Worker script.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -10167,10 +10169,12 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.versions",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-audiences": [
+			"sdk"
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "workers.legacy.scripts.versions",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/workers/scripts/{script_name}/versions": {
 		"operationId": "worker-versions-upload-version",
@@ -22327,9 +22331,11 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.versions",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-audiences": [
+			"sdk"
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "workers.legacy.scripts.versions",
+		"x-fern-sdk-method-name": "create"
 	}
 }

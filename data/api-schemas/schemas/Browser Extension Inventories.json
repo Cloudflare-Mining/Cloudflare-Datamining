@@ -257,7 +257,7 @@
 				}
 			},
 			"403": {
-				"description": "The authenticated user is not authorized to access this account.",
+				"description": "The authenticated user is not authorized to access this account, the Browser Extension service is not enabled for this account, or service availability could not be verified for this account.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -315,6 +315,63 @@
 			},
 			"500": {
 				"description": "Internal server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Browser Extension service availability could not be verified.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -598,7 +655,7 @@
 				}
 			},
 			"403": {
-				"description": "The authenticated user is not authorized to access this account.",
+				"description": "The authenticated user is not authorized to access this account, the Browser Extension service is not enabled for this account, or service availability could not be verified for this account.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -713,6 +770,63 @@
 			},
 			"500": {
 				"description": "Internal server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Browser Extension service availability could not be verified.",
 				"content": {
 					"application/json": {
 						"schema": {

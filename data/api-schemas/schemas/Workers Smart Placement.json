@@ -1,7 +1,7 @@
 {
 	"GET /accounts/{account_id}/workers/placement/regions": {
 		"operationId": "worker-placement-list-regions",
-		"summary": "List Placement Regions",
+		"summary": "List Workers Smart Placement Regions",
 		"description": "Returns a list of available placement regions organized by cloud provider. These regions can be used to configure Smart Placement for Workers.",
 		"parameters": [
 			{
@@ -286,7 +286,7 @@
 			}
 		],
 		"tags": [
-			"Worker Placement"
+			"Workers Smart Placement"
 		],
 		"x-api-token-group": [
 			"Workers Tail Read",
@@ -295,7 +295,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.placement.regions",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	}
 }

@@ -492,6 +492,22 @@
 				}
 			},
 			{
+				"description": "Filter by the type of active registration associated with the device.",
+				"explode": false,
+				"in": "query",
+				"name": "has_registration_type",
+				"schema": {
+					"description": "The registration client type, derived from device_type.",
+					"type": "string",
+					"example": "warp",
+					"enum": [
+						"warp",
+						"browser_extension"
+					],
+					"x-auditable": true
+				}
+			},
+			{
 				"description": "Filter by a one or more device IDs.",
 				"explode": true,
 				"in": "query",

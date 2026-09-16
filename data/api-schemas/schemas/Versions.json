@@ -1,8 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/workers/workers/{worker_id}/versions/{version_id}": {
 		"operationId": "deleteWorkerVersion",
-		"summary": "Delete Version",
-		"description": "Delete a version.",
+		"summary": "Delete Worker Version",
+		"description": "Delete a Worker version.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -252,13 +252,13 @@
 			"Versions"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.beta.workers.versions",
+		"x-fern-sdk-group-name": "workers.versions",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This will permanently delete the Worker version."
 	},
 	"GET /accounts/{account_id}/workers/workers/{worker_id}/versions": {
 		"operationId": "listWorkerVersions",
-		"summary": "List Versions",
+		"summary": "List Worker Versions",
 		"description": "List all versions for a Worker.",
 		"parameters": [
 			{
@@ -2769,7 +2769,7 @@
 														]
 													},
 													"modules": {
-														"description": "Code, sourcemaps, and other content used at runtime.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure \n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be \nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
+														"description": "Code, sourcemaps, and other content used at runtime.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure\n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be\nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
 														"type": "array",
 														"items": {
 															"properties": {
@@ -3239,14 +3239,13 @@
 			"Workers Scripts Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.beta.workers.versions",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "workers.versions",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/workers/workers/{worker_id}/versions/{version_id}": {
 		"operationId": "getWorkerVersion",
-		"summary": "Get Version",
-		"description": "Get details about a specific version.",
+		"summary": "Get Worker Version",
+		"description": "Get details about a specific Worker version.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -5713,7 +5712,7 @@
 													]
 												},
 												"modules": {
-													"description": "Code, sourcemaps, and other content used at runtime.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure \n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be \nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
+													"description": "Code, sourcemaps, and other content used at runtime.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure\n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be\nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
 													"type": "array",
 													"items": {
 														"properties": {
@@ -6182,14 +6181,13 @@
 			"Workers Scripts Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.beta.workers.versions",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "workers.versions",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/workers/workers/{worker_id}/versions/latest": {
 		"operationId": "patchLatestWorkerVersion",
-		"summary": "Patch Latest Version",
-		"description": "Only `/versions/latest` is supported. Creates a new version by applying a JSON Merge Patch (RFC 7396) to the latest version. Patching a specific version ID is not supported. Omitted fields are inherited from the latest version.",
+		"summary": "Patch Latest Worker Version",
+		"description": "Only `/versions/latest` is supported. Creates a new Worker version by applying a JSON Merge Patch (RFC 7396) to the latest version. Patching a specific version ID is not supported. Omitted fields are inherited from the latest version.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -8559,7 +8557,7 @@
 										]
 									},
 									"modules": {
-										"description": "Code, sourcemaps, and other content used at runtime.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure \n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be \nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
+										"description": "Code, sourcemaps, and other content used at runtime.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure\n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be\nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
 										"type": "array",
 										"items": {
 											"properties": {
@@ -11226,7 +11224,7 @@
 										]
 									},
 									"modules": {
-										"description": "Code, sourcemaps, and other content used at runtime.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure \n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be \nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
+										"description": "Code, sourcemaps, and other content used at runtime.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure\n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be\nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
 										"type": "array",
 										"items": {
 											"properties": {
@@ -13983,7 +13981,7 @@
 													]
 												},
 												"modules": {
-													"description": "Code, sourcemaps, and other content used at runtime.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure \n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be \nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
+													"description": "Code, sourcemaps, and other content used at runtime.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure\n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be\nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
 													"type": "array",
 													"items": {
 														"properties": {
@@ -14618,15 +14616,17 @@
 		"tags": [
 			"Versions"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.beta.workers.versions",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "workers.versions",
+		"x-fern-sdk-method-name": "editLatest"
 	},
 	"POST /accounts/{account_id}/workers/workers/{worker_id}/versions": {
 		"operationId": "createWorkerVersion",
-		"summary": "Create Version",
-		"description": "Create a new version.",
+		"summary": "Create Worker Version",
+		"description": "Create a new version for a Worker.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -16995,7 +16995,7 @@
 								]
 							},
 							"modules": {
-								"description": "Code, sourcemaps, and other content used at runtime.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure \n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be \nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
+								"description": "Code, sourcemaps, and other content used at runtime.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure\n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be\nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
 								"type": "array",
 								"items": {
 									"properties": {
@@ -19747,7 +19747,7 @@
 													]
 												},
 												"modules": {
-													"description": "Code, sourcemaps, and other content used at runtime.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure \n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be \nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
+													"description": "Code, sourcemaps, and other content used at runtime.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure\n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be\nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
 													"type": "array",
 													"items": {
 														"properties": {
@@ -20385,9 +20385,11 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.beta.workers.versions",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "workers.versions",
+		"x-fern-sdk-method-name": "create"
 	}
 }

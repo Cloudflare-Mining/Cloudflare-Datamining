@@ -1,8 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}": {
 		"operationId": "namespace-worker-delete-namespace",
-		"summary": "Delete dispatch namespace",
-		"description": "Delete a Workers for Platforms namespace.",
+		"summary": "Delete Workers for Platforms Dispatch Namespace",
+		"description": "Delete a Workers for Platforms dispatch namespace.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -265,14 +265,15 @@
 			"Workers Scripts Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces",
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This will permanently delete the Workers for Platforms dispatch namespace."
 	},
 	"DELETE /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts": {
 		"operationId": "namespace-worker-delete-scripts",
-		"summary": "Delete Scripts in Namespace",
-		"description": "Delete multiple scripts from a Workers for Platforms namespace based on optional tag filters.",
+		"summary": "Delete Workers for Platforms Scripts",
+		"description": "Delete multiple scripts from a Workers for Platforms dispatch namespace based on optional tag filters.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -484,14 +485,15 @@
 			"Workers Scripts Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces.scripts",
-		"x-fern-sdk-method-name": "bulk-delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts",
+		"x-fern-sdk-method-name": "bulkDelete",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This will permanently delete matching scripts in the Workers for Platforms dispatch namespace."
 	},
 	"DELETE /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
 		"operationId": "namespace-worker-script-delete-worker",
-		"summary": "Delete Worker",
-		"description": "Delete a worker from a Workers for Platforms namespace. This call has no response body on a successful delete.",
+		"summary": "Delete Workers for Platforms Script",
+		"description": "Delete a script from a Workers for Platforms dispatch namespace. This call has no response body on a successful delete.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -774,14 +776,14 @@
 			"Workers Scripts Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces.scripts",
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This will permanently delete the Workers for Platforms script."
 	},
 	"DELETE /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets/{secret_name}": {
 		"operationId": "namespace-worker-delete-script-secret",
-		"summary": "Delete script secret",
-		"description": "Remove a secret from a script by creating a new version without that\nsecret.\n\nWhen changing more than one secret at a time, prefer the \"Patch multiple\nscript secrets\" API instead of changing many secrets individually.\n",
+		"summary": "Delete Workers for Platforms script secret",
+		"description": "Remove a secret from a Workers for Platforms script by creating a new version without that\nsecret.\n\nWhen changing more than one secret at a time, prefer the \"Patch multiple\nscript secrets\" API instead of changing many secrets individually.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1078,15 +1080,18 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces.scripts.secrets",
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.secrets",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This will permanently delete the Workers for Platforms script secret."
 	},
 	"DELETE /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags/{tag}": {
 		"operationId": "namespace-worker-delete-script-tag",
-		"summary": "Delete Script Tag",
-		"description": "Delete script tag for a script uploaded to a Workers for Platforms namespace.",
+		"summary": "Delete Workers for Platforms Script Tag",
+		"description": "Delete a tag from a script uploaded to a Workers for Platforms dispatch namespace.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1371,15 +1376,18 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces.scripts.tags",
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.tags",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This will delete the tag from the Workers for Platforms script."
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces": {
 		"operationId": "namespace-worker-list",
-		"summary": "List dispatch namespaces",
-		"description": "Fetch a list of Workers for Platforms namespaces.",
+		"summary": "List Workers for Platforms Dispatch Namespaces",
+		"description": "Fetch a list of Workers for Platforms dispatch namespaces.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1689,14 +1697,14 @@
 			"Workers Scripts Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces",
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}": {
 		"operationId": "namespace-worker-get-namespace",
-		"summary": "Get dispatch namespace",
-		"description": "Get a Workers for Platforms namespace.",
+		"summary": "Get Workers for Platforms Dispatch Namespace",
+		"description": "Get a Workers for Platforms dispatch namespace.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2015,14 +2023,14 @@
 			"Workers Scripts Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces",
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts": {
 		"operationId": "namespace-worker-list-scripts",
-		"summary": "List Scripts in Namespace",
-		"description": "Fetch a list of scripts uploaded to a Workers for Platforms namespace.",
+		"summary": "List Workers for Platforms Scripts",
+		"description": "Fetch a list of scripts uploaded to a Workers for Platforms dispatch namespace.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3218,14 +3226,14 @@
 			"Workers Scripts Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces.scripts",
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
 		"operationId": "namespace-worker-script-worker-details",
-		"summary": "Worker Details",
-		"description": "Fetch information about a script uploaded to a Workers for Platforms namespace.",
+		"summary": "Get Workers for Platforms Script details",
+		"description": "Fetch information about a script uploaded to a Workers for Platforms dispatch namespace.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4421,14 +4429,13 @@
 			"Workers Scripts Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces.scripts",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/bindings": {
 		"operationId": "namespace-worker-get-script-bindings",
-		"summary": "Get Script Bindings",
-		"description": "Fetch script bindings from a script uploaded to a Workers for Platforms namespace.",
+		"summary": "Get Workers for Platforms Script Bindings",
+		"description": "Fetch bindings from a script uploaded to a Workers for Platforms dispatch namespace.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -6057,15 +6064,18 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces.scripts.bindings",
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.bindings",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/content": {
 		"operationId": "namespace-worker-get-script-content",
-		"summary": "Get Script Content",
-		"description": "Fetch script content from a script uploaded to a Workers for Platforms namespace.",
+		"summary": "Get Workers for Platforms Script Content",
+		"description": "Fetch content from a script uploaded to a Workers for Platforms dispatch namespace.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -6247,15 +6257,18 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces.scripts.content",
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.content",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets": {
 		"operationId": "namespace-worker-list-script-secrets",
-		"summary": "List Script Secrets",
-		"description": "List secrets bound to a script uploaded to a Workers for Platforms namespace.",
+		"summary": "List Workers for Platforms Script Secrets",
+		"description": "List secrets bound to a script uploaded to a Workers for Platforms dispatch namespace.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -6652,15 +6665,18 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces.scripts.secrets",
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.secrets",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets/{secret_name}": {
 		"operationId": "namespace-worker-get-script-secrets",
-		"summary": "Get secret binding",
-		"description": "Get a given secret binding (value omitted) on a script uploaded to a Workers for Platforms namespace.",
+		"summary": "Get Workers for Platforms Script Secret",
+		"description": "Get a given secret binding (value omitted) on a script uploaded to a Workers for Platforms dispatch namespace.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -7077,15 +7093,18 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces.scripts.secrets",
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.secrets",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/settings": {
 		"operationId": "namespace-worker-get-script-settings",
-		"summary": "Get Script Settings",
-		"description": "Get script settings from a script uploaded to a Workers for Platforms namespace.",
+		"summary": "Get Workers for Platforms Script Settings",
+		"description": "Get settings for a script uploaded to a Workers for Platforms dispatch namespace.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -11394,15 +11413,18 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces.scripts.settings",
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.settings",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags": {
 		"operationId": "namespace-worker-get-script-tags",
-		"summary": "Get Script Tags",
-		"description": "Fetch tags from a script uploaded to a Workers for Platforms namespace.",
+		"summary": "List Workers for Platforms Script Tags",
+		"description": "Fetch tags from a script uploaded to a Workers for Platforms dispatch namespace.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -11684,15 +11706,17 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces.scripts.tags",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.tags",
+		"x-fern-sdk-method-name": "list"
 	},
 	"PATCH /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}": {
 		"operationId": "namespace-worker-patch-namespace",
-		"summary": "Patch dispatch namespace",
-		"description": "Patch a Workers for Platforms namespace. Omitted fields are left unchanged.",
+		"summary": "Patch Workers for Platforms Dispatch Namespace",
+		"description": "Patch a Workers for Platforms dispatch namespace. Omitted fields are left unchanged.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -12034,14 +12058,14 @@
 			"Workers Scripts Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces",
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces",
 		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets-bulk": {
 		"operationId": "namespace-worker-patch-script-secrets-bulk",
-		"summary": "Patch multiple script secrets",
-		"description": "Create, update, or delete multiple secrets on a script in a single operation using JSON Merge Patch (RFC 7396).\nThis operation creates a single version with all changes included.\nPrefer this API instead of changing many secrets individually.\n\nUsage:\n\n- To create or update a secret, set its value to a secret object.\n- To delete a secret, set its value to `null`.\n- Secrets not included in the request are left unchanged.\n",
+		"summary": "Patch multiple Workers for Platforms script secrets",
+		"description": "Create, update, or delete multiple secrets on a Workers for Platforms script in a single operation using JSON Merge Patch (RFC 7396).\nThis operation creates a single version with all changes included.\nPrefer this API instead of changing many secrets individually.\n\nUsage:\n\n- To create or update a secret, set its value to a secret object.\n- To delete a secret, set its value to `null`.\n- Secrets not included in the request are left unchanged.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -12842,15 +12866,18 @@
 		"tags": [
 			"Workers for Platforms"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces.scripts.secrets",
-		"x-fern-sdk-method-name": "bulk-edit",
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.secrets",
+		"x-fern-sdk-method-name": "bulkEdit",
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/settings": {
 		"operationId": "namespace-worker-patch-script-settings",
-		"summary": "Patch Script Settings",
-		"description": "Patch script metadata, such as bindings.",
+		"summary": "Patch Workers for Platforms Script Settings",
+		"description": "Patch metadata for a script uploaded to a Workers for Platforms dispatch namespace, such as bindings.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -21386,15 +21413,18 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces.scripts.settings",
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.settings",
 		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/workers/dispatch/namespaces": {
 		"operationId": "namespace-worker-create",
-		"summary": "Create dispatch namespace",
-		"description": "Create a new Workers for Platforms namespace.",
+		"summary": "Create Workers for Platforms Dispatch Namespace",
+		"description": "Create a new Workers for Platforms dispatch namespace.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -21717,14 +21747,14 @@
 			"Workers Scripts Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces",
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/assets-upload-session": {
 		"operationId": "namespace-worker-script-update-create-assets-upload-session",
-		"summary": "Create Assets Upload Session",
-		"description": "Start uploading a collection of assets for use in a Worker version. To learn more about the direct uploads of assets, see https://developers.cloudflare.com/workers/static-assets/direct-upload/.",
+		"summary": "Create Workers for Platforms Assets Upload Session",
+		"description": "Start uploading a collection of assets for use in a Workers for Platforms script version. To learn more about the direct uploads of assets, see https://developers.cloudflare.com/workers/static-assets/direct-upload/.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -22048,15 +22078,18 @@
 		"tags": [
 			"Workers for Platforms"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces.scripts.asset-upload",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.assets.upload",
+		"x-fern-sdk-method-name": "createSession",
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}": {
 		"operationId": "namespace-worker-put-namespace",
-		"summary": "Update dispatch namespace",
-		"description": "Update a Workers for Platforms namespace.",
+		"summary": "Update Workers for Platforms Dispatch Namespace",
+		"description": "Update a Workers for Platforms dispatch namespace.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -22397,15 +22430,18 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces",
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
 		"operationId": "namespace-worker-script-upload-worker-module",
-		"summary": "Upload Worker Module",
-		"description": "Upload a worker module to a Workers for Platforms namespace. You can find more about the multipart metadata on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/.",
+		"summary": "Upload Workers for Platforms Script Module",
+		"description": "Upload a Workers for Platforms script module to a dispatch namespace. You can find more about the multipart metadata on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -26622,14 +26658,13 @@
 			"Workers Scripts Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces.scripts",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts",
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/content": {
 		"operationId": "namespace-worker-put-script-content",
-		"summary": "Put Script Content",
-		"description": "Put script content for a script uploaded to a Workers for Platforms namespace.",
+		"summary": "Replace Workers for Platforms Script Content",
+		"description": "Replace content for a script uploaded to a Workers for Platforms dispatch namespace.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -27876,15 +27911,18 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces.scripts.content",
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.content",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets": {
 		"operationId": "namespace-worker-put-script-secrets",
-		"summary": "Add script secret",
-		"description": "Add a secret to a script by creating a new version with that secret.\n\nWhen changing more than one secret at a time, prefer the \"Patch multiple\nscript secrets\" API instead of changing many secrets individually.\n",
+		"summary": "Add a secret to a Workers for Platforms script",
+		"description": "Add a secret to a Workers for Platforms script by creating a new version with that secret.\n\nWhen changing more than one secret at a time, prefer the \"Patch multiple\nscript secrets\" API instead of changing many secrets individually.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -28518,15 +28556,18 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces.scripts.secrets",
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.secrets",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags": {
 		"operationId": "namespace-worker-put-script-tags",
-		"summary": "Put Script Tags",
-		"description": "Put script tags for a script uploaded to a Workers for Platforms namespace.",
+		"summary": "Replace Workers for Platforms Script Tags",
+		"description": "Replace tags for a script uploaded to a Workers for Platforms dispatch namespace.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -28833,15 +28874,17 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces.scripts.tags",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.tags.bulk",
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags/{tag}": {
 		"operationId": "namespace-worker-put-script-tag",
-		"summary": "Put Script Tag",
-		"description": "Put a single tag on a script uploaded to a Workers for Platforms namespace.",
+		"summary": "Create Workers for Platforms Script Tag",
+		"description": "Add a single tag to a script uploaded to a Workers for Platforms dispatch namespace.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -29126,9 +29169,11 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dispatch-namespaces.scripts.tags",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.tags",
+		"x-fern-sdk-method-name": "create"
 	}
 }

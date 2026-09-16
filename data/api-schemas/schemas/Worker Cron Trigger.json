@@ -1,8 +1,8 @@
 {
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/schedules": {
 		"operationId": "worker-cron-trigger-get-cron-triggers",
-		"summary": "Get Cron Triggers",
-		"description": "Fetches Cron Triggers for a Worker.",
+		"summary": "Get Worker Script Schedules (Cron Triggers)",
+		"description": "Get the schedules (Cron Triggers) for a Worker script.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -295,15 +295,17 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.scripts.schedules",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PUT /accounts/{account_id}/workers/scripts/{script_name}/schedules": {
 		"operationId": "worker-cron-trigger-update-cron-triggers",
-		"summary": "Update Cron Triggers",
-		"description": "Updates Cron Triggers for a Worker.",
+		"summary": "Update Worker Script Schedules (Cron Triggers)",
+		"description": "Update the schedules (Cron Triggers) for a Worker script.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -628,9 +630,11 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.scripts.schedules",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }
