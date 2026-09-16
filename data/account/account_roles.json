@@ -1476,16 +1476,16 @@
 		"name": "Workers Platform (Read-only)",
 		"description": "Can read all resources in the Workers Platform.",
 		"permissions": {
+			"worker": {
+				"read": true,
+				"edit": false
+			},
 			"stream": {
 				"read": true,
 				"edit": false,
 				"content_read": true
 			},
 			"image": {
-				"read": true,
-				"edit": false
-			},
-			"worker": {
 				"read": true,
 				"edit": false
 			},
