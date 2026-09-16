@@ -489,8 +489,7 @@
 														{
 															"type": "number"
 														}
-													],
-													"description": "A numeric string."
+													]
 												},
 												"type": "array"
 											},
@@ -819,6 +818,23 @@
 														"RATIO"
 													]
 												},
+												"top_0": {
+													"type": "object",
+													"properties": {
+														"date": {
+															"type": "string",
+															"format": "date"
+														},
+														"serviceCategory": {
+															"type": "string",
+															"example": "Overall"
+														}
+													},
+													"required": [
+														"date",
+														"serviceCategory"
+													]
+												},
 												"units": {
 													"description": "Measurement units for the results.",
 													"type": "array",
@@ -846,7 +862,8 @@
 												"confidenceInfo",
 												"normalization",
 												"lastUpdated",
-												"units"
+												"units",
+												"top_0"
 											]
 										},
 										"top_0": {

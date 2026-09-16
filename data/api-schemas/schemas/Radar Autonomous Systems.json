@@ -24,6 +24,7 @@
 				"schema": {
 					"description": "Skips the specified number of objects before fetching the results.",
 					"type": "integer",
+					"example": 0,
 					"minimum": 0
 				}
 			},
@@ -851,6 +852,7 @@
 				"schema": {
 					"description": "Skips the specified number of objects before fetching the results.",
 					"type": "integer",
+					"example": 0,
 					"minimum": 0
 				}
 			},
@@ -1105,9 +1107,17 @@
 				"required": true,
 				"schema": {
 					"description": "IP address.",
-					"type": "string",
-					"format": "ip",
-					"example": "8.8.8.8"
+					"example": "8.8.8.8",
+					"anyOf": [
+						{
+							"format": "ipv4",
+							"type": "string"
+						},
+						{
+							"format": "ipv6",
+							"type": "string"
+						}
+					]
 				}
 			},
 			{

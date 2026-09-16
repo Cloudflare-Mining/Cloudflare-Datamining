@@ -24,6 +24,7 @@
 				"schema": {
 					"description": "Skips the specified number of objects before fetching the results.",
 					"type": "integer",
+					"example": 0,
 					"minimum": 0
 				}
 			},
@@ -271,6 +272,7 @@
 													},
 													"startDate": {
 														"type": "string",
+														"format": "date-time",
 														"example": "2023-08-02T23:15:00Z"
 													},
 													"status": {
@@ -517,6 +519,7 @@
 												},
 												"startDate": {
 													"type": "string",
+													"format": "date-time",
 													"example": "2023-08-02T23:15:00Z"
 												},
 												"status": {
@@ -611,7 +614,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.traffic-anomalies",
-		"x-fern-sdk-method-name": "getById",
+		"x-fern-sdk-method-name": "get-by-id",
 		"x-forge-hidden": true
 	},
 	"GET /radar/traffic_anomalies/locations": {

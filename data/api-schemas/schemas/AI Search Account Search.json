@@ -625,7 +625,7 @@
 				}
 			},
 			"400": {
-				"description": "Input Validation Error",
+				"description": "Metadata filter unknown field.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -640,18 +640,11 @@
 											},
 											"message": {
 												"type": "string"
-											},
-											"path": {
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
 											}
 										},
 										"required": [
 											"code",
-											"message",
-											"path"
+											"message"
 										],
 										"type": "object"
 									}
@@ -1243,7 +1236,7 @@
 				}
 			},
 			"400": {
-				"description": "Input Validation Error",
+				"description": "Metadata filter unknown field.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1258,18 +1251,11 @@
 											},
 											"message": {
 												"type": "string"
-											},
-											"path": {
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
 											}
 										},
 										"required": [
 											"code",
-											"message",
-											"path"
+											"message"
 										],
 										"type": "object"
 									}

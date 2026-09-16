@@ -80,8 +80,15 @@
 				"name": "prefix",
 				"in": "query",
 				"schema": {
-					"type": "string",
-					"example": "1.1.1.0/24"
+					"example": "1.1.1.0/24",
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "string"
+						}
+					]
 				}
 			},
 			{
@@ -1068,7 +1075,8 @@
 														"example": 875649
 													},
 													"v6_48s": {
-														"type": "integer"
+														"type": "integer",
+														"example": 0
 													}
 												},
 												"required": [
@@ -1804,8 +1812,15 @@
 				"name": "prefix",
 				"in": "query",
 				"schema": {
-					"type": "string",
-					"example": "1.1.1.0/24"
+					"example": "1.1.1.0/24",
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "string"
+						}
+					]
 				}
 			},
 			{
@@ -2247,8 +2262,15 @@
 				"name": "prefix",
 				"in": "query",
 				"schema": {
-					"type": "string",
-					"example": "1.1.1.0/24"
+					"example": "1.1.1.0/24",
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "string"
+						}
+					]
 				}
 			},
 			{
@@ -2448,8 +2470,15 @@
 				"name": "prefix",
 				"in": "query",
 				"schema": {
-					"type": "string",
-					"example": "1.1.1.0/24"
+					"example": "1.1.1.0/24",
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "string"
+						}
+					]
 				}
 			},
 			{
@@ -4277,7 +4306,14 @@
 					"description": "Filters results by BGP network prefix.",
 					"type": "array",
 					"items": {
-						"type": "string"
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "string"
+							}
+						]
 					},
 					"example": "1.1.1.0/24"
 				}
@@ -4689,7 +4725,14 @@
 					"description": "Filters results by BGP network prefix.",
 					"type": "array",
 					"items": {
-						"type": "string"
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "string"
+							}
+						]
 					},
 					"example": "1.1.1.0/24"
 				}

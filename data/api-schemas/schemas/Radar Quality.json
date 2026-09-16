@@ -322,16 +322,22 @@
 											"type": "object",
 											"properties": {
 												"p25": {
+													"description": "A numeric string.",
 													"type": "string",
-													"example": "32.20938"
+													"example": "32.20938",
+													"pattern": "^-?\\d+(\\.\\d+)?$"
 												},
 												"p50": {
+													"description": "A numeric string.",
 													"type": "string",
-													"example": "61.819881"
+													"example": "61.819881",
+													"pattern": "^-?\\d+(\\.\\d+)?$"
 												},
 												"p75": {
+													"description": "A numeric string.",
 													"type": "string",
-													"example": "133.813087"
+													"example": "133.813087",
+													"pattern": "^-?\\d+(\\.\\d+)?$"
 												}
 											},
 											"required": [
@@ -1029,21 +1035,27 @@
 												"bandwidthDownload": {
 													"type": "array",
 													"items": {
+														"description": "A numeric string.",
 														"example": "83681",
+														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
 													}
 												},
 												"bandwidthUpload": {
 													"type": "array",
 													"items": {
+														"description": "A numeric string.",
 														"example": "181079",
+														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
 													}
 												},
 												"bucketMin": {
 													"type": "array",
 													"items": {
+														"description": "A numeric string.",
 														"example": "0",
+														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
 													}
 												}
@@ -1604,32 +1616,46 @@
 											"type": "object",
 											"properties": {
 												"bandwidthDownload": {
+													"description": "A numeric string.",
 													"type": "string",
-													"example": "83.765201"
+													"example": "83.765201",
+													"pattern": "^-?\\d+(\\.\\d+)?$"
 												},
 												"bandwidthUpload": {
+													"description": "A numeric string.",
 													"type": "string",
-													"example": "39.005561"
+													"example": "39.005561",
+													"pattern": "^-?\\d+(\\.\\d+)?$"
 												},
 												"jitterIdle": {
+													"description": "A numeric string.",
 													"type": "string",
-													"example": "25.648713"
+													"example": "25.648713",
+													"pattern": "^-?\\d+(\\.\\d+)?$"
 												},
 												"jitterLoaded": {
+													"description": "A numeric string.",
 													"type": "string",
-													"example": "77.462155"
+													"example": "77.462155",
+													"pattern": "^-?\\d+(\\.\\d+)?$"
 												},
 												"latencyIdle": {
+													"description": "A numeric string.",
 													"type": "string",
-													"example": "83.165385"
+													"example": "83.165385",
+													"pattern": "^-?\\d+(\\.\\d+)?$"
 												},
 												"latencyLoaded": {
+													"description": "A numeric string.",
 													"type": "string",
-													"example": "270.561124"
+													"example": "270.561124",
+													"pattern": "^-?\\d+(\\.\\d+)?$"
 												},
 												"packetLoss": {
+													"description": "A numeric string.",
 													"type": "string",
-													"example": "1.23705"
+													"example": "1.23705",
+													"pattern": "^-?\\d+(\\.\\d+)?$"
 												}
 											},
 											"required": [
@@ -2045,15 +2071,19 @@
 											"items": {
 												"properties": {
 													"bandwidthDownload": {
+														"description": "A numeric string.",
 														"type": "string",
-														"example": "642.509004"
+														"example": "642.509004",
+														"pattern": "^-?\\d+(\\.\\d+)?$"
 													},
 													"bandwidthUpload": {
+														"description": "A numeric string.",
 														"type": "string",
-														"example": "300.672274"
+														"example": "300.672274",
+														"pattern": "^-?\\d+(\\.\\d+)?$"
 													},
 													"clientASN": {
-														"type": "number",
+														"type": "integer",
 														"example": 33353
 													},
 													"clientASName": {
@@ -2061,23 +2091,31 @@
 														"example": "SIE-CGEI-ASN-1"
 													},
 													"jitterIdle": {
+														"description": "A numeric string.",
 														"type": "string",
-														"example": "2.956908"
+														"example": "2.956908",
+														"pattern": "^-?\\d+(\\.\\d+)?$"
 													},
 													"jitterLoaded": {
+														"description": "A numeric string.",
 														"type": "string",
-														"example": "19.500469"
+														"example": "19.500469",
+														"pattern": "^-?\\d+(\\.\\d+)?$"
 													},
 													"latencyIdle": {
+														"description": "A numeric string.",
 														"type": "string",
-														"example": "15.925"
+														"example": "15.925",
+														"pattern": "^-?\\d+(\\.\\d+)?$"
 													},
 													"latencyLoaded": {
+														"description": "A numeric string.",
 														"type": "string",
-														"example": "65.65"
+														"example": "65.65",
+														"pattern": "^-?\\d+(\\.\\d+)?$"
 													},
 													"numTests": {
-														"type": "number",
+														"type": "integer",
 														"example": 13123
 													},
 													"rankPower": {
@@ -2484,12 +2522,16 @@
 											"items": {
 												"properties": {
 													"bandwidthDownload": {
+														"description": "A numeric string.",
 														"type": "string",
-														"example": "295.886073"
+														"example": "295.886073",
+														"pattern": "^-?\\d+(\\.\\d+)?$"
 													},
 													"bandwidthUpload": {
+														"description": "A numeric string.",
 														"type": "string",
-														"example": "158.85269"
+														"example": "158.85269",
+														"pattern": "^-?\\d+(\\.\\d+)?$"
 													},
 													"clientCountryAlpha2": {
 														"type": "string",
@@ -2500,23 +2542,31 @@
 														"example": "Iceland"
 													},
 													"jitterIdle": {
+														"description": "A numeric string.",
 														"type": "string",
-														"example": "9.640685"
+														"example": "9.640685",
+														"pattern": "^-?\\d+(\\.\\d+)?$"
 													},
 													"jitterLoaded": {
+														"description": "A numeric string.",
 														"type": "string",
-														"example": "46.480023"
+														"example": "46.480023",
+														"pattern": "^-?\\d+(\\.\\d+)?$"
 													},
 													"latencyIdle": {
+														"description": "A numeric string.",
 														"type": "string",
-														"example": "15.208124"
+														"example": "15.208124",
+														"pattern": "^-?\\d+(\\.\\d+)?$"
 													},
 													"latencyLoaded": {
+														"description": "A numeric string.",
 														"type": "string",
-														"example": "114.758887"
+														"example": "114.758887",
+														"pattern": "^-?\\d+(\\.\\d+)?$"
 													},
 													"numTests": {
-														"type": "number",
+														"type": "integer",
 														"example": 13123
 													},
 													"rankPower": {

@@ -273,7 +273,7 @@
 													"description": "A numeric string that can include decimals and infinity values.",
 													"type": "string",
 													"example": "10.5",
-													"pattern": "^-?(?:\\d+(?:\\.\\d+)?|inf)$"
+													"pattern": "^-?(?:\\d+(?:\\.\\d+)?|[iI][nN][fF])$"
 												}
 											},
 											"required": [

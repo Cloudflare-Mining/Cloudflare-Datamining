@@ -701,8 +701,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/registrar-sandbox/registrations/{domain_name}": {
 		"operationId": "sandbox-registrar-domain-registration-get",
@@ -1102,8 +1101,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/registrar-sandbox/registrations/{domain_name}/registration-status": {
 		"operationId": "sandbox-registrar-domain-registration-get-status",
@@ -1620,8 +1618,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
-		"x-fern-sdk-method-name": "get-registration-status",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get-registration-status"
 	},
 	"GET /accounts/{account_id}/registrar-sandbox/registrations/{domain_name}/update-status": {
 		"operationId": "sandbox-registrar-domain-registration-get-update-status",
@@ -2085,8 +2082,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
-		"x-fern-sdk-method-name": "get-update-status",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get-update-status"
 	},
 	"GET /accounts/{account_id}/registrar/registrations": {
 		"operationId": "registrar-domain-registration-list",
@@ -2790,8 +2786,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/registrar/registrations/{domain_name}": {
 		"operationId": "registrar-domain-registration-get",
@@ -3191,8 +3186,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/registrar/registrations/{domain_name}/registration-status": {
 		"operationId": "registrar-domain-registration-get-status",
@@ -3709,8 +3703,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "get-registration-status",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get-registration-status"
 	},
 	"GET /accounts/{account_id}/registrar/registrations/{domain_name}/update-status": {
 		"operationId": "registrar-domain-registration-get-update-status",
@@ -4174,8 +4167,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "get-update-status",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get-update-status"
 	},
 	"PATCH /accounts/{account_id}/registrar-sandbox/registrations/{domain_name}": {
 		"operationId": "sandbox-registrar-domain-registration-update",
@@ -4909,8 +4901,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PATCH /accounts/{account_id}/registrar/registrations/{domain_name}": {
 		"operationId": "registrar-domain-registration-update",
@@ -5644,8 +5635,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/registrar-sandbox/registrations": {
 		"operationId": "sandbox-registrar-domain-registration-create",
@@ -7018,8 +7008,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/registrar/registrations": {
 		"operationId": "registrar-domain-registration-create",
@@ -8392,7 +8381,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

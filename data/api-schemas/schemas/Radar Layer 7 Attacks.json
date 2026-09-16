@@ -9760,7 +9760,7 @@
 														"example": "RELIANCEJIO-IN Reliance Jio Infocomm Limited"
 													},
 													"rank": {
-														"type": "number",
+														"type": "integer",
 														"example": 1
 													},
 													"value": {
@@ -11275,7 +11275,7 @@
 														"example": "France"
 													},
 													"rank": {
-														"type": "number",
+														"type": "integer",
 														"example": 1
 													},
 													"value": {
@@ -11673,7 +11673,7 @@
 											"items": {
 												"properties": {
 													"rank": {
-														"type": "number",
+														"type": "integer",
 														"example": 1
 													},
 													"targetCountryAlpha2": {

@@ -11,9 +11,17 @@
 				"required": true,
 				"schema": {
 					"description": "IP address.",
-					"type": "string",
-					"format": "ip",
-					"example": "8.8.8.8"
+					"example": "8.8.8.8",
+					"anyOf": [
+						{
+							"format": "ipv4",
+							"type": "string"
+						},
+						{
+							"format": "ipv6",
+							"type": "string"
+						}
+					]
 				}
 			},
 			{

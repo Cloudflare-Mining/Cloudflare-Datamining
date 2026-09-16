@@ -13,7 +13,7 @@
 					"description": "Domain name.",
 					"type": "string",
 					"example": "google.com",
-					"pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9])$"
+					"pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][a-zA-Z0-9-]*[A-Za-z0-9])$"
 				}
 			},
 			{
@@ -660,8 +660,7 @@
 														{
 															"type": "number"
 														}
-													],
-													"description": "A numeric string."
+													]
 												},
 												"type": "array"
 											},
@@ -1019,6 +1018,18 @@
 														"RATIO"
 													]
 												},
+												"top_0": {
+													"type": "object",
+													"properties": {
+														"date": {
+															"type": "string",
+															"format": "date"
+														}
+													},
+													"required": [
+														"date"
+													]
+												},
 												"units": {
 													"description": "Measurement units for the results.",
 													"type": "array",
@@ -1046,7 +1057,8 @@
 												"confidenceInfo",
 												"normalization",
 												"lastUpdated",
-												"units"
+												"units",
+												"top_0"
 											]
 										},
 										"top_0": {
@@ -1058,7 +1070,7 @@
 														"items": {
 															"properties": {
 																"id": {
-																	"type": "number",
+																	"type": "integer",
 																	"example": 81
 																},
 																"name": {
@@ -1066,7 +1078,7 @@
 																	"example": "Content Servers"
 																},
 																"superCategoryId": {
-																	"type": "number",
+																	"type": "integer",
 																	"example": 26
 																}
 															},

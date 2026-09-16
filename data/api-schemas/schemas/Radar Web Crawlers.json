@@ -393,7 +393,7 @@
 											"additionalProperties": {
 												"description": "A numeric string that can include decimals and infinity values.",
 												"example": "10.5",
-												"pattern": "^-?(?:\\d+(?:\\.\\d+)?|inf)$",
+												"pattern": "^-?(?:\\d+(?:\\.\\d+)?|[iI][nN][fF])$",
 												"type": "string"
 											}
 										}
@@ -928,7 +928,7 @@
 												"items": {
 													"description": "A numeric string that can include decimals and infinity values.",
 													"example": "10.5",
-													"pattern": "^-?(?:\\d+(?:\\.\\d+)?|inf)$",
+													"pattern": "^-?(?:\\d+(?:\\.\\d+)?|[iI][nN][fF])$",
 													"type": "string"
 												},
 												"type": "array"

@@ -24,6 +24,7 @@
 				"schema": {
 					"description": "Skips the specified number of objects before fetching the results.",
 					"type": "integer",
+					"example": 0,
 					"minimum": 0
 				}
 			},
@@ -411,12 +412,14 @@
 												"validFrom": {
 													"description": "The start date of the certificate’s validity period (ISO format).",
 													"type": "string",
-													"example": "2019-12-09T00:00:00Z"
+													"format": "date",
+													"example": "2019-12-09"
 												},
 												"validTo": {
 													"description": "The end date of the certificate’s validity period (ISO format).",
 													"type": "string",
-													"example": "2032-06-08T00:00:00Z"
+													"format": "date",
+													"example": "2032-06-08"
 												}
 											},
 											"required": [
@@ -528,6 +531,7 @@
 				"schema": {
 					"description": "Skips the specified number of objects before fetching the results.",
 					"type": "integer",
+					"example": 0,
 					"minimum": 0
 				}
 			},

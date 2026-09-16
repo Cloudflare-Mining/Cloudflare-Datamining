@@ -2796,6 +2796,9 @@
 					}
 				}
 			},
+			"400": {
+				"description": "Bad request."
+			},
 			"500": {
 				"description": "Internal server error."
 			}
@@ -3003,7 +3006,7 @@
 								"maximum": 120000
 							},
 							"addScriptTag": {
-								"description": "Adds a `<script>` tag into the page with the desired URL or content.",
+								"description": "Adds a script element into the page with the desired URL or content.",
 								"type": "array",
 								"items": {
 									"additionalProperties": false,
@@ -3604,14 +3607,54 @@
 						"additionalProperties": false,
 						"oneOf": [
 							{
+								"not": {
+									"properties": {
+										"html": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"html"
+									],
+									"type": "object"
+								},
+								"properties": {
+									"html": {
+										"type": "string"
+									},
+									"url": {
+										"type": "string"
+									}
+								},
 								"required": [
 									"url"
-								]
+								],
+								"type": "object"
 							},
 							{
+								"not": {
+									"properties": {
+										"url": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"url"
+									],
+									"type": "object"
+								},
+								"properties": {
+									"html": {
+										"type": "string"
+									},
+									"url": {
+										"type": "string"
+									}
+								},
 								"required": [
 									"html"
-								]
+								],
+								"type": "object"
 							}
 						]
 					}
@@ -3820,7 +3863,8 @@
 													]
 												},
 												{
-													"nullable": true
+													"nullable": true,
+													"type": "object"
 												}
 											]
 										}
@@ -4098,7 +4142,7 @@
 								"maximum": 120000
 							},
 							"addScriptTag": {
-								"description": "Adds a `<script>` tag into the page with the desired URL or content.",
+								"description": "Adds a script element into the page with the desired URL or content.",
 								"type": "array",
 								"items": {
 									"additionalProperties": false,
@@ -4693,14 +4737,54 @@
 						"additionalProperties": false,
 						"oneOf": [
 							{
+								"not": {
+									"properties": {
+										"html": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"html"
+									],
+									"type": "object"
+								},
+								"properties": {
+									"html": {
+										"type": "string"
+									},
+									"url": {
+										"type": "string"
+									}
+								},
 								"required": [
 									"url"
-								]
+								],
+								"type": "object"
 							},
 							{
+								"not": {
+									"properties": {
+										"url": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"url"
+									],
+									"type": "object"
+								},
+								"properties": {
+									"html": {
+										"type": "string"
+									},
+									"url": {
+										"type": "string"
+									}
+								},
 								"required": [
 									"html"
-								]
+								],
+								"type": "object"
 							}
 						]
 					}
@@ -5062,7 +5146,7 @@
 										"maximum": 120000
 									},
 									"addScriptTag": {
-										"description": "Adds a `<script>` tag into the page with the desired URL or content.",
+										"description": "Adds a script element into the page with the desired URL or content.",
 										"type": "array",
 										"items": {
 											"additionalProperties": false,
@@ -5561,7 +5645,7 @@
 													"json_schema": {
 														"description": "Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/",
 														"type": "object",
-														"additionalProperties": {},
+														"additionalProperties": true,
 														"nullable": true
 													},
 													"type": {
@@ -5998,7 +6082,7 @@
 													"json_schema": {
 														"description": "Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/",
 														"type": "object",
-														"additionalProperties": {},
+														"additionalProperties": true,
 														"nullable": true
 													},
 													"type": {
@@ -6877,7 +6961,7 @@
 								"maximum": 120000
 							},
 							"addScriptTag": {
-								"description": "Adds a `<script>` tag into the page with the desired URL or content.",
+								"description": "Adds a script element into the page with the desired URL or content.",
 								"type": "array",
 								"items": {
 									"additionalProperties": false,
@@ -7413,7 +7497,7 @@
 									"json_schema": {
 										"description": "Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/",
 										"type": "object",
-										"additionalProperties": {},
+										"additionalProperties": true,
 										"nullable": true
 									},
 									"type": {
@@ -7512,14 +7596,54 @@
 						"additionalProperties": false,
 						"oneOf": [
 							{
+								"not": {
+									"properties": {
+										"html": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"html"
+									],
+									"type": "object"
+								},
+								"properties": {
+									"html": {
+										"type": "string"
+									},
+									"url": {
+										"type": "string"
+									}
+								},
 								"required": [
 									"url"
-								]
+								],
+								"type": "object"
 							},
 							{
+								"not": {
+									"properties": {
+										"url": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"url"
+									],
+									"type": "object"
+								},
+								"properties": {
+									"html": {
+										"type": "string"
+									},
+									"url": {
+										"type": "string"
+									}
+								},
 								"required": [
 									"html"
-								]
+								],
+								"type": "object"
 							}
 						]
 					}
@@ -7887,7 +8011,7 @@
 								"maximum": 120000
 							},
 							"addScriptTag": {
-								"description": "Adds a `<script>` tag into the page with the desired URL or content.",
+								"description": "Adds a script element into the page with the desired URL or content.",
 								"type": "array",
 								"items": {
 									"additionalProperties": false,
@@ -8490,14 +8614,54 @@
 						"additionalProperties": false,
 						"oneOf": [
 							{
+								"not": {
+									"properties": {
+										"html": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"html"
+									],
+									"type": "object"
+								},
+								"properties": {
+									"html": {
+										"type": "string"
+									},
+									"url": {
+										"type": "string"
+									}
+								},
 								"required": [
 									"url"
-								]
+								],
+								"type": "object"
 							},
 							{
+								"not": {
+									"properties": {
+										"url": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"url"
+									],
+									"type": "object"
+								},
+								"properties": {
+									"html": {
+										"type": "string"
+									},
+									"url": {
+										"type": "string"
+									}
+								},
 								"required": [
 									"html"
-								]
+								],
+								"type": "object"
 							}
 						]
 					}
@@ -8860,7 +9024,7 @@
 								"maximum": 120000
 							},
 							"addScriptTag": {
-								"description": "Adds a `<script>` tag into the page with the desired URL or content.",
+								"description": "Adds a script element into the page with the desired URL or content.",
 								"type": "array",
 								"items": {
 									"additionalProperties": false,
@@ -9455,14 +9619,54 @@
 						"additionalProperties": false,
 						"oneOf": [
 							{
+								"not": {
+									"properties": {
+										"html": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"html"
+									],
+									"type": "object"
+								},
+								"properties": {
+									"html": {
+										"type": "string"
+									},
+									"url": {
+										"type": "string"
+									}
+								},
 								"required": [
 									"url"
-								]
+								],
+								"type": "object"
 							},
 							{
+								"not": {
+									"properties": {
+										"url": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"url"
+									],
+									"type": "object"
+								},
+								"properties": {
+									"html": {
+										"type": "string"
+									},
+									"url": {
+										"type": "string"
+									}
+								},
 								"required": [
 									"html"
-								]
+								],
+								"type": "object"
 							}
 						]
 					}
@@ -9822,7 +10026,7 @@
 								"maximum": 120000
 							},
 							"addScriptTag": {
-								"description": "Adds a `<script>` tag into the page with the desired URL or content.",
+								"description": "Adds a script element into the page with the desired URL or content.",
 								"type": "array",
 								"items": {
 									"additionalProperties": false,
@@ -10570,14 +10774,54 @@
 						"additionalProperties": false,
 						"oneOf": [
 							{
+								"not": {
+									"properties": {
+										"html": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"html"
+									],
+									"type": "object"
+								},
+								"properties": {
+									"html": {
+										"type": "string"
+									},
+									"url": {
+										"type": "string"
+									}
+								},
 								"required": [
 									"url"
-								]
+								],
+								"type": "object"
 							},
 							{
+								"not": {
+									"properties": {
+										"url": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"url"
+									],
+									"type": "object"
+								},
+								"properties": {
+									"html": {
+										"type": "string"
+									},
+									"url": {
+										"type": "string"
+									}
+								},
 								"required": [
 									"html"
-								]
+								],
+								"type": "object"
 							}
 						]
 					}
@@ -10856,7 +11100,7 @@
 								"maximum": 120000
 							},
 							"addScriptTag": {
-								"description": "Adds a `<script>` tag into the page with the desired URL or content.",
+								"description": "Adds a script element into the page with the desired URL or content.",
 								"type": "array",
 								"items": {
 									"additionalProperties": false,
@@ -11466,14 +11710,54 @@
 						"additionalProperties": false,
 						"oneOf": [
 							{
+								"not": {
+									"properties": {
+										"html": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"html"
+									],
+									"type": "object"
+								},
+								"properties": {
+									"html": {
+										"type": "string"
+									},
+									"url": {
+										"type": "string"
+									}
+								},
 								"required": [
 									"url"
-								]
+								],
+								"type": "object"
 							},
 							{
+								"not": {
+									"properties": {
+										"url": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"url"
+									],
+									"type": "object"
+								},
+								"properties": {
+									"html": {
+										"type": "string"
+									},
+									"url": {
+										"type": "string"
+									}
+								},
 								"required": [
 									"html"
-								]
+								],
+								"type": "object"
 							}
 						],
 						"required": [
@@ -11907,7 +12191,7 @@
 								"maximum": 120000
 							},
 							"addScriptTag": {
-								"description": "Adds a `<script>` tag into the page with the desired URL or content.",
+								"description": "Adds a script element into the page with the desired URL or content.",
 								"type": "array",
 								"items": {
 									"additionalProperties": false,
@@ -12600,14 +12884,54 @@
 						"additionalProperties": false,
 						"oneOf": [
 							{
+								"not": {
+									"properties": {
+										"html": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"html"
+									],
+									"type": "object"
+								},
+								"properties": {
+									"html": {
+										"type": "string"
+									},
+									"url": {
+										"type": "string"
+									}
+								},
 								"required": [
 									"url"
-								]
+								],
+								"type": "object"
 							},
 							{
+								"not": {
+									"properties": {
+										"url": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"url"
+									],
+									"type": "object"
+								},
+								"properties": {
+									"html": {
+										"type": "string"
+									},
+									"url": {
+										"type": "string"
+									}
+								},
 								"required": [
 									"html"
-								]
+								],
+								"type": "object"
 							}
 						]
 					}
@@ -12937,7 +13261,7 @@
 								"maximum": 120000
 							},
 							"addScriptTag": {
-								"description": "Adds a `<script>` tag into the page with the desired URL or content.",
+								"description": "Adds a script element into the page with the desired URL or content.",
 								"type": "array",
 								"items": {
 									"additionalProperties": false,
@@ -13622,14 +13946,54 @@
 						"additionalProperties": false,
 						"oneOf": [
 							{
+								"not": {
+									"properties": {
+										"html": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"html"
+									],
+									"type": "object"
+								},
+								"properties": {
+									"html": {
+										"type": "string"
+									},
+									"url": {
+										"type": "string"
+									}
+								},
 								"required": [
 									"url"
-								]
+								],
+								"type": "object"
 							},
 							{
+								"not": {
+									"properties": {
+										"url": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"url"
+									],
+									"type": "object"
+								},
+								"properties": {
+									"html": {
+										"type": "string"
+									},
+									"url": {
+										"type": "string"
+									}
+								},
 								"required": [
 									"html"
-								]
+								],
+								"type": "object"
 							}
 						]
 					}
