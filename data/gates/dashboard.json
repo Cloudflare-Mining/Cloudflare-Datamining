@@ -2970,6 +2970,14 @@
 	"uc-decouple-io": {
 		"enabled": true
 	},
+	"uc-product-recommendations-sept-2026": {
+		"enabled": false,
+		"branches": [
+			"control",
+			"variant-a",
+			"variant-b"
+		]
+	},
 	"ui-last-account-redirect-with-orgs": {
 		"enabled": true
 	},
@@ -3145,6 +3153,9 @@
 	},
 	"workers-hmd": {
 		"enabled": true
+	},
+	"workers-kv-jurisdictions": {
+		"enabled": false
 	},
 	"workers-metrics-configurable-dashboard": {
 		"enabled": false
