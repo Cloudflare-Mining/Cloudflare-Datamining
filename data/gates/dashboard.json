@@ -73,6 +73,9 @@
 	"agent-readiness-aeo": {
 		"enabled": true
 	},
+	"agent-readiness-aeo-ai-bot-access": {
+		"enabled": false
+	},
 	"agent-readiness-aeo-timeseries": {
 		"enabled": true
 	},
@@ -2405,7 +2408,7 @@
 		"enabled": false
 	},
 	"queues-notification-consumer-config": {
-		"enabled": false
+		"enabled": true
 	},
 	"queues-realtime-backlog-sse": {
 		"enabled": true

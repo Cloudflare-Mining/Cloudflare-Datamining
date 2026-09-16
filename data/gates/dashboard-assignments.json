@@ -314,6 +314,9 @@
 	"cfone-cloudy-threat-events-enabled": {
 		"true": 100
 	},
+	"cfone-top-level-nav-group": {
+		"false": 100
+	},
 	"cfone-vulnerability-intelligence-enabled": {
 		"true": 100
 	},
@@ -838,7 +841,7 @@
 		"true": 100
 	},
 	"page-shield-cloudy-review": {
-		"true": 100
+		"false": 100
 	},
 	"page-shield-rules-reporting-directives": {
 		"true": 100
@@ -981,6 +984,9 @@
 	},
 	"queues-message-purging": {
 		"true": 100
+	},
+	"queues-notification-consumer-config": {
+		"false": 100
 	},
 	"quick-edit-tail-logs": {
 		"true": 100
