@@ -6,6 +6,10 @@
 <h3>Available Locations</h3>
 <ul>
 	<li>Austin, US</li>
+	<li>Atlanta, GA</li>
+	<li>Denver, CO</li>
+	<li>San Francisco, CA</li>
+	<li>Washington D.C.</li>
 </ul>
 <h3><strong>About the Role</strong></h3>
 <p>Cloudflare runs one of the world's largest networks, and every API call that configures it, from any customer, integration, or internal service, starts by proving who is calling and what they're allowed to do. The IAM team owns the authentication and authorization systems behind that: the identity layer of the Control Plane operating at global scale. Our surface spans things like login and SSO, OAuth and API tokens, account membership, roles and permissions, and SCIM provisioning.</p>
