@@ -1,23 +1,23 @@
-<p>Yesterday Cloudflare launched <a href="https://developers.cloudflare.com/argo-tunnel" target="_blank" rel="noopener noreferrer">Argo Tunnel</a>. In the words of the product team:</p>
-<blockquote>Argo Tunnel exposes applications running on your local web server, on any network with an Internet connection, without adding DNS records or configuring a firewall or router. It just works.</blockquote>
-<p>Once I grokked this, the first thing that came to mind was that I could actually use one of my Raspberry Pi's sitting around to serve a website, without:</p>
+<p data-astro-cid-yoyuw6fx="">Yesterday Cloudflare launched <a href="https://developers.cloudflare.com/argo-tunnel" target="_blank" rel="noopener noreferrer">Argo Tunnel</a>. In the words of the product team:</p>
+<blockquote data-astro-cid-yoyuw6fx="">Argo Tunnel exposes applications running on your local web server, on any network with an Internet connection, without adding DNS records or configuring a firewall or router. It just works.</blockquote>
+<p data-astro-cid-yoyuw6fx="">Once I grokked this, the first thing that came to mind was that I could actually use one of my Raspberry Pi's sitting around to serve a website, without:</p>
 <ul>
 	<li>A flaky DDNS running on my router</li>
 	<li>Exposing my home network to the world</li>
 	<li>A cloud VM</li>
 </ul>
-<p>Ooooh... so exciting.</p>
-<h3>The Rig</h3>
-<p>I'll assume you already have a Raspberry Pi with Raspbian on it.</p>
+<p data-astro-cid-yoyuw6fx="">Ooooh... so exciting.</p>
+<h3 data-astro-cid-yoyuw6fx="">The Rig</h3>
+<p data-astro-cid-yoyuw6fx="">I'll assume you already have a Raspberry Pi with Raspbian on it.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="536" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NWDF0WCNV1SZWMW70WEC.jpeg&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NWDF0WCNV1SZWMW70WEC.jpeg&amp;w=640&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NWDF0WCNV1SZWMW70WEC.jpeg&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NWDF0WCNV1SZWMW70WEC.jpeg&amp;w=750&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NWDF0WCNV1SZWMW70WEC.jpeg&amp;w=828&amp;h=621&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NWDF0WCNV1SZWMW70WEC.jpeg&amp;w=1080&amp;h=810&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NWDF0WCNV1SZWMW70WEC.jpeg&amp;w=1280&amp;h=960&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NWDF0WCNV1SZWMW70WEC.jpeg&amp;w=1430&amp;h=1072&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="My rig" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NWDF0WCNV1SZWMW70WEC.jpeg&amp;w=1024&amp;h=768&amp;f=webp" data-lightbox-width="1024" data-lightbox-height="768" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="536" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p>Plug the Pi into your router. It should now have an IP address. Look that up in your router’s admin UI:</p>
+<p data-astro-cid-yoyuw6fx="">Plug the Pi into your router. It should now have an IP address. Look that up in your router’s admin UI:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="496" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMTHVAS45RX9X8HEACQA.png&amp;w=715&amp;h=496&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMTHVAS45RX9X8HEACQA.png&amp;w=640&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMTHVAS45RX9X8HEACQA.png&amp;w=715&amp;h=496&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMTHVAS45RX9X8HEACQA.png&amp;w=750&amp;h=520&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMTHVAS45RX9X8HEACQA.png&amp;w=828&amp;h=574&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMTHVAS45RX9X8HEACQA.png&amp;w=1080&amp;h=749&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMTHVAS45RX9X8HEACQA.png&amp;w=1280&amp;h=888&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMTHVAS45RX9X8HEACQA.png&amp;w=1430&amp;h=992&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Attached devices" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMTHVAS45RX9X8HEACQA.png&amp;w=747&amp;h=518&amp;f=webp" data-lightbox-width="747" data-lightbox-height="518" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="496" class="pt-portable-image-media"></div>
 </figure>
-<p>OK, that's promising. Let's connect to that IP using the default pi/raspberry credentials:</p>
+<p data-astro-cid-yoyuw6fx="">OK, that's promising. Let's connect to that IP using the default pi/raspberry credentials:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ssh</span><span class="sk-005cc5-ffc799"> 192.168.8.26</span><span class="sk-005cc5-99ffe4"> -l</span><span class="sk-032f62-99ffe4"> pi</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">pi@192.168.8.26</span><span class="sk-6f42c1-ffc799">'s password: </span></span>
@@ -53,8 +53,8 @@
 		})
 	});
 </script>
-<p>We're in!</p>
-<p><strong>Pro tip: quick way to figure it out which type you have is</strong></p>
+<p data-astro-cid-yoyuw6fx="">We're in!</p>
+<p data-astro-cid-yoyuw6fx=""><strong>Pro tip: quick way to figure it out which type you have is</strong></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">pi@raspberrypi:~</span><span class="sk-24292e-fff"> $ </span><span class="sk-032f62-99ffe4">cat</span><span class="sk-032f62-99ffe4"> /proc/cpuinfo</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> 'Revision'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> awk</span><span class="sk-032f62-99ffe4"> '{print $3}'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sed</span><span class="sk-032f62-99ffe4"> 's/^1000//'</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">a22082</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -63,9 +63,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Then look up the value in the <a href="https://elinux.org/RPi_HardwareHistory" target="_blank" rel="noopener noreferrer">Raspbery Pi revision history</a>. I have Raspberry Pi 3 Model B</p>
-<h3>Internet connectivity</h3>
-<p>OK, so we have a Pi connected to our router. Let's make 100% sure it can connect to the Internet.</p>
+<p data-astro-cid-yoyuw6fx="">Then look up the value in the <a href="https://elinux.org/RPi_HardwareHistory" target="_blank" rel="noopener noreferrer">Raspbery Pi revision history</a>. I have Raspberry Pi 3 Model B</p>
+<h3 data-astro-cid-yoyuw6fx="">Internet connectivity</h3>
+<p data-astro-cid-yoyuw6fx="">OK, so we have a Pi connected to our router. Let's make 100% sure it can connect to the Internet.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">pi@raspberrypi:~$</span><span class="sk-24292e-fff"> $ </span><span class="sk-032f62-99ffe4">curl</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> https://www.cloudflare.com</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">HTTP/2</span><span class="sk-005cc5-ffc799"> 200</span></span>
@@ -88,9 +88,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>That first line HTTP/2 200 is the OK status code, which is enough to tell us we can connect out to the Internet. Normally this wouldn't be particularly exciting, as it's allowing connections <strong>in</strong> that causes problems. That's the promise of Argo Tunnels however, it says on the tin we don't need to poke any firewall holes or configure any DNS. Big claim, let's test it.</p>
-<h3>Install the Agent</h3>
-<p>Go to <a href="https://developers.cloudflare.com/argo-tunnel/downloads" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/argo-tunnel/downloads/</a> to get the url for the ARM build for your Pi. At the time of writing it was <a href="https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz" target="_blank" rel="noopener noreferrer">https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz</a></p>
+<p data-astro-cid-yoyuw6fx="">That first line HTTP/2 200 is the OK status code, which is enough to tell us we can connect out to the Internet. Normally this wouldn't be particularly exciting, as it's allowing connections <strong>in</strong> that causes problems. That's the promise of Argo Tunnels however, it says on the tin we don't need to poke any firewall holes or configure any DNS. Big claim, let's test it.</p>
+<h3 data-astro-cid-yoyuw6fx="">Install the Agent</h3>
+<p data-astro-cid-yoyuw6fx="">Go to <a href="https://developers.cloudflare.com/argo-tunnel/downloads" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/argo-tunnel/downloads/</a> to get the url for the ARM build for your Pi. At the time of writing it was <a href="https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz" target="_blank" rel="noopener noreferrer">https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz</a></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wget</span><span class="sk-032f62-99ffe4"> https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Resolving</span><span class="sk-032f62-99ffe4"> bin.equinox.io</span><span class="sk-24292e-fff"> (bin.equinox.io)... 54.243.137.45, 107.22.233.132, 50.19.252.69, ...</span></span>
@@ -104,7 +104,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Untar it</p>
+<p data-astro-cid-yoyuw6fx="">Untar it</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mkdir</span><span class="sk-032f62-99ffe4"> argo-tunnel</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> tar</span><span class="sk-005cc5-99ffe4"> -xvzf</span><span class="sk-032f62-99ffe4"> cloudflared-stable-linux-arm.tgz</span><span class="sk-005cc5-99ffe4"> -C</span><span class="sk-032f62-99ffe4"> ./argo-tunnel</span></span>
@@ -115,7 +115,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Check you can execute it.</p>
+<p data-astro-cid-yoyuw6fx="">Check you can execute it.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./cloudflared</span><span class="sk-005cc5-99ffe4"> --version</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cloudflared</span><span class="sk-032f62-99ffe4"> version</span><span class="sk-005cc5-ffc799"> 2018.3.0</span><span class="sk-24292e-fff"> (built </span><span class="sk-032f62-99ffe4">2018-03-02-1820</span><span class="sk-032f62-99ffe4"> UTC</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -124,12 +124,12 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Looks OK. Now, we're hoping that the agent will magically connect from the Pi out to the nearest Cloudflare POP. We obviously want that to be secure. Furthermore, we're expecting that when a request comes inbound, it magically gets routed through Cloudflare's network and back to my Raspberry Pi.</p>
-<p>Seems unlikely, but let’s have faith. Here is my mental model of what's happening:</p>
+<p data-astro-cid-yoyuw6fx="">Looks OK. Now, we're hoping that the agent will magically connect from the Pi out to the nearest Cloudflare POP. We obviously want that to be secure. Furthermore, we're expecting that when a request comes inbound, it magically gets routed through Cloudflare's network and back to my Raspberry Pi.</p>
+<p data-astro-cid-yoyuw6fx="">Seems unlikely, but let’s have faith. Here is my mental model of what's happening:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="392" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PESQ3MJ2VR1AGH1DD0G0.png&amp;w=715&amp;h=392&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PESQ3MJ2VR1AGH1DD0G0.png&amp;w=640&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PESQ3MJ2VR1AGH1DD0G0.png&amp;w=715&amp;h=392&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PESQ3MJ2VR1AGH1DD0G0.png&amp;w=750&amp;h=411&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PESQ3MJ2VR1AGH1DD0G0.png&amp;w=828&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PESQ3MJ2VR1AGH1DD0G0.png&amp;w=1080&amp;h=592&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PESQ3MJ2VR1AGH1DD0G0.png&amp;w=1280&amp;h=702&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PESQ3MJ2VR1AGH1DD0G0.png&amp;w=1430&amp;h=784&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="My mental model of Argo Tunnel" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PESQ3MJ2VR1AGH1DD0G0.png&amp;w=1563&amp;h=857&amp;f=webp" data-lightbox-width="1563" data-lightbox-height="857" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="392" class="pt-portable-image-media"></div>
 </figure>
-<p>So let's create that secure tunnel. I guess we need some sort of certificate or credentials...</p>
+<p data-astro-cid-yoyuw6fx="">So let's create that secure tunnel. I guess we need some sort of certificate or credentials...</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./cloudflared</span><span class="sk-032f62-99ffe4"> login</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -137,7 +137,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>You'll see output in the command window similar to this:</p>
+<p data-astro-cid-yoyuw6fx="">You'll see output in the command window similar to this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">A</span><span class="sk-032f62-99ffe4"> browser</span><span class="sk-032f62-99ffe4"> window</span><span class="sk-032f62-99ffe4"> should</span><span class="sk-032f62-99ffe4"> have</span><span class="sk-032f62-99ffe4"> opened</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> following</span><span class="sk-032f62-99ffe4"> URL:</span></span>
 <span class="line"></span>
@@ -149,19 +149,19 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Our headless Pi doesn't have a web browser, so let's copy the url from the console into the browser on our host dev machine.</p>
-<p>This part assumes you already have a domain on Cloudflare If you don't go to the <a href="https://support.cloudflare.com/hc/en-us/articles/201720164" target="_blank" rel="noopener noreferrer">setup guide</a> to get started.</p>
+<p data-astro-cid-yoyuw6fx="">Our headless Pi doesn't have a web browser, so let's copy the url from the console into the browser on our host dev machine.</p>
+<p data-astro-cid-yoyuw6fx="">This part assumes you already have a domain on Cloudflare If you don't go to the <a href="https://support.cloudflare.com/hc/en-us/articles/201720164" target="_blank" rel="noopener noreferrer">setup guide</a> to get started.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="258" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P9ZG1DHJSYKMCA22RJF9.png&amp;w=715&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P9ZG1DHJSYKMCA22RJF9.png&amp;w=640&amp;h=231&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P9ZG1DHJSYKMCA22RJF9.png&amp;w=715&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P9ZG1DHJSYKMCA22RJF9.png&amp;w=750&amp;h=271&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P9ZG1DHJSYKMCA22RJF9.png&amp;w=828&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P9ZG1DHJSYKMCA22RJF9.png&amp;w=1080&amp;h=390&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P9ZG1DHJSYKMCA22RJF9.png&amp;w=1280&amp;h=462&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P9ZG1DHJSYKMCA22RJF9.png&amp;w=1430&amp;h=516&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="authorize-choose-domain" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P9ZG1DHJSYKMCA22RJF9.png&amp;w=1550&amp;h=560&amp;f=webp" data-lightbox-width="1550" data-lightbox-height="560" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="258" class="pt-portable-image-media"></div>
 </figure>
-<p>We're being asked which domain we want this tunnel to sit behind. I've chosen <strong>pacman.wiki</strong>. Click Authorize.</p>
+<p data-astro-cid-yoyuw6fx="">We're being asked which domain we want this tunnel to sit behind. I've chosen <strong>pacman.wiki</strong>. Click Authorize.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="198" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EQ8STB0H21C4T5Z89Q9R.png&amp;w=715&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EQ8STB0H21C4T5Z89Q9R.png&amp;w=640&amp;h=177&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EQ8STB0H21C4T5Z89Q9R.png&amp;w=715&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EQ8STB0H21C4T5Z89Q9R.png&amp;w=750&amp;h=208&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EQ8STB0H21C4T5Z89Q9R.png&amp;w=828&amp;h=229&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EQ8STB0H21C4T5Z89Q9R.png&amp;w=1080&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EQ8STB0H21C4T5Z89Q9R.png&amp;w=1280&amp;h=354&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EQ8STB0H21C4T5Z89Q9R.png&amp;w=1430&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="authorize-confirm" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EQ8STB0H21C4T5Z89Q9R.png&amp;w=854&amp;h=237&amp;f=webp" data-lightbox-width="854" data-lightbox-height="237" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="198" class="pt-portable-image-media"></div>
 </figure>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="183" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H8HBH0GEKKBTWVGANF63.png&amp;w=715&amp;h=183&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H8HBH0GEKKBTWVGANF63.png&amp;w=640&amp;h=164&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H8HBH0GEKKBTWVGANF63.png&amp;w=715&amp;h=183&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H8HBH0GEKKBTWVGANF63.png&amp;w=750&amp;h=192&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H8HBH0GEKKBTWVGANF63.png&amp;w=828&amp;h=212&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H8HBH0GEKKBTWVGANF63.png&amp;w=1080&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H8HBH0GEKKBTWVGANF63.png&amp;w=1280&amp;h=328&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H8HBH0GEKKBTWVGANF63.png&amp;w=1430&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="authorize-complete" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H8HBH0GEKKBTWVGANF63.png&amp;w=848&amp;h=217&amp;f=webp" data-lightbox-width="848" data-lightbox-height="217" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="183" class="pt-portable-image-media"></div>
 </figure>
-<p>You should now see this back on your pi:</p>
+<p data-astro-cid-yoyuw6fx="">You should now see this back on your pi:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">You</span><span class="sk-032f62-99ffe4"> have</span><span class="sk-032f62-99ffe4"> successfully</span><span class="sk-032f62-99ffe4"> logged</span><span class="sk-032f62-99ffe4"> in.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">If</span><span class="sk-032f62-99ffe4"> you</span><span class="sk-032f62-99ffe4"> wish</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> copy</span><span class="sk-032f62-99ffe4"> your</span><span class="sk-032f62-99ffe4"> credentials</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> server,</span><span class="sk-032f62-99ffe4"> they</span><span class="sk-032f62-99ffe4"> have</span><span class="sk-032f62-99ffe4"> been</span><span class="sk-032f62-99ffe4"> saved</span><span class="sk-032f62-99ffe4"> to:</span></span>
@@ -171,9 +171,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Aha! That answers how the tunnel gets secured. The agent has created a certificate and will use that to secure the connection back to Cloudflare. Now let's create the tunnel and serve some content!</p>
-<p><code>$ cloudflared --hostname [hostname] --hello-world</code></p>
-<p><strong>hostname</strong> is a fully-qualified domain name under the domain you chose to Authorize for Argo Tunnels earlier. I'm going to use <strong>tunnel.pacman.wiki</strong></p>
+<p data-astro-cid-yoyuw6fx="">Aha! That answers how the tunnel gets secured. The agent has created a certificate and will use that to secure the connection back to Cloudflare. Now let's create the tunnel and serve some content!</p>
+<p data-astro-cid-yoyuw6fx=""><code>$ cloudflared --hostname [hostname] --hello-world</code></p>
+<p data-astro-cid-yoyuw6fx=""><strong>hostname</strong> is a fully-qualified domain name under the domain you chose to Authorize for Argo Tunnels earlier. I'm going to use <strong>tunnel.pacman.wiki</strong></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./cloudflared</span><span class="sk-005cc5-99ffe4"> --hostname</span><span class="sk-032f62-99ffe4"> tunnel.pacman.wiki</span><span class="sk-005cc5-99ffe4"> --hello-world</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">INFO[0002]</span><span class="sk-032f62-99ffe4"> Proxying</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-032f62-99ffe4"> requests</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> https://127.0.0.1:46727</span><span class="sk-24292e-fff"> </span></span>
@@ -188,11 +188,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Huh, interesting. So, we've connected to my nearest POP(s). I'm in the San Francisco Bay Area, so SJC and LAX seems reasonable. What now though? Surely that's not it? If I'm reading this right, I can go to my browser, enter <a href="https://tunnel.pacman.wiki" target="_blank" rel="noopener noreferrer">https://tunnel.pacman.wiki</a> and I'll get a hello world page... surely not.</p>
+<p data-astro-cid-yoyuw6fx="">Huh, interesting. So, we've connected to my nearest POP(s). I'm in the San Francisco Bay Area, so SJC and LAX seems reasonable. What now though? Surely that's not it? If I'm reading this right, I can go to my browser, enter <a href="https://tunnel.pacman.wiki" target="_blank" rel="noopener noreferrer">https://tunnel.pacman.wiki</a> and I'll get a hello world page... surely not.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="432" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M4Z1C924JX540FV6489V.png&amp;w=715&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M4Z1C924JX540FV6489V.png&amp;w=640&amp;h=387&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M4Z1C924JX540FV6489V.png&amp;w=715&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M4Z1C924JX540FV6489V.png&amp;w=750&amp;h=453&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M4Z1C924JX540FV6489V.png&amp;w=828&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M4Z1C924JX540FV6489V.png&amp;w=1080&amp;h=653&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M4Z1C924JX540FV6489V.png&amp;w=1280&amp;h=773&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M4Z1C924JX540FV6489V.png&amp;w=1430&amp;h=864&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Success!" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M4Z1C924JX540FV6489V.png&amp;w=1160&amp;h=701&amp;f=webp" data-lightbox-width="1160" data-lightbox-height="701" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="432" class="pt-portable-image-media"></div>
 </figure>
-<p>And back on the Pi</p>
+<p data-astro-cid-yoyuw6fx="">And back on the Pi</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">INFO[0615]</span><span class="sk-032f62-99ffe4"> GET</span><span class="sk-032f62-99ffe4"> https://127.0.0.1:62627/</span><span class="sk-032f62-99ffe4"> HTTP/1.1</span><span class="sk-032f62-99ffe4"> CF-RAY=4067701b598e8184-LAX</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">INFO[0615]</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-032f62-99ffe4"> OK</span><span class="sk-032f62-99ffe4">  CF-RAY=4067701b598e8184-LAX</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -201,7 +201,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Mind. Blown. So what happened here exactly...</p>
+<p data-astro-cid-yoyuw6fx="">Mind. Blown. So what happened here exactly...</p>
 <ol>
 	<li>The agent on the Pi created a secure tunnel (a persistent http2 connection) back to the nearest Cloudflare Argo Tunnels server</li>
 	<li>The tunnel was secured with the certificate generated by the agent.</li>
@@ -209,13 +209,13 @@
 	<li>Cloudflare received the request, saw the domain was Cloudflare managed and saw a tunnel set up to that hostname</li>
 	<li>The request got routed over that http2 connection back to my Pi</li>
 </ol>
-<p>I'm serving traffic over the Internet, from my Pi, with no ports opened on my home router. That is so cool.</p>
-<h3>More than hello world</h3>
-<p>If you're reading this, I've won my battle with the Cloudflare blog editing team about long form vs short form content :p</p>
-<p>Serving hello world is great, but I want to expose a real web server. If you're like me, if you can find any vaguely relevant reason to use Rust, then you use Rust. If you're also like me, you want to try one of these async web servers the cool kids talk about on <a href="https://www.reddit.com/r/rust" target="_blank" rel="noopener noreferrer">/r/rust</a> like <a href="https://gotham.rs" target="_blank" rel="noopener noreferrer">gotham</a>. Let's do it.</p>
-<p>First, install rust using <a href="https://www.rustup.rs" target="_blank" rel="noopener noreferrer">rustup</a>.</p>
-<p><code>$ curl https://sh.rustup.rs -sSf | sh</code></p>
-<p>When prompted, just hit enter</p>
+<p data-astro-cid-yoyuw6fx="">I'm serving traffic over the Internet, from my Pi, with no ports opened on my home router. That is so cool.</p>
+<h3 data-astro-cid-yoyuw6fx="">More than hello world</h3>
+<p data-astro-cid-yoyuw6fx="">If you're reading this, I've won my battle with the Cloudflare blog editing team about long form vs short form content :p</p>
+<p data-astro-cid-yoyuw6fx="">Serving hello world is great, but I want to expose a real web server. If you're like me, if you can find any vaguely relevant reason to use Rust, then you use Rust. If you're also like me, you want to try one of these async web servers the cool kids talk about on <a href="https://www.reddit.com/r/rust" target="_blank" rel="noopener noreferrer">/r/rust</a> like <a href="https://gotham.rs" target="_blank" rel="noopener noreferrer">gotham</a>. Let's do it.</p>
+<p data-astro-cid-yoyuw6fx="">First, install rust using <a href="https://www.rustup.rs" target="_blank" rel="noopener noreferrer">rustup</a>.</p>
+<p data-astro-cid-yoyuw6fx=""><code>$ curl https://sh.rustup.rs -sSf | sh</code></p>
+<p data-astro-cid-yoyuw6fx="">When prompted, just hit enter</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">1</span><span class="sk-24292e-fff">) Proceed with installation (</span><span class="sk-6f42c1-ffc799">default</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">2</span><span class="sk-24292e-fff">) Customize installation</span></span>
@@ -228,7 +228,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>OK, Rust is installed. Now clone Gotham and build the hello_world example:</p>
+<p data-astro-cid-yoyuw6fx="">OK, Rust is installed. Now clone Gotham and build the hello_world example:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> clone</span><span class="sk-032f62-99ffe4"> https://github.com/gotham-rs/gotham</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> gotham/examples/hello_world</span></span>
@@ -238,8 +238,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p><strong>Pro tip:</strong> if cargo is not found, run <code>source $HOME/.cargo/env</code>. It will be automatic in future sessions.</p>
-<p>As cargo does its magic, you can think to yourself about how it's a great package manager, how there really are a lot of dependencies and how OSS really is standing on the shoulders of giants of giants of giants of giants—eventually you'll have the example built.</p>
+<p data-astro-cid-yoyuw6fx=""><strong>Pro tip:</strong> if cargo is not found, run <code>source $HOME/.cargo/env</code>. It will be automatic in future sessions.</p>
+<p data-astro-cid-yoyuw6fx="">As cargo does its magic, you can think to yourself about how it's a great package manager, how there really are a lot of dependencies and how OSS really is standing on the shoulders of giants of giants of giants of giants—eventually you'll have the example built.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">...</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Compiling</span><span class="sk-032f62-99ffe4"> gotham_examples_hello_world</span><span class="sk-032f62-99ffe4"> v0.0.0</span><span class="sk-24292e-fff"> (file:///home/pi/argo-tunnel/gotham/examples/hello_world)</span></span>
@@ -253,11 +253,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>We have a rust web server listening on a local port. Let's connect the tunnel to that.</p>
-<p><code>./cloudflared --hostname gotham.pacman.wiki http://127.0.0.1:7878</code></p>
-<p>Type <strong>gotham.pacman.wiki</strong> into your web browser and you'll see those glorious words, "Hello, world".</p>
-<h2>Wait, this post was meant to be <em>more</em> than hello world.</h2>
-<p>OK, challenge accepted. Rust being fancy and modern is OK with Unicode. Let's serve some of that.</p>
+<p data-astro-cid-yoyuw6fx="">We have a rust web server listening on a local port. Let's connect the tunnel to that.</p>
+<p data-astro-cid-yoyuw6fx=""><code>./cloudflared --hostname gotham.pacman.wiki http://127.0.0.1:7878</code></p>
+<p data-astro-cid-yoyuw6fx="">Type <strong>gotham.pacman.wiki</strong> into your web browser and you'll see those glorious words, "Hello, world".</p>
+<h2 data-astro-cid-yoyuw6fx="">Wait, this post was meant to be <em>more</em> than hello world.</h2>
+<p data-astro-cid-yoyuw6fx="">OK, challenge accepted. Rust being fancy and modern is OK with Unicode. Let's serve some of that.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> examples/hello_world/src/</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> nano</span><span class="sk-032f62-99ffe4"> src/main.rs</span><span class="sk-24292e-fff"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -266,11 +266,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Replace the hello world string:</p>
-<p><code>Some((String::from("Hello World!").into_bytes(), mime::TEXT_PLAIN)),</code></p>
-<p>with some Unicode and a content-type hint so the browser know how to render it:</p>
-<p><code>Some((String::from("&lt;html&gt;&lt;head&gt;&lt;meta http-equiv='Content-Type' content='text/html; charset=UTF-8'&gt;&lt;/head&gt;&lt;body&gt;&lt;marquee&gt;Pᗣᗧ•••MᗣN&lt;/marquee&gt;&lt;/body&gt;&lt;/html&gt;").into_bytes(), mime::TEXT_HTML)),</code></p>
-<p>Build and run</p>
+<p data-astro-cid-yoyuw6fx="">Replace the hello world string:</p>
+<p data-astro-cid-yoyuw6fx=""><code>Some((String::from("Hello World!").into_bytes(), mime::TEXT_PLAIN)),</code></p>
+<p data-astro-cid-yoyuw6fx="">with some Unicode and a content-type hint so the browser know how to render it:</p>
+<p data-astro-cid-yoyuw6fx=""><code>Some((String::from("&lt;html&gt;&lt;head&gt;&lt;meta http-equiv='Content-Type' content='text/html; charset=UTF-8'&gt;&lt;/head&gt;&lt;body&gt;&lt;marquee&gt;Pᗣᗧ•••MᗣN&lt;/marquee&gt;&lt;/body&gt;&lt;/html&gt;").into_bytes(), mime::TEXT_HTML)),</code></p>
+<p data-astro-cid-yoyuw6fx="">Build and run</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cargo</span><span class="sk-032f62-99ffe4"> build</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
@@ -281,13 +281,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p><code>$ ./cloudflared --hostname gotham.pacman.wiki http://127.0.0.1:7878</code></p>
+<p data-astro-cid-yoyuw6fx=""><code>$ ./cloudflared --hostname gotham.pacman.wiki http://127.0.0.1:7878</code></p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="139" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW458MADFYVN6R3PJKM4XA1F.gif" alt="pacman" width="715" height="139" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
 </figure>
-<p>And now we have some unicode served from our Pi at home over the Internet by a highly asynchronous web server written in a fast, safe, high-level language. Cool.</p>
-<h3>Are we done?</h3>
-<p>We should probably auto start both the agent and the web server on boot so they don't die when we end our ssh session.</p>
+<p data-astro-cid-yoyuw6fx="">And now we have some unicode served from our Pi at home over the Internet by a highly asynchronous web server written in a fast, safe, high-level language. Cool.</p>
+<h3 data-astro-cid-yoyuw6fx="">Are we done?</h3>
+<p data-astro-cid-yoyuw6fx="">We should probably auto start both the agent and the web server on boot so they don't die when we end our ssh session.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ./cloudflared</span><span class="sk-032f62-99ffe4"> service</span><span class="sk-032f62-99ffe4"> install</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">INFO[0000]</span><span class="sk-032f62-99ffe4"> Failed</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> copy</span><span class="sk-032f62-99ffe4"> user</span><span class="sk-032f62-99ffe4"> configuration.</span><span class="sk-032f62-99ffe4"> Before</span><span class="sk-032f62-99ffe4"> running</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> service,</span><span class="sk-24292e-fff"> </span></span>
@@ -298,7 +298,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Nice error! OK, the product team have helpfully documented what to put in that file <a href="https://developers.cloudflare.com/argo-tunnel/reference/config" target="_blank" rel="noopener noreferrer">here</a></p>
+<p data-astro-cid-yoyuw6fx="">Nice error! OK, the product team have helpfully documented what to put in that file <a href="https://developers.cloudflare.com/argo-tunnel/reference/config" target="_blank" rel="noopener noreferrer">here</a></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> cp</span><span class="sk-032f62-99ffe4"> ~/.cloudflared/cert.pem</span><span class="sk-032f62-99ffe4"> /etc/cloudflared</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> nano</span><span class="sk-032f62-99ffe4"> /etc/cloudflared/config.yml</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -316,7 +316,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4>Autostart for the Agent</h4>
+<h4 data-astro-cid-yoyuw6fx="">Autostart for the Agent</h4>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ./cloudflared</span><span class="sk-032f62-99ffe4"> service</span><span class="sk-032f62-99ffe4"> install</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">INFO[0000]</span><span class="sk-032f62-99ffe4"> Using</span><span class="sk-032f62-99ffe4"> Systemd</span><span class="sk-24292e-fff">                                </span></span>
@@ -327,12 +327,12 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4>Autostart for the Web Server</h4>
-<p>Copy the web server executable somewhere outside the gotham source tree so you can play around with the source code. I copied mine to <code>/home/pi/argo-tunnel/server/bin/</code></p>
-<p><code>nano /etc/rc.local</code></p>
-<p>Add line: <code>/home/pi/argo-tunnel/server/bin/gotham_examples_hello_world &amp;</code> just before <code>exit 0</code></p>
-<p><code>sudo reboot</code></p>
-<p>On restart, ssh back in again and check both the agent and server are running.</p>
+<h4 data-astro-cid-yoyuw6fx="">Autostart for the Web Server</h4>
+<p data-astro-cid-yoyuw6fx="">Copy the web server executable somewhere outside the gotham source tree so you can play around with the source code. I copied mine to <code>/home/pi/argo-tunnel/server/bin/</code></p>
+<p data-astro-cid-yoyuw6fx=""><code>nano /etc/rc.local</code></p>
+<p data-astro-cid-yoyuw6fx="">Add line: <code>/home/pi/argo-tunnel/server/bin/gotham_examples_hello_world &amp;</code> just before <code>exit 0</code></p>
+<p data-astro-cid-yoyuw6fx=""><code>sudo reboot</code></p>
+<p data-astro-cid-yoyuw6fx="">On restart, ssh back in again and check both the agent and server are running.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ps</span><span class="sk-005cc5-99ffe4"> -aux</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> tunnel</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">root</span><span class="sk-005cc5-ffc799">       501</span><span class="sk-005cc5-ffc799">  0.1</span><span class="sk-005cc5-ffc799">  0.2</span><span class="sk-005cc5-ffc799">  37636</span><span class="sk-005cc5-ffc799">  1976</span><span class="sk-032f62-99ffe4"> ?</span><span class="sk-032f62-99ffe4">        Sl</span><span class="sk-032f62-99ffe4">   06:30</span><span class="sk-032f62-99ffe4">   0:00</span><span class="sk-032f62-99ffe4"> /home/pi/argo-tunnel/server/bin/gotham_examples_hello_world</span></span>
@@ -342,4 +342,4 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Profit.</p>
+<p data-astro-cid-yoyuw6fx="">Profit.</p>

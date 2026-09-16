@@ -1,6 +1,6 @@
-<p>When we launched <a href="https://github.com/cloudflare/sandbox-sdk" target="_blank" rel="noopener noreferrer"><u>Cloudflare Sandboxes</u></a> last June, the premise was simple: <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>AI agents</u></a> need to develop and run code, and they need to do it somewhere safe.</p>
-<p>If an agent is acting like a developer, this means cloning repositories, building code in many languages, running development servers, etc. To do these things effectively, they will often need a full computer (and if they don’t, they can <a href="https://blog.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>reach for something lightweight</u></a>!).</p>
-<p>Many developers are stitching together solutions using VMs or existing container solutions, but there are lots of hard problems to solve:</p>
+<p data-astro-cid-yoyuw6fx="">When we launched <a href="https://github.com/cloudflare/sandbox-sdk" target="_blank" rel="noopener noreferrer"><u>Cloudflare Sandboxes</u></a> last June, the premise was simple: <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>AI agents</u></a> need to develop and run code, and they need to do it somewhere safe.</p>
+<p data-astro-cid-yoyuw6fx="">If an agent is acting like a developer, this means cloning repositories, building code in many languages, running development servers, etc. To do these things effectively, they will often need a full computer (and if they don’t, they can <a href="https://blog.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>reach for something lightweight</u></a>!).</p>
+<p data-astro-cid-yoyuw6fx="">Many developers are stitching together solutions using VMs or existing container solutions, but there are lots of hard problems to solve:</p>
 <ul>
 	<li><strong>Burstiness -</strong> With each session needing its own sandbox, you often need to spin up many sandboxes quickly, but you don’t want to pay for idle compute on standby.</li>
 	<li><strong>Quick state restoration</strong> - Each session should start quickly and re-start quickly, resuming past state.</li>
@@ -8,13 +8,13 @@
 	<li><strong>Control</strong> - It needs to be simple to programmatically control sandbox lifecycle, execute commands, handle files, and more.</li>
 	<li><strong>Ergonomics</strong> - You need to give a simple interface for both humans and agents to do common operations.</li>
 </ul>
-<p>We’ve spent time solving these issues so you don’t have to. Since our initial launch we’ve made Sandboxes an even better place to run agents at scale. We’ve worked with our initial partners such as Figma, who run agents in containers with <a href="https://www.figma.com/make" target="_blank" rel="noopener noreferrer"><u>Figma Make</u></a>:</p>
+<p data-astro-cid-yoyuw6fx="">We’ve spent time solving these issues so you don’t have to. Since our initial launch we’ve made Sandboxes an even better place to run agents at scale. We’ve worked with our initial partners such as Figma, who run agents in containers with <a href="https://www.figma.com/make" target="_blank" rel="noopener noreferrer"><u>Figma Make</u></a>:</p>
 <blockquote>
-	<p><em>“Figma Make is built to help builders and makers of all backgrounds go from idea to production, faster. To deliver on that goal, we needed an infrastructure solution that could provide reliable, highly-scalable sandboxes where we could run untrusted agent- and user-authored code. Cloudflare Containers is that solution.”</em></p>
-	<p><em>- <strong>Alex Mullans</strong>, AI and Developer Platforms at Figma</em></p>
+	<p data-astro-cid-yoyuw6fx=""><em>“Figma Make is built to help builders and makers of all backgrounds go from idea to production, faster. To deliver on that goal, we needed an infrastructure solution that could provide reliable, highly-scalable sandboxes where we could run untrusted agent- and user-authored code. Cloudflare Containers is that solution.”</em></p>
+	<p data-astro-cid-yoyuw6fx=""><em>- <strong>Alex Mullans</strong>, AI and Developer Platforms at Figma</em></p>
 </blockquote>
-<p>We want to bring Sandboxes to even more great organizations, so today we are excited to announce that <strong>Sandboxes and Cloudflare Containers are both generally available.</strong></p>
-<p>Let’s take a look at some of the recent changes to Sandboxes:</p>
+<p data-astro-cid-yoyuw6fx="">We want to bring Sandboxes to even more great organizations, so today we are excited to announce that <strong>Sandboxes and Cloudflare Containers are both generally available.</strong></p>
+<p data-astro-cid-yoyuw6fx="">Let’s take a look at some of the recent changes to Sandboxes:</p>
 <ul>
 	<li><strong>Secure credential injection </strong>lets you make authenticated calls without the agent ever having credential access&nbsp;&nbsp;</li>
 	<li><strong>PTY support</strong> gives you and your agent a real terminal</li>
@@ -24,9 +24,9 @@
 	<li><strong>Snapshots</strong> let you quickly recover an agent's coding session</li>
 	<li><strong>Higher limits and Active CPU Pricing</strong> let you deploy a fleet of agents at scale without paying for unused CPU cycles </li>
 </ul>
-<h2>Sandboxes 101</h2>
-<p>Before getting into some of the recent changes, let’s quickly look at the basics.</p>
-<p>A Cloudflare Sandbox is a persistent, isolated environment powered by <a href="https://blog.cloudflare.com/containers-are-available-in-public-beta-for-simple-global-and-programmable" target="_blank" rel="noopener noreferrer"><u>Cloudflare Containers</u></a>. You ask for a sandbox by name. If it's running, you get it. If it's not, it starts. When it's idle, it sleeps automatically and wakes when it receives a request. It’s easy to programmatically interact with the sandbox using methods like <code>exec</code>, <code>gitClone</code>, <code>writeFile</code> and <a href="https://developers.cloudflare.com/sandbox/api" target="_blank" rel="noopener noreferrer"><u>more</u></a>.</p>
+<h2 data-astro-cid-yoyuw6fx="">Sandboxes 101</h2>
+<p data-astro-cid-yoyuw6fx="">Before getting into some of the recent changes, let’s quickly look at the basics.</p>
+<p data-astro-cid-yoyuw6fx="">A Cloudflare Sandbox is a persistent, isolated environment powered by <a href="https://blog.cloudflare.com/containers-are-available-in-public-beta-for-simple-global-and-programmable" target="_blank" rel="noopener noreferrer"><u>Cloudflare Containers</u></a>. You ask for a sandbox by name. If it's running, you get it. If it's not, it starts. When it's idle, it sleeps automatically and wakes when it receives a request. It’s easy to programmatically interact with the sandbox using methods like <code>exec</code>, <code>gitClone</code>, <code>writeFile</code> and <a href="https://developers.cloudflare.com/sandbox/api" target="_blank" rel="noopener noreferrer"><u>more</u></a>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { getSandbox } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/sandbox"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-24292e-fff"> { Sandbox } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/sandbox"</span><span class="sk-24292e-fff">;</span></span>
@@ -70,10 +70,10 @@
 		})
 	});
 </script>
-<p>As long as you provide the same ID, subsequent requests can get to this same sandbox from anywhere in the world.</p>
-<h2>Secure credential injection</h2>
-<p>One of the hardest problems in agentic workloads is authentication. You often need agents to access private services, but you can't fully trust them with raw credentials.&nbsp;</p>
-<p>Sandboxes solve this by injecting credentials at the network layer using a programmable egress proxy. This means that sandbox agents never have access to credentials and you can fully customize auth logic as you see fit:</p>
+<p data-astro-cid-yoyuw6fx="">As long as you provide the same ID, subsequent requests can get to this same sandbox from anywhere in the world.</p>
+<h2 data-astro-cid-yoyuw6fx="">Secure credential injection</h2>
+<p data-astro-cid-yoyuw6fx="">One of the hardest problems in agentic workloads is authentication. You often need agents to access private services, but you can't fully trust them with raw credentials.&nbsp;</p>
+<p data-astro-cid-yoyuw6fx="">Sandboxes solve this by injecting credentials at the network layer using a programmable egress proxy. This means that sandbox agents never have access to credentials and you can fully customize auth logic as you see fit:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> OpenCodeInABox</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Sandbox</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  static</span><span class="sk-e36209-fff"> outboundByHost</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
@@ -90,12 +90,12 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>For a deep dive into how this works — including identity-aware credential injection, dynamically modifying rules, and integrating with <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>Workers bindings</u></a> — read our recent blog post on <a href="https://blog.cloudflare.com/sandbox-auth" target="_blank" rel="noopener noreferrer"><u>Sandbox auth</u></a>.</p>
-<h2>A real terminal, not a simulation</h2>
-<p>Early agent systems often modeled shell access as a request-response loop: run a command, wait for output, stuff the transcript back into the prompt, repeat. It works, but it is not how developers actually use a terminal.&nbsp;</p>
-<p>Humans run something, watch output stream in, interrupt it, reconnect later, and keep going. Agents benefit from that same feedback loop.</p>
-<p>In February, we shipped PTY support. A pseudo-terminal session in a Sandbox, proxied over WebSocket, compatible with <a href="https://xtermjs.org" target="_blank" rel="noopener noreferrer"><u>xterm.js</u></a>.</p>
-<p>Just call <code>sandbox.terminal</code> to serve the backend:</p>
+<p data-astro-cid-yoyuw6fx="">For a deep dive into how this works — including identity-aware credential injection, dynamically modifying rules, and integrating with <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>Workers bindings</u></a> — read our recent blog post on <a href="https://blog.cloudflare.com/sandbox-auth" target="_blank" rel="noopener noreferrer"><u>Sandbox auth</u></a>.</p>
+<h2 data-astro-cid-yoyuw6fx="">A real terminal, not a simulation</h2>
+<p data-astro-cid-yoyuw6fx="">Early agent systems often modeled shell access as a request-response loop: run a command, wait for output, stuff the transcript back into the prompt, repeat. It works, but it is not how developers actually use a terminal.&nbsp;</p>
+<p data-astro-cid-yoyuw6fx="">Humans run something, watch output stream in, interrupt it, reconnect later, and keep going. Agents benefit from that same feedback loop.</p>
+<p data-astro-cid-yoyuw6fx="">In February, we shipped PTY support. A pseudo-terminal session in a Sandbox, proxied over WebSocket, compatible with <a href="https://xtermjs.org" target="_blank" rel="noopener noreferrer"><u>xterm.js</u></a>.</p>
+<p data-astro-cid-yoyuw6fx="">Just call <code>sandbox.terminal</code> to serve the backend:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Worker: upgrade a WebSocket connection into a live terminal session</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
@@ -115,7 +115,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>And use <code>xterm addon</code> to call it from the client:</p>
+<p data-astro-cid-yoyuw6fx="">And use <code>xterm addon</code> to call it from the client:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Browser: connect xterm.js to the sandbox shell</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Terminal } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "xterm"</span><span class="sk-24292e-fff">;</span></span>
@@ -135,16 +135,16 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>This allows agents and developers to use a full PTY to debug those sessions live.</p>
+<p data-astro-cid-yoyuw6fx="">This allows agents and developers to use a full PTY to debug those sessions live.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="244" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW46523K9AXQMVFN36FY21VP.gif" alt="BLOG-3264 2" width="715" height="244" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p>Each terminal session gets its own isolated shell, its own working directory, its own environment. Open as many as you need, just like you would on your own machine. Output is buffered server-side, so reconnecting replays what you missed.</p>
-<h2>A code interpreter that remembers</h2>
-<p>For data analysis, scripting, and exploratory workflows, we also ship a higher-level abstraction: a persistent code execution context.</p>
-<p>The key word is “persistent.” Many code interpreter implementations run each snippet in isolation, so state disappears between calls. You can't set a variable in one step and read it in the next.</p>
-<p>Sandboxes allow you to create “contexts” that persist state. Variables and imports persist across calls the same way they would in a Jupyter notebook:</p>
+<p data-astro-cid-yoyuw6fx="">Each terminal session gets its own isolated shell, its own working directory, its own environment. Open as many as you need, just like you would on your own machine. Output is buffered server-side, so reconnecting replays what you missed.</p>
+<h2 data-astro-cid-yoyuw6fx="">A code interpreter that remembers</h2>
+<p data-astro-cid-yoyuw6fx="">For data analysis, scripting, and exploratory workflows, we also ship a higher-level abstraction: a persistent code execution context.</p>
+<p data-astro-cid-yoyuw6fx="">The key word is “persistent.” Many code interpreter implementations run each snippet in isolation, so state disappears between calls. You can't set a variable in one step and read it in the next.</p>
+<p data-astro-cid-yoyuw6fx="">Sandboxes allow you to create “contexts” that persist state. Variables and imports persist across calls the same way they would in a Jupyter notebook:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Create a Python context. State persists for its lifetime.</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> ctx</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">createCodeContext</span><span class="sk-24292e-fff">({ language: </span><span class="sk-032f62-99ffe4">"python"</span><span class="sk-24292e-fff"> });</span></span>
@@ -168,8 +168,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2>Start a server. Get a URL. Ship it.</h2>
-<p>Agents are more useful when they can build something and show it to the user immediately. Sandboxes support background processes, readiness checks, and <a href="https://developers.cloudflare.com/sandbox/concepts/preview-urls" target="_blank" rel="noopener noreferrer"><u>preview URLs</u></a>. This lets an agent start a development server and share a live link without leaving the conversation.</p>
+<h2 data-astro-cid-yoyuw6fx="">Start a server. Get a URL. Ship it.</h2>
+<p data-astro-cid-yoyuw6fx="">Agents are more useful when they can build something and show it to the user immediately. Sandboxes support background processes, readiness checks, and <a href="https://developers.cloudflare.com/sandbox/concepts/preview-urls" target="_blank" rel="noopener noreferrer"><u>preview URLs</u></a>. This lets an agent start a development server and share a live link without leaving the conversation.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Start a dev server as a background process</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> server</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">startProcess</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"npm run dev"</span><span class="sk-24292e-fff">, {</span></span>
@@ -190,10 +190,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>With <em><code>waitForPort()</code></em> and <em><code>waitForLog()</code></em>, agents can sequence work based on real signals from the running program instead of guesswork. This is much nicer than a common alternative, which is usually some version of <code>sleep(2000)</code> followed by hope.</p>
-<h2>Watch the file system and react immediately</h2>
-<p>Modern development loops are event-driven. Save a file, rerun the build. Edit a config, restart the server. Change a test, rerun the suite.</p>
-<p>We shipped <em>sandbox.watch()</em> in March. It returns an SSE stream backed by native <a href="https://man7.org/linux/man-pages/man7/inotify.7.html" target="_blank" rel="noopener noreferrer"><u>inotify</u></a>, the kernel mechanism Linux uses for filesystem events.</p>
+<p data-astro-cid-yoyuw6fx="">With <em><code>waitForPort()</code></em> and <em><code>waitForLog()</code></em>, agents can sequence work based on real signals from the running program instead of guesswork. This is much nicer than a common alternative, which is usually some version of <code>sleep(2000)</code> followed by hope.</p>
+<h2 data-astro-cid-yoyuw6fx="">Watch the file system and react immediately</h2>
+<p data-astro-cid-yoyuw6fx="">Modern development loops are event-driven. Save a file, rerun the build. Edit a config, restart the server. Change a test, rerun the suite.</p>
+<p data-astro-cid-yoyuw6fx="">We shipped <em>sandbox.watch()</em> in March. It returns an SSE stream backed by native <a href="https://man7.org/linux/man-pages/man7/inotify.7.html" target="_blank" rel="noopener noreferrer"><u>inotify</u></a>, the kernel mechanism Linux uses for filesystem events.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { parseSSEStream, </span><span class="sk-d73a49-a0a0a0">type</span><span class="sk-24292e-fff"> FileWatchSSEEvent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@cloudflare/sandbox'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -213,13 +213,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>This is one of those primitives that quietly changes what agents can do. An agent that can observe the filesystem in real time can participate in the same feedback loops as a human developer.</p>
-<h2>Waking up quickly with snapshots</h2>
-<p>Imagine a (human) developer working on their laptop. They <code>git clone</code> a repo, run <code>npm install</code>, write code, push a PR, then close their laptop while waiting for code review. When it’s time to resume work, they just re-open the laptop and continue where they left off.</p>
-<p>If an agent wants to replicate this workflow on a naive container platform, you run into a snag. How do you resume where you left off quickly? You could keep a sandbox running, but then you pay for idle compute. You could start fresh from the container image, but then you have to wait for a long <code>git clone</code> and <code>npm install</code>.</p>
-<p>Our answer is snapshots, which will be rolling out in the coming weeks.</p>
-<p>A snapshot preserves a container's full disk state, OS config, installed dependencies, modified files, data files and more. Then it lets you quickly restore it later.</p>
-<p>You can configure a Sandbox to automatically snapshot when it goes to sleep.</p>
+<p data-astro-cid-yoyuw6fx="">This is one of those primitives that quietly changes what agents can do. An agent that can observe the filesystem in real time can participate in the same feedback loops as a human developer.</p>
+<h2 data-astro-cid-yoyuw6fx="">Waking up quickly with snapshots</h2>
+<p data-astro-cid-yoyuw6fx="">Imagine a (human) developer working on their laptop. They <code>git clone</code> a repo, run <code>npm install</code>, write code, push a PR, then close their laptop while waiting for code review. When it’s time to resume work, they just re-open the laptop and continue where they left off.</p>
+<p data-astro-cid-yoyuw6fx="">If an agent wants to replicate this workflow on a naive container platform, you run into a snag. How do you resume where you left off quickly? You could keep a sandbox running, but then you pay for idle compute. You could start fresh from the container image, but then you have to wait for a long <code>git clone</code> and <code>npm install</code>.</p>
+<p data-astro-cid-yoyuw6fx="">Our answer is snapshots, which will be rolling out in the coming weeks.</p>
+<p data-astro-cid-yoyuw6fx="">A snapshot preserves a container's full disk state, OS config, installed dependencies, modified files, data files and more. Then it lets you quickly restore it later.</p>
+<p data-astro-cid-yoyuw6fx="">You can configure a Sandbox to automatically snapshot when it goes to sleep.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> AgentDevEnvironment</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Sandbox</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-e36209-fff">  sleepAfter</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "5m"</span><span class="sk-24292e-fff">;</span></span>
@@ -231,7 +231,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>You can also programmatically take a snapshot and manually restore it. This is useful for checkpointing work or forking sessions. For instance, if you wanted to run four instances of an agent in parallel, you could easily boot four sandboxes from the same state.</p>
+<p data-astro-cid-yoyuw6fx="">You can also programmatically take a snapshot and manually restore it. This is useful for checkpointing work or forking sessions. For instance, if you wanted to run four instances of an agent in parallel, you could easily boot four sandboxes from the same state.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> AgentDevEnvironment</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Sandbox</span><span class="sk-24292e-fff"> {}</span></span>
 <span class="line"></span>
@@ -252,23 +252,23 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Snapshots are stored in <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> within your account, giving you durability and location-independence. R2's <a href="https://developers.cloudflare.com/cache/how-to/tiered-cache" target="_blank" rel="noopener noreferrer"><u>tiered caching</u></a> system allows for fast restores across all of Region: Earth.</p>
-<p>In future releases, live memory state will also be captured, allowing running processes to resume exactly where they left off. A terminal and an editor will reopen in the exact state they were in when last closed.</p>
-<p>If you are interested in restoring session state before snapshots go live, you can use the <a href="https://developers.cloudflare.com/sandbox/guides/backup-restore" target="_blank" rel="noopener noreferrer"><code><u>backup and restore</u></code></a> methods today. These also persist and restore directories using R2, but are not as performant as true VM-level snapshots. Though they still can lead to considerable speed improvements over naively recreating session state.</p>
+<p data-astro-cid-yoyuw6fx="">Snapshots are stored in <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> within your account, giving you durability and location-independence. R2's <a href="https://developers.cloudflare.com/cache/how-to/tiered-cache" target="_blank" rel="noopener noreferrer"><u>tiered caching</u></a> system allows for fast restores across all of Region: Earth.</p>
+<p data-astro-cid-yoyuw6fx="">In future releases, live memory state will also be captured, allowing running processes to resume exactly where they left off. A terminal and an editor will reopen in the exact state they were in when last closed.</p>
+<p data-astro-cid-yoyuw6fx="">If you are interested in restoring session state before snapshots go live, you can use the <a href="https://developers.cloudflare.com/sandbox/guides/backup-restore" target="_blank" rel="noopener noreferrer"><code><u>backup and restore</u></code></a> methods today. These also persist and restore directories using R2, but are not as performant as true VM-level snapshots. Though they still can lead to considerable speed improvements over naively recreating session state.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="188" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW498BPY5VC065XFA2GZ34P5.gif" alt="BLOG-3264 3" width="715" height="188" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
 </figure>
-<p><sup><em>Booting a sandbox, cloning&nbsp; ‘axios’, and npm installing takes 30 seconds. Restoring from a backup takes two seconds.</em></sup></p>
-<p>Stay tuned for the official snapshot release.</p>
-<h2>Higher limits and Active CPU Pricing</h2>
-<p>Since our initial launch, we’ve been steadily increasing capacity. Users on our standard pricing plan can now run 15,000 concurrent instances of the lite instance type, 6,000 instances of basic, and over 1,000 concurrent larger instances. <a href="https://forms.gle/3vvDvXPECjy6F8v56" target="_blank" rel="noopener noreferrer"><u>Reach out</u></a> to run even more!</p>
-<p>We also changed our pricing model to be more cost effective running at scale. Sandboxes now <a href="https://developers.cloudflare.com/changelog/post/2025-11-21-new-cpu-pricing" target="_blank" rel="noopener noreferrer"><u>only charge for actively used CPU cycles</u></a>. This means that you aren’t paying for idle CPU while your agent is waiting for an LLM to respond.</p>
-<h2>This is what a computer looks like&nbsp;</h2>
-<p>Nine months ago, we shipped a sandbox that could run commands and access a filesystem. That was enough to prove the concept.</p>
-<p>What we have now is different in kind. A Sandbox today is a full development environment: a terminal you can connect a browser to, a code interpreter with persistent state, background processes with live preview URLs, a filesystem that emits change events in real time, egress proxies for secure credential injection, and a snapshot mechanism that makes warm starts nearly instant.&nbsp;</p>
-<p>When you build on this, a satisfying pattern emerges: agents that do real engineering work. Clone a repo, install it, run the tests, read the failures, edit the code, run the tests again. The kind of tight feedback loop that makes a human engineer effective — now the agent gets it too.</p>
-<p>We're at version 0.8.9 of the SDK. You can get started today:</p>
-<p><code>npm i @cloudflare/sandbox@latest</code></p>
+<p data-astro-cid-yoyuw6fx=""><sup><em>Booting a sandbox, cloning&nbsp; ‘axios’, and npm installing takes 30 seconds. Restoring from a backup takes two seconds.</em></sup></p>
+<p data-astro-cid-yoyuw6fx="">Stay tuned for the official snapshot release.</p>
+<h2 data-astro-cid-yoyuw6fx="">Higher limits and Active CPU Pricing</h2>
+<p data-astro-cid-yoyuw6fx="">Since our initial launch, we’ve been steadily increasing capacity. Users on our standard pricing plan can now run 15,000 concurrent instances of the lite instance type, 6,000 instances of basic, and over 1,000 concurrent larger instances. <a href="https://forms.gle/3vvDvXPECjy6F8v56" target="_blank" rel="noopener noreferrer"><u>Reach out</u></a> to run even more!</p>
+<p data-astro-cid-yoyuw6fx="">We also changed our pricing model to be more cost effective running at scale. Sandboxes now <a href="https://developers.cloudflare.com/changelog/post/2025-11-21-new-cpu-pricing" target="_blank" rel="noopener noreferrer"><u>only charge for actively used CPU cycles</u></a>. This means that you aren’t paying for idle CPU while your agent is waiting for an LLM to respond.</p>
+<h2 data-astro-cid-yoyuw6fx="">This is what a computer looks like&nbsp;</h2>
+<p data-astro-cid-yoyuw6fx="">Nine months ago, we shipped a sandbox that could run commands and access a filesystem. That was enough to prove the concept.</p>
+<p data-astro-cid-yoyuw6fx="">What we have now is different in kind. A Sandbox today is a full development environment: a terminal you can connect a browser to, a code interpreter with persistent state, background processes with live preview URLs, a filesystem that emits change events in real time, egress proxies for secure credential injection, and a snapshot mechanism that makes warm starts nearly instant.&nbsp;</p>
+<p data-astro-cid-yoyuw6fx="">When you build on this, a satisfying pattern emerges: agents that do real engineering work. Clone a repo, install it, run the tests, read the failures, edit the code, run the tests again. The kind of tight feedback loop that makes a human engineer effective — now the agent gets it too.</p>
+<p data-astro-cid-yoyuw6fx="">We're at version 0.8.9 of the SDK. You can get started today:</p>
+<p data-astro-cid-yoyuw6fx=""><code>npm i @cloudflare/sandbox@latest</code></p>
 <div id="html-block-k6k" class="html-block">
 	<div style="padding-top:56.25%">
 		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/748ed282b02cbbfb5da9076d41758ede/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F748ed282b02cbbfb5da9076d41758ede%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&amp;startTime=2s" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>

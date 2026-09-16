@@ -1,0 +1,88 @@
+<p data-astro-cid-yoyuw6fx="">Memory costs are increasing dramatically. Both RAM and hard disk drive prices have exploded over the past year. At Cloudflare, we run several massively distributed storage products (including our famous CDN) that rely on making efficient use of the memory we have deployed so we can continue to serve all of our customers.</p>
+<p data-astro-cid-yoyuw6fx="">With this in mind, we prototyped a way to expand effective cache capacity. By encoding eligible assets with <a href="https://github.com/facebook/zstd" target="_blank" rel="noopener noreferrer"><u>Zstandard</u></a> inside <a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet" target="_blank" rel="noopener noreferrer"><u>Pingora</u></a>, the architecture trades a minor CPU increase for significant storage and cross-data center bandwidth savings.</p>
+<p data-astro-cid-yoyuw6fx="">We have been prototyping a system called Cache Transcoding, which I built during my internship at Cloudflare as part of the <a href="https://blog.cloudflare.com/cloudflare-1111-intern-program" target="_blank" rel="noopener noreferrer"><u>1.1.1.1 Intern Program</u></a>. When an eligible response enters the cache, we encode it using Zstandard, or zstd, before writing it to disk. We keep that compressed form while the asset lives in the cache and moves between data centers via <a href="https://blog.cloudflare.com/tiered-cache-smart-topology/#tiered-cache" target="_blank" rel="noopener noreferrer"><u>Tiered Cache</u></a>, then decode it before serving the response to the client.</p>
+<p data-astro-cid-yoyuw6fx="">In our initial testing, this encoding shrunk eligible assets to ⅓ of their original on-disk size on average. The estimated extra CPU cost in our origin-facing proxy was small, but that is the trade. A small increase in CPU gives Cloudflare petabytes of effective cache capacity and reduces the data transferred between our data centers. The encoding cost is paid once when an asset enters the cache. The storage and bandwidth savings continue every single time that asset is reused.</p>
+<h2 data-astro-cid-yoyuw6fx="">What is Zstandard?</h2>
+<p data-astro-cid-yoyuw6fx="">Zstandard, or zstd, is a lossless compression algorithm developed by <a href="https://engineering.fb.com/2018/12/19/core-infra/zstandard" target="_blank" rel="noopener noreferrer"><u>Yann Collet at Facebook</u></a> and open sourced in 2016. Lossless means that after compressed data is decoded, every byte is identical to the original. We can change how an asset is represented on disk without changing the asset itself.</p>
+<p data-astro-cid-yoyuw6fx="">Zstd is designed to balance compression ratio with speed. In our <a href="https://blog.cloudflare.com/new-standards" target="_blank" rel="noopener noreferrer"><u>earlier browser compression testing</u></a>, it compressed data 42% faster than <a href="https://research.google/pubs/brotli-a-general-purpose-data-compressor" target="_blank" rel="noopener noreferrer"><u>Brotli</u></a> while producing nearly the same file size, and produced files 11.3% smaller than gzip at a comparable speed. That balance matters because Cache Transcoding would touch a large amount of traffic, so both encoding and decoding need to stay fast.&nbsp;</p>
+<p data-astro-cid-yoyuw6fx="">The prototype uses zstd level 3, giving us most of the compression benefit without turning cache fills into a CPU bottleneck.</p>
+<p data-astro-cid-yoyuw6fx="">Cloudflare traditionally stores an asset using the content encoding supplied by its origin. If an origin sends an uncompressed response, we store those uncompressed bytes on disk and transfer them between data centers in the same form. Cache Transcoding adds compression inside the cache itself.</p>
+<h2 data-astro-cid-yoyuw6fx="">Not everything is worth compressing</h2>
+<p data-astro-cid-yoyuw6fx="">Transcoding does not mean compressing everything. Images, video, and fonts are usually compressed already. In our traffic sample, this media slice represented 21.4% of requests but 63.3% of bytes. Compressing it again would burn CPU for nothing.</p>
+<p data-astro-cid-yoyuw6fx="">Compressible text is different. HTML, JSON, CSS, and JavaScript represented 67.3% of requests and 22.3% of bytes. Within that text slice, approximately 71% arrived uncompressed with <code>Content-Encoding</code> unset and it compresses well.&nbsp;</p>
+<p data-astro-cid-yoyuw6fx="">In our controlled test corpus, the eligible assets compressed by roughly 2.8 times.</p>
+<div class="emdash-table-wrapper" data-astro-cid-zdje7xco="">
+	<table class="emdash-table" data-astro-cid-zdje7xco="">
+		<thead data-astro-cid-zdje7xco="">
+			<tr data-astro-cid-zdje7xco="">
+				<th data-astro-cid-zdje7xco="">
+					<p><strong>Measure</strong></p>
+				</th>
+				<th data-astro-cid-zdje7xco="">
+					<p><strong>Value</strong></p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-zdje7xco="">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
+					<p>Compression ratio</p>
+				</td>
+				<td data-astro-cid-zdje7xco="true">
+					<p>2.834x</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
+					<p>Encode cost</p>
+				</td>
+				<td data-astro-cid-zdje7xco="true">
+					<p>4.31 ns per byte, approximately 232 MB/s, paid once per fill</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
+					<p>Decode cost</p>
+				</td>
+				<td data-astro-cid-zdje7xco="true">
+					<p>1.56 ns per byte, approximately 641 MB/s, paid on every serve</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p data-astro-cid-yoyuw6fx="">Encoding is more expensive per byte, but assets are served far more often than they are filled.&nbsp;</p>
+<p data-astro-cid-yoyuw6fx="">By changing how assets are represented, existing hardware could store more customer content.</p>
+<p data-astro-cid-yoyuw6fx="">Fewer bytes on disk mean each server can retain more objects. This increases cache density and reduces the likelihood that useful content is evicted because an uncompressed representation consumed more space than necessary.&nbsp;</p>
+<p data-astro-cid-yoyuw6fx="">The smaller representation also helps as an asset moves through Tiered Cache because it reduces the data transferred between Cloudflare data centers, making backbone usage more efficient.</p>
+<h2 data-astro-cid-yoyuw6fx="">Paying the compression cost once</h2>
+<p data-astro-cid-yoyuw6fx="">Compression is never free. Encoding and decoding both use CPU, so the important question is whether the byte savings are worth the processing cost.&nbsp;</p>
+<p data-astro-cid-yoyuw6fx="">At zstd level 3 (often the default balance of speed and compression size output), our model kept the extra CPU cost to a few percent under the traffic and reuse assumptions we tested.&nbsp;</p>
+<p data-astro-cid-yoyuw6fx="">We initially considered limiting transcoding to popular content, since hot assets are reused more, but it did not help. Decoding happens every time an asset is served, so limiting the feature to only the hottest content reduced the storage saving without cutting CPU by the same amount.&nbsp;</p>
+<p data-astro-cid-yoyuw6fx="">The simpler policy performed better. Transcoding all eligible compressible text at or above 4 kibibytes (KiB) captured nearly all of the measured storage benefit, while remaining within the CPU budget.</p>
+<h2 data-astro-cid-yoyuw6fx="">How Cache Transcoding works</h2>
+<p data-astro-cid-yoyuw6fx="">On a cache miss, our Pingora-based proxy <strong>encodes the body using zstd </strong>before writing it to disk. The cache metadata records that the stored representation is compressed and preserves the original content length. Before the response leaves the proxy, the body is <strong>decoded back to its original identity representation</strong>.</p>
+<p data-astro-cid-yoyuw6fx="">On a cache hit, the stored zstd object is read from disk and decoded. With Tiered Cache, the compressed representation is transferred from the upper tier to the lower tier in the compressed form. Decoding only happens on the client-facing hop.</p>
+<p data-astro-cid-yoyuw6fx="">On a full cache miss, the upper tier fetches identity bytes from the origin. Those bytes are encoded once, stored as zstd, and transferred to the lower tier in their compressed form. The lower tier also stores the zstd representation, then decodes it for the request path.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA/////v/+8/Hy7ujq8urq9+/v9PHw7O3s////////9fHy7+fo8+np+PDv9fHw7e3s////////9/Ly8Ojo9Orq+vHw+PPy7+7u////////+vb29Ozr+O/u/fb1+/b28vHx//////////z7+PPz/Pb2//38//z99/b2/////////////fz7////////////+/v7/////////////////////////////v//////////////////////////////////" alt="" width="715" height="472" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M1DABE8D58WDN8W0YJ66BFK4.01M1DABEZRTM9C8N8YNJKEJS4W.png&amp;w=715&amp;h=472&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M1DABE8D58WDN8W0YJ66BFK4.01M1DABEZRTM9C8N8YNJKEJS4W.png&amp;w=640&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M1DABE8D58WDN8W0YJ66BFK4.01M1DABEZRTM9C8N8YNJKEJS4W.png&amp;w=715&amp;h=472&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M1DABE8D58WDN8W0YJ66BFK4.01M1DABEZRTM9C8N8YNJKEJS4W.png&amp;w=750&amp;h=495&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M1DABE8D58WDN8W0YJ66BFK4.01M1DABEZRTM9C8N8YNJKEJS4W.png&amp;w=828&amp;h=547&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M1DABE8D58WDN8W0YJ66BFK4.01M1DABEZRTM9C8N8YNJKEJS4W.png&amp;w=1080&amp;h=713&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M1DABE8D58WDN8W0YJ66BFK4.01M1DABEZRTM9C8N8YNJKEJS4W.png&amp;w=1280&amp;h=845&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M1DABE8D58WDN8W0YJ66BFK4.01M1DABEZRTM9C8N8YNJKEJS4W.png&amp;w=1430&amp;h=944&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="unnamed (77).png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M1DABE8D58WDN8W0YJ66BFK4.01M1DABEZRTM9C8N8YNJKEJS4W.png&amp;w=1020&amp;h=674&amp;f=webp" data-lightbox-width="1020" data-lightbox-height="674" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="472" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p data-astro-cid-yoyuw6fx="">If the lower tier misses but the upper tier already has the object, the origin is not involved. The compressed object moves directly between the cache tiers. It remains compressed on the wire and on disk, then is decoded once at the lower tier.</p>
+<p data-astro-cid-yoyuw6fx="">If the lower tier already has the object, no network transfer or encoding is needed. The lower tier reads the zstd bytes from disk, decodes them, and passes the original asset onward.</p>
+<p data-astro-cid-yoyuw6fx="">The storage encoding marker prevents an object from being encoded more than once. A cache layer receiving an object from another tier can see that it is already stored using zstd, and preserve it in that form.</p>
+<h2 data-astro-cid-yoyuw6fx="">Why we only transcode certain text</h2>
+<p data-astro-cid-yoyuw6fx="">The fastest compression operation is the one we do not need to perform. Cache Transcoding therefore uses a series of eligibility checks to avoid content that is unlikely to benefit.</p>
+<p data-astro-cid-yoyuw6fx="">The prototype only transcodes a <code>200 OK</code> response when <code>Content-Encoding</code> is unset, the <code>Content-Type</code> is compressible text, and the response has a known <code>Content-Length</code> of at least 4 KiB. Slice subrequests, responses using active upstream compression, range requests, precompressed responses, unknown length bodies, and binary content remain unchanged.</p>
+<p data-astro-cid-yoyuw6fx="">The 4 KiB threshold removed a large number of tiny requests while leaving out only about 1% of the otherwise eligible bytes. Lowering it would add per-object overhead without saving much more storage.</p>
+<p data-astro-cid-yoyuw6fx="">The threshold and zstd level are both parameters rather than permanent limits. We started with zstd level 3 and a 4 KiB minimum because they gave us a conservative way to measure the architecture. With the initial CPU budget understood, we can test whether higher compression levels improve the ratio enough to justify their additional cost.</p>
+<h2 data-astro-cid-yoyuw6fx="">Testing over one million requests through the cache</h2>
+<p data-astro-cid-yoyuw6fx="">We exercised the prototype against a controlled test zone and correlated each request across request logs, Prometheus metrics, and Jaeger traces.</p>
+<p data-astro-cid-yoyuw6fx="">The correctness campaign covered cache misses, cache hits, single-hop fills, Tiered Cache fills, and more. We varied cache keys to make each request follow a specific path and used traces to confirm where encoding and decoding occurred.</p>
+<p data-astro-cid-yoyuw6fx="">One performance campaign sent more than a million requests across 10 cache servers. Half of the campaign ran with Tiered Cache disabled and the other half with it enabled. This allowed us to measure local cache behavior separately from transfers between cache tiers.</p>
+<p data-astro-cid-yoyuw6fx="">The two assets were approximately 195 KiB and 272 KiB, and both compressed by roughly 2.8 times. This was deliberately a compressible test corpus. It gave us a clear signal for validating the architecture, but it does not represent every text object on the Internet. A broader corpus is required before treating the measured compression ratio as a fleet-wide constant.</p>
+<h2 data-astro-cid-yoyuw6fx="">Compress once, benefit many times</h2>
+<p data-astro-cid-yoyuw6fx="">What this experiment showed us is that there are significant efficiencies we can still deploy across our caching service that can benefit all of our customers. What we built for Cache Transcoding shows that the trade is favorable under the conditions we tested. The architecture preserved the content and remained within the CPU budget.</p>
+<p data-astro-cid-yoyuw6fx="">For next steps, we plan to evaluate higher zstd levels, test a broader range of content types and object sizes, tune different parameters from the eligibility criteria and more. Future work can also examine range requests, pre-compressed origin responses, and passing the compressed object directly to downstream components that already support it without decoding.</p>
+<p data-astro-cid-yoyuw6fx="">Throughout my internship, I’ve had the wonderful opportunity to work alongside Cloudflare's engineering teams on the real infrastructure that stores and serves content across our global network. If you want to start your career by helping build a better Internet, explore our <a href="https://www.cloudflare.com/careers/early-talent" target="_blank" rel="noopener noreferrer"><u>internship opportunities</u></a> and <a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer"><u>job openings</u></a>.</p>
+<p data-astro-cid-yoyuw6fx=""></p>

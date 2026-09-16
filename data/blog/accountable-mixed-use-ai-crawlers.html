@@ -1,0 +1,207 @@
+<p data-astro-cid-yoyuw6fx="">Without proper controls, website owners have long faced a difficult tradeoff: allow your content to be used for AI training, or risk losing discoverability in search. That tradeoff exists because some of the largest organizations on the Internet use mixed-use crawlers: a single crawler serving both search and AI training. Refuse one, and you refuse the other.</p>
+<p data-astro-cid-yoyuw6fx="">Today, Cloudflare is announcing a new <a href="https://blog.cloudflare.com/bot-preference-sync" target="_blank" rel="noopener noreferrer"><u>Disallow AI Training</u></a> setting that lets you easily stay indexed for search while refusing to let that same crawler train on your content. Apple, Google, and Microsoft honor or have committed (in a specified time frame) to honor this setting.</p>
+<p data-astro-cid-yoyuw6fx="">Mixed-use crawlers were the hard part of the training question. AI Summaries are next. A site-wide yes or no is too blunt: how much of your content appears in a summary matters as much as whether it appears at all. An opt-out for AI summaries is already one of the requirements we've set for mixed-use crawler operators. By early next year, our goal is to let you control how much of your content is included — set once on Cloudflare, rather than with each operator separately.</p>
+<h2 data-astro-cid-yoyuw6fx="">Why asking isn’t enough</h2>
+<p data-astro-cid-yoyuw6fx="">Most site owners want to be found: by humans, agents, and (good) bots. But a significant portion of the open Internet is funded by advertising, subscriptions, or direct relationships with visitors, and those models only pay when someone actually arrives.</p>
+<p data-astro-cid-yoyuw6fx="">Almost every site owner considers Search beneficial: less than 1% of Cloudflare sites choose to block Search bots. Training, however, is a different story: 17% of sites choose to enable some mechanism to block training. This is exactly why we decided site owners needed more granular controls, rather than a one-size-fits-all “Block AI.”</p>
+<p data-astro-cid-yoyuw6fx="">A robots.txt directive alone cannot solve this problem. Anyone can publish one, but it cannot identify who is crawling, determine why they are crawling, or stop a crawler that ignores it.</p>
+<p data-astro-cid-yoyuw6fx="">A network can solve it, however: we publish the preference, identify who is crawling, classify why they are crawling, and block the ones that ignore it – then report what each operator actually does on <a href="https://radar.cloudflare.com/ai-insights#ai-bot-transparency" target="_blank" rel="noopener noreferrer"><u>Radar</u></a>.</p>
+<p data-astro-cid-yoyuw6fx="">But blocking removes a crawler. It doesn't change how crawlers behave. The better outcome is operators that don't make you choose at all. So since July, we've been talking to them directly. The response has been encouraging: almost all agreed that site owners should have control and transparency into how their content is used, and reassurance that their choices will be respected. To help site owners understand that, we created a designation: Accountable.</p>
+<p data-astro-cid-yoyuw6fx="">The Accountable designation recognizes both capabilities available today and concrete commitments to deliver them. To qualify, a bot operator must meet or commit to meeting the following requirements:</p>
+<ol>
+	<li>A mechanism for site owners to opt out of AI training, through robots.txt or a similar standard.</li>
+	<li>A mechanism for site owners to opt out of AI summaries set with the operator directly, and next year through Cloudflare (see section below for more detail).</li>
+	<li>URL-level visibility into which pages were made available for training, along with metrics showing how content appeared in search.</li>
+	<li>Assurance that opting out of AI training will not affect traditional search results.</li>
+</ol>
+<p data-astro-cid-yoyuw6fx="">Apple, Google, and Microsoft all demonstrate that they meet the qualifications to be Accountable. Each combines capabilities available today with time-bound commitments for those still in development. The details of each of these companies’ crawlers are shared below.</p>
+<h2 data-astro-cid-yoyuw6fx="">New security setting options</h2>
+<p data-astro-cid-yoyuw6fx="">Cloudflare classifies bots by behavior, and a single bot can exhibit more than one behavior. Three behaviors are available as controls:</p>
+<ul>
+	<li><strong>Search</strong> - crawling to build a search index.</li>
+	<li><strong>Training</strong> - crawling to train or fine-tune a model.</li>
+	<li><strong>Agent</strong> - user-directed agents visiting a page on behalf of a human, such as chat fetch bots and browser-use agents.</li>
+</ul>
+<p data-astro-cid-yoyuw6fx="">A mixed-use crawler is a single crawler doing both Search and Training. Without controls, that combination creates the tradeoff described above: site owners cannot refuse one use without refusing the other.</p>
+<p data-astro-cid-yoyuw6fx="">To avoid blocking Accountable mixed-use crawlers — the ones that don't force that tradeoff on website owners — we are introducing a new setting: Disallow AI Training. Disallow AI Training is named for the Disallow: directive it publishes in your robots.txt.</p>
+<h3 data-astro-cid-yoyuw6fx="">“Block” setting now means something different</h3>
+<p data-astro-cid-yoyuw6fx="">Block and “Block on pages with ads” previously did not apply to mixed-use crawlers because blocking them could also affect search discoverability. Now that we have the new Disallow AI Training setting, Block and “Block on pages with ads” apply to <em>all</em> training crawlers, including mixed-use crawlers.</p>
+<p data-astro-cid-yoyuw6fx="">Training, Search, and Agent controls are applied at the domain level. With the addition of Disallow AI Training, the available settings are:</p>
+<ol>
+	<li><strong>Allow</strong>: All crawlers are allowed, unless blocked by another setting or a WAF rule.</li>
+	<li><strong>Disallow AI Training</strong>: Bot Preference Sync publishes the applicable no-training preference in robots.txt. Accountable mixed-use crawlers remain allowed for search. Every other training crawler is blocked, including the training-only crawlers run by Amazon, Anthropic, Meta, and OpenAI — blocking those does not affect search. Disallow AI Training is only available as a setting for Training, not Search or Agent.</li>
+	<li><strong>Block on pages with ads</strong>: Crawlers, including mixed-use crawlers, are blocked only on pages detected to be serving an ad.</li>
+	<li><strong>Block</strong>: All crawlers, including mixed-use crawlers, are blocked.</li>
+</ol>
+<p data-astro-cid-yoyuw6fx="">Disallow AI Training works by publishing a preference in robots.txt. An ads-only preference cannot be expressed that way: Cloudflare can detect which pages serve ads, but that list is too large and changes too frequently to enumerate in robots.txt. That's why there's no Disallow AI Training on pages with ads.</p>
+<p data-astro-cid-yoyuw6fx="">Agents do not create the same search-discoverability tradeoff as mixed-use crawlers, and the Internet does not yet have a well-established directive for expressing Disallow preferences to agents. For now, we’re not including a Disallow setting for Agents. As standards such as <a href="https://datatracker.ietf.org/wg/aipref/documents" target="_blank" rel="noopener noreferrer"><u>ai-prefs</u></a> mature, we will revisit this approach.</p>
+<h2 data-astro-cid-yoyuw6fx="">What changes on September 15?</h2>
+<p data-astro-cid-yoyuw6fx="">We are making the following changes to Bot Management and AI Crawl Control:</p>
+<ol>
+	<li>Block and Block on pages with ads now apply to mixed-use crawlers, including Applebot, Bingbot, and Googlebot, so either setting impacts search as well as training. To stop training and <em>keep</em> search, use Disallow AI Training.</li>
+	<li>“Block AI Bots” will be deprecated in favor of the more granular Search, Training, and Agent controls.</li>
+	<li>Managed Robots.txt will be deprecated in favor of Bot Preference Sync. Customers who enabled Managed Robots.txt will migrate to the new system.</li>
+	<li>Disallow AI Training will become part of the recommended configuration for certain new domains.</li>
+	<li>Existing customers will have their preferences migrated to the new controls as described below.</li>
+</ol>
+<h3 data-astro-cid-yoyuw6fx="">What you need to do</h3>
+<p data-astro-cid-yoyuw6fx="">Nothing, in almost every case. Your current settings carry over on their own.</p>
+<p data-astro-cid-yoyuw6fx="">If you want mixed-use crawlers gone entirely, you now have to say so. Select Block. It will stop Applebot, Bingbot, and Googlebot from reaching your site — search included.</p>
+<h4 data-astro-cid-yoyuw6fx="">Existing domains that never used the Search/Training/Agent controls</h4>
+<p data-astro-cid-yoyuw6fx="">Site owners that never configured the more granular controls will be migrated to the new settings based on their legacy Block AI Bots setting:</p>
+<div id="html-block-j4r7kdhox" class="html-block">
+	<figure class="table table-style-align-center">
+		<table>
+			<thead>
+				<tr>
+					<th>(Legacy)<br>“Block AI” setting</th>
+					<th>(New)<br>Search setting</th>
+					<th>(New)<br>Training setting</th>
+					<th>(New)<br>Agent setting</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>Disabled (unselected)</th>
+					<td>Allow</td>
+					<td>Allow</td>
+					<td>Allow</td>
+				</tr>
+				<tr>
+					<th>Block</th>
+					<td>Allow</td>
+					<td>Disallow AI Training</td>
+					<td>Block on pages with ads</td>
+				</tr>
+				<tr>
+					<th>Block on pages with ads</th>
+					<td>Allow</td>
+					<td>Disallow AI Training</td>
+					<td>Block on pages with ads</td>
+				</tr>
+			</tbody>
+		</table>
+	</figure>
+</div>
+<h4 data-astro-cid-yoyuw6fx="">Existing domains that previously configured the Search/Training/Agent controls</h4>
+<p data-astro-cid-yoyuw6fx="">For domains that previously configured the granular controls, we will preserve the practical effect of their selections under the new definitions. Previous Training selections of Block or Block on pages with ads will migrate to Disallow AI Training.</p>
+<div id="html-block-ny9qjp2ub" class="html-block">
+	<figure class="table table-style-align-center">
+		<table>
+			<thead>
+				<tr>
+					<th>Control</th>
+					<th>Legacy setting</th>
+					<th>New setting</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th rowspan="3">Search</th>
+					<td>Allow</td>
+					<td>Allow</td>
+				</tr>
+				<tr>
+					<td>Block</td>
+					<td>Block</td>
+				</tr>
+				<tr>
+					<td>Block on pages with ads</td>
+					<td>Block on pages with ads</td>
+				</tr>
+				<tr>
+					<th rowspan="3">Training</th>
+					<td>Allow</td>
+					<td>Allow</td>
+				</tr>
+				<tr>
+					<td>Block</td>
+					<td><strong>Disallow AI Training</strong></td>
+				</tr>
+				<tr>
+					<td>Block on pages with ads</td>
+					<td><strong>Disallow AI Training</strong></td>
+				</tr>
+				<tr>
+					<th rowspan="3">Agent</th>
+					<td>Allow</td>
+					<td>Allow</td>
+				</tr>
+				<tr>
+					<td>Block</td>
+					<td>Block</td>
+				</tr>
+				<tr>
+					<td>Block on pages with ads</td>
+					<td>Block on pages with ads</td>
+				</tr>
+			</tbody>
+		</table>
+	</figure>
+</div>
+<h3 data-astro-cid-yoyuw6fx="">Recommendations for new domains</h3>
+<p data-astro-cid-yoyuw6fx="">Beginning September 15, customers onboarding a new domain will be offered one of two preset configurations, depending on whether the site earns money from advertising. Ad revenue depends on a human actually seeing the page. Training replaces that visit with an answer; agents fetch the page with nobody there to see the ads. So the presets for ad-supported sites are more restrictive. You can change any of these settings during onboarding, or at any time afterward.</p>
+<div id="html-block-yt7uq7yv4" class="html-block">
+	<figure class="table table-style-align-center">
+		<table>
+			<thead>
+				<tr>
+					<th>Setting</th>
+					<th>Site does not monetize using ads</th>
+					<th>Site is monetized using ads</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>Preference Sync</th>
+					<td>Enabled</td>
+					<td>Enabled</td>
+				</tr>
+				<tr>
+					<th>Search</th>
+					<td>Allow</td>
+					<td>Allow</td>
+				</tr>
+				<tr>
+					<th>Training</th>
+					<td>Allow</td>
+					<td>Disallow AI Training</td>
+				</tr>
+				<tr>
+					<th>Agent</th>
+					<td>Allow</td>
+					<td>Block on pages with ads</td>
+				</tr>
+			</tbody>
+		</table>
+	</figure>
+</div>
+<p class="has-text-align-center" data-astro-cid-yoyuw6fx=""><em>Recommended settings for new domains</em></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA//7+/Pr69fPz8fDw9PT09/b28/Ly6ujo////////+Pf39fT0+Pj4+vr69/b27u3t/////////fz8+fn5/Pz8////+/r68/Ly/////////////P39/////////v7+9vX1/////////////f7+////////////9/f3/////////f//+/39////////////9vf3////////+/39+fv7/v///////v//9fb2////////+vz8+fr6/v///////v//9PX1" alt="" width="715" height="797" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=715&amp;h=797&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=640&amp;h=713&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=715&amp;h=797&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=750&amp;h=836&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=828&amp;h=923&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=1080&amp;h=1204&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=1280&amp;h=1427&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=1430&amp;h=1594&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3499 2.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=772&amp;h=861&amp;f=webp" data-lightbox-width="772" data-lightbox-height="861" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="797" class="pt-portable-image-media"></div>
+	<figcaption data-astro-cid-7nvefuv6="">Screenshot of onboarding flow for a new domain, showing the recommended settings when “I monetize pages that serve ads” is selected.</figcaption>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h2 data-astro-cid-yoyuw6fx="">What does this mean for specific mixed-use crawlers?</h2>
+<p data-astro-cid-yoyuw6fx="">Applebot, Bingbot, and Googlebot are Accountable. Apple, Google, and Microsoft are committed to the same principles of publisher choice and transparency. Under Disallow AI Training they can keep crawling your site for search. Selecting Block stops them entirely.</p>
+<p data-astro-cid-yoyuw6fx="">We also categorize the relevant crawlers from Amazon, Anthropic, Meta, and OpenAI as Accountable. These organizations separate their Search and Training crawlers, so Cloudflare can block the Training crawler without affecting search.</p>
+<h3 data-astro-cid-yoyuw6fx="">Applebot</h3>
+<p data-astro-cid-yoyuw6fx="">Applebot allows site owners to opt out of training by adding a Disallow rule to robots.txt for “Applebot-Extended”. Site owners can also currently express preferences for AI Summaries via their nosnippet <a href="https://support.apple.com/en-us/119829#:~:text=nosnippet%3A%20Applebot,products%20and%20services." target="_blank" rel="noopener noreferrer"><u>directive</u></a> in the page HTML. Content can also be labeled as <a href="https://support.apple.com/en-us/119829#:~:text=Marking%20paywalled%20content,the%20next%20section." target="_blank" rel="noopener noreferrer"><u>paywalled content</u></a> to exclude it from generative output. Applebot does not yet provide a tool for URL-level inspection. However, we have met with their team, and they have shared details of their in-progress solution for next year. Apple has also stated that disallowing training <a href="https://support.apple.com/en-us/119829#:~:text=Applebot%2DExtended%20and%20controlling%20data%20usage" target="_blank" rel="noopener noreferrer"><u>does not impact search ranking</u></a>.</p>
+<h3 data-astro-cid-yoyuw6fx="">Googlebot</h3>
+<p data-astro-cid-yoyuw6fx="">Googlebot allows site owners to opt out of training by adding a Disallow rule to robots.txt for “Google-Extended”, and they provide a toggle inside their webmaster portal to exclude a site’s content from generative search results. Googlebot also provides site owners with metrics and reporting regarding search results and AI summary results. Google shared information about their existing and recently launched controls, as well as information about what they're already working on, including additional URL-level transparency tools for site-owners related to Google-Extended, which they expect to launch in the weeks to come. Google has also stated that disallowing Google-Extended <a href="https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers#google-extended:~:text=Google%2DExtended%20does%20not%20impact%20a%20site%27s%20inclusion%20in%20Google%20Search%20nor%20is%20it%20used%20as%20a%20ranking%20signal%20in%20Google%20Search." target="_blank" rel="noopener noreferrer"><u>does not impact search ranking</u></a>.</p>
+<h3 data-astro-cid-yoyuw6fx="">Bingbot</h3>
+<p data-astro-cid-yoyuw6fx="">Bingbot provides granular controls and transparency in their <a href="https://www.bing.com/webmasters/help/ai-performance-9f8e7d6c" target="_blank" rel="noopener noreferrer"><u>Webmaster Tools</u></a>. Site owners can currently express AI training preferences through Bing’s <code>NOARCHIVE</code> <a href="https://blogs.bing.com/webmaster/september-2023/Announcing-new-options-for-webmasters-to-control-usage-of-their-content-in-Bing-Chat#:~:text=Content%20tagged%20NOARCHIVE%20will%20not%20be%20included%20in%20Bing%20Chat%20answers%2C%20not%20be%20linked%20to%20in%20the%20answers.%20Going%20forward%2C%20for%20content%20in%20our%20Bing%20Index%20that%20is%20labeled%20NOARCHIVE%2C%20we%20will%20not%20use%20the%20content%20for%20training%20Microsoft%E2%80%99s%20generative%20AI%20foundation%20models." target="_blank" rel="noopener noreferrer"><u>meta tag</u></a>. Microsoft is extending these capabilities and currently building the mechanism to also respect a “no training” preference in robots.txt at the domain/site level, targeted for early 2027. For Cloudflare Customers who wish to opt out of training in Bing today, in addition to using the <code>NOARCHIVE</code> tag, site owners can use the <a href="https://www.bing.com/webmasters/help/block-urls-from-bing-264e560a" target="_blank" rel="noopener noreferrer"><u>Block URLs or Content Removal tool</u></a>. Microsoft has also stated that using <code>NOARCHIVE</code> <a href="https://blogs.bing.com/webmaster/september-2023/Announcing-new-options-for-webmasters-to-control-usage-of-their-content-in-Bing-Chat#:~:text=We%20also%20heard%20from%20publishers%20that%20they%20want%20to%20exercise%20these%20choices%20without%20impacting%20how%20Bing%20users%20can%20discover%20web%20content%20on%20Bing%E2%80%99s%20search%20results%20page.%20We%20can%20assure%20publishers%20that%20content%20with%20the%20NOCACHE%20tag%20or%20NOARCHIVE%20tag%20will%20still%20appear%20in%20our%20search%20results." target="_blank" rel="noopener noreferrer"><u>will not impact search ranking</u></a>.</p>
+<p data-astro-cid-yoyuw6fx="">Until that support launches, selecting Disallow AI Training will not automatically convey a no-training preference to Bing through robots.txt. This is the same practical behavior as the previous Training Block setting, which did not apply to mixed-use crawlers such as Bingbot.</p>
+<h3 data-astro-cid-yoyuw6fx="">Continuing progress</h3>
+<p data-astro-cid-yoyuw6fx="">We will continue to reach out and engage with all operators of AI crawlers as these capabilities evolve. Cloudflare <a href="https://radar.cloudflare.com/ai-insights#ai-bot-transparency" target="_blank" rel="noopener noreferrer"><u>Radar</u></a> publicly tracks the controls, transparency, and reporting provided by Accountable crawler operators.&nbsp;</p>
+<p data-astro-cid-yoyuw6fx="">Making the Internet better requires both sides to have agency: crawlers need access to the open web, and the people who create that web need meaningful control over how their work is used. Today’s announcement represents concrete progress toward that balance.</p>
+<p data-astro-cid-yoyuw6fx="">Progress requires infrastructure providers, content creators, technology companies, and standards bodies such as the Internet Engineering Task Force (IETF) working together to translate these principles into open, interoperable standards.</p>
+<h2 data-astro-cid-yoyuw6fx="">What’s next: AI Summaries</h2>
+<p data-astro-cid-yoyuw6fx="">Training and AI Summaries raise different questions for site owners. Training concerns whether content can be used to build AI models. Summaries affect how people discover, evaluate, and ultimately visit a business. Both matter, but they affect businesses in different ways.</p>
+<p data-astro-cid-yoyuw6fx="">Controls to opt out of AI summaries are the first step. The operators identified as Accountable either provide or are completing work to provide that capability, establishing an important baseline: site owners can say no.</p>
+<p data-astro-cid-yoyuw6fx="">But a site-wide choice between allowing and prohibiting summaries is still a blunt instrument. The right decision depends on the site, the content, and the business outcome. For publishers, training raises foundational questions about control, compensation, and the sustainability of original content. Summaries create a separate and often more immediate distribution question: does someone visit the publisher’s site, or consume the answer within a search or AI experience? For many other businesses, AI summaries increasingly sit between a potential customer and a website. They may answer a question, compare alternatives, recommend a product, or help someone decide whether to visit at all.</p>
+<p data-astro-cid-yoyuw6fx="">The data illustrates mixed impact. <a href="https://www.pewresearch.org/chart/a-majority-of-americans-say-they-read-ai-summaries-at-the-top-of-search-results" target="_blank" rel="noopener noreferrer"><u>More than half</u></a> of consumers read summaries in Search, and those consumers are <a href="https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results" target="_blank" rel="noopener noreferrer"><u>over 40% more likely</u></a> to <a href="https://www.bain.com/insights/goodbye-clicks-hello-ai-zero-click-search-redefines-marketing" target="_blank" rel="noopener noreferrer"><u>end their search</u></a> after reading one. This can reduce the number of visits a website receives. But consumers referred by AI Search convert at between <a href="https://aisearch.similarweb.com/blog/ai-visibility-roi" target="_blank" rel="noopener noreferrer"><u>three times</u></a> and <a href="https://quickseo.ai/blog/ai-search-vs-google-search-in-2026-40-stats-that-show-why-your-brand-needs-to-track-both#:~:text=AI%20search%20traffic%20converts%20at%2014.2%25%2C%20compared%20to%20Google%E2%80%99s%202.8%25" target="_blank" rel="noopener noreferrer"><u>over five times</u></a> the rate of those referred by traditional search. AI may produce fewer visits while sending customers with much greater intent.</p>
+<p data-astro-cid-yoyuw6fx="">That is not inherently good or bad. A publisher funded by advertising may optimize for audience volume. A retailer may prefer fewer visitors who are more likely to purchase. Cloudflare’s role is not to choose for them, but to provide the visibility and control needed to make an informed decision.</p>
+<p data-astro-cid-yoyuw6fx="">Summary opt-outs are a strong start, but they are not the end state. Our next focus is helping site owners understand how summaries affect their businesses and giving them more control over how much of their content can be used. Open standards such as <a href="https://datatracker.ietf.org/wg/aipref/documents" target="_blank" rel="noopener noreferrer"><u>ai-prefs</u></a> will be an important part of making that possible.</p>
+<p data-astro-cid-yoyuw6fx="">If you would like to have a voice in this conversation, or provide feedback, please reach out to <a href="mailto:crawlercontrols@cloudflare.com" target="_blank" rel="noopener noreferrer"><u>crawlercontrols@cloudflare.com</u></a>.</p>
+<p data-astro-cid-yoyuw6fx="">These new controls are available to all customers, on all plans, and can be configured at the domain (zone) <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fsettings" target="_blank" rel="noopener noreferrer"><u>Security Settings</u></a>. Not on Cloudflare yet? <a href="https://www.cloudflare.com/lp/pg-one-platform" target="_blank" rel="noopener noreferrer"><u>Start for free</u></a> to set the traffic controls that you want today.</p>

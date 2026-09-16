@@ -1,15 +1,15 @@
-<p>これは大々的に披露するしかないと思っていたため、私たちは<a href="https://blog.cloudflare.com/ja-jp/cloudflare-pages-goes-full-stack-ja-jp">Cloudflare Pagesでのフルスタックアプリケーションのサポートを発表</a>できることに興奮していました。Cloudflare Workersの支援を受けてサーバーレス関数をPages内から追加する方法を示すための、実演用の画像共有プラットフォームを構築しました。プロジェクトに1つのファイルを新たに追加するだけで、ダイナミックレンダリング、他のAPIとのやりとり、KVおよびDurable Objectsを使用したpersistデータを追加することができます。フルスタックアプリケーションの可能性とPagesの高速開発サイクルおよび無制限プレビュー環境を組み合わせることで、ほとんどすべてのアプリケーションを作成する能力が得られます。</p>
-<p>本日は、画面共有プラットフォームの例について説明します。一部の画像は秘密にしたまま、画像を友人たちと共有できるようにしたいと思います。関数を使用してJSON APIを構築(KVおよびDurable Objects上にデータを格納する)して、Cloudflare ImagesおよびCloudflare Accessと統合し、フロントエンドとしてReactを使用します。</p>
-<p>良質のものをすぐにでも使用したい場合は、<a href="https://images.pages.dev" target="_blank" rel="noopener noreferrer">こちらにあるデモインスタンス</a>、および<a href="https://github.com/cloudflare/images.pages.dev" target="_blank" rel="noopener noreferrer">GitHub上のコード</a>を利用できますが、ここではゆっくりしたアプローチに拘ります。</p>
-<h2><strong>Cloudflare Pagesを使用したサーバーレス関数の構築</strong></h2>
+<p data-astro-cid-yoyuw6fx="">これは大々的に披露するしかないと思っていたため、私たちは<a href="https://blog.cloudflare.com/ja-jp/cloudflare-pages-goes-full-stack-ja-jp">Cloudflare Pagesでのフルスタックアプリケーションのサポートを発表</a>できることに興奮していました。Cloudflare Workersの支援を受けてサーバーレス関数をPages内から追加する方法を示すための、実演用の画像共有プラットフォームを構築しました。プロジェクトに1つのファイルを新たに追加するだけで、ダイナミックレンダリング、他のAPIとのやりとり、KVおよびDurable Objectsを使用したpersistデータを追加することができます。フルスタックアプリケーションの可能性とPagesの高速開発サイクルおよび無制限プレビュー環境を組み合わせることで、ほとんどすべてのアプリケーションを作成する能力が得られます。</p>
+<p data-astro-cid-yoyuw6fx="">本日は、画面共有プラットフォームの例について説明します。一部の画像は秘密にしたまま、画像を友人たちと共有できるようにしたいと思います。関数を使用してJSON APIを構築(KVおよびDurable Objects上にデータを格納する)して、Cloudflare ImagesおよびCloudflare Accessと統合し、フロントエンドとしてReactを使用します。</p>
+<p data-astro-cid-yoyuw6fx="">良質のものをすぐにでも使用したい場合は、<a href="https://images.pages.dev" target="_blank" rel="noopener noreferrer">こちらにあるデモインスタンス</a>、および<a href="https://github.com/cloudflare/images.pages.dev" target="_blank" rel="noopener noreferrer">GitHub上のコード</a>を利用できますが、ここではゆっくりしたアプローチに拘ります。</p>
+<h2 data-astro-cid-yoyuw6fx=""><strong>Cloudflare Pagesを使用したサーバーレス関数の構築</strong></h2>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="423" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4847GGYXVVZAPMZQ7A3JX0.png&amp;w=715&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4847GGYXVVZAPMZQ7A3JX0.png&amp;w=640&amp;h=379&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4847GGYXVVZAPMZQ7A3JX0.png&amp;w=715&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4847GGYXVVZAPMZQ7A3JX0.png&amp;w=750&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4847GGYXVVZAPMZQ7A3JX0.png&amp;w=828&amp;h=490&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4847GGYXVVZAPMZQ7A3JX0.png&amp;w=1080&amp;h=639&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4847GGYXVVZAPMZQ7A3JX0.png&amp;w=1280&amp;h=757&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4847GGYXVVZAPMZQ7A3JX0.png&amp;w=1430&amp;h=846&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-806 Embedded Image - kykvZS" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4847GGYXVVZAPMZQ7A3JX0.png&amp;w=1680&amp;h=994&amp;f=webp" data-lightbox-width="1680" data-lightbox-height="994" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="423" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<h3><strong>ファイル-ベースのルーティング</strong></h3>
-<p>まだ慣れていない場合、Cloudflare Pagesは<a href="https://developers.cloudflare.com/pages/get-started" target="_blank" rel="noopener noreferrer">gitプロバイダーと接続</a>(GitHubおよび<a href="https://blog.cloudflare.com/ja-jp/cloudflare-pages-partners-with-gitlab-ja-jp">GitLab</a>)して、Cloudflareのネットワークに対する静的サイトのデプロイを自動化します。関数を使用するとこれらのアプリを動的データに散りばめて拡張することができます。まだお済みでない場合は、<a href="https://dash.cloudflare.com/sign-up/pages" target="_blank" rel="noopener noreferrer">こちらから加入することができます</a>。</p>
-<p>私たちのプロジェクトで、新しい関数を作成してみましょう。</p>
-<p>git commitと、このファイルのプッシュにより最初のPages関数の構築とデプロイがトリガーされます。/timeに対するすべてのリクエストはこの関数によって処理され、他のすべてのリクエストはユーザーのプロジェクトのスタティックアセットに戻されます。ディレクトリ内へのFunctionsファイルの配置は予想どおり動作します。./functions/api/time.jsは/api/time、./functions/some_directory/index.jsは/some_directoryで利用可能です。</p>
+<h3 data-astro-cid-yoyuw6fx=""><strong>ファイル-ベースのルーティング</strong></h3>
+<p data-astro-cid-yoyuw6fx="">まだ慣れていない場合、Cloudflare Pagesは<a href="https://developers.cloudflare.com/pages/get-started" target="_blank" rel="noopener noreferrer">gitプロバイダーと接続</a>(GitHubおよび<a href="https://blog.cloudflare.com/ja-jp/cloudflare-pages-partners-with-gitlab-ja-jp">GitLab</a>)して、Cloudflareのネットワークに対する静的サイトのデプロイを自動化します。関数を使用するとこれらのアプリを動的データに散りばめて拡張することができます。まだお済みでない場合は、<a href="https://dash.cloudflare.com/sign-up/pages" target="_blank" rel="noopener noreferrer">こちらから加入することができます</a>。</p>
+<p data-astro-cid-yoyuw6fx="">私たちのプロジェクトで、新しい関数を作成してみましょう。</p>
+<p data-astro-cid-yoyuw6fx="">git commitと、このファイルのプッシュにより最初のPages関数の構築とデプロイがトリガーされます。/timeに対するすべてのリクエストはこの関数によって処理され、他のすべてのリクエストはユーザーのプロジェクトのスタティックアセットに戻されます。ディレクトリ内へのFunctionsファイルの配置は予想どおり動作します。./functions/api/time.jsは/api/time、./functions/some_directory/index.jsは/some_directoryで利用可能です。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// ./functions/time.js</span></span>
 <span class="line"></span>
@@ -40,15 +40,15 @@
 		})
 	});
 </script>
-<p>また、TypeScript (./functions/time.tsが同様に動作する)、およびパラメータ化されたファイルもサポートされます</p>
+<p data-astro-cid-yoyuw6fx="">また、TypeScript (./functions/time.tsが同様に動作する)、およびパラメータ化されたファイルもサポートされます</p>
 <ul>
 	<li>./functions/todos/[id].jsのように単一角括弧を使用すると/todos/123などのすべてのリクエストと一致させられます。</li>
 	<li>そして./functions/todos/[[path]].jsのように二重角括弧を使用すると、任意の数のパスセグメント(例：/todos/123/subtasks)と一致させられます。</li>
 </ul>
-<p>PagesFunctionの型は<a href="https://github.com/cloudflare/workers-types" target="_blank" rel="noopener noreferrer">@cloudflare/workers-types</a>ライブラリで宣言しますが、これは関数の型のチェックのために使用することができます。</p>
-<h3><strong>動的データ</strong></h3>
-<p>では、私たちの画像共有アプリに戻り、いくつかの画像をアップロード済みであると仮定し、それらをホームページ上に表示したいと思います。そのフロントエンドが呼び出すことができる、これらの画像のリストを返すエンドポイントが必要です。</p>
-<p>観察力の優れた読者であればonRequestGetをエクスポートしていることに気が付くでしょう。これによりGETリクエストのみに応答することができます。</p>
+<p data-astro-cid-yoyuw6fx="">PagesFunctionの型は<a href="https://github.com/cloudflare/workers-types" target="_blank" rel="noopener noreferrer">@cloudflare/workers-types</a>ライブラリで宣言しますが、これは関数の型のチェックのために使用することができます。</p>
+<h3 data-astro-cid-yoyuw6fx=""><strong>動的データ</strong></h3>
+<p data-astro-cid-yoyuw6fx="">では、私たちの画像共有アプリに戻り、いくつかの画像をアップロード済みであると仮定し、それらをホームページ上に表示したいと思います。そのフロントエンドが呼び出すことができる、これらの画像のリストを返すエンドポイントが必要です。</p>
+<p data-astro-cid-yoyuw6fx="">観察力の優れた読者であればonRequestGetをエクスポートしていることに気が付くでしょう。これによりGETリクエストのみに応答することができます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// ./functions/api/images.ts</span></span>
 <span class="line"></span>
@@ -116,11 +116,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>また、KV名前空間(env.IMAGESでアクセス)を使用して、アップロード済みの画像に関する情報を格納します。Pagesプロジェクト内にバインディングを作成するには、[Settings(設定)] タブに移動します。</p>
-<p>![](<a href="https://blog.cloudflare.com/content/images/2021/11/unnamed-15.png">http://staging.blog.mrk.cfdata.org/content/images/2021/11/unnamed-15.png</a> "Screenshot of the "Functions" page on the Pages project "Settings" tab in the Cloudflare dashboard")</p>
-<h3><strong>他のAPIとのインターフェース</strong></h3>
-<p>Cloudflare Imagesは画像のホスティングおよび変換のための、低価格で、ハイパフォーマンス、高機能のサービスです。複数のバリアントを作成して、様々な方法で画像をレンダリングして署名付きURLでアクセスを制御することができます。このサービスのAPIを使用するインターフェースに以下の関数を追加して、受信ファイルをCloudflare Imagesにアップロードします。</p>
-<h3><strong>永続性データ</strong></h3>
+<p data-astro-cid-yoyuw6fx="">また、KV名前空間(env.IMAGESでアクセス)を使用して、アップロード済みの画像に関する情報を格納します。Pagesプロジェクト内にバインディングを作成するには、[Settings(設定)] タブに移動します。</p>
+<p data-astro-cid-yoyuw6fx="">![](<a href="https://blog.cloudflare.com/content/images/2021/11/unnamed-15.png">http://staging.blog.mrk.cfdata.org/content/images/2021/11/unnamed-15.png</a> "Screenshot of the "Functions" page on the Pages project "Settings" tab in the Cloudflare dashboard")</p>
+<h3 data-astro-cid-yoyuw6fx=""><strong>他のAPIとのインターフェース</strong></h3>
+<p data-astro-cid-yoyuw6fx="">Cloudflare Imagesは画像のホスティングおよび変換のための、低価格で、ハイパフォーマンス、高機能のサービスです。複数のバリアントを作成して、様々な方法で画像をレンダリングして署名付きURLでアクセスを制御することができます。このサービスのAPIを使用するインターフェースに以下の関数を追加して、受信ファイルをCloudflare Imagesにアップロードします。</p>
+<h3 data-astro-cid-yoyuw6fx=""><strong>永続性データ</strong></h3>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// ./functions/api/admin/upload.ts</span></span>
 <span class="line"></span>
@@ -193,10 +193,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>頻繁に読み取られてもまれにしか書き込まれない情報を格納するため、既にKVを使用しています。もう少し同機が必要な機能の場合はどうでしょうか。</p>
-<p>各画像にダウンロードカウンターを追加しましょう。highresバリアントをCloudflare Images内に作成すると、ユーザーがリンクをリクエストするたびにカウンターをインクリメントすることができます。これにはもう少しセットアップが必要ですが、プロジェクト内のDurable Objectsの機能を解き放つだけの価値が絶対にあります。</p>
-<p>このダウンロードカウントを保持できる、以下のDurable Objectクラスを作成して公開する必要があります。</p>
-<h3><strong>ミドルウェア</strong></h3>
+<p data-astro-cid-yoyuw6fx="">頻繁に読み取られてもまれにしか書き込まれない情報を格納するため、既にKVを使用しています。もう少し同機が必要な機能の場合はどうでしょうか。</p>
+<p data-astro-cid-yoyuw6fx="">各画像にダウンロードカウンターを追加しましょう。highresバリアントをCloudflare Images内に作成すると、ユーザーがリンクをリクエストするたびにカウンターをインクリメントすることができます。これにはもう少しセットアップが必要ですが、プロジェクト内のDurable Objectsの機能を解き放つだけの価値が絶対にあります。</p>
+<p data-astro-cid-yoyuw6fx="">このダウンロードカウントを保持できる、以下のDurable Objectクラスを作成して公開する必要があります。</p>
+<h3 data-astro-cid-yoyuw6fx=""><strong>ミドルウェア</strong></h3>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// ./durable_objects/downloadCounter.js</span></span>
 <span class="line"><span class="sk-24292e-fff">ts#example</span><span class="sk-d73a49-a0a0a0">---</span><span class="sk-24292e-fff">counter</span></span>
@@ -228,9 +228,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>関数を実行する前に一部のコード(認証またはロギングなど)を実行する必要がある場合のために、Pagesには使いやすいミドルウェアが用意されており、これはファイルベースのルーティングの任意のレベルで適用することができます。ディレクトリに_middleware.tsファイルを作成することで、このファイルが最初に実行され、next()が呼び出されるときにユーザーの関数を実行することがわかります。</p>
-<p>私たちのアプリケーションでは、未認証ユーザーが画像をアップロード(/api/admin/upload)または画像を削除(/api/admin/delete)できないようにしたいと思います。Cloudflare Accessではすべてまたは一部のアプリケーションに対するロールベースのアクセス制御を適用することができ、ユーザーが必要なのはサーバーレス関数に統合する単一ファイルだけです。私たちは./functions/api/admin/_middleware.tsを作成し、これは/api/admin/*の受信リクエストすべてに適用されます:</p>
-<p>ミドルウェアは自由に使える強力なツールで、Cloudflare Accessを使用するアプリケーションのパーツを容易に保護、またはHoneycombおよびSentryなどの可観測性およびエラーロギングプラットフォームと素早く統合することができます。</p>
+<p data-astro-cid-yoyuw6fx="">関数を実行する前に一部のコード(認証またはロギングなど)を実行する必要がある場合のために、Pagesには使いやすいミドルウェアが用意されており、これはファイルベースのルーティングの任意のレベルで適用することができます。ディレクトリに_middleware.tsファイルを作成することで、このファイルが最初に実行され、next()が呼び出されるときにユーザーの関数を実行することがわかります。</p>
+<p data-astro-cid-yoyuw6fx="">私たちのアプリケーションでは、未認証ユーザーが画像をアップロード(/api/admin/upload)または画像を削除(/api/admin/delete)できないようにしたいと思います。Cloudflare Accessではすべてまたは一部のアプリケーションに対するロールベースのアクセス制御を適用することができ、ユーザーが必要なのはサーバーレス関数に統合する単一ファイルだけです。私たちは./functions/api/admin/_middleware.tsを作成し、これは/api/admin/*の受信リクエストすべてに適用されます:</p>
+<p data-astro-cid-yoyuw6fx="">ミドルウェアは自由に使える強力なツールで、Cloudflare Accessを使用するアプリケーションのパーツを容易に保護、またはHoneycombおよびSentryなどの可観測性およびエラーロギングプラットフォームと素早く統合することができます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// ./functions/api/admin/_middleware.ts</span></span>
 <span class="line"></span>
@@ -266,11 +266,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2><strong>Jamstackとしての統合</strong></h2>
-<p>"Jamstack"の"Jam"はJavaScript、API、Markupを表します。Cloudflare Pagesは以前からこの「J」と「M」を提供していましたが、中間にWorkersがあると、本当にフルスタックのJamstackを使用することができます。</p>
-<p>取り組みやすい例として、<a href="https://create-react-app.dev" target="_blank" rel="noopener noreferrer">Create Reactアプリ</a>でこの画像共有プラットフォームのフロントエンドを構築しましたが、<a href="https://developers.cloudflare.com/pages/platform/build-configuration#framework-presets" target="_blank" rel="noopener noreferrer">Cloudflare Pagesは増加の一途をたどるフレームワークと自然に統合し</a>(現在は23)、いつでも<a href="https://developers.cloudflare.com/pages/platform/build-configuration#build-commands-and-directories" target="_blank" rel="noopener noreferrer">独自の完全なカスタムビルドコマンドを構成することができます</a>。</p>
-<p>ユーザーのフロントエンドは私たちが構成済みの関数を呼び出して、そのデータをレンダリングするだけです。私たちは<a href="https://swr.vercel.app" target="_blank" rel="noopener noreferrer">SWR</a>を使用して物事を単純化しますが、ユーザーが望めば、全くありきたりなJavaScriptの fetchを使用してこれを実行することができます。</p>
-<h2><strong>ローカルデプロイ</strong></h2>
+<h2 data-astro-cid-yoyuw6fx=""><strong>Jamstackとしての統合</strong></h2>
+<p data-astro-cid-yoyuw6fx="">"Jamstack"の"Jam"はJavaScript、API、Markupを表します。Cloudflare Pagesは以前からこの「J」と「M」を提供していましたが、中間にWorkersがあると、本当にフルスタックのJamstackを使用することができます。</p>
+<p data-astro-cid-yoyuw6fx="">取り組みやすい例として、<a href="https://create-react-app.dev" target="_blank" rel="noopener noreferrer">Create Reactアプリ</a>でこの画像共有プラットフォームのフロントエンドを構築しましたが、<a href="https://developers.cloudflare.com/pages/platform/build-configuration#framework-presets" target="_blank" rel="noopener noreferrer">Cloudflare Pagesは増加の一途をたどるフレームワークと自然に統合し</a>(現在は23)、いつでも<a href="https://developers.cloudflare.com/pages/platform/build-configuration#build-commands-and-directories" target="_blank" rel="noopener noreferrer">独自の完全なカスタムビルドコマンドを構成することができます</a>。</p>
+<p data-astro-cid-yoyuw6fx="">ユーザーのフロントエンドは私たちが構成済みの関数を呼び出して、そのデータをレンダリングするだけです。私たちは<a href="https://swr.vercel.app" target="_blank" rel="noopener noreferrer">SWR</a>を使用して物事を単純化しますが、ユーザーが望めば、全くありきたりなJavaScriptの fetchを使用してこれを実行することができます。</p>
+<h2 data-astro-cid-yoyuw6fx=""><strong>ローカルデプロイ</strong></h2>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// ./src/components/ImageGrid.tsx</span></span>
 <span class="line"></span>
@@ -296,9 +296,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>動作状況をテストするためにすべての変更をプッシュする必要がある場合、それが高速であるとしても、このようなプロジェクト上の反復は手間がかかります。関数、Workers、機密情報、環境変数、KVに対する完全なサポートを含む、Pagesプロジェクトのローカルデプロイのための、Wranglerとの素晴らしい統合がリリースされました。Durable Objectsのサポートは間もなく開始されます。</p>
-<p>npmからのインストール:</p>
-<p>静的アセットのフォルダの提供をするか、既存のツールをプロキシします:</p>
+<p data-astro-cid-yoyuw6fx="">動作状況をテストするためにすべての変更をプッシュする必要がある場合、それが高速であるとしても、このようなプロジェクト上の反復は手間がかかります。関数、Workers、機密情報、環境変数、KVに対する完全なサポートを含む、Pagesプロジェクトのローカルデプロイのための、Wranglerとの素晴らしい統合がリリースされました。Durable Objectsのサポートは間もなく開始されます。</p>
+<p data-astro-cid-yoyuw6fx="">npmからのインストール:</p>
+<p data-astro-cid-yoyuw6fx="">静的アセットのフォルダの提供をするか、既存のツールをプロキシします:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> wrangler@beta</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -306,7 +306,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2><strong>前進、そして作成！</strong></h2>
+<h2 data-astro-cid-yoyuw6fx=""><strong>前進、そして作成！</strong></h2>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Serve a directory</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> pages</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> ./public</span></span>
@@ -318,8 +318,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>子犬がお好きでしたら、<a href="https://images.pages.dev" target="_blank" rel="noopener noreferrer">こちらに画像共有アプリケーションを展開してあります</a>。コードがお好きでしたら、<a href="https://github.com/cloudflare/images.pages.dev" target="_blank" rel="noopener noreferrer">GitHub上に用意されています</a>。ご自分で自由にフォークしてデプロイしてください！ 5分間のセットアップウィザードがありますが、Cloudflare Images、Access、Workers、Durable Objectsが必要になります。</p>
-<p>私たちはPagesプラットフォームの将来に胸を高鳴らせており、あなたが構築しているものについて聞きたいです！当社のDiscordサーバー上の<a href="https://discord.com/channels/595317990191398933/783765338692386886" target="_blank" rel="noopener noreferrer">#what-i-builtチャンネル</a>であなたのフルスタックアプリケーションを公開するか、<a href="https://discord.com/channels/595317990191398933/789155108529111069" target="_blank" rel="noopener noreferrer">#pages-helpチャンネル</a>でサポートを受けてください。</p>
+<p data-astro-cid-yoyuw6fx="">子犬がお好きでしたら、<a href="https://images.pages.dev" target="_blank" rel="noopener noreferrer">こちらに画像共有アプリケーションを展開してあります</a>。コードがお好きでしたら、<a href="https://github.com/cloudflare/images.pages.dev" target="_blank" rel="noopener noreferrer">GitHub上に用意されています</a>。ご自分で自由にフォークしてデプロイしてください！ 5分間のセットアップウィザードがありますが、Cloudflare Images、Access、Workers、Durable Objectsが必要になります。</p>
+<p data-astro-cid-yoyuw6fx="">私たちはPagesプラットフォームの将来に胸を高鳴らせており、あなたが構築しているものについて聞きたいです！当社のDiscordサーバー上の<a href="https://discord.com/channels/595317990191398933/783765338692386886" target="_blank" rel="noopener noreferrer">#what-i-builtチャンネル</a>であなたのフルスタックアプリケーションを公開するか、<a href="https://discord.com/channels/595317990191398933/789155108529111069" target="_blank" rel="noopener noreferrer">#pages-helpチャンネル</a>でサポートを受けてください。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="230" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WNVX7F6QSAZPPBJKA2PP.png&amp;w=715&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WNVX7F6QSAZPPBJKA2PP.png&amp;w=640&amp;h=206&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WNVX7F6QSAZPPBJKA2PP.png&amp;w=715&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WNVX7F6QSAZPPBJKA2PP.png&amp;w=750&amp;h=241&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WNVX7F6QSAZPPBJKA2PP.png&amp;w=828&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WNVX7F6QSAZPPBJKA2PP.png&amp;w=1080&amp;h=347&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WNVX7F6QSAZPPBJKA2PP.png&amp;w=1280&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WNVX7F6QSAZPPBJKA2PP.png&amp;w=1430&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-806 Embedded Image - NvBTD8" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WNVX7F6QSAZPPBJKA2PP.png&amp;w=1800&amp;h=578&amp;f=webp" data-lightbox-width="1800" data-lightbox-height="578" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="230" class="pt-portable-image-media"></div>
 </figure>

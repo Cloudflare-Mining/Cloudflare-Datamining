@@ -1,5 +1,5 @@
-<p>If you’re writing code: what can go wrong, will go wrong.</p>
-<p>Many developers know the feeling: “It worked in the local testing suite, it worked in our staging environment, but… it’s broken in production?” Testing can reduce mistakes and debugging can help find them, but logs give us the tools to understand and improve what we are creating.</p>
+<p data-astro-cid-yoyuw6fx="">If you’re writing code: what can go wrong, will go wrong.</p>
+<p data-astro-cid-yoyuw6fx="">Many developers know the feeling: “It worked in the local testing suite, it worked in our staging environment, but… it’s broken in production?” Testing can reduce mistakes and debugging can help find them, but logs give us the tools to understand and improve what we are creating.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-d73a49-a0a0a0"> ===</span><span class="sk-005cc5-fff"> undefined</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-24292e-fff">  console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"there’s no way… right?"</span><span class="sk-24292e-fff">) </span><span class="sk-6a737d-8b8b8b94">// Narrator: there was.</span></span>
@@ -27,19 +27,19 @@
 		})
 	});
 </script>
-<p>While logging can help you understand when the seemingly impossible is actually possible, it’s something that no developer really wants to set up or maintain on their own. That’s why we’re excited to launch a new addition to the Cloudflare Workers platform: logs and exceptions from the dashboard.</p>
-<p>Starting today, you can view and filter the <code>console.log</code> output and exceptions from a Worker… at no additional cost with no configuration needed!</p>
-<h3>View logs, just a click away</h3>
-<p>When you view a Worker in the dashboard, you’ll now see a “Logs” tab which you can click on to view a detailed stream of logs and exceptions. Here’s what it looks like in action:</p>
+<p data-astro-cid-yoyuw6fx="">While logging can help you understand when the seemingly impossible is actually possible, it’s something that no developer really wants to set up or maintain on their own. That’s why we’re excited to launch a new addition to the Cloudflare Workers platform: logs and exceptions from the dashboard.</p>
+<p data-astro-cid-yoyuw6fx="">Starting today, you can view and filter the <code>console.log</code> output and exceptions from a Worker… at no additional cost with no configuration needed!</p>
+<h3 data-astro-cid-yoyuw6fx="">View logs, just a click away</h3>
+<p data-astro-cid-yoyuw6fx="">When you view a Worker in the dashboard, you’ll now see a “Logs” tab which you can click on to view a detailed stream of logs and exceptions. Here’s what it looks like in action:</p>
 <div id="html-block-kg" class="html-block">
 	<div style="padding-top:63.24999999999999%"><iframe src="https://iframe.videodelivery.net/795b200ef205efae15fccdd159d5beb8?preload=true" style="border:none;position:absolute;top:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 	<p></p>
 </div>
-<p>Each log entry contains an event with a list of logs, exceptions, and request headers if it was triggered by an HTTP request. We also automatically redact sensitive URLs and headers such as Authorization, Cookie, or anything else that appears to have a sensitive name.</p>
-<p>If you are in the Durable Objects <a href="https://blog.cloudflare.com/durable-objects-open-beta">open beta</a>, you will also be able to view the logs and requests sent to <em>each</em> Durable Object. This is a great tool to help you understand and debug the interactions between your Worker and a Durable Object.</p>
-<p>For now, we support filtering by event status and type. Though, you can expect more filters to be added to the dashboard very soon! Today, we support advanced filtering with the wrangler CLI, which will be discussed later in this blog.</p>
-<h3>console.log(), and you’re all set</h3>
-<p>It’s really simple to get started with logging for Workers. Simply invoke one of the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/console" target="_blank" rel="noopener noreferrer">console</a> APIs, such as <code>console.log()</code>, and we handle the rest. That’s it! There’s no extra setup, no configuration needed, and no hidden logging fees.</p>
+<p data-astro-cid-yoyuw6fx="">Each log entry contains an event with a list of logs, exceptions, and request headers if it was triggered by an HTTP request. We also automatically redact sensitive URLs and headers such as Authorization, Cookie, or anything else that appears to have a sensitive name.</p>
+<p data-astro-cid-yoyuw6fx="">If you are in the Durable Objects <a href="https://blog.cloudflare.com/durable-objects-open-beta">open beta</a>, you will also be able to view the logs and requests sent to <em>each</em> Durable Object. This is a great tool to help you understand and debug the interactions between your Worker and a Durable Object.</p>
+<p data-astro-cid-yoyuw6fx="">For now, we support filtering by event status and type. Though, you can expect more filters to be added to the dashboard very soon! Today, we support advanced filtering with the wrangler CLI, which will be discussed later in this blog.</p>
+<h3 data-astro-cid-yoyuw6fx="">console.log(), and you’re all set</h3>
+<p data-astro-cid-yoyuw6fx="">It’s really simple to get started with logging for Workers. Simply invoke one of the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/console" target="_blank" rel="noopener noreferrer">console</a> APIs, such as <code>console.log()</code>, and we handle the rest. That’s it! There’s no extra setup, no configuration needed, and no hidden logging fees.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> logRequest</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">cf</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">headers</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> request</span></span>
@@ -59,9 +59,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>In fact, you don’t even need to use <code>console.log</code> to view an event from the dashboard. If your Worker doesn’t generate any logs or exceptions, you will still be able to see the request headers from the event.</p>
-<h3>Advanced filters, from your terminal</h3>
-<p>If you need more advanced filters you can use <a href="https://github.com/cloudflare/wrangler" target="_blank" rel="noopener noreferrer">wrangler</a>, our command-line tool for deploying Workers. We’ve updated the <code>wrangler tail</code> command to support sampling and a new set of advanced filters. You also no longer need to install or configure <code>cloudflared</code> to use the command. Not to mention it’s <em>much</em> faster, no more waiting around for logs to appear. Here are a few examples:</p>
+<p data-astro-cid-yoyuw6fx="">In fact, you don’t even need to use <code>console.log</code> to view an event from the dashboard. If your Worker doesn’t generate any logs or exceptions, you will still be able to see the request headers from the event.</p>
+<h3 data-astro-cid-yoyuw6fx="">Advanced filters, from your terminal</h3>
+<p data-astro-cid-yoyuw6fx="">If you need more advanced filters you can use <a href="https://github.com/cloudflare/wrangler" target="_blank" rel="noopener noreferrer">wrangler</a>, our command-line tool for deploying Workers. We’ve updated the <code>wrangler tail</code> command to support sampling and a new set of advanced filters. You also no longer need to install or configure <code>cloudflared</code> to use the command. Not to mention it’s <em>much</em> faster, no more waiting around for logs to appear. Here are a few examples:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Filter by your own IP address, and if there was an uncaught exception.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> tail</span><span class="sk-005cc5-99ffe4"> --format=pretty</span><span class="sk-005cc5-99ffe4"> --ip-address=self</span><span class="sk-005cc5-99ffe4"> --status=error</span></span>
@@ -76,12 +76,12 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>We recommend using the “pretty” format, since wrangler will output your logs in a colored, human-readable format. (We’re also working on a similar display for the dashboard.)</p>
+<p data-astro-cid-yoyuw6fx="">We recommend using the “pretty” format, since wrangler will output your logs in a colored, human-readable format. (We’re also working on a similar display for the dashboard.)</p>
 <div id="html-block-k1m" class="html-block">
 	<div style="padding-top:47%"><iframe src="https://iframe.videodelivery.net/401421eff1a14f81c50e563212c3f48d?preload=true" style="border:none;position:absolute;top:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 	<p></p>
 </div>
-<p>However, if you want to access structured logs, you can use the “json” format. This is great if you want to pipe your logs to another tool, such as <a href="https://stedolan.github.io/jq/tutorial" target="_blank" rel="noopener noreferrer">jq</a>, or save them to a file. Here are a few more examples:</p>
+<p data-astro-cid-yoyuw6fx="">However, if you want to access structured logs, you can use the “json” format. This is great if you want to pipe your logs to another tool, such as <a href="https://stedolan.github.io/jq/tutorial" target="_blank" rel="noopener noreferrer">jq</a>, or save them to a file. Here are a few more examples:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Parses each log event, but only outputs the url.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> tail</span><span class="sk-005cc5-99ffe4"> --format=json</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-032f62-99ffe4"> .event.request?.url</span></span>
@@ -94,8 +94,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3>Try it out!</h3>
-<p>Both logs from the dashboard and <code>wrangler tail</code> are available and free for existing Workers customers. If you would like more information or a step-by-step guide, check out any of the resources below.</p>
+<h3 data-astro-cid-yoyuw6fx="">Try it out!</h3>
+<p data-astro-cid-yoyuw6fx="">Both logs from the dashboard and <code>wrangler tail</code> are available and free for existing Workers customers. If you would like more information or a step-by-step guide, check out any of the resources below.</p>
 <ul>
 	<li>Go to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Foverview" target="_blank" rel="noopener noreferrer">dashboard</a> and look at some logs!</li>
 	<li>Read the <a href="https://developers.cloudflare.com/workers/learning/logging-workers" target="_blank" rel="noopener noreferrer">getting started</a> guide for logging.</li>

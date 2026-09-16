@@ -1,8 +1,8 @@
-<p>It can be frustrating to get errors (SERVFAIL response codes) returned from your DNS queries. It can be even more frustrating if you don’t get enough information to understand why the error is occurring or what to do next. That’s why back in 2020, we <a href="https://blog.cloudflare.com/unwrap-the-servfail">launched support</a> for Extended DNS Error (EDE) Codes to 1.1.1.1.</p>
-<p>As a quick refresher, EDE codes are a <a href="https://www.rfc-editor.org/rfc/rfc8914.html" target="_blank" rel="noopener noreferrer">proposed</a> IETF standard enabled by the Extension Mechanisms for DNS (EDNS) spec. The codes return extra information about DNS or <a href="https://www.cloudflare.com/learning/dns/dnssec/ecdsa-and-dnssec" target="_blank" rel="noopener noreferrer">DNSSEC</a> issues without touching the RCODE so that debugging is easier.</p>
-<p>Now we’re happy to announce we will return more error code types and include additional helpful information to further improve your debugging experience. Let’s run through some examples of how these error codes can help you better understand the issues you may face.</p>
-<p>To try for yourself, you’ll need to run the dig or kdig command in the terminal. For dig, please ensure you have <a href="http://ftp.swin.edu.au/isc/bind/9.11.20/RELEASE-NOTES-bind-9.11.20.html" target="_blank" rel="noopener noreferrer">v9.11.20</a> or above. If you are on macOS 12.1, by default you only have dig 9.10.6. <a href="https://formulae.brew.sh/formula/bind" target="_blank" rel="noopener noreferrer">Install</a> an updated version of BIND to fix that.</p>
-<p>Let’s start with the output of an example dig command without EDE support.</p>
+<p data-astro-cid-yoyuw6fx="">It can be frustrating to get errors (SERVFAIL response codes) returned from your DNS queries. It can be even more frustrating if you don’t get enough information to understand why the error is occurring or what to do next. That’s why back in 2020, we <a href="https://blog.cloudflare.com/unwrap-the-servfail">launched support</a> for Extended DNS Error (EDE) Codes to 1.1.1.1.</p>
+<p data-astro-cid-yoyuw6fx="">As a quick refresher, EDE codes are a <a href="https://www.rfc-editor.org/rfc/rfc8914.html" target="_blank" rel="noopener noreferrer">proposed</a> IETF standard enabled by the Extension Mechanisms for DNS (EDNS) spec. The codes return extra information about DNS or <a href="https://www.cloudflare.com/learning/dns/dnssec/ecdsa-and-dnssec" target="_blank" rel="noopener noreferrer">DNSSEC</a> issues without touching the RCODE so that debugging is easier.</p>
+<p data-astro-cid-yoyuw6fx="">Now we’re happy to announce we will return more error code types and include additional helpful information to further improve your debugging experience. Let’s run through some examples of how these error codes can help you better understand the issues you may face.</p>
+<p data-astro-cid-yoyuw6fx="">To try for yourself, you’ll need to run the dig or kdig command in the terminal. For dig, please ensure you have <a href="http://ftp.swin.edu.au/isc/bind/9.11.20/RELEASE-NOTES-bind-9.11.20.html" target="_blank" rel="noopener noreferrer">v9.11.20</a> or above. If you are on macOS 12.1, by default you only have dig 9.10.6. <a href="https://formulae.brew.sh/formula/bind" target="_blank" rel="noopener noreferrer">Install</a> an updated version of BIND to fix that.</p>
+<p data-astro-cid-yoyuw6fx="">Let’s start with the output of an example dig command without EDE support.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">%</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @1.1.1.1</span><span class="sk-032f62-99ffe4"> dnssec-failed.org</span><span class="sk-032f62-99ffe4"> +noedns</span></span>
 <span class="line"></span>
@@ -43,8 +43,8 @@
 		})
 	});
 </script>
-<p>In the output above, we tried to do DNSSEC validation on <code>dnssec-failed.org</code>. It returns a <code>SERVFAIL</code>, but we don’t have context as to why.</p>
-<p>Now let’s try that again with 1.1.1.1’s EDE support.</p>
+<p data-astro-cid-yoyuw6fx="">In the output above, we tried to do DNSSEC validation on <code>dnssec-failed.org</code>. It returns a <code>SERVFAIL</code>, but we don’t have context as to why.</p>
+<p data-astro-cid-yoyuw6fx="">Now let’s try that again with 1.1.1.1’s EDE support.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">%</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @1.1.1.1</span><span class="sk-032f62-99ffe4"> dnssec-failed.org</span><span class="sk-032f62-99ffe4"> +dnssec</span></span>
 <span class="line"></span>
@@ -70,8 +70,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>We can see there is still a <code>SERVFAIL</code>. However, this time there is also an EDE Code 9 which stands for “DNSKey Missing”. Accompanying that, we also have additional information saying “no SEP matching the DS found” for <code>dnssec-failed.org</code>. That’s better!</p>
-<p>Another nifty feature is that we will return multiple errors when appropriate, so you can debug each one separately. In the example below, we returned a <code>SERVFAIL</code> with three different error codes: “Unsupported DNSKEY Algorithm”, “No Reachable Authority”, and “Network Error”.</p>
+<p data-astro-cid-yoyuw6fx="">We can see there is still a <code>SERVFAIL</code>. However, this time there is also an EDE Code 9 which stands for “DNSKey Missing”. Accompanying that, we also have additional information saying “no SEP matching the DS found” for <code>dnssec-failed.org</code>. That’s better!</p>
+<p data-astro-cid-yoyuw6fx="">Another nifty feature is that we will return multiple errors when appropriate, so you can debug each one separately. In the example below, we returned a <code>SERVFAIL</code> with three different error codes: “Unsupported DNSKEY Algorithm”, “No Reachable Authority”, and “Network Error”.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">dig</span><span class="sk-032f62-99ffe4"> @1.1.1.1</span><span class="sk-24292e-fff"> [domain] +dnssec</span></span>
 <span class="line"></span>
@@ -99,93 +99,93 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Here’s a list of the additional codes we now support:</p>
-<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
-	<table class="emdash-table" data-astro-cid-62p3h4ye="">
-		<thead data-astro-cid-62p3h4ye="">
-			<tr data-astro-cid-62p3h4ye="">
-				<th data-astro-cid-62p3h4ye="">
+<p data-astro-cid-yoyuw6fx="">Here’s a list of the additional codes we now support:</p>
+<div class="emdash-table-wrapper" data-astro-cid-zdje7xco="">
+	<table class="emdash-table" data-astro-cid-zdje7xco="">
+		<thead data-astro-cid-zdje7xco="">
+			<tr data-astro-cid-zdje7xco="">
+				<th data-astro-cid-zdje7xco="">
 					<p>Error Code Number</p>
 				</th>
-				<th data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-zdje7xco="">
 					<p>Error Code Name</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-62p3h4ye="">
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+		<tbody data-astro-cid-zdje7xco="">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>1</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Unsupported DNSKEY Algorithm</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>2</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Unsupported DS Digest Type</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>5</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>DNSSEC Indeterminate</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>7</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Signature Expired</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>8</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Signature Not Yet Valid</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>9</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>DNSKEY Missing</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>10</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>RRSIGs Missing</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>11</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>No Zone Key Bit Set</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>12</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>NSEC Missing</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p>We have documented all the error codes we currently support with additional information you may find helpful. Refer to our <a href="https://developers.cloudflare.com/1.1.1.1/infrastructure/extended-dns-error-codes" target="_blank" rel="noopener noreferrer">dev docs</a> for more information.</p>
+<p data-astro-cid-yoyuw6fx="">We have documented all the error codes we currently support with additional information you may find helpful. Refer to our <a href="https://developers.cloudflare.com/1.1.1.1/infrastructure/extended-dns-error-codes" target="_blank" rel="noopener noreferrer">dev docs</a> for more information.</p>

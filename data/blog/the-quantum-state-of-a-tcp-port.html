@@ -1,23 +1,23 @@
-<p>Have you noticed how simple questions sometimes lead to complex answers? Today we will tackle one such question. Category: our favorite - Linux networking.</p>
-<h2>When can two TCP sockets share a local address?</h2>
-<p>If I navigate to <a href="https://blog.cloudflare.com">https://blog.cloudflare.com/</a>, my browser will connect to a remote TCP address, might be 104.16.132.229:443 in this case, from the local IP address assigned to my Linux machine, and a randomly chosen local TCP port, say 192.0.2.42:54321. What happens if I then decide to head to a different site? Is it possible to establish another TCP connection from the same local IP address and port?</p>
-<p>To find the answer let's do a bit of <a href="https://en.wikipedia.org/wiki/Discovery_learning" target="_blank" rel="noopener noreferrer">learning by discovering</a>. We have prepared eight quiz questions. Each will let you discover one aspect of the rules that govern local address sharing between TCP sockets under Linux. Fair warning, it might get a bit mind-boggling.</p>
-<p>Questions are split into two groups by test scenario:</p>
+<p data-astro-cid-yoyuw6fx="">Have you noticed how simple questions sometimes lead to complex answers? Today we will tackle one such question. Category: our favorite - Linux networking.</p>
+<h2 data-astro-cid-yoyuw6fx="">When can two TCP sockets share a local address?</h2>
+<p data-astro-cid-yoyuw6fx="">If I navigate to <a href="https://blog.cloudflare.com">https://blog.cloudflare.com/</a>, my browser will connect to a remote TCP address, might be 104.16.132.229:443 in this case, from the local IP address assigned to my Linux machine, and a randomly chosen local TCP port, say 192.0.2.42:54321. What happens if I then decide to head to a different site? Is it possible to establish another TCP connection from the same local IP address and port?</p>
+<p data-astro-cid-yoyuw6fx="">To find the answer let's do a bit of <a href="https://en.wikipedia.org/wiki/Discovery_learning" target="_blank" rel="noopener noreferrer">learning by discovering</a>. We have prepared eight quiz questions. Each will let you discover one aspect of the rules that govern local address sharing between TCP sockets under Linux. Fair warning, it might get a bit mind-boggling.</p>
+<p data-astro-cid-yoyuw6fx="">Questions are split into two groups by test scenario:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="374" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WVRVQWQ80Z7Q65Z23X7R.png&amp;w=715&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WVRVQWQ80Z7Q65Z23X7R.png&amp;w=640&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WVRVQWQ80Z7Q65Z23X7R.png&amp;w=715&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WVRVQWQ80Z7Q65Z23X7R.png&amp;w=750&amp;h=392&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WVRVQWQ80Z7Q65Z23X7R.png&amp;w=828&amp;h=433&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WVRVQWQ80Z7Q65Z23X7R.png&amp;w=1080&amp;h=565&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WVRVQWQ80Z7Q65Z23X7R.png&amp;w=1280&amp;h=670&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WVRVQWQ80Z7Q65Z23X7R.png&amp;w=1430&amp;h=748&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WVRVQWQ80Z7Q65Z23X7R.png&amp;w=881&amp;h=461&amp;f=webp" data-lightbox-width="881" data-lightbox-height="461" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="374" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p>In the first test scenario, two sockets connect from the same local port to the same remote IP and port. However, the local IP is different for each socket.</p>
-<p>While, in the second scenario, the local IP and port is the same for all sockets, but the remote address, or actually just the IP address, differs.</p>
-<p>In our quiz questions, we will either:</p>
+<p data-astro-cid-yoyuw6fx="">In the first test scenario, two sockets connect from the same local port to the same remote IP and port. However, the local IP is different for each socket.</p>
+<p data-astro-cid-yoyuw6fx="">While, in the second scenario, the local IP and port is the same for all sockets, but the remote address, or actually just the IP address, differs.</p>
+<p data-astro-cid-yoyuw6fx="">In our quiz questions, we will either:</p>
 <ol>
 	<li>let the OS automatically select the the local IP and/or port for the socket, or</li>
 	<li>we will explicitly assign the local address with <a href="https://man7.org/linux/man-pages/man2/bind.2.html" target="_blank" rel="noopener noreferrer"><code>bind()</code></a> before <a href="https://man7.org/linux/man-pages/man2/connect.2.html" target="_blank" rel="noopener noreferrer"><code>connect()</code></a>’ing the socket; a method also known as <a href="https://idea.popcount.org/2014-04-03-bind-before-connect" target="_blank" rel="noopener noreferrer">bind-before-connect</a>.</li>
 </ol>
-<p>Because we will be examining corner cases in the bind() logic, we need a way to exhaust available local addresses, that is (IP, port) pairs. We could just create lots of sockets, but it will be easier to <a href="https://www.kernel.org/doc/html/latest/networking/ip-sysctl.html#ip-variables" target="_blank" rel="noopener noreferrer">tweak the system configuration</a> and pretend that there is just one ephemeral local port, which the OS can assign to sockets:</p>
-<p><code>sysctl -w net.ipv4.ip_local_port_range='60000 60000'</code></p>
-<p>Each quiz question is a short Python snippet. Your task is to predict the outcome of running the code. Does it succeed? Does it fail? If so, what fails? Asking ChatGPT is not allowed ?</p>
-<p>There is always a common setup procedure to keep in mind. We will omit it from the quiz snippets to keep them short:</p>
+<p data-astro-cid-yoyuw6fx="">Because we will be examining corner cases in the bind() logic, we need a way to exhaust available local addresses, that is (IP, port) pairs. We could just create lots of sockets, but it will be easier to <a href="https://www.kernel.org/doc/html/latest/networking/ip-sysctl.html#ip-variables" target="_blank" rel="noopener noreferrer">tweak the system configuration</a> and pretend that there is just one ephemeral local port, which the OS can assign to sockets:</p>
+<p data-astro-cid-yoyuw6fx=""><code>sysctl -w net.ipv4.ip_local_port_range='60000 60000'</code></p>
+<p data-astro-cid-yoyuw6fx="">Each quiz question is a short Python snippet. Your task is to predict the outcome of running the code. Does it succeed? Does it fail? If so, what fails? Asking ChatGPT is not allowed ?</p>
+<p data-astro-cid-yoyuw6fx="">There is always a common setup procedure to keep in mind. We will omit it from the quiz snippets to keep them short:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">from</span><span class="sk-032f62-99ffe4"> os</span><span class="sk-032f62-99ffe4"> import</span><span class="sk-032f62-99ffe4"> system</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">from</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-032f62-99ffe4"> import</span><span class="sk-005cc5-a0a0a0"> *</span></span>
@@ -55,9 +55,9 @@
 		})
 	});
 </script>
-<p>With the formalities out of the way, let us begin. Ready. Set. Go!</p>
-<h3>Scenario #1: When the local IP is unique, but the local port is the same</h3>
-<p>In Scenario #1 we connect two sockets to the same remote address - 127.9.9.9:1234. The sockets will use different local IP addresses, but is it enough to share the local port?</p>
+<p data-astro-cid-yoyuw6fx="">With the formalities out of the way, let us begin. Ready. Set. Go!</p>
+<h3 data-astro-cid-yoyuw6fx="">Scenario #1: When the local IP is unique, but the local port is the same</h3>
+<p data-astro-cid-yoyuw6fx="">In Scenario #1 we connect two sockets to the same remote address - 127.9.9.9:1234. The sockets will use different local IP addresses, but is it enough to share the local port?</p>
 <div id="html-block-k1j" class="html-block">
 	<style>
 		#html-block-k1j .tg {
@@ -123,8 +123,8 @@
 		</tbody>
 	</table>
 </div>
-<h3>Quiz #1</h3>
-<p>On the local side, we bind two sockets to distinct, explicitly specified IP addresses. We will allow the OS to select the local port. Remember: our local ephemeral port range contains just one port (60,000).</p>
+<h3 data-astro-cid-yoyuw6fx="">Quiz #1</h3>
+<p data-astro-cid-yoyuw6fx="">On the local side, we bind two sockets to distinct, explicitly specified IP addresses. We will allow the OS to select the local port. Remember: our local ephemeral port range contains just one port (60,000).</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">s1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">AF_INET,</span><span class="sk-032f62-99ffe4"> SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s1.bind((</span><span class="sk-6f42c1-ffc799">'127.1.1.1'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">))</span></span>
@@ -140,9 +140,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_1.py" target="_blank" rel="noopener noreferrer">Answer #1</a></p>
-<h3>Quiz #2</h3>
-<p>Here, the setup is almost identical as before. However, we ask the OS to select the local IP address and port for the first socket. Do you think the result will differ from the previous question?</p>
+<p data-astro-cid-yoyuw6fx="">GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_1.py" target="_blank" rel="noopener noreferrer">Answer #1</a></p>
+<h3 data-astro-cid-yoyuw6fx="">Quiz #2</h3>
+<p data-astro-cid-yoyuw6fx="">Here, the setup is almost identical as before. However, we ask the OS to select the local IP address and port for the first socket. Do you think the result will differ from the previous question?</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">s1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">AF_INET,</span><span class="sk-032f62-99ffe4"> SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s1.connect((</span><span class="sk-6f42c1-ffc799">'127.9.9.9'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-24292e-fff">))</span></span>
@@ -157,9 +157,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_2.py" target="_blank" rel="noopener noreferrer">Answer #2</a></p>
-<h3>Quiz #3</h3>
-<p>This quiz question is just like &nbsp;the one above. We just changed the ordering. First, we connect a socket from an explicitly specified local address. Then we ask the system to select a local address for us. Obviously, such an ordering change should not make any difference, right?</p>
+<p data-astro-cid-yoyuw6fx="">GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_2.py" target="_blank" rel="noopener noreferrer">Answer #2</a></p>
+<h3 data-astro-cid-yoyuw6fx="">Quiz #3</h3>
+<p data-astro-cid-yoyuw6fx="">This quiz question is just like &nbsp;the one above. We just changed the ordering. First, we connect a socket from an explicitly specified local address. Then we ask the system to select a local address for us. Obviously, such an ordering change should not make any difference, right?</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">s1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">AF_INET,</span><span class="sk-032f62-99ffe4"> SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s1.bind((</span><span class="sk-6f42c1-ffc799">'127.1.1.1'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">))</span></span>
@@ -174,9 +174,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_3.py" target="_blank" rel="noopener noreferrer">Answer #3</a></p>
-<h3>Scenario #2: When the local IP and port are the same, but the remote IP differs</h3>
-<p>In Scenario #2 we reverse our setup. Instead of multiple local IP's and one remote address, we now have one local address <code>127.0.0.1:60000</code> and two distinct remote addresses. The question remains the same - can two sockets share the local port? Reminder: ephemeral port range is still of size one.</p>
+<p data-astro-cid-yoyuw6fx="">GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_3.py" target="_blank" rel="noopener noreferrer">Answer #3</a></p>
+<h3 data-astro-cid-yoyuw6fx="">Scenario #2: When the local IP and port are the same, but the remote IP differs</h3>
+<p data-astro-cid-yoyuw6fx="">In Scenario #2 we reverse our setup. Instead of multiple local IP's and one remote address, we now have one local address <code>127.0.0.1:60000</code> and two distinct remote addresses. The question remains the same - can two sockets share the local port? Reminder: ephemeral port range is still of size one.</p>
 <div id="html-block-k2h" class="html-block">
 	<style>
 		#html-block-k2h .tg {
@@ -242,8 +242,8 @@
 		</tbody>
 	</table>
 </div>
-<h3>Quiz #4</h3>
-<p>Let’s start from the basics. We <code>connect()</code> to two distinct remote addresses. This is a warm up ?</p>
+<h3 data-astro-cid-yoyuw6fx="">Quiz #4</h3>
+<p data-astro-cid-yoyuw6fx="">Let’s start from the basics. We <code>connect()</code> to two distinct remote addresses. This is a warm up ?</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">s1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">AF_INET,</span><span class="sk-032f62-99ffe4"> SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s1.connect((</span><span class="sk-6f42c1-ffc799">'127.8.8.8'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-24292e-fff">))</span></span>
@@ -257,9 +257,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_4.py" target="_blank" rel="noopener noreferrer">Answer #4</a></p>
-<h3>Quiz #5</h3>
-<p>What if we <code>bind()</code> to a local IP explicitly but let the OS select the port - does anything change?</p>
+<p data-astro-cid-yoyuw6fx="">GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_4.py" target="_blank" rel="noopener noreferrer">Answer #4</a></p>
+<h3 data-astro-cid-yoyuw6fx="">Quiz #5</h3>
+<p data-astro-cid-yoyuw6fx="">What if we <code>bind()</code> to a local IP explicitly but let the OS select the port - does anything change?</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">s1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">AF_INET,</span><span class="sk-032f62-99ffe4"> SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s1.bind((</span><span class="sk-6f42c1-ffc799">'127.0.0.1'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">))</span></span>
@@ -275,9 +275,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_5.py" target="_blank" rel="noopener noreferrer">Answer #5</a></p>
-<h3>Quiz #6</h3>
-<p>This time we explicitly specify the local address and port. Sometimes there is a need to specify the local port.</p>
+<p data-astro-cid-yoyuw6fx="">GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_5.py" target="_blank" rel="noopener noreferrer">Answer #5</a></p>
+<h3 data-astro-cid-yoyuw6fx="">Quiz #6</h3>
+<p data-astro-cid-yoyuw6fx="">This time we explicitly specify the local address and port. Sometimes there is a need to specify the local port.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">s1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">AF_INET,</span><span class="sk-032f62-99ffe4"> SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s1.bind((</span><span class="sk-6f42c1-ffc799">'127.0.0.1'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> 60_000</span><span class="sk-24292e-fff">))</span></span>
@@ -293,10 +293,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_6.py" target="_blank" rel="noopener noreferrer">Answer #6</a></p>
-<h3>Quiz #7</h3>
-<p>Just when you thought it couldn’t get any weirder, we add <a href="https://manpages.debian.org/unstable/manpages/socket.7.en.html#SO_REUSEADDR" target="_blank" rel="noopener noreferrer"><code>SO_REUSEADDR</code></a> into the mix.</p>
-<p>First, we ask the OS to allocate a local address for us. Then we explicitly bind to the same local address, which we know the OS must have assigned to the first socket. We enable local address reuse for both sockets. Is this allowed?</p>
+<p data-astro-cid-yoyuw6fx="">GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_6.py" target="_blank" rel="noopener noreferrer">Answer #6</a></p>
+<h3 data-astro-cid-yoyuw6fx="">Quiz #7</h3>
+<p data-astro-cid-yoyuw6fx="">Just when you thought it couldn’t get any weirder, we add <a href="https://manpages.debian.org/unstable/manpages/socket.7.en.html#SO_REUSEADDR" target="_blank" rel="noopener noreferrer"><code>SO_REUSEADDR</code></a> into the mix.</p>
+<p data-astro-cid-yoyuw6fx="">First, we ask the OS to allocate a local address for us. Then we explicitly bind to the same local address, which we know the OS must have assigned to the first socket. We enable local address reuse for both sockets. Is this allowed?</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">s1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">AF_INET,</span><span class="sk-032f62-99ffe4"> SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s1.setsockopt(SOL_SOCKET,</span><span class="sk-032f62-99ffe4"> SO_REUSEADDR,</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">)</span></span>
@@ -313,9 +313,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_7.py" target="_blank" rel="noopener noreferrer">Answer #7</a></p>
-<h3>Quiz #8</h3>
-<p>Finally, a cherry on top. This is Quiz #7 but in reverse. Common sense dictates that the outcome should be the same, but is it?</p>
+<p data-astro-cid-yoyuw6fx="">GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_7.py" target="_blank" rel="noopener noreferrer">Answer #7</a></p>
+<h3 data-astro-cid-yoyuw6fx="">Quiz #8</h3>
+<p data-astro-cid-yoyuw6fx="">Finally, a cherry on top. This is Quiz #7 but in reverse. Common sense dictates that the outcome should be the same, but is it?</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">s1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">AF_INET,</span><span class="sk-032f62-99ffe4"> SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s1.setsockopt(SOL_SOCKET,</span><span class="sk-032f62-99ffe4"> SO_REUSEADDR,</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">)</span></span>
@@ -332,22 +332,22 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_8.py" target="_blank" rel="noopener noreferrer">Answer #8</a></p>
-<h2>The secret tri-state life of a local TCP port</h2>
-<p>Is it all clear now? Well, probably no. It feels like reverse engineering a black box. So what is happening behind the scenes? Let's take a look.</p>
-<p>Linux tracks all TCP <strong>ports</strong> in use in a hash table named <a href="https://elixir.bootlin.com/linux/v6.2/source/include/net/inet_hashtables.h#L166" target="_blank" rel="noopener noreferrer">bhash</a>. Not to be confused with with <a href="https://elixir.bootlin.com/linux/v6.2/source/include/net/inet_hashtables.h#L156" target="_blank" rel="noopener noreferrer">ehash</a> table, which tracks <strong>sockets</strong> with both local and remote address already assigned.</p>
+<p data-astro-cid-yoyuw6fx="">GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_8.py" target="_blank" rel="noopener noreferrer">Answer #8</a></p>
+<h2 data-astro-cid-yoyuw6fx="">The secret tri-state life of a local TCP port</h2>
+<p data-astro-cid-yoyuw6fx="">Is it all clear now? Well, probably no. It feels like reverse engineering a black box. So what is happening behind the scenes? Let's take a look.</p>
+<p data-astro-cid-yoyuw6fx="">Linux tracks all TCP <strong>ports</strong> in use in a hash table named <a href="https://elixir.bootlin.com/linux/v6.2/source/include/net/inet_hashtables.h#L166" target="_blank" rel="noopener noreferrer">bhash</a>. Not to be confused with with <a href="https://elixir.bootlin.com/linux/v6.2/source/include/net/inet_hashtables.h#L156" target="_blank" rel="noopener noreferrer">ehash</a> table, which tracks <strong>sockets</strong> with both local and remote address already assigned.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="261" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZWSW3PBQKK7NXSMAX17J.png&amp;w=715&amp;h=261&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZWSW3PBQKK7NXSMAX17J.png&amp;w=640&amp;h=234&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZWSW3PBQKK7NXSMAX17J.png&amp;w=715&amp;h=261&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZWSW3PBQKK7NXSMAX17J.png&amp;w=750&amp;h=274&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZWSW3PBQKK7NXSMAX17J.png&amp;w=828&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZWSW3PBQKK7NXSMAX17J.png&amp;w=1080&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZWSW3PBQKK7NXSMAX17J.png&amp;w=1280&amp;h=467&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZWSW3PBQKK7NXSMAX17J.png&amp;w=1430&amp;h=522&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZWSW3PBQKK7NXSMAX17J.png&amp;w=1600&amp;h=585&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="585" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="261" class="pt-portable-image-media"></div>
 </figure>
-<p>Each hash table entry points to a chain of so-called bind buckets, which group together sockets which share a local port. To be precise, sockets are grouped into buckets by:</p>
+<p data-astro-cid-yoyuw6fx="">Each hash table entry points to a chain of so-called bind buckets, which group together sockets which share a local port. To be precise, sockets are grouped into buckets by:</p>
 <ul>
 	<li>the <a href="https://man7.org/linux/man-pages/man7/network_namespaces.7.html" target="_blank" rel="noopener noreferrer">network namespace</a> they belong to, and</li>
 	<li>the <a href="https://docs.kernel.org/networking/vrf.html" target="_blank" rel="noopener noreferrer">VRF</a> device they are bound to, and</li>
 	<li>the local port number they are bound to.</li>
 </ul>
-<p>But in the simplest possible setup - single network namespace, no VRFs - we can say that sockets in a bind bucket are grouped by their local port number.</p>
-<p>The set of sockets in each bind bucket, that is sharing a local port, is backed by a linked list of named owners.</p>
-<p>When we ask the kernel to assign a local address to a socket, its task is to check for a conflict with any existing socket. That is because a local port number can be shared only <a href="https://elixir.bootlin.com/linux/v6.2/source/include/net/inet_hashtables.h#L43" target="_blank" rel="noopener noreferrer">under some conditions</a>:</p>
+<p data-astro-cid-yoyuw6fx="">But in the simplest possible setup - single network namespace, no VRFs - we can say that sockets in a bind bucket are grouped by their local port number.</p>
+<p data-astro-cid-yoyuw6fx="">The set of sockets in each bind bucket, that is sharing a local port, is backed by a linked list of named owners.</p>
+<p data-astro-cid-yoyuw6fx="">When we ask the kernel to assign a local address to a socket, its task is to check for a conflict with any existing socket. That is because a local port number can be shared only <a href="https://elixir.bootlin.com/linux/v6.2/source/include/net/inet_hashtables.h#L43" target="_blank" rel="noopener noreferrer">under some conditions</a>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">/*</span><span class="sk-032f62-99ffe4"> There</span><span class="sk-032f62-99ffe4"> are</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> few</span><span class="sk-032f62-99ffe4"> simple</span><span class="sk-032f62-99ffe4"> rules,</span><span class="sk-032f62-99ffe4"> which</span><span class="sk-032f62-99ffe4"> allow</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> local</span><span class="sk-032f62-99ffe4"> port</span><span class="sk-032f62-99ffe4"> reuse</span><span class="sk-032f62-99ffe4"> by</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> *</span><span class="sk-032f62-99ffe4"> an</span><span class="sk-032f62-99ffe4"> application.</span><span class="sk-032f62-99ffe4">  In</span><span class="sk-032f62-99ffe4"> essence:</span></span>
@@ -375,7 +375,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>The comment above hints that the kernel tries to optimize for the happy case of no conflict. To this end the bind bucket holds additional state which aggregates the properties of the sockets it holds:</p>
+<p data-astro-cid-yoyuw6fx="">The comment above hints that the kernel tries to optimize for the happy case of no conflict. To this end the bind bucket holds additional state which aggregates the properties of the sockets it holds:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">struct</span><span class="sk-032f62-99ffe4"> inet_bind_bucket</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        /*</span><span class="sk-032f62-99ffe4"> ...</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">/</span></span>
@@ -395,20 +395,20 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Let's focus our attention just on the first aggregate property - <code>fastreuse</code>. It has existed since, now prehistoric, Linux 2.1.90pre1. Initially in the form of a <a href="https://git.kernel.org/pub/scm/linux/kernel/git/history/history.git/tree/include/net/tcp.h?h=2.1.90pre1&amp;id=9d11a5176cc5b9609542b1bd5a827b8618efe681#n76" target="_blank" rel="noopener noreferrer">bit flag</a>, as the comment says, only to evolve to a byte-sized field over time.</p>
-<p>The other six fields came on much later with the introduction of <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=da5e36308d9f7151845018369148201a5d28b46d" target="_blank" rel="noopener noreferrer"><code>SO_REUSEPORT</code> in Linux 3.9</a>. Because they play a role only when there are sockets with the <a href="https://manpages.debian.org/unstable/manpages/socket.7.en.html#SO_REUSEPORT" target="_blank" rel="noopener noreferrer"><code>SO_REUSEPORT</code></a> flag set. We are going to ignore them today.</p>
-<p>Whenever the Linux kernel needs to bind a socket to a local port, it first has to look for the bind bucket for that port. What makes life a bit more complicated is the fact that the search for a TCP bind bucket exists in two places in the kernel. The bind bucket lookup can happen early - <code>at bind()</code> time - or late - <code>at connect()</code> - time. Which one gets called depends on how the connected socket has been set up:</p>
+<p data-astro-cid-yoyuw6fx="">Let's focus our attention just on the first aggregate property - <code>fastreuse</code>. It has existed since, now prehistoric, Linux 2.1.90pre1. Initially in the form of a <a href="https://git.kernel.org/pub/scm/linux/kernel/git/history/history.git/tree/include/net/tcp.h?h=2.1.90pre1&amp;id=9d11a5176cc5b9609542b1bd5a827b8618efe681#n76" target="_blank" rel="noopener noreferrer">bit flag</a>, as the comment says, only to evolve to a byte-sized field over time.</p>
+<p data-astro-cid-yoyuw6fx="">The other six fields came on much later with the introduction of <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=da5e36308d9f7151845018369148201a5d28b46d" target="_blank" rel="noopener noreferrer"><code>SO_REUSEPORT</code> in Linux 3.9</a>. Because they play a role only when there are sockets with the <a href="https://manpages.debian.org/unstable/manpages/socket.7.en.html#SO_REUSEPORT" target="_blank" rel="noopener noreferrer"><code>SO_REUSEPORT</code></a> flag set. We are going to ignore them today.</p>
+<p data-astro-cid-yoyuw6fx="">Whenever the Linux kernel needs to bind a socket to a local port, it first has to look for the bind bucket for that port. What makes life a bit more complicated is the fact that the search for a TCP bind bucket exists in two places in the kernel. The bind bucket lookup can happen early - <code>at bind()</code> time - or late - <code>at connect()</code> - time. Which one gets called depends on how the connected socket has been set up:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="711" height="481" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YC9V7XQZ80D0NPPXM433.png&amp;w=711&amp;h=481&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YC9V7XQZ80D0NPPXM433.png&amp;w=640&amp;h=433&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YC9V7XQZ80D0NPPXM433.png&amp;w=711&amp;h=481&amp;f=webp&amp;fit=cover&amp;position=center 711w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YC9V7XQZ80D0NPPXM433.png&amp;w=750&amp;h=507&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YC9V7XQZ80D0NPPXM433.png&amp;w=828&amp;h=560&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YC9V7XQZ80D0NPPXM433.png&amp;w=1080&amp;h=731&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YC9V7XQZ80D0NPPXM433.png&amp;w=1280&amp;h=866&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YC9V7XQZ80D0NPPXM433.png&amp;w=1422&amp;h=962&amp;f=webp&amp;fit=cover&amp;position=center 1422w" alt="image" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YC9V7XQZ80D0NPPXM433.png&amp;w=711&amp;h=481&amp;f=webp" data-lightbox-width="711" data-lightbox-height="481" data-astro-cid-7nvefuv6="true" sizes="(min-width: 711px) 711px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="711" height="481" class="pt-portable-image-media"></div>
 </figure>
-<p>However, whether we land in <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_connection_sock.c#L486" target="_blank" rel="noopener noreferrer"><code>inet_csk_get_port</code></a> or <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_hashtables.c#L992" target="_blank" rel="noopener noreferrer"><code>__inet_hash_connect</code></a>, we always end up walking the bucket chain in the bhash looking for the bucket with a matching port number. The bucket might already exist or we might have to create it first. But once it exists, its fastreuse field is in one of three possible states: <code>-1</code>, <code>0</code>, or <code>+1</code>. As if Linux developers were inspired by <a href="https://en.wikipedia.org/wiki/Triplet_state" target="_blank" rel="noopener noreferrer">quantum mechanics</a>.</p>
-<p>That state reflects two aspects of the bind bucket:</p>
+<p data-astro-cid-yoyuw6fx="">However, whether we land in <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_connection_sock.c#L486" target="_blank" rel="noopener noreferrer"><code>inet_csk_get_port</code></a> or <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_hashtables.c#L992" target="_blank" rel="noopener noreferrer"><code>__inet_hash_connect</code></a>, we always end up walking the bucket chain in the bhash looking for the bucket with a matching port number. The bucket might already exist or we might have to create it first. But once it exists, its fastreuse field is in one of three possible states: <code>-1</code>, <code>0</code>, or <code>+1</code>. As if Linux developers were inspired by <a href="https://en.wikipedia.org/wiki/Triplet_state" target="_blank" rel="noopener noreferrer">quantum mechanics</a>.</p>
+<p data-astro-cid-yoyuw6fx="">That state reflects two aspects of the bind bucket:</p>
 <ol>
 	<li>What sockets are in the bucket?</li>
 	<li>When can the local port be shared?</li>
 </ol>
-<p>So let us try to decipher the three possible fastreuse states then, and what they mean in each case.</p>
-<p>First, what does the fastreuse property say about the owners of the bucket, that is the sockets using that local port?</p>
+<p data-astro-cid-yoyuw6fx="">So let us try to decipher the three possible fastreuse states then, and what they mean in each case.</p>
+<p data-astro-cid-yoyuw6fx="">First, what does the fastreuse property say about the owners of the bucket, that is the sockets using that local port?</p>
 <div id="html-block-k6m" class="html-block">
 	<style>
 		#html-block-k6m .tg {
@@ -472,8 +472,8 @@
 		</tbody>
 	</table>
 </div>
-<p>While this is not the whole truth, it is close enough for now. We will soon get to the bottom of it.</p>
-<p>When it comes port sharing, the situation is far less straightforward:</p>
+<p data-astro-cid-yoyuw6fx="">While this is not the whole truth, it is close enough for now. We will soon get to the bottom of it.</p>
+<p data-astro-cid-yoyuw6fx="">When it comes port sharing, the situation is far less straightforward:</p>
 <div id="html-block-k6r" class="html-block">
 	<style>
 		#html-block-k6r .tg {
@@ -557,18 +557,18 @@
 		</tbody>
 	</table>
 </div>
-<p>① Determined by <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_connection_sock.c#L214" target="_blank" rel="noopener noreferrer"><code>inet_csk_bind_conflict()</code></a> called from <code>inet_csk_get_port()</code> (specific port bind) or <code>inet_csk_get_port()</code> → <code>inet_csk_find_open_port()</code> (ephemeral port bind).</p>
-<p>② Because <code>inet_csk_get_port()</code> <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_connection_sock.c#L531" target="_blank" rel="noopener noreferrer">skips conflict check</a> for <code>fastreuse == 1 buckets</code>.</p>
-<p>③ Because <code>inet_hash_connect()</code> → <code>__inet_hash_connect()</code> <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_hashtables.c#L1062" target="_blank" rel="noopener noreferrer">skips buckets</a> with <code>fastreuse != -1</code>.</p>
-<p>While it all looks rather complicated at first sight, we can distill the table above into a few statements that hold true, and are a bit easier to digest:</p>
+<p data-astro-cid-yoyuw6fx="">① Determined by <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_connection_sock.c#L214" target="_blank" rel="noopener noreferrer"><code>inet_csk_bind_conflict()</code></a> called from <code>inet_csk_get_port()</code> (specific port bind) or <code>inet_csk_get_port()</code> → <code>inet_csk_find_open_port()</code> (ephemeral port bind).</p>
+<p data-astro-cid-yoyuw6fx="">② Because <code>inet_csk_get_port()</code> <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_connection_sock.c#L531" target="_blank" rel="noopener noreferrer">skips conflict check</a> for <code>fastreuse == 1 buckets</code>.</p>
+<p data-astro-cid-yoyuw6fx="">③ Because <code>inet_hash_connect()</code> → <code>__inet_hash_connect()</code> <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_hashtables.c#L1062" target="_blank" rel="noopener noreferrer">skips buckets</a> with <code>fastreuse != -1</code>.</p>
+<p data-astro-cid-yoyuw6fx="">While it all looks rather complicated at first sight, we can distill the table above into a few statements that hold true, and are a bit easier to digest:</p>
 <ul>
 	<li><code>bind()</code>, or early local address allocation, always succeeds if there is no local IP address conflict with any existing socket,</li>
 	<li><code>connect()</code>, or late local address allocation, always fails when TCP bind bucket for a local port is in any state other than <code>fastreuse = -1</code>,</li>
 	<li><code>connect()</code> only succeeds if there is no local and remote address conflict,</li>
 	<li><code>SO_REUSEADDR</code> socket option allows local address sharing, if all conflicting sockets also use it (and none of them is in the listening state).</li>
 </ul>
-<h3>This is crazy. I don’t believe you.</h3>
-<p>Fortunately, you don't have to. With <a href="https://drgn.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener noreferrer">drgn</a>, the programmable debugger, we can examine the bind bucket state on a live kernel:</p>
+<h3 data-astro-cid-yoyuw6fx="">This is crazy. I don’t believe you.</h3>
+<p data-astro-cid-yoyuw6fx="">Fortunately, you don't have to. With <a href="https://drgn.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener noreferrer">drgn</a>, the programmable debugger, we can examine the bind bucket state on a live kernel:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">#!/usr/bin/env drgn</span></span>
 <span class="line"></span>
@@ -631,8 +631,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Let's take <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/dump_bhash.py" target="_blank" rel="noopener noreferrer">this script</a> for a spin and try to confirm what <em>Table 1</em> claims to be true. Keep in mind that to produce the <code>ipython --classic</code> session snippets below I've used the same setup as for the quiz questions.</p>
-<p>Two connected sockets sharing ephemeral port 60,000:</p>
+<p data-astro-cid-yoyuw6fx="">Let's take <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/dump_bhash.py" target="_blank" rel="noopener noreferrer">this script</a> for a spin and try to confirm what <em>Table 1</em> claims to be true. Keep in mind that to produce the <code>ipython --classic</code> session snippets below I've used the same setup as for the quiz questions.</p>
+<p data-astro-cid-yoyuw6fx="">Two connected sockets sharing ephemeral port 60,000:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">&gt;&gt;&gt; </span><span class="sk-6f42c1-ffc799">s1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">AF_INET,</span><span class="sk-032f62-99ffe4"> SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">&gt;&gt;&gt; </span><span class="sk-6f42c1-ffc799">s1.connect((</span><span class="sk-6f42c1-ffc799">'127.1.1.1'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-24292e-fff">))</span></span>
@@ -648,7 +648,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Two bound sockets reusing port 60,000:</p>
+<p data-astro-cid-yoyuw6fx="">Two bound sockets reusing port 60,000:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">&gt;&gt;&gt; </span><span class="sk-6f42c1-ffc799">s1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">AF_INET,</span><span class="sk-032f62-99ffe4"> SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">&gt;&gt;&gt; </span><span class="sk-6f42c1-ffc799">s1.setsockopt(SOL_SOCKET,</span><span class="sk-032f62-99ffe4"> SO_REUSEADDR,</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">)</span></span>
@@ -666,7 +666,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>A mix of bound sockets with and without REUSEADDR sharing port 60,000:</p>
+<p data-astro-cid-yoyuw6fx="">A mix of bound sockets with and without REUSEADDR sharing port 60,000:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">&gt;&gt;&gt; </span><span class="sk-6f42c1-ffc799">s1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">AF_INET,</span><span class="sk-032f62-99ffe4"> SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">&gt;&gt;&gt; </span><span class="sk-6f42c1-ffc799">s1.setsockopt(SOL_SOCKET,</span><span class="sk-032f62-99ffe4"> SO_REUSEADDR,</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">)</span></span>
@@ -687,11 +687,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>With such tooling, proving that <em>Table 2</em> holds true is just a matter of writing a bunch of <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/test_fastreuse.py" target="_blank" rel="noopener noreferrer">exploratory tests</a>.</p>
-<p>But what has happened in that last snippet? The bind bucket has clearly transitioned from one fastreuse state to another. This is what <em>Table 1</em> fails to capture. And it means that we still don't have the full picture.</p>
-<p>We have yet to find out when the bucket's fastreuse state can change. This calls for a state machine.</p>
-<h3>Das State Machine</h3>
-<p>As we have just seen, a bind bucket does not need to stay in the initial fastreuse state throughout its lifetime. Adding sockets to the bucket can trigger a state change. As it turns out, it can only transition into <code>fastreuse = 0</code>, if we happen to bind() a socket that:</p>
+<p data-astro-cid-yoyuw6fx="">With such tooling, proving that <em>Table 2</em> holds true is just a matter of writing a bunch of <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/test_fastreuse.py" target="_blank" rel="noopener noreferrer">exploratory tests</a>.</p>
+<p data-astro-cid-yoyuw6fx="">But what has happened in that last snippet? The bind bucket has clearly transitioned from one fastreuse state to another. This is what <em>Table 1</em> fails to capture. And it means that we still don't have the full picture.</p>
+<p data-astro-cid-yoyuw6fx="">We have yet to find out when the bucket's fastreuse state can change. This calls for a state machine.</p>
+<h3 data-astro-cid-yoyuw6fx="">Das State Machine</h3>
+<p data-astro-cid-yoyuw6fx="">As we have just seen, a bind bucket does not need to stay in the initial fastreuse state throughout its lifetime. Adding sockets to the bucket can trigger a state change. As it turns out, it can only transition into <code>fastreuse = 0</code>, if we happen to bind() a socket that:</p>
 <ol>
 	<li>doesn't conflict existing owners, and</li>
 	<li>doesn't have the <code>SO_REUSEADDR</code> option enabled.</li>
@@ -699,15 +699,15 @@
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="666" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TDXVJ4CY1MRYD1E5ZSBK.png&amp;w=715&amp;h=666&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TDXVJ4CY1MRYD1E5ZSBK.png&amp;w=640&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TDXVJ4CY1MRYD1E5ZSBK.png&amp;w=715&amp;h=666&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TDXVJ4CY1MRYD1E5ZSBK.png&amp;w=750&amp;h=699&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TDXVJ4CY1MRYD1E5ZSBK.png&amp;w=828&amp;h=771&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TDXVJ4CY1MRYD1E5ZSBK.png&amp;w=1080&amp;h=1006&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TDXVJ4CY1MRYD1E5ZSBK.png&amp;w=1280&amp;h=1192&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TDXVJ4CY1MRYD1E5ZSBK.png&amp;w=1430&amp;h=1332&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TDXVJ4CY1MRYD1E5ZSBK.png&amp;w=731&amp;h=681&amp;f=webp" data-lightbox-width="731" data-lightbox-height="681" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="666" class="pt-portable-image-media"></div>
 </figure>
-<p>And while we could have figured it all out by carefully reading the code in <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_connection_sock.c#L431" target="_blank" rel="noopener noreferrer"><code>inet_csk_get_port → inet_csk_update_fastreuse</code></a>, it certainly doesn't hurt to confirm our understanding with <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/test_fastreuse_states.py" target="_blank" rel="noopener noreferrer">a few more tests</a>.</p>
-<p>Now that we have the full picture, this begs the question...</p>
-<h3>Why are you telling me all this?</h3>
-<p>Firstly, so that the next time <code>bind()</code> syscall rejects your request with <code>EADDRINUSE</code>, or <code>connect()</code> refuses to cooperate by throwing the <code>EADDRNOTAVAIL</code> error, you will know what is happening, or at least have the tools to find out.</p>
-<p>Secondly, because we have previously <a href="https://blog.cloudflare.com/how-to-stop-running-out-of-ephemeral-ports-and-start-to-love-long-lived-connections">advertised a technique</a> for opening connections from a specific range of ports which involves bind()'ing sockets with the SO_REUSEADDR option. What we did not realize back then, is that there exists <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/test_fastreuse.py#L300" target="_blank" rel="noopener noreferrer">a corner case</a> when the same port can't be shared with the regular, <code>connect()</code>'ed sockets. While that is not a deal-breaker, it is good to understand the consequences.</p>
-<p>To make things better, we have worked with the Linux community to extend the kernel API with a new socket option that lets the user <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=91d0b78c5177" target="_blank" rel="noopener noreferrer">specify the local port range</a>. The new option will be available in the upcoming Linux 6.3. With it we no longer have to resort to bind()-tricks. This makes it possible to yet again share a local port with regular <code>connect()</code>'ed sockets.</p>
-<h2>Closing thoughts</h2>
-<p>Today we posed a relatively straightforward question - when can two TCP sockets share a local address? - and worked our way towards an answer. An answer that is too complex to compress it into a single sentence. What is more, it's not even the full answer. After all, we have decided to ignore the existence of the SO_REUSEPORT feature, and did not consider conflicts with TCP listening sockets.</p>
-<p>If there is a simple takeaway, though, it is that bind()'ing a socket can have tricky consequences. When using bind() to select an egress IP address, it is best to combine it with IP_BIND_ADDRESS_NO_PORT socket option, and leave the port assignment to the kernel. Otherwise we might unintentionally block local TCP ports from being reused.</p>
-<p>It is too bad that the same advice does not apply to UDP, where IP_BIND_ADDRESS_NO_PORT does not really work today. But that is another story.</p>
-<p>Until next time ?.</p>
-<p>If you enjoy scratching your head while reading the Linux kernel source code, <a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer">we are hiring</a>.</p>
+<p data-astro-cid-yoyuw6fx="">And while we could have figured it all out by carefully reading the code in <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_connection_sock.c#L431" target="_blank" rel="noopener noreferrer"><code>inet_csk_get_port → inet_csk_update_fastreuse</code></a>, it certainly doesn't hurt to confirm our understanding with <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/test_fastreuse_states.py" target="_blank" rel="noopener noreferrer">a few more tests</a>.</p>
+<p data-astro-cid-yoyuw6fx="">Now that we have the full picture, this begs the question...</p>
+<h3 data-astro-cid-yoyuw6fx="">Why are you telling me all this?</h3>
+<p data-astro-cid-yoyuw6fx="">Firstly, so that the next time <code>bind()</code> syscall rejects your request with <code>EADDRINUSE</code>, or <code>connect()</code> refuses to cooperate by throwing the <code>EADDRNOTAVAIL</code> error, you will know what is happening, or at least have the tools to find out.</p>
+<p data-astro-cid-yoyuw6fx="">Secondly, because we have previously <a href="https://blog.cloudflare.com/how-to-stop-running-out-of-ephemeral-ports-and-start-to-love-long-lived-connections">advertised a technique</a> for opening connections from a specific range of ports which involves bind()'ing sockets with the SO_REUSEADDR option. What we did not realize back then, is that there exists <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/test_fastreuse.py#L300" target="_blank" rel="noopener noreferrer">a corner case</a> when the same port can't be shared with the regular, <code>connect()</code>'ed sockets. While that is not a deal-breaker, it is good to understand the consequences.</p>
+<p data-astro-cid-yoyuw6fx="">To make things better, we have worked with the Linux community to extend the kernel API with a new socket option that lets the user <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=91d0b78c5177" target="_blank" rel="noopener noreferrer">specify the local port range</a>. The new option will be available in the upcoming Linux 6.3. With it we no longer have to resort to bind()-tricks. This makes it possible to yet again share a local port with regular <code>connect()</code>'ed sockets.</p>
+<h2 data-astro-cid-yoyuw6fx="">Closing thoughts</h2>
+<p data-astro-cid-yoyuw6fx="">Today we posed a relatively straightforward question - when can two TCP sockets share a local address? - and worked our way towards an answer. An answer that is too complex to compress it into a single sentence. What is more, it's not even the full answer. After all, we have decided to ignore the existence of the SO_REUSEPORT feature, and did not consider conflicts with TCP listening sockets.</p>
+<p data-astro-cid-yoyuw6fx="">If there is a simple takeaway, though, it is that bind()'ing a socket can have tricky consequences. When using bind() to select an egress IP address, it is best to combine it with IP_BIND_ADDRESS_NO_PORT socket option, and leave the port assignment to the kernel. Otherwise we might unintentionally block local TCP ports from being reused.</p>
+<p data-astro-cid-yoyuw6fx="">It is too bad that the same advice does not apply to UDP, where IP_BIND_ADDRESS_NO_PORT does not really work today. But that is another story.</p>
+<p data-astro-cid-yoyuw6fx="">Until next time ?.</p>
+<p data-astro-cid-yoyuw6fx="">If you enjoy scratching your head while reading the Linux kernel source code, <a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer">we are hiring</a>.</p>

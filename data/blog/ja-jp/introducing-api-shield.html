@@ -1,33 +1,33 @@
-<p>APIは、インターネットに接続された最新アプリケーションの生命線です。ミリ秒の単位で、APIはモバイルアプリケーションからのリクエストを運びます。例えば、このフードデリバリーの注文をする、この写真に「いいね」をつけるなど。そして、IoT デバイスに向けて指示を出します。たとえば、自動車のロックを解除します、洗濯を開始します、ユーザーが5キロ走り終えましたなど、この他にも数えきれないほどのコールがあります。</p>
-<p>また、APIは不正行為やデータの漏えいを狙う広範な攻撃の対象となることが増えています。Gartnerによると、「2021年までに、Web対応アプリケーションの 90%がUIではなく公開APIの形で攻撃対象領域を増やし、2019年の40％から増加した」とのことです。「Gartnerは、2022年までに、APIの悪用が頻度の低い攻撃ベクトルから頻度の高い攻撃ベクトルに移行し、その結果、エンタープライズ Web アプリケーションのデータ漏えいが発生すると予測しています」[1] [2]。Cloudflare のネットワークを横断する毎秒1,800万リクエストのうち、50% はAPIに向けられ、これらのリクエストの大半は悪意のあるものとしてブロックされています。</p>
-<p>これらの脅威に対処するために、Cloudflareは強力なクライアント証明書ベースのIDと厳格なスキーマベースの検証を使用して、APIの保護をシンプルにしています。本日付で、これらの機能は、新しい「API Shield」サービス内のすべてのプランで無料で利用できます。さらに本日付けで、セキュリティ上のメリットは、JSONではなくプロトコルバッファなどのバイナリ形式を使用する<a href="https://blog.cloudflare.com/announcing-grpc">gRPCベースのAPIにも広がり</a>、お客様の間で人気が高まっています。</p>
-<p>新機能の詳細については、引き続きこの記事をお読みください。または、「デモンストレーション」の段落にジャンプして、最初の API Shield ルールの設定を開始する方法の例を参照してください。</p>
+<p data-astro-cid-yoyuw6fx="">APIは、インターネットに接続された最新アプリケーションの生命線です。ミリ秒の単位で、APIはモバイルアプリケーションからのリクエストを運びます。例えば、このフードデリバリーの注文をする、この写真に「いいね」をつけるなど。そして、IoT デバイスに向けて指示を出します。たとえば、自動車のロックを解除します、洗濯を開始します、ユーザーが5キロ走り終えましたなど、この他にも数えきれないほどのコールがあります。</p>
+<p data-astro-cid-yoyuw6fx="">また、APIは不正行為やデータの漏えいを狙う広範な攻撃の対象となることが増えています。Gartnerによると、「2021年までに、Web対応アプリケーションの 90%がUIではなく公開APIの形で攻撃対象領域を増やし、2019年の40％から増加した」とのことです。「Gartnerは、2022年までに、APIの悪用が頻度の低い攻撃ベクトルから頻度の高い攻撃ベクトルに移行し、その結果、エンタープライズ Web アプリケーションのデータ漏えいが発生すると予測しています」[1] [2]。Cloudflare のネットワークを横断する毎秒1,800万リクエストのうち、50% はAPIに向けられ、これらのリクエストの大半は悪意のあるものとしてブロックされています。</p>
+<p data-astro-cid-yoyuw6fx="">これらの脅威に対処するために、Cloudflareは強力なクライアント証明書ベースのIDと厳格なスキーマベースの検証を使用して、APIの保護をシンプルにしています。本日付で、これらの機能は、新しい「API Shield」サービス内のすべてのプランで無料で利用できます。さらに本日付けで、セキュリティ上のメリットは、JSONではなくプロトコルバッファなどのバイナリ形式を使用する<a href="https://blog.cloudflare.com/announcing-grpc">gRPCベースのAPIにも広がり</a>、お客様の間で人気が高まっています。</p>
+<p data-astro-cid-yoyuw6fx="">新機能の詳細については、引き続きこの記事をお読みください。または、「デモンストレーション」の段落にジャンプして、最初の API Shield ルールの設定を開始する方法の例を参照してください。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="593" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477FGQJC6S2SQNS7YQNXS7.png&amp;w=715&amp;h=593&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477FGQJC6S2SQNS7YQNXS7.png&amp;w=640&amp;h=531&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477FGQJC6S2SQNS7YQNXS7.png&amp;w=715&amp;h=593&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477FGQJC6S2SQNS7YQNXS7.png&amp;w=750&amp;h=622&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477FGQJC6S2SQNS7YQNXS7.png&amp;w=828&amp;h=687&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477FGQJC6S2SQNS7YQNXS7.png&amp;w=1080&amp;h=896&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477FGQJC6S2SQNS7YQNXS7.png&amp;w=1280&amp;h=1062&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477FGQJC6S2SQNS7YQNXS7.png&amp;w=1430&amp;h=1186&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Introducing API Shield Embedded Image - V1hj4q" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477FGQJC6S2SQNS7YQNXS7.png&amp;w=976&amp;h=809&amp;f=webp" data-lightbox-width="976" data-lightbox-height="809" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="593" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<h3>ポジティブセキュリティモデルとクライアント証明書</h3>
-<p>「ポジティブセキュリティ」モデルは、既知の動作とIDのみを許可し、他のすべてを拒否するモデルです。これは、Webアプリケーションファイアウォール（WAF）によって適用される、従来の「ネガティブセキュリティ」モデルとは逆です。ネガティブセキュリティモデルでは、問題のあるIP、ASN、国、または問題のある署名を持つリクエスト（SQLインジェクションの試み、など）以外のリクエストはすべて許可します。</p>
-<p>API にポジティブセキュリティモデルを実装することは、クレデンシャルスタッフィング攻撃やその他の自動スキャンツールのノイズを除去する最も直接的な方法です。また、ポジティブモデルへの第一歩は、相互 TLS 認証などの強力な認証を展開することです。この認証は、 <a href="https://spycloud.com/2020-annual-credential-exposure-report" target="_blank" rel="noopener noreferrer">パスワードの再利用や共有</a>に対して脆弱ではありません。</p>
-<p>2014年に Universal SSL を使用してサーバー証明書の発行を簡素化したように、API Shieldでは、クライアント証明書の発行プロセスを減らして、Cloudflare ダッシュボードのいくつかのボタンをクリックするだけで済むようになりました。完全にホストされたパブリックキーインフラストラクチャ (PKI) を提供することで、独自の認証局 (CA) を操作してセキュリティで保護するのではなく、アプリケーションと機能に集中できます。</p>
-<h3>スキーマ検証による有効なリクエストの実行</h3>
+<h3 data-astro-cid-yoyuw6fx="">ポジティブセキュリティモデルとクライアント証明書</h3>
+<p data-astro-cid-yoyuw6fx="">「ポジティブセキュリティ」モデルは、既知の動作とIDのみを許可し、他のすべてを拒否するモデルです。これは、Webアプリケーションファイアウォール（WAF）によって適用される、従来の「ネガティブセキュリティ」モデルとは逆です。ネガティブセキュリティモデルでは、問題のあるIP、ASN、国、または問題のある署名を持つリクエスト（SQLインジェクションの試み、など）以外のリクエストはすべて許可します。</p>
+<p data-astro-cid-yoyuw6fx="">API にポジティブセキュリティモデルを実装することは、クレデンシャルスタッフィング攻撃やその他の自動スキャンツールのノイズを除去する最も直接的な方法です。また、ポジティブモデルへの第一歩は、相互 TLS 認証などの強力な認証を展開することです。この認証は、 <a href="https://spycloud.com/2020-annual-credential-exposure-report" target="_blank" rel="noopener noreferrer">パスワードの再利用や共有</a>に対して脆弱ではありません。</p>
+<p data-astro-cid-yoyuw6fx="">2014年に Universal SSL を使用してサーバー証明書の発行を簡素化したように、API Shieldでは、クライアント証明書の発行プロセスを減らして、Cloudflare ダッシュボードのいくつかのボタンをクリックするだけで済むようになりました。完全にホストされたパブリックキーインフラストラクチャ (PKI) を提供することで、独自の認証局 (CA) を操作してセキュリティで保護するのではなく、アプリケーションと機能に集中できます。</p>
+<h3 data-astro-cid-yoyuw6fx="">スキーマ検証による有効なリクエストの実行</h3>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="494" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462TXBETTD4G341Q9QANA8.png&amp;w=715&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462TXBETTD4G341Q9QANA8.png&amp;w=640&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462TXBETTD4G341Q9QANA8.png&amp;w=715&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462TXBETTD4G341Q9QANA8.png&amp;w=750&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462TXBETTD4G341Q9QANA8.png&amp;w=828&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462TXBETTD4G341Q9QANA8.png&amp;w=1080&amp;h=746&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462TXBETTD4G341Q9QANA8.png&amp;w=1280&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462TXBETTD4G341Q9QANA8.png&amp;w=1430&amp;h=988&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Introducing API Shield Embedded Image - CNEgCI" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462TXBETTD4G341Q9QANA8.png&amp;w=1244&amp;h=859&amp;f=webp" data-lightbox-width="1244" data-lightbox-height="859" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="494" class="pt-portable-image-media"></div>
 </figure>
-<p>開発者が、（SSL証明書を持つ）正規のクライアントだけが自分のAPIに接続していることを確認できたら、ポジティブセキュリティモデルを実装する次のステップは、これらのクライアントが有効なリクエストを行っていることを確認することです。デバイスからクライアント証明書を抽出し、他の場所で再利用することは困難ですが、不可能ではありません。そのため、API が意図したとおりに呼び出されていることを確認しておくことも重要です。</p>
-<p>無関係な入力を含むリクエストは、API 開発者が予測していない可能性があり、アプリケーションで直接処理すると問題を引き起こす可能性があるため、可能であればエッジで遮断する必要があります。API スキーマの検証は、API リクエストの内容 （POST本文のURLとコンテンツの後にあるクエリーパラメータ) を、予想されるルールを含む規約（「スキーマ」）と照合することによって機能します。検証が失敗した場合、API 呼び出しはブロックされ、無効なリクエストまたは悪意のあるペイロードからオリジンを保護します。</p>
-<p>スキーマ検証は現在はJSON ペイロードでは非公開のベータ版であり、ロードマップでは gRPC/プロトコルバッファがサポートされています。ベータ版への参加を希望される場合は、「API スキーマ検証ベータ」という件名でサポートチケットを開いてください。ベータ版の終了後、スキーマ検証を API Shield ユーザーインターフェイスの一部として使用できるようにする予定です。</p>
-<h3>デモンストレーション</h3>
+<p data-astro-cid-yoyuw6fx="">開発者が、（SSL証明書を持つ）正規のクライアントだけが自分のAPIに接続していることを確認できたら、ポジティブセキュリティモデルを実装する次のステップは、これらのクライアントが有効なリクエストを行っていることを確認することです。デバイスからクライアント証明書を抽出し、他の場所で再利用することは困難ですが、不可能ではありません。そのため、API が意図したとおりに呼び出されていることを確認しておくことも重要です。</p>
+<p data-astro-cid-yoyuw6fx="">無関係な入力を含むリクエストは、API 開発者が予測していない可能性があり、アプリケーションで直接処理すると問題を引き起こす可能性があるため、可能であればエッジで遮断する必要があります。API スキーマの検証は、API リクエストの内容 （POST本文のURLとコンテンツの後にあるクエリーパラメータ) を、予想されるルールを含む規約（「スキーマ」）と照合することによって機能します。検証が失敗した場合、API 呼び出しはブロックされ、無効なリクエストまたは悪意のあるペイロードからオリジンを保護します。</p>
+<p data-astro-cid-yoyuw6fx="">スキーマ検証は現在はJSON ペイロードでは非公開のベータ版であり、ロードマップでは gRPC/プロトコルバッファがサポートされています。ベータ版への参加を希望される場合は、「API スキーマ検証ベータ」という件名でサポートチケットを開いてください。ベータ版の終了後、スキーマ検証を API Shield ユーザーインターフェイスの一部として使用できるようにする予定です。</p>
+<h3 data-astro-cid-yoyuw6fx="">デモンストレーション</h3>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="625" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VK3JGE8YT2RCFW74PN6M.png&amp;w=715&amp;h=625&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VK3JGE8YT2RCFW74PN6M.png&amp;w=640&amp;h=559&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VK3JGE8YT2RCFW74PN6M.png&amp;w=715&amp;h=625&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VK3JGE8YT2RCFW74PN6M.png&amp;w=750&amp;h=656&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VK3JGE8YT2RCFW74PN6M.png&amp;w=828&amp;h=724&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VK3JGE8YT2RCFW74PN6M.png&amp;w=1080&amp;h=944&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VK3JGE8YT2RCFW74PN6M.png&amp;w=1280&amp;h=1119&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VK3JGE8YT2RCFW74PN6M.png&amp;w=1430&amp;h=1250&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Introducing API Shield Embedded Image - yPkjJt" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VK3JGE8YT2RCFW74PN6M.png&amp;w=1502&amp;h=1312&amp;f=webp" data-lightbox-width="1502" data-lightbox-height="1312" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="625" class="pt-portable-image-media"></div>
 </figure>
-<p>IoT デバイスおよびモバイルアプリケーションを動かすAPI がどのように保護されるかを示すために、クライアント証明書とスキーマ検証を使用した API Shieldのデモンストレーションを構築しました。</p>
-<p>温度は IoT デバイスによってキャプチャされ、デモでは外部赤外線温度センサーを備えた Raspberry Pi 3 モデル B+ で表され、POST リクエストを介してCloudflareが保護したAPI に送信されます。温度はその後、GETリクエストによって取得され、iOS用のSwiftに組み込まれたモバイルアプリケーションに表示されます。</p>
-<p>どちらの場合も、API は実際には Cloudflare Workers® と Workers KV を使用して構築されていますが、インターネットにアクセスできるエンドポイントに置き換えることができます。</p>
-<h3>1.APIの設定</h3>
-<p>APIで安全に通信できるように、IoT デバイスおよびモバイルアプリケーションを設定する前に、API エンドポイントをブートストラップする必要があります。例をシンプルに保ちながら、追加のカスタマイズも可能にするために、API を Cloudflare Worker として実装しました (<a href="https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app" target="_blank" rel="noopener noreferrer">To-Do リストのチュートリアル</a> からコードを借用)。</p>
-<p>この例では、temperatureはソースIPアドレスをキーとして使用して Workers KV に格納されますが、これは<a href="https://developers.cloudflare.com/access/service-auth/mtls-headers" target="_blank" rel="noopener noreferrer">クライアント証明書の値</a>と簡単に置き換えることができます (例:フィンガープリント)。以下に示すコードでは、POSTが作られたときにtemperatureとタイムスタンプを KV に保存し、GETリクエストが行われたときに最新の 5 つのtemperatureを返します。</p>
-<p>相互TLS認証を追加する前に、ランダムなtemperature読み込みのPOST送信をテストします。</p>
+<p data-astro-cid-yoyuw6fx="">IoT デバイスおよびモバイルアプリケーションを動かすAPI がどのように保護されるかを示すために、クライアント証明書とスキーマ検証を使用した API Shieldのデモンストレーションを構築しました。</p>
+<p data-astro-cid-yoyuw6fx="">温度は IoT デバイスによってキャプチャされ、デモでは外部赤外線温度センサーを備えた Raspberry Pi 3 モデル B+ で表され、POST リクエストを介してCloudflareが保護したAPI に送信されます。温度はその後、GETリクエストによって取得され、iOS用のSwiftに組み込まれたモバイルアプリケーションに表示されます。</p>
+<p data-astro-cid-yoyuw6fx="">どちらの場合も、API は実際には Cloudflare Workers® と Workers KV を使用して構築されていますが、インターネットにアクセスできるエンドポイントに置き換えることができます。</p>
+<h3 data-astro-cid-yoyuw6fx="">1.APIの設定</h3>
+<p data-astro-cid-yoyuw6fx="">APIで安全に通信できるように、IoT デバイスおよびモバイルアプリケーションを設定する前に、API エンドポイントをブートストラップする必要があります。例をシンプルに保ちながら、追加のカスタマイズも可能にするために、API を Cloudflare Worker として実装しました (<a href="https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app" target="_blank" rel="noopener noreferrer">To-Do リストのチュートリアル</a> からコードを借用)。</p>
+<p data-astro-cid-yoyuw6fx="">この例では、temperatureはソースIPアドレスをキーとして使用して Workers KV に格納されますが、これは<a href="https://developers.cloudflare.com/access/service-auth/mtls-headers" target="_blank" rel="noopener noreferrer">クライアント証明書の値</a>と簡単に置き換えることができます (例:フィンガープリント)。以下に示すコードでは、POSTが作られたときにtemperatureとタイムスタンプを KV に保存し、GETリクエストが行われたときに最新の 5 つのtemperatureを返します。</p>
+<p data-astro-cid-yoyuw6fx="">相互TLS認証を追加する前に、ランダムなtemperature読み込みのPOST送信をテストします。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> defaultData</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> temperatures:</span><span class="sk-24292e-fff"> [] }</span></span>
 <span class="line"></span>
@@ -120,7 +120,7 @@
 		})
 	});
 </script>
-<p>ここに示すのは、その後に読み取られたtemperatureと、以前提出された4つのtemperatureの読み取り結果です。</p>
+<p data-astro-cid-yoyuw6fx="">ここに示すのは、その後に読み取られたtemperatureと、以前提出された4つのtemperatureの読み取り結果です。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> TEMPERATURE=</span><span class="sk-24292e-fff">$(</span><span class="sk-005cc5-ffc799">echo</span><span class="sk-24292e-fff"> $((</span><span class="sk-6f42c1-ffc799">361</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> RANDOM</span><span class="sk-032f62-99ffe4"> %11</span><span class="sk-24292e-fff">)) </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> awk</span><span class="sk-032f62-99ffe4"> '{printf("%.2f",$1/10.0)}'</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> TIMESTAMP=</span><span class="sk-24292e-fff">$(</span><span class="sk-6f42c1-ffc799">date</span><span class="sk-005cc5-99ffe4"> -u</span><span class="sk-032f62-99ffe4"> +"%Y-%m-%dT%H:%M:%SZ"</span><span class="sk-24292e-fff">)</span></span>
@@ -136,7 +136,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3>2.クライアント証明書の発行</h3>
+<h3 data-astro-cid-yoyuw6fx="">2.クライアント証明書の発行</h3>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-032f62-99ffe4"> https://shield.upinatoms.com/temps</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-032f62-99ffe4"> .</span></span>
 <span class="line"><span class="sk-24292e-fff">[</span></span>
@@ -166,9 +166,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>APIが設定できたら、有効なクライアント証明書を要求するためにロックダウンします。その前に、証明書を生成する必要があります。まず、CloudflareダッシュボードのSSL/TLS→クライアント証明書タブに移動し、「証明書の作成」をクリックするか、APIコールを介してプロセスを自動化することができます。</p>
-<p>ほとんどの開発者は、独自のプライベートキーとCSRを生成し、API 経由で署名することをリクエストするため、ここで、そのプロセスを示します。CloudflareのPKI ツールキット <a href="https://github.com/cloudflare/cfssl" target="_blank" rel="noopener noreferrer">CFSSL</a>を使用して、 まず iOS アプリケーション用のブートストラップ証明書を作成し、次に IoT デバイスの証明書を作成します。</p>
-<p>IoT デバイスおよび iOS アプリケーションのためのプライベートキーとCSRを生成します</p>
+<p data-astro-cid-yoyuw6fx="">APIが設定できたら、有効なクライアント証明書を要求するためにロックダウンします。その前に、証明書を生成する必要があります。まず、CloudflareダッシュボードのSSL/TLS→クライアント証明書タブに移動し、「証明書の作成」をクリックするか、APIコールを介してプロセスを自動化することができます。</p>
+<p data-astro-cid-yoyuw6fx="">ほとんどの開発者は、独自のプライベートキーとCSRを生成し、API 経由で署名することをリクエストするため、ここで、そのプロセスを示します。CloudflareのPKI ツールキット <a href="https://github.com/cloudflare/cfssl" target="_blank" rel="noopener noreferrer">CFSSL</a>を使用して、 まず iOS アプリケーション用のブートストラップ証明書を作成し、次に IoT デバイスの証明書を作成します。</p>
+<p data-astro-cid-yoyuw6fx="">IoT デバイスおよび iOS アプリケーションのためのプライベートキーとCSRを生成します</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-d73a49-a0a0a0"> &lt;&lt;</span><span class="sk-032f62-fff">'EOF'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> tee</span><span class="sk-005cc5-99ffe4"> -a</span><span class="sk-032f62-99ffe4"> csr.json</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">{</span></span>
@@ -210,7 +210,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Ask Cloudflare to sign the CSRs with the private CA issued for your zone</p>
+<p data-astro-cid-yoyuw6fx="">Ask Cloudflare to sign the CSRs with the private CA issued for your zone</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> we</span><span class="sk-032f62-99ffe4"> need</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> replace</span><span class="sk-032f62-99ffe4"> actual</span><span class="sk-032f62-99ffe4"> newlines</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> CSR</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> ‘</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">’</span><span class="sk-032f62-99ffe4"> before</span><span class="sk-032f62-99ffe4"> POST’ing</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> CSR=</span><span class="sk-24292e-fff">$(</span><span class="sk-6f42c1-ffc799">cat</span><span class="sk-032f62-99ffe4"> ios.csr</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> perl</span><span class="sk-005cc5-99ffe4"> -pe</span><span class="sk-032f62-99ffe4"> 's/\n/\\n/g'</span><span class="sk-24292e-fff">)</span></span>
@@ -272,16 +272,16 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>お客様のゾーンに対して発行されたプライベートCAでCSRへの署名は、Cloudflareにご依頼ください</p>
-<h3>.API Shield ルールの作成</h3>
-<p>証明書が手に入ったので、API エンドポイントに証明書の使用をリクエストするように設定できます。以下は、そのルールを作成する方法のデモンストレーションです。</p>
-<p>手順では、証明書をリクエストするホスト名 (shield.upinatoms.com など) を指定し、API Shield ルールを作成します。</p>
+<p data-astro-cid-yoyuw6fx="">お客様のゾーンに対して発行されたプライベートCAでCSRへの署名は、Cloudflareにご依頼ください</p>
+<h3 data-astro-cid-yoyuw6fx="">.API Shield ルールの作成</h3>
+<p data-astro-cid-yoyuw6fx="">証明書が手に入ったので、API エンドポイントに証明書の使用をリクエストするように設定できます。以下は、そのルールを作成する方法のデモンストレーションです。</p>
+<p data-astro-cid-yoyuw6fx="">手順では、証明書をリクエストするホスト名 (shield.upinatoms.com など) を指定し、API Shield ルールを作成します。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="600" height="469" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW46HP4RTHMF5MFZ9XP387E2.gif" alt="Introducing API Shield Embedded Image - l6bqhb" width="600" height="469" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
 </figure>
-<h3>4.IoTデバイス通信</h3>
-<p>API エンドポイントとの安全な通信のために IoT デバイスを準備するには、デバイスに証明書を埋め込み、アプリケーションがそれを指すようにし、API エンドポイントへの POSTリクエストを行うときに証明書が使用できるようにしておく必要があります。</p>
-<p>プライベートキーと証明書を /etc/ssl/private/sensor-key.pem and /etc/ssl/certs/sensor.pemに安全にコピーしました。そしてサンプルスクリプトを改変して、次のファイルを指すようにします。</p>
+<h3 data-astro-cid-yoyuw6fx="">4.IoTデバイス通信</h3>
+<p data-astro-cid-yoyuw6fx="">API エンドポイントとの安全な通信のために IoT デバイスを準備するには、デバイスに証明書を埋め込み、アプリケーションがそれを指すようにし、API エンドポイントへの POSTリクエストを行うときに証明書が使用できるようにしておく必要があります。</p>
+<p data-astro-cid-yoyuw6fx="">プライベートキーと証明書を /etc/ssl/private/sensor-key.pem and /etc/ssl/certs/sensor.pemに安全にコピーしました。そしてサンプルスクリプトを改変して、次のファイルを指すようにします。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-032f62-99ffe4"> requests</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-032f62-99ffe4"> json</span></span>
@@ -317,8 +317,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>スクリプトが <a href="https://shield.upinatoms.com/temps" target="_blank" rel="noopener noreferrer">https://shield.upinatoms.com/temps</a>に接続しようとすると、Cloudflare はクライアント証明書の送信をリクエストし、当社のスクリプトはSSL/TLSハンドシェイクの完了に必要な、sensor-key.pemを所有していることを証明する前にsensor.pem のコンテンツを送信します。</p>
-<p>クライアント証明書の送信に失敗した場合、または APIリクエストに無関係なフィールドを含めようとすると、スキーマの検証（構成は表示されません）が失敗し、リクエストは拒否されます。</p>
+<p data-astro-cid-yoyuw6fx="">スクリプトが <a href="https://shield.upinatoms.com/temps" target="_blank" rel="noopener noreferrer">https://shield.upinatoms.com/temps</a>に接続しようとすると、Cloudflare はクライアント証明書の送信をリクエストし、当社のスクリプトはSSL/TLSハンドシェイクの完了に必要な、sensor-key.pemを所有していることを証明する前にsensor.pem のコンテンツを送信します。</p>
+<p data-astro-cid-yoyuw6fx="">クライアント証明書の送信に失敗した場合、または APIリクエストに無関係なフィールドを含めようとすると、スキーマの検証（構成は表示されません）が失敗し、リクエストは拒否されます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Cloudflare</span><span class="sk-032f62-99ffe4"> API</span><span class="sk-032f62-99ffe4"> Shield</span><span class="sk-24292e-fff"> [IoT </span><span class="sk-032f62-99ffe4">device</span><span class="sk-032f62-99ffe4"> demonstration]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Request</span><span class="sk-032f62-99ffe4"> body:</span><span class="sk-032f62-99ffe4">  {"temperature":</span><span class="sk-032f62-99ffe4"> "36.5",</span><span class="sk-032f62-99ffe4"> "time":</span><span class="sk-032f62-99ffe4"> "2020-09-28T15:52:19Z"}</span></span>
@@ -328,7 +328,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>代わりに有効な証明書が表示され、ペイロードが以前にアップロードされたスキーマに従う場合、スクリプトは最新のtemperatureの読み取り結果を API にPOST送信します。</p>
+<p data-astro-cid-yoyuw6fx="">代わりに有効な証明書が表示され、ペイロードが以前にアップロードされたスキーマに従う場合、スクリプトは最新のtemperatureの読み取り結果を API にPOST送信します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Cloudflare</span><span class="sk-032f62-99ffe4"> API</span><span class="sk-032f62-99ffe4"> Shield</span><span class="sk-24292e-fff"> [IoT </span><span class="sk-032f62-99ffe4">device</span><span class="sk-032f62-99ffe4"> demonstration]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Request</span><span class="sk-032f62-99ffe4"> body:</span><span class="sk-032f62-99ffe4">  {"temperature":</span><span class="sk-032f62-99ffe4"> "36.5",</span><span class="sk-032f62-99ffe4"> "time":</span><span class="sk-032f62-99ffe4"> "2020-09-28T15:56:45Z"}</span></span>
@@ -338,11 +338,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3>5.モバイルアプリケーション (iOS) の通信</h3>
-<p>temperatureのリクエストが API エンドポイントに送信されたら、クライアント証明書の 1 つを使用して、モバイルアプリケーションから安全に読み取ります。</p>
-<p>簡潔にするために、アプリケーションバンドル内に「ブートストラップ」証明書とキーを PKCS #12 ファイルとして埋め込みます。実際の展開では、このブートストラップ証明を、一意のユーザー証明書を返すことができる API エンドポイントに対する認証に使用するためには、ユーザーの認証情報と共に使用する必要があります。企業ユーザーは、MDMを使用して証明書を配布し、制御および持続化オプションを追加する必要があります。</p>
-<h4>証明書とプライベートキーのパッケージ化</h4>
-<p>ブートストラップ証明書とプライベートキーを追加する前に、この2つをバイナリ PKCS #12 ファイルに統合する必要があります。このバイナリファイルは、iOS アプリケーションバンドルに追加されます。</p>
+<h3 data-astro-cid-yoyuw6fx="">5.モバイルアプリケーション (iOS) の通信</h3>
+<p data-astro-cid-yoyuw6fx="">temperatureのリクエストが API エンドポイントに送信されたら、クライアント証明書の 1 つを使用して、モバイルアプリケーションから安全に読み取ります。</p>
+<p data-astro-cid-yoyuw6fx="">簡潔にするために、アプリケーションバンドル内に「ブートストラップ」証明書とキーを PKCS #12 ファイルとして埋め込みます。実際の展開では、このブートストラップ証明を、一意のユーザー証明書を返すことができる API エンドポイントに対する認証に使用するためには、ユーザーの認証情報と共に使用する必要があります。企業ユーザーは、MDMを使用して証明書を配布し、制御および持続化オプションを追加する必要があります。</p>
+<h4 data-astro-cid-yoyuw6fx="">証明書とプライベートキーのパッケージ化</h4>
+<p data-astro-cid-yoyuw6fx="">ブートストラップ証明書とプライベートキーを追加する前に、この2つをバイナリ PKCS #12 ファイルに統合する必要があります。このバイナリファイルは、iOS アプリケーションバンドルに追加されます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> openssl</span><span class="sk-032f62-99ffe4"> pkcs12</span><span class="sk-005cc5-99ffe4"> -export</span><span class="sk-005cc5-99ffe4"> -out</span><span class="sk-032f62-99ffe4"> bootstrap-cert.pfx</span><span class="sk-005cc5-99ffe4"> -inkey</span><span class="sk-032f62-99ffe4"> ios-key.pem</span><span class="sk-005cc5-99ffe4"> -in</span><span class="sk-032f62-99ffe4"> ios.pem</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Enter</span><span class="sk-032f62-99ffe4"> Export</span><span class="sk-032f62-99ffe4"> Password:</span></span>
@@ -352,13 +352,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4>iOS アプリケーションに証明書バンドルを追加する</h4>
-<p>XCode内で、ファイルをクリック → [プロジェクト名] にファイルを追加して、pfxファイルを選択します。「ターゲットに追加する」をチェックした後、確定してください。</p>
-<h4>クライアント証明書を使用するためにURLセッションコードを変更します。</h4>
-<p><a href="https://leenarts.net/2020/02/28/client-certificate-with-urlsession-in-swift" target="_blank" rel="noopener noreferrer">本稿</a>ではPKCS#11 クラスと<a href="https://developer.apple.com/documentation/foundation/urlsessiondelegate" target="_blank" rel="noopener noreferrer">URLセッションの権限</a>を使って、アプリケーションを操作し、APIとの接続に必要なTLS相互認証を完了する方法をご紹介しました。</p>
-<h3>今後の予定</h3>
-<p>今後数か月で、APIトラフィックを保護するために設計されたAPI Shieldをさらに拡張し、多数の追加機能を搭載する予定です。独自のPKIの使用を希望されるお客様のために、Cloudflare Accessの一部として <a href="https://developers.cloudflare.com/access/service-auth/mtls" target="_blank" rel="noopener noreferrer">本日からご利用いただける</a>独自のCAをインポートする機能を提供します。</p>
-<p>スキーマ検証ベータに関するフィードバックを受け取り次第、すべてのお客様に向けてこの機能を一般提供する予定です。ベータ版をお試しになり、共有したいことがありましたら、フィードバックをお送りください。</p>
-<p>証明書やスキーマの検証に加えて、API をよりよく理解できるように、API セキュリティ機能の追加と詳細な分析を提供できることをうれしく思います。さらに希望される機能がある場合は、以下のコメントでお知らせください！</p>
-<p><em>1:「2021年までに、Web対応アプリケーションの 90%が、UIではなく公開APIの形で攻撃対象領域を増やし、2019年の40％から増加した。」出典：Gartner「GartnerのAPI戦略成熟度モデル」、報告者：Saniye Alaybeyi、Mark O'Neill、2019年10月21日(Gartnerのサブスクリプションが必要です)</em></p>
-<p><em>2:「Gartnerは、2022 年までに、API の悪用が頻度の低い攻撃ベクトルから頻度の高い攻撃ベクトルに移行し、その結果、エンタープライズ Web アプリケーションのデータ漏えいが発生すると予測している」出典：Gartner「API戦略におけるCool Vendors（注目ベンダー）」、報告者：Shameen Pillai、Paolo Malinverno、Mark O'Neill、Jeremy D'Hoinne、2020年5月18日（Gartnerのサブスクリプションが必要です）</em></p>
+<h4 data-astro-cid-yoyuw6fx="">iOS アプリケーションに証明書バンドルを追加する</h4>
+<p data-astro-cid-yoyuw6fx="">XCode内で、ファイルをクリック → [プロジェクト名] にファイルを追加して、pfxファイルを選択します。「ターゲットに追加する」をチェックした後、確定してください。</p>
+<h4 data-astro-cid-yoyuw6fx="">クライアント証明書を使用するためにURLセッションコードを変更します。</h4>
+<p data-astro-cid-yoyuw6fx=""><a href="https://leenarts.net/2020/02/28/client-certificate-with-urlsession-in-swift" target="_blank" rel="noopener noreferrer">本稿</a>ではPKCS#11 クラスと<a href="https://developer.apple.com/documentation/foundation/urlsessiondelegate" target="_blank" rel="noopener noreferrer">URLセッションの権限</a>を使って、アプリケーションを操作し、APIとの接続に必要なTLS相互認証を完了する方法をご紹介しました。</p>
+<h3 data-astro-cid-yoyuw6fx="">今後の予定</h3>
+<p data-astro-cid-yoyuw6fx="">今後数か月で、APIトラフィックを保護するために設計されたAPI Shieldをさらに拡張し、多数の追加機能を搭載する予定です。独自のPKIの使用を希望されるお客様のために、Cloudflare Accessの一部として <a href="https://developers.cloudflare.com/access/service-auth/mtls" target="_blank" rel="noopener noreferrer">本日からご利用いただける</a>独自のCAをインポートする機能を提供します。</p>
+<p data-astro-cid-yoyuw6fx="">スキーマ検証ベータに関するフィードバックを受け取り次第、すべてのお客様に向けてこの機能を一般提供する予定です。ベータ版をお試しになり、共有したいことがありましたら、フィードバックをお送りください。</p>
+<p data-astro-cid-yoyuw6fx="">証明書やスキーマの検証に加えて、API をよりよく理解できるように、API セキュリティ機能の追加と詳細な分析を提供できることをうれしく思います。さらに希望される機能がある場合は、以下のコメントでお知らせください！</p>
+<p data-astro-cid-yoyuw6fx=""><em>1:「2021年までに、Web対応アプリケーションの 90%が、UIではなく公開APIの形で攻撃対象領域を増やし、2019年の40％から増加した。」出典：Gartner「GartnerのAPI戦略成熟度モデル」、報告者：Saniye Alaybeyi、Mark O'Neill、2019年10月21日(Gartnerのサブスクリプションが必要です)</em></p>
+<p data-astro-cid-yoyuw6fx=""><em>2:「Gartnerは、2022 年までに、API の悪用が頻度の低い攻撃ベクトルから頻度の高い攻撃ベクトルに移行し、その結果、エンタープライズ Web アプリケーションのデータ漏えいが発生すると予測している」出典：Gartner「API戦略におけるCool Vendors（注目ベンダー）」、報告者：Shameen Pillai、Paolo Malinverno、Mark O'Neill、Jeremy D'Hoinne、2020年5月18日（Gartnerのサブスクリプションが必要です）</em></p>

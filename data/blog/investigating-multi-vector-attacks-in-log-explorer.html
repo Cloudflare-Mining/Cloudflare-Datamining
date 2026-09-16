@@ -1,278 +1,278 @@
-<p>In the world of cybersecurity, a single data point is rarely the whole story. Modern attackers don’t just knock on the front door; they probe your APIs, flood your network with "noise" to distract your team, and attempt to slide through applications and servers using stolen credentials.</p>
-<p>To stop these multi-vector attacks, you need the full picture. By using Cloudflare Log Explorer to conduct security forensics, you get 360-degree visibility through the integration of 14 new datasets, covering the full surface of Cloudflare’s Application Services and Cloudflare One product portfolios. By correlating telemetry from application-layer HTTP requests, network-layer DDoS and Firewall logs, and Zero Trust Access events, security analysts can significantly reduce Mean Time to Detect (MTTD) and effectively unmask sophisticated, multi-layered attacks.</p>
-<p>Read on to learn more about how Log Explorer gives security teams the ultimate landscape for rapid, deep-dive forensics.</p>
-<h2>The flight recorder for your entire stack</h2>
-<p>The contemporary digital landscape requires deep, correlated telemetry to defend against adversaries using multiple attack vectors. Raw logs serve as the "flight recorder" for an application, capturing every single interaction, attack attempt, and performance bottleneck. And because Cloudflare sits at the edge, between your users and your servers, all of these events are logged before the requests even reach your infrastructure.&nbsp;</p>
-<p>Cloudflare Log Explorer centralizes these logs into a unified interface for rapid investigation.</p>
-<h3>Log Types Supported</h3>
-<h4>Zone-Scoped Logs</h4>
-<p><em>Focus: Website traffic, security events, and edge performance.</em></p>
-<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
-	<table class="emdash-table" data-astro-cid-62p3h4ye="">
-		<thead data-astro-cid-62p3h4ye="">
-			<tr data-astro-cid-62p3h4ye="">
-				<th data-astro-cid-62p3h4ye="">
+<p data-astro-cid-yoyuw6fx="">In the world of cybersecurity, a single data point is rarely the whole story. Modern attackers don’t just knock on the front door; they probe your APIs, flood your network with "noise" to distract your team, and attempt to slide through applications and servers using stolen credentials.</p>
+<p data-astro-cid-yoyuw6fx="">To stop these multi-vector attacks, you need the full picture. By using Cloudflare Log Explorer to conduct security forensics, you get 360-degree visibility through the integration of 14 new datasets, covering the full surface of Cloudflare’s Application Services and Cloudflare One product portfolios. By correlating telemetry from application-layer HTTP requests, network-layer DDoS and Firewall logs, and Zero Trust Access events, security analysts can significantly reduce Mean Time to Detect (MTTD) and effectively unmask sophisticated, multi-layered attacks.</p>
+<p data-astro-cid-yoyuw6fx="">Read on to learn more about how Log Explorer gives security teams the ultimate landscape for rapid, deep-dive forensics.</p>
+<h2 data-astro-cid-yoyuw6fx="">The flight recorder for your entire stack</h2>
+<p data-astro-cid-yoyuw6fx="">The contemporary digital landscape requires deep, correlated telemetry to defend against adversaries using multiple attack vectors. Raw logs serve as the "flight recorder" for an application, capturing every single interaction, attack attempt, and performance bottleneck. And because Cloudflare sits at the edge, between your users and your servers, all of these events are logged before the requests even reach your infrastructure.&nbsp;</p>
+<p data-astro-cid-yoyuw6fx="">Cloudflare Log Explorer centralizes these logs into a unified interface for rapid investigation.</p>
+<h3 data-astro-cid-yoyuw6fx="">Log Types Supported</h3>
+<h4 data-astro-cid-yoyuw6fx="">Zone-Scoped Logs</h4>
+<p data-astro-cid-yoyuw6fx=""><em>Focus: Website traffic, security events, and edge performance.</em></p>
+<div class="emdash-table-wrapper" data-astro-cid-zdje7xco="">
+	<table class="emdash-table" data-astro-cid-zdje7xco="">
+		<thead data-astro-cid-zdje7xco="">
+			<tr data-astro-cid-zdje7xco="">
+				<th data-astro-cid-zdje7xco="">
 					<p>HTTP Requests</p>
 				</th>
-				<th data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-zdje7xco="">
 					<p>As the most comprehensive dataset, it serves as the "primary record" of all application-layer traffic, enabling the reconstruction of session activity, exploit attempts, and bot patterns.</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-62p3h4ye="">
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+		<tbody data-astro-cid-zdje7xco="">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Firewall Events</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Provides critical evidence of blocked or challenged threats, allowing analysts to identify the specific WAF rules, IP reputations, or custom filters that intercepted an attack.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>DNS Logs</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Identify cache poisoning attempts, domain hijacking, and infrastructure-level reconnaissance by tracking every query resolved at the authoritative edge.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>NEL (Network Error Logging) Reports</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Distinguish between a coordinated Layer 7 DDoS attack and legitimate network connectivity issues by tracking client-side browser errors.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Spectrum Events</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>For non-web applications, these logs provide visibility into L4 traffic (TCP/UDP), helping to identify anomalies or brute-force attacks against protocols like SSH, RDP, or custom gaming traffic.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Page Shield</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Track and audit unauthorized changes to your site's client-side environment such as JavaScript, outbound connections.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Zaraz Events</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Examine how third-party tools and trackers are interacting with user data, which is vital for auditing privacy compliance and detecting unauthorized script behaviors.</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<h4>Account-Scoped Logs</h4>
-<p><em>Focus: Internal security, Zero Trust, administrative changes, and network activity.</em></p>
-<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
-	<table class="emdash-table" data-astro-cid-62p3h4ye="">
-		<thead data-astro-cid-62p3h4ye="">
-			<tr data-astro-cid-62p3h4ye="">
-				<th data-astro-cid-62p3h4ye="">
+<h4 data-astro-cid-yoyuw6fx="">Account-Scoped Logs</h4>
+<p data-astro-cid-yoyuw6fx=""><em>Focus: Internal security, Zero Trust, administrative changes, and network activity.</em></p>
+<div class="emdash-table-wrapper" data-astro-cid-zdje7xco="">
+	<table class="emdash-table" data-astro-cid-zdje7xco="">
+		<thead data-astro-cid-zdje7xco="">
+			<tr data-astro-cid-zdje7xco="">
+				<th data-astro-cid-zdje7xco="">
 					<p>Access Requests</p>
 				</th>
-				<th data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-zdje7xco="">
 					<p>Tracks identity-based authentication events to determine which users accessed specific internal applications and whether those attempts were authorized.</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-62p3h4ye="">
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+		<tbody data-astro-cid-zdje7xco="">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Audit Logs</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Provides a trail of configuration changes within the Cloudflare dashboard to identify unauthorized administrative actions or modifications.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>CASB Findings</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Identifies security misconfigurations and data risks within SaaS applications (like Google Drive or Microsoft 365) to prevent unauthorized data exposure.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Magic Transit / IPSec Logs</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Helps network engineers perform network-level (L3) monitoring such as reviewing tunnel health and view BGP routing changes.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Browser Isolation Logs</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Tracks user actions inside an isolated browser session (e.g., copy-paste, print, or file uploads) to prevent data leaks on untrusted sites&nbsp;</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Device Posture Results&nbsp;</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Details the security health and compliance status of devices connecting to your network, helping to identify compromised or non-compliant endpoints.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>DEX Application Tests&nbsp;</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Monitors application performance from the user's perspective, which can help distinguish between a security-related outage and a standard performance degradation.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>DEX Device State Events</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Provides telemetry on the physical state of user devices, useful for correlating hardware or OS-level anomalies with potential security incidents.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>DNS Firewall Logs</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Tracks DNS queries filtered through the DNS Firewall to identify communication with known malicious domains or command-and-control (C2) servers.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Email Security Alerts</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Logs malicious email activity and phishing attempts detected at the gateway to trace the origin of email-based entry vectors.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Gateway DNS</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Monitors every DNS query made by users on your network to identify shadow IT, malware callbacks, or domain-generation algorithms (DGAs).</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Gateway HTTP</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Provides full visibility into encrypted and unencrypted web traffic to detect hidden payloads, malicious file downloads, or unauthorized SaaS usage.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Gateway Network</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Tracks L3/L4 network traffic (non-HTTP) to identify unauthorized port usage, protocol anomalies, or lateral movement within the network.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>IPSec Logs</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Monitors the status and traffic of encrypted site-to-site tunnels to ensure the integrity and availability of secure network connections.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Magic IDS Detections</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Surfaces matches against intrusion detection signatures to alert investigators to known exploit patterns or malware behavior traversing the network.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Network Analytics Logs</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Provides high-level visibility into packet-level data to identify volumetric DDoS attacks or unusual traffic spikes targeting specific infrastructure.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Sinkhole HTTP Logs</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Captures traffic directed to "sinkholed" IP addresses to confirm which internal devices are attempting to communicate with known botnet infrastructure.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>WARP Config Changes</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Tracks modifications to the WARP client settings on end-user devices to ensure that security agents haven't been tampered with or disabled.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>WARP Toggle Changes</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Specifically logs when users enable or disable their secure connectivity, helping to identify periods where a device may have been unprotected.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Zero Trust Network Session Logs</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Logs the duration and status of authenticated user sessions to map out the complete lifecycle of a user's access within the protected perimeter.</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<h2>Log Explorer can identify malicious activity at every stage</h2>
-<p>Get granular application layer visibility with <strong>HTTP Requests</strong>, <strong>Firewall Events</strong>, and <strong>DNS logs</strong> to see exactly how traffic is hitting your public-facing properties.<strong> </strong>Track internal movement with <strong>Access Requests</strong>, <strong>Gateway logs</strong>, and <strong>Audit logs</strong>. If a credential is compromised, you’ll see where they went. Use <strong>Magic IDS</strong> and <strong>Network Analytics logs</strong> to spot volumetric attacks and "East-West" lateral movement within your private network.</p>
-<h3>Identify the reconnaissance</h3>
-<p>Attackers use scanners and other tools to look for entry points, hidden directories, or software vulnerabilities. To identify this, using Log Explorer, you can query <code>http_requests</code> for any <code>EdgeResponseStatus</code> codes of 401, 403, or 404 coming from a single IP, or requests to sensitive paths (e.g. <code>/.env</code>, <code>/.git</code>, <code>/wp-admin</code>).&nbsp;</p>
-<p>Additionally, <code>magic_ids_detections</code> logs can also be used to identify scanning at the network layer. These logs provide packet-level visibility into threats targeting your network. Unlike standard HTTP logs, these logs focus on <strong>signature-based detections</strong> at the network and transport layers (IP, TCP, UDP). Query to discover cases where a single <code>SourceIP</code> is triggering multiple unique detections across a wide range of <code>DestinationPort</code> values in a short timeframe. Magic IDS signatures can specifically flag activities like Nmap scans or SYN stealth scans.</p>
-<h3>Check for diversions</h3>
-<p>While the attacker is conducting reconnaissance, they may attempt to disguise this with a simultaneous network flood. Pivot to <code>network_analytics_logs</code> to see if a volumetric attack is being used as a smokescreen.</p>
-<h3>Identify the approach&nbsp;</h3>
-<p>Once attackers identify a potential vulnerability, they begin to craft their weapon. The attacker sends malicious payloads (e.g. SQL injection or large/corrupt file uploads) to confirm the vulnerability. Review <code>http_requests</code> and/or <code>fw_events</code> to identify any Cloudflare detection tools that have triggered. Cloudflare logs security signals in these datasets to easily identify requests with malicious payloads using fields such as <code>WAFAttackScore</code>, <code>WAFSQLiAttackScore</code>, <code>FraudAttack</code>, <code>ContentScanJobResults</code>, and several more. Review <a href="https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests" target="_blank" rel="noopener noreferrer"><u>our documentation</u></a> to get a full understanding of these fields. The <code>fw_events</code> logs can be used to determine whether these requests made it past Cloudflare’s defenses by examining the <code>action</code>, <code>source</code>, and <code>ruleID</code> fields. Cloudflare’s managed rules by default blocks many of these payloads by default. Review Application Security Overview to know if your application is protected.</p>
+<h2 data-astro-cid-yoyuw6fx="">Log Explorer can identify malicious activity at every stage</h2>
+<p data-astro-cid-yoyuw6fx="">Get granular application layer visibility with <strong>HTTP Requests</strong>, <strong>Firewall Events</strong>, and <strong>DNS logs</strong> to see exactly how traffic is hitting your public-facing properties.<strong> </strong>Track internal movement with <strong>Access Requests</strong>, <strong>Gateway logs</strong>, and <strong>Audit logs</strong>. If a credential is compromised, you’ll see where they went. Use <strong>Magic IDS</strong> and <strong>Network Analytics logs</strong> to spot volumetric attacks and "East-West" lateral movement within your private network.</p>
+<h3 data-astro-cid-yoyuw6fx="">Identify the reconnaissance</h3>
+<p data-astro-cid-yoyuw6fx="">Attackers use scanners and other tools to look for entry points, hidden directories, or software vulnerabilities. To identify this, using Log Explorer, you can query <code>http_requests</code> for any <code>EdgeResponseStatus</code> codes of 401, 403, or 404 coming from a single IP, or requests to sensitive paths (e.g. <code>/.env</code>, <code>/.git</code>, <code>/wp-admin</code>).&nbsp;</p>
+<p data-astro-cid-yoyuw6fx="">Additionally, <code>magic_ids_detections</code> logs can also be used to identify scanning at the network layer. These logs provide packet-level visibility into threats targeting your network. Unlike standard HTTP logs, these logs focus on <strong>signature-based detections</strong> at the network and transport layers (IP, TCP, UDP). Query to discover cases where a single <code>SourceIP</code> is triggering multiple unique detections across a wide range of <code>DestinationPort</code> values in a short timeframe. Magic IDS signatures can specifically flag activities like Nmap scans or SYN stealth scans.</p>
+<h3 data-astro-cid-yoyuw6fx="">Check for diversions</h3>
+<p data-astro-cid-yoyuw6fx="">While the attacker is conducting reconnaissance, they may attempt to disguise this with a simultaneous network flood. Pivot to <code>network_analytics_logs</code> to see if a volumetric attack is being used as a smokescreen.</p>
+<h3 data-astro-cid-yoyuw6fx="">Identify the approach&nbsp;</h3>
+<p data-astro-cid-yoyuw6fx="">Once attackers identify a potential vulnerability, they begin to craft their weapon. The attacker sends malicious payloads (e.g. SQL injection or large/corrupt file uploads) to confirm the vulnerability. Review <code>http_requests</code> and/or <code>fw_events</code> to identify any Cloudflare detection tools that have triggered. Cloudflare logs security signals in these datasets to easily identify requests with malicious payloads using fields such as <code>WAFAttackScore</code>, <code>WAFSQLiAttackScore</code>, <code>FraudAttack</code>, <code>ContentScanJobResults</code>, and several more. Review <a href="https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests" target="_blank" rel="noopener noreferrer"><u>our documentation</u></a> to get a full understanding of these fields. The <code>fw_events</code> logs can be used to determine whether these requests made it past Cloudflare’s defenses by examining the <code>action</code>, <code>source</code>, and <code>ruleID</code> fields. Cloudflare’s managed rules by default blocks many of these payloads by default. Review Application Security Overview to know if your application is protected.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="79" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Z4WGGKCCC271C8VZ259Q.png&amp;w=715&amp;h=79&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Z4WGGKCCC271C8VZ259Q.png&amp;w=640&amp;h=71&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Z4WGGKCCC271C8VZ259Q.png&amp;w=715&amp;h=79&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Z4WGGKCCC271C8VZ259Q.png&amp;w=750&amp;h=83&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Z4WGGKCCC271C8VZ259Q.png&amp;w=828&amp;h=91&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Z4WGGKCCC271C8VZ259Q.png&amp;w=1080&amp;h=119&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Z4WGGKCCC271C8VZ259Q.png&amp;w=1280&amp;h=141&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Z4WGGKCCC271C8VZ259Q.png&amp;w=1430&amp;h=158&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Showing the Managed rules Insight that displays on Security Overview if the current zone does not have Managed Rules enabled" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Z4WGGKCCC271C8VZ259Q.png&amp;w=1117&amp;h=124&amp;f=webp" data-lightbox-width="1117" data-lightbox-height="124" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="79" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p><sup><em>Showing the Managed rules Insight that displays on Security Overview if the current zone does not have Managed Rules enabled</em></sup></p>
-<h3>Audit the identity</h3>
-<p>Did that suspicious IP manage to log in? Use the <code>ClientIP</code> to search <code>access_requests</code>. If you see a "<code>Decision: Allow</code>" for a sensitive internal app, you know you have a compromised account.</p>
-<h3>Stop the leak (data exfiltration)</h3>
-<p>Attackers sometimes use DNS tunneling to bypass firewalls by encoding sensitive data (like passwords or SSH keys) into DNS queries. Instead of a normal request like <code>google.com</code>, the logs will show long, encoded strings. Look for an unusually high volume of queries for unique, long, and high-entropy subdomains by examining the fields: <code>QueryName</code>: Look for strings like <a href="http://h3ldo293js92.example.com" target="_blank" rel="noopener noreferrer"><code><u>h3ldo293js92.example.com</u></code></a>, <code>QueryType</code>: Often uses <code>TXT</code>, <code>CNAME</code>, or <code>NULL</code> records to carry the payload, and <code>ClientIP</code>: Identify if a single internal host is generating thousands of these unique requests.</p>
-<p>Additionally, attackers may attempt to leak sensitive data by hiding it within non-standard protocols or by using common protocols (like DNS or ICMP) in unusual ways to bypass standard firewalls. Discover this by querying the <code>magic_ids_detections</code> logs to look for signatures that flag protocol anomalies, such as "ICMP tunneling" or "DNS tunneling" detections in the <code>SignatureMessage</code>.</p>
-<p>Whether you are investigating a zero-day vulnerability or tracking a sophisticated botnet, the data you need is now at your fingertips.</p>
-<h2>Correlate across datasets</h2>
-<p>Investigate malicious activity across multiple datasets by pivoting between multiple concurrent searches. With Log Explorer, you can now work with multiple queries simultaneously with the new Tabs feature. Switch between tabs to query different datasets or Pivot and adjust queries using filtering via your query results.</p>
+<p data-astro-cid-yoyuw6fx=""><sup><em>Showing the Managed rules Insight that displays on Security Overview if the current zone does not have Managed Rules enabled</em></sup></p>
+<h3 data-astro-cid-yoyuw6fx="">Audit the identity</h3>
+<p data-astro-cid-yoyuw6fx="">Did that suspicious IP manage to log in? Use the <code>ClientIP</code> to search <code>access_requests</code>. If you see a "<code>Decision: Allow</code>" for a sensitive internal app, you know you have a compromised account.</p>
+<h3 data-astro-cid-yoyuw6fx="">Stop the leak (data exfiltration)</h3>
+<p data-astro-cid-yoyuw6fx="">Attackers sometimes use DNS tunneling to bypass firewalls by encoding sensitive data (like passwords or SSH keys) into DNS queries. Instead of a normal request like <code>google.com</code>, the logs will show long, encoded strings. Look for an unusually high volume of queries for unique, long, and high-entropy subdomains by examining the fields: <code>QueryName</code>: Look for strings like <a href="http://h3ldo293js92.example.com" target="_blank" rel="noopener noreferrer"><code><u>h3ldo293js92.example.com</u></code></a>, <code>QueryType</code>: Often uses <code>TXT</code>, <code>CNAME</code>, or <code>NULL</code> records to carry the payload, and <code>ClientIP</code>: Identify if a single internal host is generating thousands of these unique requests.</p>
+<p data-astro-cid-yoyuw6fx="">Additionally, attackers may attempt to leak sensitive data by hiding it within non-standard protocols or by using common protocols (like DNS or ICMP) in unusual ways to bypass standard firewalls. Discover this by querying the <code>magic_ids_detections</code> logs to look for signatures that flag protocol anomalies, such as "ICMP tunneling" or "DNS tunneling" detections in the <code>SignatureMessage</code>.</p>
+<p data-astro-cid-yoyuw6fx="">Whether you are investigating a zero-day vulnerability or tracking a sophisticated botnet, the data you need is now at your fingertips.</p>
+<h2 data-astro-cid-yoyuw6fx="">Correlate across datasets</h2>
+<p data-astro-cid-yoyuw6fx="">Investigate malicious activity across multiple datasets by pivoting between multiple concurrent searches. With Log Explorer, you can now work with multiple queries simultaneously with the new Tabs feature. Switch between tabs to query different datasets or Pivot and adjust queries using filtering via your query results.</p>
 <div id="html-block-k4w" class="html-block">
 	<div style="padding-top:45.348837209302324%">
 		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/fdce57563737015fcb27147c4b44ac70/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Ffdce57563737015fcb27147c4b44ac70%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
 	</div>
 	<p></p>
 </div>
-<p>When you correlate data across multiple Cloudflare log sources, you can detect sophisticated multi-stage attacks that appear benign when viewed in isolation. This cross-dataset analysis allows you to see the full attack chain from reconnaissance to exfiltration.</p>
-<h3>Session hijacking (token theft)</h3>
-<p><strong>Scenario:</strong> A user authenticates via Cloudflare Access, but their subsequent HTTP_request traffic looks like a bot.</p>
-<p><strong>Step 1:</strong> Identify high-risk sessions in <code>http_requests</code>.</p>
+<p data-astro-cid-yoyuw6fx="">When you correlate data across multiple Cloudflare log sources, you can detect sophisticated multi-stage attacks that appear benign when viewed in isolation. This cross-dataset analysis allows you to see the full attack chain from reconnaissance to exfiltration.</p>
+<h3 data-astro-cid-yoyuw6fx="">Session hijacking (token theft)</h3>
+<p data-astro-cid-yoyuw6fx=""><strong>Scenario:</strong> A user authenticates via Cloudflare Access, but their subsequent HTTP_request traffic looks like a bot.</p>
+<p data-astro-cid-yoyuw6fx=""><strong>Step 1:</strong> Identify high-risk sessions in <code>http_requests</code>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">SELECT</span><span class="sk-24292e-fff"> RayID, ClientIP, ClientRequestUserAgent, BotScore</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> http_requests</span></span>
@@ -302,7 +302,7 @@
 		})
 	});
 </script>
-<p><strong>Step 2:</strong> Copy the <code>RayID</code> and search <code>access_requests</code> to see which user account is associated with that suspicious bot activity.</p>
+<p data-astro-cid-yoyuw6fx=""><strong>Step 2:</strong> Copy the <code>RayID</code> and search <code>access_requests</code> to see which user account is associated with that suspicious bot activity.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"></span>
 <span class="line"><span class="sk-d73a49-ffc799">SELECT</span><span class="sk-24292e-fff"> Email, IPAddress, Allowed</span></span>
@@ -314,9 +314,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3>Post-phishing C2 beaconing</h3>
-<p><strong>Scenario:</strong> An employee clicked a link in a phishing email which resulted in compromising their workstation. This workstation sends a DNS query for a known malicious domain, then immediately triggers an IDS alert.</p>
-<p><strong>Step 1:</strong> Find phishing attacks by examining email_security_alerts for violations.&nbsp;</p>
+<h3 data-astro-cid-yoyuw6fx="">Post-phishing C2 beaconing</h3>
+<p data-astro-cid-yoyuw6fx=""><strong>Scenario:</strong> An employee clicked a link in a phishing email which resulted in compromising their workstation. This workstation sends a DNS query for a known malicious domain, then immediately triggers an IDS alert.</p>
+<p data-astro-cid-yoyuw6fx=""><strong>Step 1:</strong> Find phishing attacks by examining email_security_alerts for violations.&nbsp;</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">SELECT</span><span class="sk-d73a49-a0a0a0"> Timestamp</span><span class="sk-24292e-fff">, Threatcategories, </span><span class="sk-d73a49-ffc799">To</span><span class="sk-24292e-fff">, Alertreason</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> email_security_alerts</span></span>
@@ -327,7 +327,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p><strong>Step 2:</strong> Use Access logs to correlate the user’s email (To) to their IP Address.</p>
+<p data-astro-cid-yoyuw6fx=""><strong>Step 2:</strong> Use Access logs to correlate the user’s email (To) to their IP Address.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">SELECT</span><span class="sk-24292e-fff"> Email, IPAddress</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> access_requests</span></span>
@@ -337,7 +337,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p><strong>Step 3:</strong> Find internal IPs querying a specific malicious domain in <code>gateway_dns</code> logs.</p>
+<p data-astro-cid-yoyuw6fx=""><strong>Step 3:</strong> Find internal IPs querying a specific malicious domain in <code>gateway_dns</code> logs.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"></span>
 <span class="line"><span class="sk-d73a49-ffc799">SELECT</span><span class="sk-24292e-fff"> SrcIP, QueryName, DstIP, </span></span>
@@ -350,9 +350,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3>Lateral movement (Access → network probing)</h3>
-<p><strong>Scenario:</strong> A user logs in via Zero Trust and then tries to scan the internal network.</p>
-<p><strong>Step 1:</strong> Find successful logins from unexpected locations in <code>access_requests</code>.</p>
+<h3 data-astro-cid-yoyuw6fx="">Lateral movement (Access → network probing)</h3>
+<p data-astro-cid-yoyuw6fx=""><strong>Scenario:</strong> A user logs in via Zero Trust and then tries to scan the internal network.</p>
+<p data-astro-cid-yoyuw6fx=""><strong>Step 1:</strong> Find successful logins from unexpected locations in <code>access_requests</code>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">SELECT</span><span class="sk-24292e-fff"> IPAddress, Email, Country</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> access_requests</span></span>
@@ -364,7 +364,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p><strong>Step 2:</strong> Check if that <code>IPAddress</code> is triggering network-level signatures in <code>magic_ids_detections</code>.</p>
+<p data-astro-cid-yoyuw6fx=""><strong>Step 2:</strong> Check if that <code>IPAddress</code> is triggering network-level signatures in <code>magic_ids_detections</code>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">SELECT</span><span class="sk-24292e-fff"> SignatureMessage, DestinationIP, Protocol</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> magic_ids_detections</span></span>
@@ -375,22 +375,22 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3>Opening doors for more data&nbsp;</h3>
-<p>From the beginning, Log Explorer was designed with extensibility in mind. Every dataset schema is defined using JSON Schema, a widely-adopted standard for describing the structure and types of JSON data. This design decision has enabled us to easily expand beyond HTTP Requests and Firewall Events to the full breadth of Cloudflare's telemetry. The same schema-driven approach that powered our initial datasets scaled naturally to accommodate Zero Trust logs, network analytics, email security alerts, and everything in between.</p>
-<p>More importantly, this standardization opens the door to ingesting data beyond Cloudflare's native telemetry. Because our ingestion pipeline is schema-driven rather than hard-coded, we're positioned to accept any structured data that can be expressed in JSON format. For security teams managing hybrid environments, this means Log Explorer could eventually serve as a single pane of glass, correlating Cloudflare's edge telemetry with logs from third-party sources, all queryable through the same SQL interface. While today's release focuses on completing coverage of Cloudflare's product portfolio, the architectural groundwork is laid for a future where customers can bring their own data sources with custom schemas.</p>
-<h3>Faster data, faster response: architectural upgrades</h3>
-<p>To investigate a multi-vector attack effectively, timing is everything. A delay of even a few minutes in the log availability can be the difference between proactive defense and reactive damage control.</p>
-<p>That is why we have optimized our ingestion for better speed and resilience. By increasing concurrency in one part of our ingestion path, we have eliminated bottlenecks that could cause “noisy neighbor” issues, ensuring that one client’s data surge doesn’t slow down another’s visibility. This architectural work has reduced our P99 ingestion latency by approximately 55%, and our P50 by 25%, cutting the time it takes for an event at the edge to become available for your SQL queries.</p>
+<h3 data-astro-cid-yoyuw6fx="">Opening doors for more data&nbsp;</h3>
+<p data-astro-cid-yoyuw6fx="">From the beginning, Log Explorer was designed with extensibility in mind. Every dataset schema is defined using JSON Schema, a widely-adopted standard for describing the structure and types of JSON data. This design decision has enabled us to easily expand beyond HTTP Requests and Firewall Events to the full breadth of Cloudflare's telemetry. The same schema-driven approach that powered our initial datasets scaled naturally to accommodate Zero Trust logs, network analytics, email security alerts, and everything in between.</p>
+<p data-astro-cid-yoyuw6fx="">More importantly, this standardization opens the door to ingesting data beyond Cloudflare's native telemetry. Because our ingestion pipeline is schema-driven rather than hard-coded, we're positioned to accept any structured data that can be expressed in JSON format. For security teams managing hybrid environments, this means Log Explorer could eventually serve as a single pane of glass, correlating Cloudflare's edge telemetry with logs from third-party sources, all queryable through the same SQL interface. While today's release focuses on completing coverage of Cloudflare's product portfolio, the architectural groundwork is laid for a future where customers can bring their own data sources with custom schemas.</p>
+<h3 data-astro-cid-yoyuw6fx="">Faster data, faster response: architectural upgrades</h3>
+<p data-astro-cid-yoyuw6fx="">To investigate a multi-vector attack effectively, timing is everything. A delay of even a few minutes in the log availability can be the difference between proactive defense and reactive damage control.</p>
+<p data-astro-cid-yoyuw6fx="">That is why we have optimized our ingestion for better speed and resilience. By increasing concurrency in one part of our ingestion path, we have eliminated bottlenecks that could cause “noisy neighbor” issues, ensuring that one client’s data surge doesn’t slow down another’s visibility. This architectural work has reduced our P99 ingestion latency by approximately 55%, and our P50 by 25%, cutting the time it takes for an event at the edge to become available for your SQL queries.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="315" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E6JRTK5WZV8TQXJ49P3R.png&amp;w=715&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E6JRTK5WZV8TQXJ49P3R.png&amp;w=640&amp;h=282&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E6JRTK5WZV8TQXJ49P3R.png&amp;w=715&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E6JRTK5WZV8TQXJ49P3R.png&amp;w=750&amp;h=330&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E6JRTK5WZV8TQXJ49P3R.png&amp;w=828&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E6JRTK5WZV8TQXJ49P3R.png&amp;w=1080&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E6JRTK5WZV8TQXJ49P3R.png&amp;w=1280&amp;h=564&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E6JRTK5WZV8TQXJ49P3R.png&amp;w=1430&amp;h=630&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Grafana chart displaying the drop in ingest latency after architectural upgrades" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E6JRTK5WZV8TQXJ49P3R.png&amp;w=1920&amp;h=847&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="847" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="315" class="pt-portable-image-media"></div>
 </figure>
-<p><sup><em>Grafana chart displaying the drop in ingest latency after architectural upgrades</em></sup></p>
-<h2>Follow along for more updates</h2>
-<p>We're just getting started. We're actively working on even more powerful features to further enhance your experience with Log Explorer, including the ability to run these detection queries on a custom defined schedule.&nbsp;</p>
+<p data-astro-cid-yoyuw6fx=""><sup><em>Grafana chart displaying the drop in ingest latency after architectural upgrades</em></sup></p>
+<h2 data-astro-cid-yoyuw6fx="">Follow along for more updates</h2>
+<p data-astro-cid-yoyuw6fx="">We're just getting started. We're actively working on even more powerful features to further enhance your experience with Log Explorer, including the ability to run these detection queries on a custom defined schedule.&nbsp;</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="432" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW456P12SSMET3N8VJFCQH67.png&amp;w=715&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW456P12SSMET3N8VJFCQH67.png&amp;w=640&amp;h=387&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW456P12SSMET3N8VJFCQH67.png&amp;w=715&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW456P12SSMET3N8VJFCQH67.png&amp;w=750&amp;h=453&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW456P12SSMET3N8VJFCQH67.png&amp;w=828&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW456P12SSMET3N8VJFCQH67.png&amp;w=1080&amp;h=653&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW456P12SSMET3N8VJFCQH67.png&amp;w=1280&amp;h=773&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW456P12SSMET3N8VJFCQH67.png&amp;w=1430&amp;h=864&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Scheduled Queries List" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW456P12SSMET3N8VJFCQH67.png&amp;w=1920&amp;h=1159&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1159" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="432" class="pt-portable-image-media"></div>
 </figure>
-<p><sup><em>Design mockup of upcoming Log Explorer Scheduled Queries feature</em></sup></p>
-<p><a href="https://blog.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Subscribe to the blog</u></a> and keep an eye out for more Log Explorer updates soon in our <a href="https://developers.cloudflare.com/changelog/product/log-explorer" target="_blank" rel="noopener noreferrer"><u>Change Log</u></a>.&nbsp;</p>
-<h2>Get access to Log Explorer</h2>
-<p>To get access to Log Explorer, you can purchase self-serve directly from the dash or for contract customers, reach out for a <a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>consultation</u></a> or contact your account manager. Additionally, you can read more in our <a href="https://developers.cloudflare.com/logs/log-explorer" target="_blank" rel="noopener noreferrer"><u>Developer Documentation</u></a>.</p>
+<p data-astro-cid-yoyuw6fx=""><sup><em>Design mockup of upcoming Log Explorer Scheduled Queries feature</em></sup></p>
+<p data-astro-cid-yoyuw6fx=""><a href="https://blog.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Subscribe to the blog</u></a> and keep an eye out for more Log Explorer updates soon in our <a href="https://developers.cloudflare.com/changelog/product/log-explorer" target="_blank" rel="noopener noreferrer"><u>Change Log</u></a>.&nbsp;</p>
+<h2 data-astro-cid-yoyuw6fx="">Get access to Log Explorer</h2>
+<p data-astro-cid-yoyuw6fx="">To get access to Log Explorer, you can purchase self-serve directly from the dash or for contract customers, reach out for a <a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>consultation</u></a> or contact your account manager. Additionally, you can read more in our <a href="https://developers.cloudflare.com/logs/log-explorer" target="_blank" rel="noopener noreferrer"><u>Developer Documentation</u></a>.</p>

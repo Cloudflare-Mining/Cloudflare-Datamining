@@ -1,0 +1,73 @@
+<p data-astro-cid-yoyuw6fx="">我們始終致力於滿足客戶的多元目標。有些客戶希望最大化內容的可被發現性，另一些則希望以最嚴格的安全策略保護自己的內容。在應對機器人流量方面，存在多種手段：有些機制僅聲明您的意願，預設網路爬蟲出於善意；另一些則透過 Bot Management 解決方案直接封鎖，從根本上鎖定內容存取。</p>
+<p data-astro-cid-yoyuw6fx="">我們深知，在網站上維護多重防護層十分繁瑣。例如，可能出現這樣的情況：您的 robots.txt 聲明某個網路爬蟲不允許 (Disallow) 存取您的網站，但實際的執行規則並未將其封鎖。當您聲明的意願與實際執行的規則相悖時，部分網路爬蟲可能將此視為無視您意願或繞過規則的依據。</p>
+<p data-astro-cid-yoyuw6fx="">幾年前，Cloudflare 推出了一種更便捷的方式，允許網站擁有者禁止 AI 訓練爬取，同時兼顧兩個防護層：一個受管理的 robots.txt 值，明確告知固定名單中的主要訓練類網路爬蟲不得爬取您的內容進行訓練；以及針對訓練類網路爬蟲的邊緣執行封鎖。2026 年 7 月 1 日，我們進一步推出了更靈活的選項，讓您能夠分別管理搜尋、智慧體及訓練類 AI 流量的存取策略。</p>
+<p data-astro-cid-yoyuw6fx="">今天，我們正式宣布推出 <strong>Bot Preference Sync</strong>，面向從免費方案到企業方案的<em>所有</em>客戶開放。Bot Preference Sync 能夠根據您在 AI 機器人配置中的設定，自動更新 robots.txt 中的對應偏好，並可隨時開啟或關閉。無需再為某一用途單獨維護靜態檔案——我們將協助您<strong>讓 robots.txt 始終反映您針對不同 AI 機器人類別所做的設定</strong>。</p>
+<h2 data-astro-cid-yoyuw6fx=""><strong>網際網路面臨的新議題</strong></h2>
+<p data-astro-cid-yoyuw6fx="">多年來，這一領域最迫切的問題始終是：「我的內容是否在未經許可的情況下被用於訓練 AI 模型？」這是一個重要問題，且不會消失。與此同時，我們越來越多地聽到關於可被發現性與使用者互動的議題：當有人向 AI 助理提問而我的網站能夠解答時，我該如何出現在結果中？我的流量中有多少來自 AI 網路爬蟲，又有多少來自真實使用者？哪些內容真正帶來了引薦流量，其價值幾何？</p>
+<p data-astro-cid-yoyuw6fx="">不同商業模式的答案各有不同。可被發現性與使用者互動是所有希望在現代網路中立足之企業的核心關切，但其轉化路徑各異：電商網站可能希望所有內容都被爬取並用於訓練，以便當購物者向聊天機器人詢問「小坪數最佳沙發」時，其產品能夠出現在推薦結果中。而依靠廣告變現的媒體發布商則可能恰恰相反：希望保留在能為頁面帶來讀者的搜尋索引中，同時讓文章內容遠離模型訓練——並且至關重要的是，能夠核實其內容確實未被未經授權地使用。</p>
+<p data-astro-cid-yoyuw6fx="">沒有放之四海而皆準的答案，這正是問題的關鍵所在。您的管控策略應當反映您的業務戰略，這也是我們一直致力於為您提供全鏈路可見性與選擇權的原因。Bot Preference Sync 將這些層面融為一體，讓您<em>設定</em>的偏好就是您<em>對外發布</em>的偏好。</p>
+<h2 data-astro-cid-yoyuw6fx=""><strong>透明度的呼聲</strong></h2>
+<p data-astro-cid-yoyuw6fx="">2026 年 7 月 1 日，我們提出：混合用途網路爬蟲（ 即「以單一使用者智慧體身分，混合執行搜尋、智慧體使用和訓練任務的機器人」） 使網站擁有者處於不利地位，因為這讓使用者難以區分自己想要什麼和不想要什麼。這一判斷至今未變，我們對網站擁有者透明度的立場也未曾動搖。</p>
+<p data-astro-cid-yoyuw6fx="">但實現透明度的方式不止一種。我們希望獎勵那些明確聲明身分和資料使用方式的機器人營運商。在機器人<a href="https://developers.cloudflare.com/bots/concepts/bot/verified-bots" target="_blank" rel="noopener noreferrer"><u>驗證</u></a>方面，<strong>同時執行搜尋和訓練的機器人需要提供額外資訊</strong>，才能在設定「Disallow Training（禁止訓練）」時不被封鎖。具體要求如下：</p>
+<ul>
+	<li>該機器人必須透過某種機制，遵守 robots.txt 中的「Disallow Training」偏好</li>
+	<li>為網站擁有者提供退出 AI 摘要的方式</li>
+	<li>提供哪些頁面被用於訓練的 URL 層級可見性，以及搜尋結果的相關指標，讓網站擁有者能夠瞭解其內容在搜尋和訓練中的使用情況</li>
+	<li>能夠公開證明：「Disallow Training」不會損害其傳統搜尋結果排名</li>
+</ul>
+<p data-astro-cid-yoyuw6fx="">符合上述標準的主流 AI 模型及服務提供商的機器人，將在 <a href="https://radar.cloudflare.com/ai-insights#ai-bot-transparency" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar AI 機器人透明度</u></a>專區中公開追蹤，其中不僅包含遵守最佳做法的範例，也涵蓋未遵守的情況。未能提供透明度的網路爬蟲將不會獲得「善意推定」——在您「Disallow Training」時，它們仍將被封鎖。換言之，這是將透明度作為準入門檻的一種方式。</p>
+<h2 data-astro-cid-yoyuw6fx=""><strong>Bot Preference Sync 詳解</strong></h2>
+<p data-astro-cid-yoyuw6fx="">Bot Preference Sync 是一項新功能，能夠讓您的 robots.txt 始終反映您在 Cloudflare 區域層級儀表板中為搜尋、智慧體和訓練類 AI 機器人所做的偏好設定。如果網站擁有者已有 robots.txt 檔案，Bot Preference Sync 新增的內容將<em>附加於</em>現有內容之前，原有的任何 Disallow 指令均予以保留。</p>
+<p data-astro-cid-yoyuw6fx="">網站擁有者無需再單獨維護靜態檔案——Cloudflare 將根據您的設定產生或更新 robots.txt，使您向外界聲明的內容與邊緣執行的策略始終保持一致。</p>
+<p data-astro-cid-yoyuw6fx="">對於搜尋和智慧體，我們在 7 月 1 日宣布的三個選項依然有效：允許、僅在投放廣告的頁面上封鎖，或全站封鎖。對於<strong>訓練</strong>，我們進一步細化了阻止內容被用於模型訓練的選項，推出 <strong>Disallow</strong> 選項：</p>
+<p data-astro-cid-yoyuw6fx=""><strong>Disallow</strong>：在 robots.txt 中寫入「禁止訓練」偏好，使採取額外透明度措施的合規混合用途網路爬蟲仍可存取您的內容用於搜尋索引——因為這些網路爬蟲允許網站擁有者直接核實其資料的使用方式。合規網路爬蟲將遵守 robots.txt 中的偏好，您在合規網路爬蟲中的搜尋可見性不受影響。</p>
+<p data-astro-cid-yoyuw6fx="">以下面的範例為例：某網站擁有者將 AI 機器人策略設定為「Allow Search, Allow Agents, Disallow Training（允許搜尋，允許智慧體，禁止訓練）」。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA/f39+Pf37u3t6uvq8fLy9vf48vHy5uPj////+vr68PDw7e7t8/X1+fr79fX16efn////////9PX18fPz+Pn5/v//+fr67u3t////////+vv79/j4/f7/////////8/Pz/////////////f7+////////////+Pn5/////////////////////////////P39////////////////////////////////////////////////////////////////" alt="" width="715" height="397" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GECZ4Q15309V1BY8F827FW.png&amp;w=715&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GECZ4Q15309V1BY8F827FW.png&amp;w=640&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GECZ4Q15309V1BY8F827FW.png&amp;w=715&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GECZ4Q15309V1BY8F827FW.png&amp;w=750&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GECZ4Q15309V1BY8F827FW.png&amp;w=828&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GECZ4Q15309V1BY8F827FW.png&amp;w=1080&amp;h=600&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GECZ4Q15309V1BY8F827FW.png&amp;w=1280&amp;h=711&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GECZ4Q15309V1BY8F827FW.png&amp;w=1430&amp;h=794&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3489 2.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GECZ4Q15309V1BY8F827FW.png&amp;w=1920&amp;h=1065&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1065" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="397" class="pt-portable-image-media"></div>
+	<figcaption data-astro-cid-7nvefuv6="">現有 AI 訓練與搜尋策略設定選項的截圖，以及將 robots.txt 內容與這些 AI 機器人策略同步的新功能介面</figcaption>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p data-astro-cid-yoyuw6fx="">由於該範例網站已開啟 Bot Preference Sync，其 robots.txt 將在開頭附加類似如下內容（為求範例簡潔，已做簡化和匿名處理）：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span># BEGIN Cloudflare Bot Preference Sync</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>User-agent: TrainingBot1</span></span>
+<span class="line"><span>User-agent: TrainingBot2</span></span>
+<span class="line"><span>User-agent: TrainingBot3</span></span>
+<span class="line"><span>User-agent: MixedUseBot-Extended</span></span>
+<span class="line"><span>Disallow: /</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>...</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># END Cloudflare Bot Preference Sync</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p data-astro-cid-yoyuw6fx="">我們將利用 <a href="https://developers.cloudflare.com/bots/botbase" target="_blank" rel="noopener noreferrer"><u>BotBase</u></a> 中追蹤的機器人，定期更新當您選擇 Block（封鎖）或 Disallow（禁止） 某類別時新增到 robots.txt 中的機器人清單。分類為搜尋、智慧體和訓練的已驗證機器人，可隨時在我們的<a href="https://radar.cloudflare.com/bots/directory" target="_blank" rel="noopener noreferrer"><u>公開機器人目錄</u></a>中查看。</p>
+<p data-astro-cid-yoyuw6fx="">對於所有新客戶，Bot Preference Sync 將<em>預設開啟</em>，以便更輕鬆地管理體現同一策略的封鎖設定和偏好設定。對於正在使用舊版受管理 robots.txt 功能的現有客戶，我們將在 Bot Preference Sync 正式上線時提示您審查並確認偏好，以完成移轉。</p>
+<p data-astro-cid-yoyuw6fx="">部分客戶可能希望或需要對偏好聲明進行更精細的控制，例如希望為特定公司設定例外。由於 Bot Preference Sync 的設計目的是處理<em>按類別</em>制定的策略決策，而非逐條處理含複雜邏輯的自訂規則，因此它不會直接讀取個別自訂規則。偏好設定更精細的客戶，始終可以選擇關閉用於設定群組層級策略的同步功能，並自行定制 robots.txt 檔案以符合其自訂策略。</p>
+<p data-astro-cid-yoyuw6fx="">我們還針對發布商或依賴廣告的網站進行了調整，為其提供與其他網站擁有者不同的預設設定。我們為依賴廣告變現，並希望廣告位保留給真實訪客的發布類網站建立了一個預設選項。此類客戶在導入時可選擇「我透過該網域上頁面的廣告進行變現」，系統將會自動將訓練設定預設為 Disallow。（客戶可隨時變更此設定。）這樣，您既能保留在搜尋結果中的曝光，又能讓內容遠離模型訓練。</p>
+<p data-astro-cid-yoyuw6fx="">對於非發布商客戶，新客戶在導入網域時，<em>預設不會</em>新增任何 Block 或 Disallow：選擇權在您。您可以隨時選擇封鎖搜尋、智慧體或訓練流量，但初始狀態不會代您新增任何封鎖設定。</p>
+<h2 data-astro-cid-yoyuw6fx=""><strong>下一步計畫</strong></h2>
+<p data-astro-cid-yoyuw6fx="">Bot Preference Sync 將在未來一週內向<em>所有</em>客戶、所有方案開放。請關注我們的 Changelog 以獲取上線通知，並留意您的儀表板（及收件匣）中審查和確認偏好的提示！</p>
+<p data-astro-cid-yoyuw6fx="">這只是一項長期工作的開端。我們將持續與大型機器人營運商合作，確保在應對已有挑戰（如未經同意的訓練爬取）和新興議題（如可被發現性與使用者互動）上不做妥協。這一切的根基，是我們持續推動為網站擁有者爭取更高透明度與更多掌控權的努力。</p>

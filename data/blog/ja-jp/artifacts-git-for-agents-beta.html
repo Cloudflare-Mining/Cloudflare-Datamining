@@ -1,8 +1,8 @@
-<p>エージェントは、ソース管理、ファイルシステム、状態の永続化に関する考え方を一変させてきました。開発者やエージェントはかつてないほどのコードを生成しています。今後5年間に書かれるコードは、プログラミングの歴史全体で書かれた量を超えると予想されており、この需要に応えるために必要なシステムの規模は桁違いに変化するでしょう。ここで特に苦戦しているのが、ソース管理プラットフォームです。これらは人間のニーズを満たすために構築されたものです。そのため、眠ることなく一度で複数の問題に取り組み、疲れ知らずのエージェントがもたらす10倍ものボリューム変化に対応するようには構築されていないのです。</p>
-<p>私たちは新しいプリミティブの必要性を考えています。すなわち、何よりもエージェントのために構築され、現在構築されているタイプのアプリケーションに対応できる、分散型のバージョン管理ファイルシステムです。</p>
-<p>私たちはこれをアーティファクトと呼んでいます。Gitを使用するバージョン管理ファイルシステムです。エージェント、サンドボックス、Workers、その他のあらゆるコンピューティングパラダイムと並行して、プログラムでリポジトリを作成し、通常のGitクライアントから接続することができます。</p>
-<p>すべてのエージェントセッションにリポジトリを付与したいですか？アーティファクトなら可能です。すべてのサンドボックスインスタンスに？それもアーティファクトです。既知の正当な開始点から10,000のフォークを作成したいですか？ご想像の通り、それもアーティファクトです。アーティファクトは、REST APIとネイティブのWorkers APIを公開しており、Gitクライアントが適切ではない環境（つまり、あらゆるサーバーレス機能内など）向けに、リポジトリの作成、認証情報の生成、コミットを可能にします。</p>
-<p>アーティファクトは有料Workersプランをご利用の開発者向けにプライベートベータ版として利用可能であり、5月初旬までにパブリックベータ版の公開を目指しています。</p>
+<p data-astro-cid-yoyuw6fx="">エージェントは、ソース管理、ファイルシステム、状態の永続化に関する考え方を一変させてきました。開発者やエージェントはかつてないほどのコードを生成しています。今後5年間に書かれるコードは、プログラミングの歴史全体で書かれた量を超えると予想されており、この需要に応えるために必要なシステムの規模は桁違いに変化するでしょう。ここで特に苦戦しているのが、ソース管理プラットフォームです。これらは人間のニーズを満たすために構築されたものです。そのため、眠ることなく一度で複数の問題に取り組み、疲れ知らずのエージェントがもたらす10倍ものボリューム変化に対応するようには構築されていないのです。</p>
+<p data-astro-cid-yoyuw6fx="">私たちは新しいプリミティブの必要性を考えています。すなわち、何よりもエージェントのために構築され、現在構築されているタイプのアプリケーションに対応できる、分散型のバージョン管理ファイルシステムです。</p>
+<p data-astro-cid-yoyuw6fx="">私たちはこれをアーティファクトと呼んでいます。Gitを使用するバージョン管理ファイルシステムです。エージェント、サンドボックス、Workers、その他のあらゆるコンピューティングパラダイムと並行して、プログラムでリポジトリを作成し、通常のGitクライアントから接続することができます。</p>
+<p data-astro-cid-yoyuw6fx="">すべてのエージェントセッションにリポジトリを付与したいですか？アーティファクトなら可能です。すべてのサンドボックスインスタンスに？それもアーティファクトです。既知の正当な開始点から10,000のフォークを作成したいですか？ご想像の通り、それもアーティファクトです。アーティファクトは、REST APIとネイティブのWorkers APIを公開しており、Gitクライアントが適切ではない環境（つまり、あらゆるサーバーレス機能内など）向けに、リポジトリの作成、認証情報の生成、コミットを可能にします。</p>
+<p data-astro-cid-yoyuw6fx="">アーティファクトは有料Workersプランをご利用の開発者向けにプライベートベータ版として利用可能であり、5月初旬までにパブリックベータ版の公開を目指しています。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Create a repo</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> repo</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AGENT_REPOS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">(name)</span></span>
@@ -40,8 +40,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>以上です。即座で作成されたすぐに使えるリポジトリ。それはどのGitクライアントでも操作可能です。</p>
-<p>また、既存のGitリポジトリからアーティファクトリポジトリをブートストラップし、エージェントが独立して作業でき、独立した変更をプッシュできるようにしたい場合でも、.import()を使用すれば可能です。</p>
+<p data-astro-cid-yoyuw6fx="">以上です。即座で作成されたすぐに使えるリポジトリ。それはどのGitクライアントでも操作可能です。</p>
+<p data-astro-cid-yoyuw6fx="">また、既存のGitリポジトリからアーティファクトリポジトリをブートストラップし、エージェントが独立して作業でき、独立した変更をプッシュできるようにしたい場合でも、.import()を使用すれば可能です。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">interface</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-e36209-fff">  ARTIFACTS</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Artifacts</span></span>
@@ -76,39 +76,39 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p><a href="http://developers.cloudflare.com/artifacts" target="_blank" rel="noopener noreferrer"><u>ドキュメントをご確認</u></a>の上、利用を開始してください。アーティファクトの使用方法、構築方法、内部の仕組みについて理解したい場合は、以下を読み進めてください。</p>
-<h2>なぜGit？バージョン管理されたファイルシステムとは？</h2>
-<p>エージェントはGitを知っています。ほとんどのモデルの学習データに入っています。ハッピーパス<em>と</em>エッジケースはエージェントによく知られていますが、コード最適化モデル（および／またはハーネス）は特にGitの使用に適しています。</p>
-<p>さらに、Gitのデータモデルはソース制御に適しているだけでなく、状態やタイムトラベルを追跡し、大量の小規模データを保持する必要がある<em>あらゆるもの</em>に適しています。コードや設定、セッションプロンプト、エージェント履歴。これらはすべて、小さなチャンク（「コミット」）で保存し、元に戻したり、履歴としてロールバックしたりできるもの（「オブジェクト」）です。</p>
-<p>まったく新しいカスタムプロトコルを発明することも可能だったのですが…それではブートストラップの問題が生じます。AIモデルはそのことを知らないため、スキルやCLIを配布するか、ユーザーがドキュメントMCPに接続されることを期待するしかありません…これらはすべて摩擦を生じさせます。<br><br>認証済みのセキュアなHTTPS GitリモートURLをエージェントに提供し、Gitリポジトリであるかのように動作させることができたらどうでしょうか？かなりうまく機能することが分かりました。また、Cloudflare Worker、Lambda関数、Node.jsアプリなど、Gitを使用しないクライアント向けに、REST APIと（近日中に）言語固有のSDKを公開しました。これらのクライアントは、<a href="https://isomorphic-git.org" target="_blank" rel="noopener noreferrer"><u>同型-Git</u></a>を使用することもできますが、多くの場合、よりシンプルなTypeScript APIの方が、必要なAPIサーフェスを減らすことができます。</p>
-<h3>ソースコントロールだけにとどまらない</h3>
-<p>人工的なGit APIは、ソースコントロールのためだけのものだと思われるかもしれません。しかし、Git APIとデータモデルは、<em>あらゆる</em>データのフォークやタイムトラベル、状態を区別できる方法で状態を保持する強力な方法であることが判明しました.</p>
-<p>Cloudflare内では、内部エージェントのためにアーティファクトを活用しています。ファイルシステムの現圢の状態<em>と</em>セッション履歴をセッションごとのアーティファクトリポジトリへ自動的に永続化します。これにより以下が可能になります。</p>
+<p data-astro-cid-yoyuw6fx=""><a href="http://developers.cloudflare.com/artifacts" target="_blank" rel="noopener noreferrer"><u>ドキュメントをご確認</u></a>の上、利用を開始してください。アーティファクトの使用方法、構築方法、内部の仕組みについて理解したい場合は、以下を読み進めてください。</p>
+<h2 data-astro-cid-yoyuw6fx="">なぜGit？バージョン管理されたファイルシステムとは？</h2>
+<p data-astro-cid-yoyuw6fx="">エージェントはGitを知っています。ほとんどのモデルの学習データに入っています。ハッピーパス<em>と</em>エッジケースはエージェントによく知られていますが、コード最適化モデル（および／またはハーネス）は特にGitの使用に適しています。</p>
+<p data-astro-cid-yoyuw6fx="">さらに、Gitのデータモデルはソース制御に適しているだけでなく、状態やタイムトラベルを追跡し、大量の小規模データを保持する必要がある<em>あらゆるもの</em>に適しています。コードや設定、セッションプロンプト、エージェント履歴。これらはすべて、小さなチャンク（「コミット」）で保存し、元に戻したり、履歴としてロールバックしたりできるもの（「オブジェクト」）です。</p>
+<p data-astro-cid-yoyuw6fx="">まったく新しいカスタムプロトコルを発明することも可能だったのですが…それではブートストラップの問題が生じます。AIモデルはそのことを知らないため、スキルやCLIを配布するか、ユーザーがドキュメントMCPに接続されることを期待するしかありません…これらはすべて摩擦を生じさせます。<br><br>認証済みのセキュアなHTTPS GitリモートURLをエージェントに提供し、Gitリポジトリであるかのように動作させることができたらどうでしょうか？かなりうまく機能することが分かりました。また、Cloudflare Worker、Lambda関数、Node.jsアプリなど、Gitを使用しないクライアント向けに、REST APIと（近日中に）言語固有のSDKを公開しました。これらのクライアントは、<a href="https://isomorphic-git.org" target="_blank" rel="noopener noreferrer"><u>同型-Git</u></a>を使用することもできますが、多くの場合、よりシンプルなTypeScript APIの方が、必要なAPIサーフェスを減らすことができます。</p>
+<h3 data-astro-cid-yoyuw6fx="">ソースコントロールだけにとどまらない</h3>
+<p data-astro-cid-yoyuw6fx="">人工的なGit APIは、ソースコントロールのためだけのものだと思われるかもしれません。しかし、Git APIとデータモデルは、<em>あらゆる</em>データのフォークやタイムトラベル、状態を区別できる方法で状態を保持する強力な方法であることが判明しました.</p>
+<p data-astro-cid-yoyuw6fx="">Cloudflare内では、内部エージェントのためにアーティファクトを活用しています。ファイルシステムの現圢の状態<em>と</em>セッション履歴をセッションごとのアーティファクトリポジトリへ自動的に永続化します。これにより以下が可能になります。</p>
 <ul>
 	<li>ブロックストレージのプロビジョニング（および維持）を必要とせず、サンドボックスの状態を永続化します。</li>
 	<li>他のユーザーとセッションを共有し、「実際の」リポジトリ（ソース管理）へのコミットの有無に関係なく、セッション（プロンプト）状態<em>と</em>ファイル状態の両方を過去にさかのぼることができるようにします。</li>
 	<li>何よりすばらしいのは、任意のポイントからセッションを<em>フォーク</em>し、チームが共同Workerとセッションを共有し、その続きを同僚に引き継いでもらうことができます。何かをデバッグして、別の視点からの意見も必要ですか？URLを送信してフォークしてください。APIについて議論したいですか？同僚にフォークしてもらい、中断した箇所から作業を再開してもらいましょう。</li>
 </ul>
-<p>私たちはさらに、Gitプロトコルはまったく要件でなくとも、セマンティックス（差し戻し、クローニング、差分）が要件で<em>ある</em>場合にアーティファクトを活用したいというチームとも話をしました。製品の一部として顧客ごとの設定を保存し、ロールバック機能を必要としていますか？アーティファクトはこれを表現できる好例です。</p>
-<p>Gitに重点を置いたユースケースと同様、Git以外の用途でアーティファクトを検討しているチームが他にもあることを、とても楽しみにしています。</p>
-<h2>機器の中身</h2>
-<p>アーティファクトはDurable Objects上に構築されています。ステートフルで分離されたコンピューティングのインスタンスを数百万（または数千万）以上作成できる能力は、現在のDurable Objectsの動作に固有のものであり、それはまさに、1つのネームスペースにつき数百万のGitリポジトリをサポートするために必要でした。</p>
-<p>メジャーリーグベースボール（ライブゲームのファンアウト用）や、Confluence Whiteboards、当社の<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>は、内部でDurable Objectsを大規模に使用しています。それにより、当社はこれを以前から本番環境で使用しているプリミティブに基づいて構築しています。</p>
-<p>しかし必要だったのは、Cloudflare Workers上で実行できるGitの実装でした。小規模かつ可能な限り完全で、拡張可能（<a href="https://git-scm.com/docs/git-notes" target="_blank" rel="noopener noreferrer"><u>メモ</u></a>、<a href="https://git-lfs.com" target="_blank" rel="noopener noreferrer"><u>LFS</u></a>）、そして効率的である必要がありました。そこで、<a href="https://ziglang.org" target="_blank" rel="noopener noreferrer"><u>Zig</u></a>で構築し、Wasmにコンパイルしました。</p>
-<p>なぜZigを使用？3つの理由：</p>
+<p data-astro-cid-yoyuw6fx="">私たちはさらに、Gitプロトコルはまったく要件でなくとも、セマンティックス（差し戻し、クローニング、差分）が要件で<em>ある</em>場合にアーティファクトを活用したいというチームとも話をしました。製品の一部として顧客ごとの設定を保存し、ロールバック機能を必要としていますか？アーティファクトはこれを表現できる好例です。</p>
+<p data-astro-cid-yoyuw6fx="">Gitに重点を置いたユースケースと同様、Git以外の用途でアーティファクトを検討しているチームが他にもあることを、とても楽しみにしています。</p>
+<h2 data-astro-cid-yoyuw6fx="">機器の中身</h2>
+<p data-astro-cid-yoyuw6fx="">アーティファクトはDurable Objects上に構築されています。ステートフルで分離されたコンピューティングのインスタンスを数百万（または数千万）以上作成できる能力は、現在のDurable Objectsの動作に固有のものであり、それはまさに、1つのネームスペースにつき数百万のGitリポジトリをサポートするために必要でした。</p>
+<p data-astro-cid-yoyuw6fx="">メジャーリーグベースボール（ライブゲームのファンアウト用）や、Confluence Whiteboards、当社の<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>は、内部でDurable Objectsを大規模に使用しています。それにより、当社はこれを以前から本番環境で使用しているプリミティブに基づいて構築しています。</p>
+<p data-astro-cid-yoyuw6fx="">しかし必要だったのは、Cloudflare Workers上で実行できるGitの実装でした。小規模かつ可能な限り完全で、拡張可能（<a href="https://git-scm.com/docs/git-notes" target="_blank" rel="noopener noreferrer"><u>メモ</u></a>、<a href="https://git-lfs.com" target="_blank" rel="noopener noreferrer"><u>LFS</u></a>）、そして効率的である必要がありました。そこで、<a href="https://ziglang.org" target="_blank" rel="noopener noreferrer"><u>Zig</u></a>で構築し、Wasmにコンパイルしました。</p>
+<p data-astro-cid-yoyuw6fx="">なぜZigを使用？3つの理由：</p>
 <ol>
 	<li>&nbsp;Gitプロトコルエンジン全体は純粋なZigで書かれており（libcなし）、約100KBのWASMバイナリにコンパイルされています（最適化の余地あり！）。SHA-1、zlib inflate/deflate、deltaエンコーディング/デコーディング、パックパーシング、完全なgitスマートHTTPプロトコルを、すべてゼロから実装しており、標準ライブラリ以外の外部依存関係は一切ありません。</li>
 	<li>Zigを使用すると、メモリ割り当てを手動で制御できます。このことは、Durable Objectsのような制約ある環境において重要です。Zigビルドシステムにより、WASMランタイム（本番設定）とネイティブビルド（libgit2を用いた正確性検証テスト）間でコードを簡単に共有することができます。</li>
 	<li>WASMモジュールは、軽量なコールバックインターフェイスを介してJSホストと通信します。具体的には、ストレージ操作用のホストインポート関数が11個（host_get_object、host_put_objectなど）、ストリーミング出力用の関数が1個（host_emit_bytes）です。WASM側は、分離して完全にテスト可能です。</li>
 </ol>
-<p>内部で、アーティファクトはR2（スナップショット用）とKV（認証トークンの追跡用）も使用します：</p>
+<p data-astro-cid-yoyuw6fx="">内部で、アーティファクトはR2（スナップショット用）とKV（認証トークンの追跡用）も使用します：</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="397" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=715&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=640&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=715&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=750&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=828&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=1080&amp;h=600&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=1280&amp;h=711&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=1430&amp;h=794&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3269 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=1800&amp;h=1000&amp;f=webp" data-lightbox-width="1800" data-lightbox-height="1000" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="397" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p><sup><em><code>Artifactsの仕組み（Workers、Durable Objects、WebAssembly）</code></em></sup></p>
-<p>Workerはフロントエンドとして機能し、認証&amp;認可、主要なメトリクス（エラー、遅延）を処理し、各アーティファクトリポジトリ（Durable Object）をその場で検索します。</p>
-<p>特に：</p>
+<p data-astro-cid-yoyuw6fx=""><sup><em><code>Artifactsの仕組み（Workers、Durable Objects、WebAssembly）</code></em></sup></p>
+<p data-astro-cid-yoyuw6fx="">Workerはフロントエンドとして機能し、認証&amp;認可、主要なメトリクス（エラー、遅延）を処理し、各アーティファクトリポジトリ（Durable Object）をその場で検索します。</p>
+<p data-astro-cid-yoyuw6fx="">特に：</p>
 <ul>
 	<li>ファイルは、基盤となるDurable ObjectのSQLiteデータベースに保存されます。<ul>
 			<li>Durable Objectストレージの最大行サイズは2MB。そのため、大規模なGitオブジェクトはチャンクに分割され、複数行にわたって保存されます。</li>
@@ -126,91 +126,91 @@
 		</ul>
 	</li>
 </ul>
-<p>さらに、<a href="https://git-scm.com/docs/git-notes" target="_blank" rel="noopener noreferrer"><u>git-notes</u></a>をネイティブでサポートしています。アーティファクトはエージェントファーストであるように設計されており、メモにより、エージェントはGitオブジェクトにメモ（メタデータ）を追加することができます。これには、オブジェクト自体を変更することなく、リポジトリから読み取り/書き込みができるプロンプトやエージェント属性、その他のメタデータが含まれます。</p>
-<h2>大きなレポジトリ、大きな問題？それではArtifactFSをぜひ。</h2>
-<p>ほとんどのリポジトリはそれほど大きくなく、Gitはストレージ面で<a href="https://github.blog/open-source/git/gits-database-internals-i-packed-object-store" target="_blank" rel="noopener noreferrer"><u>非常に効率的であるよう設計されて</u></a>います。すなわち、ほとんどのリポジトリはクローンにせいぜい数秒しかかからず、ネットワークのセットアップ時間、認証、<a href="https://git-scm.com/book/ms/v2/Git-Internals-Git-Objects" target="_blank" rel="noopener noreferrer"><u>チェックサム処理</u></a>に占められています。これは、ほとんどのエージェントやサンドボックスのシナリオで実用的です。サンドボックスが開始して動作する際、リポジトリをクローンするだけで済みます。</p>
-<p>しかし、マルチGBのリポジトリや、数百万のオブジェクトを含むリポジトリはどうでしょう？エージェントの数分間の動作を妨げず、コンピューティングを消費することなく、そのリポジトリを迅速にクローンするにはどうすればよいでしょうか？</p>
-<p>人気あるWebフレームワーク（2.4GBで、長い歴史を持ちます！）は、クローン化に2分近くかかります。シャロ―クローンはより高速ですが、1桁秒にまで短縮できるほどではなく、履歴を省略したくない場合もあります（エージェントにとってそれは有用だからです）。</p>
-<p>エージェントが動作するように、大きなレポジトリを10～15秒にまで短縮することは可能でしょうか？ええ、可能です。いくつか工夫すればですが。</p>
-<p>アーティファクト登場の一環として、<a href="https://github.com/cloudflare/artifact-fs" target="_blank" rel="noopener noreferrer"><u>ArtifactFSはオープンソース化します</u></a>。これは大きなGitレポジトリをできるだけ即時にスキャンするように設計されており、最初のクローンでブロックするのではなく、その場でファイルコンテンツをハイライトするよう設計されています。エージェントやサンドボックス、コンテナ、その他起動時間が重視されるユースケースに最適です。大規模なリポジトリごとにサンドボックスの起動時間を90～100秒短縮でき、月に10,000件のサンドボックスジョブを実行する場合、2,778時間のサンドボックス時間を節約することができます。</p>
-<p>ArtifactFSは、「非同期のGitクローン」と考えることができます。</p>
+<p data-astro-cid-yoyuw6fx="">さらに、<a href="https://git-scm.com/docs/git-notes" target="_blank" rel="noopener noreferrer"><u>git-notes</u></a>をネイティブでサポートしています。アーティファクトはエージェントファーストであるように設計されており、メモにより、エージェントはGitオブジェクトにメモ（メタデータ）を追加することができます。これには、オブジェクト自体を変更することなく、リポジトリから読み取り/書き込みができるプロンプトやエージェント属性、その他のメタデータが含まれます。</p>
+<h2 data-astro-cid-yoyuw6fx="">大きなレポジトリ、大きな問題？それではArtifactFSをぜひ。</h2>
+<p data-astro-cid-yoyuw6fx="">ほとんどのリポジトリはそれほど大きくなく、Gitはストレージ面で<a href="https://github.blog/open-source/git/gits-database-internals-i-packed-object-store" target="_blank" rel="noopener noreferrer"><u>非常に効率的であるよう設計されて</u></a>います。すなわち、ほとんどのリポジトリはクローンにせいぜい数秒しかかからず、ネットワークのセットアップ時間、認証、<a href="https://git-scm.com/book/ms/v2/Git-Internals-Git-Objects" target="_blank" rel="noopener noreferrer"><u>チェックサム処理</u></a>に占められています。これは、ほとんどのエージェントやサンドボックスのシナリオで実用的です。サンドボックスが開始して動作する際、リポジトリをクローンするだけで済みます。</p>
+<p data-astro-cid-yoyuw6fx="">しかし、マルチGBのリポジトリや、数百万のオブジェクトを含むリポジトリはどうでしょう？エージェントの数分間の動作を妨げず、コンピューティングを消費することなく、そのリポジトリを迅速にクローンするにはどうすればよいでしょうか？</p>
+<p data-astro-cid-yoyuw6fx="">人気あるWebフレームワーク（2.4GBで、長い歴史を持ちます！）は、クローン化に2分近くかかります。シャロ―クローンはより高速ですが、1桁秒にまで短縮できるほどではなく、履歴を省略したくない場合もあります（エージェントにとってそれは有用だからです）。</p>
+<p data-astro-cid-yoyuw6fx="">エージェントが動作するように、大きなレポジトリを10～15秒にまで短縮することは可能でしょうか？ええ、可能です。いくつか工夫すればですが。</p>
+<p data-astro-cid-yoyuw6fx="">アーティファクト登場の一環として、<a href="https://github.com/cloudflare/artifact-fs" target="_blank" rel="noopener noreferrer"><u>ArtifactFSはオープンソース化します</u></a>。これは大きなGitレポジトリをできるだけ即時にスキャンするように設計されており、最初のクローンでブロックするのではなく、その場でファイルコンテンツをハイライトするよう設計されています。エージェントやサンドボックス、コンテナ、その他起動時間が重視されるユースケースに最適です。大規模なリポジトリごとにサンドボックスの起動時間を90～100秒短縮でき、月に10,000件のサンドボックスジョブを実行する場合、2,778時間のサンドボックス時間を節約することができます。</p>
+<p data-astro-cid-yoyuw6fx="">ArtifactFSは、「非同期のGitクローン」と考えることができます。</p>
 <ul>
 	<li>ArtifactFSは、gitリポジトリのコンテンツを含まないクローンを作成します。ファイルツリーと参照は取得しますが、ファイルコンテンツは取得しません。サンドボックス起動時に実行でき、それによりエージェントハーネスが作業を開始できるようになります。</li>
 	<li>バックグラウンドでは軽量なデーモンを介して、ファイルコンテンツのハイドレーション（ダウンロード）を同時に開始します。</li>
 	<li>エージェントが通常最初に操作したいファイル、つまりパッケージマニフェスト（<code>package.json、go.mod</code>）、設定ファイル、コードを優先し、可能な限りバイナリブロブ（画像、実行可能ファイル、その他の非テキストファイル）の優先順位を下げます。それにより、ファイル自体が読み込まれるにつれてエージェントがファイルツリーをスキャンできるようにします。</li>
 	<li>エージェントがファイルを読み取ろうとした際、それが完全にハイドレートされていない場合、ハイドレート完了まで読み取りはブロックされます。</li>
 </ul>
-<p>ファイルシステムは、ファイルをリモートリポジトリに「同期」しようとはしません。何千、何百万ものオブジェクトがある場合、通常非常に時間がかかります。ここで話しているのはGitについてですので、同期の必要はありません。エージェントは、他のリポジトリと同様、コミットしてプッシュするだけです。新しいAPIを学ぶ必要はありません。</p>
-<p>重要なのは、ArtifactFSが当社のアーティファクトだけでなく、あらゆるGitリモートと連携できることです。GitHub、GitLab、セルフホスト型Gitインフラストラクチャから大規模なリポジトリをクローンする場合でも、ArtifactFSを使用できます。</p>
-<h2>今後の展開は？</h2>
-<p>本日のリリースはベータ版のみです。しかし、すでに多くの機能に取り組んでおり、今後数週間のうちに提供を開始する予定です。</p>
+<p data-astro-cid-yoyuw6fx="">ファイルシステムは、ファイルをリモートリポジトリに「同期」しようとはしません。何千、何百万ものオブジェクトがある場合、通常非常に時間がかかります。ここで話しているのはGitについてですので、同期の必要はありません。エージェントは、他のリポジトリと同様、コミットしてプッシュするだけです。新しいAPIを学ぶ必要はありません。</p>
+<p data-astro-cid-yoyuw6fx="">重要なのは、ArtifactFSが当社のアーティファクトだけでなく、あらゆるGitリモートと連携できることです。GitHub、GitLab、セルフホスト型Gitインフラストラクチャから大規模なリポジトリをクローンする場合でも、ArtifactFSを使用できます。</p>
+<h2 data-astro-cid-yoyuw6fx="">今後の展開は？</h2>
+<p data-astro-cid-yoyuw6fx="">本日のリリースはベータ版のみです。しかし、すでに多くの機能に取り組んでおり、今後数週間のうちに提供を開始する予定です。</p>
 <ul>
 	<li>公開予定の<a href="https://developers.cloudflare.com/artifacts/observability/metrics" target="_blank" rel="noopener noreferrer"><u>利用可能なメトリクス</u></a>を拡張中です。現在、ネームスペースごとの主要な操作数やリポジトリ、リポジトリごとの保存バイト数のメトリクスを提供しています。これにより、数百万ものアーティファクト管理が容易になります。</li>
 	<li>リポジトリレベルのイベント向け<a href="https://developers.cloudflare.com/queues/event-subscriptions" target="_blank" rel="noopener noreferrer"><u>イベントサブスクリプション</u></a>をサポート。これにより、プッシュ、プル、クローン、フォークのイベントをネームスペース内の任意のリポジトリへ出力できます。さらに、イベントの消費、Webhookの書き込み、それらのイベントを使ったエンドユーザーへの通知、製品内のライフサイクルイベントの駆動、ポストプッシュジョブ（CI/CDなど）の実行も可能です。</li>
 	<li>アーティファクトAPIと対話するためのネイティブなTypeScript、Go、PythonクライアントSDK</li>
 	<li>リポジトリレベルの検索APIやネームスペース全体の検索API。たとえば、「<code>package.json</code>ファイルを持つすべてのリポジトリを探す」など。&nbsp;</li>
 </ul>
-<p>また、<a href="https://developers.cloudflare.com/workers/ci-cd/builds" target="_blank" rel="noopener noreferrer"><u>Workers Builds</u></a>向けAPIも計画しており、エージェント主導のワークフローでCI/CDジョブも実行できます。</p>
-<h2>そのコストは？</h2>
-<p>アーティファクト導入はまだ初期段階ですが、エージェント規模で機能する価格設定を検討中です。リポジトリが数百万あっても、コスト効率がよくあるべきで、未使用（あるいはほとんど使用されない）のリポジトリが足かせになるべきではありません。さらに価格設定は、エージェントの持つ大規模なシングルテナントの性質と一致している必要があるると考えています。</p>
-<p>また、リポジトリが使用されるかどうか、ホットかコールドか、そして/またはエージェントがそれを起動しようとしているかどうかを考える必要はありません。消費されたストレージと操作（例：クローン、フォーク、プッシュ＆プルなど）に対して課金されます。</p>
-<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
-	<table class="emdash-table" data-astro-cid-62p3h4ye="">
-		<thead data-astro-cid-62p3h4ye="">
-			<tr data-astro-cid-62p3h4ye="">
-				<th data-astro-cid-62p3h4ye="">
+<p data-astro-cid-yoyuw6fx="">また、<a href="https://developers.cloudflare.com/workers/ci-cd/builds" target="_blank" rel="noopener noreferrer"><u>Workers Builds</u></a>向けAPIも計画しており、エージェント主導のワークフローでCI/CDジョブも実行できます。</p>
+<h2 data-astro-cid-yoyuw6fx="">そのコストは？</h2>
+<p data-astro-cid-yoyuw6fx="">アーティファクト導入はまだ初期段階ですが、エージェント規模で機能する価格設定を検討中です。リポジトリが数百万あっても、コスト効率がよくあるべきで、未使用（あるいはほとんど使用されない）のリポジトリが足かせになるべきではありません。さらに価格設定は、エージェントの持つ大規模なシングルテナントの性質と一致している必要があるると考えています。</p>
+<p data-astro-cid-yoyuw6fx="">また、リポジトリが使用されるかどうか、ホットかコールドか、そして/またはエージェントがそれを起動しようとしているかどうかを考える必要はありません。消費されたストレージと操作（例：クローン、フォーク、プッシュ＆プルなど）に対して課金されます。</p>
+<div class="emdash-table-wrapper" data-astro-cid-zdje7xco="">
+	<table class="emdash-table" data-astro-cid-zdje7xco="">
+		<thead data-astro-cid-zdje7xco="">
+			<tr data-astro-cid-zdje7xco="">
+				<th data-astro-cid-zdje7xco="">
 					<p></p>
 				</th>
-				<th data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-zdje7xco="">
 					<p>$/単位</p>
 				</th>
-				<th data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-zdje7xco="">
 					<p>含む</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-62p3h4ye="">
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+		<tbody data-astro-cid-zdje7xco="">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>操作</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>1,000回の操作につき$0.15</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>最初の1万件込み（1か月あたり）</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>ストレージ</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>$0.50/GB-月</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>最初の1GB込み。</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p>規模が大きく活発なリポジトリは、規模が小さく利用頻度の低いリポジトリよりもコストがかかるでしょう。それは1,000個、10万個、または1000万個であっても同じです。</p>
-<p>ベータ版の進捗に合わせて、あーていファクトをWorkers Freeプラン（公正な制限あり）にも提供する予定です。この価格設定が変更された場合、料金の請求が行われる前に、ベータ期間中、随時情報を更新しお知らせします。</p>
-<h2>何から始めるべき？&nbsp;</h2>
+<p data-astro-cid-yoyuw6fx="">規模が大きく活発なリポジトリは、規模が小さく利用頻度の低いリポジトリよりもコストがかかるでしょう。それは1,000個、10万個、または1000万個であっても同じです。</p>
+<p data-astro-cid-yoyuw6fx="">ベータ版の進捗に合わせて、あーていファクトをWorkers Freeプラン（公正な制限あり）にも提供する予定です。この価格設定が変更された場合、料金の請求が行われる前に、ベータ期間中、随時情報を更新しお知らせします。</p>
+<h2 data-astro-cid-yoyuw6fx="">何から始めるべき？&nbsp;</h2>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3269 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=1920&amp;h=1081&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1081" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
 </figure>
-<p>アーティファクトは現在プライベートベータ版として公開されています。5月初旬（念のため申し上げますが2026年です！）には、パブリックベータ版の準備が完了する予定です。お客様には今後数週間かけて徐々にご利用いただけるようにする予定です。直接、<a href="https://forms.gle/DwBoPRa3CWQ8ajFp7" target="_blank" rel="noopener noreferrer"><u>プライベートベータ版への関心をご登録いただくことも可能です</u></a>。</p>
-<p>また、アーティファクトについて詳しくは、以下をご覧ください。</p>
+<p data-astro-cid-yoyuw6fx="">アーティファクトは現在プライベートベータ版として公開されています。5月初旬（念のため申し上げますが2026年です！）には、パブリックベータ版の準備が完了する予定です。お客様には今後数週間かけて徐々にご利用いただけるようにする予定です。直接、<a href="https://forms.gle/DwBoPRa3CWQ8ajFp7" target="_blank" rel="noopener noreferrer"><u>プライベートベータ版への関心をご登録いただくことも可能です</u></a>。</p>
+<p data-astro-cid-yoyuw6fx="">また、アーティファクトについて詳しくは、以下をご覧ください。</p>
 <ul>
 	<li>ドキュメントの<a href="http://developers.cloudflare.com/artifacts/get-started/workers" target="_blank" rel="noopener noreferrer"><u>利用開始ガイド</u></a>を読む。</li>
 	<li>Cloudflareダッシュボード（構築 &gt; ストレージとデータベース &gt; アーティファクト）に移動する</li>
 	<li><a href="http://developers.cloudflare.com/artifacts/api/rest-api" target="_blank" rel="noopener noreferrer"><u>REST API例</u></a>に目を通す</li>
 	<li><a href="http://developers.cloudflare.com/artifacts/concepts/how-artifacts-works" target="_blank" rel="noopener noreferrer"><u>アーティファクトの内部機能</u></a>について詳しく知る</li>
 </ul>
-<p><a href="http://developers.cloudflare.com/changelog/product/artifacts" target="_blank" rel="noopener noreferrer"><u>Changelog</u></a>をフォローして、ベータ版の進捗を追跡してください。</p>
-<h2>Cloudflare TVで視聴する</h2>
+<p data-astro-cid-yoyuw6fx=""><a href="http://developers.cloudflare.com/changelog/product/artifacts" target="_blank" rel="noopener noreferrer"><u>Changelog</u></a>をフォローして、ベータ版の進捗を追跡してください。</p>
+<h2 data-astro-cid-yoyuw6fx="">Cloudflare TVで視聴する</h2>
 <div id="html-block-k6f" class="html-block">
 	<div style="padding-top:56.25%">
 		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/a94bcc550a1079f7aa1d77ec4d2bfd04/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fa94bcc550a1079f7aa1d77ec4d2bfd04%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>

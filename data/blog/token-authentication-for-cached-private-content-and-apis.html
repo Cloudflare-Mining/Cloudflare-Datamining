@@ -1,13 +1,13 @@
-<p>While working to make the Internet a better place, we also want to make it easier for our customers to have control of their content and APIs, and who has access to them. Using Cloudflare’s Token Authentication features, customers can implement access control via URL tokens or HTTP request headers without having to build complex back-end systems.</p>
-<p>Cloudflare will check these tokens at the edge before any request is relayed to an origin or served from cache. If the token is not valid the request is blocked. Since Cloudflare handles all the token validation, the origin server does not need to have complex authentication logic. In addition, a malicious user who attempts to forge tokens will be blocked from ever reaching the origin.</p>
-<p><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://www.flickr.com/photos/zeevveez/6089266689" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/zeevveez" target="_blank" rel="noopener noreferrer">zeevveez</a></p>
-<p>Leveraging our edge network of <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">over 100 data centers</a>, customers can use token authentication to perform access control checks on content and APIs, as well as allowing Cloudflare to cache private content and only serve it to users with a valid token tied specifically to that cached asset.</p>
-<p>Performing access control on the edge has many benefits. Brute force attempts and other attacks on private assets don't ever reach an origin server, preventing origin CPU and bandwidth from being wasted on malicious requests.</p>
-<p>By performing authentication on the edge it's possible to cache protected content, giving users faster access to private content because there’s no round trip to the origin for authentication. At the same time web application owners are assured that only valid, authenticated users have access to the cache content.</p>
-<p>By validating that an API request is from a valid client, Cloudflare is able to eliminate forged requests coming from bots, attackers or non-authenticated users.</p>
-<h3>Content Access Control</h3>
-<p>Many Internet applications are not built with access control features for assets, especially static assets like images, PDFs, zip files, apps, eBooks, and other downloadable content. Building an access control layer for these can be difficult and expensive.</p>
-<p>We’ve worked with many customers to solve problems such as:</p>
+<p data-astro-cid-yoyuw6fx="">While working to make the Internet a better place, we also want to make it easier for our customers to have control of their content and APIs, and who has access to them. Using Cloudflare’s Token Authentication features, customers can implement access control via URL tokens or HTTP request headers without having to build complex back-end systems.</p>
+<p data-astro-cid-yoyuw6fx="">Cloudflare will check these tokens at the edge before any request is relayed to an origin or served from cache. If the token is not valid the request is blocked. Since Cloudflare handles all the token validation, the origin server does not need to have complex authentication logic. In addition, a malicious user who attempts to forge tokens will be blocked from ever reaching the origin.</p>
+<p data-astro-cid-yoyuw6fx=""><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://www.flickr.com/photos/zeevveez/6089266689" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/zeevveez" target="_blank" rel="noopener noreferrer">zeevveez</a></p>
+<p data-astro-cid-yoyuw6fx="">Leveraging our edge network of <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">over 100 data centers</a>, customers can use token authentication to perform access control checks on content and APIs, as well as allowing Cloudflare to cache private content and only serve it to users with a valid token tied specifically to that cached asset.</p>
+<p data-astro-cid-yoyuw6fx="">Performing access control on the edge has many benefits. Brute force attempts and other attacks on private assets don't ever reach an origin server, preventing origin CPU and bandwidth from being wasted on malicious requests.</p>
+<p data-astro-cid-yoyuw6fx="">By performing authentication on the edge it's possible to cache protected content, giving users faster access to private content because there’s no round trip to the origin for authentication. At the same time web application owners are assured that only valid, authenticated users have access to the cache content.</p>
+<p data-astro-cid-yoyuw6fx="">By validating that an API request is from a valid client, Cloudflare is able to eliminate forged requests coming from bots, attackers or non-authenticated users.</p>
+<h3 data-astro-cid-yoyuw6fx="">Content Access Control</h3>
+<p data-astro-cid-yoyuw6fx="">Many Internet applications are not built with access control features for assets, especially static assets like images, PDFs, zip files, apps, eBooks, and other downloadable content. Building an access control layer for these can be difficult and expensive.</p>
+<p data-astro-cid-yoyuw6fx="">We’ve worked with many customers to solve problems such as:</p>
 <ul>
 	<li>A website provides downloadable static content to registered users; however, users tend to share/publish links to that content on social media platforms;</li>
 	<li>A website provides downloadable static content, but crawlers and <a href="https://www.cloudflare.com/learning/ai/how-to-prevent-web-scraping" target="_blank" rel="noopener noreferrer">scrapers</a> are constantly trying to find/leech/look for available links;</li>
@@ -15,22 +15,22 @@
 	<li>A website would like to generate links with an expiry time;</li>
 	<li>Access to specific resources hosted outside of the main application needs to be limited and restricted.</li>
 </ul>
-<h3>API Protection</h3>
-<p>Today most applications are client software that connect to HTTP based APIs on the Internet. Protecting those APIs from malicious use is important as it’s possible to write client software, such as bots, that talks directly to the APIs bypassing the original application. This can lead to abuse and unwanted load on API servers.</p>
-<p>Cloudflare’s token authentication can be used to validate that an API request is coming from a valid user, client or a mobile device on the edge. Cloudflare will filter out non-authenticated or forged requests and not pass them on to the origin API server.</p>
-<p>Along with Cloudflare’s <a href="https://www.cloudflare.com/rate-limiting" target="_blank" rel="noopener noreferrer">Rate Limiting</a> and <a href="https://www.cloudflare.com/waf" target="_blank" rel="noopener noreferrer">WAF</a>, a mobile application with an Internet API can be protected at the edge, far from the origin API server.</p>
-<h3>Cloudflare’s Token Authentication Solution</h3>
-<p>Token Authentication leverages tokens to verify that a user has access to a specific resource. The token can be sent as a URL parameter or in an HTTP header.</p>
-<p>The token is an <a href="https://en.wikipedia.org/wiki/Hash-based_message_authentication_code" target="_blank" rel="noopener noreferrer">HMAC</a> generated from the following:</p>
+<h3 data-astro-cid-yoyuw6fx="">API Protection</h3>
+<p data-astro-cid-yoyuw6fx="">Today most applications are client software that connect to HTTP based APIs on the Internet. Protecting those APIs from malicious use is important as it’s possible to write client software, such as bots, that talks directly to the APIs bypassing the original application. This can lead to abuse and unwanted load on API servers.</p>
+<p data-astro-cid-yoyuw6fx="">Cloudflare’s token authentication can be used to validate that an API request is coming from a valid user, client or a mobile device on the edge. Cloudflare will filter out non-authenticated or forged requests and not pass them on to the origin API server.</p>
+<p data-astro-cid-yoyuw6fx="">Along with Cloudflare’s <a href="https://www.cloudflare.com/rate-limiting" target="_blank" rel="noopener noreferrer">Rate Limiting</a> and <a href="https://www.cloudflare.com/waf" target="_blank" rel="noopener noreferrer">WAF</a>, a mobile application with an Internet API can be protected at the edge, far from the origin API server.</p>
+<h3 data-astro-cid-yoyuw6fx="">Cloudflare’s Token Authentication Solution</h3>
+<p data-astro-cid-yoyuw6fx="">Token Authentication leverages tokens to verify that a user has access to a specific resource. The token can be sent as a URL parameter or in an HTTP header.</p>
+<p data-astro-cid-yoyuw6fx="">The token is an <a href="https://en.wikipedia.org/wiki/Hash-based_message_authentication_code" target="_blank" rel="noopener noreferrer">HMAC</a> generated from the following:</p>
 <ul>
 	<li>A secret shared between Cloudflare and the web application or mobile app;</li>
 	<li>The path to the resource or API;</li>
 	<li>A Unix epoch timestamp;</li>
 	<li>Potential optional additional parameters (e.g. IP address, cookie value, username);</li>
 </ul>
-<p>The Cloudflare edge validates the token and allow access or not based on the result. The generated HMAC can also be configured to expire after a certain time (e.g. 10 minutes), or so that the expiry is controlled directly from the origin server. In the latter case, the generated URLs would simply include an absolute future Unix timestamp.</p>
-<h3>Protecting Private Content with Token Authentication</h3>
-<p>In the simplest implementations, tokens can be used to protect static private content. The code required in the back end application would be as follows (in PHP):</p>
+<p data-astro-cid-yoyuw6fx="">The Cloudflare edge validates the token and allow access or not based on the result. The generated HMAC can also be configured to expire after a certain time (e.g. 10 minutes), or so that the expiry is controlled directly from the origin server. In the latter case, the generated URLs would simply include an absolute future Unix timestamp.</p>
+<h3 data-astro-cid-yoyuw6fx="">Protecting Private Content with Token Authentication</h3>
+<p data-astro-cid-yoyuw6fx="">In the simplest implementations, tokens can be used to protect static private content. The code required in the back end application would be as follows (in PHP):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;?</span><span class="sk-24292e-fff">php</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Generate</span><span class="sk-032f62-99ffe4"> valid</span><span class="sk-032f62-99ffe4"> URL</span><span class="sk-032f62-99ffe4"> token</span></span>
@@ -62,7 +62,7 @@
 		})
 	});
 </script>
-<p>The code above, given a shared secret:</p>
+<p data-astro-cid-yoyuw6fx="">The code above, given a shared secret:</p>
 <ul>
 	<li>Generates the current timestamp;</li>
 	<li>Generates the token by concatenating the timestamp with the cryptographic hash separated by a dash <code>-</code>;</li>
@@ -70,18 +70,18 @@
 	<li>The hash is base64 encoded, and subsequently, URL encoded;</li>
 	<li>Finally, the URL to the private asset is generated by simply adding the resulting token to the query string. The token HTTP GET parameter name is customizable.</li>
 </ul>
-<p>Once deployed, the authentication rules are available under the Web Application Firewall Custom User Rule Set Package. From here the rules can be configured on simulate, challenge or block or deactivated completely:</p>
+<p data-astro-cid-yoyuw6fx="">Once deployed, the authentication rules are available under the Web Application Firewall Custom User Rule Set Package. From here the rules can be configured on simulate, challenge or block or deactivated completely:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="208" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YG5VVG0P6VMX742FADV3.png&amp;w=715&amp;h=208&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YG5VVG0P6VMX742FADV3.png&amp;w=640&amp;h=186&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YG5VVG0P6VMX742FADV3.png&amp;w=715&amp;h=208&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YG5VVG0P6VMX742FADV3.png&amp;w=750&amp;h=218&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YG5VVG0P6VMX742FADV3.png&amp;w=828&amp;h=241&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YG5VVG0P6VMX742FADV3.png&amp;w=1080&amp;h=314&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YG5VVG0P6VMX742FADV3.png&amp;w=1280&amp;h=372&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YG5VVG0P6VMX742FADV3.png&amp;w=1430&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="WAF Rules" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YG5VVG0P6VMX742FADV3.png&amp;w=1804&amp;h=526&amp;f=webp" data-lightbox-width="1804" data-lightbox-height="526" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="208" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p>Once active and in the event a user were to try to access a restricted resource without a valid token, Cloudflare would present the default WAF Block page shown below:</p>
+<p data-astro-cid-yoyuw6fx="">Once active and in the event a user were to try to access a restricted resource without a valid token, Cloudflare would present the default WAF Block page shown below:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="613" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455GWFRMZE77GDXS77AAJH.png&amp;w=715&amp;h=613&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455GWFRMZE77GDXS77AAJH.png&amp;w=640&amp;h=549&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455GWFRMZE77GDXS77AAJH.png&amp;w=715&amp;h=613&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455GWFRMZE77GDXS77AAJH.png&amp;w=750&amp;h=643&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455GWFRMZE77GDXS77AAJH.png&amp;w=828&amp;h=710&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455GWFRMZE77GDXS77AAJH.png&amp;w=1080&amp;h=926&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455GWFRMZE77GDXS77AAJH.png&amp;w=1280&amp;h=1097&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455GWFRMZE77GDXS77AAJH.png&amp;w=1430&amp;h=1226&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="WAF Block Page" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455GWFRMZE77GDXS77AAJH.png&amp;w=998&amp;h=856&amp;f=webp" data-lightbox-width="998" data-lightbox-height="856" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="613" class="pt-portable-image-media"></div>
 </figure>
-<p>The block page can be <a href="https://support.cloudflare.com/hc/en-us/articles/200172706-How-do-I-customize-Cloudflare-error-pages-" target="_blank" rel="noopener noreferrer">fully customized</a> to match the customer branding as necessary.</p>
-<h3>API Requests with Token Authentication</h3>
-<p>In more advanced implementations tokens can also be used to perform API authentication:</p>
+<p data-astro-cid-yoyuw6fx="">The block page can be <a href="https://support.cloudflare.com/hc/en-us/articles/200172706-How-do-I-customize-Cloudflare-error-pages-" target="_blank" rel="noopener noreferrer">fully customized</a> to match the customer branding as necessary.</p>
+<h3 data-astro-cid-yoyuw6fx="">API Requests with Token Authentication</h3>
+<p data-astro-cid-yoyuw6fx="">In more advanced implementations tokens can also be used to perform API authentication:</p>
 <ul>
 	<li>User requests access using a standard authentication method (e.g. username and password);</li>
 	<li>The origin server validates access and provides a token to the client. The token is specific to the user;</li>
@@ -89,17 +89,17 @@
 	<li>The Cloudflare edge validates the token on every request. If the token is missing or the token is not valid the request is denied;</li>
 	<li>The token can be configured to expire after a certain time, forcing the client to re-authenticate with the origin server if necessary.</li>
 </ul>
-<p>Using tokens for API endpoints provides many benefits:</p>
+<p data-astro-cid-yoyuw6fx="">Using tokens for API endpoints provides many benefits:</p>
 <ul>
 	<li>No session information is stored so it is much easier to scale applications;</li>
 	<li>Tokens help to prevent <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery" target="_blank" rel="noopener noreferrer">CSFR attacks</a> as the token is required on every request;</li>
 	<li>Ability to provide selective access to third party applications;</li>
 	<li>Lower load on API servers.</li>
 </ul>
-<p>Allowing access to API servers only from <a href="https://www.cloudflare.com/ips" target="_blank" rel="noopener noreferrer">Cloudflare IP ranges</a> will ensure that users cannot bypass the token authentication.</p>
-<p>Additionally, for API endpoints, Cloudflare can be configured to generate custom JSON responses compatible with the API specification.</p>
-<h3>Validating Mobile Apps with Token Authentication</h3>
-<p>Most mobile applications leverage HTTP based API endpoints to provide dynamic functionality to the end user. The shared secret used to generate the token can be embedded and encrypted within native mobile applications, improving protection of mobile app API endpoints and ensuring only requests from legitimate clients are allowed to access the underlying API.</p>
-<h3>Conclusion</h3>
-<p>Token Authentication is available for all paid plans if you are able to follow the default Cloudflare parameter format and expiry times are known beforehand. Our support team is able to provide implementation details on request.</p>
-<p>If this is not possible, or if you are looking for additional logic and/or custom behavior, please contact us and enquire about our <a href="https://www.cloudflare.com/plans/enterprise/contact" target="_blank" rel="noopener noreferrer">Enterprise Plan</a> and reference Token Authentication.</p>
+<p data-astro-cid-yoyuw6fx="">Allowing access to API servers only from <a href="https://www.cloudflare.com/ips" target="_blank" rel="noopener noreferrer">Cloudflare IP ranges</a> will ensure that users cannot bypass the token authentication.</p>
+<p data-astro-cid-yoyuw6fx="">Additionally, for API endpoints, Cloudflare can be configured to generate custom JSON responses compatible with the API specification.</p>
+<h3 data-astro-cid-yoyuw6fx="">Validating Mobile Apps with Token Authentication</h3>
+<p data-astro-cid-yoyuw6fx="">Most mobile applications leverage HTTP based API endpoints to provide dynamic functionality to the end user. The shared secret used to generate the token can be embedded and encrypted within native mobile applications, improving protection of mobile app API endpoints and ensuring only requests from legitimate clients are allowed to access the underlying API.</p>
+<h3 data-astro-cid-yoyuw6fx="">Conclusion</h3>
+<p data-astro-cid-yoyuw6fx="">Token Authentication is available for all paid plans if you are able to follow the default Cloudflare parameter format and expiry times are known beforehand. Our support team is able to provide implementation details on request.</p>
+<p data-astro-cid-yoyuw6fx="">If this is not possible, or if you are looking for additional logic and/or custom behavior, please contact us and enquire about our <a href="https://www.cloudflare.com/plans/enterprise/contact" target="_blank" rel="noopener noreferrer">Enterprise Plan</a> and reference Token Authentication.</p>

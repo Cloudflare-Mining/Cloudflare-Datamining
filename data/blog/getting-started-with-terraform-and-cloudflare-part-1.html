@@ -1,21 +1,21 @@
-<p><em>You can read Part 2 of Getting Started with Terraform <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-2">here</a>.</em></p>
-<p>As a Product Manager at Cloudflare, I spend quite a bit of my time talking to customers. One of the most common topics I'm asked about is configuration management. Developers want to know how they can write code to manage their Cloudflare config, without interacting with our APIs or UI directly.</p>
-<p>Following best practices in software development, they want to store configuration in their own source code repository (be it <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a> or otherwise), institute a change management process that includes code review, and be able to track their configuration versions and history over time. Additionally, they want the ability to quickly and easily roll back changes when required.</p>
-<p>When I first spoke with our engineering teams about these requirements, they gave me the best answer a Product Manager could hope to hear: there's already an open source tool out there that does all of that (and more), with a strong community and plugin system to boot—it's called <a href="https://terraform.io" target="_blank" rel="noopener noreferrer">Terraform</a>.</p>
-<p>This blog post is about getting started using Terraform with Cloudflare and the new version 1.0 of our Terraform provider. A "provider" is simply a plugin that knows how to talk to a specific set of APIs—in this case, Cloudflare, but there are also providers available for AWS, Azure, Google Cloud, Kubernetes, VMware, and <a href="https://www.terraform.io/docs/providers" target="_blank" rel="noopener noreferrer">many more services</a>. Today's release extends our existing provider that previously only supported DNS records with support for Zone Settings, Rate Limiting, Load Balancing, and Page Rules.</p>
-<h3>Before and after Terraform</h3>
-<p>Before we jump into some real-world examples of using Terraform with Cloudflare, here is a set of diagrams that depicts the paradigm shift.</p>
+<p data-astro-cid-yoyuw6fx=""><em>You can read Part 2 of Getting Started with Terraform <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-2">here</a>.</em></p>
+<p data-astro-cid-yoyuw6fx="">As a Product Manager at Cloudflare, I spend quite a bit of my time talking to customers. One of the most common topics I'm asked about is configuration management. Developers want to know how they can write code to manage their Cloudflare config, without interacting with our APIs or UI directly.</p>
+<p data-astro-cid-yoyuw6fx="">Following best practices in software development, they want to store configuration in their own source code repository (be it <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a> or otherwise), institute a change management process that includes code review, and be able to track their configuration versions and history over time. Additionally, they want the ability to quickly and easily roll back changes when required.</p>
+<p data-astro-cid-yoyuw6fx="">When I first spoke with our engineering teams about these requirements, they gave me the best answer a Product Manager could hope to hear: there's already an open source tool out there that does all of that (and more), with a strong community and plugin system to boot—it's called <a href="https://terraform.io" target="_blank" rel="noopener noreferrer">Terraform</a>.</p>
+<p data-astro-cid-yoyuw6fx="">This blog post is about getting started using Terraform with Cloudflare and the new version 1.0 of our Terraform provider. A "provider" is simply a plugin that knows how to talk to a specific set of APIs—in this case, Cloudflare, but there are also providers available for AWS, Azure, Google Cloud, Kubernetes, VMware, and <a href="https://www.terraform.io/docs/providers" target="_blank" rel="noopener noreferrer">many more services</a>. Today's release extends our existing provider that previously only supported DNS records with support for Zone Settings, Rate Limiting, Load Balancing, and Page Rules.</p>
+<h3 data-astro-cid-yoyuw6fx="">Before and after Terraform</h3>
+<p data-astro-cid-yoyuw6fx="">Before we jump into some real-world examples of using Terraform with Cloudflare, here is a set of diagrams that depicts the paradigm shift.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="375" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BP0P5YCYNJKQDJZZJE7D.png&amp;w=715&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BP0P5YCYNJKQDJZZJE7D.png&amp;w=640&amp;h=336&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BP0P5YCYNJKQDJZZJE7D.png&amp;w=715&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BP0P5YCYNJKQDJZZJE7D.png&amp;w=750&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BP0P5YCYNJKQDJZZJE7D.png&amp;w=828&amp;h=434&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BP0P5YCYNJKQDJZZJE7D.png&amp;w=1080&amp;h=566&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BP0P5YCYNJKQDJZZJE7D.png&amp;w=1280&amp;h=671&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BP0P5YCYNJKQDJZZJE7D.png&amp;w=1430&amp;h=750&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="before-terraform-@3x" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BP0P5YCYNJKQDJZZJE7D.png&amp;w=1920&amp;h=1006&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1006" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="375" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p>Before Terraform, you needed to learn how to use the configuration interfaces or <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">APIs</a> of each cloud and edge provider, e.g., Google Cloud and Cloudflare below. Additionally, your ability to store your configuration in your own source code control system depends on vendor-specific configuration export mechanisms (which may or may not exist).</p>
+<p data-astro-cid-yoyuw6fx="">Before Terraform, you needed to learn how to use the configuration interfaces or <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">APIs</a> of each cloud and edge provider, e.g., Google Cloud and Cloudflare below. Additionally, your ability to store your configuration in your own source code control system depends on vendor-specific configuration export mechanisms (which may or may not exist).</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="375" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H796KKGCMYP7W6GKWD69.png&amp;w=715&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H796KKGCMYP7W6GKWD69.png&amp;w=640&amp;h=336&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H796KKGCMYP7W6GKWD69.png&amp;w=715&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H796KKGCMYP7W6GKWD69.png&amp;w=750&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H796KKGCMYP7W6GKWD69.png&amp;w=828&amp;h=434&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H796KKGCMYP7W6GKWD69.png&amp;w=1080&amp;h=566&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H796KKGCMYP7W6GKWD69.png&amp;w=1280&amp;h=671&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H796KKGCMYP7W6GKWD69.png&amp;w=1430&amp;h=750&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="with-terraform-@3x-2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H796KKGCMYP7W6GKWD69.png&amp;w=1920&amp;h=1006&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1006" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="375" class="pt-portable-image-media"></div>
 </figure>
-<p>With Terraform, you can store and version your configuration in GitHub (or your source code control system of choice). Once you learn Terraform's configuration syntax, you don't need to bother learning how to use providers' UIs or APIs—you just tell Terraform what you want and it figures out the rest.</p>
-<h3>Installing Terraform</h3>
-<p>The installation process for Terraform is extremely simple as it ships as a single binary file. Official instructions for installing Terraform can be found <a href="https://www.terraform.io/intro/getting-started/install.html" target="_blank" rel="noopener noreferrer">here</a>, and for purposes of this example we'll show to do so on a macOS using <a href="https://brew.sh" target="_blank" rel="noopener noreferrer">Homebrew</a>:</p>
+<p data-astro-cid-yoyuw6fx="">With Terraform, you can store and version your configuration in GitHub (or your source code control system of choice). Once you learn Terraform's configuration syntax, you don't need to bother learning how to use providers' UIs or APIs—you just tell Terraform what you want and it figures out the rest.</p>
+<h3 data-astro-cid-yoyuw6fx="">Installing Terraform</h3>
+<p data-astro-cid-yoyuw6fx="">The installation process for Terraform is extremely simple as it ships as a single binary file. Official instructions for installing Terraform can be found <a href="https://www.terraform.io/intro/getting-started/install.html" target="_blank" rel="noopener noreferrer">here</a>, and for purposes of this example we'll show to do so on a macOS using <a href="https://brew.sh" target="_blank" rel="noopener noreferrer">Homebrew</a>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> brew</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> terraform</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">==</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">Downloading</span><span class="sk-032f62-99ffe4"> https://homebrew.bintray.com/bottles/terraform-0.11.7.sierra.bottle.tar.gz</span></span>
@@ -48,8 +48,8 @@
 		})
 	});
 </script>
-<p>The following instructions are adapted from the <a href="https://developers.cloudflare.com/terraform" target="_blank" rel="noopener noreferrer">Cloudflare Developers - Terraform documentation</a> site, which includes a <a href="https://developers.cloudflare.com/terraform/tutorial" target="_blank" rel="noopener noreferrer">full tutorial</a> and coverage of <a href="https://developers.cloudflare.com/terraform/advanced-topics" target="_blank" rel="noopener noreferrer">advanced topics</a>.</p>
-<p>If you're interested in seeing how to use a specific Terraform resource or technique, click on one of the following anchor links:</p>
+<p data-astro-cid-yoyuw6fx="">The following instructions are adapted from the <a href="https://developers.cloudflare.com/terraform" target="_blank" rel="noopener noreferrer">Cloudflare Developers - Terraform documentation</a> site, which includes a <a href="https://developers.cloudflare.com/terraform/tutorial" target="_blank" rel="noopener noreferrer">full tutorial</a> and coverage of <a href="https://developers.cloudflare.com/terraform/advanced-topics" target="_blank" rel="noopener noreferrer">advanced topics</a>.</p>
+<p data-astro-cid-yoyuw6fx="">If you're interested in seeing how to use a specific Terraform resource or technique, click on one of the following anchor links:</p>
 <ul>
 	<li><a href="https://blog.cloudflare.com/#installingterraform">Installing Terraform</a></li>
 	<li><a href="https://blog.cloudflare.com/#helloworld">Hello, world!</a></li>
@@ -61,10 +61,10 @@
 	<li>Reviewing and Rolling Back Configuration (next post!)</li>
 	<li>Importing Existing State and Configuration (next post!)</li>
 </ul>
-<h3>Hello, world!</h3>
-<p>Now that Terraform is installed, it's time to start using it. Let's assume you have a web server for your domain that's accessible on <code>203.0.113.10</code>. You just signed up your domain, <code>example.com</code>, on Cloudflare and want to manage everything with Terraform.</p>
-<h4>1. Define your first Terraform config file</h4>
-<p>First we'll create a initial Terraform config file. Any files ending in <code>.tf</code> will be processed by Terraform. As you configuration gets more complex you'll want to split the config into separate files and modules, but for now we'll proceed with a single file:</p>
+<h3 data-astro-cid-yoyuw6fx="">Hello, world!</h3>
+<p data-astro-cid-yoyuw6fx="">Now that Terraform is installed, it's time to start using it. Let's assume you have a web server for your domain that's accessible on <code>203.0.113.10</code>. You just signed up your domain, <code>example.com</code>, on Cloudflare and want to manage everything with Terraform.</p>
+<h4 data-astro-cid-yoyuw6fx="">1. Define your first Terraform config file</h4>
+<p data-astro-cid-yoyuw6fx="">First we'll create a initial Terraform config file. Any files ending in <code>.tf</code> will be processed by Terraform. As you configuration gets more complex you'll want to split the config into separate files and modules, but for now we'll proceed with a single file:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span><span class="sk-d73a49-a0a0a0"> &lt;&lt;</span><span class="sk-032f62-fff">'EOF'</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">provider "cloudflare" {</span></span>
@@ -89,8 +89,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4>2. Initialize Terraform and the Cloudflare provider</h4>
-<p>Now that you've created your basic configuration in HCL let's initialize Terraform and ask it to apply the configuration to Cloudflare. HCL stands for HashiCorp Configuration Lanaguage, and is named after the maker of Terraform.</p>
+<h4 data-astro-cid-yoyuw6fx="">2. Initialize Terraform and the Cloudflare provider</h4>
+<p data-astro-cid-yoyuw6fx="">Now that you've created your basic configuration in HCL let's initialize Terraform and ask it to apply the configuration to Cloudflare. HCL stands for HashiCorp Configuration Lanaguage, and is named after the maker of Terraform.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> init</span></span>
 <span class="line"></span>
@@ -130,8 +130,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4>3. Review the execution plan</h4>
-<p>With the Cloudflare provider installed, let's ask Terraform to show the changes it's planning to make to your Cloudflare account so you can confirm it matches the configuration you intended:</p>
+<h4 data-astro-cid-yoyuw6fx="">3. Review the execution plan</h4>
+<p data-astro-cid-yoyuw6fx="">With the Cloudflare provider installed, let's ask Terraform to show the changes it's planning to make to your Cloudflare account so you can confirm it matches the configuration you intended:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> plan</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Refreshing</span><span class="sk-032f62-99ffe4"> Terraform</span><span class="sk-032f62-99ffe4"> state</span><span class="sk-032f62-99ffe4"> in-memory</span><span class="sk-032f62-99ffe4"> prior</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> plan...</span></span>
@@ -175,9 +175,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>As you can see in the above "execution plan”, Terraform is going to create a new DNS record, as requested. Values that you've explicitly specified are displayed, e.g., the value of the <code>A</code> record—<code>203.0.113.10</code>—while values that are derived based on other API calls, e.g., looking up the zone_id, or returned after the object is created, are displayed as <code>&lt;computed&gt;</code>.</p>
-<h4>4. Applying Your Changes</h4>
-<p>The plan command is important, as it allows you to preview the changes for accuracy before actually making them. Once you're comfortable with the execution plan, it's time to apply it:</p>
+<p data-astro-cid-yoyuw6fx="">As you can see in the above "execution plan”, Terraform is going to create a new DNS record, as requested. Values that you've explicitly specified are displayed, e.g., the value of the <code>A</code> record—<code>203.0.113.10</code>—while values that are derived based on other API calls, e.g., looking up the zone_id, or returned after the object is created, are displayed as <code>&lt;computed&gt;</code>.</p>
+<h4 data-astro-cid-yoyuw6fx="">4. Applying Your Changes</h4>
+<p data-astro-cid-yoyuw6fx="">The plan command is important, as it allows you to preview the changes for accuracy before actually making them. Once you're comfortable with the execution plan, it's time to apply it:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> apply</span><span class="sk-005cc5-99ffe4"> --auto-approve</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cloudflare_record.www:</span><span class="sk-032f62-99ffe4"> Creating...</span></span>
@@ -202,13 +202,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Note that I specified –auto-approve on the command line for briefer output; without this flag, Terraform will show you the output of <code>terraform plan</code> and then ask for confirmation before applying it.</p>
-<h4>Verify the results</h4>
-<p>Logging back into the Cloudflare Dashboard and selecting the DNS tab, I can see the record that was created by Terraform:</p>
+<p data-astro-cid-yoyuw6fx="">Note that I specified –auto-approve on the command line for briefer output; without this flag, Terraform will show you the output of <code>terraform plan</code> and then ask for confirmation before applying it.</p>
+<h4 data-astro-cid-yoyuw6fx="">Verify the results</h4>
+<p data-astro-cid-yoyuw6fx="">Logging back into the Cloudflare Dashboard and selecting the DNS tab, I can see the record that was created by Terraform:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="75" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46628NXBKRAG3HY3BZ2XWW.png&amp;w=715&amp;h=75&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46628NXBKRAG3HY3BZ2XWW.png&amp;w=640&amp;h=67&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46628NXBKRAG3HY3BZ2XWW.png&amp;w=715&amp;h=75&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46628NXBKRAG3HY3BZ2XWW.png&amp;w=750&amp;h=79&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46628NXBKRAG3HY3BZ2XWW.png&amp;w=828&amp;h=87&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46628NXBKRAG3HY3BZ2XWW.png&amp;w=1080&amp;h=113&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46628NXBKRAG3HY3BZ2XWW.png&amp;w=1280&amp;h=134&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46628NXBKRAG3HY3BZ2XWW.png&amp;w=1430&amp;h=150&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Verify-DNS" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46628NXBKRAG3HY3BZ2XWW.png&amp;w=748&amp;h=78&amp;f=webp" data-lightbox-width="748" data-lightbox-height="78" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="75" class="pt-portable-image-media"></div>
 </figure>
-<p>If you'd like to see the full results returned from the API call (including the default values that you didn't specify but let Terraform compute), you can run <code>terraform show</code>:</p>
+<p data-astro-cid-yoyuw6fx="">If you'd like to see the full results returned from the API call (including the default values that you didn't specify but let Terraform compute), you can run <code>terraform show</code>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> show</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cloudflare_record.www:</span></span>
@@ -242,8 +242,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3>Tracking change history</h3>
-<p>In the <code>terraform apply</code> step above, you created and applied some basic Cloudflare configuration. Terraform was able to apply this configuration to your account because you provided your email address and API token at the top of the cloudflare.tf file:</p>
+<h3 data-astro-cid-yoyuw6fx="">Tracking change history</h3>
+<p data-astro-cid-yoyuw6fx="">In the <code>terraform apply</code> step above, you created and applied some basic Cloudflare configuration. Terraform was able to apply this configuration to your account because you provided your email address and API token at the top of the cloudflare.tf file:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> head</span><span class="sk-005cc5-99ffe4"> -n4</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">provider</span><span class="sk-032f62-99ffe4"> "cloudflare"</span><span class="sk-032f62-99ffe4"> {</span></span>
@@ -255,9 +255,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>We're now going to store your configuration in GitHub where it can be tracked, peer-reviewed, and rolled back to as needed. But before we do so, we're going to remove your credentials from the Terraform config file so it doesn't get committed to a repository.</p>
-<h4>1. Use environment variables for authentication</h4>
-<p>As a good security practice we need to remove your Cloudflare credentials from anything that will be committed to a repository. The Cloudflare Terraform provider supports reading these values from the <code>CLOUDFLARE_EMAIL</code> and <code>CLOUDFLARE_TOKEN</code> environment variables, so all we need to do is:</p>
+<p data-astro-cid-yoyuw6fx="">We're now going to store your configuration in GitHub where it can be tracked, peer-reviewed, and rolled back to as needed. But before we do so, we're going to remove your credentials from the Terraform config file so it doesn't get committed to a repository.</p>
+<h4 data-astro-cid-yoyuw6fx="">1. Use environment variables for authentication</h4>
+<p data-astro-cid-yoyuw6fx="">As a good security practice we need to remove your Cloudflare credentials from anything that will be committed to a repository. The Cloudflare Terraform provider supports reading these values from the <code>CLOUDFLARE_EMAIL</code> and <code>CLOUDFLARE_TOKEN</code> environment variables, so all we need to do is:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sed</span><span class="sk-005cc5-99ffe4"> -ie</span><span class="sk-032f62-99ffe4"> 's/^.*email =.*$/  # email pulled from $CLOUDFLARE_EMAIL/'</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sed</span><span class="sk-005cc5-99ffe4"> -ie</span><span class="sk-032f62-99ffe4"> 's/^.*token =.*$/  # token pulled from $CLOUDFLARE_TOKEN/'</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span></span>
@@ -275,8 +275,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Note that you need to leave the empty provider definition in the file, so that Terraform knows to install the Cloudflare plugin.</p>
-<p>After completing the above step, it's a good idea to make sure that you can still authenticate to Cloudflare. By running <code>terraform plan</code> we can get Terraform to pull the current state (which requires a valid email and API key):</p>
+<p data-astro-cid-yoyuw6fx="">Note that you need to leave the empty provider definition in the file, so that Terraform knows to install the Cloudflare plugin.</p>
+<p data-astro-cid-yoyuw6fx="">After completing the above step, it's a good idea to make sure that you can still authenticate to Cloudflare. By running <code>terraform plan</code> we can get Terraform to pull the current state (which requires a valid email and API key):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> plan</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Refreshing</span><span class="sk-032f62-99ffe4"> Terraform</span><span class="sk-032f62-99ffe4"> state</span><span class="sk-032f62-99ffe4"> in-memory</span><span class="sk-032f62-99ffe4"> prior</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> plan...</span></span>
@@ -300,7 +300,7 @@
 <ol>
 	<li>Store your configuration in GitHubNow that credentials have been removed, it's time to initialize a git repository with your Cloudflare configuration and then push it to GitHub.</li>
 </ol>
-<p>First we'll create the GitHub repository to store the config. This can be done via the GitHub UI or with a simple API call:</p>
+<p data-astro-cid-yoyuw6fx="">First we'll create the GitHub repository to store the config. This can be done via the GitHub UI or with a simple API call:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> export</span><span class="sk-032f62-99ffe4"> GITHUB_USER=your-github-user</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> export</span><span class="sk-032f62-99ffe4"> GITHUB_TOKEN=your-github-token</span></span>
@@ -315,7 +315,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Now we'll initialize a git repository and make our first commit:</p>
+<p data-astro-cid-yoyuw6fx="">Now we'll initialize a git repository and make our first commit:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> init</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Initialized</span><span class="sk-032f62-99ffe4"> empty</span><span class="sk-032f62-99ffe4"> Git</span><span class="sk-032f62-99ffe4"> repository</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-24292e-fff"> $HOME</span><span class="sk-032f62-99ffe4">/cf-config/.git/</span></span>
@@ -332,8 +332,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>An astute reader may have noticed that we did not commit the <code>.terraform</code> directory nor did we commit the <code>terraform.tfstate</code> file. The former was not committed because this repository may be used on a different architecture, and the plugins contained in this directory are built for the system on which terraform init was run. The latter was not committed as i) it may eventually contain sensitive strings and ii) it is not a good way to keep state in sync, as HashiCorp [explains].</p>
-<p>To prevent git from bugging us about these files, let's add them to a new <code>.gitignore</code> file, commit it, and push everything to GitHub:</p>
+<p data-astro-cid-yoyuw6fx="">An astute reader may have noticed that we did not commit the <code>.terraform</code> directory nor did we commit the <code>terraform.tfstate</code> file. The former was not committed because this repository may be used on a different architecture, and the plugins contained in this directory are built for the system on which terraform init was run. The latter was not committed as i) it may eventually contain sensitive strings and ii) it is not a good way to keep state in sync, as HashiCorp [explains].</p>
+<p data-astro-cid-yoyuw6fx="">To prevent git from bugging us about these files, let's add them to a new <code>.gitignore</code> file, commit it, and push everything to GitHub:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> .gitignore</span><span class="sk-d73a49-a0a0a0"> &lt;&lt;</span><span class="sk-032f62-fff">'EOF'</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">.terraform/</span></span>
@@ -360,11 +360,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3>Applying zone settings</h3>
-<p>Now that you've got a basic website proxied through Cloudflare, it's time to use Terraform to adjust some additional settings on your zone. Below we'll configure some optional HTTPS settings, and then push the updated configuration to GitHub for posterity.</p>
-<p>We'll use a new git branch for the changes, and then merge it into master before applying. On a team, you might consider using this step as an opportunity for others to review your change before merging and deploying it. Or you may integrate Terraform into your <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd" target="_blank" rel="noopener noreferrer">CI/CD system</a> to perform tests automatically using another Cloudflare domain.</p>
-<h4>1. Create a new branch and append the new zone settings</h4>
-<p>Here, we modify the Terraform configuration to enable the following settings: <a href="https://www.cloudflare.com/learning-resources/tls-1-3" target="_blank" rel="noopener noreferrer">TLS 1.3</a>, <a href="https://blog.cloudflare.com/how-to-make-your-site-https-only">Always Use HTTPS</a>, <a href="https://blog.cloudflare.com/introducing-strict-ssl-protecting-against-a-man-in-the-middle-attack-on-origin-traffic">Strict SSL mode</a>, and the <a href="https://www.cloudflare.com/waf" target="_blank" rel="noopener noreferrer">Cloudflare WAF</a>. Strict mode requires a valid SSL certificate on your origin, so be sure to use the <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin">Cloudflare Origin CA</a> to generate one.</p>
+<h3 data-astro-cid-yoyuw6fx="">Applying zone settings</h3>
+<p data-astro-cid-yoyuw6fx="">Now that you've got a basic website proxied through Cloudflare, it's time to use Terraform to adjust some additional settings on your zone. Below we'll configure some optional HTTPS settings, and then push the updated configuration to GitHub for posterity.</p>
+<p data-astro-cid-yoyuw6fx="">We'll use a new git branch for the changes, and then merge it into master before applying. On a team, you might consider using this step as an opportunity for others to review your change before merging and deploying it. Or you may integrate Terraform into your <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd" target="_blank" rel="noopener noreferrer">CI/CD system</a> to perform tests automatically using another Cloudflare domain.</p>
+<h4 data-astro-cid-yoyuw6fx="">1. Create a new branch and append the new zone settings</h4>
+<p data-astro-cid-yoyuw6fx="">Here, we modify the Terraform configuration to enable the following settings: <a href="https://www.cloudflare.com/learning-resources/tls-1-3" target="_blank" rel="noopener noreferrer">TLS 1.3</a>, <a href="https://blog.cloudflare.com/how-to-make-your-site-https-only">Always Use HTTPS</a>, <a href="https://blog.cloudflare.com/introducing-strict-ssl-protecting-against-a-man-in-the-middle-attack-on-origin-traffic">Strict SSL mode</a>, and the <a href="https://www.cloudflare.com/waf" target="_blank" rel="noopener noreferrer">Cloudflare WAF</a>. Strict mode requires a valid SSL certificate on your origin, so be sure to use the <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin">Cloudflare Origin CA</a> to generate one.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> checkout</span><span class="sk-005cc5-99ffe4"> -b</span><span class="sk-032f62-99ffe4"> step3-https</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Switched</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> branch</span><span class="sk-032f62-99ffe4"> 'step3-https'</span></span>
@@ -387,8 +387,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4>2. Preview and merge the changes</h4>
-<p>Let's take a look at what Terraform is proposing before we apply it. We filter the <code>terraform plan</code> output to ignore those values that will be "computed”—in this case, settings that will be left at their default values. For brevity from here on out, we'll omit some extranneous Terraform output; if you'd like to see the output exactly as run, please see the <a href="https://developers.cloudflare.com/terraform/tutorial" target="_blank" rel="noopener noreferrer">full tutorial</a>.</p>
+<h4 data-astro-cid-yoyuw6fx="">2. Preview and merge the changes</h4>
+<p data-astro-cid-yoyuw6fx="">Let's take a look at what Terraform is proposing before we apply it. We filter the <code>terraform plan</code> output to ignore those values that will be "computed”—in this case, settings that will be left at their default values. For brevity from here on out, we'll omit some extranneous Terraform output; if you'd like to see the output exactly as run, please see the <a href="https://developers.cloudflare.com/terraform/tutorial" target="_blank" rel="noopener noreferrer">full tutorial</a>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> plan</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-032f62-99ffe4"> "&lt;computed&gt;"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Refreshing</span><span class="sk-032f62-99ffe4"> Terraform</span><span class="sk-032f62-99ffe4"> state</span><span class="sk-032f62-99ffe4"> in-memory</span><span class="sk-032f62-99ffe4"> prior</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> plan...</span></span>
@@ -420,7 +420,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>The proposed changes look good, so we'll merge them into primary and then apply them with <code>terraform apply</code>. When working on a team, you may want to require pull requests and use this opportunity to peer review any proposed configuration changes.</p>
+<p data-astro-cid-yoyuw6fx="">The proposed changes look good, so we'll merge them into primary and then apply them with <code>terraform apply</code>. When working on a team, you may want to require pull requests and use this opportunity to peer review any proposed configuration changes.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> commit</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> "Step 3 - Enable TLS 1.3, Always Use HTTPS, and SSL Strict mode."</span></span>
@@ -450,8 +450,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4>3. Apply and verify the changes</h4>
-<p>Before applying the changes, let's see if we can connect with TLS 1.3. Hint: we should <em>not</em> be able to with default settings. If you want to follow along with this test, you'll need to [compile curl against BoringSSL].</p>
+<h4 data-astro-cid-yoyuw6fx="">3. Apply and verify the changes</h4>
+<p data-astro-cid-yoyuw6fx="">Before applying the changes, let's see if we can connect with TLS 1.3. Hint: we should <em>not</em> be able to with default settings. If you want to follow along with this test, you'll need to [compile curl against BoringSSL].</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-005cc5-99ffe4"> --tlsv1.3</span><span class="sk-032f62-99ffe4"> https://www.upinatoms.com</span><span class="sk-d73a49-a0a0a0"> 2&gt;&amp;1</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> "SSL connection\|error"</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> error:1000042e:SSL routines:OPENSSL_internal:TLSV1_ALERT_PROTOCOL_VERSION</span></span>
@@ -461,7 +461,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>As shown above, we receive an error as TLS 1.3 is not yet enabled on your zone. Let's enable it by running terraform apply and try again:</p>
+<p data-astro-cid-yoyuw6fx="">As shown above, we receive an error as TLS 1.3 is not yet enabled on your zone. Let's enable it by running terraform apply and try again:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> apply</span><span class="sk-005cc5-99ffe4"> --auto-approve</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cloudflare_record.www:</span><span class="sk-032f62-99ffe4"> Refreshing</span><span class="sk-032f62-99ffe4"> state...</span><span class="sk-24292e-fff"> (ID: </span><span class="sk-032f62-99ffe4">c38d3103767284e7cd14d5dad3ab8668</span><span class="sk-24292e-fff">)</span></span>
@@ -523,7 +523,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Now we can try the same command as above, and see that it succeeds. Niiice, TLS 1.3!</p>
+<p data-astro-cid-yoyuw6fx="">Now we can try the same command as above, and see that it succeeds. Niiice, TLS 1.3!</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-005cc5-99ffe4"> --tlsv1.3</span><span class="sk-032f62-99ffe4"> https://www.example.com</span><span class="sk-d73a49-a0a0a0"> 2&gt;&amp;1</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> "SSL connection\|error"</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> SSL connection using TLSv1.3 / AEAD-AES128-GCM-SHA256</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -532,11 +532,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3>Managing rate limits</h3>
-<p><em>Before proceeding, make sure that your account is enabled for Rate Limiting. If you’re on an Enterprise plan, you should ask your Customer Success Manager to do this; otherwise, you can subscribe to Rate Limiting within the Cloudflare Dashboard.</em></p>
-<p>With our zone settings locked down, and our site starting to get some more attention, it's unfortunately begun attracting some of the less scrupulous characters on the internet. Our server access logs show attempts to brute force our login page at <code>https://www.example.com/login</code>. Let's see what we can do with Cloudflare's <a href="https://www.cloudflare.com/application-services/products/rate-limiting" target="_blank" rel="noopener noreferrer">rate limiting product</a>) to put a stop to these efforts.</p>
-<h4>1. Create a new branch and append the rate limiting settings</h4>
-<p>After creating a new branch we specify the rate limiting rule:</p>
+<h3 data-astro-cid-yoyuw6fx="">Managing rate limits</h3>
+<p data-astro-cid-yoyuw6fx=""><em>Before proceeding, make sure that your account is enabled for Rate Limiting. If you’re on an Enterprise plan, you should ask your Customer Success Manager to do this; otherwise, you can subscribe to Rate Limiting within the Cloudflare Dashboard.</em></p>
+<p data-astro-cid-yoyuw6fx="">With our zone settings locked down, and our site starting to get some more attention, it's unfortunately begun attracting some of the less scrupulous characters on the internet. Our server access logs show attempts to brute force our login page at <code>https://www.example.com/login</code>. Let's see what we can do with Cloudflare's <a href="https://www.cloudflare.com/application-services/products/rate-limiting" target="_blank" rel="noopener noreferrer">rate limiting product</a>) to put a stop to these efforts.</p>
+<h4 data-astro-cid-yoyuw6fx="">1. Create a new branch and append the rate limiting settings</h4>
+<p data-astro-cid-yoyuw6fx="">After creating a new branch we specify the rate limiting rule:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> checkout</span><span class="sk-005cc5-99ffe4"> -b</span><span class="sk-032f62-99ffe4"> step4-ratelimit</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Switched</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> branch</span><span class="sk-032f62-99ffe4"> 'step4-ratelimit'</span></span>
@@ -575,7 +575,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>This rule is a bit more complex than the zone settings rule, so let's break it down:</p>
+<p data-astro-cid-yoyuw6fx="">This rule is a bit more complex than the zone settings rule, so let's break it down:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">00:</span><span class="sk-032f62-99ffe4"> resource</span><span class="sk-032f62-99ffe4"> "cloudflare_rate_limit"</span><span class="sk-032f62-99ffe4"> "login-limit"</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">01:</span><span class="sk-032f62-99ffe4">   zone</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">var</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">domain</span><span class="sk-032f62-99ffe4">}"</span></span>
@@ -587,7 +587,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>The threshold is an integer count of how many times an event (defined by the match block below) has to be detected in the period before the rule takes action. The period is measured in seconds, so the above rule says to take action if the match fires 5 times in 60 seconds.</p>
+<p data-astro-cid-yoyuw6fx="">The threshold is an integer count of how many times an event (defined by the match block below) has to be detected in the period before the rule takes action. The period is measured in seconds, so the above rule says to take action if the match fires 5 times in 60 seconds.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">05:</span><span class="sk-032f62-99ffe4">   match</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">06:</span><span class="sk-032f62-99ffe4">     request</span><span class="sk-032f62-99ffe4"> {</span></span>
@@ -604,7 +604,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>The match block tells the Cloudflare edge what to be on the lookout for, i.e., HTTP or HTTPS POST requests to <code>https://www.example.com/login</code>. We further restrict the match to HTTP <code>401/Unauthorized</code> or <code>403/Forbidden</code> response codes returned from the origin.</p>
+<p data-astro-cid-yoyuw6fx="">The match block tells the Cloudflare edge what to be on the lookout for, i.e., HTTP or HTTPS POST requests to <code>https://www.example.com/login</code>. We further restrict the match to HTTP <code>401/Unauthorized</code> or <code>403/Forbidden</code> response codes returned from the origin.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">15:</span><span class="sk-032f62-99ffe4">   action</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">16:</span><span class="sk-032f62-99ffe4">     mode</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "simulate"</span></span>
@@ -622,9 +622,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>After matching traffic, we set the action for our edge to take. When testing, it's a good idea to set the mode to simulate and review logs before taking enforcement action (see below). The timeout field here indicates that we want to enforce this action for 300 seconds (5 minutes) and the response block indicates what should be sent back to the caller that tripped the rate limit.</p>
-<h4>2. Preview and merge the changes</h4>
-<p>As usual, we take a look at the proposed plan before we apply any changes:</p>
+<p data-astro-cid-yoyuw6fx="">After matching traffic, we set the action for our edge to take. When testing, it's a good idea to set the mode to simulate and review logs before taking enforcement action (see below). The timeout field here indicates that we want to enforce this action for 300 seconds (5 minutes) and the response block indicates what should be sent back to the caller that tripped the rate limit.</p>
+<h4 data-astro-cid-yoyuw6fx="">2. Preview and merge the changes</h4>
+<p data-astro-cid-yoyuw6fx="">As usual, we take a look at the proposed plan before we apply any changes:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> plan</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
@@ -665,7 +665,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>The plan looks good so let's go ahead, merge it in, and apply it.</p>
+<p data-astro-cid-yoyuw6fx="">The plan looks good so let's go ahead, merge it in, and apply it.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> commit</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> "Step 4 - Add rate limiting rule to protect /login."</span></span>
@@ -718,7 +718,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Note that if you haven't purchased rate limiting yet, you will see the following error when attempting to apply the new rule:</p>
+<p data-astro-cid-yoyuw6fx="">Note that if you haven't purchased rate limiting yet, you will see the following error when attempting to apply the new rule:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Error:</span><span class="sk-032f62-99ffe4"> Error</span><span class="sk-032f62-99ffe4"> applying</span><span class="sk-032f62-99ffe4"> plan:</span></span>
 <span class="line"></span>
@@ -732,8 +732,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4>3. Update the rule to ban (not just simulate)</h4>
-<p>After confirming that the rule is triggering as planned in logs (but not yet enforcing), it's time to switch from simulate to ban:</p>
+<h4 data-astro-cid-yoyuw6fx="">3. Update the rule to ban (not just simulate)</h4>
+<p data-astro-cid-yoyuw6fx="">After confirming that the rule is triggering as planned in logs (but not yet enforcing), it's time to switch from simulate to ban:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> checkout</span><span class="sk-032f62-99ffe4"> step4-ratelimit</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sed</span><span class="sk-005cc5-99ffe4"> -i.bak</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> 's/simulate/ban/'</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span></span>
@@ -784,7 +784,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4>4. Merge and deploy the updated rule, then push config to GitHub</h4>
+<h4 data-astro-cid-yoyuw6fx="">4. Merge and deploy the updated rule, then push config to GitHub</h4>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span></span>
 <span class="line"></span>
@@ -826,8 +826,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4>5. Confirm the rule works as expected</h4>
-<p>This step is optional, but it's a good way to demonstrate that the rule is working as expected (note the final <code>429</code> response):</p>
+<h4 data-astro-cid-yoyuw6fx="">5. Confirm the rule works as expected</h4>
+<p data-astro-cid-yoyuw6fx="">This step is optional, but it's a good way to demonstrate that the rule is working as expected (note the final <code>429</code> response):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> {1..6}</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">do</span><span class="sk-6f42c1-ffc799"> curl</span><span class="sk-005cc5-99ffe4"> -XPOST</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4"> '{"username": "foo", "password": "bar"}'</span><span class="sk-005cc5-99ffe4"> -vso</span><span class="sk-032f62-99ffe4"> /dev/null</span><span class="sk-032f62-99ffe4"> https://www.example.com/login</span><span class="sk-d73a49-a0a0a0"> 2&gt;&amp;1</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> "&lt; HTTP"</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">sleep</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">done</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/1.1 401 Unauthorized</span></span>
@@ -841,8 +841,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3>Wrapping up</h3>
-<p>That's it for today! Stay tuned next week for <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-2">part 2 of this post</a>, where we continue the tour through the following resources and techniques:</p>
+<h3 data-astro-cid-yoyuw6fx="">Wrapping up</h3>
+<p data-astro-cid-yoyuw6fx="">That's it for today! Stay tuned next week for <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-2">part 2 of this post</a>, where we continue the tour through the following resources and techniques:</p>
 <ul>
 	<li>Load Balancing Resource</li>
 	<li>Page Rules Resource</li>

@@ -1,7 +1,7 @@
-<p>The following blog post describes a debugging adventure on Cloudflare's <a href="https://mesos.apache.org" target="_blank" rel="noopener noreferrer">Mesos</a>-based cluster. This internal cluster is primarily used to process log file information so that Cloudflare customers have analytics, and for our systems that detect and respond to attacks.</p>
-<p>The problem encountered didn't have any effect on our customers, but did have engineers scratching their heads...</p>
-<h3>The Problem</h3>
-<p>At some point in one of our cluster we started seeing errors like this (an NXDOMAIN for an existing domain on our internal DNS):</p>
+<p data-astro-cid-yoyuw6fx="">The following blog post describes a debugging adventure on Cloudflare's <a href="https://mesos.apache.org" target="_blank" rel="noopener noreferrer">Mesos</a>-based cluster. This internal cluster is primarily used to process log file information so that Cloudflare customers have analytics, and for our systems that detect and respond to attacks.</p>
+<p data-astro-cid-yoyuw6fx="">The problem encountered didn't have any effect on our customers, but did have engineers scratching their heads...</p>
+<h3 data-astro-cid-yoyuw6fx="">The Problem</h3>
+<p data-astro-cid-yoyuw6fx="">At some point in one of our cluster we started seeing errors like this (an NXDOMAIN for an existing domain on our internal DNS):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">lookup</span><span class="sk-032f62-99ffe4"> some.existing.internal.host</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> 10.1.0.9:53:</span><span class="sk-032f62-99ffe4"> no</span><span class="sk-032f62-99ffe4"> such</span><span class="sk-032f62-99ffe4"> host</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -27,8 +27,8 @@
 		})
 	});
 </script>
-<p>This seemed very weird, since the domain did indeed exist. It was one of our internal domains! Engineers had mentioned that they'd seen this behaviour, so we decided to investigate deeper. Queries triggering this error were varied and ranged from dynamic SRV records managed by mesos-dns to external domains looked up from inside the cluster.</p>
-<p>Our first naive attempt was to run the following in a loop:</p>
+<p data-astro-cid-yoyuw6fx="">This seemed very weird, since the domain did indeed exist. It was one of our internal domains! Engineers had mentioned that they'd seen this behaviour, so we decided to investigate deeper. Queries triggering this error were varied and ranged from dynamic SRV records managed by mesos-dns to external domains looked up from inside the cluster.</p>
+<p data-astro-cid-yoyuw6fx="">Our first naive attempt was to run the following in a loop:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">while</span><span class="sk-005cc5-ffc799"> true</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">do</span><span class="sk-6f42c1-ffc799"> dig</span><span class="sk-032f62-99ffe4"> some.existing.internal.host</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> /tmp/dig.txt</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-d73a49-a0a0a0"> break</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">done</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -36,9 +36,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Running this for a while on one server did not reproduce the problem: all the lookups were successful. Then we took our service logs for a day and did a grep for “no such host” and similar messages. Errors were happening sporadically. There were hours between errors and no obvious pattern that could lead us to any conclusion. Our investigation discarded the possibility that the error lay in Go, which we use for lots of our services, since errors were coming from Java services too.</p>
-<h3>Into the rabbit hole</h3>
-<p>We used to run <a href="https://www.unbound.net" target="_blank" rel="noopener noreferrer">Unbound</a> on a single IP across a few machines for our cluster DNS resolver. BGP is then responsible for announcing internal routes from the machines to the router. We decided to try to find a pattern by sending lots of requests from different machines and recording errors. Here’s what our load testing program looked like at first:</p>
+<p data-astro-cid-yoyuw6fx="">Running this for a while on one server did not reproduce the problem: all the lookups were successful. Then we took our service logs for a day and did a grep for “no such host” and similar messages. Errors were happening sporadically. There were hours between errors and no obvious pattern that could lead us to any conclusion. Our investigation discarded the possibility that the error lay in Go, which we use for lots of our services, since errors were coming from Java services too.</p>
+<h3 data-astro-cid-yoyuw6fx="">Into the rabbit hole</h3>
+<p data-astro-cid-yoyuw6fx="">We used to run <a href="https://www.unbound.net" target="_blank" rel="noopener noreferrer">Unbound</a> on a single IP across a few machines for our cluster DNS resolver. BGP is then responsible for announcing internal routes from the machines to the router. We decided to try to find a pattern by sending lots of requests from different machines and recording errors. Here’s what our load testing program looked like at first:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">package</span><span class="sk-032f62-99ffe4"> main</span></span>
 <span class="line"></span>
@@ -75,16 +75,16 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>We run <code>net.LookupHost</code> in a loop with small pauses and log errors; that’s it. Packaging this into a <a href="https://www.docker.com" target="_blank" rel="noopener noreferrer">Docker</a> container and running on Marathon was an obvious choice for us, since that is how we run other services anyway. Logs get shipped to <a href="https://kafka.apache.org" target="_blank" rel="noopener noreferrer">Kafka</a> and then to <a href="https://www.elastic.co/products/kibana" target="_blank" rel="noopener noreferrer">Kibana</a>, where we can analyze them. Running this program on 65 machines doing lookups every 50ms shows the following error distribution (from high to low) across hosts:</p>
-<p>We saw no strong correlation to racks or specific machines. Errors happened on many hosts, but not on all of them and in different time windows errors happen on different machines. Putting time on X axis and number of errors on Y axis showed the following:</p>
+<p data-astro-cid-yoyuw6fx="">We run <code>net.LookupHost</code> in a loop with small pauses and log errors; that’s it. Packaging this into a <a href="https://www.docker.com" target="_blank" rel="noopener noreferrer">Docker</a> container and running on Marathon was an obvious choice for us, since that is how we run other services anyway. Logs get shipped to <a href="https://kafka.apache.org" target="_blank" rel="noopener noreferrer">Kafka</a> and then to <a href="https://www.elastic.co/products/kibana" target="_blank" rel="noopener noreferrer">Kibana</a>, where we can analyze them. Running this program on 65 machines doing lookups every 50ms shows the following error distribution (from high to low) across hosts:</p>
+<p data-astro-cid-yoyuw6fx="">We saw no strong correlation to racks or specific machines. Errors happened on many hosts, but not on all of them and in different time windows errors happen on different machines. Putting time on X axis and number of errors on Y axis showed the following:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="94" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489BM859YJKPPC2XN1HNYY.png&amp;w=715&amp;h=94&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489BM859YJKPPC2XN1HNYY.png&amp;w=640&amp;h=84&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489BM859YJKPPC2XN1HNYY.png&amp;w=715&amp;h=94&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489BM859YJKPPC2XN1HNYY.png&amp;w=750&amp;h=99&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489BM859YJKPPC2XN1HNYY.png&amp;w=828&amp;h=109&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489BM859YJKPPC2XN1HNYY.png&amp;w=1080&amp;h=142&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489BM859YJKPPC2XN1HNYY.png&amp;w=1280&amp;h=168&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489BM859YJKPPC2XN1HNYY.png&amp;w=1430&amp;h=188&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Debugging war story: the mystery of NXDOMAIN Embedded Image - tCOw1c" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489BM859YJKPPC2XN1HNYY.png&amp;w=1579&amp;h=208&amp;f=webp" data-lightbox-width="1579" data-lightbox-height="208" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="94" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p>To see if some particular DNS recursor had gone crazy, we stopped all load generators on regular machines and started the load generation tool on the recursors themselves. There were no errors in a few hours, which suggested that Unbound was perfectly healthy.</p>
-<p>We started to suspect that packet loss was the issue, but why would “no such host” occur? It should only happen when an NXDOMAIN error is in a DNS response, but our theory was that replies didn’t come back at all.</p>
-<h3>The Missing</h3>
-<p>To test the hypothesis that losing packets can lead to a “no such host” error, we first tried blocking outgoing traffic on port 53:</p>
+<p data-astro-cid-yoyuw6fx="">To see if some particular DNS recursor had gone crazy, we stopped all load generators on regular machines and started the load generation tool on the recursors themselves. There were no errors in a few hours, which suggested that Unbound was perfectly healthy.</p>
+<p data-astro-cid-yoyuw6fx="">We started to suspect that packet loss was the issue, but why would “no such host” occur? It should only happen when an NXDOMAIN error is in a DNS response, but our theory was that replies didn’t come back at all.</p>
+<h3 data-astro-cid-yoyuw6fx="">The Missing</h3>
+<p data-astro-cid-yoyuw6fx="">To test the hypothesis that losing packets can lead to a “no such host” error, we first tried blocking outgoing traffic on port 53:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> iptables</span><span class="sk-005cc5-99ffe4"> -A</span><span class="sk-032f62-99ffe4"> OUTPUT</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-005cc5-99ffe4"> --dport</span><span class="sk-005cc5-ffc799"> 53</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -92,7 +92,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>In this case, dig and similar tools just time out, but don’t return “no such host”:</p>
+<p data-astro-cid-yoyuw6fx="">In this case, dig and similar tools just time out, but don’t return “no such host”:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">&lt;&lt;</span><span class="sk-032f62-fff">&gt;&gt;</span><span class="sk-6f42c1-ffc799"> DiG</span><span class="sk-032f62-99ffe4"> 9.9.5-9+deb8u3-Debian</span><span class="sk-d73a49-a0a0a0"> &lt;&lt;</span><span class="sk-032f62-fff">&gt;&gt;</span><span class="sk-6f42c1-ffc799"> cloudflare.com</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">;; global options: +cmd</span></span>
@@ -102,7 +102,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Go is a bit smarter and tells you more about what’s going on, but doesn't return “no such host” either:</p>
+<p data-astro-cid-yoyuw6fx="">Go is a bit smarter and tells you more about what’s going on, but doesn't return “no such host” either:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">error:</span><span class="sk-032f62-99ffe4"> lookup</span><span class="sk-032f62-99ffe4"> cloudflare.com</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> 10.1.0.9:53:</span><span class="sk-032f62-99ffe4"> write</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-032f62-99ffe4"> 10.1.14.20:47442</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">10.1.0.9:53:</span><span class="sk-032f62-99ffe4"> write:</span><span class="sk-032f62-99ffe4"> operation</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> permitted</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -110,7 +110,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Since the Linux kernel tells the sender that it dropped packets, we had to point the nameserver to some black hole in the network that does nothing with packets to mimic packet loss. Still no luck:</p>
+<p data-astro-cid-yoyuw6fx="">Since the Linux kernel tells the sender that it dropped packets, we had to point the nameserver to some black hole in the network that does nothing with packets to mimic packet loss. Still no luck:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">error:</span><span class="sk-032f62-99ffe4"> lookup</span><span class="sk-032f62-99ffe4"> cloudflare.com</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> 10.1.2.9:53:</span><span class="sk-032f62-99ffe4"> read</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-032f62-99ffe4"> 10.1.14.20:39046</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">10.1.2.9:53:</span><span class="sk-032f62-99ffe4"> i/o</span><span class="sk-032f62-99ffe4"> timeout</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -118,7 +118,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>To continue <em>blaming the network</em> we had to support our assumptions somehow, so we added timing information to our lookups:</p>
+<p data-astro-cid-yoyuw6fx="">To continue <em>blaming the network</em> we had to support our assumptions somehow, so we added timing information to our lookups:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">s</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> time.Now</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">_,</span><span class="sk-032f62-99ffe4"> err</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> net.LookupHost</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">n)</span></span>
@@ -133,8 +133,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>To be honest, we started by timing errors and added success timing later. Errors were happening after 10s, comparatively many successful responses were coming after 5s. It does look like packet loss, but still does not tell us why “no such host” happens.</p>
-<p>Since now we were in a place when we knew which hosts were more likely to be affected by this, we ran the following two commands in parallel in two <code>screen</code> sessions:</p>
+<p data-astro-cid-yoyuw6fx="">To be honest, we started by timing errors and added success timing later. Errors were happening after 10s, comparatively many successful responses were coming after 5s. It does look like packet loss, but still does not tell us why “no such host” happens.</p>
+<p data-astro-cid-yoyuw6fx="">Since now we were in a place when we knew which hosts were more likely to be affected by this, we ran the following two commands in parallel in two <code>screen</code> sessions:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">while</span><span class="sk-005cc5-ffc799"> true</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">do</span><span class="sk-6f42c1-ffc799"> dig</span><span class="sk-032f62-99ffe4"> cloudflare.com</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> /tmp/dig.log</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-d73a49-a0a0a0"> break</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">done</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">date</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> killall</span><span class="sk-032f62-99ffe4"> tcpdump</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> tcpdump</span><span class="sk-005cc5-99ffe4"> -w</span><span class="sk-032f62-99ffe4"> /state/wtf.cap</span><span class="sk-032f62-99ffe4"> port</span><span class="sk-005cc5-ffc799"> 53</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -143,7 +143,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>The point was to get a network dump with failed resolves. In there, we saw the following queries:</p>
+<p data-astro-cid-yoyuw6fx="">The point was to get a network dump with failed resolves. In there, we saw the following queries:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">00.00s</span><span class="sk-032f62-99ffe4"> A</span><span class="sk-032f62-99ffe4"> cloudflare.com</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">05.00s</span><span class="sk-032f62-99ffe4"> A</span><span class="sk-032f62-99ffe4"> cloudflare.com</span></span>
@@ -153,9 +153,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Two queries time out without any answer, but the third one gets lucky and succeeds. Naturally, we don’t have cloudflare.com in our internal domain, so Unbound rightfully gives NXDOMAIN in reply, 10s after the lookup was initiated.</p>
-<h3>Bingo</h3>
-<p>Let’s look at /etc/resolv.conf to understand more:</p>
+<p data-astro-cid-yoyuw6fx="">Two queries time out without any answer, but the third one gets lucky and succeeds. Naturally, we don’t have cloudflare.com in our internal domain, so Unbound rightfully gives NXDOMAIN in reply, 10s after the lookup was initiated.</p>
+<h3 data-astro-cid-yoyuw6fx="">Bingo</h3>
+<p data-astro-cid-yoyuw6fx="">Let’s look at /etc/resolv.conf to understand more:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">nameserver</span><span class="sk-005cc5-ffc799"> 10.1.0.9</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">search</span><span class="sk-032f62-99ffe4"> in.our.internal.domain</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -164,16 +164,16 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Using the search keyword allows us to use short hostnames instead of FQDN, making <code>myhost</code> transparently equivalent to <code>myhost.in.our.internal.domain</code>.</p>
-<p>For the DNS resolver it means the following: for any DNS query ask the nameserver 10.1.0.9, if this fails, append <code>.in.our.internal.domain</code> to the query and retry. It doesn’t matter what failure occurs for the original DNS query. Usually it is NXDOMAIN, but in our case it’s a read timeout due to packet loss.</p>
-<p>The following events seemed to have to occur for a “no such host” error to appear:</p>
+<p data-astro-cid-yoyuw6fx="">Using the search keyword allows us to use short hostnames instead of FQDN, making <code>myhost</code> transparently equivalent to <code>myhost.in.our.internal.domain</code>.</p>
+<p data-astro-cid-yoyuw6fx="">For the DNS resolver it means the following: for any DNS query ask the nameserver 10.1.0.9, if this fails, append <code>.in.our.internal.domain</code> to the query and retry. It doesn’t matter what failure occurs for the original DNS query. Usually it is NXDOMAIN, but in our case it’s a read timeout due to packet loss.</p>
+<p data-astro-cid-yoyuw6fx="">The following events seemed to have to occur for a “no such host” error to appear:</p>
 <ol>
 	<li>The original DNS request has to be lost</li>
 	<li>The retry that is sent after 5 seconds has to be lost</li>
 	<li>The subsequent query for the internal domain (caused by the <code>search</code> option) has to succeed and return NXDOMAIN</li>
 </ol>
-<p>On the other hand, to observe a timed out DNS query instead of NXDOMAIN, you have to lose four packets sent 5 seconds one after another (2 for the original query and 2 for the internal version of your domain), which is a much smaller probability. In fact, we only saw an NXDOMAIN after 15s once and never saw an error after 20s.</p>
-<p>To validate that assumption, we built a proof-of-concept DNS server that drops all requests for cloudflare.com, but sends an NXDOMAIN for existing domains:</p>
+<p data-astro-cid-yoyuw6fx="">On the other hand, to observe a timed out DNS query instead of NXDOMAIN, you have to lose four packets sent 5 seconds one after another (2 for the original query and 2 for the internal version of your domain), which is a much smaller probability. In fact, we only saw an NXDOMAIN after 15s once and never saw an error after 20s.</p>
+<p data-astro-cid-yoyuw6fx="">To validate that assumption, we built a proof-of-concept DNS server that drops all requests for cloudflare.com, but sends an NXDOMAIN for existing domains:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">package</span><span class="sk-032f62-99ffe4"> main</span></span>
 <span class="line"></span>
@@ -213,17 +213,17 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Finally, we found what was going on and had a way of reliably replicating that behaviour.</p>
-<h3>Solutions</h3>
-<p>Let's think about how we can improve our client to better handle these transient network issues, making it more resilient. The man page for resolv.conf tells you that you have two knobs: the <code>timeout</code> and <code>retries</code> options. The default values are 5 and 2 respectively.</p>
-<p>Unless you keep your DNS server very busy, it is very unlikely that it would take it more than 1 second to reply. In fact, if you happen to have a network device on the Moon, you can expect it to reply in 3 seconds. If your nameserver lives in the next rack and is reachable over a high-speed network, you can safely assume that if there is no reply after 1 second, your DNS server did not get your query. If you want to have less weird “no such domain” errors that make you scratch your head, you might as well increase retries. The more times you retry with transient packet loss, the less chance of failure. The more often you retry, the higher chances to finish faster.</p>
-<p>Imagine that you have truly random 1% packet loss.</p>
+<p data-astro-cid-yoyuw6fx="">Finally, we found what was going on and had a way of reliably replicating that behaviour.</p>
+<h3 data-astro-cid-yoyuw6fx="">Solutions</h3>
+<p data-astro-cid-yoyuw6fx="">Let's think about how we can improve our client to better handle these transient network issues, making it more resilient. The man page for resolv.conf tells you that you have two knobs: the <code>timeout</code> and <code>retries</code> options. The default values are 5 and 2 respectively.</p>
+<p data-astro-cid-yoyuw6fx="">Unless you keep your DNS server very busy, it is very unlikely that it would take it more than 1 second to reply. In fact, if you happen to have a network device on the Moon, you can expect it to reply in 3 seconds. If your nameserver lives in the next rack and is reachable over a high-speed network, you can safely assume that if there is no reply after 1 second, your DNS server did not get your query. If you want to have less weird “no such domain” errors that make you scratch your head, you might as well increase retries. The more times you retry with transient packet loss, the less chance of failure. The more often you retry, the higher chances to finish faster.</p>
+<p data-astro-cid-yoyuw6fx="">Imagine that you have truly random 1% packet loss.</p>
 <ul>
 	<li>2 retries, 5s timeout: max 10s wait before error, 0.001% chance of failure</li>
 	<li>5 retries, 1s timeout: max 5s wait before error, 0.000001% chance of failure</li>
 </ul>
-<p>In real life, the distribution would be different due to the fact that packet loss is not random, but you can expect to wait much less for DNS to reply with this type of change.</p>
-<p>As you know many system libraries that provide DNS resolution like glibc, nscd, systemd-resolved are not hardened to handle being on the internet or in a environment with packet losses. We have faced the challenge of creating a reliable and fast DNS resolution environment a number of times as we have grown, only to later discover that the solution is not perfect.</p>
-<h3>Over to you</h3>
-<p>Given what you have read in this article about packet loss and split-DNS/private-namespace, how would you design a fast and reliable resolution setup? What software would you use and why? What tuning changes from standard configuration would you use?</p>
-<p>We'd love to hear your ideas in the comments. And, if you like working on problems like send us your resume. We are <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">hiring</a>.</p>
+<p data-astro-cid-yoyuw6fx="">In real life, the distribution would be different due to the fact that packet loss is not random, but you can expect to wait much less for DNS to reply with this type of change.</p>
+<p data-astro-cid-yoyuw6fx="">As you know many system libraries that provide DNS resolution like glibc, nscd, systemd-resolved are not hardened to handle being on the internet or in a environment with packet losses. We have faced the challenge of creating a reliable and fast DNS resolution environment a number of times as we have grown, only to later discover that the solution is not perfect.</p>
+<h3 data-astro-cid-yoyuw6fx="">Over to you</h3>
+<p data-astro-cid-yoyuw6fx="">Given what you have read in this article about packet loss and split-DNS/private-namespace, how would you design a fast and reliable resolution setup? What software would you use and why? What tuning changes from standard configuration would you use?</p>
+<p data-astro-cid-yoyuw6fx="">We'd love to hear your ideas in the comments. And, if you like working on problems like send us your resume. We are <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">hiring</a>.</p>

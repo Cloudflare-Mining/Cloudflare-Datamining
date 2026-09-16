@@ -1,8 +1,8 @@
-<p><em>The following was originally written as a guest post by <a href="https://ashcon.app" target="_blank" rel="noopener noreferrer">Ashcon Partovi</a>, while a computer science and business undergraduate at the University of British Columbia in Vancouver, Canada. He's the founder of a popular Minecraft multiplayer server, <a href="https://stratus.network/forums" target="_blank" rel="noopener noreferrer">stratus.network</a>, that provides competitive, team-based gameplay to thousands of players every week. He also now works at Cloudflare.</em></p>
-<p>If you've ever played a video game in the past couple of years, chances are you know about <a href="https://en.wikipedia.org/wiki/Minecraft" target="_blank" rel="noopener noreferrer"><em>Minecraft</em>.</a> You might be familiar with the game or even planted a tree or two, but what you might not know about is the vast number of <em>Minecraft</em> online communities. In this post, I'm going to describe how I used Cloudflare Workers to deploy and scale a production-grade API that solves a big problem for these <em>Minecraft</em> websites.</p>
-<h3>Introducing the Problem</h3>
-<p>Here is an example of my <em>Minecraft</em> <a href="https://stratus.network/ElectroidFilms" target="_blank" rel="noopener noreferrer">player profile</a> from one of the many multiplayer websites. It shows some identity information such as my username, a bitmap of my avatar, and a preview of my friends. Although rendering this page with 49 bitmap avatars may seem like an easy task, it's far from trivial. In fact, it's unnecessarily complicated.</p>
-<p>Here is the current workflow to render a player profile on a website given their username:</p>
+<p data-astro-cid-yoyuw6fx=""><em>The following was originally written as a guest post by <a href="https://ashcon.app" target="_blank" rel="noopener noreferrer">Ashcon Partovi</a>, while a computer science and business undergraduate at the University of British Columbia in Vancouver, Canada. He's the founder of a popular Minecraft multiplayer server, <a href="https://stratus.network/forums" target="_blank" rel="noopener noreferrer">stratus.network</a>, that provides competitive, team-based gameplay to thousands of players every week. He also now works at Cloudflare.</em></p>
+<p data-astro-cid-yoyuw6fx="">If you've ever played a video game in the past couple of years, chances are you know about <a href="https://en.wikipedia.org/wiki/Minecraft" target="_blank" rel="noopener noreferrer"><em>Minecraft</em>.</a> You might be familiar with the game or even planted a tree or two, but what you might not know about is the vast number of <em>Minecraft</em> online communities. In this post, I'm going to describe how I used Cloudflare Workers to deploy and scale a production-grade API that solves a big problem for these <em>Minecraft</em> websites.</p>
+<h3 data-astro-cid-yoyuw6fx="">Introducing the Problem</h3>
+<p data-astro-cid-yoyuw6fx="">Here is an example of my <em>Minecraft</em> <a href="https://stratus.network/ElectroidFilms" target="_blank" rel="noopener noreferrer">player profile</a> from one of the many multiplayer websites. It shows some identity information such as my username, a bitmap of my avatar, and a preview of my friends. Although rendering this page with 49 bitmap avatars may seem like an easy task, it's far from trivial. In fact, it's unnecessarily complicated.</p>
+<p data-astro-cid-yoyuw6fx="">Here is the current workflow to render a player profile on a website given their username:</p>
 <ol>
 	<li>Find the UUID from the player's username.</li>
 </ol>
@@ -95,10 +95,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Yikes, that's 5 complex operations required to render a single avatar! But that's not all, in my example profile, there are 49 avatars, which would require a total of <code>5 * 49 = 245</code> operations.</p>
-<p>And that's just <em>fetching</em> the data, we haven't even started to serve it to players! Then you have to setup a host to serve the web traffic, ensure that the service scales with demand, handle cache expiration of assets, and deploy across multiple regions. Then you have to deploy There has to be a better way!</p>
-<h3>Prototyping with Workers</h3>
-<p>I'm a strong believer in the future of serverless computing. So naturally, when I learned how <a href="https://developers.cloudflare.com/workers/about" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> allow you to run JavaScript code in 150+ points of presence, I started to tinker with the possibilities of solving this problem. After looking at the documentation and using the <a href="https://cloudflareworkers.com" target="_blank" rel="noopener noreferrer">Workers playground</a>, I quickly put together some JavaScript code that aggregated all that profile complexity into a single request.</p>
+<p data-astro-cid-yoyuw6fx="">Yikes, that's 5 complex operations required to render a single avatar! But that's not all, in my example profile, there are 49 avatars, which would require a total of <code>5 * 49 = 245</code> operations.</p>
+<p data-astro-cid-yoyuw6fx="">And that's just <em>fetching</em> the data, we haven't even started to serve it to players! Then you have to setup a host to serve the web traffic, ensure that the service scales with demand, handle cache expiration of assets, and deploy across multiple regions. Then you have to deploy There has to be a better way!</p>
+<h3 data-astro-cid-yoyuw6fx="">Prototyping with Workers</h3>
+<p data-astro-cid-yoyuw6fx="">I'm a strong believer in the future of serverless computing. So naturally, when I learned how <a href="https://developers.cloudflare.com/workers/about" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> allow you to run JavaScript code in 150+ points of presence, I started to tinker with the possibilities of solving this problem. After looking at the documentation and using the <a href="https://cloudflareworkers.com" target="_blank" rel="noopener noreferrer">Workers playground</a>, I quickly put together some JavaScript code that aggregated all that profile complexity into a single request.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">renderPlayerBitmap</span><span class="sk-24292e-fff">(event.request))</span></span>
@@ -138,10 +138,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Within a couple minutes I had my first Workers implementation! I gave it my username and it was able to make all the necessary sub-requests to return my player's bitmap texture.</p>
-<p>After realizing the potential of Workers, I started to wonder if I could use it for more than just a single script. What if I could design and deploy a production-ready API for <em>Minecraft</em> that runs exclusively on Workers?</p>
-<h3>Designing an API</h3>
-<p>I wanted to address an essential problem for <em>Minecraft</em> developers: too many APIs with too many restrictions. The hassle of parsing multiple requests and handling errors prevents developers from focusing on creating great experiences for players. There needs to be a solution that requires only <strong>1 HTTP request with no rate limiting and no client-side caching.</strong> After looking at the various use-cases for the existing APIs, I created a JSON schema that encompassed all the essential data into a single response:</p>
+<p data-astro-cid-yoyuw6fx="">Within a couple minutes I had my first Workers implementation! I gave it my username and it was able to make all the necessary sub-requests to return my player's bitmap texture.</p>
+<p data-astro-cid-yoyuw6fx="">After realizing the potential of Workers, I started to wonder if I could use it for more than just a single script. What if I could design and deploy a production-ready API for <em>Minecraft</em> that runs exclusively on Workers?</p>
+<h3 data-astro-cid-yoyuw6fx="">Designing an API</h3>
+<p data-astro-cid-yoyuw6fx="">I wanted to address an essential problem for <em>Minecraft</em> developers: too many APIs with too many restrictions. The hassle of parsing multiple requests and handling errors prevents developers from focusing on creating great experiences for players. There needs to be a solution that requires only <strong>1 HTTP request with no rate limiting and no client-side caching.</strong> After looking at the various use-cases for the existing APIs, I created a JSON schema that encompassed all the essential data into a single response:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">GET:</span><span class="sk-032f62-99ffe4"> api.ashcon.app/mojang/v1/user/</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">username</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">uuid</span><span class="sk-24292e-fff">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -178,9 +178,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>One of the primary goals I had in mind was to minimize sub-requests by clients. For example, instead of giving developers a URL to a <code>image/png</code> static asset, why not fetch it for them and embed it as a base64 string? Now that's simplicity!</p>
-<h3>Getting Started</h3>
-<p>For this project, I decided to use <a href="https://coffeescript.org" target="_blank" rel="noopener noreferrer">CoffeeScript</a>, which transcompiles to JavaScript and has a simple syntax. We'll also need to use <a href="https://webpack.js.org" target="_blank" rel="noopener noreferrer">Webpack</a> to bundle all of our code into a single JavaScript file to upload to Cloudflare.</p>
+<p data-astro-cid-yoyuw6fx="">One of the primary goals I had in mind was to minimize sub-requests by clients. For example, instead of giving developers a URL to a <code>image/png</code> static asset, why not fetch it for them and embed it as a base64 string? Now that's simplicity!</p>
+<h3 data-astro-cid-yoyuw6fx="">Getting Started</h3>
+<p data-astro-cid-yoyuw6fx="">For this project, I decided to use <a href="https://coffeescript.org" target="_blank" rel="noopener noreferrer">CoffeeScript</a>, which transcompiles to JavaScript and has a simple syntax. We'll also need to use <a href="https://webpack.js.org" target="_blank" rel="noopener noreferrer">Webpack</a> to bundle all of our code into a single JavaScript file to upload to Cloudflare.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span># Welcome to CoffeeScript!</span></span>
 <span class="line"><span></span></span>
@@ -202,7 +202,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>First, let's make sure we have the proper dependencies installed for the project! These commands will create a <code>package.json</code> file and a <code>node_modules/</code> folder in our workspace.</p>
+<p data-astro-cid-yoyuw6fx="">First, let's make sure we have the proper dependencies installed for the project! These commands will create a <code>package.json</code> file and a <code>node_modules/</code> folder in our workspace.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">mkdir</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> workspace/src</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4"> workspace</span></span>
@@ -213,7 +213,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Now, we're going to edit our <code>package.json</code> to add two helper scripts for later. You can delete the default <code>"test"</code> script as well.</p>
+<p data-astro-cid-yoyuw6fx="">Now, we're going to edit our <code>package.json</code> to add two helper scripts for later. You can delete the default <code>"test"</code> script as well.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">"scripts"</span><span class="sk-24292e-fff">: {</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "build"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"webpack"</span><span class="sk-24292e-fff">,</span></span>
@@ -225,7 +225,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>We also need to initialize a <code>webpack.config.js</code> file with a CoffeeScript compiler.</p>
+<p data-astro-cid-yoyuw6fx="">We also need to initialize a <code>webpack.config.js</code> file with a CoffeeScript compiler.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> path</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> require</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'path'</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"></span>
@@ -259,7 +259,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Before we start coding, we'll create a <code>src/index.coffee</code> file and make sure everything is working so far.</p>
+<p data-astro-cid-yoyuw6fx="">Before we start coding, we'll create a <code>src/index.coffee</code> file and make sure everything is working so far.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>addEventListener('fetch', (event) -&gt;</span></span>
 <span class="line"><span>  event.respondWith(route(event.request)))</span></span>
@@ -272,7 +272,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Open your terminal in the <code>workspace/</code> directory and run the following commands:</p>
+<p data-astro-cid-yoyuw6fx="">Open your terminal in the <code>workspace/</code> directory and run the following commands:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> build</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> preview</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -281,9 +281,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Your computer's default internet browser will open up a new window and preview the result of our Worker. If you see a JSON response, then everything is working properly and we're ready to go!</p>
-<h3>Writing Production Code for Workers</h3>
-<p>Now that we're setup with a working example, we can design our source code file structure. It's important that we break up our code into easily testable chunks, so I've gone ahead and outlined the approach that I took with this project:</p>
+<p data-astro-cid-yoyuw6fx="">Your computer's default internet browser will open up a new window and preview the result of our Worker. If you see a JSON response, then everything is working properly and we're ready to go!</p>
+<h3 data-astro-cid-yoyuw6fx="">Writing Production Code for Workers</h3>
+<p data-astro-cid-yoyuw6fx="">Now that we're setup with a working example, we can design our source code file structure. It's important that we break up our code into easily testable chunks, so I've gone ahead and outlined the approach that I took with this project:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">src/</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  index.coffee</span><span class="sk-6a737d-8b8b8b94">  # routing and serving requests</span></span>
@@ -296,9 +296,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>If you've feeling adventurous, I've included a simplified version of my API code that you can browse through below. If you look at each file, you'll have a fully working implementation by the end! Otherwise, you can continue reading to learn about my deployment and analysis of the APIs impact.</p>
-<h4><code>http.coffee</code></h4>
-<p>Since our API will be making several HTTP requests, it's a good idea to code some common <code>request</code> and <code>respond</code> methods that can be reused among multiple requests. At the very least, we need to support parsing JSON or base64 responses and sending JSON or string data back to the client.</p>
+<p data-astro-cid-yoyuw6fx="">If you've feeling adventurous, I've included a simplified version of my API code that you can browse through below. If you look at each file, you'll have a fully working implementation by the end! Otherwise, you can continue reading to learn about my deployment and analysis of the APIs impact.</p>
+<h4 data-astro-cid-yoyuw6fx=""><code>http.coffee</code></h4>
+<p data-astro-cid-yoyuw6fx="">Since our API will be making several HTTP requests, it's a good idea to code some common <code>request</code> and <code>respond</code> methods that can be reused among multiple requests. At the very least, we need to support parsing JSON or base64 responses and sending JSON or string data back to the client.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span># Send a Http request and get a response.</span></span>
 <span class="line"><span>#</span></span>
@@ -383,7 +383,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>The <code>cf</code> key can be used to control various Cloudflare features, including how sub-requests are cached. See the <a href="https://developers.cloudflare.com/workers/reference/cloudflare-features" target="_blank" rel="noopener noreferrer">Workers documentation</a> for a more in-depth explanation.</p>
+<p data-astro-cid-yoyuw6fx="">The <code>cf</code> key can be used to control various Cloudflare features, including how sub-requests are cached. See the <a href="https://developers.cloudflare.com/workers/reference/cloudflare-features" target="_blank" rel="noopener noreferrer">Workers documentation</a> for a more in-depth explanation.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>cf:</span></span>
 <span class="line"><span>  cacheTtl: 120 # Cache for 2 mins.</span></span>
@@ -401,8 +401,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4><code>mojang.coffee</code></h4>
-<p>Now that we have code to send and parse requests, we can create an interface to retrieve data from the upstream APIs. It's good to note that there should be no mutation logic in this file, it's purpose is just to get the old APIs, not change them.</p>
+<h4 data-astro-cid-yoyuw6fx=""><code>mojang.coffee</code></h4>
+<p data-astro-cid-yoyuw6fx="">Now that we have code to send and parse requests, we can create an interface to retrieve data from the upstream APIs. It's good to note that there should be no mutation logic in this file, it's purpose is just to get the old APIs, not change them.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>import { get } from "./http"</span></span>
 <span class="line"><span></span></span>
@@ -432,8 +432,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4><code>api.coffee</code></h4>
-<p>This is where the bulk of our API logic will reside. I've broken up the process into 3 interdependent tasks that are executed in order:</p>
+<h4 data-astro-cid-yoyuw6fx=""><code>api.coffee</code></h4>
+<p data-astro-cid-yoyuw6fx="">This is where the bulk of our API logic will reside. I've broken up the process into 3 interdependent tasks that are executed in order:</p>
 <ol>
 	<li>Given a username, fetch its UUID.</li>
 	<li>Given a UUID, fetch the user's profile.</li>
@@ -526,8 +526,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4><code>index.coffee</code></h4>
-<p>Now, we parse the request's route and respond with the corresponding API.</p>
+<h4 data-astro-cid-yoyuw6fx=""><code>index.coffee</code></h4>
+<p data-astro-cid-yoyuw6fx="">Now, we parse the request's route and respond with the corresponding API.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>import "./util"</span></span>
 <span class="line"><span>import { notFound } from "./http"</span></span>
@@ -557,8 +557,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4><code>util.coffee</code></h4>
-<p>Finally, we'll add some prototype extensions that we used along the way.</p>
+<h4 data-astro-cid-yoyuw6fx=""><code>util.coffee</code></h4>
+<p data-astro-cid-yoyuw6fx="">Finally, we'll add some prototype extensions that we used along the way.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span># Insert a string at a given index.</span></span>
 <span class="line"><span>#</span></span>
@@ -609,15 +609,15 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3>Analyzing a Workers Deployment</h3>
-<p>I've had this code deployed and tested by real <em>Minecraft</em> users for the past few weeks. As a developer that has global web traffic, it's pivotal that players can quickly get access to my services. The essential advantage of Workers is that I don't need to deploy several replicas of my code to different cloud regions, it's everywhere! That means players from any part of the world get the same great web experience with minimal latency.</p>
-<p>As of today, the API is processing over <strong>400k requests per day</strong> from users all over the world! Cloudflare caches responses in the closest point of presence to the client, so I don't need to setup a database and developers don't need to worry about rate-limiting.</p>
-<p>Since each request to the API generates 4 to 5 additional sub-requests, it handles approximately <strong>1.8 million fetches per day</strong> with a 88% cache hit rate.</p>
-<h3>Wrapping Up</h3>
-<p>Cloudflare Workers have enabled me to solve complex technical problems without worrying about host infrastructure or cloud regions. It's simple, easy to deploy, and works blazing fast all around the world. And for <strong>50 cents for every 1 million requests</strong>, it's incomparable to the other serverless solutions on the market.</p>
-<p>If you're not already convinced to start using Workers, here's the deployment history of my API. I went from <strong>0 to 5 million requests</strong> with no scaling, no resizing, no servers, no clusters, and no containers. Just code.</p>
-<p>If you're interested in looking at all of the code used in the post, you can find it here:<a href="https://github.com/Electroid/mojang-api" target="_blank" rel="noopener noreferrer">https://github.com/Electroid/mojang-api</a></p>
-<p>And if you're a <em>Minecraft</em> developer, my API is open for you to use for free:</p>
+<h3 data-astro-cid-yoyuw6fx="">Analyzing a Workers Deployment</h3>
+<p data-astro-cid-yoyuw6fx="">I've had this code deployed and tested by real <em>Minecraft</em> users for the past few weeks. As a developer that has global web traffic, it's pivotal that players can quickly get access to my services. The essential advantage of Workers is that I don't need to deploy several replicas of my code to different cloud regions, it's everywhere! That means players from any part of the world get the same great web experience with minimal latency.</p>
+<p data-astro-cid-yoyuw6fx="">As of today, the API is processing over <strong>400k requests per day</strong> from users all over the world! Cloudflare caches responses in the closest point of presence to the client, so I don't need to setup a database and developers don't need to worry about rate-limiting.</p>
+<p data-astro-cid-yoyuw6fx="">Since each request to the API generates 4 to 5 additional sub-requests, it handles approximately <strong>1.8 million fetches per day</strong> with a 88% cache hit rate.</p>
+<h3 data-astro-cid-yoyuw6fx="">Wrapping Up</h3>
+<p data-astro-cid-yoyuw6fx="">Cloudflare Workers have enabled me to solve complex technical problems without worrying about host infrastructure or cloud regions. It's simple, easy to deploy, and works blazing fast all around the world. And for <strong>50 cents for every 1 million requests</strong>, it's incomparable to the other serverless solutions on the market.</p>
+<p data-astro-cid-yoyuw6fx="">If you're not already convinced to start using Workers, here's the deployment history of my API. I went from <strong>0 to 5 million requests</strong> with no scaling, no resizing, no servers, no clusters, and no containers. Just code.</p>
+<p data-astro-cid-yoyuw6fx="">If you're interested in looking at all of the code used in the post, you can find it here:<a href="https://github.com/Electroid/mojang-api" target="_blank" rel="noopener noreferrer">https://github.com/Electroid/mojang-api</a></p>
+<p data-astro-cid-yoyuw6fx="">And if you're a <em>Minecraft</em> developer, my API is open for you to use for free:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> https://api.ashcon.app/mojang/v1/uuid/ElectroidFilms</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> https://api.ashcon.app/mojang/v1/user/ElectroidFilms</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -626,7 +626,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>You can also use this <a href="https://github.com/Electroid/mojang-api/tree/master/avatar" target="_blank" rel="noopener noreferrer">extra goodie</a> that will crop just the face from a player texture:</p>
+<p data-astro-cid-yoyuw6fx="">You can also use this <a href="https://github.com/Electroid/mojang-api/tree/master/avatar" target="_blank" rel="noopener noreferrer">extra goodie</a> that will crop just the face from a player texture:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> https://api.ashcon.app/mojang/v1/avatar/ElectroidFilms</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> avatar.png</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">open</span><span class="sk-032f62-99ffe4"> avatar.png</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">

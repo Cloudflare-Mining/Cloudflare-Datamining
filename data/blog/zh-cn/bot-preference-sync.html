@@ -1,0 +1,73 @@
+<p data-astro-cid-yoyuw6fx="">我们始终致力于满足客户的多样化需求。有些客户希望优化内容发现，另一些客户则希望以最严格的安全策略保护内容。在这些不同策略中，有多种方法可以缓解机器人流量： 有些机制仅声明您的意愿，默认爬网程序出于善意；另一些则通过 Bot Management 解决方案直接阻止，从根本上锁定内容访问。</p>
+<p data-astro-cid-yoyuw6fx="">我们深知，在网站上维护多重防护层十分繁琐。例如，可能出现这样的情况：您的 robots.txt 声明某个爬网程序被禁止访问您的网站，但实际的执行规则并未将其阻止。当您声明的意愿与实际执行的规则相悖时，部分爬网程序可能将此视为无视您意愿或绕过规则的依据。</p>
+<p data-astro-cid-yoyuw6fx="">几年前，Cloudflare 推出了一种更便捷的方式，允许网站所有者禁止 AI 训练抓取，同时兼顾两个防护层：一个受管理的 robots.txt 值，明确告知固定名单中的主要训练类爬网程序不得抓取您的内容进行训练；以及针对训练类爬网程序的边缘执行阻止。2026 年 7 月 1 日，我们进一步推出了更灵活的选项，让您能够分别管理搜索、代理及训练类 AI 流量的访问策略。</p>
+<p data-astro-cid-yoyuw6fx="">今天，我们正式宣布推出 <strong>Bot Preference Sync</strong>，面向从免费计划到企业计划的<em>所有</em>客户开放。Bot Preference Sync 能够根据您在 AI 机器人配置中的设置，自动更新 robots.txt 中的对应偏好，并可随时开启或关闭。不再为单一用例维护静态文件：我们将帮助您<strong>定制 robots.txt 文件，反映您针对不同 AI 机器人类别所做的配置</strong>。</p>
+<h2 data-astro-cid-yoyuw6fx=""><strong>互联网面临的新议题</strong></h2>
+<p data-astro-cid-yoyuw6fx="">多年来，这一领域最迫切的问题始终是："我的内容是否在未经许可的情况下被用于训练 AI 模型？"这是一个重要问题，且不会消失。与此同时，我们越来越多地听到关于可发现性与用户互动的议题：当有人向 AI 助手提问而我的网站能够解答时，我该如何出现在搜索结果中？有多少流量来自 AI 爬网程序，有多少流量来自真实用户？哪些内容真正带来了引荐流量，其价值几何？</p>
+<p data-astro-cid-yoyuw6fx="">答案因商业模式而异。可发现性与用户互动是所有希望在现代网络中立足的企业的核心关切，但其转化路径各异：电商网站可能希望所有内容都被抓取并用于训练，以便当购物者向聊天机器人询问"小户型最佳沙发"时，其产品能够出现在推荐结果中。而依靠广告变现的媒体发布商则可能恰恰相反：希望保留在能为页面带来读者的搜索索引中，同时让文章内容远离模型训练——并且至关重要的是，能够核实其内容确实未被未经授权地使用。</p>
+<p data-astro-cid-yoyuw6fx="">关键在于，没有唯一正确答案。您的管控策略应当反映您的业务战略，这也是我们一直致力于为您提供全链路可见性与选择权的原因。Bot Preference Sync 将这些层面融为一体，让您<em>设置</em>的偏好就是您<em>对外发布</em>的偏好。</p>
+<h2 data-astro-cid-yoyuw6fx=""><strong>透明度的呼声</strong></h2>
+<p data-astro-cid-yoyuw6fx="">2026 年 7 月 1 日，我们提出：混合用途爬网程序——即“以单一用户代理身份，混合执行搜索、智能体使用和训练任务的机器人”——使网站所有者处于不利地位，因为这让用户难以区分自己想要什么和不想要什么。这一判断至今未变，我们对网站所有者透明度的立场也未曾动摇。</p>
+<p data-astro-cid-yoyuw6fx="">但实现透明度的方式不止一种。我们希望奖励那些明确声明身份和数据使用方式的运营商。为了进行机器人<a href="https://developers.cloudflare.com/bots/concepts/bot/verified-bots" target="_blank" rel="noopener noreferrer"><u>验证</u></a>，<strong>同时执行搜索和训练的机器人所有者需要提供额外信息</strong>，以免在启用“禁止训练”时遭到屏蔽。具体要求如下：</p>
+<ul>
+	<li>机器人必须通过某种机制，遵守 robots.txt 中的"禁止训练"偏好</li>
+	<li>为网站所有者提供退出 AI 摘要的方式</li>
+	<li>提供哪些页面被用于训练的 URL 级别可见性，以及搜索结果的相关指标，让网站所有者能够了解其内容在搜索和训练中的使用情况</li>
+	<li>能够公开证明：禁止训练不会损害其传统搜索结果排名</li>
+</ul>
+<p data-astro-cid-yoyuw6fx="">Cloudflare Radar 的<a href="https://radar.cloudflare.com/ai-insights#ai-bot-transparency" target="_blank" rel="noopener noreferrer"><u> AI 机器人透明度</u></a>部分公开追踪符合上述标准的主流 AI 模型及服务提供商的机器人，其中包括遵循最佳实践的示例以及违反最佳实践的示例。未能提供透明度的爬网程序将不会获得"善意推定"——在您禁止训练时，它们仍将被阻止。换言之，这是将透明度作为准入门槛的一种方式。</p>
+<h2 data-astro-cid-yoyuw6fx=""><strong>Bot Preference Sync 详解</strong></h2>
+<p data-astro-cid-yoyuw6fx="">Bot Preference Sync 是一项新功能，能够让您的 robots.txt 始终与您在 Cloudflare 区域级别仪表板中为搜索、代理和训练类 AI 机器人所做的偏好设置保持同步。如果网站所有者已有 robots.txt 文件，Bot Preference Sync 添加的内容将<em>附加到</em>现有内容之前，原有的任何禁止指令均予以保留。</p>
+<p data-astro-cid-yoyuw6fx="">网站所有者无需再单独维护静态文件——Cloudflare 将根据您的配置生成或更新 robots.txt，使您向外界声明的内容与边缘执行的策略始终保持一致。</p>
+<p data-astro-cid-yoyuw6fx="">对于搜索和代理，我们在 7 月 1 日宣布的三个选项依然有效：允许、仅在投放广告的页面上阻止，或全站阻止。对于<strong>训练</strong>，我们进一步细化了阻止内容被用于模型训练的选项，推出禁止选项：</p>
+<p data-astro-cid-yoyuw6fx=""><strong>禁止</strong>：在 robots.txt 中写入“禁止训练”偏好，使采取额外透明度措施的合规混合用途爬网程序仍可访问您的内容用于搜索索引——因为这些爬网程序允许网站所有者直接核实其数据的使用方式。合规爬网程序将遵守 robots.txt 中的偏好，您在合规爬网程序中的搜索可见性不受影响。</p>
+<p data-astro-cid-yoyuw6fx="">以下面的示例为例：某网站所有者将 AI 机器人策略配置为"允许搜索、允许代理、禁止训练"。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA/f39+Pf37u3t6uvq8fLy9vf48vHy5uPj////+vr68PDw7e7t8/X1+fr79fX16efn////////9PX18fPz+Pn5/v//+fr67u3t////////+vv79/j4/f7/////////8/Pz/////////////f7+////////////+Pn5/////////////////////////////P39////////////////////////////////////////////////////////////////" alt="" width="715" height="397" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GECZ4Q15309V1BY8F827FW.png&amp;w=715&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GECZ4Q15309V1BY8F827FW.png&amp;w=640&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GECZ4Q15309V1BY8F827FW.png&amp;w=715&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GECZ4Q15309V1BY8F827FW.png&amp;w=750&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GECZ4Q15309V1BY8F827FW.png&amp;w=828&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GECZ4Q15309V1BY8F827FW.png&amp;w=1080&amp;h=600&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GECZ4Q15309V1BY8F827FW.png&amp;w=1280&amp;h=711&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GECZ4Q15309V1BY8F827FW.png&amp;w=1430&amp;h=794&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3489 2.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GECZ4Q15309V1BY8F827FW.png&amp;w=1920&amp;h=1065&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1065" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="397" class="pt-portable-image-media"></div>
+	<figcaption data-astro-cid-7nvefuv6="">现有 AI 训练与搜索策略配置选项的截图，以及将 robots.txt 内容与这些 AI 机器人策略同步的新功能界面</figcaption>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p data-astro-cid-yoyuw6fx="">由于该示例网站已开启 Bot Preference Sync，其 robots.txt 将在开头附加类似如下内容（为示例起见，已做简化和匿名处理）：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span># BEGIN Cloudflare Bot Preference Sync</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>User-agent: TrainingBot1</span></span>
+<span class="line"><span>User-agent: TrainingBot2</span></span>
+<span class="line"><span>User-agent: TrainingBot3</span></span>
+<span class="line"><span>User-agent: MixedUseBot-Extended</span></span>
+<span class="line"><span>Disallow: /</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>...</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># END Cloudflare Bot Preference Sync</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p data-astro-cid-yoyuw6fx="">我们将利用<a href="https://developers.cloudflare.com/bots/botbase" target="_blank" rel="noopener noreferrer"> <u>BotBase</u></a> 中追踪的机器人，定期更新当您选择阻止或禁止某类别时添加到 robots.txt 中的机器人列表。分类为搜索、智能体和训练的已验证机器人，可随时在我们的<a href="https://radar.cloudflare.com/bots/directory" target="_blank" rel="noopener noreferrer"><u>公开机器人目录</u></a>中查看。</p>
+<p data-astro-cid-yoyuw6fx="">对于所有新客户，Bot Preference Sync 将<em>默认开启</em>，以便更轻松地管理体现同一策略的阻止设置和偏好设置。对于正在使用旧版受管理 robots.txt 功能的现有客户，我们将在 Bot Preference Sync 正式上线时提示您审查并确认偏好，以完成迁移。</p>
+<p data-astro-cid-yoyuw6fx="">部分客户可能希望或需要对偏好声明进行更精细的控制，例如希望为特定公司设置例外。由于 Bot Preference Sync 的设计目的是处理<em>按类别</em>制定的策略决策，而非逐条处理含复杂逻辑的自定义规则，因此它不会直接读取个别自定义规则。偏好设置更精细的客户，始终可以选择关闭用于设置组级别策略的同步功能，并自行定制 robots.txt 文件以匹配其自定义策略。</p>
+<p data-astro-cid-yoyuw6fx="">我们还针对发布商或依赖广告的网站进行了调整，为其提供与其他网站所有者不同的默认设置。我们为依赖广告变现、并希望广告位保留给真实访客的发布类网站创建了一个默认选项。此类客户在接入时可选择"我通过该域名上页面的广告进行变现"，系统将自动将训练设置默认为禁止。（客户可随时更改此设置。）这样，您既能保留在搜索结果中的露出，又能让内容远离模型训练。</p>
+<p data-astro-cid-yoyuw6fx="">对于非发布商客户，新客户在接入域名时，<em>默认不会</em>添加任何阻止或禁止：选择权在您。您可以随时选择阻止搜索、智能体或训练流量，但初始状态不会代您添加任何阻止设置。</p>
+<h2 data-astro-cid-yoyuw6fx=""><strong>下一步计划</strong></h2>
+<p data-astro-cid-yoyuw6fx="">Bot Preference Sync 将在未来一周内向<em>所有</em>客户、所有计划开放。请关注我们的 Changelog 了解具体上线时间并留意仪表板（及收件箱）中的提示，以确认您的偏好设置！&nbsp;</p>
+<p data-astro-cid-yoyuw6fx="">这只是一项长期工作的开端。我们将继续与大型机器人运营商合作，确保在应对现有挑战（例如未经同意的训练抓取）和新兴议题（例如可发现性与用户互动）时不做妥协。所有这些努力的最终目标，是促进网站所有者提高透明度与增加掌控权。</p>

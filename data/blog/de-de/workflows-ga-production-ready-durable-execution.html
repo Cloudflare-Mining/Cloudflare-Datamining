@@ -1,7 +1,7 @@
-<p>Betas sind nützlich für Feedback und Iteration, doch nicht jeder will als Versuchskaninchen herhalten oder verträgt die gelegentlichen Macken, die mit Beta-Software einhergehen. Manchmal braucht es einfach das schicke „Generally Available“-Label (oder den entsprechenden Blog-Post)&nbsp;– und jetzt ist Workflows an der Reihe.</p>
-<p><a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a>, unsere Serverless Durable Execution Engine, mit der Sie lang laufende, mehrstufige Anwendungen (manche nennen sie auch „Schrittfunktionen“) auf Workers erstellen können, ist jetzt allgemein verfügbar.</p>
-<p>Kurz gesagt, bedeutet dies, dass die Lösung <em>produktionsreif</em> ist – was aber nicht heißt, dass Workflows jetzt zum Fossil wird. Wir werden Workflows weiter skalieren (auch durch mehr gleichzeitige Instanzen), neue Funktionen hinzufügen (wie die neue <code>waitForEvent-API</code>) und die Erstellung von KI-Agents mit unserem <a href="https://developers.cloudflare.com/agents/api-reference/run-workflows" target="_blank" rel="noopener noreferrer"><u>Agents SDK und Workflows</u></a> vereinfachen.</p>
-<p>Wenn Sie lieber Code lesen als Fließtext, können Sie das Workflows-Starterprojekt schnell installieren und mit einem einzigen Befehl den Code und die API erkunden:</p>
+<p data-astro-cid-yoyuw6fx="">Betas sind nützlich für Feedback und Iteration, doch nicht jeder will als Versuchskaninchen herhalten oder verträgt die gelegentlichen Macken, die mit Beta-Software einhergehen. Manchmal braucht es einfach das schicke „Generally Available“-Label (oder den entsprechenden Blog-Post)&nbsp;– und jetzt ist Workflows an der Reihe.</p>
+<p data-astro-cid-yoyuw6fx=""><a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a>, unsere Serverless Durable Execution Engine, mit der Sie lang laufende, mehrstufige Anwendungen (manche nennen sie auch „Schrittfunktionen“) auf Workers erstellen können, ist jetzt allgemein verfügbar.</p>
+<p data-astro-cid-yoyuw6fx="">Kurz gesagt, bedeutet dies, dass die Lösung <em>produktionsreif</em> ist – was aber nicht heißt, dass Workflows jetzt zum Fossil wird. Wir werden Workflows weiter skalieren (auch durch mehr gleichzeitige Instanzen), neue Funktionen hinzufügen (wie die neue <code>waitForEvent-API</code>) und die Erstellung von KI-Agents mit unserem <a href="https://developers.cloudflare.com/agents/api-reference/run-workflows" target="_blank" rel="noopener noreferrer"><u>Agents SDK und Workflows</u></a> vereinfachen.</p>
+<p data-astro-cid-yoyuw6fx="">Wenn Sie lieber Code lesen als Fließtext, können Sie das Workflows-Starterprojekt schnell installieren und mit einem einzigen Befehl den Code und die API erkunden:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npm create cloudflare</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest workflows</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">starter </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">template</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"cloudflare/workflows-starter"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -28,19 +28,19 @@
 		})
 	});
 </script>
-<p>Wie funktioniert Workflows? Was kann ich damit entwickeln? Wie kann ich KI-Agents mit Workflows und dem <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a> erstellen? Lesen Sie weiter.</p>
-<h2>Entwickeln mit Workflows</h2>
-<p>Workflows ist eine Durable Execution Engine, die auf Cloudflare Workers basiert und die Erstellung von ausfallsicheren, mehrstufigen Apps ermöglicht.</p>
-<p>Im Kern implementiert Workflows eine schrittbasierte Architektur, bei der jeder Schritt in Ihrer App unabhängig wiederholbar ist und der Status automatisch zwischen den Schritten beibehalten wird. Das bedeutet: Selbst wenn ein Schritt aufgrund eines vorübergehenden Fehlers oder eines Netzwerkproblems fehlschlägt, kann Workflows exakt diesen Schritt wiederholen, ohne dass Sie Ihre gesamte App neu starten müssen.</p>
-<p>Mit der Definition eines Workflows unterteilen Sie Ihre Anwendung in logische Schritte.</p>
+<p data-astro-cid-yoyuw6fx="">Wie funktioniert Workflows? Was kann ich damit entwickeln? Wie kann ich KI-Agents mit Workflows und dem <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a> erstellen? Lesen Sie weiter.</p>
+<h2 data-astro-cid-yoyuw6fx="">Entwickeln mit Workflows</h2>
+<p data-astro-cid-yoyuw6fx="">Workflows ist eine Durable Execution Engine, die auf Cloudflare Workers basiert und die Erstellung von ausfallsicheren, mehrstufigen Apps ermöglicht.</p>
+<p data-astro-cid-yoyuw6fx="">Im Kern implementiert Workflows eine schrittbasierte Architektur, bei der jeder Schritt in Ihrer App unabhängig wiederholbar ist und der Status automatisch zwischen den Schritten beibehalten wird. Das bedeutet: Selbst wenn ein Schritt aufgrund eines vorübergehenden Fehlers oder eines Netzwerkproblems fehlschlägt, kann Workflows exakt diesen Schritt wiederholen, ohne dass Sie Ihre gesamte App neu starten müssen.</p>
+<p data-astro-cid-yoyuw6fx="">Mit der Definition eines Workflows unterteilen Sie Ihre Anwendung in logische Schritte.</p>
 <ul>
 	<li>Jeder Schritt kann entweder Code ausführen (<code>step.do</code>), Ihren Workflow in den Ruhezustand versetzen (<code>step.sleep</code> oder <code>step.sleepUntil</code>), oder auf ein Ereignis warten (<code>step.waitForEvent</code>).</li>
 	<li>Während Ihr Workflow ausgeführt wird, wird der von jedem Schritt zurückgegebene Status automatisch beibehalten, sodass Ihre App auch nach Fehlern oder Hibernation genau dort fortgesetzt werden kann, wo sie aufgehört hat.&nbsp;</li>
 	<li>Dieses persistente Ausführungsmodell eignet sich besonders für Apps, die mehrere Systeme koordinieren, Daten nacheinander verarbeiten oder lang andauernde Aufgaben bewältigen müssen, die sich über Minuten, Stunden oder sogar Tage erstrecken können.</li>
 </ul>
-<p>Workflows sind besonders nützlich bei der Abwicklung komplexer Geschäftsprozesse, mit denen herkömmliche zustandslose Funktionen Schwierigkeiten haben.</p>
-<p>Ein Workflow zur Auftragsabwicklung im E-Commerce könnte beispielsweise den Lagerbestand überprüfen, eine Abbuchung vornehmen, eine E-Mail-Bestätigung senden und eine Datenbank aktualisieren&nbsp;– alles als separate Schritte. Wenn der Schritt der Zahlungsabwicklung aufgrund eines vorübergehenden Ausfalls fehlschlägt, wird Workflows diesen Schritt automatisch erneut versuchen, sobald der Zahlungsdienst wieder verfügbar ist, ohne die Lagerbestandsprüfung zu duplizieren oder den gesamten Prozess neu zu starten.&nbsp;</p>
-<p>Im Folgenden sehen Sie, wie dies funktioniert: Jeder Aufruf eines Dienstes kann als Schritt modelliert, unabhängig wiederholt und bei Bedarf ab diesem Schritt wiederhergestellt werden:</p>
+<p data-astro-cid-yoyuw6fx="">Workflows sind besonders nützlich bei der Abwicklung komplexer Geschäftsprozesse, mit denen herkömmliche zustandslose Funktionen Schwierigkeiten haben.</p>
+<p data-astro-cid-yoyuw6fx="">Ein Workflow zur Auftragsabwicklung im E-Commerce könnte beispielsweise den Lagerbestand überprüfen, eine Abbuchung vornehmen, eine E-Mail-Bestätigung senden und eine Datenbank aktualisieren&nbsp;– alles als separate Schritte. Wenn der Schritt der Zahlungsabwicklung aufgrund eines vorübergehenden Ausfalls fehlschlägt, wird Workflows diesen Schritt automatisch erneut versuchen, sobald der Zahlungsdienst wieder verfügbar ist, ohne die Lagerbestandsprüfung zu duplizieren oder den gesamten Prozess neu zu starten.&nbsp;</p>
+<p data-astro-cid-yoyuw6fx="">Im Folgenden sehen Sie, wie dies funktioniert: Jeder Aufruf eines Dienstes kann als Schritt modelliert, unabhängig wiederholt und bei Bedarf ab diesem Schritt wiederhergestellt werden:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { WorkflowEntrypoint, WorkflowStep, WorkflowEvent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cloudflare:workers'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -142,16 +142,16 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p><br>Diese Kombination aus Dauerhaftigkeit, automatischen Wiederholungsversuchen und Zustandspersistenz macht Workflows zur idealen Lösung für die Entwicklung zuverlässiger verteilter Apps, die reale Ausfälle problemlos bewältigen können.</p>
-<h2>Der Mensch in der Schleife</h2>
-<p>Workflows sind nur Code, und das macht sie extrem leistungsfähig: Als Entwickler können Sie Schritte dynamisch und spontan definieren, bedingte Verzweigungen vornehmen und API-Aufrufe an jedes beliebige System senden. Manchmal muss ein Workflow aber auch warten, bis in der realen Welt etwas passiert.</p>
-<p>Zum Beispiel:</p>
+<p data-astro-cid-yoyuw6fx=""><br>Diese Kombination aus Dauerhaftigkeit, automatischen Wiederholungsversuchen und Zustandspersistenz macht Workflows zur idealen Lösung für die Entwicklung zuverlässiger verteilter Apps, die reale Ausfälle problemlos bewältigen können.</p>
+<h2 data-astro-cid-yoyuw6fx="">Der Mensch in der Schleife</h2>
+<p data-astro-cid-yoyuw6fx="">Workflows sind nur Code, und das macht sie extrem leistungsfähig: Als Entwickler können Sie Schritte dynamisch und spontan definieren, bedingte Verzweigungen vornehmen und API-Aufrufe an jedes beliebige System senden. Manchmal muss ein Workflow aber auch warten, bis in der realen Welt etwas passiert.</p>
+<p data-astro-cid-yoyuw6fx="">Zum Beispiel:</p>
 <ul>
 	<li>Eine Genehmigung durch einen Menschen, um fortzufahren.</li>
 	<li>Ein eingehender Webhook, z.&nbsp;B. von einer Stripe-Zahlung oder einem GitHub-Event. </li>
 	<li>Eine Zustandsänderung, z.&nbsp;B. das Hochladen einer Datei zu R2, die eine <a href="https://developers.cloudflare.com/r2/buckets/event-notifications" target="_blank" rel="noopener noreferrer"><u>Ereignisbenachrichtigung</u></a> auslöst und dann einen Verweis auf die Datei an den Workflow weitergibt, damit er die Datei verarbeiten oder durch ein KI-Modell laufen lassen kann.</li>
 </ul>
-<p>Die neue <code>waitForEvent</code>-API in Workflows ermöglicht Ihnen genau das:&nbsp;</p>
+<p data-astro-cid-yoyuw6fx="">Die neue <code>waitForEvent</code>-API in Workflows ermöglicht Ihnen genau das:&nbsp;</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> event </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">waitForEvent</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">IncomingStripeWebhook</span><span class="sk-24292e-fff">&gt;(</span><span class="sk-032f62-99ffe4">"receive invoice paid webhook from Stripe"</span><span class="sk-24292e-fff">, { type: </span><span class="sk-032f62-99ffe4">"stripe-webhook"</span><span class="sk-24292e-fff">, timeout: </span><span class="sk-032f62-99ffe4">"1 hour"</span><span class="sk-24292e-fff"> }) </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -159,7 +159,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Sie können dann von jedem externen Dienst, der eine HTTP-Anfrage stellen kann, ein Ereignis an eine bestimmte Instanz senden:</p>
+<p data-astro-cid-yoyuw6fx="">Sie können dann von jedem externen Dienst, der eine HTTP-Anfrage stellen kann, ein Ereignis an eine bestimmte Instanz senden:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'{"transaction":"complete","id":"1234-6789"}'</span><span class="sk-24292e-fff"> \</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-005cc5-fff">H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer ${CF_TOKEN}"</span><span class="sk-24292e-fff"> \</span></span>
@@ -169,7 +169,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>… oder über die <a href="https://developers.cloudflare.com/workflows/build/workers-api/#workflowinstance" target="_blank" rel="noopener noreferrer"><u>Workers API</u></a> innerhalb eines Workers selbst:</p>
+<p data-astro-cid-yoyuw6fx="">… oder über die <a href="https://developers.cloudflare.com/workflows/build/workers-api/#workflowinstance" target="_blank" rel="noopener noreferrer"><u>Workers API</u></a> innerhalb eines Workers selbst:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">interface</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-e36209-fff">  MY_WORKFLOW</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Workflow</span><span class="sk-24292e-fff">;</span></span>
@@ -200,7 +200,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Sie können sogar auf mehrere Ereignisse warten, indem Sie den Parameter <code>type</code> verwenden, und/oder mehrere Ereignisse starten, indem Sie <code>Promise.race</code> nutzen, um fortzufahren&nbsp;– je nachdem, welches Ereignis zuerst empfangen wurde:</p>
+<p data-astro-cid-yoyuw6fx="">Sie können sogar auf mehrere Ereignisse warten, indem Sie den Parameter <code>type</code> verwenden, und/oder mehrere Ereignisse starten, indem Sie <code>Promise.race</code> nutzen, um fortzufahren&nbsp;– je nachdem, welches Ereignis zuerst empfangen wurde:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> MyWorkflow</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> WorkflowEntrypoint</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Params</span><span class="sk-24292e-fff">&gt; {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	async</span><span class="sk-6f42c1-ffc799"> run</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WorkflowEvent</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Params</span><span class="sk-24292e-fff">&gt;, </span><span class="sk-e36209-fff">step</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WorkflowStep</span><span class="sk-24292e-fff">) {</span></span>
@@ -219,83 +219,83 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Um <code>waitForEvent</code> etwas detaillierter zu veranschaulichen, nehmen wir an, dass wir einen Workflow haben, der von einem Code Review Agent ausgelöst wird, der ein GitHub-Repository überwacht.</p>
-<p>Ohne die Möglichkeit, auf Ereignisse zu warten, kann unser Workflow nicht einfach die Genehmigung von Menschen erhalten, Vorschläge zurückzuschreiben (oder sogar einen eigenen PR einzureichen). Er <em>könnte</em> möglicherweise einen Status abfragen, der aktualisiert wurde, aber das bedeutet, dass wir <code>step.sleep</code> für beliebige Zeiträume aufrufen, einen Speicherdienst für einen aktualisierten Wert abfragen und den Vorgang wiederholen müssen, wenn er nicht vorhanden ist. Das ist eine Menge Code und Raum für Fehler:</p>
+<p data-astro-cid-yoyuw6fx="">Um <code>waitForEvent</code> etwas detaillierter zu veranschaulichen, nehmen wir an, dass wir einen Workflow haben, der von einem Code Review Agent ausgelöst wird, der ein GitHub-Repository überwacht.</p>
+<p data-astro-cid-yoyuw6fx="">Ohne die Möglichkeit, auf Ereignisse zu warten, kann unser Workflow nicht einfach die Genehmigung von Menschen erhalten, Vorschläge zurückzuschreiben (oder sogar einen eigenen PR einzureichen). Er <em>könnte</em> möglicherweise einen Status abfragen, der aktualisiert wurde, aber das bedeutet, dass wir <code>step.sleep</code> für beliebige Zeiträume aufrufen, einen Speicherdienst für einen aktualisierten Wert abfragen und den Vorgang wiederholen müssen, wenn er nicht vorhanden ist. Das ist eine Menge Code und Raum für Fehler:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="308" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=640&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=750&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=828&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=1080&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=1280&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=1430&amp;h=616&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2729 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=1920&amp;h=826&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="826" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="308" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p><sup><em>Ohne waitForEvent ist es schwieriger, Daten an eine laufende Workflow-Instanz zu senden</em></sup></p>
-<p>Würde man dasselbe Beispiel modifizieren und die neue waitForEvent-API einbinden, könnte man damit auf die Genehmigung des Menschen warten, bevor man eine mutierende Änderung vornimmt:&nbsp;</p>
+<p data-astro-cid-yoyuw6fx=""><sup><em>Ohne waitForEvent ist es schwieriger, Daten an eine laufende Workflow-Instanz zu senden</em></sup></p>
+<p data-astro-cid-yoyuw6fx="">Würde man dasselbe Beispiel modifizieren und die neue waitForEvent-API einbinden, könnte man damit auf die Genehmigung des Menschen warten, bevor man eine mutierende Änderung vornimmt:&nbsp;</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="308" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=640&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=750&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=828&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=1080&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=1280&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=1430&amp;h=616&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2729 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=1920&amp;h=826&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="826" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="308" class="pt-portable-image-media"></div>
 </figure>
-<p><sup><em>Hinzufügen von waitForEvent zu unserem Code-Review-Workflow, damit es um explizite Genehmigung bitten kann.</em></sup></p>
-<p>Man könnte sich sogar vorstellen, dass ein KI-Agent hier selbst stellvertretend für einen Menschen sendet und/oder handelt. <code>waitForEvent</code> bietet einfach eine Möglichkeit für einen Workflow, etwas von Außen abzurufen und anzuhalten, um es zu ändern, bevor es fortgesetzt wird (oder nicht).</p>
-<p>Entscheidend ist, dass Sie <code>waitForEvent</code> wie jeden anderen Schritt in Workflows aufrufen können. Sie können ihn bedingt und/oder mehrmals und/oder in einer Schleife aufrufen. Workflows sind nur Workers. Sie haben die volle Leistungsfähigkeit einer Programmiersprache und sind nicht durch eine <a href="https://en.wikipedia.org/wiki/Domain-specific_language" target="_blank" rel="noopener noreferrer"><u>domainspezifische Sprache (DSL)</u></a> oder Konfigurationssprache eingeschränkt.</p>
-<h2>Preise</h2>
-<p>Gute Nachrichten: Wir haben seit unserer ursprünglichen Beta-Ankündigung nicht viel verändert! Wir fügen Speicherpreise für den von Ihren Workflows gespeicherten Status hinzu und behalten unsere CPU-basierten und Anfrage-basierten (Aufrufe) Preise wie folgt bei:</p>
-<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
-	<table class="emdash-table" data-astro-cid-62p3h4ye="">
-		<thead data-astro-cid-62p3h4ye="">
-			<tr data-astro-cid-62p3h4ye="">
-				<th data-astro-cid-62p3h4ye="">
+<p data-astro-cid-yoyuw6fx=""><sup><em>Hinzufügen von waitForEvent zu unserem Code-Review-Workflow, damit es um explizite Genehmigung bitten kann.</em></sup></p>
+<p data-astro-cid-yoyuw6fx="">Man könnte sich sogar vorstellen, dass ein KI-Agent hier selbst stellvertretend für einen Menschen sendet und/oder handelt. <code>waitForEvent</code> bietet einfach eine Möglichkeit für einen Workflow, etwas von Außen abzurufen und anzuhalten, um es zu ändern, bevor es fortgesetzt wird (oder nicht).</p>
+<p data-astro-cid-yoyuw6fx="">Entscheidend ist, dass Sie <code>waitForEvent</code> wie jeden anderen Schritt in Workflows aufrufen können. Sie können ihn bedingt und/oder mehrmals und/oder in einer Schleife aufrufen. Workflows sind nur Workers. Sie haben die volle Leistungsfähigkeit einer Programmiersprache und sind nicht durch eine <a href="https://en.wikipedia.org/wiki/Domain-specific_language" target="_blank" rel="noopener noreferrer"><u>domainspezifische Sprache (DSL)</u></a> oder Konfigurationssprache eingeschränkt.</p>
+<h2 data-astro-cid-yoyuw6fx="">Preise</h2>
+<p data-astro-cid-yoyuw6fx="">Gute Nachrichten: Wir haben seit unserer ursprünglichen Beta-Ankündigung nicht viel verändert! Wir fügen Speicherpreise für den von Ihren Workflows gespeicherten Status hinzu und behalten unsere CPU-basierten und Anfrage-basierten (Aufrufe) Preise wie folgt bei:</p>
+<div class="emdash-table-wrapper" data-astro-cid-zdje7xco="">
+	<table class="emdash-table" data-astro-cid-zdje7xco="">
+		<thead data-astro-cid-zdje7xco="">
+			<tr data-astro-cid-zdje7xco="">
+				<th data-astro-cid-zdje7xco="">
 					<p>Einheit</p>
 				</th>
-				<th data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-zdje7xco="">
 					<p>Free-Tarif für Workers</p>
 				</th>
-				<th data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-zdje7xco="">
 					<p>Kostenpflichtige Workers-Version</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-62p3h4ye="">
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+		<tbody data-astro-cid-zdje7xco="">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>CPU-Zeit (ms)</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>10&nbsp;ms pro Workflow</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>30 Millionen CPU-Millisekunden pro Monat inbegriffen+0,02&nbsp;$ pro zusätzliche Million CPU-Millisekunden</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Anfragen</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>100.000 Workflow-Aufrufe pro Tag (geteilt mit Workers)</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>10&nbsp;Mio. pro Monat inbegriffen<br>+0,30&nbsp;$ pro zusätzlicher Million</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Speicherplatz (GB)</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>1 GB</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>1 GB pro Monat inbegriffen<br>+ 0,20&nbsp;$/ GB-Monat</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p>Da die Preisgestaltung für Speicherplatz neu ist, werden wir den Speicherplatz erst ab dem 15.&nbsp;September 2025 aktiv in Rechnung stellen. Wir benachrichtigen Nutzer, die das enthaltene 1-GB-Limit überschreiten, bevor der Speicherplatz in Rechnung gestellt wird, und standardmäßig laufen Workflows im gespeicherten Zustand nach drei (3) Tagen (Free-Tarif) oder dreißig (30) Tagen (kostenpflichtiger Tarif) ab.</p>
-<p>Falls Sie sich fragen, was „CPU-Zeit“ ist: Die Zeit, in der Ihr Workflow aktiv Rechenressourcen verbraucht. <em>Nicht</em> enthalten ist die Zeit, die für API-Aufrufe, LLMs oder andere E/A-Vorgänge (z.&nbsp;B. Schreibvorgänge in einer Datenbank) aufgewendet wird. Das hört sich vielleicht nach einer Kleinigkeit an, aber in der Praxis summiert sich das. Die meisten Apps haben eine CPU-Zeit im einstelligen Millisekundenbereich und eine Echtzeit von mehreren Sekunden: Wenn eine oder zwei APIs 100–250&nbsp;ms für die Antwort benötigen, summiert sich das!</p>
+<p data-astro-cid-yoyuw6fx="">Da die Preisgestaltung für Speicherplatz neu ist, werden wir den Speicherplatz erst ab dem 15.&nbsp;September 2025 aktiv in Rechnung stellen. Wir benachrichtigen Nutzer, die das enthaltene 1-GB-Limit überschreiten, bevor der Speicherplatz in Rechnung gestellt wird, und standardmäßig laufen Workflows im gespeicherten Zustand nach drei (3) Tagen (Free-Tarif) oder dreißig (30) Tagen (kostenpflichtiger Tarif) ab.</p>
+<p data-astro-cid-yoyuw6fx="">Falls Sie sich fragen, was „CPU-Zeit“ ist: Die Zeit, in der Ihr Workflow aktiv Rechenressourcen verbraucht. <em>Nicht</em> enthalten ist die Zeit, die für API-Aufrufe, LLMs oder andere E/A-Vorgänge (z.&nbsp;B. Schreibvorgänge in einer Datenbank) aufgewendet wird. Das hört sich vielleicht nach einer Kleinigkeit an, aber in der Praxis summiert sich das. Die meisten Apps haben eine CPU-Zeit im einstelligen Millisekundenbereich und eine Echtzeit von mehreren Sekunden: Wenn eine oder zwei APIs 100–250&nbsp;ms für die Antwort benötigen, summiert sich das!</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="311" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=715&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=640&amp;h=278&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=715&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=750&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=828&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=1080&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=1280&amp;h=557&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=1430&amp;h=622&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2729 Image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=1912&amp;h=832&amp;f=webp" data-lightbox-width="1912" data-lightbox-height="832" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="311" class="pt-portable-image-media"></div>
 </figure>
-<p><sup><em>Rechnen Sie nach CPU, nicht nach Zeit, die ein Workflow im Leerlauf oder im Wartezustand verbringt.</em></sup></p>
-<p>Insbesondere Workflow-Engines verbringen viel Zeit mit Warten: Lesen von Daten aus Objektspeichern (wie <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>Cloudflare R2</u></a>), Aufrufen von Drittanbieter-APIs oder LLMs wie o3-mini oder Claude 3.7, sogar Abfragen von Datenbanken wie <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a>, Postgres oder MySQL. Bei Workflows gilt dasselbe wie bei Workers: Sie zahlen nicht für die Zeit, in der Ihre App nur wartet.</p>
-<h2>Jetzt entwickeln</h2>
-<p>Sie haben Workflows und ihre Funktionsweise gut im Griff und wollen mit der Entwicklung beginnen. Wie geht es weiter?</p>
+<p data-astro-cid-yoyuw6fx=""><sup><em>Rechnen Sie nach CPU, nicht nach Zeit, die ein Workflow im Leerlauf oder im Wartezustand verbringt.</em></sup></p>
+<p data-astro-cid-yoyuw6fx="">Insbesondere Workflow-Engines verbringen viel Zeit mit Warten: Lesen von Daten aus Objektspeichern (wie <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>Cloudflare R2</u></a>), Aufrufen von Drittanbieter-APIs oder LLMs wie o3-mini oder Claude 3.7, sogar Abfragen von Datenbanken wie <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a>, Postgres oder MySQL. Bei Workflows gilt dasselbe wie bei Workers: Sie zahlen nicht für die Zeit, in der Ihre App nur wartet.</p>
+<h2 data-astro-cid-yoyuw6fx="">Jetzt entwickeln</h2>
+<p data-astro-cid-yoyuw6fx="">Sie haben Workflows und ihre Funktionsweise gut im Griff und wollen mit der Entwicklung beginnen. Wie geht es weiter?</p>
 <ol>
 	<li><a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Besuchen Sie die Workflows-Dokumentation</u></a>, um ihre Funktionsweise zu entdecken, die Workflows-API zu verstehen und Best Practices zu erfahren</li>
 	<li>Sehen Sie sich den Code im <a href="https://github.com/cloudflare/workflows-starter" target="_blank" rel="noopener noreferrer"><u>Starterprojekt</u></a> an</li>

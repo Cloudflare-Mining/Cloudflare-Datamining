@@ -1,8 +1,8 @@
-<p>Wir freuen uns, heute bekannt geben zu können, dass Workers KV jetzt allgemein verfügbar und einsatzbereit ist!</p>
-<h3><strong>Was ist Workers KV?</strong></h3>
-<p><a href="https://www.cloudflare.com/products/workers-kv" target="_blank" rel="noopener noreferrer">Workers KV</a> ist ein hochverteilter, konsistenter Schlüsselwertspeicher auf der gesamten globalen Edge von Cloudflare. Er gestattet Ihnen, Milliarden von Schlüsselwertpaaren zu speichern und diese überall auf der Welt mit extrem niedriger Latenz zu lesen. Sie können jetzt komplette Anwendungen mit der Leistung eines statischen CDN-Cache erstellen.</p>
-<h3><strong>Warum haben wir Workers KV entwickelt?</strong></h3>
-<p><a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank" rel="noopener noreferrer">Workers</a> ist eine Plattform, auf der Sie JavaScript auf Cloudflares globaler Edge mit mehr als 175 Rechenzentren ausführen können. Mit nur wenigen Zeilen Code können Sie HTTP-Anfragen weiterleiten, Antworten ändern oder sogar neue Antworten ohne Ursprungsserver erstellen.</p>
+<p data-astro-cid-yoyuw6fx="">Wir freuen uns, heute bekannt geben zu können, dass Workers KV jetzt allgemein verfügbar und einsatzbereit ist!</p>
+<h3 data-astro-cid-yoyuw6fx=""><strong>Was ist Workers KV?</strong></h3>
+<p data-astro-cid-yoyuw6fx=""><a href="https://www.cloudflare.com/products/workers-kv" target="_blank" rel="noopener noreferrer">Workers KV</a> ist ein hochverteilter, konsistenter Schlüsselwertspeicher auf der gesamten globalen Edge von Cloudflare. Er gestattet Ihnen, Milliarden von Schlüsselwertpaaren zu speichern und diese überall auf der Welt mit extrem niedriger Latenz zu lesen. Sie können jetzt komplette Anwendungen mit der Leistung eines statischen CDN-Cache erstellen.</p>
+<h3 data-astro-cid-yoyuw6fx=""><strong>Warum haben wir Workers KV entwickelt?</strong></h3>
+<p data-astro-cid-yoyuw6fx=""><a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank" rel="noopener noreferrer">Workers</a> ist eine Plattform, auf der Sie JavaScript auf Cloudflares globaler Edge mit mehr als 175 Rechenzentren ausführen können. Mit nur wenigen Zeilen Code können Sie HTTP-Anfragen weiterleiten, Antworten ändern oder sogar neue Antworten ohne Ursprungsserver erstellen.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// A Worker that handles a single redirect,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// such a humble beginning...</span></span>
@@ -45,7 +45,7 @@
 		})
 	});
 </script>
-<p>Kunden kamen schnell mit Anwendungsfällen zu uns, die die Möglichkeit erforderten, persistente Daten zu speichern. Auf der Basis unseres obigen Beispiel ist es einfach, eine einzelne Umleitung zu bewältigen, aber was ist, wenn Sie Milliarden davon bewältigen wollen? Sie müssten sie in Ihrem Workers-Skript hartcoden, alles in weniger als 1 MB einpassen und jedes Mal erneut bereitstellen, wenn Sie eine Änderung vornehmen wollen – oje! Deshalb haben wir Workers KV entwickelt.</p>
+<p data-astro-cid-yoyuw6fx="">Kunden kamen schnell mit Anwendungsfällen zu uns, die die Möglichkeit erforderten, persistente Daten zu speichern. Auf der Basis unseres obigen Beispiel ist es einfach, eine einzelne Umleitung zu bewältigen, aber was ist, wenn Sie Milliarden davon bewältigen wollen? Sie müssten sie in Ihrem Workers-Skript hartcoden, alles in weniger als 1 MB einpassen und jedes Mal erneut bereitstellen, wenn Sie eine Änderung vornehmen wollen – oje! Deshalb haben wir Workers KV entwickelt.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// A Worker that can handle billions of redirects,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// now that's more like it!</span></span>
@@ -75,9 +75,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Mit nur wenigen Änderungen gegenüber unserem früheren Beispiel konnten wir von einer einzigen Umleitung auf Milliarden Umleitungen skalieren – und das ist nur ein Vorgeschmack auf das, was Sie mit Workers KV bauen können.</p>
-<h3><strong>Wie funktioniert es?</strong></h3>
-<p>Verteilte Datenspeicher werden häufig mit dem <a href="https://en.wikipedia.org/wiki/CAP_theorem" target="_blank" rel="noopener noreferrer">CAP-Theorem</a>modelliert, das besagt, dass verteilte Systeme nur 2 der folgenden 3 Eigenschaften gleichzeitig erfüllen können:</p>
+<p data-astro-cid-yoyuw6fx="">Mit nur wenigen Änderungen gegenüber unserem früheren Beispiel konnten wir von einer einzigen Umleitung auf Milliarden Umleitungen skalieren – und das ist nur ein Vorgeschmack auf das, was Sie mit Workers KV bauen können.</p>
+<h3 data-astro-cid-yoyuw6fx=""><strong>Wie funktioniert es?</strong></h3>
+<p data-astro-cid-yoyuw6fx="">Verteilte Datenspeicher werden häufig mit dem <a href="https://en.wikipedia.org/wiki/CAP_theorem" target="_blank" rel="noopener noreferrer">CAP-Theorem</a>modelliert, das besagt, dass verteilte Systeme nur 2 der folgenden 3 Eigenschaften gleichzeitig erfüllen können:</p>
 <ul>
 	<li>Konsistenz – sind meine Daten überall gleich?</li>
 	<li>Verfügbarkeit – sind meine Daten jederzeit verfügbar?</li>
@@ -87,27 +87,27 @@
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="549" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=715&amp;h=549&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=640&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=715&amp;h=549&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=750&amp;h=576&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=828&amp;h=636&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=1080&amp;h=829&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=1280&amp;h=983&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=1430&amp;h=1098&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Workers KV — Cloudflare's distributed database Embedded Image - pjWvzj" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=1204&amp;h=924&amp;f=webp" data-lightbox-width="1204" data-lightbox-height="924" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="549" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p>Workers KV garantiert Verfügbarkeit und Partitionstoleranz. Diese Kombination wird als <a href="https://en.wikipedia.org/wiki/Eventual_consistency" target="_blank" rel="noopener noreferrer">Eventual Consistency</a> (schlussendliche Konsistenz) bezeichnet und stattet Workers KV mit zwei einzigartigen Wettbewerbsvorteilen aus:</p>
+<p data-astro-cid-yoyuw6fx="">Workers KV garantiert Verfügbarkeit und Partitionstoleranz. Diese Kombination wird als <a href="https://en.wikipedia.org/wiki/Eventual_consistency" target="_blank" rel="noopener noreferrer">Eventual Consistency</a> (schlussendliche Konsistenz) bezeichnet und stattet Workers KV mit zwei einzigartigen Wettbewerbsvorteilen aus:</p>
 <ul>
 	<li>Die Lesevorgänge sind extrem schnell (im Mittelwert 12 ms), da sie von unserer Caching-Technologie gestützt werden.</li>
 	<li>Die Daten sind in mehr als 175 Edge-Rechenzentren verfügbar und widerstehen regionalen Ausfällen.</li>
 </ul>
-<p>Trotzdem gibt es Kompromisse bei der Eventual Consistency. Wenn zwei Clients gleichzeitig unterschiedliche Werte in denselben Schlüssel schreiben, „gewinnt“ <em>schlussendlich</em> der letzte Client, der geschrieben hat, und sein Wert wird global konsistent. Das bedeutet auch, dass, wenn ein Client in einen Schlüssel schreibt und derselbe Client denselben Schlüssel liest, die Werte für einen kurzen Zeitraum möglicherweise inkonsistent sind.</p>
-<p>Um dieses Szenario zu visualisieren, hier ein Beispiel aus dem wirklichen Leben mit drei Freunden:</p>
+<p data-astro-cid-yoyuw6fx="">Trotzdem gibt es Kompromisse bei der Eventual Consistency. Wenn zwei Clients gleichzeitig unterschiedliche Werte in denselben Schlüssel schreiben, „gewinnt“ <em>schlussendlich</em> der letzte Client, der geschrieben hat, und sein Wert wird global konsistent. Das bedeutet auch, dass, wenn ein Client in einen Schlüssel schreibt und derselbe Client denselben Schlüssel liest, die Werte für einen kurzen Zeitraum möglicherweise inkonsistent sind.</p>
+<p data-astro-cid-yoyuw6fx="">Um dieses Szenario zu visualisieren, hier ein Beispiel aus dem wirklichen Leben mit drei Freunden:</p>
 <ul>
 	<li>Nehmen wir an, Matthew, Michelle und Lee planen ihr wöchentliches Mittagessen.</li>
 	<li>Matthew beschließt, dass sie Sushi essen werden.</li>
 	<li>Matthew teilt Michelle seine Sushi-Pläne mit und Michelle stimmt zu.</li>
 	<li>Lee, der die Pläne nicht kennt, sagt Michelle, dass sie tatsächlich Pizza essen werden.</li>
 </ul>
-<p>Eine Stunde später warten Michelle und Lee in der Pizzeria, während Matthew allein im Sushi-Restaurant sitzt – was ist schief gelaufen? Wir können es der Eventual Consistency ankreiden, denn nachdem Matthew einige Minuten lang gewartet hat, schaut er auf seinen aktualisierten Kalender und findet <em>schlussendlich</em> die neue Wahrheit heraus: dass sie Pizza essen.</p>
-<p>Während es im wirklichen Leben Minuten dauern kann, ist Workers KV viel schneller. Es kann die globale Konsistenz in weniger als 60 Sekunden erreichen. Darüber hinauskann ein Worker, wenn er in einen Schlüssel schreibt und dann <em>sofort</em> denselben Schlüssel liest, erwarten, dass die Werte konsistent sind, wenn beide Vorgänge vom gleichen Speicherort stammen.</p>
-<h3><strong>Wann sollte ich das anwenden?</strong></h3>
-<p>Jetzt, da Sie die Vorteile und Kompromisse der Verwendung der Eventual Consistency verstehen, bleibt die Frage, wie Sie feststellen können, ob es die richtige Speicherlösung für Ihre Anwendung ist. Einfach formuliert: Wenn Sie globale Verfügbarkeit mit ultraschnellen Lesevorgängen wollen, ist Workers KV genau das Richtige für Sie.</p>
-<p>Wenn Ihre Anwendung jedoch häufig in denselben Schlüssel schreibt, gibt es eine zusätzliche Überlegung. Wir nennen es „die Matthew-Frage“: Macht es Ihnen etwas aus, wenn die Matthews dieser Welt <em>gelegentlich</em> ins falsche Restaurant gehen?</p>
-<p>Sie können sich Anwendungsfälle (wie unser Worker-Umleitungsbeispiel) vorstellen, bei denen es keinen wesentlichen Unterschied macht. Aber Sie den Kontostand eines Benutzers verfolgen wollen, möchten Sie nicht, dass die Möglichkeit des gleichzeitigen Vorhandenseins von zwei verschiedenen Salden besteht, da der Benutzer etwas mit Geld kaufen könnte, das er bereits ausgegeben hat.</p>
-<h3><strong>Was kann ich damit bauen?</strong></h3>
-<p>Hier sind einige Beispiele für Anwendungen, die mit KV erstellt wurden:</p>
+<p data-astro-cid-yoyuw6fx="">Eine Stunde später warten Michelle und Lee in der Pizzeria, während Matthew allein im Sushi-Restaurant sitzt – was ist schief gelaufen? Wir können es der Eventual Consistency ankreiden, denn nachdem Matthew einige Minuten lang gewartet hat, schaut er auf seinen aktualisierten Kalender und findet <em>schlussendlich</em> die neue Wahrheit heraus: dass sie Pizza essen.</p>
+<p data-astro-cid-yoyuw6fx="">Während es im wirklichen Leben Minuten dauern kann, ist Workers KV viel schneller. Es kann die globale Konsistenz in weniger als 60 Sekunden erreichen. Darüber hinauskann ein Worker, wenn er in einen Schlüssel schreibt und dann <em>sofort</em> denselben Schlüssel liest, erwarten, dass die Werte konsistent sind, wenn beide Vorgänge vom gleichen Speicherort stammen.</p>
+<h3 data-astro-cid-yoyuw6fx=""><strong>Wann sollte ich das anwenden?</strong></h3>
+<p data-astro-cid-yoyuw6fx="">Jetzt, da Sie die Vorteile und Kompromisse der Verwendung der Eventual Consistency verstehen, bleibt die Frage, wie Sie feststellen können, ob es die richtige Speicherlösung für Ihre Anwendung ist. Einfach formuliert: Wenn Sie globale Verfügbarkeit mit ultraschnellen Lesevorgängen wollen, ist Workers KV genau das Richtige für Sie.</p>
+<p data-astro-cid-yoyuw6fx="">Wenn Ihre Anwendung jedoch häufig in denselben Schlüssel schreibt, gibt es eine zusätzliche Überlegung. Wir nennen es „die Matthew-Frage“: Macht es Ihnen etwas aus, wenn die Matthews dieser Welt <em>gelegentlich</em> ins falsche Restaurant gehen?</p>
+<p data-astro-cid-yoyuw6fx="">Sie können sich Anwendungsfälle (wie unser Worker-Umleitungsbeispiel) vorstellen, bei denen es keinen wesentlichen Unterschied macht. Aber Sie den Kontostand eines Benutzers verfolgen wollen, möchten Sie nicht, dass die Möglichkeit des gleichzeitigen Vorhandenseins von zwei verschiedenen Salden besteht, da der Benutzer etwas mit Geld kaufen könnte, das er bereits ausgegeben hat.</p>
+<h3 data-astro-cid-yoyuw6fx=""><strong>Was kann ich damit bauen?</strong></h3>
+<p data-astro-cid-yoyuw6fx="">Hier sind einige Beispiele für Anwendungen, die mit KV erstellt wurden:</p>
 <ul>
 	<li>Massenumleitungen – Bewältigung von Milliarden von HTTP-Umleitungen.</li>
 	<li>Benutzerauthentifizierung – Überprüfung von Benutzeranfragen an Ihre API.</li>
@@ -116,14 +116,14 @@
 	<li>Step-Funktionen – Synchronisierung von Statusdaten zwischen den Funktionen mehrerer APIs.</li>
 	<li>Edge-Dateispeicher – Hosten von großen Mengen kleiner Dateien.</li>
 </ul>
-<p>Wir haben mehrere dieser Anwendungsfälle in unserem vorherigen <a href="https://blog.cloudflare.com/building-with-workers-kv">Blogbeitrag</a> hervorgehoben. Wir haben auch einige ausführlichere Codedurchläufe veröffentlicht, einschließlich eines kürzlich erschienenen Blogbeitrags zum Erstellen einer Online-<a href="https://blog.cloudflare.com/building-a-to-do-list-with-workers-and-kv">To-Do-Liste mit Workers KV</a>.</p>
+<p data-astro-cid-yoyuw6fx="">Wir haben mehrere dieser Anwendungsfälle in unserem vorherigen <a href="https://blog.cloudflare.com/building-with-workers-kv">Blogbeitrag</a> hervorgehoben. Wir haben auch einige ausführlichere Codedurchläufe veröffentlicht, einschließlich eines kürzlich erschienenen Blogbeitrags zum Erstellen einer Online-<a href="https://blog.cloudflare.com/building-a-to-do-list-with-workers-and-kv">To-Do-Liste mit Workers KV</a>.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="618" height="487" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=618&amp;h=487&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=618&amp;h=487&amp;f=webp&amp;fit=cover&amp;position=center 618w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=640&amp;h=504&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=750&amp;h=591&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=828&amp;h=652&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=1080&amp;h=851&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=1236&amp;h=974&amp;f=webp&amp;fit=cover&amp;position=center 1236w" alt="Workers KV — Cloudflare's distributed database Embedded Image - LkgCY5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=618&amp;h=487&amp;f=webp" data-lightbox-width="618" data-lightbox-height="487" data-astro-cid-7nvefuv6="true" sizes="(min-width: 618px) 618px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="618" height="487" class="pt-portable-image-media"></div>
 </figure>
-<h3><strong>Was ist neu seit der Beta-Version?</strong></h3>
-<p>Der bei weitem häufigste Wunsch war, das Schreiben von Daten in Workers KV zu vereinfachen. Deshalb veröffentlichen wir drei neue Möglichkeiten zur weiteren Verbesserung dieser Erfahrung:</p>
-<h4><strong>1. Bulk-Schreiben</strong></h4>
-<p>Beim Importieren Ihrer vorhandenen Daten in Workers KV wollen Sie sich nicht dem Senden einer HTTP-Anfrage für <em>jedes</em> Schlüsselwertpaar herumärgern müssen. Aus diesem Grund haben wir der Cloudflare-API einen <a href="https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs" target="_blank" rel="noopener noreferrer">Bulk-Endpunkt</a> hinzugefügt. Jetzt können Sie bis zu 10.000 Paare (bis zu 100 MB Daten) in einer einzigen PUT-Anfrage hochladen.</p>
+<h3 data-astro-cid-yoyuw6fx=""><strong>Was ist neu seit der Beta-Version?</strong></h3>
+<p data-astro-cid-yoyuw6fx="">Der bei weitem häufigste Wunsch war, das Schreiben von Daten in Workers KV zu vereinfachen. Deshalb veröffentlichen wir drei neue Möglichkeiten zur weiteren Verbesserung dieser Erfahrung:</p>
+<h4 data-astro-cid-yoyuw6fx=""><strong>1. Bulk-Schreiben</strong></h4>
+<p data-astro-cid-yoyuw6fx="">Beim Importieren Ihrer vorhandenen Daten in Workers KV wollen Sie sich nicht dem Senden einer HTTP-Anfrage für <em>jedes</em> Schlüsselwertpaar herumärgern müssen. Aus diesem Grund haben wir der Cloudflare-API einen <a href="https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs" target="_blank" rel="noopener noreferrer">Bulk-Endpunkt</a> hinzugefügt. Jetzt können Sie bis zu 10.000 Paare (bis zu 100 MB Daten) in einer einzigen PUT-Anfrage hochladen.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/accounts/ </span><span class="sk-005cc5-a0a0a0">\</span></span>
 <span class="line"><span class="sk-24292e-fff">     $ACCOUNT_ID</span><span class="sk-032f62-99ffe4">/storage/kv/namespaces/</span><span class="sk-24292e-fff">$NAMESPACE_ID</span><span class="sk-032f62-99ffe4">/bulk"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
@@ -140,8 +140,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Lassen Sie uns eine Beispielanwendung durchgehen: Sie wollen die Übersetzung Ihrer Website zu Workers auslagern. Da Sie die Übersetzungsschlüssel häufig lesen, aber nur gelegentlich aktualisieren, funktioniert diese Anwendung mit dem Modell der Eventual Consistency von Workers KV gut.</p>
-<p>In diesem Beispiel haken wir uns in <a href="https://crowdin.com" target="_blank" rel="noopener noreferrer">Crowdin</a>, eine beliebte Plattform zum Verwalten von Übersetzungsdaten, ein. Dieser Worker reagiert auf einen /translate-Endpunkt, lädt alle Übersetzungsschlüssel herunter und schreibt sie als Bulk in Workers KV, damit Sie sie später auf unserer Edge lesen können:</p>
+<p data-astro-cid-yoyuw6fx="">Lassen Sie uns eine Beispielanwendung durchgehen: Sie wollen die Übersetzung Ihrer Website zu Workers auslagern. Da Sie die Übersetzungsschlüssel häufig lesen, aber nur gelegentlich aktualisieren, funktioniert diese Anwendung mit dem Modell der Eventual Consistency von Workers KV gut.</p>
+<p data-astro-cid-yoyuw6fx="">In diesem Beispiel haken wir uns in <a href="https://crowdin.com" target="_blank" rel="noopener noreferrer">Crowdin</a>, eine beliebte Plattform zum Verwalten von Übersetzungsdaten, ein. Dieser Worker reagiert auf einen /translate-Endpunkt, lädt alle Übersetzungsschlüssel herunter und schreibt sie als Bulk in Workers KV, damit Sie sie später auf unserer Edge lesen können:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (event.request.url.pathname </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "/translate"</span><span class="sk-24292e-fff">) {</span></span>
@@ -193,7 +193,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Wenn Sie nun eine Seite übersetzen wollen, müssen Sie nur noch aus Workers KV auslesen:</p>
+<p data-astro-cid-yoyuw6fx="">Wenn Sie nun eine Seite übersetzen wollen, müssen Sie nur noch aus Workers KV auslesen:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> translate</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">keys</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">lang</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // You bind your translations namespace to the TRANSLATIONS variable.</span></span>
@@ -204,8 +204,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4><strong>2. Ablaufende Schlüssel</strong></h4>
-<p>Standardmäßig sind Schlüsselwertpaare, die in Workers KV gespeichert werden, dauerhaft. Manchmal wollen Sie jedoch, dass Ihre Daten nach einer bestimmten Zeit automatisch gelöscht werden. Aus diesem Grund führen wir für Schreibvorgänge die Optionen expiration undexpiration Ttl ein.</p>
+<h4 data-astro-cid-yoyuw6fx=""><strong>2. Ablaufende Schlüssel</strong></h4>
+<p data-astro-cid-yoyuw6fx="">Standardmäßig sind Schlüsselwertpaare, die in Workers KV gespeichert werden, dauerhaft. Manchmal wollen Sie jedoch, dass Ihre Daten nach einer bestimmten Zeit automatisch gelöscht werden. Aus diesem Grund führen wir für Schreibvorgänge die Optionen expiration undexpiration Ttl ein.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Key expires 60 seconds from now.</span></span>
 <span class="line"><span class="sk-005cc5-fff">NAMESPACE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"myKey"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"myValue"</span><span class="sk-24292e-fff">, {expirationTtl: </span><span class="sk-005cc5-ffc799">60</span><span class="sk-24292e-fff">})</span></span>
@@ -231,8 +231,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Angenommen, Sie wollen Benutzer blockieren, die von Ihrer Website als ungeeignet gekennzeichnet wurden, aber nur für eine Woche. Mit einem ablaufenden Schlüssel können Sie die Ablaufzeit festlegen und müssen sich nicht um ein späteres Löschen kümmern.</p>
-<p>In diesem Beispiel gehen wir davon aus, dass Benutzer- und IP-Adressen identisch sind. Wenn Ihre Anwendung über eine Authentifizierung verfügt, können Sie Zugriffstoken als Schlüsselkennzeichen verwenden.</p>
+<p data-astro-cid-yoyuw6fx="">Angenommen, Sie wollen Benutzer blockieren, die von Ihrer Website als ungeeignet gekennzeichnet wurden, aber nur für eine Woche. Mit einem ablaufenden Schlüssel können Sie die Ablaufzeit festlegen und müssen sich nicht um ein späteres Löschen kümmern.</p>
+<p data-astro-cid-yoyuw6fx="">In diesem Beispiel gehen wir davon aus, dass Benutzer- und IP-Adressen identisch sind. Wenn Ihre Anwendung über eine Authentifizierung verfügt, können Sie Zugriffstoken als Schlüsselkennzeichen verwenden.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(event.request.url)</span></span>
@@ -271,14 +271,14 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4><strong>3. Größere Werte</strong></h4>
-<p>Wir haben unsere Größenbeschränkung für Werte von 64 kB auf 2 MB erhöht. Das ist sehr nützlich, wenn Sie pufferbasierte oder Dateidaten in Workers KV speichern müssen.</p>
+<h4 data-astro-cid-yoyuw6fx=""><strong>3. Größere Werte</strong></h4>
+<p data-astro-cid-yoyuw6fx="">Wir haben unsere Größenbeschränkung für Werte von 64 kB auf 2 MB erhöht. Das ist sehr nützlich, wenn Sie pufferbasierte oder Dateidaten in Workers KV speichern müssen.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="356" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=715&amp;h=356&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=640&amp;h=319&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=715&amp;h=356&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=750&amp;h=373&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=828&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=1080&amp;h=538&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=1280&amp;h=637&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=1430&amp;h=712&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Workers KV — Cloudflare's distributed database Embedded Image - cOsdZR" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=1212&amp;h=604&amp;f=webp" data-lightbox-width="1212" data-lightbox-height="604" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="356" class="pt-portable-image-media"></div>
 </figure>
-<p>Betrachten Sie folgendes Szenario: Sie wollen Ihren Benutzern das Hochladen ihres Lieblings-GIF für ihr Profil ermöglichen, ohne dass Sie diese GIFs als Binärdateien in Ihrer Datenbank speichern oder <em>noch ein</em> Speicher-Bucket in der Cloud verwalten müssen.</p>
-<p>Workers KV passt hervorragend für diesen Anwendungsfall! Sie können einen Workers KV-Namepace für die GIFs Ihrer Benutzer erstellen, der schnell und zuverlässig ist, wo auch immer sich Ihre Kunden befinden.</p>
-<p>In diesem Beispiel laden Benutzer einen Link zu ihrem bevorzugten GIF hoch, dann lädt ein Worker ihn herunter und speichert ihn in Workers KV.</p>
+<p data-astro-cid-yoyuw6fx="">Betrachten Sie folgendes Szenario: Sie wollen Ihren Benutzern das Hochladen ihres Lieblings-GIF für ihr Profil ermöglichen, ohne dass Sie diese GIFs als Binärdateien in Ihrer Datenbank speichern oder <em>noch ein</em> Speicher-Bucket in der Cloud verwalten müssen.</p>
+<p data-astro-cid-yoyuw6fx="">Workers KV passt hervorragend für diesen Anwendungsfall! Sie können einen Workers KV-Namepace für die GIFs Ihrer Benutzer erstellen, der schnell und zuverlässig ist, wo auch immer sich Ihre Kunden befinden.</p>
+<p data-astro-cid-yoyuw6fx="">In diesem Beispiel laden Benutzer einen Link zu ihrem bevorzugten GIF hoch, dann lädt ein Worker ihn herunter und speichert ihn in Workers KV.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> event.request.url</span></span>
@@ -317,17 +317,17 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Abschließend möchten wir uns noch bei allen Beta-Kunden bedanken. Es war Ihr wertvolles Feedback, das uns zur Entwicklung dieser Änderungen von Workers KV veranlasst hat. Bleiben Sie in Kontakt mit uns. Wir sind immer auf der Suche nach neuen Möglichkeiten und wir freuen uns, von Ihnen zu hören!</p>
-<h3><strong>Preis</strong></h3>
-<p>Wir sind auch in der Lage, unsere GA-Preise bekannt zu geben. Wenn Sie einer unserer Enterprise-Kunden sind, bleiben Ihre Preise offensichtlich unverändert.</p>
+<p data-astro-cid-yoyuw6fx="">Abschließend möchten wir uns noch bei allen Beta-Kunden bedanken. Es war Ihr wertvolles Feedback, das uns zur Entwicklung dieser Änderungen von Workers KV veranlasst hat. Bleiben Sie in Kontakt mit uns. Wir sind immer auf der Suche nach neuen Möglichkeiten und wir freuen uns, von Ihnen zu hören!</p>
+<h3 data-astro-cid-yoyuw6fx=""><strong>Preis</strong></h3>
+<p data-astro-cid-yoyuw6fx="">Wir sind auch in der Lage, unsere GA-Preise bekannt zu geben. Wenn Sie einer unserer Enterprise-Kunden sind, bleiben Ihre Preise offensichtlich unverändert.</p>
 <ul>
 	<li>0,50 USD / GB gespeicherte Daten, 1 GB enthalten</li>
 	<li>0,50 USD / Millionen Lesevorgänge, 10 Millionen enthalten</li>
 	<li>5 USD / Millionen Schreib-, Auflist- und Löschvorgänge, 1 Million enthalten</li>
 </ul>
-<p>Während der Beta-Phase haben wir erfahren, dass Kunden nicht nur Werte auf unserer Edge lesen, sondern auch Werte von unserer Edge schreiben wollen. Da die Nachfrage nach diesen teureren Edge-Vorgängen groß ist, haben wir damit begonnen, Nicht-Lese-Vorgänge pro Monat abzurechnen.</p>
-<h3><strong>Beschränkungen</strong></h3>
-<p>Wie bereits erwähnt, haben wir unsere Größenbeschränkung von 64 kB auf 2 MB erhöht. Wir haben auch unsere Obergrenze für die Anzahl der Schlüssel pro Namespace aufgehoben – sie ist jetzt unbegrenzt. Hier sind unsere GA-Beschränkungen:</p>
+<p data-astro-cid-yoyuw6fx="">Während der Beta-Phase haben wir erfahren, dass Kunden nicht nur Werte auf unserer Edge lesen, sondern auch Werte von unserer Edge schreiben wollen. Da die Nachfrage nach diesen teureren Edge-Vorgängen groß ist, haben wir damit begonnen, Nicht-Lese-Vorgänge pro Monat abzurechnen.</p>
+<h3 data-astro-cid-yoyuw6fx=""><strong>Beschränkungen</strong></h3>
+<p data-astro-cid-yoyuw6fx="">Wie bereits erwähnt, haben wir unsere Größenbeschränkung von 64 kB auf 2 MB erhöht. Wir haben auch unsere Obergrenze für die Anzahl der Schlüssel pro Namespace aufgehoben – sie ist jetzt unbegrenzt. Hier sind unsere GA-Beschränkungen:</p>
 <ul>
 	<li>Bis zu 20 Namespaces pro Konto, jeder mit unbegrenzt vielen Schlüsseln</li>
 	<li>Schlüssel bis zu 512 Bytes und Werte bis zu 2 MB</li>
@@ -335,7 +335,7 @@
 	<li>Ein Schreibvorgang pro Sekunde für denselben Schlüssel</li>
 	<li>Unbegrenzt viele Lesevorgänge pro Sekunde pro Schlüssel</li>
 </ul>
-<h3><strong>Probieren Sie es jetzt aus!</strong></h3>
-<p><a href="https://www.cloudflare.com/products/workers-kv" target="_blank" rel="noopener noreferrer">Workers KV</a> ist jetzt für alle Kunden zugänglich und Sie können noch heute in Ihrem Cloudflare-Dashboard über die Registerkarte „Workers“ mit der Verwendung beginnen. Sie können auch unsere aktualisierte <a href="https://developers.cloudflare.com/workers/kv" target="_blank" rel="noopener noreferrer">Dokumentation einsehen.</a></p>
-<p>Wir sind sehr gespannt, was Sie mit Workers KV bauen werden!</p>
-<p><a href="https://blog.cloudflare.com/tag/serverless">Serverlos</a> <a href="https://blog.cloudflare.com/tag/workers">Workers</a> <a href="https://blog.cloudflare.com/tag/workers-kv">Workers KV</a> <a href="https://blog.cloudflare.com/tag/javascript">JavaScript</a> <a href="https://blog.cloudflare.com/tag/bash">Bash</a></p>
+<h3 data-astro-cid-yoyuw6fx=""><strong>Probieren Sie es jetzt aus!</strong></h3>
+<p data-astro-cid-yoyuw6fx=""><a href="https://www.cloudflare.com/products/workers-kv" target="_blank" rel="noopener noreferrer">Workers KV</a> ist jetzt für alle Kunden zugänglich und Sie können noch heute in Ihrem Cloudflare-Dashboard über die Registerkarte „Workers“ mit der Verwendung beginnen. Sie können auch unsere aktualisierte <a href="https://developers.cloudflare.com/workers/kv" target="_blank" rel="noopener noreferrer">Dokumentation einsehen.</a></p>
+<p data-astro-cid-yoyuw6fx="">Wir sind sehr gespannt, was Sie mit Workers KV bauen werden!</p>
+<p data-astro-cid-yoyuw6fx=""><a href="https://blog.cloudflare.com/tag/serverless">Serverlos</a> <a href="https://blog.cloudflare.com/tag/workers">Workers</a> <a href="https://blog.cloudflare.com/tag/workers-kv">Workers KV</a> <a href="https://blog.cloudflare.com/tag/javascript">JavaScript</a> <a href="https://blog.cloudflare.com/tag/bash">Bash</a></p>

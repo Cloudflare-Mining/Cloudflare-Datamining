@@ -1,7 +1,7 @@
-<p>Les versions bêta sont utiles pour les retours d'expérience et l'itération, mais de compte, tous les utilisateurs n'ont pas envie de servir de cobaye ou ne tolèrent pas forcément les nouveautés radicales qui caractérisent parfois les logiciels en version bêta. Parfois, vous avez besoin de la grande promotion « En disponibilité générale » (ou d'un article de blog), et maintenant, c'est au tour de Workflows.</p>
-<p>La solution <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a>, notre moteur d'exécution durable et serverless qui vous permet de développer des applications de longue durée et multi-étapes (certains les appellent « fonctions d'étapes ») sur Workers, est désormais accessible en disponibilité générale.</p>
-<p>En résumé, cela signifie que la solution est <em>prête pour la production</em>, mais que Workflows n'est pas forcément fixe. Nous continuons à faire évoluer Workflows (avec notamment plus d'instances simultanées), à proposer de nouvelles fonctionnalités (comme la nouvelle API <code>waitForEvent )</code> et à faciliter le développement d'agents IA grâce à notre <a href="https://developers.cloudflare.com/agents/api-reference/run-workflows" target="_blank" rel="noopener noreferrer"><u>SDK pour agents et à Workflows.</u></a></p>
-<p>Si vous préférez le code à la prose, vous pouvez rapidement installer le projet de démarrage Workflows et commencer à explorer le code et l'API à l'aide d'une simple commande :</p>
+<p data-astro-cid-yoyuw6fx="">Les versions bêta sont utiles pour les retours d'expérience et l'itération, mais de compte, tous les utilisateurs n'ont pas envie de servir de cobaye ou ne tolèrent pas forcément les nouveautés radicales qui caractérisent parfois les logiciels en version bêta. Parfois, vous avez besoin de la grande promotion « En disponibilité générale » (ou d'un article de blog), et maintenant, c'est au tour de Workflows.</p>
+<p data-astro-cid-yoyuw6fx="">La solution <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a>, notre moteur d'exécution durable et serverless qui vous permet de développer des applications de longue durée et multi-étapes (certains les appellent « fonctions d'étapes ») sur Workers, est désormais accessible en disponibilité générale.</p>
+<p data-astro-cid-yoyuw6fx="">En résumé, cela signifie que la solution est <em>prête pour la production</em>, mais que Workflows n'est pas forcément fixe. Nous continuons à faire évoluer Workflows (avec notamment plus d'instances simultanées), à proposer de nouvelles fonctionnalités (comme la nouvelle API <code>waitForEvent )</code> et à faciliter le développement d'agents IA grâce à notre <a href="https://developers.cloudflare.com/agents/api-reference/run-workflows" target="_blank" rel="noopener noreferrer"><u>SDK pour agents et à Workflows.</u></a></p>
+<p data-astro-cid-yoyuw6fx="">Si vous préférez le code à la prose, vous pouvez rapidement installer le projet de démarrage Workflows et commencer à explorer le code et l'API à l'aide d'une simple commande :</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npm create cloudflare</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest workflows</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">starter </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">template</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"cloudflare/workflows-starter"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -28,19 +28,19 @@
 		})
 	});
 </script>
-<p>Comment fonctionne Workflows ? Que puis-je construire avec Workflows ? Comment penser le développement d'agents IA avec Workflows et le <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>SDK d'agents</u></a> ? Poursuivez la lecture.</p>
-<h2>Développer avec Workflows</h2>
-<p>Workflows est un moteur d'exécution durable basé sur Cloudflare Workers qui vous permet de développer des applications résistantes et multi-étapes.</p>
-<p>Fondamentalement, la solution Workflows met en œuvre une architecture reposant sur des étapes, au sein de laquelle chaque étape de votre application peut être réutilisée indépendamment, avec la possibilité de conserver automatiquement l'état entre les étapes. Cela signifie que même si une étape échoue en raison d'une erreur transitoire ou d'un problème réseau, Workflows peut réessayer cette étape uniquement, sans avoir à redémarrer l'ensemble de l'application depuis le début.</p>
-<p>Lorsque vous définissez un flux de travail, vous décomposez votre application en étapes logiques.</p>
+<p data-astro-cid-yoyuw6fx="">Comment fonctionne Workflows ? Que puis-je construire avec Workflows ? Comment penser le développement d'agents IA avec Workflows et le <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>SDK d'agents</u></a> ? Poursuivez la lecture.</p>
+<h2 data-astro-cid-yoyuw6fx="">Développer avec Workflows</h2>
+<p data-astro-cid-yoyuw6fx="">Workflows est un moteur d'exécution durable basé sur Cloudflare Workers qui vous permet de développer des applications résistantes et multi-étapes.</p>
+<p data-astro-cid-yoyuw6fx="">Fondamentalement, la solution Workflows met en œuvre une architecture reposant sur des étapes, au sein de laquelle chaque étape de votre application peut être réutilisée indépendamment, avec la possibilité de conserver automatiquement l'état entre les étapes. Cela signifie que même si une étape échoue en raison d'une erreur transitoire ou d'un problème réseau, Workflows peut réessayer cette étape uniquement, sans avoir à redémarrer l'ensemble de l'application depuis le début.</p>
+<p data-astro-cid-yoyuw6fx="">Lorsque vous définissez un flux de travail, vous décomposez votre application en étapes logiques.</p>
 <ul>
 	<li>Chaque étape peut soit exécuter un code (<code>step.do</code>), soit mettre votre flux de travail en sommeil (<code>étape.sleep</code> ou <code>étape.sleepUntil</code>), ou encore, attendre un événement (<code>étapes.waitForEvent</code>).</li>
 	<li>Tandis que votre flux de travail s'exécute, il conserve automatiquement l'état renvoyé à chaque étape, afin de garantir que votre application peut reprendre exactement là où elle avait été interrompue, même après des défaillances ou des périodes d'hibernation.&nbsp;</li>
 	<li>Ce modèle d'exécution durable est particulièrement puissant pour les applications qui coordonnent plusieurs systèmes, traitent les données dans l'ordre ou doivent gérer des tâches de longue durée qui peuvent durer des minutes, des heures, voire des jours.</li>
 </ul>
-<p>Les flux de travail sont particulièrement utiles pour gérer les processus métier complexes, qui donnent du fil à retordre aux fonctions traditionnelles sans état.</p>
-<p>Par exemple, un flux de travail de traitement d'une commande e-commerce peut vérifier les stocks, facturer un mode de paiement, envoyer une confirmation par e-mail et mettre à jour une base de données ; tout cela, selon des étapes distinctes. Si l'étape de traitement des paiements échoue en raison d'une panne temporaire, Workflows réessaie automatiquement cette étape lorsque le service de paiement est à nouveau disponible, sans qu'il soit nécessaire de vérifier les stocks ou de recommencer l'ensemble du processus.&nbsp;</p>
-<p>Vous pouvez observer le fonctionnement ci-dessous : chaque appel à un service peut être modélisé comme une étape, permettant un nouvel essai indépendamment et, si nécessaire, une récupération à partir de cette étape :</p>
+<p data-astro-cid-yoyuw6fx="">Les flux de travail sont particulièrement utiles pour gérer les processus métier complexes, qui donnent du fil à retordre aux fonctions traditionnelles sans état.</p>
+<p data-astro-cid-yoyuw6fx="">Par exemple, un flux de travail de traitement d'une commande e-commerce peut vérifier les stocks, facturer un mode de paiement, envoyer une confirmation par e-mail et mettre à jour une base de données ; tout cela, selon des étapes distinctes. Si l'étape de traitement des paiements échoue en raison d'une panne temporaire, Workflows réessaie automatiquement cette étape lorsque le service de paiement est à nouveau disponible, sans qu'il soit nécessaire de vérifier les stocks ou de recommencer l'ensemble du processus.&nbsp;</p>
+<p data-astro-cid-yoyuw6fx="">Vous pouvez observer le fonctionnement ci-dessous : chaque appel à un service peut être modélisé comme une étape, permettant un nouvel essai indépendamment et, si nécessaire, une récupération à partir de cette étape :</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { WorkflowEntrypoint, WorkflowStep, WorkflowEvent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cloudflare:workers'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -142,16 +142,16 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p><br>Cette combinaison de durabilité, de nouvelles tentatives automatiques et de persistance des états fait de Workflows une solution idéale pour développer des applications distribuées fiables, capables de gérer sans problème les défaillances réelles.</p>
-<h2>Human-in-the-Loop (Humain dans la boucle)</h2>
-<p>Les flux de travail ne sont constitués que de code, et c'est ce qui les rend extrêmement puissants : vous pouvez définir des étapes de manière dynamique et à la volée, ou mettre en œuvre des sections conditionnelles et lancer des appels d'API vers les systèmes dont vous avez besoin. Il peut arriver toutefois que vous ayez besoin d'un flux de travail permettant de patienter qu'un événement se produise dans le monde réel.</p>
-<p>Par exemple :</p>
+<p data-astro-cid-yoyuw6fx=""><br>Cette combinaison de durabilité, de nouvelles tentatives automatiques et de persistance des états fait de Workflows une solution idéale pour développer des applications distribuées fiables, capables de gérer sans problème les défaillances réelles.</p>
+<h2 data-astro-cid-yoyuw6fx="">Human-in-the-Loop (Humain dans la boucle)</h2>
+<p data-astro-cid-yoyuw6fx="">Les flux de travail ne sont constitués que de code, et c'est ce qui les rend extrêmement puissants : vous pouvez définir des étapes de manière dynamique et à la volée, ou mettre en œuvre des sections conditionnelles et lancer des appels d'API vers les systèmes dont vous avez besoin. Il peut arriver toutefois que vous ayez besoin d'un flux de travail permettant de patienter qu'un événement se produise dans le monde réel.</p>
+<p data-astro-cid-yoyuw6fx="">Par exemple :</p>
 <ul>
 	<li>L'approbation d'un humain pour poursuivre la progression.</li>
 	<li>Un webhook entrant, par exemple à la suite d'un paiement Stripe ou d'un événement GitHub. </li>
 	<li>Un changement d'état, tel que l'importation d'un fichier vers R2, qui déclenche une <a href="https://developers.cloudflare.com/r2/buckets/event-notifications" target="_blank" rel="noopener noreferrer"><u>notification d'événement</u></a>, puis transmet une référence au fichier vers le flux de travail, afin que le fichier puisse être traité (ou exécuté dans un modèle IA).</li>
 </ul>
-<p>C'est précisément ce que permet la nouvelle API <code>waitForEvent</code> disponible dans Workflows :&nbsp;</p>
+<p data-astro-cid-yoyuw6fx="">C'est précisément ce que permet la nouvelle API <code>waitForEvent</code> disponible dans Workflows :&nbsp;</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> event </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">waitForEvent</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">IncomingStripeWebhook</span><span class="sk-24292e-fff">&gt;(</span><span class="sk-032f62-99ffe4">"receive invoice paid webhook from Stripe"</span><span class="sk-24292e-fff">, { type: </span><span class="sk-032f62-99ffe4">"stripe-webhook"</span><span class="sk-24292e-fff">, timeout: </span><span class="sk-032f62-99ffe4">"1 hour"</span><span class="sk-24292e-fff"> }) </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -159,7 +159,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Vous pouvez ensuite transmettre un événement à une instance spécifique depuis n'importe quel service externe capable d'effectuer une requête HTTP :</p>
+<p data-astro-cid-yoyuw6fx="">Vous pouvez ensuite transmettre un événement à une instance spécifique depuis n'importe quel service externe capable d'effectuer une requête HTTP :</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'{"transaction":"complete","id":"1234-6789"}'</span><span class="sk-24292e-fff"> \</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-005cc5-fff">H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer ${CF_TOKEN}"</span><span class="sk-24292e-fff"> \</span></span>
@@ -169,7 +169,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>… ou via l'<a href="https://developers.cloudflare.com/workflows/build/workers-api/#workflowinstance" target="_blank" rel="noopener noreferrer"><u>API Workers</u></a> au sein d'une instance Worker elle-même :</p>
+<p data-astro-cid-yoyuw6fx="">… ou via l'<a href="https://developers.cloudflare.com/workflows/build/workers-api/#workflowinstance" target="_blank" rel="noopener noreferrer"><u>API Workers</u></a> au sein d'une instance Worker elle-même :</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">interface</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-e36209-fff">  MY_WORKFLOW</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Workflow</span><span class="sk-24292e-fff">;</span></span>
@@ -200,7 +200,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Vous pouvez même attendre plusieurs événements, en utilisant le paramètre <code>de type</code>, ou lancer plusieurs événements avec <code>Promise.race</code> pour continuer en fonction de l'événement reçu en premier :</p>
+<p data-astro-cid-yoyuw6fx="">Vous pouvez même attendre plusieurs événements, en utilisant le paramètre <code>de type</code>, ou lancer plusieurs événements avec <code>Promise.race</code> pour continuer en fonction de l'événement reçu en premier :</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> MyWorkflow</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> WorkflowEntrypoint</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Params</span><span class="sk-24292e-fff">&gt; {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	async</span><span class="sk-6f42c1-ffc799"> run</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WorkflowEvent</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Params</span><span class="sk-24292e-fff">&gt;, </span><span class="sk-e36209-fff">step</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WorkflowStep</span><span class="sk-24292e-fff">) {</span></span>
@@ -219,83 +219,83 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>Pour visualiser <code>waitForEvent</code> un peu plus en détail, supposons que nous avons un Workflow déclenché par un agent d'examen de code qui surveille un référentiel GitHub.</p>
-<p>Sans la possibilité d'attendre les événements, notre flux de travail ne peut pas facilement obtenir l'approbation d'un humain pour rédiger des suggestions (ou encore, soumettre son propre PR). Il <em>peut</em> potentiellement interroger un état qui a été mis à jour, mais cela signifie que nous devons appeler <code>step.sleep</code> pour des périodes arbitraires, interroger un service de stockage pour obtenir une valeur mise à jour et recommencer si cette dernière n'existe pas. Cela représente beaucoup de code et augmente le risque d'erreur :</p>
+<p data-astro-cid-yoyuw6fx="">Pour visualiser <code>waitForEvent</code> un peu plus en détail, supposons que nous avons un Workflow déclenché par un agent d'examen de code qui surveille un référentiel GitHub.</p>
+<p data-astro-cid-yoyuw6fx="">Sans la possibilité d'attendre les événements, notre flux de travail ne peut pas facilement obtenir l'approbation d'un humain pour rédiger des suggestions (ou encore, soumettre son propre PR). Il <em>peut</em> potentiellement interroger un état qui a été mis à jour, mais cela signifie que nous devons appeler <code>step.sleep</code> pour des périodes arbitraires, interroger un service de stockage pour obtenir une valeur mise à jour et recommencer si cette dernière n'existe pas. Cela représente beaucoup de code et augmente le risque d'erreur :</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="308" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=640&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=750&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=828&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=1080&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=1280&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=1430&amp;h=616&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2729 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=1920&amp;h=826&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="826" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="308" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p><sup><em>Sans waitForEvent, il est plus difficile d'envoyer des données à une instance Workflow en cours d'exécution</em></sup></p>
-<p>Si nous modifions ce même exemple pour intégrer la nouvelle API waitForEvent, nous pourrions l'utiliser pour attendre l'approbation d'un humain avant d'effectuer une modification ou une mutation :&nbsp;</p>
+<p data-astro-cid-yoyuw6fx=""><sup><em>Sans waitForEvent, il est plus difficile d'envoyer des données à une instance Workflow en cours d'exécution</em></sup></p>
+<p data-astro-cid-yoyuw6fx="">Si nous modifions ce même exemple pour intégrer la nouvelle API waitForEvent, nous pourrions l'utiliser pour attendre l'approbation d'un humain avant d'effectuer une modification ou une mutation :&nbsp;</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="308" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=640&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=750&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=828&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=1080&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=1280&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=1430&amp;h=616&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2729 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=1920&amp;h=826&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="826" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="308" class="pt-portable-image-media"></div>
 </figure>
-<p><sup><em>L'ajout de waitForEvent à notre flux de travail de révision du code, afin qu'il puisse demander une approbation explicite.</em></sup></p>
-<p>Vous pourriez même imaginer un agent IA lui-même envoyant ou agissant pour le compte d'un humain ici : <code>waitForEvent</code> expose simplement un moyen pour un Workflow de récupérer et de mettre en pause un élément du monde pour le changer avant de poursuivre (ou non).</p>
-<p>Détail important, vous pouvez appeler <code>waitForEvent</code> comme n'importe quelle autre étape de Workflows : vous pouvez l'appeler de manière conditionnelle, une ou plusieurs fois, ou encore, dans une boucle. Les flux de travail sont de simples Workers : vous disposez de toute la puissance d'un langage de programmation, et vous n'êtes pas limité par un <a href="https://en.wikipedia.org/wiki/Domain-specific_language" target="_blank" rel="noopener noreferrer"><u>langage spécifique à un domaine (DSL)</u></a> ou un langage de configuration.</p>
-<h2>Tarification</h2>
-<p>Bonne nouvelle, nous n'avons pas changé grand-chose depuis l'annonce initiale de la version bêta ! Nous ajoutons une tarification de stockage pour l'état stocké par vos flux de travail et conservons notre tarification basée sur le processeur et la requête (invocation), comme suit :</p>
-<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
-	<table class="emdash-table" data-astro-cid-62p3h4ye="">
-		<thead data-astro-cid-62p3h4ye="">
-			<tr data-astro-cid-62p3h4ye="">
-				<th data-astro-cid-62p3h4ye="">
+<p data-astro-cid-yoyuw6fx=""><sup><em>L'ajout de waitForEvent à notre flux de travail de révision du code, afin qu'il puisse demander une approbation explicite.</em></sup></p>
+<p data-astro-cid-yoyuw6fx="">Vous pourriez même imaginer un agent IA lui-même envoyant ou agissant pour le compte d'un humain ici : <code>waitForEvent</code> expose simplement un moyen pour un Workflow de récupérer et de mettre en pause un élément du monde pour le changer avant de poursuivre (ou non).</p>
+<p data-astro-cid-yoyuw6fx="">Détail important, vous pouvez appeler <code>waitForEvent</code> comme n'importe quelle autre étape de Workflows : vous pouvez l'appeler de manière conditionnelle, une ou plusieurs fois, ou encore, dans une boucle. Les flux de travail sont de simples Workers : vous disposez de toute la puissance d'un langage de programmation, et vous n'êtes pas limité par un <a href="https://en.wikipedia.org/wiki/Domain-specific_language" target="_blank" rel="noopener noreferrer"><u>langage spécifique à un domaine (DSL)</u></a> ou un langage de configuration.</p>
+<h2 data-astro-cid-yoyuw6fx="">Tarification</h2>
+<p data-astro-cid-yoyuw6fx="">Bonne nouvelle, nous n'avons pas changé grand-chose depuis l'annonce initiale de la version bêta ! Nous ajoutons une tarification de stockage pour l'état stocké par vos flux de travail et conservons notre tarification basée sur le processeur et la requête (invocation), comme suit :</p>
+<div class="emdash-table-wrapper" data-astro-cid-zdje7xco="">
+	<table class="emdash-table" data-astro-cid-zdje7xco="">
+		<thead data-astro-cid-zdje7xco="">
+			<tr data-astro-cid-zdje7xco="">
+				<th data-astro-cid-zdje7xco="">
 					<p>Unité</p>
 				</th>
-				<th data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-zdje7xco="">
 					<p>Workers&nbsp;: offre gratuite</p>
 				</th>
-				<th data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-zdje7xco="">
 					<p>Workers&nbsp;: offre payante</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-62p3h4ye="">
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+		<tbody data-astro-cid-zdje7xco="">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Temps processeur (ms)</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>10 ms par flux de travail</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>30 millions de millisecondes processeur incluses par mois+0,02&nbsp;$ par million de millisecondes processeur supplémentaires</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Requêtes</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>100 000 d'invocations de Workflow par jour (partagées avec Workers)</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>10&nbsp;millions inclus par mois+0,30&nbsp;USD par million supplémentaire</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-62p3h4ye="">
-				<td data-astro-cid-62p3h4ye="true">
+			<tr data-astro-cid-zdje7xco="">
+				<td data-astro-cid-zdje7xco="true">
 					<p>Stockage (Go)</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>1&nbsp;Go</p>
 				</td>
-				<td data-astro-cid-62p3h4ye="true">
+				<td data-astro-cid-zdje7xco="true">
 					<p>1 Go inclus par mois + 0,20 USD/Go-mois</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p>La tarification du stockage étant nouvelle, nous ne facturerons pas réellement le stockage avant le 15 septembre 2025. Nous informerons les utilisateurs au-delà de la limite incluse de 1 Go avant de facturer le stockage et, par défaut, les flux de travail expireront après trois (3) jours (pour l'offre gratuite ) ou trente (30) jours (pour l'offre payante).</p>
-<p>Si vous vous demandez à quoi correspond le « temps processeur » : il s'agit de la durée pendant laquelle votre flux de travail consomme activement des ressources informatiques. Il <em>ne compte</em> pas le temps passé à attendre les appels API, le raisonnement des LLM ou d'autres E/S (comme l'écriture dans une base de données). Cela peut paraître négligeable, mais dans la pratique, cela représente un certain cumul : la plupart des applications ont un temps processeur à un seul chiffre, et plusieurs secondes de temps d'exécution ; une API ou deux prenant de 100 à 250 ms pour répondre, les secondes finissent par s'accumuler !</p>
+<p data-astro-cid-yoyuw6fx="">La tarification du stockage étant nouvelle, nous ne facturerons pas réellement le stockage avant le 15 septembre 2025. Nous informerons les utilisateurs au-delà de la limite incluse de 1 Go avant de facturer le stockage et, par défaut, les flux de travail expireront après trois (3) jours (pour l'offre gratuite ) ou trente (30) jours (pour l'offre payante).</p>
+<p data-astro-cid-yoyuw6fx="">Si vous vous demandez à quoi correspond le « temps processeur » : il s'agit de la durée pendant laquelle votre flux de travail consomme activement des ressources informatiques. Il <em>ne compte</em> pas le temps passé à attendre les appels API, le raisonnement des LLM ou d'autres E/S (comme l'écriture dans une base de données). Cela peut paraître négligeable, mais dans la pratique, cela représente un certain cumul : la plupart des applications ont un temps processeur à un seul chiffre, et plusieurs secondes de temps d'exécution ; une API ou deux prenant de 100 à 250 ms pour répondre, les secondes finissent par s'accumuler !</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="311" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=715&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=640&amp;h=278&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=715&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=750&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=828&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=1080&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=1280&amp;h=557&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=1430&amp;h=622&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2729 Image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=1912&amp;h=832&amp;f=webp" data-lightbox-width="1912" data-lightbox-height="832" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="311" class="pt-portable-image-media"></div>
 </figure>
-<p><sup><em>Facturez le temps processeur, pas le temps passé tandis qu'un flux de travail est inactif ou en attente.</em></sup></p>
-<p>Les moteurs de flux de travail, en particulier, ont tendance à passer beaucoup de temps à attendre : la lecture de données à partir du stockage d'objets (comme <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>Cloudflare R2</u></a>), l'appel d'API ou de LLM tiers, comme o3-mini ou Claude 3.7, même l'interrogation de bases de données comme <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a>, Postgres ou MySQL. Avec Workflows, tout comme Workers, vous ne payez pas le temps d'attente de votre application.</p>
-<h2>Commencez le développement</h2>
-<p>Vous maîtrisez bien Workflows (c'est-à-dire son fonctionnement), et vous souhaitez commencer à développer. Quelle est la suite&nbsp;?</p>
+<p data-astro-cid-yoyuw6fx=""><sup><em>Facturez le temps processeur, pas le temps passé tandis qu'un flux de travail est inactif ou en attente.</em></sup></p>
+<p data-astro-cid-yoyuw6fx="">Les moteurs de flux de travail, en particulier, ont tendance à passer beaucoup de temps à attendre : la lecture de données à partir du stockage d'objets (comme <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>Cloudflare R2</u></a>), l'appel d'API ou de LLM tiers, comme o3-mini ou Claude 3.7, même l'interrogation de bases de données comme <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a>, Postgres ou MySQL. Avec Workflows, tout comme Workers, vous ne payez pas le temps d'attente de votre application.</p>
+<h2 data-astro-cid-yoyuw6fx="">Commencez le développement</h2>
+<p data-astro-cid-yoyuw6fx="">Vous maîtrisez bien Workflows (c'est-à-dire son fonctionnement), et vous souhaitez commencer à développer. Quelle est la suite&nbsp;?</p>
 <ol>
 	<li><a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Consultez la documentation de Workflows</u></a> pour en savoir plus sur le fonctionnement de la solution, comprendre l'API Workflows et les bonnes pratiques à adopter</li>
 	<li>Passez en revue le code dans le <a href="https://github.com/cloudflare/workflows-starter" target="_blank" rel="noopener noreferrer"><u>projet de démarrage</u></a></li>

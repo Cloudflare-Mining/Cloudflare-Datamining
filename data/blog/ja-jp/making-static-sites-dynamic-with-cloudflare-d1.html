@@ -1,18 +1,18 @@
-<h3>はじめに</h3>
-<p>アプリケーションでデータを保存する方法はたくさんあります。例えば、Cloudflare Workersアプリケーションでは、キーバリューストレージとしてWorkers KVを、一貫性を損なわずにリアルタイムで連携したストレージとしてDurable Objectsを用意しています。Cloudflareのエコシステムの外側では、NoSQLやグラフデータベースなどの他のツールもプラグインできます。</p>
-<p>それでも、SQLが欲しくなることがあります。インデックスを使えば、データを素早く取り出せるようになりますし、Joinにより、異なるテーブル間の複雑な関係を記述することができます。SQLは、アプリケーションのデータがどのように検証され、作成され、パフォーマンスよくクエリーが行われるかを宣言的に記述します。</p>
-<p><a href="https://blog.cloudflare.com/d1-open-alpha">D1は本日、オープンアルファ版</a>がリリースされました。これを記念して、D1を使ってアプリを構築した体験を共有したいと思います。具体的には、構築の始め方と、D1がCloudflareでアプリを構築するためのツールの仲間入りを果たしたことに私がワクワクしている理由です。</p>
-<p>D1は、新しいツールを必要とすることなく、Cloudflareのエコシステム内でアプリケーションに即座に付加価値を与えることができる点で注目に値します。Wranglerを使えばWorkersアプリケーションをローカルで開発できますし、WranglerにD1が追加されたことで、きちんとしたステートフルなアプリケーションもローカルで開発できるようになりました。そして、アプリケーションをデプロイするとき、WranglerによりD1データベースとAPI自体にアクセスしてコマンドを実行することができるようになるのです。</p>
+<h3 data-astro-cid-yoyuw6fx="">はじめに</h3>
+<p data-astro-cid-yoyuw6fx="">アプリケーションでデータを保存する方法はたくさんあります。例えば、Cloudflare Workersアプリケーションでは、キーバリューストレージとしてWorkers KVを、一貫性を損なわずにリアルタイムで連携したストレージとしてDurable Objectsを用意しています。Cloudflareのエコシステムの外側では、NoSQLやグラフデータベースなどの他のツールもプラグインできます。</p>
+<p data-astro-cid-yoyuw6fx="">それでも、SQLが欲しくなることがあります。インデックスを使えば、データを素早く取り出せるようになりますし、Joinにより、異なるテーブル間の複雑な関係を記述することができます。SQLは、アプリケーションのデータがどのように検証され、作成され、パフォーマンスよくクエリーが行われるかを宣言的に記述します。</p>
+<p data-astro-cid-yoyuw6fx=""><a href="https://blog.cloudflare.com/d1-open-alpha">D1は本日、オープンアルファ版</a>がリリースされました。これを記念して、D1を使ってアプリを構築した体験を共有したいと思います。具体的には、構築の始め方と、D1がCloudflareでアプリを構築するためのツールの仲間入りを果たしたことに私がワクワクしている理由です。</p>
+<p data-astro-cid-yoyuw6fx="">D1は、新しいツールを必要とすることなく、Cloudflareのエコシステム内でアプリケーションに即座に付加価値を与えることができる点で注目に値します。Wranglerを使えばWorkersアプリケーションをローカルで開発できますし、WranglerにD1が追加されたことで、きちんとしたステートフルなアプリケーションもローカルで開発できるようになりました。そして、アプリケーションをデプロイするとき、WranglerによりD1データベースとAPI自体にアクセスしてコマンドを実行することができるようになるのです。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="405" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JR34ZAFY8YP883YFMAR2.png&amp;w=715&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JR34ZAFY8YP883YFMAR2.png&amp;w=640&amp;h=363&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JR34ZAFY8YP883YFMAR2.png&amp;w=715&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JR34ZAFY8YP883YFMAR2.png&amp;w=750&amp;h=425&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JR34ZAFY8YP883YFMAR2.png&amp;w=828&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JR34ZAFY8YP883YFMAR2.png&amp;w=1080&amp;h=612&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JR34ZAFY8YP883YFMAR2.png&amp;w=1280&amp;h=725&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JR34ZAFY8YP883YFMAR2.png&amp;w=1430&amp;h=810&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1448 Embedded Image - GkyxdY" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JR34ZAFY8YP883YFMAR2.png&amp;w=1498&amp;h=849&amp;f=webp" data-lightbox-width="1498" data-lightbox-height="849" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="405" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<h3>Cloudflareが構築しているもの</h3>
-<p>こののブログ記事では、D1を使って静的なブログサイトにコメントを追加する方法を紹介します。説明用に、新しいD1データベースを構築し、コメントの作成と取得を可能にする単純なJSON APIを構築します。</p>
-<p>先ほど述べたように、D1をアプリ本体から分離することで、静的なサイトとは別にAPIとデータベースを残し、Webサイトの静的な部分と動的な部分を互いに抽象化することができるのです。また、アプリケーションのデプロイも簡単になります。フロントエンドはCloudflare Pagesに、D1のAPIはCloudflare Workersにデプロイされます。</p>
-<h3>新規アプリケーションの構築</h3>
-<p>まず、Workersで基本的なAPIを追加します。新しいディレクトリを作成し、その中に新しいWranglerプロジェクトを作成します。</p>
-<p>この例では、APIを迅速に構築するために、Express.jsスタイルフレームワークのHonoを使用します。このプロジェクトでHonoを使用するには、NPMを使用してインストールします。</p>
+<h3 data-astro-cid-yoyuw6fx="">Cloudflareが構築しているもの</h3>
+<p data-astro-cid-yoyuw6fx="">こののブログ記事では、D1を使って静的なブログサイトにコメントを追加する方法を紹介します。説明用に、新しいD1データベースを構築し、コメントの作成と取得を可能にする単純なJSON APIを構築します。</p>
+<p data-astro-cid-yoyuw6fx="">先ほど述べたように、D1をアプリ本体から分離することで、静的なサイトとは別にAPIとデータベースを残し、Webサイトの静的な部分と動的な部分を互いに抽象化することができるのです。また、アプリケーションのデプロイも簡単になります。フロントエンドはCloudflare Pagesに、D1のAPIはCloudflare Workersにデプロイされます。</p>
+<h3 data-astro-cid-yoyuw6fx="">新規アプリケーションの構築</h3>
+<p data-astro-cid-yoyuw6fx="">まず、Workersで基本的なAPIを追加します。新しいディレクトリを作成し、その中に新しいWranglerプロジェクトを作成します。</p>
+<p data-astro-cid-yoyuw6fx="">この例では、APIを迅速に構築するために、Express.jsスタイルフレームワークのHonoを使用します。このプロジェクトでHonoを使用するには、NPMを使用してインストールします。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mkdir</span><span class="sk-032f62-99ffe4"> d1-example</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">d1-example</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> init</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -39,7 +39,7 @@
 		})
 	});
 </script>
-<p>次に、<code>src/index.ts</code>で新しいHonoアプリを初期化し、GET /API/posts/:slug/commentsとPOST /get/api/:slug/commentsといういくつかのエンドポイントを定義します。</p>
+<p data-astro-cid-yoyuw6fx="">次に、<code>src/index.ts</code>で新しいHonoアプリを初期化し、GET /API/posts/:slug/commentsとPOST /get/api/:slug/commentsといういくつかのエンドポイントを定義します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> hono</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -47,7 +47,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>それでは、D1データベースを作成します。Wrangler 2では、<code>wrangler d1</code>サブコマンドがサポートされており、コマンドラインから直接D1データベースを作成し、クエリーを行うことができます。これにより、例えば、1つのコマンドで新しいデータベースを作成できます。</p>
+<p data-astro-cid-yoyuw6fx="">それでは、D1データベースを作成します。Wrangler 2では、<code>wrangler d1</code>サブコマンドがサポートされており、コマンドラインから直接D1データベースを作成し、クエリーを行うことができます。これにより、例えば、1つのコマンドで新しいデータベースを作成できます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Hono } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'hono'</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { cors } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'hono/cors'</span></span>
@@ -68,7 +68,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>作成したデータベースで、データベース名IDを取得し、wranglerの設定ファイルである wrangler.toml内で<strong>バインディング</strong>と関連付けることができます。バインディングを使うと、D1データベース、KVネームスペース、R2バケットなどのCloudflareリソースに、コード内の簡単な変数名でアクセスできるようになります。以下では、バインディング<code>DB</code>を作成し、新しいデータベースを表すために使用します。</p>
+<p data-astro-cid-yoyuw6fx="">作成したデータベースで、データベース名IDを取得し、wranglerの設定ファイルである wrangler.toml内で<strong>バインディング</strong>と関連付けることができます。バインディングを使うと、D1データベース、KVネームスペース、R2バケットなどのCloudflareリソースに、コード内の簡単な変数名でアクセスできるようになります。以下では、バインディング<code>DB</code>を作成し、新しいデータベースを表すために使用します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> d1-example</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -76,7 +76,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>このディレクティブ、<code>[[d1_databases]]</code>フィールドは、現在wranglerのベータ版を必要とすることに注意してください。これをプロジェクトにインストールするには、<code>npm install -D wrangler/beta</code>コマンドを実行します。</p>
+<p data-astro-cid-yoyuw6fx="">このディレクティブ、<code>[[d1_databases]]</code>フィールドは、現在wranglerのベータ版を必要とすることに注意してください。これをプロジェクトにインストールするには、<code>npm install -D wrangler/beta</code>コマンドを実行します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>[[ d1_databases ]]</span></span>
 <span class="line"><span>binding = "DB" # i.e. available in your Worker on env.DB</span></span>
@@ -87,9 +87,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>wrangler.tomlでデータベースが設定された状態になり、コマンドラインおよびWorkers関数の内部で対話できます。</p>
-<p>まず、<code>wrangler d1 execute</code>を使って、直接SQLコマンドを発行できます。</p>
-<p>また、SQLファイルを渡すこともでき、1つのコマンドで最初のデータシードを作成するのに最適です。<code>src/schema.sql</code>を作成すると、プロジェクト用に新しい<code>comments</code>テーブルが作成されます。</p>
+<p data-astro-cid-yoyuw6fx="">wrangler.tomlでデータベースが設定された状態になり、コマンドラインおよびWorkers関数の内部で対話できます。</p>
+<p data-astro-cid-yoyuw6fx="">まず、<code>wrangler d1 execute</code>を使って、直接SQLコマンドを発行できます。</p>
+<p data-astro-cid-yoyuw6fx="">また、SQLファイルを渡すこともでき、1つのコマンドで最初のデータシードを作成するのに最適です。<code>src/schema.sql</code>を作成すると、プロジェクト用に新しい<code>comments</code>テーブルが作成されます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> execute</span><span class="sk-032f62-99ffe4"> d1-example</span><span class="sk-005cc5-99ffe4"> --command</span><span class="sk-032f62-99ffe4"> "SELECT name FROM sqlite_schema WHERE type ='table'"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> d1-example:</span></span>
@@ -103,7 +103,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>作成したファイルにフラグ<code>--file</code>を付けて渡し、D1データベースに対してスキーマファイルを実行します。</p>
+<p data-astro-cid-yoyuw6fx="">作成したファイルにフラグ<code>--file</code>を付けて渡し、D1データベースに対してスキーマファイルを実行します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">drop</span><span class="sk-d73a49-ffc799"> table</span><span class="sk-d73a49-ffc799"> if</span><span class="sk-d73a49-ffc799"> exists</span><span class="sk-24292e-fff"> comments;</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">create</span><span class="sk-d73a49-ffc799"> table</span><span class="sk-6f42c1-ffc799"> comments</span><span class="sk-24292e-fff"> (</span></span>
@@ -123,7 +123,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>いくつかのコマンドを実行するだけで、SQLデータベースを作成し、初期データをシードできました。次に、Workers関数にルートを追加して、そのデータベースからデータを取得できます。wrangler.tomlの設定に基づき、D1データベースは<code>DB</code>のバインディングでアクセスできるようになっています。このコードでは、バインディングを使ってSQLステートメントを用意して実行することで、コメントの取得などを行実行できます。</p>
+<p data-astro-cid-yoyuw6fx="">いくつかのコマンドを実行するだけで、SQLデータベースを作成し、初期データをシードできました。次に、Workers関数にルートを追加して、そのデータベースからデータを取得できます。wrangler.tomlの設定に基づき、D1データベースは<code>DB</code>のバインディングでアクセスできるようになっています。このコードでは、バインディングを使ってSQLステートメントを用意して実行することで、コメントの取得などを行実行できます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> execute</span><span class="sk-032f62-99ffe4"> d1-example</span><span class="sk-005cc5-99ffe4"> --file</span><span class="sk-032f62-99ffe4"> src/schema.sql</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -131,7 +131,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>この関数では、<code>slug</code> URLクエリーパラメータを受け取り、新しいSQLステートメントを設定して、クエリーパラメータに<code>post_slug</code>の値が一致するコメントをすべて選択します。そして、それをシンプルなJSON応答として返します。</p>
+<p data-astro-cid-yoyuw6fx="">この関数では、<code>slug</code> URLクエリーパラメータを受け取り、新しいSQLステートメントを設定して、クエリーパラメータに<code>post_slug</code>の値が一致するコメントをすべて選択します。そして、それをシンプルなJSON応答として返します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">app.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/api/posts/:slug/comments'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-e36209-fff"> c</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">slug</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> c.req.</span><span class="sk-6f42c1-ffc799">param</span><span class="sk-24292e-fff">()</span></span>
@@ -145,8 +145,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>これまでは、データへの読み取り専用のアクセスを構築してきました。しかし、もちろん値をSQLに「挿入」することも可能です。そこで、エンドポイントにPOSTして新しいコメントを作成する別の関数を定義してみましょう。</p>
-<p>この例では、ブログのためのコメントAPIを構築しています。このD1のコメントAPIのソースについては、<a href="https://github.com/cloudflare/templates/tree/main/worker-d1-api" target="_blank" rel="noopener noreferrer">cloudflare/templates/worker-d1-api</a>をご覧ください。</p>
+<p data-astro-cid-yoyuw6fx="">これまでは、データへの読み取り専用のアクセスを構築してきました。しかし、もちろん値をSQLに「挿入」することも可能です。そこで、エンドポイントにPOSTして新しいコメントを作成する別の関数を定義してみましょう。</p>
+<p data-astro-cid-yoyuw6fx="">この例では、ブログのためのコメントAPIを構築しています。このD1のコメントAPIのソースについては、<a href="https://github.com/cloudflare/templates/tree/main/worker-d1-api" target="_blank" rel="noopener noreferrer">cloudflare/templates/worker-d1-api</a>をご覧ください。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">app.</span><span class="sk-6f42c1-ffc799">post</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/API/posts/:slug/comments'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-e36209-fff"> c</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">slug</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> c.req.</span><span class="sk-6f42c1-ffc799">param</span><span class="sk-24292e-fff">()</span></span>
@@ -172,11 +172,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3>まとめ</h3>
+<h3 data-astro-cid-yoyuw6fx="">まとめ</h3>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="465" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V9EE6EZQZV1C3JGHHBT9.png&amp;w=715&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V9EE6EZQZV1C3JGHHBT9.png&amp;w=640&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V9EE6EZQZV1C3JGHHBT9.png&amp;w=715&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V9EE6EZQZV1C3JGHHBT9.png&amp;w=750&amp;h=488&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V9EE6EZQZV1C3JGHHBT9.png&amp;w=828&amp;h=538&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V9EE6EZQZV1C3JGHHBT9.png&amp;w=1080&amp;h=702&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V9EE6EZQZV1C3JGHHBT9.png&amp;w=1280&amp;h=832&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V9EE6EZQZV1C3JGHHBT9.png&amp;w=1430&amp;h=930&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1448 Embedded Image - GcF8bo" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V9EE6EZQZV1C3JGHHBT9.png&amp;w=994&amp;h=647&amp;f=webp" data-lightbox-width="994" data-lightbox-height="647" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="465" class="pt-portable-image-media"></div>
 </figure>
-<p>D1で最もエキサイティングなことの1つは、既存のアプリケーションやWebサイトをダイナミックなリレーショナルデータで強化できることです。Ruby on Railsの元開発者として、JavaScriptやサーバーレス開発ツールの世界において、このフレームワークが最も恋しくなるのは、データベースインフラストラクチャの管理の専門家でなくても、データ駆動型アプリケーションを迅速にフル回転させることができる点です。D1とSQLベースのデータへの容易なアクセスにより、パフォーマンスや開発者の体験を犠牲にすることなく、真のデータ駆動型アプリケーションを構築できます。</p>
-<p>この変化は、ここ数年のHugoやGatsbyといったツールを使った静的サイトの出現にうまく対応しています。Hugoのような静的サイトジェネレータで構築されたブログは非常にパフォーマンスが高く、アセットサイズを小さくしつつ、ほんの数秒で構築できます。</p>
-<p>しかし、WordPressのようなツールを静的サイトジェネレータと組み合わせると、サイトに動的な情報を追加する機会を失ってしまうのです。多くの開発者は、この問題に対して、データをフェッチして取得し、そのデータをビルドの一部としてページを生成するという複雑なビルドプロセスで対応してきました。</p>
-<p>このように複雑なビルドプロセスを経ることで、アプリケーションのダイナミズムの欠如を解決しようとしていますが、それでも純粋に動的とは言えません。新しいデータが作成されるたびに取得して表示するのではなく、データが変更されるたびにアプリケーションを再構築して再デプロイするため、ライブで動的にデータが表示されるようになります。アプリケーションは静的なままで、動的なデータがサイトのユーザーに地理的に近い場所に存在し、クエリーと表現が可能なAPIを介してアクセスできます。</p>
+<p data-astro-cid-yoyuw6fx="">D1で最もエキサイティングなことの1つは、既存のアプリケーションやWebサイトをダイナミックなリレーショナルデータで強化できることです。Ruby on Railsの元開発者として、JavaScriptやサーバーレス開発ツールの世界において、このフレームワークが最も恋しくなるのは、データベースインフラストラクチャの管理の専門家でなくても、データ駆動型アプリケーションを迅速にフル回転させることができる点です。D1とSQLベースのデータへの容易なアクセスにより、パフォーマンスや開発者の体験を犠牲にすることなく、真のデータ駆動型アプリケーションを構築できます。</p>
+<p data-astro-cid-yoyuw6fx="">この変化は、ここ数年のHugoやGatsbyといったツールを使った静的サイトの出現にうまく対応しています。Hugoのような静的サイトジェネレータで構築されたブログは非常にパフォーマンスが高く、アセットサイズを小さくしつつ、ほんの数秒で構築できます。</p>
+<p data-astro-cid-yoyuw6fx="">しかし、WordPressのようなツールを静的サイトジェネレータと組み合わせると、サイトに動的な情報を追加する機会を失ってしまうのです。多くの開発者は、この問題に対して、データをフェッチして取得し、そのデータをビルドの一部としてページを生成するという複雑なビルドプロセスで対応してきました。</p>
+<p data-astro-cid-yoyuw6fx="">このように複雑なビルドプロセスを経ることで、アプリケーションのダイナミズムの欠如を解決しようとしていますが、それでも純粋に動的とは言えません。新しいデータが作成されるたびに取得して表示するのではなく、データが変更されるたびにアプリケーションを再構築して再デプロイするため、ライブで動的にデータが表示されるようになります。アプリケーションは静的なままで、動的なデータがサイトのユーザーに地理的に近い場所に存在し、クエリーと表現が可能なAPIを介してアクセスできます。</p>

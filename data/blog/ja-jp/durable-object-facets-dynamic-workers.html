@@ -1,28 +1,28 @@
-<p>数週間前、当社はWorkersプラットフォームの新機能である<a href="https://blog.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Dynamic Workers</u></a>を発表しました。これは、Workerコードをセキュアなサンドボックスにオンザフライで読み込むことができるものです。Dynamic Worker Loader APIは、Workersが基盤としてきた基本的なコンピューティング分離プリミティブ、すなわちコンテナではなくIsolateへの直接アクセスを提供します。Isolateはコンテナよりはるかに軽量なうえメモリの使用は1/10ですが、100倍速く読み込み可能です。非常に効率的で、「使い捨て」として扱うことができます。数行のコードを実行するために起動し、その後破棄するのです。eval()のセキュアバージョンのようなものだと言えるでしょう。 </p>
-<p>Dynamic Workersには多くの用途があります。最初の発表では、ツール呼び出しの代替として、AIエージェント生成コードをどのように実行するかに焦点を当てていました。このユースケースでは、AIエージェントは数行のコードを記述して実行することにより、ユーザーのリクエストに応じてアクションを実行します。このコードは使い捨てで、1つのタスクを1回実行することを目的としており、実行後すぐに破棄されます。</p>
-<p>しかし、AIにより持続的なコードを生成させたい場合はどうでしょうか？AIに、ユーザーが対話できるカスタムUIで小さなアプリケーションを構築させたい場合はどうですか？そのアプリケーションの状態を長期間維持させる場合はどうすればよいでしょうか？もちろん、セキュアなサンドボックスで実行したいでしょう。</p>
-<p>それを実現する方法の1つが、Dynamic Workersを使用し、単純にストレージにアクセスできる<a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer"><u>RPC</u></a> APIをWorkerに提供することです。<a href="https://developers.cloudflare.com/dynamic-workers/usage/bindings" target="_blank" rel="noopener noreferrer"><u>バインディング</u></a>を使用すれば、Dynamic WorkerにリモートSQLデータベース（おそらく<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>Cloudflare D1</u></a>がサポートするもの、または<a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a>を介してアクセスするPostgresデータベースという選択肢があります）を指すAPIを与えることができます。</p>
-<p>しかし、Workersには、このユースケースに最適な、他に類を見ない、極めて高速なストレージタイプである<a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>があります。Durable Objectは、一意の名称を持つ特殊なWorkerで、名称ごとにグローバルに1つのインスタンスを持つことができます。このインスタンスには、Durable Objectが実行されるマシンの<em>ローカルディスク上</em>に存在するSQLiteデータベースが接続されています。これにより、ストレージへのアクセスが驚くほど高速になり<a href="https://blog.cloudflare.com/sqlite-in-durable-objects" target="_blank" rel="noopener noreferrer"><u>遅延は事実上ゼロ</u></a>です。</p>
-<p>理想としては、AIにDurable Objectのコードを書かせ、そのコードをDynamic Workerで実行させたいということでしょう。</p>
-<h2><strong>でも、どうやって？</strong></h2>
-<p>これは厄介な問題を引き起こします。Durable Objects使用時の必要事項は、以下の通りです。</p>
+<p data-astro-cid-yoyuw6fx="">数週間前、当社はWorkersプラットフォームの新機能である<a href="https://blog.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Dynamic Workers</u></a>を発表しました。これは、Workerコードをセキュアなサンドボックスにオンザフライで読み込むことができるものです。Dynamic Worker Loader APIは、Workersが基盤としてきた基本的なコンピューティング分離プリミティブ、すなわちコンテナではなくIsolateへの直接アクセスを提供します。Isolateはコンテナよりはるかに軽量なうえメモリの使用は1/10ですが、100倍速く読み込み可能です。非常に効率的で、「使い捨て」として扱うことができます。数行のコードを実行するために起動し、その後破棄するのです。eval()のセキュアバージョンのようなものだと言えるでしょう。 </p>
+<p data-astro-cid-yoyuw6fx="">Dynamic Workersには多くの用途があります。最初の発表では、ツール呼び出しの代替として、AIエージェント生成コードをどのように実行するかに焦点を当てていました。このユースケースでは、AIエージェントは数行のコードを記述して実行することにより、ユーザーのリクエストに応じてアクションを実行します。このコードは使い捨てで、1つのタスクを1回実行することを目的としており、実行後すぐに破棄されます。</p>
+<p data-astro-cid-yoyuw6fx="">しかし、AIにより持続的なコードを生成させたい場合はどうでしょうか？AIに、ユーザーが対話できるカスタムUIで小さなアプリケーションを構築させたい場合はどうですか？そのアプリケーションの状態を長期間維持させる場合はどうすればよいでしょうか？もちろん、セキュアなサンドボックスで実行したいでしょう。</p>
+<p data-astro-cid-yoyuw6fx="">それを実現する方法の1つが、Dynamic Workersを使用し、単純にストレージにアクセスできる<a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer"><u>RPC</u></a> APIをWorkerに提供することです。<a href="https://developers.cloudflare.com/dynamic-workers/usage/bindings" target="_blank" rel="noopener noreferrer"><u>バインディング</u></a>を使用すれば、Dynamic WorkerにリモートSQLデータベース（おそらく<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>Cloudflare D1</u></a>がサポートするもの、または<a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a>を介してアクセスするPostgresデータベースという選択肢があります）を指すAPIを与えることができます。</p>
+<p data-astro-cid-yoyuw6fx="">しかし、Workersには、このユースケースに最適な、他に類を見ない、極めて高速なストレージタイプである<a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>があります。Durable Objectは、一意の名称を持つ特殊なWorkerで、名称ごとにグローバルに1つのインスタンスを持つことができます。このインスタンスには、Durable Objectが実行されるマシンの<em>ローカルディスク上</em>に存在するSQLiteデータベースが接続されています。これにより、ストレージへのアクセスが驚くほど高速になり<a href="https://blog.cloudflare.com/sqlite-in-durable-objects" target="_blank" rel="noopener noreferrer"><u>遅延は事実上ゼロ</u></a>です。</p>
+<p data-astro-cid-yoyuw6fx="">理想としては、AIにDurable Objectのコードを書かせ、そのコードをDynamic Workerで実行させたいということでしょう。</p>
+<h2 data-astro-cid-yoyuw6fx=""><strong>でも、どうやって？</strong></h2>
+<p data-astro-cid-yoyuw6fx="">これは厄介な問題を引き起こします。Durable Objects使用時の必要事項は、以下の通りです。</p>
 <ol>
 	<li><code>DurableObject</code>を拡張するクラスの記述。</li>
 	<li>Workerのメインモジュールからのエクスポート。</li>
 	<li><a href="https://developers.cloudflare.com/durable-objects/get-started/#5-configure-durable-object-class-with-sqlite-storage-backend" target="_blank" rel="noopener noreferrer"><u>Wrangler設定で</u></a>、このクラスにストレージをプロビジョニングするよう指定。これにより、着信リクエストを処理するクラスを指すDurable Object名前空間が作成される。</li>
 	<li><u><a href="https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings" target="_blank" rel="noopener noreferrer">自身の名前空間を指す Durable Object 名前空間バインディングを宣言し（または </a><a href="https://developers.cloudflare.com/workers/runtime-apis/context/#exports" target="_blank" rel="noopener noreferrer">ctx.exports</a></u> を使用し）、これを使用してDurable Objectへのリクエストを実行。</li>
 </ol>
-<p>これは、Dynamic Workersには自然には拡張されません。まず、明らかな問題があります。コードが動的であるということです。Cloudflare APIをまったく呼び出さずに実行できます。ただし、Durable ObjectストレージはAPIを介してプロビジョニングする必要があり、名前空間は実装クラスを指している必要があります。Dynamic Workerを指すことはできません。</p>
-<p>しかし、さらに深い問題があります。何らかの方法でDurable Objectの名前空間を設定してDynamic Workerを直接指すようにすることができたとしても、それを行いたいと思うでしょうか？エージェント（またはユーザー）がDurable Objectsで完全な名前空間全体を作成できるようにしたいですか？世界中に広がる無制限のストレージを使用したいですか？</p>
-<p>おそらく、そうではないでしょう。何らかの制御が必要になるでしょう。作成するオブジェクトの数を制限または少なくとも追跡したい場合もあるでしょう。1つのオブジェクトだけに制限したいかもしれません（バイブコード化された個人アプリには十分かもしれません）。ロギングや可観測性の追加が必要になるかもしれません。指標。課金。その他。</p>
-<p>実際、これらすべてを行うために望むのは、これらのDurable Objectsへのリクエストが、<em>自分自身の</em>コードに<em>まず</em>送られることであり、そこで「ロジスティクス」をすべて行い、<em>その後</em>エージェントのコードにリクエストを転送することです。すべてのDurable Objectの一部として実行される<em>スーパーバイザー</em>の作成をお望みだと思います。</p>
-<h2><strong>ソリューション：Durable Object Facets</strong></h2>
-<p>本日、この問題を解決する機能をオープンベータ版でリリースします。</p>
+<p data-astro-cid-yoyuw6fx="">これは、Dynamic Workersには自然には拡張されません。まず、明らかな問題があります。コードが動的であるということです。Cloudflare APIをまったく呼び出さずに実行できます。ただし、Durable ObjectストレージはAPIを介してプロビジョニングする必要があり、名前空間は実装クラスを指している必要があります。Dynamic Workerを指すことはできません。</p>
+<p data-astro-cid-yoyuw6fx="">しかし、さらに深い問題があります。何らかの方法でDurable Objectの名前空間を設定してDynamic Workerを直接指すようにすることができたとしても、それを行いたいと思うでしょうか？エージェント（またはユーザー）がDurable Objectsで完全な名前空間全体を作成できるようにしたいですか？世界中に広がる無制限のストレージを使用したいですか？</p>
+<p data-astro-cid-yoyuw6fx="">おそらく、そうではないでしょう。何らかの制御が必要になるでしょう。作成するオブジェクトの数を制限または少なくとも追跡したい場合もあるでしょう。1つのオブジェクトだけに制限したいかもしれません（バイブコード化された個人アプリには十分かもしれません）。ロギングや可観測性の追加が必要になるかもしれません。指標。課金。その他。</p>
+<p data-astro-cid-yoyuw6fx="">実際、これらすべてを行うために望むのは、これらのDurable Objectsへのリクエストが、<em>自分自身の</em>コードに<em>まず</em>送られることであり、そこで「ロジスティクス」をすべて行い、<em>その後</em>エージェントのコードにリクエストを転送することです。すべてのDurable Objectの一部として実行される<em>スーパーバイザー</em>の作成をお望みだと思います。</p>
+<h2 data-astro-cid-yoyuw6fx=""><strong>ソリューション：Durable Object Facets</strong></h2>
+<p data-astro-cid-yoyuw6fx="">本日、この問題を解決する機能をオープンベータ版でリリースします。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="396" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=715&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=640&amp;h=354&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=715&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=750&amp;h=415&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=828&amp;h=459&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=1080&amp;h=598&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=1280&amp;h=709&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=1430&amp;h=792&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3211 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=1920&amp;h=1064&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1064" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="396" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p><a href="https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets" target="_blank" rel="noopener noreferrer"><u>Durable Object Facets</u></a>を使用すると、Durable Objectクラスを動的に読み込んでインスタンス化し、ストレージに使用するSQLiteデータベースの提供が可能になります。Facetsでできること：</p>
+<p data-astro-cid-yoyuw6fx=""><a href="https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets" target="_blank" rel="noopener noreferrer"><u>Durable Object Facets</u></a>を使用すると、Durable Objectクラスを動的に読み込んでインスタンス化し、ストレージに使用するSQLiteデータベースの提供が可能になります。Facetsでできること：</p>
 <ul>
 	<li>まず、通常のDurable Object名前空間を作成し、<em>ご自身で作成する</em>クラスを指定します。</li>
 	<li>そのクラスでは、エージェントのコードをDynamic Workerとして読み込み、呼び出します。</li>
@@ -30,8 +30,8 @@
 	<li>そのクラスを、自分のDurable Objectの「ファセット」としてインスタンス化しています。</li>
 	<li>このファセットは独自のSQLiteデータベースを取得し、通常のDurable ObjectストレージAPIを介して使用することができます。そしてこのデータベースは、スーパーバイザーのデータベースとは別のものですが、この2つは同じ全体的なDurable Objectの一部として一緒に保存されます。</li>
 </ul>
-<h2><strong>仕組み</strong></h2>
-<p>以下は、Durable Objectクラスを動的に読み込んで実行するアプリプラットフォームのシンプルで完全な実装です。</p>
+<h2 data-astro-cid-yoyuw6fx=""><strong>仕組み</strong></h2>
+<p data-astro-cid-yoyuw6fx="">以下は、Durable Objectクラスを動的に読み込んで実行するアプリプラットフォームのシンプルで完全な実装です。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { DurableObject } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "cloudflare:workers"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -157,7 +157,7 @@
 		})
 	});
 </script>
-<p>例：</p>
+<p data-astro-cid-yoyuw6fx="">例：</p>
 <ul>
 	<li><code>AppRunner</code>は、プラットフォーム開発者（あなた）によって書かれた「通常の」Durable Objectです。</li>
 	<li><code>AppRunner</code>の各インスタンスは、1つのアプリケーションを管理します。アプリのコードを保存し、オンデマンドで読み込みます。</li>
@@ -165,7 +165,7 @@
 	<li><code>AppRunner</code>は、Dynamic Workersを使用してアプリケーションコードを読み込み、Durable Object Facetとしてコードを実行します。</li>
 	<li><code>AppRunner</code>の各インスタンスは、<em>2つ</em>のSQLiteデータベースで構成される1つのDurable Objectです。1つは親（<code>AppRunner</code>自体）に属し、もう1つはファセット（<code>App</code>）に属します。これらのデータベースは分離されています。アプリケーションは、<code>AppRunner</code>のデータベースを読み取ることができず、それ自身のデータベースのみを読み取ることができます。</li>
 </ul>
-<p>例を実行するには、上記のコードを<code>worker.js</code>ファイルにコピーし、以下の<code>wrangler.jsonc</code>と組み合わせます。そして、<code>npx wrangler dev</code> を使用してローカルで実行します。</p>
+<p data-astro-cid-yoyuw6fx="">例を実行するには、上記のコードを<code>worker.js</code>ファイルにコピーし、以下の<code>wrangler.jsonc</code>と組み合わせます。そして、<code>npx wrangler dev</code> を使用してローカルで実行します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// wrangler.jsonc for the above sample worker.</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
@@ -191,6 +191,6 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2><strong>構築を開始する</strong></h2>
-<p>FacetsはDynamic Workersの機能の1つであり、Workers有料プランのユーザーにすぐにベータ版でご利用いただけます。</p>
-<p><a href="https://developers.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Dynamic Workers</u></a>と<a href="https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets" target="_blank" rel="noopener noreferrer"><u>Facets</u></a>の詳細については、ドキュメントをご覧ください。</p>
+<h2 data-astro-cid-yoyuw6fx=""><strong>構築を開始する</strong></h2>
+<p data-astro-cid-yoyuw6fx="">FacetsはDynamic Workersの機能の1つであり、Workers有料プランのユーザーにすぐにベータ版でご利用いただけます。</p>
+<p data-astro-cid-yoyuw6fx=""><a href="https://developers.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Dynamic Workers</u></a>と<a href="https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets" target="_blank" rel="noopener noreferrer"><u>Facets</u></a>の詳細については、ドキュメントをご覧ください。</p>

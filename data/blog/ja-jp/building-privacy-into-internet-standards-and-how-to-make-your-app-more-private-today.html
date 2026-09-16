@@ -1,44 +1,44 @@
-<p>もしあなたがプライバシーを重視するアプリケーションやサービスをインターネット上で運営している場合、ユーザーのプライバシーを確実に保護するための選択肢は限られています。ログやデータ収集を最小限にすることはできますが、それでもネットワークレベルでは、すべてのHTTPリクエストは_どこから_か来る必要があります。HTTPリクエストによって生成される情報、たとえばユーザーのIPアドレスやTLSフィンガープリントは、特にアプリケーションデータと組み合わせると機密となり得ます。</p>
-<p>ユーザーのプライバシーを守るためには、クライアントのデバイスからアプリケーションのロジックを実行するサーバーへのHTTPリクエストの送信方法を変更する必要があります。Privacy Gatewayは、暗号化されたHTTPリクエストとレスポンスを、クライアントとアプリケーションサーバーの間で中継するサービスです。Privacy Gatewayを用いることで、Cloudflareはリクエストの送信元を把握することはできますが、その内容はわかりません。また、アプリケーションはリクエストの内容はわかりますが、その送信元はわかりません。**Cloudflareもアプリケーションサーバーも全貌を把握することはできず、**エンドユーザーのプライバシーを向上させます。</p>
-<p>最近、女性の健康に関する業界を主導するアプリを提供する<a href="https://flo.health" target="_blank" rel="noopener noreferrer">Flo Health Inc</a>は、<a href="https://www.theverge.com/2022/9/14/23351957/flo-period-tracker-privacy-anonymous-mode" target="_blank" rel="noopener noreferrer">匿名化モード</a>を導入することを目的としてPrivacy Gatewayをデプロイしました。Privacy Gatewayをデプロイすることで、匿名化モードユーザーのリクエストデータは、アプリユーザーとFloの間で暗号化され、Floから利用者のIPアドレス、Cloudflareからリクエストデータの内容を見ることができなくなりました。</p>
-<p>Privacy Gatewayを導入することで、他にもいくつかのプライバシーを重視したアプリケーションの展開が可能になります。</p>
+<p data-astro-cid-yoyuw6fx="">もしあなたがプライバシーを重視するアプリケーションやサービスをインターネット上で運営している場合、ユーザーのプライバシーを確実に保護するための選択肢は限られています。ログやデータ収集を最小限にすることはできますが、それでもネットワークレベルでは、すべてのHTTPリクエストは_どこから_か来る必要があります。HTTPリクエストによって生成される情報、たとえばユーザーのIPアドレスやTLSフィンガープリントは、特にアプリケーションデータと組み合わせると機密となり得ます。</p>
+<p data-astro-cid-yoyuw6fx="">ユーザーのプライバシーを守るためには、クライアントのデバイスからアプリケーションのロジックを実行するサーバーへのHTTPリクエストの送信方法を変更する必要があります。Privacy Gatewayは、暗号化されたHTTPリクエストとレスポンスを、クライアントとアプリケーションサーバーの間で中継するサービスです。Privacy Gatewayを用いることで、Cloudflareはリクエストの送信元を把握することはできますが、その内容はわかりません。また、アプリケーションはリクエストの内容はわかりますが、その送信元はわかりません。**Cloudflareもアプリケーションサーバーも全貌を把握することはできず、**エンドユーザーのプライバシーを向上させます。</p>
+<p data-astro-cid-yoyuw6fx="">最近、女性の健康に関する業界を主導するアプリを提供する<a href="https://flo.health" target="_blank" rel="noopener noreferrer">Flo Health Inc</a>は、<a href="https://www.theverge.com/2022/9/14/23351957/flo-period-tracker-privacy-anonymous-mode" target="_blank" rel="noopener noreferrer">匿名化モード</a>を導入することを目的としてPrivacy Gatewayをデプロイしました。Privacy Gatewayをデプロイすることで、匿名化モードユーザーのリクエストデータは、アプリユーザーとFloの間で暗号化され、Floから利用者のIPアドレス、Cloudflareからリクエストデータの内容を見ることができなくなりました。</p>
+<p data-astro-cid-yoyuw6fx="">Privacy Gatewayを導入することで、他にもいくつかのプライバシーを重視したアプリケーションの展開が可能になります。</p>
 <ul>
 	<li>ブラウザの開発者は、プライバシーを尊重した方法でユーザーのテレメトリデータを遠隔で収集することができます。例えば、データから個人の識別情報（IPアドレス）となる可能性のある情報を削除しながら、どのような拡張機能がインストールされているか、ユーザーがどのようなデフォルトを変更したかなどのデータを収集できます。</li>
 	<li>ユーザーは、ヘルスケアサイトにアクセスして新型コロナへの暴露を報告する際に、自分のIPアドレスや位置を追跡される心配がありません。</li>
 	<li>DNSリゾルバーは、DNSクエリを、誰がリクエストしたのか、どのWebサイトを訪問しているのかを関連付けずに提供することができます。これは、<a href="https://blog.cloudflare.com/oblivious-dns">Oblivious DNS</a>で私たちが実装したパターンです。Privacy Gatewayは、<a href="https://datatracker.ietf.org/doc/draft-ietf-ohai-ohttp" target="_blank" rel="noopener noreferrer">新たなIETF標準であるOblivious HTTP（OHTTP）</a>に基づいており、標準の<a href="https://datatracker.ietf.org/doc/html/rfc9180" target="_blank" rel="noopener noreferrer">ハイブリッドパブリックキー暗号化</a>で構築されています。</li>
 </ul>
-<h2>その仕組みは？</h2>
-<p>Oblivious HTTP標準の主な革新点は、基本的なプロキシサービスを超えて、これらのメッセージが_アプリケーションサーバーへの_送信の際に暗号化されるということです。Privacy Gatewayは、各メッセージの送信元と送信先以外のアプリケーションデータについて何も知ることができません。</p>
-<p>Privacy Gatewayは、アプリケーションの開発者やプラットフォーム、特にプライバシーを強く要求する人々が、「<a href="https://en.wikipedia.org/wiki/Mix_network" target="_blank" rel="noopener noreferrer">Mixnet</a>」で、ネットワーク上のメッセージの送信元と宛先を難読化するアプローチに酷似したものを構築できるようにします。そのために、Privacy Gatewayは3つの主要なコンポーネントから構成されています。</p>
+<h2 data-astro-cid-yoyuw6fx="">その仕組みは？</h2>
+<p data-astro-cid-yoyuw6fx="">Oblivious HTTP標準の主な革新点は、基本的なプロキシサービスを超えて、これらのメッセージが_アプリケーションサーバーへの_送信の際に暗号化されるということです。Privacy Gatewayは、各メッセージの送信元と送信先以外のアプリケーションデータについて何も知ることができません。</p>
+<p data-astro-cid-yoyuw6fx="">Privacy Gatewayは、アプリケーションの開発者やプラットフォーム、特にプライバシーを強く要求する人々が、「<a href="https://en.wikipedia.org/wiki/Mix_network" target="_blank" rel="noopener noreferrer">Mixnet</a>」で、ネットワーク上のメッセージの送信元と宛先を難読化するアプローチに酷似したものを構築できるようにします。そのために、Privacy Gatewayは3つの主要なコンポーネントから構成されています。</p>
 <ol>
 	<li>**クライアント：**ユーザーのデバイス、またはPrivacy Gatewayにリクエストを転送するように設定されているクライアント。</li>
 	<li>**Privacy Gateway：**Cloudflareが運営するサービス。クライアントとゲートウェイ間のリクエストを中継し、中のコンテンツを見ることができないように設計されています。</li>
 	<li>**アプリケーションサーバー：**オリジンまたはアプリケーションWebサーバーであり、クライアントからのリクエストを復号化し、レスポンスを暗号化して返す責任を負います。</li>
 </ol>
-<p>リクエストデータを封筒（手紙）とIPアドレスの内容、リクエストメタデータを外部のアドレスと考えた場合、Privacy Gatewayを使用することで、Cloudflareは封筒のアドレスを確認し、内部を見ることなく安全に宛先に転送することができます。</p>
-<p>Privacy Gatewayを利用したOblivious HTTPトランザクション</p>
+<p data-astro-cid-yoyuw6fx="">リクエストデータを封筒（手紙）とIPアドレスの内容、リクエストメタデータを外部のアドレスと考えた場合、Privacy Gatewayを使用することで、Cloudflareは封筒のアドレスを確認し、内部を見ることなく安全に宛先に転送することができます。</p>
+<p data-astro-cid-yoyuw6fx="">Privacy Gatewayを利用したOblivious HTTPトランザクション</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="494" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45M1VJRESBDHFQWWZA0F5D.png&amp;w=715&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45M1VJRESBDHFQWWZA0F5D.png&amp;w=640&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45M1VJRESBDHFQWWZA0F5D.png&amp;w=715&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45M1VJRESBDHFQWWZA0F5D.png&amp;w=750&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45M1VJRESBDHFQWWZA0F5D.png&amp;w=828&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45M1VJRESBDHFQWWZA0F5D.png&amp;w=1080&amp;h=746&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45M1VJRESBDHFQWWZA0F5D.png&amp;w=1280&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45M1VJRESBDHFQWWZA0F5D.png&amp;w=1430&amp;h=988&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1009 Embedded Image - mIHDR0" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45M1VJRESBDHFQWWZA0F5D.png&amp;w=1524&amp;h=1052&amp;f=webp" data-lightbox-width="1524" data-lightbox-height="1052" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="494" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p>もう少し詳しく説明すると、データの流れは次のようになります。</p>
+<p data-astro-cid-yoyuw6fx="">もう少し詳しく説明すると、データの流れは次のようになります。</p>
 <ol>
 	<li>クライアントは、<a href="https://datatracker.ietf.org/doc/html/draft-thomson-http-oblivious-02#section-5.1" target="_blank" rel="noopener noreferrer">HTTPリクエスト</a>をアプリケーションサーバーのパブリックキーでカプセル化し、HTTPS接続でPrivacy Gatewayに送信します。</li>
 	<li>Privacy Gatewayは、リクエストをサーバーに転送する際に、独自に構築したアプリケーションサーバーとの個別のHTTPS接続を使用します。</li>
 	<li>アプリケーションサーバーはリクエストをカプセル化し、レスポンスを生成できるターゲットサーバに転送します。</li>
 	<li>アプリケーションサーバーは、<a href="https://datatracker.ietf.org/doc/html/draft-thomson-http-oblivious-02#section-5.2" target="_blank" rel="noopener noreferrer">カプセル化されたレスポンス</a>をPrivacy Gatewayに返し、その結果をクライアントに転送します。プロトコルで指定されているように、クライアントからサーバーへのリクエストは、パブリックキー暗号化の最新の標準であるHPKEを使用して暗号化されます。詳しくは<a href="https://blog.cloudflare.com/hybrid-public-key-encryption">こちら</a>をご覧ください。OHTTPのHPKEの使用が安全であることを保証するために、私たちはさらに対策を講じ、<a href="https://blog.cloudflare.com/stronger-than-a-promise-proving-oblivious-http-privacy-properties">プロトコルの正式な分析</a>を実施しています。今後数週間のうちに、より深い分析結果を発表する予定です。</li>
 </ol>
-<h2>Privacy Gatewayがエンドユーザーのプライバシーを向上させる仕組み</h2>
-<p>このインタラクションは2種類のプライバシーを提供し、私たちは非公式に_リクエストプライバシー_および_クライアントプライバシー_と呼んでいます。</p>
-<p>リクエストプライバシーとは、IPアドレス、ジオロケーション、TLSおよびHTTPSフィンガープリントなど、HTTPリクエストによって明らかになる情報を、アプリケーションサーバーが学習しないことを意味します。Privacy Gatewayは、アプリケーションサーバーとの間で別のHTTPS接続を使用しているため、アプリケーションサーバーに公開されるこのリクエストごとの情報は、すべてPrivacy Gatewayのものであり、クライアントのものではありません。ただし、開発者はリクエストの内容に個人を特定できる情報を送信しないように注意する必要があります。例えば、リクエストにユーザーのメールアドレス、電話番号、クレジットカード情報などが含まれている場合、Privacy Gatewayはプライバシーを有意に改善することはできません。</p>
-<p>クライアントプライバシーは、より強い概念です。Cloudflareとアプリケーションサーバーは連携して個々のユーザーのデータを共有しているわけではないので、サーバーから見れば、個々のトランザクションはPrivacy Gatewayの背後にある未知のクライアントから来たものです。つまり、適切に設定されたPrivacy Gatewayの導入は、アプリケーションが2つのリクエストを同じクライアントにリンクさせることができないことを意味します。特に、Privacy Gatewayを用いることで、企業はプライバシーを愛することになるでしょう。Privacy Gatewayを利用するエンドユーザーが1人しかいない場合、リクエストプライバシーのみが提供されます（ゲートウェイからは、クライアントIPアドレスが見えないため）。サーバーは、各リクエストが同じ単一のクライアントに対応していることを知ることになるので、クライアントプライバシーは提供されません。クライアントプライバシーは、システムのユーザーが多数いることが前提なので、アプリケーションサーバーがこの決定を行うことはできません。</p>
-<p>リクエストとクライアントのプライバシーをよりよく理解するために、クライアントとサーバー間の次のようなHTTPリクエストを考えてみましょう。</p>
-<p>サイズ1のクライアント匿名化セットを使用した通常のHTTP設定</p>
+<h2 data-astro-cid-yoyuw6fx="">Privacy Gatewayがエンドユーザーのプライバシーを向上させる仕組み</h2>
+<p data-astro-cid-yoyuw6fx="">このインタラクションは2種類のプライバシーを提供し、私たちは非公式に_リクエストプライバシー_および_クライアントプライバシー_と呼んでいます。</p>
+<p data-astro-cid-yoyuw6fx="">リクエストプライバシーとは、IPアドレス、ジオロケーション、TLSおよびHTTPSフィンガープリントなど、HTTPリクエストによって明らかになる情報を、アプリケーションサーバーが学習しないことを意味します。Privacy Gatewayは、アプリケーションサーバーとの間で別のHTTPS接続を使用しているため、アプリケーションサーバーに公開されるこのリクエストごとの情報は、すべてPrivacy Gatewayのものであり、クライアントのものではありません。ただし、開発者はリクエストの内容に個人を特定できる情報を送信しないように注意する必要があります。例えば、リクエストにユーザーのメールアドレス、電話番号、クレジットカード情報などが含まれている場合、Privacy Gatewayはプライバシーを有意に改善することはできません。</p>
+<p data-astro-cid-yoyuw6fx="">クライアントプライバシーは、より強い概念です。Cloudflareとアプリケーションサーバーは連携して個々のユーザーのデータを共有しているわけではないので、サーバーから見れば、個々のトランザクションはPrivacy Gatewayの背後にある未知のクライアントから来たものです。つまり、適切に設定されたPrivacy Gatewayの導入は、アプリケーションが2つのリクエストを同じクライアントにリンクさせることができないことを意味します。特に、Privacy Gatewayを用いることで、企業はプライバシーを愛することになるでしょう。Privacy Gatewayを利用するエンドユーザーが1人しかいない場合、リクエストプライバシーのみが提供されます（ゲートウェイからは、クライアントIPアドレスが見えないため）。サーバーは、各リクエストが同じ単一のクライアントに対応していることを知ることになるので、クライアントプライバシーは提供されません。クライアントプライバシーは、システムのユーザーが多数いることが前提なので、アプリケーションサーバーがこの決定を行うことはできません。</p>
+<p data-astro-cid-yoyuw6fx="">リクエストとクライアントのプライバシーをよりよく理解するために、クライアントとサーバー間の次のようなHTTPリクエストを考えてみましょう。</p>
+<p data-astro-cid-yoyuw6fx="">サイズ1のクライアント匿名化セットを使用した通常のHTTP設定</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="340" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EWA761Z7AAW4R0A461CB.png&amp;w=715&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EWA761Z7AAW4R0A461CB.png&amp;w=640&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EWA761Z7AAW4R0A461CB.png&amp;w=715&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EWA761Z7AAW4R0A461CB.png&amp;w=750&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EWA761Z7AAW4R0A461CB.png&amp;w=828&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EWA761Z7AAW4R0A461CB.png&amp;w=1080&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EWA761Z7AAW4R0A461CB.png&amp;w=1280&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EWA761Z7AAW4R0A461CB.png&amp;w=1430&amp;h=680&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1009 Embedded Image - XuYKpy" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EWA761Z7AAW4R0A461CB.png&amp;w=808&amp;h=384&amp;f=webp" data-lightbox-width="808" data-lightbox-height="384" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="340" class="pt-portable-image-media"></div>
 </figure>
-<p>クライアントがサーバー（OHTTP用語では「ゲートウェイ」といいます）に直接接続する場合、サーバーはクライアントに関する情報（IPアドレス、使用されたTLS暗号、そのIPアドレスに基づくある程度の位置情報など）を把握できます。</p>
-<p>ここには、エンドユーザーならではの機密情報がたくさん詰まっているかもしれません。つまり、この接続は、リクエストプライバシーもクライアントプライバシーも提供しません。</p>
+<p data-astro-cid-yoyuw6fx="">クライアントがサーバー（OHTTP用語では「ゲートウェイ」といいます）に直接接続する場合、サーバーはクライアントに関する情報（IPアドレス、使用されたTLS暗号、そのIPアドレスに基づくある程度の位置情報など）を把握できます。</p>
+<p data-astro-cid-yoyuw6fx="">ここには、エンドユーザーならではの機密情報がたくさん詰まっているかもしれません。つまり、この接続は、リクエストプライバシーもクライアントプライバシーも提供しません。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">-</span><span class="sk-032f62-99ffe4"> ipAddress:</span><span class="sk-005cc5-ffc799"> 192.0.2.33</span><span class="sk-6a737d-8b8b8b94"> # the client’s real IP address</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">-</span><span class="sk-032f62-99ffe4"> ASN:</span><span class="sk-005cc5-ffc799"> 7922</span></span>
@@ -71,8 +71,8 @@
 		})
 	});
 </script>
-<p>Privacy Gatewayでは、クライアントがアプリケーションサーバー自体に直接接続することはありません。その代わり、Privacy Gatewayに接続し、そのゲートウェイがサーバーに接続します。つまり、サーバーはPrivacy Gatewayからの接続のみを観察し、クライアントからの個別の接続は観察しないため、異なる見解が得られます。</p>
-<p>サイズkのクライアント匿名化セットによるPrivacy Gatewayの構成</p>
+<p data-astro-cid-yoyuw6fx="">Privacy Gatewayでは、クライアントがアプリケーションサーバー自体に直接接続することはありません。その代わり、Privacy Gatewayに接続し、そのゲートウェイがサーバーに接続します。つまり、サーバーはPrivacy Gatewayからの接続のみを観察し、クライアントからの個別の接続は観察しないため、異なる見解が得られます。</p>
+<p data-astro-cid-yoyuw6fx="">サイズkのクライアント匿名化セットによるPrivacy Gatewayの構成</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">-</span><span class="sk-032f62-99ffe4"> ipAddress:</span><span class="sk-005cc5-ffc799"> 104.16.5.5</span><span class="sk-6a737d-8b8b8b94"> # a Cloudflare IP</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">-</span><span class="sk-032f62-99ffe4"> ASN:</span><span class="sk-005cc5-ffc799"> 13335</span></span>
@@ -90,18 +90,18 @@
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="152" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RTW4KJ55TPP0H57Z013B.png&amp;w=715&amp;h=152&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RTW4KJ55TPP0H57Z013B.png&amp;w=640&amp;h=136&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RTW4KJ55TPP0H57Z013B.png&amp;w=715&amp;h=152&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RTW4KJ55TPP0H57Z013B.png&amp;w=750&amp;h=159&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RTW4KJ55TPP0H57Z013B.png&amp;w=828&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RTW4KJ55TPP0H57Z013B.png&amp;w=1080&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RTW4KJ55TPP0H57Z013B.png&amp;w=1280&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RTW4KJ55TPP0H57Z013B.png&amp;w=1430&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1009 Embedded Image - mXVbK4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RTW4KJ55TPP0H57Z013B.png&amp;w=1712&amp;h=364&amp;f=webp" data-lightbox-width="1712" data-lightbox-height="364" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="152" class="pt-portable-image-media"></div>
 </figure>
-<p>これはリクエストプライバシーです。クライアントの位置と識別情報に関するすべての情報は、アプリケーションサーバーから隠されています。また、Privacy Gatewayでは、アプリケーションデータに関する詳細な情報はすべて隠されています。機密性の高いアプリケーションやDNSのようなプロトコルの場合、このメタデータをアプリケーションデータから分離しておくことは、エンドユーザーのプライバシーを向上させる重要なステップとなります。</p>
-<p>さらに、アプリケーションは、個々のリクエストにおいて、クライアントごとの機密情報を明らかにしないように注意する必要があります。Privacy Gatewayは、平文のアプリケーションデータを観察することができないため、アプリケーションがリクエストボディにメールアドレス、氏名などの識別情報を送信しないことを保証することはできません。リクエストの中でユーザーを特定する情報を公開するアプリケーションは、リクエストのプライバシーを侵害する可能性がありますが、リクエストプライバシーを侵害することはありません。このため、当社の完全な<a href="https://blog.cloudflare.com/privacy-edge-making-building-privacy-first-apps-easier">アプリケーションレベルのプライバシープロキシ</a>製品とは異なり、Privacy Gatewayは任意のアプリケーションやトラフィックに対する汎用プロキシベースプロトコルとして使用することを目的として_いません_。DNS（<a href="https://blog.cloudflare.com/oblivious-dns">Oblivious DNS-over-HTTPS</a>で裏付けられているように）、テレメトリデータ、または前述の汎用API呼び出しなど、機密性の高いアプリケーションのための特別な目的を持ったプロトコルとなることを意図しています。</p>
-<h2>Privacy Gatewayをアプリケーションに組み込む</h2>
-<p>Privacy Gatewayとの連携には、OHTTPプロトコルのクライアント側とサーバー側をアプリケーションで実装する必要があります。その内容を順を追って説明しましょう。</p>
-<h3>サーバーインテグレーション</h3>
-<p>プロトコルのサーバー側では、2つの基本的なタスクを担当します。</p>
+<p data-astro-cid-yoyuw6fx="">これはリクエストプライバシーです。クライアントの位置と識別情報に関するすべての情報は、アプリケーションサーバーから隠されています。また、Privacy Gatewayでは、アプリケーションデータに関する詳細な情報はすべて隠されています。機密性の高いアプリケーションやDNSのようなプロトコルの場合、このメタデータをアプリケーションデータから分離しておくことは、エンドユーザーのプライバシーを向上させる重要なステップとなります。</p>
+<p data-astro-cid-yoyuw6fx="">さらに、アプリケーションは、個々のリクエストにおいて、クライアントごとの機密情報を明らかにしないように注意する必要があります。Privacy Gatewayは、平文のアプリケーションデータを観察することができないため、アプリケーションがリクエストボディにメールアドレス、氏名などの識別情報を送信しないことを保証することはできません。リクエストの中でユーザーを特定する情報を公開するアプリケーションは、リクエストのプライバシーを侵害する可能性がありますが、リクエストプライバシーを侵害することはありません。このため、当社の完全な<a href="https://blog.cloudflare.com/privacy-edge-making-building-privacy-first-apps-easier">アプリケーションレベルのプライバシープロキシ</a>製品とは異なり、Privacy Gatewayは任意のアプリケーションやトラフィックに対する汎用プロキシベースプロトコルとして使用することを目的として_いません_。DNS（<a href="https://blog.cloudflare.com/oblivious-dns">Oblivious DNS-over-HTTPS</a>で裏付けられているように）、テレメトリデータ、または前述の汎用API呼び出しなど、機密性の高いアプリケーションのための特別な目的を持ったプロトコルとなることを意図しています。</p>
+<h2 data-astro-cid-yoyuw6fx="">Privacy Gatewayをアプリケーションに組み込む</h2>
+<p data-astro-cid-yoyuw6fx="">Privacy Gatewayとの連携には、OHTTPプロトコルのクライアント側とサーバー側をアプリケーションで実装する必要があります。その内容を順を追って説明しましょう。</p>
+<h3 data-astro-cid-yoyuw6fx="">サーバーインテグレーション</h3>
+<p data-astro-cid-yoyuw6fx="">プロトコルのサーバー側では、2つの基本的なタスクを担当します。</p>
 <ol>
 	<li>リクエストのカプセル化のためのパブリックキーを発行する</li>
 	<li>カプセル化されたクライアントリクエストを復号化し、結果のリクエストを処理し、対応するレスポンスを暗号化する</li>
 </ol>
-<p><a href="https://ietf-wg-ohai.github.io/oblivious-http/draft-ietf-ohai-ohttp.html#name-key-configuration" target="_blank" rel="noopener noreferrer">カプセル化パブリックキー</a>は、「鍵構成」と呼ばれ、鍵識別子（サーバーがローテーションのために一度に複数の鍵をサポートできるように）、暗号化および復号化のための暗号アルゴリズム識別子、パブリックキーからなります。</p>
-<p>クライアントはパブリックキーがリクエストの作成のために必要で、その方法はたくさんあります。サーバーがパブリックキーを修正し、それを自分のアプリケーションに焼き付けることもできますが、その場合、キーをローテーションさせるためのソフトウェアのアップデートが必要になります。あるいは、クライアントが他の方法でパブリックキーを取得することも可能です。詳細については、<a href="https://datatracker.ietf.org/doc/html/draft-wood-key-consistency" target="_blank" rel="noopener noreferrer">この文書</a>を参照してください。まず、シンプルな方法として、APIを使用してサーバーから直接パブリックキーを取得することができます。以下は、私たちの<a href="https://github.com/cloudflare/app-relay-gateway-go/blob/main/gateway.go#L116-L134" target="_blank" rel="noopener noreferrer">オープンソースのOHTTPサーバーが提供する</a>APIのスニペットです。</p>
+<p data-astro-cid-yoyuw6fx=""><a href="https://ietf-wg-ohai.github.io/oblivious-http/draft-ietf-ohai-ohttp.html#name-key-configuration" target="_blank" rel="noopener noreferrer">カプセル化パブリックキー</a>は、「鍵構成」と呼ばれ、鍵識別子（サーバーがローテーションのために一度に複数の鍵をサポートできるように）、暗号化および復号化のための暗号アルゴリズム識別子、パブリックキーからなります。</p>
+<p data-astro-cid-yoyuw6fx="">クライアントはパブリックキーがリクエストの作成のために必要で、その方法はたくさんあります。サーバーがパブリックキーを修正し、それを自分のアプリケーションに焼き付けることもできますが、その場合、キーをローテーションさせるためのソフトウェアのアップデートが必要になります。あるいは、クライアントが他の方法でパブリックキーを取得することも可能です。詳細については、<a href="https://datatracker.ietf.org/doc/html/draft-wood-key-consistency" target="_blank" rel="noopener noreferrer">この文書</a>を参照してください。まず、シンプルな方法として、APIを使用してサーバーから直接パブリックキーを取得することができます。以下は、私たちの<a href="https://github.com/cloudflare/app-relay-gateway-go/blob/main/gateway.go#L116-L134" target="_blank" rel="noopener noreferrer">オープンソースのOHTTPサーバーが提供する</a>APIのスニペットです。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">HPKE</span><span class="sk-032f62-99ffe4"> Symmetric</span><span class="sk-032f62-99ffe4"> Algorithms</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  HPKE</span><span class="sk-032f62-99ffe4"> KDF</span><span class="sk-032f62-99ffe4"> ID</span><span class="sk-24292e-fff"> (16),</span></span>
@@ -120,7 +120,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>パブリックキーの生成と配布が解決されると、次にサーバーはクライアントからのカプセル化されたリクエストを処理する必要があります。各リクエストに対して、サーバーはリクエストを復号化し、平文を解決可能な対応するHTTPリクエストに変換し、その結果のレスポンスを暗号化してクライアントに返す必要があります。</p>
+<p data-astro-cid-yoyuw6fx="">パブリックキーの生成と配布が解決されると、次にサーバーはクライアントからのカプセル化されたリクエストを処理する必要があります。各リクエストに対して、サーバーはリクエストを復号化し、平文を解決可能な対応するHTTPリクエストに変換し、その結果のレスポンスを暗号化してクライアントに返す必要があります。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">func</span><span class="sk-24292e-fff"> (s </span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">GatewayResource</span><span class="sk-24292e-fff">) configHandler(</span><span class="sk-6f42c1-ffc799">w</span><span class="sk-032f62-99ffe4"> http.ResponseWriter,</span><span class="sk-032f62-99ffe4"> r</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">http.Request</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	config,</span><span class="sk-032f62-99ffe4"> err</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> s.Gateway.Config</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">s.keyID</span><span class="sk-24292e-fff">)</span></span>
@@ -135,8 +135,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>オープンソースのOHTTPライブラリは通常、<a href="https://github.com/chris-wood/ohttp-go/blob/main/ohttp.go#L455" target="_blank" rel="noopener noreferrer">リクエストの復号化</a>および<a href="https://github.com/chris-wood/ohttp-go/blob/main/ohttp.go#L502-L541" target="_blank" rel="noopener noreferrer">レスポンスの暗号化</a>の関数を提供し、<a href="https://datatracker.ietf.org/doc/html/rfc9292" target="_blank" rel="noopener noreferrer">バイナリHTTP</a>からの平文変換は、HTTPリクエストと別に処理されます。例えば、オープンソースのサーバーでは、Go HTTPリクエストがメモリ上でどのように表現されるかに応じて、この変換を別のライブラリに委ねます。特に、平文リクエストから<a href="https://pkg.go.dev/net/http#Request" target="_blank" rel="noopener noreferrer">Go HTTPリクエスト</a>に変換する関数は、次のシグネチャを持つ関数で行われます。</p>
-<p>逆に、<a href="https://pkg.go.dev/net/http#Response" target="_blank" rel="noopener noreferrer">Go HTTPレスポンス</a>を平文のバイナリHTTPレスポンスメッセージに変換するには、以下のシグネチャを持つ関数を使用します。</p>
+<p data-astro-cid-yoyuw6fx="">オープンソースのOHTTPライブラリは通常、<a href="https://github.com/chris-wood/ohttp-go/blob/main/ohttp.go#L455" target="_blank" rel="noopener noreferrer">リクエストの復号化</a>および<a href="https://github.com/chris-wood/ohttp-go/blob/main/ohttp.go#L502-L541" target="_blank" rel="noopener noreferrer">レスポンスの暗号化</a>の関数を提供し、<a href="https://datatracker.ietf.org/doc/html/rfc9292" target="_blank" rel="noopener noreferrer">バイナリHTTP</a>からの平文変換は、HTTPリクエストと別に処理されます。例えば、オープンソースのサーバーでは、Go HTTPリクエストがメモリ上でどのように表現されるかに応じて、この変換を別のライブラリに委ねます。特に、平文リクエストから<a href="https://pkg.go.dev/net/http#Request" target="_blank" rel="noopener noreferrer">Go HTTPリクエスト</a>に変換する関数は、次のシグネチャを持つ関数で行われます。</p>
+<p data-astro-cid-yoyuw6fx="">逆に、<a href="https://pkg.go.dev/net/http#Response" target="_blank" rel="noopener noreferrer">Go HTTPレスポンス</a>を平文のバイナリHTTPレスポンスメッセージに変換するには、以下のシグネチャを持つ関数を使用します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">func</span><span class="sk-032f62-99ffe4"> UnmarshalBinaryRequest</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">data</span><span class="sk-24292e-fff"> []byte) (*http.Request, </span><span class="sk-032f62-99ffe4">error</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">	...</span></span>
@@ -146,7 +146,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>OHTTPサーバーを実装するために使用できるオープンソースライブラリはいくつかありますが、私たちはそのすべてをオープンソースサーバー実装としてパッケージ化しました。<a href="https://github.com/cloudflare/app-relay-gateway-go" target="_blank" rel="noopener noreferrer">こちらから入手できます</a>。このパッケージには、ビルド、テスト、デプロイの手順が記載されているので、簡単に始めることができます。</p>
+<p data-astro-cid-yoyuw6fx="">OHTTPサーバーを実装するために使用できるオープンソースライブラリはいくつかありますが、私たちはそのすべてをオープンソースサーバー実装としてパッケージ化しました。<a href="https://github.com/cloudflare/app-relay-gateway-go" target="_blank" rel="noopener noreferrer">こちらから入手できます</a>。このパッケージには、ビルド、テスト、デプロイの手順が記載されているので、簡単に始めることができます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">type</span><span class="sk-032f62-99ffe4"> BinaryResponse</span><span class="sk-032f62-99ffe4"> http.Response</span></span>
 <span class="line"></span>
@@ -158,14 +158,14 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3>クライアント統合</h3>
-<p>当然ながら、OHTTPのクライアント側の動作は、サーバーの動作を反映したものです。特に、クライアントは以下を行う必要があります。</p>
+<h3 data-astro-cid-yoyuw6fx="">クライアント統合</h3>
+<p data-astro-cid-yoyuw6fx="">当然ながら、OHTTPのクライアント側の動作は、サーバーの動作を反映したものです。特に、クライアントは以下を行う必要があります。</p>
 <ol>
 	<li>サーバーパブリックキーの発見または取得</li>
 	<li>HTTPリクエストをエンコード・暗号化してPrivacy Gatewayに送信し、HTTPレスポンスを復号化・デコードします。</li>
 </ol>
-<p>サーバーのパブリックキーの発見は、サーバーが選択したデプロイメントモデルに依存します。例えば、パブリックキーがAPIで利用できる場合、クライアントはそれを直接取得することができます。</p>
-<p><a href="https://github.com/chris-wood/ohttp-go/blob/main/bhttp.go#L66" target="_blank" rel="noopener noreferrer">エンコード</a>、<a href="https://github.com/chris-wood/ohttp-go/blob/main/ohttp.go#L321" target="_blank" rel="noopener noreferrer">暗号化</a>、<a href="https://github.com/chris-wood/ohttp-go/blob/main/ohttp.go#L373" target="_blank" rel="noopener noreferrer">復号化</a>、およびデコードは、利用できる場合はOHTTPライブラリで処理するのが最適です。これらの関数が利用できれば、クライアントサポートの構築はかなり簡単です。上記でリンクしたライブラリ関数を使用したGo クライアントの簡単な例を以下に示します。</p>
+<p data-astro-cid-yoyuw6fx="">サーバーのパブリックキーの発見は、サーバーが選択したデプロイメントモデルに依存します。例えば、パブリックキーがAPIで利用できる場合、クライアントはそれを直接取得することができます。</p>
+<p data-astro-cid-yoyuw6fx=""><a href="https://github.com/chris-wood/ohttp-go/blob/main/bhttp.go#L66" target="_blank" rel="noopener noreferrer">エンコード</a>、<a href="https://github.com/chris-wood/ohttp-go/blob/main/ohttp.go#L321" target="_blank" rel="noopener noreferrer">暗号化</a>、<a href="https://github.com/chris-wood/ohttp-go/blob/main/ohttp.go#L373" target="_blank" rel="noopener noreferrer">復号化</a>、およびデコードは、利用できる場合はOHTTPライブラリで処理するのが最適です。これらの関数が利用できれば、クライアントサポートの構築はかなり簡単です。上記でリンクしたライブラリ関数を使用したGo クライアントの簡単な例を以下に示します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-032f62-99ffe4"> https://server.example/ohttp-configs</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> config.bin</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -173,7 +173,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p>このようなスタンドアロン型のクライアントは、既存のアプリケーションをお持ちの方にとってはあまり便利ではないかもしれません。そこで、既存のアプリケーションとの統合を支援するために、iOSやmacOSアプリと互換性のある<a href="https://github.com/cloudflare/app-relay-client-library" target="_blank" rel="noopener noreferrer">OHTTPのサンプルライブラリ</a>を作成しました。また、クライアント側、サーバー側、またはその両方において、統合を容易にするための言語やプラットフォームのサポートが必要な場合は、当社までご連絡ください。</p>
+<p data-astro-cid-yoyuw6fx="">このようなスタンドアロン型のクライアントは、既存のアプリケーションをお持ちの方にとってはあまり便利ではないかもしれません。そこで、既存のアプリケーションとの統合を支援するために、iOSやmacOSアプリと互換性のある<a href="https://github.com/cloudflare/app-relay-client-library" target="_blank" rel="noopener noreferrer">OHTTPのサンプルライブラリ</a>を作成しました。また、クライアント側、サーバー側、またはその両方において、統合を容易にするための言語やプラットフォームのサポートが必要な場合は、当社までご連絡ください。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">configEnc</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> ...</span><span class="sk-032f62-99ffe4"> //</span><span class="sk-032f62-99ffe4"> encoded</span><span class="sk-032f62-99ffe4"> public</span><span class="sk-032f62-99ffe4"> key</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">config,</span><span class="sk-032f62-99ffe4"> err</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> ohttp.UnmarshalPublicConfig</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">configEnc</span><span class="sk-24292e-fff">)</span></span>
@@ -231,5 +231,5 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2>ご関心がおありですか？</h2>
-<p>Privacy Gatewayは現在、早期アクセス期間中で、プライバシーを重視する企業やパートナーに限定して提供されています。ご興味のあるお客様は、<a href="https://www.cloudflare.com/lp/privacy-edge" target="_blank" rel="noopener noreferrer">お問い合わせください</a>。</p>
+<h2 data-astro-cid-yoyuw6fx="">ご関心がおありですか？</h2>
+<p data-astro-cid-yoyuw6fx="">Privacy Gatewayは現在、早期アクセス期間中で、プライバシーを重視する企業やパートナーに限定して提供されています。ご興味のあるお客様は、<a href="https://www.cloudflare.com/lp/privacy-edge" target="_blank" rel="noopener noreferrer">お問い合わせください</a>。</p>
