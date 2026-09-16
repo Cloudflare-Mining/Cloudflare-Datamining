@@ -40,6 +40,7 @@
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
 	<li>For Colorado based hires: Estimated annual salary of $168,000 - $231,000</li>
+	<li>For New York City based hires: Estimated annual salary of $185,000 - $254,000</li>
 	<li>For Washington based hires: Estimated annual salary of $185,000 - $254,000</li>
 	<li>For Washington DC based hires: Estimated annual salary of $185,000 - $254,000</li>
 </ul>
