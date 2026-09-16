@@ -3,58 +3,79 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3><strong>Position Location: Austin, TX | Lisbon, Portugal</strong></h3>
-<h3>About the Role</h3>
-<p>Join the Workers Deploy &amp; Config team as a Principal Engineer, the most senior technical role on the team behind Cloudflare’s serverless edge developer platform. You’ll build the critical large-scale systems that let developers deploy, configure, and manage Workers globally, powering everything from simple static sites to full-stack applications serving millions of users. This team sits at the foundation of Cloudflare’s developer platform, including Pages and R2. The work spans distributed systems, high-traffic APIs, performance, reliability, and developer experience at global scale.</p>
-<h3>Responsibilities</h3>
+<p><strong>Available Locations: </strong>Austin, TX | &nbsp;New York, NY | Lisbon, Portugal | London, UK</p>
+<h4><strong>About the Role</strong></h4>
+<p>As the Engineering Manager for our Developer Observability Platform you will manage a high-velocity customer-obsessed team. Your mission will be to empower customers by making their telemetry discoverable and actionable in one place.&nbsp;</p>
+<p>The team is international and distributed, they move fast and are deeply attuned to customer feedback. They bring a deep range of observability experience from major companies and fast-moving startups. This is a deeply cross-functional role that will need to understand the nuances of monitoring some of our most complex and high volume primitives such as Workers, Workers for Platforms, Agents, and Durable Objects. This is a high-visibility role that will be directly interfacing with some of our biggest customers.</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Lead the architectural evolution of the Workers control plane and help define its multi-year strategy.</li>
-	<li>Identify high-leverage technical challenges and turn ambiguous problems into actionable engineering paths.</li>
-	<li>Re-engineer core services to keep ahead of exponential traffic growth.</li>
-	<li>Architect foundational primitives that unlock new product capabilities and categories.</li>
-	<li>Own the stability and efficiency of a core customer-facing system.</li>
-	<li>Establish rigorous benchmarks for API responsiveness, availability, and reliability.</li>
-	<li>Participate in on-call to help maintain global platform availability.</li>
-	<li>Collaborate with Product and engineering leadership to shape future roadmaps.</li>
-	<li>Serve as the primary technical representative for Workers Deploy &amp; Config in major design forums.</li>
-	<li>Mentor mid-level and senior engineers and raise overall engineering standards.</li>
-	<li>Investigate and apply emerging technologies to improve the developer platform.</li>
-</ul>
-<h3>Desirable Skills, Knowledge &amp; Experience</h3>
-<ul>
-	<li>Deep experience using Go in production environments.</li>
-	<li>Experience with JavaScript and TypeScript.</li>
-	<li>Experience with Kubernetes and metrics/observability tooling such as Prometheus and Grafana, or similar.</li>
-	<li>Proven history of architecting, expanding, and managing massive distributed infrastructures in live environments.</li>
-	<li>Track record of owning architecture across multiple teams or systems from concept through global release.</li>
-	<li>Demonstrated organizational influence through standards-setting, design leadership, cross-team collaboration, and mentoring senior engineers.</li>
-	<li>Strong ability to design and evolve RESTful APIs with a focus on developer experience.</li>
-	<li>Track record of increasing team leverage with AI, including evaluating and introducing AI-assisted development and agentic workflows responsibly.</li>
-</ul>
-<h3>Bonus Points</h3>
-<ul>
-	<li>Experience with C++ or Rust.</li>
-	<li>Experience working on a control plane or data plane.</li>
-	<li>Experience using Cloudflare Workers or Pages.</li>
-	<li>Experience working in frontend frameworks such as React.</li>
-	<li>Experience managing interns or mentoring junior engineers.</li>
-	<li>Product mindset and comfort talking to customers and partners.</li>
-	<li>Familiarity with GraphQL</li>
-	<li>Familiarity with RPC</li>
-</ul>
-<h3><strong>Compensation</strong></h3>
-<p>Compensation may be adjusted depending on work location.</p>
-<p data-path-to-node="1">● For Portugal based hires: Estimated annual salary is between €79,000 - €109,000.</p>
-<ul data-path-to-node="2">
 	<li>
-		<p data-path-to-node="2,0,0">The final offer will be inclusive of time exemption, in alignment with the applicable law and collective bargaining agreements.</p>
+		<p>Deliver excellent customer outcomes above all else. Whatever is required - building, planning, deciding, designing, communicating - you are accountable and get it done.</p>
+	</li>
+	<li>Set the technical and product vision along with your PM and Engineers. Build the right thing at the right time.</li>
+	<li>
+		<p>Building an observability platform for the current AI driven ecosystem. Agents empower new types of platforms capabilities even as they require new types of observability.</p>
+	</li>
+	<li>
+		<p>Own the operational aspects of your platform such as SLOs, incident response, customer escalations, and technical debt. Reliability is its own feature.</p>
+	</li>
+	<li>
+		<p>Recruit, mentor, and grow engineers. We have a high bar and expect you to raise it.</p>
+	</li>
+	<li>
+		<p>Cultivate a team culture that values fast iteration, high agency, and ownership.</p>
+	</li>
+	<li>
+		<p>Work cross-functionally with a range of platform and product teams to instrument and surface meaningful data in actionable ways.</p>
 	</li>
 </ul>
-<h3><strong>Equity</strong></h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3><strong>Benefits</strong></h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h3><strong>Health &amp; Welfare Benefits</strong></h3>
+<h4><strong>Desirable Skills, Knowledge &amp; Experience</strong></h4>
+<ul>
+	<li>
+		<p>A minimum of 8 years of relevant industry experience, including at least 4 years managing software engineering teams.</p>
+	</li>
+	<li>
+		<p>Proven track record leading teams that have shipped and operated complex, large-scale systems and data-driven applications. Preferably in observability, developer platforms, cloud infrastructure, edge/proxy systems, or high-scale APIs.</p>
+	</li>
+	<li>
+		<p>Significant technical depth, with the ability to guide architectural discussions, make credible technical decisions, review designs, and unblock your team.</p>
+	</li>
+	<li>
+		<p>Strong developer tools taste. You have used and built enough observability products to know what makes them delightful or painful.</p>
+	</li>
+	<li>
+		<p>Demonstrated ability to hire, coach, and develop senior engineers, and to build high-performing, inclusive teams that ship. You care about teams and team culture.</p>
+	</li>
+	<li>
+		<p>A hands-on approach to leadership: you consider yourself a builder, stay close to the code, know the numbers, know the customer, and know what to build next.</p>
+	</li>
+</ul>
+<h4><strong>Bonus Points&nbsp;</strong></h4>
+<ul>
+	<li>
+		<p>Working on hosted customer-facing observability products</p>
+	</li>
+	<li>
+		<p>Instrumenting observability in global-scale, production environments&nbsp;</p>
+	</li>
+	<li>
+		<p>Implementing observability (OTLP, OLAP databases such as Clickhouse, Grafana, Elasticsearch, Kibana, etc)</p>
+	</li>
+	<li>
+		<p>Experience building with Cloudflare’s Developer Platform and have opinions on where we could improve, especially with respect to observability.</p>
+	</li>
+</ul>
+<h4>Compensation</h4>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For NY-based hires: Estimated annual salary of $220,000 - $303,000</li>
+	<li>For Portugal-based hires: Estimated annual salary of €89,000 - €122,000</li>
+</ul>
+<h4>Equity</h4>
+<p>This role is eligible to participate in Cloudflare's equity plan.</p>
+<h4>Benefits</h4>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>Health &amp; Welfare Benefits</p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -65,14 +86,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<h3><strong>Financial Benefits</strong></h3>
+<p>Financial Benefits</p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<h3><strong>Time Off</strong></h3>
+<p>Time Off</p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

@@ -3,7 +3,7 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3><strong>Position Location: Austin, TX | New York City, NY | Washington, DC</strong></h3>
+<h3><strong>Position Location: Austin, TX | Lisbon, Portugal</strong></h3>
 <h3>About the Role</h3>
 <p>Join the Workers Deploy &amp; Config team, the engine behind Cloudflare’s serverless edge developer platform. You’ll build the large-scale systems that let developers deploy, configure, and manage Workers globally, from simple static sites to full-stack applications serving millions of users. This team powers the foundation behind much of Cloudflare’s developer platform, including services like Pages and R2. The work combines distributed systems, high-traffic APIs, performance, reliability, and developer experience.</p>
 <h3>Responsibilities</h3>
@@ -41,8 +41,11 @@
 </ul>
 <h3><strong>Compensation</strong></h3>
 <p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $150,000 - $206,000</li>
+<p data-path-to-node="1">● For Portugal based hires: Estimated annual salary is between €54,000 - €75,000.</p>
+<ul data-path-to-node="2">
+	<li>
+		<p data-path-to-node="2,0,0">The final offer will be inclusive of time exemption, in alignment with the applicable law and collective bargaining agreements.</p>
+	</li>
 </ul>
 <h3><strong>Equity</strong></h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
