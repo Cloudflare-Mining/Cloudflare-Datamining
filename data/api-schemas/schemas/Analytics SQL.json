@@ -209,7 +209,7 @@
 	"GET /analytics/sql/introspection": {
 		"operationId": "sql-api-introspection",
 		"summary": "List available analytics datasets",
-		"description": "Returns the analytics dataset catalogue. By default, the response contains dataset names and descriptions. Set `include_columns` to include each dataset's column names, descriptions, and data types. The caller must have Account Analytics Read permission on the account identified by `account_tag`. The account tag authorizes the request; it does not filter the catalogue, which is the same for every authorized account.\n",
+		"description": "Returns the analytics dataset catalogue. By default, the response contains dataset names and descriptions. Set `include_columns` to include each dataset's column names, descriptions, and data types. The caller must have Account Analytics Read permission on the account identified by `account_tag`. The account tag authorizes the request; it does not filter the catalogue, which is the same for every authorized account. Note. This endpoint does not support zone_tag.\n",
 		"parameters": [
 			{
 				"name": "account_tag",
@@ -453,9 +453,10 @@
 										"type": "object",
 										"properties": {
 											"zoneTag": {
-												"description": "Zone tag used to authorize and scope the query.",
+												"description": "Zone tag used to authorize and scope the query. Must be a 32-character lowercase hex string or a UUID with hyphens (8-4-4-4-12 format).\n",
 												"type": "string",
-												"example": "023e105f-2fd3-4989-9d76-34a245f8ca0f"
+												"example": "023e105f-2fd3-4989-9d76-34a245f8ca0f",
+												"pattern": "^[0-9a-f]{32}$|^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
 											}
 										},
 										"additionalProperties": false,

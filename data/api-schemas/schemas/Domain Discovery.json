@@ -1903,7 +1903,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
-		"x-fern-sdk-method-name": "check"
+		"x-fern-sdk-method-name": "check",
+		"x-forge-params": {
+			"domains": {
+				"positional": true
+			}
+		}
 	},
 	"POST /accounts/{account_id}/registrar/domain-check": {
 		"operationId": "registrar-domain-discovery-check",
@@ -2553,6 +2558,11 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "check"
+		"x-fern-sdk-method-name": "check",
+		"x-forge-params": {
+			"domains": {
+				"positional": true
+			}
+		}
 	}
 }

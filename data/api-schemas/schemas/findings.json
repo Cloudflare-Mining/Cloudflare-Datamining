@@ -2757,6 +2757,12 @@
 																"description": "Human-readable name of the asset.",
 																"type": "string",
 																"example": "Public.svg"
+															},
+															"updated": {
+																"description": "Timestamp of the asset row version represented by this data.",
+																"type": "string",
+																"format": "date-time",
+																"example": "2026-09-10T20:15:30.123456Z"
 															}
 														},
 														"example": {
@@ -3286,6 +3292,12 @@
 															"description": "Human-readable name of the asset.",
 															"type": "string",
 															"example": "Public.svg"
+														},
+														"updated": {
+															"description": "Timestamp of the asset row version represented by this data.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2026-09-10T20:15:30.123456Z"
 														}
 													},
 													"example": {
@@ -3830,6 +3842,12 @@
 															"description": "Human-readable name of the asset.",
 															"type": "string",
 															"example": "Public.svg"
+														},
+														"updated": {
+															"description": "Timestamp of the asset row version represented by this data.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2026-09-10T20:15:30.123456Z"
 														}
 													},
 													"example": {
@@ -4373,6 +4391,12 @@
 															"description": "Human-readable name of the asset.",
 															"type": "string",
 															"example": "Public.svg"
+														},
+														"updated": {
+															"description": "Timestamp of the asset row version represented by this data.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2026-09-10T20:15:30.123456Z"
 														}
 													},
 													"example": {

@@ -797,6 +797,190 @@
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
 	},
+	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/lock": {
+		"operationId": "r2-delete-bucket-lock-configuration",
+		"summary": "Delete Bucket Lock Rules",
+		"description": "Delete all lock rules for a bucket.",
+		"parameters": [
+			{
+				"name": "bucket_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket.",
+					"type": "string",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			},
+			{
+				"name": "cf-r2-jurisdiction",
+				"in": "header",
+				"schema": {
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
+					"type": "string",
+					"default": "default",
+					"enum": [
+						"default",
+						"eu",
+						"us",
+						"fedramp",
+						"fedramp-high"
+					],
+					"x-auditable": true,
+					"x-stainless-param": "jurisdiction"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Success Response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error Response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"R2 Bucket"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.locks",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
+	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/sippy": {
 		"operationId": "r2-delete-bucket-sippy-config",
 		"summary": "Disable Sippy",
@@ -7819,7 +8003,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets",
-		"x-fern-sdk-method-name": "createByName",
+		"x-fern-sdk-method-name": "create-by-name",
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/cors": {
