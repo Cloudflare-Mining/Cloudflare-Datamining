@@ -616300,22 +616300,6 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Rate of received packets being dropped from the ingest buffer",
-							"isDeprecated": false,
-							"name": "bufferDropRate",
-							"type": {
-								"kind": "NON_NULL",
-								"name": "",
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "float64",
-									"ofType": null
-								}
-							}
-						},
-						{
-							"args": [],
-							"deprecationReason": null,
 							"description": "Media codec MIME type",
 							"isDeprecated": false,
 							"name": "codecMimeType",
@@ -616596,102 +616580,6 @@
 									"ofType": {
 										"kind": "INPUT_OBJECT",
 										"name": "AccountStreamWHIPBroadcastMetricsAdaptiveFilter_InputObject",
-										"ofType": null
-									}
-								}
-							}
-						},
-						{
-							"defaultValue": null,
-							"description": "",
-							"name": "bufferDropRate",
-							"type": {
-								"kind": "SCALAR",
-								"name": "float64",
-								"ofType": null
-							}
-						},
-						{
-							"defaultValue": null,
-							"description": "",
-							"name": "bufferDropRate_geq",
-							"type": {
-								"kind": "SCALAR",
-								"name": "float64",
-								"ofType": null
-							}
-						},
-						{
-							"defaultValue": null,
-							"description": "",
-							"name": "bufferDropRate_gt",
-							"type": {
-								"kind": "SCALAR",
-								"name": "float64",
-								"ofType": null
-							}
-						},
-						{
-							"defaultValue": null,
-							"description": "",
-							"name": "bufferDropRate_in",
-							"type": {
-								"kind": "LIST",
-								"name": "",
-								"ofType": {
-									"kind": "NON_NULL",
-									"name": "",
-									"ofType": {
-										"kind": "SCALAR",
-										"name": "float64",
-										"ofType": null
-									}
-								}
-							}
-						},
-						{
-							"defaultValue": null,
-							"description": "",
-							"name": "bufferDropRate_leq",
-							"type": {
-								"kind": "SCALAR",
-								"name": "float64",
-								"ofType": null
-							}
-						},
-						{
-							"defaultValue": null,
-							"description": "",
-							"name": "bufferDropRate_lt",
-							"type": {
-								"kind": "SCALAR",
-								"name": "float64",
-								"ofType": null
-							}
-						},
-						{
-							"defaultValue": null,
-							"description": "",
-							"name": "bufferDropRate_neq",
-							"type": {
-								"kind": "SCALAR",
-								"name": "float64",
-								"ofType": null
-							}
-						},
-						{
-							"defaultValue": null,
-							"description": "",
-							"name": "bufferDropRate_notin",
-							"type": {
-								"kind": "LIST",
-								"name": "",
-								"ofType": {
-									"kind": "NON_NULL",
-									"name": "",
-									"ofType": {
-										"kind": "SCALAR",
-										"name": "float64",
 										"ofType": null
 									}
 								}
@@ -618511,22 +618399,6 @@
 					"description": "",
 					"enumValues": [],
 					"fields": [
-						{
-							"args": [],
-							"deprecationReason": null,
-							"description": "Rate of received packets being dropped from the ingest buffer",
-							"isDeprecated": false,
-							"name": "bufferDropRate",
-							"type": {
-								"kind": "NON_NULL",
-								"name": "",
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "float64",
-									"ofType": null
-								}
-							}
-						},
 						{
 							"args": [],
 							"deprecationReason": null,
@@ -620762,18 +620634,6 @@
 					"enumValues": [
 						{
 							"deprecationReason": null,
-							"description": "avg(bufferDropRate) ascending",
-							"isDeprecated": false,
-							"name": "avg_bufferDropRate_ASC"
-						},
-						{
-							"deprecationReason": null,
-							"description": "avg(bufferDropRate) descending",
-							"isDeprecated": false,
-							"name": "avg_bufferDropRate_DESC"
-						},
-						{
-							"deprecationReason": null,
 							"description": "avg(ingestBitrate) ascending",
 							"isDeprecated": false,
 							"name": "avg_ingestBitrate_ASC"
@@ -621221,18 +621081,6 @@
 				{
 					"description": "",
 					"enumValues": [
-						{
-							"deprecationReason": null,
-							"description": "bufferDropRate ascending",
-							"isDeprecated": false,
-							"name": "bufferDropRate_ASC"
-						},
-						{
-							"deprecationReason": null,
-							"description": "bufferDropRate descending",
-							"isDeprecated": false,
-							"name": "bufferDropRate_DESC"
-						},
 						{
 							"deprecationReason": null,
 							"description": "codecMimeType ascending",
@@ -918480,7 +918328,7 @@
 					"possibleTypes": []
 				},
 				{
-					"description": "Scalar type types.Float64",
+					"description": "Scalar type float64",
 					"enumValues": [],
 					"fields": [],
 					"inputFields": [],

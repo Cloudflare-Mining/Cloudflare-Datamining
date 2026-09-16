@@ -11650,7 +11650,6 @@
 	},
 	"AccountStreamWHIPBroadcastMetricsAdaptive": {
 		"__description": "WHIP broadcast metrics for Cloudflare Stream.",
-		"bufferDropRate": "Rate of received packets being dropped from the ingest buffer",
 		"codecMimeType": "Media codec MIME type",
 		"codecName": "Media codec name",
 		"datetime": "Date and time when the metric was collected",
@@ -11680,7 +11679,6 @@
 	},
 	"AccountStreamWHIPBroadcastMetricsAdaptiveGroupsAvg": {
 		"__description": "",
-		"bufferDropRate": "Rate of received packets being dropped from the ingest buffer",
 		"ingestBitrate": "Average ingest bitrate measured in bits per second",
 		"ingestPacketRate": "Average ingest packet rate measured in packets per second",
 		"sampleInterval": "Average adaptive sampling interval"
