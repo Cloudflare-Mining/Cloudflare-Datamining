@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+September 16, 2026 [<h2>When scanners miss the attack: how Cloudflare Client-Side Security protects storefronts</h2>](https://blog.cloudflare.com/client-side-security-finds-4-malicious-campaigns/)
+
+A modern storefront can look healthy while malicious JavaScript quietly siphons revenue, hijacks clicks, or rewrites analytics. See how Cloudflare's machine learning models surface evasive client-side attacks for analyst investigation.
+
+![Juan Miguel Cejuela](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2NNGNXWKEB20VGBSJG0NW3S.01M2NNGPWD0KA2CVW0JDYVNXRG.png&w=64&h=64&f=webp&fit=cover&position=center)![Zhiyuan Zheng](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H03CGFSDPVGKTC145T2G.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Denzil Correa](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48B6V73R1DF1YQBSAN5YFJ.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Juan Miguel Cejuela](https://blog.cloudflare.com/author/juan-miguel-cejuela/),  [Zhiyuan Zheng](https://blog.cloudflare.com/author/xmflsct/), and  [Denzil Correa](https://blog.cloudflare.com/author/denzil-correa/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4WW7J8M4KCQSHWGS28X.01M2KND6MD5RWBZG4CTV12T33B.png&w=1999&h=1066&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/client-side-security-finds-4-malicious-campaigns/)
+
 September 15, 2026 [<h2>Have it both ways: stay discoverable in search while disallowing AI training</h2>](https://blog.cloudflare.com/accountable-mixed-use-ai-crawlers/)
 
 Cloudflare is giving site owners a way to stay discoverable while disallowing AI training. New controls and an Accountable designation establish a shared model with Apple, Google, and Microsoft.
@@ -17,8 +27,6 @@ Cloudflare is giving site owners a way to stay discoverable while disallowing AI
 ![Bryan Becker](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PPX6Y9F64M9HHDMGBP2Q.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Bryan Becker](https://blog.cloudflare.com/author/bryan-becker/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9EEQXN77GRVF484P66A.01M2H2ZAMANYA3DTBA92G3WQ5X.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/accountable-mixed-use-ai-crawlers/)
 
 September 15, 2026 [<h2>Give every teammate and agent the right level of access to your Workers</h2>](https://blog.cloudflare.com/workers-granular-authorization/)
 
@@ -155,14 +163,6 @@ Introducing Cloudflare Access for Workers. Attach an Access policy directly to a
 ![Chythra Malapati](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZW0HX4HHXGH027XF9NKB8X0.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Matt Rothenberg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZW0HWV9Q9VTDJZXEVZDWDCP.webp&w=64&h=64&f=webp&fit=cover&position=center)![Matt Provost](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZW0HZ5QA2K86ATYSMSAQXYC.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Chythra Malapati](https://blog.cloudflare.com/author/chythra-malapati/),  [Matt Rothenberg](https://blog.cloudflare.com/author/matt-rothenberg/), and  [Matt Provost](https://blog.cloudflare.com/author/matt-provost/)
-
-August 13, 2026 [<h2>Total eclipse of the Internet: traffic impacts in Iceland, Spain, and Portugal</h2>](https://blog.cloudflare.com/total-eclipse-internet-traffic-iceland-spain-portugal/)
-
-Cloudflare's data shows a clear impact on Internet traffic from Iceland to Spain and Portugal, following the path of totality of the total solar eclipse that occurred on August 12, 2026.
-
-![Sabina Zejnilovic](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49B114HP8HRQ7MA3FAFRSN.JPG&w=64&h=64&f=webp&fit=cover&position=center)![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Sabina Zejnilovic](https://blog.cloudflare.com/author/sabina/) and  [Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/)
 
 Load more
 
