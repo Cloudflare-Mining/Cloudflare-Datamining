@@ -58,10 +58,10 @@
 	<li>Familiarity with Cloudflare Radar, Internet measurement research, or the broader ecosystem of tools used to understand Internet performance, availability and security</li>
 </ul>
 <p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
 <ul>
 	<li><span data-sheets-root="1">For Portugal based hires: Estimated annual salary of €74,000 - €<span class="cell-value">111,000</span></span></li>
 </ul>
+<p><span data-sheets-root="1"><span class="cell-value">The final offer will be inclusive of time exemption, in alignment with the applicable law and collective bargaining agreements.</span></span></p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <div class="content-conclusion">
