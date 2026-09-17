@@ -11,6 +11,7 @@
 				"schema": {
 					"description": "Identify the API resource with a UUID.",
 					"type": "string",
+					"format": "uuid",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"x-auditable": true
@@ -27,12 +28,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Delete a Zero Trust Gateway rule response.",
@@ -335,28 +330,36 @@
 					"items": {
 						"anyOf": [
 							{
-								"pattern": "^name:.*$"
+								"pattern": "^name:.*$",
+								"type": "string"
 							},
 							{
-								"pattern": "^id:.*$"
+								"pattern": "^id:.*$",
+								"type": "string"
 							},
 							{
-								"pattern": "^action:(on|off|allow|block|scan|noscan|safesearch|ytrestricted|isolate|noisolate|override|l4_override|audit_ssh|egress|resolve|quarantine|redirect|custom)$"
+								"pattern": "^action:(on|off|allow|block|scan|noscan|safesearch|ytrestricted|isolate|noisolate|override|l4_override|audit_ssh|egress|resolve|quarantine|redirect|custom)$",
+								"type": "string"
 							},
 							{
-								"pattern": "^enabled:(true|false)$"
+								"pattern": "^enabled:(true|false)$",
+								"type": "string"
 							},
 							{
-								"pattern": "^source_account:.*$"
+								"pattern": "^source_account:.*$",
+								"type": "string"
 							},
 							{
-								"pattern": "^is_shared:(true|false)$"
+								"pattern": "^is_shared:(true|false)$",
+								"type": "string"
 							},
 							{
-								"pattern": "^filters:(http|dns|dns_resolver|l4|egress)$"
+								"pattern": "^filters:(http|dns|dns_resolver|l4|egress)$",
+								"type": "string"
 							},
 							{
-								"pattern": "^expression:.*$"
+								"pattern": "^expression:.*$",
+								"type": "string"
 							}
 						],
 						"type": "string"
@@ -635,6 +638,7 @@
 													"id": {
 														"description": "Identify the API resource with a UUID.",
 														"type": "string",
+														"format": "uuid",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
 														"x-auditable": true
@@ -1625,6 +1629,7 @@
 															"id": {
 																"description": "Identify the API resource with a UUID.",
 																"type": "string",
+																"format": "uuid",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
 																"x-auditable": true
@@ -2491,6 +2496,7 @@
 				"schema": {
 					"description": "Identify the API resource with a UUID.",
 					"type": "string",
+					"format": "uuid",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"x-auditable": true
@@ -2710,6 +2716,7 @@
 												"id": {
 													"description": "Identify the API resource with a UUID.",
 													"type": "string",
+													"format": "uuid",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"x-auditable": true
@@ -3666,6 +3673,7 @@
 														"id": {
 															"description": "Identify the API resource with a UUID.",
 															"type": "string",
+															"format": "uuid",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"x-auditable": true
@@ -4770,6 +4778,7 @@
 													"id": {
 														"description": "Identify the API resource with a UUID.",
 														"type": "string",
+														"format": "uuid",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
 														"x-auditable": true
@@ -5760,6 +5769,7 @@
 															"id": {
 																"description": "Identify the API resource with a UUID.",
 																"type": "string",
+																"format": "uuid",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
 																"x-auditable": true
@@ -6654,6 +6664,7 @@
 								"id": {
 									"description": "Identify the API resource with a UUID.",
 									"type": "string",
+									"format": "uuid",
 									"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 									"maxLength": 36,
 									"x-auditable": true
@@ -6915,6 +6926,7 @@
 													"id": {
 														"description": "Identify the API resource with a UUID.",
 														"type": "string",
+														"format": "uuid",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
 														"x-auditable": true
@@ -7902,6 +7914,7 @@
 															"id": {
 																"description": "Identify the API resource with a UUID.",
 																"type": "string",
+																"format": "uuid",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
 																"x-auditable": true
@@ -8768,6 +8781,7 @@
 				"schema": {
 					"description": "Identify the API resource with a UUID.",
 					"type": "string",
+					"format": "uuid",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"x-auditable": true
@@ -9024,6 +9038,7 @@
 												"id": {
 													"description": "Identify the API resource with a UUID.",
 													"type": "string",
+													"format": "uuid",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"x-auditable": true
@@ -9978,6 +9993,7 @@
 														"id": {
 															"description": "Identify the API resource with a UUID.",
 															"type": "string",
+															"format": "uuid",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"x-auditable": true
@@ -11859,6 +11875,7 @@
 												"id": {
 													"description": "Identify the API resource with a UUID.",
 													"type": "string",
+													"format": "uuid",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"x-auditable": true
@@ -12816,6 +12833,7 @@
 														"id": {
 															"description": "Identify the API resource with a UUID.",
 															"type": "string",
+															"format": "uuid",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"x-auditable": true
@@ -13681,6 +13699,7 @@
 				"schema": {
 					"description": "Identify the API resource with a UUID.",
 					"type": "string",
+					"format": "uuid",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"x-auditable": true
@@ -13900,6 +13919,7 @@
 												"id": {
 													"description": "Identify the API resource with a UUID.",
 													"type": "string",
+													"format": "uuid",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"x-auditable": true
@@ -14854,6 +14874,7 @@
 														"id": {
 															"description": "Identify the API resource with a UUID.",
 															"type": "string",
+															"format": "uuid",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"x-auditable": true
@@ -15719,6 +15740,7 @@
 				"schema": {
 					"description": "Identify the API resource with a UUID.",
 					"type": "string",
+					"format": "uuid",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"x-auditable": true
@@ -16747,6 +16769,7 @@
 												"id": {
 													"description": "Identify the API resource with a UUID.",
 													"type": "string",
+													"format": "uuid",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"x-auditable": true
@@ -17703,6 +17726,7 @@
 														"id": {
 															"description": "Identify the API resource with a UUID.",
 															"type": "string",
+															"format": "uuid",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"x-auditable": true

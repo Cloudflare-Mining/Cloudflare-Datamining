@@ -25,12 +25,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Returns a deleted proxy endpoint response.",
@@ -336,13 +330,16 @@
 					"items": {
 						"anyOf": [
 							{
-								"pattern": "^name:.*$"
+								"pattern": "^name:.*$",
+								"type": "string"
 							},
 							{
-								"pattern": "^id:.*$"
+								"pattern": "^id:.*$",
+								"type": "string"
 							},
 							{
-								"pattern": "^kind:(ip|identity)$"
+								"pattern": "^kind:(ip|identity)$",
+								"type": "string"
 							}
 						],
 						"type": "string"

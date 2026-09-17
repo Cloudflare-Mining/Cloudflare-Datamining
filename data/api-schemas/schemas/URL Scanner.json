@@ -4348,52 +4348,47 @@
 																	},
 																	"rules": {
 																		"type": "object",
-																		"properties": {
-																			"*": {
-																				"type": "object",
-																				"properties": {
-																					"allow": {
-																						"type": "array",
-																						"items": {
-																							"type": "string"
-																						}
-																					},
-																					"contentSignal": {
-																						"type": "object",
-																						"properties": {
-																							"ai-input": {
-																								"type": "string",
-																								"example": "no"
-																							},
-																							"ai-train": {
-																								"type": "string",
-																								"example": "yes"
-																							},
-																							"search": {
-																								"type": "string",
-																								"example": "yes"
-																							}
-																						}
-																					},
-																					"crawlDelay": {
-																						"type": "number"
-																					},
-																					"disallow": {
-																						"type": "array",
-																						"items": {
-																							"type": "string"
+																		"additionalProperties": {
+																			"properties": {
+																				"allow": {
+																					"type": "array",
+																					"items": {
+																						"type": "string"
+																					}
+																				},
+																				"contentSignal": {
+																					"type": "object",
+																					"properties": {
+																						"ai-input": {
+																							"type": "string",
+																							"example": "no"
+																						},
+																						"ai-train": {
+																							"type": "string",
+																							"example": "yes"
+																						},
+																						"search": {
+																							"type": "string",
+																							"example": "yes"
 																						}
 																					}
 																				},
-																				"required": [
-																					"allow",
-																					"disallow"
-																				]
-																			}
-																		},
-																		"required": [
-																			"*"
-																		]
+																				"crawlDelay": {
+																					"type": "number"
+																				},
+																				"disallow": {
+																					"type": "array",
+																					"items": {
+																						"type": "string"
+																					}
+																				}
+																			},
+																			"required": [
+																				"allow",
+																				"disallow"
+																			],
+																			"type": "object"
+																		}
 																	},
 																	"sitemaps": {
 																		"type": "array",

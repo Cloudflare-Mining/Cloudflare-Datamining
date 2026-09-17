@@ -27,12 +27,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Deletes Zero Trust certificate response.",
@@ -2027,12 +2021,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"202": {
 				"description": "Activates Zero Trust certificate details response.",
@@ -2516,12 +2504,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"201": {
 				"description": "Deactivate Zero Trust certificate details response.",

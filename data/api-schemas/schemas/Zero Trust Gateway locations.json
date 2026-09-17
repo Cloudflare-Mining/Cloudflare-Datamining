@@ -25,12 +25,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Deletes a Zero Trust Gateway location response.",
@@ -337,13 +331,16 @@
 					"items": {
 						"anyOf": [
 							{
-								"pattern": "^name:.*$"
+								"pattern": "^name:.*$",
+								"type": "string"
 							},
 							{
-								"pattern": "^id:.*$"
+								"pattern": "^id:.*$",
+								"type": "string"
 							},
 							{
-								"pattern": "^is_default:(true|false)$"
+								"pattern": "^is_default:(true|false)$",
+								"type": "string"
 							}
 						],
 						"type": "string"

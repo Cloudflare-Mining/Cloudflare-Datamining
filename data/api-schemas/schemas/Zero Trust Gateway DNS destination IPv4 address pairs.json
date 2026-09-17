@@ -136,6 +136,7 @@
 													},
 													"pair_type": {
 														"description": "Specify whether the pair shared across multiple accounts (shared) or available exclusively to this account. Non-shared pairs can contain Cloudflare-owned IPs (dedicated) or customer-provided IPs (byoip).",
+														"type": "string",
 														"example": "shared",
 														"enum": [
 															"shared",
@@ -290,6 +291,7 @@
 															},
 															"pair_type": {
 																"description": "Specify whether the pair shared across multiple accounts (shared) or available exclusively to this account. Non-shared pairs can contain Cloudflare-owned IPs (dedicated) or customer-provided IPs (byoip).",
+																"type": "string",
 																"example": "shared",
 																"enum": [
 																	"shared",

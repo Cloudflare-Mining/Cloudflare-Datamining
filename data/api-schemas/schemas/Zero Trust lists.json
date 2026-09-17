@@ -27,12 +27,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Delete Zero Trust list response.",
@@ -357,16 +351,20 @@
 					"items": {
 						"anyOf": [
 							{
-								"pattern": "^name:.*$"
+								"pattern": "^name:.*$",
+								"type": "string"
 							},
 							{
-								"pattern": "^id:.*$"
+								"pattern": "^id:.*$",
+								"type": "string"
 							},
 							{
-								"pattern": "^type:(IP|URL|DOMAIN|CATEGORY|EMAIL|SERIAL|LOCATION|DEVICE|AAGUID)$"
+								"pattern": "^type:(IP|URL|DOMAIN|CATEGORY|EMAIL|SERIAL|LOCATION|DEVICE|AAGUID)$",
+								"type": "string"
 							},
 							{
-								"pattern": "^item_count:[0-9]+$"
+								"pattern": "^item_count:[0-9]+$",
+								"type": "string"
 							}
 						],
 						"type": "string"
