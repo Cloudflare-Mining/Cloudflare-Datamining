@@ -1567,8 +1567,20 @@
 	},
 	"POST /accounts": {
 		"operationId": "account-creation",
-		"summary": "Create an account",
-		"description": "Create an account (only available for tenant admins at this time)",
+		"summary": "Create an Account",
+		"description": "Create an Account. To create the Account within an Organization, provide `unit.id` and omit `standalone`. To create a standalone Free Account, provide `standalone: true` and omit `unit`. Providing both fields is invalid. If you omit both fields, Cloudflare can determine the destination only when the User is an administrator of exactly one Organization. Cloudflare creates the Account in that Organization; otherwise, the request returns an error.",
+		"parameters": [
+			{
+				"name": "Idempotency-Key",
+				"in": "header",
+				"description": "Optional key that identifies an Account-creation request. Free Account creation can require exactly one valid key, so API clients should send a key with every Account-creation request. Reuse the same key when retrying the same request.",
+				"schema": {
+					"type": "string",
+					"maxLength": 128,
+					"minLength": 1
+				}
+			}
+		],
 		"requestBody": {
 			"description": "Parameters for account creation",
 			"required": true,
@@ -1581,6 +1593,14 @@
 								"description": "Account name",
 								"type": "string"
 							},
+							"standalone": {
+								"description": "Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.",
+								"type": "boolean",
+								"enum": [
+									true
+								],
+								"x-stainless-terraform-configurability": "computed_optional"
+							},
 							"type": {
 								"enum": [
 									"standard",
@@ -1588,7 +1608,7 @@
 								]
 							},
 							"unit": {
-								"description": "information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/",
+								"description": "Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.",
 								"type": "object",
 								"properties": {
 									"id": {
@@ -1602,10 +1622,16 @@
 								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
+						"not": {
+							"required": [
+								"unit",
+								"standalone"
+							]
+						},
 						"required": [
 							"name"
 						],
-						"title": "Create account"
+						"title": "Create Account"
 					}
 				}
 			}

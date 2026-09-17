@@ -436,7 +436,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "share",
+		"x-fern-sdk-group-name": "resource-sharing",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
@@ -1079,7 +1079,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "share.recipient",
+		"x-fern-sdk-group-name": "resource-sharing.recipients",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
@@ -1421,7 +1421,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "share.resource",
+		"x-fern-sdk-group-name": "resource-sharing.resources",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
@@ -2044,7 +2044,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "share",
+		"x-fern-sdk-group-name": "resource-sharing",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/shares/{share_id}": {
@@ -2502,7 +2502,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "share",
+		"x-fern-sdk-group-name": "resource-sharing",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/shares/{share_id}/excluded-recipients": {
@@ -3569,7 +3569,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "share.recipient",
+		"x-fern-sdk-group-name": "resource-sharing.recipients",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}": {
@@ -3924,7 +3924,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "share.recipient",
+		"x-fern-sdk-group-name": "resource-sharing.recipients",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/shares/{share_id}/resources": {
@@ -4359,7 +4359,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "share.resource",
+		"x-fern-sdk-group-name": "resource-sharing.resources",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}": {
@@ -4700,7 +4700,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "share.resource",
+		"x-fern-sdk-group-name": "resource-sharing.resources",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /organizations/{organization_id}/shares": {
@@ -5829,7 +5829,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "share",
+		"x-fern-sdk-group-name": "resource-sharing",
 		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/shares/{share_id}/excluded-recipients": {
@@ -6523,7 +6523,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "share.recipient",
+		"x-fern-sdk-group-name": "resource-sharing.recipients",
 		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/shares/{share_id}/resources": {
@@ -6902,7 +6902,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "share.resource",
+		"x-fern-sdk-group-name": "resource-sharing.resources",
 		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/shares/{share_id}": {
@@ -7363,7 +7363,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "share",
+		"x-fern-sdk-group-name": "resource-sharing",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/shares/{share_id}/excluded-recipients": {
@@ -7813,7 +7813,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "share.recipient",
+		"x-fern-sdk-group-name": "resource-sharing.recipients",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}": {
@@ -8172,7 +8172,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "share.resource",
+		"x-fern-sdk-group-name": "resource-sharing.resources",
 		"x-fern-sdk-method-name": "update"
 	}
 }

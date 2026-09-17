@@ -487,7 +487,8 @@
 														"type": "string",
 														"example": "fc0a8dc887b16759bfd9ad922230a014",
 														"maxLength": 32,
-														"x-auditable": true
+														"x-auditable": true,
+														"x-fern-type-name": "LiveInputId"
 													},
 													"maxDurationSeconds": {
 														"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
@@ -1096,7 +1097,8 @@
 													"type": "string",
 													"example": "fc0a8dc887b16759bfd9ad922230a014",
 													"maxLength": 32,
-													"x-auditable": true
+													"x-auditable": true,
+													"x-fern-type-name": "LiveInputId"
 												},
 												"maxDurationSeconds": {
 													"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
@@ -2486,7 +2488,8 @@
 													"type": "string",
 													"example": "fc0a8dc887b16759bfd9ad922230a014",
 													"maxLength": 32,
-													"x-auditable": true
+													"x-auditable": true,
+													"x-fern-type-name": "LiveInputId"
 												},
 												"maxDurationSeconds": {
 													"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
@@ -3571,7 +3574,8 @@
 													"type": "string",
 													"example": "fc0a8dc887b16759bfd9ad922230a014",
 													"maxLength": 32,
-													"x-auditable": true
+													"x-auditable": true,
+													"x-fern-type-name": "LiveInputId"
 												},
 												"maxDurationSeconds": {
 													"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
