@@ -12,61 +12,65 @@
 	<li>Washington DC, US</li>
 </ul>
 <p><strong>Applications will be accepted until November 23, 2026.</strong></p>
-<h4>About the Role</h4>
-<p>We are seeking a DCIM Program Leader to build, scale, and own our Data Center Infrastructure Management program.&nbsp; This leadership role is part of the Infrastructure Operations organization, which is responsible for building, scaling, and running one of the world's largest and most important cloud networks. Cloudflare’s global network spans more than 330 cities, and is a key strategic asset that supports all of our customers and products. As a leader on this team, you will play a crucial role in ensuring the performance, availability, and security of our infrastructure.</p>
-<p>The DCIM Program Leader role is the single point of ownership for the Nlyte platform across Cloudflare's global network of 330+ cities. You will architect our Workflow and Change Management policy, own the strategic vision, and help drive the deep integration necessary to establish Nlyte as the mandatory Single Source of Truth (SSOT), enabling the disciplined, high-velocity scale of our edge and core network.</p>
-<p>We operate in a fast-paced environment where you will be expected to drive both project delivery and operational excellence through continuous improvement, standardization, and optimization. This isn't just about day to day operations; it's about building a scalable, performant, secure, and resilient infrastructure that plays a critical role in us building a better Internet.</p>
-<h4>Responsibilities</h4>
+<h4><strong>About the Role</strong></h4>
+<p>We are seeking an experienced IT Asset Manager to help build and scale our Asset Lifecycle Operations Team. This is a leadership role and part of our broader Infrastructure Operations organization which is focussed on the deployment and maintenance of IT infrastructure assets across our global deploy base. This group is responsible for building, scaling, and running one of the world's largest and most important cloud networks. Cloudflare’s global network spans more than 330+ cities, and is a key strategic asset that supports all of our customers and products. As a leader on this team, you will play a crucial role in ensuring the performance, availability, and security of our infrastructure.</p>
+<p>Serving as the central owner of infrastructure assets across Cloudflare's global network, the IT Asset Manager establishes foundational DCIM processes, tooling, and policies to govern the complete asset lifecycle. In this position, you will execute a clear operational vision to maintain precise asset records, satisfying key security and financial controls while driving automated, scalable service deployment.</p>
+<p>We operate in a fast-paced environment where you will be expected to drive both project delivery and operational excellence through continuous improvement, standardization, and optimization. This isn't just about day to day operations; it's about building a scalable, performant, secure, and resilient infrastructure that plays a critical role in aiding Cloudflare to build a better Internet.</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Own the successful deployment of CAPEX investments, ensuring our infrastructure scales ahead of demand.</li>
-	<li>Collaborate strategically with cross-functional partners including Project Managers, Capacity Planning, Finance, and Security to deliver on ambitious group initiatives.</li>
-	<li>Manage key third-party vendors and contractors, holding them accountable for performance and service level agreements (SLAs).</li>
+	<li>Ensure accurate recording of capital investments, whilst maintaining the pace of execution needed by our engineering teams&nbsp;</li>
+	<li>Collaborate with cross-functional partners including Technical Project Managers, Capacity Planning Analysts, Engineering Managers,&nbsp; Finance, and Security to meet strategic group initiatives&nbsp;</li>
+	<li>Manage key third-party vendors and contractors involved in ITAD activities, holding them accountable for performance and service level agreements (SLAs)</li>
 	<li>Drive a culture of continuous improvement by championing standardization, optimization, and automation.</li>
-	<li>Own incident response, root cause analysis (RCA), and executive-level communication during critical events.</li>
+	<li>Design and enforce the global DCIM Workflow and Change Management policies (MAC process), ensuring strict ITIL/ITSM compliance across IT, Facilities, and Deployment teams worldwide</li>
+	<li>Support the complex, bi-directional API/database integration between DCIM platform and core enterprise systems (ERP, CMDB, etc) to automate asset management lifecycle changes</li>
+	<li>Partner with the DCIM and Capacity Planning Analysts to develop forward-looking capacity models, ensuring resource availability and optimization for new Cloudflare services</li>
+	<li>Establish and track key operational metrics (e.g., Workflow Compliance KPIs, Data Accuracy Rate), providing executive reporting on infrastructure risk.</li>
+	<li>Lead and mentor the members of the Asset Lifecycle Operations Team</li>
 	<li>Foster a best-in-class operations team by bringing fresh perspectives, leadership acumen, and a focus on employee engagement.</li>
-	<li>Change Policy Architect: Design and enforce the global DCIM Workflow and Change Management policies (MAC process), ensuring strict ITIL/ITSM compliance across IT, Facilities, and Deployment teams worldwide.</li>
-	<li>Technical Integration Leader: Support the complex, bi-directional API/database integration between Nlyte and core enterprise systems (ERP, CMDB, etc) to automate asset management and trigger workflow requests.</li>
-	<li>Capacity Strategy: Partner with the DCIM Analyst and our Capacity Planning team to develop forward-looking capacity models, ensuring resource availability and optimization for new services like Workers AI and R2.</li>
-	<li>Governance &amp; Leadership: Establish and track key operational metrics (e.g., Workflow Compliance KPIs, Data Accuracy Rate), providing executive reporting on infrastructure risk.</li>
-	<li>Lead and mentor the DCI Administrator and Analyst and members across the Infrastructure Engineering organization.</li>
 </ul>
-<h4>Desirable Skills, Knowledge, and Experience</h4>
+<h4><strong>Desirable Skills, Knowledge, and Experience</strong></h4>
 <ul>
-	<li>You are an experienced engineering leader and DCIM expert, with a passion for building high-performing teams and a track record of driving operational excellence. You will set strategy, establish priorities, and mentor a group of top technical talent. This role is for a hands-on leader who can rapidly learn, adapt, and apply learnings to enable fast and sustainable growth. You thrive in a hyper-growth environment and have an outstanding ability to get things done under pressure while leading with optimism and grit.</li>
-	<li>You have a proven track record of scaling teams, driving change, and being a well-respected technical leader and people manager. You are not just a manager, but a mentor who can grow and empower your team to ensure an energized, motivating, and inclusive work environment.</li>
-	<li>You are Principled; you are the guardian of data integrity, refusing to allow undocumented changes. You are Curious; you seek novel ways to automate workflow integration with proprietary Cloudflare systems to achieve zero-touch provisioning.</li>
-	<li>Education:
+	<li>
 		<ul>
-			<li>Bachelor's degree in Information Technology, Computer Science, Business Administration, or a related field, or equivalent practical experience.</li>
-		</ul>
-	</li>
-	<li>Experience:
-		<ul>
-			<li>7+ years in Infrastructure/Data Center Operations, including inventory control and asset lifecycle.</li>
-			<li>4+ years managing a major DCIM platform (Nlyte preferred).</li>
-			<li>Proven ability to lead complex, cross-functional programs and manage vendor relationships in a high-velocity environment.</li>
-			<li>Experience with leading change management in ERP and asset management transformation efforts.</li>
-		</ul>
-	</li>
-	<li>Technical Skills:
-		<ul>
-			<li>Expert with ERP asset management and maintenance management functionalities.</li>
-			<li>Expert-level knowledge of ITIL v4, particularly Change and Configuration Management, with demonstrable experience enforcing standards at a global scale.</li>
-			<li>Strong understanding of Data Center infrastructure, including data center hardware (servers, storage, networking equipment) and their configurations.</li>
-			<li>Ability to analyze complex data and generate detailed reports.</li>
-		</ul>
-	</li>
-	<li>Soft Skills:
-		<ul>
-			<li>Exceptional attention to detail and strong organizational skills.</li>
-			<li>Excellent problem-solving and root cause analysis capabilities.</li>
-			<li>Strong communication and interpersonal skills, with the ability to effectively collaborate with cross-functional teams and present recommendations to various stakeholders.</li>
-			<li>Customer service-oriented with a proactive and collaborative team approach.</li>
+			<li>
+				<ul>
+					<li>You are an experienced engineering leader and DCIM expert, with a passion for building high-performing teams and a track record of driving operational excellence. You will set strategy, establish priorities, and mentor a group of top technical talent. This role is for a hands-on leader who can rapidly learn, adapt, and apply learnings to enable fast and sustainable growth. You thrive in a hyper-growth environment and have an outstanding ability to get things done under pressure while leading with optimism and grit.</li>
+					<li>You have a proven track record of scaling teams, driving change, and being a well-respected technical leader and people manager. You are not just a manager, but a mentor who can grow and empower your team to ensure an energized, motivating, and inclusive work environment.</li>
+					<li>You are Principled; you are the guardian of data integrity, refusing to allow undocumented changes. You are Curious; you seek novel ways to automate workflow integration with proprietary Cloudflare systems to achieve zero-touch provisioning.</li>
+					<li>Education:
+						<ul>
+							<li>Bachelor's degree in Information Technology, Computer Science, Business Administration, or a related field, or equivalent practical experience.</li>
+						</ul>
+					</li>
+					<li>Experience:
+						<ul>
+							<li>7+ years in Infrastructure/Data Center Operations, including inventory control and asset lifecycle.</li>
+							<li>4+ years managing a major DCIM platform (Nlyte preferred).</li>
+							<li>Proven ability to lead complex, cross-functional programs and manage vendor relationships in a high-velocity environment.</li>
+							<li>Experience with leading change management in ERP and asset management transformation efforts.</li>
+						</ul>
+					</li>
+					<li>Technical Skills:
+						<ul>
+							<li>Expert with asset management tooling&nbsp;</li>
+							<li>Expert-level knowledge of ITIL v4, particularly Change and Configuration Management, with demonstrable experience enforcing standards at a global scale</li>
+							<li>Strong understanding of Data Center infrastructure, including data center hardware (servers, storage, networking equipment) and their configurations</li>
+							<li>Ability to analyze complex data and generate detailed reports.</li>
+						</ul>
+					</li>
+					<li>Soft Skills:
+						<ul>
+							<li>Exceptional attention to detail and strong organizational skills.</li>
+							<li>Excellent problem-solving and root cause analysis capabilities.</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
 		</ul>
 	</li>
 </ul>
 <h3>Compensation</h3>
-<p>&nbsp;</p>
 <p data-path-to-node="1,0,0">Compensation may be adjusted depending on work location.</p>
 <ul>
 	<li>

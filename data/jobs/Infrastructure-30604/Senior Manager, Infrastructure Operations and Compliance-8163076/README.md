@@ -3,7 +3,19 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: Austin&nbsp;</strong></p>
+<p><strong>Available Locations: </strong></p>
+<ul>
+	<li><strong>Austin&nbsp;</strong></li>
+	<li><strong>Seattle</strong></li>
+	<li><strong>Denver</strong></li>
+	<li><strong>Atlanta&nbsp;</strong></li>
+	<li><strong>Washington DC</strong></li>
+</ul>
+<p><strong></strong></p>
+<ul>
+	<li>Application Deadline: December 16, 2026</li>
+</ul>
+<p><strong></strong></p>
 <p><strong>Position Overview</strong></p>
 <p>Cloudflare is looking for a Senior Manager to lead a unified Infrastructure Operations function spanning physical network reliability, operational security, and global regulatory compliance across 750+ data center sites in 125+ countries. The leader in this role ensures 24x7 operational availability of Cloudflare's network infrastructure through incident response, hardware break-fix, circuit management, and physical hardware lifecycle operations. This leader also owns&nbsp; physical access control policy and administration, periodic access reviews, and evidence-based compliance delivery across SOC 2 Type II, ISO 27001, FedRAMP, ISMAP, and IRAP.</p>
 <p>You will lead two teams, setting organizational direction, building talent, and being accountable for outcomes across the full lifecycle of Cloudflare's physical infrastructure: from how hardware is deployed and maintained, to how access is controlled and reviewed, to how assets are securely retired and evidenced for audit. The breadth of this scope demands a leader who can hold the org-level tensions, speed versus rigor, global scale versus precise detail, partner dependency versus uncompromising standards, without losing either end.</p>
@@ -72,7 +84,49 @@
 </ul>
 <p><strong>Reporting Structure</strong></p>
 <p>This role reports to the Director, Infrastructure Operations (AMER) and is part of the broader Infrastructure Operations leadership team.</p>
-<p>&nbsp;</p>
+<p></p>
+<h3 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
+<ul data-path-to-node="1">
+	<li>
+		<p data-path-to-node="1,0,0">Compensation may be adjusted depending on work location.</p>
+	</li>
+	<li>
+		<p data-path-to-node="1,1,0">For Colorado based hires: Estimated annual salary of $156,000 - $215,000.</p>
+	</li>
+	<li>Washington (Kirkland), and Washington D.C. based hires: Estimated annual salary of $182,000 - $251,000.</li>
+</ul>
+<h3><strong>Equity</strong></h3>
+<ul>
+	<li>This role is eligible to participate in Cloudflare's equity plan.</li>
+</ul>
+<h3><strong>Benefits</strong></h3>
+<ul>
+	<li>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</li>
+	<li>Health &amp; Welfare Benefits</li>
+	<ul>
+		<li>Medical/Rx Insurance</li>
+		<li>Dental Insurance</li>
+		<li>Vision Insurance</li>
+		<li>Flexible Spending Accounts</li>
+		<li>Commuter Spending Accounts</li>
+		<li>Fertility &amp; Family Forming Benefits</li>
+		<li>On-demand mental health support and Employee Assistance Program</li>
+		<li>Global Travel Medical Insurance</li>
+	</ul>
+	<li>Financial Benefits</li>
+	<ul>
+		<li>Short and Long Term Disability Insurance</li>
+		<li>Life &amp; Accident Insurance</li>
+		<li>401(k) Retirement Savings Plan</li>
+		<li>Employee Stock Participation Plan</li>
+	</ul>
+	<li>Time Off</li>
+	<ul>
+		<li>Flexible paid time off covering vacation and sick leave</li>
+		<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	</ul>
+</ul>
+<p></p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

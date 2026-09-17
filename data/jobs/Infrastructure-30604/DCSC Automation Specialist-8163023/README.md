@@ -11,6 +11,9 @@
 	<li><strong>Seattle, WA</strong></li>
 	<li><strong>Washington, DC&nbsp;</strong></li>
 </ul>
+<p><strong></strong></p>
+<p><strong>Application Deadline: December 16, 2026</strong></p>
+<p><strong></strong></p>
 <p><strong>Position Overview</strong></p>
 <p>Cloudflare is looking for an Automation Specialist to transform how our global Data Center Security Compliance (DCSC) team operates. This critical role is part of the Infrastructure Operations organization, which is responsible for building, scaling, and running Cloudflare's data center and network infrastructure across 700+ sites worldwide.</p>
 <p>The DCSC team manages physical access control and compliance auditing across one of the most complex and distributed infrastructure footprints in the industry, spanning more than 105 vendor portals, hundreds of non-portal carrier-neutral and edge partner sites, and multiple regulatory frameworks including SOC 2, ISO 27001, FedRAMP, ISMAP, and IRAP. The operational burden of this work is substantial and largely manual: user lists are pulled by hand, access control lists are reconciled by eye, evidence packages are assembled ticket by ticket, and attestation cycles consume weeks of coordinator time every quarter.</p>
@@ -80,7 +83,49 @@
 	<li>Prior work in infrastructure operations, data center, or physical security environments</li>
 	<li>Experience building internal tooling or developer-facing portals (not just scripts)</li>
 </ul>
-<p>&nbsp;</p>
+<p></p>
+<h3 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
+<ul data-path-to-node="1">
+	<li>
+		<p data-path-to-node="1,0,0">Compensation may be adjusted depending on work location.</p>
+	</li>
+	<li>
+		<p data-path-to-node="1,1,0">For Colorado based hires: Estimated annual salary of $136,000 - $187,000.</p>
+	</li>
+	<li>Washington (Kirkland), and Washington D.C. based hires: Estimated annual salary of $150,000 - $206,000.</li>
+</ul>
+<h3><strong>Equity</strong></h3>
+<ul>
+	<li>This role is eligible to participate in Cloudflare's equity plan.</li>
+</ul>
+<h3><strong>Benefits</strong></h3>
+<ul>
+	<li>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</li>
+	<li>Health &amp; Welfare Benefits</li>
+	<ul>
+		<li>Medical/Rx Insurance</li>
+		<li>Dental Insurance</li>
+		<li>Vision Insurance</li>
+		<li>Flexible Spending Accounts</li>
+		<li>Commuter Spending Accounts</li>
+		<li>Fertility &amp; Family Forming Benefits</li>
+		<li>On-demand mental health support and Employee Assistance Program</li>
+		<li>Global Travel Medical Insurance</li>
+	</ul>
+	<li>Financial Benefits</li>
+	<ul>
+		<li>Short and Long Term Disability Insurance</li>
+		<li>Life &amp; Accident Insurance</li>
+		<li>401(k) Retirement Savings Plan</li>
+		<li>Employee Stock Participation Plan</li>
+	</ul>
+	<li>Time Off</li>
+	<ul>
+		<li>Flexible paid time off covering vacation and sick leave</li>
+		<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	</ul>
+</ul>
+<h3 data-path-to-node="2">&nbsp;</h3>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
