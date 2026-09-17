@@ -712575,6 +712575,22 @@
 						{
 							"args": [],
 							"deprecationReason": null,
+							"description": "Start of the UTC day containing the aggregate bucket.",
+							"isDeprecated": false,
+							"name": "datetimeDay",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
 							"description": "Start of the UTC hourly aggregate bucket.",
 							"isDeprecated": false,
 							"name": "datetimeHour",
@@ -712663,6 +712679,102 @@
 									"ofType": {
 										"kind": "INPUT_OBJECT",
 										"name": "ZoneAccountAbuseProtectionAdaptiveGroupsFilter_InputObject",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeDay",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeDay_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeDay_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeDay_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeDay_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeDay_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeDay_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeDay_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
 										"ofType": null
 									}
 								}
@@ -713025,6 +713137,18 @@
 				{
 					"description": "",
 					"enumValues": [
+						{
+							"deprecationReason": null,
+							"description": "datetimeDay ascending",
+							"isDeprecated": false,
+							"name": "datetimeDay_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeDay descending",
+							"isDeprecated": false,
+							"name": "datetimeDay_DESC"
+						},
 						{
 							"deprecationReason": null,
 							"description": "datetimeHour ascending",

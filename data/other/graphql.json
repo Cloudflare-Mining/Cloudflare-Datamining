@@ -13613,6 +13613,7 @@
 	},
 	"ZoneAccountAbuseProtectionAdaptiveGroupsDimensions": {
 		"__description": "",
+		"datetimeDay": "Start of the UTC day containing the aggregate bucket.",
 		"datetimeHour": "Start of the UTC hourly aggregate bucket.",
 		"eventSource": "Event ingestion source. Possible values are cdn or api.",
 		"eventType": "Canonical account-activity category used to partition hourly aggregates."
@@ -17149,7 +17150,7 @@
 		"__description": "Scalar type types.Float32"
 	},
 	"float64": {
-		"__description": "Scalar type types.Float64"
+		"__description": "Scalar type float64"
 	},
 	"int16": {
 		"__description": "Scalar type int16"
