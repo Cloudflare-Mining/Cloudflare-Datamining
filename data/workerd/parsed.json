@@ -7075,6 +7075,11 @@
 					"name": "tcp",
 					"annotations": {},
 					"type": "workerd/src/workerd/server/workerd.capnp:Socket.tcp"
+				},
+				{
+					"name": "udp",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:Socket.udp"
 				}
 			]
 		},
