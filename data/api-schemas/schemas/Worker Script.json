@@ -861,8 +861,8 @@
 		"x-fern-audiences": [
 			"sdk"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.scripts.subdomain",
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "workers.legacy.scripts.subdomain",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This will disable all workers.dev subdomains for the Worker script."
@@ -2852,8 +2852,8 @@
 		"x-fern-audiences": [
 			"sdk"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.scripts.content",
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "workers.legacy.scripts.content",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -3349,8 +3349,8 @@
 		"x-fern-audiences": [
 			"sdk"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.scripts.settings",
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "workers.legacy.scripts.settings",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/secrets": {
@@ -8475,8 +8475,8 @@
 		"x-fern-audiences": [
 			"sdk"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.scripts.scriptAndVersionSettings",
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "workers.legacy.scripts.script-and-version-settings",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/subdomain": {
@@ -8769,8 +8769,8 @@
 		"x-fern-audiences": [
 			"sdk"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.scripts.subdomain",
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "workers.legacy.scripts.subdomain",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -9070,8 +9070,8 @@
 		"x-fern-audiences": [
 			"sdk"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.scripts.usageModel",
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "workers.legacy.scripts.usage-model",
 		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/workers/scripts/{script_name}/script-settings": {
@@ -9969,8 +9969,8 @@
 		"x-fern-audiences": [
 			"sdk"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.scripts.settings",
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "workers.legacy.scripts.settings",
 		"x-fern-sdk-method-name": "edit"
 	},
 	"PATCH /accounts/{account_id}/workers/scripts/{script_name}/secrets-bulk": {
@@ -10767,7 +10767,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.secrets",
-		"x-fern-sdk-method-name": "bulkEdit",
+		"x-fern-sdk-method-name": "bulk-edit",
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/workers/scripts/{script_name}/settings": {
@@ -19349,8 +19349,8 @@
 		"x-fern-audiences": [
 			"sdk"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.scripts.scriptAndVersionSettings",
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "workers.legacy.scripts.script-and-version-settings",
 		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/workers/assets/upload": {
@@ -20186,7 +20186,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.assets.upload",
-		"x-fern-sdk-method-name": "createSession",
+		"x-fern-sdk-method-name": "create-session",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/workers/scripts/{script_name}/subdomain": {
@@ -20505,8 +20505,8 @@
 		"x-fern-audiences": [
 			"sdk"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.scripts.subdomain",
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "workers.legacy.scripts.subdomain",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
@@ -25997,8 +25997,8 @@
 		"x-fern-audiences": [
 			"sdk"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.scripts.content",
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "workers.legacy.scripts.content",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
@@ -26969,8 +26969,8 @@
 		"x-fern-audiences": [
 			"sdk"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers.scripts.usageModel",
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "workers.legacy.scripts.usage-model",
 		"x-fern-sdk-method-name": "update"
 	}
 }

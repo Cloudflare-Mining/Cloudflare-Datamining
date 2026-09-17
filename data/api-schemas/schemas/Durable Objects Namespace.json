@@ -491,7 +491,7 @@
 			"Workers Scripts Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "durableObjects.namespaces",
+		"x-fern-sdk-group-name": "durable-objects.namespaces",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/workers/durable_objects/namespaces/{id}/objects": {
@@ -1017,7 +1017,7 @@
 			"Workers Scripts Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "durableObjects.namespaces.objects",
+		"x-fern-sdk-group-name": "durable-objects.namespaces.objects",
 		"x-fern-sdk-method-name": "list"
 	}
 }

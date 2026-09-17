@@ -849,8 +849,10 @@
 													"x-auditable": true
 												},
 												"num_tables": {
+													"description": "The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.",
 													"type": "number",
 													"example": 12,
+													"deprecated": true,
 													"x-auditable": true
 												},
 												"read_replication": {
@@ -1555,8 +1557,10 @@
 													"x-auditable": true
 												},
 												"num_tables": {
+													"description": "The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.",
 													"type": "number",
 													"example": 12,
+													"deprecated": true,
 													"x-auditable": true
 												},
 												"read_replication": {
@@ -1972,8 +1976,10 @@
 													"x-auditable": true
 												},
 												"num_tables": {
+													"description": "The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.",
 													"type": "number",
 													"example": 12,
+													"deprecated": true,
 													"x-auditable": true
 												},
 												"read_replication": {
@@ -4780,8 +4786,10 @@
 													"x-auditable": true
 												},
 												"num_tables": {
+													"description": "The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.",
 													"type": "number",
 													"example": 12,
+													"deprecated": true,
 													"x-auditable": true
 												},
 												"read_replication": {

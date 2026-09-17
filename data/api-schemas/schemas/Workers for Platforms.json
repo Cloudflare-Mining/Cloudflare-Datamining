@@ -265,7 +265,7 @@
 			"Workers Scripts Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This will permanently delete the Workers for Platforms dispatch namespace."
@@ -485,8 +485,8 @@
 			"Workers Scripts Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts",
-		"x-fern-sdk-method-name": "bulkDelete",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts",
+		"x-fern-sdk-method-name": "bulk-delete",
 		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This will permanently delete matching scripts in the Workers for Platforms dispatch namespace."
 	},
@@ -776,7 +776,7 @@
 			"Workers Scripts Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-require-confirmation": "This will permanently delete the Workers for Platforms script."
 	},
@@ -1084,7 +1084,7 @@
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.secrets",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.secrets",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-require-confirmation": "This will permanently delete the Workers for Platforms script secret."
 	},
@@ -1380,7 +1380,7 @@
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.tags",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.tags",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-require-confirmation": "This will delete the tag from the Workers for Platforms script."
 	},
@@ -1697,7 +1697,7 @@
 			"Workers Scripts Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -2023,7 +2023,7 @@
 			"Workers Scripts Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -3226,7 +3226,7 @@
 			"Workers Scripts Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -4429,7 +4429,7 @@
 			"Workers Scripts Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/bindings": {
@@ -6068,7 +6068,7 @@
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.bindings",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.bindings",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -6261,7 +6261,7 @@
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.content",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.content",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -6669,7 +6669,7 @@
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.secrets",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.secrets",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -7097,7 +7097,7 @@
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.secrets",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.secrets",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -11417,7 +11417,7 @@
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.settings",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.settings",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -11710,7 +11710,7 @@
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.tags",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.tags",
 		"x-fern-sdk-method-name": "list"
 	},
 	"PATCH /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}": {
@@ -12058,7 +12058,7 @@
 			"Workers Scripts Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces",
 		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true
 	},
@@ -12870,8 +12870,8 @@
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.secrets",
-		"x-fern-sdk-method-name": "bulkEdit",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.secrets",
+		"x-fern-sdk-method-name": "bulk-edit",
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/settings": {
@@ -21417,7 +21417,7 @@
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.settings",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.settings",
 		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true
 	},
@@ -21747,7 +21747,7 @@
 			"Workers Scripts Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
@@ -22082,8 +22082,8 @@
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.assets.upload",
-		"x-fern-sdk-method-name": "createSession",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.assets.upload",
+		"x-fern-sdk-method-name": "create-session",
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}": {
@@ -22434,7 +22434,7 @@
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
@@ -26658,7 +26658,7 @@
 			"Workers Scripts Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/content": {
@@ -27915,7 +27915,7 @@
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.content",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.content",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
@@ -28560,7 +28560,7 @@
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.secrets",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.secrets",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
@@ -28878,7 +28878,7 @@
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.tags.bulk",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.tags.bulk",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags/{tag}": {
@@ -29173,7 +29173,7 @@
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workersForPlatforms.dispatchNamespaces.scripts.tags",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.tags",
 		"x-fern-sdk-method-name": "create"
 	}
 }
