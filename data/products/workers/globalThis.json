@@ -9217,6 +9217,19 @@
 				},
 				"isBlockList": "function"
 			},
+			"BoundSocket": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined",
+					"isBoundSocket": "undefined"
+				},
+				"isBoundSocket": "function"
+			},
 			"SocketAddress": {
 				"__proto": "function",
 				"__type": "function",
@@ -10001,9 +10014,10 @@
 					"_parent": "object",
 					"_parentWrap": "object",
 					"_host": "object",
+					"server": "object",
+					"_server": "object",
 					"_closeAfterHandlingError": "boolean",
 					"autoSelectFamilyAttemptedAddresses": "object",
-					"_sockname": "object",
 					"_pendingData": "object",
 					"_pendingEncoding": "string",
 					"_readableState": "object",
@@ -10103,7 +10117,182 @@
 				"__type": "function",
 				"length": "number",
 				"name": "string",
-				"_prototype": {}
+				"_prototype": {
+					"_events": "undefined",
+					"_eventsCount": "number",
+					"_maxListeners": "undefined",
+					"setMaxListeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"getMaxListeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"emit": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"addListener": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"on": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"prependListener": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"once": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"prependOnceListener": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"removeListener": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"off": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"removeAllListeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"listeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "number",
+							"name": "undefined",
+							"prototype": "undefined",
+							"isArray": "undefined",
+							"from": "undefined",
+							"fromAsync": "undefined",
+							"of": "undefined"
+						}
+					},
+					"rawListeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "number",
+							"name": "undefined",
+							"prototype": "undefined",
+							"isArray": "undefined",
+							"from": "undefined",
+							"fromAsync": "undefined",
+							"of": "undefined"
+						}
+					},
+					"listenerCount": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"eventNames": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "number",
+							"name": "undefined",
+							"prototype": "undefined",
+							"isArray": "undefined",
+							"from": "undefined",
+							"fromAsync": "undefined",
+							"of": "undefined"
+						}
+					},
+					"domain": "object",
+					"allowHalfOpen": "boolean",
+					"pauseOnConnect": "boolean",
+					"noDelay": "boolean",
+					"keepAlive": "boolean",
+					"keepAliveInitialDelay": "number",
+					"highWaterMark": "undefined",
+					"maxConnections": "undefined",
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				},
+				"on": "function",
+				"once": "function",
+				"getEventListeners": "function",
+				"getMaxListeners": "function",
+				"setMaxListeners": "function",
+				"listenerCount": "function",
+				"EventEmitter": "function",
+				"usingDomains": "boolean",
+				"captureRejectionSymbol": "symbol",
+				"errorMonitor": "symbol",
+				"EventEmitterAsyncResource": "function",
+				"captureRejections": "boolean",
+				"defaultMaxListeners": "number",
+				"init": "function",
+				"addAbortListener": "function"
 			},
 			"Socket": {
 				"__proto": "function",
@@ -10874,9 +11063,10 @@
 					"_parent": "object",
 					"_parentWrap": "object",
 					"_host": "object",
+					"server": "object",
+					"_server": "object",
 					"_closeAfterHandlingError": "boolean",
 					"autoSelectFamilyAttemptedAddresses": "object",
-					"_sockname": "object",
 					"_pendingData": "object",
 					"_pendingEncoding": "string",
 					"_readableState": "object",
@@ -10990,7 +11180,37 @@
 				"__type": "function",
 				"length": "number",
 				"name": "string",
-				"_prototype": {}
+				"_prototype": {
+					"_events": "object",
+					"_eventsCount": "number",
+					"_maxListeners": "undefined",
+					"domain": "object",
+					"allowHalfOpen": "boolean",
+					"pauseOnConnect": "boolean",
+					"noDelay": "boolean",
+					"keepAlive": "boolean",
+					"keepAliveInitialDelay": "number",
+					"highWaterMark": "undefined",
+					"maxConnections": "undefined",
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined",
+					"setMaxListeners": "function",
+					"getMaxListeners": "function",
+					"emit": "function",
+					"addListener": "function",
+					"on": "function",
+					"prependListener": "function",
+					"once": "function",
+					"prependOnceListener": "function",
+					"removeListener": "function",
+					"off": "function",
+					"removeAllListeners": "function",
+					"listeners": "function",
+					"rawListeners": "function",
+					"listenerCount": "function",
+					"eventNames": "function"
+				}
 			},
 			"getDefaultAutoSelectFamily": {
 				"__proto": "function",
@@ -17436,9 +17656,10 @@
 					"_parent": "object",
 					"_parentWrap": "object",
 					"_host": "object",
+					"server": "object",
+					"_server": "object",
 					"_closeAfterHandlingError": "boolean",
 					"autoSelectFamilyAttemptedAddresses": "object",
-					"_sockname": "object",
 					"_pendingData": "object",
 					"_pendingEncoding": "string",
 					"_readableState": "object",
