@@ -36,19 +36,25 @@ Cloudflare's connectivity cloud is the digital core that businesses need to tran
 
  PowerUP Partner Program 
 
- Our award-winning channel program with four routes-to-revenue — Resell, Manage, Distribute, or Consult — backed by 5-star CRN recognition, partner enablement, and dedicated support. 
+ Our award-winning channel program with four routes-to-revenue — Resell, Manage, Distribute, or Consult — backed by 5-star CRN recognition, partner enablement, and dedicated support. [Learn more](https://www.cloudflare.com/partners/power-up-program/) 
 
  Technology alliance partners 
 
  Build integrations on Cloudflare's global network for application, Zero Trust, network, and developer services. 
 
+[Learn more](https://www.cloudflare.com/partners/technology-partners/) 
+
  Global system integrators 
 
  Accelerate large-scale transformations with deep technical expertise, pre-built integrations, and dedicated support. 
 
+[Learn more](https://www.cloudflare.com/partners/global-system-integrators/) 
+
  Service Providers 
 
  Deliver secure, low-latency connectivity and unlock new revenue opportunities for your customers. 
+
+[Learn more](https://www.cloudflare.com/partners/service-providers/) 
 
 ## Cloudflare@OCI 
 
