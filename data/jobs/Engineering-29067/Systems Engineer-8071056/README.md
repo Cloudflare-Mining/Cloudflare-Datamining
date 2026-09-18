@@ -3,37 +3,36 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations:</strong> London, Lisbon, or New York</p>
-<h3>About the Role</h3>
-<p>As a Senior Product Manager for Application Protection &amp; Governance, you’ll join our core Application Security team to protect web, API applications against evolving abuse and threat patterns. You will own the product outcomes that help customers deploy, operate, and improve security controls over time, turning complex security requirements into practical capabilities and operational guidance.</p>
-<p>In this role, you will partner with engineering, security specialists and the go-to-market organization to define product direction and drive adoption across areas including web, LLM and API protection (for example, profiling and validation of traffic patterns, schema-aware enforcement, and reducing risks from interconnected third- and fourth-party integrations). You’ll also establish measurement and feedback loops to assess effectiveness, reduce customer operational friction, and continuously iterate based on real-world results.</p>
-<p>You’ll be the strategic anchor for these initiatives aligning customer needs, internal safety requirements, and technical feasibility to deliver reliable protection for applications at global scale.</p>
-<h3>&nbsp;</h3>
-<p><strong>Responsibilities</strong></p>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<h3><strong>About the Department</strong></h3>
+<p>Cloudflare’s engineering teams build and maintain the systems and products that power our global platform. A global platform which is within approximately 50 milliseconds of about 95% of the Internet connected population, serving on average, over 46 million HTTP requests per second.</p>
+<h3><strong>About the role</strong></h3>
+<p>Cloudflare engineering delivers code to production at a tremendous pace, and depends on automated testing to do so without incidents. The SLO team builds and runs the internal platform and tooling that empowers other engineering teams to set up Service Level Indicators (SLIs) and effectively measure their Service Level Objectives (SLOs). This enables all engineering teams to effectively measure their service and feature reliability that verify the interactions between systems and products in production at huge scale.</p>
+<p>We are looking for a highly motivated software engineer to join our Production Platform Organization. You will build the infrastructure necessary to collect, store, and make reliability data easily accessible for monitoring needs. You’ll need to communicate effectively and proactively with engineers across the company to deeply understand the behaviors of our systems and refine their reliability objectives. You will also work closely with Product Managers and Product Site Reliability Engineers on quality of service measurements for enterprise customers.&nbsp;</p>
+<p><strong>What You Will Do</strong></p>
 <ul>
-	<li><strong>End-to-End Product Ownership:</strong> Own the entire user journey for your product portfolio, ensuring a seamless experience across both programmatic APIs and user-facing dashboards (UX). Collaborate closely with design teams to build intuitive, developer-friendly interfaces.</li>
-	<li><strong>Roadmap &amp; Strategy:</strong> Deeply understand the application security landscape and analyze customer pain points to define, prioritize, and own the product roadmap.</li>
-	<li><strong>Voice of the Customer:</strong> Meet regularly with customers and partners to gather direct feedback, understand real-world deployment challenges, and continuously inject customer insights back into the product lifecycle.</li>
-	<li><strong>Iterative Execution:</strong> Partner with engineering and the broader application security organization to ship impactful features. At Cloudflare, we are biased for action, we prioritize shipping early, gathering data, and iterating rapidly.</li>
-	<li><strong>Go-to-Market &amp; Documentation:</strong> Own all customer-facing communications and technical documentation, ensuring complex security features are easily understood and adopted by our users.</li>
-	<li><strong>Cross-Functional Leadership:</strong> Serve as the primary point of contact for your products, both internally and externally.</li>
-	<li><strong>Sales &amp; Support Enablement:</strong> Actively support the sales organization across all stages of customer engagement (pre-sales strategy and post-sales expansion and adoption). Collaborate tightly with Customer Support to resolve technical issues and incidents.</li>
+	<li><strong>Build the Platform</strong>: Create and maintain production reliability testing infrastructure and availability reporting.</li>
+	<li><strong>Define Reliability Metrics</strong>: Measure uptime metrics like correctness, availability, and latency SLIs/SLOs. Develop, document, and execute SLI/SLO plans to verify systems continue to operate as expected.</li>
+	<li><strong>Collaborate Cross-Functionally</strong>: Collaborate with engineering teams to understand how their systems function and interact with other Cloudflare systems in production at a huge scale.&nbsp;</li>
+	<li><strong>Communicate &amp; Improve</strong>: Provide clear and concise feedback to engineering and product teams as an excellent communicator. Help drive continued improvements in the software development and reliability measurement processes.</li>
 </ul>
-<h3>&nbsp;</h3>
-<p><strong>Key Qualifications</strong></p>
+<p><strong>What You Will Need</strong></p>
 <ul>
-	<li><strong>Proven Product Management Experience:</strong> 4+ years of experience as a Product Manager successfully delivering high-scale cloud solutions targeted at a technical audience within the B2B SaaS industry.</li>
-	<li><strong>Customer Focus:</strong> Ability to design for massive enterprises without compromising the experience for individual developers and small businesses. You excel at balancing the diverse needs of Cloudflare's broad user base.</li>
-	<li><strong>Deep Technical Acumen:</strong> Comfortable engaging in deep technical discussions with engineering teams. You can quickly grasp complex security concepts and translate them into clear, compelling narratives for customers through blog posts, whitepapers, and direct calls.</li>
-	<li><strong>AI-Driven Productivity:</strong> Embrace and actively adopt advanced AI tools to work autonomously, streamline product management workflows, and maximize efficiency to ship high-quality products faster.</li>
-	<li><strong>Preferred Experience:</strong> Professional background in web security, API security, application security, or cloud security infrastructure is highly preferred.</li>
+	<li><strong>Experience</strong>: Proven track record as a software engineer or similar role with a deep understanding of developing and maintaining distributed systems.</li>
+	<li><strong>System Design</strong>: Experience designing, implementing, and maintaining secure and highly-available distributed systems.</li>
+	<li><strong>Programming Languages</strong>: Programming experience with one of the following languages: Go, Rust, or Python.</li>
+	<li><strong>Reliability Metrics</strong>: Deep understanding and hands-on experience measuring uptime metrics like correctness, availability, and latency using SLOs/SLIs.</li>
 </ul>
-<h4>&nbsp;</h4>
-<h4>Compensation</h4>
-<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>For <strong>New York City </strong>based hires: Estimated annual salary of $156,000 - $210,000</li>
+	<li>Experience working with Clickhouse, Prometheus, GraphQL, and Postgres.</li>
+	<li>Experience working with data pipelines with a focus on reliability and scale.</li>
+	<li>Experience working with synthetic traffic &amp; load testing tools.&nbsp;</li>
+	<li>Experience developing reliable, extensible platforms that other engineers can trust and leverage.</li>
 </ul>
+<p>&nbsp;</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <p><strong>Health &amp; Welfare Benefits</strong></p>
@@ -59,6 +58,8 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

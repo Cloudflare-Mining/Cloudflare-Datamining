@@ -3,61 +3,55 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations:</strong> London, Lisbon, or New York</p>
-<h3>About the Role</h3>
-<p>As a Senior Product Manager for Application Protection &amp; Governance, you’ll join our core Application Security team to protect web, API applications against evolving abuse and threat patterns. You will own the product outcomes that help customers deploy, operate, and improve security controls over time, turning complex security requirements into practical capabilities and operational guidance.</p>
-<p>In this role, you will partner with engineering, security specialists and the go-to-market organization to define product direction and drive adoption across areas including web, LLM and API protection (for example, profiling and validation of traffic patterns, schema-aware enforcement, and reducing risks from interconnected third- and fourth-party integrations). You’ll also establish measurement and feedback loops to assess effectiveness, reduce customer operational friction, and continuously iterate based on real-world results.</p>
-<p>You’ll be the strategic anchor for these initiatives aligning customer needs, internal safety requirements, and technical feasibility to deliver reliable protection for applications at global scale.</p>
-<h3>&nbsp;</h3>
+<h3><strong>About the Role</strong></h3>
+<h3>We are looking for a Software Engineer to design, build, and scale internal platforms and software tools that power our infrastructure operations. You will treat operational challenges as software problems, developing clean services and developer platforms that make managing our global infrastructure reliable, fast, and effortless.</h3>
 <p><strong>Responsibilities</strong></p>
 <ul>
-	<li><strong>End-to-End Product Ownership:</strong> Own the entire user journey for your product portfolio, ensuring a seamless experience across both programmatic APIs and user-facing dashboards (UX). Collaborate closely with design teams to build intuitive, developer-friendly interfaces.</li>
-	<li><strong>Roadmap &amp; Strategy:</strong> Deeply understand the application security landscape and analyze customer pain points to define, prioritize, and own the product roadmap.</li>
-	<li><strong>Voice of the Customer:</strong> Meet regularly with customers and partners to gather direct feedback, understand real-world deployment challenges, and continuously inject customer insights back into the product lifecycle.</li>
-	<li><strong>Iterative Execution:</strong> Partner with engineering and the broader application security organization to ship impactful features. At Cloudflare, we are biased for action, we prioritize shipping early, gathering data, and iterating rapidly.</li>
-	<li><strong>Go-to-Market &amp; Documentation:</strong> Own all customer-facing communications and technical documentation, ensuring complex security features are easily understood and adopted by our users.</li>
-	<li><strong>Cross-Functional Leadership:</strong> Serve as the primary point of contact for your products, both internally and externally.</li>
-	<li><strong>Sales &amp; Support Enablement:</strong> Actively support the sales organization across all stages of customer engagement (pre-sales strategy and post-sales expansion and adoption). Collaborate tightly with Customer Support to resolve technical issues and incidents.</li>
+	<li>
+		<p><strong>Build Infrastructure Software:</strong> Architect, write, and maintain scalable services, APIs, and tools that automate infrastructure provisioning, configuration, and runtime operations.</p>
+	</li>
+	<li>
+		<p><strong>Streamline Developer Workflows:</strong> Develop platform software and self-service tools that reduce operational toil, enabling engineering teams to deploy and manage resources safely and efficiently.</p>
+	</li>
+	<li>
+		<p><strong>Drive Engineering Best Practices:</strong> Apply standard software engineering practices—including modular design, code reviews, automated testing, and CI/CD—to infrastructure codebases and tooling.</p>
+	</li>
+	<li>
+		<p><strong>Ensure System Reliability:</strong> Write observability frameworks, automated testing pipelines, and self-healing tools to maintain high availability and proactively catch operational failures.</p>
+	</li>
+	<li>
+		<p><strong>Collaborate Cross-Functionally:</strong> Partner closely with Security, Systems, and Product Engineering teams to integrate infrastructure software seamlessly across the application lifecycle.</p>
+	</li>
 </ul>
-<h3>&nbsp;</h3>
-<p><strong>Key Qualifications</strong></p>
+<p><strong>Desirable Skills, Knowledge, and Experience</strong></p>
 <ul>
-	<li><strong>Proven Product Management Experience:</strong> 4+ years of experience as a Product Manager successfully delivering high-scale cloud solutions targeted at a technical audience within the B2B SaaS industry.</li>
-	<li><strong>Customer Focus:</strong> Ability to design for massive enterprises without compromising the experience for individual developers and small businesses. You excel at balancing the diverse needs of Cloudflare's broad user base.</li>
-	<li><strong>Deep Technical Acumen:</strong> Comfortable engaging in deep technical discussions with engineering teams. You can quickly grasp complex security concepts and translate them into clear, compelling narratives for customers through blog posts, whitepapers, and direct calls.</li>
-	<li><strong>AI-Driven Productivity:</strong> Embrace and actively adopt advanced AI tools to work autonomously, streamline product management workflows, and maximize efficiency to ship high-quality products faster.</li>
-	<li><strong>Preferred Experience:</strong> Professional background in web security, API security, application security, or cloud security infrastructure is highly preferred.</li>
+	<li>
+		<p>Demonstrable experience as a Software Engineer building production software, with an emphasis on backend systems, APIs, or developer platform tools.</p>
+	</li>
+	<li>
+		<p>Strong proficiency in modern programming languages (e.g., Go, Python, Java, or Rust) with a track record of writing clean, testable, and maintainable code.</p>
+	</li>
+	<li>
+		<p>Solid understanding of software design patterns, API architecture (REST, gRPC), and data structures applied to operational tooling.</p>
+	</li>
+	<li>
+		<p>Hands-on experience with Infrastructure as Code frameworks (e.g., Terraform, Ansible) and programmatically interacting with infrastructure APIs.</p>
+	</li>
+	<li>
+		<p>Strong analytical, debugging, and system troubleshooting skills to diagnose issues across both application logic and underlying infrastructure.</p>
+	</li>
 </ul>
-<h4>&nbsp;</h4>
-<h4>Compensation</h4>
-<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>For <strong>New York City </strong>based hires: Estimated annual salary of $156,000 - $210,000</li>
-</ul>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>
+		<p>Experience writing software that interacts with cloud providers (AWS, GCP, or Azure) or container orchestration platforms (Kubernetes, Docker).</p>
+	</li>
+	<li>
+		<p>Familiarity with building robust CI/CD systems, automated integration testing, or continuous deployment tooling.</p>
+	</li>
+	<li>
+		<p>Active contributions to open-source developer tools, CLI applications, or infrastructure platforms.</p>
+	</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
