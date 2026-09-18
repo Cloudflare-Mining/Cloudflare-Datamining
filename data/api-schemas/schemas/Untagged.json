@@ -2353,6 +2353,83 @@
 			}
 		}
 	],
+	"PARAMETERS /accounts/{account_id}/workers/observability/issues": [
+		{
+			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/workers/observability/issues/{issueId}": [
+		{
+			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/workers/observability/issues/{issueId}/notification-runs": [
+		{
+			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/workers/observability/issues/{issueId}/occurrences": [
+		{
+			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/workers/observability/issues/automations": [
+		{
+			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/workers/observability/issues/automations/{automationId}": [
+		{
+			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/workers/observability/issues/summary": [
+		{
+			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
 	"PARAMETERS /accounts/{account_id}/workers/observability/metricsexport": [
 		{
 			"name": "account_id",

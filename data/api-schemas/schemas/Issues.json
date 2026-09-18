@@ -1,0 +1,5147 @@
+{
+	"DELETE /accounts/{account_id}/workers/observability/issues/automations/{automationId}": {
+		"operationId": "issues.automations.delete",
+		"summary": "Delete an issue automation",
+		"description": "Delete an issue automation while preserving its historical runs.",
+		"parameters": [
+			{
+				"name": "automationId",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"automation": {
+											"type": "object",
+											"properties": {
+												"ansPolicyId": {
+													"type": "string"
+												},
+												"created": {
+													"type": "number"
+												},
+												"createdByUserId": {
+													"type": "string",
+													"nullable": true
+												},
+												"enabled": {
+													"type": "boolean"
+												},
+												"id": {
+													"type": "string"
+												},
+												"inactivitySeconds": {
+													"type": "number",
+													"nullable": true
+												},
+												"name": {
+													"type": "string"
+												},
+												"revision": {
+													"type": "number"
+												},
+												"scope": {
+													"type": "string",
+													"enum": [
+														"account",
+														"service"
+													]
+												},
+												"service": {
+													"type": "string",
+													"nullable": true
+												},
+												"serviceType": {
+													"type": "string",
+													"nullable": true
+												},
+												"threshold": {
+													"type": "number",
+													"nullable": true
+												},
+												"triggerType": {
+													"type": "string",
+													"enum": [
+														"occurrence_threshold",
+														"recurrence_after_inactivity"
+													]
+												},
+												"updated": {
+													"type": "number"
+												},
+												"updatedByUserId": {
+													"type": "string",
+													"nullable": true
+												}
+											},
+											"required": [
+												"id",
+												"revision",
+												"name",
+												"enabled",
+												"ansPolicyId",
+												"scope",
+												"serviceType",
+												"service",
+												"triggerType",
+												"threshold",
+												"inactivitySeconds",
+												"createdByUserId",
+												"updatedByUserId",
+												"created",
+												"updated"
+											]
+										}
+									},
+									"required": [
+										"automation"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Not found"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"tags": [
+			"Issues"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.issues.automations",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "This operation deletes the issue automation."
+	},
+	"GET /accounts/{account_id}/workers/observability/issues": {
+		"operationId": "issues.list",
+		"summary": "List detected issues",
+		"description": "List detected issues.",
+		"parameters": [
+			{
+				"name": "page",
+				"in": "query",
+				"schema": {
+					"type": "integer",
+					"minimum": 1
+				}
+			},
+			{
+				"name": "perPage",
+				"in": "query",
+				"schema": {
+					"type": "integer",
+					"maximum": 100,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "order",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"asc",
+						"desc"
+					]
+				}
+			},
+			{
+				"name": "orderBy",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"id",
+						"service",
+						"fingerprint",
+						"title",
+						"type",
+						"status",
+						"statusUpdated",
+						"count",
+						"firstObserved",
+						"lastObserved",
+						"created",
+						"updated"
+					]
+				}
+			},
+			{
+				"name": "search",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"maxLength": 256
+				}
+			},
+			{
+				"name": "service",
+				"in": "query",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "status",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"active",
+						"resolved",
+						"ignored"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"activity": {
+												"type": "array",
+												"items": {
+													"properties": {
+														"automationId": {
+															"type": "string"
+														},
+														"automationName": {
+															"type": "string"
+														},
+														"automationRevision": {
+															"type": "number"
+														},
+														"created": {
+															"type": "number"
+														},
+														"id": {
+															"type": "string"
+														},
+														"inactivitySeconds": {
+															"type": "number",
+															"nullable": true
+														},
+														"initiatedBy": {
+															"type": "string",
+															"enum": [
+																"automatic",
+																"manual"
+															]
+														},
+														"issueCount": {
+															"type": "number"
+														},
+														"issueId": {
+															"type": "string"
+														},
+														"lastError": {
+															"type": "string",
+															"nullable": true
+														},
+														"policyId": {
+															"type": "string"
+														},
+														"scope": {
+															"type": "string",
+															"enum": [
+																"account",
+																"service"
+															]
+														},
+														"status": {
+															"type": "string",
+															"enum": [
+																"pending",
+																"succeeded",
+																"failed"
+															]
+														},
+														"terminalAt": {
+															"type": "number",
+															"nullable": true
+														},
+														"threshold": {
+															"type": "number",
+															"nullable": true
+														},
+														"triggerType": {
+															"type": "string",
+															"enum": [
+																"occurrence_threshold",
+																"recurrence_after_inactivity"
+															]
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"notification"
+															]
+														}
+													},
+													"required": [
+														"type",
+														"id",
+														"policyId",
+														"issueId",
+														"issueCount",
+														"threshold",
+														"inactivitySeconds",
+														"initiatedBy",
+														"status",
+														"lastError",
+														"created",
+														"terminalAt"
+													],
+													"type": "object"
+												}
+											},
+											"count": {
+												"type": "number"
+											},
+											"created": {
+												"type": "number"
+											},
+											"fingerprint": {
+												"type": "string"
+											},
+											"firstObserved": {
+												"type": "number"
+											},
+											"id": {
+												"type": "string"
+											},
+											"lastObserved": {
+												"type": "number"
+											},
+											"service": {
+												"type": "string"
+											},
+											"status": {
+												"type": "string",
+												"enum": [
+													"active",
+													"resolved",
+													"ignored"
+												]
+											},
+											"statusUpdated": {
+												"type": "number"
+											},
+											"title": {
+												"type": "string"
+											},
+											"type": {
+												"type": "string"
+											},
+											"updated": {
+												"type": "number"
+											}
+										},
+										"required": [
+											"id",
+											"service",
+											"fingerprint",
+											"title",
+											"type",
+											"status",
+											"statusUpdated",
+											"count",
+											"firstObserved",
+											"lastObserved",
+											"created",
+											"updated",
+											"activity"
+										],
+										"type": "object"
+									}
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count",
+										"total_pages"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result",
+								"result_info"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Not found"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"tags": [
+			"Issues"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write",
+			"Workers Observability Read"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.issues",
+		"x-fern-sdk-method-name": "list"
+	},
+	"GET /accounts/{account_id}/workers/observability/issues/{issueId}": {
+		"operationId": "issues.get",
+		"summary": "Get an issue",
+		"description": "Retrieve an issue.",
+		"parameters": [
+			{
+				"name": "issueId",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"issue": {
+											"type": "object",
+											"properties": {
+												"activity": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"automationId": {
+																"type": "string"
+															},
+															"automationName": {
+																"type": "string"
+															},
+															"automationRevision": {
+																"type": "number"
+															},
+															"created": {
+																"type": "number"
+															},
+															"id": {
+																"type": "string"
+															},
+															"inactivitySeconds": {
+																"type": "number",
+																"nullable": true
+															},
+															"initiatedBy": {
+																"type": "string",
+																"enum": [
+																	"automatic",
+																	"manual"
+																]
+															},
+															"issueCount": {
+																"type": "number"
+															},
+															"issueId": {
+																"type": "string"
+															},
+															"lastError": {
+																"type": "string",
+																"nullable": true
+															},
+															"policyId": {
+																"type": "string"
+															},
+															"scope": {
+																"type": "string",
+																"enum": [
+																	"account",
+																	"service"
+																]
+															},
+															"status": {
+																"type": "string",
+																"enum": [
+																	"pending",
+																	"succeeded",
+																	"failed"
+																]
+															},
+															"terminalAt": {
+																"type": "number",
+																"nullable": true
+															},
+															"threshold": {
+																"type": "number",
+																"nullable": true
+															},
+															"triggerType": {
+																"type": "string",
+																"enum": [
+																	"occurrence_threshold",
+																	"recurrence_after_inactivity"
+																]
+															},
+															"type": {
+																"type": "string",
+																"enum": [
+																	"notification"
+																]
+															}
+														},
+														"required": [
+															"type",
+															"id",
+															"policyId",
+															"issueId",
+															"issueCount",
+															"threshold",
+															"inactivitySeconds",
+															"initiatedBy",
+															"status",
+															"lastError",
+															"created",
+															"terminalAt"
+														],
+														"type": "object"
+													}
+												},
+												"count": {
+													"type": "number"
+												},
+												"created": {
+													"type": "number"
+												},
+												"fingerprint": {
+													"type": "string"
+												},
+												"firstObserved": {
+													"type": "number"
+												},
+												"id": {
+													"type": "string"
+												},
+												"lastObserved": {
+													"type": "number"
+												},
+												"service": {
+													"type": "string"
+												},
+												"status": {
+													"type": "string",
+													"enum": [
+														"active",
+														"resolved",
+														"ignored"
+													]
+												},
+												"statusUpdated": {
+													"type": "number"
+												},
+												"title": {
+													"type": "string"
+												},
+												"type": {
+													"type": "string"
+												},
+												"updated": {
+													"type": "number"
+												}
+											},
+											"required": [
+												"id",
+												"service",
+												"fingerprint",
+												"title",
+												"type",
+												"status",
+												"statusUpdated",
+												"count",
+												"firstObserved",
+												"lastObserved",
+												"created",
+												"updated",
+												"activity"
+											]
+										}
+									},
+									"required": [
+										"issue"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Not found"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"tags": [
+			"Issues"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write",
+			"Workers Observability Read"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.issues",
+		"x-fern-sdk-method-name": "get"
+	},
+	"GET /accounts/{account_id}/workers/observability/issues/{issueId}/occurrences": {
+		"operationId": "issues.occurrences.list",
+		"summary": "List issue occurrences",
+		"description": "List the retained error occurrences grouped into an issue, newest first.",
+		"parameters": [
+			{
+				"name": "issueId",
+				"in": "path",
+				"description": "Issue ID returned by the issues API.",
+				"required": true,
+				"schema": {
+					"description": "Issue ID returned by the issues API.",
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "cursor",
+				"in": "query",
+				"description": "Opaque cursor returned in result_info.cursors.after.",
+				"schema": {
+					"description": "Opaque cursor returned in result_info.cursors.after.",
+					"type": "string",
+					"maxLength": 512,
+					"minLength": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"schema": {
+					"type": "integer",
+					"maximum": 100,
+					"minimum": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"context": {
+												"type": "object",
+												"properties": {
+													"account": {
+														"type": "string"
+													},
+													"session": {
+														"type": "string"
+													},
+													"user": {
+														"type": "string"
+													}
+												}
+											},
+											"error": {
+												"type": "object",
+												"properties": {
+													"handled": {
+														"type": "boolean"
+													},
+													"mechanism": {
+														"type": "string",
+														"enum": [
+															"structured-log",
+															"error-log",
+															"stack-log",
+															"http-status",
+															"exception",
+															"outcome"
+														]
+													},
+													"message": {
+														"type": "string"
+													},
+													"name": {
+														"type": "string"
+													},
+													"signature": {
+														"type": "string"
+													},
+													"stack": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name",
+													"message",
+													"mechanism",
+													"handled",
+													"signature"
+												]
+											},
+											"id": {
+												"description": "Unique occurrence ID.",
+												"type": "string"
+											},
+											"invocation": {
+												"type": "object",
+												"properties": {
+													"batchSize": {
+														"type": "number"
+													},
+													"cron": {
+														"type": "string"
+													},
+													"id": {
+														"description": "Worker invocation request ID.",
+														"type": "string"
+													},
+													"jsrpcMethod": {
+														"type": "string"
+													},
+													"mailFrom": {
+														"type": "string"
+													},
+													"method": {
+														"type": "string"
+													},
+													"path": {
+														"type": "string"
+													},
+													"queue": {
+														"type": "string"
+													},
+													"rawSize": {
+														"type": "number"
+													},
+													"rayId": {
+														"type": "string"
+													},
+													"rcptTo": {
+														"type": "string"
+													},
+													"scheduledTime": {
+														"type": "number"
+													},
+													"spanId": {
+														"type": "string"
+													},
+													"statusCode": {
+														"type": "integer",
+														"minimum": 0
+													},
+													"traceId": {
+														"type": "string"
+													},
+													"type": {
+														"type": "string"
+													},
+													"url": {
+														"description": "Redacted request URL without query parameters.",
+														"type": "string"
+													},
+													"websocketCloseCode": {
+														"type": "number"
+													},
+													"websocketEvent": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"type",
+													"traceId"
+												]
+											},
+											"request": {
+												"type": "object",
+												"properties": {
+													"headers": {
+														"type": "object",
+														"additionalProperties": {
+															"type": "string"
+														}
+													}
+												},
+												"required": [
+													"headers"
+												]
+											},
+											"timestamp": {
+												"description": "Occurrence timestamp as Unix epoch milliseconds.",
+												"type": "number"
+											},
+											"trail": {
+												"type": "array",
+												"items": {
+													"anyOf": [
+														{
+															"properties": {
+																"level": {
+																	"type": "string"
+																},
+																"message": {
+																	"type": "string"
+																},
+																"timestamp": {
+																	"type": "number"
+																},
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"log"
+																	]
+																}
+															},
+															"required": [
+																"type",
+																"timestamp",
+																"level",
+																"message"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"name": {
+																	"type": "string"
+																},
+																"ongoing": {
+																	"type": "boolean"
+																},
+																"parentSpanId": {
+																	"type": "string"
+																},
+																"spanId": {
+																	"type": "string"
+																},
+																"timestamp": {
+																	"type": "number"
+																},
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"span"
+																	]
+																}
+															},
+															"required": [
+																"type",
+																"timestamp",
+																"name",
+																"spanId",
+																"ongoing"
+															],
+															"type": "object"
+														}
+													]
+												}
+											},
+											"worker": {
+												"type": "object",
+												"properties": {
+													"dispatchNamespace": {
+														"type": "string"
+													},
+													"entrypoint": {
+														"type": "string"
+													},
+													"executionModel": {
+														"type": "string"
+													},
+													"scriptName": {
+														"type": "string"
+													},
+													"scriptTags": {
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													},
+													"scriptVersion": {
+														"type": "object",
+														"properties": {
+															"id": {
+																"type": "string"
+															},
+															"tag": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"id"
+														]
+													}
+												},
+												"required": [
+													"scriptName",
+													"executionModel",
+													"scriptTags"
+												]
+											}
+										},
+										"required": [
+											"id",
+											"timestamp",
+											"error",
+											"worker",
+											"invocation",
+											"trail"
+										]
+									}
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer",
+											"minimum": 0
+										},
+										"cursors": {
+											"type": "object",
+											"properties": {
+												"after": {
+													"type": "string",
+													"nullable": true
+												}
+											},
+											"required": [
+												"after"
+											]
+										},
+										"per_page": {
+											"type": "integer",
+											"minimum": 1
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"cursors"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result",
+								"result_info"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Bad Request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Not found"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Too many requests",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Too many requests"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"504": {
+				"description": "Gateway timeout",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Gateway timeout"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"tags": [
+			"Issues"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write",
+			"Workers Observability Read"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.issues",
+		"x-fern-sdk-method-name": "occurrences",
+		"x-forge-params": {
+			"issueId": {
+				"positional": true,
+				"required": true
+			}
+		}
+	},
+	"GET /accounts/{account_id}/workers/observability/issues/automations": {
+		"operationId": "issues.automations.list",
+		"summary": "List issue automations",
+		"description": "List account and service issue automations.",
+		"parameters": [
+			{
+				"name": "service",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"maxLength": 128,
+					"minLength": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"automations": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"ansPolicyId": {
+														"type": "string"
+													},
+													"created": {
+														"type": "number"
+													},
+													"createdByUserId": {
+														"type": "string",
+														"nullable": true
+													},
+													"enabled": {
+														"type": "boolean"
+													},
+													"id": {
+														"type": "string"
+													},
+													"inactivitySeconds": {
+														"type": "number",
+														"nullable": true
+													},
+													"name": {
+														"type": "string"
+													},
+													"revision": {
+														"type": "number"
+													},
+													"scope": {
+														"type": "string",
+														"enum": [
+															"account",
+															"service"
+														]
+													},
+													"service": {
+														"type": "string",
+														"nullable": true
+													},
+													"serviceType": {
+														"type": "string",
+														"nullable": true
+													},
+													"threshold": {
+														"type": "number",
+														"nullable": true
+													},
+													"triggerType": {
+														"type": "string",
+														"enum": [
+															"occurrence_threshold",
+															"recurrence_after_inactivity"
+														]
+													},
+													"updated": {
+														"type": "number"
+													},
+													"updatedByUserId": {
+														"type": "string",
+														"nullable": true
+													}
+												},
+												"required": [
+													"id",
+													"revision",
+													"name",
+													"enabled",
+													"ansPolicyId",
+													"scope",
+													"serviceType",
+													"service",
+													"triggerType",
+													"threshold",
+													"inactivitySeconds",
+													"createdByUserId",
+													"updatedByUserId",
+													"created",
+													"updated"
+												],
+												"type": "object"
+											}
+										}
+									},
+									"required": [
+										"automations"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Not found"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"tags": [
+			"Issues"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write",
+			"Workers Observability Read"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.issues.automations",
+		"x-fern-sdk-method-name": "list"
+	},
+	"GET /accounts/{account_id}/workers/observability/issues/automations/{automationId}": {
+		"operationId": "issues.automations.get",
+		"summary": "Get an issue automation",
+		"description": "Retrieve an issue automation.",
+		"parameters": [
+			{
+				"name": "automationId",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"automation": {
+											"type": "object",
+											"properties": {
+												"ansPolicyId": {
+													"type": "string"
+												},
+												"created": {
+													"type": "number"
+												},
+												"createdByUserId": {
+													"type": "string",
+													"nullable": true
+												},
+												"enabled": {
+													"type": "boolean"
+												},
+												"id": {
+													"type": "string"
+												},
+												"inactivitySeconds": {
+													"type": "number",
+													"nullable": true
+												},
+												"name": {
+													"type": "string"
+												},
+												"revision": {
+													"type": "number"
+												},
+												"scope": {
+													"type": "string",
+													"enum": [
+														"account",
+														"service"
+													]
+												},
+												"service": {
+													"type": "string",
+													"nullable": true
+												},
+												"serviceType": {
+													"type": "string",
+													"nullable": true
+												},
+												"threshold": {
+													"type": "number",
+													"nullable": true
+												},
+												"triggerType": {
+													"type": "string",
+													"enum": [
+														"occurrence_threshold",
+														"recurrence_after_inactivity"
+													]
+												},
+												"updated": {
+													"type": "number"
+												},
+												"updatedByUserId": {
+													"type": "string",
+													"nullable": true
+												}
+											},
+											"required": [
+												"id",
+												"revision",
+												"name",
+												"enabled",
+												"ansPolicyId",
+												"scope",
+												"serviceType",
+												"service",
+												"triggerType",
+												"threshold",
+												"inactivitySeconds",
+												"createdByUserId",
+												"updatedByUserId",
+												"created",
+												"updated"
+											]
+										}
+									},
+									"required": [
+										"automation"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Not found"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"tags": [
+			"Issues"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write",
+			"Workers Observability Read"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.issues.automations",
+		"x-fern-sdk-method-name": "get"
+	},
+	"GET /accounts/{account_id}/workers/observability/issues/summary": {
+		"operationId": "issues.summary",
+		"summary": "Summarize detected issues",
+		"description": "Retrieve aggregate issue counts for the account.",
+		"parameters": [
+			{
+				"name": "service",
+				"in": "query",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"activeIssues": {
+											"type": "number"
+										},
+										"activeOccurrences": {
+											"type": "number"
+										},
+										"lastIssue": {
+											"type": "number",
+											"nullable": true
+										},
+										"resolvedIssues": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"lastIssue",
+										"activeIssues",
+										"activeOccurrences",
+										"resolvedIssues"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Not found"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"tags": [
+			"Issues"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write",
+			"Workers Observability Read"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.issues",
+		"x-fern-sdk-method-name": "summary"
+	},
+	"PATCH /accounts/{account_id}/workers/observability/issues/{issueId}": {
+		"operationId": "issues.patch",
+		"summary": "Modify an issue",
+		"description": "Modify an issue status.",
+		"parameters": [
+			{
+				"name": "issueId",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"requestBody": {
+			"description": "Modify an issue status.",
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"status": {
+								"type": "string",
+								"enum": [
+									"active",
+									"resolved",
+									"ignored"
+								]
+							}
+						},
+						"required": [
+							"status"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"created": {
+											"type": "number"
+										},
+										"fingerprint": {
+											"type": "string"
+										},
+										"firstObserved": {
+											"type": "number"
+										},
+										"id": {
+											"type": "string"
+										},
+										"lastObserved": {
+											"type": "number"
+										},
+										"service": {
+											"type": "string"
+										},
+										"status": {
+											"type": "string",
+											"enum": [
+												"active",
+												"resolved",
+												"ignored"
+											]
+										},
+										"statusUpdated": {
+											"type": "number"
+										},
+										"title": {
+											"type": "string"
+										},
+										"type": {
+											"type": "string"
+										},
+										"updated": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"id",
+										"service",
+										"fingerprint",
+										"title",
+										"type",
+										"status",
+										"statusUpdated",
+										"count",
+										"firstObserved",
+										"lastObserved",
+										"created",
+										"updated"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Not found"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"tags": [
+			"Issues"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.issues",
+		"x-fern-sdk-method-name": "update"
+	},
+	"POST /accounts/{account_id}/workers/observability/issues/{issueId}/notification-runs": {
+		"operationId": "issues.notificationRuns.create",
+		"summary": "Notify about an issue",
+		"description": "Send the issue to one ANS policy, or every matching Real-Time Issue policy when no policy ID is provided.",
+		"parameters": [
+			{
+				"name": "issueId",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"policyId": {
+								"type": "string",
+								"maxLength": 200,
+								"minLength": 1
+							}
+						},
+						"additionalProperties": false
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"run": {
+											"type": "object",
+											"properties": {
+												"automationId": {
+													"type": "string"
+												},
+												"automationName": {
+													"type": "string"
+												},
+												"automationRevision": {
+													"type": "number"
+												},
+												"created": {
+													"type": "number"
+												},
+												"id": {
+													"type": "string"
+												},
+												"inactivitySeconds": {
+													"type": "number",
+													"nullable": true
+												},
+												"initiatedBy": {
+													"type": "string",
+													"enum": [
+														"automatic",
+														"manual"
+													]
+												},
+												"issueCount": {
+													"type": "number"
+												},
+												"issueId": {
+													"type": "string"
+												},
+												"lastError": {
+													"type": "string",
+													"nullable": true
+												},
+												"policyId": {
+													"type": "string"
+												},
+												"scope": {
+													"type": "string",
+													"enum": [
+														"account",
+														"service"
+													]
+												},
+												"status": {
+													"type": "string",
+													"enum": [
+														"pending",
+														"succeeded",
+														"failed"
+													]
+												},
+												"terminalAt": {
+													"type": "number",
+													"nullable": true
+												},
+												"threshold": {
+													"type": "number",
+													"nullable": true
+												},
+												"triggerType": {
+													"type": "string",
+													"enum": [
+														"occurrence_threshold",
+														"recurrence_after_inactivity"
+													]
+												}
+											},
+											"required": [
+												"id",
+												"policyId",
+												"issueId",
+												"issueCount",
+												"threshold",
+												"inactivitySeconds",
+												"initiatedBy",
+												"status",
+												"lastError",
+												"created",
+												"terminalAt"
+											]
+										}
+									},
+									"required": [
+										"run"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Bad Request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Not found"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"tags": [
+			"Issues"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.issues",
+		"x-fern-sdk-method-name": "notify",
+		"x-forge-params": {
+			"issueId": {
+				"positional": true,
+				"required": true
+			}
+		},
+		"x-forge-require-confirmation": "This operation sends an issue notification."
+	},
+	"POST /accounts/{account_id}/workers/observability/issues/automations": {
+		"operationId": "issues.automations.create",
+		"summary": "Create an issue automation",
+		"description": "Create an account or service issue automation.",
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"afterInactivitySeconds": {
+								"type": "integer",
+								"maximum": 31536000,
+								"minimum": 3600
+							},
+							"afterOccurrences": {
+								"type": "integer",
+								"maximum": 9007199254740991,
+								"minimum": 1
+							},
+							"enabled": {
+								"type": "boolean"
+							},
+							"name": {
+								"type": "string",
+								"maxLength": 200,
+								"minLength": 1
+							},
+							"policyId": {
+								"type": "string",
+								"maxLength": 200,
+								"minLength": 1
+							},
+							"service": {
+								"type": "string",
+								"maxLength": 128,
+								"minLength": 1
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"policyId"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"automation": {
+											"type": "object",
+											"properties": {
+												"ansPolicyId": {
+													"type": "string"
+												},
+												"created": {
+													"type": "number"
+												},
+												"createdByUserId": {
+													"type": "string",
+													"nullable": true
+												},
+												"enabled": {
+													"type": "boolean"
+												},
+												"id": {
+													"type": "string"
+												},
+												"inactivitySeconds": {
+													"type": "number",
+													"nullable": true
+												},
+												"name": {
+													"type": "string"
+												},
+												"revision": {
+													"type": "number"
+												},
+												"scope": {
+													"type": "string",
+													"enum": [
+														"account",
+														"service"
+													]
+												},
+												"service": {
+													"type": "string",
+													"nullable": true
+												},
+												"serviceType": {
+													"type": "string",
+													"nullable": true
+												},
+												"threshold": {
+													"type": "number",
+													"nullable": true
+												},
+												"triggerType": {
+													"type": "string",
+													"enum": [
+														"occurrence_threshold",
+														"recurrence_after_inactivity"
+													]
+												},
+												"updated": {
+													"type": "number"
+												},
+												"updatedByUserId": {
+													"type": "string",
+													"nullable": true
+												}
+											},
+											"required": [
+												"id",
+												"revision",
+												"name",
+												"enabled",
+												"ansPolicyId",
+												"scope",
+												"serviceType",
+												"service",
+												"triggerType",
+												"threshold",
+												"inactivitySeconds",
+												"createdByUserId",
+												"updatedByUserId",
+												"created",
+												"updated"
+											]
+										}
+									},
+									"required": [
+										"automation"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Not found"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"tags": [
+			"Issues"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.issues.automations",
+		"x-fern-sdk-method-name": "create"
+	},
+	"PUT /accounts/{account_id}/workers/observability/issues/automations/{automationId}": {
+		"operationId": "issues.automations.update",
+		"summary": "Update an issue automation",
+		"description": "Replace an issue automation configuration.",
+		"parameters": [
+			{
+				"name": "automationId",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"afterInactivitySeconds": {
+								"type": "integer",
+								"maximum": 31536000,
+								"minimum": 3600
+							},
+							"afterOccurrences": {
+								"type": "integer",
+								"maximum": 9007199254740991,
+								"minimum": 1
+							},
+							"enabled": {
+								"type": "boolean"
+							},
+							"name": {
+								"type": "string",
+								"maxLength": 200,
+								"minLength": 1
+							},
+							"policyId": {
+								"type": "string",
+								"maxLength": 200,
+								"minLength": 1
+							},
+							"service": {
+								"type": "string",
+								"maxLength": 128,
+								"minLength": 1
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"policyId"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"automation": {
+											"type": "object",
+											"properties": {
+												"ansPolicyId": {
+													"type": "string"
+												},
+												"created": {
+													"type": "number"
+												},
+												"createdByUserId": {
+													"type": "string",
+													"nullable": true
+												},
+												"enabled": {
+													"type": "boolean"
+												},
+												"id": {
+													"type": "string"
+												},
+												"inactivitySeconds": {
+													"type": "number",
+													"nullable": true
+												},
+												"name": {
+													"type": "string"
+												},
+												"revision": {
+													"type": "number"
+												},
+												"scope": {
+													"type": "string",
+													"enum": [
+														"account",
+														"service"
+													]
+												},
+												"service": {
+													"type": "string",
+													"nullable": true
+												},
+												"serviceType": {
+													"type": "string",
+													"nullable": true
+												},
+												"threshold": {
+													"type": "number",
+													"nullable": true
+												},
+												"triggerType": {
+													"type": "string",
+													"enum": [
+														"occurrence_threshold",
+														"recurrence_after_inactivity"
+													]
+												},
+												"updated": {
+													"type": "number"
+												},
+												"updatedByUserId": {
+													"type": "string",
+													"nullable": true
+												}
+											},
+											"required": [
+												"id",
+												"revision",
+												"name",
+												"enabled",
+												"ansPolicyId",
+												"scope",
+												"serviceType",
+												"service",
+												"triggerType",
+												"threshold",
+												"inactivitySeconds",
+												"createdByUserId",
+												"updatedByUserId",
+												"created",
+												"updated"
+											]
+										}
+									},
+									"required": [
+										"automation"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Not found"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"tags": [
+			"Issues"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.issues.automations",
+		"x-fern-sdk-method-name": "update"
+	}
+}

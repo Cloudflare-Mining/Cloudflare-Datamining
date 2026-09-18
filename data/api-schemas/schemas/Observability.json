@@ -1,4 +1,736 @@
 {
+	"DELETE /accounts/{account_id}/workers/observability/zones/{zone_id}/observability/tracing/rules": {
+		"operationId": "zone.observability.tracing.rules.delete",
+		"summary": "Delete zone trace rules",
+		"description": "Delete every sampling override from a zone's managed Cloudflare Traces ruleset.",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"description": "Specify the zone ID.",
+				"required": true,
+				"schema": {
+					"description": "Specify the zone ID.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"rules": {
+											"description": "Trace rules in evaluation order.",
+											"type": "array",
+											"items": {
+												"additionalProperties": false,
+												"properties": {
+													"action": {
+														"type": "string",
+														"enum": [
+															"set_trace_settings"
+														]
+													},
+													"action_parameters": {
+														"type": "object",
+														"additionalProperties": false,
+														"properties": {
+															"sampling_ratio": {
+																"description": "The ratio of requests sampled for tracing, from 0 to 1.",
+																"type": "number",
+																"maximum": 1,
+																"minimum": 0
+															}
+														},
+														"required": [
+															"sampling_ratio"
+														]
+													},
+													"description": {
+														"type": "string",
+														"maxLength": 1000
+													},
+													"enabled": {
+														"type": "boolean"
+													},
+													"expression": {
+														"description": "A Rules language expression that selects requests.",
+														"type": "string",
+														"maxLength": 4096,
+														"minLength": 1
+													}
+												},
+												"required": [
+													"action",
+													"action_parameters",
+													"expression",
+													"description",
+													"enabled"
+												],
+												"type": "object"
+											},
+											"maxItems": 1000
+										}
+									},
+									"required": [
+										"rules"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Bad Request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"tags": [
+			"Observability"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.tracing.rules",
+		"x-fern-sdk-method-name": "delete"
+	},
+	"DELETE /accounts/{account_id}/workers/observability/zones/{zone_id}/observability/tracing/settings": {
+		"operationId": "zone.observability.tracing.settings.delete",
+		"summary": "Reset zone tracing settings",
+		"description": "Reset the zone-level Cloudflare Traces settings to their defaults while preserving the sampling rules.",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"description": "Specify the zone ID.",
+				"required": true,
+				"schema": {
+					"description": "Specify the zone ID.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"additionalProperties": false,
+									"properties": {
+										"destinations": {
+											"description": "Up to 100 OpenTelemetry destination identifiers that receive traces.",
+											"type": "array",
+											"items": {
+												"maxLength": 256,
+												"minLength": 1,
+												"type": "string"
+											},
+											"maxItems": 100
+										},
+										"enabled": {
+											"description": "Whether Cloudflare Traces is enabled for the zone.",
+											"type": "boolean"
+										},
+										"forward_context": {
+											"description": "Whether trace context is sent externally or across a zone boundary.",
+											"type": "boolean"
+										},
+										"persist": {
+											"description": "Whether traces are persisted in Cloudflare.",
+											"type": "boolean"
+										},
+										"propagation_policy": {
+											"description": "When inbound trace context may be continued.",
+											"type": "string",
+											"enum": [
+												"authenticated",
+												"unauthenticated"
+											]
+										},
+										"sampling_ratio": {
+											"description": "The ratio of requests sampled for tracing, from 0 to 1.",
+											"type": "number",
+											"maximum": 1,
+											"minimum": 0
+										}
+									},
+									"required": [
+										"enabled",
+										"persist",
+										"sampling_ratio",
+										"destinations",
+										"propagation_policy",
+										"forward_context"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Bad Request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"tags": [
+			"Observability"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.tracing.settings",
+		"x-fern-sdk-method-name": "delete"
+	},
 	"GET /accounts/{account_id}/workers/observability/zones/{zone_id}/observability/tracing/rules": {
 		"operationId": "zone.observability.tracing.rules.get",
 		"summary": "View zone trace rules",
@@ -369,8 +1101,7 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.tracing.rules",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workers/observability/zones/{zone_id}/observability/tracing/settings": {
 		"operationId": "zone.observability.tracing.settings.get",
@@ -732,8 +1463,7 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.tracing.settings",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/workers/observability/zones/{zone_id}/observability/tracing/settings": {
 		"operationId": "zone.observability.tracing.settings.update",
@@ -1145,8 +1875,7 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.tracing.settings",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/workers/observability/zones/{zone_id}/observability/tracing/rules": {
 		"operationId": "zone.observability.tracing.rules.update",
@@ -1585,7 +2314,6 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.tracing.rules",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

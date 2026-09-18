@@ -464,6 +464,284 @@
 		"x-fern-sdk-group-name": "billing.usage",
 		"x-fern-sdk-method-name": "get-account-usage-v2"
 	},
+	"GET /accounts/{account_id}/billable/usage/billable-metrics": {
+		"operationId": "billable-usage-v2-get-account-billable-metrics",
+		"summary": "List Account Billable Metrics (Version 2, Alpha, Restricted)",
+		"description": "Lists billable metrics available to the account through contracts and\nsubscriptions that overlap the requested period. Results are\ndeduplicated and ordered. If no qualifying contract exists, the\nresult is an empty array.\n\nWhen `from` and `to` are omitted, the period defaults to the start of\nthe current month through today. The maximum date range is 31 days.\n",
+		"parameters": [
+			{
+				"description": "Identifies the Cloudflare account.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Represents a Cloudflare resource identifier tag.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"description": "Start date for the usage query (ISO 8601). Required if `to` is set. When omitted along with `to`, defaults to the start of the current month. Filters by charge period (when consumption happened), not billing period. The maximum date range is 31 days.",
+				"in": "query",
+				"name": "from",
+				"schema": {
+					"type": "string",
+					"format": "date",
+					"example": "2025-05-01"
+				}
+			},
+			{
+				"description": "End date for the usage query (ISO 8601). Required if `from` is set. When omitted along with `from`, defaults to today. Filters by charge period (when consumption happened), not billing period. The maximum date range is 31 days.",
+				"in": "query",
+				"name": "to",
+				"schema": {
+					"type": "string",
+					"format": "date",
+					"example": "2025-05-31"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Account billable metrics were successfully retrieved.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Successful response containing account-visible billable metrics.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"DimensionKeys": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"Id": {
+												"description": "Public catalog identifier of the billable metric.",
+												"type": "string"
+											},
+											"Name": {
+												"description": "Human-readable billable metric name.",
+												"type": "string"
+											},
+											"ProductCategory": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"Id": {
+															"type": "string"
+														},
+														"Name": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"Id",
+														"Name"
+													]
+												}
+											},
+											"ProductFamily": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"Id": {
+															"type": "string"
+														},
+														"Name": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"Id",
+														"Name"
+													]
+												}
+											}
+										},
+										"required": [
+											"Id",
+											"Name",
+											"ProductFamily",
+											"ProductCategory",
+											"DimensionKeys"
+										]
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"example": true,
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Indicates the request failed.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": [
+										{
+											"code": 1183,
+											"message": "Invalid request parameters: Please ensure all required parameters are included and correctly formatted."
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Billable Usage V2"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "billing.usage",
+		"x-fern-sdk-method-name": "get-account-billable-metrics"
+	},
 	"GET /organizations/{organization_id}/billable/usage": {
 		"operationId": "billable-usage-v2-get-organization-usage",
 		"summary": "Get Organization Usage (Version 2, Alpha, Restricted)",

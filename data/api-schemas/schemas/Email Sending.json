@@ -1138,6 +1138,46 @@
 							]
 						},
 						"additionalProperties": false,
+						"allOf": [
+							{
+								"anyOf": [
+									{
+										"required": [
+											"to"
+										],
+										"type": "object"
+									},
+									{
+										"required": [
+											"cc"
+										],
+										"type": "object"
+									},
+									{
+										"required": [
+											"bcc"
+										],
+										"type": "object"
+									}
+								]
+							},
+							{
+								"anyOf": [
+									{
+										"required": [
+											"text"
+										],
+										"type": "object"
+									},
+									{
+										"required": [
+											"html"
+										],
+										"type": "object"
+									}
+								]
+							}
+						],
 						"required": [
 							"from",
 							"subject"
@@ -1309,14 +1349,8 @@
 									"items": {
 										"properties": {
 											"code": {
-												"type": "string",
-												"enum": [
-													"10001",
-													"10200",
-													"10201",
-													"10202",
-													"10205"
-												]
+												"type": "number",
+												"nullable": true
 											},
 											"message": {
 												"type": "string",
@@ -1378,17 +1412,73 @@
 									"items": {
 										"properties": {
 											"code": {
-												"type": "string",
-												"enum": [
-													"10203",
-													"10204"
-												]
+												"type": "number",
+												"nullable": true
 											},
 											"message": {
 												"type": "string",
 												"enum": [
 													"email.sending.error.email.sending_disabled",
 													"email.sending.error.email.sender_not_configured"
+												]
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Email Sending setup is still in progress. Retry later; no email was sent.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number",
+												"nullable": true
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"email.sending.error.email.sending_not_ready"
 												]
 											}
 										},
@@ -1442,9 +1532,7 @@
 										"properties": {
 											"code": {
 												"type": "number",
-												"enum": [
-													10004
-												]
+												"nullable": true
 											},
 											"message": {
 												"type": "string",
@@ -1503,9 +1591,7 @@
 										"properties": {
 											"code": {
 												"type": "number",
-												"enum": [
-													10002
-												]
+												"nullable": true
 											},
 											"message": {
 												"type": "string",
@@ -1803,14 +1889,8 @@
 									"items": {
 										"properties": {
 											"code": {
-												"type": "string",
-												"enum": [
-													"10001",
-													"10200",
-													"10201",
-													"10202",
-													"10205"
-												]
+												"type": "number",
+												"nullable": true
 											},
 											"message": {
 												"type": "string",
@@ -1872,17 +1952,73 @@
 									"items": {
 										"properties": {
 											"code": {
-												"type": "string",
-												"enum": [
-													"10203",
-													"10204"
-												]
+												"type": "number",
+												"nullable": true
 											},
 											"message": {
 												"type": "string",
 												"enum": [
 													"email.sending.error.email.sending_disabled",
 													"email.sending.error.email.sender_not_configured"
+												]
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Email Sending setup is still in progress. Retry later; no email was sent.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number",
+												"nullable": true
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"email.sending.error.email.sending_not_ready"
 												]
 											}
 										},
@@ -1936,9 +2072,7 @@
 										"properties": {
 											"code": {
 												"type": "number",
-												"enum": [
-													10004
-												]
+												"nullable": true
 											},
 											"message": {
 												"type": "string",
@@ -1997,9 +2131,7 @@
 										"properties": {
 											"code": {
 												"type": "number",
-												"enum": [
-													10002
-												]
+												"nullable": true
 											},
 											"message": {
 												"type": "string",
