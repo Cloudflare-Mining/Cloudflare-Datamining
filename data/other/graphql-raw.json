@@ -33953,6 +33953,54 @@
 						{
 							"args": [],
 							"deprecationReason": null,
+							"description": "Estimated cost in USD had the classifier's pick served this row's requests, at that model's per-token prices; 0 when the pick has no known price (chosenPriced = 0) or nothing was measured",
+							"isDeprecated": false,
+							"name": "chosenCostEstimate",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "1 when a price is known for the classifier's pick; 0 means chosenCostEstimate and savingEstimate are absent, not zero",
+							"isDeprecated": false,
+							"name": "chosenPriced",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Model the classifier judged the cheapest sufficient for the conversation; its id may be spelled differently from servedModel's. Empty when not classified",
+							"isDeprecated": false,
+							"name": "classifierChosen",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
 							"description": "Coding agent that held the conversation; empty when no readable trajectory",
 							"isDeprecated": false,
 							"name": "client",
@@ -34122,6 +34170,22 @@
 								"ofType": {
 									"kind": "SCALAR",
 									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "costEstimate minus chosenCostEstimate, positive where the pick is cheaper; 0 when the pick has no known price",
+							"isDeprecated": false,
+							"name": "savingEstimate",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
 									"ofType": null
 								}
 							}
@@ -34460,6 +34524,324 @@
 										"ofType": null
 									}
 								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenCostEstimate",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenCostEstimate_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenCostEstimate_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenCostEstimate_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "float64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenCostEstimate_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenCostEstimate_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenCostEstimate_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenCostEstimate_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "float64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_ilike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
 							}
 						},
 						{
@@ -35663,6 +36045,102 @@
 									"ofType": {
 										"kind": "SCALAR",
 										"name": "uint64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "savingEstimate",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "savingEstimate_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "savingEstimate_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "savingEstimate_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "float64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "savingEstimate_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "savingEstimate_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "savingEstimate_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "savingEstimate_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "float64",
 										"ofType": null
 									}
 								}
@@ -37259,6 +37737,22 @@
 						{
 							"args": [],
 							"deprecationReason": null,
+							"description": "Model the classifier judged the cheapest sufficient for the conversation. Its id may be spelled differently from servedModel's for the same model. Empty on conversations that were not classified - filter outcome to 'ok' before grouping",
+							"isDeprecated": false,
+							"name": "classifierChosen",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
 							"description": "Coding agent that held the conversation (e.g. claude-code, codex, opencode); empty when no readable trajectory existed",
 							"isDeprecated": false,
 							"name": "client",
@@ -37590,6 +38084,228 @@
 										"ofType": null
 									}
 								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_ilike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
 							}
 						},
 						{
@@ -40090,6 +40806,18 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "classifierChosen ascending",
+							"isDeprecated": false,
+							"name": "classifierChosen_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "classifierChosen descending",
+							"isDeprecated": false,
+							"name": "classifierChosen_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "client ascending",
 							"isDeprecated": false,
 							"name": "client_ASC"
@@ -40270,6 +40998,18 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "sum(chosenCostEstimate) ascending",
+							"isDeprecated": false,
+							"name": "sum_chosenCostEstimate_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(chosenCostEstimate) descending",
+							"isDeprecated": false,
+							"name": "sum_chosenCostEstimate_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "sum(costEstimate) ascending",
 							"isDeprecated": false,
 							"name": "sum_costEstimate_ASC"
@@ -40279,6 +41019,18 @@
 							"description": "sum(costEstimate) descending",
 							"isDeprecated": false,
 							"name": "sum_costEstimate_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(savingEstimate) ascending",
+							"isDeprecated": false,
+							"name": "sum_savingEstimate_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(savingEstimate) descending",
+							"isDeprecated": false,
+							"name": "sum_savingEstimate_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -40403,9 +41155,41 @@
 						{
 							"args": [],
 							"deprecationReason": null,
+							"description": "Total estimated cost in USD had the classifier's pick served the grouped conversations, their token counts priced at that model's per-token prices. A row whose pick has no known price (chosenPriced = 0) contributes 0, so subtract this from costEstimate only under a chosenPriced filter - or read savingEstimate, which does that",
+							"isDeprecated": false,
+							"name": "chosenCostEstimate",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
 							"description": "Total estimated cost in USD across the grouped conversations; an estimate from token counts and model rates, not a billing figure, and cached input is priced as fresh",
 							"isDeprecated": false,
 							"name": "costEstimate",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "costEstimate minus chosenCostEstimate over rows whose pick has a known price: the estimated USD saved had the classifier's pick served them. Positive where the pick is cheaper; filter verdict to 'overkill' for the conversations a cheaper model would have handled. On the same footing as costEstimate (an estimate, cached input priced as fresh), and a conversation that used several models has every token repriced",
+							"isDeprecated": false,
+							"name": "savingEstimate",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -40480,7 +41264,39 @@
 							"deprecationReason": null,
 							"description": "Confidence interval for the corresponding point estimate",
 							"isDeprecated": false,
+							"name": "chosenCostEstimate",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "Confidence",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Confidence interval for the corresponding point estimate",
+							"isDeprecated": false,
 							"name": "costEstimate",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "Confidence",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Confidence interval for the corresponding point estimate",
+							"isDeprecated": false,
+							"name": "savingEstimate",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -40587,6 +41403,42 @@
 							"description": "assistantTurns descending",
 							"isDeprecated": false,
 							"name": "assistantTurns_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "chosenCostEstimate ascending",
+							"isDeprecated": false,
+							"name": "chosenCostEstimate_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "chosenCostEstimate descending",
+							"isDeprecated": false,
+							"name": "chosenCostEstimate_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "chosenPriced ascending",
+							"isDeprecated": false,
+							"name": "chosenPriced_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "chosenPriced descending",
+							"isDeprecated": false,
+							"name": "chosenPriced_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "classifierChosen ascending",
+							"isDeprecated": false,
+							"name": "classifierChosen_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "classifierChosen descending",
+							"isDeprecated": false,
+							"name": "classifierChosen_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -40719,6 +41571,18 @@
 							"description": "sampleInterval descending",
 							"isDeprecated": false,
 							"name": "sampleInterval_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "savingEstimate ascending",
+							"isDeprecated": false,
+							"name": "savingEstimate_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "savingEstimate descending",
+							"isDeprecated": false,
+							"name": "savingEstimate_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -40895,6 +41759,54 @@
 						{
 							"args": [],
 							"deprecationReason": null,
+							"description": "Estimated cost in USD had the classifier's pick served this row's requests, at that model's per-token prices; 0 when the pick has no known price (chosenPriced = 0) or nothing was measured",
+							"isDeprecated": false,
+							"name": "chosenCostEstimate",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "1 when a price is known for the classifier's pick; 0 means chosenCostEstimate and savingEstimate are absent, not zero",
+							"isDeprecated": false,
+							"name": "chosenPriced",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Model the classifier judged the cheapest sufficient for the conversation; its id may be spelled differently from servedModel's. Empty when not classified",
+							"isDeprecated": false,
+							"name": "classifierChosen",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
 							"description": "Coding agent that held the conversation; empty when no readable trajectory",
 							"isDeprecated": false,
 							"name": "client",
@@ -41064,6 +41976,22 @@
 								"ofType": {
 									"kind": "SCALAR",
 									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "costEstimate minus chosenCostEstimate, positive where the pick is cheaper; 0 when the pick has no known price",
+							"isDeprecated": false,
+							"name": "savingEstimate",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
 									"ofType": null
 								}
 							}
@@ -41402,6 +42330,324 @@
 										"ofType": null
 									}
 								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenCostEstimate",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenCostEstimate_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenCostEstimate_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenCostEstimate_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "float64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenCostEstimate_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenCostEstimate_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenCostEstimate_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenCostEstimate_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "float64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_ilike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
 							}
 						},
 						{
@@ -42605,6 +43851,102 @@
 									"ofType": {
 										"kind": "SCALAR",
 										"name": "uint64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "savingEstimate",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "savingEstimate_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "savingEstimate_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "savingEstimate_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "float64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "savingEstimate_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "savingEstimate_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "savingEstimate_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "float64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "savingEstimate_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "float64",
 										"ofType": null
 									}
 								}
@@ -44201,6 +45543,22 @@
 						{
 							"args": [],
 							"deprecationReason": null,
+							"description": "Model the classifier judged the cheapest sufficient for the conversation. Its id may be spelled differently from servedModel's for the same model. Empty on conversations that were not classified - filter outcome to 'ok' before grouping",
+							"isDeprecated": false,
+							"name": "classifierChosen",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
 							"description": "Coding agent that held the conversation (e.g. claude-code, codex, opencode); empty when no readable trajectory existed",
 							"isDeprecated": false,
 							"name": "client",
@@ -44532,6 +45890,228 @@
 										"ofType": null
 									}
 								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "chosenPriced_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_ilike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "classifierChosen_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
 							}
 						},
 						{
@@ -47032,6 +48612,18 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "classifierChosen ascending",
+							"isDeprecated": false,
+							"name": "classifierChosen_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "classifierChosen descending",
+							"isDeprecated": false,
+							"name": "classifierChosen_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "client ascending",
 							"isDeprecated": false,
 							"name": "client_ASC"
@@ -47212,6 +48804,18 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "sum(chosenCostEstimate) ascending",
+							"isDeprecated": false,
+							"name": "sum_chosenCostEstimate_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(chosenCostEstimate) descending",
+							"isDeprecated": false,
+							"name": "sum_chosenCostEstimate_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "sum(costEstimate) ascending",
 							"isDeprecated": false,
 							"name": "sum_costEstimate_ASC"
@@ -47221,6 +48825,18 @@
 							"description": "sum(costEstimate) descending",
 							"isDeprecated": false,
 							"name": "sum_costEstimate_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(savingEstimate) ascending",
+							"isDeprecated": false,
+							"name": "sum_savingEstimate_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(savingEstimate) descending",
+							"isDeprecated": false,
+							"name": "sum_savingEstimate_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -47345,9 +48961,41 @@
 						{
 							"args": [],
 							"deprecationReason": null,
+							"description": "Total estimated cost in USD had the classifier's pick served the grouped conversations, their token counts priced at that model's per-token prices. A row whose pick has no known price (chosenPriced = 0) contributes 0, so subtract this from costEstimate only under a chosenPriced filter - or read savingEstimate, which does that",
+							"isDeprecated": false,
+							"name": "chosenCostEstimate",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
 							"description": "Total estimated cost in USD across the grouped conversations; an estimate from token counts and model rates, not a billing figure, and cached input is priced as fresh",
 							"isDeprecated": false,
 							"name": "costEstimate",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "costEstimate minus chosenCostEstimate over rows whose pick has a known price: the estimated USD saved had the classifier's pick served them. Positive where the pick is cheaper; filter verdict to 'overkill' for the conversations a cheaper model would have handled. On the same footing as costEstimate (an estimate, cached input priced as fresh), and a conversation that used several models has every token repriced",
+							"isDeprecated": false,
+							"name": "savingEstimate",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -47422,7 +49070,39 @@
 							"deprecationReason": null,
 							"description": "Confidence interval for the corresponding point estimate",
 							"isDeprecated": false,
+							"name": "chosenCostEstimate",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "Confidence",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Confidence interval for the corresponding point estimate",
+							"isDeprecated": false,
 							"name": "costEstimate",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "Confidence",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Confidence interval for the corresponding point estimate",
+							"isDeprecated": false,
+							"name": "savingEstimate",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -47529,6 +49209,42 @@
 							"description": "assistantTurns descending",
 							"isDeprecated": false,
 							"name": "assistantTurns_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "chosenCostEstimate ascending",
+							"isDeprecated": false,
+							"name": "chosenCostEstimate_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "chosenCostEstimate descending",
+							"isDeprecated": false,
+							"name": "chosenCostEstimate_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "chosenPriced ascending",
+							"isDeprecated": false,
+							"name": "chosenPriced_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "chosenPriced descending",
+							"isDeprecated": false,
+							"name": "chosenPriced_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "classifierChosen ascending",
+							"isDeprecated": false,
+							"name": "classifierChosen_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "classifierChosen descending",
+							"isDeprecated": false,
+							"name": "classifierChosen_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -47661,6 +49377,18 @@
 							"description": "sampleInterval descending",
 							"isDeprecated": false,
 							"name": "sampleInterval_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "savingEstimate ascending",
+							"isDeprecated": false,
+							"name": "savingEstimate_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "savingEstimate descending",
+							"isDeprecated": false,
+							"name": "savingEstimate_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -572495,6 +574223,310 @@
 						{
 							"args": [],
 							"deprecationReason": null,
+							"description": "INP input delay in microseconds (-1 indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpInputDelay",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP presentation delay in microseconds (-1 indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpPresentationDelay",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP processing duration in microseconds (-1 indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpProcessingDuration",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Interaction to Next Paint (Core Web Vitals) in microseconds (-1 indicates N/A)",
+							"isDeprecated": false,
+							"name": "interactionToNextPaint",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "DOM selector name of the interaction",
+							"isDeprecated": false,
+							"name": "interactionToNextPaintElement",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Action name of the interaction",
+							"isDeprecated": false,
+							"name": "interactionToNextPaintName",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Observed path of the Interaction to Next Paint (Core Web Vitals)",
+							"isDeprecated": false,
+							"name": "interactionToNextPaintPath",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Largest Contentful Paint (Core Web Vitals) in microseconds (-1 indicates N/A)",
+							"isDeprecated": false,
+							"name": "largestContentfulPaint",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "DOM selector name of the largest object",
+							"isDeprecated": false,
+							"name": "largestContentfulPaintElement",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Size of the largest contentful paint element",
+							"isDeprecated": false,
+							"name": "largestContentfulPaintElementSize",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint32",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Host of the largest object",
+							"isDeprecated": false,
+							"name": "largestContentfulPaintObjectHost",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Path of the largest object",
+							"isDeprecated": false,
+							"name": "largestContentfulPaintObjectPath",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Scheme of the largest object (http or https)",
+							"isDeprecated": false,
+							"name": "largestContentfulPaintObjectScheme",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Observed path of the Largest Contentful Paint (Core Web Vitals)",
+							"isDeprecated": false,
+							"name": "largestContentfulPaintPath",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Largest Contentful Paint element render delay in microseconds (-1 indicates N/A)",
+							"isDeprecated": false,
+							"name": "lcpElementRenderDelay",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Fetch priority of the LCP element",
+							"isDeprecated": false,
+							"name": "lcpFetchPriority",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Initiator type of the LCP element",
+							"isDeprecated": false,
+							"name": "lcpInitiatorType",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Largest Contentful Paint resource load delay in microseconds (-1 indicates N/A)",
+							"isDeprecated": false,
+							"name": "lcpResourceLoadDelay",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Largest Contentful Paint resource load time in microseconds (-1 indicates N/A)",
+							"isDeprecated": false,
+							"name": "lcpResourceLoadTime",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
 							"description": "Navigation type of the request",
 							"isDeprecated": false,
 							"name": "navigationType",
@@ -572632,6 +574664,22 @@
 								"ofType": {
 									"kind": "SCALAR",
 									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Time to First Byte in microseconds (-1 indicates N/A)",
+							"isDeprecated": false,
+							"name": "timeToFirstByte",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
 									"ofType": null
 								}
 							}
@@ -574575,6 +576623,2130 @@
 						{
 							"defaultValue": null,
 							"description": "",
+							"name": "inpInputDelay",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "inpInputDelay_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "inpInputDelay_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "inpInputDelay_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "int64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "inpInputDelay_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "inpInputDelay_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "inpInputDelay_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "inpInputDelay_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "int64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "inpPresentationDelay",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "inpPresentationDelay_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "inpPresentationDelay_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "inpPresentationDelay_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "int64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "inpPresentationDelay_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "inpPresentationDelay_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "inpPresentationDelay_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "inpPresentationDelay_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "int64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "inpProcessingDuration",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "inpProcessingDuration_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "inpProcessingDuration_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "inpProcessingDuration_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "int64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "inpProcessingDuration_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "inpProcessingDuration_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "inpProcessingDuration_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "inpProcessingDuration_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "int64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaint",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintElement",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintElement_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintElement_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintElement_ilike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintElement_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintElement_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintElement_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintElement_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintElement_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintElement_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintElement_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintName",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintName_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintName_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintName_ilike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintName_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintName_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintName_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintName_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintName_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintName_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintName_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintPath",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintPath_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintPath_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintPath_ilike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintPath_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintPath_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintPath_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintPath_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintPath_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintPath_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaintPath_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaint_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaint_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaint_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "int64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaint_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaint_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaint_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "interactionToNextPaint_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "int64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaint",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintElement",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintElementSize",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint32",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintElementSize_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint32",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintElementSize_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint32",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintElementSize_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint32",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintElementSize_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint32",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintElementSize_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint32",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintElementSize_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint32",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintElementSize_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint32",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintElement_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintElement_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintElement_ilike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintElement_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintElement_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintElement_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintElement_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintElement_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintElement_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintElement_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectHost",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectHost_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectHost_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectHost_ilike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectHost_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectHost_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectHost_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectHost_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectHost_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectHost_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectHost_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectPath",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectPath_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectPath_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectPath_ilike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectPath_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectPath_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectPath_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectPath_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectPath_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectPath_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectPath_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectScheme",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectScheme_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectScheme_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectScheme_ilike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectScheme_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectScheme_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectScheme_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectScheme_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectScheme_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectScheme_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintObjectScheme_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintPath",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintPath_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintPath_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintPath_ilike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintPath_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintPath_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintPath_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintPath_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintPath_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintPath_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaintPath_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaint_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaint_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaint_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "int64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaint_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaint_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaint_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "largestContentfulPaint_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "int64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpElementRenderDelay",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpElementRenderDelay_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpElementRenderDelay_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpElementRenderDelay_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "int64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpElementRenderDelay_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpElementRenderDelay_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpElementRenderDelay_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpElementRenderDelay_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "int64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpFetchPriority",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpFetchPriority_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpFetchPriority_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpFetchPriority_ilike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpFetchPriority_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpFetchPriority_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpFetchPriority_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpFetchPriority_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpFetchPriority_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpFetchPriority_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpFetchPriority_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpInitiatorType",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpInitiatorType_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpInitiatorType_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpInitiatorType_ilike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpInitiatorType_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpInitiatorType_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpInitiatorType_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpInitiatorType_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpInitiatorType_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpInitiatorType_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpInitiatorType_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpResourceLoadDelay",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpResourceLoadDelay_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpResourceLoadDelay_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpResourceLoadDelay_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "int64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpResourceLoadDelay_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpResourceLoadDelay_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpResourceLoadDelay_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpResourceLoadDelay_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "int64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpResourceLoadTime",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpResourceLoadTime_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpResourceLoadTime_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpResourceLoadTime_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "int64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpResourceLoadTime_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpResourceLoadTime_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpResourceLoadTime_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "lcpResourceLoadTime_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "int64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
 							"name": "navigationType",
 							"type": {
 								"kind": "SCALAR",
@@ -575679,6 +579851,102 @@
 						{
 							"defaultValue": null,
 							"description": "",
+							"name": "timeToFirstByte",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "timeToFirstByte_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "timeToFirstByte_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "timeToFirstByte_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "int64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "timeToFirstByte_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "timeToFirstByte_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "timeToFirstByte_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "timeToFirstByte_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "int64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
 							"name": "userAgentBrowser",
 							"type": {
 								"kind": "SCALAR",
@@ -576082,6 +580350,54 @@
 							"description": "First Input Delay (Core Web Vitals) in microseconds (negative value indicates N/A)",
 							"isDeprecated": true,
 							"name": "firstInputDelay",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP input delay in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpInputDelay",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP presentation delay in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpPresentationDelay",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP processing duration in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpProcessingDuration",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -581731,6 +586047,42 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "avg(inpInputDelay) ascending",
+							"isDeprecated": false,
+							"name": "avg_inpInputDelay_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "avg(inpInputDelay) descending",
+							"isDeprecated": false,
+							"name": "avg_inpInputDelay_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "avg(inpPresentationDelay) ascending",
+							"isDeprecated": false,
+							"name": "avg_inpPresentationDelay_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "avg(inpPresentationDelay) descending",
+							"isDeprecated": false,
+							"name": "avg_inpPresentationDelay_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "avg(inpProcessingDuration) ascending",
+							"isDeprecated": false,
+							"name": "avg_inpProcessingDuration_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "avg(inpProcessingDuration) descending",
+							"isDeprecated": false,
+							"name": "avg_inpProcessingDuration_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "avg(interactionToNextPaint) ascending",
 							"isDeprecated": false,
 							"name": "avg_interactionToNextPaint_ASC"
@@ -582400,6 +586752,258 @@
 							"description": "quantiles(firstInputDelayP99) descending",
 							"isDeprecated": false,
 							"name": "quantiles_firstInputDelayP99_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpInputDelayP25) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_inpInputDelayP25_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpInputDelayP25) descending",
+							"isDeprecated": false,
+							"name": "quantiles_inpInputDelayP25_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpInputDelayP50) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_inpInputDelayP50_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpInputDelayP50) descending",
+							"isDeprecated": false,
+							"name": "quantiles_inpInputDelayP50_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpInputDelayP75) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_inpInputDelayP75_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpInputDelayP75) descending",
+							"isDeprecated": false,
+							"name": "quantiles_inpInputDelayP75_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpInputDelayP90) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_inpInputDelayP90_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpInputDelayP90) descending",
+							"isDeprecated": false,
+							"name": "quantiles_inpInputDelayP90_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpInputDelayP95) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_inpInputDelayP95_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpInputDelayP95) descending",
+							"isDeprecated": false,
+							"name": "quantiles_inpInputDelayP95_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpInputDelayP999) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_inpInputDelayP999_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpInputDelayP999) descending",
+							"isDeprecated": false,
+							"name": "quantiles_inpInputDelayP999_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpInputDelayP99) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_inpInputDelayP99_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpInputDelayP99) descending",
+							"isDeprecated": false,
+							"name": "quantiles_inpInputDelayP99_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpPresentationDelayP25) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_inpPresentationDelayP25_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpPresentationDelayP25) descending",
+							"isDeprecated": false,
+							"name": "quantiles_inpPresentationDelayP25_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpPresentationDelayP50) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_inpPresentationDelayP50_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpPresentationDelayP50) descending",
+							"isDeprecated": false,
+							"name": "quantiles_inpPresentationDelayP50_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpPresentationDelayP75) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_inpPresentationDelayP75_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpPresentationDelayP75) descending",
+							"isDeprecated": false,
+							"name": "quantiles_inpPresentationDelayP75_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpPresentationDelayP90) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_inpPresentationDelayP90_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpPresentationDelayP90) descending",
+							"isDeprecated": false,
+							"name": "quantiles_inpPresentationDelayP90_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpPresentationDelayP95) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_inpPresentationDelayP95_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpPresentationDelayP95) descending",
+							"isDeprecated": false,
+							"name": "quantiles_inpPresentationDelayP95_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpPresentationDelayP999) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_inpPresentationDelayP999_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpPresentationDelayP999) descending",
+							"isDeprecated": false,
+							"name": "quantiles_inpPresentationDelayP999_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpPresentationDelayP99) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_inpPresentationDelayP99_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpPresentationDelayP99) descending",
+							"isDeprecated": false,
+							"name": "quantiles_inpPresentationDelayP99_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpProcessingDurationP25) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_inpProcessingDurationP25_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpProcessingDurationP25) descending",
+							"isDeprecated": false,
+							"name": "quantiles_inpProcessingDurationP25_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpProcessingDurationP50) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_inpProcessingDurationP50_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpProcessingDurationP50) descending",
+							"isDeprecated": false,
+							"name": "quantiles_inpProcessingDurationP50_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpProcessingDurationP75) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_inpProcessingDurationP75_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpProcessingDurationP75) descending",
+							"isDeprecated": false,
+							"name": "quantiles_inpProcessingDurationP75_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpProcessingDurationP90) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_inpProcessingDurationP90_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpProcessingDurationP90) descending",
+							"isDeprecated": false,
+							"name": "quantiles_inpProcessingDurationP90_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpProcessingDurationP95) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_inpProcessingDurationP95_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpProcessingDurationP95) descending",
+							"isDeprecated": false,
+							"name": "quantiles_inpProcessingDurationP95_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpProcessingDurationP999) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_inpProcessingDurationP999_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpProcessingDurationP999) descending",
+							"isDeprecated": false,
+							"name": "quantiles_inpProcessingDurationP999_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpProcessingDurationP99) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_inpProcessingDurationP99_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(inpProcessingDurationP99) descending",
+							"isDeprecated": false,
+							"name": "quantiles_inpProcessingDurationP99_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -583651,6 +588255,342 @@
 							"description": "First Input Delay (Core Web Vitals) in microseconds (negative value indicates N/A)",
 							"isDeprecated": true,
 							"name": "firstInputDelayP999",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP input delay in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpInputDelayP25",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP input delay in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpInputDelayP50",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP input delay in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpInputDelayP75",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP input delay in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpInputDelayP90",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP input delay in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpInputDelayP95",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP input delay in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpInputDelayP99",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP input delay in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpInputDelayP999",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP presentation delay in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpPresentationDelayP25",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP presentation delay in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpPresentationDelayP50",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP presentation delay in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpPresentationDelayP75",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP presentation delay in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpPresentationDelayP90",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP presentation delay in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpPresentationDelayP95",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP presentation delay in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpPresentationDelayP99",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP presentation delay in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpPresentationDelayP999",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP processing duration in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpProcessingDurationP25",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP processing duration in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpProcessingDurationP50",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP processing duration in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpProcessingDurationP75",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP processing duration in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpProcessingDurationP90",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP processing duration in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpProcessingDurationP95",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP processing duration in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpProcessingDurationP99",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "INP processing duration in microseconds (negative value indicates N/A)",
+							"isDeprecated": false,
+							"name": "inpProcessingDurationP999",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -585307,6 +590247,234 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "inpInputDelay ascending",
+							"isDeprecated": false,
+							"name": "inpInputDelay_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "inpInputDelay descending",
+							"isDeprecated": false,
+							"name": "inpInputDelay_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "inpPresentationDelay ascending",
+							"isDeprecated": false,
+							"name": "inpPresentationDelay_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "inpPresentationDelay descending",
+							"isDeprecated": false,
+							"name": "inpPresentationDelay_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "inpProcessingDuration ascending",
+							"isDeprecated": false,
+							"name": "inpProcessingDuration_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "inpProcessingDuration descending",
+							"isDeprecated": false,
+							"name": "inpProcessingDuration_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "interactionToNextPaintElement ascending",
+							"isDeprecated": false,
+							"name": "interactionToNextPaintElement_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "interactionToNextPaintElement descending",
+							"isDeprecated": false,
+							"name": "interactionToNextPaintElement_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "interactionToNextPaintName ascending",
+							"isDeprecated": false,
+							"name": "interactionToNextPaintName_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "interactionToNextPaintName descending",
+							"isDeprecated": false,
+							"name": "interactionToNextPaintName_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "interactionToNextPaintPath ascending",
+							"isDeprecated": false,
+							"name": "interactionToNextPaintPath_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "interactionToNextPaintPath descending",
+							"isDeprecated": false,
+							"name": "interactionToNextPaintPath_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "interactionToNextPaint ascending",
+							"isDeprecated": false,
+							"name": "interactionToNextPaint_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "interactionToNextPaint descending",
+							"isDeprecated": false,
+							"name": "interactionToNextPaint_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "largestContentfulPaintElementSize ascending",
+							"isDeprecated": false,
+							"name": "largestContentfulPaintElementSize_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "largestContentfulPaintElementSize descending",
+							"isDeprecated": false,
+							"name": "largestContentfulPaintElementSize_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "largestContentfulPaintElement ascending",
+							"isDeprecated": false,
+							"name": "largestContentfulPaintElement_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "largestContentfulPaintElement descending",
+							"isDeprecated": false,
+							"name": "largestContentfulPaintElement_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "largestContentfulPaintObjectHost ascending",
+							"isDeprecated": false,
+							"name": "largestContentfulPaintObjectHost_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "largestContentfulPaintObjectHost descending",
+							"isDeprecated": false,
+							"name": "largestContentfulPaintObjectHost_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "largestContentfulPaintObjectPath ascending",
+							"isDeprecated": false,
+							"name": "largestContentfulPaintObjectPath_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "largestContentfulPaintObjectPath descending",
+							"isDeprecated": false,
+							"name": "largestContentfulPaintObjectPath_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "largestContentfulPaintObjectScheme ascending",
+							"isDeprecated": false,
+							"name": "largestContentfulPaintObjectScheme_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "largestContentfulPaintObjectScheme descending",
+							"isDeprecated": false,
+							"name": "largestContentfulPaintObjectScheme_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "largestContentfulPaintPath ascending",
+							"isDeprecated": false,
+							"name": "largestContentfulPaintPath_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "largestContentfulPaintPath descending",
+							"isDeprecated": false,
+							"name": "largestContentfulPaintPath_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "largestContentfulPaint ascending",
+							"isDeprecated": false,
+							"name": "largestContentfulPaint_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "largestContentfulPaint descending",
+							"isDeprecated": false,
+							"name": "largestContentfulPaint_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "lcpElementRenderDelay ascending",
+							"isDeprecated": false,
+							"name": "lcpElementRenderDelay_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "lcpElementRenderDelay descending",
+							"isDeprecated": false,
+							"name": "lcpElementRenderDelay_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "lcpFetchPriority ascending",
+							"isDeprecated": false,
+							"name": "lcpFetchPriority_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "lcpFetchPriority descending",
+							"isDeprecated": false,
+							"name": "lcpFetchPriority_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "lcpInitiatorType ascending",
+							"isDeprecated": false,
+							"name": "lcpInitiatorType_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "lcpInitiatorType descending",
+							"isDeprecated": false,
+							"name": "lcpInitiatorType_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "lcpResourceLoadDelay ascending",
+							"isDeprecated": false,
+							"name": "lcpResourceLoadDelay_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "lcpResourceLoadDelay descending",
+							"isDeprecated": false,
+							"name": "lcpResourceLoadDelay_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "lcpResourceLoadTime ascending",
+							"isDeprecated": false,
+							"name": "lcpResourceLoadTime_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "lcpResourceLoadTime descending",
+							"isDeprecated": false,
+							"name": "lcpResourceLoadTime_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "navigationType ascending",
 							"isDeprecated": false,
 							"name": "navigationType_ASC"
@@ -585412,6 +590580,18 @@
 							"description": "siteTag descending",
 							"isDeprecated": false,
 							"name": "siteTag_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "timeToFirstByte ascending",
+							"isDeprecated": false,
+							"name": "timeToFirstByte_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "timeToFirstByte descending",
+							"isDeprecated": false,
+							"name": "timeToFirstByte_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -918452,7 +923632,7 @@
 					"possibleTypes": []
 				},
 				{
-					"description": "Scalar type types.Float64",
+					"description": "Scalar type float64",
 					"enumValues": [],
 					"fields": [],
 					"inputFields": [],
