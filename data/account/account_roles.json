@@ -1043,11 +1043,11 @@
 		"name": "Workers Platform Metadata (Read-Only)",
 		"description": "Can view metadata, settings, and observability for all Developer Platform resources without access to secret values or stored data content.",
 		"permissions": {
-			"worker": {
+			"organization": {
 				"read": true,
 				"edit": false
 			},
-			"organization": {
+			"worker": {
 				"read": true,
 				"edit": false
 			},
@@ -1476,6 +1476,10 @@
 		"name": "Workers Platform (Read-only)",
 		"description": "Can read all resources in the Workers Platform.",
 		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": false
+			},
 			"worker": {
 				"read": true,
 				"edit": false
@@ -1486,10 +1490,6 @@
 				"content_read": true
 			},
 			"image": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
 				"read": true,
 				"edit": false
 			},
