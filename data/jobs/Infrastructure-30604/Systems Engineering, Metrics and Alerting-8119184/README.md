@@ -3,88 +3,66 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>About the Department</strong></p>
-<p>The Infrastructure Engineering team builds and scales Cloudflare’s global network, ensuring high availability, security, and performance across hundreds of cities worldwide. Within Infrastructure Operations, the Hardware Integration group acts as the bridge between engineering designs and physical deployment, overseeing key third-party manufacturing partnerships, hardware quality, and supply chain logistics to keep our expanding footprint running seamlessly.</p>
-<p><strong>Role Summary</strong></p>
-<p>As a <strong>Rack Integration Operations Engineer</strong>, you will serve as a technical quality gatekeeper and operational partner across Cloudflare's hardware build programs. Working collaboratively within the Infrastructure Engineering and Strategy teams, you will bridge the gap between engineering specifications and external contract manufacturing partners.</p>
-<p>In this role, you will ensure Bill of Materials (BOM) accuracy, optimize materials planning, track partner performance, and actively modernise internal operations by building light, AI-enabled automations to streamline repetitive workflows.</p>
-<p><strong>Key Responsibilities</strong></p>
-<h3><strong>Engineering &amp; Quality Review</strong></h3>
+<p><strong>Available Locations: </strong></p>
 <ul>
+	<li><strong>London</strong></li>
+	<li><strong>Lisbon</strong></li>
+</ul>
+<p>&nbsp;</p>
+<p><span style="font-size: 12pt;"><strong>About the Department</strong></span></p>
+<p><span style="font-size: 12pt;">Production Engineering is responsible for the world’s most reliable, observable, performant, and safe network ecosystem. Our customers rely on our products and systems to safely modify, troubleshoot, and release products without external impact.</span></p>
+<p><span style="font-size: 12pt;">Our external customers rely on us to provide seamless and predictable incident, traffic, policy management, resulting in the fastest and safest network services in the world.</span></p>
+<p><span style="font-size: 12pt;">We are accountable for the overall performance of internal and external facing services, guiding our product teams to optimal configurations and maximum efficiency. From the moment that a packet enters the Cloudflare ecosystem, we know exactly what its expected purpose and behaviour is and we are capable of determining and exposing anomalous behaviour.</span></p>
+<p><span style="font-size: 12pt;">The Cloudflare network makes it possible to solve challenges at massive scale and efficiency which would be impossible for almost any other organization.</span></p>
+<h2><span style="font-size: 12pt;">About the Team</span></h2>
+<p><span style="font-size: 12pt;">This role is for the internal Observability Team, responsible for the observability platform and stack to make our engineering teams productive. This includes (but is not limited to) areas like metrics, alerting, error tracking, logging, tracing, and more.</span></p>
+<h2><span style="font-size: 12pt;">In this role, you can expect to:</span></h2>
+<ul>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Design, deliver, and operate software and a platform that progresses Cloudflare's Observability competency</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Solve scaling bottlenecks in critical services in our Metrics &amp; Alerting pipeline</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Work on highly distributed and scalable systems</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Participate in the constant cycle of knowledge sharing and mentoring</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Participate in the global on-call rotation for the services your team owns</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Research and introduce cutting-edge technologies</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Contribute to open-source</span></li>
+</ul>
+<p><span style="font-size: 12pt;">We are a small team, well-funded, growing and focused on building an extraordinary company. This is a software engineering/systems engineering role and is a superb opportunity to be part of a high performing team to help to support Cloudflare’s mission and help build a better internet.</span></p>
+<p><span style="font-size: 12pt;">You may be a good fit for our team if you have:</span></p>
+<ul>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">A Software Engineering background and proficiency in high-level programming languages (e.g., Go)</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Proficiency in Data structures and databases like TSDBs, Columnar stores or related</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Proficiency in distributed Linux environments</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Proficiency in designing high-scale distributed systems</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Proficiency in Prometheus, Alertmanager, Thanos</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Experience working in a fast, high-growth environment</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Experience working in a 24/7/365 service environment</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Exquisite written and verbal communication skills</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Familiarity with Internetworking, networking protocols Layer 2-7 of the OSI model and BGP</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Strong bias for action</span></li>
+</ul>
+<p>&nbsp;</p>
+<p><span style="font-size: 12pt;">Bonus points if you have:</span></p>
+<ul>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Experience with high-bandwidth transit Internetworking and routing</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Passion for code simplicity and performance</span></li>
+</ul>
+<p>&nbsp;</p>
+<p><span style="font-size: 12pt;"></span></p>
+<h3 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
+<ul data-path-to-node="1">
 	<li>
-		<p><strong>Ensure BOM Accuracy:</strong> Review and validate complex BOMs prior to release to integration partners, proactively identifying part substitutions, spec mismatches, and potential build blockers.</p>
-	</li>
-	<li>
-		<p><strong>Bridge Engineering &amp; Production:</strong> Partner closely with data center engineers to resolve design change requests (DCRs) and BOM discrepancies throughout the build lifecycle.</p>
-	</li>
-	<li>
-		<p><strong>Maintain Technical Quality Standards:</strong> Leverage functional expertise across rack-level power, networking, server, and firmware architectures to evaluate build compliance against Cloudflare specifications.</p>
+		<p data-path-to-node="1,0,0">For Portugal based hires: Estimated annual salary is between €66,000 - €91,000.</p>
 	</li>
 </ul>
-<h3><strong>Materials &amp; Logistics Operations</strong></h3>
-<ul>
+<h3 data-path-to-node="2"><strong data-path-to-node="2" data-index-in-node="0">Equity</strong></h3>
+<ul data-path-to-node="3">
 	<li>
-		<p><strong>Support Materials Planning:</strong> Contribute to demand forecasting and materials planning for rack build programs, aligning partner capacity with component lead times.</p>
-	</li>
-	<li>
-		<p><strong>Coordinate Supply Chain Logistics:</strong> Oversee inbound and outbound logistics for components and finished racks between partners and Cloudflare sites through to final shipment.</p>
+		<p data-path-to-node="3,0,0">This role is eligible to participate in Cloudflare's equity plan</p>
 	</li>
 </ul>
-<h3><strong>Partner &amp; Program Management</strong></h3>
-<ul>
-	<li>
-		<p><strong>Drive Partner Execution:</strong> Serve as an operational point of contact for external hardware integration partners regarding build progress, scheduling, and issue resolution.</p>
-	</li>
-	<li>
-		<p><strong>Track SLAs &amp; Quality Metrics:</strong> Contribute to vendor scorecards and KPI tracking across build quality, on-time delivery, and cost efficiency; lead root-cause analyses for recurring defects.</p>
-	</li>
-	<li>
-		<p><strong>Maintain Program Visibility:</strong> Track hardware build cycles in Jira, leading documentation, status check-ins, and project closeouts alongside cross-functional teammates.</p>
-	</li>
-</ul>
-<h3><strong>AI Innovation &amp; Process Automation</strong></h3>
-<ul>
-	<li>
-		<p><strong>Automate Operational Workflows:</strong> Identify manual, repetitive tasks across BOM reviews, reporting, and partner tracking, using AI tools and LLM prompt engineering to streamline processes.</p>
-	</li>
-	<li>
-		<p><strong>Analyze Performance Data:</strong> Evaluate spend, build timelines, and quality trends using AI-assisted analysis tools to surface actionable operational insights.</p>
-	</li>
-	<li>
-		<p><strong>Build Shared Tooling:</strong> Develop, document, and maintain sustainable, lightweight automation scripts and workflows for adoption across the broader team.</p>
-	</li>
-</ul>
-<p><strong>Qualifications</strong></p>
-<h3><strong>Requirements</strong></h3>
-<ul>
-	<li>
-		<p><strong>Vendor &amp; Manufacturing Experience:</strong> Professional background managing hardware vendor or contract manufacturing (EMS/ODM) relationships, including BOM validation, quality tracking, and schedule management.</p>
-	</li>
-	<li>
-		<p><strong>Hardware &amp; BOM Proficiency:</strong> Practical ability to evaluate rack-level technical specifications (power distribution, networking, server hardware, firmware) to ensure manufacturing compliance.</p>
-	</li>
-	<li>
-		<p><strong>Program Management Discipline:</strong> Hands-on experience managing operational workflows in Jira, with a track record of tracking and reporting on team KPIs and SLAs.</p>
-	</li>
-	<li>
-		<p><strong>Applied AI &amp; Automation Skills:</strong> Practical experience using AI tools or LLMs to automate concrete workflows, optimize reporting, or perform data analysis.</p>
-	</li>
-	<li>
-		<p><strong>Cross-Functional Collaboration:</strong> Strong written and verbal communication skills, with a track record of working effectively across engineering, procurement, supply chain, and external partner teams.</p>
-	</li>
-</ul>
-<h3><strong>Desirable / Bonus Qualifications</strong></h3>
-<ul>
-	<li>
-		<p>Background in data center infrastructure hardware (servers, network switches, rPDUs, enterprise cabling).</p>
-	</li>
-	<li>
-		<p>Experience writing lightweight scripts (Python, Google Apps Script, or similar) paired with AI developer tools.</p>
-	</li>
-	<li>
-		<p>Familiarity with global hardware supply chain and logistics operations.</p>
-	</li>
-</ul>
+<p><span style="font-size: 12pt;"></span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
