@@ -19,7 +19,14 @@
 			"display_name": "Expiring Service Token Alert",
 			"type": "expiring_service_token_alert",
 			"description": "Cloudflare Access service token expiration notice, sent 7 days before token is set to expire",
-			"filter_options": []
+			"filter_options": [
+				{
+					"Key": "token_id",
+					"ComparisonOperator": "==",
+					"Range": "0-n",
+					"AvailableValues": null
+				}
+			]
 		}
 	],
 	"Billing": [
