@@ -209,7 +209,7 @@
 	"GET /analytics/sql/introspection": {
 		"operationId": "sql-api-introspection",
 		"summary": "List available analytics datasets",
-		"description": "Returns the analytics dataset catalogue. By default, the response contains dataset names and descriptions. Set `include_columns` to include each dataset's column names, descriptions, and data types. The caller must have Account Analytics Read permission on the account identified by `account_tag`. The account tag authorizes the request; it does not filter the catalogue, which is the same for every authorized account. Note. This endpoint does not support zone_tag.\n",
+		"description": "Returns the analytics dataset catalogue. By default, the response contains dataset names and descriptions. Set `include_columns` to include each dataset's column names, descriptions, and data types. The caller must have Account Analytics Read permission on the account identified by `account_tag`. Dataset names, descriptions, and columns are the same for every authorized account. When `include_custom_attributes` is set, the response also includes custom attribute names and types discovered from that account's own data, which legitimately differs per caller.\n",
 		"parameters": [
 			{
 				"name": "account_tag",
@@ -225,6 +225,15 @@
 				"name": "include_columns",
 				"in": "query",
 				"description": "Include column metadata for each returned dataset.",
+				"schema": {
+					"type": "boolean",
+					"default": false
+				}
+			},
+			{
+				"name": "include_custom_attributes",
+				"in": "query",
+				"description": "Include custom attribute names and types for each dataset that supports them.",
 				"schema": {
 					"type": "boolean",
 					"default": false
@@ -279,6 +288,29 @@
 													"required": [
 														"name",
 														"description",
+														"data_type"
+													]
+												}
+											},
+											"custom_attributes": {
+												"description": "Present when `include_custom_attributes` is true and the dataset supports custom attributes.",
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"data_type": {
+															"description": "ClickHouse type of the attribute value.",
+															"type": "string",
+															"example": "String"
+														},
+														"name": {
+															"description": "Attribute name.",
+															"type": "string"
+														}
+													},
+													"additionalProperties": false,
+													"required": [
+														"name",
 														"data_type"
 													]
 												}

@@ -1482,6 +1482,49 @@
 																"description": "A unique identifier for the user's account.",
 																"type": "string"
 															},
+															"configuration": {
+																"description": "Application-wide settings for a Durable Object-managed application.",
+																"type": "object",
+																"properties": {
+																	"authorized_keys": {
+																		"type": "array",
+																		"items": {
+																			"description": "User-provided SSH public key.",
+																			"type": "object",
+																			"properties": {
+																				"name": {
+																					"description": "Optional human readable name for this key.",
+																					"type": "string"
+																				},
+																				"public_key": {
+																					"description": "An SSH public key.",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"public_key"
+																			]
+																		}
+																	},
+																	"wrangler_ssh": {
+																		"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
+																		"type": "object",
+																		"properties": {
+																			"enabled": {
+																				"type": "boolean",
+																				"default": true
+																			},
+																			"port": {
+																				"type": "integer",
+																				"default": 22,
+																				"maximum": 65535,
+																				"minimum": 1
+																			}
+																		}
+																	}
+																},
+																"additionalProperties": false
+															},
 															"created_at": {
 																"description": "UTC timestamp string in ISO 8601 format.",
 																"type": "string",
@@ -2325,6 +2368,49 @@
 														"account_id": {
 															"description": "A unique identifier for the user's account.",
 															"type": "string"
+														},
+														"configuration": {
+															"description": "Application-wide settings for a Durable Object-managed application.",
+															"type": "object",
+															"properties": {
+																"authorized_keys": {
+																	"type": "array",
+																	"items": {
+																		"description": "User-provided SSH public key.",
+																		"type": "object",
+																		"properties": {
+																			"name": {
+																				"description": "Optional human readable name for this key.",
+																				"type": "string"
+																			},
+																			"public_key": {
+																				"description": "An SSH public key.",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"public_key"
+																		]
+																	}
+																},
+																"wrangler_ssh": {
+																	"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
+																	"type": "object",
+																	"properties": {
+																		"enabled": {
+																			"type": "boolean",
+																			"default": true
+																		},
+																		"port": {
+																			"type": "integer",
+																			"default": 22,
+																			"maximum": 65535,
+																			"minimum": 1
+																		}
+																	}
+																}
+															},
+															"additionalProperties": false
 														},
 														"created_at": {
 															"description": "UTC timestamp string in ISO 8601 format.",
@@ -6159,6 +6245,22 @@
 												"public_key"
 											]
 										}
+									},
+									"wrangler_ssh": {
+										"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
+										"type": "object",
+										"properties": {
+											"enabled": {
+												"type": "boolean",
+												"default": true
+											},
+											"port": {
+												"type": "integer",
+												"default": 22,
+												"maximum": 65535,
+												"minimum": 1
+											}
+										}
 									}
 								}
 							},
@@ -6692,6 +6794,49 @@
 														"account_id": {
 															"description": "A unique identifier for the user's account.",
 															"type": "string"
+														},
+														"configuration": {
+															"description": "Application-wide settings for a Durable Object-managed application.",
+															"type": "object",
+															"properties": {
+																"authorized_keys": {
+																	"type": "array",
+																	"items": {
+																		"description": "User-provided SSH public key.",
+																		"type": "object",
+																		"properties": {
+																			"name": {
+																				"description": "Optional human readable name for this key.",
+																				"type": "string"
+																			},
+																			"public_key": {
+																				"description": "An SSH public key.",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"public_key"
+																		]
+																	}
+																},
+																"wrangler_ssh": {
+																	"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
+																	"type": "object",
+																	"properties": {
+																		"enabled": {
+																			"type": "boolean",
+																			"default": true
+																		},
+																		"port": {
+																			"type": "integer",
+																			"default": 22,
+																			"maximum": 65535,
+																			"minimum": 1
+																		}
+																	}
+																}
+															},
+															"additionalProperties": false
 														},
 														"created_at": {
 															"description": "UTC timestamp string in ISO 8601 format.",
@@ -7869,13 +8014,13 @@
 	"POST /accounts/{account_id}/containers/applications": {
 		"operationId": "createApplication",
 		"summary": "Create a new application",
-		"description": "Create a Containers application.\n\nUse `scheduling_policy: \"default\"` for a scheduler-backed application. The\nContainers scheduler maintains the requested instance count and manages\ndeployment configuration, placement, scaling, versions, and rollouts.\n\nUse `scheduling_policy: \"durable_object\"` for a Durable Object-managed\napplication. Each Durable Object creates and manages the lifecycle of its\ncontainer instance. Supply `name`, `scheduling_policy`, and `durable_objects`,\nwith optional top-level `observability` settings. Deployment configuration,\nscaling, constraints, versions, and rollouts do not apply.\n",
+		"description": "Create a Containers application.\n\nUse `scheduling_policy: \"default\"` for a scheduler-backed application. The\nContainers scheduler maintains the requested instance count and manages\ndeployment configuration, placement, scaling, versions, and rollouts.\n\nUse `scheduling_policy: \"durable_object\"` for a Durable Object-managed\napplication. Each Durable Object creates and manages the lifecycle of its\ncontainer instance. Supply `name`, `scheduling_policy`, and `durable_objects`,\nwith optional `configuration` and optional top-level `observability` settings.\nDeployment configuration, scaling, constraints, versions, and rollouts do not apply.\n",
 		"requestBody": {
 			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Create a Containers application.\nSet `scheduling_policy` to `default` for a\nscheduler-backed application with deployment configuration, instance counts,\nconstraints, versions, and rollouts. Set it to `durable_object` for a\nDurable Object-managed application where each Durable Object creates and manages\nthe lifecycle of its container instance. For `durable_object` requests, supply\n`name`, `scheduling_policy`, and `durable_objects`, with optional top-level\n`observability` settings.\n",
+						"description": "Create a Containers application.\nSet `scheduling_policy` to `default` for a\nscheduler-backed application with deployment configuration, instance counts,\nconstraints, versions, and rollouts. Set it to `durable_object` for a\nDurable Object-managed application where each Durable Object creates and manages\nthe lifecycle of its container instance. For `durable_object` requests, supply\n`name`, `scheduling_policy`, and `durable_objects`, with optional `configuration`\nand top-level `observability` settings.\n",
 						"oneOf": [
 							{
 								"description": "Create a scheduler-backed Containers application. The Containers scheduler\nmaintains the requested instance count and applies deployment configuration,\nplacement, scaling, versions, and rollouts.\n",
@@ -8116,9 +8261,57 @@
 								]
 							},
 							{
-								"description": "Create a Durable Object-managed Containers application. Each Durable Object\ncreates and manages the lifecycle of its container instance. Supply `name`,\n`scheduling_policy`, and `durable_objects`, with optional top-level `observability`\nsettings. Deployment configuration, instance counts, scaling, constraints,\nversions, and rollouts do not apply.\n",
+								"description": "Create a Durable Object-managed Containers application. Each Durable Object\ncreates and manages the lifecycle of its container instance. Supply `name`,\n`scheduling_policy`, and `durable_objects`, with optional `configuration` and\ntop-level `observability` settings. Deployment configuration, instance counts,\nscaling, constraints, versions, and rollouts do not apply.\n",
 								"type": "object",
 								"properties": {
+									"configuration": {
+										"description": "Configuration for a Durable Object-managed application.",
+										"allOf": [
+											{
+												"description": "Application-wide settings for a Durable Object-managed application.",
+												"type": "object",
+												"properties": {
+													"authorized_keys": {
+														"type": "array",
+														"items": {
+															"description": "User-provided SSH public key.",
+															"type": "object",
+															"properties": {
+																"name": {
+																	"description": "Optional human readable name for this key.",
+																	"type": "string"
+																},
+																"public_key": {
+																	"description": "An SSH public key.",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"public_key"
+															]
+														}
+													},
+													"wrangler_ssh": {
+														"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
+														"type": "object",
+														"properties": {
+															"enabled": {
+																"type": "boolean",
+																"default": true
+															},
+															"port": {
+																"type": "integer",
+																"default": 22,
+																"maximum": 65535,
+																"minimum": 1
+															}
+														}
+													}
+												},
+												"additionalProperties": false
+											}
+										]
+									},
 									"durable_objects": {
 										"description": "The customer-owned Durable Object namespace that owns this application and its instances.",
 										"allOf": [
@@ -8678,6 +8871,49 @@
 														"account_id": {
 															"description": "A unique identifier for the user's account.",
 															"type": "string"
+														},
+														"configuration": {
+															"description": "Application-wide settings for a Durable Object-managed application.",
+															"type": "object",
+															"properties": {
+																"authorized_keys": {
+																	"type": "array",
+																	"items": {
+																		"description": "User-provided SSH public key.",
+																		"type": "object",
+																		"properties": {
+																			"name": {
+																				"description": "Optional human readable name for this key.",
+																				"type": "string"
+																			},
+																			"public_key": {
+																				"description": "An SSH public key.",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"public_key"
+																		]
+																	}
+																},
+																"wrangler_ssh": {
+																	"description": "Configuration properties for connecting with SSH to a container using Wrangler.",
+																	"type": "object",
+																	"properties": {
+																		"enabled": {
+																			"type": "boolean",
+																			"default": true
+																		},
+																		"port": {
+																			"type": "integer",
+																			"default": 22,
+																			"maximum": 65535,
+																			"minimum": 1
+																		}
+																	}
+																}
+															},
+															"additionalProperties": false
 														},
 														"created_at": {
 															"description": "UTC timestamp string in ISO 8601 format.",

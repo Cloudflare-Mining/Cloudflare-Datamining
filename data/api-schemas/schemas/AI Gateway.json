@@ -271,7 +271,7 @@
 	"DELETE /accounts/{account_id}/ai-gateway/billing/topup/config": {
 		"operationId": "aig-billing-delete-topup-config",
 		"summary": "Delete auto top-up configuration",
-		"description": "Remove the auto top-up configuration for the account.",
+		"description": "Remove the auto top-up configuration for the account. Dashboard sessions only: API token, OAuth, and service credentials are rejected with 403.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3542,7 +3542,7 @@
 	"POST /accounts/{account_id}/ai-gateway/billing/topup/config": {
 		"operationId": "aig-billing-set-topup-config",
 		"summary": "Set auto top-up configuration",
-		"description": "Configure auto top-up with a balance threshold and top-up amount.",
+		"description": "Configure auto top-up with a balance threshold and top-up amount. Dashboard sessions only: API token, OAuth, and service credentials are rejected with 403.",
 		"parameters": [
 			{
 				"name": "account_id",

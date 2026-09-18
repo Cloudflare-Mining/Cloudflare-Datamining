@@ -125,7 +125,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.analytics.livestreams.daily",
+		"x-fern-sdk-group-name": "realtime.kit.analytics.livestreams.daily",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/analytics/livestreams/overall": {
@@ -243,7 +243,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.analytics.livestreams",
+		"x-fern-sdk-group-name": "realtime.kit.analytics.livestreams",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/livestreams": {
@@ -456,7 +456,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.livestreams",
+		"x-fern-sdk-group-name": "realtime.kit.livestreams",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/livestreams/{livestream_id}": {
@@ -703,7 +703,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.livestreams",
+		"x-fern-sdk-group-name": "realtime.kit.livestreams",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/livestreams/{livestream_id}/active-livestream-session": {
@@ -910,7 +910,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.livestreams.sessions",
+		"x-fern-sdk-group-name": "realtime.kit.livestreams.sessions",
 		"x-fern-sdk-method-name": "list-active"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/livestreams/sessions/{livestream-session-id}": {
@@ -1040,7 +1040,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.livestreams.sessions",
+		"x-fern-sdk-group-name": "realtime.kit.livestreams.sessions",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-livestream": {
@@ -1159,7 +1159,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.meetings.livestream",
+		"x-fern-sdk-group-name": "realtime.kit.meetings.livestream",
 		"x-fern-sdk-method-name": "list-active"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/livestream": {
@@ -1389,7 +1389,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.meetings.livestream",
+		"x-fern-sdk-group-name": "realtime.kit.meetings.livestream",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/livestream-sessions": {
@@ -1568,7 +1568,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.sessions.livestreams",
+		"x-fern-sdk-group-name": "realtime.kit.sessions.livestreams",
 		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-livestream/stop": {
@@ -1635,7 +1635,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.livestreams",
+		"x-fern-sdk-group-name": "realtime.kit.livestreams",
 		"x-fern-sdk-method-name": "stop",
 		"x-forge-require-confirmation": "This operation stops the active livestream. Viewers lose the broadcast immediately."
 	},
@@ -1767,7 +1767,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.livestreams",
+		"x-fern-sdk-group-name": "realtime.kit.livestreams",
 		"x-fern-sdk-method-name": "start"
 	}
 }

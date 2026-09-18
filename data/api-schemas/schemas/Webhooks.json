@@ -208,7 +208,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.webhooks",
+		"x-fern-sdk-group-name": "realtime.kit.webhooks",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-require-confirmation": "This operation deletes the webhook. Event delivery to it will stop.",
 		"x-stability": "beta"
@@ -369,7 +369,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.webhooks",
+		"x-fern-sdk-group-name": "realtime.kit.webhooks",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}": {
@@ -581,7 +581,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.webhooks",
+		"x-fern-sdk-group-name": "realtime.kit.webhooks",
 		"x-fern-sdk-method-name": "get",
 		"x-stability": "beta"
 	},
@@ -666,7 +666,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.webhooks.events",
+		"x-fern-sdk-group-name": "realtime.kit.webhooks.events",
 		"x-fern-sdk-method-name": "list"
 	},
 	"PATCH /accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}": {
@@ -932,7 +932,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.webhooks",
+		"x-fern-sdk-group-name": "realtime.kit.webhooks",
 		"x-fern-sdk-method-name": "update",
 		"x-stability": "beta"
 	},
@@ -1197,7 +1197,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.webhooks",
+		"x-fern-sdk-group-name": "realtime.kit.webhooks",
 		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}": {
@@ -1481,7 +1481,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.webhooks",
+		"x-fern-sdk-group-name": "realtime.kit.webhooks",
 		"x-fern-sdk-method-name": "replace",
 		"x-stability": "beta"
 	}

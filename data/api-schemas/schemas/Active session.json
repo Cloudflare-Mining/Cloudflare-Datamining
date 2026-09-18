@@ -201,7 +201,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.meetings.active",
+		"x-fern-sdk-group-name": "realtime.kit.meetings.active",
 		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/kick": {
@@ -406,7 +406,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.meetings.active",
+		"x-fern-sdk-group-name": "realtime.kit.meetings.active",
 		"x-fern-sdk-method-name": "kick"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/kick-all": {
@@ -488,7 +488,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.meetings.active",
+		"x-fern-sdk-group-name": "realtime.kit.meetings.active",
 		"x-fern-sdk-method-name": "kick-all",
 		"x-forge-require-confirmation": "This operation disconnects every active participant immediately."
 	},
@@ -643,7 +643,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.meetings.active",
+		"x-fern-sdk-group-name": "realtime.kit.meetings.active",
 		"x-fern-sdk-method-name": "mute"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/mute-all": {
@@ -743,7 +743,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.meetings.active",
+		"x-fern-sdk-group-name": "realtime.kit.meetings.active",
 		"x-fern-sdk-method-name": "mute-all"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/poll": {
@@ -934,7 +934,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.meetings.active.polls",
+		"x-fern-sdk-group-name": "realtime.kit.meetings.active.polls",
 		"x-fern-sdk-method-name": "create"
 	}
 }

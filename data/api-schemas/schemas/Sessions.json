@@ -268,7 +268,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.sessions",
+		"x-fern-sdk-group-name": "realtime.kit.sessions",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}": {
@@ -435,7 +435,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.sessions",
+		"x-fern-sdk-group-name": "realtime.kit.sessions",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/chat": {
@@ -524,7 +524,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.sessions.chat",
+		"x-fern-sdk-group-name": "realtime.kit.sessions.chat",
 		"x-fern-sdk-method-name": "export"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/participants": {
@@ -900,7 +900,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.sessions.participants",
+		"x-fern-sdk-group-name": "realtime.kit.sessions.participants",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/participants/{participant_id}": {
@@ -1107,7 +1107,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.sessions.participants",
+		"x-fern-sdk-group-name": "realtime.kit.sessions.participants",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/summary": {
@@ -1200,7 +1200,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.sessions.summaries",
+		"x-fern-sdk-group-name": "realtime.kit.sessions.summaries",
 		"x-fern-sdk-method-name": "export"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/transcript": {
@@ -1308,7 +1308,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.sessions.transcripts",
+		"x-fern-sdk-group-name": "realtime.kit.sessions.transcripts",
 		"x-fern-sdk-method-name": "export"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/peer-report/{peer_id}": {
@@ -3337,7 +3337,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.sessions.peers",
+		"x-fern-sdk-group-name": "realtime.kit.sessions.peers",
 		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/summary": {
@@ -3420,7 +3420,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.sessions.summaries",
+		"x-fern-sdk-group-name": "realtime.kit.sessions.summaries",
 		"x-fern-sdk-method-name": "generate"
 	}
 }

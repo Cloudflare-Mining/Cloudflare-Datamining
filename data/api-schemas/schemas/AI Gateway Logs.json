@@ -107,6 +107,7 @@
 								]
 							},
 							"value": {
+								"description": "Filter values.",
 								"type": "array",
 								"items": {
 									"anyOf": [
@@ -265,6 +266,7 @@
 				"name": "search",
 				"in": "query",
 				"schema": {
+					"description": "Free-text search over log metadata.",
 					"type": "string"
 				}
 			},
@@ -362,6 +364,7 @@
 								]
 							},
 							"value": {
+								"description": "Filter values.",
 								"type": "array",
 								"items": {
 									"anyOf": [
@@ -552,6 +555,7 @@
 				"name": "model",
 				"in": "query",
 				"schema": {
+					"description": "Model filter.",
 					"type": "string",
 					"deprecated": true
 				}

@@ -693,7 +693,9 @@
 		],
 		"x-api-token-group": [
 			"User Details Read"
-		]
+		],
+		"x-fern-sdk-group-name": "cps",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PUT /user/communication_preferences": {
 		"operationId": "user-communication-preferences-update",
@@ -1479,6 +1481,8 @@
 		],
 		"x-api-token-group": [
 			"User Details Write"
-		]
+		],
+		"x-fern-sdk-group-name": "cps",
+		"x-fern-sdk-method-name": "update"
 	}
 }

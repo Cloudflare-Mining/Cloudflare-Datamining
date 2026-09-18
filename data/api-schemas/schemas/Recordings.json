@@ -855,7 +855,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.recordings",
+		"x-fern-sdk-group-name": "realtime.kit.recordings",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/recordings/{recording_id}": {
@@ -1288,7 +1288,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.recordings",
+		"x-fern-sdk-group-name": "realtime.kit.recordings",
 		"x-fern-sdk-method-name": "get",
 		"x-stability": "beta"
 	},
@@ -1516,7 +1516,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.recordings.active",
+		"x-fern-sdk-group-name": "realtime.kit.recordings.active",
 		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/recordings": {
@@ -2318,7 +2318,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.recordings",
+		"x-fern-sdk-group-name": "realtime.kit.recordings",
 		"x-fern-sdk-method-name": "start",
 		"x-stability": "beta"
 	},
@@ -2577,7 +2577,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.recordings.tracks",
+		"x-fern-sdk-group-name": "realtime.kit.recordings.tracks",
 		"x-fern-sdk-method-name": "start"
 	},
 	"PUT /accounts/{account_id}/realtime/kit/{app_id}/recordings/{recording_id}": {
@@ -3035,7 +3035,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.recordings",
+		"x-fern-sdk-group-name": "realtime.kit.recordings",
 		"x-fern-sdk-method-name": "control",
 		"x-stability": "beta"
 	}

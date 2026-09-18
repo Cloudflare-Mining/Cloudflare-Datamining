@@ -141,7 +141,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.meetings.participants",
+		"x-fern-sdk-group-name": "realtime.kit.meetings.participants",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-require-confirmation": "This operation removes the participant from the meeting and revokes their authentication token."
 	},
@@ -685,7 +685,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.meetings",
+		"x-fern-sdk-group-name": "realtime.kit.meetings",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}": {
@@ -1586,7 +1586,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.meetings",
+		"x-fern-sdk-group-name": "realtime.kit.meetings",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants": {
@@ -1813,7 +1813,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.meetings.participants",
+		"x-fern-sdk-group-name": "realtime.kit.meetings.participants",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}": {
@@ -1979,7 +1979,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.meetings.participants",
+		"x-fern-sdk-group-name": "realtime.kit.meetings.participants",
 		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}": {
@@ -3314,7 +3314,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.meetings",
+		"x-fern-sdk-group-name": "realtime.kit.meetings",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PATCH /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}": {
@@ -3523,7 +3523,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.meetings.participants",
+		"x-fern-sdk-group-name": "realtime.kit.meetings.participants",
 		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings": {
@@ -4833,7 +4833,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.meetings",
+		"x-fern-sdk-group-name": "realtime.kit.meetings",
 		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants": {
@@ -5065,7 +5065,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.meetings.participants",
+		"x-fern-sdk-group-name": "realtime.kit.meetings.participants",
 		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}/token": {
@@ -5219,7 +5219,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.meetings.participants.tokens",
+		"x-fern-sdk-group-name": "realtime.kit.meetings.participants.tokens",
 		"x-fern-sdk-method-name": "refresh"
 	},
 	"PUT /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}": {
@@ -6516,7 +6516,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.meetings",
+		"x-fern-sdk-group-name": "realtime.kit.meetings",
 		"x-fern-sdk-method-name": "replace",
 		"x-forge-hidden": true
 	},
@@ -6732,7 +6732,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.meetings.participants",
+		"x-fern-sdk-group-name": "realtime.kit.meetings.participants",
 		"x-fern-sdk-method-name": "replace",
 		"x-forge-hidden": true
 	}

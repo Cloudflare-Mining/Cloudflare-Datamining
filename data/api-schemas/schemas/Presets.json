@@ -729,7 +729,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.presets",
+		"x-fern-sdk-group-name": "realtime.kit.presets",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-require-confirmation": "This operation permanently deletes the preset."
 	},
@@ -895,7 +895,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.presets",
+		"x-fern-sdk-group-name": "realtime.kit.presets",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/presets/{preset_id}": {
@@ -1628,7 +1628,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.presets",
+		"x-fern-sdk-group-name": "realtime.kit.presets",
 		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/realtime/kit/{app_id}/presets/{preset_id}": {
@@ -2847,7 +2847,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.presets",
+		"x-fern-sdk-group-name": "realtime.kit.presets",
 		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/presets": {
@@ -4187,7 +4187,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.presets",
+		"x-fern-sdk-group-name": "realtime.kit.presets",
 		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/realtime/kit/{app_id}/presets/{preset_id}": {
@@ -5537,7 +5537,7 @@
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "realtimekit.presets",
+		"x-fern-sdk-group-name": "realtime.kit.presets",
 		"x-fern-sdk-method-name": "replace",
 		"x-forge-hidden": true
 	}
