@@ -51,6 +51,7 @@
 	<li>Experience enabling channel partners, distributors, managed service providers, or systems integrators in complex enterprise sales cycles.</li>
 	<li>Relevant security, networking, cloud, or AI certifications, or equivalent demonstrated expertise.</li>
 </ul>
+<p><strong>Application Deadline:</strong> December 8, 2026</p>
 <p><strong>Compensation</strong></p>
 <ul>
 	<li>Compensation may be adjusted depending on work location
@@ -61,7 +62,6 @@
 		</ul>
 	</li>
 	<li>This role is eligible to earn incentive compensation under Cloudflare's Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</li>
-	<li>Application Deadline: December 8, 2026</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>

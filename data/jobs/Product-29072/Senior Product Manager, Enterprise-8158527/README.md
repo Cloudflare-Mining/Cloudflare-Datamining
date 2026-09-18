@@ -30,13 +30,13 @@
 	<li>Data-fluency - Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
 	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity. &nbsp;</li>
 </ul>
+<p><strong>Application Deadline:</strong> December 09, 2026</p>
 <h4>Compensation</h4>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
 	<li>For <strong>Colorado</strong> based hires: Estimated annual salary of $156,000 - $215,000</li>
 	<li>For <strong>San Francisco / Bay Area </strong>based hires: Estimated annual salary of $179,000 - $224,000</li>
 	<li>For <strong>New York City </strong>based hires: Estimated annual salary of $156,000 - $216,000</li>
-	<li>Application Deadline: December 09, 2026</li>
 </ul>
 <h4>Equity</h4>
 <p>This role is eligible to participate in Cloudflare's equity plan.</p>
