@@ -2,7 +2,7 @@
 	"GET /accounts/{account_id}/ai-search/instances/{id}/jobs": {
 		"operationId": "ai-search-instance-list-jobs",
 		"summary": "List Jobs",
-		"description": "Lists indexing jobs for an AI Search instance.",
+		"description": "Lists indexing jobs for an AI Search instance.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
 		"parameters": [
 			{
 				"name": "id",
@@ -259,6 +259,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -290,7 +291,7 @@
 	"GET /accounts/{account_id}/ai-search/instances/{id}/jobs/{job_id}": {
 		"operationId": "ai-search-instance-get-job",
 		"summary": "Get a Job Details",
-		"description": "Retrieves details for a specific AI Search indexing job.",
+		"description": "Retrieves details for a specific AI Search indexing job.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
 		"parameters": [
 			{
 				"name": "id",
@@ -462,6 +463,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -493,7 +495,7 @@
 	"GET /accounts/{account_id}/ai-search/instances/{id}/jobs/{job_id}/logs": {
 		"operationId": "ai-search-instance-list-job-logs",
 		"summary": "List Job Logs",
-		"description": "Lists log entries for an AI Search indexing job.",
+		"description": "Lists log entries for an AI Search indexing job.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
 		"parameters": [
 			{
 				"name": "id",
@@ -745,6 +747,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -1618,7 +1621,7 @@
 	"PATCH /accounts/{account_id}/ai-search/instances/{id}/jobs/{job_id}": {
 		"operationId": "ai-search-instance-change-job-status",
 		"summary": "Cancel an indexing job.",
-		"description": "Cancel an in-progress indexing job for an AI Search instance.",
+		"description": "Cancel an in-progress indexing job for an AI Search instance.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
 		"parameters": [
 			{
 				"name": "id",
@@ -1850,6 +1853,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -2174,7 +2178,7 @@
 	"POST /accounts/{account_id}/ai-search/instances/{id}/jobs": {
 		"operationId": "ai-search-instance-create-job",
 		"summary": "Create new job",
-		"description": "Creates a new indexing job for an AI Search instance.",
+		"description": "Creates a new indexing job for an AI Search instance.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
 		"parameters": [
 			{
 				"name": "id",
@@ -2440,6 +2444,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
