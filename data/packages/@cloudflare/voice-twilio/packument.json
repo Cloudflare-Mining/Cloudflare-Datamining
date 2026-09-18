@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/voice-twilio",
 	"dist-tags": {
-		"latest": "0.1.0"
+		"latest": "0.1.1"
 	},
 	"versions": {
 		"0.0.0": {
@@ -83,23 +83,56 @@
 				"agents": ">=0.23.0 <2.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-SZcOxYB7UBCxPWeZc0PRxfX+CeaBuGmJp64029/E3DYY2qMgXRanNiFzf7m7aLAHAI7sT9T0JmHSEzpK8rNkKA==",
 				"shasum": "d480d7c2088be869c4cc35bae2d11c443af1ffc0",
 				"tarball": "https://registry.npmjs.org/@cloudflare/voice-twilio/-/voice-twilio-0.1.0.tgz",
 				"fileCount": 6,
-				"unpackedSize": 33732,
+				"integrity": "sha512-SZcOxYB7UBCxPWeZc0PRxfX+CeaBuGmJp64029/E3DYY2qMgXRanNiFzf7m7aLAHAI7sT9T0JmHSEzpK8rNkKA==",
+				"signatures": [
+					{
+						"sig": "MEUCIHLebPIkwzfBHk9sPghUJRIOwDnk4O53q3HPkwsj+QRhAiEAilGfRJ2V0tu1D6jXEjtHF5ZbbN8ovwOGOdd3r0ZFuVY=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvoice-twilio@0.1.0",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
+				"unpackedSize": 33732
+			}
+		},
+		"0.1.1": {
+			"name": "@cloudflare/voice-twilio",
+			"version": "0.1.1",
+			"devDependencies": {
+				"agents": "0.24.0"
+			},
+			"peerDependencies": {
+				"agents": ">=0.23.0 <2.0.0"
+			},
+			"dist": {
+				"shasum": "e38846d458815b8ae7f60774f7459049affea03f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/voice-twilio/-/voice-twilio-0.1.1.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-Rb5fumvsWfTZn5ndtxHQPDu25hz26tiFdGG0UCnb1xHHS7RtlUivcCzmr/xEY7RYnprW21rwAqd4kSMIZh445g==",
 				"signatures": [
 					{
+						"sig": "MEQCIBEv6VXDgyqaOjy4uDM78T3umVbId+gldLdI+R2zOVUeAiBeWw/KjTJYVZoiJ2977RaOy2GQA4FXSUIE9+qqUbvI0w==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIHLebPIkwzfBHk9sPghUJRIOwDnk4O53q3HPkwsj+QRhAiEAilGfRJ2V0tu1D6jXEjtHF5ZbbN8ovwOGOdd3r0ZFuVY="
+						"sig": "MEQCIFMNnspm7PSF5dC5MWMe7kMsjDElOIEaqsNG3Qi0K24zAiBbMz2Rr6H3DrSnnx8EJhtA8eAKME6bx0jBeP5bS2qiQQ=="
 					}
-				]
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvoice-twilio@0.1.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 40135
 			}
 		}
 	}
