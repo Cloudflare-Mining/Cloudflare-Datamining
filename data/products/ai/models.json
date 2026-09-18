@@ -75,6 +75,19 @@
 			{
 				"property_id": "reasoning",
 				"value": "true"
+			},
+			{
+				"property_id": "reasoning_effort",
+				"value": {
+					"supported_efforts": [
+						"high",
+						"medium",
+						"low"
+					],
+					"default_effort": "medium",
+					"mandatory": true,
+					"default_enabled": true
+				}
 			}
 		]
 	},
@@ -2302,6 +2315,19 @@
 			{
 				"property_id": "reasoning",
 				"value": "true"
+			},
+			{
+				"property_id": "reasoning_effort",
+				"value": {
+					"supported_efforts": [
+						"high",
+						"medium",
+						"low"
+					],
+					"default_effort": "medium",
+					"mandatory": true,
+					"default_enabled": true
+				}
 			}
 		]
 	},
