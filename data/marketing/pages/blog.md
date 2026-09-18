@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+September 18, 2026 [<h2>Saving another 100TB of RAM with math (and Rust)</h2>](https://blog.cloudflare.com/saving-100-tb-of-ram-with-math/)
+
+Cloudflare's global network is immense but not limitless. As we look for small ways to trim our resource usage, we sometimes get lucky and we can cut significantly more. Here's how we reduced one of our Pingora-based service's RAM usage with statistics.
+
+![Kevin Guthrie](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VQ8K1T55ANDEX70V1EEQ.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Mariia Iurchenko](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2PGX99HXQ1AJD4D0GYQ6PZ7.01M2PGXACVX3VE6FGB02AYFXX5.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Zaidoon Abd Al Hadi](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VAC8T0NPDPFZ06GAZW3H.png&w=64&h=64&f=webp&fit=cover&position=center)![Ivan Babrou](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459B6P3WP5JXFP7X1NGXQY.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Kevin Guthrie](https://blog.cloudflare.com/author/kevin-guthrie/),  [Mariia Iurchenko](https://blog.cloudflare.com/author/mariia-iurchenko/),  [Zaidoon Abd Al Hadi](https://blog.cloudflare.com/author/zaidoon/), and  [Ivan Babrou](https://blog.cloudflare.com/author/ivan/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2PFYDRYA8R4X8XVQJYTED8Q.01M2PFYEWJNSK872MVT1JSCHA4.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/saving-100-tb-of-ram-with-math/)
+
 September 16, 2026 [<h2>When scanners miss the attack: how Cloudflare Client-Side Security protects storefronts</h2>](https://blog.cloudflare.com/client-side-security-finds-4-malicious-campaigns/)
 
 A modern storefront can look healthy while malicious JavaScript quietly siphons revenue, hijacks clicks, or rewrites analytics. See how Cloudflare's machine learning models surface evasive client-side attacks for analyst investigation.
@@ -17,8 +27,6 @@ A modern storefront can look healthy while malicious JavaScript quietly siphons 
 ![Juan Miguel Cejuela](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2NNGNXWKEB20VGBSJG0NW3S.01M2NNGPWD0KA2CVW0JDYVNXRG.png&w=64&h=64&f=webp&fit=cover&position=center)![Zhiyuan Zheng](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H03CGFSDPVGKTC145T2G.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Denzil Correa](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48B6V73R1DF1YQBSAN5YFJ.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Juan Miguel Cejuela](https://blog.cloudflare.com/author/juan-miguel-cejuela/),  [Zhiyuan Zheng](https://blog.cloudflare.com/author/xmflsct/), and  [Denzil Correa](https://blog.cloudflare.com/author/denzil-correa/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4WW7J8M4KCQSHWGS28X.01M2KND6MD5RWBZG4CTV12T33B.png&w=1999&h=1066&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/client-side-security-finds-4-malicious-campaigns/)
 
 September 15, 2026 [<h2>Have it both ways: stay discoverable in search while disallowing AI training</h2>](https://blog.cloudflare.com/accountable-mixed-use-ai-crawlers/)
 
@@ -155,14 +163,6 @@ Cloudflare Gateway identifies MCP requests using protocol-level heuristics. Secu
 ![AJ Gerstenhaber](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AC8ST716E4F0Q7NWHHKA.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Kenny Johnson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471W94YNK8KYMJEK8P7RHD.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [AJ Gerstenhaber](https://blog.cloudflare.com/author/aj/) and  [Kenny Johnson](https://blog.cloudflare.com/author/kenny/)
-
-August 14, 2026 [<h2>Secure all your internal vibe-coded applications — in one click</h2>](https://blog.cloudflare.com/workers-protected-by-access/)
-
-Introducing Cloudflare Access for Workers. Attach an Access policy directly to a Worker and it applies everywhere that Worker runs — routes, custom domains, workers.dev, and previews — automatically.
-
-![Chythra Malapati](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZW0HX4HHXGH027XF9NKB8X0.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Matt Rothenberg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZW0HWV9Q9VTDJZXEVZDWDCP.webp&w=64&h=64&f=webp&fit=cover&position=center)![Matt Provost](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZW0HZ5QA2K86ATYSMSAQXYC.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Chythra Malapati](https://blog.cloudflare.com/author/chythra-malapati/),  [Matt Rothenberg](https://blog.cloudflare.com/author/matt-rothenberg/), and  [Matt Provost](https://blog.cloudflare.com/author/matt-provost/)
 
 Load more
 
