@@ -467,7 +467,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "listRemediationJobs",
+		"x-fern-sdk-method-name": "list-remediation-jobs",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/remediations/jobs": {
@@ -1257,7 +1257,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "createRemediationJobs",
+		"x-fern-sdk-method-name": "create-remediation-jobs",
 		"x-forge-hidden": true
 	}
 }

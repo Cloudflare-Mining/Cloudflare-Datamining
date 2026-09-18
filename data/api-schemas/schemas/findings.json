@@ -1213,7 +1213,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "listFindings",
+		"x-fern-sdk-method-name": "list-findings",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/findings/{finding_id}": {
@@ -2316,7 +2316,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "getFinding",
+		"x-fern-sdk-method-name": "get-finding",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances": {
@@ -3030,7 +3030,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "listFindingInstances",
+		"x-fern-sdk-method-name": "list-finding-instances",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances/{instance_id}": {
@@ -3564,7 +3564,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "getFindingInstance",
+		"x-fern-sdk-method-name": "get-finding-instance",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances/archive": {
@@ -4113,7 +4113,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "archiveFindingInstance",
+		"x-fern-sdk-method-name": "archive-finding-instance",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances/unarchive": {
@@ -4662,7 +4662,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "unarchiveFindingInstance",
+		"x-fern-sdk-method-name": "unarchive-finding-instance",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/reset_finding_severity": {
@@ -5446,7 +5446,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "resetFindingSeverity",
+		"x-fern-sdk-method-name": "reset-finding-severity",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/tune_finding_severity": {
@@ -6256,7 +6256,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "changeFindingSeverity",
+		"x-fern-sdk-method-name": "change-finding-severity",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/ignore": {
@@ -6949,7 +6949,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "ignoreFinding",
+		"x-fern-sdk-method-name": "ignore-finding",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/unignore": {
@@ -7642,7 +7642,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "unIgnoreFinding",
+		"x-fern-sdk-method-name": "unignore-finding",
 		"x-forge-hidden": true
 	}
 }

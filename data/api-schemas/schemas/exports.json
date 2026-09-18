@@ -563,7 +563,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "getExportJob",
+		"x-fern-sdk-method-name": "get-export-job",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/content/export": {
@@ -1310,7 +1310,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "createFindingInstancesExportCSV",
+		"x-fern-sdk-method-name": "create-finding-instances-export-csv",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/export": {
@@ -1698,7 +1698,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "createFindingExportCSV",
+		"x-fern-sdk-method-name": "create-finding-export-csv",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/remediations/jobs/export": {
@@ -2031,7 +2031,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "createRemediationJobsExportCSV",
+		"x-fern-sdk-method-name": "create-remediation-jobs-export-csv",
 		"x-forge-hidden": true
 	}
 }

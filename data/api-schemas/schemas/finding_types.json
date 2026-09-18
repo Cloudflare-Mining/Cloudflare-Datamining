@@ -345,7 +345,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "listFindingTypes",
+		"x-fern-sdk-method-name": "list-finding-types",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/finding_types/{finding_type_id}": {
@@ -601,7 +601,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "getFindingType",
+		"x-fern-sdk-method-name": "get-finding-type",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/finding_types/{finding_type_id}/remediation_types": {
@@ -889,7 +889,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "getRemediationTypesForFindingType",
+		"x-fern-sdk-method-name": "get-remediation-types-for-finding-type",
 		"x-forge-hidden": true
 	}
 }
