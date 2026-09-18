@@ -1,0 +1,37 @@
+{
+	"name": "@cloudflare/aig-opencode-plugin",
+	"dist-tags": {
+		"latest": "2026.9.18"
+	},
+	"versions": {
+		"2026.9.18": {
+			"name": "@cloudflare/aig-opencode-plugin",
+			"version": "2026.9.18",
+			"dependencies": {
+				"@opencode-ai/plugin": "1.18.4",
+				"@opentui/core": "0.4.2",
+				"@opentui/solid": "0.4.2",
+				"solid-js": "1.9.15"
+			},
+			"devDependencies": {
+				"vitest": "4.1.10",
+				"@repo/eslint-config": "0.0.0",
+				"@repo/tools": "0.0.0",
+				"@repo/typescript-config": "0.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-OASx5kLlgB22fRSiLsndZB0QfscLiEzDvYfmVGIkMlAYwkak9miQEaPRhtAVEGx1jM5cayP24kOA16JrEcxTzA==",
+				"shasum": "69d863a3d1fc428971b746729633d70130c3cb9d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/aig-opencode-plugin/-/aig-opencode-plugin-2026.9.18.tgz",
+				"fileCount": 16,
+				"unpackedSize": 49017,
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQCLiHhE3bnntrZGZUp21dWEmeqM2rksgCi4Ckvy2PartQIhAJsm7JKhg/is4pSHSqsgIoi5MO1/gW4yk+EcXR/TPIlH"
+					}
+				]
+			}
+		}
+	}
+}

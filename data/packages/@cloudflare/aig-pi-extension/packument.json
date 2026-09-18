@@ -1,0 +1,37 @@
+{
+	"name": "@cloudflare/aig-pi-extension",
+	"dist-tags": {
+		"latest": "2026.9.18"
+	},
+	"versions": {
+		"2026.9.18": {
+			"name": "@cloudflare/aig-pi-extension",
+			"version": "2026.9.18",
+			"devDependencies": {
+				"@earendil-works/pi-ai": "0.84.4",
+				"@earendil-works/pi-coding-agent": "0.84.4",
+				"vitest": "4.1.10",
+				"@repo/tools": "0.0.0",
+				"@repo/eslint-config": "0.0.0",
+				"@repo/typescript-config": "0.0.0"
+			},
+			"peerDependencies": {
+				"@earendil-works/pi-ai": "0.84.4",
+				"@earendil-works/pi-coding-agent": "0.84.4"
+			},
+			"dist": {
+				"integrity": "sha512-0+L1Ch0Czgw89hxDuRHO/BGOA6lI0glWLyobm+YcoGthWhjjaZBuREy83kcWxSXgZj9JSj5gtPzqGVS0OtIlJw==",
+				"shasum": "de5197a7d0f17c70b9bcf497fcec1c2d6a7d15fd",
+				"tarball": "https://registry.npmjs.org/@cloudflare/aig-pi-extension/-/aig-pi-extension-2026.9.18.tgz",
+				"fileCount": 3,
+				"unpackedSize": 4264,
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIAZsytYUH7xzNp0lgY2Ogk7cT5rN4EV9HJ7CdSpD2fioAiEAl0j1xHMqw7VwDFXcl5fte6ZlKWIFGKwU357YOfB7Qug="
+					}
+				]
+			}
+		}
+	}
+}
