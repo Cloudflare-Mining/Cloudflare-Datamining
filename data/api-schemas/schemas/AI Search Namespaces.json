@@ -231,6 +231,7 @@
 											"created_at": {
 												"type": "string",
 												"format": "date-time",
+												"nullable": true,
 												"readOnly": true
 											},
 											"description": {
@@ -522,6 +523,7 @@
 										"created_at": {
 											"type": "string",
 											"format": "date-time",
+											"nullable": true,
 											"readOnly": true
 										},
 										"description": {
@@ -1119,6 +1121,7 @@
 										"created_at": {
 											"type": "string",
 											"format": "date-time",
+											"nullable": true,
 											"readOnly": true
 										},
 										"description": {
@@ -1593,6 +1596,7 @@
 										"created_at": {
 											"type": "string",
 											"format": "date-time",
+											"nullable": true,
 											"readOnly": true
 										},
 										"description": {
