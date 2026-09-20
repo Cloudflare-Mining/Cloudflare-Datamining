@@ -95,7 +95,7 @@
 		})
 	});
 </script>
-<div id="html-block-8xq4nc3cj" class="html-block">In memory this is represented as eight bytes, where four go to the hash (which is unavoidable), and four go to an index pointing to the server which is stored in another array. Zaidoon’s insight was that a 32-bit integer for that index is wasteful, because PBR is not likely to ever have to coordinate more than $m2^16 \approx 65\text{k} m$ servers at the same time, so a 16-bit integer will work. So we can replace the struct above with this one:</div>
+<div id="html-block-8xq4nc3cj" class="html-block">In memory this is represented as eight bytes, where four go to the hash (which is unavoidable), and four go to an index pointing to the server which is stored in another array. Zaidoon’s insight was that a 32-bit integer for that index is wasteful, because PBR is not likely to ever have to coordinate more than $m2^{16} \approx 65\text{k} m$ servers at the same time, so a 16-bit integer will work. So we can replace the struct above with this one:</div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-6f42c1-ffc799"> PointV2</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">    hash</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> u32</span><span class="sk-24292e-fff">,</span></span>
