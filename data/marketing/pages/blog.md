@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+September 21, 2026 [<h2>Python Workers are now generally available</h2>](https://blog.cloudflare.com/python-workers-ga/)
+
+Python Workers allow developers to run Python web frameworks and AI orchestration libraries natively in the Cloudflare Workers runtime. You can seamlessly integrate with Cloudflare's ecosystem including D1, R2, and Workers AI without writing any JavaScript glue code.
+
+![Gyeongjae Choi](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYT1GVVH6V865W8Z5B63CYZT.webp&w=64&h=64&f=webp&fit=cover&position=center)![Dominik Picheta](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P5G8RRA9GKFZA6BYERZ1.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Hood Chatham](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DGCR56ZBCN9NTBRE18MF.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Gyeongjae Choi](https://blog.cloudflare.com/author/gyeongjae-choi/),  [Dominik Picheta](https://blog.cloudflare.com/author/dominik/), and  [Hood Chatham](https://blog.cloudflare.com/author/hood/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2V34BA05P39V3QCVSXF412X.01M2V34C4FZEN00M4XFVXH4W2K.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/python-workers-ga/)
+
 September 18, 2026 [<h2>Saving another 100TB of RAM with math (and Rust)</h2>](https://blog.cloudflare.com/saving-100-tb-of-ram-with-math/)
 
 Cloudflare's global network is immense but not limitless. As we look for small ways to trim our resource usage, we sometimes get lucky and we can cut significantly more. Here's how we reduced one of our Pingora-based service's RAM usage with statistics.
@@ -18,15 +28,13 @@ Cloudflare's global network is immense but not limitless. As we look for small w
 
 [Kevin Guthrie](https://blog.cloudflare.com/author/kevin-guthrie/),  [Mariia Iurchenko](https://blog.cloudflare.com/author/mariia-iurchenko/),  [Zaidoon Abd Al Hadi](https://blog.cloudflare.com/author/zaidoon/), and  [Ivan Babrou](https://blog.cloudflare.com/author/ivan/)
 
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2PFYDRYA8R4X8XVQJYTED8Q.01M2PFYEWJNSK872MVT1JSCHA4.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/saving-100-tb-of-ram-with-math/)
-
 September 16, 2026 [<h2>When scanners miss the attack: how Cloudflare Client-Side Security protects storefronts</h2>](https://blog.cloudflare.com/client-side-security-finds-4-malicious-campaigns/)
 
 A modern storefront can look healthy while malicious JavaScript quietly siphons revenue, hijacks clicks, or rewrites analytics. See how Cloudflare's machine learning models surface evasive client-side attacks for analyst investigation.
 
-![Juan Miguel Cejuela](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2NNGNXWKEB20VGBSJG0NW3S.01M2NNGPWD0KA2CVW0JDYVNXRG.png&w=64&h=64&f=webp&fit=cover&position=center)![Zhiyuan Zheng](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H03CGFSDPVGKTC145T2G.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Denzil Correa](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48B6V73R1DF1YQBSAN5YFJ.png&w=64&h=64&f=webp&fit=cover&position=center)
+![Juan Miguel Cejuela (Juanmi)](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2NNGNXWKEB20VGBSJG0NW3S.01M2NNGPWD0KA2CVW0JDYVNXRG.png&w=64&h=64&f=webp&fit=cover&position=center)![Zhiyuan Zheng](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H03CGFSDPVGKTC145T2G.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Denzil Correa](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48B6V73R1DF1YQBSAN5YFJ.png&w=64&h=64&f=webp&fit=cover&position=center)
 
-[Juan Miguel Cejuela](https://blog.cloudflare.com/author/juan-miguel-cejuela/),  [Zhiyuan Zheng](https://blog.cloudflare.com/author/xmflsct/), and  [Denzil Correa](https://blog.cloudflare.com/author/denzil-correa/)
+[Juan Miguel Cejuela (Juanmi)](https://blog.cloudflare.com/author/juan-miguel-cejuela/),  [Zhiyuan Zheng](https://blog.cloudflare.com/author/xmflsct/), and  [Denzil Correa](https://blog.cloudflare.com/author/denzil-correa/)
 
 September 15, 2026 [<h2>Have it both ways: stay discoverable in search while disallowing AI training</h2>](https://blog.cloudflare.com/accountable-mixed-use-ai-crawlers/)
 
@@ -155,14 +163,6 @@ RFC 9234 lets routers reject route leaks on their own, using BGP Roles and the O
 ![Bryton Herdes](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYAJP648S3013NEXJ8RKZF1Y.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Iliana Xygkou](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYAGC1W8ZPJBM3V4CJ2523N8.png&w=64&h=64&f=webp&fit=cover&position=center)![Mingwei Zhang](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ER28A8EPWVBKJWBWZ58R.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Bryton Herdes](https://blog.cloudflare.com/author/bryton/),  [Iliana Xygkou](https://blog.cloudflare.com/author/iliana-xygkou/), and  [Mingwei Zhang](https://blog.cloudflare.com/author/mingwei/)
-
-August 14, 2026 [<h2>How Cloudflare detects MCP traffic and helps secure it</h2>](https://blog.cloudflare.com/mcp-security-updates/)
-
-Cloudflare Gateway identifies MCP requests using protocol-level heuristics. Security teams can use that signal to find shadow MCP traffic, enforce Portal-only access for approved servers, and block direct connections on managed network paths.
-
-![AJ Gerstenhaber](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AC8ST716E4F0Q7NWHHKA.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Kenny Johnson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471W94YNK8KYMJEK8P7RHD.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[AJ Gerstenhaber](https://blog.cloudflare.com/author/aj/) and  [Kenny Johnson](https://blog.cloudflare.com/author/kenny/)
 
 Load more
 
