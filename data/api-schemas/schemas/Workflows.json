@@ -1233,6 +1233,10 @@
 													"type": "object"
 												}
 											},
+											"script_deleted": {
+												"description": "Whether the bound Worker was deleted, leaving this Workflow inactive.",
+												"type": "boolean"
+											},
 											"script_name": {
 												"type": "string"
 											},
@@ -1504,6 +1508,10 @@
 												],
 												"type": "object"
 											}
+										},
+										"script_deleted": {
+											"description": "Whether the bound Worker was deleted, leaving this Workflow inactive.",
+											"type": "boolean"
 										},
 										"script_name": {
 											"type": "string"

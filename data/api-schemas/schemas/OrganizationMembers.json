@@ -24,7 +24,8 @@
 					"description": "Organization Member ID",
 					"type": "string",
 					"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
-					"pattern": "^[a-f0-9]{32}$"
+					"pattern": "^[a-f0-9]{32}$",
+					"x-auditable": true
 				}
 			}
 		],
@@ -247,7 +248,8 @@
 												"description": "Organization Member ID",
 												"type": "string",
 												"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
-												"pattern": "^[a-f0-9]{32}$"
+												"pattern": "^[a-f0-9]{32}$",
+												"x-auditable": true
 											},
 											"meta": {
 												"type": "object",
@@ -262,7 +264,8 @@
 													"pending",
 													"rejected",
 													"canceled"
-												]
+												],
+												"x-auditable": true
 											},
 											"update_time": {
 												"type": "string",
@@ -272,16 +275,20 @@
 												"type": "object",
 												"properties": {
 													"email": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"two_factor_authentication_enabled": {
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -435,7 +442,8 @@
 					"description": "Organization Member ID",
 					"type": "string",
 					"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
-					"pattern": "^[a-f0-9]{32}$"
+					"pattern": "^[a-f0-9]{32}$",
+					"x-auditable": true
 				}
 			}
 		],
@@ -483,7 +491,8 @@
 											"description": "Organization Member ID",
 											"type": "string",
 											"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
-											"pattern": "^[a-f0-9]{32}$"
+											"pattern": "^[a-f0-9]{32}$",
+											"x-auditable": true
 										},
 										"meta": {
 											"type": "object",
@@ -498,7 +507,8 @@
 												"pending",
 												"rejected",
 												"canceled"
-											]
+											],
+											"x-auditable": true
 										},
 										"update_time": {
 											"type": "string",
@@ -508,16 +518,20 @@
 											"type": "object",
 											"properties": {
 												"email": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"two_factor_authentication_enabled": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -664,13 +678,15 @@
 										"enum": [
 											"active",
 											"canceled"
-										]
+										],
+										"x-auditable": true
 									},
 									"user": {
 										"type": "object",
 										"properties": {
 											"email": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -734,7 +750,8 @@
 											"description": "Organization Member ID",
 											"type": "string",
 											"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
-											"pattern": "^[a-f0-9]{32}$"
+											"pattern": "^[a-f0-9]{32}$",
+											"x-auditable": true
 										},
 										"meta": {
 											"type": "object",
@@ -749,7 +766,8 @@
 												"pending",
 												"rejected",
 												"canceled"
-											]
+											],
+											"x-auditable": true
 										},
 										"update_time": {
 											"type": "string",
@@ -759,16 +777,20 @@
 											"type": "object",
 											"properties": {
 												"email": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"two_factor_authentication_enabled": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -917,13 +939,15 @@
 											"enum": [
 												"active",
 												"canceled"
-											]
+											],
+											"x-auditable": true
 										},
 										"user": {
 											"type": "object",
 											"properties": {
 												"email": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -991,7 +1015,8 @@
 												"description": "Organization Member ID",
 												"type": "string",
 												"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
-												"pattern": "^[a-f0-9]{32}$"
+												"pattern": "^[a-f0-9]{32}$",
+												"x-auditable": true
 											},
 											"meta": {
 												"type": "object",
@@ -1006,7 +1031,8 @@
 													"pending",
 													"rejected",
 													"canceled"
-												]
+												],
+												"x-auditable": true
 											},
 											"update_time": {
 												"type": "string",
@@ -1016,16 +1042,20 @@
 												"type": "object",
 												"properties": {
 													"email": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"two_factor_authentication_enabled": {
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													}
 												},
 												"required": [

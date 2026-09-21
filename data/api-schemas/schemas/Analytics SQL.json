@@ -319,6 +319,81 @@
 												"description": "Human-readable description of the dataset.",
 												"type": "string"
 											},
+											"kind": {
+												"description": "What kind of dataset this is. Determines aggregation rules and sampling behavior. Exactly one of `events`, `states`, or `logs` is present.\n",
+												"type": "object",
+												"properties": {
+													"events": {
+														"description": "Row-per-event analytics dataset. Aggregations describe the cumulative effect of those events.\n",
+														"type": "object",
+														"additionalProperties": false,
+														"properties": {
+															"sampling": {
+																"description": "Whether the dataset is sampled. `unsampled` means every row is recorded. `adaptive` means Adaptive Bit Rate (ABR) sampling is applied, and aggregates must be weighted accordingly.\n",
+																"type": "string",
+																"enum": [
+																	"unsampled",
+																	"adaptive"
+																]
+															}
+														},
+														"required": [
+															"sampling"
+														]
+													},
+													"logs": {
+														"description": "Row-per-log dataset intended for record retrieval.",
+														"type": "object",
+														"additionalProperties": false,
+														"properties": {
+															"sampling": {
+																"description": "Whether the dataset is sampled. `unsampled` means every row is recorded. `adaptive` means Adaptive Bit Rate (ABR) sampling is applied, and aggregates must be weighted accordingly.\n",
+																"type": "string",
+																"enum": [
+																	"unsampled",
+																	"adaptive"
+																]
+															}
+														},
+														"required": [
+															"sampling"
+														]
+													},
+													"states": {
+														"description": "Snapshot/state dataset. Only `valid_aggregations` are valid aggregations for this dataset.\n",
+														"type": "object",
+														"additionalProperties": false,
+														"properties": {
+															"sampling": {
+																"description": "Whether the dataset is sampled. `unsampled` means every row is recorded. `adaptive` means Adaptive Bit Rate (ABR) sampling is applied, and aggregates must be weighted accordingly.\n",
+																"type": "string",
+																"enum": [
+																	"unsampled",
+																	"adaptive"
+																]
+															},
+															"valid_aggregations": {
+																"description": "Which aggregation function names are allowed for this dataset.",
+																"type": "array",
+																"items": {
+																	"type": "string"
+																},
+																"example": [
+																	"count",
+																	"max"
+																]
+															}
+														},
+														"required": [
+															"sampling",
+															"valid_aggregations"
+														]
+													}
+												},
+												"additionalProperties": false,
+												"maxProperties": 1,
+												"minProperties": 1
+											},
 											"name": {
 												"description": "Dataset name used in SQL queries.",
 												"type": "string",
@@ -334,7 +409,8 @@
 										"required": [
 											"name",
 											"title",
-											"description"
+											"description",
+											"kind"
 										]
 									}
 								}

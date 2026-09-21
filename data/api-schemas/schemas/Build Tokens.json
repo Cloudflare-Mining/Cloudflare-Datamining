@@ -42,6 +42,7 @@
 								"errors": {
 									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer",
@@ -52,7 +53,9 @@
 												"example": "Not found"
 											}
 										},
-										"type": "object"
+										"required": [
+											"message"
+										]
 									}
 								},
 								"messages": {
@@ -126,6 +129,7 @@
 								"errors": {
 									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer",
@@ -138,8 +142,7 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
+										]
 									}
 								},
 								"messages": {
@@ -188,6 +191,7 @@
 								"errors": {
 									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer",
@@ -200,8 +204,7 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
+										]
 									}
 								},
 								"messages": {
@@ -300,6 +303,7 @@
 										"errors": {
 											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
 														"type": "integer",
@@ -310,7 +314,9 @@
 														"example": "Not found"
 													}
 												},
-												"type": "object"
+												"required": [
+													"message"
+												]
 											}
 										},
 										"messages": {
@@ -441,6 +447,7 @@
 								"errors": {
 									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer",
@@ -453,8 +460,7 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
+										]
 									}
 								},
 								"messages": {
@@ -561,6 +567,7 @@
 										"errors": {
 											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
 														"type": "integer",
@@ -571,7 +578,9 @@
 														"example": "Not found"
 													}
 												},
-												"type": "object"
+												"required": [
+													"message"
+												]
 											}
 										},
 										"messages": {
@@ -674,6 +683,7 @@
 								"errors": {
 									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer",
@@ -686,8 +696,7 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
+										]
 									}
 								},
 								"messages": {

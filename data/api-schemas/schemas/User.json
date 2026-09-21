@@ -534,7 +534,8 @@
 												"readOnly": true
 											},
 											"name": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"parent": {
 												"type": "object",
@@ -548,7 +549,8 @@
 													},
 													"name": {
 														"type": "string",
-														"readOnly": true
+														"readOnly": true,
+														"x-auditable": true
 													}
 												},
 												"required": [
