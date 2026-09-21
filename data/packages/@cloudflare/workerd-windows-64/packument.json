@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workerd-windows-64",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20260920.1"
+		"latest": "1.20260921.1"
 	},
 	"versions": {
 		"0.20230404.0": {
@@ -12062,12 +12062,42 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIFbf8qJUJIUS2fUpeiVyn72KM/9o+/AAKD5f1bDU+ZsfAiAbcIcRq3Hn938XT3lxRMSf+to2Rpbe1aAmiJFeuo4pHQ=="
+						"sig": "MEQCIFbf8qJUJIUS2fUpeiVyn72KM/9o+/AAKD5f1bDU+ZsfAiAbcIcRq3Hn938XT3lxRMSf+to2Rpbe1aAmiJFeuo4pHQ==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-windows-64@1.20260920.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 95258227
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20260921.1": {
+			"name": "@cloudflare/workerd-windows-64",
+			"version": "1.20260921.1",
+			"dist": {
+				"shasum": "56a09fb4527798a17472015da79ba3f9e33ad5d0",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-windows-64/-/workerd-windows-64-1.20260921.1.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-VgNcRPstoZMb1G94JTrx+jU24GtkkazNfox0gnF/2fkuXpcfW/M0e0xvdMovYfwt8ZxG5AB2ZNvanD6ufBwiuQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIG6HQYehzHXtKlPUxYMpvnBAbwUzfzOONmq5W2yesM6fAiBvaZrkuAw3hAoC3vjECccA8aMVmQvJmxEjFVC8Yxe8gQ==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQCXD/Kh8AQQCs5x9gqYN3Fc97dyVe48K00G8uP9048fOAIhAJw5T99mjhAQwRWpcjt22jKSfMxIVenDz9ojUHK93emm"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-windows-64@1.20260921.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
