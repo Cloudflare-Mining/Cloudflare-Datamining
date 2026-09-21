@@ -2671,6 +2671,471 @@
 															}
 														}
 													},
+													"previews_base_config": {
+														"description": "Template configuration used when creating new Previews for this Worker.",
+														"allOf": [
+															{
+																"type": "object",
+																"properties": {
+																	"cache_options": {
+																		"description": "Cache options used when creating new Previews.",
+																		"allOf": [
+																			{
+																				"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",
+																				"type": "object",
+																				"properties": {
+																					"cross_version_cache": {
+																						"description": "Whether cached responses are shared across Worker version\nuploads. This is independent of `enabled`. It can stay true\nwhile caching is off, so the preference survives turning\ncaching off and back on.\n",
+																						"type": "boolean",
+																						"example": true,
+																						"default": false,
+																						"x-auditable": true
+																					},
+																					"enabled": {
+																						"description": "Whether caching is enabled for this Worker.",
+																						"type": "boolean",
+																						"example": true,
+																						"default": false,
+																						"x-auditable": true
+																					}
+																				},
+																				"additionalProperties": false,
+																				"required": [
+																					"enabled"
+																				]
+																			}
+																		]
+																	},
+																	"env": {
+																		"description": "Bindings used when creating new Previews, keyed by binding name.",
+																		"allOf": [
+																			{
+																				"description": "Bindings attached to a Worker, keyed by binding name. `bindings`\ncarries the same information as an array of objects that each\nname themselves, and an upload can use one form or the other.\n",
+																				"type": "object",
+																				"example": {
+																					"MY_ENV_VAR": {
+																						"text": "my_data",
+																						"type": "plain_text"
+																					}
+																				},
+																				"additionalProperties": {
+																					"description": "A single entry in the `env` map. An entry holds the same payload\nas an entry of `bindings` without the `name` property, because\nthe map key supplies the name. See `binding_item` for the payload\nof each binding kind.\n",
+																					"type": "object",
+																					"properties": {
+																						"type": {
+																							"description": "The kind of resource that the binding provides.",
+																							"type": "string",
+																							"example": "plain_text",
+																							"x-auditable": true
+																						}
+																					},
+																					"additionalProperties": true,
+																					"required": [
+																						"type"
+																					]
+																				}
+																			}
+																		]
+																	},
+																	"limits": {
+																		"description": "Resource limits enforced at runtime for newly created Previews.",
+																		"allOf": [
+																			{
+																				"description": "Limits to apply for this Worker.",
+																				"type": "object",
+																				"properties": {
+																					"cpu_ms": {
+																						"description": "The amount of CPU time this Worker can use in milliseconds.",
+																						"type": "integer",
+																						"example": 50,
+																						"x-auditable": true
+																					},
+																					"subrequests": {
+																						"description": "The number of subrequests this Worker can make per request.",
+																						"type": "integer",
+																						"example": 1000,
+																						"x-auditable": true
+																					}
+																				}
+																			}
+																		],
+																		"x-stainless-terraform-configurability": "computed_optional"
+																	},
+																	"logpush": {
+																		"description": "Whether logpush is enabled when creating new Previews.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"observability": {
+																		"description": "Observability settings used when creating new Previews.",
+																		"allOf": [
+																			{
+																				"description": "Observability settings for the Worker.",
+																				"type": "object",
+																				"properties": {
+																					"enabled": {
+																						"description": "Whether observability is enabled for the Worker.",
+																						"type": "boolean",
+																						"default": false,
+																						"x-auditable": true
+																					},
+																					"head_sampling_rate": {
+																						"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																						"type": "number",
+																						"example": 1,
+																						"default": 1,
+																						"x-auditable": true
+																					},
+																					"issues": {
+																						"description": "Real-time Issues settings for the Worker.",
+																						"type": "object",
+																						"nullable": true,
+																						"properties": {
+																							"enabled": {
+																								"description": "Whether real-time Issues are enabled for the Worker.",
+																								"type": "boolean",
+																								"default": false,
+																								"x-auditable": true
+																							}
+																						}
+																					},
+																					"logs": {
+																						"description": "Log settings for the Worker.",
+																						"type": "object",
+																						"properties": {
+																							"destinations": {
+																								"description": "A list of destinations where logs will be exported to.",
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								},
+																								"default": [],
+																								"x-auditable": true
+																							},
+																							"enabled": {
+																								"description": "Whether logs are enabled for the Worker.",
+																								"type": "boolean",
+																								"default": false,
+																								"x-auditable": true
+																							},
+																							"head_sampling_rate": {
+																								"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																								"type": "number",
+																								"example": 1,
+																								"default": 1,
+																								"x-auditable": true
+																							},
+																							"invocation_logs": {
+																								"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																								"type": "boolean",
+																								"default": true,
+																								"x-auditable": true
+																							},
+																							"persist": {
+																								"description": "Whether log persistence is enabled for the Worker.",
+																								"type": "boolean",
+																								"default": true,
+																								"x-auditable": true
+																							}
+																						}
+																					},
+																					"redact_query_string": {
+																						"description": "Whether query strings are removed from request URLs in logs and traces.",
+																						"type": "boolean",
+																						"default": false,
+																						"x-auditable": true
+																					},
+																					"traces": {
+																						"description": "Trace settings for the Worker.",
+																						"type": "object",
+																						"properties": {
+																							"destinations": {
+																								"description": "A list of destinations where traces will be exported to.",
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								},
+																								"default": [],
+																								"x-auditable": true
+																							},
+																							"enabled": {
+																								"description": "Whether traces are enabled for the Worker.",
+																								"type": "boolean",
+																								"default": false,
+																								"x-auditable": true
+																							},
+																							"head_sampling_rate": {
+																								"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																								"type": "number",
+																								"example": 1,
+																								"default": 1,
+																								"x-auditable": true
+																							},
+																							"persist": {
+																								"description": "Whether trace persistence is enabled for the Worker.",
+																								"type": "boolean",
+																								"default": true,
+																								"x-auditable": true
+																							},
+																							"propagation_policy": {
+																								"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.",
+																								"type": "string",
+																								"enum": [
+																									"authenticated",
+																									"accept",
+																									null
+																								],
+																								"nullable": true,
+																								"x-auditable": true
+																							}
+																						}
+																					}
+																				}
+																			}
+																		]
+																	},
+																	"placement": {
+																		"description": "Placement configuration used when creating new Previews.",
+																		"allOf": [
+																			{
+																				"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
+																				"type": "object",
+																				"oneOf": [
+																					{
+																						"additionalProperties": false,
+																						"properties": {
+																							"mode": {
+																								"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																								"type": "string",
+																								"enum": [
+																									"smart"
+																								],
+																								"x-auditable": true
+																							}
+																						},
+																						"required": [
+																							"mode"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"additionalProperties": false,
+																						"properties": {
+																							"region": {
+																								"description": "Cloud region for targeted placement in format 'provider:region'.",
+																								"type": "string",
+																								"example": "aws:us-east-1",
+																								"x-auditable": true
+																							}
+																						},
+																						"required": [
+																							"region"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"additionalProperties": false,
+																						"properties": {
+																							"hostname": {
+																								"description": "HTTP hostname for targeted placement.",
+																								"type": "string",
+																								"example": "api.example.com",
+																								"x-auditable": true
+																							}
+																						},
+																						"required": [
+																							"hostname"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"additionalProperties": false,
+																						"properties": {
+																							"host": {
+																								"description": "TCP host and port for targeted placement.",
+																								"type": "string",
+																								"example": "db.example.com:5432",
+																								"x-auditable": true
+																							}
+																						},
+																						"required": [
+																							"host"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"additionalProperties": false,
+																						"properties": {
+																							"mode": {
+																								"description": "Targeted placement mode.",
+																								"type": "string",
+																								"enum": [
+																									"targeted"
+																								],
+																								"x-auditable": true
+																							},
+																							"region": {
+																								"description": "Cloud region for targeted placement in format 'provider:region'.",
+																								"type": "string",
+																								"example": "aws:us-east-1",
+																								"x-auditable": true
+																							}
+																						},
+																						"required": [
+																							"mode",
+																							"region"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"additionalProperties": false,
+																						"properties": {
+																							"hostname": {
+																								"description": "HTTP hostname for targeted placement.",
+																								"type": "string",
+																								"example": "api.example.com",
+																								"x-auditable": true
+																							},
+																							"mode": {
+																								"description": "Targeted placement mode.",
+																								"type": "string",
+																								"enum": [
+																									"targeted"
+																								],
+																								"x-auditable": true
+																							}
+																						},
+																						"required": [
+																							"mode",
+																							"hostname"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"additionalProperties": false,
+																						"properties": {
+																							"host": {
+																								"description": "TCP host and port for targeted placement.",
+																								"type": "string",
+																								"example": "db.example.com:5432",
+																								"x-auditable": true
+																							},
+																							"mode": {
+																								"description": "Targeted placement mode.",
+																								"type": "string",
+																								"enum": [
+																									"targeted"
+																								],
+																								"x-auditable": true
+																							}
+																						},
+																						"required": [
+																							"mode",
+																							"host"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"additionalProperties": false,
+																						"properties": {
+																							"mode": {
+																								"description": "Targeted placement mode.",
+																								"type": "string",
+																								"enum": [
+																									"targeted"
+																								],
+																								"x-auditable": true
+																							},
+																							"target": {
+																								"description": "Array of placement targets (currently limited to single target).",
+																								"type": "array",
+																								"items": {
+																									"description": "A target to run your Worker near.",
+																									"type": "object",
+																									"oneOf": [
+																										{
+																											"additionalProperties": false,
+																											"properties": {
+																												"region": {
+																													"description": "Cloud region in format 'provider:region'.",
+																													"type": "string",
+																													"example": "aws:us-east-1"
+																												}
+																											},
+																											"required": [
+																												"region"
+																											],
+																											"type": "object"
+																										},
+																										{
+																											"additionalProperties": false,
+																											"properties": {
+																												"hostname": {
+																													"description": "HTTP hostname for targeted placement.",
+																													"type": "string",
+																													"example": "api.example.com"
+																												}
+																											},
+																											"required": [
+																												"hostname"
+																											],
+																											"type": "object"
+																										},
+																										{
+																											"additionalProperties": false,
+																											"properties": {
+																												"host": {
+																													"description": "TCP host:port for targeted placement.",
+																													"type": "string",
+																													"example": "db.example.com:5432"
+																												}
+																											},
+																											"required": [
+																												"host"
+																											],
+																											"type": "object"
+																										}
+																									]
+																								},
+																								"maxItems": 1,
+																								"minItems": 1,
+																								"x-auditable": true
+																							}
+																						},
+																						"required": [
+																							"mode",
+																							"target"
+																						],
+																						"type": "object"
+																					}
+																				]
+																			}
+																		]
+																	},
+																	"tail_consumers": {
+																		"description": "Other Workers that should consume logs from newly created Previews.",
+																		"type": "array",
+																		"items": {
+																			"properties": {
+																				"name": {
+																					"description": "Name of the consumer Worker.",
+																					"type": "string",
+																					"example": "my-tail-consumer",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"name"
+																			],
+																			"type": "object"
+																		},
+																		"x-stainless-collection-type": "set"
+																	}
+																}
+															}
+														],
+														"x-auditable": true
+													},
 													"references": {
 														"description": "Other resources that reference the Worker and depend on it existing.",
 														"type": "object",
@@ -3542,6 +4007,471 @@
 															}
 														}
 													}
+												},
+												"previews_base_config": {
+													"description": "Template configuration used when creating new Previews for this Worker.",
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"cache_options": {
+																	"description": "Cache options used when creating new Previews.",
+																	"allOf": [
+																		{
+																			"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",
+																			"type": "object",
+																			"properties": {
+																				"cross_version_cache": {
+																					"description": "Whether cached responses are shared across Worker version\nuploads. This is independent of `enabled`. It can stay true\nwhile caching is off, so the preference survives turning\ncaching off and back on.\n",
+																					"type": "boolean",
+																					"example": true,
+																					"default": false,
+																					"x-auditable": true
+																				},
+																				"enabled": {
+																					"description": "Whether caching is enabled for this Worker.",
+																					"type": "boolean",
+																					"example": true,
+																					"default": false,
+																					"x-auditable": true
+																				}
+																			},
+																			"additionalProperties": false,
+																			"required": [
+																				"enabled"
+																			]
+																		}
+																	]
+																},
+																"env": {
+																	"description": "Bindings used when creating new Previews, keyed by binding name.",
+																	"allOf": [
+																		{
+																			"description": "Bindings attached to a Worker, keyed by binding name. `bindings`\ncarries the same information as an array of objects that each\nname themselves, and an upload can use one form or the other.\n",
+																			"type": "object",
+																			"example": {
+																				"MY_ENV_VAR": {
+																					"text": "my_data",
+																					"type": "plain_text"
+																				}
+																			},
+																			"additionalProperties": {
+																				"description": "A single entry in the `env` map. An entry holds the same payload\nas an entry of `bindings` without the `name` property, because\nthe map key supplies the name. See `binding_item` for the payload\nof each binding kind.\n",
+																				"type": "object",
+																				"properties": {
+																					"type": {
+																						"description": "The kind of resource that the binding provides.",
+																						"type": "string",
+																						"example": "plain_text",
+																						"x-auditable": true
+																					}
+																				},
+																				"additionalProperties": true,
+																				"required": [
+																					"type"
+																				]
+																			}
+																		}
+																	]
+																},
+																"limits": {
+																	"description": "Resource limits enforced at runtime for newly created Previews.",
+																	"allOf": [
+																		{
+																			"description": "Limits to apply for this Worker.",
+																			"type": "object",
+																			"properties": {
+																				"cpu_ms": {
+																					"description": "The amount of CPU time this Worker can use in milliseconds.",
+																					"type": "integer",
+																					"example": 50,
+																					"x-auditable": true
+																				},
+																				"subrequests": {
+																					"description": "The number of subrequests this Worker can make per request.",
+																					"type": "integer",
+																					"example": 1000,
+																					"x-auditable": true
+																				}
+																			}
+																		}
+																	],
+																	"x-stainless-terraform-configurability": "computed_optional"
+																},
+																"logpush": {
+																	"description": "Whether logpush is enabled when creating new Previews.",
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"observability": {
+																	"description": "Observability settings used when creating new Previews.",
+																	"allOf": [
+																		{
+																			"description": "Observability settings for the Worker.",
+																			"type": "object",
+																			"properties": {
+																				"enabled": {
+																					"description": "Whether observability is enabled for the Worker.",
+																					"type": "boolean",
+																					"default": false,
+																					"x-auditable": true
+																				},
+																				"head_sampling_rate": {
+																					"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																					"type": "number",
+																					"example": 1,
+																					"default": 1,
+																					"x-auditable": true
+																				},
+																				"issues": {
+																					"description": "Real-time Issues settings for the Worker.",
+																					"type": "object",
+																					"nullable": true,
+																					"properties": {
+																						"enabled": {
+																							"description": "Whether real-time Issues are enabled for the Worker.",
+																							"type": "boolean",
+																							"default": false,
+																							"x-auditable": true
+																						}
+																					}
+																				},
+																				"logs": {
+																					"description": "Log settings for the Worker.",
+																					"type": "object",
+																					"properties": {
+																						"destinations": {
+																							"description": "A list of destinations where logs will be exported to.",
+																							"type": "array",
+																							"items": {
+																								"type": "string"
+																							},
+																							"default": [],
+																							"x-auditable": true
+																						},
+																						"enabled": {
+																							"description": "Whether logs are enabled for the Worker.",
+																							"type": "boolean",
+																							"default": false,
+																							"x-auditable": true
+																						},
+																						"head_sampling_rate": {
+																							"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																							"type": "number",
+																							"example": 1,
+																							"default": 1,
+																							"x-auditable": true
+																						},
+																						"invocation_logs": {
+																							"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																							"type": "boolean",
+																							"default": true,
+																							"x-auditable": true
+																						},
+																						"persist": {
+																							"description": "Whether log persistence is enabled for the Worker.",
+																							"type": "boolean",
+																							"default": true,
+																							"x-auditable": true
+																						}
+																					}
+																				},
+																				"redact_query_string": {
+																					"description": "Whether query strings are removed from request URLs in logs and traces.",
+																					"type": "boolean",
+																					"default": false,
+																					"x-auditable": true
+																				},
+																				"traces": {
+																					"description": "Trace settings for the Worker.",
+																					"type": "object",
+																					"properties": {
+																						"destinations": {
+																							"description": "A list of destinations where traces will be exported to.",
+																							"type": "array",
+																							"items": {
+																								"type": "string"
+																							},
+																							"default": [],
+																							"x-auditable": true
+																						},
+																						"enabled": {
+																							"description": "Whether traces are enabled for the Worker.",
+																							"type": "boolean",
+																							"default": false,
+																							"x-auditable": true
+																						},
+																						"head_sampling_rate": {
+																							"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																							"type": "number",
+																							"example": 1,
+																							"default": 1,
+																							"x-auditable": true
+																						},
+																						"persist": {
+																							"description": "Whether trace persistence is enabled for the Worker.",
+																							"type": "boolean",
+																							"default": true,
+																							"x-auditable": true
+																						},
+																						"propagation_policy": {
+																							"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.",
+																							"type": "string",
+																							"enum": [
+																								"authenticated",
+																								"accept",
+																								null
+																							],
+																							"nullable": true,
+																							"x-auditable": true
+																						}
+																					}
+																				}
+																			}
+																		}
+																	]
+																},
+																"placement": {
+																	"description": "Placement configuration used when creating new Previews.",
+																	"allOf": [
+																		{
+																			"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
+																			"type": "object",
+																			"oneOf": [
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"mode": {
+																							"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																							"type": "string",
+																							"enum": [
+																								"smart"
+																							],
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"region": {
+																							"description": "Cloud region for targeted placement in format 'provider:region'.",
+																							"type": "string",
+																							"example": "aws:us-east-1",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"region"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"hostname": {
+																							"description": "HTTP hostname for targeted placement.",
+																							"type": "string",
+																							"example": "api.example.com",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"hostname"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"host": {
+																							"description": "TCP host and port for targeted placement.",
+																							"type": "string",
+																							"example": "db.example.com:5432",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"host"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"mode": {
+																							"description": "Targeted placement mode.",
+																							"type": "string",
+																							"enum": [
+																								"targeted"
+																							],
+																							"x-auditable": true
+																						},
+																						"region": {
+																							"description": "Cloud region for targeted placement in format 'provider:region'.",
+																							"type": "string",
+																							"example": "aws:us-east-1",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode",
+																						"region"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"hostname": {
+																							"description": "HTTP hostname for targeted placement.",
+																							"type": "string",
+																							"example": "api.example.com",
+																							"x-auditable": true
+																						},
+																						"mode": {
+																							"description": "Targeted placement mode.",
+																							"type": "string",
+																							"enum": [
+																								"targeted"
+																							],
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode",
+																						"hostname"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"host": {
+																							"description": "TCP host and port for targeted placement.",
+																							"type": "string",
+																							"example": "db.example.com:5432",
+																							"x-auditable": true
+																						},
+																						"mode": {
+																							"description": "Targeted placement mode.",
+																							"type": "string",
+																							"enum": [
+																								"targeted"
+																							],
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode",
+																						"host"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"mode": {
+																							"description": "Targeted placement mode.",
+																							"type": "string",
+																							"enum": [
+																								"targeted"
+																							],
+																							"x-auditable": true
+																						},
+																						"target": {
+																							"description": "Array of placement targets (currently limited to single target).",
+																							"type": "array",
+																							"items": {
+																								"description": "A target to run your Worker near.",
+																								"type": "object",
+																								"oneOf": [
+																									{
+																										"additionalProperties": false,
+																										"properties": {
+																											"region": {
+																												"description": "Cloud region in format 'provider:region'.",
+																												"type": "string",
+																												"example": "aws:us-east-1"
+																											}
+																										},
+																										"required": [
+																											"region"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"additionalProperties": false,
+																										"properties": {
+																											"hostname": {
+																												"description": "HTTP hostname for targeted placement.",
+																												"type": "string",
+																												"example": "api.example.com"
+																											}
+																										},
+																										"required": [
+																											"hostname"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"additionalProperties": false,
+																										"properties": {
+																											"host": {
+																												"description": "TCP host:port for targeted placement.",
+																												"type": "string",
+																												"example": "db.example.com:5432"
+																											}
+																										},
+																										"required": [
+																											"host"
+																										],
+																										"type": "object"
+																									}
+																								]
+																							},
+																							"maxItems": 1,
+																							"minItems": 1,
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode",
+																						"target"
+																					],
+																					"type": "object"
+																				}
+																			]
+																		}
+																	]
+																},
+																"tail_consumers": {
+																	"description": "Other Workers that should consume logs from newly created Previews.",
+																	"type": "array",
+																	"items": {
+																		"properties": {
+																			"name": {
+																				"description": "Name of the consumer Worker.",
+																				"type": "string",
+																				"example": "my-tail-consumer",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name"
+																		],
+																		"type": "object"
+																	},
+																	"x-stainless-collection-type": "set"
+																}
+															}
+														}
+													],
+													"x-auditable": true
 												},
 												"references": {
 													"description": "Other resources that reference the Worker and depend on it existing.",
@@ -5072,6 +6002,471 @@
 											}
 										}
 									},
+									"previews_base_config": {
+										"description": "Template configuration used when creating new Previews for this Worker.",
+										"allOf": [
+											{
+												"type": "object",
+												"properties": {
+													"cache_options": {
+														"description": "Cache options used when creating new Previews.",
+														"allOf": [
+															{
+																"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",
+																"type": "object",
+																"properties": {
+																	"cross_version_cache": {
+																		"description": "Whether cached responses are shared across Worker version\nuploads. This is independent of `enabled`. It can stay true\nwhile caching is off, so the preference survives turning\ncaching off and back on.\n",
+																		"type": "boolean",
+																		"example": true,
+																		"default": false,
+																		"x-auditable": true
+																	},
+																	"enabled": {
+																		"description": "Whether caching is enabled for this Worker.",
+																		"type": "boolean",
+																		"example": true,
+																		"default": false,
+																		"x-auditable": true
+																	}
+																},
+																"additionalProperties": false,
+																"required": [
+																	"enabled"
+																]
+															}
+														]
+													},
+													"env": {
+														"description": "Bindings used when creating new Previews, keyed by binding name.",
+														"allOf": [
+															{
+																"description": "Bindings attached to a Worker, keyed by binding name. `bindings`\ncarries the same information as an array of objects that each\nname themselves, and an upload can use one form or the other.\n",
+																"type": "object",
+																"example": {
+																	"MY_ENV_VAR": {
+																		"text": "my_data",
+																		"type": "plain_text"
+																	}
+																},
+																"additionalProperties": {
+																	"description": "A single entry in the `env` map. An entry holds the same payload\nas an entry of `bindings` without the `name` property, because\nthe map key supplies the name. See `binding_item` for the payload\nof each binding kind.\n",
+																	"type": "object",
+																	"properties": {
+																		"type": {
+																			"description": "The kind of resource that the binding provides.",
+																			"type": "string",
+																			"example": "plain_text",
+																			"x-auditable": true
+																		}
+																	},
+																	"additionalProperties": true,
+																	"required": [
+																		"type"
+																	]
+																}
+															}
+														]
+													},
+													"limits": {
+														"description": "Resource limits enforced at runtime for newly created Previews.",
+														"allOf": [
+															{
+																"description": "Limits to apply for this Worker.",
+																"type": "object",
+																"properties": {
+																	"cpu_ms": {
+																		"description": "The amount of CPU time this Worker can use in milliseconds.",
+																		"type": "integer",
+																		"example": 50,
+																		"x-auditable": true
+																	},
+																	"subrequests": {
+																		"description": "The number of subrequests this Worker can make per request.",
+																		"type": "integer",
+																		"example": 1000,
+																		"x-auditable": true
+																	}
+																}
+															}
+														],
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"logpush": {
+														"description": "Whether logpush is enabled when creating new Previews.",
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"observability": {
+														"description": "Observability settings used when creating new Previews.",
+														"allOf": [
+															{
+																"description": "Observability settings for the Worker.",
+																"type": "object",
+																"properties": {
+																	"enabled": {
+																		"description": "Whether observability is enabled for the Worker.",
+																		"type": "boolean",
+																		"default": false,
+																		"x-auditable": true
+																	},
+																	"head_sampling_rate": {
+																		"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																		"type": "number",
+																		"example": 1,
+																		"default": 1,
+																		"x-auditable": true
+																	},
+																	"issues": {
+																		"description": "Real-time Issues settings for the Worker.",
+																		"type": "object",
+																		"nullable": true,
+																		"properties": {
+																			"enabled": {
+																				"description": "Whether real-time Issues are enabled for the Worker.",
+																				"type": "boolean",
+																				"default": false,
+																				"x-auditable": true
+																			}
+																		}
+																	},
+																	"logs": {
+																		"description": "Log settings for the Worker.",
+																		"type": "object",
+																		"properties": {
+																			"destinations": {
+																				"description": "A list of destinations where logs will be exported to.",
+																				"type": "array",
+																				"items": {
+																					"type": "string"
+																				},
+																				"default": [],
+																				"x-auditable": true
+																			},
+																			"enabled": {
+																				"description": "Whether logs are enabled for the Worker.",
+																				"type": "boolean",
+																				"default": false,
+																				"x-auditable": true
+																			},
+																			"head_sampling_rate": {
+																				"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																				"type": "number",
+																				"example": 1,
+																				"default": 1,
+																				"x-auditable": true
+																			},
+																			"invocation_logs": {
+																				"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																				"type": "boolean",
+																				"default": true,
+																				"x-auditable": true
+																			},
+																			"persist": {
+																				"description": "Whether log persistence is enabled for the Worker.",
+																				"type": "boolean",
+																				"default": true,
+																				"x-auditable": true
+																			}
+																		}
+																	},
+																	"redact_query_string": {
+																		"description": "Whether query strings are removed from request URLs in logs and traces.",
+																		"type": "boolean",
+																		"default": false,
+																		"x-auditable": true
+																	},
+																	"traces": {
+																		"description": "Trace settings for the Worker.",
+																		"type": "object",
+																		"properties": {
+																			"destinations": {
+																				"description": "A list of destinations where traces will be exported to.",
+																				"type": "array",
+																				"items": {
+																					"type": "string"
+																				},
+																				"default": [],
+																				"x-auditable": true
+																			},
+																			"enabled": {
+																				"description": "Whether traces are enabled for the Worker.",
+																				"type": "boolean",
+																				"default": false,
+																				"x-auditable": true
+																			},
+																			"head_sampling_rate": {
+																				"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																				"type": "number",
+																				"example": 1,
+																				"default": 1,
+																				"x-auditable": true
+																			},
+																			"persist": {
+																				"description": "Whether trace persistence is enabled for the Worker.",
+																				"type": "boolean",
+																				"default": true,
+																				"x-auditable": true
+																			},
+																			"propagation_policy": {
+																				"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.",
+																				"type": "string",
+																				"enum": [
+																					"authenticated",
+																					"accept",
+																					null
+																				],
+																				"nullable": true,
+																				"x-auditable": true
+																			}
+																		}
+																	}
+																}
+															}
+														]
+													},
+													"placement": {
+														"description": "Placement configuration used when creating new Previews.",
+														"allOf": [
+															{
+																"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
+																"type": "object",
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																				"type": "string",
+																				"enum": [
+																					"smart"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"mode"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"region": {
+																				"description": "Cloud region for targeted placement in format 'provider:region'.",
+																				"type": "string",
+																				"example": "aws:us-east-1",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"region"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"hostname": {
+																				"description": "HTTP hostname for targeted placement.",
+																				"type": "string",
+																				"example": "api.example.com",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"hostname"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"host": {
+																				"description": "TCP host and port for targeted placement.",
+																				"type": "string",
+																				"example": "db.example.com:5432",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"host"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"description": "Targeted placement mode.",
+																				"type": "string",
+																				"enum": [
+																					"targeted"
+																				],
+																				"x-auditable": true
+																			},
+																			"region": {
+																				"description": "Cloud region for targeted placement in format 'provider:region'.",
+																				"type": "string",
+																				"example": "aws:us-east-1",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"region"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"hostname": {
+																				"description": "HTTP hostname for targeted placement.",
+																				"type": "string",
+																				"example": "api.example.com",
+																				"x-auditable": true
+																			},
+																			"mode": {
+																				"description": "Targeted placement mode.",
+																				"type": "string",
+																				"enum": [
+																					"targeted"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"hostname"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"host": {
+																				"description": "TCP host and port for targeted placement.",
+																				"type": "string",
+																				"example": "db.example.com:5432",
+																				"x-auditable": true
+																			},
+																			"mode": {
+																				"description": "Targeted placement mode.",
+																				"type": "string",
+																				"enum": [
+																					"targeted"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"host"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"description": "Targeted placement mode.",
+																				"type": "string",
+																				"enum": [
+																					"targeted"
+																				],
+																				"x-auditable": true
+																			},
+																			"target": {
+																				"description": "Array of placement targets (currently limited to single target).",
+																				"type": "array",
+																				"items": {
+																					"description": "A target to run your Worker near.",
+																					"type": "object",
+																					"oneOf": [
+																						{
+																							"additionalProperties": false,
+																							"properties": {
+																								"region": {
+																									"description": "Cloud region in format 'provider:region'.",
+																									"type": "string",
+																									"example": "aws:us-east-1"
+																								}
+																							},
+																							"required": [
+																								"region"
+																							],
+																							"type": "object"
+																						},
+																						{
+																							"additionalProperties": false,
+																							"properties": {
+																								"hostname": {
+																									"description": "HTTP hostname for targeted placement.",
+																									"type": "string",
+																									"example": "api.example.com"
+																								}
+																							},
+																							"required": [
+																								"hostname"
+																							],
+																							"type": "object"
+																						},
+																						{
+																							"additionalProperties": false,
+																							"properties": {
+																								"host": {
+																									"description": "TCP host:port for targeted placement.",
+																									"type": "string",
+																									"example": "db.example.com:5432"
+																								}
+																							},
+																							"required": [
+																								"host"
+																							],
+																							"type": "object"
+																						}
+																					]
+																				},
+																				"maxItems": 1,
+																				"minItems": 1,
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"target"
+																		],
+																		"type": "object"
+																	}
+																]
+															}
+														]
+													},
+													"tail_consumers": {
+														"description": "Other Workers that should consume logs from newly created Previews.",
+														"type": "array",
+														"items": {
+															"properties": {
+																"name": {
+																	"description": "Name of the consumer Worker.",
+																	"type": "string",
+																	"example": "my-tail-consumer",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name"
+															],
+															"type": "object"
+														},
+														"x-stainless-collection-type": "set"
+													}
+												}
+											}
+										],
+										"x-auditable": true
+									},
 									"references": {
 										"description": "Other resources that reference the Worker and depend on it existing.",
 										"type": "object",
@@ -5504,6 +6899,471 @@
 												}
 											}
 										}
+									},
+									"previews_base_config": {
+										"description": "Template configuration used when creating new Previews for this Worker.",
+										"allOf": [
+											{
+												"type": "object",
+												"properties": {
+													"cache_options": {
+														"description": "Cache options used when creating new Previews.",
+														"allOf": [
+															{
+																"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",
+																"type": "object",
+																"properties": {
+																	"cross_version_cache": {
+																		"description": "Whether cached responses are shared across Worker version\nuploads. This is independent of `enabled`. It can stay true\nwhile caching is off, so the preference survives turning\ncaching off and back on.\n",
+																		"type": "boolean",
+																		"example": true,
+																		"default": false,
+																		"x-auditable": true
+																	},
+																	"enabled": {
+																		"description": "Whether caching is enabled for this Worker.",
+																		"type": "boolean",
+																		"example": true,
+																		"default": false,
+																		"x-auditable": true
+																	}
+																},
+																"additionalProperties": false,
+																"required": [
+																	"enabled"
+																]
+															}
+														]
+													},
+													"env": {
+														"description": "Bindings used when creating new Previews, keyed by binding name.",
+														"allOf": [
+															{
+																"description": "Bindings attached to a Worker, keyed by binding name. `bindings`\ncarries the same information as an array of objects that each\nname themselves, and an upload can use one form or the other.\n",
+																"type": "object",
+																"example": {
+																	"MY_ENV_VAR": {
+																		"text": "my_data",
+																		"type": "plain_text"
+																	}
+																},
+																"additionalProperties": {
+																	"description": "A single entry in the `env` map. An entry holds the same payload\nas an entry of `bindings` without the `name` property, because\nthe map key supplies the name. See `binding_item` for the payload\nof each binding kind.\n",
+																	"type": "object",
+																	"properties": {
+																		"type": {
+																			"description": "The kind of resource that the binding provides.",
+																			"type": "string",
+																			"example": "plain_text",
+																			"x-auditable": true
+																		}
+																	},
+																	"additionalProperties": true,
+																	"required": [
+																		"type"
+																	]
+																}
+															}
+														]
+													},
+													"limits": {
+														"description": "Resource limits enforced at runtime for newly created Previews.",
+														"allOf": [
+															{
+																"description": "Limits to apply for this Worker.",
+																"type": "object",
+																"properties": {
+																	"cpu_ms": {
+																		"description": "The amount of CPU time this Worker can use in milliseconds.",
+																		"type": "integer",
+																		"example": 50,
+																		"x-auditable": true
+																	},
+																	"subrequests": {
+																		"description": "The number of subrequests this Worker can make per request.",
+																		"type": "integer",
+																		"example": 1000,
+																		"x-auditable": true
+																	}
+																}
+															}
+														],
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"logpush": {
+														"description": "Whether logpush is enabled when creating new Previews.",
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"observability": {
+														"description": "Observability settings used when creating new Previews.",
+														"allOf": [
+															{
+																"description": "Observability settings for the Worker.",
+																"type": "object",
+																"properties": {
+																	"enabled": {
+																		"description": "Whether observability is enabled for the Worker.",
+																		"type": "boolean",
+																		"default": false,
+																		"x-auditable": true
+																	},
+																	"head_sampling_rate": {
+																		"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																		"type": "number",
+																		"example": 1,
+																		"default": 1,
+																		"x-auditable": true
+																	},
+																	"issues": {
+																		"description": "Real-time Issues settings for the Worker.",
+																		"type": "object",
+																		"nullable": true,
+																		"properties": {
+																			"enabled": {
+																				"description": "Whether real-time Issues are enabled for the Worker.",
+																				"type": "boolean",
+																				"default": false,
+																				"x-auditable": true
+																			}
+																		}
+																	},
+																	"logs": {
+																		"description": "Log settings for the Worker.",
+																		"type": "object",
+																		"properties": {
+																			"destinations": {
+																				"description": "A list of destinations where logs will be exported to.",
+																				"type": "array",
+																				"items": {
+																					"type": "string"
+																				},
+																				"default": [],
+																				"x-auditable": true
+																			},
+																			"enabled": {
+																				"description": "Whether logs are enabled for the Worker.",
+																				"type": "boolean",
+																				"default": false,
+																				"x-auditable": true
+																			},
+																			"head_sampling_rate": {
+																				"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																				"type": "number",
+																				"example": 1,
+																				"default": 1,
+																				"x-auditable": true
+																			},
+																			"invocation_logs": {
+																				"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																				"type": "boolean",
+																				"default": true,
+																				"x-auditable": true
+																			},
+																			"persist": {
+																				"description": "Whether log persistence is enabled for the Worker.",
+																				"type": "boolean",
+																				"default": true,
+																				"x-auditable": true
+																			}
+																		}
+																	},
+																	"redact_query_string": {
+																		"description": "Whether query strings are removed from request URLs in logs and traces.",
+																		"type": "boolean",
+																		"default": false,
+																		"x-auditable": true
+																	},
+																	"traces": {
+																		"description": "Trace settings for the Worker.",
+																		"type": "object",
+																		"properties": {
+																			"destinations": {
+																				"description": "A list of destinations where traces will be exported to.",
+																				"type": "array",
+																				"items": {
+																					"type": "string"
+																				},
+																				"default": [],
+																				"x-auditable": true
+																			},
+																			"enabled": {
+																				"description": "Whether traces are enabled for the Worker.",
+																				"type": "boolean",
+																				"default": false,
+																				"x-auditable": true
+																			},
+																			"head_sampling_rate": {
+																				"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																				"type": "number",
+																				"example": 1,
+																				"default": 1,
+																				"x-auditable": true
+																			},
+																			"persist": {
+																				"description": "Whether trace persistence is enabled for the Worker.",
+																				"type": "boolean",
+																				"default": true,
+																				"x-auditable": true
+																			},
+																			"propagation_policy": {
+																				"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.",
+																				"type": "string",
+																				"enum": [
+																					"authenticated",
+																					"accept",
+																					null
+																				],
+																				"nullable": true,
+																				"x-auditable": true
+																			}
+																		}
+																	}
+																}
+															}
+														]
+													},
+													"placement": {
+														"description": "Placement configuration used when creating new Previews.",
+														"allOf": [
+															{
+																"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
+																"type": "object",
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																				"type": "string",
+																				"enum": [
+																					"smart"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"mode"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"region": {
+																				"description": "Cloud region for targeted placement in format 'provider:region'.",
+																				"type": "string",
+																				"example": "aws:us-east-1",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"region"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"hostname": {
+																				"description": "HTTP hostname for targeted placement.",
+																				"type": "string",
+																				"example": "api.example.com",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"hostname"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"host": {
+																				"description": "TCP host and port for targeted placement.",
+																				"type": "string",
+																				"example": "db.example.com:5432",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"host"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"description": "Targeted placement mode.",
+																				"type": "string",
+																				"enum": [
+																					"targeted"
+																				],
+																				"x-auditable": true
+																			},
+																			"region": {
+																				"description": "Cloud region for targeted placement in format 'provider:region'.",
+																				"type": "string",
+																				"example": "aws:us-east-1",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"region"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"hostname": {
+																				"description": "HTTP hostname for targeted placement.",
+																				"type": "string",
+																				"example": "api.example.com",
+																				"x-auditable": true
+																			},
+																			"mode": {
+																				"description": "Targeted placement mode.",
+																				"type": "string",
+																				"enum": [
+																					"targeted"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"hostname"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"host": {
+																				"description": "TCP host and port for targeted placement.",
+																				"type": "string",
+																				"example": "db.example.com:5432",
+																				"x-auditable": true
+																			},
+																			"mode": {
+																				"description": "Targeted placement mode.",
+																				"type": "string",
+																				"enum": [
+																					"targeted"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"host"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"description": "Targeted placement mode.",
+																				"type": "string",
+																				"enum": [
+																					"targeted"
+																				],
+																				"x-auditable": true
+																			},
+																			"target": {
+																				"description": "Array of placement targets (currently limited to single target).",
+																				"type": "array",
+																				"items": {
+																					"description": "A target to run your Worker near.",
+																					"type": "object",
+																					"oneOf": [
+																						{
+																							"additionalProperties": false,
+																							"properties": {
+																								"region": {
+																									"description": "Cloud region in format 'provider:region'.",
+																									"type": "string",
+																									"example": "aws:us-east-1"
+																								}
+																							},
+																							"required": [
+																								"region"
+																							],
+																							"type": "object"
+																						},
+																						{
+																							"additionalProperties": false,
+																							"properties": {
+																								"hostname": {
+																									"description": "HTTP hostname for targeted placement.",
+																									"type": "string",
+																									"example": "api.example.com"
+																								}
+																							},
+																							"required": [
+																								"hostname"
+																							],
+																							"type": "object"
+																						},
+																						{
+																							"additionalProperties": false,
+																							"properties": {
+																								"host": {
+																									"description": "TCP host:port for targeted placement.",
+																									"type": "string",
+																									"example": "db.example.com:5432"
+																								}
+																							},
+																							"required": [
+																								"host"
+																							],
+																							"type": "object"
+																						}
+																					]
+																				},
+																				"maxItems": 1,
+																				"minItems": 1,
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"target"
+																		],
+																		"type": "object"
+																	}
+																]
+															}
+														]
+													},
+													"tail_consumers": {
+														"description": "Other Workers that should consume logs from newly created Previews.",
+														"type": "array",
+														"items": {
+															"properties": {
+																"name": {
+																	"description": "Name of the consumer Worker.",
+																	"type": "string",
+																	"example": "my-tail-consumer",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name"
+															],
+															"type": "object"
+														},
+														"x-stainless-collection-type": "set"
+													}
+												}
+											}
+										],
+										"x-auditable": true
 									},
 									"references": {
 										"description": "Other resources that reference the Worker and depend on it existing.",
@@ -6027,6 +7887,471 @@
 															}
 														}
 													}
+												},
+												"previews_base_config": {
+													"description": "Template configuration used when creating new Previews for this Worker.",
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"cache_options": {
+																	"description": "Cache options used when creating new Previews.",
+																	"allOf": [
+																		{
+																			"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",
+																			"type": "object",
+																			"properties": {
+																				"cross_version_cache": {
+																					"description": "Whether cached responses are shared across Worker version\nuploads. This is independent of `enabled`. It can stay true\nwhile caching is off, so the preference survives turning\ncaching off and back on.\n",
+																					"type": "boolean",
+																					"example": true,
+																					"default": false,
+																					"x-auditable": true
+																				},
+																				"enabled": {
+																					"description": "Whether caching is enabled for this Worker.",
+																					"type": "boolean",
+																					"example": true,
+																					"default": false,
+																					"x-auditable": true
+																				}
+																			},
+																			"additionalProperties": false,
+																			"required": [
+																				"enabled"
+																			]
+																		}
+																	]
+																},
+																"env": {
+																	"description": "Bindings used when creating new Previews, keyed by binding name.",
+																	"allOf": [
+																		{
+																			"description": "Bindings attached to a Worker, keyed by binding name. `bindings`\ncarries the same information as an array of objects that each\nname themselves, and an upload can use one form or the other.\n",
+																			"type": "object",
+																			"example": {
+																				"MY_ENV_VAR": {
+																					"text": "my_data",
+																					"type": "plain_text"
+																				}
+																			},
+																			"additionalProperties": {
+																				"description": "A single entry in the `env` map. An entry holds the same payload\nas an entry of `bindings` without the `name` property, because\nthe map key supplies the name. See `binding_item` for the payload\nof each binding kind.\n",
+																				"type": "object",
+																				"properties": {
+																					"type": {
+																						"description": "The kind of resource that the binding provides.",
+																						"type": "string",
+																						"example": "plain_text",
+																						"x-auditable": true
+																					}
+																				},
+																				"additionalProperties": true,
+																				"required": [
+																					"type"
+																				]
+																			}
+																		}
+																	]
+																},
+																"limits": {
+																	"description": "Resource limits enforced at runtime for newly created Previews.",
+																	"allOf": [
+																		{
+																			"description": "Limits to apply for this Worker.",
+																			"type": "object",
+																			"properties": {
+																				"cpu_ms": {
+																					"description": "The amount of CPU time this Worker can use in milliseconds.",
+																					"type": "integer",
+																					"example": 50,
+																					"x-auditable": true
+																				},
+																				"subrequests": {
+																					"description": "The number of subrequests this Worker can make per request.",
+																					"type": "integer",
+																					"example": 1000,
+																					"x-auditable": true
+																				}
+																			}
+																		}
+																	],
+																	"x-stainless-terraform-configurability": "computed_optional"
+																},
+																"logpush": {
+																	"description": "Whether logpush is enabled when creating new Previews.",
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"observability": {
+																	"description": "Observability settings used when creating new Previews.",
+																	"allOf": [
+																		{
+																			"description": "Observability settings for the Worker.",
+																			"type": "object",
+																			"properties": {
+																				"enabled": {
+																					"description": "Whether observability is enabled for the Worker.",
+																					"type": "boolean",
+																					"default": false,
+																					"x-auditable": true
+																				},
+																				"head_sampling_rate": {
+																					"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																					"type": "number",
+																					"example": 1,
+																					"default": 1,
+																					"x-auditable": true
+																				},
+																				"issues": {
+																					"description": "Real-time Issues settings for the Worker.",
+																					"type": "object",
+																					"nullable": true,
+																					"properties": {
+																						"enabled": {
+																							"description": "Whether real-time Issues are enabled for the Worker.",
+																							"type": "boolean",
+																							"default": false,
+																							"x-auditable": true
+																						}
+																					}
+																				},
+																				"logs": {
+																					"description": "Log settings for the Worker.",
+																					"type": "object",
+																					"properties": {
+																						"destinations": {
+																							"description": "A list of destinations where logs will be exported to.",
+																							"type": "array",
+																							"items": {
+																								"type": "string"
+																							},
+																							"default": [],
+																							"x-auditable": true
+																						},
+																						"enabled": {
+																							"description": "Whether logs are enabled for the Worker.",
+																							"type": "boolean",
+																							"default": false,
+																							"x-auditable": true
+																						},
+																						"head_sampling_rate": {
+																							"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																							"type": "number",
+																							"example": 1,
+																							"default": 1,
+																							"x-auditable": true
+																						},
+																						"invocation_logs": {
+																							"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																							"type": "boolean",
+																							"default": true,
+																							"x-auditable": true
+																						},
+																						"persist": {
+																							"description": "Whether log persistence is enabled for the Worker.",
+																							"type": "boolean",
+																							"default": true,
+																							"x-auditable": true
+																						}
+																					}
+																				},
+																				"redact_query_string": {
+																					"description": "Whether query strings are removed from request URLs in logs and traces.",
+																					"type": "boolean",
+																					"default": false,
+																					"x-auditable": true
+																				},
+																				"traces": {
+																					"description": "Trace settings for the Worker.",
+																					"type": "object",
+																					"properties": {
+																						"destinations": {
+																							"description": "A list of destinations where traces will be exported to.",
+																							"type": "array",
+																							"items": {
+																								"type": "string"
+																							},
+																							"default": [],
+																							"x-auditable": true
+																						},
+																						"enabled": {
+																							"description": "Whether traces are enabled for the Worker.",
+																							"type": "boolean",
+																							"default": false,
+																							"x-auditable": true
+																						},
+																						"head_sampling_rate": {
+																							"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																							"type": "number",
+																							"example": 1,
+																							"default": 1,
+																							"x-auditable": true
+																						},
+																						"persist": {
+																							"description": "Whether trace persistence is enabled for the Worker.",
+																							"type": "boolean",
+																							"default": true,
+																							"x-auditable": true
+																						},
+																						"propagation_policy": {
+																							"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.",
+																							"type": "string",
+																							"enum": [
+																								"authenticated",
+																								"accept",
+																								null
+																							],
+																							"nullable": true,
+																							"x-auditable": true
+																						}
+																					}
+																				}
+																			}
+																		}
+																	]
+																},
+																"placement": {
+																	"description": "Placement configuration used when creating new Previews.",
+																	"allOf": [
+																		{
+																			"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
+																			"type": "object",
+																			"oneOf": [
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"mode": {
+																							"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																							"type": "string",
+																							"enum": [
+																								"smart"
+																							],
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"region": {
+																							"description": "Cloud region for targeted placement in format 'provider:region'.",
+																							"type": "string",
+																							"example": "aws:us-east-1",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"region"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"hostname": {
+																							"description": "HTTP hostname for targeted placement.",
+																							"type": "string",
+																							"example": "api.example.com",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"hostname"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"host": {
+																							"description": "TCP host and port for targeted placement.",
+																							"type": "string",
+																							"example": "db.example.com:5432",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"host"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"mode": {
+																							"description": "Targeted placement mode.",
+																							"type": "string",
+																							"enum": [
+																								"targeted"
+																							],
+																							"x-auditable": true
+																						},
+																						"region": {
+																							"description": "Cloud region for targeted placement in format 'provider:region'.",
+																							"type": "string",
+																							"example": "aws:us-east-1",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode",
+																						"region"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"hostname": {
+																							"description": "HTTP hostname for targeted placement.",
+																							"type": "string",
+																							"example": "api.example.com",
+																							"x-auditable": true
+																						},
+																						"mode": {
+																							"description": "Targeted placement mode.",
+																							"type": "string",
+																							"enum": [
+																								"targeted"
+																							],
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode",
+																						"hostname"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"host": {
+																							"description": "TCP host and port for targeted placement.",
+																							"type": "string",
+																							"example": "db.example.com:5432",
+																							"x-auditable": true
+																						},
+																						"mode": {
+																							"description": "Targeted placement mode.",
+																							"type": "string",
+																							"enum": [
+																								"targeted"
+																							],
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode",
+																						"host"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"mode": {
+																							"description": "Targeted placement mode.",
+																							"type": "string",
+																							"enum": [
+																								"targeted"
+																							],
+																							"x-auditable": true
+																						},
+																						"target": {
+																							"description": "Array of placement targets (currently limited to single target).",
+																							"type": "array",
+																							"items": {
+																								"description": "A target to run your Worker near.",
+																								"type": "object",
+																								"oneOf": [
+																									{
+																										"additionalProperties": false,
+																										"properties": {
+																											"region": {
+																												"description": "Cloud region in format 'provider:region'.",
+																												"type": "string",
+																												"example": "aws:us-east-1"
+																											}
+																										},
+																										"required": [
+																											"region"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"additionalProperties": false,
+																										"properties": {
+																											"hostname": {
+																												"description": "HTTP hostname for targeted placement.",
+																												"type": "string",
+																												"example": "api.example.com"
+																											}
+																										},
+																										"required": [
+																											"hostname"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"additionalProperties": false,
+																										"properties": {
+																											"host": {
+																												"description": "TCP host:port for targeted placement.",
+																												"type": "string",
+																												"example": "db.example.com:5432"
+																											}
+																										},
+																										"required": [
+																											"host"
+																										],
+																										"type": "object"
+																									}
+																								]
+																							},
+																							"maxItems": 1,
+																							"minItems": 1,
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode",
+																						"target"
+																					],
+																					"type": "object"
+																				}
+																			]
+																		}
+																	]
+																},
+																"tail_consumers": {
+																	"description": "Other Workers that should consume logs from newly created Previews.",
+																	"type": "array",
+																	"items": {
+																		"properties": {
+																			"name": {
+																				"description": "Name of the consumer Worker.",
+																				"type": "string",
+																				"example": "my-tail-consumer",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name"
+																		],
+																		"type": "object"
+																	},
+																	"x-stainless-collection-type": "set"
+																}
+															}
+														}
+													],
+													"x-auditable": true
 												},
 												"references": {
 													"description": "Other resources that reference the Worker and depend on it existing.",
@@ -8387,6 +10712,471 @@
 											}
 										}
 									},
+									"previews_base_config": {
+										"description": "Template configuration used when creating new Previews for this Worker.",
+										"allOf": [
+											{
+												"type": "object",
+												"properties": {
+													"cache_options": {
+														"description": "Cache options used when creating new Previews.",
+														"allOf": [
+															{
+																"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",
+																"type": "object",
+																"properties": {
+																	"cross_version_cache": {
+																		"description": "Whether cached responses are shared across Worker version\nuploads. This is independent of `enabled`. It can stay true\nwhile caching is off, so the preference survives turning\ncaching off and back on.\n",
+																		"type": "boolean",
+																		"example": true,
+																		"default": false,
+																		"x-auditable": true
+																	},
+																	"enabled": {
+																		"description": "Whether caching is enabled for this Worker.",
+																		"type": "boolean",
+																		"example": true,
+																		"default": false,
+																		"x-auditable": true
+																	}
+																},
+																"additionalProperties": false,
+																"required": [
+																	"enabled"
+																]
+															}
+														]
+													},
+													"env": {
+														"description": "Bindings used when creating new Previews, keyed by binding name.",
+														"allOf": [
+															{
+																"description": "Bindings attached to a Worker, keyed by binding name. `bindings`\ncarries the same information as an array of objects that each\nname themselves, and an upload can use one form or the other.\n",
+																"type": "object",
+																"example": {
+																	"MY_ENV_VAR": {
+																		"text": "my_data",
+																		"type": "plain_text"
+																	}
+																},
+																"additionalProperties": {
+																	"description": "A single entry in the `env` map. An entry holds the same payload\nas an entry of `bindings` without the `name` property, because\nthe map key supplies the name. See `binding_item` for the payload\nof each binding kind.\n",
+																	"type": "object",
+																	"properties": {
+																		"type": {
+																			"description": "The kind of resource that the binding provides.",
+																			"type": "string",
+																			"example": "plain_text",
+																			"x-auditable": true
+																		}
+																	},
+																	"additionalProperties": true,
+																	"required": [
+																		"type"
+																	]
+																}
+															}
+														]
+													},
+													"limits": {
+														"description": "Resource limits enforced at runtime for newly created Previews.",
+														"allOf": [
+															{
+																"description": "Limits to apply for this Worker.",
+																"type": "object",
+																"properties": {
+																	"cpu_ms": {
+																		"description": "The amount of CPU time this Worker can use in milliseconds.",
+																		"type": "integer",
+																		"example": 50,
+																		"x-auditable": true
+																	},
+																	"subrequests": {
+																		"description": "The number of subrequests this Worker can make per request.",
+																		"type": "integer",
+																		"example": 1000,
+																		"x-auditable": true
+																	}
+																}
+															}
+														],
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"logpush": {
+														"description": "Whether logpush is enabled when creating new Previews.",
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"observability": {
+														"description": "Observability settings used when creating new Previews.",
+														"allOf": [
+															{
+																"description": "Observability settings for the Worker.",
+																"type": "object",
+																"properties": {
+																	"enabled": {
+																		"description": "Whether observability is enabled for the Worker.",
+																		"type": "boolean",
+																		"default": false,
+																		"x-auditable": true
+																	},
+																	"head_sampling_rate": {
+																		"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																		"type": "number",
+																		"example": 1,
+																		"default": 1,
+																		"x-auditable": true
+																	},
+																	"issues": {
+																		"description": "Real-time Issues settings for the Worker.",
+																		"type": "object",
+																		"nullable": true,
+																		"properties": {
+																			"enabled": {
+																				"description": "Whether real-time Issues are enabled for the Worker.",
+																				"type": "boolean",
+																				"default": false,
+																				"x-auditable": true
+																			}
+																		}
+																	},
+																	"logs": {
+																		"description": "Log settings for the Worker.",
+																		"type": "object",
+																		"properties": {
+																			"destinations": {
+																				"description": "A list of destinations where logs will be exported to.",
+																				"type": "array",
+																				"items": {
+																					"type": "string"
+																				},
+																				"default": [],
+																				"x-auditable": true
+																			},
+																			"enabled": {
+																				"description": "Whether logs are enabled for the Worker.",
+																				"type": "boolean",
+																				"default": false,
+																				"x-auditable": true
+																			},
+																			"head_sampling_rate": {
+																				"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																				"type": "number",
+																				"example": 1,
+																				"default": 1,
+																				"x-auditable": true
+																			},
+																			"invocation_logs": {
+																				"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																				"type": "boolean",
+																				"default": true,
+																				"x-auditable": true
+																			},
+																			"persist": {
+																				"description": "Whether log persistence is enabled for the Worker.",
+																				"type": "boolean",
+																				"default": true,
+																				"x-auditable": true
+																			}
+																		}
+																	},
+																	"redact_query_string": {
+																		"description": "Whether query strings are removed from request URLs in logs and traces.",
+																		"type": "boolean",
+																		"default": false,
+																		"x-auditable": true
+																	},
+																	"traces": {
+																		"description": "Trace settings for the Worker.",
+																		"type": "object",
+																		"properties": {
+																			"destinations": {
+																				"description": "A list of destinations where traces will be exported to.",
+																				"type": "array",
+																				"items": {
+																					"type": "string"
+																				},
+																				"default": [],
+																				"x-auditable": true
+																			},
+																			"enabled": {
+																				"description": "Whether traces are enabled for the Worker.",
+																				"type": "boolean",
+																				"default": false,
+																				"x-auditable": true
+																			},
+																			"head_sampling_rate": {
+																				"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																				"type": "number",
+																				"example": 1,
+																				"default": 1,
+																				"x-auditable": true
+																			},
+																			"persist": {
+																				"description": "Whether trace persistence is enabled for the Worker.",
+																				"type": "boolean",
+																				"default": true,
+																				"x-auditable": true
+																			},
+																			"propagation_policy": {
+																				"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.",
+																				"type": "string",
+																				"enum": [
+																					"authenticated",
+																					"accept",
+																					null
+																				],
+																				"nullable": true,
+																				"x-auditable": true
+																			}
+																		}
+																	}
+																}
+															}
+														]
+													},
+													"placement": {
+														"description": "Placement configuration used when creating new Previews.",
+														"allOf": [
+															{
+																"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
+																"type": "object",
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																				"type": "string",
+																				"enum": [
+																					"smart"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"mode"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"region": {
+																				"description": "Cloud region for targeted placement in format 'provider:region'.",
+																				"type": "string",
+																				"example": "aws:us-east-1",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"region"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"hostname": {
+																				"description": "HTTP hostname for targeted placement.",
+																				"type": "string",
+																				"example": "api.example.com",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"hostname"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"host": {
+																				"description": "TCP host and port for targeted placement.",
+																				"type": "string",
+																				"example": "db.example.com:5432",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"host"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"description": "Targeted placement mode.",
+																				"type": "string",
+																				"enum": [
+																					"targeted"
+																				],
+																				"x-auditable": true
+																			},
+																			"region": {
+																				"description": "Cloud region for targeted placement in format 'provider:region'.",
+																				"type": "string",
+																				"example": "aws:us-east-1",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"region"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"hostname": {
+																				"description": "HTTP hostname for targeted placement.",
+																				"type": "string",
+																				"example": "api.example.com",
+																				"x-auditable": true
+																			},
+																			"mode": {
+																				"description": "Targeted placement mode.",
+																				"type": "string",
+																				"enum": [
+																					"targeted"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"hostname"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"host": {
+																				"description": "TCP host and port for targeted placement.",
+																				"type": "string",
+																				"example": "db.example.com:5432",
+																				"x-auditable": true
+																			},
+																			"mode": {
+																				"description": "Targeted placement mode.",
+																				"type": "string",
+																				"enum": [
+																					"targeted"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"host"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"description": "Targeted placement mode.",
+																				"type": "string",
+																				"enum": [
+																					"targeted"
+																				],
+																				"x-auditable": true
+																			},
+																			"target": {
+																				"description": "Array of placement targets (currently limited to single target).",
+																				"type": "array",
+																				"items": {
+																					"description": "A target to run your Worker near.",
+																					"type": "object",
+																					"oneOf": [
+																						{
+																							"additionalProperties": false,
+																							"properties": {
+																								"region": {
+																									"description": "Cloud region in format 'provider:region'.",
+																									"type": "string",
+																									"example": "aws:us-east-1"
+																								}
+																							},
+																							"required": [
+																								"region"
+																							],
+																							"type": "object"
+																						},
+																						{
+																							"additionalProperties": false,
+																							"properties": {
+																								"hostname": {
+																									"description": "HTTP hostname for targeted placement.",
+																									"type": "string",
+																									"example": "api.example.com"
+																								}
+																							},
+																							"required": [
+																								"hostname"
+																							],
+																							"type": "object"
+																						},
+																						{
+																							"additionalProperties": false,
+																							"properties": {
+																								"host": {
+																									"description": "TCP host:port for targeted placement.",
+																									"type": "string",
+																									"example": "db.example.com:5432"
+																								}
+																							},
+																							"required": [
+																								"host"
+																							],
+																							"type": "object"
+																						}
+																					]
+																				},
+																				"maxItems": 1,
+																				"minItems": 1,
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"target"
+																		],
+																		"type": "object"
+																	}
+																]
+															}
+														]
+													},
+													"tail_consumers": {
+														"description": "Other Workers that should consume logs from newly created Previews.",
+														"type": "array",
+														"items": {
+															"properties": {
+																"name": {
+																	"description": "Name of the consumer Worker.",
+																	"type": "string",
+																	"example": "my-tail-consumer",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name"
+															],
+															"type": "object"
+														},
+														"x-stainless-collection-type": "set"
+													}
+												}
+											}
+										],
+										"x-auditable": true
+									},
 									"references": {
 										"description": "Other resources that reference the Worker and depend on it existing.",
 										"type": "object",
@@ -8912,6 +11702,471 @@
 															}
 														}
 													}
+												},
+												"previews_base_config": {
+													"description": "Template configuration used when creating new Previews for this Worker.",
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"cache_options": {
+																	"description": "Cache options used when creating new Previews.",
+																	"allOf": [
+																		{
+																			"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",
+																			"type": "object",
+																			"properties": {
+																				"cross_version_cache": {
+																					"description": "Whether cached responses are shared across Worker version\nuploads. This is independent of `enabled`. It can stay true\nwhile caching is off, so the preference survives turning\ncaching off and back on.\n",
+																					"type": "boolean",
+																					"example": true,
+																					"default": false,
+																					"x-auditable": true
+																				},
+																				"enabled": {
+																					"description": "Whether caching is enabled for this Worker.",
+																					"type": "boolean",
+																					"example": true,
+																					"default": false,
+																					"x-auditable": true
+																				}
+																			},
+																			"additionalProperties": false,
+																			"required": [
+																				"enabled"
+																			]
+																		}
+																	]
+																},
+																"env": {
+																	"description": "Bindings used when creating new Previews, keyed by binding name.",
+																	"allOf": [
+																		{
+																			"description": "Bindings attached to a Worker, keyed by binding name. `bindings`\ncarries the same information as an array of objects that each\nname themselves, and an upload can use one form or the other.\n",
+																			"type": "object",
+																			"example": {
+																				"MY_ENV_VAR": {
+																					"text": "my_data",
+																					"type": "plain_text"
+																				}
+																			},
+																			"additionalProperties": {
+																				"description": "A single entry in the `env` map. An entry holds the same payload\nas an entry of `bindings` without the `name` property, because\nthe map key supplies the name. See `binding_item` for the payload\nof each binding kind.\n",
+																				"type": "object",
+																				"properties": {
+																					"type": {
+																						"description": "The kind of resource that the binding provides.",
+																						"type": "string",
+																						"example": "plain_text",
+																						"x-auditable": true
+																					}
+																				},
+																				"additionalProperties": true,
+																				"required": [
+																					"type"
+																				]
+																			}
+																		}
+																	]
+																},
+																"limits": {
+																	"description": "Resource limits enforced at runtime for newly created Previews.",
+																	"allOf": [
+																		{
+																			"description": "Limits to apply for this Worker.",
+																			"type": "object",
+																			"properties": {
+																				"cpu_ms": {
+																					"description": "The amount of CPU time this Worker can use in milliseconds.",
+																					"type": "integer",
+																					"example": 50,
+																					"x-auditable": true
+																				},
+																				"subrequests": {
+																					"description": "The number of subrequests this Worker can make per request.",
+																					"type": "integer",
+																					"example": 1000,
+																					"x-auditable": true
+																				}
+																			}
+																		}
+																	],
+																	"x-stainless-terraform-configurability": "computed_optional"
+																},
+																"logpush": {
+																	"description": "Whether logpush is enabled when creating new Previews.",
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"observability": {
+																	"description": "Observability settings used when creating new Previews.",
+																	"allOf": [
+																		{
+																			"description": "Observability settings for the Worker.",
+																			"type": "object",
+																			"properties": {
+																				"enabled": {
+																					"description": "Whether observability is enabled for the Worker.",
+																					"type": "boolean",
+																					"default": false,
+																					"x-auditable": true
+																				},
+																				"head_sampling_rate": {
+																					"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																					"type": "number",
+																					"example": 1,
+																					"default": 1,
+																					"x-auditable": true
+																				},
+																				"issues": {
+																					"description": "Real-time Issues settings for the Worker.",
+																					"type": "object",
+																					"nullable": true,
+																					"properties": {
+																						"enabled": {
+																							"description": "Whether real-time Issues are enabled for the Worker.",
+																							"type": "boolean",
+																							"default": false,
+																							"x-auditable": true
+																						}
+																					}
+																				},
+																				"logs": {
+																					"description": "Log settings for the Worker.",
+																					"type": "object",
+																					"properties": {
+																						"destinations": {
+																							"description": "A list of destinations where logs will be exported to.",
+																							"type": "array",
+																							"items": {
+																								"type": "string"
+																							},
+																							"default": [],
+																							"x-auditable": true
+																						},
+																						"enabled": {
+																							"description": "Whether logs are enabled for the Worker.",
+																							"type": "boolean",
+																							"default": false,
+																							"x-auditable": true
+																						},
+																						"head_sampling_rate": {
+																							"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																							"type": "number",
+																							"example": 1,
+																							"default": 1,
+																							"x-auditable": true
+																						},
+																						"invocation_logs": {
+																							"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																							"type": "boolean",
+																							"default": true,
+																							"x-auditable": true
+																						},
+																						"persist": {
+																							"description": "Whether log persistence is enabled for the Worker.",
+																							"type": "boolean",
+																							"default": true,
+																							"x-auditable": true
+																						}
+																					}
+																				},
+																				"redact_query_string": {
+																					"description": "Whether query strings are removed from request URLs in logs and traces.",
+																					"type": "boolean",
+																					"default": false,
+																					"x-auditable": true
+																				},
+																				"traces": {
+																					"description": "Trace settings for the Worker.",
+																					"type": "object",
+																					"properties": {
+																						"destinations": {
+																							"description": "A list of destinations where traces will be exported to.",
+																							"type": "array",
+																							"items": {
+																								"type": "string"
+																							},
+																							"default": [],
+																							"x-auditable": true
+																						},
+																						"enabled": {
+																							"description": "Whether traces are enabled for the Worker.",
+																							"type": "boolean",
+																							"default": false,
+																							"x-auditable": true
+																						},
+																						"head_sampling_rate": {
+																							"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																							"type": "number",
+																							"example": 1,
+																							"default": 1,
+																							"x-auditable": true
+																						},
+																						"persist": {
+																							"description": "Whether trace persistence is enabled for the Worker.",
+																							"type": "boolean",
+																							"default": true,
+																							"x-auditable": true
+																						},
+																						"propagation_policy": {
+																							"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.",
+																							"type": "string",
+																							"enum": [
+																								"authenticated",
+																								"accept",
+																								null
+																							],
+																							"nullable": true,
+																							"x-auditable": true
+																						}
+																					}
+																				}
+																			}
+																		}
+																	]
+																},
+																"placement": {
+																	"description": "Placement configuration used when creating new Previews.",
+																	"allOf": [
+																		{
+																			"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
+																			"type": "object",
+																			"oneOf": [
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"mode": {
+																							"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																							"type": "string",
+																							"enum": [
+																								"smart"
+																							],
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"region": {
+																							"description": "Cloud region for targeted placement in format 'provider:region'.",
+																							"type": "string",
+																							"example": "aws:us-east-1",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"region"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"hostname": {
+																							"description": "HTTP hostname for targeted placement.",
+																							"type": "string",
+																							"example": "api.example.com",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"hostname"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"host": {
+																							"description": "TCP host and port for targeted placement.",
+																							"type": "string",
+																							"example": "db.example.com:5432",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"host"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"mode": {
+																							"description": "Targeted placement mode.",
+																							"type": "string",
+																							"enum": [
+																								"targeted"
+																							],
+																							"x-auditable": true
+																						},
+																						"region": {
+																							"description": "Cloud region for targeted placement in format 'provider:region'.",
+																							"type": "string",
+																							"example": "aws:us-east-1",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode",
+																						"region"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"hostname": {
+																							"description": "HTTP hostname for targeted placement.",
+																							"type": "string",
+																							"example": "api.example.com",
+																							"x-auditable": true
+																						},
+																						"mode": {
+																							"description": "Targeted placement mode.",
+																							"type": "string",
+																							"enum": [
+																								"targeted"
+																							],
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode",
+																						"hostname"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"host": {
+																							"description": "TCP host and port for targeted placement.",
+																							"type": "string",
+																							"example": "db.example.com:5432",
+																							"x-auditable": true
+																						},
+																						"mode": {
+																							"description": "Targeted placement mode.",
+																							"type": "string",
+																							"enum": [
+																								"targeted"
+																							],
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode",
+																						"host"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"mode": {
+																							"description": "Targeted placement mode.",
+																							"type": "string",
+																							"enum": [
+																								"targeted"
+																							],
+																							"x-auditable": true
+																						},
+																						"target": {
+																							"description": "Array of placement targets (currently limited to single target).",
+																							"type": "array",
+																							"items": {
+																								"description": "A target to run your Worker near.",
+																								"type": "object",
+																								"oneOf": [
+																									{
+																										"additionalProperties": false,
+																										"properties": {
+																											"region": {
+																												"description": "Cloud region in format 'provider:region'.",
+																												"type": "string",
+																												"example": "aws:us-east-1"
+																											}
+																										},
+																										"required": [
+																											"region"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"additionalProperties": false,
+																										"properties": {
+																											"hostname": {
+																												"description": "HTTP hostname for targeted placement.",
+																												"type": "string",
+																												"example": "api.example.com"
+																											}
+																										},
+																										"required": [
+																											"hostname"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"additionalProperties": false,
+																										"properties": {
+																											"host": {
+																												"description": "TCP host:port for targeted placement.",
+																												"type": "string",
+																												"example": "db.example.com:5432"
+																											}
+																										},
+																										"required": [
+																											"host"
+																										],
+																										"type": "object"
+																									}
+																								]
+																							},
+																							"maxItems": 1,
+																							"minItems": 1,
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode",
+																						"target"
+																					],
+																					"type": "object"
+																				}
+																			]
+																		}
+																	]
+																},
+																"tail_consumers": {
+																	"description": "Other Workers that should consume logs from newly created Previews.",
+																	"type": "array",
+																	"items": {
+																		"properties": {
+																			"name": {
+																				"description": "Name of the consumer Worker.",
+																				"type": "string",
+																				"example": "my-tail-consumer",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name"
+																		],
+																		"type": "object"
+																	},
+																	"x-stainless-collection-type": "set"
+																}
+															}
+														}
+													],
+													"x-auditable": true
 												},
 												"references": {
 													"description": "Other resources that reference the Worker and depend on it existing.",
@@ -10325,6 +13580,471 @@
 											}
 										}
 									},
+									"previews_base_config": {
+										"description": "Template configuration used when creating new Previews for this Worker.",
+										"allOf": [
+											{
+												"type": "object",
+												"properties": {
+													"cache_options": {
+														"description": "Cache options used when creating new Previews.",
+														"allOf": [
+															{
+																"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",
+																"type": "object",
+																"properties": {
+																	"cross_version_cache": {
+																		"description": "Whether cached responses are shared across Worker version\nuploads. This is independent of `enabled`. It can stay true\nwhile caching is off, so the preference survives turning\ncaching off and back on.\n",
+																		"type": "boolean",
+																		"example": true,
+																		"default": false,
+																		"x-auditable": true
+																	},
+																	"enabled": {
+																		"description": "Whether caching is enabled for this Worker.",
+																		"type": "boolean",
+																		"example": true,
+																		"default": false,
+																		"x-auditable": true
+																	}
+																},
+																"additionalProperties": false,
+																"required": [
+																	"enabled"
+																]
+															}
+														]
+													},
+													"env": {
+														"description": "Bindings used when creating new Previews, keyed by binding name.",
+														"allOf": [
+															{
+																"description": "Bindings attached to a Worker, keyed by binding name. `bindings`\ncarries the same information as an array of objects that each\nname themselves, and an upload can use one form or the other.\n",
+																"type": "object",
+																"example": {
+																	"MY_ENV_VAR": {
+																		"text": "my_data",
+																		"type": "plain_text"
+																	}
+																},
+																"additionalProperties": {
+																	"description": "A single entry in the `env` map. An entry holds the same payload\nas an entry of `bindings` without the `name` property, because\nthe map key supplies the name. See `binding_item` for the payload\nof each binding kind.\n",
+																	"type": "object",
+																	"properties": {
+																		"type": {
+																			"description": "The kind of resource that the binding provides.",
+																			"type": "string",
+																			"example": "plain_text",
+																			"x-auditable": true
+																		}
+																	},
+																	"additionalProperties": true,
+																	"required": [
+																		"type"
+																	]
+																}
+															}
+														]
+													},
+													"limits": {
+														"description": "Resource limits enforced at runtime for newly created Previews.",
+														"allOf": [
+															{
+																"description": "Limits to apply for this Worker.",
+																"type": "object",
+																"properties": {
+																	"cpu_ms": {
+																		"description": "The amount of CPU time this Worker can use in milliseconds.",
+																		"type": "integer",
+																		"example": 50,
+																		"x-auditable": true
+																	},
+																	"subrequests": {
+																		"description": "The number of subrequests this Worker can make per request.",
+																		"type": "integer",
+																		"example": 1000,
+																		"x-auditable": true
+																	}
+																}
+															}
+														],
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"logpush": {
+														"description": "Whether logpush is enabled when creating new Previews.",
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"observability": {
+														"description": "Observability settings used when creating new Previews.",
+														"allOf": [
+															{
+																"description": "Observability settings for the Worker.",
+																"type": "object",
+																"properties": {
+																	"enabled": {
+																		"description": "Whether observability is enabled for the Worker.",
+																		"type": "boolean",
+																		"default": false,
+																		"x-auditable": true
+																	},
+																	"head_sampling_rate": {
+																		"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																		"type": "number",
+																		"example": 1,
+																		"default": 1,
+																		"x-auditable": true
+																	},
+																	"issues": {
+																		"description": "Real-time Issues settings for the Worker.",
+																		"type": "object",
+																		"nullable": true,
+																		"properties": {
+																			"enabled": {
+																				"description": "Whether real-time Issues are enabled for the Worker.",
+																				"type": "boolean",
+																				"default": false,
+																				"x-auditable": true
+																			}
+																		}
+																	},
+																	"logs": {
+																		"description": "Log settings for the Worker.",
+																		"type": "object",
+																		"properties": {
+																			"destinations": {
+																				"description": "A list of destinations where logs will be exported to.",
+																				"type": "array",
+																				"items": {
+																					"type": "string"
+																				},
+																				"default": [],
+																				"x-auditable": true
+																			},
+																			"enabled": {
+																				"description": "Whether logs are enabled for the Worker.",
+																				"type": "boolean",
+																				"default": false,
+																				"x-auditable": true
+																			},
+																			"head_sampling_rate": {
+																				"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																				"type": "number",
+																				"example": 1,
+																				"default": 1,
+																				"x-auditable": true
+																			},
+																			"invocation_logs": {
+																				"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																				"type": "boolean",
+																				"default": true,
+																				"x-auditable": true
+																			},
+																			"persist": {
+																				"description": "Whether log persistence is enabled for the Worker.",
+																				"type": "boolean",
+																				"default": true,
+																				"x-auditable": true
+																			}
+																		}
+																	},
+																	"redact_query_string": {
+																		"description": "Whether query strings are removed from request URLs in logs and traces.",
+																		"type": "boolean",
+																		"default": false,
+																		"x-auditable": true
+																	},
+																	"traces": {
+																		"description": "Trace settings for the Worker.",
+																		"type": "object",
+																		"properties": {
+																			"destinations": {
+																				"description": "A list of destinations where traces will be exported to.",
+																				"type": "array",
+																				"items": {
+																					"type": "string"
+																				},
+																				"default": [],
+																				"x-auditable": true
+																			},
+																			"enabled": {
+																				"description": "Whether traces are enabled for the Worker.",
+																				"type": "boolean",
+																				"default": false,
+																				"x-auditable": true
+																			},
+																			"head_sampling_rate": {
+																				"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																				"type": "number",
+																				"example": 1,
+																				"default": 1,
+																				"x-auditable": true
+																			},
+																			"persist": {
+																				"description": "Whether trace persistence is enabled for the Worker.",
+																				"type": "boolean",
+																				"default": true,
+																				"x-auditable": true
+																			},
+																			"propagation_policy": {
+																				"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.",
+																				"type": "string",
+																				"enum": [
+																					"authenticated",
+																					"accept",
+																					null
+																				],
+																				"nullable": true,
+																				"x-auditable": true
+																			}
+																		}
+																	}
+																}
+															}
+														]
+													},
+													"placement": {
+														"description": "Placement configuration used when creating new Previews.",
+														"allOf": [
+															{
+																"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
+																"type": "object",
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																				"type": "string",
+																				"enum": [
+																					"smart"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"mode"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"region": {
+																				"description": "Cloud region for targeted placement in format 'provider:region'.",
+																				"type": "string",
+																				"example": "aws:us-east-1",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"region"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"hostname": {
+																				"description": "HTTP hostname for targeted placement.",
+																				"type": "string",
+																				"example": "api.example.com",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"hostname"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"host": {
+																				"description": "TCP host and port for targeted placement.",
+																				"type": "string",
+																				"example": "db.example.com:5432",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"host"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"description": "Targeted placement mode.",
+																				"type": "string",
+																				"enum": [
+																					"targeted"
+																				],
+																				"x-auditable": true
+																			},
+																			"region": {
+																				"description": "Cloud region for targeted placement in format 'provider:region'.",
+																				"type": "string",
+																				"example": "aws:us-east-1",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"region"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"hostname": {
+																				"description": "HTTP hostname for targeted placement.",
+																				"type": "string",
+																				"example": "api.example.com",
+																				"x-auditable": true
+																			},
+																			"mode": {
+																				"description": "Targeted placement mode.",
+																				"type": "string",
+																				"enum": [
+																					"targeted"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"hostname"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"host": {
+																				"description": "TCP host and port for targeted placement.",
+																				"type": "string",
+																				"example": "db.example.com:5432",
+																				"x-auditable": true
+																			},
+																			"mode": {
+																				"description": "Targeted placement mode.",
+																				"type": "string",
+																				"enum": [
+																					"targeted"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"host"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"description": "Targeted placement mode.",
+																				"type": "string",
+																				"enum": [
+																					"targeted"
+																				],
+																				"x-auditable": true
+																			},
+																			"target": {
+																				"description": "Array of placement targets (currently limited to single target).",
+																				"type": "array",
+																				"items": {
+																					"description": "A target to run your Worker near.",
+																					"type": "object",
+																					"oneOf": [
+																						{
+																							"additionalProperties": false,
+																							"properties": {
+																								"region": {
+																									"description": "Cloud region in format 'provider:region'.",
+																									"type": "string",
+																									"example": "aws:us-east-1"
+																								}
+																							},
+																							"required": [
+																								"region"
+																							],
+																							"type": "object"
+																						},
+																						{
+																							"additionalProperties": false,
+																							"properties": {
+																								"hostname": {
+																									"description": "HTTP hostname for targeted placement.",
+																									"type": "string",
+																									"example": "api.example.com"
+																								}
+																							},
+																							"required": [
+																								"hostname"
+																							],
+																							"type": "object"
+																						},
+																						{
+																							"additionalProperties": false,
+																							"properties": {
+																								"host": {
+																									"description": "TCP host:port for targeted placement.",
+																									"type": "string",
+																									"example": "db.example.com:5432"
+																								}
+																							},
+																							"required": [
+																								"host"
+																							],
+																							"type": "object"
+																						}
+																					]
+																				},
+																				"maxItems": 1,
+																				"minItems": 1,
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"target"
+																		],
+																		"type": "object"
+																	}
+																]
+															}
+														]
+													},
+													"tail_consumers": {
+														"description": "Other Workers that should consume logs from newly created Previews.",
+														"type": "array",
+														"items": {
+															"properties": {
+																"name": {
+																	"description": "Name of the consumer Worker.",
+																	"type": "string",
+																	"example": "my-tail-consumer",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name"
+															],
+															"type": "object"
+														},
+														"x-stainless-collection-type": "set"
+													}
+												}
+											}
+										],
+										"x-auditable": true
+									},
 									"references": {
 										"description": "Other resources that reference the Worker and depend on it existing.",
 										"type": "object",
@@ -10850,6 +14570,471 @@
 															}
 														}
 													}
+												},
+												"previews_base_config": {
+													"description": "Template configuration used when creating new Previews for this Worker.",
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"cache_options": {
+																	"description": "Cache options used when creating new Previews.",
+																	"allOf": [
+																		{
+																			"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",
+																			"type": "object",
+																			"properties": {
+																				"cross_version_cache": {
+																					"description": "Whether cached responses are shared across Worker version\nuploads. This is independent of `enabled`. It can stay true\nwhile caching is off, so the preference survives turning\ncaching off and back on.\n",
+																					"type": "boolean",
+																					"example": true,
+																					"default": false,
+																					"x-auditable": true
+																				},
+																				"enabled": {
+																					"description": "Whether caching is enabled for this Worker.",
+																					"type": "boolean",
+																					"example": true,
+																					"default": false,
+																					"x-auditable": true
+																				}
+																			},
+																			"additionalProperties": false,
+																			"required": [
+																				"enabled"
+																			]
+																		}
+																	]
+																},
+																"env": {
+																	"description": "Bindings used when creating new Previews, keyed by binding name.",
+																	"allOf": [
+																		{
+																			"description": "Bindings attached to a Worker, keyed by binding name. `bindings`\ncarries the same information as an array of objects that each\nname themselves, and an upload can use one form or the other.\n",
+																			"type": "object",
+																			"example": {
+																				"MY_ENV_VAR": {
+																					"text": "my_data",
+																					"type": "plain_text"
+																				}
+																			},
+																			"additionalProperties": {
+																				"description": "A single entry in the `env` map. An entry holds the same payload\nas an entry of `bindings` without the `name` property, because\nthe map key supplies the name. See `binding_item` for the payload\nof each binding kind.\n",
+																				"type": "object",
+																				"properties": {
+																					"type": {
+																						"description": "The kind of resource that the binding provides.",
+																						"type": "string",
+																						"example": "plain_text",
+																						"x-auditable": true
+																					}
+																				},
+																				"additionalProperties": true,
+																				"required": [
+																					"type"
+																				]
+																			}
+																		}
+																	]
+																},
+																"limits": {
+																	"description": "Resource limits enforced at runtime for newly created Previews.",
+																	"allOf": [
+																		{
+																			"description": "Limits to apply for this Worker.",
+																			"type": "object",
+																			"properties": {
+																				"cpu_ms": {
+																					"description": "The amount of CPU time this Worker can use in milliseconds.",
+																					"type": "integer",
+																					"example": 50,
+																					"x-auditable": true
+																				},
+																				"subrequests": {
+																					"description": "The number of subrequests this Worker can make per request.",
+																					"type": "integer",
+																					"example": 1000,
+																					"x-auditable": true
+																				}
+																			}
+																		}
+																	],
+																	"x-stainless-terraform-configurability": "computed_optional"
+																},
+																"logpush": {
+																	"description": "Whether logpush is enabled when creating new Previews.",
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"observability": {
+																	"description": "Observability settings used when creating new Previews.",
+																	"allOf": [
+																		{
+																			"description": "Observability settings for the Worker.",
+																			"type": "object",
+																			"properties": {
+																				"enabled": {
+																					"description": "Whether observability is enabled for the Worker.",
+																					"type": "boolean",
+																					"default": false,
+																					"x-auditable": true
+																				},
+																				"head_sampling_rate": {
+																					"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																					"type": "number",
+																					"example": 1,
+																					"default": 1,
+																					"x-auditable": true
+																				},
+																				"issues": {
+																					"description": "Real-time Issues settings for the Worker.",
+																					"type": "object",
+																					"nullable": true,
+																					"properties": {
+																						"enabled": {
+																							"description": "Whether real-time Issues are enabled for the Worker.",
+																							"type": "boolean",
+																							"default": false,
+																							"x-auditable": true
+																						}
+																					}
+																				},
+																				"logs": {
+																					"description": "Log settings for the Worker.",
+																					"type": "object",
+																					"properties": {
+																						"destinations": {
+																							"description": "A list of destinations where logs will be exported to.",
+																							"type": "array",
+																							"items": {
+																								"type": "string"
+																							},
+																							"default": [],
+																							"x-auditable": true
+																						},
+																						"enabled": {
+																							"description": "Whether logs are enabled for the Worker.",
+																							"type": "boolean",
+																							"default": false,
+																							"x-auditable": true
+																						},
+																						"head_sampling_rate": {
+																							"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																							"type": "number",
+																							"example": 1,
+																							"default": 1,
+																							"x-auditable": true
+																						},
+																						"invocation_logs": {
+																							"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																							"type": "boolean",
+																							"default": true,
+																							"x-auditable": true
+																						},
+																						"persist": {
+																							"description": "Whether log persistence is enabled for the Worker.",
+																							"type": "boolean",
+																							"default": true,
+																							"x-auditable": true
+																						}
+																					}
+																				},
+																				"redact_query_string": {
+																					"description": "Whether query strings are removed from request URLs in logs and traces.",
+																					"type": "boolean",
+																					"default": false,
+																					"x-auditable": true
+																				},
+																				"traces": {
+																					"description": "Trace settings for the Worker.",
+																					"type": "object",
+																					"properties": {
+																						"destinations": {
+																							"description": "A list of destinations where traces will be exported to.",
+																							"type": "array",
+																							"items": {
+																								"type": "string"
+																							},
+																							"default": [],
+																							"x-auditable": true
+																						},
+																						"enabled": {
+																							"description": "Whether traces are enabled for the Worker.",
+																							"type": "boolean",
+																							"default": false,
+																							"x-auditable": true
+																						},
+																						"head_sampling_rate": {
+																							"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																							"type": "number",
+																							"example": 1,
+																							"default": 1,
+																							"x-auditable": true
+																						},
+																						"persist": {
+																							"description": "Whether trace persistence is enabled for the Worker.",
+																							"type": "boolean",
+																							"default": true,
+																							"x-auditable": true
+																						},
+																						"propagation_policy": {
+																							"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.",
+																							"type": "string",
+																							"enum": [
+																								"authenticated",
+																								"accept",
+																								null
+																							],
+																							"nullable": true,
+																							"x-auditable": true
+																						}
+																					}
+																				}
+																			}
+																		}
+																	]
+																},
+																"placement": {
+																	"description": "Placement configuration used when creating new Previews.",
+																	"allOf": [
+																		{
+																			"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
+																			"type": "object",
+																			"oneOf": [
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"mode": {
+																							"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																							"type": "string",
+																							"enum": [
+																								"smart"
+																							],
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"region": {
+																							"description": "Cloud region for targeted placement in format 'provider:region'.",
+																							"type": "string",
+																							"example": "aws:us-east-1",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"region"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"hostname": {
+																							"description": "HTTP hostname for targeted placement.",
+																							"type": "string",
+																							"example": "api.example.com",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"hostname"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"host": {
+																							"description": "TCP host and port for targeted placement.",
+																							"type": "string",
+																							"example": "db.example.com:5432",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"host"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"mode": {
+																							"description": "Targeted placement mode.",
+																							"type": "string",
+																							"enum": [
+																								"targeted"
+																							],
+																							"x-auditable": true
+																						},
+																						"region": {
+																							"description": "Cloud region for targeted placement in format 'provider:region'.",
+																							"type": "string",
+																							"example": "aws:us-east-1",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode",
+																						"region"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"hostname": {
+																							"description": "HTTP hostname for targeted placement.",
+																							"type": "string",
+																							"example": "api.example.com",
+																							"x-auditable": true
+																						},
+																						"mode": {
+																							"description": "Targeted placement mode.",
+																							"type": "string",
+																							"enum": [
+																								"targeted"
+																							],
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode",
+																						"hostname"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"host": {
+																							"description": "TCP host and port for targeted placement.",
+																							"type": "string",
+																							"example": "db.example.com:5432",
+																							"x-auditable": true
+																						},
+																						"mode": {
+																							"description": "Targeted placement mode.",
+																							"type": "string",
+																							"enum": [
+																								"targeted"
+																							],
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode",
+																						"host"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"additionalProperties": false,
+																					"properties": {
+																						"mode": {
+																							"description": "Targeted placement mode.",
+																							"type": "string",
+																							"enum": [
+																								"targeted"
+																							],
+																							"x-auditable": true
+																						},
+																						"target": {
+																							"description": "Array of placement targets (currently limited to single target).",
+																							"type": "array",
+																							"items": {
+																								"description": "A target to run your Worker near.",
+																								"type": "object",
+																								"oneOf": [
+																									{
+																										"additionalProperties": false,
+																										"properties": {
+																											"region": {
+																												"description": "Cloud region in format 'provider:region'.",
+																												"type": "string",
+																												"example": "aws:us-east-1"
+																											}
+																										},
+																										"required": [
+																											"region"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"additionalProperties": false,
+																										"properties": {
+																											"hostname": {
+																												"description": "HTTP hostname for targeted placement.",
+																												"type": "string",
+																												"example": "api.example.com"
+																											}
+																										},
+																										"required": [
+																											"hostname"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"additionalProperties": false,
+																										"properties": {
+																											"host": {
+																												"description": "TCP host:port for targeted placement.",
+																												"type": "string",
+																												"example": "db.example.com:5432"
+																											}
+																										},
+																										"required": [
+																											"host"
+																										],
+																										"type": "object"
+																									}
+																								]
+																							},
+																							"maxItems": 1,
+																							"minItems": 1,
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode",
+																						"target"
+																					],
+																					"type": "object"
+																				}
+																			]
+																		}
+																	]
+																},
+																"tail_consumers": {
+																	"description": "Other Workers that should consume logs from newly created Previews.",
+																	"type": "array",
+																	"items": {
+																		"properties": {
+																			"name": {
+																				"description": "Name of the consumer Worker.",
+																				"type": "string",
+																				"example": "my-tail-consumer",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name"
+																		],
+																		"type": "object"
+																	},
+																	"x-stainless-collection-type": "set"
+																}
+															}
+														}
+													],
+													"x-auditable": true
 												},
 												"references": {
 													"description": "Other resources that reference the Worker and depend on it existing.",

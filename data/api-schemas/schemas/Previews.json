@@ -1,0 +1,3840 @@
+{
+	"DELETE /accounts/{account_id}/workers/workers/{worker_id}/previews/{preview_id}": {
+		"operationId": "workers.previews.delete",
+		"summary": "Delete Preview",
+		"description": "Delete a Preview.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "worker_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier for the Worker, which can be ID or name.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "preview_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier for the Preview, which can be ID, slug, or URL-encoded name.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "force",
+				"in": "query",
+				"description": "If true, delete the Preview even when a service binding, Durable Object, or other binding still references it. The delete also removes those bindings and Durable Objects.",
+				"schema": {
+					"type": "boolean"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Delete Preview success.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"example": []
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true,
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Delete Preview failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Previews"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
+		"x-fern-audiences": [
+			"sdk"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "workers.previews",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "This will permanently delete the preview."
+	},
+	"GET /accounts/{account_id}/workers/workers/{worker_id}/previews": {
+		"operationId": "workers.previews.list",
+		"summary": "List Previews",
+		"description": "List all Previews for a Worker.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "worker_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier for the Worker, which can be ID or name.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"description": "Current page.",
+				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Items per-page.",
+				"schema": {
+					"type": "integer",
+					"default": 10,
+					"maximum": 100,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "order_by",
+				"in": "query",
+				"description": "Property to sort results by.",
+				"schema": {
+					"type": "string",
+					"default": "deployed_on",
+					"enum": [
+						"deployed_on",
+						"updated_on",
+						"created_on",
+						"slug",
+						"name"
+					]
+				}
+			},
+			{
+				"name": "order",
+				"in": "query",
+				"description": "Sort direction.",
+				"schema": {
+					"type": "string",
+					"default": "desc",
+					"enum": [
+						"asc",
+						"desc"
+					]
+				}
+			},
+			{
+				"name": "slug",
+				"in": "query",
+				"description": "Partial-match filter on preview slug.",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "name",
+				"in": "query",
+				"description": "Partial-match filter on preview name.",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List Previews success.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"type": "number",
+															"example": 1
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"type": "number",
+															"example": 20
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"type": "number",
+															"example": 2000
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"type": "number",
+															"example": 100
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"created_on": {
+														"description": "When the Preview was created.",
+														"type": "string",
+														"format": "date-time",
+														"readOnly": true,
+														"x-auditable": true
+													},
+													"deployed_on": {
+														"description": "When the Preview's most recent deployment was created. `null` if the Preview has never been deployed.",
+														"type": "string",
+														"format": "date-time",
+														"nullable": true,
+														"readOnly": true
+													},
+													"id": {
+														"description": "Immutable ID of the Preview.",
+														"type": "string",
+														"example": "63bafce9179948688866bb22268eb1c6",
+														"pattern": "^[0-9a-f]{32}$",
+														"readOnly": true,
+														"x-auditable": true
+													},
+													"logpush": {
+														"description": "Whether logpush is enabled for the Preview.",
+														"type": "boolean",
+														"default": false,
+														"x-auditable": true
+													},
+													"name": {
+														"description": "Human-readable name of the Preview.",
+														"type": "string",
+														"example": "feature/my-branch",
+														"maxLength": 256,
+														"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9\\-_/.+=]*[a-zA-Z0-9])?$",
+														"x-auditable": true
+													},
+													"observability": {
+														"description": "Observability settings for the Preview.",
+														"type": "object",
+														"properties": {
+															"enabled": {
+																"description": "Whether observability is enabled for the Preview.",
+																"type": "boolean",
+																"default": false,
+																"x-auditable": true
+															},
+															"head_sampling_rate": {
+																"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																"type": "number",
+																"example": 1,
+																"default": 1,
+																"x-auditable": true
+															},
+															"issues": {
+																"description": "Real-time Issues settings for the Preview.",
+																"type": "object",
+																"nullable": true,
+																"properties": {
+																	"enabled": {
+																		"description": "Whether real-time Issues are enabled for the Preview.",
+																		"type": "boolean",
+																		"default": false,
+																		"x-auditable": true
+																	}
+																}
+															},
+															"logs": {
+																"description": "Log settings for the Preview.",
+																"type": "object",
+																"properties": {
+																	"destinations": {
+																		"description": "A list of destinations where logs will be exported to.",
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
+																		"default": [],
+																		"x-auditable": true
+																	},
+																	"enabled": {
+																		"description": "Whether logs are enabled for the Preview.",
+																		"type": "boolean",
+																		"default": false,
+																		"x-auditable": true
+																	},
+																	"head_sampling_rate": {
+																		"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																		"type": "number",
+																		"example": 1,
+																		"default": 1,
+																		"x-auditable": true
+																	},
+																	"invocation_logs": {
+																		"description": "Whether invocation logs are enabled for the Preview.",
+																		"type": "boolean",
+																		"default": true,
+																		"x-auditable": true
+																	},
+																	"persist": {
+																		"description": "Whether log persistence is enabled for the Preview.",
+																		"type": "boolean",
+																		"default": true,
+																		"x-auditable": true
+																	}
+																}
+															},
+															"redact_query_string": {
+																"description": "Whether query strings are removed from request URLs in logs and traces.",
+																"type": "boolean",
+																"default": false,
+																"x-auditable": true
+															},
+															"traces": {
+																"description": "Trace settings for the Preview.",
+																"type": "object",
+																"properties": {
+																	"destinations": {
+																		"description": "A list of destinations where traces will be exported to.",
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
+																		"default": [],
+																		"x-auditable": true
+																	},
+																	"enabled": {
+																		"description": "Whether traces are enabled for the Preview.",
+																		"type": "boolean",
+																		"default": false,
+																		"x-auditable": true
+																	},
+																	"head_sampling_rate": {
+																		"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																		"type": "number",
+																		"example": 1,
+																		"default": 1,
+																		"x-auditable": true
+																	},
+																	"persist": {
+																		"description": "Whether trace persistence is enabled for the Preview.",
+																		"type": "boolean",
+																		"default": true,
+																		"x-auditable": true
+																	}
+																}
+															}
+														}
+													},
+													"slug": {
+														"description": "Immutable URL-safe identifier for the Preview.",
+														"type": "string",
+														"example": "feature-my-branch",
+														"readOnly": true,
+														"x-auditable": true
+													},
+													"tags": {
+														"description": "Tags associated with the Preview.",
+														"type": "array",
+														"items": {
+															"maxLength": 1024,
+															"pattern": "^[^,&]*$",
+															"type": "string"
+														},
+														"example": [
+															"my-team",
+															"my-preview"
+														],
+														"default": [],
+														"maxItems": 8,
+														"x-stainless-collection-type": "set"
+													},
+													"tail_consumers": {
+														"description": "Other Workers that should consume logs from the Preview.",
+														"type": "array",
+														"items": {
+															"properties": {
+																"name": {
+																	"description": "Name of the consumer Worker.",
+																	"type": "string",
+																	"example": "my-tail-consumer",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name"
+															],
+															"type": "object"
+														},
+														"default": [],
+														"x-stainless-collection-type": "set"
+													},
+													"updated_on": {
+														"description": "When the Preview was most recently updated.",
+														"type": "string",
+														"format": "date-time",
+														"readOnly": true,
+														"x-auditable": true
+													},
+													"urls": {
+														"description": "Routable URLs for the Preview.",
+														"type": "array",
+														"items": {
+															"example": "https://feature-my-branch-my-worker.workers.dev",
+															"type": "string"
+														},
+														"readOnly": true
+													}
+												},
+												"required": [
+													"id",
+													"slug",
+													"name",
+													"tags",
+													"observability",
+													"logpush",
+													"tail_consumers",
+													"urls",
+													"created_on",
+													"updated_on"
+												]
+											}
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "List Previews failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Previews"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
+		"x-fern-audiences": [
+			"sdk"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "workers.previews",
+		"x-fern-sdk-method-name": "list"
+	},
+	"GET /accounts/{account_id}/workers/workers/{worker_id}/previews/{preview_id}": {
+		"operationId": "workers.previews.get",
+		"summary": "Get Preview",
+		"description": "Get details about a specific Preview.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "worker_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier for the Worker, which can be ID or name.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "preview_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier for the Preview, which can be ID, slug, or URL-encoded name.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get Preview success.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"created_on": {
+													"description": "When the Preview was created.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"deployed_on": {
+													"description": "When the Preview's most recent deployment was created. `null` if the Preview has never been deployed.",
+													"type": "string",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true
+												},
+												"id": {
+													"description": "Immutable ID of the Preview.",
+													"type": "string",
+													"example": "63bafce9179948688866bb22268eb1c6",
+													"pattern": "^[0-9a-f]{32}$",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"logpush": {
+													"description": "Whether logpush is enabled for the Preview.",
+													"type": "boolean",
+													"default": false,
+													"x-auditable": true
+												},
+												"name": {
+													"description": "Human-readable name of the Preview.",
+													"type": "string",
+													"example": "feature/my-branch",
+													"maxLength": 256,
+													"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9\\-_/.+=]*[a-zA-Z0-9])?$",
+													"x-auditable": true
+												},
+												"observability": {
+													"description": "Observability settings for the Preview.",
+													"type": "object",
+													"properties": {
+														"enabled": {
+															"description": "Whether observability is enabled for the Preview.",
+															"type": "boolean",
+															"default": false,
+															"x-auditable": true
+														},
+														"head_sampling_rate": {
+															"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+															"type": "number",
+															"example": 1,
+															"default": 1,
+															"x-auditable": true
+														},
+														"issues": {
+															"description": "Real-time Issues settings for the Preview.",
+															"type": "object",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "Whether real-time Issues are enabled for the Preview.",
+																	"type": "boolean",
+																	"default": false,
+																	"x-auditable": true
+																}
+															}
+														},
+														"logs": {
+															"description": "Log settings for the Preview.",
+															"type": "object",
+															"properties": {
+																"destinations": {
+																	"description": "A list of destinations where logs will be exported to.",
+																	"type": "array",
+																	"items": {
+																		"type": "string"
+																	},
+																	"default": [],
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Whether logs are enabled for the Preview.",
+																	"type": "boolean",
+																	"default": false,
+																	"x-auditable": true
+																},
+																"head_sampling_rate": {
+																	"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																	"type": "number",
+																	"example": 1,
+																	"default": 1,
+																	"x-auditable": true
+																},
+																"invocation_logs": {
+																	"description": "Whether invocation logs are enabled for the Preview.",
+																	"type": "boolean",
+																	"default": true,
+																	"x-auditable": true
+																},
+																"persist": {
+																	"description": "Whether log persistence is enabled for the Preview.",
+																	"type": "boolean",
+																	"default": true,
+																	"x-auditable": true
+																}
+															}
+														},
+														"redact_query_string": {
+															"description": "Whether query strings are removed from request URLs in logs and traces.",
+															"type": "boolean",
+															"default": false,
+															"x-auditable": true
+														},
+														"traces": {
+															"description": "Trace settings for the Preview.",
+															"type": "object",
+															"properties": {
+																"destinations": {
+																	"description": "A list of destinations where traces will be exported to.",
+																	"type": "array",
+																	"items": {
+																		"type": "string"
+																	},
+																	"default": [],
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Whether traces are enabled for the Preview.",
+																	"type": "boolean",
+																	"default": false,
+																	"x-auditable": true
+																},
+																"head_sampling_rate": {
+																	"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																	"type": "number",
+																	"example": 1,
+																	"default": 1,
+																	"x-auditable": true
+																},
+																"persist": {
+																	"description": "Whether trace persistence is enabled for the Preview.",
+																	"type": "boolean",
+																	"default": true,
+																	"x-auditable": true
+																}
+															}
+														}
+													}
+												},
+												"slug": {
+													"description": "Immutable URL-safe identifier for the Preview.",
+													"type": "string",
+													"example": "feature-my-branch",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"tags": {
+													"description": "Tags associated with the Preview.",
+													"type": "array",
+													"items": {
+														"maxLength": 1024,
+														"pattern": "^[^,&]*$",
+														"type": "string"
+													},
+													"example": [
+														"my-team",
+														"my-preview"
+													],
+													"default": [],
+													"maxItems": 8,
+													"x-stainless-collection-type": "set"
+												},
+												"tail_consumers": {
+													"description": "Other Workers that should consume logs from the Preview.",
+													"type": "array",
+													"items": {
+														"properties": {
+															"name": {
+																"description": "Name of the consumer Worker.",
+																"type": "string",
+																"example": "my-tail-consumer",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"name"
+														],
+														"type": "object"
+													},
+													"default": [],
+													"x-stainless-collection-type": "set"
+												},
+												"updated_on": {
+													"description": "When the Preview was most recently updated.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"urls": {
+													"description": "Routable URLs for the Preview.",
+													"type": "array",
+													"items": {
+														"example": "https://feature-my-branch-my-worker.workers.dev",
+														"type": "string"
+													},
+													"readOnly": true
+												}
+											},
+											"required": [
+												"id",
+												"slug",
+												"name",
+												"tags",
+												"observability",
+												"logpush",
+												"tail_consumers",
+												"urls",
+												"created_on",
+												"updated_on"
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get Preview failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Previews"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
+		"x-fern-audiences": [
+			"sdk"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "workers.previews",
+		"x-fern-sdk-method-name": "get"
+	},
+	"PATCH /accounts/{account_id}/workers/workers/{worker_id}/previews/{preview_id}": {
+		"operationId": "workers.previews.edit",
+		"summary": "Edit Preview",
+		"description": "Perform a partial update on a Preview, where omitted properties are left unchanged.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "worker_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier for the Worker, which can be ID or name.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "preview_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier for the Preview, which can be ID, slug, or URL-encoded name.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"description": "Preview partial update parameters.",
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"type": "object",
+								"properties": {
+									"created_on": {
+										"description": "When the Preview was created.",
+										"type": "string",
+										"format": "date-time",
+										"readOnly": true,
+										"x-auditable": true
+									},
+									"deployed_on": {
+										"description": "When the Preview's most recent deployment was created. `null` if the Preview has never been deployed.",
+										"type": "string",
+										"format": "date-time",
+										"nullable": true,
+										"readOnly": true
+									},
+									"id": {
+										"description": "Immutable ID of the Preview.",
+										"type": "string",
+										"example": "63bafce9179948688866bb22268eb1c6",
+										"pattern": "^[0-9a-f]{32}$",
+										"readOnly": true,
+										"x-auditable": true
+									},
+									"logpush": {
+										"description": "Whether logpush is enabled for the Preview.",
+										"type": "boolean",
+										"default": false,
+										"x-auditable": true
+									},
+									"name": {
+										"description": "Human-readable name of the Preview.",
+										"type": "string",
+										"example": "feature/my-branch",
+										"maxLength": 256,
+										"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9\\-_/.+=]*[a-zA-Z0-9])?$",
+										"x-auditable": true
+									},
+									"observability": {
+										"description": "Observability settings for the Preview.",
+										"type": "object",
+										"properties": {
+											"enabled": {
+												"description": "Whether observability is enabled for the Preview.",
+												"type": "boolean",
+												"default": false,
+												"x-auditable": true
+											},
+											"head_sampling_rate": {
+												"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+												"type": "number",
+												"example": 1,
+												"default": 1,
+												"x-auditable": true
+											},
+											"issues": {
+												"description": "Real-time Issues settings for the Preview.",
+												"type": "object",
+												"nullable": true,
+												"properties": {
+													"enabled": {
+														"description": "Whether real-time Issues are enabled for the Preview.",
+														"type": "boolean",
+														"default": false,
+														"x-auditable": true
+													}
+												}
+											},
+											"logs": {
+												"description": "Log settings for the Preview.",
+												"type": "object",
+												"properties": {
+													"destinations": {
+														"description": "A list of destinations where logs will be exported to.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"default": [],
+														"x-auditable": true
+													},
+													"enabled": {
+														"description": "Whether logs are enabled for the Preview.",
+														"type": "boolean",
+														"default": false,
+														"x-auditable": true
+													},
+													"head_sampling_rate": {
+														"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+														"type": "number",
+														"example": 1,
+														"default": 1,
+														"x-auditable": true
+													},
+													"invocation_logs": {
+														"description": "Whether invocation logs are enabled for the Preview.",
+														"type": "boolean",
+														"default": true,
+														"x-auditable": true
+													},
+													"persist": {
+														"description": "Whether log persistence is enabled for the Preview.",
+														"type": "boolean",
+														"default": true,
+														"x-auditable": true
+													}
+												}
+											},
+											"redact_query_string": {
+												"description": "Whether query strings are removed from request URLs in logs and traces.",
+												"type": "boolean",
+												"default": false,
+												"x-auditable": true
+											},
+											"traces": {
+												"description": "Trace settings for the Preview.",
+												"type": "object",
+												"properties": {
+													"destinations": {
+														"description": "A list of destinations where traces will be exported to.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"default": [],
+														"x-auditable": true
+													},
+													"enabled": {
+														"description": "Whether traces are enabled for the Preview.",
+														"type": "boolean",
+														"default": false,
+														"x-auditable": true
+													},
+													"head_sampling_rate": {
+														"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+														"type": "number",
+														"example": 1,
+														"default": 1,
+														"x-auditable": true
+													},
+													"persist": {
+														"description": "Whether trace persistence is enabled for the Preview.",
+														"type": "boolean",
+														"default": true,
+														"x-auditable": true
+													}
+												}
+											}
+										}
+									},
+									"slug": {
+										"description": "Immutable URL-safe identifier for the Preview.",
+										"type": "string",
+										"example": "feature-my-branch",
+										"readOnly": true,
+										"x-auditable": true
+									},
+									"tags": {
+										"description": "Tags associated with the Preview.",
+										"type": "array",
+										"items": {
+											"maxLength": 1024,
+											"pattern": "^[^,&]*$",
+											"type": "string"
+										},
+										"example": [
+											"my-team",
+											"my-preview"
+										],
+										"default": [],
+										"maxItems": 8,
+										"x-stainless-collection-type": "set"
+									},
+									"tail_consumers": {
+										"description": "Other Workers that should consume logs from the Preview.",
+										"type": "array",
+										"items": {
+											"properties": {
+												"name": {
+													"description": "Name of the consumer Worker.",
+													"type": "string",
+													"example": "my-tail-consumer",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"name"
+											],
+											"type": "object"
+										},
+										"default": [],
+										"x-stainless-collection-type": "set"
+									},
+									"updated_on": {
+										"description": "When the Preview was most recently updated.",
+										"type": "string",
+										"format": "date-time",
+										"readOnly": true,
+										"x-auditable": true
+									},
+									"urls": {
+										"description": "Routable URLs for the Preview.",
+										"type": "array",
+										"items": {
+											"example": "https://feature-my-branch-my-worker.workers.dev",
+											"type": "string"
+										},
+										"readOnly": true
+									}
+								},
+								"required": [
+									"id",
+									"slug",
+									"name",
+									"tags",
+									"observability",
+									"logpush",
+									"tail_consumers",
+									"urls",
+									"created_on",
+									"updated_on"
+								]
+							},
+							{
+								"type": "object"
+							}
+						]
+					}
+				},
+				"application/merge-patch+json": {
+					"schema": {
+						"allOf": [
+							{
+								"type": "object",
+								"properties": {
+									"created_on": {
+										"description": "When the Preview was created.",
+										"type": "string",
+										"format": "date-time",
+										"readOnly": true,
+										"x-auditable": true
+									},
+									"deployed_on": {
+										"description": "When the Preview's most recent deployment was created. `null` if the Preview has never been deployed.",
+										"type": "string",
+										"format": "date-time",
+										"nullable": true,
+										"readOnly": true
+									},
+									"id": {
+										"description": "Immutable ID of the Preview.",
+										"type": "string",
+										"example": "63bafce9179948688866bb22268eb1c6",
+										"pattern": "^[0-9a-f]{32}$",
+										"readOnly": true,
+										"x-auditable": true
+									},
+									"logpush": {
+										"description": "Whether logpush is enabled for the Preview.",
+										"type": "boolean",
+										"default": false,
+										"x-auditable": true
+									},
+									"name": {
+										"description": "Human-readable name of the Preview.",
+										"type": "string",
+										"example": "feature/my-branch",
+										"maxLength": 256,
+										"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9\\-_/.+=]*[a-zA-Z0-9])?$",
+										"x-auditable": true
+									},
+									"observability": {
+										"description": "Observability settings for the Preview.",
+										"type": "object",
+										"properties": {
+											"enabled": {
+												"description": "Whether observability is enabled for the Preview.",
+												"type": "boolean",
+												"default": false,
+												"x-auditable": true
+											},
+											"head_sampling_rate": {
+												"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+												"type": "number",
+												"example": 1,
+												"default": 1,
+												"x-auditable": true
+											},
+											"issues": {
+												"description": "Real-time Issues settings for the Preview.",
+												"type": "object",
+												"nullable": true,
+												"properties": {
+													"enabled": {
+														"description": "Whether real-time Issues are enabled for the Preview.",
+														"type": "boolean",
+														"default": false,
+														"x-auditable": true
+													}
+												}
+											},
+											"logs": {
+												"description": "Log settings for the Preview.",
+												"type": "object",
+												"properties": {
+													"destinations": {
+														"description": "A list of destinations where logs will be exported to.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"default": [],
+														"x-auditable": true
+													},
+													"enabled": {
+														"description": "Whether logs are enabled for the Preview.",
+														"type": "boolean",
+														"default": false,
+														"x-auditable": true
+													},
+													"head_sampling_rate": {
+														"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+														"type": "number",
+														"example": 1,
+														"default": 1,
+														"x-auditable": true
+													},
+													"invocation_logs": {
+														"description": "Whether invocation logs are enabled for the Preview.",
+														"type": "boolean",
+														"default": true,
+														"x-auditable": true
+													},
+													"persist": {
+														"description": "Whether log persistence is enabled for the Preview.",
+														"type": "boolean",
+														"default": true,
+														"x-auditable": true
+													}
+												}
+											},
+											"redact_query_string": {
+												"description": "Whether query strings are removed from request URLs in logs and traces.",
+												"type": "boolean",
+												"default": false,
+												"x-auditable": true
+											},
+											"traces": {
+												"description": "Trace settings for the Preview.",
+												"type": "object",
+												"properties": {
+													"destinations": {
+														"description": "A list of destinations where traces will be exported to.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"default": [],
+														"x-auditable": true
+													},
+													"enabled": {
+														"description": "Whether traces are enabled for the Preview.",
+														"type": "boolean",
+														"default": false,
+														"x-auditable": true
+													},
+													"head_sampling_rate": {
+														"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+														"type": "number",
+														"example": 1,
+														"default": 1,
+														"x-auditable": true
+													},
+													"persist": {
+														"description": "Whether trace persistence is enabled for the Preview.",
+														"type": "boolean",
+														"default": true,
+														"x-auditable": true
+													}
+												}
+											}
+										}
+									},
+									"slug": {
+										"description": "Immutable URL-safe identifier for the Preview.",
+										"type": "string",
+										"example": "feature-my-branch",
+										"readOnly": true,
+										"x-auditable": true
+									},
+									"tags": {
+										"description": "Tags associated with the Preview.",
+										"type": "array",
+										"items": {
+											"maxLength": 1024,
+											"pattern": "^[^,&]*$",
+											"type": "string"
+										},
+										"example": [
+											"my-team",
+											"my-preview"
+										],
+										"default": [],
+										"maxItems": 8,
+										"x-stainless-collection-type": "set"
+									},
+									"tail_consumers": {
+										"description": "Other Workers that should consume logs from the Preview.",
+										"type": "array",
+										"items": {
+											"properties": {
+												"name": {
+													"description": "Name of the consumer Worker.",
+													"type": "string",
+													"example": "my-tail-consumer",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"name"
+											],
+											"type": "object"
+										},
+										"default": [],
+										"x-stainless-collection-type": "set"
+									},
+									"updated_on": {
+										"description": "When the Preview was most recently updated.",
+										"type": "string",
+										"format": "date-time",
+										"readOnly": true,
+										"x-auditable": true
+									},
+									"urls": {
+										"description": "Routable URLs for the Preview.",
+										"type": "array",
+										"items": {
+											"example": "https://feature-my-branch-my-worker.workers.dev",
+											"type": "string"
+										},
+										"readOnly": true
+									}
+								},
+								"required": [
+									"id",
+									"slug",
+									"name",
+									"tags",
+									"observability",
+									"logpush",
+									"tail_consumers",
+									"urls",
+									"created_on",
+									"updated_on"
+								]
+							},
+							{
+								"type": "object"
+							}
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Edit Preview success.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"created_on": {
+													"description": "When the Preview was created.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"deployed_on": {
+													"description": "When the Preview's most recent deployment was created. `null` if the Preview has never been deployed.",
+													"type": "string",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true
+												},
+												"id": {
+													"description": "Immutable ID of the Preview.",
+													"type": "string",
+													"example": "63bafce9179948688866bb22268eb1c6",
+													"pattern": "^[0-9a-f]{32}$",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"logpush": {
+													"description": "Whether logpush is enabled for the Preview.",
+													"type": "boolean",
+													"default": false,
+													"x-auditable": true
+												},
+												"name": {
+													"description": "Human-readable name of the Preview.",
+													"type": "string",
+													"example": "feature/my-branch",
+													"maxLength": 256,
+													"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9\\-_/.+=]*[a-zA-Z0-9])?$",
+													"x-auditable": true
+												},
+												"observability": {
+													"description": "Observability settings for the Preview.",
+													"type": "object",
+													"properties": {
+														"enabled": {
+															"description": "Whether observability is enabled for the Preview.",
+															"type": "boolean",
+															"default": false,
+															"x-auditable": true
+														},
+														"head_sampling_rate": {
+															"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+															"type": "number",
+															"example": 1,
+															"default": 1,
+															"x-auditable": true
+														},
+														"issues": {
+															"description": "Real-time Issues settings for the Preview.",
+															"type": "object",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "Whether real-time Issues are enabled for the Preview.",
+																	"type": "boolean",
+																	"default": false,
+																	"x-auditable": true
+																}
+															}
+														},
+														"logs": {
+															"description": "Log settings for the Preview.",
+															"type": "object",
+															"properties": {
+																"destinations": {
+																	"description": "A list of destinations where logs will be exported to.",
+																	"type": "array",
+																	"items": {
+																		"type": "string"
+																	},
+																	"default": [],
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Whether logs are enabled for the Preview.",
+																	"type": "boolean",
+																	"default": false,
+																	"x-auditable": true
+																},
+																"head_sampling_rate": {
+																	"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																	"type": "number",
+																	"example": 1,
+																	"default": 1,
+																	"x-auditable": true
+																},
+																"invocation_logs": {
+																	"description": "Whether invocation logs are enabled for the Preview.",
+																	"type": "boolean",
+																	"default": true,
+																	"x-auditable": true
+																},
+																"persist": {
+																	"description": "Whether log persistence is enabled for the Preview.",
+																	"type": "boolean",
+																	"default": true,
+																	"x-auditable": true
+																}
+															}
+														},
+														"redact_query_string": {
+															"description": "Whether query strings are removed from request URLs in logs and traces.",
+															"type": "boolean",
+															"default": false,
+															"x-auditable": true
+														},
+														"traces": {
+															"description": "Trace settings for the Preview.",
+															"type": "object",
+															"properties": {
+																"destinations": {
+																	"description": "A list of destinations where traces will be exported to.",
+																	"type": "array",
+																	"items": {
+																		"type": "string"
+																	},
+																	"default": [],
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Whether traces are enabled for the Preview.",
+																	"type": "boolean",
+																	"default": false,
+																	"x-auditable": true
+																},
+																"head_sampling_rate": {
+																	"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																	"type": "number",
+																	"example": 1,
+																	"default": 1,
+																	"x-auditable": true
+																},
+																"persist": {
+																	"description": "Whether trace persistence is enabled for the Preview.",
+																	"type": "boolean",
+																	"default": true,
+																	"x-auditable": true
+																}
+															}
+														}
+													}
+												},
+												"slug": {
+													"description": "Immutable URL-safe identifier for the Preview.",
+													"type": "string",
+													"example": "feature-my-branch",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"tags": {
+													"description": "Tags associated with the Preview.",
+													"type": "array",
+													"items": {
+														"maxLength": 1024,
+														"pattern": "^[^,&]*$",
+														"type": "string"
+													},
+													"example": [
+														"my-team",
+														"my-preview"
+													],
+													"default": [],
+													"maxItems": 8,
+													"x-stainless-collection-type": "set"
+												},
+												"tail_consumers": {
+													"description": "Other Workers that should consume logs from the Preview.",
+													"type": "array",
+													"items": {
+														"properties": {
+															"name": {
+																"description": "Name of the consumer Worker.",
+																"type": "string",
+																"example": "my-tail-consumer",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"name"
+														],
+														"type": "object"
+													},
+													"default": [],
+													"x-stainless-collection-type": "set"
+												},
+												"updated_on": {
+													"description": "When the Preview was most recently updated.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"urls": {
+													"description": "Routable URLs for the Preview.",
+													"type": "array",
+													"items": {
+														"example": "https://feature-my-branch-my-worker.workers.dev",
+														"type": "string"
+													},
+													"readOnly": true
+												}
+											},
+											"required": [
+												"id",
+												"slug",
+												"name",
+												"tags",
+												"observability",
+												"logpush",
+												"tail_consumers",
+												"urls",
+												"created_on",
+												"updated_on"
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Edit Preview failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Previews"
+		],
+		"x-fern-audiences": [
+			"sdk"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "workers.previews",
+		"x-fern-sdk-method-name": "edit"
+	},
+	"POST /accounts/{account_id}/workers/workers/{worker_id}/previews": {
+		"operationId": "workers.previews.create",
+		"summary": "Create Preview",
+		"description": "Create a new Preview for a Worker.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "worker_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier for the Worker, which can be ID or name.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "ignore_defaults",
+				"in": "query",
+				"schema": {
+					"description": "If true, preview defaults/base config from the parent Worker is ignored.",
+					"type": "boolean"
+				}
+			},
+			{
+				"name": "ignore_base_config",
+				"in": "query",
+				"schema": {
+					"description": "If true, preview base config from the parent Worker is ignored.",
+					"type": "boolean"
+				}
+			}
+		],
+		"requestBody": {
+			"description": "Preview creation parameters.",
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"type": "object",
+								"properties": {
+									"created_on": {
+										"description": "When the Preview was created.",
+										"type": "string",
+										"format": "date-time",
+										"readOnly": true,
+										"x-auditable": true
+									},
+									"deployed_on": {
+										"description": "When the Preview's most recent deployment was created. `null` if the Preview has never been deployed.",
+										"type": "string",
+										"format": "date-time",
+										"nullable": true,
+										"readOnly": true
+									},
+									"id": {
+										"description": "Immutable ID of the Preview.",
+										"type": "string",
+										"example": "63bafce9179948688866bb22268eb1c6",
+										"pattern": "^[0-9a-f]{32}$",
+										"readOnly": true,
+										"x-auditable": true
+									},
+									"logpush": {
+										"description": "Whether logpush is enabled for the Preview.",
+										"type": "boolean",
+										"default": false,
+										"x-auditable": true
+									},
+									"name": {
+										"description": "Human-readable name of the Preview.",
+										"type": "string",
+										"example": "feature/my-branch",
+										"maxLength": 256,
+										"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9\\-_/.+=]*[a-zA-Z0-9])?$",
+										"x-auditable": true
+									},
+									"observability": {
+										"description": "Observability settings for the Preview.",
+										"type": "object",
+										"properties": {
+											"enabled": {
+												"description": "Whether observability is enabled for the Preview.",
+												"type": "boolean",
+												"default": false,
+												"x-auditable": true
+											},
+											"head_sampling_rate": {
+												"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+												"type": "number",
+												"example": 1,
+												"default": 1,
+												"x-auditable": true
+											},
+											"issues": {
+												"description": "Real-time Issues settings for the Preview.",
+												"type": "object",
+												"nullable": true,
+												"properties": {
+													"enabled": {
+														"description": "Whether real-time Issues are enabled for the Preview.",
+														"type": "boolean",
+														"default": false,
+														"x-auditable": true
+													}
+												}
+											},
+											"logs": {
+												"description": "Log settings for the Preview.",
+												"type": "object",
+												"properties": {
+													"destinations": {
+														"description": "A list of destinations where logs will be exported to.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"default": [],
+														"x-auditable": true
+													},
+													"enabled": {
+														"description": "Whether logs are enabled for the Preview.",
+														"type": "boolean",
+														"default": false,
+														"x-auditable": true
+													},
+													"head_sampling_rate": {
+														"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+														"type": "number",
+														"example": 1,
+														"default": 1,
+														"x-auditable": true
+													},
+													"invocation_logs": {
+														"description": "Whether invocation logs are enabled for the Preview.",
+														"type": "boolean",
+														"default": true,
+														"x-auditable": true
+													},
+													"persist": {
+														"description": "Whether log persistence is enabled for the Preview.",
+														"type": "boolean",
+														"default": true,
+														"x-auditable": true
+													}
+												}
+											},
+											"redact_query_string": {
+												"description": "Whether query strings are removed from request URLs in logs and traces.",
+												"type": "boolean",
+												"default": false,
+												"x-auditable": true
+											},
+											"traces": {
+												"description": "Trace settings for the Preview.",
+												"type": "object",
+												"properties": {
+													"destinations": {
+														"description": "A list of destinations where traces will be exported to.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"default": [],
+														"x-auditable": true
+													},
+													"enabled": {
+														"description": "Whether traces are enabled for the Preview.",
+														"type": "boolean",
+														"default": false,
+														"x-auditable": true
+													},
+													"head_sampling_rate": {
+														"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+														"type": "number",
+														"example": 1,
+														"default": 1,
+														"x-auditable": true
+													},
+													"persist": {
+														"description": "Whether trace persistence is enabled for the Preview.",
+														"type": "boolean",
+														"default": true,
+														"x-auditable": true
+													}
+												}
+											}
+										}
+									},
+									"slug": {
+										"description": "Immutable URL-safe identifier for the Preview.",
+										"type": "string",
+										"example": "feature-my-branch",
+										"readOnly": true,
+										"x-auditable": true
+									},
+									"tags": {
+										"description": "Tags associated with the Preview.",
+										"type": "array",
+										"items": {
+											"maxLength": 1024,
+											"pattern": "^[^,&]*$",
+											"type": "string"
+										},
+										"example": [
+											"my-team",
+											"my-preview"
+										],
+										"default": [],
+										"maxItems": 8,
+										"x-stainless-collection-type": "set"
+									},
+									"tail_consumers": {
+										"description": "Other Workers that should consume logs from the Preview.",
+										"type": "array",
+										"items": {
+											"properties": {
+												"name": {
+													"description": "Name of the consumer Worker.",
+													"type": "string",
+													"example": "my-tail-consumer",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"name"
+											],
+											"type": "object"
+										},
+										"default": [],
+										"x-stainless-collection-type": "set"
+									},
+									"updated_on": {
+										"description": "When the Preview was most recently updated.",
+										"type": "string",
+										"format": "date-time",
+										"readOnly": true,
+										"x-auditable": true
+									},
+									"urls": {
+										"description": "Routable URLs for the Preview.",
+										"type": "array",
+										"items": {
+											"example": "https://feature-my-branch-my-worker.workers.dev",
+											"type": "string"
+										},
+										"readOnly": true
+									}
+								},
+								"required": [
+									"id",
+									"slug",
+									"name",
+									"tags",
+									"observability",
+									"logpush",
+									"tail_consumers",
+									"urls",
+									"created_on",
+									"updated_on"
+								]
+							},
+							{
+								"required": [
+									"name"
+								],
+								"type": "object"
+							}
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Create Preview success.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"created_on": {
+													"description": "When the Preview was created.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"deployed_on": {
+													"description": "When the Preview's most recent deployment was created. `null` if the Preview has never been deployed.",
+													"type": "string",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true
+												},
+												"id": {
+													"description": "Immutable ID of the Preview.",
+													"type": "string",
+													"example": "63bafce9179948688866bb22268eb1c6",
+													"pattern": "^[0-9a-f]{32}$",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"logpush": {
+													"description": "Whether logpush is enabled for the Preview.",
+													"type": "boolean",
+													"default": false,
+													"x-auditable": true
+												},
+												"name": {
+													"description": "Human-readable name of the Preview.",
+													"type": "string",
+													"example": "feature/my-branch",
+													"maxLength": 256,
+													"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9\\-_/.+=]*[a-zA-Z0-9])?$",
+													"x-auditable": true
+												},
+												"observability": {
+													"description": "Observability settings for the Preview.",
+													"type": "object",
+													"properties": {
+														"enabled": {
+															"description": "Whether observability is enabled for the Preview.",
+															"type": "boolean",
+															"default": false,
+															"x-auditable": true
+														},
+														"head_sampling_rate": {
+															"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+															"type": "number",
+															"example": 1,
+															"default": 1,
+															"x-auditable": true
+														},
+														"issues": {
+															"description": "Real-time Issues settings for the Preview.",
+															"type": "object",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "Whether real-time Issues are enabled for the Preview.",
+																	"type": "boolean",
+																	"default": false,
+																	"x-auditable": true
+																}
+															}
+														},
+														"logs": {
+															"description": "Log settings for the Preview.",
+															"type": "object",
+															"properties": {
+																"destinations": {
+																	"description": "A list of destinations where logs will be exported to.",
+																	"type": "array",
+																	"items": {
+																		"type": "string"
+																	},
+																	"default": [],
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Whether logs are enabled for the Preview.",
+																	"type": "boolean",
+																	"default": false,
+																	"x-auditable": true
+																},
+																"head_sampling_rate": {
+																	"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																	"type": "number",
+																	"example": 1,
+																	"default": 1,
+																	"x-auditable": true
+																},
+																"invocation_logs": {
+																	"description": "Whether invocation logs are enabled for the Preview.",
+																	"type": "boolean",
+																	"default": true,
+																	"x-auditable": true
+																},
+																"persist": {
+																	"description": "Whether log persistence is enabled for the Preview.",
+																	"type": "boolean",
+																	"default": true,
+																	"x-auditable": true
+																}
+															}
+														},
+														"redact_query_string": {
+															"description": "Whether query strings are removed from request URLs in logs and traces.",
+															"type": "boolean",
+															"default": false,
+															"x-auditable": true
+														},
+														"traces": {
+															"description": "Trace settings for the Preview.",
+															"type": "object",
+															"properties": {
+																"destinations": {
+																	"description": "A list of destinations where traces will be exported to.",
+																	"type": "array",
+																	"items": {
+																		"type": "string"
+																	},
+																	"default": [],
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Whether traces are enabled for the Preview.",
+																	"type": "boolean",
+																	"default": false,
+																	"x-auditable": true
+																},
+																"head_sampling_rate": {
+																	"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																	"type": "number",
+																	"example": 1,
+																	"default": 1,
+																	"x-auditable": true
+																},
+																"persist": {
+																	"description": "Whether trace persistence is enabled for the Preview.",
+																	"type": "boolean",
+																	"default": true,
+																	"x-auditable": true
+																}
+															}
+														}
+													}
+												},
+												"slug": {
+													"description": "Immutable URL-safe identifier for the Preview.",
+													"type": "string",
+													"example": "feature-my-branch",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"tags": {
+													"description": "Tags associated with the Preview.",
+													"type": "array",
+													"items": {
+														"maxLength": 1024,
+														"pattern": "^[^,&]*$",
+														"type": "string"
+													},
+													"example": [
+														"my-team",
+														"my-preview"
+													],
+													"default": [],
+													"maxItems": 8,
+													"x-stainless-collection-type": "set"
+												},
+												"tail_consumers": {
+													"description": "Other Workers that should consume logs from the Preview.",
+													"type": "array",
+													"items": {
+														"properties": {
+															"name": {
+																"description": "Name of the consumer Worker.",
+																"type": "string",
+																"example": "my-tail-consumer",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"name"
+														],
+														"type": "object"
+													},
+													"default": [],
+													"x-stainless-collection-type": "set"
+												},
+												"updated_on": {
+													"description": "When the Preview was most recently updated.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"urls": {
+													"description": "Routable URLs for the Preview.",
+													"type": "array",
+													"items": {
+														"example": "https://feature-my-branch-my-worker.workers.dev",
+														"type": "string"
+													},
+													"readOnly": true
+												}
+											},
+											"required": [
+												"id",
+												"slug",
+												"name",
+												"tags",
+												"observability",
+												"logpush",
+												"tail_consumers",
+												"urls",
+												"created_on",
+												"updated_on"
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Create Preview failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Previews"
+		],
+		"x-fern-audiences": [
+			"sdk"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "workers.previews",
+		"x-fern-sdk-method-name": "create"
+	},
+	"PUT /accounts/{account_id}/workers/workers/{worker_id}/previews/{preview_id}": {
+		"operationId": "workers.previews.update",
+		"summary": "Update Preview",
+		"description": "Perform a complete replacement of a Preview, where omitted properties are set to defaults.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "worker_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier for the Worker, which can be ID or name.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "preview_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier for the Preview, which can be ID, slug, or URL-encoded name.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "ignore_defaults",
+				"in": "query",
+				"schema": {
+					"description": "If true, preview defaults/base config from the parent Worker is ignored.",
+					"type": "boolean"
+				}
+			},
+			{
+				"name": "ignore_base_config",
+				"in": "query",
+				"schema": {
+					"description": "If true, preview base config from the parent Worker is ignored.",
+					"type": "boolean"
+				}
+			}
+		],
+		"requestBody": {
+			"description": "Preview update parameters.",
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"type": "object",
+								"properties": {
+									"created_on": {
+										"description": "When the Preview was created.",
+										"type": "string",
+										"format": "date-time",
+										"readOnly": true,
+										"x-auditable": true
+									},
+									"deployed_on": {
+										"description": "When the Preview's most recent deployment was created. `null` if the Preview has never been deployed.",
+										"type": "string",
+										"format": "date-time",
+										"nullable": true,
+										"readOnly": true
+									},
+									"id": {
+										"description": "Immutable ID of the Preview.",
+										"type": "string",
+										"example": "63bafce9179948688866bb22268eb1c6",
+										"pattern": "^[0-9a-f]{32}$",
+										"readOnly": true,
+										"x-auditable": true
+									},
+									"logpush": {
+										"description": "Whether logpush is enabled for the Preview.",
+										"type": "boolean",
+										"default": false,
+										"x-auditable": true
+									},
+									"name": {
+										"description": "Human-readable name of the Preview.",
+										"type": "string",
+										"example": "feature/my-branch",
+										"maxLength": 256,
+										"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9\\-_/.+=]*[a-zA-Z0-9])?$",
+										"x-auditable": true
+									},
+									"observability": {
+										"description": "Observability settings for the Preview.",
+										"type": "object",
+										"properties": {
+											"enabled": {
+												"description": "Whether observability is enabled for the Preview.",
+												"type": "boolean",
+												"default": false,
+												"x-auditable": true
+											},
+											"head_sampling_rate": {
+												"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+												"type": "number",
+												"example": 1,
+												"default": 1,
+												"x-auditable": true
+											},
+											"issues": {
+												"description": "Real-time Issues settings for the Preview.",
+												"type": "object",
+												"nullable": true,
+												"properties": {
+													"enabled": {
+														"description": "Whether real-time Issues are enabled for the Preview.",
+														"type": "boolean",
+														"default": false,
+														"x-auditable": true
+													}
+												}
+											},
+											"logs": {
+												"description": "Log settings for the Preview.",
+												"type": "object",
+												"properties": {
+													"destinations": {
+														"description": "A list of destinations where logs will be exported to.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"default": [],
+														"x-auditable": true
+													},
+													"enabled": {
+														"description": "Whether logs are enabled for the Preview.",
+														"type": "boolean",
+														"default": false,
+														"x-auditable": true
+													},
+													"head_sampling_rate": {
+														"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+														"type": "number",
+														"example": 1,
+														"default": 1,
+														"x-auditable": true
+													},
+													"invocation_logs": {
+														"description": "Whether invocation logs are enabled for the Preview.",
+														"type": "boolean",
+														"default": true,
+														"x-auditable": true
+													},
+													"persist": {
+														"description": "Whether log persistence is enabled for the Preview.",
+														"type": "boolean",
+														"default": true,
+														"x-auditable": true
+													}
+												}
+											},
+											"redact_query_string": {
+												"description": "Whether query strings are removed from request URLs in logs and traces.",
+												"type": "boolean",
+												"default": false,
+												"x-auditable": true
+											},
+											"traces": {
+												"description": "Trace settings for the Preview.",
+												"type": "object",
+												"properties": {
+													"destinations": {
+														"description": "A list of destinations where traces will be exported to.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"default": [],
+														"x-auditable": true
+													},
+													"enabled": {
+														"description": "Whether traces are enabled for the Preview.",
+														"type": "boolean",
+														"default": false,
+														"x-auditable": true
+													},
+													"head_sampling_rate": {
+														"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+														"type": "number",
+														"example": 1,
+														"default": 1,
+														"x-auditable": true
+													},
+													"persist": {
+														"description": "Whether trace persistence is enabled for the Preview.",
+														"type": "boolean",
+														"default": true,
+														"x-auditable": true
+													}
+												}
+											}
+										}
+									},
+									"slug": {
+										"description": "Immutable URL-safe identifier for the Preview.",
+										"type": "string",
+										"example": "feature-my-branch",
+										"readOnly": true,
+										"x-auditable": true
+									},
+									"tags": {
+										"description": "Tags associated with the Preview.",
+										"type": "array",
+										"items": {
+											"maxLength": 1024,
+											"pattern": "^[^,&]*$",
+											"type": "string"
+										},
+										"example": [
+											"my-team",
+											"my-preview"
+										],
+										"default": [],
+										"maxItems": 8,
+										"x-stainless-collection-type": "set"
+									},
+									"tail_consumers": {
+										"description": "Other Workers that should consume logs from the Preview.",
+										"type": "array",
+										"items": {
+											"properties": {
+												"name": {
+													"description": "Name of the consumer Worker.",
+													"type": "string",
+													"example": "my-tail-consumer",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"name"
+											],
+											"type": "object"
+										},
+										"default": [],
+										"x-stainless-collection-type": "set"
+									},
+									"updated_on": {
+										"description": "When the Preview was most recently updated.",
+										"type": "string",
+										"format": "date-time",
+										"readOnly": true,
+										"x-auditable": true
+									},
+									"urls": {
+										"description": "Routable URLs for the Preview.",
+										"type": "array",
+										"items": {
+											"example": "https://feature-my-branch-my-worker.workers.dev",
+											"type": "string"
+										},
+										"readOnly": true
+									}
+								},
+								"required": [
+									"id",
+									"slug",
+									"name",
+									"tags",
+									"observability",
+									"logpush",
+									"tail_consumers",
+									"urls",
+									"created_on",
+									"updated_on"
+								]
+							},
+							{
+								"required": [
+									"name"
+								],
+								"type": "object"
+							}
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Update Preview success.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"created_on": {
+													"description": "When the Preview was created.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"deployed_on": {
+													"description": "When the Preview's most recent deployment was created. `null` if the Preview has never been deployed.",
+													"type": "string",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true
+												},
+												"id": {
+													"description": "Immutable ID of the Preview.",
+													"type": "string",
+													"example": "63bafce9179948688866bb22268eb1c6",
+													"pattern": "^[0-9a-f]{32}$",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"logpush": {
+													"description": "Whether logpush is enabled for the Preview.",
+													"type": "boolean",
+													"default": false,
+													"x-auditable": true
+												},
+												"name": {
+													"description": "Human-readable name of the Preview.",
+													"type": "string",
+													"example": "feature/my-branch",
+													"maxLength": 256,
+													"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9\\-_/.+=]*[a-zA-Z0-9])?$",
+													"x-auditable": true
+												},
+												"observability": {
+													"description": "Observability settings for the Preview.",
+													"type": "object",
+													"properties": {
+														"enabled": {
+															"description": "Whether observability is enabled for the Preview.",
+															"type": "boolean",
+															"default": false,
+															"x-auditable": true
+														},
+														"head_sampling_rate": {
+															"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+															"type": "number",
+															"example": 1,
+															"default": 1,
+															"x-auditable": true
+														},
+														"issues": {
+															"description": "Real-time Issues settings for the Preview.",
+															"type": "object",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "Whether real-time Issues are enabled for the Preview.",
+																	"type": "boolean",
+																	"default": false,
+																	"x-auditable": true
+																}
+															}
+														},
+														"logs": {
+															"description": "Log settings for the Preview.",
+															"type": "object",
+															"properties": {
+																"destinations": {
+																	"description": "A list of destinations where logs will be exported to.",
+																	"type": "array",
+																	"items": {
+																		"type": "string"
+																	},
+																	"default": [],
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Whether logs are enabled for the Preview.",
+																	"type": "boolean",
+																	"default": false,
+																	"x-auditable": true
+																},
+																"head_sampling_rate": {
+																	"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																	"type": "number",
+																	"example": 1,
+																	"default": 1,
+																	"x-auditable": true
+																},
+																"invocation_logs": {
+																	"description": "Whether invocation logs are enabled for the Preview.",
+																	"type": "boolean",
+																	"default": true,
+																	"x-auditable": true
+																},
+																"persist": {
+																	"description": "Whether log persistence is enabled for the Preview.",
+																	"type": "boolean",
+																	"default": true,
+																	"x-auditable": true
+																}
+															}
+														},
+														"redact_query_string": {
+															"description": "Whether query strings are removed from request URLs in logs and traces.",
+															"type": "boolean",
+															"default": false,
+															"x-auditable": true
+														},
+														"traces": {
+															"description": "Trace settings for the Preview.",
+															"type": "object",
+															"properties": {
+																"destinations": {
+																	"description": "A list of destinations where traces will be exported to.",
+																	"type": "array",
+																	"items": {
+																		"type": "string"
+																	},
+																	"default": [],
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Whether traces are enabled for the Preview.",
+																	"type": "boolean",
+																	"default": false,
+																	"x-auditable": true
+																},
+																"head_sampling_rate": {
+																	"description": "The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).",
+																	"type": "number",
+																	"example": 1,
+																	"default": 1,
+																	"x-auditable": true
+																},
+																"persist": {
+																	"description": "Whether trace persistence is enabled for the Preview.",
+																	"type": "boolean",
+																	"default": true,
+																	"x-auditable": true
+																}
+															}
+														}
+													}
+												},
+												"slug": {
+													"description": "Immutable URL-safe identifier for the Preview.",
+													"type": "string",
+													"example": "feature-my-branch",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"tags": {
+													"description": "Tags associated with the Preview.",
+													"type": "array",
+													"items": {
+														"maxLength": 1024,
+														"pattern": "^[^,&]*$",
+														"type": "string"
+													},
+													"example": [
+														"my-team",
+														"my-preview"
+													],
+													"default": [],
+													"maxItems": 8,
+													"x-stainless-collection-type": "set"
+												},
+												"tail_consumers": {
+													"description": "Other Workers that should consume logs from the Preview.",
+													"type": "array",
+													"items": {
+														"properties": {
+															"name": {
+																"description": "Name of the consumer Worker.",
+																"type": "string",
+																"example": "my-tail-consumer",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"name"
+														],
+														"type": "object"
+													},
+													"default": [],
+													"x-stainless-collection-type": "set"
+												},
+												"updated_on": {
+													"description": "When the Preview was most recently updated.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"urls": {
+													"description": "Routable URLs for the Preview.",
+													"type": "array",
+													"items": {
+														"example": "https://feature-my-branch-my-worker.workers.dev",
+														"type": "string"
+													},
+													"readOnly": true
+												}
+											},
+											"required": [
+												"id",
+												"slug",
+												"name",
+												"tags",
+												"observability",
+												"logpush",
+												"tail_consumers",
+												"urls",
+												"created_on",
+												"updated_on"
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Update Preview failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Previews"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
+		"x-fern-audiences": [
+			"sdk"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "workers.previews",
+		"x-fern-sdk-method-name": "update"
+	}
+}

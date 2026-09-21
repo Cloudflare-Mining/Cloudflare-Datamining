@@ -5086,24 +5086,30 @@
 													},
 													"authorization": {
 														"type": "object",
-														"properties": {
-															"authorized": {
-																"type": "boolean"
-															},
-															"status_message": {
-																"type": "string",
-																"nullable": true
-															},
-															"timestamp": {
-																"type": "string",
-																"format": "date-time",
-																"readOnly": true
+														"allOf": [
+															{
+																"type": "object",
+																"properties": {
+																	"authorized": {
+																		"type": "boolean"
+																	},
+																	"status_message": {
+																		"type": "string",
+																		"nullable": true
+																	},
+																	"timestamp": {
+																		"type": "string",
+																		"format": "date-time",
+																		"readOnly": true
+																	}
+																},
+																"required": [
+																	"authorized",
+																	"timestamp"
+																]
 															}
-														},
-														"required": [
-															"authorized",
-															"timestamp"
-														]
+														],
+														"nullable": true
 													},
 													"created_at": {
 														"allOf": [
@@ -5152,26 +5158,32 @@
 													},
 													"emails_processed": {
 														"type": "object",
-														"properties": {
-															"timestamp": {
-																"type": "string",
-																"format": "date-time",
-																"readOnly": true
-															},
-															"total_emails_processed": {
-																"type": "integer",
-																"minimum": 0
-															},
-															"total_emails_processed_previous": {
-																"type": "integer",
-																"minimum": 0
+														"allOf": [
+															{
+																"type": "object",
+																"properties": {
+																	"timestamp": {
+																		"type": "string",
+																		"format": "date-time",
+																		"readOnly": true
+																	},
+																	"total_emails_processed": {
+																		"type": "integer",
+																		"minimum": 0
+																	},
+																	"total_emails_processed_previous": {
+																		"type": "integer",
+																		"minimum": 0
+																	}
+																},
+																"required": [
+																	"total_emails_processed",
+																	"total_emails_processed_previous",
+																	"timestamp"
+																]
 															}
-														},
-														"required": [
-															"total_emails_processed",
-															"total_emails_processed_previous",
-															"timestamp"
-														]
+														],
+														"nullable": true
 													},
 													"folder": {
 														"allOf": [
@@ -5570,24 +5582,30 @@
 												},
 												"authorization": {
 													"type": "object",
-													"properties": {
-														"authorized": {
-															"type": "boolean"
-														},
-														"status_message": {
-															"type": "string",
-															"nullable": true
-														},
-														"timestamp": {
-															"type": "string",
-															"format": "date-time",
-															"readOnly": true
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"authorized": {
+																	"type": "boolean"
+																},
+																"status_message": {
+																	"type": "string",
+																	"nullable": true
+																},
+																"timestamp": {
+																	"type": "string",
+																	"format": "date-time",
+																	"readOnly": true
+																}
+															},
+															"required": [
+																"authorized",
+																"timestamp"
+															]
 														}
-													},
-													"required": [
-														"authorized",
-														"timestamp"
-													]
+													],
+													"nullable": true
 												},
 												"created_at": {
 													"allOf": [
@@ -5636,26 +5654,32 @@
 												},
 												"emails_processed": {
 													"type": "object",
-													"properties": {
-														"timestamp": {
-															"type": "string",
-															"format": "date-time",
-															"readOnly": true
-														},
-														"total_emails_processed": {
-															"type": "integer",
-															"minimum": 0
-														},
-														"total_emails_processed_previous": {
-															"type": "integer",
-															"minimum": 0
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"timestamp": {
+																	"type": "string",
+																	"format": "date-time",
+																	"readOnly": true
+																},
+																"total_emails_processed": {
+																	"type": "integer",
+																	"minimum": 0
+																},
+																"total_emails_processed_previous": {
+																	"type": "integer",
+																	"minimum": 0
+																}
+															},
+															"required": [
+																"total_emails_processed",
+																"total_emails_processed_previous",
+																"timestamp"
+															]
 														}
-													},
-													"required": [
-														"total_emails_processed",
-														"total_emails_processed_previous",
-														"timestamp"
-													]
+													],
+													"nullable": true
 												},
 												"folder": {
 													"allOf": [
@@ -6503,12 +6527,18 @@
 													},
 													"provenance": {
 														"type": "string",
-														"enum": [
-															"A1S_INTERNAL",
-															"SNOOPY-CASB_OFFICE_365",
-															"SNOOPY-OFFICE_365",
-															"SNOOPY-GOOGLE_DIRECTORY"
-														]
+														"allOf": [
+															{
+																"type": "string",
+																"enum": [
+																	"A1S_INTERNAL",
+																	"SNOOPY-CASB_OFFICE_365",
+																	"SNOOPY-OFFICE_365",
+																	"SNOOPY-GOOGLE_DIRECTORY"
+																]
+															}
+														],
+														"nullable": true
 													}
 												}
 											}
@@ -6846,12 +6876,18 @@
 												},
 												"provenance": {
 													"type": "string",
-													"enum": [
-														"A1S_INTERNAL",
-														"SNOOPY-CASB_OFFICE_365",
-														"SNOOPY-OFFICE_365",
-														"SNOOPY-GOOGLE_DIRECTORY"
-													]
+													"allOf": [
+														{
+															"type": "string",
+															"enum": [
+																"A1S_INTERNAL",
+																"SNOOPY-CASB_OFFICE_365",
+																"SNOOPY-OFFICE_365",
+																"SNOOPY-GOOGLE_DIRECTORY"
+															]
+														}
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -10779,24 +10815,30 @@
 												},
 												"authorization": {
 													"type": "object",
-													"properties": {
-														"authorized": {
-															"type": "boolean"
-														},
-														"status_message": {
-															"type": "string",
-															"nullable": true
-														},
-														"timestamp": {
-															"type": "string",
-															"format": "date-time",
-															"readOnly": true
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"authorized": {
+																	"type": "boolean"
+																},
+																"status_message": {
+																	"type": "string",
+																	"nullable": true
+																},
+																"timestamp": {
+																	"type": "string",
+																	"format": "date-time",
+																	"readOnly": true
+																}
+															},
+															"required": [
+																"authorized",
+																"timestamp"
+															]
 														}
-													},
-													"required": [
-														"authorized",
-														"timestamp"
-													]
+													],
+													"nullable": true
 												},
 												"created_at": {
 													"allOf": [
@@ -10845,26 +10887,32 @@
 												},
 												"emails_processed": {
 													"type": "object",
-													"properties": {
-														"timestamp": {
-															"type": "string",
-															"format": "date-time",
-															"readOnly": true
-														},
-														"total_emails_processed": {
-															"type": "integer",
-															"minimum": 0
-														},
-														"total_emails_processed_previous": {
-															"type": "integer",
-															"minimum": 0
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"timestamp": {
+																	"type": "string",
+																	"format": "date-time",
+																	"readOnly": true
+																},
+																"total_emails_processed": {
+																	"type": "integer",
+																	"minimum": 0
+																},
+																"total_emails_processed_previous": {
+																	"type": "integer",
+																	"minimum": 0
+																}
+															},
+															"required": [
+																"total_emails_processed",
+																"total_emails_processed_previous",
+																"timestamp"
+															]
 														}
-													},
-													"required": [
-														"total_emails_processed",
-														"total_emails_processed_previous",
-														"timestamp"
-													]
+													],
+													"nullable": true
 												},
 												"folder": {
 													"allOf": [
@@ -11242,12 +11290,18 @@
 									},
 									"provenance": {
 										"type": "string",
-										"enum": [
-											"A1S_INTERNAL",
-											"SNOOPY-CASB_OFFICE_365",
-											"SNOOPY-OFFICE_365",
-											"SNOOPY-GOOGLE_DIRECTORY"
-										]
+										"allOf": [
+											{
+												"type": "string",
+												"enum": [
+													"A1S_INTERNAL",
+													"SNOOPY-CASB_OFFICE_365",
+													"SNOOPY-OFFICE_365",
+													"SNOOPY-GOOGLE_DIRECTORY"
+												]
+											}
+										],
+										"nullable": true
 									}
 								}
 							}
@@ -11442,12 +11496,18 @@
 												},
 												"provenance": {
 													"type": "string",
-													"enum": [
-														"A1S_INTERNAL",
-														"SNOOPY-CASB_OFFICE_365",
-														"SNOOPY-OFFICE_365",
-														"SNOOPY-GOOGLE_DIRECTORY"
-													]
+													"allOf": [
+														{
+															"type": "string",
+															"enum": [
+																"A1S_INTERNAL",
+																"SNOOPY-CASB_OFFICE_365",
+																"SNOOPY-OFFICE_365",
+																"SNOOPY-GOOGLE_DIRECTORY"
+															]
+														}
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -17444,24 +17504,30 @@
 												},
 												"authorization": {
 													"type": "object",
-													"properties": {
-														"authorized": {
-															"type": "boolean"
-														},
-														"status_message": {
-															"type": "string",
-															"nullable": true
-														},
-														"timestamp": {
-															"type": "string",
-															"format": "date-time",
-															"readOnly": true
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"authorized": {
+																	"type": "boolean"
+																},
+																"status_message": {
+																	"type": "string",
+																	"nullable": true
+																},
+																"timestamp": {
+																	"type": "string",
+																	"format": "date-time",
+																	"readOnly": true
+																}
+															},
+															"required": [
+																"authorized",
+																"timestamp"
+															]
 														}
-													},
-													"required": [
-														"authorized",
-														"timestamp"
-													]
+													],
+													"nullable": true
 												},
 												"created_at": {
 													"allOf": [
@@ -17510,26 +17576,32 @@
 												},
 												"emails_processed": {
 													"type": "object",
-													"properties": {
-														"timestamp": {
-															"type": "string",
-															"format": "date-time",
-															"readOnly": true
-														},
-														"total_emails_processed": {
-															"type": "integer",
-															"minimum": 0
-														},
-														"total_emails_processed_previous": {
-															"type": "integer",
-															"minimum": 0
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"timestamp": {
+																	"type": "string",
+																	"format": "date-time",
+																	"readOnly": true
+																},
+																"total_emails_processed": {
+																	"type": "integer",
+																	"minimum": 0
+																},
+																"total_emails_processed_previous": {
+																	"type": "integer",
+																	"minimum": 0
+																}
+															},
+															"required": [
+																"total_emails_processed",
+																"total_emails_processed_previous",
+																"timestamp"
+															]
 														}
-													},
-													"required": [
-														"total_emails_processed",
-														"total_emails_processed_previous",
-														"timestamp"
-													]
+													],
+													"nullable": true
 												},
 												"folder": {
 													"allOf": [
@@ -18390,24 +18462,30 @@
 															},
 															"authorization": {
 																"type": "object",
-																"properties": {
-																	"authorized": {
-																		"type": "boolean"
-																	},
-																	"status_message": {
-																		"type": "string",
-																		"nullable": true
-																	},
-																	"timestamp": {
-																		"type": "string",
-																		"format": "date-time",
-																		"readOnly": true
+																"allOf": [
+																	{
+																		"type": "object",
+																		"properties": {
+																			"authorized": {
+																				"type": "boolean"
+																			},
+																			"status_message": {
+																				"type": "string",
+																				"nullable": true
+																			},
+																			"timestamp": {
+																				"type": "string",
+																				"format": "date-time",
+																				"readOnly": true
+																			}
+																		},
+																		"required": [
+																			"authorized",
+																			"timestamp"
+																		]
 																	}
-																},
-																"required": [
-																	"authorized",
-																	"timestamp"
-																]
+																],
+																"nullable": true
 															},
 															"created_at": {
 																"allOf": [
@@ -18456,26 +18534,32 @@
 															},
 															"emails_processed": {
 																"type": "object",
-																"properties": {
-																	"timestamp": {
-																		"type": "string",
-																		"format": "date-time",
-																		"readOnly": true
-																	},
-																	"total_emails_processed": {
-																		"type": "integer",
-																		"minimum": 0
-																	},
-																	"total_emails_processed_previous": {
-																		"type": "integer",
-																		"minimum": 0
+																"allOf": [
+																	{
+																		"type": "object",
+																		"properties": {
+																			"timestamp": {
+																				"type": "string",
+																				"format": "date-time",
+																				"readOnly": true
+																			},
+																			"total_emails_processed": {
+																				"type": "integer",
+																				"minimum": 0
+																			},
+																			"total_emails_processed_previous": {
+																				"type": "integer",
+																				"minimum": 0
+																			}
+																		},
+																		"required": [
+																			"total_emails_processed",
+																			"total_emails_processed_previous",
+																			"timestamp"
+																		]
 																	}
-																},
-																"required": [
-																	"total_emails_processed",
-																	"total_emails_processed_previous",
-																	"timestamp"
-																]
+																],
+																"nullable": true
 															},
 															"folder": {
 																"allOf": [
@@ -18632,24 +18716,30 @@
 															},
 															"authorization": {
 																"type": "object",
-																"properties": {
-																	"authorized": {
-																		"type": "boolean"
-																	},
-																	"status_message": {
-																		"type": "string",
-																		"nullable": true
-																	},
-																	"timestamp": {
-																		"type": "string",
-																		"format": "date-time",
-																		"readOnly": true
+																"allOf": [
+																	{
+																		"type": "object",
+																		"properties": {
+																			"authorized": {
+																				"type": "boolean"
+																			},
+																			"status_message": {
+																				"type": "string",
+																				"nullable": true
+																			},
+																			"timestamp": {
+																				"type": "string",
+																				"format": "date-time",
+																				"readOnly": true
+																			}
+																		},
+																		"required": [
+																			"authorized",
+																			"timestamp"
+																		]
 																	}
-																},
-																"required": [
-																	"authorized",
-																	"timestamp"
-																]
+																],
+																"nullable": true
 															},
 															"created_at": {
 																"allOf": [
@@ -18698,26 +18788,32 @@
 															},
 															"emails_processed": {
 																"type": "object",
-																"properties": {
-																	"timestamp": {
-																		"type": "string",
-																		"format": "date-time",
-																		"readOnly": true
-																	},
-																	"total_emails_processed": {
-																		"type": "integer",
-																		"minimum": 0
-																	},
-																	"total_emails_processed_previous": {
-																		"type": "integer",
-																		"minimum": 0
+																"allOf": [
+																	{
+																		"type": "object",
+																		"properties": {
+																			"timestamp": {
+																				"type": "string",
+																				"format": "date-time",
+																				"readOnly": true
+																			},
+																			"total_emails_processed": {
+																				"type": "integer",
+																				"minimum": 0
+																			},
+																			"total_emails_processed_previous": {
+																				"type": "integer",
+																				"minimum": 0
+																			}
+																		},
+																		"required": [
+																			"total_emails_processed",
+																			"total_emails_processed_previous",
+																			"timestamp"
+																		]
 																	}
-																},
-																"required": [
-																	"total_emails_processed",
-																	"total_emails_processed_previous",
-																	"timestamp"
-																]
+																],
+																"nullable": true
 															},
 															"folder": {
 																"allOf": [
@@ -18874,24 +18970,30 @@
 															},
 															"authorization": {
 																"type": "object",
-																"properties": {
-																	"authorized": {
-																		"type": "boolean"
-																	},
-																	"status_message": {
-																		"type": "string",
-																		"nullable": true
-																	},
-																	"timestamp": {
-																		"type": "string",
-																		"format": "date-time",
-																		"readOnly": true
+																"allOf": [
+																	{
+																		"type": "object",
+																		"properties": {
+																			"authorized": {
+																				"type": "boolean"
+																			},
+																			"status_message": {
+																				"type": "string",
+																				"nullable": true
+																			},
+																			"timestamp": {
+																				"type": "string",
+																				"format": "date-time",
+																				"readOnly": true
+																			}
+																		},
+																		"required": [
+																			"authorized",
+																			"timestamp"
+																		]
 																	}
-																},
-																"required": [
-																	"authorized",
-																	"timestamp"
-																]
+																],
+																"nullable": true
 															},
 															"created_at": {
 																"allOf": [
@@ -18940,26 +19042,32 @@
 															},
 															"emails_processed": {
 																"type": "object",
-																"properties": {
-																	"timestamp": {
-																		"type": "string",
-																		"format": "date-time",
-																		"readOnly": true
-																	},
-																	"total_emails_processed": {
-																		"type": "integer",
-																		"minimum": 0
-																	},
-																	"total_emails_processed_previous": {
-																		"type": "integer",
-																		"minimum": 0
+																"allOf": [
+																	{
+																		"type": "object",
+																		"properties": {
+																			"timestamp": {
+																				"type": "string",
+																				"format": "date-time",
+																				"readOnly": true
+																			},
+																			"total_emails_processed": {
+																				"type": "integer",
+																				"minimum": 0
+																			},
+																			"total_emails_processed_previous": {
+																				"type": "integer",
+																				"minimum": 0
+																			}
+																		},
+																		"required": [
+																			"total_emails_processed",
+																			"total_emails_processed_previous",
+																			"timestamp"
+																		]
 																	}
-																},
-																"required": [
-																	"total_emails_processed",
-																	"total_emails_processed_previous",
-																	"timestamp"
-																]
+																],
+																"nullable": true
 															},
 															"folder": {
 																"allOf": [
@@ -19347,12 +19455,18 @@
 									},
 									"provenance": {
 										"type": "string",
-										"enum": [
-											"A1S_INTERNAL",
-											"SNOOPY-CASB_OFFICE_365",
-											"SNOOPY-OFFICE_365",
-											"SNOOPY-GOOGLE_DIRECTORY"
-										]
+										"allOf": [
+											{
+												"type": "string",
+												"enum": [
+													"A1S_INTERNAL",
+													"SNOOPY-CASB_OFFICE_365",
+													"SNOOPY-OFFICE_365",
+													"SNOOPY-GOOGLE_DIRECTORY"
+												]
+											}
+										],
+										"nullable": true
 									}
 								}
 							}
@@ -19551,12 +19665,18 @@
 												},
 												"provenance": {
 													"type": "string",
-													"enum": [
-														"A1S_INTERNAL",
-														"SNOOPY-CASB_OFFICE_365",
-														"SNOOPY-OFFICE_365",
-														"SNOOPY-GOOGLE_DIRECTORY"
-													]
+													"allOf": [
+														{
+															"type": "string",
+															"enum": [
+																"A1S_INTERNAL",
+																"SNOOPY-CASB_OFFICE_365",
+																"SNOOPY-OFFICE_365",
+																"SNOOPY-GOOGLE_DIRECTORY"
+															]
+														}
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -23944,24 +24064,30 @@
 												},
 												"authorization": {
 													"type": "object",
-													"properties": {
-														"authorized": {
-															"type": "boolean"
-														},
-														"status_message": {
-															"type": "string",
-															"nullable": true
-														},
-														"timestamp": {
-															"type": "string",
-															"format": "date-time",
-															"readOnly": true
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"authorized": {
+																	"type": "boolean"
+																},
+																"status_message": {
+																	"type": "string",
+																	"nullable": true
+																},
+																"timestamp": {
+																	"type": "string",
+																	"format": "date-time",
+																	"readOnly": true
+																}
+															},
+															"required": [
+																"authorized",
+																"timestamp"
+															]
 														}
-													},
-													"required": [
-														"authorized",
-														"timestamp"
-													]
+													],
+													"nullable": true
 												},
 												"created_at": {
 													"allOf": [
@@ -24010,26 +24136,32 @@
 												},
 												"emails_processed": {
 													"type": "object",
-													"properties": {
-														"timestamp": {
-															"type": "string",
-															"format": "date-time",
-															"readOnly": true
-														},
-														"total_emails_processed": {
-															"type": "integer",
-															"minimum": 0
-														},
-														"total_emails_processed_previous": {
-															"type": "integer",
-															"minimum": 0
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"timestamp": {
+																	"type": "string",
+																	"format": "date-time",
+																	"readOnly": true
+																},
+																"total_emails_processed": {
+																	"type": "integer",
+																	"minimum": 0
+																},
+																"total_emails_processed_previous": {
+																	"type": "integer",
+																	"minimum": 0
+																}
+															},
+															"required": [
+																"total_emails_processed",
+																"total_emails_processed_previous",
+																"timestamp"
+															]
 														}
-													},
-													"required": [
-														"total_emails_processed",
-														"total_emails_processed_previous",
-														"timestamp"
-													]
+													],
+													"nullable": true
 												},
 												"folder": {
 													"allOf": [

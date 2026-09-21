@@ -399,6 +399,852 @@
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-require-confirmation": "This operation deletes the issue automation."
 	},
+	"DELETE /accounts/{account_id}/workers/observability/issues/groups/{groupId}": {
+		"operationId": "issues.groups.delete",
+		"summary": "Dissolve an issue group",
+		"description": "Dissolve an issue group and restore its members as standalone issues.",
+		"parameters": [
+			{
+				"name": "groupId",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"deleted": {
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"deleted"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Not found"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"tags": [
+			"Issues"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.issues",
+		"x-fern-sdk-method-name": "ungroup",
+		"x-forge-params": {
+			"groupId": {
+				"positional": true,
+				"required": true
+			}
+		}
+	},
+	"DELETE /accounts/{account_id}/workers/observability/issues/groups/{groupId}/members/{issueId}": {
+		"operationId": "issues.groups.members.remove",
+		"summary": "Remove an issue group member",
+		"description": "Remove an issue from a group, dissolving the group when fewer than two members remain.",
+		"parameters": [
+			{
+				"name": "groupId",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "issueId",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true,
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"created": {
+											"type": "number"
+										},
+										"fingerprint": {
+											"type": "string"
+										},
+										"firstObserved": {
+											"type": "number"
+										},
+										"group": {
+											"type": "object",
+											"properties": {
+												"issueIds": {
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												}
+											},
+											"required": [
+												"issueIds"
+											]
+										},
+										"id": {
+											"type": "string"
+										},
+										"lastObserved": {
+											"type": "number"
+										},
+										"service": {
+											"type": "string"
+										},
+										"status": {
+											"type": "string",
+											"enum": [
+												"active",
+												"resolved",
+												"ignored"
+											]
+										},
+										"statusUpdated": {
+											"type": "number"
+										},
+										"title": {
+											"type": "string"
+										},
+										"type": {
+											"type": "string"
+										},
+										"updated": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"id",
+										"service",
+										"title",
+										"status",
+										"statusUpdated",
+										"count",
+										"firstObserved",
+										"lastObserved",
+										"created",
+										"updated"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Bad Request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Not found"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Conflict",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Conflict"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"tags": [
+			"Issues"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.issues",
+		"x-fern-sdk-method-name": "remove",
+		"x-forge-params": {
+			"groupId": {
+				"positional": true,
+				"required": true
+			},
+			"issueId": {
+				"positional": true,
+				"required": true
+			}
+		}
+	},
 	"GET /accounts/{account_id}/workers/observability/issues": {
 		"operationId": "issues.list",
 		"summary": "List detected issues",
@@ -440,7 +1286,6 @@
 					"enum": [
 						"id",
 						"service",
-						"fingerprint",
 						"title",
 						"type",
 						"status",
@@ -633,6 +1478,20 @@
 											"firstObserved": {
 												"type": "number"
 											},
+											"group": {
+												"type": "object",
+												"properties": {
+													"issueIds": {
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												},
+												"required": [
+													"issueIds"
+												]
+											},
 											"id": {
 												"type": "string"
 											},
@@ -666,9 +1525,7 @@
 										"required": [
 											"id",
 											"service",
-											"fingerprint",
 											"title",
-											"type",
 											"status",
 											"statusUpdated",
 											"count",
@@ -1135,6 +1992,20 @@
 												"firstObserved": {
 													"type": "number"
 												},
+												"group": {
+													"type": "object",
+													"properties": {
+														"issueIds": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														}
+													},
+													"required": [
+														"issueIds"
+													]
+												},
 												"id": {
 													"type": "string"
 												},
@@ -1168,9 +2039,7 @@
 											"required": [
 												"id",
 												"service",
-												"fingerprint",
 												"title",
-												"type",
 												"status",
 												"statusUpdated",
 												"count",
@@ -3391,7 +4260,7 @@
 	"PATCH /accounts/{account_id}/workers/observability/issues/{issueId}": {
 		"operationId": "issues.patch",
 		"summary": "Modify an issue",
-		"description": "Modify an issue status.",
+		"description": "Modify an issue status or group title.",
 		"parameters": [
 			{
 				"name": "issueId",
@@ -3404,7 +4273,7 @@
 			}
 		],
 		"requestBody": {
-			"description": "Modify an issue status.",
+			"description": "Modify an issue status or group title.",
 			"required": true,
 			"content": {
 				"application/json": {
@@ -3418,11 +4287,13 @@
 									"resolved",
 									"ignored"
 								]
+							},
+							"title": {
+								"type": "string",
+								"maxLength": 128,
+								"minLength": 1
 							}
-						},
-						"required": [
-							"status"
-						]
+						}
 					}
 				}
 			}
@@ -3481,6 +4352,20 @@
 										"firstObserved": {
 											"type": "number"
 										},
+										"group": {
+											"type": "object",
+											"properties": {
+												"issueIds": {
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												}
+											},
+											"required": [
+												"issueIds"
+											]
+										},
 										"id": {
 											"type": "string"
 										},
@@ -3514,9 +4399,7 @@
 									"required": [
 										"id",
 										"service",
-										"fingerprint",
 										"title",
-										"type",
 										"status",
 										"statusUpdated",
 										"count",
@@ -3538,6 +4421,63 @@
 								"success",
 								"errors",
 								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Bad Request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
 							]
 						}
 					}
@@ -4700,6 +5640,1047 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.issues.automations",
 		"x-fern-sdk-method-name": "create"
+	},
+	"POST /accounts/{account_id}/workers/observability/issues/groups": {
+		"operationId": "issues.groups.create",
+		"summary": "Create an issue group",
+		"description": "Group two or more issues under a new customer-defined identity.",
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"issueIds": {
+								"type": "array",
+								"items": {
+									"minLength": 1,
+									"type": "string"
+								},
+								"maxItems": 100,
+								"minItems": 2
+							},
+							"title": {
+								"type": "string",
+								"maxLength": 128,
+								"minLength": 1
+							}
+						},
+						"required": [
+							"title",
+							"issueIds"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"created": {
+											"type": "number"
+										},
+										"fingerprint": {
+											"type": "string"
+										},
+										"firstObserved": {
+											"type": "number"
+										},
+										"group": {
+											"type": "object",
+											"properties": {
+												"issueIds": {
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												}
+											},
+											"required": [
+												"issueIds"
+											]
+										},
+										"id": {
+											"type": "string"
+										},
+										"lastObserved": {
+											"type": "number"
+										},
+										"service": {
+											"type": "string"
+										},
+										"status": {
+											"type": "string",
+											"enum": [
+												"active",
+												"resolved",
+												"ignored"
+											]
+										},
+										"statusUpdated": {
+											"type": "number"
+										},
+										"title": {
+											"type": "string"
+										},
+										"type": {
+											"type": "string"
+										},
+										"updated": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"id",
+										"service",
+										"title",
+										"status",
+										"statusUpdated",
+										"count",
+										"firstObserved",
+										"lastObserved",
+										"created",
+										"updated"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Bad Request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Not found"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Conflict",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Conflict"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"tags": [
+			"Issues"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.issues",
+		"x-fern-sdk-method-name": "group"
+	},
+	"POST /accounts/{account_id}/workers/observability/issues/groups/{groupId}/members": {
+		"operationId": "issues.groups.members.add",
+		"summary": "Add issue group members",
+		"description": "Add one or more ungrouped issues to an existing issue group.",
+		"parameters": [
+			{
+				"name": "groupId",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"issueIds": {
+								"type": "array",
+								"items": {
+									"minLength": 1,
+									"type": "string"
+								},
+								"maxItems": 100,
+								"minItems": 1
+							}
+						},
+						"required": [
+							"issueIds"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"created": {
+											"type": "number"
+										},
+										"fingerprint": {
+											"type": "string"
+										},
+										"firstObserved": {
+											"type": "number"
+										},
+										"group": {
+											"type": "object",
+											"properties": {
+												"issueIds": {
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												}
+											},
+											"required": [
+												"issueIds"
+											]
+										},
+										"id": {
+											"type": "string"
+										},
+										"lastObserved": {
+											"type": "number"
+										},
+										"service": {
+											"type": "string"
+										},
+										"status": {
+											"type": "string",
+											"enum": [
+												"active",
+												"resolved",
+												"ignored"
+											]
+										},
+										"statusUpdated": {
+											"type": "number"
+										},
+										"title": {
+											"type": "string"
+										},
+										"type": {
+											"type": "string"
+										},
+										"updated": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"id",
+										"service",
+										"title",
+										"status",
+										"statusUpdated",
+										"count",
+										"firstObserved",
+										"lastObserved",
+										"created",
+										"updated"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Bad Request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Not found"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Conflict",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Conflict"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"tags": [
+			"Issues"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.issues",
+		"x-fern-sdk-method-name": "add",
+		"x-forge-params": {
+			"groupId": {
+				"positional": true,
+				"required": true
+			}
+		}
 	},
 	"PUT /accounts/{account_id}/workers/observability/issues/automations/{automationId}": {
 		"operationId": "issues.automations.update",

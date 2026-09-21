@@ -151,203 +151,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"properties": {
-														"result": {
-															"type": "object",
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															],
-															"nullable": true
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"nullable": true
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -608,299 +492,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "array",
-															"items": {
-																"type": "object"
-															},
-															"nullable": true
-														},
-														"result_info": {
-															"type": "object",
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service.",
-																	"type": "number",
-																	"example": 1
-																},
-																"page": {
-																	"description": "Current page within paginated list of results.",
-																	"type": "number",
-																	"example": 1
-																},
-																"per_page": {
-																	"description": "Number of results per page of results.",
-																	"type": "number",
-																	"example": 20
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters.",
-																	"type": "number",
-																	"example": 2000
-																}
-															}
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"properties": {
-															"config": {
-																"description": "The configuration object containing third-party integration information.",
-																"type": "object",
-																"example": {
-																	"api_url": "https://as123.awmdm.com/API",
-																	"auth_url": "https://na.uemauth.workspaceone.com/connect/token",
-																	"client_id": "example client id"
-																},
-																"oneOf": [
-																	{
-																		"description": "The Workspace One Config Response.",
-																		"type": "object",
-																		"properties": {
-																			"api_url": {
-																				"description": "The Workspace One API URL provided in the Workspace One Admin Dashboard.",
-																				"type": "string",
-																				"example": "https://as123.awmdm.com/API"
-																			},
-																			"auth_url": {
-																				"description": "The Workspace One Authorization URL depending on your region.",
-																				"type": "string",
-																				"example": "https://na.uemauth.workspaceone.com/connect/token"
-																			},
-																			"client_id": {
-																				"description": "The Workspace One client ID provided in the Workspace One Admin Dashboard.",
-																				"type": "string",
-																				"example": "example client id"
-																			}
-																		},
-																		"required": [
-																			"api_url",
-																			"auth_url",
-																			"client_id"
-																		]
-																	}
-																]
-															},
-															"id": {
-																"description": "API UUID.",
-																"type": "string",
-																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																"maxLength": 36,
-																"x-auditable": true
-															},
-															"interval": {
-																"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
-																"type": "string",
-																"example": "10m",
-																"x-auditable": true
-															},
-															"name": {
-																"description": "The name of the device posture integration.",
-																"type": "string",
-																"example": "My Workspace One Integration",
-																"x-auditable": true
-															},
-															"type": {
-																"description": "The type of device posture integration.",
-																"type": "string",
-																"example": "workspace_one",
-																"enum": [
-																	"workspace_one",
-																	"crowdstrike_s2s",
-																	"uptycs",
-																	"intune",
-																	"kolide",
-																	"tanium_s2s",
-																	"sentinelone_s2s",
-																	"custom_s2s"
-																],
-																"x-auditable": true
-															}
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1148,276 +820,86 @@
 					"application/json": {
 						"schema": {
 							"type": "object",
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "object",
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															],
-															"nullable": true
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"config": {
-															"description": "The configuration object containing third-party integration information.",
-															"type": "object",
-															"example": {
-																"api_url": "https://as123.awmdm.com/API",
-																"auth_url": "https://na.uemauth.workspaceone.com/connect/token",
-																"client_id": "example client id"
-															},
-															"oneOf": [
-																{
-																	"description": "The Workspace One Config Response.",
-																	"type": "object",
-																	"properties": {
-																		"api_url": {
-																			"description": "The Workspace One API URL provided in the Workspace One Admin Dashboard.",
-																			"type": "string",
-																			"example": "https://as123.awmdm.com/API"
-																		},
-																		"auth_url": {
-																			"description": "The Workspace One Authorization URL depending on your region.",
-																			"type": "string",
-																			"example": "https://na.uemauth.workspaceone.com/connect/token"
-																		},
-																		"client_id": {
-																			"description": "The Workspace One client ID provided in the Workspace One Admin Dashboard.",
-																			"type": "string",
-																			"example": "example client id"
-																		}
-																	},
-																	"required": [
-																		"api_url",
-																		"auth_url",
-																		"client_id"
-																	]
-																}
-															]
-														},
-														"id": {
-															"description": "API UUID.",
-															"type": "string",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-															"maxLength": 36,
-															"x-auditable": true
-														},
-														"interval": {
-															"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
-															"type": "string",
-															"example": "10m",
-															"x-auditable": true
-														},
-														"name": {
-															"description": "The name of the device posture integration.",
-															"type": "string",
-															"example": "My Workspace One Integration",
-															"x-auditable": true
-														},
-														"type": {
-															"description": "The type of device posture integration.",
-															"type": "string",
-															"example": "workspace_one",
-															"enum": [
-																"workspace_one",
-																"crowdstrike_s2s",
-																"uptycs",
-																"intune",
-																"kolide",
-																"tanium_s2s",
-																"sentinelone_s2s",
-																"custom_s2s"
-															],
-															"x-auditable": true
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1949,276 +1431,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "object",
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															],
-															"nullable": true
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"config": {
-															"description": "The configuration object containing third-party integration information.",
-															"type": "object",
-															"example": {
-																"api_url": "https://as123.awmdm.com/API",
-																"auth_url": "https://na.uemauth.workspaceone.com/connect/token",
-																"client_id": "example client id"
-															},
-															"oneOf": [
-																{
-																	"description": "The Workspace One Config Response.",
-																	"type": "object",
-																	"properties": {
-																		"api_url": {
-																			"description": "The Workspace One API URL provided in the Workspace One Admin Dashboard.",
-																			"type": "string",
-																			"example": "https://as123.awmdm.com/API"
-																		},
-																		"auth_url": {
-																			"description": "The Workspace One Authorization URL depending on your region.",
-																			"type": "string",
-																			"example": "https://na.uemauth.workspaceone.com/connect/token"
-																		},
-																		"client_id": {
-																			"description": "The Workspace One client ID provided in the Workspace One Admin Dashboard.",
-																			"type": "string",
-																			"example": "example client id"
-																		}
-																	},
-																	"required": [
-																		"api_url",
-																		"auth_url",
-																		"client_id"
-																	]
-																}
-															]
-														},
-														"id": {
-															"description": "API UUID.",
-															"type": "string",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-															"maxLength": 36,
-															"x-auditable": true
-														},
-														"interval": {
-															"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
-															"type": "string",
-															"example": "10m",
-															"x-auditable": true
-														},
-														"name": {
-															"description": "The name of the device posture integration.",
-															"type": "string",
-															"example": "My Workspace One Integration",
-															"x-auditable": true
-														},
-														"type": {
-															"description": "The type of device posture integration.",
-															"type": "string",
-															"example": "workspace_one",
-															"enum": [
-																"workspace_one",
-																"crowdstrike_s2s",
-																"uptycs",
-																"intune",
-																"kolide",
-																"tanium_s2s",
-																"sentinelone_s2s",
-																"custom_s2s"
-															],
-															"x-auditable": true
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -2747,276 +2040,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "object",
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															],
-															"nullable": true
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"config": {
-															"description": "The configuration object containing third-party integration information.",
-															"type": "object",
-															"example": {
-																"api_url": "https://as123.awmdm.com/API",
-																"auth_url": "https://na.uemauth.workspaceone.com/connect/token",
-																"client_id": "example client id"
-															},
-															"oneOf": [
-																{
-																	"description": "The Workspace One Config Response.",
-																	"type": "object",
-																	"properties": {
-																		"api_url": {
-																			"description": "The Workspace One API URL provided in the Workspace One Admin Dashboard.",
-																			"type": "string",
-																			"example": "https://as123.awmdm.com/API"
-																		},
-																		"auth_url": {
-																			"description": "The Workspace One Authorization URL depending on your region.",
-																			"type": "string",
-																			"example": "https://na.uemauth.workspaceone.com/connect/token"
-																		},
-																		"client_id": {
-																			"description": "The Workspace One client ID provided in the Workspace One Admin Dashboard.",
-																			"type": "string",
-																			"example": "example client id"
-																		}
-																	},
-																	"required": [
-																		"api_url",
-																		"auth_url",
-																		"client_id"
-																	]
-																}
-															]
-														},
-														"id": {
-															"description": "API UUID.",
-															"type": "string",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-															"maxLength": 36,
-															"x-auditable": true
-														},
-														"interval": {
-															"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
-															"type": "string",
-															"example": "10m",
-															"x-auditable": true
-														},
-														"name": {
-															"description": "The name of the device posture integration.",
-															"type": "string",
-															"example": "My Workspace One Integration",
-															"x-auditable": true
-														},
-														"type": {
-															"description": "The type of device posture integration.",
-															"type": "string",
-															"example": "workspace_one",
-															"enum": [
-																"workspace_one",
-																"crowdstrike_s2s",
-																"uptycs",
-																"intune",
-																"kolide",
-																"tanium_s2s",
-																"sentinelone_s2s",
-																"custom_s2s"
-															],
-															"x-auditable": true
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}

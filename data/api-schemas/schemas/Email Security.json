@@ -609,19 +609,25 @@
 													},
 													"delivery_mode": {
 														"type": "string",
-														"enum": [
-															"DIRECT",
-															"BCC",
-															"JOURNAL",
-															"REVIEW_SUBMISSION",
-															"DMARC_UNVERIFIED",
-															"DMARC_FAILURE_REPORT",
-															"DMARC_AGGREGATE_REPORT",
-															"THREAT_INTEL_SUBMISSION",
-															"SIMULATION_SUBMISSION",
-															"API",
-															"RETRO_SCAN"
-														]
+														"allOf": [
+															{
+																"type": "string",
+																"enum": [
+																	"DIRECT",
+																	"BCC",
+																	"JOURNAL",
+																	"REVIEW_SUBMISSION",
+																	"DMARC_UNVERIFIED",
+																	"DMARC_FAILURE_REPORT",
+																	"DMARC_AGGREGATE_REPORT",
+																	"THREAT_INTEL_SUBMISSION",
+																	"SIMULATION_SUBMISSION",
+																	"API",
+																	"RETRO_SCAN"
+																]
+															}
+														],
+														"nullable": true
 													},
 													"delivery_status": {
 														"type": "array",
@@ -664,18 +670,24 @@
 													},
 													"final_disposition": {
 														"type": "string",
-														"enum": [
-															"MALICIOUS",
-															"MALICIOUS-BEC",
-															"SUSPICIOUS",
-															"SPOOF",
-															"SPAM",
-															"BULK",
-															"ENCRYPTED",
-															"EXTERNAL",
-															"UNKNOWN",
-															"NONE"
-														]
+														"allOf": [
+															{
+																"type": "string",
+																"enum": [
+																	"MALICIOUS",
+																	"MALICIOUS-BEC",
+																	"SUSPICIOUS",
+																	"SPOOF",
+																	"SPAM",
+																	"BULK",
+																	"ENCRYPTED",
+																	"EXTERNAL",
+																	"UNKNOWN",
+																	"NONE"
+																]
+															}
+														],
+														"nullable": true
 													},
 													"findings": {
 														"description": "Deprecated, use the `findings` field from `GET /investigate/{investigate_id}/detections` instead. End of life: November 1, 2026. Detection findings for this message.",
@@ -692,18 +704,24 @@
 																},
 																"detection": {
 																	"type": "string",
-																	"enum": [
-																		"MALICIOUS",
-																		"MALICIOUS-BEC",
-																		"SUSPICIOUS",
-																		"SPOOF",
-																		"SPAM",
-																		"BULK",
-																		"ENCRYPTED",
-																		"EXTERNAL",
-																		"UNKNOWN",
-																		"NONE"
-																	]
+																	"allOf": [
+																		{
+																			"type": "string",
+																			"enum": [
+																				"MALICIOUS",
+																				"MALICIOUS-BEC",
+																				"SUSPICIOUS",
+																				"SPOOF",
+																				"SPAM",
+																				"BULK",
+																				"ENCRYPTED",
+																				"EXTERNAL",
+																				"UNKNOWN",
+																				"NONE"
+																			]
+																		}
+																	],
+																	"nullable": true
 																},
 																"field": {
 																	"type": "string",
@@ -905,42 +923,66 @@
 													},
 													"validation": {
 														"type": "object",
-														"properties": {
-															"comment": {
-																"type": "string",
-																"nullable": true
-															},
-															"dkim": {
-																"type": "string",
-																"enum": [
-																	"pass",
-																	"neutral",
-																	"fail",
-																	"error",
-																	"none"
-																]
-															},
-															"dmarc": {
-																"type": "string",
-																"enum": [
-																	"pass",
-																	"neutral",
-																	"fail",
-																	"error",
-																	"none"
-																]
-															},
-															"spf": {
-																"type": "string",
-																"enum": [
-																	"pass",
-																	"neutral",
-																	"fail",
-																	"error",
-																	"none"
-																]
+														"allOf": [
+															{
+																"type": "object",
+																"properties": {
+																	"comment": {
+																		"type": "string",
+																		"nullable": true
+																	},
+																	"dkim": {
+																		"type": "string",
+																		"allOf": [
+																			{
+																				"type": "string",
+																				"enum": [
+																					"pass",
+																					"neutral",
+																					"fail",
+																					"error",
+																					"none"
+																				]
+																			}
+																		],
+																		"nullable": true
+																	},
+																	"dmarc": {
+																		"type": "string",
+																		"allOf": [
+																			{
+																				"type": "string",
+																				"enum": [
+																					"pass",
+																					"neutral",
+																					"fail",
+																					"error",
+																					"none"
+																				]
+																			}
+																		],
+																		"nullable": true
+																	},
+																	"spf": {
+																		"type": "string",
+																		"allOf": [
+																			{
+																				"type": "string",
+																				"enum": [
+																					"pass",
+																					"neutral",
+																					"fail",
+																					"error",
+																					"none"
+																				]
+																			}
+																		],
+																		"nullable": true
+																	}
+																}
 															}
-														}
+														],
+														"nullable": true
 													},
 													"x_originating_ip": {
 														"type": "string",
@@ -1483,19 +1525,25 @@
 												},
 												"delivery_mode": {
 													"type": "string",
-													"enum": [
-														"DIRECT",
-														"BCC",
-														"JOURNAL",
-														"REVIEW_SUBMISSION",
-														"DMARC_UNVERIFIED",
-														"DMARC_FAILURE_REPORT",
-														"DMARC_AGGREGATE_REPORT",
-														"THREAT_INTEL_SUBMISSION",
-														"SIMULATION_SUBMISSION",
-														"API",
-														"RETRO_SCAN"
-													]
+													"allOf": [
+														{
+															"type": "string",
+															"enum": [
+																"DIRECT",
+																"BCC",
+																"JOURNAL",
+																"REVIEW_SUBMISSION",
+																"DMARC_UNVERIFIED",
+																"DMARC_FAILURE_REPORT",
+																"DMARC_AGGREGATE_REPORT",
+																"THREAT_INTEL_SUBMISSION",
+																"SIMULATION_SUBMISSION",
+																"API",
+																"RETRO_SCAN"
+															]
+														}
+													],
+													"nullable": true
 												},
 												"delivery_status": {
 													"type": "array",
@@ -1538,18 +1586,24 @@
 												},
 												"final_disposition": {
 													"type": "string",
-													"enum": [
-														"MALICIOUS",
-														"MALICIOUS-BEC",
-														"SUSPICIOUS",
-														"SPOOF",
-														"SPAM",
-														"BULK",
-														"ENCRYPTED",
-														"EXTERNAL",
-														"UNKNOWN",
-														"NONE"
-													]
+													"allOf": [
+														{
+															"type": "string",
+															"enum": [
+																"MALICIOUS",
+																"MALICIOUS-BEC",
+																"SUSPICIOUS",
+																"SPOOF",
+																"SPAM",
+																"BULK",
+																"ENCRYPTED",
+																"EXTERNAL",
+																"UNKNOWN",
+																"NONE"
+															]
+														}
+													],
+													"nullable": true
 												},
 												"findings": {
 													"description": "Deprecated, use the `findings` field from `GET /investigate/{investigate_id}/detections` instead. End of life: November 1, 2026. Detection findings for this message.",
@@ -1566,18 +1620,24 @@
 															},
 															"detection": {
 																"type": "string",
-																"enum": [
-																	"MALICIOUS",
-																	"MALICIOUS-BEC",
-																	"SUSPICIOUS",
-																	"SPOOF",
-																	"SPAM",
-																	"BULK",
-																	"ENCRYPTED",
-																	"EXTERNAL",
-																	"UNKNOWN",
-																	"NONE"
-																]
+																"allOf": [
+																	{
+																		"type": "string",
+																		"enum": [
+																			"MALICIOUS",
+																			"MALICIOUS-BEC",
+																			"SUSPICIOUS",
+																			"SPOOF",
+																			"SPAM",
+																			"BULK",
+																			"ENCRYPTED",
+																			"EXTERNAL",
+																			"UNKNOWN",
+																			"NONE"
+																		]
+																	}
+																],
+																"nullable": true
 															},
 															"field": {
 																"type": "string",
@@ -1779,42 +1839,66 @@
 												},
 												"validation": {
 													"type": "object",
-													"properties": {
-														"comment": {
-															"type": "string",
-															"nullable": true
-														},
-														"dkim": {
-															"type": "string",
-															"enum": [
-																"pass",
-																"neutral",
-																"fail",
-																"error",
-																"none"
-															]
-														},
-														"dmarc": {
-															"type": "string",
-															"enum": [
-																"pass",
-																"neutral",
-																"fail",
-																"error",
-																"none"
-															]
-														},
-														"spf": {
-															"type": "string",
-															"enum": [
-																"pass",
-																"neutral",
-																"fail",
-																"error",
-																"none"
-															]
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"comment": {
+																	"type": "string",
+																	"nullable": true
+																},
+																"dkim": {
+																	"type": "string",
+																	"allOf": [
+																		{
+																			"type": "string",
+																			"enum": [
+																				"pass",
+																				"neutral",
+																				"fail",
+																				"error",
+																				"none"
+																			]
+																		}
+																	],
+																	"nullable": true
+																},
+																"dmarc": {
+																	"type": "string",
+																	"allOf": [
+																		{
+																			"type": "string",
+																			"enum": [
+																				"pass",
+																				"neutral",
+																				"fail",
+																				"error",
+																				"none"
+																			]
+																		}
+																	],
+																	"nullable": true
+																},
+																"spf": {
+																	"type": "string",
+																	"allOf": [
+																		{
+																			"type": "string",
+																			"enum": [
+																				"pass",
+																				"neutral",
+																				"fail",
+																				"error",
+																				"none"
+																			]
+																		}
+																	],
+																	"nullable": true
+																}
+															}
 														}
-													}
+													],
+													"nullable": true
 												},
 												"x_originating_ip": {
 													"type": "string",
@@ -2473,18 +2557,24 @@
 												},
 												"final_disposition": {
 													"type": "string",
-													"enum": [
-														"MALICIOUS",
-														"MALICIOUS-BEC",
-														"SUSPICIOUS",
-														"SPOOF",
-														"SPAM",
-														"BULK",
-														"ENCRYPTED",
-														"EXTERNAL",
-														"UNKNOWN",
-														"NONE"
-													]
+													"allOf": [
+														{
+															"type": "string",
+															"enum": [
+																"MALICIOUS",
+																"MALICIOUS-BEC",
+																"SUSPICIOUS",
+																"SPOOF",
+																"SPAM",
+																"BULK",
+																"ENCRYPTED",
+																"EXTERNAL",
+																"UNKNOWN",
+																"NONE"
+															]
+														}
+													],
+													"nullable": true
 												},
 												"findings": {
 													"type": "array",
@@ -2642,33 +2732,51 @@
 														},
 														"dkim": {
 															"type": "string",
-															"enum": [
-																"pass",
-																"neutral",
-																"fail",
-																"error",
-																"none"
-															]
+															"allOf": [
+																{
+																	"type": "string",
+																	"enum": [
+																		"pass",
+																		"neutral",
+																		"fail",
+																		"error",
+																		"none"
+																	]
+																}
+															],
+															"nullable": true
 														},
 														"dmarc": {
 															"type": "string",
-															"enum": [
-																"pass",
-																"neutral",
-																"fail",
-																"error",
-																"none"
-															]
+															"allOf": [
+																{
+																	"type": "string",
+																	"enum": [
+																		"pass",
+																		"neutral",
+																		"fail",
+																		"error",
+																		"none"
+																	]
+																}
+															],
+															"nullable": true
 														},
 														"spf": {
 															"type": "string",
-															"enum": [
-																"pass",
-																"neutral",
-																"fail",
-																"error",
-																"none"
-															]
+															"allOf": [
+																{
+																	"type": "string",
+																	"enum": [
+																		"pass",
+																		"neutral",
+																		"fail",
+																		"error",
+																		"none"
+																	]
+																}
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -3836,19 +3944,29 @@
 																		]
 																	},
 																	"expected_disposition": {
+																		"description": "Nonfunctional field. End of life: December 1, 2026.",
 																		"type": "string",
-																		"enum": [
-																			"MALICIOUS",
-																			"MALICIOUS-BEC",
-																			"SUSPICIOUS",
-																			"SPOOF",
-																			"SPAM",
-																			"BULK",
-																			"ENCRYPTED",
-																			"EXTERNAL",
-																			"UNKNOWN",
-																			"NONE"
-																		]
+																		"allOf": [
+																			{
+																				"type": "string",
+																				"enum": [
+																					"MALICIOUS",
+																					"MALICIOUS-BEC",
+																					"SUSPICIOUS",
+																					"SPOOF",
+																					"SPAM",
+																					"BULK",
+																					"ENCRYPTED",
+																					"EXTERNAL",
+																					"UNKNOWN",
+																					"NONE"
+																				]
+																			}
+																		],
+																		"deprecated": true,
+																		"nullable": true,
+																		"x-stainless-deprecation-message": "This field is nonfunctional.",
+																		"x-sunset": "2026-12-01T00:00:00Z"
 																	},
 																	"type": {
 																		"type": "string",
@@ -3903,10 +4021,18 @@
 														"type": "string",
 														"format": "uuid"
 													},
+													"messages_cancelled": {
+														"description": "Messages that were cancelled: rows cancelled via the API before being claimed, and rows whose in-flight attempt ended when the job reached a terminal state. Together the counters satisfy total_messages_discovered = messages_pending + messages_successful + messages_failed + messages_skipped + messages_cancelled.",
+														"type": "integer"
+													},
 													"messages_failed": {
 														"type": "integer"
 													},
 													"messages_pending": {
+														"type": "integer"
+													},
+													"messages_skipped": {
+														"description": "Messages that discovery skipped (for example, phish submissions, which the job cannot action).",
 														"type": "integer"
 													},
 													"messages_successful": {
@@ -3927,18 +4053,24 @@
 																"nullable": true
 															},
 															"delivery_status": {
-																"description": "Delivery status of the message.",
 																"type": "string",
-																"enum": [
-																	"delivered",
-																	"moved",
-																	"quarantined",
-																	"rejected",
-																	"deferred",
-																	"bounced",
-																	"queued",
-																	"move_failed"
-																]
+																"allOf": [
+																	{
+																		"description": "Delivery status of the message.",
+																		"type": "string",
+																		"enum": [
+																			"delivered",
+																			"moved",
+																			"quarantined",
+																			"rejected",
+																			"deferred",
+																			"bounced",
+																			"queued",
+																			"move_failed"
+																		]
+																	}
+																],
+																"nullable": true
 															},
 															"detections_only": {
 																"type": "boolean",
@@ -3960,18 +4092,24 @@
 															},
 															"final_disposition": {
 																"type": "string",
-																"enum": [
-																	"MALICIOUS",
-																	"MALICIOUS-BEC",
-																	"SUSPICIOUS",
-																	"SPOOF",
-																	"SPAM",
-																	"BULK",
-																	"ENCRYPTED",
-																	"EXTERNAL",
-																	"UNKNOWN",
-																	"NONE"
-																]
+																"allOf": [
+																	{
+																		"type": "string",
+																		"enum": [
+																			"MALICIOUS",
+																			"MALICIOUS-BEC",
+																			"SUSPICIOUS",
+																			"SPOOF",
+																			"SPAM",
+																			"BULK",
+																			"ENCRYPTED",
+																			"EXTERNAL",
+																			"UNKNOWN",
+																			"NONE"
+																		]
+																	}
+																],
+																"nullable": true
 															},
 															"message_action": {
 																"type": "string",
@@ -4058,6 +4196,8 @@
 													"messages_pending",
 													"messages_successful",
 													"messages_failed",
+													"messages_skipped",
+													"messages_cancelled",
 													"created_at"
 												]
 											}
@@ -4375,19 +4515,29 @@
 																	]
 																},
 																"expected_disposition": {
+																	"description": "Nonfunctional field. End of life: December 1, 2026.",
 																	"type": "string",
-																	"enum": [
-																		"MALICIOUS",
-																		"MALICIOUS-BEC",
-																		"SUSPICIOUS",
-																		"SPOOF",
-																		"SPAM",
-																		"BULK",
-																		"ENCRYPTED",
-																		"EXTERNAL",
-																		"UNKNOWN",
-																		"NONE"
-																	]
+																	"allOf": [
+																		{
+																			"type": "string",
+																			"enum": [
+																				"MALICIOUS",
+																				"MALICIOUS-BEC",
+																				"SUSPICIOUS",
+																				"SPOOF",
+																				"SPAM",
+																				"BULK",
+																				"ENCRYPTED",
+																				"EXTERNAL",
+																				"UNKNOWN",
+																				"NONE"
+																			]
+																		}
+																	],
+																	"deprecated": true,
+																	"nullable": true,
+																	"x-stainless-deprecation-message": "This field is nonfunctional.",
+																	"x-sunset": "2026-12-01T00:00:00Z"
 																},
 																"type": {
 																	"type": "string",
@@ -4442,10 +4592,18 @@
 													"type": "string",
 													"format": "uuid"
 												},
+												"messages_cancelled": {
+													"description": "Messages that were cancelled: rows cancelled via the API before being claimed, and rows whose in-flight attempt ended when the job reached a terminal state. Together the counters satisfy total_messages_discovered = messages_pending + messages_successful + messages_failed + messages_skipped + messages_cancelled.",
+													"type": "integer"
+												},
 												"messages_failed": {
 													"type": "integer"
 												},
 												"messages_pending": {
+													"type": "integer"
+												},
+												"messages_skipped": {
+													"description": "Messages that discovery skipped (for example, phish submissions, which the job cannot action).",
 													"type": "integer"
 												},
 												"messages_successful": {
@@ -4466,18 +4624,24 @@
 															"nullable": true
 														},
 														"delivery_status": {
-															"description": "Delivery status of the message.",
 															"type": "string",
-															"enum": [
-																"delivered",
-																"moved",
-																"quarantined",
-																"rejected",
-																"deferred",
-																"bounced",
-																"queued",
-																"move_failed"
-															]
+															"allOf": [
+																{
+																	"description": "Delivery status of the message.",
+																	"type": "string",
+																	"enum": [
+																		"delivered",
+																		"moved",
+																		"quarantined",
+																		"rejected",
+																		"deferred",
+																		"bounced",
+																		"queued",
+																		"move_failed"
+																	]
+																}
+															],
+															"nullable": true
 														},
 														"detections_only": {
 															"type": "boolean",
@@ -4499,18 +4663,24 @@
 														},
 														"final_disposition": {
 															"type": "string",
-															"enum": [
-																"MALICIOUS",
-																"MALICIOUS-BEC",
-																"SUSPICIOUS",
-																"SPOOF",
-																"SPAM",
-																"BULK",
-																"ENCRYPTED",
-																"EXTERNAL",
-																"UNKNOWN",
-																"NONE"
-															]
+															"allOf": [
+																{
+																	"type": "string",
+																	"enum": [
+																		"MALICIOUS",
+																		"MALICIOUS-BEC",
+																		"SUSPICIOUS",
+																		"SPOOF",
+																		"SPAM",
+																		"BULK",
+																		"ENCRYPTED",
+																		"EXTERNAL",
+																		"UNKNOWN",
+																		"NONE"
+																	]
+																}
+															],
+															"nullable": true
 														},
 														"message_action": {
 															"type": "string",
@@ -4597,6 +4767,8 @@
 												"messages_pending",
 												"messages_successful",
 												"messages_failed",
+												"messages_skipped",
+												"messages_cancelled",
 												"created_at"
 											]
 										}
@@ -4909,19 +5081,29 @@
 																		]
 																	},
 																	"expected_disposition": {
+																		"description": "Nonfunctional field. End of life: December 1, 2026.",
 																		"type": "string",
-																		"enum": [
-																			"MALICIOUS",
-																			"MALICIOUS-BEC",
-																			"SUSPICIOUS",
-																			"SPOOF",
-																			"SPAM",
-																			"BULK",
-																			"ENCRYPTED",
-																			"EXTERNAL",
-																			"UNKNOWN",
-																			"NONE"
-																		]
+																		"allOf": [
+																			{
+																				"type": "string",
+																				"enum": [
+																					"MALICIOUS",
+																					"MALICIOUS-BEC",
+																					"SUSPICIOUS",
+																					"SPOOF",
+																					"SPAM",
+																					"BULK",
+																					"ENCRYPTED",
+																					"EXTERNAL",
+																					"UNKNOWN",
+																					"NONE"
+																				]
+																			}
+																		],
+																		"deprecated": true,
+																		"nullable": true,
+																		"x-stainless-deprecation-message": "This field is nonfunctional.",
+																		"x-sunset": "2026-12-01T00:00:00Z"
 																	},
 																	"type": {
 																		"type": "string",
@@ -5050,19 +5232,25 @@
 															},
 															"delivery_mode": {
 																"type": "string",
-																"enum": [
-																	"DIRECT",
-																	"BCC",
-																	"JOURNAL",
-																	"REVIEW_SUBMISSION",
-																	"DMARC_UNVERIFIED",
-																	"DMARC_FAILURE_REPORT",
-																	"DMARC_AGGREGATE_REPORT",
-																	"THREAT_INTEL_SUBMISSION",
-																	"SIMULATION_SUBMISSION",
-																	"API",
-																	"RETRO_SCAN"
-																]
+																"allOf": [
+																	{
+																		"type": "string",
+																		"enum": [
+																			"DIRECT",
+																			"BCC",
+																			"JOURNAL",
+																			"REVIEW_SUBMISSION",
+																			"DMARC_UNVERIFIED",
+																			"DMARC_FAILURE_REPORT",
+																			"DMARC_AGGREGATE_REPORT",
+																			"THREAT_INTEL_SUBMISSION",
+																			"SIMULATION_SUBMISSION",
+																			"API",
+																			"RETRO_SCAN"
+																		]
+																	}
+																],
+																"nullable": true
 															},
 															"delivery_status": {
 																"type": "array",
@@ -5105,18 +5293,24 @@
 															},
 															"final_disposition": {
 																"type": "string",
-																"enum": [
-																	"MALICIOUS",
-																	"MALICIOUS-BEC",
-																	"SUSPICIOUS",
-																	"SPOOF",
-																	"SPAM",
-																	"BULK",
-																	"ENCRYPTED",
-																	"EXTERNAL",
-																	"UNKNOWN",
-																	"NONE"
-																]
+																"allOf": [
+																	{
+																		"type": "string",
+																		"enum": [
+																			"MALICIOUS",
+																			"MALICIOUS-BEC",
+																			"SUSPICIOUS",
+																			"SPOOF",
+																			"SPAM",
+																			"BULK",
+																			"ENCRYPTED",
+																			"EXTERNAL",
+																			"UNKNOWN",
+																			"NONE"
+																		]
+																	}
+																],
+																"nullable": true
 															},
 															"findings": {
 																"description": "Deprecated, use the `findings` field from `GET /investigate/{investigate_id}/detections` instead. End of life: November 1, 2026. Detection findings for this message.",
@@ -5133,18 +5327,24 @@
 																		},
 																		"detection": {
 																			"type": "string",
-																			"enum": [
-																				"MALICIOUS",
-																				"MALICIOUS-BEC",
-																				"SUSPICIOUS",
-																				"SPOOF",
-																				"SPAM",
-																				"BULK",
-																				"ENCRYPTED",
-																				"EXTERNAL",
-																				"UNKNOWN",
-																				"NONE"
-																			]
+																			"allOf": [
+																				{
+																					"type": "string",
+																					"enum": [
+																						"MALICIOUS",
+																						"MALICIOUS-BEC",
+																						"SUSPICIOUS",
+																						"SPOOF",
+																						"SPAM",
+																						"BULK",
+																						"ENCRYPTED",
+																						"EXTERNAL",
+																						"UNKNOWN",
+																						"NONE"
+																					]
+																				}
+																			],
+																			"nullable": true
 																		},
 																		"field": {
 																			"type": "string",
@@ -5346,42 +5546,66 @@
 															},
 															"validation": {
 																"type": "object",
-																"properties": {
-																	"comment": {
-																		"type": "string",
-																		"nullable": true
-																	},
-																	"dkim": {
-																		"type": "string",
-																		"enum": [
-																			"pass",
-																			"neutral",
-																			"fail",
-																			"error",
-																			"none"
-																		]
-																	},
-																	"dmarc": {
-																		"type": "string",
-																		"enum": [
-																			"pass",
-																			"neutral",
-																			"fail",
-																			"error",
-																			"none"
-																		]
-																	},
-																	"spf": {
-																		"type": "string",
-																		"enum": [
-																			"pass",
-																			"neutral",
-																			"fail",
-																			"error",
-																			"none"
-																		]
+																"allOf": [
+																	{
+																		"type": "object",
+																		"properties": {
+																			"comment": {
+																				"type": "string",
+																				"nullable": true
+																			},
+																			"dkim": {
+																				"type": "string",
+																				"allOf": [
+																					{
+																						"type": "string",
+																						"enum": [
+																							"pass",
+																							"neutral",
+																							"fail",
+																							"error",
+																							"none"
+																						]
+																					}
+																				],
+																				"nullable": true
+																			},
+																			"dmarc": {
+																				"type": "string",
+																				"allOf": [
+																					{
+																						"type": "string",
+																						"enum": [
+																							"pass",
+																							"neutral",
+																							"fail",
+																							"error",
+																							"none"
+																						]
+																					}
+																				],
+																				"nullable": true
+																			},
+																			"spf": {
+																				"type": "string",
+																				"allOf": [
+																					{
+																						"type": "string",
+																						"enum": [
+																							"pass",
+																							"neutral",
+																							"fail",
+																							"error",
+																							"none"
+																						]
+																					}
+																				],
+																				"nullable": true
+																			}
+																		}
 																	}
-																}
+																],
+																"nullable": true
 															},
 															"x_originating_ip": {
 																"type": "string",
@@ -6653,19 +6877,28 @@
 								]
 							},
 							"expected_disposition": {
+								"description": "Nonfunctional field. End of life: December 1, 2026.",
 								"type": "string",
-								"enum": [
-									"MALICIOUS",
-									"MALICIOUS-BEC",
-									"SUSPICIOUS",
-									"SPOOF",
-									"SPAM",
-									"BULK",
-									"ENCRYPTED",
-									"EXTERNAL",
-									"UNKNOWN",
-									"NONE"
-								]
+								"allOf": [
+									{
+										"type": "string",
+										"enum": [
+											"MALICIOUS",
+											"MALICIOUS-BEC",
+											"SUSPICIOUS",
+											"SPOOF",
+											"SPAM",
+											"BULK",
+											"ENCRYPTED",
+											"EXTERNAL",
+											"UNKNOWN",
+											"NONE"
+										]
+									}
+								],
+								"deprecated": true,
+								"nullable": true,
+								"x-stainless-deprecation-message": "This field is nonfunctional."
 							}
 						},
 						"required": [
@@ -7272,29 +7505,43 @@
 								"nullable": true
 							},
 							"destination": {
-								"type": "string",
-								"enum": [
-									"Inbox",
-									"JunkEmail",
-									"DeletedItems",
-									"RecoverableItemsDeletions",
-									"RecoverableItemsPurges"
+								"description": "Required when action is 'MOVE'.",
+								"allOf": [
+									{
+										"type": "string",
+										"enum": [
+											"Inbox",
+											"JunkEmail",
+											"DeletedItems",
+											"RecoverableItemsDeletions",
+											"RecoverableItemsPurges"
+										]
+									}
 								]
 							},
 							"expected_disposition": {
+								"description": "Nonfunctional field. End of life: December 1, 2026.",
 								"type": "string",
-								"enum": [
-									"MALICIOUS",
-									"MALICIOUS-BEC",
-									"SUSPICIOUS",
-									"SPOOF",
-									"SPAM",
-									"BULK",
-									"ENCRYPTED",
-									"EXTERNAL",
-									"UNKNOWN",
-									"NONE"
-								]
+								"allOf": [
+									{
+										"type": "string",
+										"enum": [
+											"MALICIOUS",
+											"MALICIOUS-BEC",
+											"SUSPICIOUS",
+											"SPOOF",
+											"SPAM",
+											"BULK",
+											"ENCRYPTED",
+											"EXTERNAL",
+											"UNKNOWN",
+											"NONE"
+										]
+									}
+								],
+								"deprecated": true,
+								"nullable": true,
+								"x-stainless-deprecation-message": "This field is nonfunctional."
 							},
 							"search_params": {
 								"type": "object",
@@ -7311,18 +7558,24 @@
 										"nullable": true
 									},
 									"delivery_status": {
-										"description": "Delivery status of the message.",
 										"type": "string",
-										"enum": [
-											"delivered",
-											"moved",
-											"quarantined",
-											"rejected",
-											"deferred",
-											"bounced",
-											"queued",
-											"move_failed"
-										]
+										"allOf": [
+											{
+												"description": "Delivery status of the message.",
+												"type": "string",
+												"enum": [
+													"delivered",
+													"moved",
+													"quarantined",
+													"rejected",
+													"deferred",
+													"bounced",
+													"queued",
+													"move_failed"
+												]
+											}
+										],
+										"nullable": true
 									},
 									"detections_only": {
 										"type": "boolean",
@@ -7344,18 +7597,24 @@
 									},
 									"final_disposition": {
 										"type": "string",
-										"enum": [
-											"MALICIOUS",
-											"MALICIOUS-BEC",
-											"SUSPICIOUS",
-											"SPOOF",
-											"SPAM",
-											"BULK",
-											"ENCRYPTED",
-											"EXTERNAL",
-											"UNKNOWN",
-											"NONE"
-										]
+										"allOf": [
+											{
+												"type": "string",
+												"enum": [
+													"MALICIOUS",
+													"MALICIOUS-BEC",
+													"SUSPICIOUS",
+													"SPOOF",
+													"SPAM",
+													"BULK",
+													"ENCRYPTED",
+													"EXTERNAL",
+													"UNKNOWN",
+													"NONE"
+												]
+											}
+										],
+										"nullable": true
 									},
 									"message_action": {
 										"type": "string",
@@ -7533,19 +7792,29 @@
 																	]
 																},
 																"expected_disposition": {
+																	"description": "Nonfunctional field. End of life: December 1, 2026.",
 																	"type": "string",
-																	"enum": [
-																		"MALICIOUS",
-																		"MALICIOUS-BEC",
-																		"SUSPICIOUS",
-																		"SPOOF",
-																		"SPAM",
-																		"BULK",
-																		"ENCRYPTED",
-																		"EXTERNAL",
-																		"UNKNOWN",
-																		"NONE"
-																	]
+																	"allOf": [
+																		{
+																			"type": "string",
+																			"enum": [
+																				"MALICIOUS",
+																				"MALICIOUS-BEC",
+																				"SUSPICIOUS",
+																				"SPOOF",
+																				"SPAM",
+																				"BULK",
+																				"ENCRYPTED",
+																				"EXTERNAL",
+																				"UNKNOWN",
+																				"NONE"
+																			]
+																		}
+																	],
+																	"deprecated": true,
+																	"nullable": true,
+																	"x-stainless-deprecation-message": "This field is nonfunctional.",
+																	"x-sunset": "2026-12-01T00:00:00Z"
 																},
 																"type": {
 																	"type": "string",
@@ -7600,10 +7869,18 @@
 													"type": "string",
 													"format": "uuid"
 												},
+												"messages_cancelled": {
+													"description": "Messages that were cancelled: rows cancelled via the API before being claimed, and rows whose in-flight attempt ended when the job reached a terminal state. Together the counters satisfy total_messages_discovered = messages_pending + messages_successful + messages_failed + messages_skipped + messages_cancelled.",
+													"type": "integer"
+												},
 												"messages_failed": {
 													"type": "integer"
 												},
 												"messages_pending": {
+													"type": "integer"
+												},
+												"messages_skipped": {
+													"description": "Messages that discovery skipped (for example, phish submissions, which the job cannot action).",
 													"type": "integer"
 												},
 												"messages_successful": {
@@ -7624,18 +7901,24 @@
 															"nullable": true
 														},
 														"delivery_status": {
-															"description": "Delivery status of the message.",
 															"type": "string",
-															"enum": [
-																"delivered",
-																"moved",
-																"quarantined",
-																"rejected",
-																"deferred",
-																"bounced",
-																"queued",
-																"move_failed"
-															]
+															"allOf": [
+																{
+																	"description": "Delivery status of the message.",
+																	"type": "string",
+																	"enum": [
+																		"delivered",
+																		"moved",
+																		"quarantined",
+																		"rejected",
+																		"deferred",
+																		"bounced",
+																		"queued",
+																		"move_failed"
+																	]
+																}
+															],
+															"nullable": true
 														},
 														"detections_only": {
 															"type": "boolean",
@@ -7657,18 +7940,24 @@
 														},
 														"final_disposition": {
 															"type": "string",
-															"enum": [
-																"MALICIOUS",
-																"MALICIOUS-BEC",
-																"SUSPICIOUS",
-																"SPOOF",
-																"SPAM",
-																"BULK",
-																"ENCRYPTED",
-																"EXTERNAL",
-																"UNKNOWN",
-																"NONE"
-															]
+															"allOf": [
+																{
+																	"type": "string",
+																	"enum": [
+																		"MALICIOUS",
+																		"MALICIOUS-BEC",
+																		"SUSPICIOUS",
+																		"SPOOF",
+																		"SPAM",
+																		"BULK",
+																		"ENCRYPTED",
+																		"EXTERNAL",
+																		"UNKNOWN",
+																		"NONE"
+																	]
+																}
+															],
+															"nullable": true
 														},
 														"message_action": {
 															"type": "string",
@@ -7755,6 +8044,8 @@
 												"messages_pending",
 												"messages_successful",
 												"messages_failed",
+												"messages_skipped",
+												"messages_cancelled",
 												"created_at"
 											]
 										}
@@ -8025,19 +8316,29 @@
 																	]
 																},
 																"expected_disposition": {
+																	"description": "Nonfunctional field. End of life: December 1, 2026.",
 																	"type": "string",
-																	"enum": [
-																		"MALICIOUS",
-																		"MALICIOUS-BEC",
-																		"SUSPICIOUS",
-																		"SPOOF",
-																		"SPAM",
-																		"BULK",
-																		"ENCRYPTED",
-																		"EXTERNAL",
-																		"UNKNOWN",
-																		"NONE"
-																	]
+																	"allOf": [
+																		{
+																			"type": "string",
+																			"enum": [
+																				"MALICIOUS",
+																				"MALICIOUS-BEC",
+																				"SUSPICIOUS",
+																				"SPOOF",
+																				"SPAM",
+																				"BULK",
+																				"ENCRYPTED",
+																				"EXTERNAL",
+																				"UNKNOWN",
+																				"NONE"
+																			]
+																		}
+																	],
+																	"deprecated": true,
+																	"nullable": true,
+																	"x-stainless-deprecation-message": "This field is nonfunctional.",
+																	"x-sunset": "2026-12-01T00:00:00Z"
 																},
 																"type": {
 																	"type": "string",
@@ -8092,10 +8393,18 @@
 													"type": "string",
 													"format": "uuid"
 												},
+												"messages_cancelled": {
+													"description": "Messages that were cancelled: rows cancelled via the API before being claimed, and rows whose in-flight attempt ended when the job reached a terminal state. Together the counters satisfy total_messages_discovered = messages_pending + messages_successful + messages_failed + messages_skipped + messages_cancelled.",
+													"type": "integer"
+												},
 												"messages_failed": {
 													"type": "integer"
 												},
 												"messages_pending": {
+													"type": "integer"
+												},
+												"messages_skipped": {
+													"description": "Messages that discovery skipped (for example, phish submissions, which the job cannot action).",
 													"type": "integer"
 												},
 												"messages_successful": {
@@ -8116,18 +8425,24 @@
 															"nullable": true
 														},
 														"delivery_status": {
-															"description": "Delivery status of the message.",
 															"type": "string",
-															"enum": [
-																"delivered",
-																"moved",
-																"quarantined",
-																"rejected",
-																"deferred",
-																"bounced",
-																"queued",
-																"move_failed"
-															]
+															"allOf": [
+																{
+																	"description": "Delivery status of the message.",
+																	"type": "string",
+																	"enum": [
+																		"delivered",
+																		"moved",
+																		"quarantined",
+																		"rejected",
+																		"deferred",
+																		"bounced",
+																		"queued",
+																		"move_failed"
+																	]
+																}
+															],
+															"nullable": true
 														},
 														"detections_only": {
 															"type": "boolean",
@@ -8149,18 +8464,24 @@
 														},
 														"final_disposition": {
 															"type": "string",
-															"enum": [
-																"MALICIOUS",
-																"MALICIOUS-BEC",
-																"SUSPICIOUS",
-																"SPOOF",
-																"SPAM",
-																"BULK",
-																"ENCRYPTED",
-																"EXTERNAL",
-																"UNKNOWN",
-																"NONE"
-															]
+															"allOf": [
+																{
+																	"type": "string",
+																	"enum": [
+																		"MALICIOUS",
+																		"MALICIOUS-BEC",
+																		"SUSPICIOUS",
+																		"SPOOF",
+																		"SPAM",
+																		"BULK",
+																		"ENCRYPTED",
+																		"EXTERNAL",
+																		"UNKNOWN",
+																		"NONE"
+																	]
+																}
+															],
+															"nullable": true
 														},
 														"message_action": {
 															"type": "string",
@@ -8247,6 +8568,8 @@
 												"messages_pending",
 												"messages_successful",
 												"messages_failed",
+												"messages_skipped",
+												"messages_cancelled",
 												"created_at"
 											]
 										}
@@ -8418,19 +8741,28 @@
 								]
 							},
 							"expected_disposition": {
+								"description": "Nonfunctional field. End of life: December 1, 2026.",
 								"type": "string",
-								"enum": [
-									"MALICIOUS",
-									"MALICIOUS-BEC",
-									"SUSPICIOUS",
-									"SPOOF",
-									"SPAM",
-									"BULK",
-									"ENCRYPTED",
-									"EXTERNAL",
-									"UNKNOWN",
-									"NONE"
-								]
+								"allOf": [
+									{
+										"type": "string",
+										"enum": [
+											"MALICIOUS",
+											"MALICIOUS-BEC",
+											"SUSPICIOUS",
+											"SPOOF",
+											"SPAM",
+											"BULK",
+											"ENCRYPTED",
+											"EXTERNAL",
+											"UNKNOWN",
+											"NONE"
+										]
+									}
+								],
+								"deprecated": true,
+								"nullable": true,
+								"x-stainless-deprecation-message": "This field is nonfunctional."
 							},
 							"ids": {
 								"description": "List of message IDs to move.",

@@ -565,6 +565,7 @@
 																	"images": "#/components/schemas/workers_binding_kind_images",
 																	"inherit": "#/components/schemas/workers_binding_kind_inherit",
 																	"json": "#/components/schemas/workers_binding_kind_json",
+																	"k2": "#/components/schemas/workers_binding_kind_k2",
 																	"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
 																	"media": "#/components/schemas/workers_binding_kind_media",
 																	"messaging": "#/components/schemas/workers_binding_kind_messaging",
@@ -1254,6 +1255,38 @@
 																		"name",
 																		"type",
 																		"pipeline"
+																	]
+																},
+																{
+																	"description": "A K2 stream binding. Available only to accounts enabled for K2.",
+																	"type": "object",
+																	"properties": {
+																		"name": {
+																			"description": "A JavaScript variable name for the binding.",
+																			"type": "string",
+																			"example": "myBinding",
+																			"x-auditable": true
+																		},
+																		"stream": {
+																			"description": "ID of a K2 stream owned by the account deploying the Worker.",
+																			"type": "string",
+																			"example": "0123456789abcdef0123456789abcdef",
+																			"pattern": "^[a-f0-9]{32}$",
+																			"x-auditable": true
+																		},
+																		"type": {
+																			"description": "The kind of resource that the binding provides.",
+																			"type": "string",
+																			"enum": [
+																				"k2"
+																			],
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"name",
+																		"type",
+																		"stream"
 																	]
 																},
 																{
@@ -3508,6 +3541,7 @@
 																"images": "#/components/schemas/workers_binding_kind_images",
 																"inherit": "#/components/schemas/workers_binding_kind_inherit",
 																"json": "#/components/schemas/workers_binding_kind_json",
+																"k2": "#/components/schemas/workers_binding_kind_k2",
 																"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
 																"media": "#/components/schemas/workers_binding_kind_media",
 																"messaging": "#/components/schemas/workers_binding_kind_messaging",
@@ -4197,6 +4231,38 @@
 																	"name",
 																	"type",
 																	"pipeline"
+																]
+															},
+															{
+																"description": "A K2 stream binding. Available only to accounts enabled for K2.",
+																"type": "object",
+																"properties": {
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"type": "string",
+																		"example": "myBinding",
+																		"x-auditable": true
+																	},
+																	"stream": {
+																		"description": "ID of a K2 stream owned by the account deploying the Worker.",
+																		"type": "string",
+																		"example": "0123456789abcdef0123456789abcdef",
+																		"pattern": "^[a-f0-9]{32}$",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "The kind of resource that the binding provides.",
+																		"type": "string",
+																		"enum": [
+																			"k2"
+																		],
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"stream"
 																]
 															},
 															{
@@ -6441,6 +6507,7 @@
 																"images": "#/components/schemas/workers_binding_kind_images",
 																"inherit": "#/components/schemas/workers_binding_kind_inherit",
 																"json": "#/components/schemas/workers_binding_kind_json",
+																"k2": "#/components/schemas/workers_binding_kind_k2",
 																"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
 																"media": "#/components/schemas/workers_binding_kind_media",
 																"messaging": "#/components/schemas/workers_binding_kind_messaging",
@@ -7130,6 +7197,38 @@
 																	"name",
 																	"type",
 																	"pipeline"
+																]
+															},
+															{
+																"description": "A K2 stream binding. Available only to accounts enabled for K2.",
+																"type": "object",
+																"properties": {
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"type": "string",
+																		"example": "myBinding",
+																		"x-auditable": true
+																	},
+																	"stream": {
+																		"description": "ID of a K2 stream owned by the account deploying the Worker.",
+																		"type": "string",
+																		"example": "0123456789abcdef0123456789abcdef",
+																		"pattern": "^[a-f0-9]{32}$",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "The kind of resource that the binding provides.",
+																		"type": "string",
+																		"enum": [
+																			"k2"
+																		],
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"stream"
 																]
 															},
 															{
@@ -9289,6 +9388,7 @@
 													"images": "#/components/schemas/workers_binding_kind_images",
 													"inherit": "#/components/schemas/workers_binding_kind_inherit",
 													"json": "#/components/schemas/workers_binding_kind_json",
+													"k2": "#/components/schemas/workers_binding_kind_k2",
 													"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
 													"media": "#/components/schemas/workers_binding_kind_media",
 													"messaging": "#/components/schemas/workers_binding_kind_messaging",
@@ -9978,6 +10078,38 @@
 														"name",
 														"type",
 														"pipeline"
+													]
+												},
+												{
+													"description": "A K2 stream binding. Available only to accounts enabled for K2.",
+													"type": "object",
+													"properties": {
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"type": "string",
+															"example": "myBinding",
+															"x-auditable": true
+														},
+														"stream": {
+															"description": "ID of a K2 stream owned by the account deploying the Worker.",
+															"type": "string",
+															"example": "0123456789abcdef0123456789abcdef",
+															"pattern": "^[a-f0-9]{32}$",
+															"x-auditable": true
+														},
+														"type": {
+															"description": "The kind of resource that the binding provides.",
+															"type": "string",
+															"enum": [
+																"k2"
+															],
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"type",
+														"stream"
 													]
 												},
 												{
@@ -11956,6 +12088,7 @@
 													"images": "#/components/schemas/workers_binding_kind_images",
 													"inherit": "#/components/schemas/workers_binding_kind_inherit",
 													"json": "#/components/schemas/workers_binding_kind_json",
+													"k2": "#/components/schemas/workers_binding_kind_k2",
 													"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
 													"media": "#/components/schemas/workers_binding_kind_media",
 													"messaging": "#/components/schemas/workers_binding_kind_messaging",
@@ -12645,6 +12778,38 @@
 														"name",
 														"type",
 														"pipeline"
+													]
+												},
+												{
+													"description": "A K2 stream binding. Available only to accounts enabled for K2.",
+													"type": "object",
+													"properties": {
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"type": "string",
+															"example": "myBinding",
+															"x-auditable": true
+														},
+														"stream": {
+															"description": "ID of a K2 stream owned by the account deploying the Worker.",
+															"type": "string",
+															"example": "0123456789abcdef0123456789abcdef",
+															"pattern": "^[a-f0-9]{32}$",
+															"x-auditable": true
+														},
+														"type": {
+															"description": "The kind of resource that the binding provides.",
+															"type": "string",
+															"enum": [
+																"k2"
+															],
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"type",
+														"stream"
 													]
 												},
 												{
@@ -14713,6 +14878,7 @@
 																"images": "#/components/schemas/workers_binding_kind_images",
 																"inherit": "#/components/schemas/workers_binding_kind_inherit",
 																"json": "#/components/schemas/workers_binding_kind_json",
+																"k2": "#/components/schemas/workers_binding_kind_k2",
 																"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
 																"media": "#/components/schemas/workers_binding_kind_media",
 																"messaging": "#/components/schemas/workers_binding_kind_messaging",
@@ -15402,6 +15568,38 @@
 																	"name",
 																	"type",
 																	"pipeline"
+																]
+															},
+															{
+																"description": "A K2 stream binding. Available only to accounts enabled for K2.",
+																"type": "object",
+																"properties": {
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"type": "string",
+																		"example": "myBinding",
+																		"x-auditable": true
+																	},
+																	"stream": {
+																		"description": "ID of a K2 stream owned by the account deploying the Worker.",
+																		"type": "string",
+																		"example": "0123456789abcdef0123456789abcdef",
+																		"pattern": "^[a-f0-9]{32}$",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "The kind of resource that the binding provides.",
+																		"type": "string",
+																		"enum": [
+																			"k2"
+																		],
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"stream"
 																]
 															},
 															{
@@ -17727,6 +17925,7 @@
 											"images": "#/components/schemas/workers_binding_kind_images",
 											"inherit": "#/components/schemas/workers_binding_kind_inherit",
 											"json": "#/components/schemas/workers_binding_kind_json",
+											"k2": "#/components/schemas/workers_binding_kind_k2",
 											"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
 											"media": "#/components/schemas/workers_binding_kind_media",
 											"messaging": "#/components/schemas/workers_binding_kind_messaging",
@@ -18416,6 +18615,38 @@
 												"name",
 												"type",
 												"pipeline"
+											]
+										},
+										{
+											"description": "A K2 stream binding. Available only to accounts enabled for K2.",
+											"type": "object",
+											"properties": {
+												"name": {
+													"description": "A JavaScript variable name for the binding.",
+													"type": "string",
+													"example": "myBinding",
+													"x-auditable": true
+												},
+												"stream": {
+													"description": "ID of a K2 stream owned by the account deploying the Worker.",
+													"type": "string",
+													"example": "0123456789abcdef0123456789abcdef",
+													"pattern": "^[a-f0-9]{32}$",
+													"x-auditable": true
+												},
+												"type": {
+													"description": "The kind of resource that the binding provides.",
+													"type": "string",
+													"enum": [
+														"k2"
+													],
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"name",
+												"type",
+												"stream"
 											]
 										},
 										{
@@ -20479,6 +20710,7 @@
 																"images": "#/components/schemas/workers_binding_kind_images",
 																"inherit": "#/components/schemas/workers_binding_kind_inherit",
 																"json": "#/components/schemas/workers_binding_kind_json",
+																"k2": "#/components/schemas/workers_binding_kind_k2",
 																"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
 																"media": "#/components/schemas/workers_binding_kind_media",
 																"messaging": "#/components/schemas/workers_binding_kind_messaging",
@@ -21168,6 +21400,38 @@
 																	"name",
 																	"type",
 																	"pipeline"
+																]
+															},
+															{
+																"description": "A K2 stream binding. Available only to accounts enabled for K2.",
+																"type": "object",
+																"properties": {
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"type": "string",
+																		"example": "myBinding",
+																		"x-auditable": true
+																	},
+																	"stream": {
+																		"description": "ID of a K2 stream owned by the account deploying the Worker.",
+																		"type": "string",
+																		"example": "0123456789abcdef0123456789abcdef",
+																		"pattern": "^[a-f0-9]{32}$",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "The kind of resource that the binding provides.",
+																		"type": "string",
+																		"enum": [
+																			"k2"
+																		],
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"stream"
 																]
 															},
 															{

@@ -2419,6 +2419,50 @@
 			}
 		}
 	],
+	"PARAMETERS /accounts/{account_id}/workers/observability/issues/groups": [
+		{
+			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/workers/observability/issues/groups/{groupId}": [
+		{
+			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/workers/observability/issues/groups/{groupId}/members": [
+		{
+			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/workers/observability/issues/groups/{groupId}/members/{issueId}": [
+		{
+			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
 	"PARAMETERS /accounts/{account_id}/workers/observability/issues/summary": [
 		{
 			"name": "account_id",

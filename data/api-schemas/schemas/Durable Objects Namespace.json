@@ -1019,5 +1019,351 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "durable-objects.namespaces.objects",
 		"x-fern-sdk-method-name": "list"
+	},
+	"POST /accounts/{account_id}/workers/durable_objects/namespaces/{id}/query/v2": {
+		"operationId": "durable-objects-namespace-query",
+		"summary": "Query a Durable Object",
+		"description": "Executes one or more SQL queries against a Durable Object.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "ID of the namespace.",
+					"type": "string",
+					"example": "5fd1cafff895419c8bcc647fc64ab8f0"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"type": "object",
+								"properties": {
+									"durable_object_id": {
+										"type": "string",
+										"minLength": 1
+									},
+									"queries": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"params": {
+													"type": "array",
+													"items": {}
+												},
+												"sql": {
+													"type": "string",
+													"minLength": 1
+												}
+											},
+											"required": [
+												"sql"
+											]
+										}
+									}
+								},
+								"required": [
+									"durable_object_id",
+									"queries"
+								]
+							},
+							{
+								"type": "object",
+								"properties": {
+									"durable_object_name": {
+										"type": "string",
+										"minLength": 1
+									},
+									"jurisdiction": {
+										"type": "string",
+										"enum": [
+											"fedramp",
+											"eu",
+											"none"
+										]
+									},
+									"queries": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"params": {
+													"type": "array",
+													"items": {}
+												},
+												"sql": {
+													"type": "string",
+													"minLength": 1
+												}
+											},
+											"required": [
+												"sql"
+											]
+										}
+									}
+								},
+								"required": [
+									"durable_object_name",
+									"jurisdiction",
+									"queries"
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Query execution response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Query execution failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Durable Objects Namespace"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "durable-objects.namespaces",
+		"x-fern-sdk-method-name": "query",
+		"x-forge-hidden": true
 	}
 }
