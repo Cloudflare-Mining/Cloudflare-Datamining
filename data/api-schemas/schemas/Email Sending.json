@@ -166,15 +166,22 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"403": {
+				"description": "Authentication error or missing email sending read permission."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -517,101 +524,165 @@
 											"type": "object",
 											"properties": {
 												"active_policy": {
-													"type": "object",
-													"properties": {
-														"complaint": {
+													"description": "The reputation policy thresholds currently applied to the account.",
+													"allOf": [
+														{
 															"type": "object",
 															"properties": {
-																"at_risk_at": {
-																	"type": "number",
-																	"format": "double"
+																"complaint": {
+																	"description": "Complaint-rate thresholds used to evaluate reputation status.",
+																	"allOf": [
+																		{
+																			"type": "object",
+																			"properties": {
+																				"at_risk_at": {
+																					"description": "The rate at or above which the metric enters the at-risk band. A fraction between 0 and 1.",
+																					"type": "number",
+																					"format": "double",
+																					"example": 0.05,
+																					"maximum": 1,
+																					"minimum": 0
+																				},
+																				"minimum_denominator": {
+																					"description": "The smallest eligible event count for this metric. Below this, the metric is skipped and cannot affect the account's status.",
+																					"type": "integer",
+																					"format": "int64",
+																					"example": 100,
+																					"minimum": 1
+																				},
+																				"warning_at": {
+																					"description": "The rate at or above which the metric enters the warning band. A fraction between 0 and 1.",
+																					"type": "number",
+																					"format": "double",
+																					"example": 0.02,
+																					"maximum": 1,
+																					"minimum": 0
+																				}
+																			},
+																			"additionalProperties": false,
+																			"required": [
+																				"warning_at",
+																				"at_risk_at",
+																				"minimum_denominator"
+																			]
+																		}
+																	]
 																},
-																"minimum_denominator": {
+																"customer_bounce": {
+																	"description": "Bounce-rate thresholds used to evaluate reputation status.",
+																	"allOf": [
+																		{
+																			"type": "object",
+																			"properties": {
+																				"at_risk_at": {
+																					"description": "The rate at or above which the metric enters the at-risk band. A fraction between 0 and 1.",
+																					"type": "number",
+																					"format": "double",
+																					"example": 0.05,
+																					"maximum": 1,
+																					"minimum": 0
+																				},
+																				"minimum_denominator": {
+																					"description": "The smallest eligible event count for this metric. Below this, the metric is skipped and cannot affect the account's status.",
+																					"type": "integer",
+																					"format": "int64",
+																					"example": 100,
+																					"minimum": 1
+																				},
+																				"warning_at": {
+																					"description": "The rate at or above which the metric enters the warning band. A fraction between 0 and 1.",
+																					"type": "number",
+																					"format": "double",
+																					"example": 0.02,
+																					"maximum": 1,
+																					"minimum": 0
+																				}
+																			},
+																			"additionalProperties": false,
+																			"required": [
+																				"warning_at",
+																				"at_risk_at",
+																				"minimum_denominator"
+																			]
+																		}
+																	]
+																},
+																"spam_rejection": {
+																	"description": "Spam-rejection-rate thresholds used to evaluate reputation status.",
+																	"allOf": [
+																		{
+																			"type": "object",
+																			"properties": {
+																				"at_risk_at": {
+																					"description": "The rate at or above which the metric enters the at-risk band. A fraction between 0 and 1.",
+																					"type": "number",
+																					"format": "double",
+																					"example": 0.05,
+																					"maximum": 1,
+																					"minimum": 0
+																				},
+																				"minimum_denominator": {
+																					"description": "The smallest eligible event count for this metric. Below this, the metric is skipped and cannot affect the account's status.",
+																					"type": "integer",
+																					"format": "int64",
+																					"example": 100,
+																					"minimum": 1
+																				},
+																				"warning_at": {
+																					"description": "The rate at or above which the metric enters the warning band. A fraction between 0 and 1.",
+																					"type": "number",
+																					"format": "double",
+																					"example": 0.02,
+																					"maximum": 1,
+																					"minimum": 0
+																				}
+																			},
+																			"additionalProperties": false,
+																			"required": [
+																				"warning_at",
+																				"at_risk_at",
+																				"minimum_denominator"
+																			]
+																		}
+																	]
+																},
+																"suspension_after_hours": {
+																	"description": "The grace period before suspension. The value must be a whole number of days.",
 																	"type": "integer",
-																	"format": "int64"
-																},
-																"warning_at": {
-																	"type": "number",
-																	"format": "double"
+																	"format": "int64",
+																	"example": 168,
+																	"minimum": 24,
+																	"multipleOf": 24
 																}
 															},
 															"additionalProperties": false,
 															"required": [
-																"warning_at",
-																"at_risk_at",
-																"minimum_denominator"
+																"customer_bounce",
+																"complaint",
+																"spam_rejection",
+																"suspension_after_hours"
 															]
-														},
-														"customer_bounce": {
-															"type": "object",
-															"properties": {
-																"at_risk_at": {
-																	"type": "number",
-																	"format": "double"
-																},
-																"minimum_denominator": {
-																	"type": "integer",
-																	"format": "int64"
-																},
-																"warning_at": {
-																	"type": "number",
-																	"format": "double"
-																}
-															},
-															"additionalProperties": false,
-															"required": [
-																"warning_at",
-																"at_risk_at",
-																"minimum_denominator"
-															]
-														},
-														"spam_rejection": {
-															"type": "object",
-															"properties": {
-																"at_risk_at": {
-																	"type": "number",
-																	"format": "double"
-																},
-																"minimum_denominator": {
-																	"type": "integer",
-																	"format": "int64"
-																},
-																"warning_at": {
-																	"type": "number",
-																	"format": "double"
-																}
-															},
-															"additionalProperties": false,
-															"required": [
-																"warning_at",
-																"at_risk_at",
-																"minimum_denominator"
-															]
-														},
-														"suspension_after_hours": {
-															"description": "The grace period before suspension. The value must be a whole number of days.",
-															"type": "integer",
-															"format": "int64",
-															"example": 168,
-															"minimum": 24,
-															"multipleOf": 24
 														}
-													},
-													"additionalProperties": false,
-													"required": [
-														"customer_bounce",
-														"complaint",
-														"spam_rejection",
-														"suspension_after_hours"
 													]
 												},
 												"evaluated_at": {
+													"description": "When the account's reputation was last evaluated. Null when the account has never been evaluated.",
 													"type": "string",
 													"format": "date-time",
+													"example": "2026-07-08T00:00:00Z",
+													"nullable": true
+												},
+												"grace_started_at": {
+													"description": "When the current At Risk suspension grace period started. This can be later than status_since if the grace period was restarted. Null outside At Risk. Automatic suspension remains subject to enforcement and suspension exemptions.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2026-07-09T00:00:00Z",
 													"nullable": true
 												},
 												"status": {
+													"description": "The account's current reputation status.",
 													"type": "string",
+													"example": "healthy",
 													"enum": [
 														"healthy",
 														"warning",
@@ -620,8 +691,10 @@
 													]
 												},
 												"status_since": {
+													"description": "When the account most recently transitioned into its current status. Null if the account has been Healthy since it was first tracked and has never changed status.",
 													"type": "string",
 													"format": "date-time",
+													"example": "2026-07-08T00:00:00Z",
 													"nullable": true
 												}
 											},
@@ -629,19 +702,27 @@
 											"required": [
 												"status",
 												"status_since",
+												"grace_started_at",
 												"evaluated_at",
 												"active_policy"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"403": {
+				"description": "Authentication error or missing email sending read permission."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

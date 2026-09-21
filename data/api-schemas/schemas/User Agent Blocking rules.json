@@ -225,273 +225,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"result": {
-															"type": "object",
-															"properties": {
-																"configuration": {
-																	"description": "The configuration object for the current rule.",
-																	"type": "object",
-																	"properties": {
-																		"target": {
-																			"description": "The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules.",
-																			"type": "string",
-																			"example": "ua"
-																		},
-																		"value": {
-																			"description": "The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value.",
-																			"type": "string",
-																			"example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4"
-																		}
-																	}
-																},
-																"description": {
-																	"description": "An informative summary of the rule.",
-																	"type": "string",
-																	"example": "Prevent access from abusive clients identified by this User Agent to mitigate a DDoS attack",
-																	"maxLength": 1024
-																},
-																"id": {
-																	"description": "The unique identifier of the User Agent Blocking rule.",
-																	"type": "string",
-																	"example": "372e67954025e0ba6aaa6d586b9e0b59",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"mode": {
-																	"description": "The action to apply to a matched request.",
-																	"example": "js_challenge",
-																	"enum": [
-																		"block",
-																		"challenge",
-																		"js_challenge",
-																		"managed_challenge"
-																	],
-																	"maxLength": 12
-																},
-																"paused": {
-																	"description": "When true, indicates that the rule is currently paused.",
-																	"type": "boolean",
-																	"example": false,
-																	"x-auditable": true
-																}
-															}
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"type": "object"
-												},
-												{
-													"type": "object",
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"errors": {
-																	"type": "array",
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"type": "integer",
-																				"minimum": 1000
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
-																	},
-																	"example": []
-																},
-																"messages": {
-																	"type": "array",
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"type": "integer",
-																				"minimum": 1000
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
-																	},
-																	"example": []
-																},
-																"result": {
-																	"anyOf": [
-																		{
-																			"type": "object"
-																		},
-																		{
-																			"items": {
-																				"type": "object"
-																			},
-																			"type": "array"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
-																},
-																"success": {
-																	"description": "Defines whether the API call was successful.",
-																	"type": "boolean",
-																	"example": true,
-																	"enum": [
-																		true
-																	]
-																}
-															},
-															"required": [
-																"success",
-																"errors",
-																"messages",
-																"result"
-															]
-														},
-														{
-															"properties": {
-																"result": {
-																	"anyOf": [
-																		{
-																			"nullable": true,
-																			"type": "object"
-																		},
-																		{
-																			"nullable": true,
-																			"type": "string"
-																		}
-																	]
-																}
-															},
-															"type": "object"
-														}
-													]
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"id": {
-															"description": "The unique identifier of the User Agent Blocking rule.",
-															"type": "string",
-															"example": "372e67954025e0ba6aaa6d586b9e0b59",
-															"maxLength": 32,
-															"readOnly": true,
-															"x-auditable": true
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -790,274 +604,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"properties": {
-															"configuration": {
-																"description": "The configuration object for the current rule.",
-																"type": "object",
-																"properties": {
-																	"target": {
-																		"description": "The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules.",
-																		"type": "string",
-																		"example": "ua"
-																	},
-																	"value": {
-																		"description": "The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value.",
-																		"type": "string",
-																		"example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4"
-																	}
-																}
-															},
-															"description": {
-																"description": "An informative summary of the rule.",
-																"type": "string",
-																"example": "Prevent access from abusive clients identified by this User Agent to mitigate a DDoS attack",
-																"maxLength": 1024
-															},
-															"id": {
-																"description": "The unique identifier of the User Agent Blocking rule.",
-																"type": "string",
-																"example": "372e67954025e0ba6aaa6d586b9e0b59",
-																"maxLength": 32,
-																"readOnly": true,
-																"x-auditable": true
-															},
-															"mode": {
-																"description": "The action to apply to a matched request.",
-																"example": "js_challenge",
-																"enum": [
-																	"block",
-																	"challenge",
-																	"js_challenge",
-																	"managed_challenge"
-																],
-																"maxLength": 12
-															},
-															"paused": {
-																"description": "When true, indicates that the rule is currently paused.",
-																"type": "boolean",
-																"example": false,
-																"x-auditable": true
-															}
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
 													}
-												}
-											},
-											"type": "object"
-										},
-										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
 												},
-												{
-													"properties": {
-														"result": {
-															"type": "array",
-															"items": {
-																"type": "object"
-															},
-															"nullable": true
-														},
-														"result_info": {
-															"type": "object",
-															"properties": {
-																"count": {
-																	"description": "Defines the total number of results for the requested service.",
-																	"type": "number",
-																	"example": 1
-																},
-																"page": {
-																	"description": "Defines the current page within paginated list of results.",
-																	"type": "number",
-																	"example": 1
-																},
-																"per_page": {
-																	"description": "Defines the number of results per page of results.",
-																	"type": "number",
-																	"example": 20
-																},
-																"total_count": {
-																	"description": "Defines the total results available without any search parameters.",
-																	"type": "number",
-																	"example": 2000
-																}
-															}
-														}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"type": "object"
-												}
-											]
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1293,251 +920,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"configuration": {
-															"description": "The configuration object for the current rule.",
-															"type": "object",
-															"properties": {
-																"target": {
-																	"description": "The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules.",
-																	"type": "string",
-																	"example": "ua"
-																},
-																"value": {
-																	"description": "The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value.",
-																	"type": "string",
-																	"example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4"
-																}
-															}
-														},
-														"description": {
-															"description": "An informative summary of the rule.",
-															"type": "string",
-															"example": "Prevent access from abusive clients identified by this User Agent to mitigate a DDoS attack",
-															"maxLength": 1024
-														},
-														"id": {
-															"description": "The unique identifier of the User Agent Blocking rule.",
-															"type": "string",
-															"example": "372e67954025e0ba6aaa6d586b9e0b59",
-															"maxLength": 32,
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"mode": {
-															"description": "The action to apply to a matched request.",
-															"example": "js_challenge",
-															"enum": [
-																"block",
-																"challenge",
-																"js_challenge",
-																"managed_challenge"
-															],
-															"maxLength": 12
-														},
-														"paused": {
-															"description": "When true, indicates that the rule is currently paused.",
-															"type": "boolean",
-															"example": false,
-															"x-auditable": true
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
 													}
-												}
-											},
-											"type": "object"
-										},
-										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
 												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"type": "object"
-												}
-											]
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1822,251 +1285,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"configuration": {
-															"description": "The configuration object for the current rule.",
-															"type": "object",
-															"properties": {
-																"target": {
-																	"description": "The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules.",
-																	"type": "string",
-																	"example": "ua"
-																},
-																"value": {
-																	"description": "The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value.",
-																	"type": "string",
-																	"example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4"
-																}
-															}
-														},
-														"description": {
-															"description": "An informative summary of the rule.",
-															"type": "string",
-															"example": "Prevent access from abusive clients identified by this User Agent to mitigate a DDoS attack",
-															"maxLength": 1024
-														},
-														"id": {
-															"description": "The unique identifier of the User Agent Blocking rule.",
-															"type": "string",
-															"example": "372e67954025e0ba6aaa6d586b9e0b59",
-															"maxLength": 32,
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"mode": {
-															"description": "The action to apply to a matched request.",
-															"example": "js_challenge",
-															"enum": [
-																"block",
-																"challenge",
-																"js_challenge",
-																"managed_challenge"
-															],
-															"maxLength": 12
-														},
-														"paused": {
-															"description": "When true, indicates that the rule is currently paused.",
-															"type": "boolean",
-															"example": false,
-															"x-auditable": true
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
 													}
-												}
-											},
-											"type": "object"
-										},
-										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
 												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"type": "object"
-												}
-											]
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -2453,251 +1752,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"configuration": {
-															"description": "The configuration object for the current rule.",
-															"type": "object",
-															"properties": {
-																"target": {
-																	"description": "The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules.",
-																	"type": "string",
-																	"example": "ua"
-																},
-																"value": {
-																	"description": "The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value.",
-																	"type": "string",
-																	"example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4"
-																}
-															}
-														},
-														"description": {
-															"description": "An informative summary of the rule.",
-															"type": "string",
-															"example": "Prevent access from abusive clients identified by this User Agent to mitigate a DDoS attack",
-															"maxLength": 1024
-														},
-														"id": {
-															"description": "The unique identifier of the User Agent Blocking rule.",
-															"type": "string",
-															"example": "372e67954025e0ba6aaa6d586b9e0b59",
-															"maxLength": 32,
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"mode": {
-															"description": "The action to apply to a matched request.",
-															"example": "js_challenge",
-															"enum": [
-																"block",
-																"challenge",
-																"js_challenge",
-																"managed_challenge"
-															],
-															"maxLength": 12
-														},
-														"paused": {
-															"description": "When true, indicates that the rule is currently paused.",
-															"type": "boolean",
-															"example": false,
-															"x-auditable": true
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
 													}
-												}
-											},
-											"type": "object"
-										},
-										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
 												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"type": "object"
-												}
-											]
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}

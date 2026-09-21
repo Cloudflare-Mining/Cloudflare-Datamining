@@ -2958,6 +2958,421 @@
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
+	"GET /accounts/{account_id}/browser-rendering/recording/{session_id}": {
+		"operationId": "brapi-get_Recording",
+		"summary": "Get recording data.",
+		"description": "Returns the recording data for a given session as a dictionary of events per targetId.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "session_id",
+				"in": "path",
+				"description": "Session ID.",
+				"required": true,
+				"schema": {
+					"description": "Session ID.",
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns the recording data as a dictionary of events per targetId.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"additionalProperties": false,
+									"properties": {
+										"duration": {
+											"description": "Recording duration in milliseconds.",
+											"type": "number"
+										},
+										"events": {
+											"description": "Recording events.",
+											"type": "array",
+											"items": {
+												"nullable": true
+											}
+										},
+										"sessionId": {
+											"description": "Session ID.",
+											"type": "string"
+										}
+									},
+									"required": [
+										"sessionId",
+										"events",
+										"duration"
+									]
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "The request contains errors or didn't properly encode content.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Recording not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal server error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"brapi"
+		],
+		"x-api-token-group": [
+			"Browser Rendering Write",
+			"Browser Rendering Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			],
+			"type": "string"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "browser-run.recording",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/browser-rendering/recording/{session_id}/network": {
+		"operationId": "brapi-get_RecordingNetwork",
+		"summary": "Get network recording data.",
+		"description": "Returns network recording events for the requested target ID. Use ?format=har for a HAR JSON document.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "session_id",
+				"in": "path",
+				"description": "Session ID.",
+				"required": true,
+				"schema": {
+					"description": "Session ID.",
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "format",
+				"in": "query",
+				"description": "Set to `har` to return a HAR JSON document.",
+				"schema": {
+					"description": "Set to `har` to return a HAR JSON document.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "target",
+				"in": "query",
+				"description": "Target ID to include in the response.",
+				"required": true,
+				"schema": {
+					"description": "Target ID to include in the response.",
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns network recording events for the requested target ID, or HAR JSON when format=har.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"additionalProperties": {
+								"nullable": true,
+								"type": "object"
+							}
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Network recording not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal server error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"brapi"
+		],
+		"x-api-token-group": [
+			"Browser Rendering Write",
+			"Browser Rendering Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			],
+			"type": "string"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "browser-run.recording.network",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	},
 	"POST /accounts/{account_id}/browser-rendering/accessibilityTree": {
 		"operationId": "brapi-post_AccessibilityTree",
 		"summary": "Get accessibility tree page",

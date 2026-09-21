@@ -226,15 +226,22 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"403": {
+				"description": "Authentication error or missing zone email routing settings update permission."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -466,15 +473,22 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"403": {
+				"description": "Authentication error or missing zone email routing settings read permission."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -740,15 +754,22 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"403": {
+				"description": "Authentication error or missing zone email routing settings read permission."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1025,15 +1046,22 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"403": {
+				"description": "Authentication error or missing zone email routing settings update permission."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1288,15 +1316,22 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"403": {
+				"description": "Authentication error or missing zone email routing settings update permission."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1342,12 +1377,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Disable Email Routing response",
@@ -1539,16 +1568,23 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"403": {
+				"description": "Authentication error or missing zone email routing settings update permission."
 			}
 		},
 		"deprecated": true,
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1804,15 +1840,22 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"403": {
+				"description": "Authentication error or missing zone email routing settings update permission."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1858,12 +1901,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Enable Email Routing response",
@@ -2055,16 +2092,23 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"403": {
+				"description": "Authentication error or missing zone email routing settings update permission."
 			}
 		},
 		"deprecated": true,
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -2319,16 +2363,23 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"403": {
+				"description": "Authentication error or missing zone email routing settings update permission."
 			}
 		},
 		"deprecated": true,
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -2604,15 +2655,22 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"403": {
+				"description": "Authentication error or missing zone email routing settings update permission."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

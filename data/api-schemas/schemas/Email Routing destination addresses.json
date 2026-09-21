@@ -180,15 +180,22 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"404": {
+				"description": "Error 2015: Address not found."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -475,28 +482,43 @@
 											"type": "object",
 											"properties": {
 												"count": {
+													"description": "Total number of results for the requested service.",
+													"type": "number",
 													"example": 1
 												},
 												"page": {
+													"description": "Current page within paginated list of results.",
+													"type": "number",
 													"example": 1
 												},
 												"per_page": {
+													"description": "Number of results per page of results.",
+													"type": "number",
 													"example": 20
 												},
 												"total_count": {
+													"description": "Total results available without any search parameters.",
+													"type": "number",
 													"example": 1
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"403": {
+				"description": "Authentication error or missing email routing address list permission."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -706,15 +728,22 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"404": {
+				"description": "Error 2015: Address not found."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -949,15 +978,22 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"404": {
+				"description": "Error 2015: Address not found."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1175,15 +1211,22 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"422": {
+				"description": "Error 2007: Invalid Input."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

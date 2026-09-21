@@ -326,365 +326,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "array",
-															"items": {
-																"type": "object"
-															},
-															"nullable": true
-														},
-														"result_info": {
-															"type": "object",
-															"properties": {
-																"count": {
-																	"description": "Defines the total number of results for the requested service.",
-																	"type": "number",
-																	"example": 1
-																},
-																"page": {
-																	"description": "Defines the current page within paginated list of results.",
-																	"type": "number",
-																	"example": 1
-																},
-																"per_page": {
-																	"description": "Defines the number of results per page of results.",
-																	"type": "number",
-																	"example": 20
-																},
-																"total_count": {
-																	"description": "Defines the total results available without any search parameters.",
-																	"type": "number",
-																	"example": 2000
-																}
-															}
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"allOf": [
-															{
-																"type": "object",
-																"properties": {
-																	"action": {
-																		"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																		"type": "string",
-																		"example": "block",
-																		"enum": [
-																			"block",
-																			"challenge",
-																			"js_challenge",
-																			"managed_challenge",
-																			"allow",
-																			"log",
-																			"bypass"
-																		]
-																	},
-																	"description": {
-																		"description": "An informative summary of the firewall rule.",
-																		"type": "string",
-																		"example": "Blocks traffic identified during investigation for MIR-31",
-																		"maxLength": 500
-																	},
-																	"id": {
-																		"description": "The unique identifier of the firewall rule.",
-																		"type": "string",
-																		"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																		"maxLength": 32,
-																		"readOnly": true
-																	},
-																	"paused": {
-																		"description": "When true, indicates that the firewall rule is currently paused.",
-																		"type": "boolean",
-																		"example": false
-																	},
-																	"priority": {
-																		"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																		"type": "number",
-																		"example": 50,
-																		"maximum": 2147483647,
-																		"minimum": 0
-																	},
-																	"products": {
-																		"type": "array",
-																		"items": {
-																			"description": "A list of products to bypass for a request when using the `bypass` action.",
-																			"enum": [
-																				"zoneLockdown",
-																				"uaBlock",
-																				"bic",
-																				"hot",
-																				"securityLevel",
-																				"rateLimit",
-																				"waf"
-																			],
-																			"example": "waf",
-																			"type": "string"
-																		}
-																	},
-																	"ref": {
-																		"description": "A short reference tag. Allows you to select related firewall rules.",
-																		"type": "string",
-																		"example": "MIR-31",
-																		"maxLength": 50
-																	}
-																}
-															},
-															{
-																"properties": {
-																	"filter": {
-																		"oneOf": [
-																			{
-																				"type": "object",
-																				"properties": {
-																					"description": {
-																						"description": "An informative summary of the filter.",
-																						"type": "string",
-																						"example": "Restrict access from these browsers on this address range.",
-																						"maxLength": 500
-																					},
-																					"expression": {
-																						"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																						"type": "string",
-																						"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155"
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"type": "string",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true
-																					},
-																					"paused": {
-																						"description": "When true, indicates that the filter is currently paused.",
-																						"type": "boolean",
-																						"example": false
-																					},
-																					"ref": {
-																						"description": "A short reference tag. Allows you to select related filters.",
-																						"type": "string",
-																						"example": "FIL-100",
-																						"maxLength": 50
-																					}
-																				},
-																				"additionalProperties": false
-																			},
-																			{
-																				"type": "object",
-																				"properties": {
-																					"deleted": {
-																						"description": "When true, indicates that the firewall rule was deleted.",
-																						"type": "boolean",
-																						"example": true
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"type": "string",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true
-																					}
-																				},
-																				"additionalProperties": false,
-																				"required": [
-																					"id",
-																					"deleted"
-																				]
-																			}
-																		]
-																	}
-																},
-																"type": "object"
-															}
-														]
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"result"
-											],
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1026,342 +748,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"action": {
-																	"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																	"type": "string",
-																	"example": "block",
-																	"enum": [
-																		"block",
-																		"challenge",
-																		"js_challenge",
-																		"managed_challenge",
-																		"allow",
-																		"log",
-																		"bypass"
-																	]
-																},
-																"description": {
-																	"description": "An informative summary of the firewall rule.",
-																	"type": "string",
-																	"example": "Blocks traffic identified during investigation for MIR-31",
-																	"maxLength": 500
-																},
-																"id": {
-																	"description": "The unique identifier of the firewall rule.",
-																	"type": "string",
-																	"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																	"maxLength": 32,
-																	"readOnly": true
-																},
-																"paused": {
-																	"description": "When true, indicates that the firewall rule is currently paused.",
-																	"type": "boolean",
-																	"example": false
-																},
-																"priority": {
-																	"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																	"type": "number",
-																	"example": 50,
-																	"maximum": 2147483647,
-																	"minimum": 0
-																},
-																"products": {
-																	"type": "array",
-																	"items": {
-																		"description": "A list of products to bypass for a request when using the `bypass` action.",
-																		"enum": [
-																			"zoneLockdown",
-																			"uaBlock",
-																			"bic",
-																			"hot",
-																			"securityLevel",
-																			"rateLimit",
-																			"waf"
-																		],
-																		"example": "waf",
-																		"type": "string"
-																	}
-																},
-																"ref": {
-																	"description": "A short reference tag. Allows you to select related firewall rules.",
-																	"type": "string",
-																	"example": "MIR-31",
-																	"maxLength": 50
-																}
-															}
-														},
-														{
-															"properties": {
-																"filter": {
-																	"oneOf": [
-																		{
-																			"type": "object",
-																			"properties": {
-																				"description": {
-																					"description": "An informative summary of the filter.",
-																					"type": "string",
-																					"example": "Restrict access from these browsers on this address range.",
-																					"maxLength": 500
-																				},
-																				"expression": {
-																					"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																					"type": "string",
-																					"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155"
-																				},
-																				"id": {
-																					"description": "The unique identifier of the filter.",
-																					"type": "string",
-																					"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																					"maxLength": 32,
-																					"minLength": 32,
-																					"readOnly": true
-																				},
-																				"paused": {
-																					"description": "When true, indicates that the filter is currently paused.",
-																					"type": "boolean",
-																					"example": false
-																				},
-																				"ref": {
-																					"description": "A short reference tag. Allows you to select related filters.",
-																					"type": "string",
-																					"example": "FIL-100",
-																					"maxLength": 50
-																				}
-																			},
-																			"additionalProperties": false
-																		},
-																		{
-																			"type": "object",
-																			"properties": {
-																				"deleted": {
-																					"description": "When true, indicates that the firewall rule was deleted.",
-																					"type": "boolean",
-																					"example": true
-																				},
-																				"id": {
-																					"description": "The unique identifier of the filter.",
-																					"type": "string",
-																					"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																					"maxLength": 32,
-																					"minLength": 32,
-																					"readOnly": true
-																				}
-																			},
-																			"additionalProperties": false,
-																			"required": [
-																				"id",
-																				"deleted"
-																			]
-																		}
-																	]
-																}
-															},
-															"type": "object"
-														}
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"result"
-											],
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1757,365 +1224,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "array",
-															"items": {
-																"type": "object"
-															},
-															"nullable": true
-														},
-														"result_info": {
-															"type": "object",
-															"properties": {
-																"count": {
-																	"description": "Defines the total number of results for the requested service.",
-																	"type": "number",
-																	"example": 1
-																},
-																"page": {
-																	"description": "Defines the current page within paginated list of results.",
-																	"type": "number",
-																	"example": 1
-																},
-																"per_page": {
-																	"description": "Defines the number of results per page of results.",
-																	"type": "number",
-																	"example": 20
-																},
-																"total_count": {
-																	"description": "Defines the total results available without any search parameters.",
-																	"type": "number",
-																	"example": 2000
-																}
-															}
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"allOf": [
-															{
-																"type": "object",
-																"properties": {
-																	"action": {
-																		"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																		"type": "string",
-																		"example": "block",
-																		"enum": [
-																			"block",
-																			"challenge",
-																			"js_challenge",
-																			"managed_challenge",
-																			"allow",
-																			"log",
-																			"bypass"
-																		]
-																	},
-																	"description": {
-																		"description": "An informative summary of the firewall rule.",
-																		"type": "string",
-																		"example": "Blocks traffic identified during investigation for MIR-31",
-																		"maxLength": 500
-																	},
-																	"id": {
-																		"description": "The unique identifier of the firewall rule.",
-																		"type": "string",
-																		"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																		"maxLength": 32,
-																		"readOnly": true
-																	},
-																	"paused": {
-																		"description": "When true, indicates that the firewall rule is currently paused.",
-																		"type": "boolean",
-																		"example": false
-																	},
-																	"priority": {
-																		"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																		"type": "number",
-																		"example": 50,
-																		"maximum": 2147483647,
-																		"minimum": 0
-																	},
-																	"products": {
-																		"type": "array",
-																		"items": {
-																			"description": "A list of products to bypass for a request when using the `bypass` action.",
-																			"enum": [
-																				"zoneLockdown",
-																				"uaBlock",
-																				"bic",
-																				"hot",
-																				"securityLevel",
-																				"rateLimit",
-																				"waf"
-																			],
-																			"example": "waf",
-																			"type": "string"
-																		}
-																	},
-																	"ref": {
-																		"description": "A short reference tag. Allows you to select related firewall rules.",
-																		"type": "string",
-																		"example": "MIR-31",
-																		"maxLength": 50
-																	}
-																}
-															},
-															{
-																"properties": {
-																	"filter": {
-																		"oneOf": [
-																			{
-																				"type": "object",
-																				"properties": {
-																					"description": {
-																						"description": "An informative summary of the filter.",
-																						"type": "string",
-																						"example": "Restrict access from these browsers on this address range.",
-																						"maxLength": 500
-																					},
-																					"expression": {
-																						"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																						"type": "string",
-																						"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155"
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"type": "string",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true
-																					},
-																					"paused": {
-																						"description": "When true, indicates that the filter is currently paused.",
-																						"type": "boolean",
-																						"example": false
-																					},
-																					"ref": {
-																						"description": "A short reference tag. Allows you to select related filters.",
-																						"type": "string",
-																						"example": "FIL-100",
-																						"maxLength": 50
-																					}
-																				},
-																				"additionalProperties": false
-																			},
-																			{
-																				"type": "object",
-																				"properties": {
-																					"deleted": {
-																						"description": "When true, indicates that the firewall rule was deleted.",
-																						"type": "boolean",
-																						"example": true
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"type": "string",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true
-																					}
-																				},
-																				"additionalProperties": false,
-																				"required": [
-																					"id",
-																					"deleted"
-																				]
-																			}
-																		]
-																	}
-																},
-																"type": "object"
-															}
-														]
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"result"
-											],
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -2457,342 +1646,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"action": {
-																	"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																	"type": "string",
-																	"example": "block",
-																	"enum": [
-																		"block",
-																		"challenge",
-																		"js_challenge",
-																		"managed_challenge",
-																		"allow",
-																		"log",
-																		"bypass"
-																	]
-																},
-																"description": {
-																	"description": "An informative summary of the firewall rule.",
-																	"type": "string",
-																	"example": "Blocks traffic identified during investigation for MIR-31",
-																	"maxLength": 500
-																},
-																"id": {
-																	"description": "The unique identifier of the firewall rule.",
-																	"type": "string",
-																	"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																	"maxLength": 32,
-																	"readOnly": true
-																},
-																"paused": {
-																	"description": "When true, indicates that the firewall rule is currently paused.",
-																	"type": "boolean",
-																	"example": false
-																},
-																"priority": {
-																	"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																	"type": "number",
-																	"example": 50,
-																	"maximum": 2147483647,
-																	"minimum": 0
-																},
-																"products": {
-																	"type": "array",
-																	"items": {
-																		"description": "A list of products to bypass for a request when using the `bypass` action.",
-																		"enum": [
-																			"zoneLockdown",
-																			"uaBlock",
-																			"bic",
-																			"hot",
-																			"securityLevel",
-																			"rateLimit",
-																			"waf"
-																		],
-																		"example": "waf",
-																		"type": "string"
-																	}
-																},
-																"ref": {
-																	"description": "A short reference tag. Allows you to select related firewall rules.",
-																	"type": "string",
-																	"example": "MIR-31",
-																	"maxLength": 50
-																}
-															}
-														},
-														{
-															"properties": {
-																"filter": {
-																	"oneOf": [
-																		{
-																			"type": "object",
-																			"properties": {
-																				"description": {
-																					"description": "An informative summary of the filter.",
-																					"type": "string",
-																					"example": "Restrict access from these browsers on this address range.",
-																					"maxLength": 500
-																				},
-																				"expression": {
-																					"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																					"type": "string",
-																					"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155"
-																				},
-																				"id": {
-																					"description": "The unique identifier of the filter.",
-																					"type": "string",
-																					"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																					"maxLength": 32,
-																					"minLength": 32,
-																					"readOnly": true
-																				},
-																				"paused": {
-																					"description": "When true, indicates that the filter is currently paused.",
-																					"type": "boolean",
-																					"example": false
-																				},
-																				"ref": {
-																					"description": "A short reference tag. Allows you to select related filters.",
-																					"type": "string",
-																					"example": "FIL-100",
-																					"maxLength": 50
-																				}
-																			},
-																			"additionalProperties": false
-																		},
-																		{
-																			"type": "object",
-																			"properties": {
-																				"deleted": {
-																					"description": "When true, indicates that the firewall rule was deleted.",
-																					"type": "boolean",
-																					"example": true
-																				},
-																				"id": {
-																					"description": "The unique identifier of the filter.",
-																					"type": "string",
-																					"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																					"maxLength": 32,
-																					"minLength": 32,
-																					"readOnly": true
-																				}
-																			},
-																			"additionalProperties": false,
-																			"required": [
-																				"id",
-																				"deleted"
-																			]
-																		}
-																	]
-																}
-															},
-															"type": "object"
-														}
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"result"
-											],
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -2848,6 +1782,13 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
+						"properties": {
+							"id": {
+								"description": "The unique identifier of the firewall rule.",
+								"type": "string"
+							}
+						},
 						"required": [
 							"id"
 						]
@@ -3142,365 +2083,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "array",
-															"items": {
-																"type": "object"
-															},
-															"nullable": true
-														},
-														"result_info": {
-															"type": "object",
-															"properties": {
-																"count": {
-																	"description": "Defines the total number of results for the requested service.",
-																	"type": "number",
-																	"example": 1
-																},
-																"page": {
-																	"description": "Defines the current page within paginated list of results.",
-																	"type": "number",
-																	"example": 1
-																},
-																"per_page": {
-																	"description": "Defines the number of results per page of results.",
-																	"type": "number",
-																	"example": 20
-																},
-																"total_count": {
-																	"description": "Defines the total results available without any search parameters.",
-																	"type": "number",
-																	"example": 2000
-																}
-															}
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"allOf": [
-															{
-																"type": "object",
-																"properties": {
-																	"action": {
-																		"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																		"type": "string",
-																		"example": "block",
-																		"enum": [
-																			"block",
-																			"challenge",
-																			"js_challenge",
-																			"managed_challenge",
-																			"allow",
-																			"log",
-																			"bypass"
-																		]
-																	},
-																	"description": {
-																		"description": "An informative summary of the firewall rule.",
-																		"type": "string",
-																		"example": "Blocks traffic identified during investigation for MIR-31",
-																		"maxLength": 500
-																	},
-																	"id": {
-																		"description": "The unique identifier of the firewall rule.",
-																		"type": "string",
-																		"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																		"maxLength": 32,
-																		"readOnly": true
-																	},
-																	"paused": {
-																		"description": "When true, indicates that the firewall rule is currently paused.",
-																		"type": "boolean",
-																		"example": false
-																	},
-																	"priority": {
-																		"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																		"type": "number",
-																		"example": 50,
-																		"maximum": 2147483647,
-																		"minimum": 0
-																	},
-																	"products": {
-																		"type": "array",
-																		"items": {
-																			"description": "A list of products to bypass for a request when using the `bypass` action.",
-																			"enum": [
-																				"zoneLockdown",
-																				"uaBlock",
-																				"bic",
-																				"hot",
-																				"securityLevel",
-																				"rateLimit",
-																				"waf"
-																			],
-																			"example": "waf",
-																			"type": "string"
-																		}
-																	},
-																	"ref": {
-																		"description": "A short reference tag. Allows you to select related firewall rules.",
-																		"type": "string",
-																		"example": "MIR-31",
-																		"maxLength": 50
-																	}
-																}
-															},
-															{
-																"properties": {
-																	"filter": {
-																		"oneOf": [
-																			{
-																				"type": "object",
-																				"properties": {
-																					"description": {
-																						"description": "An informative summary of the filter.",
-																						"type": "string",
-																						"example": "Restrict access from these browsers on this address range.",
-																						"maxLength": 500
-																					},
-																					"expression": {
-																						"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																						"type": "string",
-																						"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155"
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"type": "string",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true
-																					},
-																					"paused": {
-																						"description": "When true, indicates that the filter is currently paused.",
-																						"type": "boolean",
-																						"example": false
-																					},
-																					"ref": {
-																						"description": "A short reference tag. Allows you to select related filters.",
-																						"type": "string",
-																						"example": "FIL-100",
-																						"maxLength": 50
-																					}
-																				},
-																				"additionalProperties": false
-																			},
-																			{
-																				"type": "object",
-																				"properties": {
-																					"deleted": {
-																						"description": "When true, indicates that the firewall rule was deleted.",
-																						"type": "boolean",
-																						"example": true
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"type": "string",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true
-																					}
-																				},
-																				"additionalProperties": false,
-																				"required": [
-																					"id",
-																					"deleted"
-																				]
-																			}
-																		]
-																	}
-																},
-																"type": "object"
-															}
-														]
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"result"
-											],
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -3871,365 +2534,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "array",
-															"items": {
-																"type": "object"
-															},
-															"nullable": true
-														},
-														"result_info": {
-															"type": "object",
-															"properties": {
-																"count": {
-																	"description": "Defines the total number of results for the requested service.",
-																	"type": "number",
-																	"example": 1
-																},
-																"page": {
-																	"description": "Defines the current page within paginated list of results.",
-																	"type": "number",
-																	"example": 1
-																},
-																"per_page": {
-																	"description": "Defines the number of results per page of results.",
-																	"type": "number",
-																	"example": 20
-																},
-																"total_count": {
-																	"description": "Defines the total results available without any search parameters.",
-																	"type": "number",
-																	"example": 2000
-																}
-															}
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"allOf": [
-															{
-																"type": "object",
-																"properties": {
-																	"action": {
-																		"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																		"type": "string",
-																		"example": "block",
-																		"enum": [
-																			"block",
-																			"challenge",
-																			"js_challenge",
-																			"managed_challenge",
-																			"allow",
-																			"log",
-																			"bypass"
-																		]
-																	},
-																	"description": {
-																		"description": "An informative summary of the firewall rule.",
-																		"type": "string",
-																		"example": "Blocks traffic identified during investigation for MIR-31",
-																		"maxLength": 500
-																	},
-																	"id": {
-																		"description": "The unique identifier of the firewall rule.",
-																		"type": "string",
-																		"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																		"maxLength": 32,
-																		"readOnly": true
-																	},
-																	"paused": {
-																		"description": "When true, indicates that the firewall rule is currently paused.",
-																		"type": "boolean",
-																		"example": false
-																	},
-																	"priority": {
-																		"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																		"type": "number",
-																		"example": 50,
-																		"maximum": 2147483647,
-																		"minimum": 0
-																	},
-																	"products": {
-																		"type": "array",
-																		"items": {
-																			"description": "A list of products to bypass for a request when using the `bypass` action.",
-																			"enum": [
-																				"zoneLockdown",
-																				"uaBlock",
-																				"bic",
-																				"hot",
-																				"securityLevel",
-																				"rateLimit",
-																				"waf"
-																			],
-																			"example": "waf",
-																			"type": "string"
-																		}
-																	},
-																	"ref": {
-																		"description": "A short reference tag. Allows you to select related firewall rules.",
-																		"type": "string",
-																		"example": "MIR-31",
-																		"maxLength": 50
-																	}
-																}
-															},
-															{
-																"properties": {
-																	"filter": {
-																		"oneOf": [
-																			{
-																				"type": "object",
-																				"properties": {
-																					"description": {
-																						"description": "An informative summary of the filter.",
-																						"type": "string",
-																						"example": "Restrict access from these browsers on this address range.",
-																						"maxLength": 500
-																					},
-																					"expression": {
-																						"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																						"type": "string",
-																						"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155"
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"type": "string",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true
-																					},
-																					"paused": {
-																						"description": "When true, indicates that the filter is currently paused.",
-																						"type": "boolean",
-																						"example": false
-																					},
-																					"ref": {
-																						"description": "A short reference tag. Allows you to select related filters.",
-																						"type": "string",
-																						"example": "FIL-100",
-																						"maxLength": 50
-																					}
-																				},
-																				"additionalProperties": false
-																			},
-																			{
-																				"type": "object",
-																				"properties": {
-																					"deleted": {
-																						"description": "When true, indicates that the firewall rule was deleted.",
-																						"type": "boolean",
-																						"example": true
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"type": "string",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true
-																					}
-																				},
-																				"additionalProperties": false,
-																				"required": [
-																					"id",
-																					"deleted"
-																				]
-																			}
-																		]
-																	}
-																},
-																"type": "object"
-															}
-														]
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"result"
-											],
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -4674,365 +3059,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "array",
-															"items": {
-																"type": "object"
-															},
-															"nullable": true
-														},
-														"result_info": {
-															"type": "object",
-															"properties": {
-																"count": {
-																	"description": "Defines the total number of results for the requested service.",
-																	"type": "number",
-																	"example": 1
-																},
-																"page": {
-																	"description": "Defines the current page within paginated list of results.",
-																	"type": "number",
-																	"example": 1
-																},
-																"per_page": {
-																	"description": "Defines the number of results per page of results.",
-																	"type": "number",
-																	"example": 20
-																},
-																"total_count": {
-																	"description": "Defines the total results available without any search parameters.",
-																	"type": "number",
-																	"example": 2000
-																}
-															}
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"allOf": [
-															{
-																"type": "object",
-																"properties": {
-																	"action": {
-																		"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																		"type": "string",
-																		"example": "block",
-																		"enum": [
-																			"block",
-																			"challenge",
-																			"js_challenge",
-																			"managed_challenge",
-																			"allow",
-																			"log",
-																			"bypass"
-																		]
-																	},
-																	"description": {
-																		"description": "An informative summary of the firewall rule.",
-																		"type": "string",
-																		"example": "Blocks traffic identified during investigation for MIR-31",
-																		"maxLength": 500
-																	},
-																	"id": {
-																		"description": "The unique identifier of the firewall rule.",
-																		"type": "string",
-																		"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																		"maxLength": 32,
-																		"readOnly": true
-																	},
-																	"paused": {
-																		"description": "When true, indicates that the firewall rule is currently paused.",
-																		"type": "boolean",
-																		"example": false
-																	},
-																	"priority": {
-																		"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																		"type": "number",
-																		"example": 50,
-																		"maximum": 2147483647,
-																		"minimum": 0
-																	},
-																	"products": {
-																		"type": "array",
-																		"items": {
-																			"description": "A list of products to bypass for a request when using the `bypass` action.",
-																			"enum": [
-																				"zoneLockdown",
-																				"uaBlock",
-																				"bic",
-																				"hot",
-																				"securityLevel",
-																				"rateLimit",
-																				"waf"
-																			],
-																			"example": "waf",
-																			"type": "string"
-																		}
-																	},
-																	"ref": {
-																		"description": "A short reference tag. Allows you to select related firewall rules.",
-																		"type": "string",
-																		"example": "MIR-31",
-																		"maxLength": 50
-																	}
-																}
-															},
-															{
-																"properties": {
-																	"filter": {
-																		"oneOf": [
-																			{
-																				"type": "object",
-																				"properties": {
-																					"description": {
-																						"description": "An informative summary of the filter.",
-																						"type": "string",
-																						"example": "Restrict access from these browsers on this address range.",
-																						"maxLength": 500
-																					},
-																					"expression": {
-																						"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																						"type": "string",
-																						"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155"
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"type": "string",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true
-																					},
-																					"paused": {
-																						"description": "When true, indicates that the filter is currently paused.",
-																						"type": "boolean",
-																						"example": false
-																					},
-																					"ref": {
-																						"description": "A short reference tag. Allows you to select related filters.",
-																						"type": "string",
-																						"example": "FIL-100",
-																						"maxLength": 50
-																					}
-																				},
-																				"additionalProperties": false
-																			},
-																			{
-																				"type": "object",
-																				"properties": {
-																					"deleted": {
-																						"description": "When true, indicates that the firewall rule was deleted.",
-																						"type": "boolean",
-																						"example": true
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"type": "string",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true
-																					}
-																				},
-																				"additionalProperties": false,
-																				"required": [
-																					"id",
-																					"deleted"
-																				]
-																			}
-																		]
-																	}
-																},
-																"type": "object"
-															}
-														]
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"result"
-											],
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -5087,6 +3194,13 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
+						"properties": {
+							"id": {
+								"description": "The unique identifier of the firewall rule.",
+								"type": "string"
+							}
+						},
 						"required": [
 							"id"
 						]
@@ -5381,365 +3495,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "array",
-															"items": {
-																"type": "object"
-															},
-															"nullable": true
-														},
-														"result_info": {
-															"type": "object",
-															"properties": {
-																"count": {
-																	"description": "Defines the total number of results for the requested service.",
-																	"type": "number",
-																	"example": 1
-																},
-																"page": {
-																	"description": "Defines the current page within paginated list of results.",
-																	"type": "number",
-																	"example": 1
-																},
-																"per_page": {
-																	"description": "Defines the number of results per page of results.",
-																	"type": "number",
-																	"example": 20
-																},
-																"total_count": {
-																	"description": "Defines the total results available without any search parameters.",
-																	"type": "number",
-																	"example": 2000
-																}
-															}
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"allOf": [
-															{
-																"type": "object",
-																"properties": {
-																	"action": {
-																		"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																		"type": "string",
-																		"example": "block",
-																		"enum": [
-																			"block",
-																			"challenge",
-																			"js_challenge",
-																			"managed_challenge",
-																			"allow",
-																			"log",
-																			"bypass"
-																		]
-																	},
-																	"description": {
-																		"description": "An informative summary of the firewall rule.",
-																		"type": "string",
-																		"example": "Blocks traffic identified during investigation for MIR-31",
-																		"maxLength": 500
-																	},
-																	"id": {
-																		"description": "The unique identifier of the firewall rule.",
-																		"type": "string",
-																		"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																		"maxLength": 32,
-																		"readOnly": true
-																	},
-																	"paused": {
-																		"description": "When true, indicates that the firewall rule is currently paused.",
-																		"type": "boolean",
-																		"example": false
-																	},
-																	"priority": {
-																		"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																		"type": "number",
-																		"example": 50,
-																		"maximum": 2147483647,
-																		"minimum": 0
-																	},
-																	"products": {
-																		"type": "array",
-																		"items": {
-																			"description": "A list of products to bypass for a request when using the `bypass` action.",
-																			"enum": [
-																				"zoneLockdown",
-																				"uaBlock",
-																				"bic",
-																				"hot",
-																				"securityLevel",
-																				"rateLimit",
-																				"waf"
-																			],
-																			"example": "waf",
-																			"type": "string"
-																		}
-																	},
-																	"ref": {
-																		"description": "A short reference tag. Allows you to select related firewall rules.",
-																		"type": "string",
-																		"example": "MIR-31",
-																		"maxLength": 50
-																	}
-																}
-															},
-															{
-																"properties": {
-																	"filter": {
-																		"oneOf": [
-																			{
-																				"type": "object",
-																				"properties": {
-																					"description": {
-																						"description": "An informative summary of the filter.",
-																						"type": "string",
-																						"example": "Restrict access from these browsers on this address range.",
-																						"maxLength": 500
-																					},
-																					"expression": {
-																						"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																						"type": "string",
-																						"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155"
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"type": "string",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true
-																					},
-																					"paused": {
-																						"description": "When true, indicates that the filter is currently paused.",
-																						"type": "boolean",
-																						"example": false
-																					},
-																					"ref": {
-																						"description": "A short reference tag. Allows you to select related filters.",
-																						"type": "string",
-																						"example": "FIL-100",
-																						"maxLength": 50
-																					}
-																				},
-																				"additionalProperties": false
-																			},
-																			{
-																				"type": "object",
-																				"properties": {
-																					"deleted": {
-																						"description": "When true, indicates that the firewall rule was deleted.",
-																						"type": "boolean",
-																						"example": true
-																					},
-																					"id": {
-																						"description": "The unique identifier of the filter.",
-																						"type": "string",
-																						"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																						"maxLength": 32,
-																						"minLength": 32,
-																						"readOnly": true
-																					}
-																				},
-																				"additionalProperties": false,
-																				"required": [
-																					"id",
-																					"deleted"
-																				]
-																			}
-																		]
-																	}
-																},
-																"type": "object"
-															}
-														]
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"result"
-											],
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -6181,342 +4017,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"action": {
-																	"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
-																	"type": "string",
-																	"example": "block",
-																	"enum": [
-																		"block",
-																		"challenge",
-																		"js_challenge",
-																		"managed_challenge",
-																		"allow",
-																		"log",
-																		"bypass"
-																	]
-																},
-																"description": {
-																	"description": "An informative summary of the firewall rule.",
-																	"type": "string",
-																	"example": "Blocks traffic identified during investigation for MIR-31",
-																	"maxLength": 500
-																},
-																"id": {
-																	"description": "The unique identifier of the firewall rule.",
-																	"type": "string",
-																	"example": "372e67954025e0ba6aaa6d586b9e0b60",
-																	"maxLength": 32,
-																	"readOnly": true
-																},
-																"paused": {
-																	"description": "When true, indicates that the firewall rule is currently paused.",
-																	"type": "boolean",
-																	"example": false
-																},
-																"priority": {
-																	"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
-																	"type": "number",
-																	"example": 50,
-																	"maximum": 2147483647,
-																	"minimum": 0
-																},
-																"products": {
-																	"type": "array",
-																	"items": {
-																		"description": "A list of products to bypass for a request when using the `bypass` action.",
-																		"enum": [
-																			"zoneLockdown",
-																			"uaBlock",
-																			"bic",
-																			"hot",
-																			"securityLevel",
-																			"rateLimit",
-																			"waf"
-																		],
-																		"example": "waf",
-																		"type": "string"
-																	}
-																},
-																"ref": {
-																	"description": "A short reference tag. Allows you to select related firewall rules.",
-																	"type": "string",
-																	"example": "MIR-31",
-																	"maxLength": 50
-																}
-															}
-														},
-														{
-															"properties": {
-																"filter": {
-																	"oneOf": [
-																		{
-																			"type": "object",
-																			"properties": {
-																				"description": {
-																					"description": "An informative summary of the filter.",
-																					"type": "string",
-																					"example": "Restrict access from these browsers on this address range.",
-																					"maxLength": 500
-																				},
-																				"expression": {
-																					"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																					"type": "string",
-																					"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155"
-																				},
-																				"id": {
-																					"description": "The unique identifier of the filter.",
-																					"type": "string",
-																					"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																					"maxLength": 32,
-																					"minLength": 32,
-																					"readOnly": true
-																				},
-																				"paused": {
-																					"description": "When true, indicates that the filter is currently paused.",
-																					"type": "boolean",
-																					"example": false
-																				},
-																				"ref": {
-																					"description": "A short reference tag. Allows you to select related filters.",
-																					"type": "string",
-																					"example": "FIL-100",
-																					"maxLength": 50
-																				}
-																			},
-																			"additionalProperties": false
-																		},
-																		{
-																			"type": "object",
-																			"properties": {
-																				"deleted": {
-																					"description": "When true, indicates that the firewall rule was deleted.",
-																					"type": "boolean",
-																					"example": true
-																				},
-																				"id": {
-																					"description": "The unique identifier of the filter.",
-																					"type": "string",
-																					"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																					"maxLength": 32,
-																					"minLength": 32,
-																					"readOnly": true
-																				}
-																			},
-																			"additionalProperties": false,
-																			"required": [
-																				"id",
-																				"deleted"
-																			]
-																		}
-																	]
-																}
-															},
-															"type": "object"
-														}
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"result"
-											],
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}

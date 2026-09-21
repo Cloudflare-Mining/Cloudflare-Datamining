@@ -184,212 +184,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"id": {
-															"description": "The unique identifier of the IP Access rule.",
-															"type": "string",
-															"example": "92f17202ed8bd63d69a66b86a49a8f6b",
-															"maxLength": 32,
-															"readOnly": true,
-															"x-auditable": true
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -870,401 +745,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "array",
-															"items": {
-																"type": "object"
-															},
-															"nullable": true
-														},
-														"result_info": {
-															"type": "object",
-															"properties": {
-																"count": {
-																	"description": "Defines the total number of results for the requested service.",
-																	"type": "number",
-																	"example": 1
-																},
-																"page": {
-																	"description": "Defines the current page within paginated list of results.",
-																	"type": "number",
-																	"example": 1
-																},
-																"per_page": {
-																	"description": "Defines the number of results per page of results.",
-																	"type": "number",
-																	"example": 20
-																},
-																"total_count": {
-																	"description": "Defines the total results available without any search parameters.",
-																	"type": "number",
-																	"example": 2000
-																}
-															}
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"properties": {
-															"allowed_modes": {
-																"description": "The available actions that a rule can apply to a matched request.",
-																"type": "array",
-																"items": {
-																	"description": "The action to apply to a matched request.",
-																	"type": "string",
-																	"example": "challenge",
-																	"enum": [
-																		"block",
-																		"challenge",
-																		"whitelist",
-																		"js_challenge",
-																		"managed_challenge"
-																	],
-																	"x-auditable": true
-																},
-																"example": [
-																	"whitelist",
-																	"block",
-																	"challenge",
-																	"js_challenge",
-																	"managed_challenge"
-																],
-																"readOnly": true
-															},
-															"configuration": {
-																"description": "The rule configuration.",
-																"type": "object",
-																"oneOf": [
-																	{
-																		"type": "object",
-																		"properties": {
-																			"target": {
-																				"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule.",
-																				"type": "string",
-																				"example": "ip",
-																				"enum": [
-																					"ip"
-																				]
-																			},
-																			"value": {
-																				"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-																				"type": "string",
-																				"example": "198.51.100.4"
-																			}
-																		},
-																		"title": "An IP address configuration."
-																	},
-																	{
-																		"type": "object",
-																		"properties": {
-																			"target": {
-																				"description": "The configuration target. You must set the target to `ip6` when specifying an IPv6 address in the rule.",
-																				"type": "string",
-																				"example": "ip6",
-																				"enum": [
-																					"ip6"
-																				]
-																			},
-																			"value": {
-																				"description": "The IPv6 address to match.",
-																				"type": "string",
-																				"example": "2001:DB8:100::CF"
-																			}
-																		},
-																		"title": "An IPv6 address configuration."
-																	},
-																	{
-																		"type": "object",
-																		"properties": {
-																			"target": {
-																				"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the rule.",
-																				"type": "string",
-																				"example": "ip_range",
-																				"enum": [
-																					"ip_range"
-																				]
-																			},
-																			"value": {
-																				"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.",
-																				"type": "string",
-																				"example": "198.51.100.4/16"
-																			}
-																		},
-																		"title": "An IP address range configuration."
-																	},
-																	{
-																		"type": "object",
-																		"properties": {
-																			"target": {
-																				"description": "The configuration target. You must set the target to `asn` when specifying an Autonomous System Number (ASN) in the rule.",
-																				"type": "string",
-																				"example": "asn",
-																				"enum": [
-																					"asn"
-																				]
-																			},
-																			"value": {
-																				"description": "The AS number to match.",
-																				"type": "string",
-																				"example": "AS12345"
-																			}
-																		},
-																		"title": "An ASN configuration."
-																	},
-																	{
-																		"type": "object",
-																		"properties": {
-																			"target": {
-																				"description": "The configuration target. You must set the target to `country` when specifying a country code in the rule.",
-																				"type": "string",
-																				"example": "country",
-																				"enum": [
-																					"country"
-																				]
-																			},
-																			"value": {
-																				"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
-																				"type": "string",
-																				"example": "US",
-																				"x-auditable": true
-																			}
-																		},
-																		"title": "A country configuration."
-																	}
-																]
-															},
-															"created_on": {
-																"description": "The timestamp of when the rule was created.",
-																"type": "string",
-																"format": "date-time",
-																"example": "2014-01-01T05:20:00.12345Z",
-																"readOnly": true
-															},
-															"id": {
-																"description": "The unique identifier of the IP Access rule.",
-																"type": "string",
-																"example": "92f17202ed8bd63d69a66b86a49a8f6b",
-																"maxLength": 32,
-																"readOnly": true,
-																"x-auditable": true
-															},
-															"mode": {
-																"description": "The action to apply to a matched request.",
-																"type": "string",
-																"example": "challenge",
-																"enum": [
-																	"block",
-																	"challenge",
-																	"whitelist",
-																	"js_challenge",
-																	"managed_challenge"
-																],
-																"x-auditable": true
-															},
-															"modified_on": {
-																"description": "The timestamp of when the rule was last modified.",
-																"type": "string",
-																"format": "date-time",
-																"example": "2014-01-01T05:20:00.12345Z",
-																"readOnly": true
-															},
-															"notes": {
-																"description": "An informative summary of the rule, typically used as a reminder or explanation.",
-																"type": "string",
-																"example": "This rule is enabled because of an event that occurred on date X.",
-																"x-auditable": true
-															}
-														},
-														"required": [
-															"id",
-															"mode",
-															"allowed_modes",
-															"configuration"
-														]
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1656,378 +1217,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"allowed_modes": {
-															"description": "The available actions that a rule can apply to a matched request.",
-															"type": "array",
-															"items": {
-																"description": "The action to apply to a matched request.",
-																"type": "string",
-																"example": "challenge",
-																"enum": [
-																	"block",
-																	"challenge",
-																	"whitelist",
-																	"js_challenge",
-																	"managed_challenge"
-																],
-																"x-auditable": true
-															},
-															"example": [
-																"whitelist",
-																"block",
-																"challenge",
-																"js_challenge",
-																"managed_challenge"
-															],
-															"readOnly": true
-														},
-														"configuration": {
-															"description": "The rule configuration.",
-															"type": "object",
-															"oneOf": [
-																{
-																	"type": "object",
-																	"properties": {
-																		"target": {
-																			"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule.",
-																			"type": "string",
-																			"example": "ip",
-																			"enum": [
-																				"ip"
-																			]
-																		},
-																		"value": {
-																			"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-																			"type": "string",
-																			"example": "198.51.100.4"
-																		}
-																	},
-																	"title": "An IP address configuration."
-																},
-																{
-																	"type": "object",
-																	"properties": {
-																		"target": {
-																			"description": "The configuration target. You must set the target to `ip6` when specifying an IPv6 address in the rule.",
-																			"type": "string",
-																			"example": "ip6",
-																			"enum": [
-																				"ip6"
-																			]
-																		},
-																		"value": {
-																			"description": "The IPv6 address to match.",
-																			"type": "string",
-																			"example": "2001:DB8:100::CF"
-																		}
-																	},
-																	"title": "An IPv6 address configuration."
-																},
-																{
-																	"type": "object",
-																	"properties": {
-																		"target": {
-																			"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the rule.",
-																			"type": "string",
-																			"example": "ip_range",
-																			"enum": [
-																				"ip_range"
-																			]
-																		},
-																		"value": {
-																			"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.",
-																			"type": "string",
-																			"example": "198.51.100.4/16"
-																		}
-																	},
-																	"title": "An IP address range configuration."
-																},
-																{
-																	"type": "object",
-																	"properties": {
-																		"target": {
-																			"description": "The configuration target. You must set the target to `asn` when specifying an Autonomous System Number (ASN) in the rule.",
-																			"type": "string",
-																			"example": "asn",
-																			"enum": [
-																				"asn"
-																			]
-																		},
-																		"value": {
-																			"description": "The AS number to match.",
-																			"type": "string",
-																			"example": "AS12345"
-																		}
-																	},
-																	"title": "An ASN configuration."
-																},
-																{
-																	"type": "object",
-																	"properties": {
-																		"target": {
-																			"description": "The configuration target. You must set the target to `country` when specifying a country code in the rule.",
-																			"type": "string",
-																			"example": "country",
-																			"enum": [
-																				"country"
-																			]
-																		},
-																		"value": {
-																			"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
-																			"type": "string",
-																			"example": "US",
-																			"x-auditable": true
-																		}
-																	},
-																	"title": "A country configuration."
-																}
-															]
-														},
-														"created_on": {
-															"description": "The timestamp of when the rule was created.",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true
-														},
-														"id": {
-															"description": "The unique identifier of the IP Access rule.",
-															"type": "string",
-															"example": "92f17202ed8bd63d69a66b86a49a8f6b",
-															"maxLength": 32,
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"mode": {
-															"description": "The action to apply to a matched request.",
-															"type": "string",
-															"example": "challenge",
-															"enum": [
-																"block",
-																"challenge",
-																"whitelist",
-																"js_challenge",
-																"managed_challenge"
-															],
-															"x-auditable": true
-														},
-														"modified_on": {
-															"description": "The timestamp of when the rule was last modified.",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true
-														},
-														"notes": {
-															"description": "An informative summary of the rule, typically used as a reminder or explanation.",
-															"type": "string",
-															"example": "This rule is enabled because of an event that occurred on date X.",
-															"x-auditable": true
-														}
-													},
-													"required": [
-														"id",
-														"mode",
-														"allowed_modes",
-														"configuration"
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -2518,378 +1788,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"allowed_modes": {
-															"description": "The available actions that a rule can apply to a matched request.",
-															"type": "array",
-															"items": {
-																"description": "The action to apply to a matched request.",
-																"type": "string",
-																"example": "challenge",
-																"enum": [
-																	"block",
-																	"challenge",
-																	"whitelist",
-																	"js_challenge",
-																	"managed_challenge"
-																],
-																"x-auditable": true
-															},
-															"example": [
-																"whitelist",
-																"block",
-																"challenge",
-																"js_challenge",
-																"managed_challenge"
-															],
-															"readOnly": true
-														},
-														"configuration": {
-															"description": "The rule configuration.",
-															"type": "object",
-															"oneOf": [
-																{
-																	"type": "object",
-																	"properties": {
-																		"target": {
-																			"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule.",
-																			"type": "string",
-																			"example": "ip",
-																			"enum": [
-																				"ip"
-																			]
-																		},
-																		"value": {
-																			"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-																			"type": "string",
-																			"example": "198.51.100.4"
-																		}
-																	},
-																	"title": "An IP address configuration."
-																},
-																{
-																	"type": "object",
-																	"properties": {
-																		"target": {
-																			"description": "The configuration target. You must set the target to `ip6` when specifying an IPv6 address in the rule.",
-																			"type": "string",
-																			"example": "ip6",
-																			"enum": [
-																				"ip6"
-																			]
-																		},
-																		"value": {
-																			"description": "The IPv6 address to match.",
-																			"type": "string",
-																			"example": "2001:DB8:100::CF"
-																		}
-																	},
-																	"title": "An IPv6 address configuration."
-																},
-																{
-																	"type": "object",
-																	"properties": {
-																		"target": {
-																			"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the rule.",
-																			"type": "string",
-																			"example": "ip_range",
-																			"enum": [
-																				"ip_range"
-																			]
-																		},
-																		"value": {
-																			"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.",
-																			"type": "string",
-																			"example": "198.51.100.4/16"
-																		}
-																	},
-																	"title": "An IP address range configuration."
-																},
-																{
-																	"type": "object",
-																	"properties": {
-																		"target": {
-																			"description": "The configuration target. You must set the target to `asn` when specifying an Autonomous System Number (ASN) in the rule.",
-																			"type": "string",
-																			"example": "asn",
-																			"enum": [
-																				"asn"
-																			]
-																		},
-																		"value": {
-																			"description": "The AS number to match.",
-																			"type": "string",
-																			"example": "AS12345"
-																		}
-																	},
-																	"title": "An ASN configuration."
-																},
-																{
-																	"type": "object",
-																	"properties": {
-																		"target": {
-																			"description": "The configuration target. You must set the target to `country` when specifying a country code in the rule.",
-																			"type": "string",
-																			"example": "country",
-																			"enum": [
-																				"country"
-																			]
-																		},
-																		"value": {
-																			"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
-																			"type": "string",
-																			"example": "US",
-																			"x-auditable": true
-																		}
-																	},
-																	"title": "A country configuration."
-																}
-															]
-														},
-														"created_on": {
-															"description": "The timestamp of when the rule was created.",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true
-														},
-														"id": {
-															"description": "The unique identifier of the IP Access rule.",
-															"type": "string",
-															"example": "92f17202ed8bd63d69a66b86a49a8f6b",
-															"maxLength": 32,
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"mode": {
-															"description": "The action to apply to a matched request.",
-															"type": "string",
-															"example": "challenge",
-															"enum": [
-																"block",
-																"challenge",
-																"whitelist",
-																"js_challenge",
-																"managed_challenge"
-															],
-															"x-auditable": true
-														},
-														"modified_on": {
-															"description": "The timestamp of when the rule was last modified.",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true
-														},
-														"notes": {
-															"description": "An informative summary of the rule, typically used as a reminder or explanation.",
-															"type": "string",
-															"example": "This rule is enabled because of an event that occurred on date X.",
-															"x-auditable": true
-														}
-													},
-													"required": [
-														"id",
-														"mode",
-														"allowed_modes",
-														"configuration"
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}

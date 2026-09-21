@@ -151,6 +151,7 @@
 																		"x-auditable": true
 																	},
 																	"value": {
+																		"description": "List of values for the action. Currently limited to a single value.",
 																		"type": "array",
 																		"items": {
 																			"description": "Value for action.",
@@ -264,15 +265,22 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"404": {
+				"description": "Error 2017: ID not found."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -510,6 +518,7 @@
 																			"x-auditable": true
 																		},
 																		"value": {
+																			"description": "List of values for the action. Currently limited to a single value.",
 																			"type": "array",
 																			"items": {
 																				"description": "Value for action.",
@@ -642,7 +651,8 @@
 																	}
 																}
 															}
-														}
+														},
+														"type": "object"
 													}
 												]
 											}
@@ -651,28 +661,43 @@
 											"type": "object",
 											"properties": {
 												"count": {
+													"description": "Total number of results for the requested service.",
+													"type": "number",
 													"example": 1
 												},
 												"page": {
+													"description": "Current page within paginated list of results.",
+													"type": "number",
 													"example": 1
 												},
 												"per_page": {
+													"description": "Number of results per page of results.",
+													"type": "number",
 													"example": 20
 												},
 												"total_count": {
+													"description": "Total results available without any search parameters.",
+													"type": "number",
 													"example": 1
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"403": {
+				"description": "Authentication error or missing account rule list permission."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -903,6 +928,7 @@
 																			"x-auditable": true
 																		},
 																		"value": {
+																			"description": "List of values for the action. Currently limited to a single value.",
 																			"type": "array",
 																			"items": {
 																				"description": "Value for action.",
@@ -1021,28 +1047,43 @@
 											"type": "object",
 											"properties": {
 												"count": {
+													"description": "Total number of results for the requested service.",
+													"type": "number",
 													"example": 1
 												},
 												"page": {
+													"description": "Current page within paginated list of results.",
+													"type": "number",
 													"example": 1
 												},
 												"per_page": {
+													"description": "Number of results per page of results.",
+													"type": "number",
 													"example": 20
 												},
 												"total_count": {
+													"description": "Total results available without any search parameters.",
+													"type": "number",
 													"example": 1
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"403": {
+				"description": "Authentication error or missing zone routing rule list permission."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1223,6 +1264,7 @@
 																		"x-auditable": true
 																	},
 																	"value": {
+																		"description": "List of values for the action. Currently limited to a single value.",
 																		"type": "array",
 																		"items": {
 																			"description": "Value for action.",
@@ -1336,15 +1378,22 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"404": {
+				"description": "Error 2017: ID not found."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1509,6 +1558,7 @@
 																"x-auditable": true
 															},
 															"value": {
+																"description": "List of values for the action. Currently limited to a single value.",
 																"type": "array",
 																"items": {
 																	"description": "Input value for action.",
@@ -1596,15 +1646,22 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"403": {
+				"description": "Authentication error or missing zone routing rule read permission."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1686,6 +1743,7 @@
 																"x-auditable": true
 															},
 															"value": {
+																"description": "List of values for the action. Currently limited to a single value.",
 																"type": "array",
 																"items": {
 																	"description": "Input value for action.",
@@ -1788,6 +1846,7 @@
 														"x-auditable": true
 													},
 													"value": {
+														"description": "List of values for the action. Currently limited to a single value.",
 														"type": "array",
 														"items": {
 															"description": "Value for action.",
@@ -2047,11 +2106,13 @@
 											"type": "object",
 											"properties": {
 												"zones": {
+													"description": "Per-zone diff between the desired rules and the account's current Email Routing rules.",
 													"type": "array",
 													"items": {
 														"type": "object",
 														"properties": {
 															"changes": {
+																"description": "Rule changes planned for this zone.",
 																"type": "array",
 																"items": {
 																	"type": "object",
@@ -2078,6 +2139,7 @@
 																								"x-auditable": true
 																							},
 																							"value": {
+																								"description": "List of values for the action. Currently limited to a single value.",
 																								"type": "array",
 																								"items": {
 																									"description": "Value for action.",
@@ -2317,7 +2379,8 @@
 												]
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2335,6 +2398,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -2399,6 +2465,7 @@
 											"x-auditable": true
 										},
 										"value": {
+											"description": "List of values for the action. Currently limited to a single value.",
 											"type": "array",
 											"items": {
 												"description": "Value for action.",
@@ -2630,6 +2697,7 @@
 																		"x-auditable": true
 																	},
 																	"value": {
+																		"description": "List of values for the action. Currently limited to a single value.",
 																		"type": "array",
 																		"items": {
 																			"description": "Value for action.",
@@ -2743,7 +2811,8 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2758,6 +2827,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -2842,6 +2914,7 @@
 											"x-auditable": true
 										},
 										"value": {
+											"description": "List of values for the action. Currently limited to a single value.",
 											"type": "array",
 											"items": {
 												"description": "Value for action.",
@@ -3073,6 +3146,7 @@
 																		"x-auditable": true
 																	},
 																	"value": {
+																		"description": "List of values for the action. Currently limited to a single value.",
 																		"type": "array",
 																		"items": {
 																			"description": "Value for action.",
@@ -3186,7 +3260,8 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3201,6 +3276,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -3272,6 +3350,7 @@
 											"x-auditable": true
 										},
 										"value": {
+											"description": "List of values for the action. Currently limited to a single value.",
 											"type": "array",
 											"items": {
 												"description": "Input value for action.",
@@ -3476,6 +3555,7 @@
 																"x-auditable": true
 															},
 															"value": {
+																"description": "List of values for the action. Currently limited to a single value.",
 																"type": "array",
 																"items": {
 																	"description": "Input value for action.",
@@ -3563,7 +3643,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3578,6 +3659,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

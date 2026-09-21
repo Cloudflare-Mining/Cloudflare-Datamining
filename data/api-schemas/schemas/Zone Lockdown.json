@@ -61,109 +61,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"properties": {
-										"result": {
-											"type": "object",
-											"properties": {
-												"id": {
-													"description": "The unique identifier of the Zone Lockdown rule.",
-													"type": "string",
-													"example": "372e67954025e0ba6aaa6d586b9e0b59",
-													"maxLength": 32,
-													"readOnly": true,
-													"x-auditable": true
-												}
-											}
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
 										}
-									},
-									"type": "object"
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
 								},
-								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -601,331 +579,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "array",
-															"items": {
-																"type": "object"
-															},
-															"nullable": true
-														},
-														"result_info": {
-															"type": "object",
-															"properties": {
-																"count": {
-																	"description": "Defines the total number of results for the requested service.",
-																	"type": "number",
-																	"example": 1
-																},
-																"page": {
-																	"description": "Defines the current page within paginated list of results.",
-																	"type": "number",
-																	"example": 1
-																},
-																"per_page": {
-																	"description": "Defines the number of results per page of results.",
-																	"type": "number",
-																	"example": 20
-																},
-																"total_count": {
-																	"description": "Defines the total results available without any search parameters.",
-																	"type": "number",
-																	"example": 2000
-																}
-															}
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"properties": {
-															"configurations": {
-																"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
-																"type": "array",
-																"items": {
-																	"anyOf": [
-																		{
-																			"type": "object",
-																			"properties": {
-																				"target": {
-																					"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
-																					"type": "string",
-																					"example": "ip",
-																					"enum": [
-																						"ip"
-																					]
-																				},
-																				"value": {
-																					"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-																					"type": "string",
-																					"example": "198.51.100.4"
-																				}
-																			},
-																			"title": "An IP address configuration."
-																		},
-																		{
-																			"type": "object",
-																			"properties": {
-																				"target": {
-																					"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
-																					"type": "string",
-																					"example": "ip_range",
-																					"enum": [
-																						"ip_range"
-																					]
-																				},
-																				"value": {
-																					"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-																					"type": "string",
-																					"example": "198.51.100.4/16"
-																				}
-																			},
-																			"title": "An IP address range configuration."
-																		}
-																	]
-																}
-															},
-															"created_on": {
-																"description": "The timestamp of when the rule was created.",
-																"type": "string",
-																"format": "date-time",
-																"example": "2014-01-01T05:20:00.12345Z",
-																"readOnly": true,
-																"x-auditable": true
-															},
-															"description": {
-																"description": "An informative summary of the rule.",
-																"type": "string",
-																"example": "Restrict access to these endpoints to requests from a known IP address",
-																"maxLength": 1024
-															},
-															"id": {
-																"description": "The unique identifier of the Zone Lockdown rule.",
-																"type": "string",
-																"example": "372e67954025e0ba6aaa6d586b9e0b59",
-																"maxLength": 32,
-																"readOnly": true,
-																"x-auditable": true
-															},
-															"modified_on": {
-																"description": "The timestamp of when the rule was last modified.",
-																"type": "string",
-																"format": "date-time",
-																"example": "2014-01-01T05:20:00.12345Z",
-																"readOnly": true,
-																"x-auditable": true
-															},
-															"paused": {
-																"description": "When true, indicates that the rule is currently paused.",
-																"type": "boolean",
-																"example": false,
-																"x-auditable": true
-															},
-															"urls": {
-																"description": "The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
-																"type": "array",
-																"items": {
-																	"example": "api.mysite.com/some/endpoint*",
-																	"type": "string",
-																	"x-auditable": true
-																}
-															}
-														},
-														"additionalProperties": false,
-														"required": [
-															"id",
-															"created_on",
-															"modified_on",
-															"paused",
-															"description",
-															"urls",
-															"configurations"
-														]
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"result"
-											],
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1218,308 +952,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"configurations": {
-															"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
-															"type": "array",
-															"items": {
-																"anyOf": [
-																	{
-																		"type": "object",
-																		"properties": {
-																			"target": {
-																				"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
-																				"type": "string",
-																				"example": "ip",
-																				"enum": [
-																					"ip"
-																				]
-																			},
-																			"value": {
-																				"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-																				"type": "string",
-																				"example": "198.51.100.4"
-																			}
-																		},
-																		"title": "An IP address configuration."
-																	},
-																	{
-																		"type": "object",
-																		"properties": {
-																			"target": {
-																				"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
-																				"type": "string",
-																				"example": "ip_range",
-																				"enum": [
-																					"ip_range"
-																				]
-																			},
-																			"value": {
-																				"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-																				"type": "string",
-																				"example": "198.51.100.4/16"
-																			}
-																		},
-																		"title": "An IP address range configuration."
-																	}
-																]
-															}
-														},
-														"created_on": {
-															"description": "The timestamp of when the rule was created.",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"description": {
-															"description": "An informative summary of the rule.",
-															"type": "string",
-															"example": "Restrict access to these endpoints to requests from a known IP address",
-															"maxLength": 1024
-														},
-														"id": {
-															"description": "The unique identifier of the Zone Lockdown rule.",
-															"type": "string",
-															"example": "372e67954025e0ba6aaa6d586b9e0b59",
-															"maxLength": 32,
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"modified_on": {
-															"description": "The timestamp of when the rule was last modified.",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"paused": {
-															"description": "When true, indicates that the rule is currently paused.",
-															"type": "boolean",
-															"example": false,
-															"x-auditable": true
-														},
-														"urls": {
-															"description": "The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
-															"type": "array",
-															"items": {
-																"example": "api.mysite.com/some/endpoint*",
-																"type": "string",
-																"x-auditable": true
-															}
-														}
-													},
-													"additionalProperties": false,
-													"required": [
-														"id",
-														"created_on",
-														"modified_on",
-														"paused",
-														"description",
-														"urls",
-														"configurations"
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"result"
-											],
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1889,308 +1402,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"configurations": {
-															"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
-															"type": "array",
-															"items": {
-																"anyOf": [
-																	{
-																		"type": "object",
-																		"properties": {
-																			"target": {
-																				"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
-																				"type": "string",
-																				"example": "ip",
-																				"enum": [
-																					"ip"
-																				]
-																			},
-																			"value": {
-																				"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-																				"type": "string",
-																				"example": "198.51.100.4"
-																			}
-																		},
-																		"title": "An IP address configuration."
-																	},
-																	{
-																		"type": "object",
-																		"properties": {
-																			"target": {
-																				"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
-																				"type": "string",
-																				"example": "ip_range",
-																				"enum": [
-																					"ip_range"
-																				]
-																			},
-																			"value": {
-																				"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-																				"type": "string",
-																				"example": "198.51.100.4/16"
-																			}
-																		},
-																		"title": "An IP address range configuration."
-																	}
-																]
-															}
-														},
-														"created_on": {
-															"description": "The timestamp of when the rule was created.",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"description": {
-															"description": "An informative summary of the rule.",
-															"type": "string",
-															"example": "Restrict access to these endpoints to requests from a known IP address",
-															"maxLength": 1024
-														},
-														"id": {
-															"description": "The unique identifier of the Zone Lockdown rule.",
-															"type": "string",
-															"example": "372e67954025e0ba6aaa6d586b9e0b59",
-															"maxLength": 32,
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"modified_on": {
-															"description": "The timestamp of when the rule was last modified.",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"paused": {
-															"description": "When true, indicates that the rule is currently paused.",
-															"type": "boolean",
-															"example": false,
-															"x-auditable": true
-														},
-														"urls": {
-															"description": "The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
-															"type": "array",
-															"items": {
-																"example": "api.mysite.com/some/endpoint*",
-																"type": "string",
-																"x-auditable": true
-															}
-														}
-													},
-													"additionalProperties": false,
-													"required": [
-														"id",
-														"created_on",
-														"modified_on",
-														"paused",
-														"description",
-														"urls",
-														"configurations"
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"result"
-											],
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -2553,308 +1845,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"configurations": {
-															"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
-															"type": "array",
-															"items": {
-																"anyOf": [
-																	{
-																		"type": "object",
-																		"properties": {
-																			"target": {
-																				"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
-																				"type": "string",
-																				"example": "ip",
-																				"enum": [
-																					"ip"
-																				]
-																			},
-																			"value": {
-																				"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-																				"type": "string",
-																				"example": "198.51.100.4"
-																			}
-																		},
-																		"title": "An IP address configuration."
-																	},
-																	{
-																		"type": "object",
-																		"properties": {
-																			"target": {
-																				"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
-																				"type": "string",
-																				"example": "ip_range",
-																				"enum": [
-																					"ip_range"
-																				]
-																			},
-																			"value": {
-																				"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-																				"type": "string",
-																				"example": "198.51.100.4/16"
-																			}
-																		},
-																		"title": "An IP address range configuration."
-																	}
-																]
-															}
-														},
-														"created_on": {
-															"description": "The timestamp of when the rule was created.",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"description": {
-															"description": "An informative summary of the rule.",
-															"type": "string",
-															"example": "Restrict access to these endpoints to requests from a known IP address",
-															"maxLength": 1024
-														},
-														"id": {
-															"description": "The unique identifier of the Zone Lockdown rule.",
-															"type": "string",
-															"example": "372e67954025e0ba6aaa6d586b9e0b59",
-															"maxLength": 32,
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"modified_on": {
-															"description": "The timestamp of when the rule was last modified.",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"paused": {
-															"description": "When true, indicates that the rule is currently paused.",
-															"type": "boolean",
-															"example": false,
-															"x-auditable": true
-														},
-														"urls": {
-															"description": "The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
-															"type": "array",
-															"items": {
-																"example": "api.mysite.com/some/endpoint*",
-																"type": "string",
-																"x-auditable": true
-															}
-														}
-													},
-													"additionalProperties": false,
-													"required": [
-														"id",
-														"created_on",
-														"modified_on",
-														"paused",
-														"description",
-														"urls",
-														"configurations"
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"result"
-											],
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}

@@ -3641,7 +3641,7 @@
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
-	"GET /accounts/{account_id}/security-center/insights/count": {
+	"GET /accounts/{account_id}/security-center/insights/partner-count": {
 		"operationId": "get-security-center-partner-insight-count",
 		"summary": "Retrieves a Partner Security Center Insight Count",
 		"description": "Retrieves the uncapped count of active, non-dismissed, unclassified RiskRecon insights for the account.",
@@ -3915,7 +3915,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "security-center.insights",
-		"x-fern-sdk-method-name": "get",
+		"x-fern-sdk-method-name": "get-partner-count",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/security-center/insights/severity": {
@@ -6208,6 +6208,287 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "security-center.zone-insights.class",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	},
+	"GET /zones/{zone_id}/security-center/insights/partner-count": {
+		"operationId": "get-zone-security-center-partner-insight-count",
+		"summary": "Retrieves a Partner Zone Security Center Insight Count",
+		"description": "Retrieves the uncapped count of active, non-dismissed, unclassified RiskRecon insights for the zone.",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "source",
+				"in": "query",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"riskrecon"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "The request was successful.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"anyOf": [
+												{
+													"additionalProperties": false,
+													"properties": {
+														"count": {
+															"type": "integer",
+															"example": 1,
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"count"
+													],
+													"type": "object"
+												}
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "A client error occurred.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Security Center Insights"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-center.zone-insights",
+		"x-fern-sdk-method-name": "get-partner-count",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/security-center/insights/severity": {

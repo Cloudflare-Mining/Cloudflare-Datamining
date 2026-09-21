@@ -124,9 +124,15 @@
 						}
 					}
 				}
+			},
+			"404": {
+				"description": "Error 2033: sending subdomain not found."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -330,6 +336,7 @@
 															"enabled": {
 																"description": "Whether Email Sending is enabled on this subdomain.",
 																"type": "boolean",
+																"example": true,
 																"readOnly": true
 															},
 															"modified": {
@@ -376,15 +383,22 @@
 												]
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"403": {
+				"description": "Authentication error or missing email sending read permission."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -564,6 +578,7 @@
 														"enabled": {
 															"description": "Whether Email Sending is enabled on this subdomain.",
 															"type": "boolean",
+															"example": true,
 															"readOnly": true
 														},
 														"modified": {
@@ -609,15 +624,22 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"404": {
+				"description": "Error 2033: sending subdomain not found."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -880,15 +902,22 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"404": {
+				"description": "Error 2033: sending subdomain not found."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1075,152 +1104,163 @@
 																"example": "*.example.com"
 															},
 															"existing": {
-																"description": "List of records needed to enable an Email Routing zone.",
-																"type": "object",
-																"properties": {
-																	"content": {
-																		"description": "DNS record content.",
-																		"example": "route1.mx.cloudflare.net",
-																		"type": "string"
-																	},
-																	"name": {
-																		"description": "DNS record name (or @ for the zone apex).",
-																		"type": "string",
-																		"example": "example.com",
-																		"maxLength": 255,
-																		"x-auditable": true
-																	},
-																	"priority": {
-																		"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
-																		"type": "number",
-																		"example": 12,
-																		"maximum": 65535,
-																		"minimum": 0,
-																		"x-auditable": true
-																	},
-																	"ttl": {
-																		"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-																		"type": "number",
-																		"example": 1,
-																		"anyOf": [
-																			{
-																				"example": 3600,
-																				"maximum": 86400,
-																				"minimum": 1,
-																				"type": "number"
+																"description": "The conflicting DNS record found in the zone.",
+																"allOf": [
+																	{
+																		"description": "List of records needed to enable an Email Routing zone.",
+																		"type": "object",
+																		"properties": {
+																			"content": {
+																				"description": "DNS record content.",
+																				"example": "route1.mx.cloudflare.net",
+																				"type": "string"
 																			},
-																			{
-																				"enum": [
-																					1
+																			"name": {
+																				"description": "DNS record name (or @ for the zone apex).",
+																				"type": "string",
+																				"example": "example.com",
+																				"maxLength": 255,
+																				"x-auditable": true
+																			},
+																			"priority": {
+																				"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																				"type": "number",
+																				"example": 12,
+																				"maximum": 65535,
+																				"minimum": 0,
+																				"x-auditable": true
+																			},
+																			"ttl": {
+																				"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																				"type": "number",
+																				"example": 1,
+																				"anyOf": [
+																					{
+																						"example": 3600,
+																						"maximum": 86400,
+																						"minimum": 1,
+																						"type": "number"
+																					},
+																					{
+																						"enum": [
+																							1
+																						],
+																						"type": "number"
+																					}
 																				],
-																				"type": "number"
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "DNS record type.",
+																				"type": "string",
+																				"example": "NS",
+																				"enum": [
+																					"A",
+																					"AAAA",
+																					"CNAME",
+																					"HTTPS",
+																					"TXT",
+																					"SRV",
+																					"LOC",
+																					"MX",
+																					"NS",
+																					"CERT",
+																					"DNSKEY",
+																					"DS",
+																					"NAPTR",
+																					"SMIMEA",
+																					"SSHFP",
+																					"SVCB",
+																					"TLSA",
+																					"URI"
+																				],
+																				"readOnly": true,
+																				"x-auditable": true
 																			}
-																		],
-																		"x-auditable": true
-																	},
-																	"type": {
-																		"description": "DNS record type.",
-																		"type": "string",
-																		"example": "NS",
-																		"enum": [
-																			"A",
-																			"AAAA",
-																			"CNAME",
-																			"HTTPS",
-																			"TXT",
-																			"SRV",
-																			"LOC",
-																			"MX",
-																			"NS",
-																			"CERT",
-																			"DNSKEY",
-																			"DS",
-																			"NAPTR",
-																			"SMIMEA",
-																			"SSHFP",
-																			"SVCB",
-																			"TLSA",
-																			"URI"
-																		],
-																		"readOnly": true,
-																		"x-auditable": true
+																		}
 																	}
-																}
+																]
 															},
 															"missing": {
-																"description": "List of records needed to enable an Email Routing zone.",
-																"type": "object",
-																"properties": {
-																	"content": {
-																		"description": "DNS record content.",
-																		"example": "route1.mx.cloudflare.net",
-																		"type": "string"
-																	},
-																	"name": {
-																		"description": "DNS record name (or @ for the zone apex).",
-																		"type": "string",
-																		"example": "example.com",
-																		"maxLength": 255,
-																		"x-auditable": true
-																	},
-																	"priority": {
-																		"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
-																		"type": "number",
-																		"example": 12,
-																		"maximum": 65535,
-																		"minimum": 0,
-																		"x-auditable": true
-																	},
-																	"ttl": {
-																		"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-																		"type": "number",
-																		"example": 1,
-																		"anyOf": [
-																			{
-																				"example": 3600,
-																				"maximum": 86400,
-																				"minimum": 1,
-																				"type": "number"
+																"description": "The DNS record that must be added to resolve this error.",
+																"allOf": [
+																	{
+																		"description": "List of records needed to enable an Email Routing zone.",
+																		"type": "object",
+																		"properties": {
+																			"content": {
+																				"description": "DNS record content.",
+																				"example": "route1.mx.cloudflare.net",
+																				"type": "string"
 																			},
-																			{
-																				"enum": [
-																					1
+																			"name": {
+																				"description": "DNS record name (or @ for the zone apex).",
+																				"type": "string",
+																				"example": "example.com",
+																				"maxLength": 255,
+																				"x-auditable": true
+																			},
+																			"priority": {
+																				"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																				"type": "number",
+																				"example": 12,
+																				"maximum": 65535,
+																				"minimum": 0,
+																				"x-auditable": true
+																			},
+																			"ttl": {
+																				"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																				"type": "number",
+																				"example": 1,
+																				"anyOf": [
+																					{
+																						"example": 3600,
+																						"maximum": 86400,
+																						"minimum": 1,
+																						"type": "number"
+																					},
+																					{
+																						"enum": [
+																							1
+																						],
+																						"type": "number"
+																					}
 																				],
-																				"type": "number"
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "DNS record type.",
+																				"type": "string",
+																				"example": "NS",
+																				"enum": [
+																					"A",
+																					"AAAA",
+																					"CNAME",
+																					"HTTPS",
+																					"TXT",
+																					"SRV",
+																					"LOC",
+																					"MX",
+																					"NS",
+																					"CERT",
+																					"DNSKEY",
+																					"DS",
+																					"NAPTR",
+																					"SMIMEA",
+																					"SSHFP",
+																					"SVCB",
+																					"TLSA",
+																					"URI"
+																				],
+																				"readOnly": true,
+																				"x-auditable": true
 																			}
-																		],
-																		"x-auditable": true
-																	},
-																	"type": {
-																		"description": "DNS record type.",
-																		"type": "string",
-																		"example": "NS",
-																		"enum": [
-																			"A",
-																			"AAAA",
-																			"CNAME",
-																			"HTTPS",
-																			"TXT",
-																			"SRV",
-																			"LOC",
-																			"MX",
-																			"NS",
-																			"CERT",
-																			"DNSKEY",
-																			"DS",
-																			"NAPTR",
-																			"SMIMEA",
-																			"SSHFP",
-																			"SVCB",
-																			"TLSA",
-																			"URI"
-																		],
-																		"readOnly": true,
-																		"x-auditable": true
+																		}
 																	}
-																}
+																]
 															},
 															"multiple": {
+																"description": "Multiple conflicting DNS records found, for example more than one SPF or DMARC TXT record.",
 																"type": "array",
 																"items": {
 																	"description": "List of records needed to enable an Email Routing zone.",
@@ -1391,7 +1431,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1406,6 +1447,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1579,7 +1623,9 @@
 											"type": "object",
 											"properties": {
 												"complaints": {
+													"description": "The number of matched complaints for the sending subdomain in the requested time window.",
 													"type": "integer",
+													"example": 3,
 													"minimum": 0
 												}
 											},
@@ -1587,7 +1633,8 @@
 												"complaints"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1608,6 +1655,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1688,12 +1738,14 @@
 							{
 								"required": [
 									"preview_enabled"
-								]
+								],
+								"type": "object"
 							},
 							{
 								"required": [
 									"drop_suppressed_recipients"
-								]
+								],
+								"type": "object"
 							}
 						]
 					}
@@ -1824,6 +1876,7 @@
 														"enabled": {
 															"description": "Whether Email Sending is enabled on this subdomain.",
 															"type": "boolean",
+															"example": true,
 															"readOnly": true
 														},
 														"modified": {
@@ -1869,15 +1922,22 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
+			},
+			"404": {
+				"description": "Error 2033: sending subdomain not found."
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -2064,6 +2124,7 @@
 														"enabled": {
 															"description": "Whether Email Sending is enabled on this subdomain.",
 															"type": "boolean",
+															"example": true,
 															"readOnly": true
 														},
 														"modified": {
@@ -2109,7 +2170,8 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2121,6 +2183,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -2307,152 +2372,163 @@
 																"example": "*.example.com"
 															},
 															"existing": {
-																"description": "List of records needed to enable an Email Routing zone.",
-																"type": "object",
-																"properties": {
-																	"content": {
-																		"description": "DNS record content.",
-																		"example": "route1.mx.cloudflare.net",
-																		"type": "string"
-																	},
-																	"name": {
-																		"description": "DNS record name (or @ for the zone apex).",
-																		"type": "string",
-																		"example": "example.com",
-																		"maxLength": 255,
-																		"x-auditable": true
-																	},
-																	"priority": {
-																		"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
-																		"type": "number",
-																		"example": 12,
-																		"maximum": 65535,
-																		"minimum": 0,
-																		"x-auditable": true
-																	},
-																	"ttl": {
-																		"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-																		"type": "number",
-																		"example": 1,
-																		"anyOf": [
-																			{
-																				"example": 3600,
-																				"maximum": 86400,
-																				"minimum": 1,
-																				"type": "number"
+																"description": "The conflicting DNS record found in the zone.",
+																"allOf": [
+																	{
+																		"description": "List of records needed to enable an Email Routing zone.",
+																		"type": "object",
+																		"properties": {
+																			"content": {
+																				"description": "DNS record content.",
+																				"example": "route1.mx.cloudflare.net",
+																				"type": "string"
 																			},
-																			{
-																				"enum": [
-																					1
+																			"name": {
+																				"description": "DNS record name (or @ for the zone apex).",
+																				"type": "string",
+																				"example": "example.com",
+																				"maxLength": 255,
+																				"x-auditable": true
+																			},
+																			"priority": {
+																				"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																				"type": "number",
+																				"example": 12,
+																				"maximum": 65535,
+																				"minimum": 0,
+																				"x-auditable": true
+																			},
+																			"ttl": {
+																				"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																				"type": "number",
+																				"example": 1,
+																				"anyOf": [
+																					{
+																						"example": 3600,
+																						"maximum": 86400,
+																						"minimum": 1,
+																						"type": "number"
+																					},
+																					{
+																						"enum": [
+																							1
+																						],
+																						"type": "number"
+																					}
 																				],
-																				"type": "number"
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "DNS record type.",
+																				"type": "string",
+																				"example": "NS",
+																				"enum": [
+																					"A",
+																					"AAAA",
+																					"CNAME",
+																					"HTTPS",
+																					"TXT",
+																					"SRV",
+																					"LOC",
+																					"MX",
+																					"NS",
+																					"CERT",
+																					"DNSKEY",
+																					"DS",
+																					"NAPTR",
+																					"SMIMEA",
+																					"SSHFP",
+																					"SVCB",
+																					"TLSA",
+																					"URI"
+																				],
+																				"readOnly": true,
+																				"x-auditable": true
 																			}
-																		],
-																		"x-auditable": true
-																	},
-																	"type": {
-																		"description": "DNS record type.",
-																		"type": "string",
-																		"example": "NS",
-																		"enum": [
-																			"A",
-																			"AAAA",
-																			"CNAME",
-																			"HTTPS",
-																			"TXT",
-																			"SRV",
-																			"LOC",
-																			"MX",
-																			"NS",
-																			"CERT",
-																			"DNSKEY",
-																			"DS",
-																			"NAPTR",
-																			"SMIMEA",
-																			"SSHFP",
-																			"SVCB",
-																			"TLSA",
-																			"URI"
-																		],
-																		"readOnly": true,
-																		"x-auditable": true
+																		}
 																	}
-																}
+																]
 															},
 															"missing": {
-																"description": "List of records needed to enable an Email Routing zone.",
-																"type": "object",
-																"properties": {
-																	"content": {
-																		"description": "DNS record content.",
-																		"example": "route1.mx.cloudflare.net",
-																		"type": "string"
-																	},
-																	"name": {
-																		"description": "DNS record name (or @ for the zone apex).",
-																		"type": "string",
-																		"example": "example.com",
-																		"maxLength": 255,
-																		"x-auditable": true
-																	},
-																	"priority": {
-																		"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
-																		"type": "number",
-																		"example": 12,
-																		"maximum": 65535,
-																		"minimum": 0,
-																		"x-auditable": true
-																	},
-																	"ttl": {
-																		"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-																		"type": "number",
-																		"example": 1,
-																		"anyOf": [
-																			{
-																				"example": 3600,
-																				"maximum": 86400,
-																				"minimum": 1,
-																				"type": "number"
+																"description": "The DNS record that must be added to resolve this error.",
+																"allOf": [
+																	{
+																		"description": "List of records needed to enable an Email Routing zone.",
+																		"type": "object",
+																		"properties": {
+																			"content": {
+																				"description": "DNS record content.",
+																				"example": "route1.mx.cloudflare.net",
+																				"type": "string"
 																			},
-																			{
-																				"enum": [
-																					1
+																			"name": {
+																				"description": "DNS record name (or @ for the zone apex).",
+																				"type": "string",
+																				"example": "example.com",
+																				"maxLength": 255,
+																				"x-auditable": true
+																			},
+																			"priority": {
+																				"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																				"type": "number",
+																				"example": 12,
+																				"maximum": 65535,
+																				"minimum": 0,
+																				"x-auditable": true
+																			},
+																			"ttl": {
+																				"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																				"type": "number",
+																				"example": 1,
+																				"anyOf": [
+																					{
+																						"example": 3600,
+																						"maximum": 86400,
+																						"minimum": 1,
+																						"type": "number"
+																					},
+																					{
+																						"enum": [
+																							1
+																						],
+																						"type": "number"
+																					}
 																				],
-																				"type": "number"
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "DNS record type.",
+																				"type": "string",
+																				"example": "NS",
+																				"enum": [
+																					"A",
+																					"AAAA",
+																					"CNAME",
+																					"HTTPS",
+																					"TXT",
+																					"SRV",
+																					"LOC",
+																					"MX",
+																					"NS",
+																					"CERT",
+																					"DNSKEY",
+																					"DS",
+																					"NAPTR",
+																					"SMIMEA",
+																					"SSHFP",
+																					"SVCB",
+																					"TLSA",
+																					"URI"
+																				],
+																				"readOnly": true,
+																				"x-auditable": true
 																			}
-																		],
-																		"x-auditable": true
-																	},
-																	"type": {
-																		"description": "DNS record type.",
-																		"type": "string",
-																		"example": "NS",
-																		"enum": [
-																			"A",
-																			"AAAA",
-																			"CNAME",
-																			"HTTPS",
-																			"TXT",
-																			"SRV",
-																			"LOC",
-																			"MX",
-																			"NS",
-																			"CERT",
-																			"DNSKEY",
-																			"DS",
-																			"NAPTR",
-																			"SMIMEA",
-																			"SSHFP",
-																			"SVCB",
-																			"TLSA",
-																			"URI"
-																		],
-																		"readOnly": true,
-																		"x-auditable": true
+																		}
 																	}
-																}
+																]
 															},
 															"multiple": {
+																"description": "Multiple conflicting DNS records found, for example more than one SPF or DMARC TXT record.",
 																"type": "array",
 																"items": {
 																	"description": "List of records needed to enable an Email Routing zone.",
@@ -2623,7 +2699,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2644,6 +2721,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -2837,152 +2917,163 @@
 																"example": "*.example.com"
 															},
 															"existing": {
-																"description": "List of records needed to enable an Email Routing zone.",
-																"type": "object",
-																"properties": {
-																	"content": {
-																		"description": "DNS record content.",
-																		"example": "route1.mx.cloudflare.net",
-																		"type": "string"
-																	},
-																	"name": {
-																		"description": "DNS record name (or @ for the zone apex).",
-																		"type": "string",
-																		"example": "example.com",
-																		"maxLength": 255,
-																		"x-auditable": true
-																	},
-																	"priority": {
-																		"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
-																		"type": "number",
-																		"example": 12,
-																		"maximum": 65535,
-																		"minimum": 0,
-																		"x-auditable": true
-																	},
-																	"ttl": {
-																		"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-																		"type": "number",
-																		"example": 1,
-																		"anyOf": [
-																			{
-																				"example": 3600,
-																				"maximum": 86400,
-																				"minimum": 1,
-																				"type": "number"
+																"description": "The conflicting DNS record found in the zone.",
+																"allOf": [
+																	{
+																		"description": "List of records needed to enable an Email Routing zone.",
+																		"type": "object",
+																		"properties": {
+																			"content": {
+																				"description": "DNS record content.",
+																				"example": "route1.mx.cloudflare.net",
+																				"type": "string"
 																			},
-																			{
-																				"enum": [
-																					1
+																			"name": {
+																				"description": "DNS record name (or @ for the zone apex).",
+																				"type": "string",
+																				"example": "example.com",
+																				"maxLength": 255,
+																				"x-auditable": true
+																			},
+																			"priority": {
+																				"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																				"type": "number",
+																				"example": 12,
+																				"maximum": 65535,
+																				"minimum": 0,
+																				"x-auditable": true
+																			},
+																			"ttl": {
+																				"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																				"type": "number",
+																				"example": 1,
+																				"anyOf": [
+																					{
+																						"example": 3600,
+																						"maximum": 86400,
+																						"minimum": 1,
+																						"type": "number"
+																					},
+																					{
+																						"enum": [
+																							1
+																						],
+																						"type": "number"
+																					}
 																				],
-																				"type": "number"
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "DNS record type.",
+																				"type": "string",
+																				"example": "NS",
+																				"enum": [
+																					"A",
+																					"AAAA",
+																					"CNAME",
+																					"HTTPS",
+																					"TXT",
+																					"SRV",
+																					"LOC",
+																					"MX",
+																					"NS",
+																					"CERT",
+																					"DNSKEY",
+																					"DS",
+																					"NAPTR",
+																					"SMIMEA",
+																					"SSHFP",
+																					"SVCB",
+																					"TLSA",
+																					"URI"
+																				],
+																				"readOnly": true,
+																				"x-auditable": true
 																			}
-																		],
-																		"x-auditable": true
-																	},
-																	"type": {
-																		"description": "DNS record type.",
-																		"type": "string",
-																		"example": "NS",
-																		"enum": [
-																			"A",
-																			"AAAA",
-																			"CNAME",
-																			"HTTPS",
-																			"TXT",
-																			"SRV",
-																			"LOC",
-																			"MX",
-																			"NS",
-																			"CERT",
-																			"DNSKEY",
-																			"DS",
-																			"NAPTR",
-																			"SMIMEA",
-																			"SSHFP",
-																			"SVCB",
-																			"TLSA",
-																			"URI"
-																		],
-																		"readOnly": true,
-																		"x-auditable": true
+																		}
 																	}
-																}
+																]
 															},
 															"missing": {
-																"description": "List of records needed to enable an Email Routing zone.",
-																"type": "object",
-																"properties": {
-																	"content": {
-																		"description": "DNS record content.",
-																		"example": "route1.mx.cloudflare.net",
-																		"type": "string"
-																	},
-																	"name": {
-																		"description": "DNS record name (or @ for the zone apex).",
-																		"type": "string",
-																		"example": "example.com",
-																		"maxLength": 255,
-																		"x-auditable": true
-																	},
-																	"priority": {
-																		"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
-																		"type": "number",
-																		"example": 12,
-																		"maximum": 65535,
-																		"minimum": 0,
-																		"x-auditable": true
-																	},
-																	"ttl": {
-																		"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-																		"type": "number",
-																		"example": 1,
-																		"anyOf": [
-																			{
-																				"example": 3600,
-																				"maximum": 86400,
-																				"minimum": 1,
-																				"type": "number"
+																"description": "The DNS record that must be added to resolve this error.",
+																"allOf": [
+																	{
+																		"description": "List of records needed to enable an Email Routing zone.",
+																		"type": "object",
+																		"properties": {
+																			"content": {
+																				"description": "DNS record content.",
+																				"example": "route1.mx.cloudflare.net",
+																				"type": "string"
 																			},
-																			{
-																				"enum": [
-																					1
+																			"name": {
+																				"description": "DNS record name (or @ for the zone apex).",
+																				"type": "string",
+																				"example": "example.com",
+																				"maxLength": 255,
+																				"x-auditable": true
+																			},
+																			"priority": {
+																				"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																				"type": "number",
+																				"example": 12,
+																				"maximum": 65535,
+																				"minimum": 0,
+																				"x-auditable": true
+																			},
+																			"ttl": {
+																				"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																				"type": "number",
+																				"example": 1,
+																				"anyOf": [
+																					{
+																						"example": 3600,
+																						"maximum": 86400,
+																						"minimum": 1,
+																						"type": "number"
+																					},
+																					{
+																						"enum": [
+																							1
+																						],
+																						"type": "number"
+																					}
 																				],
-																				"type": "number"
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "DNS record type.",
+																				"type": "string",
+																				"example": "NS",
+																				"enum": [
+																					"A",
+																					"AAAA",
+																					"CNAME",
+																					"HTTPS",
+																					"TXT",
+																					"SRV",
+																					"LOC",
+																					"MX",
+																					"NS",
+																					"CERT",
+																					"DNSKEY",
+																					"DS",
+																					"NAPTR",
+																					"SMIMEA",
+																					"SSHFP",
+																					"SVCB",
+																					"TLSA",
+																					"URI"
+																				],
+																				"readOnly": true,
+																				"x-auditable": true
 																			}
-																		],
-																		"x-auditable": true
-																	},
-																	"type": {
-																		"description": "DNS record type.",
-																		"type": "string",
-																		"example": "NS",
-																		"enum": [
-																			"A",
-																			"AAAA",
-																			"CNAME",
-																			"HTTPS",
-																			"TXT",
-																			"SRV",
-																			"LOC",
-																			"MX",
-																			"NS",
-																			"CERT",
-																			"DNSKEY",
-																			"DS",
-																			"NAPTR",
-																			"SMIMEA",
-																			"SSHFP",
-																			"SVCB",
-																			"TLSA",
-																			"URI"
-																		],
-																		"readOnly": true,
-																		"x-auditable": true
+																		}
 																	}
-																}
+																]
 															},
 															"multiple": {
+																"description": "Multiple conflicting DNS records found, for example more than one SPF or DMARC TXT record.",
 																"type": "array",
 																"items": {
 																	"description": "List of records needed to enable an Email Routing zone.",
@@ -3143,7 +3234,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3155,6 +3247,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

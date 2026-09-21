@@ -409,401 +409,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"anyOf": [
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "array",
-															"items": {
-																"type": "object"
-															},
-															"nullable": true
-														},
-														"result_info": {
-															"type": "object",
-															"properties": {
-																"count": {
-																	"description": "Defines the total number of results for the requested service.",
-																	"type": "number",
-																	"example": 1
-																},
-																"page": {
-																	"description": "Defines the current page within paginated list of results.",
-																	"type": "number",
-																	"example": 1
-																},
-																"per_page": {
-																	"description": "Defines the number of results per page of results.",
-																	"type": "number",
-																	"example": 20
-																},
-																"total_count": {
-																	"description": "Defines the total results available without any search parameters.",
-																	"type": "number",
-																	"example": 2000
-																}
-															}
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"oneOf": [
-															{
-																"type": "object",
-																"properties": {
-																	"description": {
-																		"description": "A summary of the purpose/function of the WAF package.",
-																		"type": "string",
-																		"example": "null",
-																		"readOnly": true
-																	},
-																	"detection_mode": {
-																		"description": "The mode that defines how rules within the package are evaluated during the course of a request. When a package uses anomaly detection mode (`anomaly` value), each rule is given a score when triggered. If the total score of all triggered rules exceeds the sensitivity defined in the WAF package, the action configured in the package will be performed. Traditional detection mode (`traditional` value) will decide the action to take when it is triggered by the request. If multiple rules are triggered, the action providing the highest protection will be applied (for example, a 'block' action will win over a 'challenge' action).",
-																		"type": "string",
-																		"example": "traditional",
-																		"enum": [
-																			"anomaly",
-																			"traditional"
-																		],
-																		"readOnly": true
-																	},
-																	"id": {
-																		"description": "Defines an identifier.",
-																		"type": "string",
-																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																		"maxLength": 32,
-																		"readOnly": true
-																	},
-																	"name": {
-																		"description": "The name of the WAF package.",
-																		"type": "string",
-																		"example": "USER",
-																		"readOnly": true
-																	},
-																	"status": {
-																		"description": "When set to `active`, indicates that the WAF package will be applied to the zone.",
-																		"type": "string",
-																		"default": "active",
-																		"enum": [
-																			"active"
-																		],
-																		"readOnly": true
-																	},
-																	"zone_id": {
-																		"description": "Defines an identifier.",
-																		"type": "string",
-																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																		"maxLength": 32,
-																		"readOnly": true
-																	}
-																},
-																"required": [
-																	"id",
-																	"name",
-																	"description",
-																	"detection_mode",
-																	"zone_id"
-																],
-																"title": "Traditional WAF package"
-															},
-															{
-																"allOf": [
-																	{
-																		"type": "object",
-																		"properties": {
-																			"description": {
-																				"description": "A summary of the purpose/function of the WAF package.",
-																				"type": "string",
-																				"example": "null",
-																				"readOnly": true
-																			},
-																			"detection_mode": {
-																				"description": "The mode that defines how rules within the package are evaluated during the course of a request. When a package uses anomaly detection mode (`anomaly` value), each rule is given a score when triggered. If the total score of all triggered rules exceeds the sensitivity defined in the WAF package, the action configured in the package will be performed. Traditional detection mode (`traditional` value) will decide the action to take when it is triggered by the request. If multiple rules are triggered, the action providing the highest protection will be applied (for example, a 'block' action will win over a 'challenge' action).",
-																				"type": "string",
-																				"example": "traditional",
-																				"enum": [
-																					"anomaly",
-																					"traditional"
-																				],
-																				"readOnly": true
-																			},
-																			"id": {
-																				"description": "Defines an identifier.",
-																				"type": "string",
-																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																				"maxLength": 32,
-																				"readOnly": true
-																			},
-																			"name": {
-																				"description": "The name of the WAF package.",
-																				"type": "string",
-																				"example": "USER",
-																				"readOnly": true
-																			},
-																			"status": {
-																				"description": "When set to `active`, indicates that the WAF package will be applied to the zone.",
-																				"type": "string",
-																				"default": "active",
-																				"enum": [
-																					"active"
-																				],
-																				"readOnly": true
-																			},
-																			"zone_id": {
-																				"description": "Defines an identifier.",
-																				"type": "string",
-																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																				"maxLength": 32,
-																				"readOnly": true
-																			}
-																		},
-																		"required": [
-																			"id",
-																			"name",
-																			"description",
-																			"detection_mode",
-																			"zone_id"
-																		],
-																		"title": "Traditional WAF package"
-																	},
-																	{
-																		"properties": {
-																			"action_mode": {
-																				"description": "The default action performed by the rules in the WAF package.",
-																				"type": "string",
-																				"default": "challenge",
-																				"enum": [
-																					"simulate",
-																					"block",
-																					"challenge"
-																				]
-																			},
-																			"description": {
-																				"description": "A summary of the purpose/function of the WAF package.",
-																				"type": "string",
-																				"example": "Covers OWASP Top 10 vulnerabilities and more.",
-																				"readOnly": true
-																			},
-																			"detection_mode": {
-																				"description": "When a WAF package uses anomaly detection, each rule is given a score when triggered. If the total score of all triggered rules exceeds the sensitivity defined on the WAF package, the action defined on the package will be taken.",
-																				"type": "string",
-																				"example": "anomaly",
-																				"readOnly": true
-																			},
-																			"name": {
-																				"description": "The name of the WAF package.",
-																				"type": "string",
-																				"example": "OWASP ModSecurity Core Rule Set",
-																				"readOnly": true
-																			},
-																			"sensitivity": {
-																				"description": "The sensitivity of the WAF package.",
-																				"type": "string",
-																				"default": "high",
-																				"enum": [
-																					"high",
-																					"medium",
-																					"low",
-																					"off"
-																				]
-																			}
-																		},
-																		"type": "object"
-																	}
-																],
-																"required": [
-																	"id",
-																	"name",
-																	"description",
-																	"zone_id",
-																	"detection_mode",
-																	"sensitivity",
-																	"action_mode"
-																],
-																"title": "Anomaly detection WAF package (OWASP)"
-															}
-														]
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -872,7 +558,7 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"oneOf": [
+							"allOf": [
 								{
 									"type": "object",
 									"allOf": [
@@ -990,202 +676,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"oneOf": [
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1289,110 +860,98 @@
 						"schema": {
 							"allOf": [
 								{
-									"oneOf": [
+									"type": "object",
+									"allOf": [
 										{
 											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
 															},
-															"example": []
+															"message": {
+																"type": "string"
+															}
 														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
 													]
 												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
+												"success": {
+													"description": "Defines whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
 												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
 											]
 										},
 										{
 											"properties": {
 												"result": {
-													"type": "object"
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
 												}
 											},
 											"type": "object"
@@ -1530,327 +1089,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"oneOf": [
-												{
-													"type": "object",
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"errors": {
-																	"type": "array",
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"type": "integer",
-																				"minimum": 1000
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
-																	},
-																	"example": []
-																},
-																"messages": {
-																	"type": "array",
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"type": "integer",
-																				"minimum": 1000
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
-																	},
-																	"example": []
-																},
-																"result": {
-																	"anyOf": [
-																		{
-																			"type": "object"
-																		},
-																		{
-																			"items": {
-																				"type": "object"
-																			},
-																			"type": "array"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
-																},
-																"success": {
-																	"description": "Defines whether the API call was successful.",
-																	"type": "boolean",
-																	"example": true,
-																	"enum": [
-																		true
-																	]
-																}
-															},
-															"required": [
-																"success",
-																"errors",
-																"messages",
-																"result"
-															]
-														},
-														{
-															"properties": {
-																"result": {
-																	"anyOf": [
-																		{
-																			"nullable": true,
-																			"type": "object"
-																		},
-																		{
-																			"nullable": true,
-																			"type": "string"
-																		}
-																	]
-																}
-															},
-															"type": "object"
-														}
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "object"
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"description": {
-																	"description": "A summary of the purpose/function of the WAF package.",
-																	"type": "string",
-																	"example": "null",
-																	"readOnly": true
-																},
-																"detection_mode": {
-																	"description": "The mode that defines how rules within the package are evaluated during the course of a request. When a package uses anomaly detection mode (`anomaly` value), each rule is given a score when triggered. If the total score of all triggered rules exceeds the sensitivity defined in the WAF package, the action configured in the package will be performed. Traditional detection mode (`traditional` value) will decide the action to take when it is triggered by the request. If multiple rules are triggered, the action providing the highest protection will be applied (for example, a 'block' action will win over a 'challenge' action).",
-																	"type": "string",
-																	"example": "traditional",
-																	"enum": [
-																		"anomaly",
-																		"traditional"
-																	],
-																	"readOnly": true
-																},
-																"id": {
-																	"description": "Defines an identifier.",
-																	"type": "string",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
-																	"readOnly": true
-																},
-																"name": {
-																	"description": "The name of the WAF package.",
-																	"type": "string",
-																	"example": "USER",
-																	"readOnly": true
-																},
-																"status": {
-																	"description": "When set to `active`, indicates that the WAF package will be applied to the zone.",
-																	"type": "string",
-																	"default": "active",
-																	"enum": [
-																		"active"
-																	],
-																	"readOnly": true
-																},
-																"zone_id": {
-																	"description": "Defines an identifier.",
-																	"type": "string",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
-																	"readOnly": true
-																}
-															},
-															"required": [
-																"id",
-																"name",
-																"description",
-																"detection_mode",
-																"zone_id"
-															],
-															"title": "Traditional WAF package"
-														},
-														{
-															"properties": {
-																"action_mode": {
-																	"description": "The default action performed by the rules in the WAF package.",
-																	"type": "string",
-																	"default": "challenge",
-																	"enum": [
-																		"simulate",
-																		"block",
-																		"challenge"
-																	]
-																},
-																"description": {
-																	"description": "A summary of the purpose/function of the WAF package.",
-																	"type": "string",
-																	"example": "Covers OWASP Top 10 vulnerabilities and more.",
-																	"readOnly": true
-																},
-																"detection_mode": {
-																	"description": "When a WAF package uses anomaly detection, each rule is given a score when triggered. If the total score of all triggered rules exceeds the sensitivity defined on the WAF package, the action defined on the package will be taken.",
-																	"type": "string",
-																	"example": "anomaly",
-																	"readOnly": true
-																},
-																"name": {
-																	"description": "The name of the WAF package.",
-																	"type": "string",
-																	"example": "OWASP ModSecurity Core Rule Set",
-																	"readOnly": true
-																},
-																"sensitivity": {
-																	"description": "The sensitivity of the WAF package.",
-																	"type": "string",
-																	"default": "high",
-																	"enum": [
-																		"high",
-																		"medium",
-																		"low",
-																		"off"
-																	]
-																}
-															},
-															"type": "object"
-														}
-													],
-													"required": [
-														"id",
-														"name",
-														"description",
-														"zone_id",
-														"detection_mode",
-														"sensitivity",
-														"action_mode"
-													],
-													"title": "Anomaly detection WAF package (OWASP)"
-												}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1880,9 +1199,6 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "firewall.waf.packages",
 		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true,
-		"x-forge-sunset": {
-			"date": "2030-01-01T00:00:00Z"
-		}
+		"x-forge-hidden": true
 	}
 }
