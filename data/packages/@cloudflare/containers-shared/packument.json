@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/containers-shared",
 	"dist-tags": {
-		"latest": "0.17.0"
+		"latest": "0.18.0"
 	},
 	"versions": {
 		"0.16.0": {
@@ -267,8 +267,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCTOKoHTeORtrPzLefCn4H676OtVjXB+415hPqoIKHTcgIhAM8niUZEkcooJRrocmZXbJ4H2ExGdsf+QT4VEG2sBQsT"
+						"sig": "MEYCIQCTOKoHTeORtrPzLefCn4H676OtVjXB+415hPqoIKHTcgIhAM8niUZEkcooJRrocmZXbJ4H2ExGdsf+QT4VEG2sBQsT",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -278,6 +278,49 @@
 					}
 				},
 				"unpackedSize": 350953
+			},
+			"engines": {
+				"node": ">=22.0.0"
+			}
+		},
+		"0.18.0": {
+			"name": "@cloudflare/containers-shared",
+			"version": "0.18.0",
+			"dependencies": {
+				"@cloudflare/config": "0.16.0",
+				"@cloudflare/workers-utils": "0.41.0",
+				"@cloudflare/build-output-utils": "0.7.0",
+				"@cloudflare/cli-shared-helpers": "0.1.35"
+			},
+			"devDependencies": {
+				"tsup": "8.3.0",
+				"vitest": "4.1.0",
+				"typescript": "5.8.3",
+				"@types/node": "22.15.17",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"dist": {
+				"shasum": "157b03f020590dcfc54b217ef7402ac881535805",
+				"tarball": "https://registry.npmjs.org/@cloudflare/containers-shared/-/containers-shared-0.18.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-w9ydQ/czTI35wGxK6bOy/I+jwYwcN+zegfGcIS3i2eqy+fQkI/OjjRkpSbo9mCSWq7Do0p21ZhDpgtrMeTkJnA==",
+				"signatures": [
+					{
+						"sig": "MEQCIDuEY37l3QVbA+50iRjeMpnT1mhBhbm9AbiOfwAf4CCHAiA+Ar+eCq0qSCdvxUXLS8QreOR88XPpEItSkaT9hV45Kw==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIAZBAp1/v8ruHpw0rEQ4cn8crLka3VqkaPAxpmbF6lDwAiEAuIrhF6SS+x0CY5PDm8U0aJbqdSoqVKLhQfMoKDJvuUU="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcontainers-shared@0.18.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 350297
 			},
 			"engines": {
 				"node": ">=22.0.0"
