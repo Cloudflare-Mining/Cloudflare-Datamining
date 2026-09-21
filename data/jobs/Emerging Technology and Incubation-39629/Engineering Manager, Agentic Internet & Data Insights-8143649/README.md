@@ -7,26 +7,26 @@
 <p><strong>About the Department</strong></p>
 <p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a hugely successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
 <p><strong>About the Team</strong></p>
-<p>Cloudflare Radar helps people understand what is happening on the Internet.&nbsp;The team builds the systems behind radar.cloudflare.com, Cloudflare Speed Test, our Internet measurement and analytics platforms, and the data pipelines that turn signals from Cloudflare’s global network into useful insights. We publish analysis of DDoS attacks and other Internet events, power recurring reports such as the Cloudflare Year in Review, and build tools that make large and complex datasets understandable.</p>
-<p>Cloudflare operates one of the world’s largest networks and observes billions of signals across it. A major part of the team’s next chapter is figuring out how to turn more of that unique perspective into useful, reliable and consumable insights — improving the products we already have, helping other Cloudflare products make better decisions, and identifying entirely new opportunities.</p>
-<p>This is a team working at the intersection of distributed systems, large-scale data, Internet measurement and product engineering.&nbsp;We are a tight-knit team that communicates and collaborates regularly. We celebrate our achievements, support each other when we make mistakes, and hold each other and our work to the highest standard.</p>
+<p>We build products at the intersection of AI, search and retrieval, data insights, and product engineering.</p>
+<p>As AI agents change how people discover and interact with the Internet, new problems are emerging around how content is found, understood, retrieved, and kept current. Cloudflare is uniquely positioned to help website owners make their content discoverable and to help agents find relevant, trustworthy information across our network. Building these capabilities requires solving problems across distributed systems, crawling, content ingestion, indexing, retrieval quality, developer experience, and reliable product delivery.</p>
+<p>Cloudflare also has a unique perspective on how the Internet is changing. Our global network observes signals that can help us understand trends, identify when content changes, and measure the pulse of the Internet. Used responsibly, these signals could improve existing products, help customers and AI companies find fresher and more relevant information, and create entirely new capabilities and products.&nbsp;The opportunity is broad and still evolving. We need to deliver excellent products today while continuing to identify the problems Cloudflare is uniquely positioned to solve next.</p>
+<p>We are a tight-knit group that communicates and collaborates regularly. We celebrate our achievements, support each other when we make mistakes, and hold each other and our work to a high standard.</p>
 <p><strong>About the role</strong></p>
-<p>We are looking for an Engineering Manager to lead the Radar &amp; Insights engineering team.&nbsp;You will lead a team of approximately eight engineers responsible for some of Cloudflare’s most visible Internet measurement products and the systems behind them. You will be responsible for the people, execution and engineering quality of the team while partnering closely with Product Management and engineering teams across Cloudflare.</p>
-<p>This is a management role for someone who is deeply technically credible. You will not be expected to write most of the code, but you should be able to understand the systems your team operates, challenge architectural decisions, ask the right questions when something is going wrong, and step into a technical problem when the situation calls for it.</p>
+<p>We are looking for an Engineering Manager to lead engineering across some of our AI and Internet Data Insights portfolio.</p>
+<p>You will be responsible for the people, execution, and engineering quality behind products that help customers make their content discoverable and turn complex Internet signals into useful experiences. You will partner closely with Product Management and engineering teams across Cloudflare to deliver current priorities and shape future opportunities.&nbsp;This is a management role for someone who is deeply technically credible. You will not be expected to write most of the code, but you should be able to understand the systems your engineers operate, challenge architectural decisions, ask the right questions when something is going wrong, and step into a technical problem when the situation calls for it.</p>
 <p>At the same time, we are looking for a manager, not a tech lead with direct reports. Your success will be measured by the quality and output of the team you build, the engineers you develop, and the systems and products they deliver.</p>
 <p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
 <h4><strong>What you'll do</strong></h4>
 <ul>
-	<li>Manage, coach and grow a team of engineers working across Cloudflare Radar, Speed Test andInternet measurement, analytics and large-scale data systems.</li>
-	<li>Own the team’s execution: establish clear priorities, create predictable delivery, and give engineers the context and autonomy to own meaningful areas of the product.</li>
-	<li>Improve the quality, reliability and usability of the data and insights surfaced through Radar and the systems that produce them.</li>
-	<li>Help evolve Cloudflare Speed Test and the measurement capabilities behind it.</li>
-	<li>Partner closely with Product Management to shape the roadmap and turn broad opportunities into clear engineering problems.</li>
-	<li>Help the team make the enormous volume of signals available across Cloudflare’s network more useful and consumable.</li>
-	<li>Explore how Cloudflare’s unique view of Internet activity can improve existing products, power new experiences and create entirely new businesses.</li>
-	<li>Own the operational health of the team’s systems, including observability, incident response, data quality and long-term reliability.</li>
-	<li>Develop technical leaders within the team and create space for engineers to lead architecture and implementation.</li>
-	<li>Work across Cloudflare to resolve dependencies and bring complex technical and product decisions to closure.</li>
+	<li>Manage, coach, and grow engineers working across AI-powered search, Internet data insights, and customer-facing products.</li>
+	<li>Own execution by establishing clear priorities, creating predictable delivery, and giving engineers the context and autonomy to own meaningful areas of the product.</li>
+	<li>Lead the development of search and retrieval capabilities that help people and AI agents find relevant, trustworthy, and current content.</li>
+	<li>Partner closely with Product Management to understand customer problems, shape the roadmap, and turn broad opportunities into clear engineering outcomes.</li>
+	<li>Help identify how signals from Cloudflare's global network can produce useful and trustworthy insights for customers, partners, and other Cloudflare products.</li>
+	<li>Explore where Cloudflare's unique view of Internet activity can improve content discovery, enable new product experiences, or support entirely new products.</li>
+	<li>Balance near-term product delivery with thoughtful technical investments that allow promising ideas to grow.</li>
+	<li>Own the operational health of the systems in your area, including observability, incident response, data and search quality, and long-term reliability.</li>
+	<li>Develop technical leaders and create space for engineers to lead architecture and implementation.</li>
 </ul>
 <h4><strong>Responsibilities</strong></h4>
 <p>We want you to love it here. This role is a great fit for you if:</p>
@@ -41,21 +41,21 @@
 </ul>
 <p><strong>Examples of Desirable Skills, Knowledge, and Experience</strong></p>
 <ul>
-	<li>Experience leading engineering teams responsible for production software and services.</li>
-	<li>Strong technical grounding in distributed systems, data-intensive systems, Internet infrastructure or adjacent areas.</li>
-	<li>Experience operating systems where correctness, reliability and data quality matter as much as feature delivery.</li>
-	<li>Experience building or operating large-scale data pipelines, analytics platforms, telemetry systems or measurement infrastructure.</li>
-	<li>A track record of hiring, developing and retaining strong engineers.</li>
+	<li>Strong technical grounding in distributed systems, search systems, data-intensive systems, Internet infrastructure, or adjacent areas.</li>
+	<li>Experience building or operating products involving crawling, content ingestion, indexing, retrieval, analytics, or large-scale data processing.</li>
+	<li>Experience operating systems where correctness, reliability, and quality matter as much as feature delivery.</li>
+	<li>A track record of hiring, developing, and retaining strong engineers.</li>
 	<li>Experience partnering closely with Product Management to shape and execute a roadmap.</li>
+	<li>Experience taking products or major capabilities from an ambiguous opportunity to a clear customer outcome.</li>
 	<li>Strong written and verbal communication.</li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Familiarity with Internet protocols and infrastructure such as HTTP, DNS, BGP, routing or network measurement.</li>
-	<li>Experience working with very large telemetry or Internet-scale datasets.</li>
-	<li>Experience building analytics or insights products that turn complex underlying data into something useful for a broad audience.</li>
-	<li>Experience working on products where the underlying data or infrastructure creates opportunities beyond the product’s original scope.</li>
-	<li>Familiarity with Cloudflare Radar, Internet measurement research, or the broader ecosystem of tools used to understand Internet performance, availability and security</li>
+	<li>Familiarity with Retrieval-Augmented Generation (RAG), which combines information retrieval with generative AI to produce answers grounded in selected source material.</li>
+	<li>Experience building products for AI developers, AI agents, publishers, or content-heavy websites.</li>
+	<li>Experience working with large-scale telemetry or Internet-scale datasets.</li>
+	<li>Experience turning complex underlying systems or data into useful products for a broad audience.</li>
+	<li>Familiarity with Cloudflare Radar, Internet measurement research, or the broader ecosystem of tools used to understand Internet performance, availability and security.</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <ul>

@@ -3,60 +3,43 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: San Francisco, CA, Austin, TX or New York City</strong></p>
-<h4><strong>What you'll do</strong></h4>
-<p>The Vice President of Internal Audit will play a critical role in ensuring the effectiveness of our company's internal control framework, risk management processes, and compliance with regulatory requirements.&nbsp;</p>
-<p>Reporting directly to Cloudflare’s Chair of the Audit Committee with a dotted line to the CFO, this individual will lead the internal audit function, providing independent and objective assessments of the company's operations, financial reporting, and internal control environment.</p>
-<p>In a world of AI-native agentic solutions, we are looking for a creative and entrepreneurial leader who will help to reshape and transform our legacy human-execution IA processes and controls. We’re looking for someone to couple the core tenets of integrity, security and compliance with an AI-assisted and automated operating model.</p>
-<p><strong>Responsibilities</strong></p>
-<p><strong>Strategic Leadership:</strong></p>
+<h3>Available Locations | Austin, TX or Seattle, WA</h3>
+<h3>About the Role</h3>
+<p>The Cloudflare Hyperdrive team builds the technology that makes regional databases feel like they are global. Hyperdrive is a core piece of the Cloudflare Developer Platform that accelerates database queries from Cloudflare Workers by pooling connections and caching data at the edge. By eliminating the massive latency overhead of TCP, TLS, and database-specific handshakes, Hyperdrive allows developers to use the databases they already know and love—like PostgreSQL and MySQL—without the "cold start" performance penalties typically associated with serverless environments.</p>
+<h3>Responsibilities</h3>
+<p>Hyperdrive is integrated directly into the Cloudflare global network and features:</p>
 <ul>
-	<li>Develop and execute the internal audit strategy, vision, and annual audit plan in alignment with the company's goals and objectives and its shift toward automated workflows.</li>
-	<li>Provide guidance and support to the internal audit team, fostering a culture of excellence, continuous learning, innovation and professional development.</li>
-	<li>Collaborate with executive leadership across functions, CEO, CFO and the Audit Committee to identify and address key risks and ensure effective risk mitigation strategies; including identifying and addressing key risks within automated environments.</li>
+	<li>Global Connection Pooling: Maintains "warm" connections to origin databases across the globe, reducing connection times by up to 90%.</li>
+	<li>Intelligent Query Caching: Automatically caches frequently run read queries as close to the user as possible.</li>
+	<li>Protocol-Aware Proxying: Features custom-built implementations of database wire protocols (PostgreSQL and MySQL) to parse and optimize traffic in real-time.</li>
+	<li>Seamless Integration: Works with existing ORMs and drivers, providing a simple connection string that "just works" for developers.</li>
+	<li>The team is geographically distributed across North America.</li>
+	<li>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to Rust, Go, C++, Typescript.</li>
 </ul>
-<p><strong>Risk Assessment and Audit Planning:</strong></p>
+<h3>Desirable Skills, Knowledge, and Experience</h3>
 <ul>
-	<li>Conduct comprehensive risk assessments to identify areas of significant risk, evaluate internal controls, and develop appropriate audit programs.</li>
-	<li>Prepare an annual audit plan based on risk assessments, regulatory requirements, and management requests.</li>
-	<li>Monitor emerging operational risks and regulatory changes to adjust the audit plan as needed in a dynamic environment.</li>
+	<li>You have 5+ years of professional experience with Rust, Go, or C++. You understand how to write code that respects CPU and memory constraints.</li>
+	<li>You are comfortable with the Linux networking stack. You know your way around TCP/IP, TLS, and WebSockets.</li>
+	<li>You don’t just use databases; you understand how they work. You’re familiar with connection lifecycles, transaction states, and wire protocols.</li>
+	<li>You enjoy the challenge of debugging complex, distributed systems and building for "five nines" reliability.</li>
 </ul>
-<p><strong>Audit Execution and Reporting:</strong></p>
+<h3>Bonus Points</h3>
 <ul>
-	<li>Lead and manage a team of internal auditors to execute audits across various business functions and global locations.</li>
-	<li>Conduct thorough and independent evaluations of internal controls, financial systems, and operational processes to assess their effectiveness, security and data integrity.</li>
-	<li>Prepare clear and concise audit reports, including identified issues, root causes, and actionable recommendations for improvement.</li>
-	<li>Present audit findings to executive management, the Chair of the Audit Committee, and the Audit Committee, ensuring a clear understanding of the risks, opportunities for enhancement and actions required to address audit findings.&nbsp;</li>
+	<li>Experience with PgBouncer, ProxySQL, or custom database middleware.</li>
+	<li>Familiarity with the Cloudflare Workers ecosystem and the unique stateful connection challenges of ephemeral computing.</li>
+	<li>You’ve contributed to database drivers, ORMs, or low-level networking libraries.</li>
+	<li>Experience using eBPF, perf, or other profiling tools to find and kill bottlenecks.</li>
 </ul>
-<p><strong>Stakeholder Collaboration:</strong></p>
-<ul>
-	<li>Collaborate with cross-functional teams, including Finance, Legal, IT, Security, HR and Operations to promote robust risk management and internal controls.</li>
-	<li>Establish and maintain strong relationships with the Chair of the Audit Committee, external auditors, regulatory bodies, and industry professionals navigating the evolving technological landscape.</li>
-	<li>Provide guidance and support to management in the design and implementation of effective control measures.</li>
-</ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
-<ul>
-	<li>10+ years of progressive management experience in consulting, internal audit and/or risk management, preferably within the technology industry.</li>
-	<li>Professional certification such as Certified Internal Auditor (CIA), Certified Public Accountant (CPA), or Certified Information Systems Auditor (CISA) is required.</li>
-	<li>Strong knowledge of internal control frameworks, risk assessment methodologies, and industry best practices.</li>
-	<li>Ability to influence cross functional teams utilizing different skill sets and perspectives, prioritizing team objectives and managing scope, managing and reconciling conflicting team member opinions.</li>
-	<li>Demonstrated ability to build and maintain relationships with stakeholders at all levels of the organization, including the Chair of the Audit Committee.</li>
-	<li>High ethical standards and integrity, with a commitment to promoting a culture of compliance and ethics.</li>
-	<li>Dynamic and results-driven professional with a passion for driving excellence and continuous improvement.&nbsp;</li>
-	<li>Excellent analytical, problem-solving, and decision-making skills.</li>
-	<li>Outstanding verbal and written communication skills, with the ability to present complex concepts in a clear and concise manner.</li>
-	<li>Bachelor's degree in Accounting, Finance, or a related field. A Master's degree is preferred.</li>
-</ul>
-<p><strong>Compensation</strong></p>
+<h3>Compensation</h3>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For San Francisco / San Jose Bay Area or NYC based hires: Estimated annual salary range of $300,000 - $375,000.</li>
+	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $150,000 - $206,000</li>
 </ul>
-<p><strong>Equity</strong></p>
+<h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h3>Benefits</h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3>Health &amp; Welfare Benefits</h3>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -67,14 +50,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h3>Financial Benefits</h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h3>Time Off</h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
