@@ -18,7 +18,7 @@
 	"k2.name_invalid": "Enter 1–128 lowercase letters, numbers, or underscores.",
 	"k2.configuration": "Configuration",
 	"k2.retention": "Retention period",
-	"k2.retention_help": "How long to retain data in the stream. Minimum 1 hour; default 7 days.",
+	"k2.retention_help": "How long to retain data in the stream. Minimum 1 hour; maximum 30 days; default 7 days.",
 	"k2.retention_invalid": "Enter a duration of at least 1 hour, up to %{max}.",
 	"k2.retention_unit": "Retention unit",
 	"k2.retention_units.days": "Days",
