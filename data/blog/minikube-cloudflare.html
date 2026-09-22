@@ -1,12 +1,12 @@
-<p data-astro-cid-yoyuw6fx=""><sub><em>The following is a guest blog post by <a href="https://www.linkedin.com/in/nathanfranzen" target="_blank" rel="noopener noreferrer">Nathan Franzen</a>, Software Engineer at <a href="https://stackpoint.io" target="_blank" rel="noopener noreferrer">StackPointCloud</a>. StackPointCloud is the creator of Stackpoint.io, the leading multi-cloud management platform for cloud native workloads. They are the developers of the <a href="https://github.com/cloudflare/cloudflare-warp-ingress" target="_blank" rel="noopener noreferrer">Cloudflare Ingress Controller</a> for Kubernetes.</em></sub></p>
-<h3 data-astro-cid-yoyuw6fx="">Deploying Applications on Minikube with Argo Tunnels</h3>
-<blockquote data-astro-cid-yoyuw6fx="">This article assumes basic knowledge of Kubernetes. If you're not familiar with Kubernetes, visit <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/tutorials/kubernetes-basics/</a> to learn the basics.</blockquote>
-<p data-astro-cid-yoyuw6fx="">Minikube is a tool which allows you to run a Kubernetes cluster locally. It’s not only a great way to experiment with Kubernetes, but also a great way to try out deploying services using a reverse tunnel.</p>
-<p data-astro-cid-yoyuw6fx="">At Cloudflare, we've created a product called <a href="https://www.cloudflare.com/products/argo-tunnel" target="_blank" rel="noopener noreferrer">Argo Tunnel</a> which allows you to host services through a tunnel using Cloudflare as your edge. Tunnels provide a way to expose your services to the internet by creating a connection to Cloudflare's edge and routing your traffic over it. Since your service is creating its own outbound connection to the edge, you don’t have to open ports, configure a firewall, or even have a public IP address for your service. All traffic flows through Cloudflare, blocking attacks and intrusion attempts before they ever make it to you, completely securing your origin.</p>
-<p data-astro-cid-yoyuw6fx="">Deploying your service to more locations around the world is as simple as spinning up more containers. Anything which uses the Ingress Controller will receive your traffic, wherever the container is running in the world or on the Internet. Tunnels make it simpler to have robust security even while deploying across multiple regions or cloud providers.</p>
-<p data-astro-cid-yoyuw6fx="">Usually Minikube applications need to be ported over to a production Kubernetes setup to be deployed, but with Argo Tunnel, you can easily deploy a locally-running yet publicly-available Minikube instance making it a great way to try out both Kubernetes and Argo Tunnel. In this example, we’ll create a simple microservice that returns data when given a key, deploy it into Minikube, and start up the Argo Tunnel machinery to get it exposed to the Internet.</p>
-<h3 data-astro-cid-yoyuw6fx="">Getting Started with an Application API</h3>
-<p data-astro-cid-yoyuw6fx="">We'll start by by creating a web service in Python using <a href="http://flask.pocoo.org" target="_blank" rel="noopener noreferrer">Flask</a>. We'll write a simple application to represent a small piece of an API in just a few lines of code. The complete application, secret_token.py is simply:</p>
+<p data-astro-cid-byeekcgh=""><sub><em>The following is a guest blog post by <a href="https://www.linkedin.com/in/nathanfranzen" target="_blank" rel="noopener noreferrer">Nathan Franzen</a>, Software Engineer at <a href="https://stackpoint.io" target="_blank" rel="noopener noreferrer">StackPointCloud</a>. StackPointCloud is the creator of Stackpoint.io, the leading multi-cloud management platform for cloud native workloads. They are the developers of the <a href="https://github.com/cloudflare/cloudflare-warp-ingress" target="_blank" rel="noopener noreferrer">Cloudflare Ingress Controller</a> for Kubernetes.</em></sub></p>
+<h3 data-astro-cid-byeekcgh="">Deploying Applications on Minikube with Argo Tunnels</h3>
+<blockquote data-astro-cid-byeekcgh="">This article assumes basic knowledge of Kubernetes. If you're not familiar with Kubernetes, visit <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/tutorials/kubernetes-basics/</a> to learn the basics.</blockquote>
+<p data-astro-cid-byeekcgh="">Minikube is a tool which allows you to run a Kubernetes cluster locally. It’s not only a great way to experiment with Kubernetes, but also a great way to try out deploying services using a reverse tunnel.</p>
+<p data-astro-cid-byeekcgh="">At Cloudflare, we've created a product called <a href="https://www.cloudflare.com/products/argo-tunnel" target="_blank" rel="noopener noreferrer">Argo Tunnel</a> which allows you to host services through a tunnel using Cloudflare as your edge. Tunnels provide a way to expose your services to the internet by creating a connection to Cloudflare's edge and routing your traffic over it. Since your service is creating its own outbound connection to the edge, you don’t have to open ports, configure a firewall, or even have a public IP address for your service. All traffic flows through Cloudflare, blocking attacks and intrusion attempts before they ever make it to you, completely securing your origin.</p>
+<p data-astro-cid-byeekcgh="">Deploying your service to more locations around the world is as simple as spinning up more containers. Anything which uses the Ingress Controller will receive your traffic, wherever the container is running in the world or on the Internet. Tunnels make it simpler to have robust security even while deploying across multiple regions or cloud providers.</p>
+<p data-astro-cid-byeekcgh="">Usually Minikube applications need to be ported over to a production Kubernetes setup to be deployed, but with Argo Tunnel, you can easily deploy a locally-running yet publicly-available Minikube instance making it a great way to try out both Kubernetes and Argo Tunnel. In this example, we’ll create a simple microservice that returns data when given a key, deploy it into Minikube, and start up the Argo Tunnel machinery to get it exposed to the Internet.</p>
+<h3 data-astro-cid-byeekcgh="">Getting Started with an Application API</h3>
+<p data-astro-cid-byeekcgh="">We'll start by by creating a web service in Python using <a href="http://flask.pocoo.org" target="_blank" rel="noopener noreferrer">Flask</a>. We'll write a simple application to represent a small piece of an API in just a few lines of code. The complete application, secret_token.py is simply:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>from flask import Flask, jsonify, abort  </span></span>
 <span class="line"><span>  </span></span>
@@ -45,9 +45,9 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">This tiny service will simply respond to a GET request with some secret data, given a key.</p>
-<h3 data-astro-cid-yoyuw6fx="">Using Docker</h3>
-<p data-astro-cid-yoyuw6fx="">We’ll take the next step toward deployment and package our application into a portable Docker image with a Dockerfile:</p>
+<p data-astro-cid-byeekcgh="">This tiny service will simply respond to a GET request with some secret data, given a key.</p>
+<h3 data-astro-cid-byeekcgh="">Using Docker</h3>
+<p data-astro-cid-byeekcgh="">We’ll take the next step toward deployment and package our application into a portable Docker image with a Dockerfile:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>FROM  python:alpine3.7  </span></span>
 <span class="line"><span>RUN  pip install flask gunicorn</span></span>
@@ -58,10 +58,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">This will allow us to define a Docker image, the blueprint for the containers Minikube will build.</p>
-<h4 data-astro-cid-yoyuw6fx="">Deploying into Minikube</h4>
-<blockquote data-astro-cid-yoyuw6fx="">If you don't have Minikube installed, install it here: <a href="https://kubernetes.io/docs/tasks/tools/install-minikube" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/tasks/tools/install-minikube/</a></blockquote>
-<p data-astro-cid-yoyuw6fx="">Usually, we would build the Docker image with our Docker daemon and push it to a repository where the cluster can access it. With Minikube, however, that’s a round-trip we don’t need. We can share the Minikube Docker daemon with the Docker build process and avoid pushing to a cloud repository:</p>
+<p data-astro-cid-byeekcgh="">This will allow us to define a Docker image, the blueprint for the containers Minikube will build.</p>
+<h4 data-astro-cid-byeekcgh="">Deploying into Minikube</h4>
+<blockquote data-astro-cid-byeekcgh="">If you don't have Minikube installed, install it here: <a href="https://kubernetes.io/docs/tasks/tools/install-minikube" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/tasks/tools/install-minikube/</a></blockquote>
+<p data-astro-cid-byeekcgh="">Usually, we would build the Docker image with our Docker daemon and push it to a repository where the cluster can access it. With Minikube, however, that’s a round-trip we don’t need. We can share the Minikube Docker daemon with the Docker build process and avoid pushing to a cloud repository:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ eval $(minikube docker-env)  </span></span>
 <span class="line"><span>$ docker build -t myrepo/secret_token .</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -70,8 +70,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">The image is now present on the Minikube VM where Kubernetes is running.</p>
-<p data-astro-cid-yoyuw6fx="">In a production Kubernetes system, we might spend a good deal of time going over the details of the deployment and service manifests, but kubectl run provides a simple way to get the basic app up and running. We add the image-pull-policy flag to make sure that Kubernetes doesn’t first try to pull the image remotely from Docker Hub.</p>
+<p data-astro-cid-byeekcgh="">The image is now present on the Minikube VM where Kubernetes is running.</p>
+<p data-astro-cid-byeekcgh="">In a production Kubernetes system, we might spend a good deal of time going over the details of the deployment and service manifests, but kubectl run provides a simple way to get the basic app up and running. We add the image-pull-policy flag to make sure that Kubernetes doesn’t first try to pull the image remotely from Docker Hub.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ kubectl run token --image myrepo/secret_token --expose --port 8000 --image-pull-policy=IfNotPresent --replicas=3</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -79,7 +79,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">We now have a Kubernetes deployment running with our 3 replicas of containers built from our image, and a service associated with it that exposes port <code>8000</code>. Save the two manifests locally into files:</p>
+<p data-astro-cid-byeekcgh="">We now have a Kubernetes deployment running with our 3 replicas of containers built from our image, and a service associated with it that exposes port <code>8000</code>. Save the two manifests locally into files:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>kubectl get deployment token --export -o yaml &gt; deployment.yaml  </span></span>
 <span class="line"><span>kubectl get svc token --export -o yaml &gt; service.yaml</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -88,8 +88,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">We’ll be able to edit these files to make changes to our cluster configuration.</p>
-<p data-astro-cid-yoyuw6fx="">For local testing, let's change that service so that it exposes a NodePort -- this will proxy the service to a port on the Minikube VM. Replace the spec in the service.yaml file with:</p>
+<p data-astro-cid-byeekcgh="">We’ll be able to edit these files to make changes to our cluster configuration.</p>
+<p data-astro-cid-byeekcgh="">For local testing, let's change that service so that it exposes a NodePort -- this will proxy the service to a port on the Minikube VM. Replace the spec in the service.yaml file with:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>spec:  </span></span>
 <span class="line"><span>	ports:  </span></span>
@@ -106,7 +106,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">And apply the change to our cluster:</p>
+<p data-astro-cid-byeekcgh="">And apply the change to our cluster:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ kubectl apply -f service.yaml</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -114,7 +114,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Now, we can test locally with <code>curl</code>, reaching the service via the NodePort on the Minikube VM:</p>
+<p data-astro-cid-byeekcgh="">Now, we can test locally with <code>curl</code>, reaching the service via the NodePort on the Minikube VM:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ minikube start</span></span>
 <span class="line"><span>$ export MINIKUBE_IP=$(minikube ip)</span></span>
@@ -124,14 +124,14 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">Using Cloudflare’s Argo Tunnel</h3>
-<p data-astro-cid-yoyuw6fx="">The NodePort setup is fine for testing the application locally, but if we want to share this service with others or better simulate how it will work in the real world, we need to expose it to the internet. In most cases, this means running in a cloud environment and dealing with load balancer configuration or setting up an NGINX ingress controller and dealing with network rules and routing. The Cloudflare Argo Tunnel Ingress Controller allows us to route almost anything to a Cloudflare domain, including services running inside of Minikube.</p>
-<p data-astro-cid-yoyuw6fx="">In the Kubernetes cluster, an <code>ingress</code> is an object that describes how we want our service exposed on the internet and an <code>ingress-controller</code> is the process that actually exposes it. To install the Cloudflare Ingress Controller, you’ll need to have a Cloudflare domain and an Argo Tunnel certificate, configured with the <code>cloudflared</code> application.</p>
-<p data-astro-cid-yoyuw6fx=""><code>kubectl run</code> was fine for quickly installing the test application, but for more complex installations, <a href="https://helm.sh" target="_blank" rel="noopener noreferrer">helm</a> is a great tool, and is used to package the Cloudflare agent. Once you have the helm client installed, a simple <code>helm init</code> will configure Minikube to work with it. The chart for the ingress controller is found at the <a href="https://github.com/StackPointCloud/trusted-charts/tree/master/stable/cloudflare-warp-ingress&amp;sa=D&amp;ust=1529959945974000" target="_blank" rel="noopener noreferrer">trusted-charts public repository</a> and can be installed directly from there.</p>
-<h4 data-astro-cid-yoyuw6fx="">Cloudflared Configuration</h4>
-<p data-astro-cid-yoyuw6fx=""><code>Cloudflared</code> is the end of the tunnel that runs on your machine and proxies traffic to and from your origin server through the tunnel. If you don't have it installed already, the <code>cloudflared</code> application complete quickstart instructions can be found at <a href="https://www.google.com/url?q=https%3A%2F%2Fdevelopers.cloudflare.com%2Fargo-tunnel%2Fquickstart%2Fquickstart%2F&amp;sa=D&amp;ust=1529959945975000" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/argo-tunnel/quickstart/quickstart/</a></p>
-<h4 data-astro-cid-yoyuw6fx="">Installing the Controller with Helm</h4>
-<p data-astro-cid-yoyuw6fx="">Now we will run some commands that define the repository that holds our chart and override a few default values:</p>
+<h3 data-astro-cid-byeekcgh="">Using Cloudflare’s Argo Tunnel</h3>
+<p data-astro-cid-byeekcgh="">The NodePort setup is fine for testing the application locally, but if we want to share this service with others or better simulate how it will work in the real world, we need to expose it to the internet. In most cases, this means running in a cloud environment and dealing with load balancer configuration or setting up an NGINX ingress controller and dealing with network rules and routing. The Cloudflare Argo Tunnel Ingress Controller allows us to route almost anything to a Cloudflare domain, including services running inside of Minikube.</p>
+<p data-astro-cid-byeekcgh="">In the Kubernetes cluster, an <code>ingress</code> is an object that describes how we want our service exposed on the internet and an <code>ingress-controller</code> is the process that actually exposes it. To install the Cloudflare Ingress Controller, you’ll need to have a Cloudflare domain and an Argo Tunnel certificate, configured with the <code>cloudflared</code> application.</p>
+<p data-astro-cid-byeekcgh=""><code>kubectl run</code> was fine for quickly installing the test application, but for more complex installations, <a href="https://helm.sh" target="_blank" rel="noopener noreferrer">helm</a> is a great tool, and is used to package the Cloudflare agent. Once you have the helm client installed, a simple <code>helm init</code> will configure Minikube to work with it. The chart for the ingress controller is found at the <a href="https://github.com/StackPointCloud/trusted-charts/tree/master/stable/cloudflare-warp-ingress&amp;sa=D&amp;ust=1529959945974000" target="_blank" rel="noopener noreferrer">trusted-charts public repository</a> and can be installed directly from there.</p>
+<h4 data-astro-cid-byeekcgh="">Cloudflared Configuration</h4>
+<p data-astro-cid-byeekcgh=""><code>Cloudflared</code> is the end of the tunnel that runs on your machine and proxies traffic to and from your origin server through the tunnel. If you don't have it installed already, the <code>cloudflared</code> application complete quickstart instructions can be found at <a href="https://www.google.com/url?q=https%3A%2F%2Fdevelopers.cloudflare.com%2Fargo-tunnel%2Fquickstart%2Fquickstart%2F&amp;sa=D&amp;ust=1529959945975000" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/argo-tunnel/quickstart/quickstart/</a></p>
+<h4 data-astro-cid-byeekcgh="">Installing the Controller with Helm</h4>
+<p data-astro-cid-byeekcgh="">Now we will run some commands that define the repository that holds our chart and override a few default values:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ minikube start</span></span>
 <span class="line"><span>$ export MINIKUBE_IP=$(minikube ip)</span></span>
@@ -141,9 +141,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">This installation configures two cloudflare-warp-ingress controller replicas so that any service we expose will get two separate tunnels to the Cloudflare edge, paired together in a single pool.</p>
-<h4 data-astro-cid-yoyuw6fx="">Exposing Our Application with an Ingress</h4>
-<p data-astro-cid-yoyuw6fx="">We'll need to write an ingress definition. Create a file called <code>warp-controller.yaml</code>:</p>
+<p data-astro-cid-byeekcgh="">This installation configures two cloudflare-warp-ingress controller replicas so that any service we expose will get two separate tunnels to the Cloudflare edge, paired together in a single pool.</p>
+<h4 data-astro-cid-byeekcgh="">Exposing Our Application with an Ingress</h4>
+<p data-astro-cid-byeekcgh="">We'll need to write an ingress definition. Create a file called <code>warp-controller.yaml</code>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>apiVersion:  extensions/v1beta1  </span></span>
 <span class="line"><span>kind:  Ingress  </span></span>
@@ -165,7 +165,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">And apply the definition:</p>
+<p data-astro-cid-byeekcgh="">And apply the definition:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ kubectl apply -f service.yaml</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -173,7 +173,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4 data-astro-cid-yoyuw6fx="">Examining the deployment</h4>
+<h4 data-astro-cid-byeekcgh="">Examining the deployment</h4>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ kubectl get pod</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -181,7 +181,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Should print:</p>
+<p data-astro-cid-byeekcgh="">Should print:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>NAME									READY 	STATUS	RESTARTS 	AGE</span></span>
 <span class="line"><span></span></span>
@@ -197,7 +197,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">The output shows the three <code>token</code> pods and the <code>cloudflare-warp-ingress</code> pod. Examine the logs from the argo pod to see the activity of the ingress controller:</p>
+<p data-astro-cid-byeekcgh="">The output shows the three <code>token</code> pods and the <code>cloudflare-warp-ingress</code> pod. Examine the logs from the argo pod to see the activity of the ingress controller:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ kubectl logs cloudflare-argo-ingress-6b886994b-52fsl</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -205,8 +205,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">The controller watches the cluster for creation of ingresses, services and pods.</p>
-<p data-astro-cid-yoyuw6fx="">The endpoint is live at <a href="https://token.anthopleura.net/api/v1/token/e8990ab9be26" target="_blank" rel="noopener noreferrer">https://token.anthopleura.net/api/v1/token/e8990ab9be26</a> returning</p>
+<p data-astro-cid-byeekcgh="">The controller watches the cluster for creation of ingresses, services and pods.</p>
+<p data-astro-cid-byeekcgh="">The endpoint is live at <a href="https://token.anthopleura.net/api/v1/token/e8990ab9be26" target="_blank" rel="noopener noreferrer">https://token.anthopleura.net/api/v1/token/e8990ab9be26</a> returning</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>{  </span></span>
 <span class="line"><span>	"key": "e8990ab9be26",  </span></span>
@@ -217,16 +217,16 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Now this small piece of an api is available publicly on the internet for testing. Obviously you don’t want to serve public traffic into a minikube instance, but it’s certainly handy for sharing preliminary work across development teams.</p>
-<p data-astro-cid-yoyuw6fx="">The Cloudflare <a href="https://blog.cloudflare.com/minikube-cloudflare/%5Bhttps://dash.cloudflare.com/%5D(https://dash.cloudflare.com/&amp;sa=D&amp;ust=1529959945990000)" target="_blank" rel="noopener noreferrer">dashboard</a> under the analytics tab will show some general statistics about the requests to your zone.</p>
-<h3 data-astro-cid-yoyuw6fx="">Routing and relationships</h3>
-<p data-astro-cid-yoyuw6fx="">A quick sketch of the routing in the Kubernetes cluster and from the Cloudflare network:</p>
+<p data-astro-cid-byeekcgh="">Now this small piece of an api is available publicly on the internet for testing. Obviously you don’t want to serve public traffic into a minikube instance, but it’s certainly handy for sharing preliminary work across development teams.</p>
+<p data-astro-cid-byeekcgh="">The Cloudflare <a href="https://blog.cloudflare.com/minikube-cloudflare/%5Bhttps://dash.cloudflare.com/%5D(https://dash.cloudflare.com/&amp;sa=D&amp;ust=1529959945990000)" target="_blank" rel="noopener noreferrer">dashboard</a> under the analytics tab will show some general statistics about the requests to your zone.</p>
+<h3 data-astro-cid-byeekcgh="">Routing and relationships</h3>
+<p data-astro-cid-byeekcgh="">A quick sketch of the routing in the Kubernetes cluster and from the Cloudflare network:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="667" height="423" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NDC13N2YVPFHWY20XYCD.png&amp;w=667&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NDC13N2YVPFHWY20XYCD.png&amp;w=640&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NDC13N2YVPFHWY20XYCD.png&amp;w=667&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 667w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NDC13N2YVPFHWY20XYCD.png&amp;w=750&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NDC13N2YVPFHWY20XYCD.png&amp;w=828&amp;h=525&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NDC13N2YVPFHWY20XYCD.png&amp;w=1080&amp;h=685&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NDC13N2YVPFHWY20XYCD.png&amp;w=1280&amp;h=812&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NDC13N2YVPFHWY20XYCD.png&amp;w=1334&amp;h=846&amp;f=webp&amp;fit=cover&amp;position=center 1334w" alt="Kuernetes Cluster" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NDC13N2YVPFHWY20XYCD.png&amp;w=667&amp;h=423&amp;f=webp" data-lightbox-width="667" data-lightbox-height="423" data-astro-cid-7nvefuv6="true" sizes="(min-width: 667px) 667px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="667" height="423" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-yoyuw6fx="">The warp controller pods provide a way for Argo Tunnels to connect the pods containing your application to the internet through Cloudflare's edge.</p>
-<h3 data-astro-cid-yoyuw6fx="">Going farther with Cloudflare Load Balancers</h3>
-<p data-astro-cid-yoyuw6fx="">This demo exposes a service through a single Argo Tunnel. If your Cloudflare account is enabled with load balancing, you can route traffic through a load balancer and pool of tunnels instead, by adding the annotation<code>argo.cloudflare.com/lb-pool=token</code> to the ingress. For details of load balancer routing and weighting please refer to the Cloudflare <a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer">docs</a>.</p>
-<p data-astro-cid-yoyuw6fx="">If you do use load balancing, then it is possible to run multiple instances of the ingress controller. When installing from the helm chart, set the value <code>replicaCount</code> to two or more and get multiple instances of the controller in the minikube cluster. The configuration will be useful for high availability in a single cluster. Load balancing can also be used to spread traffic across multiple clusters with different argo ingress controllers connecting to the same load balancing pool.</p>
-<p data-astro-cid-yoyuw6fx="">With two ingress controllers, the <a href="https://www.cloudflare.com/a/traffic/stackpoint.io&amp;sa=D&amp;ust=1529959945991000" target="_blank" rel="noopener noreferrer">Cloudflare UI</a> will show a pool named token.anthopleura.net with two origins with tunnel ids as origin addresses:</p>
+<p data-astro-cid-byeekcgh="">The warp controller pods provide a way for Argo Tunnels to connect the pods containing your application to the internet through Cloudflare's edge.</p>
+<h3 data-astro-cid-byeekcgh="">Going farther with Cloudflare Load Balancers</h3>
+<p data-astro-cid-byeekcgh="">This demo exposes a service through a single Argo Tunnel. If your Cloudflare account is enabled with load balancing, you can route traffic through a load balancer and pool of tunnels instead, by adding the annotation<code>argo.cloudflare.com/lb-pool=token</code> to the ingress. For details of load balancer routing and weighting please refer to the Cloudflare <a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer">docs</a>.</p>
+<p data-astro-cid-byeekcgh="">If you do use load balancing, then it is possible to run multiple instances of the ingress controller. When installing from the helm chart, set the value <code>replicaCount</code> to two or more and get multiple instances of the controller in the minikube cluster. The configuration will be useful for high availability in a single cluster. Load balancing can also be used to spread traffic across multiple clusters with different argo ingress controllers connecting to the same load balancing pool.</p>
+<p data-astro-cid-byeekcgh="">With two ingress controllers, the <a href="https://www.cloudflare.com/a/traffic/stackpoint.io&amp;sa=D&amp;ust=1529959945991000" target="_blank" rel="noopener noreferrer">Cloudflare UI</a> will show a pool named token.anthopleura.net with two origins with tunnel ids as origin addresses:</p>

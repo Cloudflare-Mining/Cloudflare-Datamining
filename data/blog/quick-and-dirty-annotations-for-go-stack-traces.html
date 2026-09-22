@@ -1,10 +1,10 @@
-<p data-astro-cid-yoyuw6fx="">CloudFlare’s DNS server, <a href="https://blog.cloudflare.com/tag/rrdns">RRDNS</a>, is entirely written in Go and typically runs tens of thousands goroutines. Since goroutines are cheap and Go I/O is blocking we run one goroutine per file descriptor we listen on and queue new packets for processing.</p>
-<p data-astro-cid-yoyuw6fx=""><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/wiredforsound23/6372385465" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/wiredforsound23" target="_blank" rel="noopener noreferrer">wiredforlego</a></p>
-<p data-astro-cid-yoyuw6fx="">When there are thousands of goroutines running, debug output quickly becomes difficult to interpret. For example, last week I was tracking down a problem with a file descriptor and wanted to know what its listening goroutine was doing. <em>With 40k stack traces, good luck figuring out which one is having trouble.</em></p>
-<p data-astro-cid-yoyuw6fx="">Go stack traces include parameter values, but most Go types are (or are implemented as) pointers, so what you will see passed to the goroutine function is just a meaningless memory address.</p>
-<p data-astro-cid-yoyuw6fx="">We have a couple options to make sense of the addresses: get a heap dump at the same time as the stack trace and cross-reference the pointers, or have a debug endpoint that prints a goroutine/pointer -&gt; IP map. Neither are seamless.</p>
-<h3 data-astro-cid-yoyuw6fx="">Underscore to the rescue</h3>
-<p data-astro-cid-yoyuw6fx="">However, we know that <em>integers are shown in traces</em>, so what we did is first <em>convert IPv4 addresses to their uint32 representation</em>:</p>
+<p data-astro-cid-byeekcgh="">CloudFlare’s DNS server, <a href="https://blog.cloudflare.com/tag/rrdns">RRDNS</a>, is entirely written in Go and typically runs tens of thousands goroutines. Since goroutines are cheap and Go I/O is blocking we run one goroutine per file descriptor we listen on and queue new packets for processing.</p>
+<p data-astro-cid-byeekcgh=""><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/wiredforsound23/6372385465" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/wiredforsound23" target="_blank" rel="noopener noreferrer">wiredforlego</a></p>
+<p data-astro-cid-byeekcgh="">When there are thousands of goroutines running, debug output quickly becomes difficult to interpret. For example, last week I was tracking down a problem with a file descriptor and wanted to know what its listening goroutine was doing. <em>With 40k stack traces, good luck figuring out which one is having trouble.</em></p>
+<p data-astro-cid-byeekcgh="">Go stack traces include parameter values, but most Go types are (or are implemented as) pointers, so what you will see passed to the goroutine function is just a meaningless memory address.</p>
+<p data-astro-cid-byeekcgh="">We have a couple options to make sense of the addresses: get a heap dump at the same time as the stack trace and cross-reference the pointers, or have a debug endpoint that prints a goroutine/pointer -&gt; IP map. Neither are seamless.</p>
+<h3 data-astro-cid-byeekcgh="">Underscore to the rescue</h3>
+<p data-astro-cid-byeekcgh="">However, we know that <em>integers are shown in traces</em>, so what we did is first <em>convert IPv4 addresses to their uint32 representation</em>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// addrToUint32 takes a TCPAddr or UDPAddr and converts its IP to a uint32.</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// If the IP is v6, 0xffffffff is returned.</span></span>
@@ -50,7 +50,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">And then <em>pass the IPv4-as-uint32 to the listening goroutine as an <code>_</code> parameter</em>. Yes, as a parameter with name <code>_</code>; it's known as the <a href="https://golang.org/ref/spec#Blank_identifier" target="_blank" rel="noopener noreferrer">blank identifier</a> in Go.</p>
+<p data-astro-cid-byeekcgh="">And then <em>pass the IPv4-as-uint32 to the listening goroutine as an <code>_</code> parameter</em>. Yes, as a parameter with name <code>_</code>; it's known as the <a href="https://golang.org/ref/spec#Blank_identifier" target="_blank" rel="noopener noreferrer">blank identifier</a> in Go.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// PacketUDPRead is a goroutine that listens on a specific UDP socket and reads</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// in new requests</span></span>
@@ -64,7 +64,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Now when we get a stack trace, we can just look at the first bytes, convert them back to dotted notation, and know on what IP the goroutine was listening.</p>
+<p data-astro-cid-byeekcgh="">Now when we get a stack trace, we can just look at the first bytes, convert them back to dotted notation, and know on what IP the goroutine was listening.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">goroutine</span><span class="sk-005cc5-ffc799"> 42</span><span class="sk-24292e-fff"> [IO </span><span class="sk-032f62-99ffe4">wait]:</span></span>
 <span class="line"><span class="sk-24292e-fff">	[...]</span></span>
@@ -78,6 +78,6 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx=""><code>0xc27f000001</code> -&gt; remove alignment byte -&gt; <code>0x7f000001</code> -&gt; <code>127.0.0.1</code></p>
-<p data-astro-cid-yoyuw6fx="">Obviously you can do the same with any piece of information you can represent as an <code>int</code>.</p>
-<p data-astro-cid-yoyuw6fx=""><em>Are you interested in taming the goroutines that run the web? We're <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">hiring</a> in London, San Francisco and Singapore!</em></p>
+<p data-astro-cid-byeekcgh=""><code>0xc27f000001</code> -&gt; remove alignment byte -&gt; <code>0x7f000001</code> -&gt; <code>127.0.0.1</code></p>
+<p data-astro-cid-byeekcgh="">Obviously you can do the same with any piece of information you can represent as an <code>int</code>.</p>
+<p data-astro-cid-byeekcgh=""><em>Are you interested in taming the goroutines that run the web? We're <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">hiring</a> in London, San Francisco and Singapore!</em></p>

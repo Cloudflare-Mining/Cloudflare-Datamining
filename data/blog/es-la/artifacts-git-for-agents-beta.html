@@ -1,8 +1,8 @@
-<p data-astro-cid-yoyuw6fx="">Los agentes han transformado la manera en que concebimos el control de versiones, los sistemas de archivos y la persistencia del estado.Los desarrolladores y los agentes están generando más código que nunca —se escribirá más código en los próximos 5 años que en toda la historia de la programación— y esto ha impulsado un cambio de magnitud en la escala de los sistemas necesarios para satisfacer esta demanda. Las plataformas de control de versiones están teniendo dificultades en este punto: fueron diseñadas para satisfacer las necesidades de los humanos, no para afrontar un incremento de 10 veces en el volumen, impulsado por agentes que nunca duermen, pueden trabajar en varios problemas a la vez y nunca se cansan.</p>
-<p data-astro-cid-yoyuw6fx="">Creemos que se necesita una nueva primitiva: un sistema de archivos distribuido y versionado que esté diseñado ante todo para agentes, y que pueda servir a los tipos de aplicaciones que se están creando en la actualidad.</p>
-<p data-astro-cid-yoyuw6fx="">A esto lo llamamos Artifacts: un sistema de archivos con control de versiones integrado con Git. Puedes crear repositorios de forma programática, junto con tus agentes, sandboxes, Workers u otros paradigmas informáticos, y conectarte a ellos desde cualquier cliente Git estándar.</p>
-<p data-astro-cid-yoyuw6fx="">¿Quieres asignar un repositorio a cada sesión para agente?Artifacts puede hacerlo. ¿Cada instancia de sandbox? También Artifacts. ¿Quieres crear 10&nbsp;000 bifurcaciones a partir de un punto de partida conocido? Adivinaste: Artifacts de nuevo. Artifacts expone una API REST y una API nativa de Workers para crear repositorios, generar credenciales y confirmaciones de cambios para entornos en los que un cliente Git no es la opción adecuada (por ejemplo, en cualquier función sin servidor).</p>
-<p data-astro-cid-yoyuw6fx="">Artifacts está disponible en versión beta privada para cualquier desarrollador del plan pago de Workers, y nuestro objetivo es abrirlo como versión beta pública a principios de mayo.</p>
+<p data-astro-cid-byeekcgh="">Los agentes han transformado la manera en que concebimos el control de versiones, los sistemas de archivos y la persistencia del estado.Los desarrolladores y los agentes están generando más código que nunca —se escribirá más código en los próximos 5 años que en toda la historia de la programación— y esto ha impulsado un cambio de magnitud en la escala de los sistemas necesarios para satisfacer esta demanda. Las plataformas de control de versiones están teniendo dificultades en este punto: fueron diseñadas para satisfacer las necesidades de los humanos, no para afrontar un incremento de 10 veces en el volumen, impulsado por agentes que nunca duermen, pueden trabajar en varios problemas a la vez y nunca se cansan.</p>
+<p data-astro-cid-byeekcgh="">Creemos que se necesita una nueva primitiva: un sistema de archivos distribuido y versionado que esté diseñado ante todo para agentes, y que pueda servir a los tipos de aplicaciones que se están creando en la actualidad.</p>
+<p data-astro-cid-byeekcgh="">A esto lo llamamos Artifacts: un sistema de archivos con control de versiones integrado con Git. Puedes crear repositorios de forma programática, junto con tus agentes, sandboxes, Workers u otros paradigmas informáticos, y conectarte a ellos desde cualquier cliente Git estándar.</p>
+<p data-astro-cid-byeekcgh="">¿Quieres asignar un repositorio a cada sesión para agente?Artifacts puede hacerlo. ¿Cada instancia de sandbox? También Artifacts. ¿Quieres crear 10&nbsp;000 bifurcaciones a partir de un punto de partida conocido? Adivinaste: Artifacts de nuevo. Artifacts expone una API REST y una API nativa de Workers para crear repositorios, generar credenciales y confirmaciones de cambios para entornos en los que un cliente Git no es la opción adecuada (por ejemplo, en cualquier función sin servidor).</p>
+<p data-astro-cid-byeekcgh="">Artifacts está disponible en versión beta privada para cualquier desarrollador del plan pago de Workers, y nuestro objetivo es abrirlo como versión beta pública a principios de mayo.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Create a repo</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> repo</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AGENT_REPOS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">(name)</span></span>
@@ -40,8 +40,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Eso es todo. Un repositorio vacío, listo para usar, creado al instante, con el que cualquier cliente Git puede operar.</p>
-<p data-astro-cid-yoyuw6fx="">Y si quieres inicializar un repositorio de Artifacts a partir de un repositorio Git existente, para que tu agente pueda trabajar en este de forma independiente y enviar cambios propios, también puedes hacerlo con .import():</p>
+<p data-astro-cid-byeekcgh="">Eso es todo. Un repositorio vacío, listo para usar, creado al instante, con el que cualquier cliente Git puede operar.</p>
+<p data-astro-cid-byeekcgh="">Y si quieres inicializar un repositorio de Artifacts a partir de un repositorio Git existente, para que tu agente pueda trabajar en este de forma independiente y enviar cambios propios, también puedes hacerlo con .import():</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">interface</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-e36209-fff">  ARTIFACTS</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Artifacts</span></span>
@@ -76,39 +76,39 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx=""><a href="http://developers.cloudflare.com/artifacts" target="_blank" rel="noopener noreferrer"><u>Consulta la documentación</u></a> para empezar, o si quieres entender cómo se utiliza Artifacts, cómo se creó y cómo funciona internamente: sigue leyendo.</p>
-<h2 data-astro-cid-yoyuw6fx="">¿Por qué Git? ¿Qué es un sistema de archivos versionado?</h2>
-<p data-astro-cid-yoyuw6fx="">Los agentes conocen Git. Está profundamente integrado en los datos de entrenamiento de la mayoría de los modelos. Los agentes conocen bien tanto la ruta ideal <em>como </em>los casos límite, y los modelos de código optimizado (y/o arneses) son particularmente eficaces para usar git.</p>
-<p data-astro-cid-yoyuw6fx="">Además, el modelo de datos de Git no solo es útil para el control de versiones, sino también para <em>cualquier escenario</em> en el que necesites hacer un seguimiento de estado, retroceder en el tiempo y mantener grandes volúmenes de datos pequeños. Código, configuración, prompts de sesión e historial del agentes: todos estos son elementos ("objetos") que a menudo quieres almacenar en pequeños fragmentos ("commits") y poder revertir o retroceder ("historial").&nbsp;</p>
-<p data-astro-cid-yoyuw6fx="">Podríamos haber inventado un protocolo completamente nuevo y a medida... pero luego está el problema de la inicialización. Los modelos de IA no lo conocen, así que tienes que distribuir habilidades, o una CLI, o confiar en que los usuarios estén conectados con tu documentación MCP... todo eso agrega fricción.<br><br>¿Y si simplemente les damos a los agentes una URL remota de Git por HTTPS, autenticada y segura, para que trabajen como si fuera un repositorio Git?Eso funciona bastante bien. Y para los clientes que no usan Git — como Cloudflare Worker, una función Lambda o una aplicación Node.js, — hemos expuesto una API REST y (próximamente) SDK específicos del idioma. Esos clientes también pueden usar <a href="https://isomorphic-git.org" target="_blank" rel="noopener noreferrer"><u>isomorphic-git</u></a>, pero en muchos casos una API de TypeScript más simple puede reducir la superficie de API necesaria.</p>
-<h3 data-astro-cid-yoyuw6fx="">No solo para el control de versiones</h3>
-<p data-astro-cid-yoyuw6fx="">La API de Git de Artifacts podría hacerte pensar que es solo para el control de versiones, pero en realidad la API y el modelo de datos de Git son una forma eficaz de mantener el estado, permitiendo bifurcar, retroceder en el tiempo y comparar estados para <em>cualquier tipo</em> de datos.</p>
-<p data-astro-cid-yoyuw6fx="">En Cloudflare, utilizamos Artifacts para nuestros agentes internos: se guarda automáticamente el estado actual del sistema de archivos <em>y</em> el historial de la sesión en un repositorio de Artifacts por sesión. Esto nos permite:</p>
+<p data-astro-cid-byeekcgh=""><a href="http://developers.cloudflare.com/artifacts" target="_blank" rel="noopener noreferrer"><u>Consulta la documentación</u></a> para empezar, o si quieres entender cómo se utiliza Artifacts, cómo se creó y cómo funciona internamente: sigue leyendo.</p>
+<h2 data-astro-cid-byeekcgh="">¿Por qué Git? ¿Qué es un sistema de archivos versionado?</h2>
+<p data-astro-cid-byeekcgh="">Los agentes conocen Git. Está profundamente integrado en los datos de entrenamiento de la mayoría de los modelos. Los agentes conocen bien tanto la ruta ideal <em>como </em>los casos límite, y los modelos de código optimizado (y/o arneses) son particularmente eficaces para usar git.</p>
+<p data-astro-cid-byeekcgh="">Además, el modelo de datos de Git no solo es útil para el control de versiones, sino también para <em>cualquier escenario</em> en el que necesites hacer un seguimiento de estado, retroceder en el tiempo y mantener grandes volúmenes de datos pequeños. Código, configuración, prompts de sesión e historial del agentes: todos estos son elementos ("objetos") que a menudo quieres almacenar en pequeños fragmentos ("commits") y poder revertir o retroceder ("historial").&nbsp;</p>
+<p data-astro-cid-byeekcgh="">Podríamos haber inventado un protocolo completamente nuevo y a medida... pero luego está el problema de la inicialización. Los modelos de IA no lo conocen, así que tienes que distribuir habilidades, o una CLI, o confiar en que los usuarios estén conectados con tu documentación MCP... todo eso agrega fricción.<br><br>¿Y si simplemente les damos a los agentes una URL remota de Git por HTTPS, autenticada y segura, para que trabajen como si fuera un repositorio Git?Eso funciona bastante bien. Y para los clientes que no usan Git — como Cloudflare Worker, una función Lambda o una aplicación Node.js, — hemos expuesto una API REST y (próximamente) SDK específicos del idioma. Esos clientes también pueden usar <a href="https://isomorphic-git.org" target="_blank" rel="noopener noreferrer"><u>isomorphic-git</u></a>, pero en muchos casos una API de TypeScript más simple puede reducir la superficie de API necesaria.</p>
+<h3 data-astro-cid-byeekcgh="">No solo para el control de versiones</h3>
+<p data-astro-cid-byeekcgh="">La API de Git de Artifacts podría hacerte pensar que es solo para el control de versiones, pero en realidad la API y el modelo de datos de Git son una forma eficaz de mantener el estado, permitiendo bifurcar, retroceder en el tiempo y comparar estados para <em>cualquier tipo</em> de datos.</p>
+<p data-astro-cid-byeekcgh="">En Cloudflare, utilizamos Artifacts para nuestros agentes internos: se guarda automáticamente el estado actual del sistema de archivos <em>y</em> el historial de la sesión en un repositorio de Artifacts por sesión. Esto nos permite:</p>
 <ul>
 	<li>Mantener el estado del sandbox sin tener que asignar (ni mantener) almacenamiento en bloques.</li>
 	<li>Compartir sesiones con otros y permitir que retrocedan en el tiempo tanto en el estado de la sesión (prompt) <em>y</em> como en el estado de los archivos, independientemente de si hubo confirmaciones de cambios en el repositorio "real" (control de versiones).</li>
 	<li>Y lo mejor: <em>bifurcar</em> una sesión desde cualquier punto, lo que permite a nuestro equipo compartir sesiones con un compañero de trabajo y que este pueda retomarlas desde allí. ¿Estás depurando algo y quieres otra mirada?Envía una URL y haz una bifurcación. ¿Quieres probar una API? Pídele a un compañero de trabajo que la bifurque y continúa desde donde la dejaste.</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">También hemos hablado con equipos que quieren usar Artifacts en casos en los que el protocolo Git no es un requisito absoluto, pero sí lo son las operaciones semánticas (revertir, clonar, comparar) <em>.</em> ¿Guardas la configuración por cliente como parte de tu producto y quieres tener la posibilidad de revertirla? Artifacts puede ser una buena representación de esto.</p>
-<p data-astro-cid-yoyuw6fx="">Nos entusiasma que los equipos exploren con Artifacts tanto los usos que van más allá de Git como los que se centran directamente en Git.</p>
-<h2 data-astro-cid-yoyuw6fx="">A nivel interno</h2>
-<p data-astro-cid-yoyuw6fx="">Artifacts se crea sobre Durable Objects. La capacidad de crear millones (o decenas de millones) de instancias de cómputo con estado y aisladas es parte del funcionamiento actual de Durable Objects, y eso es exactamente lo que necesitábamos para admitir millones de repositorios Git por espacio de nombres.</p>
-<p data-astro-cid-yoyuw6fx="">Major League Baseball (para la distribución de partidos en directo), Confluence Whiteboards y nuestro propio <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a> utilizan Durable Objects a nivel interno y a gran escala; por eso estamos construyendo esto sobre una primitiva que ya usamos hace tiempo en producción.</p>
-<p data-astro-cid-yoyuw6fx="">Sin embargo, lo que sí necesitábamos era una implementación de Git que pudiera ejecutarse en Cloudflare Workers. Tenía que ser compacto, lo más completo posible, extensible (<a href="https://git-scm.com/docs/git-notes" target="_blank" rel="noopener noreferrer"><u>notas</u></a>, <a href="https://git-lfs.com" target="_blank" rel="noopener noreferrer"><u>LFS</u></a>) y eficiente. Así que creamos uno en <a href="https://ziglang.org" target="_blank" rel="noopener noreferrer"><u>Zig</u></a> y lo compilamos en Wasm.</p>
-<p data-astro-cid-yoyuw6fx="">¿Por qué usamos Zig? Tres razones:</p>
+<p data-astro-cid-byeekcgh="">También hemos hablado con equipos que quieren usar Artifacts en casos en los que el protocolo Git no es un requisito absoluto, pero sí lo son las operaciones semánticas (revertir, clonar, comparar) <em>.</em> ¿Guardas la configuración por cliente como parte de tu producto y quieres tener la posibilidad de revertirla? Artifacts puede ser una buena representación de esto.</p>
+<p data-astro-cid-byeekcgh="">Nos entusiasma que los equipos exploren con Artifacts tanto los usos que van más allá de Git como los que se centran directamente en Git.</p>
+<h2 data-astro-cid-byeekcgh="">A nivel interno</h2>
+<p data-astro-cid-byeekcgh="">Artifacts se crea sobre Durable Objects. La capacidad de crear millones (o decenas de millones) de instancias de cómputo con estado y aisladas es parte del funcionamiento actual de Durable Objects, y eso es exactamente lo que necesitábamos para admitir millones de repositorios Git por espacio de nombres.</p>
+<p data-astro-cid-byeekcgh="">Major League Baseball (para la distribución de partidos en directo), Confluence Whiteboards y nuestro propio <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a> utilizan Durable Objects a nivel interno y a gran escala; por eso estamos construyendo esto sobre una primitiva que ya usamos hace tiempo en producción.</p>
+<p data-astro-cid-byeekcgh="">Sin embargo, lo que sí necesitábamos era una implementación de Git que pudiera ejecutarse en Cloudflare Workers. Tenía que ser compacto, lo más completo posible, extensible (<a href="https://git-scm.com/docs/git-notes" target="_blank" rel="noopener noreferrer"><u>notas</u></a>, <a href="https://git-lfs.com" target="_blank" rel="noopener noreferrer"><u>LFS</u></a>) y eficiente. Así que creamos uno en <a href="https://ziglang.org" target="_blank" rel="noopener noreferrer"><u>Zig</u></a> y lo compilamos en Wasm.</p>
+<p data-astro-cid-byeekcgh="">¿Por qué usamos Zig? Tres razones:</p>
 <ol>
 	<li>&nbsp;Todo el motor del protocolo git está escrito íntegramente en Zig (sin libc) y compilado en un binario WASM de aproximadamente 100KB, con margen para optimización.Implementa SHA-1, compresión y descompresión zlib, codificación y decodificación delta, análisis de paquetes y todo el protocolo Git Smart — completamente, desde cero y sin dependencias externas más allá de la biblioteca estándar.</li>
 	<li>&nbsp;Zig nos brinda&nbsp; control manual sobre la asignación de memoria, lo que es importante en entornos restringidos como Durable Objects. El sistema de compilación de Zig nos permite compartir fácilmente código entre el entorno WASM (producción) y las compilaciones nativas (pruebas contra libgit2 y verificar la corrección).</li>
 	<li>El módulo WASM se comunica con el host JS mediante una interfaz ligera de devolución de llamadas: 11 funciones importadas por el host para operaciones de almacenamiento (host_get_object, host_put_object, etc.) y una para la transmisión de salida (host_emit_bytes). El componente WASM se puede probar completamente de forma aislada.</li>
 </ol>
-<p data-astro-cid-yoyuw6fx="">A nivel interno, Artifacts también utiliza R2 (para instantáneas) y KV (para el seguimiento de tokens de autenticación):</p>
+<p data-astro-cid-byeekcgh="">A nivel interno, Artifacts también utiliza R2 (para instantáneas) y KV (para el seguimiento de tokens de autenticación):</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="397" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=715&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=640&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=715&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=750&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=828&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=1080&amp;h=600&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=1280&amp;h=711&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=1430&amp;h=794&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3269 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=1800&amp;h=1000&amp;f=webp" data-lightbox-width="1800" data-lightbox-height="1000" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="397" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-yoyuw6fx=""><sup><em><code>Cómo funciona Artifacts (Workers, Durable Objects y WebAssembly)</code></em></sup></p>
-<p data-astro-cid-yoyuw6fx="">Un Worker actúa como front-end, gestionando la autenticación y la autorización, las métricas clave (errores, latencia) y localizando dinámicamente cada repositorio de Artifacts (Durable Objects).&nbsp;</p>
-<p data-astro-cid-yoyuw6fx="">En concreto:</p>
+<p data-astro-cid-byeekcgh=""><sup><em><code>Cómo funciona Artifacts (Workers, Durable Objects y WebAssembly)</code></em></sup></p>
+<p data-astro-cid-byeekcgh="">Un Worker actúa como front-end, gestionando la autenticación y la autorización, las métricas clave (errores, latencia) y localizando dinámicamente cada repositorio de Artifacts (Durable Objects).&nbsp;</p>
+<p data-astro-cid-byeekcgh="">En concreto:</p>
 <ul>
 	<li>Los archivos se almacenan en la base de datos SQLite del Durable Object subyacente.<ul>
 			<li>El almacenamiento de Durable Object tiene un tamaño máximo de fila de 2&nbsp;MB, por lo tanto, los objetos Git grandes se fragmentan y se guardan en varias filas.</li>
@@ -126,91 +126,91 @@
 		</ul>
 	</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">Además, contamos con soporte nativo para <a href="https://git-scm.com/docs/git-notes" target="_blank" rel="noopener noreferrer"><u>git-notes</u></a>. Artifacts está diseñado con un enfoque centrado en los agentes, y las "notes" permiten que los agentes agreguen anotaciones (metadatos) a los objetos de Git.Esto incluye prompts, atribución de agentes y otros metadatos que se pueden leer/escribir desde el repositorio sin modificar los propios objetos.</p>
-<h2 data-astro-cid-yoyuw6fx="">¿Grandes repositorios, grandes problemas? Conoce ArtifactFS.</h2>
-<p data-astro-cid-yoyuw6fx="">La mayoría de los repositorios no son tan grandes, y Git está <a href="https://github.blog/open-source/git/gits-database-internals-i-packed-object-store" target="_blank" rel="noopener noreferrer"><u>diseñado para ser sumamente eficiente</u></a> en términos de almacenamiento: la mayoría de los repositorios tardan solo unos segundos en clonarse, y ese tiempo está dominado por la configuración de red, la autenticación y la <a href="https://git-scm.com/book/ms/v2/Git-Internals-Git-Objects" target="_blank" rel="noopener noreferrer"><u>verificación mediante suma de comprobación</u></a>. En la mayoría de los escenarios con agentes o entornos sandbox, esto resulta práctico: basta con clonar el repositorio al iniciar el sandbox y ponerse a trabajar.</p>
-<p data-astro-cid-yoyuw6fx="">Pero, ¿qué pasa con un repositorio y/o repositorios de varios GB que tienen millones de objetos? ¿Cómo podemos clonar ese repositorio rápidamente, sin impedir que el agente empiece a trabajar durante varios minutos ni agotar recursos de procesamiento?</p>
-<p data-astro-cid-yoyuw6fx="">Un marco web popular (de 2,4&nbsp;GB y con un largo historial) tarda cerca de 2&nbsp;minutos en clonarse. Un clon superficial acelera el proceso, pero no lo suficiente como para reducir los segundos a un solo dígito, y no siempre conviene omitir el historial (los agentes suelen necesitarlo).</p>
-<p data-astro-cid-yoyuw6fx="">¿Podemos reducir el tiempo de clonación de repositorios grandes a unos 10‑15 segundos, de modo que el agente pueda empezar a trabajar enseguida? En realidad sí, con algunos trucos.</p>
-<p data-astro-cid-yoyuw6fx="">Como parte del lanzamiento de Artifacts, <a href="https://github.com/cloudflare/artifact-fs" target="_blank" rel="noopener noreferrer"><u>vamos a ofrecer ArtifactFS de código abierto</u></a>, un controlador de sistema de archivos diseñado para montar repositorios grandes de Git lo más rápido posible, cargando los contenidos de los archivos en tiempo real en lugar de bloquearse durante el clon inicial. Es ideal para agentes, entornos sandbox, contenedores y otros escenarios en los que la rapidez en el inicio marca la diferencia. Si logras reducir unos 90-100&nbsp;segundos del tiempo de inicio de cada repositorio grande en tu sandbox, y ejecutas 10&nbsp;000 de esos trabajos al mes, estarías ahorrando alrededor de 2778 horas de ejecución de sandbox.</p>
-<p data-astro-cid-yoyuw6fx="">Puedes imaginar ArtifactFS como "un clon de Git pero asíncrono":</p>
+<p data-astro-cid-byeekcgh="">Además, contamos con soporte nativo para <a href="https://git-scm.com/docs/git-notes" target="_blank" rel="noopener noreferrer"><u>git-notes</u></a>. Artifacts está diseñado con un enfoque centrado en los agentes, y las "notes" permiten que los agentes agreguen anotaciones (metadatos) a los objetos de Git.Esto incluye prompts, atribución de agentes y otros metadatos que se pueden leer/escribir desde el repositorio sin modificar los propios objetos.</p>
+<h2 data-astro-cid-byeekcgh="">¿Grandes repositorios, grandes problemas? Conoce ArtifactFS.</h2>
+<p data-astro-cid-byeekcgh="">La mayoría de los repositorios no son tan grandes, y Git está <a href="https://github.blog/open-source/git/gits-database-internals-i-packed-object-store" target="_blank" rel="noopener noreferrer"><u>diseñado para ser sumamente eficiente</u></a> en términos de almacenamiento: la mayoría de los repositorios tardan solo unos segundos en clonarse, y ese tiempo está dominado por la configuración de red, la autenticación y la <a href="https://git-scm.com/book/ms/v2/Git-Internals-Git-Objects" target="_blank" rel="noopener noreferrer"><u>verificación mediante suma de comprobación</u></a>. En la mayoría de los escenarios con agentes o entornos sandbox, esto resulta práctico: basta con clonar el repositorio al iniciar el sandbox y ponerse a trabajar.</p>
+<p data-astro-cid-byeekcgh="">Pero, ¿qué pasa con un repositorio y/o repositorios de varios GB que tienen millones de objetos? ¿Cómo podemos clonar ese repositorio rápidamente, sin impedir que el agente empiece a trabajar durante varios minutos ni agotar recursos de procesamiento?</p>
+<p data-astro-cid-byeekcgh="">Un marco web popular (de 2,4&nbsp;GB y con un largo historial) tarda cerca de 2&nbsp;minutos en clonarse. Un clon superficial acelera el proceso, pero no lo suficiente como para reducir los segundos a un solo dígito, y no siempre conviene omitir el historial (los agentes suelen necesitarlo).</p>
+<p data-astro-cid-byeekcgh="">¿Podemos reducir el tiempo de clonación de repositorios grandes a unos 10‑15 segundos, de modo que el agente pueda empezar a trabajar enseguida? En realidad sí, con algunos trucos.</p>
+<p data-astro-cid-byeekcgh="">Como parte del lanzamiento de Artifacts, <a href="https://github.com/cloudflare/artifact-fs" target="_blank" rel="noopener noreferrer"><u>vamos a ofrecer ArtifactFS de código abierto</u></a>, un controlador de sistema de archivos diseñado para montar repositorios grandes de Git lo más rápido posible, cargando los contenidos de los archivos en tiempo real en lugar de bloquearse durante el clon inicial. Es ideal para agentes, entornos sandbox, contenedores y otros escenarios en los que la rapidez en el inicio marca la diferencia. Si logras reducir unos 90-100&nbsp;segundos del tiempo de inicio de cada repositorio grande en tu sandbox, y ejecutas 10&nbsp;000 de esos trabajos al mes, estarías ahorrando alrededor de 2778 horas de ejecución de sandbox.</p>
+<p data-astro-cid-byeekcgh="">Puedes imaginar ArtifactFS como "un clon de Git pero asíncrono":</p>
 <ul>
 	<li>ArtifactFS ejecuta una clonación sin blobs de un repositorio Git: obtiene la estructura de archivos y las referencias, pero no descarga los contenidos de los archivos.Puede realizar esa tarea durante el arranque del sandbox, lo que permite que el agente empiece a trabajar de inmediato.</li>
 	<li>En segundo plano comienza a cargar los contenidos de los archivos de manera concurrente, a través de un servicio ligero.</li>
 	<li>Prioriza los archivos que los agentes suelen necesitar primero: manifiestos de paquetes (<code>package.json, go.mod</code>), archivos de configuración y código. En lo posible, deja en segundo plano los blobs binarios (imágenes, ejecutables y otros archivos no textuales), de modo que los agentes puedan recorrer la estructura de archivos mientras los contenidos se van cargando.</li>
 	<li>Si un archivo no está completamente cargado cuando el agente intenta leerlo, la lectura se detiene hasta que el contenido esté disponible.</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">El sistema de archivos no intenta "sincronizar" los archivos de nuevo con el repositorio remoto: con miles o millones de objetos, eso suele ser muy lento, y tratándose de Git, no es necesario. Tu agente solo necesita confirmar y enviar, como lo haría con cualquier repositorio. No hay que aprender nuevas API.</p>
-<p data-astro-cid-yoyuw6fx="">Es importante destacar que ArtifactFS funciona con cualquier control remoto de Git, no solo con nuestros propios Artifacts. Si estás clonando grandes repositorios desde GitHub, GitLab o una infraestructura Git autoalojada, puedes seguir utilizando ArtifactFS.</p>
-<h2 data-astro-cid-yoyuw6fx="">¿Qué novedades están por llegar?</h2>
-<p data-astro-cid-yoyuw6fx="">El lanzamiento de hoy es una versión beta, y ya estamos desarrollando varias funciones que irán llegando en las próximas semanas:</p>
+<p data-astro-cid-byeekcgh="">El sistema de archivos no intenta "sincronizar" los archivos de nuevo con el repositorio remoto: con miles o millones de objetos, eso suele ser muy lento, y tratándose de Git, no es necesario. Tu agente solo necesita confirmar y enviar, como lo haría con cualquier repositorio. No hay que aprender nuevas API.</p>
+<p data-astro-cid-byeekcgh="">Es importante destacar que ArtifactFS funciona con cualquier control remoto de Git, no solo con nuestros propios Artifacts. Si estás clonando grandes repositorios desde GitHub, GitLab o una infraestructura Git autoalojada, puedes seguir utilizando ArtifactFS.</p>
+<h2 data-astro-cid-byeekcgh="">¿Qué novedades están por llegar?</h2>
+<p data-astro-cid-byeekcgh="">El lanzamiento de hoy es una versión beta, y ya estamos desarrollando varias funciones que irán llegando en las próximas semanas:</p>
 <ul>
 	<li>Estamos ampliando las <a href="https://developers.cloudflare.com/artifacts/observability/metrics" target="_blank" rel="noopener noreferrer"><u>métricas disponibles</u></a> que ponemos a disposición. Hoy incorporamos métricas sobre operaciones clave por espacio de nombre, repositorio y bytes almacenados por repositorio, para que administrar millones de Artifacts no resulte una tarea pesada.</li>
 	<li>Compatibilidad con <a href="https://developers.cloudflare.com/queues/event-subscriptions" target="_blank" rel="noopener noreferrer"><u>suscripciones a eventos</u></a> a nivel de repositorio, para poder emitir notificaciones en inserciones, extracciones, clonaciones y bifurcaciones hacia cualquier repositorio dentro de un espacio de nombres. Esto también te permitirá consumir eventos, crear webhooks y aprovecharlos para notificar a los usuarios finales, impulsar eventos del ciclo de evolución dentro de tus productos y/o ejecutar tareas posteriores a una inserción (como procesos de CI/CD).</li>
 	<li>Los SDK nativos de cliente en TypeScript, Go y Python para interactuar con la API de Artifacts</li>
 	<li>API de búsqueda a nivel de repositorio y API de búsqueda en todo el espacio de nombres, p. ej., "buscar todos los repositorios con un archivo <code>package.json</code>".&nbsp;</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">También estamos planificando una API para <a href="https://developers.cloudflare.com/workers/ci-cd/builds" target="_blank" rel="noopener noreferrer"><u>Workers Builds</u></a>, que permitirá ejecutar trabajos de CI/CD en cualquier flujo de trabajo impulsado por agentes.</p>
-<h2 data-astro-cid-yoyuw6fx="">¿Cuánto me costará?</h2>
-<p data-astro-cid-yoyuw6fx="">Artifacts aún está en una etapa inicial, pero queremos que nuestro modelo de precios funcione a escala de agentes: debe ser rentable incluso con millones de repositorios, los repositorios sin uso (o con uso mínimo) no deberían representar una carga, y la tarifa debe reflejar la naturaleza altamente exclusiva de los agentes.</p>
-<p data-astro-cid-yoyuw6fx="">Tampoco deberías tener que preocuparte por si un repositorio va a usarse o no, si está activo o inactivo, o si un agente va a reactivarlo. Te cobraremos por el almacenamiento que consumas y por las operaciones realizadas (p. ej., clones, bifurcaciones, pushes y pulls) contra cada repositorio.</p>
-<div class="emdash-table-wrapper" data-astro-cid-zdje7xco="">
-	<table class="emdash-table" data-astro-cid-zdje7xco="">
-		<thead data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<th data-astro-cid-zdje7xco="">
+<p data-astro-cid-byeekcgh="">También estamos planificando una API para <a href="https://developers.cloudflare.com/workers/ci-cd/builds" target="_blank" rel="noopener noreferrer"><u>Workers Builds</u></a>, que permitirá ejecutar trabajos de CI/CD en cualquier flujo de trabajo impulsado por agentes.</p>
+<h2 data-astro-cid-byeekcgh="">¿Cuánto me costará?</h2>
+<p data-astro-cid-byeekcgh="">Artifacts aún está en una etapa inicial, pero queremos que nuestro modelo de precios funcione a escala de agentes: debe ser rentable incluso con millones de repositorios, los repositorios sin uso (o con uso mínimo) no deberían representar una carga, y la tarifa debe reflejar la naturaleza altamente exclusiva de los agentes.</p>
+<p data-astro-cid-byeekcgh="">Tampoco deberías tener que preocuparte por si un repositorio va a usarse o no, si está activo o inactivo, o si un agente va a reactivarlo. Te cobraremos por el almacenamiento que consumas y por las operaciones realizadas (p. ej., clones, bifurcaciones, pushes y pulls) contra cada repositorio.</p>
+<div class="emdash-table-wrapper" data-astro-cid-paimycxl="">
+	<table class="emdash-table" data-astro-cid-paimycxl="">
+		<thead data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<th data-astro-cid-paimycxl="">
 					<p></p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>$/unidad</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Incluido</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+		<tbody data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Operaciones</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>USD&nbsp;0,15 por 1000 operaciones</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Primeras 10 mil incluidas (por mes)</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Almacenamiento</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>USD0&nbsp;50/GB por mes</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Primer 1&nbsp;GB incluido.</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-yoyuw6fx="">Los repositorios grandes y activos costarán más que los repositorios pequeños o de uso poco frecuente, ya sea que tengas 1000, 100&nbsp;000 o 10 millones de ellos.</p>
-<p data-astro-cid-yoyuw6fx="">También incorporaremos Artifacts al plan gratuito de Workers (con límites razonables) a medida que avance la versión beta, y compartiremos actualizaciones durante todo el período de prueba en caso de que haya cambios en los precios, antes de facturar.</p>
-<h2 data-astro-cid-yoyuw6fx="">¿Por dónde empezar?&nbsp;</h2>
+<p data-astro-cid-byeekcgh="">Los repositorios grandes y activos costarán más que los repositorios pequeños o de uso poco frecuente, ya sea que tengas 1000, 100&nbsp;000 o 10 millones de ellos.</p>
+<p data-astro-cid-byeekcgh="">También incorporaremos Artifacts al plan gratuito de Workers (con límites razonables) a medida que avance la versión beta, y compartiremos actualizaciones durante todo el período de prueba en caso de que haya cambios en los precios, antes de facturar.</p>
+<h2 data-astro-cid-byeekcgh="">¿Por dónde empezar?&nbsp;</h2>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3269 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=1920&amp;h=1081&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1081" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-yoyuw6fx="">Artifacts se lanzará en versión beta privada, y esperamos que la versión beta pública esté lista a principios de mayo (de 2026, para ser precisos). Iremos incorporando clientes de forma progresiva durante las próximas semanas, y <a href="https://forms.gle/DwBoPRa3CWQ8ajFp7" target="_blank" rel="noopener noreferrer"><u>podrás inscribirte directamente para participar en la versión beta</u></a> privada.</p>
-<p data-astro-cid-yoyuw6fx="">Mientras tanto, para obtener más información sobre Artifacts, puedes hacer lo siguiente:</p>
+<p data-astro-cid-byeekcgh="">Artifacts se lanzará en versión beta privada, y esperamos que la versión beta pública esté lista a principios de mayo (de 2026, para ser precisos). Iremos incorporando clientes de forma progresiva durante las próximas semanas, y <a href="https://forms.gle/DwBoPRa3CWQ8ajFp7" target="_blank" rel="noopener noreferrer"><u>podrás inscribirte directamente para participar en la versión beta</u></a> privada.</p>
+<p data-astro-cid-byeekcgh="">Mientras tanto, para obtener más información sobre Artifacts, puedes hacer lo siguiente:</p>
 <ul>
 	<li>Consultar la <a href="http://developers.cloudflare.com/artifacts/get-started/workers" target="_blank" rel="noopener noreferrer"><u>Guía de introducción</u></a> en la documentación.</li>
 	<li>Visitar el panel de control de Cloudflare (Crear &gt; Almacenamiento y bases de datos &gt; Artifacts)</li>
 	<li>Leer los <a href="http://developers.cloudflare.com/artifacts/api/rest-api" target="_blank" rel="noopener noreferrer"><u>ejemplos de la API REST</u></a></li>
 	<li>Obtener más información sobre <a href="http://developers.cloudflare.com/artifacts/concepts/how-artifacts-works" target="_blank" rel="noopener noreferrer"><u>cómo funciona Artifacts</u></a> a nivel interno</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">Consulta el <a href="http://developers.cloudflare.com/changelog/product/artifacts" target="_blank" rel="noopener noreferrer"><u>registro de cambios</u></a> para seguir la evolución de la versión beta a medida que avanza.</p>
-<h2 data-astro-cid-yoyuw6fx="">Ver en Cloudflare TV</h2>
+<p data-astro-cid-byeekcgh="">Consulta el <a href="http://developers.cloudflare.com/changelog/product/artifacts" target="_blank" rel="noopener noreferrer"><u>registro de cambios</u></a> para seguir la evolución de la versión beta a medida que avanza.</p>
+<h2 data-astro-cid-byeekcgh="">Ver en Cloudflare TV</h2>
 <div id="html-block-k6h" class="html-block">
 	<div style="padding-top:56.25%">
 		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/a94bcc550a1079f7aa1d77ec4d2bfd04/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fa94bcc550a1079f7aa1d77ec4d2bfd04%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>

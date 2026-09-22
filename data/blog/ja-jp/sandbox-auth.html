@@ -1,14 +1,14 @@
-<p data-astro-cid-yoyuw6fx="">このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</p>
-<p data-astro-cid-yoyuw6fx=""><a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank" rel="noopener noreferrer"><u>AI大規模言語モデル</u></a>やOpenCode、Claude Codeのような活用がますます能力を高めるにつれて、チャットメッセージ、Kanbanの更新、<a href="https://www.cloudflare.com/learning/ai/ai-vibe-coding" target="_blank" rel="noopener noreferrer"><u>バイブコーディング</u></a>UI、ターミナルセッション、GitHubのコメントなどに応答してサンドボックスエージェントを起動するユーザーが増えています。</p>
-<p data-astro-cid-yoyuw6fx="">サンドボックスは、単純なコンテナを超えた重要なステップです。それは、いくつかのことを可能にします。</p>
+<p data-astro-cid-byeekcgh="">このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</p>
+<p data-astro-cid-byeekcgh=""><a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank" rel="noopener noreferrer"><u>AI大規模言語モデル</u></a>やOpenCode、Claude Codeのような活用がますます能力を高めるにつれて、チャットメッセージ、Kanbanの更新、<a href="https://www.cloudflare.com/learning/ai/ai-vibe-coding" target="_blank" rel="noopener noreferrer"><u>バイブコーディング</u></a>UI、ターミナルセッション、GitHubのコメントなどに応答してサンドボックスエージェントを起動するユーザーが増えています。</p>
+<p data-astro-cid-byeekcgh="">サンドボックスは、単純なコンテナを超えた重要なステップです。それは、いくつかのことを可能にします。</p>
 <ul>
 	<li><strong>セキュリティ</strong>：信頼できないエンドユーザー（または不正なLLM）は、サンドボックスで実行される可能性があり、ホストマシンやそれに沿って実行されている他のサンドボックスを侵害することはありません。これは従来、(<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader" target="_blank" rel="noopener noreferrer"><u>常にそうとは限りませんが</u></a>) マイクロVMで実現されます。</li>
 	<li><strong>スピード</strong>：エンドユーザーは、新しいサンドボックスをすばやく選択し、以前使用したサンドボックスから状態をすぐに復元できる必要があります<em>。</em></li>
 	<li><strong>制御</strong>：<em>信頼できる</em>プラットフォームは、サンドボックスの<em>信頼できない</em>ドメイン内でアクションを実行できる必要があります。これは、サンドボックスにファイルをインストールしたり、アクセスするリクエストを制御したり、特定のコマンドを実行したりすることを意味します。</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">本日、<a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>サンドボックス</u></a>およびすべての<a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>コンテナ</u></a>への、もう一つの重要な制御コンポーネントであるOutbound Workersを追加できることを嬉しく思います。これらは、プログラム可能なエグレスプロキシで、サンドボックスを実行するユーザーがさまざまなサービスに簡単に接続し、<a href="https://www.cloudflare.com/learning/performance/what-is-observability" target="_blank" rel="noopener noreferrer"><u>可観測性</u></a>を追加し、エージェントにとって柔軟で安全な認証を追加することができます。</p>
-<h2 data-astro-cid-yoyuw6fx="">仕組み</h2>
-<p data-astro-cid-yoyuw6fx="">Outbound Workersを使って秘密鍵をヘッダーに追加する方法を簡単に説明します。</p>
+<p data-astro-cid-byeekcgh="">本日、<a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>サンドボックス</u></a>およびすべての<a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>コンテナ</u></a>への、もう一つの重要な制御コンポーネントであるOutbound Workersを追加できることを嬉しく思います。これらは、プログラム可能なエグレスプロキシで、サンドボックスを実行するユーザーがさまざまなサービスに簡単に接続し、<a href="https://www.cloudflare.com/learning/performance/what-is-observability" target="_blank" rel="noopener noreferrer"><u>可観測性</u></a>を追加し、エージェントにとって柔軟で安全な認証を追加することができます。</p>
+<h2 data-astro-cid-byeekcgh="">仕組み</h2>
+<p data-astro-cid-byeekcgh="">Outbound Workersを使って秘密鍵をヘッダーに追加する方法を簡単に説明します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> OpenCodeInABox</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Sandbox</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  static</span><span class="sk-e36209-fff"> outboundByHost</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
@@ -43,20 +43,20 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">サンドボックスで実行されているコードが <code>“github.com”</code> にリクエストを行うと、リクエストはハンドラを介してプロキシされます。これにより、各リクエストに対して、ログ記録、変更、取り消しなど、何でもすることができます。この場合、シークレット（詳細は後述）を安全に挿入することができます。プロキシはサンドボックスと同じマシンで実行され、分散状態にアクセスでき、簡単なJavaScriptで簡単に変更できます。</p>
+<p data-astro-cid-byeekcgh="">サンドボックスで実行されているコードが <code>“github.com”</code> にリクエストを行うと、リクエストはハンドラを介してプロキシされます。これにより、各リクエストに対して、ログ記録、変更、取り消しなど、何でもすることができます。この場合、シークレット（詳細は後述）を安全に挿入することができます。プロキシはサンドボックスと同じマシンで実行され、分散状態にアクセスでき、簡単なJavaScriptで簡単に変更できます。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="352" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7JWDJG380QQGEZ6MY1C.png&amp;w=715&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7JWDJG380QQGEZ6MY1C.png&amp;w=640&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7JWDJG380QQGEZ6MY1C.png&amp;w=715&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7JWDJG380QQGEZ6MY1C.png&amp;w=750&amp;h=369&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7JWDJG380QQGEZ6MY1C.png&amp;w=828&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7JWDJG380QQGEZ6MY1C.png&amp;w=1080&amp;h=532&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7JWDJG380QQGEZ6MY1C.png&amp;w=1280&amp;h=630&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7JWDJG380QQGEZ6MY1C.png&amp;w=1430&amp;h=704&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3199 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7JWDJG380QQGEZ6MY1C.png&amp;w=1496&amp;h=736&amp;f=webp" data-lightbox-width="1496" data-lightbox-height="736" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="352" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-yoyuw6fx="">当社は、特にエージェントの認証に関して、Sandboxに追加される可能性を非常に楽しみにしています。詳しく説明する前に、従来の認証形式と、弊社が優れたものがあると考える理由について簡単に説明します。</p>
-<h2 data-astro-cid-yoyuw6fx="">エージェンティックワークロードの共通認証</h2>
-<p data-astro-cid-yoyuw6fx="">エージェント認証の中心的な問題は、ワークロードを完全に信頼することができないことです。当社のLLMは（少なくともまだ）悪意のあるものではありませんが、データを不適切に使用したり、不適切なアクションを実行したりしないように、保護を適用できる必要があります。</p>
-<p data-astro-cid-yoyuw6fx="">エージェントに認証を提供するための一般的な方法がいくつかありますが、それぞれに欠点があります。</p>
-<p data-astro-cid-yoyuw6fx=""><strong>Standard APIトークン</strong>は最も基本的な認証方法で、通常は環境変数か、インストールされたシークレットファイルを介してアプリケーションに挿入されます。これは確かに最もシンプルな方法ですが、安全性は最も低いです。リクエストを行っている間に、サンドボックスが何らかの形で侵害されたり、誤ってトークンが流出したりする可能性はないと信用しなければなりません。エージェントを完全に信頼できないため、トークンの有効期限とローテーションを設定する必要があり、面倒な作業になる可能性があります。</p>
-<p data-astro-cid-yoyuw6fx="">OIDCトークンなどのワークロードIDトークンは、この問題の一部を解決できます。エージェントに一般的な権限でトークンを付与するのではなく、そのアイデンティティを証明するトークンを付与することができます。現在、エージェントはトークンを使用していくつかのサービスに直接アクセスするのではなく、IDトークンを非常に短期間のアクセストークンに交換することができます。OIDCトークンは、特定のエージェントのワークフローが完了した後に無効にすることができ、有効期限の管理も容易になります。ワークロードIDトークンの最大の欠点の1つは、統合の柔軟性に欠ける可能性があることです。多くのサービスにはOIDCの一流のサポートがないため、アップストリームのサービスとの統合を機能させるためには、プラットフォームは独自のトークン交換サービスを展開する必要があります。これにより、導入が困難になります。</p>
-<p data-astro-cid-yoyuw6fx=""><strong>カスタムプロキシ</strong>は最大限の柔軟性を提供し、ワークロードIDトークンと組み合わせることができます。サンドボックスのエグレスの一部またはすべてを信頼できるコードを介して通過させることができれば、必要なルールを挿入できます。エージェントが通信しているアップストリームサービスのRBACストーリーが異なり、きめ細かい許可を提供できないかもしれません。問題ありません。コントロールと許可を自分で書けば良いのです！これは、きめ細かい制御でロックダウンする必要があるエージェントに最適なオプションです。しかし、サンドボックスのトラフィックをすべて傍受するにはどうすればいいのでしょうか？動的で簡単にプログラム可能なプロキシを設定するにはどうすればよいでしょうか？トラフィックを効率的にプロキシする方法は？これらは解決するのは簡単ではありません。</p>
-<p data-astro-cid-yoyuw6fx="">このような不完全な方法を念頭に置くと、理想的な認証メカニズムはどのようなものになるでしょうか？</p>
-<p data-astro-cid-yoyuw6fx="">理想的には、次のような状態です：</p>
+<p data-astro-cid-byeekcgh="">当社は、特にエージェントの認証に関して、Sandboxに追加される可能性を非常に楽しみにしています。詳しく説明する前に、従来の認証形式と、弊社が優れたものがあると考える理由について簡単に説明します。</p>
+<h2 data-astro-cid-byeekcgh="">エージェンティックワークロードの共通認証</h2>
+<p data-astro-cid-byeekcgh="">エージェント認証の中心的な問題は、ワークロードを完全に信頼することができないことです。当社のLLMは（少なくともまだ）悪意のあるものではありませんが、データを不適切に使用したり、不適切なアクションを実行したりしないように、保護を適用できる必要があります。</p>
+<p data-astro-cid-byeekcgh="">エージェントに認証を提供するための一般的な方法がいくつかありますが、それぞれに欠点があります。</p>
+<p data-astro-cid-byeekcgh=""><strong>Standard APIトークン</strong>は最も基本的な認証方法で、通常は環境変数か、インストールされたシークレットファイルを介してアプリケーションに挿入されます。これは確かに最もシンプルな方法ですが、安全性は最も低いです。リクエストを行っている間に、サンドボックスが何らかの形で侵害されたり、誤ってトークンが流出したりする可能性はないと信用しなければなりません。エージェントを完全に信頼できないため、トークンの有効期限とローテーションを設定する必要があり、面倒な作業になる可能性があります。</p>
+<p data-astro-cid-byeekcgh="">OIDCトークンなどのワークロードIDトークンは、この問題の一部を解決できます。エージェントに一般的な権限でトークンを付与するのではなく、そのアイデンティティを証明するトークンを付与することができます。現在、エージェントはトークンを使用していくつかのサービスに直接アクセスするのではなく、IDトークンを非常に短期間のアクセストークンに交換することができます。OIDCトークンは、特定のエージェントのワークフローが完了した後に無効にすることができ、有効期限の管理も容易になります。ワークロードIDトークンの最大の欠点の1つは、統合の柔軟性に欠ける可能性があることです。多くのサービスにはOIDCの一流のサポートがないため、アップストリームのサービスとの統合を機能させるためには、プラットフォームは独自のトークン交換サービスを展開する必要があります。これにより、導入が困難になります。</p>
+<p data-astro-cid-byeekcgh=""><strong>カスタムプロキシ</strong>は最大限の柔軟性を提供し、ワークロードIDトークンと組み合わせることができます。サンドボックスのエグレスの一部またはすべてを信頼できるコードを介して通過させることができれば、必要なルールを挿入できます。エージェントが通信しているアップストリームサービスのRBACストーリーが異なり、きめ細かい許可を提供できないかもしれません。問題ありません。コントロールと許可を自分で書けば良いのです！これは、きめ細かい制御でロックダウンする必要があるエージェントに最適なオプションです。しかし、サンドボックスのトラフィックをすべて傍受するにはどうすればいいのでしょうか？動的で簡単にプログラム可能なプロキシを設定するにはどうすればよいでしょうか？トラフィックを効率的にプロキシする方法は？これらは解決するのは簡単ではありません。</p>
+<p data-astro-cid-byeekcgh="">このような不完全な方法を念頭に置くと、理想的な認証メカニズムはどのようなものになるでしょうか？</p>
+<p data-astro-cid-byeekcgh="">理想的には、次のような状態です：</p>
 <ul>
 	<li><strong>Zero Trust.</strong>信頼できないユーザーにトークンが付与されることは決してありません。</li>
 	<li><strong>シンプルです。</strong>作成が容易。トークンの生成、ローテーション、復号化という複雑なシステムは不要です。</li>
@@ -67,11 +67,11 @@
 	<li><strong>透明。</strong>サンドボックス化されたワークロードは、それを知る必要はありません。上手く機能しているのです。</li>
 	<li><strong>ダイナミック。</strong>ルールはその場で変更できます。</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">Cloudflareは、Outbound Workers for Sandboxsがこれらすべてに適合すると考えています。方法を見てみましょう。</p>
-<h2 data-astro-cid-yoyuw6fx="">Outbound Workersの活用事例</h2>
-<h3 data-astro-cid-yoyuw6fx="">基本：制限と可観測性</h3>
-<p data-astro-cid-yoyuw6fx="">まず、リクエストをログに記録し、特定のアクションを拒否するという非常に基本的な例を見ていきます。</p>
-<p data-astro-cid-yoyuw6fx="">この場合は、サンドボックスからすべての発信HTTPリクエストを傍受するアウトバウンド関数を使用します。数行のJavaScriptで、GETだけを実行し、ログに記録して、許可されていないメソッドを拒否することが簡単にできます。</p>
+<p data-astro-cid-byeekcgh="">Cloudflareは、Outbound Workers for Sandboxsがこれらすべてに適合すると考えています。方法を見てみましょう。</p>
+<h2 data-astro-cid-byeekcgh="">Outbound Workersの活用事例</h2>
+<h3 data-astro-cid-byeekcgh="">基本：制限と可観測性</h3>
+<p data-astro-cid-byeekcgh="">まず、リクエストをログに記録し、特定のアクションを拒否するという非常に基本的な例を見ていきます。</p>
+<p data-astro-cid-byeekcgh="">この場合は、サンドボックスからすべての発信HTTPリクエストを傍受するアウトバウンド関数を使用します。数行のJavaScriptで、GETだけを実行し、ログに記録して、許可されていないメソッドを拒否することが簡単にできます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> MySandboxedApp</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Sandbox</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  static</span><span class="sk-6f42c1-ffc799"> outbound</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">req</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
@@ -91,11 +91,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">このプロキシはWorkers上で実行され、サンドボックス化されたVMと同じマシン上で実行されます。Workersは応答時間を短縮するために構築されており、キャッシュされたCDNトラフィックの前面に位置することが多いため、追加の遅延は極めて最小限に抑えられます。</p>
-<p data-astro-cid-yoyuw6fx="">これはWorkers上で実行されているため、すぐに観測可能性が得られます。Workersダッシュボードでログやアウトバウンドリクエストを表示したり、お好みのアプリケーションパフォーマンス監視ツールにエクスポートしたりできます。</p>
-<h3 data-astro-cid-yoyuw6fx="">Zero Trustクレデンシャルインジェクション</h3>
-<p data-astro-cid-yoyuw6fx="">これを使って、エージェントに<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer"><u>Zero Trust環境</u></a>を強制する方法とは？プライベートなGitHubインスタンスにリクエストを作成したいが、LLMにはプライベートトークンにアクセスさせたくない場合を想像してみましょう。</p>
-<p data-astro-cid-yoyuw6fx=""><code>outboundByHost</code>を使用して、特定のドメインまたはIPに対する関数を定義できます。今回、ドメインが「my-internal-vcs.dev」の場合、保護されたクレデンシャルを挿入します。サンドボックス化されたエージェントは、これらのクレデンシャルに<em>アクセスすることはできません</em>。</p>
+<p data-astro-cid-byeekcgh="">このプロキシはWorkers上で実行され、サンドボックス化されたVMと同じマシン上で実行されます。Workersは応答時間を短縮するために構築されており、キャッシュされたCDNトラフィックの前面に位置することが多いため、追加の遅延は極めて最小限に抑えられます。</p>
+<p data-astro-cid-byeekcgh="">これはWorkers上で実行されているため、すぐに観測可能性が得られます。Workersダッシュボードでログやアウトバウンドリクエストを表示したり、お好みのアプリケーションパフォーマンス監視ツールにエクスポートしたりできます。</p>
+<h3 data-astro-cid-byeekcgh="">Zero Trustクレデンシャルインジェクション</h3>
+<p data-astro-cid-byeekcgh="">これを使って、エージェントに<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer"><u>Zero Trust環境</u></a>を強制する方法とは？プライベートなGitHubインスタンスにリクエストを作成したいが、LLMにはプライベートトークンにアクセスさせたくない場合を想像してみましょう。</p>
+<p data-astro-cid-byeekcgh=""><code>outboundByHost</code>を使用して、特定のドメインまたはIPに対する関数を定義できます。今回、ドメインが「my-internal-vcs.dev」の場合、保護されたクレデンシャルを挿入します。サンドボックス化されたエージェントは、これらのクレデンシャルに<em>アクセスすることはできません</em>。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> OpenCodeInABox</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Sandbox</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  static</span><span class="sk-e36209-fff"> outboundByHost</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
@@ -112,7 +112,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">また、コンテナのIDに基づいて、応答の条件を簡単に設定することもできます。すべてのサンドボックスインスタンスに同じトークンを注入する必要はありません。</p>
+<p data-astro-cid-byeekcgh="">また、コンテナのIDに基づいて、応答の条件を簡単に設定することもできます。すべてのサンドボックスインスタンスに同じトークンを注入する必要はありません。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff"> static outboundByHost </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "my-internal-vcs.dev"</span><span class="sk-24292e-fff">: (</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
@@ -130,9 +130,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">Cloudflare開発者プラットフォームを使用する</h3>
-<p data-astro-cid-yoyuw6fx="">最後の例でお分かりのように、Outbound Workersを使用するもう1つの大きな利点は、Workersエコシステムへの統合が容易になることです。以前は、ユーザーが<a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>にアクセスする場合、R2認証情報を挿入し、コンテナからパブリックR2 APIを呼び出す必要がありました。<a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>KV</u></a>、<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>エージェント</u></a>、その他の<a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>コンテナ</u></a>、その他の<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings" target="_blank" rel="noopener noreferrer"><u>Workerサービス</u></a>、<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>など</u></a>でも同様です。</p>
-<p data-astro-cid-yoyuw6fx="">今、<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>任意のバインディング</u></a>をOutbound Workersから呼び出すだけです。</p>
+<h3 data-astro-cid-byeekcgh="">Cloudflare開発者プラットフォームを使用する</h3>
+<p data-astro-cid-byeekcgh="">最後の例でお分かりのように、Outbound Workersを使用するもう1つの大きな利点は、Workersエコシステムへの統合が容易になることです。以前は、ユーザーが<a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>にアクセスする場合、R2認証情報を挿入し、コンテナからパブリックR2 APIを呼び出す必要がありました。<a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>KV</u></a>、<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>エージェント</u></a>、その他の<a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>コンテナ</u></a>、その他の<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings" target="_blank" rel="noopener noreferrer"><u>Workerサービス</u></a>、<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>など</u></a>でも同様です。</p>
+<p data-astro-cid-byeekcgh="">今、<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>任意のバインディング</u></a>をOutbound Workersから呼び出すだけです。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> MySandboxedApp</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Sandbox</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  static</span><span class="sk-e36209-fff"> outboundByHost</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
@@ -156,9 +156,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">トークンを解析したりポリシーを設定したりする代わりに、コードと必要なロジックを使用して簡単にアクセスの条件を設定できます。R2の例では、サンドボックスのIDを使用して、アクセスの範囲を簡単に拡大することができました。</p>
-<h3 data-astro-cid-yoyuw6fx="">動的制御</h3>
-<p data-astro-cid-yoyuw6fx="">ネットワーク制御も動的である必要があります。多くのプラットフォームでは、コンテナとVMネットワーキングの設定は静的で、次のようになります。</p>
+<p data-astro-cid-byeekcgh="">トークンを解析したりポリシーを設定したりする代わりに、コードと必要なロジックを使用して簡単にアクセスの条件を設定できます。R2の例では、サンドボックスのIDを使用して、アクセスの範囲を簡単に拡大することができました。</p>
+<h3 data-astro-cid-byeekcgh="">動的制御</h3>
+<p data-astro-cid-byeekcgh="">ネットワーク制御も動的である必要があります。多くのプラットフォームでは、コンテナとVMネットワーキングの設定は静的で、次のようになります。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  defaultEgress</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"block"</span><span class="sk-24292e-fff">,</span></span>
@@ -170,9 +170,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">これなら何もないよりはいいのですが、もっと良い方法があります。多くのサンドボックスでは、開始時にポリシーを適用し、特定の操作が実行された後で別のポリシーに上書きしたい場合があります。</p>
-<p data-astro-cid-yoyuw6fx="">たとえば、サンドボックスを起動し、NPMやGithubを介して依存関係を取得し、その後、エグレスをロックダウンすることができます。そうすることで、ネットワークを開く時間ができるだけ短くなります。</p>
-<p data-astro-cid-yoyuw6fx="">これを実現するために、<code>outboundHandlers</code>を使用できます。これにより、<code>setOutboundHandler</code>メソッドを使用してプログラム的に適用できる任意のアウトバウンドハンドラーを定義できます。これらのそれぞれはパラムを利用するので、コードから動作をカスタマイズすることができます。この場合、カスタム「<code>allowHosts</code>」ポリシーでいくつかのホスト名を許可し、その後はHTTPをオフにします。 </p>
+<p data-astro-cid-byeekcgh="">これなら何もないよりはいいのですが、もっと良い方法があります。多くのサンドボックスでは、開始時にポリシーを適用し、特定の操作が実行された後で別のポリシーに上書きしたい場合があります。</p>
+<p data-astro-cid-byeekcgh="">たとえば、サンドボックスを起動し、NPMやGithubを介して依存関係を取得し、その後、エグレスをロックダウンすることができます。そうすることで、ネットワークを開く時間ができるだけ短くなります。</p>
+<p data-astro-cid-byeekcgh="">これを実現するために、<code>outboundHandlers</code>を使用できます。これにより、<code>setOutboundHandler</code>メソッドを使用してプログラム的に適用できる任意のアウトバウンドハンドラーを定義できます。これらのそれぞれはパラムを利用するので、コードから動作をカスタマイズすることができます。この場合、カスタム「<code>allowHosts</code>」ポリシーでいくつかのホスト名を許可し、その後はHTTPをオフにします。 </p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> MySandboxedApp</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Sandbox</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  static</span><span class="sk-e36209-fff"> outboundHandlers</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
@@ -208,10 +208,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">これはさらに拡張することも可能です。<code>エージェントはエンドユーザーに対して、「cloudflare.comへのPOSTリクエストを許可しますか？」といった質問をするかもしれません。アクセスできるように\nしたりすることもできます。</code>動的Outbound Workersを使用すると、その場でサンドボックスルールを簡単に変更して、このレベルの制御を提供することができます。</p>
-<h2 data-astro-cid-yoyuw6fx="">MITMプロキシによるTLSサポート</h2>
-<p data-astro-cid-yoyuw6fx="">リクエストを許可または拒否する以上の有用な操作を行うには、コンテンツへのアクセスが必要です。つまり、HTTPSリクエストを行う場合、Workersプロキシによって復号化される必要があるのです。</p>
-<p data-astro-cid-yoyuw6fx="">これを実現するために、各サンドボックスインスタンスに一意のエフェメラル認証局（CA）とプライベートキーを作成し、CAをサンドボックスに配置します。デフォルトでは、サンドボックスインスタンスはこのCAを信頼しますが、標準的なコンテナインスタンスは、たとえば<code>sudo update-ca-certificates</code>を呼び出すことによって、信頼することを選択できます。</p>
+<p data-astro-cid-byeekcgh="">これはさらに拡張することも可能です。<code>エージェントはエンドユーザーに対して、「cloudflare.comへのPOSTリクエストを許可しますか？」といった質問をするかもしれません。アクセスできるように\nしたりすることもできます。</code>動的Outbound Workersを使用すると、その場でサンドボックスルールを簡単に変更して、このレベルの制御を提供することができます。</p>
+<h2 data-astro-cid-byeekcgh="">MITMプロキシによるTLSサポート</h2>
+<p data-astro-cid-byeekcgh="">リクエストを許可または拒否する以上の有用な操作を行うには、コンテンツへのアクセスが必要です。つまり、HTTPSリクエストを行う場合、Workersプロキシによって復号化される必要があるのです。</p>
+<p data-astro-cid-byeekcgh="">これを実現するために、各サンドボックスインスタンスに一意のエフェメラル認証局（CA）とプライベートキーを作成し、CAをサンドボックスに配置します。デフォルトでは、サンドボックスインスタンスはこのCAを信頼しますが、標準的なコンテナインスタンスは、たとえば<code>sudo update-ca-certificates</code>を呼び出すことによって、信頼することを選択できます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> MyContainer</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Container</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-e36209-fff">  interceptHttps</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-ffc799"> true</span><span class="sk-24292e-fff">;</span></span>
@@ -228,11 +228,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">TLSトラフィックは、TLSハンドシェイクを実行することにより、Cloudflareの分離されたネットワークプロセスによってプロキシされます。一過性の一意のプライベートキーからエッジCAを作成し、ClientHelloから抽出されたSNIを使用します。次に、同じマシンで設定済みのWorkerを呼び出し、HTTPSリクエストを処理します。</p>
-<p data-astro-cid-yoyuw6fx="">一過性のプライベートキーとCAは、コンテナランタイムのサイドカープロセスから離れることはなく、他のコンテナサイドカープロセスで共有されることはありません。</p>
-<p data-astro-cid-yoyuw6fx="">これを有効にすると、Outbound Workersは真に透明性のあるプロキシとして機能します。サンドボックスは、特定のプロトコルまたはドメインを認識する必要がありません。すべてのHTTPおよびHTTPSトラフィックは、フィルタリングまたは変更のためにアウトバウンドハンドラーを通過します。</p>
-<h2 data-astro-cid-yoyuw6fx="">機器の中身</h2>
-<p data-astro-cid-yoyuw6fx="">上記の機能を<a href="https://github.com/cloudflare/containers" target="_blank" rel="noopener noreferrer"><code><u>Container</u></code></a>と<a href="https://github.com/cloudflare/sandbox-sdk" target="_blank" rel="noopener noreferrer"><code><u>Sandbox</u></code></a>の両方で有効にするために、<a href="https://developers.cloudflare.com/durable-objects/api/container" target="_blank" rel="noopener noreferrer"><code><u>ctx.container</u></code></a>オブジェクトに新しいメソッドを追加しました。<code>interceptOutboundHttpとinterceptOutboundHttps</code>は、特定のホスト名（基本的なglobパターン一致を含む）、IP範囲での発信リクエストをインターセプトし、すべての発信リクエストをインターセプトするために使用できます。これらのメソッドは、<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc" target="_blank" rel="noopener noreferrer"><u>WorkerEntrypoint</u></a> を使用して呼び出されます。WorkerEntrypointは、Outbound Workersの玄関口として設定されます。</p>
+<p data-astro-cid-byeekcgh="">TLSトラフィックは、TLSハンドシェイクを実行することにより、Cloudflareの分離されたネットワークプロセスによってプロキシされます。一過性の一意のプライベートキーからエッジCAを作成し、ClientHelloから抽出されたSNIを使用します。次に、同じマシンで設定済みのWorkerを呼び出し、HTTPSリクエストを処理します。</p>
+<p data-astro-cid-byeekcgh="">一過性のプライベートキーとCAは、コンテナランタイムのサイドカープロセスから離れることはなく、他のコンテナサイドカープロセスで共有されることはありません。</p>
+<p data-astro-cid-byeekcgh="">これを有効にすると、Outbound Workersは真に透明性のあるプロキシとして機能します。サンドボックスは、特定のプロトコルまたはドメインを認識する必要がありません。すべてのHTTPおよびHTTPSトラフィックは、フィルタリングまたは変更のためにアウトバウンドハンドラーを通過します。</p>
+<h2 data-astro-cid-byeekcgh="">機器の中身</h2>
+<p data-astro-cid-byeekcgh="">上記の機能を<a href="https://github.com/cloudflare/containers" target="_blank" rel="noopener noreferrer"><code><u>Container</u></code></a>と<a href="https://github.com/cloudflare/sandbox-sdk" target="_blank" rel="noopener noreferrer"><code><u>Sandbox</u></code></a>の両方で有効にするために、<a href="https://developers.cloudflare.com/durable-objects/api/container" target="_blank" rel="noopener noreferrer"><code><u>ctx.container</u></code></a>オブジェクトに新しいメソッドを追加しました。<code>interceptOutboundHttpとinterceptOutboundHttps</code>は、特定のホスト名（基本的なglobパターン一致を含む）、IP範囲での発信リクエストをインターセプトし、すべての発信リクエストをインターセプトするために使用できます。これらのメソッドは、<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc" target="_blank" rel="noopener noreferrer"><u>WorkerEntrypoint</u></a> を使用して呼び出されます。WorkerEntrypointは、Outbound Workersの玄関口として設定されます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> MyWorker</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> WorkerEntrypoint</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">() {</span></span>
@@ -263,15 +263,15 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Workersへのプロキシはすべて、サンドボックスVMを実行している同じマシン上でローカルに行われます。コンテナとWorkerの間の通信は「認証されていない」ものですが、安全です。</p>
-<p data-astro-cid-yoyuw6fx="">これらのメソッドは、コンテナが開始する前または後、接続がまだオープン中であっても、いつでも呼び出すことができます。複数のHTTPリクエストを送信する接続は、新しいエントリポイントを自動的に選択するため、Outbound Workersを更新しても、既存のTCP接続が切断されたり、HTTPリクエストが中断されたりすることはありません。</p>
+<p data-astro-cid-byeekcgh="">Workersへのプロキシはすべて、サンドボックスVMを実行している同じマシン上でローカルに行われます。コンテナとWorkerの間の通信は「認証されていない」ものですが、安全です。</p>
+<p data-astro-cid-byeekcgh="">これらのメソッドは、コンテナが開始する前または後、接続がまだオープン中であっても、いつでも呼び出すことができます。複数のHTTPリクエストを送信する接続は、新しいエントリポイントを自動的に選択するため、Outbound Workersを更新しても、既存のTCP接続が切断されたり、HTTPリクエストが中断されたりすることはありません。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="346" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZY7ESVDW49FZB30KRC52.png&amp;w=715&amp;h=346&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZY7ESVDW49FZB30KRC52.png&amp;w=640&amp;h=310&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZY7ESVDW49FZB30KRC52.png&amp;w=715&amp;h=346&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZY7ESVDW49FZB30KRC52.png&amp;w=750&amp;h=363&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZY7ESVDW49FZB30KRC52.png&amp;w=828&amp;h=401&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZY7ESVDW49FZB30KRC52.png&amp;w=1080&amp;h=523&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZY7ESVDW49FZB30KRC52.png&amp;w=1280&amp;h=619&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZY7ESVDW49FZB30KRC52.png&amp;w=1430&amp;h=692&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3199 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZY7ESVDW49FZB30KRC52.png&amp;w=1862&amp;h=900&amp;f=webp" data-lightbox-width="1862" data-lightbox-height="900" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="346" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-yoyuw6fx=""><a href="https://developers.cloudflare.com/workers/wrangler/commands/#dev" target="_blank" rel="noopener noreferrer"><u>wrangler dev</u></a>を使用したローカル開発は、エグレス傍受もサポートしています。これを可能にするために、ローカルコンテナのネットワークネームスペース内にサイドカープロセスを自動的に生成します。私たちはこのサイドカーコンポーネントを<a href="https://github.com/cloudflare/proxy-everything" target="_blank" rel="noopener noreferrer"><em><u>proxy-everything</u></em></a>と呼んでいます。<em>proxy-everything</em>が接続されると、適切なTPROXY nftableルールが適用され、ローカルコンテナから<a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer"><u>workerd</u></a>（CloudflareのオープンソースJavaScriptランタイム）にトラフィックがルーティングされ、アウトバウンドWorkerを実行します。これにより、ローカル開発エクスペリエンスが本番環境で発生することを反映させることができるため、テストと開発はシンプルのままとなります。</p>
-<h2 data-astro-cid-yoyuw6fx="">Giving Outbound Workers a try</h2>
-<p data-astro-cid-yoyuw6fx="">Cloudflare Sandboxesをまだお試しでない方は、<a href="https://developers.cloudflare.com/sandbox/get-started" target="_blank" rel="noopener noreferrer"><u>利用開始ガイド</u></a>をぜひご覧ください。現在既に<a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>Containers</u></a>または<a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>Sandboxes</u></a>をご利用の方は、<a href="https://developers.cloudflare.com/containers/platform-details/outbound-traffic" target="_blank" rel="noopener noreferrer"><u>ドキュメントをご覧になり</u></a>、<code>@cloudflare/containers@0.3.0</code>または<code>@cloudflare/sandbox@0.8.9</code>にアップグレードして、今すぐOutbound Workersを使い始めてください。</p>
-<h4 data-astro-cid-yoyuw6fx="">Cloudflare TVで視聴する</h4>
+<p data-astro-cid-byeekcgh=""><a href="https://developers.cloudflare.com/workers/wrangler/commands/#dev" target="_blank" rel="noopener noreferrer"><u>wrangler dev</u></a>を使用したローカル開発は、エグレス傍受もサポートしています。これを可能にするために、ローカルコンテナのネットワークネームスペース内にサイドカープロセスを自動的に生成します。私たちはこのサイドカーコンポーネントを<a href="https://github.com/cloudflare/proxy-everything" target="_blank" rel="noopener noreferrer"><em><u>proxy-everything</u></em></a>と呼んでいます。<em>proxy-everything</em>が接続されると、適切なTPROXY nftableルールが適用され、ローカルコンテナから<a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer"><u>workerd</u></a>（CloudflareのオープンソースJavaScriptランタイム）にトラフィックがルーティングされ、アウトバウンドWorkerを実行します。これにより、ローカル開発エクスペリエンスが本番環境で発生することを反映させることができるため、テストと開発はシンプルのままとなります。</p>
+<h2 data-astro-cid-byeekcgh="">Giving Outbound Workers a try</h2>
+<p data-astro-cid-byeekcgh="">Cloudflare Sandboxesをまだお試しでない方は、<a href="https://developers.cloudflare.com/sandbox/get-started" target="_blank" rel="noopener noreferrer"><u>利用開始ガイド</u></a>をぜひご覧ください。現在既に<a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>Containers</u></a>または<a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>Sandboxes</u></a>をご利用の方は、<a href="https://developers.cloudflare.com/containers/platform-details/outbound-traffic" target="_blank" rel="noopener noreferrer"><u>ドキュメントをご覧になり</u></a>、<code>@cloudflare/containers@0.3.0</code>または<code>@cloudflare/sandbox@0.8.9</code>にアップグレードして、今すぐOutbound Workersを使い始めてください。</p>
+<h4 data-astro-cid-byeekcgh="">Cloudflare TVで視聴する</h4>
 <div id="html-block-k6z" class="html-block">
 	<div style="padding-top:56.25%"> <iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/748ed282b02cbbfb5da9076d41758ede/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F748ed282b02cbbfb5da9076d41758ede%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe> </div>
 </div>

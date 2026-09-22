@@ -1,13 +1,13 @@
-<p data-astro-cid-yoyuw6fx="">(<em>Esta es una publicación cruzada de un tutorial</em> <a href="https://rreverser.com/writing-complex-macros-in-rust" target="_blank" rel="noopener noreferrer"><em>publicado originalmente</em></a> <em>en mi blog personal )</em></p>
-<p data-astro-cid-yoyuw6fx="">Entre otras características interesantes, Rust tiene un sólido sistema macro. Lamentablemente, incluso después de leer el libro y varios tutoriales, cuando trataba de implementar una macro, que implicaba el procesamiento de listas complejas de diferentes elementos, seguía teniendo problemas para entender cómo se hacía, y me llevó un tiempo hasta que me dí cuenta y comencé a usar macros indiscriminadamente para todo :) <em>(de acuerdo, no para todo, como si dijera uso macros porque no quiero usar funciones y especificar tipos y duraciones como he visto que hacen algunos, pero en realidad es útil)</em></p>
+<p data-astro-cid-byeekcgh="">(<em>Esta es una publicación cruzada de un tutorial</em> <a href="https://rreverser.com/writing-complex-macros-in-rust" target="_blank" rel="noopener noreferrer"><em>publicado originalmente</em></a> <em>en mi blog personal )</em></p>
+<p data-astro-cid-byeekcgh="">Entre otras características interesantes, Rust tiene un sólido sistema macro. Lamentablemente, incluso después de leer el libro y varios tutoriales, cuando trataba de implementar una macro, que implicaba el procesamiento de listas complejas de diferentes elementos, seguía teniendo problemas para entender cómo se hacía, y me llevó un tiempo hasta que me dí cuenta y comencé a usar macros indiscriminadamente para todo :) <em>(de acuerdo, no para todo, como si dijera uso macros porque no quiero usar funciones y especificar tipos y duraciones como he visto que hacen algunos, pero en realidad es útil)</em></p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="640" height="427" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AZAKFG11R2WFAJH521KV.jpg&amp;w=640&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AZAKFG11R2WFAJH521KV.jpg&amp;w=640&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AZAKFG11R2WFAJH521KV.jpg&amp;w=750&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AZAKFG11R2WFAJH521KV.jpg&amp;w=828&amp;h=552&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AZAKFG11R2WFAJH521KV.jpg&amp;w=1080&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AZAKFG11R2WFAJH521KV.jpg&amp;w=1280&amp;h=854&amp;f=webp&amp;fit=cover&amp;position=center 1280w" alt="Rust with a macro lens" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AZAKFG11R2WFAJH521KV.jpg&amp;w=640&amp;h=427&amp;f=webp" data-lightbox-width="640" data-lightbox-height="427" data-astro-cid-7nvefuv6="true" sizes="(min-width: 640px) 640px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="640" height="427" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-yoyuw6fx=""><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://www.flickr.com/photos/conchur/25057125240/in/photolist-EbdjmG-8NSN1q-qXhueG-YTYnm3-odaneQ-DxCKQA-228jg4t-DU8Axz-XTQfdD-4p6nJk-UKVzbn-YFeKcW-osZ2XM-e6qefx-Tb3a6Q-dCw1zk-Et3kKh-dbAR9x-zHP8TR-a9cqw4-9JQHRy-Et1Ag5-PqFtx1-7x3Ukq-67VJc6-cvoKSo-qH2S9L-zHJAr9-XmCLsL-8AMWXX-ZV2hHh-XGPiHq-ZKpFSB-yqd2P1-23hMiaC-zETYYa-Wj7BVi-PNP4YA-LCNm6c-8AnkrZ-KA7qmt-KjYPxC-SzQsZD-Cxwvqg-GuZ3nn-J4jBaA-TzyjpB-DcYJA1-YQYNA3-My1uu8" target="_blank" rel="noopener noreferrer">Imagen</a> de <a href="https://www.flickr.com/photos/conchur" target="_blank" rel="noopener noreferrer">Conor Lawless</a></p>
-<p data-astro-cid-yoyuw6fx="">Por lo tanto, esta es mi opinión sobre la descripción de los principios de creación de estas macros. Se supone que ha leído la sección <a href="https://doc.rust-lang.org/book/first-edition/macros.html" target="_blank" rel="noopener noreferrer">Macros</a> del libro y que está familiarizado con las definiciones básicas de macros y con los tipos de <em>token.</em></p>
-<p data-astro-cid-yoyuw6fx="">Tomaré <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation" target="_blank" rel="noopener noreferrer">la notación polaca inversa</a> como ejemplo para este tutorial. Es interesante porque es bastante simple, es posible que el tema le resulte familiar, ya que seguramente lo vio en la escuela o la universidad y, sin embargo, para implementarla de manera estática en el momento de la compilación, usted debe usar un método recursivo de macros.</p>
-<p data-astro-cid-yoyuw6fx="">La notación polaca inversa (también denominada notación posfija) utiliza una pila para todas sus operaciones, por lo tanto, cualquier operando se inserta en la pila, y cualquier operador <em>[binario]</em> toma dos operandos de la pila, evalúa el resultado y lo vuelve a colocar en su lugar. Por lo tanto, la expresión a continuación:</p>
+<p data-astro-cid-byeekcgh=""><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://www.flickr.com/photos/conchur/25057125240/in/photolist-EbdjmG-8NSN1q-qXhueG-YTYnm3-odaneQ-DxCKQA-228jg4t-DU8Axz-XTQfdD-4p6nJk-UKVzbn-YFeKcW-osZ2XM-e6qefx-Tb3a6Q-dCw1zk-Et3kKh-dbAR9x-zHP8TR-a9cqw4-9JQHRy-Et1Ag5-PqFtx1-7x3Ukq-67VJc6-cvoKSo-qH2S9L-zHJAr9-XmCLsL-8AMWXX-ZV2hHh-XGPiHq-ZKpFSB-yqd2P1-23hMiaC-zETYYa-Wj7BVi-PNP4YA-LCNm6c-8AnkrZ-KA7qmt-KjYPxC-SzQsZD-Cxwvqg-GuZ3nn-J4jBaA-TzyjpB-DcYJA1-YQYNA3-My1uu8" target="_blank" rel="noopener noreferrer">Imagen</a> de <a href="https://www.flickr.com/photos/conchur" target="_blank" rel="noopener noreferrer">Conor Lawless</a></p>
+<p data-astro-cid-byeekcgh="">Por lo tanto, esta es mi opinión sobre la descripción de los principios de creación de estas macros. Se supone que ha leído la sección <a href="https://doc.rust-lang.org/book/first-edition/macros.html" target="_blank" rel="noopener noreferrer">Macros</a> del libro y que está familiarizado con las definiciones básicas de macros y con los tipos de <em>token.</em></p>
+<p data-astro-cid-byeekcgh="">Tomaré <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation" target="_blank" rel="noopener noreferrer">la notación polaca inversa</a> como ejemplo para este tutorial. Es interesante porque es bastante simple, es posible que el tema le resulte familiar, ya que seguramente lo vio en la escuela o la universidad y, sin embargo, para implementarla de manera estática en el momento de la compilación, usted debe usar un método recursivo de macros.</p>
+<p data-astro-cid-byeekcgh="">La notación polaca inversa (también denominada notación posfija) utiliza una pila para todas sus operaciones, por lo tanto, cualquier operando se inserta en la pila, y cualquier operador <em>[binario]</em> toma dos operandos de la pila, evalúa el resultado y lo vuelve a colocar en su lugar. Por lo tanto, la expresión a continuación:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-005cc5-a0a0a0"> *</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -33,8 +33,8 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx=""><code>2 3 + 4 *</code></p>
-<p data-astro-cid-yoyuw6fx="">se traduce en lo siguiente:</p>
+<p data-astro-cid-byeekcgh=""><code>2 3 + 4 *</code></p>
+<p data-astro-cid-byeekcgh="">se traduce en lo siguiente:</p>
 <ol>
 	<li>Poner <code>2</code> en la pila.</li>
 	<li>Poner <code>3</code> en la pila.</li>
@@ -43,7 +43,7 @@
 	<li>Tomar los dos últimos valores de la pila ( <code>4</code> y <code>5</code>), aplicar el operador <code>*</code> ( <code>4 * 5</code>) y volver a colocar el resultado ( <code>20</code>) en la pila.</li>
 	<li>Fin de la expresión, el valor único de la pila es el resultado ( <code>20</code>).</li>
 </ol>
-<p data-astro-cid-yoyuw6fx="">En una notación infija más común, que se utiliza en matemáticas y en la mayoría de los lenguajes de programación modernos, la expresión sería <code>(2 + 3) * 4</code>.</p>
+<p data-astro-cid-byeekcgh="">En una notación infija más común, que se utiliza en matemáticas y en la mayoría de los lenguajes de programación modernos, la expresión sería <code>(2 + 3) * 4</code>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">macro_rules!</span><span class="sk-6f42c1-ffc799"> rpn</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // TODO</span></span>
@@ -55,8 +55,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Así que vamos a crear una macro que evaluaría la notación polaca inversa (RPN) en el momento de la compilación convirtiéndola en una notación infija que Rust comprenda.</p>
-<p data-astro-cid-yoyuw6fx="">Comencemos por hacer avanzar números a la pila.</p>
+<p data-astro-cid-byeekcgh="">Así que vamos a crear una macro que evaluaría la notación polaca inversa (RPN) en el momento de la compilación convirtiéndola en una notación infija que Rust comprenda.</p>
+<p data-astro-cid-byeekcgh="">Comencemos por hacer avanzar números a la pila.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">macro_rules!</span><span class="sk-6f42c1-ffc799"> rpn</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">  (</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
@@ -68,9 +68,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Las macros actualmente no permiten literales coincidentes, y <code>expr</code> no funcionará para nosotros ya que puede hacer coincidir accidentalmente una secuencia como <code>2 + 3 ...</code> en lugar de tomar un solo número, por lo tanto, recurriremos a <code>tt</code> - un buscador de coincidencias de token genérico que coincida con un solo árbol de token (independientemente de si se trata de un token primitivo como literal/identificador/duración/etc. o <code>()</code>/ <code>[]</code>/ <code>{}</code> - expresión entre paréntesis que contiene más tokens):</p>
-<p data-astro-cid-yoyuw6fx="">Ahora, necesitaremos una variable para la pila.</p>
-<p data-astro-cid-yoyuw6fx="">Las macros no pueden usar variables reales, ya que queremos que esta pila solo exista en el momento de la compilación. Por lo tanto, el truco consiste en tener una secuencia de token separada que se pueda hacer circular y usar como una especie de acumulador.</p>
+<p data-astro-cid-byeekcgh="">Las macros actualmente no permiten literales coincidentes, y <code>expr</code> no funcionará para nosotros ya que puede hacer coincidir accidentalmente una secuencia como <code>2 + 3 ...</code> en lugar de tomar un solo número, por lo tanto, recurriremos a <code>tt</code> - un buscador de coincidencias de token genérico que coincida con un solo árbol de token (independientemente de si se trata de un token primitivo como literal/identificador/duración/etc. o <code>()</code>/ <code>[]</code>/ <code>{}</code> - expresión entre paréntesis que contiene más tokens):</p>
+<p data-astro-cid-byeekcgh="">Ahora, necesitaremos una variable para la pila.</p>
+<p data-astro-cid-byeekcgh="">Las macros no pueden usar variables reales, ya que queremos que esta pila solo exista en el momento de la compilación. Por lo tanto, el truco consiste en tener una secuencia de token separada que se pueda hacer circular y usar como una especie de acumulador.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">macro_rules!</span><span class="sk-6f42c1-ffc799"> rpn</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">  ([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr),</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
@@ -82,8 +82,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">En nuestro caso, la representaremos como una secuencia separada por comas de <code>expr</code> (ya que la usaremos no solo para números simples sino también para expresiones infijas intermedias) y la encerraremos entre corchetes para separarla del resto de la entrada:</p>
-<p data-astro-cid-yoyuw6fx="">Ahora, una secuencia de token no es en realidad una variable - no se puede modificar in situ y hacer algo con esta después. Pero usted puede crear una copia nueva de esta secuencia de token con las modificaciones necesarias y volver a designar de manera recursiva la misma macro.</p>
+<p data-astro-cid-byeekcgh="">En nuestro caso, la representaremos como una secuencia separada por comas de <code>expr</code> (ya que la usaremos no solo para números simples sino también para expresiones infijas intermedias) y la encerraremos entre corchetes para separarla del resto de la entrada:</p>
+<p data-astro-cid-byeekcgh="">Ahora, una secuencia de token no es en realidad una variable - no se puede modificar in situ y hacer algo con esta después. Pero usted puede crear una copia nueva de esta secuencia de token con las modificaciones necesarias y volver a designar de manera recursiva la misma macro.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">macro_rules!</span><span class="sk-6f42c1-ffc799"> rpn</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">  ([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr),</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
@@ -95,7 +95,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Si usted proviene de un entorno de lenguaje funcional o ha trabajado antes con una biblioteca que proporciona datos inmutables, es probable que ambos métodos - mutación de datos mediante la creación de una copia modificada y procesamiento de listas con recursividad - le resulten familiares.</p>
+<p data-astro-cid-byeekcgh="">Si usted proviene de un entorno de lenguaje funcional o ha trabajado antes con una biblioteca que proporciona datos inmutables, es probable que ambos métodos - mutación de datos mediante la creación de una copia modificada y procesamiento de listas con recursividad - le resulten familiares.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">macro_rules!</span><span class="sk-6f42c1-ffc799"> rpn</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">  ([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr),</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">rest</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
@@ -107,10 +107,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Ahora, obviamente, el caso con un número simple es bastante improbable y no resulta muy interesante para nosotros, por lo tanto, tendremos que hacer coincidir todo lo demás después de ese número como una secuencia de cero o más tokens <code>tt</code>, que se puede pasar a la siguiente invocación de nuestra macro para una coincidencia y procesamiento posteriores:</p>
-<p data-astro-cid-yoyuw6fx="">En este punto aún nos falta el soporte del operador. ¿Cómo hacemos coincidir a los operadores?</p>
-<p data-astro-cid-yoyuw6fx="">Si nuestra RPN fuera una secuencia de tokens que quisiéramos procesar exactamente de la misma manera, simplemente podríamos usar una lista como <code>$($token:tt)*</code>. Lamentablemente, eso no nos permitiría revisar la lista y hacer avanzar un operando o aplicar un operador según cada token.</p>
-<p data-astro-cid-yoyuw6fx="">El libro dice que “el sistema macro no se ocupa de analizar la ambigüedad”, y eso es cierto para una sola bifurcación de macros - no podemos hacer coincidir una secuencia de números seguidos por un operador como <code>$($num:tt)* +</code> &nbsp;porque <code>+</code> también es un token válido y podría hacerse coincidir por el grupo tt, pero aquí es donde las macros recursivas vuelven a ayudar.</p>
+<p data-astro-cid-byeekcgh="">Ahora, obviamente, el caso con un número simple es bastante improbable y no resulta muy interesante para nosotros, por lo tanto, tendremos que hacer coincidir todo lo demás después de ese número como una secuencia de cero o más tokens <code>tt</code>, que se puede pasar a la siguiente invocación de nuestra macro para una coincidencia y procesamiento posteriores:</p>
+<p data-astro-cid-byeekcgh="">En este punto aún nos falta el soporte del operador. ¿Cómo hacemos coincidir a los operadores?</p>
+<p data-astro-cid-byeekcgh="">Si nuestra RPN fuera una secuencia de tokens que quisiéramos procesar exactamente de la misma manera, simplemente podríamos usar una lista como <code>$($token:tt)*</code>. Lamentablemente, eso no nos permitiría revisar la lista y hacer avanzar un operando o aplicar un operador según cada token.</p>
+<p data-astro-cid-byeekcgh="">El libro dice que “el sistema macro no se ocupa de analizar la ambigüedad”, y eso es cierto para una sola bifurcación de macros - no podemos hacer coincidir una secuencia de números seguidos por un operador como <code>$($num:tt)* +</code> &nbsp;porque <code>+</code> también es un token válido y podría hacerse coincidir por el grupo tt, pero aquí es donde las macros recursivas vuelven a ayudar.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">macro_rules!</span><span class="sk-6f42c1-ffc799"> rpn</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">  ([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr),</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-d73a49-a0a0a0"> $</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">rest</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
@@ -138,7 +138,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Si tiene diferentes bifurcaciones en su definición de macro, Rust las probará una por una, para que podamos poner nuestras bifurcaciones para el operador antes del número uno y, de esta manera, evitar cualquier tipo de conflicto:</p>
+<p data-astro-cid-byeekcgh="">Si tiene diferentes bifurcaciones en su definición de macro, Rust las probará una por una, para que podamos poner nuestras bifurcaciones para el operador antes del número uno y, de esta manera, evitar cualquier tipo de conflicto:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">macro_rules!</span><span class="sk-6f42c1-ffc799"> rpn</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">  ([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">b</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr, </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">a</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(, </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-d73a49-a0a0a0"> $</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">rest</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
@@ -166,11 +166,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Como dije antes, los operadores se aplican a los dos últimos números de la pila, por lo tanto, tendremos que lograr una coincidencia por separado, “evaluar” el resultado (construir una expresión infija regular) y volver a colocarlo:</p>
-<p data-astro-cid-yoyuw6fx="">En realidad no me gustan mucho esas repeticiones tan obvias, pero, al igual que con los literales, no hay ningún tipo de token especial que coincida con los operadores.</p>
-<p data-astro-cid-yoyuw6fx="">Lo que podemos hacer, sin embargo, es agregar un auxiliar que sería responsable de la evaluación y delegar cualquier bifurcación para el operador explícita a este.</p>
-<p data-astro-cid-yoyuw6fx="">En las macros, no se puede utilizar un auxiliar externo, pero de lo único que puede estar seguro es que sus macros ya están en escala, por lo tanto, el truco habitual es tener una bifurcación en la misma macro “marcada” con alguna secuencia de token única, y designarla de manera recursiva como lo hicimos con las bifurcaciones regulares.</p>
-<p data-astro-cid-yoyuw6fx="">Usaremos <code>@op</code> como marcador, y aceptaremos cualquier operador a través de <code>tt</code> dentro de este ( <code>tt</code> sería inequívoco en ese contexto, ya que solo pasaremos operadores a este auxiliar).</p>
+<p data-astro-cid-byeekcgh="">Como dije antes, los operadores se aplican a los dos últimos números de la pila, por lo tanto, tendremos que lograr una coincidencia por separado, “evaluar” el resultado (construir una expresión infija regular) y volver a colocarlo:</p>
+<p data-astro-cid-byeekcgh="">En realidad no me gustan mucho esas repeticiones tan obvias, pero, al igual que con los literales, no hay ningún tipo de token especial que coincida con los operadores.</p>
+<p data-astro-cid-byeekcgh="">Lo que podemos hacer, sin embargo, es agregar un auxiliar que sería responsable de la evaluación y delegar cualquier bifurcación para el operador explícita a este.</p>
+<p data-astro-cid-byeekcgh="">En las macros, no se puede utilizar un auxiliar externo, pero de lo único que puede estar seguro es que sus macros ya están en escala, por lo tanto, el truco habitual es tener una bifurcación en la misma macro “marcada” con alguna secuencia de token única, y designarla de manera recursiva como lo hicimos con las bifurcaciones regulares.</p>
+<p data-astro-cid-byeekcgh="">Usaremos <code>@op</code> como marcador, y aceptaremos cualquier operador a través de <code>tt</code> dentro de este ( <code>tt</code> sería inequívoco en ese contexto, ya que solo pasaremos operadores a este auxiliar).</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">macro_rules!</span><span class="sk-6f42c1-ffc799"> rpn</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">  (</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">op [ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">b</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr, </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">a</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(, </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">op</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">rest</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
@@ -202,7 +202,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Y la pila ya no necesita expandirse en cada bifurcación separada, ya que la encerramos entre <code>[]</code> corchetes anteriormente, se puede hacer coincidir como cualquier otro árbol de tokens <code>(tt)</code>, y luego pasar a nuestro auxiliar:</p>
+<p data-astro-cid-byeekcgh="">Y la pila ya no necesita expandirse en cada bifurcación separada, ya que la encerramos entre <code>[]</code> corchetes anteriormente, se puede hacer coincidir como cualquier otro árbol de tokens <code>(tt)</code>, y luego pasar a nuestro auxiliar:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">macro_rules!</span><span class="sk-6f42c1-ffc799"> rpn</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // ...</span></span>
@@ -216,8 +216,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Ahora las bifurcaciones correspondientes procesan los tokens, y nosotros debemos manejar el proceso final cuando la pila contenga un solo elemento, y ya no quedan más tokens:</p>
-<p data-astro-cid-yoyuw6fx="">En este punto, si usted invoca esta macro con una pila vacía y una expresión RPN, ya arrojará un resultado correcto:</p>
+<p data-astro-cid-byeekcgh="">Ahora las bifurcaciones correspondientes procesan los tokens, y nosotros debemos manejar el proceso final cuando la pila contenga un solo elemento, y ya no quedan más tokens:</p>
+<p data-astro-cid-byeekcgh="">En este punto, si usted invoca esta macro con una pila vacía y una expresión RPN, ya arrojará un resultado correcto:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">([] </span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)); </span><span class="sk-6a737d-8b8b8b94">// 20</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -225,8 +225,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx=""><a href="https://play.rust-lang.org/?gist=cd56f6d7335e2d27c05e7fa89545b2cd&amp;version=stable" target="_blank" rel="noopener noreferrer">Sitio de prueba</a></p>
-<p data-astro-cid-yoyuw6fx=""><code>println!("{}", rpn!([] 2 3 + 4 *)); // 20</code></p>
+<p data-astro-cid-byeekcgh=""><a href="https://play.rust-lang.org/?gist=cd56f6d7335e2d27c05e7fa89545b2cd&amp;version=stable" target="_blank" rel="noopener noreferrer">Sitio de prueba</a></p>
+<p data-astro-cid-byeekcgh=""><code>println!("{}", rpn!([] 2 3 + 4 *)); // 20</code></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">macro_rules!</span><span class="sk-6f42c1-ffc799"> rpn</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // ...</span></span>
@@ -242,7 +242,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Sin embargo, nuestra pila es un detalle de la implementación y realmente no quisiéramos que cada usuario pase una pila vacía, por lo tanto, agregaremos otra bifurcación de captura general al final que serviría como punto de entrada y agregaría [] de manera automática:</p>
+<p data-astro-cid-byeekcgh="">Sin embargo, nuestra pila es un detalle de la implementación y realmente no quisiéramos que cada usuario pase una pila vacía, por lo tanto, agregaremos otra bifurcación de captura general al final que serviría como punto de entrada y agregaría [] de manera automática:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">15</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff">)); </span><span class="sk-6a737d-8b8b8b94">// 5</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -250,9 +250,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx=""><a href="https://play.rust-lang.org/?gist=d94abc0e20aa5c7f689706af06fd1923&amp;version=stable" target="_blank" rel="noopener noreferrer">Sitio de prueba</a></p>
-<p data-astro-cid-yoyuw6fx="">Nuestra macro incluso funciona para expresiones más complejas, ¡como la de la <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation#Example" target="_blank" rel="noopener noreferrer">página de Wikipedia sobre RPN</a>!</p>
-<p data-astro-cid-yoyuw6fx=""><code>println!("{}", rpn!(15 7 1 1 + - / 3 * 2 1 1 + + -)); // 5</code></p>
+<p data-astro-cid-byeekcgh=""><a href="https://play.rust-lang.org/?gist=d94abc0e20aa5c7f689706af06fd1923&amp;version=stable" target="_blank" rel="noopener noreferrer">Sitio de prueba</a></p>
+<p data-astro-cid-byeekcgh="">Nuestra macro incluso funciona para expresiones más complejas, ¡como la de la <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation#Example" target="_blank" rel="noopener noreferrer">página de Wikipedia sobre RPN</a>!</p>
+<p data-astro-cid-byeekcgh=""><code>println!("{}", rpn!(15 7 1 1 + - / 3 * 2 1 1 + + -)); // 5</code></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -260,7 +260,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx=""><strong>Solución de errores</strong></h3>
+<h3 data-astro-cid-byeekcgh=""><strong>Solución de errores</strong></h3>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">error[E0277]:</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> trait</span><span class="sk-032f62-99ffe4"> bound</span><span class="sk-032f62-99ffe4"> `[{integer}; 2]: std::fmt::Display`</span><span class="sk-6f42c1-ffc799"> is</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> satisfied</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">src/main.rs:36:20</span></span>
@@ -275,9 +275,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Ahora todo parece funcionar sin inconvenientes para las expresiones RPN correctas, pero para que una macro esté lista para funcionar, debemos estar seguros de que también pueda gestionar las entradas no válidas, con un mensaje de error razonable.</p>
-<p data-astro-cid-yoyuw6fx="">En primer lugar, intentaremos insertar otro número en el medio y ver qué sucede:</p>
-<p data-astro-cid-yoyuw6fx="">Resultado:</p>
+<p data-astro-cid-byeekcgh="">Ahora todo parece funcionar sin inconvenientes para las expresiones RPN correctas, pero para que una macro esté lista para funcionar, debemos estar seguros de que también pueda gestionar las entradas no válidas, con un mensaje de error razonable.</p>
+<p data-astro-cid-byeekcgh="">En primer lugar, intentaremos insertar otro número en el medio y ver qué sucede:</p>
+<p data-astro-cid-byeekcgh="">Resultado:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">#![feature(trace_macros)]</span></span>
 <span class="line"></span>
@@ -294,7 +294,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">De acuerdo, eso indudablemente no parece útil, ya que no brinda ninguna información relevante con respecto al error real en la expresión.</p>
+<p data-astro-cid-byeekcgh="">De acuerdo, eso indudablemente no parece útil, ya que no brinda ninguna información relevante con respecto al error real en la expresión.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">note:</span><span class="sk-032f62-99ffe4"> trace_macro</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">src/main.rs:39:13</span></span>
@@ -331,7 +331,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Para averiguar qué sucedió, deberemos depurar nuestras macros. Para ello, utilizaremos una característica <a href="https://doc.rust-lang.org/unstable-book/language-features/trace-macros.html" target="_blank" rel="noopener noreferrer"><code>trace_macros</code></a> (y, como para cualquier otra característica del compilador opcional, necesitará una versión nocturna de Rust). No queremos rastrear la designación <code>println!</code>, por lo tanto, separaremos nuestro cálculo de RPN a una variable:</p>
+<p data-astro-cid-byeekcgh="">Para averiguar qué sucedió, deberemos depurar nuestras macros. Para ello, utilizaremos una característica <a href="https://doc.rust-lang.org/unstable-book/language-features/trace-macros.html" target="_blank" rel="noopener noreferrer"><code>trace_macros</code></a> (y, como para cualquier otra característica del compilador opcional, necesitará una versión nocturna de Rust). No queremos rastrear la designación <code>println!</code>, por lo tanto, separaremos nuestro cálculo de RPN a una variable:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> note:</span><span class="sk-032f62-99ffe4"> expanding</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-032f62-99ffe4"> { [ </span><span class="sk-005cc5-ffc799">3</span><span class="sk-032f62-99ffe4"> + </span><span class="sk-005cc5-ffc799">7</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-032f62-99ffe4"> , </span><span class="sk-005cc5-ffc799">2</span><span class="sk-032f62-99ffe4"> ] }`</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> note:</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">rpn</span><span class="sk-032f62-99ffe4"> ! ( [  ] [ </span><span class="sk-005cc5-ffc799">3</span><span class="sk-032f62-99ffe4"> + </span><span class="sk-005cc5-ffc799">7</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-032f62-99ffe4"> , </span><span class="sk-005cc5-ffc799">2</span><span class="sk-032f62-99ffe4"> ] )`</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -340,11 +340,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx=""><a href="https://play.rust-lang.org/?gist=610bc0c241aacda3d30a916f89b244cd&amp;version=nightly" target="_blank" rel="noopener noreferrer">Sitio de prueba</a></p>
-<p data-astro-cid-yoyuw6fx="">En el resultado, ahora veremos cómo nuestra macro se está evaluando de manera recursiva, paso a paso:</p>
-<p data-astro-cid-yoyuw6fx="">Si analizamos detenidamente el seguimiento, advertiremos que el problema se origina en estos pasos:</p>
-<p data-astro-cid-yoyuw6fx="">Puesto que a <code>[ 3 + 7 * 4 , 2 ]</code> la bifurcación <code>([$result:expr]) =&gt; ...</code> no lo hizo coincidir como expresión final, nuestra bifurcación <code>($($tokens:tt)*) =&gt; ...</code> de captura general final antepuso una pila vacía con <code>[]</code> y luego al original <code>[ 3 + 7 * 4 , 2 ]</code> el genérico <code>$num:tt</code> lo hizo coincidir y se empujó hacia la pila como único valor final.</p>
-<p data-astro-cid-yoyuw6fx="">Para evitar que esto suceda, insertaremos otra bifurcación entre estas dos últimas que coincidirían con cualquier pila.</p>
+<p data-astro-cid-byeekcgh=""><a href="https://play.rust-lang.org/?gist=610bc0c241aacda3d30a916f89b244cd&amp;version=nightly" target="_blank" rel="noopener noreferrer">Sitio de prueba</a></p>
+<p data-astro-cid-byeekcgh="">En el resultado, ahora veremos cómo nuestra macro se está evaluando de manera recursiva, paso a paso:</p>
+<p data-astro-cid-byeekcgh="">Si analizamos detenidamente el seguimiento, advertiremos que el problema se origina en estos pasos:</p>
+<p data-astro-cid-byeekcgh="">Puesto que a <code>[ 3 + 7 * 4 , 2 ]</code> la bifurcación <code>([$result:expr]) =&gt; ...</code> no lo hizo coincidir como expresión final, nuestra bifurcación <code>($($tokens:tt)*) =&gt; ...</code> de captura general final antepuso una pila vacía con <code>[]</code> y luego al original <code>[ 3 + 7 * 4 , 2 ]</code> el genérico <code>$num:tt</code> lo hizo coincidir y se empujó hacia la pila como único valor final.</p>
+<p data-astro-cid-byeekcgh="">Para evitar que esto suceda, insertaremos otra bifurcación entre estas dos últimas que coincidirían con cualquier pila.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">macro_rules!</span><span class="sk-6f42c1-ffc799"> rpn</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // ...</span></span>
@@ -369,7 +369,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Solo se afectaría cuando nos quedamos sin tokens, pero la pila no tenía exactamente un valor final, por lo tanto, podemos tratarlo como un error de compilación y producir un mensaje de error más útil usando una macro incorporada <a href="https://doc.rust-lang.org/std/macro.compile_error.html" target="_blank" rel="noopener noreferrer"><code>compile_error!</code></a>.</p>
+<p data-astro-cid-byeekcgh="">Solo se afectaría cuando nos quedamos sin tokens, pero la pila no tenía exactamente un valor final, por lo tanto, podemos tratarlo como un error de compilación y producir un mensaje de error más útil usando una macro incorporada <a href="https://doc.rust-lang.org/std/macro.compile_error.html" target="_blank" rel="noopener noreferrer"><code>compile_error!</code></a>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">error:</span><span class="sk-032f62-99ffe4"> Could</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> find</span><span class="sk-032f62-99ffe4"> final</span><span class="sk-032f62-99ffe4"> value</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> expression,</span><span class="sk-032f62-99ffe4"> perhaps</span><span class="sk-032f62-99ffe4"> you</span><span class="sk-032f62-99ffe4"> missed</span><span class="sk-032f62-99ffe4"> an</span><span class="sk-032f62-99ffe4"> operator?</span><span class="sk-032f62-99ffe4"> Final</span><span class="sk-032f62-99ffe4"> stack:</span><span class="sk-24292e-fff"> [ (3 </span><span class="sk-032f62-99ffe4">+</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> 4 , 2 ]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">src/main.rs:31:9</span></span>
@@ -384,8 +384,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Tenga en cuenta que no podemos usar <code>format!</code> en este contexto, ya que este utiliza API en tiempo de ejecución para dar formato a una cadena, y tendremos que limitarnos a las macros incorporadas <code>concat!</code> y <code>stringify!</code> para dar formato a un mensaje:</p>
-<p data-astro-cid-yoyuw6fx=""><a href="https://play.rust-lang.org/?gist=e56be9422387bcae54aab3b8405a11e7&amp;version=stable" target="_blank" rel="noopener noreferrer">Sitio de prueba</a></p>
+<p data-astro-cid-byeekcgh="">Tenga en cuenta que no podemos usar <code>format!</code> en este contexto, ya que este utiliza API en tiempo de ejecución para dar formato a una cadena, y tendremos que limitarnos a las macros incorporadas <code>concat!</code> y <code>stringify!</code> para dar formato a un mensaje:</p>
+<p data-astro-cid-byeekcgh=""><a href="https://play.rust-lang.org/?gist=e56be9422387bcae54aab3b8405a11e7&amp;version=stable" target="_blank" rel="noopener noreferrer">Sitio de prueba</a></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -393,7 +393,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">El mensaje de error ahora resulta más comprensible y contiene al menos algunos detalles sobre el estado actual de la evaluación:</p>
+<p data-astro-cid-byeekcgh="">El mensaje de error ahora resulta más comprensible y contiene al menos algunos detalles sobre el estado actual de la evaluación:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">error:</span><span class="sk-032f62-99ffe4"> expected</span><span class="sk-032f62-99ffe4"> expression,</span><span class="sk-032f62-99ffe4"> found</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">@</span><span class="sk-032f62-99ffe4">`</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">src/main.rs:15:14</span></span>
@@ -408,9 +408,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Pero, ¿qué pasaría si perdemos algún número?</p>
-<p data-astro-cid-yoyuw6fx=""><a href="https://play.rust-lang.org/?gist=ce40630b8c1aa610c46b94557fdc9905&amp;version=stable" target="_blank" rel="noopener noreferrer">Sitio de prueba</a></p>
-<p data-astro-cid-yoyuw6fx=""><code>println!("{}", rpn!(2 3 + *));</code></p>
+<p data-astro-cid-byeekcgh="">Pero, ¿qué pasaría si perdemos algún número?</p>
+<p data-astro-cid-byeekcgh=""><a href="https://play.rust-lang.org/?gist=ce40630b8c1aa610c46b94557fdc9905&amp;version=stable" target="_blank" rel="noopener noreferrer">Sitio de prueba</a></p>
+<p data-astro-cid-byeekcgh=""><code>println!("{}", rpn!(2 3 + *));</code></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">macro_rules!</span><span class="sk-6f42c1-ffc799"> rpn</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">  (</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">op [ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">b</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr, </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">a</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(, </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">op</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">rest</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
@@ -433,7 +433,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Lamentablemente, esto todavía no es muy útil:</p>
+<p data-astro-cid-byeekcgh="">Lamentablemente, esto todavía no es muy útil:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">error:</span><span class="sk-032f62-99ffe4"> Could</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> apply</span><span class="sk-032f62-99ffe4"> operator</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> current</span><span class="sk-032f62-99ffe4"> stack:</span><span class="sk-24292e-fff"> [ </span><span class="sk-005cc5-ffc799">2</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-032f62-99ffe4"> ]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">src/main.rs:9:9</span></span>
@@ -448,10 +448,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Si trata de usar trace_macros, tampoco va a ampliar la pila aquí por alguna razón, pero, afortunadamente, lo que sucede es relativamente claro - @op tiene condiciones muy específicas en cuanto a lo que se debe hacer coincidir (se esperan al menos dos valores en la pila) y, cuando no se puede, a @, $num:tt la hace coincidir y la empuja a la pila.</p>
-<p data-astro-cid-yoyuw6fx="">Para evitar esto, de nuevo, agregaremos otra bifurcación para que coincida con todo lo que comience con @op que aún no se ha hecho coincidir, y que genera un error de compilación:</p>
-<p data-astro-cid-yoyuw6fx=""><a href="https://play.rust-lang.org/?gist=8729a8f3c96fa58ed62d35804c48782d&amp;version=stable" target="_blank" rel="noopener noreferrer">Sitio de prueba</a></p>
-<p data-astro-cid-yoyuw6fx="">Intentémoslo nuevamente:</p>
-<p data-astro-cid-yoyuw6fx="">¡Mucho mejor! Ahora, nuestra macro puede evaluar cualquier expresión de RPN durante la compilación y controla correctamente los errores más comunes, así que nos detendremos aquí y consideremos que está lista para funcionar:)</p>
-<p data-astro-cid-yoyuw6fx="">Podríamos agregar muchas mejoras más pequeñas, pero me gustaría dejarlas afuera de este tutorial de demostración.</p>
-<p data-astro-cid-yoyuw6fx="">No dude en comentarme si esto le ha resultado útil y/o qué temas le gustaría que incluyamos <a href="https://twitter.com/RReverser" target="_blank" rel="noopener noreferrer">en Twitter</a>.</p>
+<p data-astro-cid-byeekcgh="">Si trata de usar trace_macros, tampoco va a ampliar la pila aquí por alguna razón, pero, afortunadamente, lo que sucede es relativamente claro - @op tiene condiciones muy específicas en cuanto a lo que se debe hacer coincidir (se esperan al menos dos valores en la pila) y, cuando no se puede, a @, $num:tt la hace coincidir y la empuja a la pila.</p>
+<p data-astro-cid-byeekcgh="">Para evitar esto, de nuevo, agregaremos otra bifurcación para que coincida con todo lo que comience con @op que aún no se ha hecho coincidir, y que genera un error de compilación:</p>
+<p data-astro-cid-byeekcgh=""><a href="https://play.rust-lang.org/?gist=8729a8f3c96fa58ed62d35804c48782d&amp;version=stable" target="_blank" rel="noopener noreferrer">Sitio de prueba</a></p>
+<p data-astro-cid-byeekcgh="">Intentémoslo nuevamente:</p>
+<p data-astro-cid-byeekcgh="">¡Mucho mejor! Ahora, nuestra macro puede evaluar cualquier expresión de RPN durante la compilación y controla correctamente los errores más comunes, así que nos detendremos aquí y consideremos que está lista para funcionar:)</p>
+<p data-astro-cid-byeekcgh="">Podríamos agregar muchas mejoras más pequeñas, pero me gustaría dejarlas afuera de este tutorial de demostración.</p>
+<p data-astro-cid-byeekcgh="">No dude en comentarme si esto le ha resultado útil y/o qué temas le gustaría que incluyamos <a href="https://twitter.com/RReverser" target="_blank" rel="noopener noreferrer">en Twitter</a>.</p>

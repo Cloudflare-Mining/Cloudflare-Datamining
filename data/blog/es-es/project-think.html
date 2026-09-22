@@ -1,17 +1,17 @@
-<p data-astro-cid-yoyuw6fx="">Hoy presentamos Project Think: la nueva generación del <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>SDK de agentes</u></a>. Project Think es un conjunto de nuevas primitivas para el desarrollo de agentes de larga duración (ejecución duradera, subagentes, ejecución de código en un sandbox, sesiones persistentes) y una clase base prescriptiva que conecta todas ellas. Utiliza las primitivas para crear exactamente lo que necesitas, o utiliza la clase base para empezar rápidamente.</p>
-<p data-astro-cid-yoyuw6fx="">A principios de este año un suceso cambió nuestra forma de pensar sobre la IA. Herramientas como <a href="https://github.com/badlogic/pi-mono" target="_blank" rel="noopener noreferrer"><u>Pi</u></a>, <a href="https://github.com/openclaw" target="_blank" rel="noopener noreferrer"><u>OpenClaw</u></a>, <a href="https://docs.anthropic.com/en/docs/agents" target="_blank" rel="noopener noreferrer"><u>Claude Code</u></a> y <a href="https://openai.com/codex" target="_blank" rel="noopener noreferrer"><u>Codex</u></a> demostraron una idea sencilla pero muy interesante: si equipas a un LLM con la capacidad para leer archivos, escribir código, ejecutarlo y recordar lo que ha aprendido, el resultado es algo que se parece menos a una herramienta para desarrolladores y más a un asistente de uso general.</p>
-<p data-astro-cid-yoyuw6fx="">Estos agentes de programación ya no solo escriben código. Los usuarios los utilizan para gestionar calendarios, analizar conjuntos de datos, negociar compras, declarar impuestos y automatizar flujos de trabajo empresariales completos. El patrón es siempre el mismo: el agente lee el contexto, razona sobre él, escribe el código necesario para realizar determinadas acciones, observa el resultado y repite el proceso. El código es el marco universal de acción.</p>
-<p data-astro-cid-yoyuw6fx="">Nuestro equipo ha estado utilizando estos agentes de programación a diario. Y seguíamos topándonos con los mismos obstáculos:</p>
+<p data-astro-cid-byeekcgh="">Hoy presentamos Project Think: la nueva generación del <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>SDK de agentes</u></a>. Project Think es un conjunto de nuevas primitivas para el desarrollo de agentes de larga duración (ejecución duradera, subagentes, ejecución de código en un sandbox, sesiones persistentes) y una clase base prescriptiva que conecta todas ellas. Utiliza las primitivas para crear exactamente lo que necesitas, o utiliza la clase base para empezar rápidamente.</p>
+<p data-astro-cid-byeekcgh="">A principios de este año un suceso cambió nuestra forma de pensar sobre la IA. Herramientas como <a href="https://github.com/badlogic/pi-mono" target="_blank" rel="noopener noreferrer"><u>Pi</u></a>, <a href="https://github.com/openclaw" target="_blank" rel="noopener noreferrer"><u>OpenClaw</u></a>, <a href="https://docs.anthropic.com/en/docs/agents" target="_blank" rel="noopener noreferrer"><u>Claude Code</u></a> y <a href="https://openai.com/codex" target="_blank" rel="noopener noreferrer"><u>Codex</u></a> demostraron una idea sencilla pero muy interesante: si equipas a un LLM con la capacidad para leer archivos, escribir código, ejecutarlo y recordar lo que ha aprendido, el resultado es algo que se parece menos a una herramienta para desarrolladores y más a un asistente de uso general.</p>
+<p data-astro-cid-byeekcgh="">Estos agentes de programación ya no solo escriben código. Los usuarios los utilizan para gestionar calendarios, analizar conjuntos de datos, negociar compras, declarar impuestos y automatizar flujos de trabajo empresariales completos. El patrón es siempre el mismo: el agente lee el contexto, razona sobre él, escribe el código necesario para realizar determinadas acciones, observa el resultado y repite el proceso. El código es el marco universal de acción.</p>
+<p data-astro-cid-byeekcgh="">Nuestro equipo ha estado utilizando estos agentes de programación a diario. Y seguíamos topándonos con los mismos obstáculos:</p>
 <ul>
 	<li><strong>Su ejecución solo es posible en tu portátil o en un costoso VPS:</strong> no es posible el uso compartido, la colaboración ni la transferencia entre dispositivos.</li>
 	<li><strong>Son caros cuando están inactivos</strong>: tienen un coste mensual fijo, utilices o no el agente. Si amplías su uso a un equipo o a una empresa, el coste aumenta rápidamente.</li>
 	<li><strong>Requieren gestión y configuración manual</strong>: como la instalación de dependencias, la gestión de actualizaciones, la configuración de identidad y los secretos.</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">Además, presentan un problema estructural más profundo. Las aplicaciones tradicionales dan servicio a muchos usuarios desde una sola instancia. Como mencionamos en nuestra publicación de bienvenida a la Agents Week, <a href="https://blog.cloudflare.com/welcome-to-agents-week" target="_blank" rel="noopener noreferrer"><u>los agentes ofrecen un modelo uno a uno</u></a>. Cada agente es una instancia exclusiva que da servicio a un usuario y que ejecuta una tarea. Un restaurante tiene una carta y una cocina optimizada para elaborar los platos en gran cantidad. Un agente es más como un chef personal: distintos ingredientes, distintas técnicas y distintas herramientas cada vez.</p>
-<p data-astro-cid-yoyuw6fx="">Eso cambia fundamentalmente el desafío de su ampliación. Si cien millones de profesionales del conocimiento utilizaran cada uno un asistente agéntico, incluso con un grado de simultaneidad no muy alto, necesitarías capacidad para decenas de millones de sesiones simultáneas. Con los costes actuales por contenedor, eso es insostenible. Necesitamos una base distinta.</p>
-<p data-astro-cid-yoyuw6fx="">Y eso es en lo que hemos estado trabajando.</p>
-<h2 data-astro-cid-yoyuw6fx="">Novedad: Project Think</h2>
-<p data-astro-cid-yoyuw6fx="">Project Think incluye un conjunto de nuevas primitivas para el SDK de agentes:</p>
+<p data-astro-cid-byeekcgh="">Además, presentan un problema estructural más profundo. Las aplicaciones tradicionales dan servicio a muchos usuarios desde una sola instancia. Como mencionamos en nuestra publicación de bienvenida a la Agents Week, <a href="https://blog.cloudflare.com/welcome-to-agents-week" target="_blank" rel="noopener noreferrer"><u>los agentes ofrecen un modelo uno a uno</u></a>. Cada agente es una instancia exclusiva que da servicio a un usuario y que ejecuta una tarea. Un restaurante tiene una carta y una cocina optimizada para elaborar los platos en gran cantidad. Un agente es más como un chef personal: distintos ingredientes, distintas técnicas y distintas herramientas cada vez.</p>
+<p data-astro-cid-byeekcgh="">Eso cambia fundamentalmente el desafío de su ampliación. Si cien millones de profesionales del conocimiento utilizaran cada uno un asistente agéntico, incluso con un grado de simultaneidad no muy alto, necesitarías capacidad para decenas de millones de sesiones simultáneas. Con los costes actuales por contenedor, eso es insostenible. Necesitamos una base distinta.</p>
+<p data-astro-cid-byeekcgh="">Y eso es en lo que hemos estado trabajando.</p>
+<h2 data-astro-cid-byeekcgh="">Novedad: Project Think</h2>
+<p data-astro-cid-byeekcgh="">Project Think incluye un conjunto de nuevas primitivas para el SDK de agentes:</p>
 <ul>
 	<li><strong>Ejecución duradera</strong> con fibras: recuperación tras fallos, puntos de control, keepalive automático.</li>
 	<li><strong>Subagentes</strong>: agentes secundarios aislados con su propio SQLite y RPC con tipo.</li>
@@ -20,99 +20,99 @@
 	<li><strong>La secuencia de ejecución</strong>: espacio de trabajo, aislamiento, npm, navegador, espacio aislado.</li>
 	<li><strong>Extensiones de creación propia</strong>: agentes que escriben sus propias herramientas en tiempo de ejecución.</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">Cada una de estas primitivas se puede utilizar directamente con la clase base Agent. Crea exactamente lo que necesitas con las primitivas, o utiliza la clase base Think para empezar rápidamente. Veamos qué hace cada una.</p>
-<h2 data-astro-cid-yoyuw6fx="">Agentes de larga duración</h2>
-<p data-astro-cid-yoyuw6fx="">Los agentes, tal como existen hoy en día, son efímeros. Se ejecutan durante una sesión, vinculados a un único proceso o dispositivo, y luego desaparecen. Un agente de programación que desaparece cuando tu portátil está en reposo, eso es una herramienta. Un agente persistente, es decir, que puede activarse bajo demanda, continuar funcionando después de una interrupción y mantener el estado sin depender de tu entorno de ejecución local, empieza a parecerse a una infraestructura. Y cambia por completo el modelo de ampliación de los agentes.</p>
-<p data-astro-cid-yoyuw6fx="">El SDK de agentes se basa en <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> para equipar a cada agente con una identidad, un estado persistente y la capacidad de activarse al recibir un mensaje. El <a href="https://en.wikipedia.org/wiki/Actor_model" target="_blank" rel="noopener noreferrer"><u>modelo actor</u></a> es el siguiente: cada agente es una entidad direccionable con su propia base de datos SQLite. No consume recursos de proceso cuando está en hibernación. Cuando se produce algún evento (una solicitud HTTP, un mensaje WebSocket, una alarma programada, un correo electrónico entrante), la plataforma activa al agente, carga su estado y le entrega el evento. El agente completa su trabajo y se desactiva de nuevo.</p>
-<div class="emdash-table-wrapper" data-astro-cid-zdje7xco="">
-	<table class="emdash-table" data-astro-cid-zdje7xco="">
-		<thead data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<th data-astro-cid-zdje7xco="">
+<p data-astro-cid-byeekcgh="">Cada una de estas primitivas se puede utilizar directamente con la clase base Agent. Crea exactamente lo que necesitas con las primitivas, o utiliza la clase base Think para empezar rápidamente. Veamos qué hace cada una.</p>
+<h2 data-astro-cid-byeekcgh="">Agentes de larga duración</h2>
+<p data-astro-cid-byeekcgh="">Los agentes, tal como existen hoy en día, son efímeros. Se ejecutan durante una sesión, vinculados a un único proceso o dispositivo, y luego desaparecen. Un agente de programación que desaparece cuando tu portátil está en reposo, eso es una herramienta. Un agente persistente, es decir, que puede activarse bajo demanda, continuar funcionando después de una interrupción y mantener el estado sin depender de tu entorno de ejecución local, empieza a parecerse a una infraestructura. Y cambia por completo el modelo de ampliación de los agentes.</p>
+<p data-astro-cid-byeekcgh="">El SDK de agentes se basa en <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> para equipar a cada agente con una identidad, un estado persistente y la capacidad de activarse al recibir un mensaje. El <a href="https://en.wikipedia.org/wiki/Actor_model" target="_blank" rel="noopener noreferrer"><u>modelo actor</u></a> es el siguiente: cada agente es una entidad direccionable con su propia base de datos SQLite. No consume recursos de proceso cuando está en hibernación. Cuando se produce algún evento (una solicitud HTTP, un mensaje WebSocket, una alarma programada, un correo electrónico entrante), la plataforma activa al agente, carga su estado y le entrega el evento. El agente completa su trabajo y se desactiva de nuevo.</p>
+<div class="emdash-table-wrapper" data-astro-cid-paimycxl="">
+	<table class="emdash-table" data-astro-cid-paimycxl="">
+		<thead data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<th data-astro-cid-paimycxl="">
 					<p><br></p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Máquinas virtuales/contenedores</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Durable Objects</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+		<tbody data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Coste por inactividad</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Coste de proceso completo, siempre</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Cero (en hibernación)</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Escalabilidad</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Suministro y gestión de la capacidad</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Automática, por agente</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Estado</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Base de datos externa necesaria</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>SQLite integrada</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Recuperación</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Función que debes desarrollar tú (gestores de procesos, comprobaciones de estado)</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Mantenimiento del estado cuando se reinicia la plataforma</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Identidad/enrutamiento</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Función que debes desarrollar tú (equilibradores de carga, sesiones persistentes)</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Función integrada (nombre → agente)</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>10 000 agentes, cada uno activo el 1 % del tiempo</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>10 000 instancias siempre activas</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Unos 100 activos en cualquier momento</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-yoyuw6fx="">Esto cambia el modelo económico de la ejecución de agentes a escala. En lugar de "un costoso agente por usuario avanzado", puedes crear "un agente por cliente" o "un agente por tarea" o "un agente por hilo de correo electrónico". El coste marginal de generar un nuevo agente es prácticamente cero.</p>
-<h3 data-astro-cid-yoyuw6fx="">Sobrevivir a los fallos: ejecución duradera con fibras</h3>
-<p data-astro-cid-yoyuw6fx="">Una llamada a un LLM tarda 30 segundos. Un bucle de agente de varios turnos puede durar mucho más tiempo. En cualquier momento durante ese intervalo, el entorno de ejecución puede desaparecer (ya sea por una implementación, por un reinicio de la plataforma o porque se ha alcanzado el límite de algún recurso). La conexión ascendente con el proveedor de modelos se interrumpe de forma permanente, se pierde el estado guardado en la memoria y los clientes conectados ven cómo se detiene la transmisión, sin ninguna explicación.</p>
-<p data-astro-cid-yoyuw6fx=""><a href="https://developers.cloudflare.com/agents/api-reference/durable-execution" target="_blank" rel="noopener noreferrer"><code><u>runFiber()</u></code></a> resuelve este problema. Una fibra es una invocación de función duradera: se registra en SQLite antes de que comience la ejecución, se puede comprobar en cualquier punto de control mediante <code>stash()</code> y se puede recuperar al reiniciar mediante <code>onFiberRecovered</code>.</p>
+<p data-astro-cid-byeekcgh="">Esto cambia el modelo económico de la ejecución de agentes a escala. En lugar de "un costoso agente por usuario avanzado", puedes crear "un agente por cliente" o "un agente por tarea" o "un agente por hilo de correo electrónico". El coste marginal de generar un nuevo agente es prácticamente cero.</p>
+<h3 data-astro-cid-byeekcgh="">Sobrevivir a los fallos: ejecución duradera con fibras</h3>
+<p data-astro-cid-byeekcgh="">Una llamada a un LLM tarda 30 segundos. Un bucle de agente de varios turnos puede durar mucho más tiempo. En cualquier momento durante ese intervalo, el entorno de ejecución puede desaparecer (ya sea por una implementación, por un reinicio de la plataforma o porque se ha alcanzado el límite de algún recurso). La conexión ascendente con el proveedor de modelos se interrumpe de forma permanente, se pierde el estado guardado en la memoria y los clientes conectados ven cómo se detiene la transmisión, sin ninguna explicación.</p>
+<p data-astro-cid-byeekcgh=""><a href="https://developers.cloudflare.com/agents/api-reference/durable-execution" target="_blank" rel="noopener noreferrer"><code><u>runFiber()</u></code></a> resuelve este problema. Una fibra es una invocación de función duradera: se registra en SQLite antes de que comience la ejecución, se puede comprobar en cualquier punto de control mediante <code>stash()</code> y se puede recuperar al reiniciar mediante <code>onFiberRecovered</code>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Agent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -166,9 +166,9 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">El SDK mantiene el agente activo automáticamente durante la ejecución de la fibra, sin necesidad de una configuración especial. Para los trabajos que duran unos minutos, keepAlive()/keepAliveWhile() evita el desalojo mientras el trabajo está activo. Para operaciones más largas (canalizaciones de CI, revisiones de diseño, generación de vídeo), el agente inicia el trabajo, conserva el ID del trabajo, hiberna y se activa cuando se devuelve la llamada.</p>
-<h3 data-astro-cid-yoyuw6fx="">Delegación de trabajo: subagentes mediante Facets</h3>
-<p data-astro-cid-yoyuw6fx="">Un único agente no debería hacerlo todo por sí mismo. Los <a href="https://developers.cloudflare.com/agents/api-reference/sub-agents" target="_blank" rel="noopener noreferrer"><u>subagentes</u></a> son Durable Objects secundarios coubicados con el Durable Object principal a través de <a href="https://blog.cloudflare.com/durable-object-facets-dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Facets</u></a>, cada uno con su propio SQLite aislado y su contexto de ejecución:</p>
+<p data-astro-cid-byeekcgh="">El SDK mantiene el agente activo automáticamente durante la ejecución de la fibra, sin necesidad de una configuración especial. Para los trabajos que duran unos minutos, keepAlive()/keepAliveWhile() evita el desalojo mientras el trabajo está activo. Para operaciones más largas (canalizaciones de CI, revisiones de diseño, generación de vídeo), el agente inicia el trabajo, conserva el ID del trabajo, hiberna y se activa cuando se devuelve la llamada.</p>
+<h3 data-astro-cid-byeekcgh="">Delegación de trabajo: subagentes mediante Facets</h3>
+<p data-astro-cid-byeekcgh="">Un único agente no debería hacerlo todo por sí mismo. Los <a href="https://developers.cloudflare.com/agents/api-reference/sub-agents" target="_blank" rel="noopener noreferrer"><u>subagentes</u></a> son Durable Objects secundarios coubicados con el Durable Object principal a través de <a href="https://blog.cloudflare.com/durable-object-facets-dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Facets</u></a>, cada uno con su propio SQLite aislado y su contexto de ejecución:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Agent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -199,9 +199,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Los subagentes están aislados a nivel de almacenamiento. Cada uno tiene su propia base de datos SQLite, y no hay ningún intercambio implícito de datos entre ellos. Esto lo aplica el entorno de ejecución, donde la latencia de RPC del subagente es una llamada a función. TypeScript detecta el uso indebido en tiempo de compilación.</p>
-<h3 data-astro-cid-yoyuw6fx="">Conversaciones persistentes: la API Session</h3>
-<p data-astro-cid-yoyuw6fx="">Los agentes que se ejecutan durante días o semanas necesitan algo más que la típica lista plana de mensajes. La <a href="https://developers.cloudflare.com/agents/api-reference/sessions" target="_blank" rel="noopener noreferrer"><u>API Session</u></a> experimental modela esto explícitamente. Disponible en la clase base Agent, las conversaciones se almacenan como árboles, donde cada mensaje tiene un parent_id. Esto permite la bifurcación (es decir, explorar una alternativa sin perder la ruta original), la compactación no destructiva (esto es, resumir los mensajes más antiguos en lugar de suprimirlos) y la búsqueda de texto completo en el historial de conversaciones a través de <a href="https://www.sqlite.org/fts5.html" target="_blank" rel="noopener noreferrer"><u>FTS5</u></a>.</p>
+<p data-astro-cid-byeekcgh="">Los subagentes están aislados a nivel de almacenamiento. Cada uno tiene su propia base de datos SQLite, y no hay ningún intercambio implícito de datos entre ellos. Esto lo aplica el entorno de ejecución, donde la latencia de RPC del subagente es una llamada a función. TypeScript detecta el uso indebido en tiempo de compilación.</p>
+<h3 data-astro-cid-byeekcgh="">Conversaciones persistentes: la API Session</h3>
+<p data-astro-cid-byeekcgh="">Los agentes que se ejecutan durante días o semanas necesitan algo más que la típica lista plana de mensajes. La <a href="https://developers.cloudflare.com/agents/api-reference/sessions" target="_blank" rel="noopener noreferrer"><u>API Session</u></a> experimental modela esto explícitamente. Disponible en la clase base Agent, las conversaciones se almacenan como árboles, donde cada mensaje tiene un parent_id. Esto permite la bifurcación (es decir, explorar una alternativa sin perder la ruta original), la compactación no destructiva (esto es, resumir los mensajes más antiguos en lugar de suprimirlos) y la búsqueda de texto completo en el historial de conversaciones a través de <a href="https://www.sqlite.org/fts5.html" target="_blank" rel="noopener noreferrer"><u>FTS5</u></a>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Agent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Session, SessionManager } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents/experimental/memory/session"</span><span class="sk-24292e-fff">;</span></span>
@@ -221,10 +221,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Session se puede utilizar directamente con <code>Agent</code>, y es la capa de almacenamiento sobre la que se basa la clase base <code>Think</code>.</p>
-<h2 data-astro-cid-yoyuw6fx="">De las llamadas a herramientas a la ejecución del código</h2>
-<p data-astro-cid-yoyuw6fx="">El proceso convencional de la llamada a herramientas resulta engorroso. El modelo llama a una herramienta, extrae el resultado a través de la ventana de contexto, llama a otra herramienta, la vuelve a extraer, y así sucesivamente. A medida que crece la superficie de ataque, este proceso resulta caro y complicado. Cien archivos significan cien recorridos de ida y vuelta a través del modelo.</p>
-<p data-astro-cid-yoyuw6fx="">Pero <a href="https://blog.cloudflare.com/code-mode" target="_blank" rel="noopener noreferrer"><u>los modelos son mejores escribiendo código para utilizar un sistema que invocando repetidamente herramientas</u></a>. Esta es la idea en la que se basa <a href="https://github.com/cloudflare/agents/tree/main/packages/codemode" target="_blank" rel="noopener noreferrer"><u>@cloudflare/codemode</u></a>: el LLM, en lugar de invocar secuencialmente las herramientas, escribe un único programa que se encarga de toda la tarea.</p>
+<p data-astro-cid-byeekcgh="">Session se puede utilizar directamente con <code>Agent</code>, y es la capa de almacenamiento sobre la que se basa la clase base <code>Think</code>.</p>
+<h2 data-astro-cid-byeekcgh="">De las llamadas a herramientas a la ejecución del código</h2>
+<p data-astro-cid-byeekcgh="">El proceso convencional de la llamada a herramientas resulta engorroso. El modelo llama a una herramienta, extrae el resultado a través de la ventana de contexto, llama a otra herramienta, la vuelve a extraer, y así sucesivamente. A medida que crece la superficie de ataque, este proceso resulta caro y complicado. Cien archivos significan cien recorridos de ida y vuelta a través del modelo.</p>
+<p data-astro-cid-byeekcgh="">Pero <a href="https://blog.cloudflare.com/code-mode" target="_blank" rel="noopener noreferrer"><u>los modelos son mejores escribiendo código para utilizar un sistema que invocando repetidamente herramientas</u></a>. Esta es la idea en la que se basa <a href="https://github.com/cloudflare/agents/tree/main/packages/codemode" target="_blank" rel="noopener noreferrer"><u>@cloudflare/codemode</u></a>: el LLM, en lugar de invocar secuencialmente las herramientas, escribe un único programa que se encarga de toda la tarea.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// The LLM writes this. It runs in a sandboxed Dynamic Worker.</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> files</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> tools.</span><span class="sk-6f42c1-ffc799">find</span><span class="sk-24292e-fff">({ pattern: </span><span class="sk-032f62-99ffe4">"**/*.ts"</span><span class="sk-24292e-fff"> });</span></span>
@@ -242,195 +242,195 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">En lugar de 100 viajes de ida y vuelta al modelo, solo tienes que ejecutar un único programa. Esto reduce el uso de tokens, acelera la ejecución y mejora los resultados. El <a href="https://github.com/cloudflare/mcp" target="_blank" rel="noopener noreferrer"><u>servidor MCP de la API de Cloudflare</u></a> demuestra este proceso a gran escala. Solo exponemos dos herramientas <code>(search()</code> y <code>execute())</code> que consumen unos 1000 tokens, frente a los aproximadamente 1,17 millones de tokens para el método equivalente no optimizado de una herramienta por cada punto final. Esto supone una reducción del 99,9 %.</p>
-<h3 data-astro-cid-yoyuw6fx="">La primitiva que faltaba: sandboxes seguros</h3>
-<p data-astro-cid-yoyuw6fx="">Una vez aceptado que los modelos deben escribir código en nombre de los usuarios, la cuestión que se plantea es: ¿dónde se ejecuta ese código? Al final no, no después de que un equipo de producto lo integre como un elemento de su hoja de ruta. Ahora mismo, para este usuario, en este sistema, con permisos estrictamente definidos.</p>
-<p data-astro-cid-yoyuw6fx=""><a href="https://blog.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Dynamic Workers</u></a> son ese sandbox. Un nuevo aislamiento de V8 se activa en tiempo de ejecución, en milisegundos, con unos pocos megabytes de memoria. Es aproximadamente 100 veces más rápido y hasta 100 veces más eficiente en términos de memoria que un contenedor. Puedes iniciar un aislamiento nuevo para cada solicitud, ejecutar un fragmento de código y desecharlo.</p>
-<p data-astro-cid-yoyuw6fx="">La elección de diseño fundamental es el modelo de capacidad. En lugar de empezar con una máquina de uso general e intentar restringirla, los Dynamic Workers empiezan casi sin autoridad de entorno (<code>globalOutbound: null</code>, sin acceso a la red) y el desarrollador otorga funciones explícitamente, recurso a recurso, mediante vinculaciones. Pasamos de preguntarnos "¿cómo evitamos que esto haga demasiado?" a "¿qué queremos que pueda hacer exactamente?"</p>
-<p data-astro-cid-yoyuw6fx="">Esta es la pregunta adecuada para la infraestructura de agentes.</p>
-<h3 data-astro-cid-yoyuw6fx="">La secuencia de ejecución</h3>
-<p data-astro-cid-yoyuw6fx="">Este modelo de capacidad genera naturalmente un espectro de entornos informáticos, una <strong>secuencia de ejecución</strong> por la que el agente avanza según sea necesario:</p>
+<p data-astro-cid-byeekcgh="">En lugar de 100 viajes de ida y vuelta al modelo, solo tienes que ejecutar un único programa. Esto reduce el uso de tokens, acelera la ejecución y mejora los resultados. El <a href="https://github.com/cloudflare/mcp" target="_blank" rel="noopener noreferrer"><u>servidor MCP de la API de Cloudflare</u></a> demuestra este proceso a gran escala. Solo exponemos dos herramientas <code>(search()</code> y <code>execute())</code> que consumen unos 1000 tokens, frente a los aproximadamente 1,17 millones de tokens para el método equivalente no optimizado de una herramienta por cada punto final. Esto supone una reducción del 99,9 %.</p>
+<h3 data-astro-cid-byeekcgh="">La primitiva que faltaba: sandboxes seguros</h3>
+<p data-astro-cid-byeekcgh="">Una vez aceptado que los modelos deben escribir código en nombre de los usuarios, la cuestión que se plantea es: ¿dónde se ejecuta ese código? Al final no, no después de que un equipo de producto lo integre como un elemento de su hoja de ruta. Ahora mismo, para este usuario, en este sistema, con permisos estrictamente definidos.</p>
+<p data-astro-cid-byeekcgh=""><a href="https://blog.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Dynamic Workers</u></a> son ese sandbox. Un nuevo aislamiento de V8 se activa en tiempo de ejecución, en milisegundos, con unos pocos megabytes de memoria. Es aproximadamente 100 veces más rápido y hasta 100 veces más eficiente en términos de memoria que un contenedor. Puedes iniciar un aislamiento nuevo para cada solicitud, ejecutar un fragmento de código y desecharlo.</p>
+<p data-astro-cid-byeekcgh="">La elección de diseño fundamental es el modelo de capacidad. En lugar de empezar con una máquina de uso general e intentar restringirla, los Dynamic Workers empiezan casi sin autoridad de entorno (<code>globalOutbound: null</code>, sin acceso a la red) y el desarrollador otorga funciones explícitamente, recurso a recurso, mediante vinculaciones. Pasamos de preguntarnos "¿cómo evitamos que esto haga demasiado?" a "¿qué queremos que pueda hacer exactamente?"</p>
+<p data-astro-cid-byeekcgh="">Esta es la pregunta adecuada para la infraestructura de agentes.</p>
+<h3 data-astro-cid-byeekcgh="">La secuencia de ejecución</h3>
+<p data-astro-cid-byeekcgh="">Este modelo de capacidad genera naturalmente un espectro de entornos informáticos, una <strong>secuencia de ejecución</strong> por la que el agente avanza según sea necesario:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="667" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H0G3Y1NFFRVA3Z21GJX2.png&amp;w=715&amp;h=667&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H0G3Y1NFFRVA3Z21GJX2.png&amp;w=640&amp;h=597&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H0G3Y1NFFRVA3Z21GJX2.png&amp;w=715&amp;h=667&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H0G3Y1NFFRVA3Z21GJX2.png&amp;w=750&amp;h=700&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H0G3Y1NFFRVA3Z21GJX2.png&amp;w=828&amp;h=772&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H0G3Y1NFFRVA3Z21GJX2.png&amp;w=1080&amp;h=1007&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H0G3Y1NFFRVA3Z21GJX2.png&amp;w=1280&amp;h=1194&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H0G3Y1NFFRVA3Z21GJX2.png&amp;w=1430&amp;h=1334&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3200 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H0G3Y1NFFRVA3Z21GJX2.png&amp;w=1288&amp;h=1202&amp;f=webp" data-lightbox-width="1288" data-lightbox-height="1202" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="667" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-yoyuw6fx="">El <strong>nivel 0</strong> es Workspace, un sistema de archivos virtual duradero respaldado por SQLite y R2. Lectura, escritura, edición, búsqueda, grep, diff. Basado en <a href="https://www.npmjs.com/package/@cloudflare/shell" target="_blank" rel="noopener noreferrer"><code><u>@cloudflare/shell</u></code></a>.</p>
-<p data-astro-cid-yoyuw6fx="">El <strong>nivel 1</strong> es un Dynamic Worker: JavaScript generado por un LLM que se ejecuta en un aislamiento en sandbox sin acceso a la red. Basado en <a href="https://www.npmjs.com/package/@cloudflare/codemode" target="_blank" rel="noopener noreferrer"><code><u>@cloudflare/codemode</u></code></a>.</p>
-<p data-astro-cid-yoyuw6fx="">El <strong>nivel 2</strong> añade npm. <a href="https://github.com/cloudflare/agents/tree/main/packages/worker-bundler" target="_blank" rel="noopener noreferrer"><code><u>@cloudflare/worker-bundler</u></code></a> obtiene los paquetes del registro, los agrupa con esbuild y carga el resultado en el Dynamic Worker. El agente escribe <code>import { z } from "zod"</code> y simplemente funciona.</p>
-<p data-astro-cid-yoyuw6fx="">El <strong>nivel 3</strong> es un navegador sin interfaz gráfica a través de <a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Cloudflare Browser Run</u></a>. Navegación, clic, extracción, captura de pantalla. Resulta útil cuando el servicio aún no admite agentes a través de MCP o las API.</p>
-<p data-astro-cid-yoyuw6fx="">El <strong>nivel 4</strong> es un <a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>Cloudflare Sandbox</u></a> configurado con tus cadenas de herramientas, repositorios y dependencias: <code>git clone, npm test, cargo build</code>, sincronizado bidireccionalmente con Workspace.</p>
-<p data-astro-cid-yoyuw6fx="">El principio clave del diseño: <strong>el agente debe ser útil solo en el nivel 0, sobre el que se añade cada uno de los otros niveles.</strong> El usuario puede añadir funciones sobre la marcha.</p>
-<h3 data-astro-cid-yoyuw6fx="">Elementos esenciales, no un marco</h3>
-<p data-astro-cid-yoyuw6fx="">Todas estas primitivas están disponibles como paquetes independientes. <a href="https://blog.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Dynamic Workers</u></a>, <a href="https://github.com/cloudflare/agents/tree/main/packages/codemode" target="_blank" rel="noopener noreferrer"><code><u>@cloudflare/codemode</u></code></a>, <a href="https://github.com/cloudflare/agents/tree/main/packages/worker-bundler" target="_blank" rel="noopener noreferrer"><code><u>@cloudflare/worker-bundler</u></code></a> y <a href="https://www.npmjs.com/package/@cloudflare/shell" target="_blank" rel="noopener noreferrer"><code><u>@cloudflare/shell</u></code></a> (un sistema de archivos duradero con herramientas) se pueden utilizar directamente con la clase base Agent. Puedes combinarlas para equipar a cualquier agente con un espacio de trabajo, la ejecución de código y la resolución de paquetes en tiempo de ejecución sin adoptar un marco prescriptivo.</p>
-<h2 data-astro-cid-yoyuw6fx="">La plataforma</h2>
-<p data-astro-cid-yoyuw6fx="">Te presentamos la pila completa para el desarrollo de agentes en Cloudflare:</p>
-<div class="emdash-table-wrapper" data-astro-cid-zdje7xco="">
-	<table class="emdash-table" data-astro-cid-zdje7xco="">
-		<thead data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<th data-astro-cid-zdje7xco="">
+<p data-astro-cid-byeekcgh="">El <strong>nivel 0</strong> es Workspace, un sistema de archivos virtual duradero respaldado por SQLite y R2. Lectura, escritura, edición, búsqueda, grep, diff. Basado en <a href="https://www.npmjs.com/package/@cloudflare/shell" target="_blank" rel="noopener noreferrer"><code><u>@cloudflare/shell</u></code></a>.</p>
+<p data-astro-cid-byeekcgh="">El <strong>nivel 1</strong> es un Dynamic Worker: JavaScript generado por un LLM que se ejecuta en un aislamiento en sandbox sin acceso a la red. Basado en <a href="https://www.npmjs.com/package/@cloudflare/codemode" target="_blank" rel="noopener noreferrer"><code><u>@cloudflare/codemode</u></code></a>.</p>
+<p data-astro-cid-byeekcgh="">El <strong>nivel 2</strong> añade npm. <a href="https://github.com/cloudflare/agents/tree/main/packages/worker-bundler" target="_blank" rel="noopener noreferrer"><code><u>@cloudflare/worker-bundler</u></code></a> obtiene los paquetes del registro, los agrupa con esbuild y carga el resultado en el Dynamic Worker. El agente escribe <code>import { z } from "zod"</code> y simplemente funciona.</p>
+<p data-astro-cid-byeekcgh="">El <strong>nivel 3</strong> es un navegador sin interfaz gráfica a través de <a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Cloudflare Browser Run</u></a>. Navegación, clic, extracción, captura de pantalla. Resulta útil cuando el servicio aún no admite agentes a través de MCP o las API.</p>
+<p data-astro-cid-byeekcgh="">El <strong>nivel 4</strong> es un <a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>Cloudflare Sandbox</u></a> configurado con tus cadenas de herramientas, repositorios y dependencias: <code>git clone, npm test, cargo build</code>, sincronizado bidireccionalmente con Workspace.</p>
+<p data-astro-cid-byeekcgh="">El principio clave del diseño: <strong>el agente debe ser útil solo en el nivel 0, sobre el que se añade cada uno de los otros niveles.</strong> El usuario puede añadir funciones sobre la marcha.</p>
+<h3 data-astro-cid-byeekcgh="">Elementos esenciales, no un marco</h3>
+<p data-astro-cid-byeekcgh="">Todas estas primitivas están disponibles como paquetes independientes. <a href="https://blog.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Dynamic Workers</u></a>, <a href="https://github.com/cloudflare/agents/tree/main/packages/codemode" target="_blank" rel="noopener noreferrer"><code><u>@cloudflare/codemode</u></code></a>, <a href="https://github.com/cloudflare/agents/tree/main/packages/worker-bundler" target="_blank" rel="noopener noreferrer"><code><u>@cloudflare/worker-bundler</u></code></a> y <a href="https://www.npmjs.com/package/@cloudflare/shell" target="_blank" rel="noopener noreferrer"><code><u>@cloudflare/shell</u></code></a> (un sistema de archivos duradero con herramientas) se pueden utilizar directamente con la clase base Agent. Puedes combinarlas para equipar a cualquier agente con un espacio de trabajo, la ejecución de código y la resolución de paquetes en tiempo de ejecución sin adoptar un marco prescriptivo.</p>
+<h2 data-astro-cid-byeekcgh="">La plataforma</h2>
+<p data-astro-cid-byeekcgh="">Te presentamos la pila completa para el desarrollo de agentes en Cloudflare:</p>
+<div class="emdash-table-wrapper" data-astro-cid-paimycxl="">
+	<table class="emdash-table" data-astro-cid-paimycxl="">
+		<thead data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<th data-astro-cid-paimycxl="">
 					<p>Funciones</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>¿Qué hace?</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Basado en</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+		<tbody data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Aislamiento por agente</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Cada agente tiene un entorno propio</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Durable Objects (DO)</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Sin coste cuando está inactivo</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>0 USD hasta la activación del agente</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Hibernación DO</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Estado persistente</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Almacenamiento transaccional consultable</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>SQLite DO</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Sistema de archivos duradero</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Archivos que se conservan después de un reinicio</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Workspace (SQLite + R2)</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Ejecución de código en un sandbox</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Ejecución segura de código generado por un LLM</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Dynamic Workers + @cloudflare/codemode</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Dependencias del entorno de ejecución</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>import * from react simplemente funciona</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>@cloudflare/worker-bundler</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Automatización web</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Exploración, navegación, cumplimentación de formularios</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Browser Run</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Acceso total al sistema operativo</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>git, compiladores, ejecutores de pruebas</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Sandboxes</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Ejecución programada</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Proactivo, no solo reactivo</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Alarmas + Fibras DO</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Transmisión en tiempo real</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Token por token a cualquier cliente</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>WebSockets</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Herramientas externas</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Conexión a cualquier servidor de herramientas</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>MCP</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Coordinación de agentes</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>RPC con tipo entre agentes</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Subagentes (Facets)</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Acceso a los modelos</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Conexión a un LLM para mejorar el agente</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>AI Gateway + Workers AI (o trae tu propio modelo)</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-yoyuw6fx="">Cada una de estas primitivas es un elemento esencial. Juntas, forman algo nuevo: una plataforma en la que cualquier persona puede desarrollar, implementar y ejecutar agentes de IA tan capacitados como los que se ejecutan hoy en tu máquina local, pero <a href="https://www.cloudflare.com/learning/serverless/what-is-serverless" target="_blank" rel="noopener noreferrer"><u>sin servidor</u></a>, duraderos y con seguridad integrada por diseño. </p>
-<h2 data-astro-cid-yoyuw6fx="">La clase base Think</h2>
-<p data-astro-cid-yoyuw6fx="">Ahora que has visto las primitivas, esto es lo que sucede cuando las conectas todas.</p>
-<p data-astro-cid-yoyuw6fx=""><code>Think</code> es una infraestructura preceptiva que gestiona todo el ciclo de vida del chat: el bucle agéntico, la persistencia de los mensajes, la transmisión, la ejecución de las herramientas, la reanudación de la transmisión y las extensiones. Tu prioridad es que lo que hace que tu agente sea exclusivo.</p>
-<p data-astro-cid-yoyuw6fx="">La subclase mínima tiene este aspecto:</p>
+<p data-astro-cid-byeekcgh="">Cada una de estas primitivas es un elemento esencial. Juntas, forman algo nuevo: una plataforma en la que cualquier persona puede desarrollar, implementar y ejecutar agentes de IA tan capacitados como los que se ejecutan hoy en tu máquina local, pero <a href="https://www.cloudflare.com/learning/serverless/what-is-serverless" target="_blank" rel="noopener noreferrer"><u>sin servidor</u></a>, duraderos y con seguridad integrada por diseño. </p>
+<h2 data-astro-cid-byeekcgh="">La clase base Think</h2>
+<p data-astro-cid-byeekcgh="">Ahora que has visto las primitivas, esto es lo que sucede cuando las conectas todas.</p>
+<p data-astro-cid-byeekcgh=""><code>Think</code> es una infraestructura preceptiva que gestiona todo el ciclo de vida del chat: el bucle agéntico, la persistencia de los mensajes, la transmisión, la ejecución de las herramientas, la reanudación de la transmisión y las extensiones. Tu prioridad es que lo que hace que tu agente sea exclusivo.</p>
+<p data-astro-cid-byeekcgh="">La subclase mínima tiene este aspecto:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Think } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/think"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createWorkersAI } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "workers-ai-provider"</span><span class="sk-24292e-fff">;</span></span>
@@ -448,67 +448,67 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Eso es todo lo que necesitas para tener un agente de chat operativo con funciones de transmisión, persistencia, interrupción/cancelación, gestión de errores, transmisiones reanudables y un sistema de archivos de espacio de trabajo integrado. Implementa con <code>npx wrangler deploy</code>.</p>
-<p data-astro-cid-yoyuw6fx="">Think toma las decisiones por ti. Cuando necesites tener un mayor control, puedes anular las que te interesen:</p>
-<div class="emdash-table-wrapper" data-astro-cid-zdje7xco="">
-	<table class="emdash-table" data-astro-cid-zdje7xco="">
-		<thead data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<th data-astro-cid-zdje7xco="">
+<p data-astro-cid-byeekcgh="">Eso es todo lo que necesitas para tener un agente de chat operativo con funciones de transmisión, persistencia, interrupción/cancelación, gestión de errores, transmisiones reanudables y un sistema de archivos de espacio de trabajo integrado. Implementa con <code>npx wrangler deploy</code>.</p>
+<p data-astro-cid-byeekcgh="">Think toma las decisiones por ti. Cuando necesites tener un mayor control, puedes anular las que te interesen:</p>
+<div class="emdash-table-wrapper" data-astro-cid-paimycxl="">
+	<table class="emdash-table" data-astro-cid-paimycxl="">
+		<thead data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<th data-astro-cid-paimycxl="">
 					<p>Invalidar</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Propósito</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+		<tbody data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>getModel()</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Devolver el LanguageModel a utilizar</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>getSystemPrompt()</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Instrucción del sistema</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>getTools()</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Conjunto de herramientas compatible con AI SDK para el bucle agéntico</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>maxSteps</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Máximo de rondas de llamadas a herramientas por turno</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>configureSession()</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Bloques de contexto, compactación, búsqueda, competencias</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-yoyuw6fx="">A nivel interno, Think ejecuta el bucle agéntico completo en cada turno: ensambla el contexto (instrucciones básicas + descripciones de las herramientas + competencias + memoria + historial de conversaciones), llama a <code>streamText</code>, ejecuta las llamadas a las herramientas (con truncamiento de salida para evitar el inflado del contexto), añade los resultados y repite este proceso hasta que se completa el modelo o hasta que se alcanza el límite de pasos. Todos los mensajes se conservan después de cada turno.</p>
-<h3 data-astro-cid-yoyuw6fx="">Enlaces del ciclo de vida</h3>
-<p data-astro-cid-yoyuw6fx="">Think te ofrece enlaces en cada etapa del turno de chat, sin necesidad de que seas el propietario de todo el proceso:</p>
+<p data-astro-cid-byeekcgh="">A nivel interno, Think ejecuta el bucle agéntico completo en cada turno: ensambla el contexto (instrucciones básicas + descripciones de las herramientas + competencias + memoria + historial de conversaciones), llama a <code>streamText</code>, ejecuta las llamadas a las herramientas (con truncamiento de salida para evitar el inflado del contexto), añade los resultados y repite este proceso hasta que se completa el modelo o hasta que se alcanza el límite de pasos. Todos los mensajes se conservan después de cada turno.</p>
+<h3 data-astro-cid-byeekcgh="">Enlaces del ciclo de vida</h3>
+<p data-astro-cid-byeekcgh="">Think te ofrece enlaces en cada etapa del turno de chat, sin necesidad de que seas el propietario de todo el proceso:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">beforeTurn</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-24292e-fff">  → </span><span class="sk-6f42c1-ffc799">streamText</span><span class="sk-24292e-fff">()</span></span>
@@ -522,10 +522,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Cambia a un modelo de menor coste para los turnos de seguimiento, limita las herramientas que puede utilizar y pasa el contexto del lado cliente en cada turno. Registra también la llamada a cada herramienta en los análisis y activa automáticamente un turno de seguimiento más después de que el modelo se haya completado, todo ello sin reemplazar <code>onChatMessage</code>.</p>
-<h3 data-astro-cid-yoyuw6fx="">Memoria persistente y conversaciones largas</h3>
-<p data-astro-cid-yoyuw6fx="">Think se basa en la <a href="https://developers.cloudflare.com/agents/api-reference/sessions/?cf_target_id=E7A3D837FA7DC4C7DDA822B3DE0F831B" target="_blank" rel="noopener noreferrer"><u>API Session</u></a> como su capa de almacenamiento, lo que te ofrece mensajes con estructura de árbol con bifurcación integrada.</p>
-<p data-astro-cid-yoyuw6fx="">Además, añade memoria persistente a través de <strong>bloques de contexto</strong>. Se trata de secciones estructuradas de las instrucciones del sistema que el modelo puede leer y actualizar a lo largo del tiempo, y que persisten durante la hibernación<strong>. </strong>El modelo ve "MEMORY (Important facts, use set_context to update) [42%, 462/1100 tokens]" y puede recordar cosas de forma proactiva.</p>
+<p data-astro-cid-byeekcgh="">Cambia a un modelo de menor coste para los turnos de seguimiento, limita las herramientas que puede utilizar y pasa el contexto del lado cliente en cada turno. Registra también la llamada a cada herramienta en los análisis y activa automáticamente un turno de seguimiento más después de que el modelo se haya completado, todo ello sin reemplazar <code>onChatMessage</code>.</p>
+<h3 data-astro-cid-byeekcgh="">Memoria persistente y conversaciones largas</h3>
+<p data-astro-cid-byeekcgh="">Think se basa en la <a href="https://developers.cloudflare.com/agents/api-reference/sessions/?cf_target_id=E7A3D837FA7DC4C7DDA822B3DE0F831B" target="_blank" rel="noopener noreferrer"><u>API Session</u></a> como su capa de almacenamiento, lo que te ofrece mensajes con estructura de árbol con bifurcación integrada.</p>
+<p data-astro-cid-byeekcgh="">Además, añade memoria persistente a través de <strong>bloques de contexto</strong>. Se trata de secciones estructuradas de las instrucciones del sistema que el modelo puede leer y actualizar a lo largo del tiempo, y que persisten durante la hibernación<strong>. </strong>El modelo ve "MEMORY (Important facts, use set_context to update) [42%, 462/1100 tokens]" y puede recordar cosas de forma proactiva.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">configureSession</span><span class="sk-24292e-fff">(session: Session) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> session</span></span>
@@ -544,11 +544,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Las sesiones son flexibles. Puedes ejecutar varias conversaciones por agente y bifurcarlas para intentar tomar una dirección distinta sin perder el original.<strong>&nbsp;</strong></p>
-<p data-astro-cid-yoyuw6fx="">A medida que crece el contexto, Think maneja los límites con una compactación no destructiva. Los mensajes más antiguos se resumen en lugar de suprimirse, mientras que el historial completo permanece almacenado en SQLite.<strong>&nbsp;</strong></p>
-<p data-astro-cid-yoyuw6fx="">La búsqueda también está integrada. Con FTS5, puedes consultar el historial de conversaciones dentro de una sesión o en todas las sesiones. El agente también puede buscar en su propio pasado utilizando la herramienta <code>search_context</code>.</p>
-<h3 data-astro-cid-yoyuw6fx="">La secuencia de ejecución completa, integrada</h3>
-<p data-astro-cid-yoyuw6fx="">Think integra toda la secuencia de ejecución en un único retorno de <code>getTools()</code>.</p>
+<p data-astro-cid-byeekcgh="">Las sesiones son flexibles. Puedes ejecutar varias conversaciones por agente y bifurcarlas para intentar tomar una dirección distinta sin perder el original.<strong>&nbsp;</strong></p>
+<p data-astro-cid-byeekcgh="">A medida que crece el contexto, Think maneja los límites con una compactación no destructiva. Los mensajes más antiguos se resumen en lugar de suprimirse, mientras que el historial completo permanece almacenado en SQLite.<strong>&nbsp;</strong></p>
+<p data-astro-cid-byeekcgh="">La búsqueda también está integrada. Con FTS5, puedes consultar el historial de conversaciones dentro de una sesión o en todas las sesiones. El agente también puede buscar en su propio pasado utilizando la herramienta <code>search_context</code>.</p>
+<h3 data-astro-cid-byeekcgh="">La secuencia de ejecución completa, integrada</h3>
+<p data-astro-cid-byeekcgh="">Think integra toda la secuencia de ejecución en un único retorno de <code>getTools()</code>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Think } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/think"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createWorkspaceTools } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/think/tools/workspace"</span><span class="sk-24292e-fff">;</span></span>
@@ -583,8 +583,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">Extensiones de creación propia</h3>
-<p data-astro-cid-yoyuw6fx="">Think lleva la ejecución de código un paso más allá. Un agente puede escribir sus propias extensiones: programas TypeScript que se ejecutan en Dynamic Workers, declarando permisos para el acceso a la red y las operaciones en el espacio de trabajo.</p>
+<h3 data-astro-cid-byeekcgh="">Extensiones de creación propia</h3>
+<p data-astro-cid-byeekcgh="">Think lleva la ejecución de código un paso más allá. Un agente puede escribir sus propias extensiones: programas TypeScript que se ejecutan en Dynamic Workers, declarando permisos para el acceso a la red y las operaciones en el espacio de trabajo.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"github"</span><span class="sk-24292e-fff">,</span></span>
@@ -601,10 +601,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx=""><code>ExtensionManager</code> de Think agrupa la extensión (opcionalmente con npm deps a través de <code>@cloudflare/worker-bundler</code>), la carga en un Dynamic Worker y registra las nuevas herramientas. La extensión persiste en el almacenamiento DO y se conserva después de la hibernación. La próxima vez que el usuario pregunte por las solicitudes de extracción, el agente tendrá una herramienta <code>github_create_pr </code>que no existía 30 segundos antes.</p>
-<p data-astro-cid-yoyuw6fx="">Este es el tipo de bucle de automejora que hace que los agentes realmente mejoren su utilidad con el tiempo. No mediante ajustes o RLHF, sino gracias al código. El agente puede escribir nuevas funciones por sí mismo, todo en TypeScript en sandbox, auditable y revocable.</p>
-<h3 data-astro-cid-yoyuw6fx="">RPC de subagente</h3>
-<p data-astro-cid-yoyuw6fx="">Think también funciona como un subagente, al que se invoca a través de <code>chat()</code> sobre RPC desde un agente principal, con eventos de transmisión mediante la devolución de llamada:</p>
+<p data-astro-cid-byeekcgh=""><code>ExtensionManager</code> de Think agrupa la extensión (opcionalmente con npm deps a través de <code>@cloudflare/worker-bundler</code>), la carga en un Dynamic Worker y registra las nuevas herramientas. La extensión persiste en el almacenamiento DO y se conserva después de la hibernación. La próxima vez que el usuario pregunte por las solicitudes de extracción, el agente tendrá una herramienta <code>github_create_pr </code>que no existía 30 segundos antes.</p>
+<p data-astro-cid-byeekcgh="">Este es el tipo de bucle de automejora que hace que los agentes realmente mejoren su utilidad con el tiempo. No mediante ajustes o RLHF, sino gracias al código. El agente puede escribir nuevas funciones por sí mismo, todo en TypeScript en sandbox, auditable y revocable.</p>
+<h3 data-astro-cid-byeekcgh="">RPC de subagente</h3>
+<p data-astro-cid-byeekcgh="">Think también funciona como un subagente, al que se invoca a través de <code>chat()</code> sobre RPC desde un agente principal, con eventos de transmisión mediante la devolución de llamada:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> researcher</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">subAgent</span><span class="sk-24292e-fff">(ResearchSession, </span><span class="sk-032f62-99ffe4">"research"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> researcher.</span><span class="sk-6f42c1-ffc799">chat</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Research this: ${</span><span class="sk-24292e-fff">task</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">, streamRelay);</span></span>
@@ -614,9 +614,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Cada subagente tiene su propio árbol de conversación, su memoria, sus herramientas y su modelo. El agente principal no necesita conocer los detalles.</p>
-<h3 data-astro-cid-yoyuw6fx="">Primeros pasos</h3>
-<p data-astro-cid-yoyuw6fx="">Project Think es experimental. La superficie de la API es estable, pero seguirá evolucionando en los próximos días y semanas. Ya lo utilizamos internamente para desarrollar nuestra propia infraestructura de agentes en segundo plano, y te proporcionamos un adelanto para que puedas desarrollar con nosotros.</p>
+<p data-astro-cid-byeekcgh="">Cada subagente tiene su propio árbol de conversación, su memoria, sus herramientas y su modelo. El agente principal no necesita conocer los detalles.</p>
+<h3 data-astro-cid-byeekcgh="">Primeros pasos</h3>
+<p data-astro-cid-byeekcgh="">Project Think es experimental. La superficie de la API es estable, pero seguirá evolucionando en los próximos días y semanas. Ya lo utilizamos internamente para desarrollar nuestra propia infraestructura de agentes en segundo plano, y te proporcionamos un adelanto para que puedas desarrollar con nosotros.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> @cloudflare/think</span><span class="sk-032f62-99ffe4"> agents</span><span class="sk-032f62-99ffe4"> ai</span><span class="sk-032f62-99ffe4"> @cloudflare/shell</span><span class="sk-032f62-99ffe4"> zod</span><span class="sk-032f62-99ffe4"> workers-ai-provider</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -668,17 +668,17 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Think utiliza el mismo protocolo WebSocket que <code>@cloudflare/ai-chat</code>, por lo que los componentes de la interfaz de usuario existentes no requieren configuración. Si has desarrollado en <a href="https://developers.cloudflare.com/agents/api-reference/chat-agents" target="_blank" rel="noopener noreferrer"><code><u>AIChatAgent</u></code></a>, tu código de cliente no cambia.</p>
-<h2 data-astro-cid-yoyuw6fx="">La tercera ola</h2>
-<p data-astro-cid-yoyuw6fx="">Vemos tres olas de agentes de IA:</p>
-<p data-astro-cid-yoyuw6fx=""><strong>La primera ola fueron los bots de chat.</strong> No tenían estado y eran reactivos y frágiles. Cada conversación empezaba desde cero, sin memoria, sin herramientas y sin capacidad de acción. Por ello, resultaban útiles para responder preguntas, pero se veían limitados a esta tarea.</p>
-<p data-astro-cid-yoyuw6fx=""><strong>La segunda ola fueron los agentes de programación.</strong> Se trata de herramientas con estado, que utilizan herramientas, y ofrecen funciones mucho más potentes, como Pi, Claude Code, OpenClaw y Codex. Estos agentes pueden leer bases de código, escribir y ejecutar código y realizar iteraciones. Demostraron que un LLM con las herramientas adecuadas es una máquina de uso general, pero se ejecutan en tu portátil, para un usuario, sin garantía de durabilidad.</p>
-<p data-astro-cid-yoyuw6fx=""><strong>Ahora estamos entrando en la tercera ola: los agentes como infraestructura.</strong> Duraderos, distribuidos, estructuralmente seguros y sin servidor. Se trata de agentes que se ejecutan en Internet, se mantienen después de un fallo, que no tienen ningún coste cuando están inactivos y que aplican la seguridad a través de la arquitectura, no mediante el comportamiento. Son agentes que cualquier desarrollador puede crear e implementar para cualquier número de usuarios.</p>
-<p data-astro-cid-yoyuw6fx="">Esta es la dirección por la que apostamos.</p>
-<p data-astro-cid-yoyuw6fx="">El SDK de agentes ya funciona en miles de agentes de producción. Con Project Think y las primitivas que incorpora, añadimos las funciones que faltaban para que esos agentes estén mucho mejor capacitados: espacios de trabajo persistentes, ejecución de código en un sandbox, tareas duraderas de larga ejecución, seguridad estructural, coordinación de subagentes y extensiones de autoría propia.</p>
-<p data-astro-cid-yoyuw6fx="">Ya está disponible en versión preliminar. Estamos desarrollando al mismo tiempo que tú, y nos encantaría ver lo que tú (y tu agente de programación) creáis con él.</p>
-<hr class="emdash-break emdash-break-line" data-astro-cid-7mewxrht="">
-<p data-astro-cid-yoyuw6fx=""><sup><em>Think forma parte del SDK de agentes de Cloudflare, disponible como @cloudflare/think. Las funciones descritas en esta publicación están en versión preliminar. Las API pueden cambiar a medida que incorporemos sugerencias. Consulta la <a href="https://github.com/cloudflare/agents/blob/main/docs/think/index.md" target="_blank" rel="noopener noreferrer"><u>documentación</u></a> y el <a href="https://github.com/cloudflare/agents/tree/main/examples/assistant" target="_blank" rel="noopener noreferrer"><u>ejemplo</u></a> para empezar.</em></sup></p>
+<p data-astro-cid-byeekcgh="">Think utiliza el mismo protocolo WebSocket que <code>@cloudflare/ai-chat</code>, por lo que los componentes de la interfaz de usuario existentes no requieren configuración. Si has desarrollado en <a href="https://developers.cloudflare.com/agents/api-reference/chat-agents" target="_blank" rel="noopener noreferrer"><code><u>AIChatAgent</u></code></a>, tu código de cliente no cambia.</p>
+<h2 data-astro-cid-byeekcgh="">La tercera ola</h2>
+<p data-astro-cid-byeekcgh="">Vemos tres olas de agentes de IA:</p>
+<p data-astro-cid-byeekcgh=""><strong>La primera ola fueron los bots de chat.</strong> No tenían estado y eran reactivos y frágiles. Cada conversación empezaba desde cero, sin memoria, sin herramientas y sin capacidad de acción. Por ello, resultaban útiles para responder preguntas, pero se veían limitados a esta tarea.</p>
+<p data-astro-cid-byeekcgh=""><strong>La segunda ola fueron los agentes de programación.</strong> Se trata de herramientas con estado, que utilizan herramientas, y ofrecen funciones mucho más potentes, como Pi, Claude Code, OpenClaw y Codex. Estos agentes pueden leer bases de código, escribir y ejecutar código y realizar iteraciones. Demostraron que un LLM con las herramientas adecuadas es una máquina de uso general, pero se ejecutan en tu portátil, para un usuario, sin garantía de durabilidad.</p>
+<p data-astro-cid-byeekcgh=""><strong>Ahora estamos entrando en la tercera ola: los agentes como infraestructura.</strong> Duraderos, distribuidos, estructuralmente seguros y sin servidor. Se trata de agentes que se ejecutan en Internet, se mantienen después de un fallo, que no tienen ningún coste cuando están inactivos y que aplican la seguridad a través de la arquitectura, no mediante el comportamiento. Son agentes que cualquier desarrollador puede crear e implementar para cualquier número de usuarios.</p>
+<p data-astro-cid-byeekcgh="">Esta es la dirección por la que apostamos.</p>
+<p data-astro-cid-byeekcgh="">El SDK de agentes ya funciona en miles de agentes de producción. Con Project Think y las primitivas que incorpora, añadimos las funciones que faltaban para que esos agentes estén mucho mejor capacitados: espacios de trabajo persistentes, ejecución de código en un sandbox, tareas duraderas de larga ejecución, seguridad estructural, coordinación de subagentes y extensiones de autoría propia.</p>
+<p data-astro-cid-byeekcgh="">Ya está disponible en versión preliminar. Estamos desarrollando al mismo tiempo que tú, y nos encantaría ver lo que tú (y tu agente de programación) creáis con él.</p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-yq53pyv4="">
+<p data-astro-cid-byeekcgh=""><sup><em>Think forma parte del SDK de agentes de Cloudflare, disponible como @cloudflare/think. Las funciones descritas en esta publicación están en versión preliminar. Las API pueden cambiar a medida que incorporemos sugerencias. Consulta la <a href="https://github.com/cloudflare/agents/blob/main/docs/think/index.md" target="_blank" rel="noopener noreferrer"><u>documentación</u></a> y el <a href="https://github.com/cloudflare/agents/tree/main/examples/assistant" target="_blank" rel="noopener noreferrer"><u>ejemplo</u></a> para empezar.</em></sup></p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="176" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MZWKJNNEBP4805C2CT1.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MZWKJNNEBP4805C2CT1.png&amp;w=640&amp;h=158&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MZWKJNNEBP4805C2CT1.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MZWKJNNEBP4805C2CT1.png&amp;w=750&amp;h=185&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MZWKJNNEBP4805C2CT1.png&amp;w=828&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MZWKJNNEBP4805C2CT1.png&amp;w=1080&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MZWKJNNEBP4805C2CT1.png&amp;w=1280&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MZWKJNNEBP4805C2CT1.png&amp;w=1430&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3200 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MZWKJNNEBP4805C2CT1.png&amp;w=1200&amp;h=295&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="295" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="176" class="pt-portable-image-media"></div>
 </figure>

@@ -1,18 +1,18 @@
-<p data-astro-cid-yoyuw6fx="">Last month we <a href="https://blog.cloudflare.com/reflections-on-reflections">shared statistics on some popular reflection</a> attacks. Back then the average SSDP attack size was ~12 Gbps and largest SSDP reflection we recorded was:</p>
+<p data-astro-cid-byeekcgh="">Last month we <a href="https://blog.cloudflare.com/reflections-on-reflections">shared statistics on some popular reflection</a> attacks. Back then the average SSDP attack size was ~12 Gbps and largest SSDP reflection we recorded was:</p>
 <ul>
 	<li>30 Mpps (millions of packets per second)</li>
 	<li>80 Gbps (billions of bits per second)</li>
 	<li>using 940k reflector IPs</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">This changed a couple of days ago when we noticed an unusually large SSDP amplification. It's worth deeper investigation since it crossed the symbolic threshold of 100 Gbps.</p>
-<p data-astro-cid-yoyuw6fx="">The packets per second chart during the attack looked like this:</p>
-<p data-astro-cid-yoyuw6fx="">The bandwidth usage:</p>
+<p data-astro-cid-byeekcgh="">This changed a couple of days ago when we noticed an unusually large SSDP amplification. It's worth deeper investigation since it crossed the symbolic threshold of 100 Gbps.</p>
+<p data-astro-cid-byeekcgh="">The packets per second chart during the attack looked like this:</p>
+<p data-astro-cid-byeekcgh="">The bandwidth usage:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="238" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NYXTKG1C6VECCJ410PQJ.png&amp;w=715&amp;h=238&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NYXTKG1C6VECCJ410PQJ.png&amp;w=640&amp;h=213&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NYXTKG1C6VECCJ410PQJ.png&amp;w=715&amp;h=238&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NYXTKG1C6VECCJ410PQJ.png&amp;w=750&amp;h=250&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NYXTKG1C6VECCJ410PQJ.png&amp;w=828&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NYXTKG1C6VECCJ410PQJ.png&amp;w=1080&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NYXTKG1C6VECCJ410PQJ.png&amp;w=1280&amp;h=426&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NYXTKG1C6VECCJ410PQJ.png&amp;w=1430&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Stupidly Simple DDoS Protocol (SSDP) generates 100 Gbps DDoS Embedded Image - Zxqz6t" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NYXTKG1C6VECCJ410PQJ.png&amp;w=800&amp;h=266&amp;f=webp" data-lightbox-width="800" data-lightbox-height="266" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="238" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-yoyuw6fx="">This packet flood lasted 38 minutes. According to our sampled netflow data it utilized 930k reflector servers. We estimate that the during 38 minutes of the attack each reflector sent 112k packets to Cloudflare.</p>
-<p data-astro-cid-yoyuw6fx="">The reflector servers are across the globe, with a large presence in Argentina, Russia and China. Here are the unique IPs per country:</p>
+<p data-astro-cid-byeekcgh="">This packet flood lasted 38 minutes. According to our sampled netflow data it utilized 930k reflector servers. We estimate that the during 38 minutes of the attack each reflector sent 112k packets to Cloudflare.</p>
+<p data-astro-cid-byeekcgh="">The reflector servers are across the globe, with a large presence in Argentina, Russia and China. Here are the unique IPs per country:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> ips-nf-ct.txt</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">uniq</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">cut</span><span class="sk-005cc5-99ffe4"> -f</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">sort</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">uniq</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">sort</span><span class="sk-005cc5-99ffe4"> -nr</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">head</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> 439126</span><span class="sk-032f62-99ffe4"> CN</span></span>
@@ -51,7 +51,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">The reflector IP distribution across ASNs is typical. It pretty much follows the world’s largest residential ISPs:</p>
+<p data-astro-cid-byeekcgh="">The reflector IP distribution across ASNs is typical. It pretty much follows the world’s largest residential ISPs:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> ips-nf-asn.txt</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">uniq</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">cut</span><span class="sk-005cc5-99ffe4"> -f</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">sort</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">uniq</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">sort</span><span class="sk-005cc5-99ffe4"> -nr</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">head</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> 318405</span><span class="sk-005cc5-ffc799"> 4837</span><span class="sk-6a737d-8b8b8b94">   # CN China Unicom</span></span>
@@ -72,13 +72,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">What's SSDP anyway?</h3>
-<p data-astro-cid-yoyuw6fx="">The attack was composed of UDP packets with source port 1900. This port is used by the <a href="https://en.wikipedia.org/wiki/Simple_Service_Discovery_Protocol" target="_blank" rel="noopener noreferrer">SSDP</a> and is used by the UPnP protocols. UPnP is one of the <a href="https://en.wikipedia.org/wiki/Zero-configuration_networking#UPnP" target="_blank" rel="noopener noreferrer">zero-configuration networking</a> protocols. Most likely your home devices support it, allowing them to be easily discovered by your computer or phone. When a new device (like your laptop) joins the network, it can query the local network for specific devices, like internet gateways, audio systems, TVs, or printers. Read more on <a href="http://www.zeroconf.org/zeroconfandupnp.html" target="_blank" rel="noopener noreferrer">how UPnP compares to Bonjour</a>.</p>
-<p data-astro-cid-yoyuw6fx=""><a href="http://www.upnp-hacks.org/upnp.html" target="_blank" rel="noopener noreferrer">UPnP</a> is poorly standardised, but here's a snippet from <a href="https://web.archive.org/web/20151107123618/http://upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v2.0.pdf" target="_blank" rel="noopener noreferrer">the spec</a> about the <code>M-SEARCH</code> frame - the main method for discovery:</p>
-<p data-astro-cid-yoyuw6fx=""><em>When a control point is added to the network, the UPnP discovery protocol allows that control point to search for devices of interest on the network. It does this by multicasting on the reserved address and port (239.255.255.250:1900) a search message with a pattern, or target, equal to a type or identifier for a device or service.</em></p>
-<p data-astro-cid-yoyuw6fx="">Responses to <code>M-SEARCH</code> frame:</p>
-<p data-astro-cid-yoyuw6fx=""><em>To be found by a network search, a device shall send a unicast UDP response to the source IP address and port that sent the request to the multicast address. Devices respond if the ST header field of the <code>M-SEARCH</code> request is “ssdp:all”, “upnp:rootdevice”, “uuid:” followed by a UUID that exactly matches the one advertised by the device, or if the <code>M-SEARCH</code> request matches a device type or service type supported by the device.</em></p>
-<p data-astro-cid-yoyuw6fx="">This works in practice. For example, my Chrome browser regularly asks for a Smart TV I guess:</p>
+<h3 data-astro-cid-byeekcgh="">What's SSDP anyway?</h3>
+<p data-astro-cid-byeekcgh="">The attack was composed of UDP packets with source port 1900. This port is used by the <a href="https://en.wikipedia.org/wiki/Simple_Service_Discovery_Protocol" target="_blank" rel="noopener noreferrer">SSDP</a> and is used by the UPnP protocols. UPnP is one of the <a href="https://en.wikipedia.org/wiki/Zero-configuration_networking#UPnP" target="_blank" rel="noopener noreferrer">zero-configuration networking</a> protocols. Most likely your home devices support it, allowing them to be easily discovered by your computer or phone. When a new device (like your laptop) joins the network, it can query the local network for specific devices, like internet gateways, audio systems, TVs, or printers. Read more on <a href="http://www.zeroconf.org/zeroconfandupnp.html" target="_blank" rel="noopener noreferrer">how UPnP compares to Bonjour</a>.</p>
+<p data-astro-cid-byeekcgh=""><a href="http://www.upnp-hacks.org/upnp.html" target="_blank" rel="noopener noreferrer">UPnP</a> is poorly standardised, but here's a snippet from <a href="https://web.archive.org/web/20151107123618/http://upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v2.0.pdf" target="_blank" rel="noopener noreferrer">the spec</a> about the <code>M-SEARCH</code> frame - the main method for discovery:</p>
+<p data-astro-cid-byeekcgh=""><em>When a control point is added to the network, the UPnP discovery protocol allows that control point to search for devices of interest on the network. It does this by multicasting on the reserved address and port (239.255.255.250:1900) a search message with a pattern, or target, equal to a type or identifier for a device or service.</em></p>
+<p data-astro-cid-byeekcgh="">Responses to <code>M-SEARCH</code> frame:</p>
+<p data-astro-cid-byeekcgh=""><em>To be found by a network search, a device shall send a unicast UDP response to the source IP address and port that sent the request to the multicast address. Devices respond if the ST header field of the <code>M-SEARCH</code> request is “ssdp:all”, “upnp:rootdevice”, “uuid:” followed by a UUID that exactly matches the one advertised by the device, or if the <code>M-SEARCH</code> request matches a device type or service type supported by the device.</em></p>
+<p data-astro-cid-byeekcgh="">This works in practice. For example, my Chrome browser regularly asks for a Smart TV I guess:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> tcpdump</span><span class="sk-005cc5-99ffe4"> -ni</span><span class="sk-032f62-99ffe4"> eth0</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> port</span><span class="sk-005cc5-ffc799"> 1900</span><span class="sk-005cc5-99ffe4"> -A</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">IP</span><span class="sk-005cc5-ffc799"> 192.168.1.124.53044</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 239.255.255.250.1900:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 175</span></span>
@@ -93,13 +93,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">This frame is sent to a multicast IP address. Other devices listening on that address and supporting this specific <code>ST</code> (search-target) multiscreen type are supposed to answer.</p>
-<p data-astro-cid-yoyuw6fx="">Apart from queries for specific device types, there are two "generic" <code>ST</code> query types:</p>
+<p data-astro-cid-byeekcgh="">This frame is sent to a multicast IP address. Other devices listening on that address and supporting this specific <code>ST</code> (search-target) multiscreen type are supposed to answer.</p>
+<p data-astro-cid-byeekcgh="">Apart from queries for specific device types, there are two "generic" <code>ST</code> query types:</p>
 <ul>
 	<li><code>upnp:rootdevice</code>: search for root devices</li>
 	<li><code>ssdp:all</code>: search for all UPnP devices and services</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">To emulate these queries you can run this python script (based on <a href="https://www.electricmonk.nl/log/2016/07/05/exploring-upnp-with-python" target="_blank" rel="noopener noreferrer">this work</a>):</p>
+<p data-astro-cid-byeekcgh="">To emulate these queries you can run this python script (based on <a href="https://www.electricmonk.nl/log/2016/07/05/exploring-upnp-with-python" target="_blank" rel="noopener noreferrer">this work</a>):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>#!/usr/bin/env python2</span></span>
 <span class="line"><span>import socket</span></span>
@@ -135,7 +135,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">On my home network two devices show up:</p>
+<p data-astro-cid-byeekcgh="">On my home network two devices show up:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> python</span><span class="sk-032f62-99ffe4"> ssdp-query.py</span></span>
 <span class="line"><span class="sk-24292e-fff">[+] (</span><span class="sk-6f42c1-ffc799">'192.168.1.71'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 1026</span><span class="sk-24292e-fff">)</span></span>
@@ -161,13 +161,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">The firewall</h3>
-<p data-astro-cid-yoyuw6fx="">Now that we understand the basics of SSDP, understanding the reflection attack should be easy. You see, there are in fact two ways of delivering the <code>M-SEARCH</code> frame:</p>
+<h3 data-astro-cid-byeekcgh="">The firewall</h3>
+<p data-astro-cid-byeekcgh="">Now that we understand the basics of SSDP, understanding the reflection attack should be easy. You see, there are in fact two ways of delivering the <code>M-SEARCH</code> frame:</p>
 <ul>
 	<li>what we presented, over the multicast address</li>
 	<li>directly to a UPnP/SSDP enabled host on a normal unicast address</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">The latter method works. We can specifically target my printer IP address:</p>
+<p data-astro-cid-byeekcgh="">The latter method works. We can specifically target my printer IP address:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> python</span><span class="sk-032f62-99ffe4"> ssdp-query.py</span><span class="sk-005cc5-ffc799"> 192.168.1.71</span></span>
 <span class="line"><span class="sk-24292e-fff">[+] (</span><span class="sk-6f42c1-ffc799">'192.168.1.71'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 1026</span><span class="sk-24292e-fff">)</span></span>
@@ -183,8 +183,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Now the problem is easily seen: the SSDP protocol does not check whether the querying party is in the same network as the device. It will happily respond to an <code>M-SEARCH</code> delivered over the public Internet. All it takes is a tiny misconfiguration in a firewall - port 1900 UDP open to the world - and a perfect target for UDP amplification will be available.</p>
-<p data-astro-cid-yoyuw6fx="">Given a misconfigured target our script will happily work over the internet:</p>
+<p data-astro-cid-byeekcgh="">Now the problem is easily seen: the SSDP protocol does not check whether the querying party is in the same network as the device. It will happily respond to an <code>M-SEARCH</code> delivered over the public Internet. All it takes is a tiny misconfiguration in a firewall - port 1900 UDP open to the world - and a perfect target for UDP amplification will be available.</p>
+<p data-astro-cid-byeekcgh="">Given a misconfigured target our script will happily work over the internet:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> python</span><span class="sk-032f62-99ffe4"> ssdp-query.py</span><span class="sk-032f62-99ffe4"> 100.42.x.x</span></span>
 <span class="line"><span class="sk-24292e-fff">[+] (</span><span class="sk-6f42c1-ffc799">'100.42.x.x'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 1900</span><span class="sk-24292e-fff">)</span></span>
@@ -200,8 +200,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">The amplification</h3>
-<p data-astro-cid-yoyuw6fx="">The real damage is done by the <code>ssdp:all</code> <code>ST</code> type though. These responses are <em>much</em> larger:</p>
+<h3 data-astro-cid-byeekcgh="">The amplification</h3>
+<p data-astro-cid-byeekcgh="">The real damage is done by the <code>ssdp:all</code> <code>ST</code> type though. These responses are <em>much</em> larger:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> python</span><span class="sk-032f62-99ffe4"> ssdp-query.py</span><span class="sk-032f62-99ffe4"> 100.42.x.x</span><span class="sk-032f62-99ffe4"> ssdp:all</span></span>
 <span class="line"><span class="sk-24292e-fff">[+] (</span><span class="sk-6f42c1-ffc799">'100.42.x.x'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 1900</span><span class="sk-24292e-fff">)</span></span>
@@ -228,7 +228,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">In this particular case, a single SSDP <code>M-SEARCH</code> packet triggered 8 response packets. tcpdump view:</p>
+<p data-astro-cid-byeekcgh="">In this particular case, a single SSDP <code>M-SEARCH</code> packet triggered 8 response packets. tcpdump view:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> tcpdump</span><span class="sk-005cc5-99ffe4"> -ni</span><span class="sk-032f62-99ffe4"> en7</span><span class="sk-032f62-99ffe4"> host</span><span class="sk-032f62-99ffe4"> 100.42.x.x</span><span class="sk-005cc5-99ffe4"> -ttttt</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> 00:00:00.000000</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-005cc5-ffc799"> 192.168.1.200.61794</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 100.42.x.x.1900:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 88</span></span>
@@ -245,11 +245,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">That target exposes 8x packet count amplification and 26x bandwidth amplification. Sadly, this is typical for SSDP.</p>
-<h3 data-astro-cid-yoyuw6fx="">IP Spoofing</h3>
-<p data-astro-cid-yoyuw6fx="">The final step for the attack is to fool the vulnerable servers to flood the target IP - not the attacker. For that the attacker needs to <a href="https://en.wikipedia.org/wiki/IP_address_spoofing" target="_blank" rel="noopener noreferrer">spoof the source IP address</a> on their queries.</p>
-<p data-astro-cid-yoyuw6fx="">We probed the reflector IPs used in the shown 100 Gbps+ attack. We found that out of the 920k reflector IPs, only 350k (38%) still respond to SSDP probes.</p>
-<p data-astro-cid-yoyuw6fx="">Out of the reflectors that responded, each sent on average 7 packets:</p>
+<p data-astro-cid-byeekcgh="">That target exposes 8x packet count amplification and 26x bandwidth amplification. Sadly, this is typical for SSDP.</p>
+<h3 data-astro-cid-byeekcgh="">IP Spoofing</h3>
+<p data-astro-cid-byeekcgh="">The final step for the attack is to fool the vulnerable servers to flood the target IP - not the attacker. For that the attacker needs to <a href="https://en.wikipedia.org/wiki/IP_address_spoofing" target="_blank" rel="noopener noreferrer">spoof the source IP address</a> on their queries.</p>
+<p data-astro-cid-byeekcgh="">We probed the reflector IPs used in the shown 100 Gbps+ attack. We found that out of the 920k reflector IPs, only 350k (38%) still respond to SSDP probes.</p>
+<p data-astro-cid-byeekcgh="">Out of the reflectors that responded, each sent on average 7 packets:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> results-first-run.txt</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">cut</span><span class="sk-005cc5-99ffe4"> -f</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">sort</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">uniq</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">sed</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-032f62-99ffe4"> 's#^ \+##g'</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">cut</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4"> " "</span><span class="sk-005cc5-99ffe4"> -f</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> ~/mmhistogram</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> "Response packets per IP"</span><span class="sk-005cc5-99ffe4"> -p</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Response</span><span class="sk-032f62-99ffe4"> packets</span><span class="sk-032f62-99ffe4"> per</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> min:1.00</span><span class="sk-032f62-99ffe4"> avg:6.99</span><span class="sk-032f62-99ffe4"> med=</span><span class="sk-005cc5-ffc799">8.00</span><span class="sk-032f62-99ffe4"> max:186.00</span><span class="sk-032f62-99ffe4"> dev:4.44</span><span class="sk-032f62-99ffe4"> count:350337</span></span>
@@ -269,20 +269,20 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">The response packets had 321 bytes (+/- 29 bytes) on average. Our request packets had 110 bytes.</p>
-<p data-astro-cid-yoyuw6fx="">According to our measurements with the <code>ssdp:all</code> <code>M-SEARCH</code> attacker would be able to achieve:</p>
+<p data-astro-cid-byeekcgh="">The response packets had 321 bytes (+/- 29 bytes) on average. Our request packets had 110 bytes.</p>
+<p data-astro-cid-byeekcgh="">According to our measurements with the <code>ssdp:all</code> <code>M-SEARCH</code> attacker would be able to achieve:</p>
 <ul>
 	<li><strong>7x</strong> packet number amplification</li>
 	<li><strong>20x</strong> bandwidth amplification</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">We can estimate the 43 Mpps/112 Gbps attack was generated with roughly:</p>
+<p data-astro-cid-byeekcgh="">We can estimate the 43 Mpps/112 Gbps attack was generated with roughly:</p>
 <ul>
 	<li>6.1 Mpps of spoofing capacity</li>
 	<li>5.6 Gbps of spoofed bandwidth</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">In other words: a single well connected 10 Gbps server able to perform IP spoofing can deliver a significant SSDP attack.</p>
-<h3 data-astro-cid-yoyuw6fx="">More on the SSDP servers</h3>
-<p data-astro-cid-yoyuw6fx="">Since we probed the vulnerable SSDP servers, here are the most common <code>Server</code> header values we received:</p>
+<p data-astro-cid-byeekcgh="">In other words: a single well connected 10 Gbps server able to perform IP spoofing can deliver a significant SSDP attack.</p>
+<h3 data-astro-cid-byeekcgh="">More on the SSDP servers</h3>
+<p data-astro-cid-byeekcgh="">Since we probed the vulnerable SSDP servers, here are the most common <code>Server</code> header values we received:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> 104833</span><span class="sk-032f62-99ffe4"> Linux/2.4.22-1.2115.nptl</span><span class="sk-032f62-99ffe4"> UPnP/1.0</span><span class="sk-032f62-99ffe4"> miniupnpd/1.0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  77329</span><span class="sk-032f62-99ffe4"> System/1.0</span><span class="sk-032f62-99ffe4"> UPnP/1.0</span><span class="sk-032f62-99ffe4"> IGD/1.0</span></span>
@@ -317,7 +317,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">The most common <code>ST</code> header values we saw:</p>
+<p data-astro-cid-byeekcgh="">The most common <code>ST</code> header values we saw:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> 298497</span><span class="sk-032f62-99ffe4"> upnp:rootdevice</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> 158442</span><span class="sk-032f62-99ffe4"> urn:schemas-upnp-org:device:InternetGatewayDevice:1</span></span>
@@ -346,19 +346,19 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">The vulnerable IPs are seem to be mostly unprotected home routers.</p>
-<h3 data-astro-cid-yoyuw6fx="">Open SSDP is a vulnerability</h3>
-<p data-astro-cid-yoyuw6fx="">It's not a novelty that allowing UDP port 1900 traffic from the Internet to your home printer or such is not a good idea. This problem has been known since at least January 2013:</p>
+<p data-astro-cid-byeekcgh="">The vulnerable IPs are seem to be mostly unprotected home routers.</p>
+<h3 data-astro-cid-byeekcgh="">Open SSDP is a vulnerability</h3>
+<p data-astro-cid-byeekcgh="">It's not a novelty that allowing UDP port 1900 traffic from the Internet to your home printer or such is not a good idea. This problem has been known since at least January 2013:</p>
 <ul>
 	<li><a href="https://community.rapid7.com/community/infosec/blog/2013/01/29/security-flaws-in-universal-plug-and-play-unplug-dont-play" target="_blank" rel="noopener noreferrer">"Security Flaws in Universal Plug and Play: Unplug, Don't Play"</a></li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">Authors of SSDP clearly didn't give any thought to UDP amplification potential. There are a number of obvious recommendations about future use of SSDP protocol:</p>
+<p data-astro-cid-byeekcgh="">Authors of SSDP clearly didn't give any thought to UDP amplification potential. There are a number of obvious recommendations about future use of SSDP protocol:</p>
 <ul>
 	<li>The authors of SSDP should answer if there is any real world use of unicast <code>M-SEARCH</code> queries. From what I understand <code>M-SEARCH</code> only makes practical sense as a multicast query in local area network.</li>
 	<li>Unicast <code>M-SEARCH</code> support should be either deprecated or at least rate limited, in similar way to <a href="http://www.redbarn.org/dns/ratelimits" target="_blank" rel="noopener noreferrer">DNS Response Rate Limit techniques</a>.</li>
 	<li><code>M-SEARCH</code> responses should be only delivered to local network. Responses routed over the network make little sense and open described vulnerability.</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">In the meantime we recommend:</p>
+<p data-astro-cid-byeekcgh="">In the meantime we recommend:</p>
 <ul>
 	<li>Network administrators should ensure inbound UDP port 1900 is blocked on firewall.</li>
 	<li>Internet service providers should <strong>never allow IP spoofing</strong> to be performed on their network. IP spoofing is the true root cause of the issue. See the infamous <a href="http://www.bcp38.info/index.php/Main_Page" target="_blank" rel="noopener noreferrer">BCP38</a>.</li>
@@ -367,12 +367,12 @@
 	<li>Developers should not roll out their own UDP protocols without careful consideration of UDP amplification problems. UPnP should be properly standardized and scrutinized.</li>
 	<li>End users are encouraged to use the script scan their network for UPnP enabled devices. Consider if these devices should be allowed to access to the internet.</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">Furthermore, we prepared on online checking website. Click if you want to know if your public IP address has a vulnerable SSDP service:</p>
+<p data-astro-cid-byeekcgh="">Furthermore, we prepared on online checking website. Click if you want to know if your public IP address has a vulnerable SSDP service:</p>
 <ul>
 	<li><a href="https://badupnp.benjojo.co.uk" target="_blank" rel="noopener noreferrer">https://badupnp.benjojo.co.uk/</a></li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">Sadly, the most unprotected routers we saw in the described attack were from China, Russia and Argentina, places not historically known for the most agile internet service providers.</p>
-<h3 data-astro-cid-yoyuw6fx="">Summary</h3>
-<p data-astro-cid-yoyuw6fx="">Cloudflare customers are fully protected from SSDP and other L3 amplification attacks. These attacks are nicely deflected by <a href="https://blog.cloudflare.com/how-cloudflares-architecture-allows-us-to-scale-to-stop-the-largest-attacks">Cloudflare anycast</a> infrastructure and require no special action. Unfortunately the raising of SSDP attack sizes might be a tough problem for other Internet citizens. We should encourage our ISPs to stop IP spoofing within their network, support BGP flowspec and configure in netflow collection.</p>
-<p data-astro-cid-yoyuw6fx=""><em>This article is a joint work of Marek Majkowski and Ben Cartwright-Cox.</em></p>
-<p data-astro-cid-yoyuw6fx="">Dealing with large attacks sounds like fun? <a href="https://boards.greenhouse.io/cloudflare/jobs/589572" target="_blank" rel="noopener noreferrer">Join our world famous DDoS team</a> in London, Austin, San Francisco and our elite office in Warsaw, Poland.</p>
+<p data-astro-cid-byeekcgh="">Sadly, the most unprotected routers we saw in the described attack were from China, Russia and Argentina, places not historically known for the most agile internet service providers.</p>
+<h3 data-astro-cid-byeekcgh="">Summary</h3>
+<p data-astro-cid-byeekcgh="">Cloudflare customers are fully protected from SSDP and other L3 amplification attacks. These attacks are nicely deflected by <a href="https://blog.cloudflare.com/how-cloudflares-architecture-allows-us-to-scale-to-stop-the-largest-attacks">Cloudflare anycast</a> infrastructure and require no special action. Unfortunately the raising of SSDP attack sizes might be a tough problem for other Internet citizens. We should encourage our ISPs to stop IP spoofing within their network, support BGP flowspec and configure in netflow collection.</p>
+<p data-astro-cid-byeekcgh=""><em>This article is a joint work of Marek Majkowski and Ben Cartwright-Cox.</em></p>
+<p data-astro-cid-byeekcgh="">Dealing with large attacks sounds like fun? <a href="https://boards.greenhouse.io/cloudflare/jobs/589572" target="_blank" rel="noopener noreferrer">Join our world famous DDoS team</a> in London, Austin, San Francisco and our elite office in Warsaw, Poland.</p>

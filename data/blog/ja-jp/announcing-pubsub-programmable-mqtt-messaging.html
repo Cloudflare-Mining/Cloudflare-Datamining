@@ -1,29 +1,29 @@
-<p data-astro-cid-yoyuw6fx="">Platform Weekを推進する根本的な疑問の1つは、「開発者が Cloudflare上でフルスタックアプリケーションを構築できるようにするにはどうすればよいか」ということです。Workersはデフォルトで分散されたアプリケーションを簡単にデプロイするためのサーバーレス環境として、<a href="https://developers.cloudflare.com/workers/learning/how-kv-works" target="_blank" rel="noopener noreferrer">KV</a>と<a href="https://developers.cloudflare.com/workers/learning/using-durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a>はキャッシュと調整のため、<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">R2</a>はゼロエグレスコストオブジェクトストアとして、開発者が新しいアプリケーションを構築したり、既存のアプリケーションをCloudflareの開発者プラットフォームに取り込んだりするために、他に何を構築する必要があるかについて議論し続けてきました。</p>
-<p data-astro-cid-yoyuw6fx="">このことを念頭に置き、Cloudflare Pub/Subは、現在何千万もの既存デバイスでサポートされているユビキタスで、業界標準のMQTTプロトコルをベースに構築された_プログラマブル_メッセージバスであり、私たちはこのプライベートベータを発表できることを大変嬉しく思っています。</p>
-<p data-astro-cid-yoyuw6fx="">一言で言えば、Pub/Subでは以下のようなことが可能です。</p>
+<p data-astro-cid-byeekcgh="">Platform Weekを推進する根本的な疑問の1つは、「開発者が Cloudflare上でフルスタックアプリケーションを構築できるようにするにはどうすればよいか」ということです。Workersはデフォルトで分散されたアプリケーションを簡単にデプロイするためのサーバーレス環境として、<a href="https://developers.cloudflare.com/workers/learning/how-kv-works" target="_blank" rel="noopener noreferrer">KV</a>と<a href="https://developers.cloudflare.com/workers/learning/using-durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a>はキャッシュと調整のため、<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">R2</a>はゼロエグレスコストオブジェクトストアとして、開発者が新しいアプリケーションを構築したり、既存のアプリケーションをCloudflareの開発者プラットフォームに取り込んだりするために、他に何を構築する必要があるかについて議論し続けてきました。</p>
+<p data-astro-cid-byeekcgh="">このことを念頭に置き、Cloudflare Pub/Subは、現在何千万もの既存デバイスでサポートされているユビキタスで、業界標準のMQTTプロトコルをベースに構築された_プログラマブル_メッセージバスであり、私たちはこのプライベートベータを発表できることを大変嬉しく思っています。</p>
+<p data-astro-cid-byeekcgh="">一言で言えば、Pub/Subでは以下のようなことが可能です。</p>
 <ul>
 	<li>MQTT対応クライアント（将来的には他のクライアント向けプロトコル）からのイベント、テレメトリー、センサーデータを発行します</li>
 	<li>Cloudflare Workers を使って_ブローカーに発行され、_サブスクライバーに配信される前に、メッセージを単一の「クラウドリージョン」に転送する必要なく、メッセージをフィルタリング、集約、修正できるコードを記述ができます</li>
 	<li>Pub/Subはプログラム可能なイベントルーターとして、またR2やKVといった永続的なデータストレージへのフックとして機能し、他のクラウド上のアプリケーションやオンプレミスからイベントをプッシュします</li>
 	<li>アップデートをプッシュすることが難しく（あるいはリスクが高く！）、デバイス上でコードを実行すると材料費（CPU、メモリ）が高くなりますが、クライアントからロジックを移動させることで、レイテンシーができるだけ低く保たれます（あなたのコードは <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">すべての場所</a>で実行されます）。</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">そして、私たちがまだ予測していないことが、数多くありそうです。私たちは、開発者がCloudflare Workersの上に<a href="https://workers.cloudflare.com/built-with" target="_blank" rel="noopener noreferrer">信じられないほどのものを構築する</a>のを見てきましたが、Pub/Subのようなプログラム可能なメッセージバスの力で、彼らがどんなものを構築するのかを見ることにも興奮しています。</p>
-<h3 data-astro-cid-yoyuw6fx="">なぜMQTTなのか？そしてMQTTとは何か？</h3>
-<p data-astro-cid-yoyuw6fx=""><a href="https://mqtt.org" target="_blank" rel="noopener noreferrer">MQTT</a>を聞いたことがない人は、それが今日展開されている最も普及した「メッセージングプロトコル」の1つであることを知って驚くかもしれません。今日、接続された決済端末から自律走行車、携帯電話、さらにはビデオゲームまで、MQTTを話すデバイスは数千万台（少なくとも！）にものぼります。センサー読み取り、テレメトリー、金融取引、モバイル通知やメッセージなどはすべてMQTTの一般的な使用例で、プロトコルの柔軟性により、開発者はそれらの使用例に応じて信頼性、トピック階層、永続性などのトレードオフを行うことができます。</p>
-<p data-astro-cid-yoyuw6fx="">Cloudflare Pub/Subの基盤としてMQTTを選択したのは、Workersの基盤としてService Worker APIを選んだときや、最近発表したCommon APIプロジェクトへの参加と同様に、オープンでアクセス可能な標準の上に構築することが重要だと考えているからです。また、既存のクライアントがCloudflareのスケールとプログラマビリティの恩恵を簡単に受けられるようにし、開発者が現在慣れ親しんでいる言語で、クライアントライブラリの豊富なエコシステムを持てるようにしたいと思いました。</p>
-<p data-astro-cid-yoyuw6fx="">しかしそれ以上に、MQTTは最新の「パブリッシュ・サブスクライブ」メッセージングサービスのニーズを満たしているとも考えています。柔軟な配信保証、トランスポート暗号化のためのTLS（特注の暗号は不要！）、スケーラブルなトピック作成とサブスクリプションモデル、拡張可能なメッセージごとのメタデータがあり、そして重要なのは、明確なエラーメッセージとともに、明確に定義された仕様を提供していることです。</p>
-<p data-astro-cid-yoyuw6fx="">このことを念頭に置いて、私たちはPub/Subへのより多くの「オンランプ」をサポートするつもりです。MQTTの優れた部分の多くは、HTTPやWebSocketを介して私たちと通信することを望むクライアントから、抽象化して切り離すことが可能です。</p>
-<h3 data-astro-cid-yoyuw6fx="">ビルディングブロック</h3>
-<p data-astro-cid-yoyuw6fx="">Pub/Sub Brokerに発行されるすべてのメッセージに作用するコードを書くことができるとすると、実際にはどのようになるのでしょうか。</p>
-<p data-astro-cid-yoyuw6fx="">ここでは、Workerで直接Pub/Subメッセージを処理する、シンプルでわかりやすい例を示します。クライアント（この場合は決済端末）が取引データを報告しており、私たちは各地域で処理された取引数を取得し、取引量を時系列で追跡できるようにしたいのです。</p>
-<p data-astro-cid-yoyuw6fx="">具体的には、以下の通りです。</p>
+<p data-astro-cid-byeekcgh="">そして、私たちがまだ予測していないことが、数多くありそうです。私たちは、開発者がCloudflare Workersの上に<a href="https://workers.cloudflare.com/built-with" target="_blank" rel="noopener noreferrer">信じられないほどのものを構築する</a>のを見てきましたが、Pub/Subのようなプログラム可能なメッセージバスの力で、彼らがどんなものを構築するのかを見ることにも興奮しています。</p>
+<h3 data-astro-cid-byeekcgh="">なぜMQTTなのか？そしてMQTTとは何か？</h3>
+<p data-astro-cid-byeekcgh=""><a href="https://mqtt.org" target="_blank" rel="noopener noreferrer">MQTT</a>を聞いたことがない人は、それが今日展開されている最も普及した「メッセージングプロトコル」の1つであることを知って驚くかもしれません。今日、接続された決済端末から自律走行車、携帯電話、さらにはビデオゲームまで、MQTTを話すデバイスは数千万台（少なくとも！）にものぼります。センサー読み取り、テレメトリー、金融取引、モバイル通知やメッセージなどはすべてMQTTの一般的な使用例で、プロトコルの柔軟性により、開発者はそれらの使用例に応じて信頼性、トピック階層、永続性などのトレードオフを行うことができます。</p>
+<p data-astro-cid-byeekcgh="">Cloudflare Pub/Subの基盤としてMQTTを選択したのは、Workersの基盤としてService Worker APIを選んだときや、最近発表したCommon APIプロジェクトへの参加と同様に、オープンでアクセス可能な標準の上に構築することが重要だと考えているからです。また、既存のクライアントがCloudflareのスケールとプログラマビリティの恩恵を簡単に受けられるようにし、開発者が現在慣れ親しんでいる言語で、クライアントライブラリの豊富なエコシステムを持てるようにしたいと思いました。</p>
+<p data-astro-cid-byeekcgh="">しかしそれ以上に、MQTTは最新の「パブリッシュ・サブスクライブ」メッセージングサービスのニーズを満たしているとも考えています。柔軟な配信保証、トランスポート暗号化のためのTLS（特注の暗号は不要！）、スケーラブルなトピック作成とサブスクリプションモデル、拡張可能なメッセージごとのメタデータがあり、そして重要なのは、明確なエラーメッセージとともに、明確に定義された仕様を提供していることです。</p>
+<p data-astro-cid-byeekcgh="">このことを念頭に置いて、私たちはPub/Subへのより多くの「オンランプ」をサポートするつもりです。MQTTの優れた部分の多くは、HTTPやWebSocketを介して私たちと通信することを望むクライアントから、抽象化して切り離すことが可能です。</p>
+<h3 data-astro-cid-byeekcgh="">ビルディングブロック</h3>
+<p data-astro-cid-byeekcgh="">Pub/Sub Brokerに発行されるすべてのメッセージに作用するコードを書くことができるとすると、実際にはどのようになるのでしょうか。</p>
+<p data-astro-cid-byeekcgh="">ここでは、Workerで直接Pub/Subメッセージを処理する、シンプルでわかりやすい例を示します。クライアント（この場合は決済端末）が取引データを報告しており、私たちは各地域で処理された取引数を取得し、取引量を時系列で追跡できるようにしたいのです。</p>
+<p data-astro-cid-byeekcgh="">具体的には、以下の通りです。</p>
 <ol>
 	<li>気になるメッセージを、特定のトピックプレフィックスでフィルタリングします</li>
 	<li>特定のkey:valueペアのメッセージを、メトリックとして解析します</li>
 	<li>そのメトリックを、サーバーレスの新しい時系列分析サービスであるWorkers Analytics Engineに直接書き込んで、GraphQLで直接クエリできるようにします</li>
 </ol>
-<p data-astro-cid-yoyuw6fx="">これにより、外部のメトリクスサービスを立ち上げて保守したり、別のクラウドサービスを設定したり、どのように拡張するかを考えたりする必要がなく、すべてCloudflare上で直接行うことができます。</p>
-<p data-astro-cid-yoyuw6fx="">そしてこれらのメトリクスを、使い慣れた言語であるSQLを使って直接問い合わせることができます。このクエリでは作成したメトリクスを使用して、決済デバイスで処理されたトランザクションの内訳を、マーチャントごとにグループ化して表示します（繰り返しますが、すべてCloudflareで処理されます）。</p>
+<p data-astro-cid-byeekcgh="">これにより、外部のメトリクスサービスを立ち上げて保守したり、別のクラウドサービスを設定したり、どのように拡張するかを考えたりする必要がなく、すべてCloudflare上で直接行うことができます。</p>
+<p data-astro-cid-byeekcgh="">そしてこれらのメトリクスを、使い慣れた言語であるSQLを使って直接問い合わせることができます。このクエリでは作成したメトリクスを使用して、決済デバイスで処理されたトランザクションの内訳を、マーチャントごとにグループ化して表示します（繰り返しますが、すべてCloudflareで処理されます）。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> pubsub</span><span class="sk-24292e-fff">(</span></span>
@@ -98,7 +98,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">Analytics Engineの呼び出しを、任意の数の例で置き換えたり増やしたりすることができます。</p>
+<p data-astro-cid-byeekcgh="">Analytics Engineの呼び出しを、任意の数の例で置き換えたり増やしたりすることができます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">SELECT</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  label_2</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> region,</span></span>
@@ -124,17 +124,17 @@
 	<li>メッセージがサブスクライバーにプッシュされる前に、<a href="https://developers.cloudflare.com/workers/runtime-apis/kv" target="_blank" rel="noopener noreferrer">KVから入力された</a>データを使用してその場でメッセージを書き換えます</li>
 	<li>ペイロードに基づいてメッセージを集約し、Cloudflareの外部にホストされているレガシーインフラにHTTP POSTします</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">Pub/Subは、データをCloudflareのネットワークに取り込み、フィルタリング、集約、変異させ、サブスクライバー（そのトピックをリッスンしているサブスクライバーが10人でも1000人でも1万人でも）にプッシュバックする方法を提供します。</p>
-<h3 data-astro-cid-yoyuw6fx="">今後の私たち</h3>
-<p data-astro-cid-yoyuw6fx="">よく言われるように、私たちはまだスタートしたばかりです。Pub/Subのプライベートベータは、道のりの始まりに過ぎず、私たちにはすでに取り組んでいる数多くの機能があります。</p>
-<p data-astro-cid-yoyuw6fx="">重要なのは、MQTT v5.0仕様をできるだけ多くカバーし、お客様が既存のデプロイメントを移行して「そのまま使える」ようにすることであり、それが私たちの優先事項の 1 つなのです。多数のサブスクライバー間でメッセージの負荷分散ができるようにする<a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901250" target="_blank" rel="noopener noreferrer">共有サブスクリプション、</a>集約ユースケースの<a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901242" target="_blank" rel="noopener noreferrer">ワイルドカードサブスクリプション</a>（単層と多層の両方）、より強力な配信保証（<a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901234" target="_blank" rel="noopener noreferrer">QoS</a>）、追加の認証モード（特にMutual TLS）のサポートなどの便利な機能は、私たちが取り組んでいるものの一部に過ぎません。</p>
-<p data-astro-cid-yoyuw6fx="">それ以上に、Pub/Subの開発者体験を最高のものにすることに注力しており、ベータ期間中、私たちは以下のことを行います。</p>
+<p data-astro-cid-byeekcgh="">Pub/Subは、データをCloudflareのネットワークに取り込み、フィルタリング、集約、変異させ、サブスクライバー（そのトピックをリッスンしているサブスクライバーが10人でも1000人でも1万人でも）にプッシュバックする方法を提供します。</p>
+<h3 data-astro-cid-byeekcgh="">今後の私たち</h3>
+<p data-astro-cid-byeekcgh="">よく言われるように、私たちはまだスタートしたばかりです。Pub/Subのプライベートベータは、道のりの始まりに過ぎず、私たちにはすでに取り組んでいる数多くの機能があります。</p>
+<p data-astro-cid-byeekcgh="">重要なのは、MQTT v5.0仕様をできるだけ多くカバーし、お客様が既存のデプロイメントを移行して「そのまま使える」ようにすることであり、それが私たちの優先事項の 1 つなのです。多数のサブスクライバー間でメッセージの負荷分散ができるようにする<a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901250" target="_blank" rel="noopener noreferrer">共有サブスクリプション、</a>集約ユースケースの<a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901242" target="_blank" rel="noopener noreferrer">ワイルドカードサブスクリプション</a>（単層と多層の両方）、より強力な配信保証（<a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901234" target="_blank" rel="noopener noreferrer">QoS</a>）、追加の認証モード（特にMutual TLS）のサポートなどの便利な機能は、私たちが取り組んでいるものの一部に過ぎません。</p>
+<p data-astro-cid-byeekcgh="">それ以上に、Pub/Subの開発者体験を最高のものにすることに注力しており、ベータ期間中、私たちは以下のことを行います。</p>
 <ul>
 	<li>開発者用CLIである<a href="https://github.com/cloudflare/wrangler2" target="_blank" rel="noopener noreferrer">wrangler2</a>で、新しい「pubsub」サブコマンドのセットをサポートし、できるだけ摩擦を少なくして使い始められるようにします。</li>
 	<li>メッセージの発信元がCloudflare以外のクライアントであるかどうかに関係なく、Workerコードから直接メッセージを発行したりトピックを購読したりできる「ネイティブ」バインディング（<a href="https://developers.cloudflare.com/workers/runtime-apis/kv" target="_blank" rel="noopener noreferrer">Workers KV</a>の操作方法と同様）を構築します。</li>
 	<li>HTTPリクエストやWebSocketなど、MQTTベースではないクライアントから発行・購読する方法をさらに検討し、既存のコードとの統合をさらに容易にします。</li>
 </ul>
-<p data-astro-cid-yoyuw6fx=""><a href="https://developers.cloudflare.com/pub-sub" target="_blank" rel="noopener noreferrer">開発者向けドキュメント</a>では、これらの機能を順次紹介していく予定です。</p>
-<p data-astro-cid-yoyuw6fx="">私たちはまた、価格設定は開発者経験の大きな部分を占めると認識しており、アクセス可能で柔軟な無料枠の確保に全力を注いでいます。開発者が実験し、プロトタイプを作成し、私たちがまだ考えつかないような問題を解決できるようにしたいと考えています。価格については、ベータ期間中に詳しくお知らせする予定です。</p>
-<h3 data-astro-cid-yoyuw6fx="">利用をはじめる</h3>
-<p data-astro-cid-yoyuw6fx="">Pub/Subの利用を開始したい方は、<a href="https://www.cloudflare.com/cloudflare-pub-sub-lightweight-messaging-private-beta" target="_blank" rel="noopener noreferrer">プライベートベータにサインアップしてください</a>：来月中にアクセスできるようにする予定です。私たちは開発者からのフィードバックを収集し、メンバーがどのようなものを作り始めるか見届けることを楽しみにしています。その間、<a href="https://developers.cloudflare.com/pub-sub" target="_blank" rel="noopener noreferrer">最新のPub/Sub開発者向けドキュメント</a>をご覧になり、Pub/Subがどのように機能するか、MQTTプロトコル、Cloudflare Workersとの統合方法について理解していただければと思います。</p>
+<p data-astro-cid-byeekcgh=""><a href="https://developers.cloudflare.com/pub-sub" target="_blank" rel="noopener noreferrer">開発者向けドキュメント</a>では、これらの機能を順次紹介していく予定です。</p>
+<p data-astro-cid-byeekcgh="">私たちはまた、価格設定は開発者経験の大きな部分を占めると認識しており、アクセス可能で柔軟な無料枠の確保に全力を注いでいます。開発者が実験し、プロトタイプを作成し、私たちがまだ考えつかないような問題を解決できるようにしたいと考えています。価格については、ベータ期間中に詳しくお知らせする予定です。</p>
+<h3 data-astro-cid-byeekcgh="">利用をはじめる</h3>
+<p data-astro-cid-byeekcgh="">Pub/Subの利用を開始したい方は、<a href="https://www.cloudflare.com/cloudflare-pub-sub-lightweight-messaging-private-beta" target="_blank" rel="noopener noreferrer">プライベートベータにサインアップしてください</a>：来月中にアクセスできるようにする予定です。私たちは開発者からのフィードバックを収集し、メンバーがどのようなものを作り始めるか見届けることを楽しみにしています。その間、<a href="https://developers.cloudflare.com/pub-sub" target="_blank" rel="noopener noreferrer">最新のPub/Sub開発者向けドキュメント</a>をご覧になり、Pub/Subがどのように機能するか、MQTTプロトコル、Cloudflare Workersとの統合方法について理解していただければと思います。</p>

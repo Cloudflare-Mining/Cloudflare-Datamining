@@ -1,8 +1,8 @@
-<p data-astro-cid-yoyuw6fx="">The Go test coverage implementation is <a href="https://blog.golang.org/cover" target="_blank" rel="noopener noreferrer">quite ingenious</a>: when asked to, the Go compiler will preprocess the source so that when each code portion is executed a bit is set in a coverage bitmap. This is integrated in the <code>go test</code> tool: <code>go test -cover</code> enables it and <code>-coverprofile=</code> allows you to write a profile to then inspect with <code>go tool cover</code>.</p>
-<p data-astro-cid-yoyuw6fx="">This makes it very easy to get unit test coverage, but <strong>there's no simple way to get coverage data for tests that you run against the main version of your program, like end-to-end tests</strong>.</p>
-<p data-astro-cid-yoyuw6fx="">The proper fix would involve adding <code>-cover</code> preprocessing support to <code>go build</code>, and exposing the coverage profile maybe as a <code>runtime/pprof.Profile</code>, but as of Go 1.6 there’s no such support. Here instead is a hack we've been using for a while in the test suite of <a href="https://blog.cloudflare.com/tag/rrdns">RRDNS</a>, our custom Go DNS server.</p>
-<p data-astro-cid-yoyuw6fx="">We create a <strong>dummy test</strong> that executes <code>main()</code>, we put it behind a build tag, compile a binary with <code>go test -c -cover</code> and then run only that test instead of running the regular binary.</p>
-<p data-astro-cid-yoyuw6fx="">Here's what the <code>rrdns_test.go</code> file looks like:</p>
+<p data-astro-cid-byeekcgh="">The Go test coverage implementation is <a href="https://blog.golang.org/cover" target="_blank" rel="noopener noreferrer">quite ingenious</a>: when asked to, the Go compiler will preprocess the source so that when each code portion is executed a bit is set in a coverage bitmap. This is integrated in the <code>go test</code> tool: <code>go test -cover</code> enables it and <code>-coverprofile=</code> allows you to write a profile to then inspect with <code>go tool cover</code>.</p>
+<p data-astro-cid-byeekcgh="">This makes it very easy to get unit test coverage, but <strong>there's no simple way to get coverage data for tests that you run against the main version of your program, like end-to-end tests</strong>.</p>
+<p data-astro-cid-byeekcgh="">The proper fix would involve adding <code>-cover</code> preprocessing support to <code>go build</code>, and exposing the coverage profile maybe as a <code>runtime/pprof.Profile</code>, but as of Go 1.6 there’s no such support. Here instead is a hack we've been using for a while in the test suite of <a href="https://blog.cloudflare.com/tag/rrdns">RRDNS</a>, our custom Go DNS server.</p>
+<p data-astro-cid-byeekcgh="">We create a <strong>dummy test</strong> that executes <code>main()</code>, we put it behind a build tag, compile a binary with <code>go test -c -cover</code> and then run only that test instead of running the regular binary.</p>
+<p data-astro-cid-byeekcgh="">Here's what the <code>rrdns_test.go</code> file looks like:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// +build testrunmain</span></span>
 <span class="line"></span>
@@ -36,7 +36,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">We compile the binary like this</p>
+<p data-astro-cid-byeekcgh="">We compile the binary like this</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ go test -coverpkg="rrdns/..." -c -tags testrunmain rrdns</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -44,7 +44,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">And then when we want to collect coverage information, we execute this instead of <code>./rrdns</code> (and run our test battery as usual):</p>
+<p data-astro-cid-byeekcgh="">And then when we want to collect coverage information, we execute this instead of <code>./rrdns</code> (and run our test battery as usual):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ ./rrdns.test -test.run "^TestRunMain$" -test.coverprofile=system.out</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -52,8 +52,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">You must return from <code>main()</code> cleanly for the profile to be written to disk; in RRDNS we do that by catching SIGINT. You can still use command line arguments and standard input normally, just note that you will get two lines of extra output from the test framework.</p>
-<p data-astro-cid-yoyuw6fx="">Finally, since you probably also run unit tests, you might want to merge the coverage profiles with <a href="https://github.com/wadey/gocovmerge" target="_blank" rel="noopener noreferrer">gocovmerge</a> (from <a href="https://github.com/golang/go/issues/6909#issuecomment-124185553" target="_blank" rel="noopener noreferrer">issue #6909</a>):</p>
+<p data-astro-cid-byeekcgh="">You must return from <code>main()</code> cleanly for the profile to be written to disk; in RRDNS we do that by catching SIGINT. You can still use command line arguments and standard input normally, just note that you will get two lines of extra output from the test framework.</p>
+<p data-astro-cid-byeekcgh="">Finally, since you probably also run unit tests, you might want to merge the coverage profiles with <a href="https://github.com/wadey/gocovmerge" target="_blank" rel="noopener noreferrer">gocovmerge</a> (from <a href="https://github.com/golang/go/issues/6909#issuecomment-124185553" target="_blank" rel="noopener noreferrer">issue #6909</a>):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ go get github.com/wadey/gocovmerge</span></span>
 <span class="line"><span>$ gocovmerge unit.out system.out &gt; all.out</span></span>
@@ -63,4 +63,4 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">If finding creative ways to test big-scale network services sounds fun, know that <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">we are hiring in London, San Francisco and Singapore</a>.</p>
+<p data-astro-cid-byeekcgh="">If finding creative ways to test big-scale network services sounds fun, know that <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">we are hiring in London, San Francisco and Singapore</a>.</p>

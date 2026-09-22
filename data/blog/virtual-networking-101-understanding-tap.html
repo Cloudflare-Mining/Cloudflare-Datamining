@@ -1,6 +1,6 @@
-<p data-astro-cid-yoyuw6fx="">It's a never-ending effort to improve the performance of our infrastructure. As part of that quest, we wanted to squeeze as much network oomph as possible from our virtual machines. Internally for some projects we use <a href="https://firecracker-microvm.github.io" target="_blank" rel="noopener noreferrer">Firecracker</a>, which is a KVM-based virtual machine manager (VMM) that runs light-weight “Micro-VM”s. Each Firecracker instance uses a tap device to communicate with a host system. Not knowing much about tap, I had to up my game, however, it wasn't easy — the documentation is messy and spread across the Internet.</p>
-<p data-astro-cid-yoyuw6fx="">Here are the notes that I wish someone had passed me when I started out on this journey!</p>
-<p data-astro-cid-yoyuw6fx="">A tap device is a virtual <strong>network interface</strong> that looks like an ethernet network card. Instead of having real wires plugged into it, it exposes a nice handy file descriptor to an application willing to send/receive packets. Historically tap devices were mostly used to implement VPN clients. The machine would route traffic towards a <strong>tap interface</strong>, and a VPN client application would pick them up and process accordingly. For example this is what our Cloudflare WARP Linux client does. Here's how it looks on my laptop:</p>
+<p data-astro-cid-byeekcgh="">It's a never-ending effort to improve the performance of our infrastructure. As part of that quest, we wanted to squeeze as much network oomph as possible from our virtual machines. Internally for some projects we use <a href="https://firecracker-microvm.github.io" target="_blank" rel="noopener noreferrer">Firecracker</a>, which is a KVM-based virtual machine manager (VMM) that runs light-weight “Micro-VM”s. Each Firecracker instance uses a tap device to communicate with a host system. Not knowing much about tap, I had to up my game, however, it wasn't easy — the documentation is messy and spread across the Internet.</p>
+<p data-astro-cid-byeekcgh="">Here are the notes that I wish someone had passed me when I started out on this journey!</p>
+<p data-astro-cid-byeekcgh="">A tap device is a virtual <strong>network interface</strong> that looks like an ethernet network card. Instead of having real wires plugged into it, it exposes a nice handy file descriptor to an application willing to send/receive packets. Historically tap devices were mostly used to implement VPN clients. The machine would route traffic towards a <strong>tap interface</strong>, and a VPN client application would pick them up and process accordingly. For example this is what our Cloudflare WARP Linux client does. Here's how it looks on my laptop:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> link</span><span class="sk-032f62-99ffe4"> list</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
@@ -32,19 +32,19 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">More recently tap devices started to be used by <a href="https://www.cloudflare.com/learning/cloud/what-is-a-virtual-machine" target="_blank" rel="noopener noreferrer">virtual machines</a> to enable networking. The VMM (like Qemu, Firecracker, or gVisor) would open the application side of a tap and pass all the packets to the guest VM. The tap network interface would be left for the host kernel to deal with. Typically, a host would behave like a router and firewall, forward or NAT all the packets. This design is somewhat surprising - it's almost reversing the original use case for tap. In the VPN days tap was a traffic destination. With a VM behind, tap looks like a traffic source.</p>
-<p data-astro-cid-yoyuw6fx="">A Linux tap device is a <strong>mean creature</strong>. It looks trivial — a virtual network interface, with a file descriptor behind it. However, it's <strong>surprisingly hard</strong> to get it to perform well. The Linux networking stack is optimized for packets handled by a physical network card, not a userspace application. However, over the years the Linux tap interface grew in features and nowadays, it's possible to get good performance out of it. Later I'll explain how to use the Linux tap API in a modern way.</p>
+<p data-astro-cid-byeekcgh="">More recently tap devices started to be used by <a href="https://www.cloudflare.com/learning/cloud/what-is-a-virtual-machine" target="_blank" rel="noopener noreferrer">virtual machines</a> to enable networking. The VMM (like Qemu, Firecracker, or gVisor) would open the application side of a tap and pass all the packets to the guest VM. The tap network interface would be left for the host kernel to deal with. Typically, a host would behave like a router and firewall, forward or NAT all the packets. This design is somewhat surprising - it's almost reversing the original use case for tap. In the VPN days tap was a traffic destination. With a VM behind, tap looks like a traffic source.</p>
+<p data-astro-cid-byeekcgh="">A Linux tap device is a <strong>mean creature</strong>. It looks trivial — a virtual network interface, with a file descriptor behind it. However, it's <strong>surprisingly hard</strong> to get it to perform well. The Linux networking stack is optimized for packets handled by a physical network card, not a userspace application. However, over the years the Linux tap interface grew in features and nowadays, it's possible to get good performance out of it. Later I'll explain how to use the Linux tap API in a modern way.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="386" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48N5Z94KN4WT9RDSVF1NV6.png&amp;w=715&amp;h=386&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48N5Z94KN4WT9RDSVF1NV6.png&amp;w=640&amp;h=346&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48N5Z94KN4WT9RDSVF1NV6.png&amp;w=715&amp;h=386&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48N5Z94KN4WT9RDSVF1NV6.png&amp;w=750&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48N5Z94KN4WT9RDSVF1NV6.png&amp;w=828&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48N5Z94KN4WT9RDSVF1NV6.png&amp;w=1080&amp;h=583&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48N5Z94KN4WT9RDSVF1NV6.png&amp;w=1280&amp;h=691&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48N5Z94KN4WT9RDSVF1NV6.png&amp;w=1430&amp;h=772&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2123 Embedded Image - d5mfGT" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48N5Z94KN4WT9RDSVF1NV6.png&amp;w=1920&amp;h=1037&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1037" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="386" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-yoyuw6fx="">Source: DALL-E</p>
-<h2 data-astro-cid-yoyuw6fx="">To tun or to tap?</h2>
-<p data-astro-cid-yoyuw6fx="">The interface is <a href="https://docs.kernel.org/networking/tuntap.html" target="_blank" rel="noopener noreferrer">called "the universal tun/tap"</a> in the kernel. The "tun" variant, accessible via the IFF_TUN flag, looks like a point-to-point link. There are no L2 Ethernet headers. Since most modern networks are Ethernet, this is a bit less intuitive to set up for a novice user. Most importantly, projects like Firecracker and gVisor do expect L2 headers.</p>
-<p data-astro-cid-yoyuw6fx="">"Tap", with the IFF_TAP flag, is the one which has Ethernet headers, and has been getting all the attention lately. If you are like me and always forget which one is which, you can use this &nbsp;AI-generated rhyme (check out <a href="https://blog.cloudflare.com/writing-poems-using-llama-2-on-workers-ai">WorkersAI/LLama</a>) to help to remember:</p>
-<p data-astro-cid-yoyuw6fx=""><em>Tap is like a switch,Ethernet headers it'll hitch.Tun is like a tunnel,VPN connections it'll funnel.Ethernet headers it won't hold,Tap uses, tun does not, we're told.</em></p>
-<h2 data-astro-cid-yoyuw6fx="">Listing devices</h2>
-<p data-astro-cid-yoyuw6fx="">Tun/tap devices are natively supported by iproute2 tooling. Typically, one creates a device with <strong>ip tuntap add</strong> and lists it with <strong>ip tuntap list</strong>:</p>
+<p data-astro-cid-byeekcgh="">Source: DALL-E</p>
+<h2 data-astro-cid-byeekcgh="">To tun or to tap?</h2>
+<p data-astro-cid-byeekcgh="">The interface is <a href="https://docs.kernel.org/networking/tuntap.html" target="_blank" rel="noopener noreferrer">called "the universal tun/tap"</a> in the kernel. The "tun" variant, accessible via the IFF_TUN flag, looks like a point-to-point link. There are no L2 Ethernet headers. Since most modern networks are Ethernet, this is a bit less intuitive to set up for a novice user. Most importantly, projects like Firecracker and gVisor do expect L2 headers.</p>
+<p data-astro-cid-byeekcgh="">"Tap", with the IFF_TAP flag, is the one which has Ethernet headers, and has been getting all the attention lately. If you are like me and always forget which one is which, you can use this &nbsp;AI-generated rhyme (check out <a href="https://blog.cloudflare.com/writing-poems-using-llama-2-on-workers-ai">WorkersAI/LLama</a>) to help to remember:</p>
+<p data-astro-cid-byeekcgh=""><em>Tap is like a switch,Ethernet headers it'll hitch.Tun is like a tunnel,VPN connections it'll funnel.Ethernet headers it won't hold,Tap uses, tun does not, we're told.</em></p>
+<h2 data-astro-cid-byeekcgh="">Listing devices</h2>
+<p data-astro-cid-byeekcgh="">Tun/tap devices are natively supported by iproute2 tooling. Typically, one creates a device with <strong>ip tuntap add</strong> and lists it with <strong>ip tuntap list</strong>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> tuntap</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> mode</span><span class="sk-032f62-99ffe4"> tap</span><span class="sk-032f62-99ffe4"> user</span><span class="sk-032f62-99ffe4"> marek</span><span class="sk-032f62-99ffe4"> group</span><span class="sk-032f62-99ffe4"> marek</span><span class="sk-032f62-99ffe4"> name</span><span class="sk-032f62-99ffe4"> tap0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> tuntap</span><span class="sk-032f62-99ffe4"> list</span></span>
@@ -54,9 +54,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Alternatively, it's possible to look for the <code>/sys/devices/virtual/net/&lt;ifr_name&gt;/tun_flags</code> files.</p>
-<h2 data-astro-cid-yoyuw6fx="">Tap device setup</h2>
-<p data-astro-cid-yoyuw6fx="">To open or create a new device, you first need to open <code>/dev/net/tun</code> which is called a "clone device":</p>
+<p data-astro-cid-byeekcgh="">Alternatively, it's possible to look for the <code>/sys/devices/virtual/net/&lt;ifr_name&gt;/tun_flags</code> files.</p>
+<h2 data-astro-cid-byeekcgh="">Tap device setup</h2>
+<p data-astro-cid-byeekcgh="">To open or create a new device, you first need to open <code>/dev/net/tun</code> which is called a "clone device":</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">    /* First, whatever you do, the device /dev/net/tun must be</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">     * opened read/write. That device is also called the clone</span></span>
@@ -72,7 +72,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">With the clone device file descriptor we can now instantiate a specific tap device by name:</p>
+<p data-astro-cid-byeekcgh="">With the clone device file descriptor we can now instantiate a specific tap device by name:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">    struct</span><span class="sk-6f42c1-ffc799"> ifreq</span><span class="sk-24292e-fff"> ifr </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> {};</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    strncpy</span><span class="sk-24292e-fff">(ifr.ifr_name, tap_name, IFNAMSIZ);</span></span>
@@ -86,8 +86,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">If <strong>ifr_name</strong> is empty or with a name that doesn't exist, a new tap device is created. Otherwise, an existing device is opened. When opening existing devices, flags like IFF_MULTI_QUEUE must match with the way the device was created, or EINVAL is returned. It's a good idea to try to reopen the device with flipped multi queue setting on EINVAL error.</p>
-<p data-astro-cid-yoyuw6fx="">The <strong>ifr_flags</strong> can have the following bits set:</p>
+<p data-astro-cid-byeekcgh="">If <strong>ifr_name</strong> is empty or with a name that doesn't exist, a new tap device is created. Otherwise, an existing device is opened. When opening existing devices, flags like IFF_MULTI_QUEUE must match with the way the device was created, or EINVAL is returned. It's a good idea to try to reopen the device with flipped multi queue setting on EINVAL error.</p>
+<p data-astro-cid-byeekcgh="">The <strong>ifr_flags</strong> can have the following bits set:</p>
 <div id="html-block-k27" class="html-block">
 	<table style="border:none;border-collapse:collapse">
 		<colgroup>
@@ -154,11 +154,11 @@
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-yoyuw6fx="">You almost always want IFF_TAP, IFF_NO_PI, IFF_VNET_HDR flags and perhaps sometimes IFF_MULTI_QUEUE.</p>
-<h2 data-astro-cid-yoyuw6fx="">The curious IFF_NAPI</h2>
-<p data-astro-cid-yoyuw6fx="">Judging by the <a href="https://www.mail-archive.com/netdev@vger.kernel.org/msg189704.html" target="_blank" rel="noopener noreferrer">original patchset introducing IFF_NAPI and IFF_NAPI_FRAGS</a>, these flags were introduced to increase code coverage of syzkaller. However, later work indicates there were <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fb3f903769e805221eb19209b3d9128d398038a1" target="_blank" rel="noopener noreferrer">performance benefits when doing XDP on tap</a>. IFF_NAPI enables a dedicated NAPI instance for packets written from an application into a tap. Besides allowing XDP, it also allows packets to be batched and GRO-ed. Otherwise, a backlog NAPI is used.</p>
-<h2 data-astro-cid-yoyuw6fx="">A note on buffer sizes</h2>
-<p data-astro-cid-yoyuw6fx="">Internally, a tap device is just a pair of packet queues. It's exposed as a network interface towards the host, and a file descriptor, a character device, towards the application. The queue in the direction of application (tap TX queue) is of size <strong>txqueuelen</strong> packets, controlled by an interface parameter:</p>
+<p data-astro-cid-byeekcgh="">You almost always want IFF_TAP, IFF_NO_PI, IFF_VNET_HDR flags and perhaps sometimes IFF_MULTI_QUEUE.</p>
+<h2 data-astro-cid-byeekcgh="">The curious IFF_NAPI</h2>
+<p data-astro-cid-byeekcgh="">Judging by the <a href="https://www.mail-archive.com/netdev@vger.kernel.org/msg189704.html" target="_blank" rel="noopener noreferrer">original patchset introducing IFF_NAPI and IFF_NAPI_FRAGS</a>, these flags were introduced to increase code coverage of syzkaller. However, later work indicates there were <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fb3f903769e805221eb19209b3d9128d398038a1" target="_blank" rel="noopener noreferrer">performance benefits when doing XDP on tap</a>. IFF_NAPI enables a dedicated NAPI instance for packets written from an application into a tap. Besides allowing XDP, it also allows packets to be batched and GRO-ed. Otherwise, a backlog NAPI is used.</p>
+<h2 data-astro-cid-byeekcgh="">A note on buffer sizes</h2>
+<p data-astro-cid-byeekcgh="">Internally, a tap device is just a pair of packet queues. It's exposed as a network interface towards the host, and a file descriptor, a character device, towards the application. The queue in the direction of application (tap TX queue) is of size <strong>txqueuelen</strong> packets, controlled by an interface parameter:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> link</span><span class="sk-032f62-99ffe4"> set</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> tap0</span><span class="sk-032f62-99ffe4"> txqueuelen</span><span class="sk-005cc5-ffc799"> 1000</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-032f62-99ffe4"> link</span><span class="sk-032f62-99ffe4"> show</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> tap0</span></span>
@@ -172,10 +172,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">In "ip link" statistics the column "<strong>TX dropped</strong>" indicates the tap application was too slow and the queue space exhausted.</p>
-<p data-astro-cid-yoyuw6fx="">In the other direction - interface RX queue - &nbsp;from application towards the host, the queue size limit is measured in bytes and controlled by the TUNSETSNDBUF ioctl. The <a href="https://elixir.bootlin.com/qemu/v8.1.1/source/net/tap-linux.c#L120" target="_blank" rel="noopener noreferrer">qemu comment discusses</a> this setting, however it's not easy to cause this queue to overflow. See this <a href="https://bugzilla.redhat.com/show_bug.cgi?id=508861" target="_blank" rel="noopener noreferrer">discussion for details</a>.</p>
-<h2 data-astro-cid-yoyuw6fx="">vnethdr size</h2>
-<p data-astro-cid-yoyuw6fx="">After the device is opened, a typical scenario is to set up VNET_HDR size and offloads. Typically the VNETHDRSZ should be set to 12:</p>
+<p data-astro-cid-byeekcgh="">In "ip link" statistics the column "<strong>TX dropped</strong>" indicates the tap application was too slow and the queue space exhausted.</p>
+<p data-astro-cid-byeekcgh="">In the other direction - interface RX queue - &nbsp;from application towards the host, the queue size limit is measured in bytes and controlled by the TUNSETSNDBUF ioctl. The <a href="https://elixir.bootlin.com/qemu/v8.1.1/source/net/tap-linux.c#L120" target="_blank" rel="noopener noreferrer">qemu comment discusses</a> this setting, however it's not easy to cause this queue to overflow. See this <a href="https://bugzilla.redhat.com/show_bug.cgi?id=508861" target="_blank" rel="noopener noreferrer">discussion for details</a>.</p>
+<h2 data-astro-cid-byeekcgh="">vnethdr size</h2>
+<p data-astro-cid-byeekcgh="">After the device is opened, a typical scenario is to set up VNET_HDR size and offloads. Typically the VNETHDRSZ should be set to 12:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">    len </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 12</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">    r </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> ioctl</span><span class="sk-24292e-fff">(tap_fd, TUNSETVNETHDRSZ, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">int</span><span class="sk-24292e-fff">){len});</span></span>
@@ -187,7 +187,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Sensible values are {10, 12, 20}, which are derived from <a href="https://docs.oasis-open.org/virtio/virtio/v1.2/csd01/virtio-v1.2-csd01.html" target="_blank" rel="noopener noreferrer">virtio spec</a>. 12 bytes makes room for the following header (little endian):</p>
+<p data-astro-cid-byeekcgh="">Sensible values are {10, 12, 20}, which are derived from <a href="https://docs.oasis-open.org/virtio/virtio/v1.2/csd01/virtio-v1.2-csd01.html" target="_blank" rel="noopener noreferrer">virtio spec</a>. 12 bytes makes room for the following header (little endian):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-6f42c1-ffc799"> virtio_net_hdr_v1</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> VIRTIO_NET_HDR_F_NEEDS_CSUM</span><span class="sk-005cc5-ffc799">  1</span><span class="sk-6a737d-8b8b8b94">    /* Use csum_start, csum_offset */</span></span>
@@ -211,8 +211,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2 data-astro-cid-yoyuw6fx="">offloads</h2>
-<p data-astro-cid-yoyuw6fx="">To enable offloads use the ioctl:</p>
+<h2 data-astro-cid-byeekcgh="">offloads</h2>
+<p data-astro-cid-byeekcgh="">To enable offloads use the ioctl:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">    unsigned</span><span class="sk-24292e-fff"> off_flags </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> TUN_F_CSUM </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> TUN_F_TSO4 </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> TUN_F_TSO6;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    int</span><span class="sk-24292e-fff"> r </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> ioctl</span><span class="sk-24292e-fff">(tap_fd, TUNSETOFFLOAD, off_flags);</span></span>
@@ -224,7 +224,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Here are the allowed bit values. They confirm that the userspace application can receive:</p>
+<p data-astro-cid-byeekcgh="">Here are the allowed bit values. They confirm that the userspace application can receive:</p>
 <div id="html-block-k3l" class="html-block">
 	<table style="border:none;border-collapse:collapse">
 		<colgroup>
@@ -291,23 +291,23 @@
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-yoyuw6fx="">Generally, offloads are extra packet features the tap application can deal with. Details of the offloads used by the sender are set on each packet in the vnethdr prefix.</p>
-<h2 data-astro-cid-yoyuw6fx="">Checksum offload TUN_F_CSUM</h2>
+<p data-astro-cid-byeekcgh="">Generally, offloads are extra packet features the tap application can deal with. Details of the offloads used by the sender are set on each packet in the vnethdr prefix.</p>
+<h2 data-astro-cid-byeekcgh="">Checksum offload TUN_F_CSUM</h2>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="624" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EDB77K8HQ8934Q2XM73Q.jpg&amp;w=715&amp;h=624&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EDB77K8HQ8934Q2XM73Q.jpg&amp;w=640&amp;h=559&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EDB77K8HQ8934Q2XM73Q.jpg&amp;w=715&amp;h=624&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EDB77K8HQ8934Q2XM73Q.jpg&amp;w=750&amp;h=655&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EDB77K8HQ8934Q2XM73Q.jpg&amp;w=828&amp;h=723&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EDB77K8HQ8934Q2XM73Q.jpg&amp;w=1080&amp;h=943&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EDB77K8HQ8934Q2XM73Q.jpg&amp;w=1280&amp;h=1117&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EDB77K8HQ8934Q2XM73Q.jpg&amp;w=1430&amp;h=1248&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2123 Embedded Image - YcThpe" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EDB77K8HQ8934Q2XM73Q.jpg&amp;w=1167&amp;h=1019&amp;f=webp" data-lightbox-width="1167" data-lightbox-height="1019" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="624" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-yoyuw6fx="">Structure of a typical UDP packet received over tap.</p>
-<p data-astro-cid-yoyuw6fx="">Let's start with the checksumming offload. The TUN_F_CSUM offload saves the kernel some work by pushing the checksum processing down the path. Applications which set that flag are indicating they can handle checksum validation. For example with this offload, for UDP IPv4 packet will have:</p>
+<p data-astro-cid-byeekcgh="">Structure of a typical UDP packet received over tap.</p>
+<p data-astro-cid-byeekcgh="">Let's start with the checksumming offload. The TUN_F_CSUM offload saves the kernel some work by pushing the checksum processing down the path. Applications which set that flag are indicating they can handle checksum validation. For example with this offload, for UDP IPv4 packet will have:</p>
 <ul>
 	<li>vnethdr flags will have VIRTIO_NET_HDR_F_NEEDS_CSUM set</li>
 	<li>hdr_len would be 42 (14+20+8)</li>
 	<li>csum_start 34 (14+20)</li>
 	<li>and csum_offset 6 (UDP header checksum is 6 bytes into L4)</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">This is illustrated above.</p>
-<p data-astro-cid-yoyuw6fx="">Supporting checksum offload is needed for further offloads.</p>
-<h2 data-astro-cid-yoyuw6fx="">TUN_F_CSUM is a must</h2>
-<p data-astro-cid-yoyuw6fx="">Consider this code:</p>
+<p data-astro-cid-byeekcgh="">This is illustrated above.</p>
+<p data-astro-cid-byeekcgh="">Supporting checksum offload is needed for further offloads.</p>
+<h2 data-astro-cid-byeekcgh="">TUN_F_CSUM is a must</h2>
+<p data-astro-cid-byeekcgh="">Consider this code:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">s </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> socket(</span><span class="sk-005cc5-fff">AF_INET</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">SOCK_DGRAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">s.setsockopt(</span><span class="sk-005cc5-fff">SOL_UDP</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">UDP_SEGMENT</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">1400</span><span class="sk-24292e-fff">)</span></span>
@@ -317,19 +317,19 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">This simple code produces a packet. When directed at a tap device, this code will surprisingly yield an EIO "Input/output error". This weird behavior happens if the tap is opened without TUN_F_CSUM and the application is sending GSO / UDP_SEGMENT frames. Tough luck. It might be considered a kernel bug, and we're thinking about fixing that. However, in the meantime everyone using tap should just set the TUN_F_CSUM bit.</p>
-<h2 data-astro-cid-yoyuw6fx="">Segmentation offloads</h2>
-<p data-astro-cid-yoyuw6fx="">We wrote about <a href="https://blog.cloudflare.com/accelerating-udp-packet-transmission-for-quic">UDP_SEGMENT</a> in the past. In short: on Linux an application can handle many packets with a single send/recv, as long as they have identical length.</p>
+<p data-astro-cid-byeekcgh="">This simple code produces a packet. When directed at a tap device, this code will surprisingly yield an EIO "Input/output error". This weird behavior happens if the tap is opened without TUN_F_CSUM and the application is sending GSO / UDP_SEGMENT frames. Tough luck. It might be considered a kernel bug, and we're thinking about fixing that. However, in the meantime everyone using tap should just set the TUN_F_CSUM bit.</p>
+<h2 data-astro-cid-byeekcgh="">Segmentation offloads</h2>
+<p data-astro-cid-byeekcgh="">We wrote about <a href="https://blog.cloudflare.com/accelerating-udp-packet-transmission-for-quic">UDP_SEGMENT</a> in the past. In short: on Linux an application can handle many packets with a single send/recv, as long as they have identical length.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="387" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QNMBHAYHDQPVEZ4H9MHN.png&amp;w=715&amp;h=387&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QNMBHAYHDQPVEZ4H9MHN.png&amp;w=640&amp;h=346&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QNMBHAYHDQPVEZ4H9MHN.png&amp;w=715&amp;h=387&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QNMBHAYHDQPVEZ4H9MHN.png&amp;w=750&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QNMBHAYHDQPVEZ4H9MHN.png&amp;w=828&amp;h=448&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QNMBHAYHDQPVEZ4H9MHN.png&amp;w=1080&amp;h=585&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QNMBHAYHDQPVEZ4H9MHN.png&amp;w=1280&amp;h=693&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QNMBHAYHDQPVEZ4H9MHN.png&amp;w=1430&amp;h=774&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2123 Embedded Image - vwtLjn" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QNMBHAYHDQPVEZ4H9MHN.png&amp;w=1920&amp;h=1040&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1040" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="387" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-yoyuw6fx="">With UDP_SEGMENT a single send() can transfer multiple packets.</p>
-<p data-astro-cid-yoyuw6fx="">Tap devices support offloading which exposes that very functionality. With TUN_F_TSO4 and TUN_F_TSO6 flags the tap application signals it can deal with long packet trains. Note, that with these features the application must be ready to receive much larger buffers - up to 65507 bytes for IPv4 and 65527 for IPv6.</p>
-<p data-astro-cid-yoyuw6fx="">TSO4/TSO6 flags are enabling long packet trains for <a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip" target="_blank" rel="noopener noreferrer">TCP</a> and have been supported for a long time. More recently TUN_F_USO4 and TUN_F_USO6 bits were introduced for <a href="https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp" target="_blank" rel="noopener noreferrer">UDP</a>. When any of these offloads are used, the <strong>gso_type</strong> contains the relevant offload type and <strong>gso_size</strong> holds a segment size within the GRO packet train.</p>
-<p data-astro-cid-yoyuw6fx="">TUN_F_UFO is a UDP fragmentation offload which is deprecated.</p>
-<p data-astro-cid-yoyuw6fx="">By setting TUNSETOFFLOAD, the application is telling the kernel which offloads it's able to handle on the read() side of a tap device. If the ioctl(TUNSETOFFLOAD) succeeds, the application can assume the kernel supports the same offloads for packets in the other direction.</p>
-<h2 data-astro-cid-yoyuw6fx="">Bug in rx-udp-gro-forwarding - TUN_F_USO4</h2>
-<p data-astro-cid-yoyuw6fx="">When working with tap and offloads it's useful to inspect <strong>ethtool</strong>:</p>
+<p data-astro-cid-byeekcgh="">With UDP_SEGMENT a single send() can transfer multiple packets.</p>
+<p data-astro-cid-byeekcgh="">Tap devices support offloading which exposes that very functionality. With TUN_F_TSO4 and TUN_F_TSO6 flags the tap application signals it can deal with long packet trains. Note, that with these features the application must be ready to receive much larger buffers - up to 65507 bytes for IPv4 and 65527 for IPv6.</p>
+<p data-astro-cid-byeekcgh="">TSO4/TSO6 flags are enabling long packet trains for <a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip" target="_blank" rel="noopener noreferrer">TCP</a> and have been supported for a long time. More recently TUN_F_USO4 and TUN_F_USO6 bits were introduced for <a href="https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp" target="_blank" rel="noopener noreferrer">UDP</a>. When any of these offloads are used, the <strong>gso_type</strong> contains the relevant offload type and <strong>gso_size</strong> holds a segment size within the GRO packet train.</p>
+<p data-astro-cid-byeekcgh="">TUN_F_UFO is a UDP fragmentation offload which is deprecated.</p>
+<p data-astro-cid-byeekcgh="">By setting TUNSETOFFLOAD, the application is telling the kernel which offloads it's able to handle on the read() side of a tap device. If the ioctl(TUNSETOFFLOAD) succeeds, the application can assume the kernel supports the same offloads for packets in the other direction.</p>
+<h2 data-astro-cid-byeekcgh="">Bug in rx-udp-gro-forwarding - TUN_F_USO4</h2>
+<p data-astro-cid-byeekcgh="">When working with tap and offloads it's useful to inspect <strong>ethtool</strong>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ethtool</span><span class="sk-005cc5-99ffe4"> -k</span><span class="sk-032f62-99ffe4"> tap0</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> egrep</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-032f62-99ffe4"> fixed</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">tx-checksumming:</span><span class="sk-032f62-99ffe4"> on</span></span>
@@ -349,10 +349,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">With ethtool we can see the enabled offloads and disable them as needed.</p>
-<p data-astro-cid-yoyuw6fx="">While toying with UDP Segmentation Offload (USO) I've noticed that when packet trains from tap are forwarded to a real network interface, sometimes they seem badly packetized. See the <a href="https://lore.kernel.org/all/CAJPywTKDdjtwkLVUW6LRA2FU912qcDmQOQGt2WaDo28KzYDg+A@mail.gmail.com" target="_blank" rel="noopener noreferrer">netdev discussion</a>, and the <a href="https://lore.kernel.org/netdev/ZK9ZiNMsJX8+1F3N@debian.debian/T/#m9f532bb5463b89d997c5d16c78490ceeccb4497f" target="_blank" rel="noopener noreferrer">proposed fix</a>. In any case - beware of this bug, and maybe consider doing "ethtool -K tap0 rx-udp-gro-forwarding off".</p>
-<h2 data-astro-cid-yoyuw6fx="">Miscellaneous setsockopts</h2>
-<h4 data-astro-cid-yoyuw6fx="">Setup related socket options</h4>
+<p data-astro-cid-byeekcgh="">With ethtool we can see the enabled offloads and disable them as needed.</p>
+<p data-astro-cid-byeekcgh="">While toying with UDP Segmentation Offload (USO) I've noticed that when packet trains from tap are forwarded to a real network interface, sometimes they seem badly packetized. See the <a href="https://lore.kernel.org/all/CAJPywTKDdjtwkLVUW6LRA2FU912qcDmQOQGt2WaDo28KzYDg+A@mail.gmail.com" target="_blank" rel="noopener noreferrer">netdev discussion</a>, and the <a href="https://lore.kernel.org/netdev/ZK9ZiNMsJX8+1F3N@debian.debian/T/#m9f532bb5463b89d997c5d16c78490ceeccb4497f" target="_blank" rel="noopener noreferrer">proposed fix</a>. In any case - beware of this bug, and maybe consider doing "ethtool -K tap0 rx-udp-gro-forwarding off".</p>
+<h2 data-astro-cid-byeekcgh="">Miscellaneous setsockopts</h2>
+<h4 data-astro-cid-byeekcgh="">Setup related socket options</h4>
 <div id="html-block-k5r" class="html-block">
 	<table style="border:none;border-collapse:collapse">
 		<colgroup>
@@ -459,7 +459,7 @@
 		</tbody>
 	</table>
 </div>
-<h5 data-astro-cid-yoyuw6fx="">Filtering related socket options</h5>
+<h5 data-astro-cid-byeekcgh="">Filtering related socket options</h5>
 <div id="html-block-k5u" class="html-block">
 	<table style="border:none;border-collapse:collapse">
 		<colgroup>
@@ -494,7 +494,7 @@
 		</tbody>
 	</table>
 </div>
-<h4 data-astro-cid-yoyuw6fx="">Multi queue related socket options</h4>
+<h4 data-astro-cid-byeekcgh="">Multi queue related socket options</h4>
 <div id="html-block-k5x" class="html-block">
 	<table style="border:none;border-collapse:collapse">
 		<colgroup>
@@ -521,20 +521,20 @@
 		</tbody>
 	</table>
 </div>
-<h2 data-astro-cid-yoyuw6fx="">Single queue speed</h2>
-<p data-astro-cid-yoyuw6fx="">Tap devices are quite weird — they aren't network sockets, nor true files. Their semantics are closest to pipes, and unfortunately the API reflects that. To receive or send a packet from a tap device, the application must do a read() or write() syscall, one packet at a time.</p>
-<p data-astro-cid-yoyuw6fx="">One might think that some sort of syscall batching would help. Sockets have sendmmsg()/recvmmsg(), but that doesn't work on tap file descriptors. The typical alternatives enabling batching are: an old <a href="https://blog.cloudflare.com/io_submit-the-epoll-alternative-youve-never-heard-about">io_submit AIO interface</a>, or modern io_uring. Io_uring added tap support quite recently. However, it turns out syscall batching doesn't really offer that much of an improvement. Maybe in the range of 10%.</p>
-<p data-astro-cid-yoyuw6fx="">The Linux kernel is just not capable of forwarding millions of packets per second for a single flow or on a single CPU. The best possible solution is to scale vertically for elephant flows with TSO/USO (packet trains) offloads, and scale horizontally for multiple concurrent flows with multi queue.</p>
+<h2 data-astro-cid-byeekcgh="">Single queue speed</h2>
+<p data-astro-cid-byeekcgh="">Tap devices are quite weird — they aren't network sockets, nor true files. Their semantics are closest to pipes, and unfortunately the API reflects that. To receive or send a packet from a tap device, the application must do a read() or write() syscall, one packet at a time.</p>
+<p data-astro-cid-byeekcgh="">One might think that some sort of syscall batching would help. Sockets have sendmmsg()/recvmmsg(), but that doesn't work on tap file descriptors. The typical alternatives enabling batching are: an old <a href="https://blog.cloudflare.com/io_submit-the-epoll-alternative-youve-never-heard-about">io_submit AIO interface</a>, or modern io_uring. Io_uring added tap support quite recently. However, it turns out syscall batching doesn't really offer that much of an improvement. Maybe in the range of 10%.</p>
+<p data-astro-cid-byeekcgh="">The Linux kernel is just not capable of forwarding millions of packets per second for a single flow or on a single CPU. The best possible solution is to scale vertically for elephant flows with TSO/USO (packet trains) offloads, and scale horizontally for multiple concurrent flows with multi queue.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="441" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SR225H1M8X8BXSP50463.png&amp;w=715&amp;h=441&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SR225H1M8X8BXSP50463.png&amp;w=640&amp;h=395&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SR225H1M8X8BXSP50463.png&amp;w=715&amp;h=441&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SR225H1M8X8BXSP50463.png&amp;w=750&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SR225H1M8X8BXSP50463.png&amp;w=828&amp;h=511&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SR225H1M8X8BXSP50463.png&amp;w=1080&amp;h=666&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SR225H1M8X8BXSP50463.png&amp;w=1280&amp;h=789&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SR225H1M8X8BXSP50463.png&amp;w=1430&amp;h=882&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2123 Embedded Image - yzP0N2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SR225H1M8X8BXSP50463.png&amp;w=799&amp;h=493&amp;f=webp" data-lightbox-width="799" data-lightbox-height="493" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="441" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-yoyuw6fx="">In this chart you can see how dramatic the performance gain of offloads is. Without them, a sample "echo" tap application can process between 320 and 500 thousand packets per second on a single core. MTU being 1500. When the offloads are enabled it jumps to 2.7Mpps, while keeping the number of received "packet trains" to just 56 thousand per second. Of course not every traffic pattern can fully utilize GRO/GSO. However, to get decent performance from tap, and from Linux in general, offloads are absolutely critical.</p>
-<h2 data-astro-cid-yoyuw6fx="">Multi queue considerations</h2>
-<p data-astro-cid-yoyuw6fx="">Multi queue is useful when the tap application is handling multiple concurrent flows and needs to utilize more than one CPU.</p>
-<p data-astro-cid-yoyuw6fx="">To get a file descriptor of a tap queue, just add the IFF_MULTI_QUEUE flag when opening the tap. It's possible to detach/reattach a queue with TUNSETQUEUE and IFF_DETACH_QUEUE/IFF_ATTACH_QUEUE, but I'm unsure when this is useful.</p>
-<p data-astro-cid-yoyuw6fx="">When a multi queue tap is created, it spreads the load across multiple tap queues, each one having a unique file descriptor. Beware of the algorithm selecting the queue though: it might bite you back.</p>
-<p data-astro-cid-yoyuw6fx="">By default, Linux tap driver records a symmetric flow hash of any handled flow in a flow table. It saves on which queue the traffic from the application was transmitted. Then, on the receiving side it follows that selection and sends subsequent packets to that specific queue. For example, if your userspace application is sending some TCP flow over queue #2, then the packets going into the application which are a part of that flow will go to queue #2. This is generally a sensible design as long as the sender is always selecting one specific queue. If the sender changes the TX queue, new packets will immediately shift and packets within one flow might be seen as reordered. Additionally, this queue selection design does not take into account CPU locality and might have minor negative effects on performance for very high throughput applications.</p>
-<p data-astro-cid-yoyuw6fx="">It's possible to override the flow hash based queue selection by using <a href="https://www.infradead.org/~mchehab/kernel_docs/networking/multiqueue.html" target="_blank" rel="noopener noreferrer">tc multiq qdisc and skbedit queue_mapping filter</a>:</p>
+<p data-astro-cid-byeekcgh="">In this chart you can see how dramatic the performance gain of offloads is. Without them, a sample "echo" tap application can process between 320 and 500 thousand packets per second on a single core. MTU being 1500. When the offloads are enabled it jumps to 2.7Mpps, while keeping the number of received "packet trains" to just 56 thousand per second. Of course not every traffic pattern can fully utilize GRO/GSO. However, to get decent performance from tap, and from Linux in general, offloads are absolutely critical.</p>
+<h2 data-astro-cid-byeekcgh="">Multi queue considerations</h2>
+<p data-astro-cid-byeekcgh="">Multi queue is useful when the tap application is handling multiple concurrent flows and needs to utilize more than one CPU.</p>
+<p data-astro-cid-byeekcgh="">To get a file descriptor of a tap queue, just add the IFF_MULTI_QUEUE flag when opening the tap. It's possible to detach/reattach a queue with TUNSETQUEUE and IFF_DETACH_QUEUE/IFF_ATTACH_QUEUE, but I'm unsure when this is useful.</p>
+<p data-astro-cid-byeekcgh="">When a multi queue tap is created, it spreads the load across multiple tap queues, each one having a unique file descriptor. Beware of the algorithm selecting the queue though: it might bite you back.</p>
+<p data-astro-cid-byeekcgh="">By default, Linux tap driver records a symmetric flow hash of any handled flow in a flow table. It saves on which queue the traffic from the application was transmitted. Then, on the receiving side it follows that selection and sends subsequent packets to that specific queue. For example, if your userspace application is sending some TCP flow over queue #2, then the packets going into the application which are a part of that flow will go to queue #2. This is generally a sensible design as long as the sender is always selecting one specific queue. If the sender changes the TX queue, new packets will immediately shift and packets within one flow might be seen as reordered. Additionally, this queue selection design does not take into account CPU locality and might have minor negative effects on performance for very high throughput applications.</p>
+<p data-astro-cid-byeekcgh="">It's possible to override the flow hash based queue selection by using <a href="https://www.infradead.org/~mchehab/kernel_docs/networking/multiqueue.html" target="_blank" rel="noopener noreferrer">tc multiq qdisc and skbedit queue_mapping filter</a>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">tc</span><span class="sk-032f62-99ffe4"> qdisc</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> tap0</span><span class="sk-032f62-99ffe4"> root</span><span class="sk-032f62-99ffe4"> handle</span><span class="sk-032f62-99ffe4"> 1:</span><span class="sk-032f62-99ffe4"> multiq</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">tc</span><span class="sk-032f62-99ffe4"> filter</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> tap0</span><span class="sk-032f62-99ffe4"> parent</span><span class="sk-032f62-99ffe4"> 1:</span><span class="sk-032f62-99ffe4"> protocol</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> prio</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> u32</span><span class="sk-005cc5-a0a0a0"> \</span></span>
@@ -545,10 +545,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx=""><strong>tc</strong> is fragile and thus it's not a solution I would recommend. A better way is to customize the queue selection algorithm with a TUNSETSTEERINGEBPF eBPF program. In that case, the flow tracking code is not employed anymore. By smartly using such a steering eBPF program, it's possible to keep the flow processing local to one CPU — useful for best performance.</p>
-<h2 data-astro-cid-yoyuw6fx="">Summary</h2>
-<p data-astro-cid-yoyuw6fx="">Now you know everything I wish I had known when I was setting out on this journey!</p>
-<p data-astro-cid-yoyuw6fx="">To get the best performance, I recommend:</p>
+<p data-astro-cid-byeekcgh=""><strong>tc</strong> is fragile and thus it's not a solution I would recommend. A better way is to customize the queue selection algorithm with a TUNSETSTEERINGEBPF eBPF program. In that case, the flow tracking code is not employed anymore. By smartly using such a steering eBPF program, it's possible to keep the flow processing local to one CPU — useful for best performance.</p>
+<h2 data-astro-cid-byeekcgh="">Summary</h2>
+<p data-astro-cid-byeekcgh="">Now you know everything I wish I had known when I was setting out on this journey!</p>
+<p data-astro-cid-byeekcgh="">To get the best performance, I recommend:</p>
 <ul>
 	<li>enable vnethdr</li>
 	<li>enable offloads (TSO and USO)</li>
@@ -556,7 +556,7 @@
 	<li>consider syscall batching for additional gain of maybe 10%, perhaps try io_uring</li>
 	<li>consider customizing the steering algorithm</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">References:</p>
+<p data-astro-cid-byeekcgh="">References:</p>
 <ul>
 	<li><a href="https://www.linux-kvm.org/images/6/63/2012-forum-multiqueue-networking-for-kvm.pdf" target="_blank" rel="noopener noreferrer">https://www.linux-kvm.org/images/6/63/2012-forum-multiqueue-networking-for-kvm.pdf</a></li>
 	<li><a href="https://backreference.org/2010/03/26/tuntap-interface-tutorial" target="_blank" rel="noopener noreferrer">https://backreference.org/2010/03/26/tuntap-interface-tutorial/</a></li>

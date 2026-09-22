@@ -1,16 +1,16 @@
-<p data-astro-cid-yoyuw6fx=""><em>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</em></p>
-<p data-astro-cid-yoyuw6fx="">すべての<a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>エージェント</u></a>は検索が必要です。コーディングエージェントはリポジトリの数百万ファイルを検索し、サポートエージェントは顧客チケットや社内ドキュメントを検索します。ユースケースは異なりますが、根本的な問題は同じです。適切なタイミングでモデルに適切な情報を得ることです。</p>
-<p data-astro-cid-yoyuw6fx="">自分で検索を構築する場合は、ベクトルインデックス、ドキュメントを解析してチャンク化するインデックス作成パイプライン、そしてデータが変更されたときにインデックスを最新に保つためのものが必要になります。キーワード検索も必要な場合は、それは別のインデックスと融合ロジックです。また、各エージェントに独自の検索可能なコンテキストが必要な場合は、エージェントごとにすべて設定することができます。</p>
-<p data-astro-cid-yoyuw6fx=""><a href="https://developers.cloudflare.com/ai-search" target="_blank" rel="noopener noreferrer"><u>AI Search</u></a>（旧<a href="https://blog.cloudflare.com/introducing-autorag-on-cloudflare" target="_blank" rel="noopener noreferrer"><u>AutoRAG</u></a>）は、必要なプラグアンドプレイの検索プリミティブです。Worker、Agents SDK、またはWrangler CLIを使用して、インスタンスを動的に作成し、データを提供し、検索することができます。内容は以下の通りです。</p>
+<p data-astro-cid-byeekcgh=""><em>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</em></p>
+<p data-astro-cid-byeekcgh="">すべての<a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>エージェント</u></a>は検索が必要です。コーディングエージェントはリポジトリの数百万ファイルを検索し、サポートエージェントは顧客チケットや社内ドキュメントを検索します。ユースケースは異なりますが、根本的な問題は同じです。適切なタイミングでモデルに適切な情報を得ることです。</p>
+<p data-astro-cid-byeekcgh="">自分で検索を構築する場合は、ベクトルインデックス、ドキュメントを解析してチャンク化するインデックス作成パイプライン、そしてデータが変更されたときにインデックスを最新に保つためのものが必要になります。キーワード検索も必要な場合は、それは別のインデックスと融合ロジックです。また、各エージェントに独自の検索可能なコンテキストが必要な場合は、エージェントごとにすべて設定することができます。</p>
+<p data-astro-cid-byeekcgh=""><a href="https://developers.cloudflare.com/ai-search" target="_blank" rel="noopener noreferrer"><u>AI Search</u></a>（旧<a href="https://blog.cloudflare.com/introducing-autorag-on-cloudflare" target="_blank" rel="noopener noreferrer"><u>AutoRAG</u></a>）は、必要なプラグアンドプレイの検索プリミティブです。Worker、Agents SDK、またはWrangler CLIを使用して、インスタンスを動的に作成し、データを提供し、検索することができます。内容は以下の通りです。</p>
 <ul>
 	<li><strong>ハイブリッド検索</strong>。同じクエリで、セマンティックとキーワードの一致を有効にします。ベクトル検索とBM25は並行して実行され、結果は融合されます。（現在、当社ブログの検索はAI Searchによって行われています。<em>右上の虫眼鏡アイコンをお試しください。</em>)</li>
 	<li><strong>内蔵されたストレージとインデックス。</strong>新しいインスタンスには、独自のストレージとベクトルインデックスが付属しています。APIを介してインスタンスに直接ファイルをアップロードすると、インデックスが作成されます。R2バケットのセットアップも、最初に接続する必要のある外部データソースもありません。新しい<code>ai_search_namespaces</code>バインディングでは、Workerから実行時にインスタンスを作成/削除できるため、再デプロイなしに、エージェントごと、顧客ごと、または言語ごとに1つをスピンアップできます。</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">ドキュメントにメタデータを添付してクエリ時にランキングを上げるために使用したり、1回の呼び出しで複数のインスタンスにクエリを実行したりすることもできるようになりました。<strong> </strong></p>
-<p data-astro-cid-yoyuw6fx="">では、これが実際に何を意味するのかを見ていきましょう。</p>
-<h2 data-astro-cid-yoyuw6fx="">稼働中：カスタマーサポートエージェント</h2>
-<p data-astro-cid-yoyuw6fx="">共有製品ドキュメントと過去の解決方法のような顧客ごとの履歴という2種類のナレッジを検索するサポートエージェントについて説明します。製品ドキュメントはコンテキストウィンドウに収まらない容量です。また、解決された問題ごとに顧客の履歴も更新されるため、エージェントは情報を検索して関連性のある情報を見つける必要があります。</p>
-<p data-astro-cid-yoyuw6fx="">AI Searchと<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>を使用した場合の例を次に示します。まずはプロジェクトのスキャフォールディングから始めましょう：</p>
+<p data-astro-cid-byeekcgh="">ドキュメントにメタデータを添付してクエリ時にランキングを上げるために使用したり、1回の呼び出しで複数のインスタンスにクエリを実行したりすることもできるようになりました。<strong> </strong></p>
+<p data-astro-cid-byeekcgh="">では、これが実際に何を意味するのかを見ていきましょう。</p>
+<h2 data-astro-cid-byeekcgh="">稼働中：カスタマーサポートエージェント</h2>
+<p data-astro-cid-byeekcgh="">共有製品ドキュメントと過去の解決方法のような顧客ごとの履歴という2種類のナレッジを検索するサポートエージェントについて説明します。製品ドキュメントはコンテキストウィンドウに収まらない容量です。また、解決された問題ごとに顧客の履歴も更新されるため、エージェントは情報を検索して関連性のある情報を見つける必要があります。</p>
+<p data-astro-cid-byeekcgh="">AI Searchと<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>を使用した場合の例を次に示します。まずはプロジェクトのスキャフォールディングから始めましょう：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> cloudflare@latest</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-005cc5-99ffe4"> --template</span><span class="sk-032f62-99ffe4"> cloudflare/agents-starter</span></span>
 <span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -37,7 +37,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">まず、AI SearchネームスペースをWorkerにバインドします。</p>
+<p data-astro-cid-byeekcgh="">まず、AI SearchネームスペースをWorkerにバインドします。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// wrangler.jsonc </span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
@@ -57,13 +57,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">共有製品ドキュメントが<code>product-doc</code>というR2バケットにあるとします。Cloudflareダッシュボードの<code>support</code>名前空間内で、バケットにバックアップされた一度限りのAI Searchインスタンス（ <code>product-knowledge</code>という名前）を作成できます。</p>
+<p data-astro-cid-byeekcgh="">共有製品ドキュメントが<code>product-doc</code>というR2バケットにあるとします。Cloudflareダッシュボードの<code>support</code>名前空間内で、バケットにバックアップされた一度限りのAI Searchインスタンス（ <code>product-knowledge</code>という名前）を作成できます。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="515" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=715&amp;h=515&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=640&amp;h=461&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=715&amp;h=515&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=750&amp;h=540&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=828&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=1080&amp;h=778&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=1280&amp;h=922&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=1430&amp;h=1030&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3240 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=1014&amp;h=730&amp;f=webp" data-lightbox-width="1014" data-lightbox-height="730" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="515" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-yoyuw6fx="">それが共有ナレッジベースであり、すべてのエージェントが参照できるドキュメントです。</p>
-<p data-astro-cid-yoyuw6fx="">お客様が新しい問題について再度報告してくれた場合、すでに試されたものを知ることができることで、誰もが時間を節約することができます。これは、顧客ごとにAI Searchインスタンスを作成することで追跡できます。各問題が解決されると、エージェントは何が問題だったのか、どのように修正したのかの概要を保存します。時間の経過とともに、これにより過去の解決状況を示す検索可能なログが蓄積されます。ネームスペースバインディングを使用して、動的にインスタンスを作成できます。</p>
+<p data-astro-cid-byeekcgh="">それが共有ナレッジベースであり、すべてのエージェントが参照できるドキュメントです。</p>
+<p data-astro-cid-byeekcgh="">お客様が新しい問題について再度報告してくれた場合、すでに試されたものを知ることができることで、誰もが時間を節約することができます。これは、顧客ごとにAI Searchインスタンスを作成することで追跡できます。各問題が解決されると、エージェントは何が問題だったのか、どのように修正したのかの概要を保存します。時間の経過とともに、これにより過去の解決状況を示す検索可能なログが蓄積されます。ネームスペースバインディングを使用して、動的にインスタンスを作成できます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// create a per-customer instance when they first show up </span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">SUPPORT_KB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">({</span></span>
@@ -76,8 +76,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">各インスタンスは、<a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>と<a href="https://www.cloudflare.com/developer-platform/products/vectorize" target="_blank" rel="noopener noreferrer"><u>Vectorize</u></a>を活用した独自の内蔵ストレージとベクトルインデックスを取得します。インスタンスは空から始まり、時間の経過とともにコンテキストを蓄積します。次回のお客様の訪問時には、そのすべてが検索可能です。</p>
-<p data-astro-cid-yoyuw6fx="">一部のお客様のネームスペースは次のようになります：</p>
+<p data-astro-cid-byeekcgh="">各インスタンスは、<a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>と<a href="https://www.cloudflare.com/developer-platform/products/vectorize" target="_blank" rel="noopener noreferrer"><u>Vectorize</u></a>を活用した独自の内蔵ストレージとベクトルインデックスを取得します。インスタンスは空から始まり、時間の経過とともにコンテキストを蓄積します。次回のお客様の訪問時には、そのすべてが検索可能です。</p>
+<p data-astro-cid-byeekcgh="">一部のお客様のネームスペースは次のようになります：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>namespace: "support"</span></span>
 <span class="line"><span>├── product-knowledge     (R2 as source, shared across all agents)</span></span>
@@ -91,7 +91,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">エージェント自体がそうです。Agents SDKの<code>AIChatAgent</code>を拡張し、2つのツールを定義しています。<a href="https://www.cloudflare.com/developer-platform/products/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>を介し、LLMとしてKin <a href="https://blog.cloudflare.com/workers-ai-large-models" target="_blank" rel="noopener noreferrer"><u>K2.5を使用しています。</u></a>モデルがツールを呼び出すタイミングを決定：</p>
+<p data-astro-cid-byeekcgh="">エージェント自体がそうです。Agents SDKの<code>AIChatAgent</code>を拡張し、2つのツールを定義しています。<a href="https://www.cloudflare.com/developer-platform/products/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>を介し、LLMとしてKin <a href="https://blog.cloudflare.com/workers-ai-large-models" target="_blank" rel="noopener noreferrer"><u>K2.5を使用しています。</u></a>モデルがツールを呼び出すタイミングを決定：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { AIChatAgent, </span><span class="sk-d73a49-a0a0a0">type</span><span class="sk-24292e-fff"> OnChatMessageOptions } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/ai-chat"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createWorkersAI } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "workers-ai-provider"</span><span class="sk-24292e-fff">;</span></span>
@@ -211,24 +211,24 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">これによって、モデルは検索するタイミングと保存するタイミングを決定します。検索の際、<code>product-knowledge</code>とこの顧客の過去の解決策を一緒に問い合わせます。問題が解決されると、今後の会話ですぐに検索できる概要を保存します。</p>
-<h2 data-astro-cid-yoyuw6fx="">AI Searchが探している情報を見つける方法</h2>
-<p data-astro-cid-yoyuw6fx="">内部では、AI Searchは複数ステップの検索パイプラインを実行しており、その中ではすべてのステップが設定可能です。</p>
-<h3 data-astro-cid-yoyuw6fx="">ハイブリッド検索：意図を理解し、条件に一致する検索</h3>
-<p data-astro-cid-yoyuw6fx="">これまでは、AI Searchはベクトル検索のみを提供していました。ベクトル検索は意図の理解に長けますが、具体性を失うことがあります。「ERR_CONNECTION_REFused timeout」クエリでは、エンベッディングは接続失敗の広範な概念を捉えています。しかし、ユーザーは一般的なネットワークドキュメントを探しているわけではありません。「ERR_CONNECTION_REFused」に記載された特定の文書を探しています。ベクトル検索は、その正確なエラー文字列を含むページを表示することなく、トラブルシューティングに関する結果を返す可能性があります。</p>
-<p data-astro-cid-yoyuw6fx="">キーワード検索がそのギャップを埋めるのです。AI Searchは、最も広く使用されている検索スコアリング機能の1つであるBM25をサポートするようになりました。BM25は、クエリー条件が表示される頻度、コーパス全体におけるその用語の出現頻度、文書に存在する期間によって文書を評価します。特定の条件で一致した場合に報酬を与え、一般的な単語を罰し、文書の長さを正規化します。「ERR_CONNECTION_REFused タイムアウト」を検索すると、BM25は実際に「ERR_CONNECTION_REFused」を用語として含むドキュメントを検索します。ただし、BM25では、同じ問題が記述されているにもかかわらず、「ネットワーク接続のトラブルシューティング」に関するページは見逃される可能性があります。そこではベクトル検索の出番であり、両方が必要なのです。</p>
-<p data-astro-cid-yoyuw6fx="">ハイブリッド検索を有効にすると、ベクトルとBM25を並行して実行し、結果を融合させ、必要に応じて再ランク付けします：</p>
+<p data-astro-cid-byeekcgh="">これによって、モデルは検索するタイミングと保存するタイミングを決定します。検索の際、<code>product-knowledge</code>とこの顧客の過去の解決策を一緒に問い合わせます。問題が解決されると、今後の会話ですぐに検索できる概要を保存します。</p>
+<h2 data-astro-cid-byeekcgh="">AI Searchが探している情報を見つける方法</h2>
+<p data-astro-cid-byeekcgh="">内部では、AI Searchは複数ステップの検索パイプラインを実行しており、その中ではすべてのステップが設定可能です。</p>
+<h3 data-astro-cid-byeekcgh="">ハイブリッド検索：意図を理解し、条件に一致する検索</h3>
+<p data-astro-cid-byeekcgh="">これまでは、AI Searchはベクトル検索のみを提供していました。ベクトル検索は意図の理解に長けますが、具体性を失うことがあります。「ERR_CONNECTION_REFused timeout」クエリでは、エンベッディングは接続失敗の広範な概念を捉えています。しかし、ユーザーは一般的なネットワークドキュメントを探しているわけではありません。「ERR_CONNECTION_REFused」に記載された特定の文書を探しています。ベクトル検索は、その正確なエラー文字列を含むページを表示することなく、トラブルシューティングに関する結果を返す可能性があります。</p>
+<p data-astro-cid-byeekcgh="">キーワード検索がそのギャップを埋めるのです。AI Searchは、最も広く使用されている検索スコアリング機能の1つであるBM25をサポートするようになりました。BM25は、クエリー条件が表示される頻度、コーパス全体におけるその用語の出現頻度、文書に存在する期間によって文書を評価します。特定の条件で一致した場合に報酬を与え、一般的な単語を罰し、文書の長さを正規化します。「ERR_CONNECTION_REFused タイムアウト」を検索すると、BM25は実際に「ERR_CONNECTION_REFused」を用語として含むドキュメントを検索します。ただし、BM25では、同じ問題が記述されているにもかかわらず、「ネットワーク接続のトラブルシューティング」に関するページは見逃される可能性があります。そこではベクトル検索の出番であり、両方が必要なのです。</p>
+<p data-astro-cid-byeekcgh="">ハイブリッド検索を有効にすると、ベクトルとBM25を並行して実行し、結果を融合させ、必要に応じて再ランク付けします：</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="494" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=715&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=640&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=715&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=750&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=828&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=1080&amp;h=746&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=1280&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=1430&amp;h=988&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3240 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=1920&amp;h=1327&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1327" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="494" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-yoyuw6fx="">BM25の新しい設定とその組み合わせを見てみましょう。</p>
+<p data-astro-cid-byeekcgh="">BM25の新しい設定とその組み合わせを見てみましょう。</p>
 <ol>
 	<li><strong>トークナイザー</strong>は、インデックス作成時に文書が一致する条件にどう分割されるかを制御します。Porter Stemmer（オプション：<code>porter</code>）は、「running」を「run」に一致させるように単語を語幹に変換します。Trigram (オプション：<code>trigram</code>) は、文字の部分文字列と一致するため、"conf" は "configuration" と一致します。ドキュメントのような自然言語コンテンツにはporterを使用し、部分一致が重要なコードにはtrigramを使用することができます。</li>
 	<li><strong>キーワード一致モード</strong>で、クエリ時にBM25のスコアリング対象となるドキュメントを管理します。<code>AND</code>は、すべてのクエリー条件を文書内に表示する必要があるか、少なくとも1つの一致するものを含めます。</li>
 	<li><strong>Fusion </strong>は、クエリ時間中に、ベクトルとキーワードの結果をどのように最終的な結果リストに結合するかを制御します。再帰的ランクフュージョン（オプション：<code>rrf</code>）は、スコアではなくランク位置でマージします。これは、互換性のない2つのスコアリングスケールを比較することを回避しますが、最大融合（オプション：<code>max</code>）は、より高いスコアを取ります。</li>
 	<li><strong>（オプション）再ランク付け</strong>では、クエリとドキュメントをペアとして評価することで結果を再スコアリングするクロスエンコーダーパスが追加されます。これは、結果が適切な条件を備えているにもかかわらず、質問に答えていないケースを見つけるのに役立ちます。</li>
 </ol>
-<p data-astro-cid-yoyuw6fx="">すべてのオプションは、省略された場合はきちんとしたデフォルトとなります。新しいインスタンスを作成するたびに、どのようなものを柔軟に構成することができます。</p>
+<p data-astro-cid-byeekcgh="">すべてのオプションは、省略された場合はきちんとしたデフォルトとなります。新しいインスタンスを作成するたびに、どのようなものを柔軟に構成することができます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> instance</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI_SEARCH</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">({</span></span>
 <span class="line"><span class="sk-24292e-fff">  id: </span><span class="sk-032f62-99ffe4">"my-instance"</span><span class="sk-24292e-fff">,</span></span>
@@ -249,9 +249,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">関連性の向上：重要なことを表面化</h3>
-<p data-astro-cid-yoyuw6fx="">検索により関連性のある結果が得られますが、関連性だけでは必ずしも十分とは言えません。たとえば、ニュース検索では、先週の記事と3年前の記事の両方が、「選挙結果」に意味的に関連するかもしれませんが、ほとんどのユーザーはおそらく最近の記事を求めているでしょう。Boostingを使用すると、ドキュメントのメタデータに基づいてランキングを急上昇させることで、検索の上にビジネスロジックを重ねることができます。</p>
-<p data-astro-cid-yoyuw6fx="">タイムスタンプ（すべての項目に組み込まれている）または定義した<a href="https://developers.cloudflare.com/ai-search/configuration/indexing/metadata" target="_blank" rel="noopener noreferrer"><u>カスタムメタデータフィールド</u></a>に基づいてブーストできます。</p>
+<h3 data-astro-cid-byeekcgh="">関連性の向上：重要なことを表面化</h3>
+<p data-astro-cid-byeekcgh="">検索により関連性のある結果が得られますが、関連性だけでは必ずしも十分とは言えません。たとえば、ニュース検索では、先週の記事と3年前の記事の両方が、「選挙結果」に意味的に関連するかもしれませんが、ほとんどのユーザーはおそらく最近の記事を求めているでしょう。Boostingを使用すると、ドキュメントのメタデータに基づいてランキングを急上昇させることで、検索の上にビジネスロジックを重ねることができます。</p>
+<p data-astro-cid-byeekcgh="">タイムスタンプ（すべての項目に組み込まれている）または定義した<a href="https://developers.cloudflare.com/ai-search/configuration/indexing/metadata" target="_blank" rel="noopener noreferrer"><u>カスタムメタデータフィールド</u></a>に基づいてブーストできます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// boost high priority docs</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> results</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> instance.</span><span class="sk-6f42c1-ffc799">search</span><span class="sk-24292e-fff">({</span></span>
@@ -268,9 +268,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">クロスインスタンス検索：境界を越えたクエリー</h3>
-<p data-astro-cid-yoyuw6fx="">サポートエージェントの例では、製品ドキュメントとお客様の解決履歴は設計上、別々のインスタンスに存在します。しかし、エージェントが質問に応答する場合、一度に両方の場所からのコンテキストが必要です。インスタンス間検索がなければ、2つの別々の呼び出しを行い、結果を自分で統合することになります。</p>
-<p data-astro-cid-yoyuw6fx="">ネームスペースのバインディングは、これを処理する<code>search()</code>メソッドを公開します。インスタンス名の配列を渡して、ランク付けされたリストを 1 つ取得する：</p>
+<h3 data-astro-cid-byeekcgh="">クロスインスタンス検索：境界を越えたクエリー</h3>
+<p data-astro-cid-byeekcgh="">サポートエージェントの例では、製品ドキュメントとお客様の解決履歴は設計上、別々のインスタンスに存在します。しかし、エージェントが質問に応答する場合、一度に両方の場所からのコンテキストが必要です。インスタンス間検索がなければ、2つの別々の呼び出しを行い、結果を自分で統合することになります。</p>
+<p data-astro-cid-byeekcgh="">ネームスペースのバインディングは、これを処理する<code>search()</code>メソッドを公開します。インスタンス名の配列を渡して、ランク付けされたリストを 1 つ取得する：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> results</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">SUPPORT_KB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">search</span><span class="sk-24292e-fff">({</span></span>
 <span class="line"><span class="sk-24292e-fff">  query: </span><span class="sk-032f62-99ffe4">"billing error"</span><span class="sk-24292e-fff">,</span></span>
@@ -284,11 +284,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">結果はインスタンス間で統合され、ランク付けされます。エージェントは、共有ドキュメントと顧客解決の履歴が別々の場所に存在することを知る必要はなく、気にする必要はありません。</p>
-<h2 data-astro-cid-yoyuw6fx="">AI Searchインスタンスの仕組み</h2>
-<p data-astro-cid-yoyuw6fx="">ここまで、AI Searchが適切な結果を見つける方法について説明してきました。次は、検索インスタンスの作成と管理方法です。</p>
-<p data-astro-cid-yoyuw6fx="">このリリース以前にAI Searchを使用していれば、R2バケットを作成し、AI Searchインスタンスにリンクし、AI SearchはサービスAPIトークンを生成し、アカウントにプロビジョニングされるVectorizeインデックスを管理します。オブジェクトをアップロードするには、R2に書き込み、同期ジョブが実行されるのを待ってオブジェクトにインデックスを付ける必要があります。</p>
-<p data-astro-cid-yoyuw6fx="">作成された新しいインスタンスは、他とは異なる動作をします。<code>create()</code>を呼び出すと、インスタンスには独自のストレージとベクトルインデックスが組み込まれます。ファイルをアップロードすると、ファイルはすぐにインデックスに送信され、インデックス作成ステータスを1つの<code>uploadAndpoll()</code> APIで調査できます。完了したら、すぐにインスタンスを検索でき、外部依存関係も連携させる必要はありません。</p>
+<p data-astro-cid-byeekcgh="">結果はインスタンス間で統合され、ランク付けされます。エージェントは、共有ドキュメントと顧客解決の履歴が別々の場所に存在することを知る必要はなく、気にする必要はありません。</p>
+<h2 data-astro-cid-byeekcgh="">AI Searchインスタンスの仕組み</h2>
+<p data-astro-cid-byeekcgh="">ここまで、AI Searchが適切な結果を見つける方法について説明してきました。次は、検索インスタンスの作成と管理方法です。</p>
+<p data-astro-cid-byeekcgh="">このリリース以前にAI Searchを使用していれば、R2バケットを作成し、AI Searchインスタンスにリンクし、AI SearchはサービスAPIトークンを生成し、アカウントにプロビジョニングされるVectorizeインデックスを管理します。オブジェクトをアップロードするには、R2に書き込み、同期ジョブが実行されるのを待ってオブジェクトにインデックスを付ける必要があります。</p>
+<p data-astro-cid-byeekcgh="">作成された新しいインスタンスは、他とは異なる動作をします。<code>create()</code>を呼び出すと、インスタンスには独自のストレージとベクトルインデックスが組み込まれます。ファイルをアップロードすると、ファイルはすぐにインデックスに送信され、インデックス作成ステータスを1つの<code>uploadAndpoll()</code> APIで調査できます。完了したら、すぐにインスタンスを検索でき、外部依存関係も連携させる必要はありません。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> instance</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI_SEARCH</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"my-instance"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"></span>
@@ -309,9 +309,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">各インスタンスは、1つの外部データソース（R2バケットまたはWebサイト）に接続し、同期スケジュールで実行することもできます。提供されたビルトインストレージと並行して存在することができます。サポートエージェントの例では、<code>product-knowledge</code>は共有ドキュメント用にR2バケットによって支えられ、各お客様のインスタンスは内蔵型ストレージを使用してその場でアップロードされるコンテキストを使用します。</p>
-<h3 data-astro-cid-yoyuw6fx="">ネームスペース：実行時に検索インスタンスを作成</h3>
-<p data-astro-cid-yoyuw6fx=""><code>ai_search_namespaces</code>は、実行時に検索インスタンスを動的に作成するために活用できる新しいバインディングです。これは、以前の<code>env.AI.autorag()</code>を置き換えるものです。AIバインディングを通じて<code>AI</code> SearchにアクセスしたAPI。古いバインディングは、<a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates" target="_blank" rel="noopener noreferrer"><u>Workers の互換性日付</u></a>を使用して引き続き機能します。</p>
+<p data-astro-cid-byeekcgh="">各インスタンスは、1つの外部データソース（R2バケットまたはWebサイト）に接続し、同期スケジュールで実行することもできます。提供されたビルトインストレージと並行して存在することができます。サポートエージェントの例では、<code>product-knowledge</code>は共有ドキュメント用にR2バケットによって支えられ、各お客様のインスタンスは内蔵型ストレージを使用してその場でアップロードされるコンテキストを使用します。</p>
+<h3 data-astro-cid-byeekcgh="">ネームスペース：実行時に検索インスタンスを作成</h3>
+<p data-astro-cid-byeekcgh=""><code>ai_search_namespaces</code>は、実行時に検索インスタンスを動的に作成するために活用できる新しいバインディングです。これは、以前の<code>env.AI.autorag()</code>を置き換えるものです。AIバインディングを通じて<code>AI</code> SearchにアクセスしたAPI。古いバインディングは、<a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates" target="_blank" rel="noopener noreferrer"><u>Workers の互換性日付</u></a>を使用して引き続き機能します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// wrangler.jsonc </span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
@@ -325,7 +325,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">ネームスペースバインディングは、ネームスペースレベルで<code>create()</code>、<code>delete()</code>、<code>list()</code>、<code>search()</code>などのAPIを提供します。インスタンスを動的に作成する場合（例：エージェントごと、カスタマー、テナントごと）、これは使用するバインディングです。</p>
+<p data-astro-cid-byeekcgh="">ネームスペースバインディングは、ネームスペースレベルで<code>create()</code>、<code>delete()</code>、<code>list()</code>、<code>search()</code>などのAPIを提供します。インスタンスを動的に作成する場合（例：エージェントごと、カスタマー、テナントごと）、これは使用するバインディングです。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// create an instance </span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> instance</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI_SEARCH</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">({</span></span>
@@ -340,89 +340,89 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">新規インスタンスの価格設定</h3>
-<p data-astro-cid-yoyuw6fx="">本日作成された新規インスタンスは、内蔵ストレージとベクトルインデックスを自動的に取得します。</p>
-<p data-astro-cid-yoyuw6fx="">これらのインスタンスは、AI Searchのオープンベータ版中は、以下に記載された制限付きで無料でご利用いただけます。Webサイトをデータソースとして使用する場合、<a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Browser Run（旧ブラウザレンダリング）</u></a>を使用したWebサイトのクローリングも、ビルトインのサービスとなり、個別に請求されることはありません。ベータ版提供後は、AI Searchを単一のサービスとして統一し、基本となるコンポーネントごとに個別に請求するのではなく、単一のサービスとして統一した価格設定を目指しています。Workers AIと<a href="https://www.cloudflare.com/developer-platform/products/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a>の使用量は引き続き個別に請求されます。</p>
-<p data-astro-cid-yoyuw6fx="">請求が開始される前に、少なくとも30日前に通知と価格の詳細をお伝えします。</p>
-<div class="emdash-table-wrapper" data-astro-cid-zdje7xco="">
-	<table class="emdash-table" data-astro-cid-zdje7xco="">
-		<thead data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<th data-astro-cid-zdje7xco="">
+<h3 data-astro-cid-byeekcgh="">新規インスタンスの価格設定</h3>
+<p data-astro-cid-byeekcgh="">本日作成された新規インスタンスは、内蔵ストレージとベクトルインデックスを自動的に取得します。</p>
+<p data-astro-cid-byeekcgh="">これらのインスタンスは、AI Searchのオープンベータ版中は、以下に記載された制限付きで無料でご利用いただけます。Webサイトをデータソースとして使用する場合、<a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Browser Run（旧ブラウザレンダリング）</u></a>を使用したWebサイトのクローリングも、ビルトインのサービスとなり、個別に請求されることはありません。ベータ版提供後は、AI Searchを単一のサービスとして統一し、基本となるコンポーネントごとに個別に請求するのではなく、単一のサービスとして統一した価格設定を目指しています。Workers AIと<a href="https://www.cloudflare.com/developer-platform/products/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a>の使用量は引き続き個別に請求されます。</p>
+<p data-astro-cid-byeekcgh="">請求が開始される前に、少なくとも30日前に通知と価格の詳細をお伝えします。</p>
+<div class="emdash-table-wrapper" data-astro-cid-paimycxl="">
+	<table class="emdash-table" data-astro-cid-paimycxl="">
+		<thead data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<th data-astro-cid-paimycxl="">
 					<p>制限</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Workers 無料</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Workers 有料</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+		<tbody data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>アカウントあたりのAI Searchインスタンス数</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>100</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>5,000</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>インスタンスあたりのファイル数</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>100,000</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>ハイブリッド検索は100万または50万</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>最大ファイルサイズ</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>4MB</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>4MB</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>月間のクエリー数</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>20,000</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>無制限</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>1日あたり最大クロールページ数</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>500</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>無制限</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-yoyuw6fx=""><em>既存のインスタンスはどうですか？</em>&nbsp;</p>
-<p data-astro-cid-yoyuw6fx="">このリリース以前にインスタンスを作成した場合は、現在と同じように機能し続けます。R2バケット、Vectorizeインデックス、Browser Runの使用量はアカウントに引き続き使用され、課金も以前のままとなります。既存インスタンスの移行詳細は、近日中にお知らせいたします。</p>
-<h2 data-astro-cid-yoyuw6fx="">今すぐ始めましょう</h2>
-<p data-astro-cid-yoyuw6fx="">検索は、エージェントができる最も基本的なことの1つです。AI Searchを使用すれば、インフラを構築する必要はありません。インスタンスを作成し、データを渡して、エージェントに検索させましょう。</p>
-<p data-astro-cid-yoyuw6fx="">今日から、このコマンドを実行して最初のインスタンスを作成しましょう。</p>
+<p data-astro-cid-byeekcgh=""><em>既存のインスタンスはどうですか？</em>&nbsp;</p>
+<p data-astro-cid-byeekcgh="">このリリース以前にインスタンスを作成した場合は、現在と同じように機能し続けます。R2バケット、Vectorizeインデックス、Browser Runの使用量はアカウントに引き続き使用され、課金も以前のままとなります。既存インスタンスの移行詳細は、近日中にお知らせいたします。</p>
+<h2 data-astro-cid-byeekcgh="">今すぐ始めましょう</h2>
+<p data-astro-cid-byeekcgh="">検索は、エージェントができる最も基本的なことの1つです。AI Searchを使用すれば、インフラを構築する必要はありません。インスタンスを作成し、データを渡して、エージェントに検索させましょう。</p>
+<p data-astro-cid-byeekcgh="">今日から、このコマンドを実行して最初のインスタンスを作成しましょう。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> ai-search</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> my-search</span></span>
 <span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -431,7 +431,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx=""><a href="https://developers.cloudflare.com/ai-search" target="_blank" rel="noopener noreferrer"><u>ドキュメント</u></a>をご覧になり、<a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Developer Discord</u></a>で何を構築しているか、ぜひお聞かせください。</p>
+<p data-astro-cid-byeekcgh=""><a href="https://developers.cloudflare.com/ai-search" target="_blank" rel="noopener noreferrer"><u>ドキュメント</u></a>をご覧になり、<a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Developer Discord</u></a>で何を構築しているか、ぜひお聞かせください。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="176" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=640&amp;h=158&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=750&amp;h=185&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=828&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=1080&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=1280&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=1430&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3240 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=1920&amp;h=472&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="472" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="176" class="pt-portable-image-media"></div>
 </figure>

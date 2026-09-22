@@ -1,93 +1,93 @@
-<p data-astro-cid-yoyuw6fx="">A modern storefront can look perfectly healthy while malicious JavaScript works underneath: siphoning affiliate revenue, hijacking searches and clicks, tampering with analytics, or asking a remote server what to execute next. Pages load, products appear, and checkout works — yet the browser may be quietly doing something the site owner never authorized.</p>
-<p data-astro-cid-yoyuw6fx="">That is the blind spot our Client-Side Security <a href="https://blog.cloudflare.com/client-side-security-open-to-everyone" target="_blank" rel="noopener noreferrer"><u>machine learning (ML) model</u></a> is built to expose. This post follows four operations, spanning eight payloads, that our Page Shield ML uncovered in the wild.&nbsp;</p>
-<p data-astro-cid-yoyuw6fx="">The detection of these malicious payloads was automated; humans verified each finding only after the system had flagged it. When we afterward reviewed the campaigns using security scanning tools, seven of the eight payloads were entirely absent from VirusTotal, and URLScan returned no malicious verdict for any of them. <strong><a href="https://www.cloudflare.com/products/client-side-security" target="_blank" rel="noopener noreferrer"><u>Page Shield ML</u></a>, meanwhile, caught all eight in live traffic.</strong></p>
-<p data-astro-cid-yoyuw6fx="">For instance, while security research documented the broader <a href="https://www.netskope.com/blog/ad-injector-dulls-chromes-luster" target="_blank" rel="noopener noreferrer"><u>Lnkr</u></a> family years earlier, one specific payload version sat indexed by URLScan for nearly two and a half years with “No classification,” including during a direct scan in January 2024. Only in this case had VirusTotal ingested the payload earlier: while it currently flags the script as malicious, public history does not reveal when that verdict was first assigned. Meanwhile, Page Shield ML independently surfaced those exact bytes live on an online retailer's storefront. More broadly, a hash can be known long before the code behind it is classified as malicious. If your defense waits for that label, you are already late. You need ML that can unravel the JavaScript itself and judge it at scale.</p>
-<p data-astro-cid-yoyuw6fx="">Indeed, seeing a file is not the same as understanding it. The tricky part was that the four operations shared no universal signature or common concealment technique. One remained dormant unless the device, country, time, referrer, or browser state matched what it was waiting for. Another concealed a clickless affiliate request within an invisible iframe. Others intercepted clicks, suppressed monitoring, or conditionally loaded additional code from remote servers. To catch them, you have to watch how those pieces work together: when the script wakes up, what it hides, what it intercepts, and what it fetches next. Checking the page once is not enough; as these cases show, such scripts are built to stay quiet until the right victim shows up. <strong>That is why ongoing browser visibility makes the difference between catching an attack and missing it entirely.</strong></p>
-<h2 data-astro-cid-yoyuw6fx="">How we detect and label JavaScript at scale</h2>
-<p data-astro-cid-yoyuw6fx="">The same GNN (graph neural network) that flagged the four operations in this post had already caught <a href="https://blog.cloudflare.com/how-cloudflares-client-side-security-made-the-npm-supply-chain-attack-a-non/#finding-needles-in-a-3-5-billion-script-haystack" target="_blank" rel="noopener noreferrer"><u>malicious npm packages</u></a> and <a href="https://blog.cloudflare.com/navigating-the-maze-of-magecart/#proactive-detection" target="_blank" rel="noopener noreferrer"><u>an in-the-wild Magecart payment skimmer</u></a>. The GNN does not treat JavaScript as a flat chunk of text; it reasons through the code as a graph: a <a href="https://blog.cloudflare.com/how-we-train-ai-to-uncover-malicious-javascript-intent-and-make-web-surfing-safer/#using-syntax-trees-to-classify-malicious-code" target="_blank" rel="noopener noreferrer"><u>syntax tree</u></a> connecting code symbols and exposing what calls what, what the attacker tried to bury, and what still phones home. That structure helps it recognize suspicious patterns across minification, renaming, and some obfuscation without relying on a known URL or byte signature.&nbsp;</p>
-<p data-astro-cid-yoyuw6fx="">The few scripts that the GNN flags as malicious (under 0.3% of all analyzed traffic) go to a lightweight <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank" rel="noopener noreferrer"><u>large language model (LLM)</u></a> on <a href="https://blog.cloudflare.com/client-side-security-open-to-everyone/#adding-an-llm-based-second-opinion-for-triage" target="_blank" rel="noopener noreferrer"><u>Workers AI for a live second opinion</u></a>. This further reduces false positives while keeping recall high. When the LLM corroborates the GNN, customers are alerted.</p>
-<p data-astro-cid-yoyuw6fx="">To investigate the most complex scripts at scale, we use a cohort of frontier models, which we call teachers (an ensemble of automated judges). The cohort draws leading models from around six different families, including open-weight models running on Workers AI. We spin up each as an agent to analyze the same suspicious script in its own fresh, independent session. When useful, their agentic tool access lets them use a restricted JavaScript evaluator to unpack small snippets and reveal concealed behavior. We will soon extend this workflow with <a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>Cloudflare Sandbox</u></a> for deeper analysis in isolated environments.</p>
-<p data-astro-cid-yoyuw6fx="">The frontier models sometimes disagree, especially on the most intricate scripts. We treat that disagreement as signal, not noise. Each label becomes a vote, weighted by the model's score in the <a href="https://artificialanalysis.ai/leaderboards/models" target="_blank" rel="noopener noreferrer"><u>Artificial Analysis Intelligence Index</u></a>, producing a probability distribution over four labels: benign, payment skimming (<a href="https://blog.cloudflare.com/navigating-the-maze-of-magecart" target="_blank" rel="noopener noreferrer"><u>magecart</u></a>), other malware, and cryptomining. Human reviewers therefore need only examine scripts flagged as malicious or lacking a clear two-thirds majority. We then feed those label distributions back into GNN training, helping it distinguish ever more nuanced cases. This feedback loop is still partly manual, though we are starting to automate it.</p>
-<h2 data-astro-cid-yoyuw6fx="">Four malicious JavaScript operations we caught</h2>
-<p data-astro-cid-yoyuw6fx="">These four operations do very different things, from commission theft to stolen analytics on shoppers the store already paid to acquire. Stealing a commission is not like skimming a credit card; likewise, hijacking search is not like stealing a password. If an ML model only knows one of those tricks, it will sleep through the others. Instead, our Page Shield ML has to stay attuned to every kind of hostile behavior.&nbsp;</p>
-<p data-astro-cid-yoyuw6fx="">Now, let’s dig deeper into each operation and how it worked.</p>
-<div class="emdash-table-wrapper" data-astro-cid-zdje7xco="">
-	<table class="emdash-table" data-astro-cid-zdje7xco="">
-		<thead data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<th data-astro-cid-zdje7xco="">
+<p data-astro-cid-byeekcgh="">A modern storefront can look perfectly healthy while malicious JavaScript works underneath: siphoning affiliate revenue, hijacking searches and clicks, tampering with analytics, or asking a remote server what to execute next. Pages load, products appear, and checkout works — yet the browser may be quietly doing something the site owner never authorized.</p>
+<p data-astro-cid-byeekcgh="">That is the blind spot our Client-Side Security <a href="https://blog.cloudflare.com/client-side-security-open-to-everyone" target="_blank" rel="noopener noreferrer"><u>machine learning (ML) model</u></a> is built to expose. This post follows four operations, spanning eight payloads, that our Page Shield ML uncovered in the wild.&nbsp;</p>
+<p data-astro-cid-byeekcgh="">The detection of these malicious payloads was automated; humans verified each finding only after the system had flagged it. When we afterward reviewed the campaigns using security scanning tools, seven of the eight payloads were entirely absent from VirusTotal, and URLScan returned no malicious verdict for any of them. <strong><a href="https://www.cloudflare.com/products/client-side-security" target="_blank" rel="noopener noreferrer"><u>Page Shield ML</u></a>, meanwhile, caught all eight in live traffic.</strong></p>
+<p data-astro-cid-byeekcgh="">For instance, while security research documented the broader <a href="https://www.netskope.com/blog/ad-injector-dulls-chromes-luster" target="_blank" rel="noopener noreferrer"><u>Lnkr</u></a> family years earlier, one specific payload version sat indexed by URLScan for nearly two and a half years with “No classification,” including during a direct scan in January 2024. Only in this case had VirusTotal ingested the payload earlier: while it currently flags the script as malicious, public history does not reveal when that verdict was first assigned. Meanwhile, Page Shield ML independently surfaced those exact bytes live on an online retailer's storefront. More broadly, a hash can be known long before the code behind it is classified as malicious. If your defense waits for that label, you are already late. You need ML that can unravel the JavaScript itself and judge it at scale.</p>
+<p data-astro-cid-byeekcgh="">Indeed, seeing a file is not the same as understanding it. The tricky part was that the four operations shared no universal signature or common concealment technique. One remained dormant unless the device, country, time, referrer, or browser state matched what it was waiting for. Another concealed a clickless affiliate request within an invisible iframe. Others intercepted clicks, suppressed monitoring, or conditionally loaded additional code from remote servers. To catch them, you have to watch how those pieces work together: when the script wakes up, what it hides, what it intercepts, and what it fetches next. Checking the page once is not enough; as these cases show, such scripts are built to stay quiet until the right victim shows up. <strong>That is why ongoing browser visibility makes the difference between catching an attack and missing it entirely.</strong></p>
+<h2 data-astro-cid-byeekcgh="">How we detect and label JavaScript at scale</h2>
+<p data-astro-cid-byeekcgh="">The same GNN (graph neural network) that flagged the four operations in this post had already caught <a href="https://blog.cloudflare.com/how-cloudflares-client-side-security-made-the-npm-supply-chain-attack-a-non/#finding-needles-in-a-3-5-billion-script-haystack" target="_blank" rel="noopener noreferrer"><u>malicious npm packages</u></a> and <a href="https://blog.cloudflare.com/navigating-the-maze-of-magecart/#proactive-detection" target="_blank" rel="noopener noreferrer"><u>an in-the-wild Magecart payment skimmer</u></a>. The GNN does not treat JavaScript as a flat chunk of text; it reasons through the code as a graph: a <a href="https://blog.cloudflare.com/how-we-train-ai-to-uncover-malicious-javascript-intent-and-make-web-surfing-safer/#using-syntax-trees-to-classify-malicious-code" target="_blank" rel="noopener noreferrer"><u>syntax tree</u></a> connecting code symbols and exposing what calls what, what the attacker tried to bury, and what still phones home. That structure helps it recognize suspicious patterns across minification, renaming, and some obfuscation without relying on a known URL or byte signature.&nbsp;</p>
+<p data-astro-cid-byeekcgh="">The few scripts that the GNN flags as malicious (under 0.3% of all analyzed traffic) go to a lightweight <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank" rel="noopener noreferrer"><u>large language model (LLM)</u></a> on <a href="https://blog.cloudflare.com/client-side-security-open-to-everyone/#adding-an-llm-based-second-opinion-for-triage" target="_blank" rel="noopener noreferrer"><u>Workers AI for a live second opinion</u></a>. This further reduces false positives while keeping recall high. When the LLM corroborates the GNN, customers are alerted.</p>
+<p data-astro-cid-byeekcgh="">To investigate the most complex scripts at scale, we use a cohort of frontier models, which we call teachers (an ensemble of automated judges). The cohort draws leading models from around six different families, including open-weight models running on Workers AI. We spin up each as an agent to analyze the same suspicious script in its own fresh, independent session. When useful, their agentic tool access lets them use a restricted JavaScript evaluator to unpack small snippets and reveal concealed behavior. We will soon extend this workflow with <a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>Cloudflare Sandbox</u></a> for deeper analysis in isolated environments.</p>
+<p data-astro-cid-byeekcgh="">The frontier models sometimes disagree, especially on the most intricate scripts. We treat that disagreement as signal, not noise. Each label becomes a vote, weighted by the model's score in the <a href="https://artificialanalysis.ai/leaderboards/models" target="_blank" rel="noopener noreferrer"><u>Artificial Analysis Intelligence Index</u></a>, producing a probability distribution over four labels: benign, payment skimming (<a href="https://blog.cloudflare.com/navigating-the-maze-of-magecart" target="_blank" rel="noopener noreferrer"><u>magecart</u></a>), other malware, and cryptomining. Human reviewers therefore need only examine scripts flagged as malicious or lacking a clear two-thirds majority. We then feed those label distributions back into GNN training, helping it distinguish ever more nuanced cases. This feedback loop is still partly manual, though we are starting to automate it.</p>
+<h2 data-astro-cid-byeekcgh="">Four malicious JavaScript operations we caught</h2>
+<p data-astro-cid-byeekcgh="">These four operations do very different things, from commission theft to stolen analytics on shoppers the store already paid to acquire. Stealing a commission is not like skimming a credit card; likewise, hijacking search is not like stealing a password. If an ML model only knows one of those tricks, it will sleep through the others. Instead, our Page Shield ML has to stay attuned to every kind of hostile behavior.&nbsp;</p>
+<p data-astro-cid-byeekcgh="">Now, let’s dig deeper into each operation and how it worked.</p>
+<div class="emdash-table-wrapper" data-astro-cid-paimycxl="">
+	<table class="emdash-table" data-astro-cid-paimycxl="">
+		<thead data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<th data-astro-cid-paimycxl="">
 					<p><strong>Operation</strong></p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p><strong>Customer impact</strong></p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p><strong>What the script does</strong></p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+		<tbody data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p><strong>1) After-hours affiliate-commission hijacker</strong></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Hijacks affiliate commissions</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Mobile device &amp; time gates; dynamic page monitoring; click interception; multi-day cooldown</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p><strong>2) Clickless affiliate theft</strong></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Steals affiliate commissions without user clicks</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Off-screen iframe; auto-clicking hidden link fallback; spurious IP-lookup fetch &amp; time gates; hourly affiliate rotation</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p><strong>3) Old search saboteur, now storefront backdoor</strong></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Tracks users and opens a backdoor for arbitrary remote JavaScript execution</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Legacy keyword silencing; localStorage opt-out; telemetry; remote code loading</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p><strong>4) Paid-mobile cloaker</strong></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Blinds the store on campaign-tagged mobile visitors, attempts to replace ads and analytics, and hides support</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Host, viewport &amp; UTM tag gates; 325-entry IP substring list; disables 9 monitoring/analytics tools; zero-pixel tracking beacons</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<h2 data-astro-cid-yoyuw6fx="">Operation 1: The after-hours affiliate-commission hijacker</h2>
-<p data-astro-cid-yoyuw6fx="">Picture a quiet Sunday afternoon: a shopper on a phone taps a product. Instead of following the tap normally, the script opens a product or campaign landing page from an attacker-preselected list in a new tab and sends the original tab through an affiliate route. The storefront still appears to work. If the shopper completes a purchase (either then or later), the detour hijacks the attribution, crediting the sale (and any resulting commission) to an account that did not earn the referral.</p>
-<h3 data-astro-cid-yoyuw6fx="">What the shop lost</h3>
-<p data-astro-cid-yoyuw6fx="">The shop could pay an unearned commission to an account that did not bring the shopper. Worse, if a legitimate partner had made the referral, the forced request could misattribute it, diverting credit and a potential payout from the partner who did the work. The damage could outlast one commission: partners who stop trusting the attribution system may also stop trusting the retailer behind it.</p>
-<h3 data-astro-cid-yoyuw6fx="">Attack chain</h3>
-<p data-astro-cid-yoyuw6fx=""><code>Qualified mobile visitor → intercepted product tap → script-selected page opens in new tab + original tab follows attacker’s affiliate route</code></p>
+<h2 data-astro-cid-byeekcgh="">Operation 1: The after-hours affiliate-commission hijacker</h2>
+<p data-astro-cid-byeekcgh="">Picture a quiet Sunday afternoon: a shopper on a phone taps a product. Instead of following the tap normally, the script opens a product or campaign landing page from an attacker-preselected list in a new tab and sends the original tab through an affiliate route. The storefront still appears to work. If the shopper completes a purchase (either then or later), the detour hijacks the attribution, crediting the sale (and any resulting commission) to an account that did not earn the referral.</p>
+<h3 data-astro-cid-byeekcgh="">What the shop lost</h3>
+<p data-astro-cid-byeekcgh="">The shop could pay an unearned commission to an account that did not bring the shopper. Worse, if a legitimate partner had made the referral, the forced request could misattribute it, diverting credit and a potential payout from the partner who did the work. The damage could outlast one commission: partners who stop trusting the attribution system may also stop trusting the retailer behind it.</p>
+<h3 data-astro-cid-byeekcgh="">Attack chain</h3>
+<p data-astro-cid-byeekcgh=""><code>Qualified mobile visitor → intercepted product tap → script-selected page opens in new tab + original tab follows attacker’s affiliate route</code></p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+vf49vP07uzt6unp7O3s7vDv6uzs4eTj/fn6+fX28u7u7uvq8O/u8vLy7O7u4+Xm//7+//r69/Hx9O7t9vPy9/f38fPz5+jq//////////j3+/X0/vr5//7++fr67u/x///////////////+////////////9/j6////////////////////////////////////////////////////////////////////////////////////////////////" alt="" width="715" height="235" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y9KWAZNWCC79G32GVW.01M2KND72ADRC2X0RV1VQTQ308.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y9KWAZNWCC79G32GVW.01M2KND72ADRC2X0RV1VQTQ308.png&amp;w=640&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y9KWAZNWCC79G32GVW.01M2KND72ADRC2X0RV1VQTQ308.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y9KWAZNWCC79G32GVW.01M2KND72ADRC2X0RV1VQTQ308.png&amp;w=750&amp;h=247&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y9KWAZNWCC79G32GVW.01M2KND72ADRC2X0RV1VQTQ308.png&amp;w=828&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y9KWAZNWCC79G32GVW.01M2KND72ADRC2X0RV1VQTQ308.png&amp;w=1080&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y9KWAZNWCC79G32GVW.01M2KND72ADRC2X0RV1VQTQ308.png&amp;w=1280&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y9KWAZNWCC79G32GVW.01M2KND72ADRC2X0RV1VQTQ308.png&amp;w=1430&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3372 2.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y9KWAZNWCC79G32GVW.01M2KND72ADRC2X0RV1VQTQ308.png&amp;w=1920&amp;h=630&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="630" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="235" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<h3 data-astro-cid-yoyuw6fx="">How it stayed hidden</h3>
-<p data-astro-cid-yoyuw6fx="">We found five related script builds: two active and three paused when captured. Each active variant uses a different set of gates before it acts, checking things like the visitor’s device and local time, whether the trick has run recently, whether a product button has appeared, and whether someone actually clicks it. That maze of rules keeps the malicious behavior out of sight during a brief automated visit unless the variant’s specific conditions are met. The active scripts use a MutationObserver (a JavaScript API) to watch for product tiles and buttons that dynamically appear after the page is first loaded. This lets them intercept clicks on those late-arriving elements, while a crawler that loaded the HTML once and stopped there could miss the redirect path entirely.</p>
-<p data-astro-cid-yoyuw6fx="">In the active later variants, the script intercepts a qualifying click and writes a three-day cooldown to <code>localStorage</code> (staying dormant on that device for days). It then executes a dual-tab maneuver: popping an attacker-chosen product page into a fresh tab to keep the shopper engaged, while the original tab takes a quick, unnoticed round-trip through the attacker's affiliate tracking link and back to the shop, to plant the attacker’s attribution cookie in the background. Console masking and self-defending source checks make inspection harder, while the cooldowns and narrow schedules limit how often the malicious path can appear during otherwise normal shopping.</p>
-<p data-astro-cid-yoyuw6fx="">The following sanitized excerpt shows how the payload hooks dynamic product tiles and executes the dual-tab detour. <em>We simplified identifiers, reformatted the code, and neutralized destination URLs for readability</em>.</p>
+<h3 data-astro-cid-byeekcgh="">How it stayed hidden</h3>
+<p data-astro-cid-byeekcgh="">We found five related script builds: two active and three paused when captured. Each active variant uses a different set of gates before it acts, checking things like the visitor’s device and local time, whether the trick has run recently, whether a product button has appeared, and whether someone actually clicks it. That maze of rules keeps the malicious behavior out of sight during a brief automated visit unless the variant’s specific conditions are met. The active scripts use a MutationObserver (a JavaScript API) to watch for product tiles and buttons that dynamically appear after the page is first loaded. This lets them intercept clicks on those late-arriving elements, while a crawler that loaded the HTML once and stopped there could miss the redirect path entirely.</p>
+<p data-astro-cid-byeekcgh="">In the active later variants, the script intercepts a qualifying click and writes a three-day cooldown to <code>localStorage</code> (staying dormant on that device for days). It then executes a dual-tab maneuver: popping an attacker-chosen product page into a fresh tab to keep the shopper engaged, while the original tab takes a quick, unnoticed round-trip through the attacker's affiliate tracking link and back to the shop, to plant the attacker’s attribution cookie in the background. Console masking and self-defending source checks make inspection harder, while the cooldowns and narrow schedules limit how often the malicious path can appear during otherwise normal shopping.</p>
+<p data-astro-cid-byeekcgh="">The following sanitized excerpt shows how the payload hooks dynamic product tiles and executes the dual-tab detour. <em>We simplified identifiers, reformatted the code, and neutralized destination URLs for readability</em>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Watch for late-rendering product elements and hook clicks</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> MutationObserver</span><span class="sk-24292e-fff">((</span><span class="sk-e36209-fff">_</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">observer</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
@@ -140,25 +140,25 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">The paused builds showed how the campaign could go dark without removing the script. Their embedded configuration set <code>status: "paused"</code>, so they exited before installing click handlers. These paused scripts carried different per-shopper cooldown configurations (3, 4, and 5 days). One of the paused scripts even recorded a version-history comment explicitly documenting that the campaign was paused after Black Friday.</p>
-<p data-astro-cid-yoyuw6fx="">To reach visitors in the first place, the operation leveraged the site's marketing supply chain: the third-party scripts and tag managers embedded by e-commerce sites to track ad campaigns and analytics. One confirmed delivery path ran through two otherwise ordinary tag managers: Google Tag Manager → another tag manager → malicious script. That is how the payload reached the browser, not proof that either tag manager was compromised.</p>
-<p data-astro-cid-yoyuw6fx="">The attacker even disguised the domain hosting the script to pass a quick marketing review. One delivery host hid in plain sight: <code>adtargett[.]com</code> differed by a single “t” from <code>adtarget[.]com</code>, an advertising domain registered in 1998. The lookalike was registered in 2025 and, when we checked, its homepage called itself “<a href="http://adtarget.com" target="_blank" rel="noopener noreferrer">Adtarget.com</a> - Performance Marketing Agency.” This is typosquatting: by mimicking a real ad agency, the host blended in with routine marketing tags, quietly serving the malicious payload that hijacked shopper clicks and redirected them through affiliate payout links.</p>
-<h2 data-astro-cid-yoyuw6fx="">Operation 2: The clickless affiliate theft</h2>
-<p data-astro-cid-yoyuw6fx="">While the first scam still needed a click, this one requires even less. A shopper can open a booking page, linger over the product options, and never touch an ad. In the background, however, the script might have already sent an affiliate request that could make a later sale look as though someone else had referred the shopper. Indeed, when the script’s conditions are met, the payload sends that request through a hidden iframe or a link that clicks itself.</p>
-<h3 data-astro-cid-yoyuw6fx="">What the shop lost</h3>
-<p data-astro-cid-yoyuw6fx="">For the affected tourism business, the attack could corrupt the economics of customer acquisition: a legitimate booking or purchase could be credited to an unearned affiliate account. The code proves covert, automated affiliate requests, but whether any specific request resulted in completed attribution, account crediting, or paid commission in practice remains unobserved.</p>
-<h3 data-astro-cid-yoyuw6fx="">Attack chain</h3>
-<p data-astro-cid-yoyuw6fx=""><code>Time-gated browser → covert affiliate request (off-screen iframe) → 1-hour throttle cookie → when blocked, automated hidden-link click fallback</code></p>
+<p data-astro-cid-byeekcgh="">The paused builds showed how the campaign could go dark without removing the script. Their embedded configuration set <code>status: "paused"</code>, so they exited before installing click handlers. These paused scripts carried different per-shopper cooldown configurations (3, 4, and 5 days). One of the paused scripts even recorded a version-history comment explicitly documenting that the campaign was paused after Black Friday.</p>
+<p data-astro-cid-byeekcgh="">To reach visitors in the first place, the operation leveraged the site's marketing supply chain: the third-party scripts and tag managers embedded by e-commerce sites to track ad campaigns and analytics. One confirmed delivery path ran through two otherwise ordinary tag managers: Google Tag Manager → another tag manager → malicious script. That is how the payload reached the browser, not proof that either tag manager was compromised.</p>
+<p data-astro-cid-byeekcgh="">The attacker even disguised the domain hosting the script to pass a quick marketing review. One delivery host hid in plain sight: <code>adtargett[.]com</code> differed by a single “t” from <code>adtarget[.]com</code>, an advertising domain registered in 1998. The lookalike was registered in 2025 and, when we checked, its homepage called itself “<a href="http://adtarget.com" target="_blank" rel="noopener noreferrer">Adtarget.com</a> - Performance Marketing Agency.” This is typosquatting: by mimicking a real ad agency, the host blended in with routine marketing tags, quietly serving the malicious payload that hijacked shopper clicks and redirected them through affiliate payout links.</p>
+<h2 data-astro-cid-byeekcgh="">Operation 2: The clickless affiliate theft</h2>
+<p data-astro-cid-byeekcgh="">While the first scam still needed a click, this one requires even less. A shopper can open a booking page, linger over the product options, and never touch an ad. In the background, however, the script might have already sent an affiliate request that could make a later sale look as though someone else had referred the shopper. Indeed, when the script’s conditions are met, the payload sends that request through a hidden iframe or a link that clicks itself.</p>
+<h3 data-astro-cid-byeekcgh="">What the shop lost</h3>
+<p data-astro-cid-byeekcgh="">For the affected tourism business, the attack could corrupt the economics of customer acquisition: a legitimate booking or purchase could be credited to an unearned affiliate account. The code proves covert, automated affiliate requests, but whether any specific request resulted in completed attribution, account crediting, or paid commission in practice remains unobserved.</p>
+<h3 data-astro-cid-byeekcgh="">Attack chain</h3>
+<p data-astro-cid-byeekcgh=""><code>Time-gated browser → covert affiliate request (off-screen iframe) → 1-hour throttle cookie → when blocked, automated hidden-link click fallback</code></p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+vn59PPz5+fm4uLg5+jl6+zq4+Xk09XV//3++vj47uzr6ebj7Onn8O3r6ejn3Nvb////////+PPy8uzp9O3q9/Du8u3s6OTk//////////z7+/Ty/fXy//f1+/X08+7u//////////////78///8///////+/fn5////////////////////////////////////////////////////////////////////////////////////////////////" alt="" width="715" height="235" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y1G0JJC04K69G2PHWX.01M2KND77EYA6TF3SMS8AEHCZ4.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y1G0JJC04K69G2PHWX.01M2KND77EYA6TF3SMS8AEHCZ4.png&amp;w=640&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y1G0JJC04K69G2PHWX.01M2KND77EYA6TF3SMS8AEHCZ4.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y1G0JJC04K69G2PHWX.01M2KND77EYA6TF3SMS8AEHCZ4.png&amp;w=750&amp;h=247&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y1G0JJC04K69G2PHWX.01M2KND77EYA6TF3SMS8AEHCZ4.png&amp;w=828&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y1G0JJC04K69G2PHWX.01M2KND77EYA6TF3SMS8AEHCZ4.png&amp;w=1080&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y1G0JJC04K69G2PHWX.01M2KND77EYA6TF3SMS8AEHCZ4.png&amp;w=1280&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y1G0JJC04K69G2PHWX.01M2KND77EYA6TF3SMS8AEHCZ4.png&amp;w=1430&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3372 3.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y1G0JJC04K69G2PHWX.01M2KND77EYA6TF3SMS8AEHCZ4.png&amp;w=1920&amp;h=630&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="630" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="235" class="pt-portable-image-media"></div>
 </figure>
-<h3 data-astro-cid-yoyuw6fx="">How it stayed hidden</h3>
-<p data-astro-cid-yoyuw6fx="">The script conceals the affiliate request in two layers: selective execution (a pre-flight network gate and hourly schedule), and stealth delivery (an off-screen iframe). The first layer is surprising because its country labels are disconnected from actual geography: neither the shopper’s nor the shop’s location drives the choice.</p>
-<p data-astro-cid-yoyuw6fx="">First, the script calls a public IP-based geolocation service but ignores everything it returns, including the shopper’s country. We could not determine why it required a successful response while ignoring the returned data; this may have been intended to confuse investigators or simply been a remnant of an earlier version. Interestingly, if the geolocation request fails, the script silently stops; its promise chain ends with .catch(() =&gt; {}). Although intent is unproven, this fail-closed behavior could help the script evade network-restricted sandboxes.</p>
-<p data-astro-cid-yoyuw6fx="">Next, instead of using the fetched geolocation data, the payload contains three TradeDoubler (an affiliate-marketing network) configuration objects labelled {<code>AU</code>, <code>US</code>, and <code>UK</code>}. These settings blocks are embedded in the code, and each contains an affiliate URL and start and end times. The script computes <code>Asia/Kolkata</code> time in JavaScript, checks those configured time windows, then applies fixed odd/even-hour rules to choose one of the three or else skip the affiliate request for that run. The choice is deterministic.&nbsp;</p>
-<p data-astro-cid-yoyuw6fx="">Together, the schedule and browser-state checks create time-gated selective execution, a form of cloaking. When those conditions do not line up, the affiliate behavior stays dormant, so a one-off inspection can miss it.</p>
-<p data-astro-cid-yoyuw6fx="">Once the script chooses a configuration, it writes a local cookie named <code>affiliateClicked_&lt;market&gt;</code> as a one-hour retry throttle so it will not re-fire for that region right away (this is a client-side throttle to avoid noise, not an affiliate-network attribution cookie). Next, it loads that affiliate URL in an off-screen iframe with the referrer suppressed. The iframe is the primary delivery path, but it carries an aggressive fallback: if the iframe errors or fails to finish loading after one to two seconds, the script creates a hidden link (<code>&lt;a&gt;</code>) without a <code>target</code> attribute and clicks it programmatically, which could navigate the user's active tab. To the qualifying shopper, nothing seems out of place: they never see an ad, never have to click, and can close the tab as if nothing happened.</p>
-<p data-astro-cid-yoyuw6fx="">As for the script’s obfuscation, it is simple but effective: even property names are assembled one character at a time. The following sanitized excerpt shows the payload creating an invisible off-screen iframe. <em>We renamed key identifiers and reformatted the code for readability. The destination has been removed.</em></p>
+<h3 data-astro-cid-byeekcgh="">How it stayed hidden</h3>
+<p data-astro-cid-byeekcgh="">The script conceals the affiliate request in two layers: selective execution (a pre-flight network gate and hourly schedule), and stealth delivery (an off-screen iframe). The first layer is surprising because its country labels are disconnected from actual geography: neither the shopper’s nor the shop’s location drives the choice.</p>
+<p data-astro-cid-byeekcgh="">First, the script calls a public IP-based geolocation service but ignores everything it returns, including the shopper’s country. We could not determine why it required a successful response while ignoring the returned data; this may have been intended to confuse investigators or simply been a remnant of an earlier version. Interestingly, if the geolocation request fails, the script silently stops; its promise chain ends with .catch(() =&gt; {}). Although intent is unproven, this fail-closed behavior could help the script evade network-restricted sandboxes.</p>
+<p data-astro-cid-byeekcgh="">Next, instead of using the fetched geolocation data, the payload contains three TradeDoubler (an affiliate-marketing network) configuration objects labelled {<code>AU</code>, <code>US</code>, and <code>UK</code>}. These settings blocks are embedded in the code, and each contains an affiliate URL and start and end times. The script computes <code>Asia/Kolkata</code> time in JavaScript, checks those configured time windows, then applies fixed odd/even-hour rules to choose one of the three or else skip the affiliate request for that run. The choice is deterministic.&nbsp;</p>
+<p data-astro-cid-byeekcgh="">Together, the schedule and browser-state checks create time-gated selective execution, a form of cloaking. When those conditions do not line up, the affiliate behavior stays dormant, so a one-off inspection can miss it.</p>
+<p data-astro-cid-byeekcgh="">Once the script chooses a configuration, it writes a local cookie named <code>affiliateClicked_&lt;market&gt;</code> as a one-hour retry throttle so it will not re-fire for that region right away (this is a client-side throttle to avoid noise, not an affiliate-network attribution cookie). Next, it loads that affiliate URL in an off-screen iframe with the referrer suppressed. The iframe is the primary delivery path, but it carries an aggressive fallback: if the iframe errors or fails to finish loading after one to two seconds, the script creates a hidden link (<code>&lt;a&gt;</code>) without a <code>target</code> attribute and clicks it programmatically, which could navigate the user's active tab. To the qualifying shopper, nothing seems out of place: they never see an ad, never have to click, and can close the tab as if nothing happened.</p>
+<p data-astro-cid-byeekcgh="">As for the script’s obfuscation, it is simple but effective: even property names are assembled one character at a time. The following sanitized excerpt shows the payload creating an invisible off-screen iframe. <em>We renamed key identifiers and reformatted the code for readability. The destination has been removed.</em></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> loadAttribution</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">target</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> frame</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> document[</span><span class="sk-032f62-99ffe4">'c'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'r'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'e'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'a'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'t'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'e'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'E'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'l'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'e'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'m'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'e'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'n'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'t'</span><span class="sk-24292e-fff">](</span></span>
@@ -180,38 +180,38 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2 data-astro-cid-yoyuw6fx="">Operation 3: The old search saboteur, now storefront backdoor</h2>
-<p data-astro-cid-yoyuw6fx="">Years ago, the <a href="https://www.netskope.com/blog/ad-injector-dulls-chromes-luster" target="_blank" rel="noopener noreferrer"><u>Lnkr</u></a> malware family made the news by hiding inside shady browser extensions, intercepting Google and Bing searches to redirect results and pocket ad money. Now, attackers repurposed the codebase to plant a backdoor into an online retailer’s website.</p>
-<p data-astro-cid-yoyuw6fx="">Because the script was running on a shop rather than a search engine, its old redirect tricks stayed dormant. This time, the script was used to send telemetry back to the attacker. More dangerously, it gave the attacker a remote doorway to arbitrarily download and run fresh JavaScript in customers' browsers whenever they wanted, without touching a single file on the server. It even carried an old trick from its extension days: shutting itself off if someone typed words like “virus” or “popup” into Google. From the outside, the store kept selling without a hint that anything was wrong.</p>
-<h3 data-astro-cid-yoyuw6fx="">What the shop lost</h3>
-<p data-astro-cid-yoyuw6fx="">The shop lost control over what code runs in its customers' browsers. Attackers were secretly tracking visitors' sessions and had a direct backdoor to push and run any JavaScript they wanted on the storefront at any time.</p>
-<h3 data-astro-cid-yoyuw6fx="">Attack chain</h3>
-<p data-astro-cid-yoyuw6fx=""><code>HTML-referenced script → analyst evasion gates → parallel host-gated branches (dormant search vs. live backdoor) → arbitrary remote JavaScript execution</code></p>
+<h2 data-astro-cid-byeekcgh="">Operation 3: The old search saboteur, now storefront backdoor</h2>
+<p data-astro-cid-byeekcgh="">Years ago, the <a href="https://www.netskope.com/blog/ad-injector-dulls-chromes-luster" target="_blank" rel="noopener noreferrer"><u>Lnkr</u></a> malware family made the news by hiding inside shady browser extensions, intercepting Google and Bing searches to redirect results and pocket ad money. Now, attackers repurposed the codebase to plant a backdoor into an online retailer’s website.</p>
+<p data-astro-cid-byeekcgh="">Because the script was running on a shop rather than a search engine, its old redirect tricks stayed dormant. This time, the script was used to send telemetry back to the attacker. More dangerously, it gave the attacker a remote doorway to arbitrarily download and run fresh JavaScript in customers' browsers whenever they wanted, without touching a single file on the server. It even carried an old trick from its extension days: shutting itself off if someone typed words like “virus” or “popup” into Google. From the outside, the store kept selling without a hint that anything was wrong.</p>
+<h3 data-astro-cid-byeekcgh="">What the shop lost</h3>
+<p data-astro-cid-byeekcgh="">The shop lost control over what code runs in its customers' browsers. Attackers were secretly tracking visitors' sessions and had a direct backdoor to push and run any JavaScript they wanted on the storefront at any time.</p>
+<h3 data-astro-cid-byeekcgh="">Attack chain</h3>
+<p data-astro-cid-byeekcgh=""><code>HTML-referenced script → analyst evasion gates → parallel host-gated branches (dormant search vs. live backdoor) → arbitrary remote JavaScript execution</code></p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA9/z78ff25evq3+Xk4ufn5+vr5Ojn29/d+/z59vb06urp4+Tk5+fo7Ovs6ubl4NvY//36/ff08ezq6+bn7+rs9e7v8ufm6NjV///+//z5+vLw9e3u+fL0/vX2++zr8t3Z//////////z7//j5//z+//7///b1++fk//////////////////////////////Xz///////////////////////////////+////////////////////////////////" alt="" width="715" height="235" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2NQQ9F1DNJ3JPPHHPMF8VF1.01M2NQQAZTMK2XGXBXXWTN7BY9.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2NQQ9F1DNJ3JPPHHPMF8VF1.01M2NQQAZTMK2XGXBXXWTN7BY9.png&amp;w=640&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2NQQ9F1DNJ3JPPHHPMF8VF1.01M2NQQAZTMK2XGXBXXWTN7BY9.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2NQQ9F1DNJ3JPPHHPMF8VF1.01M2NQQAZTMK2XGXBXXWTN7BY9.png&amp;w=750&amp;h=247&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2NQQ9F1DNJ3JPPHHPMF8VF1.01M2NQQAZTMK2XGXBXXWTN7BY9.png&amp;w=828&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2NQQ9F1DNJ3JPPHHPMF8VF1.01M2NQQAZTMK2XGXBXXWTN7BY9.png&amp;w=1080&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2NQQ9F1DNJ3JPPHHPMF8VF1.01M2NQQAZTMK2XGXBXXWTN7BY9.png&amp;w=1280&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2NQQ9F1DNJ3JPPHHPMF8VF1.01M2NQQAZTMK2XGXBXXWTN7BY9.png&amp;w=1430&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3372 4.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2NQQ9F1DNJ3JPPHHPMF8VF1.01M2NQQAZTMK2XGXBXXWTN7BY9.png&amp;w=1920&amp;h=630&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="630" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="235" class="pt-portable-image-media"></div>
 </figure>
-<h3 data-astro-cid-yoyuw6fx="">How it stayed hidden</h3>
-<p data-astro-cid-yoyuw6fx="">Unlike campaigns delivered through tag managers, this script was directly embedded into the merchant’s HTML. We could not determine the exact initial intrusion vector; in practice, direct HTML insertions usually happen through compromised store admin credentials, an unauthorized template edit, or an infected third-party theme or plugin.</p>
-<p data-astro-cid-yoyuw6fx="">Under the hood, the script is a modular toolkit carrying both active and dormant code. Its older modules (transparent click overlays, search-engine query interceptors, extension-store link rewriters, and redirects for typosquatted domains, like <code>buking[.]com</code> instead of <code>booking[.]com</code>) only wake up on specific target sites, so they stayed turned off on this storefront. Several embedded domains (<code>sugabit[.]net</code>, <code>votetoda[.]com</code>, <code>cdnpps[.]us</code>, and telemetry endpoint <code>hanstrackr[.]com</code>) sat inside these disabled modules.</p>
-<p data-astro-cid-yoyuw6fx="">On the shop, the active branches focused on evasion, telemetry, and remote control:</p>
+<h3 data-astro-cid-byeekcgh="">How it stayed hidden</h3>
+<p data-astro-cid-byeekcgh="">Unlike campaigns delivered through tag managers, this script was directly embedded into the merchant’s HTML. We could not determine the exact initial intrusion vector; in practice, direct HTML insertions usually happen through compromised store admin credentials, an unauthorized template edit, or an infected third-party theme or plugin.</p>
+<p data-astro-cid-byeekcgh="">Under the hood, the script is a modular toolkit carrying both active and dormant code. Its older modules (transparent click overlays, search-engine query interceptors, extension-store link rewriters, and redirects for typosquatted domains, like <code>buking[.]com</code> instead of <code>booking[.]com</code>) only wake up on specific target sites, so they stayed turned off on this storefront. Several embedded domains (<code>sugabit[.]net</code>, <code>votetoda[.]com</code>, <code>cdnpps[.]us</code>, and telemetry endpoint <code>hanstrackr[.]com</code>) sat inside these disabled modules.</p>
+<p data-astro-cid-byeekcgh="">On the shop, the active branches focused on evasion, telemetry, and remote control:</p>
 <ul>
 	<li><strong>Playing dead for security researchers.</strong> An evasion trick inherited from its browser-extension days: the script monitored search inputs and URL queries for telltale adware terms. Searching one security keyword paused the script for that visit. Searching two or more wrote a persistent opt-out record to <code>localStorage</code>, permanently silencing the script on that analyst's machine so repeated tests would find nothing. While originally built to dodge analysts on search engines, as far as we could determine, this check was hard-coded specifically to Google search URLs and remained dormant on the merchant's storefront.</li>
 	<li><strong>Dynamic remote code execution.</strong> The script didn't need to modify the storefront to change its behavior. While the hardcoded domain names (<code>scrprime[.]com</code>, <code>youronlinesearches[.]com</code>, <code>jullyambery[.]net</code>) remained identical to older captures, what those endpoints returned was entirely up to the attacker. The script could phone home visitor telemetry, ask those servers for new instructions, and pull down fresh JavaScript directly into the shopper's browser. Effectively, this gave attackers a live backdoor to run arbitrary code on the storefront. We could not determine what second-stage payloads were served in practice.</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">All in all, a static snapshot of the site showed only the normal storefront, while the underlying state checks, anti-analysis traps, and remote-loading branches exposed the backdoor.</p>
-<h2 data-astro-cid-yoyuw6fx="">Operation 4: The paid-mobile cloaker</h2>
-<p data-astro-cid-yoyuw6fx="">The shop already paid to bring this visitor in from a mobile ad or marketing campaign. The malicious script lets that visit through, then cuts off the merchant's visibility. Analytics go dark, the live support chat vanishes, and a rogue observer starts recording telemetry on the very session the store just bought.&nbsp;</p>
-<p data-astro-cid-yoyuw6fx="">Behind the scenes, the payload refuses to run unless that visit matches an elaborate set of conditions: the exact target storefront, a narrow mobile screen, and a campaign tag during the first two pages of the visit. It stays dormant on laptops, corporate networks, cloud providers, and VPNs, so the engineers most likely to debug the page never see it fire. The script also stays dormant across selected US cities and regions, backed by a handcrafted denylist of 325 IP strings to dodge automated scanners and security analysts. Only then does the script attempt to tear down the shop’s monitoring, substitute replacement advertising and analytics identities, and phone home. A second look from the wrong device or network will never trigger it. All the while, the storefront keeps selling.</p>
-<h3 data-astro-cid-yoyuw6fx="">What the shop lost</h3>
-<p data-astro-cid-yoyuw6fx="">For a direct-to-consumer retailer, the malware specifically targeted high-value traffic the store had paid to acquire through paid-search and marketing campaigns (<code>ppc</code>, <code>cpc</code>, <code>sms</code>, <code>paid</code>). Those customers could still buy. Yet the shop faced three clear threats: diverted advertising attribution and unearned publisher payouts, the loss of critical session analytics across nine observability tools, and the suppression of the help chat and contact form (preventing shoppers from asking questions or reporting anomalies). Dynamic analysis in a sandboxed browser environment confirmed that the replacement analytics script loaded and fired a tracking beacon (an invisible network request sent to log visitor activity), but whether the attacker successfully captured session telemetry or diverted ad revenue in practice remains unproven.</p>
-<h3 data-astro-cid-yoyuw6fx="">Attack chain</h3>
-<p data-astro-cid-yoyuw6fx=""><code>Campaign-tagged mobile arrival → multi-tier cloaking &amp; network gates → monitoring sabotaged → advertising, analytics, and support controls rewritten&nbsp;</code></p>
+<p data-astro-cid-byeekcgh="">All in all, a static snapshot of the site showed only the normal storefront, while the underlying state checks, anti-analysis traps, and remote-loading branches exposed the backdoor.</p>
+<h2 data-astro-cid-byeekcgh="">Operation 4: The paid-mobile cloaker</h2>
+<p data-astro-cid-byeekcgh="">The shop already paid to bring this visitor in from a mobile ad or marketing campaign. The malicious script lets that visit through, then cuts off the merchant's visibility. Analytics go dark, the live support chat vanishes, and a rogue observer starts recording telemetry on the very session the store just bought.&nbsp;</p>
+<p data-astro-cid-byeekcgh="">Behind the scenes, the payload refuses to run unless that visit matches an elaborate set of conditions: the exact target storefront, a narrow mobile screen, and a campaign tag during the first two pages of the visit. It stays dormant on laptops, corporate networks, cloud providers, and VPNs, so the engineers most likely to debug the page never see it fire. The script also stays dormant across selected US cities and regions, backed by a handcrafted denylist of 325 IP strings to dodge automated scanners and security analysts. Only then does the script attempt to tear down the shop’s monitoring, substitute replacement advertising and analytics identities, and phone home. A second look from the wrong device or network will never trigger it. All the while, the storefront keeps selling.</p>
+<h3 data-astro-cid-byeekcgh="">What the shop lost</h3>
+<p data-astro-cid-byeekcgh="">For a direct-to-consumer retailer, the malware specifically targeted high-value traffic the store had paid to acquire through paid-search and marketing campaigns (<code>ppc</code>, <code>cpc</code>, <code>sms</code>, <code>paid</code>). Those customers could still buy. Yet the shop faced three clear threats: diverted advertising attribution and unearned publisher payouts, the loss of critical session analytics across nine observability tools, and the suppression of the help chat and contact form (preventing shoppers from asking questions or reporting anomalies). Dynamic analysis in a sandboxed browser environment confirmed that the replacement analytics script loaded and fired a tracking beacon (an invisible network request sent to log visitor activity), but whether the attacker successfully captured session telemetry or diverted ad revenue in practice remains unproven.</p>
+<h3 data-astro-cid-byeekcgh="">Attack chain</h3>
+<p data-astro-cid-byeekcgh=""><code>Campaign-tagged mobile arrival → multi-tier cloaking &amp; network gates → monitoring sabotaged → advertising, analytics, and support controls rewritten&nbsp;</code></p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+ff49PLz6+jp5+Xm6+rs7+/x6uvs4N/f/vv69/X16+nq5eTn6+ru8fHz7u3v4+Li/////fr57ezt5ebq7e3y9vX59PP06ejm////////8/P06+zw8/P5/fz//Pr78fDu/////////f3+9vf6/f3/////////+vj3////////////////////////////////////////////////////////////////////////////////////////////////" alt="" width="715" height="235" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KNDAWEN0VK7S1WMKW0P2R1.01M2KNDCN29TK8T8Q04S5ZSEWT.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KNDAWEN0VK7S1WMKW0P2R1.01M2KNDCN29TK8T8Q04S5ZSEWT.png&amp;w=640&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KNDAWEN0VK7S1WMKW0P2R1.01M2KNDCN29TK8T8Q04S5ZSEWT.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KNDAWEN0VK7S1WMKW0P2R1.01M2KNDCN29TK8T8Q04S5ZSEWT.png&amp;w=750&amp;h=247&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KNDAWEN0VK7S1WMKW0P2R1.01M2KNDCN29TK8T8Q04S5ZSEWT.png&amp;w=828&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KNDAWEN0VK7S1WMKW0P2R1.01M2KNDCN29TK8T8Q04S5ZSEWT.png&amp;w=1080&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KNDAWEN0VK7S1WMKW0P2R1.01M2KNDCN29TK8T8Q04S5ZSEWT.png&amp;w=1280&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KNDAWEN0VK7S1WMKW0P2R1.01M2KNDCN29TK8T8Q04S5ZSEWT.png&amp;w=1430&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3372 5.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KNDAWEN0VK7S1WMKW0P2R1.01M2KNDCN29TK8T8Q04S5ZSEWT.png&amp;w=1920&amp;h=630&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="630" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="235" class="pt-portable-image-media"></div>
 </figure>
-<h3 data-astro-cid-yoyuw6fx="">How it stayed hidden</h3>
-<p data-astro-cid-yoyuw6fx="">To blend into the store's marketing supply chain, the attacker delivered the payload from <code>sdk-amazonaws[.]com</code>, a lookalike domain registered in 2024 and wholly unaffiliated with the official Amazon Web Services domain (<code>amazonaws.com</code>, registered in 2005). To compound the deception, the attacker prefixed the domain with a subdomain mimicking a popular e-commerce marketing platform too. This stacked, double-trusted-brand typosquat forged a convincing disguise, engineered to slip past quick tag reviews. Neither Amazon Web Services nor the impersonated marketing platform was involved in the attack or suffered any compromise.</p>
-<p data-astro-cid-yoyuw6fx="">Once loaded in the browser, the script executed an exceptionally dense gauntlet of cloaking gates before triggering its main payload:</p>
+<h3 data-astro-cid-byeekcgh="">How it stayed hidden</h3>
+<p data-astro-cid-byeekcgh="">To blend into the store's marketing supply chain, the attacker delivered the payload from <code>sdk-amazonaws[.]com</code>, a lookalike domain registered in 2024 and wholly unaffiliated with the official Amazon Web Services domain (<code>amazonaws.com</code>, registered in 2005). To compound the deception, the attacker prefixed the domain with a subdomain mimicking a popular e-commerce marketing platform too. This stacked, double-trusted-brand typosquat forged a convincing disguise, engineered to slip past quick tag reviews. Neither Amazon Web Services nor the impersonated marketing platform was involved in the attack or suffered any compromise.</p>
+<p data-astro-cid-byeekcgh="">Once loaded in the browser, the script executed an exceptionally dense gauntlet of cloaking gates before triggering its main payload:</p>
 <ul>
 	<li><strong>Target host and browsing context.</strong> The script verified that <code>window.location.hostname</code> matched the specific merchant host it was built to target (exiting immediately anywhere else), ensured the current window was top-level (not an embedded iframe), and checked that the path did not contain <code>/challenge</code>. It also verified that tracking marker cookies (<code>_cart_dr</code> and <code><em>logo</em>alt</code>) were not already present in the browser.</li>
 	<li><strong>Device and campaign filtering.</strong> The visitor's viewport width had to be narrower than <code>477</code> pixels (a handheld smartphone). Furthermore, the visitor had to arrive via a first-touch (the visitor's initial referral) campaign tagged with one of six specific UTM mediums (<em>Urchin Tracking Module</em>, standard URL tags used to track marketing campaigns): <code>ppc</code>, <code>cpc</code>, <code>sms</code>, <code>paid</code>, <code>flow</code>, or <code>campaign</code>. It also had to be the first or second page load of their session. Curiously, while the code contained a nominal non-UTM path, it required the session page count to be simultaneously greater than -1 and less than -2 (a mathematical impossibility that left that branch completely unreachable). This could be yet another diversion technique or a code change leftover.</li>
@@ -220,7 +220,7 @@
 	<li><strong>Geographic exclusions.</strong> The payload did not activate for visitors from specific regions (<code>US-NY</code>, <code>US-CA</code>, and <code>US-NHDD</code>) or from cities named San Francisco, Plymouth, Compton, Hopkinton, and Lafayette.</li>
 	<li><strong>The 325-entry IP substring trap.</strong> The script checked the visitor's IP against an embedded denylist containing 325 full IPv4 address strings. After deduplication, these represented 313 unique addresses across 249 distinct three-octet prefixes. Rather than performing structured CIDR (Classless Inter-Domain Routing) subnet matching, the author simply stripped the final octet from the visitor's IPv4 address and ran a raw substring search: <code>!denylistString.includes(visitorPrefix)</code>.</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">In stripped-down pseudocode, the multi-layer primary activation funnel looks like this:</p>
+<p data-astro-cid-byeekcgh="">In stripped-down pseudocode, the multi-layer primary activation funnel looks like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// 1. Context, device, and campaign gates</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> eligible </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> isTopWindow </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span><span class="sk-24292e-fff"> host </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-005cc5-fff"> EXPECTED_HOST</span><span class="sk-d73a49-a0a0a0"> &amp;&amp;</span><span class="sk-d73a49-a0a0a0"> !</span><span class="sk-24292e-fff">path.</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/challenge"</span><span class="sk-24292e-fff">);</span></span>
@@ -247,208 +247,208 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx=""><strong>Sabotaging observability and hijacking identities:</strong></p>
-<p data-astro-cid-yoyuw6fx="">Only after every primary gate passed did the script execute its payload:</p>
+<p data-astro-cid-byeekcgh=""><strong>Sabotaging observability and hijacking identities:</strong></p>
+<p data-astro-cid-byeekcgh="">Only after every primary gate passed did the script execute its payload:</p>
 <ul>
 	<li><strong>Blinding monitoring tools.</strong> It searched the DOM and removed script tags for nine different observability and analytics services: Lucky Orange, Segment, Optimizely, New Relic, Bugsnag, LogRocket, Hotjar, Microsoft Clarity, and the store's Google Tag Manager container (<code>GTM-&lt;redacted&gt;</code>). In remaining inline scripts, it string-replaced references to these tools with undefined dummy identifiers (<code>hji0</code>) so calls to them failed silently, attempting to blind the store's error reporting and monitoring.</li>
 	<li><strong>Suppressing customer support.</strong> It injected CSS and removed elements to hide its support-chat and contact-form containers, cutting off the customer's direct line to store support.</li>
 	<li><strong>Replacing advertising and analytics identities.</strong> It purged Google Ads globals (<code>google_ad_modifications</code>, <code>adsbygoogle</code>), tore down existing ad slots (<code>ca-pub-&lt;original&gt;</code>), and loaded Google Ads under a replacement publisher ID (<code>ca-pub-&lt;replacement&gt;</code>). It then injected a new Microsoft Clarity session-replay script configured with a rogue, replacement project ID.</li>
 </ul>
-<p data-astro-cid-yoyuw6fx=""><strong>Simpler independent beacons and the 600-day marker:</strong></p>
-<p data-astro-cid-yoyuw6fx="">In sharp contrast to the elaborate primary cloak, the payload also contained secondary beaconing branches (standalone routines that quietly ping an external server to confirm a visit) that completely bypassed the viewport, hostname, campaign, geography, and IP gates. If the visitor was on their second page or beyond, the script wrote a persistent cookie (<code>_cart_dr=1</code>) with an expiry of exactly 600 days (51,840,000,000 milliseconds) and fired an invisible zero-pixel image request to a remote telemetry endpoint on <code>maper[.]info</code> (a tracking beacon used to log that the browser reached this step).</p>
-<p data-astro-cid-yoyuw6fx="">A separate branch checked for an alternate marker (<code>_logo_alt</code>), which would trigger a second telemetry <code>.png</code> beacon (a cookie this script looked for, but never wrote itself; likely planted by a companion script). This gave the attacker a simple, persistent hit-counter to log basic traffic for all visitors (IP and User-Agent logged at the endpoint) across the entire store, while keeping their high-risk ad-hijacking routines strictly hidden behind the mobile cloak (high-value paid arrivals). It shows why analyzing only one visible effect does not reveal the full reach of a multi-purpose payload.</p>
-<h2 data-astro-cid-yoyuw6fx="">Indicators of Compromise (IOCs)</h2>
-<p data-astro-cid-yoyuw6fx="">We are publishing these indicators to help security teams and researchers detect and hunt these campaigns across their own environments. All indicators are drawn directly from captured payloads and their network connections. Listed URLs are defanged. Some indicators have been withheld or generalized because publishing them could inadvertently divulge the identities of affected organizations. Listed domains reflect infrastructure observed participating in the delivery, redirection, or telemetry chain during these attacks; inclusion does not imply that a shared service or hosting provider is exclusively malicious.</p>
-<div class="emdash-table-wrapper" data-astro-cid-zdje7xco="">
-	<table class="emdash-table" data-astro-cid-zdje7xco="">
-		<thead data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<th data-astro-cid-zdje7xco="">
+<p data-astro-cid-byeekcgh=""><strong>Simpler independent beacons and the 600-day marker:</strong></p>
+<p data-astro-cid-byeekcgh="">In sharp contrast to the elaborate primary cloak, the payload also contained secondary beaconing branches (standalone routines that quietly ping an external server to confirm a visit) that completely bypassed the viewport, hostname, campaign, geography, and IP gates. If the visitor was on their second page or beyond, the script wrote a persistent cookie (<code>_cart_dr=1</code>) with an expiry of exactly 600 days (51,840,000,000 milliseconds) and fired an invisible zero-pixel image request to a remote telemetry endpoint on <code>maper[.]info</code> (a tracking beacon used to log that the browser reached this step).</p>
+<p data-astro-cid-byeekcgh="">A separate branch checked for an alternate marker (<code>_logo_alt</code>), which would trigger a second telemetry <code>.png</code> beacon (a cookie this script looked for, but never wrote itself; likely planted by a companion script). This gave the attacker a simple, persistent hit-counter to log basic traffic for all visitors (IP and User-Agent logged at the endpoint) across the entire store, while keeping their high-risk ad-hijacking routines strictly hidden behind the mobile cloak (high-value paid arrivals). It shows why analyzing only one visible effect does not reveal the full reach of a multi-purpose payload.</p>
+<h2 data-astro-cid-byeekcgh="">Indicators of Compromise (IOCs)</h2>
+<p data-astro-cid-byeekcgh="">We are publishing these indicators to help security teams and researchers detect and hunt these campaigns across their own environments. All indicators are drawn directly from captured payloads and their network connections. Listed URLs are defanged. Some indicators have been withheld or generalized because publishing them could inadvertently divulge the identities of affected organizations. Listed domains reflect infrastructure observed participating in the delivery, redirection, or telemetry chain during these attacks; inclusion does not imply that a shared service or hosting provider is exclusively malicious.</p>
+<div class="emdash-table-wrapper" data-astro-cid-paimycxl="">
+	<table class="emdash-table" data-astro-cid-paimycxl="">
+		<thead data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<th data-astro-cid-paimycxl="">
 					<p><strong>Operation</strong></p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p><strong>Indicator</strong></p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p><strong>Type and role</strong></p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+		<tbody data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p><strong>1) After-hours affiliate-commission hijacker</strong></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>adtargett[.]com</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Script-delivery and affiliate-redirect typosquat domain</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p><strong>1) After-hours affiliate-commission hijacker</strong></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>gdataroute[.]com</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Affiliate-redirect short-link service observed in attack chain</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p><strong>3) Old search saboteur, now storefront backdoor</strong></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>scrprime[.]com</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Browser-hijacker script-delivery domain</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p><strong>3) Old search saboteur, now storefront backdoor</strong></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>searchvalidation[.]com</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Search-hijacking and traffic-redirect domain</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p><strong>3) Old search saboteur, now storefront backdoor</strong></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>sugabit[.]net</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Forced search-redirect domain</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p><strong>3) Old search saboteur, now storefront backdoor</strong></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>youronlinesearches[.]com</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Conditional remote-script delivery domain</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p><strong>3) Old search saboteur, now storefront backdoor</strong></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>hublosk[.]com</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Remote-script delivery domain</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p><strong>3) Old search saboteur, now storefront backdoor</strong></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>jullyambery[.]net</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Remote-JavaScript API and command domain</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p><strong>3) Old search saboteur, now storefront backdoor</strong></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>votetoda[.]com</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Injected-payload delivery domain</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p><strong>3) Old search saboteur, now storefront backdoor</strong></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>hanstrackr[.]com</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Hidden visitor-telemetry domain</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p><strong>3) Old search saboteur, now storefront backdoor</strong></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>adrs[.]me</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Typosquat-traffic redirect service observed in attack chain</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p><strong>3) Old search saboteur, now storefront backdoor</strong></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>youradexchange[.]com</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Monetization redirect service observed in attack chain</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p><strong>3) Old search saboteur, now storefront backdoor</strong></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>cdnpps[.]us</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Injected ad-frame delivery domain</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p><strong>4) Paid-mobile cloaker</strong></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>sdk-amazonaws[.]com</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Lookalike script-delivery domain abusing brand trust</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p><strong>4) Paid-mobile cloaker</strong></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>maper[.]info</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Conditional visitor-telemetry beacon domain</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<h2 data-astro-cid-yoyuw6fx="">Four lessons for defenders</h2>
-<p data-astro-cid-yoyuw6fx="">Taken together, the operations tell one escalating story: attackers changed the objective, delivery path, and disguise, but the browser still had to execute their logic. Four lessons stand out.</p>
-<p data-astro-cid-yoyuw6fx=""><strong>Behavior beats signatures.</strong> These operations pursued different forms of monetization and manipulation, but every payload still had to act in the browser: observe events, inspect state, alter the page, schedule work, make network requests, or load another stage. That is what structural analysis looks for: the logic a hostile payload must carry, even as URLs, signatures, and objectives change.</p>
-<p data-astro-cid-yoyuw6fx=""><strong>Selective execution is part of the attack, not a footnote.</strong> Device, time, geography, referrer, session, network, and cooldown gates can all defeat a crawler that visits once and takes a static snapshot. Continuous visibility matters because an attack may appear only to one browser, in one state, at one moment.&nbsp;</p>
-<p data-astro-cid-yoyuw6fx=""><strong>Obfuscation raised the cost of analysis, but in these cases it did not prevent detection.</strong> Self-defending loops, console suppression, debugger traps, rotated string tables, and dead branches complicated analysis. Page Shield ML still surfaced all four operations despite those barriers. Fast in-house models surface the suspicious code at scale, while frontier models investigate the hardest cases. Their disagreements highlight the trickiest obfuscation and logic, helping us narrow our focus.</p>
-<p data-astro-cid-yoyuw6fx=""><strong>Context completes the picture.</strong> Code that looks ordinary in isolation can reveal its malicious role once defenders link static analysis with dynamic context: how it arrived, which browser state activated it, what connections it opened, and what it actually did at runtime.</p>
-<h2 data-astro-cid-yoyuw6fx="">Continuous visibility into client-side execution</h2>
-<p data-astro-cid-yoyuw6fx="">These four operations relied on different layers of misdirection, but they all shared one constraint: their JavaScript had to execute in the browser. Public scanners and static crawls can miss gated behavior. Continuous observation helps clarify what the code actually does when real visitors interact with the page</p>
-<p data-astro-cid-yoyuw6fx="">Cloudflare <a href="https://developers.cloudflare.com/client-side-security" target="_blank" rel="noopener noreferrer"><u>Client-Side Security</u></a> provides that visibility across all plans. You can turn on Continuous script monitoring under Security settings to track first- and third-party scripts on your storefront, while automated malicious-script detection and alerting are available with <a href="https://developers.cloudflare.com/client-side-security/#availability" target="_blank" rel="noopener noreferrer"><u>Client-Side Security Advanced</u></a>. You can review script activity and manage detections directly in the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fweb-assets" target="_blank" rel="noopener noreferrer"><u>Cloudflare dashboard</u></a>.</p>
+<h2 data-astro-cid-byeekcgh="">Four lessons for defenders</h2>
+<p data-astro-cid-byeekcgh="">Taken together, the operations tell one escalating story: attackers changed the objective, delivery path, and disguise, but the browser still had to execute their logic. Four lessons stand out.</p>
+<p data-astro-cid-byeekcgh=""><strong>Behavior beats signatures.</strong> These operations pursued different forms of monetization and manipulation, but every payload still had to act in the browser: observe events, inspect state, alter the page, schedule work, make network requests, or load another stage. That is what structural analysis looks for: the logic a hostile payload must carry, even as URLs, signatures, and objectives change.</p>
+<p data-astro-cid-byeekcgh=""><strong>Selective execution is part of the attack, not a footnote.</strong> Device, time, geography, referrer, session, network, and cooldown gates can all defeat a crawler that visits once and takes a static snapshot. Continuous visibility matters because an attack may appear only to one browser, in one state, at one moment.&nbsp;</p>
+<p data-astro-cid-byeekcgh=""><strong>Obfuscation raised the cost of analysis, but in these cases it did not prevent detection.</strong> Self-defending loops, console suppression, debugger traps, rotated string tables, and dead branches complicated analysis. Page Shield ML still surfaced all four operations despite those barriers. Fast in-house models surface the suspicious code at scale, while frontier models investigate the hardest cases. Their disagreements highlight the trickiest obfuscation and logic, helping us narrow our focus.</p>
+<p data-astro-cid-byeekcgh=""><strong>Context completes the picture.</strong> Code that looks ordinary in isolation can reveal its malicious role once defenders link static analysis with dynamic context: how it arrived, which browser state activated it, what connections it opened, and what it actually did at runtime.</p>
+<h2 data-astro-cid-byeekcgh="">Continuous visibility into client-side execution</h2>
+<p data-astro-cid-byeekcgh="">These four operations relied on different layers of misdirection, but they all shared one constraint: their JavaScript had to execute in the browser. Public scanners and static crawls can miss gated behavior. Continuous observation helps clarify what the code actually does when real visitors interact with the page</p>
+<p data-astro-cid-byeekcgh="">Cloudflare <a href="https://developers.cloudflare.com/client-side-security" target="_blank" rel="noopener noreferrer"><u>Client-Side Security</u></a> provides that visibility across all plans. You can turn on Continuous script monitoring under Security settings to track first- and third-party scripts on your storefront, while automated malicious-script detection and alerting are available with <a href="https://developers.cloudflare.com/client-side-security/#availability" target="_blank" rel="noopener noreferrer"><u>Client-Side Security Advanced</u></a>. You can review script activity and manage detections directly in the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fweb-assets" target="_blank" rel="noopener noreferrer"><u>Cloudflare dashboard</u></a>.</p>

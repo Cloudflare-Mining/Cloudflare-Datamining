@@ -1,16 +1,16 @@
-<p data-astro-cid-yoyuw6fx="">We’re making it easier to run your Node.js applications on <a href="https://www.cloudflare.com/developer-platform/products/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers </u></a>by adding support for the <code>node:http</code> client and server APIs. This significant addition brings familiar Node.js HTTP interfaces to the edge, enabling you to deploy existing Express.js, Koa, and other Node.js applications globally with zero cold starts, automatic scaling, and significantly lower latency for your users — all without rewriting your codebase. Whether you're looking to migrate legacy applications to a modern serverless platform or build new ones using the APIs you already know, you can now leverage Workers' global network while maintaining your existing development patterns and frameworks.</p>
-<h2 data-astro-cid-yoyuw6fx="">The Challenge: Node.js-style HTTP in a Serverless Environment</h2>
-<p data-astro-cid-yoyuw6fx="">Cloudflare Workers operate in a unique <a href="https://www.cloudflare.com/learning/serverless/what-is-serverless" target="_blank" rel="noopener noreferrer"><u>serverless</u></a> environment where direct tcp connection isn't available. Instead, all networking operations are fully managed by specialized services outside the Workers runtime itself — systems like our <a href="https://blog.cloudflare.com/introducing-oxy" target="_blank" rel="noopener noreferrer"><u>Open Egress Router (OER)</u></a> and <a href="https://github.com/cloudflare/pingora" target="_blank" rel="noopener noreferrer"><u>Pingora</u></a> that handle connection pooling, keeping connections warm, managing egress IPs, and all the complex networking details. This means as a developer, you don't need to worry about TLS negotiation, connection management, or network optimization — it's all handled for you automatically.</p>
-<p data-astro-cid-yoyuw6fx="">This fully-managed approach is actually why we can't support certain Node.js APIs — these networking decisions are handled at the system level for performance and security. While this makes Workers different from traditional Node.js environments, it also makes them better for serverless computing — you get enterprise-grade networking without the complexity.</p>
-<p data-astro-cid-yoyuw6fx="">This fundamental difference required us to rethink how HTTP APIs work at the edge while maintaining compatibility with existing Node.js code patterns.</p>
-<p data-astro-cid-yoyuw6fx="">Our Solution: we've implemented the core `node:http` APIs by building on top of the web-standard technologies that Workers already excel at. Here's how it works:</p>
-<h3 data-astro-cid-yoyuw6fx="">HTTP Client APIs</h3>
-<p data-astro-cid-yoyuw6fx="">The <code>node:http</code> client implementation includes the essential APIs you're familiar with:</p>
+<p data-astro-cid-byeekcgh="">We’re making it easier to run your Node.js applications on <a href="https://www.cloudflare.com/developer-platform/products/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers </u></a>by adding support for the <code>node:http</code> client and server APIs. This significant addition brings familiar Node.js HTTP interfaces to the edge, enabling you to deploy existing Express.js, Koa, and other Node.js applications globally with zero cold starts, automatic scaling, and significantly lower latency for your users — all without rewriting your codebase. Whether you're looking to migrate legacy applications to a modern serverless platform or build new ones using the APIs you already know, you can now leverage Workers' global network while maintaining your existing development patterns and frameworks.</p>
+<h2 data-astro-cid-byeekcgh="">The Challenge: Node.js-style HTTP in a Serverless Environment</h2>
+<p data-astro-cid-byeekcgh="">Cloudflare Workers operate in a unique <a href="https://www.cloudflare.com/learning/serverless/what-is-serverless" target="_blank" rel="noopener noreferrer"><u>serverless</u></a> environment where direct tcp connection isn't available. Instead, all networking operations are fully managed by specialized services outside the Workers runtime itself — systems like our <a href="https://blog.cloudflare.com/introducing-oxy" target="_blank" rel="noopener noreferrer"><u>Open Egress Router (OER)</u></a> and <a href="https://github.com/cloudflare/pingora" target="_blank" rel="noopener noreferrer"><u>Pingora</u></a> that handle connection pooling, keeping connections warm, managing egress IPs, and all the complex networking details. This means as a developer, you don't need to worry about TLS negotiation, connection management, or network optimization — it's all handled for you automatically.</p>
+<p data-astro-cid-byeekcgh="">This fully-managed approach is actually why we can't support certain Node.js APIs — these networking decisions are handled at the system level for performance and security. While this makes Workers different from traditional Node.js environments, it also makes them better for serverless computing — you get enterprise-grade networking without the complexity.</p>
+<p data-astro-cid-byeekcgh="">This fundamental difference required us to rethink how HTTP APIs work at the edge while maintaining compatibility with existing Node.js code patterns.</p>
+<p data-astro-cid-byeekcgh="">Our Solution: we've implemented the core `node:http` APIs by building on top of the web-standard technologies that Workers already excel at. Here's how it works:</p>
+<h3 data-astro-cid-byeekcgh="">HTTP Client APIs</h3>
+<p data-astro-cid-byeekcgh="">The <code>node:http</code> client implementation includes the essential APIs you're familiar with:</p>
 <ul>
 	<li><code>http.get()</code> - For simple GET requests</li>
 	<li><code>http.request()</code> - For full control over HTTP requests</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">Our implementations of these APIs are built on top of the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank" rel="noopener noreferrer"><code><u>fetch()</u></code></a> API that Workers use natively, providing excellent performance while maintaining Node.js compatibility.</p>
+<p data-astro-cid-byeekcgh="">Our implementations of these APIs are built on top of the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank" rel="noopener noreferrer"><code><u>fetch()</u></code></a> API that Workers use natively, providing excellent performance while maintaining Node.js compatibility.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> http </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:http'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -57,7 +57,7 @@
 		})
 	});
 </script>
-<h3 data-astro-cid-yoyuw6fx="">What's Supported</h3>
+<h3 data-astro-cid-byeekcgh="">What's Supported</h3>
 <ul>
 	<li>Standard HTTP methods (GET, POST, PUT, DELETE, etc.)</li>
 	<li>Request and response headers</li>
@@ -65,17 +65,17 @@
 	<li>Streaming responses</li>
 	<li>Basic authentication</li>
 </ul>
-<h3 data-astro-cid-yoyuw6fx="">Current Limitations</h3>
+<h3 data-astro-cid-byeekcgh="">Current Limitations</h3>
 <ul>
 	<li>The <a href="https://nodejs.org/api/http.html#class-httpagent" target="_blank" rel="noopener noreferrer"><code><u>Agent</u></code></a> API is provided but operates as a no-op.</li>
 	<li><a href="https://nodejs.org/docs/v22.19.0/api/http.html#responseaddtrailersheaders" target="_blank" rel="noopener noreferrer"><u>Trailers</u></a>, <a href="https://nodejs.org/docs/v22.19.0/api/http.html#responsewriteearlyhintshints-callback" target="_blank" rel="noopener noreferrer"><u>early hints</u></a>, and <a href="https://nodejs.org/docs/v22.19.0/api/http.html#event-continue" target="_blank" rel="noopener noreferrer"><u>1xx responses</u></a> are not supported.</li>
 	<li>TLS-specific options are not supported (Workers handle TLS automatically).</li>
 </ul>
-<h2 data-astro-cid-yoyuw6fx="">HTTP Server APIs</h2>
-<p data-astro-cid-yoyuw6fx="">The server-side implementation is where things get particularly interesting. Since Workers can't create traditional TCP servers listening on specific ports, we've created a bridge system that connects Node.js-style servers to the Workers request handling model.</p>
-<p data-astro-cid-yoyuw6fx="">When you create an HTTP server and call <code>listen(port)</code>, instead of opening a TCP socket, the server is registered in an internal table within your Worker. This internal table acts as a bridge between http.createServer executions and the incoming fetch requests using the port number as the identifier. <br><br>You then use one of two methods to bridge incoming Worker requests to your Node.js-style server.</p>
-<h3 data-astro-cid-yoyuw6fx="">Manual Integration with <code>handleAsNodeRequest</code></h3>
-<p data-astro-cid-yoyuw6fx="">This approach gives you the flexibility to integrate Node.js HTTP servers with other Worker features, and allows you to have multiple handlers in your default <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc" target="_blank" rel="noopener noreferrer"><u>entrypoint</u></a> such as <code>fetch</code>, <code>scheduled</code>, <code>queue</code>, etc.</p>
+<h2 data-astro-cid-byeekcgh="">HTTP Server APIs</h2>
+<p data-astro-cid-byeekcgh="">The server-side implementation is where things get particularly interesting. Since Workers can't create traditional TCP servers listening on specific ports, we've created a bridge system that connects Node.js-style servers to the Workers request handling model.</p>
+<p data-astro-cid-byeekcgh="">When you create an HTTP server and call <code>listen(port)</code>, instead of opening a TCP socket, the server is registered in an internal table within your Worker. This internal table acts as a bridge between http.createServer executions and the incoming fetch requests using the port number as the identifier. <br><br>You then use one of two methods to bridge incoming Worker requests to your Node.js-style server.</p>
+<h3 data-astro-cid-byeekcgh="">Manual Integration with <code>handleAsNodeRequest</code></h3>
+<p data-astro-cid-byeekcgh="">This approach gives you the flexibility to integrate Node.js HTTP servers with other Worker features, and allows you to have multiple handlers in your default <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc" target="_blank" rel="noopener noreferrer"><u>entrypoint</u></a> such as <code>fetch</code>, <code>scheduled</code>, <code>queue</code>, etc.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { handleAsNodeRequest } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cloudflare:node'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createServer } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:http'</span><span class="sk-24292e-fff">;</span></span>
@@ -114,14 +114,14 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">This approach is perfect when you need to:</p>
+<p data-astro-cid-byeekcgh="">This approach is perfect when you need to:</p>
 <ul>
 	<li>Integrate with other Workers features like <a href="https://www.cloudflare.com/developer-platform/products/workers-kv" target="_blank" rel="noopener noreferrer"><u>KV</u></a>, <a href="https://www.cloudflare.com/developer-platform/products/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>, or <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a></li>
 	<li>Handle some routes differently while delegating others to the Node.js server</li>
 	<li>Apply custom middleware or request processing</li>
 </ul>
-<h3 data-astro-cid-yoyuw6fx="">Automatic Integration with <code>httpServerHandler</code></h3>
-<p data-astro-cid-yoyuw6fx="">For use cases where you want to integrate a Node.js HTTP server without any additional features or complexity, you can use the `httpServerHandler` function. This function automatically handles the integration for you. This solution is ideal for applications that don’t need Workers-specific features.</p>
+<h3 data-astro-cid-byeekcgh="">Automatic Integration with <code>httpServerHandler</code></h3>
+<p data-astro-cid-byeekcgh="">For use cases where you want to integrate a Node.js HTTP server without any additional features or complexity, you can use the `httpServerHandler` function. This function automatically handles the integration for you. This solution is ideal for applications that don’t need Workers-specific features.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { httpServerHandler } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cloudflare:node'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createServer } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:http'</span><span class="sk-24292e-fff">;</span></span>
@@ -151,8 +151,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2 data-astro-cid-yoyuw6fx=""><a href="https://expressjs.com" target="_blank" rel="noopener noreferrer"><u>Express.js</u></a>, <a href="https://koajs.com" target="_blank" rel="noopener noreferrer"><u>Koa.js</u></a> and Framework Compatibility</h2>
-<p data-astro-cid-yoyuw6fx="">These HTTP APIs open the door to running popular Node.js frameworks like Express.js on Workers. If any of the middlewares for these frameworks don’t work as expected, please <a href="https://github.com/cloudflare/workerd/issues" target="_blank" rel="noopener noreferrer"><u>open an issue</u></a> to Cloudflare Workers repository.</p>
+<h2 data-astro-cid-byeekcgh=""><a href="https://expressjs.com" target="_blank" rel="noopener noreferrer"><u>Express.js</u></a>, <a href="https://koajs.com" target="_blank" rel="noopener noreferrer"><u>Koa.js</u></a> and Framework Compatibility</h2>
+<p data-astro-cid-byeekcgh="">These HTTP APIs open the door to running popular Node.js frameworks like Express.js on Workers. If any of the middlewares for these frameworks don’t work as expected, please <a href="https://github.com/cloudflare/workerd/issues" target="_blank" rel="noopener noreferrer"><u>open an issue</u></a> to Cloudflare Workers repository.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { httpServerHandler } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cloudflare:node'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> express </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'express'</span><span class="sk-24292e-fff">;</span></span>
@@ -179,7 +179,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">In addition to <a href="https://expressjs.com" target="_blank" rel="noopener noreferrer"><u>Express.js</u></a>, <a href="https://koajs.com" target="_blank" rel="noopener noreferrer"><u>Koa.js</u></a> is also supported:</p>
+<p data-astro-cid-byeekcgh="">In addition to <a href="https://expressjs.com" target="_blank" rel="noopener noreferrer"><u>Express.js</u></a>, <a href="https://koajs.com" target="_blank" rel="noopener noreferrer"><u>Koa.js</u></a> is also supported:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> Koa </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'koa'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { httpServerHandler } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cloudflare:node'</span><span class="sk-24292e-fff">;</span></span>
@@ -198,10 +198,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2 data-astro-cid-yoyuw6fx="">Getting started with serverless <a href="http://node.js" target="_blank" rel="noopener noreferrer"><u>Node.js</u></a> applications</h2>
-<p data-astro-cid-yoyuw6fx="">The <code>node:http </code>and <code>node:https</code> APIs are available in Workers with Node.js compatibility enabled using the <a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates/#nodejs-compatibility-flag" target="_blank" rel="noopener noreferrer"><code><u>nodejs_compat</u></code></a> compatibility flag with a compatibility date later than 08-15-2025.</p>
-<p data-astro-cid-yoyuw6fx="">The addition of <code>node:http</code> support brings us closer to our goal of making Cloudflare Workers the best platform for running JavaScript at the edge, whether you're building new applications or migrating existing ones.</p>
+<h2 data-astro-cid-byeekcgh="">Getting started with serverless <a href="http://node.js" target="_blank" rel="noopener noreferrer"><u>Node.js</u></a> applications</h2>
+<p data-astro-cid-byeekcgh="">The <code>node:http </code>and <code>node:https</code> APIs are available in Workers with Node.js compatibility enabled using the <a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates/#nodejs-compatibility-flag" target="_blank" rel="noopener noreferrer"><code><u>nodejs_compat</u></code></a> compatibility flag with a compatibility date later than 08-15-2025.</p>
+<p data-astro-cid-byeekcgh="">The addition of <code>node:http</code> support brings us closer to our goal of making Cloudflare Workers the best platform for running JavaScript at the edge, whether you're building new applications or migrating existing ones.</p>
 <div id="html-block-k4j" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=%3Chttps%3A%2F%2Fgithub.com%2Fcloudflare%2Ftemplates%2Ftree%2Fmain%2Fnodejs-http-server-template"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
 	<p></p>
 </div>
-<p data-astro-cid-yoyuw6fx="">Ready to try it out? <a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs" target="_blank" rel="noopener noreferrer"><u>Enable Node.js compatibility</u></a> in your Worker and start exploring the possibilities of familiar<a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs/http" target="_blank" rel="noopener noreferrer"><u> HTTP APIs at the edge</u></a>.</p>
+<p data-astro-cid-byeekcgh="">Ready to try it out? <a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs" target="_blank" rel="noopener noreferrer"><u>Enable Node.js compatibility</u></a> in your Worker and start exploring the possibilities of familiar<a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs/http" target="_blank" rel="noopener noreferrer"><u> HTTP APIs at the edge</u></a>.</p>

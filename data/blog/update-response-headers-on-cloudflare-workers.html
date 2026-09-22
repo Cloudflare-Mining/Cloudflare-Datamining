@@ -1,10 +1,10 @@
-<p data-astro-cid-yoyuw6fx=""><em>The following is a guest post by <a href="https://www.linkedin.com/in/jayaprabhakar" target="_blank" rel="noopener noreferrer">Jayaprabhakar Kadarkarai</a>, Developer of <a href="https://www.codiva.io" target="_blank" rel="noopener noreferrer">Codiva.io</a>, an Online IDE used by computer science students across the world. He works full stack to deliver low latency and scalable web applications.</em></p>
-<p data-astro-cid-yoyuw6fx="">Have you launched your website? Getting a lot of traffic? And you are planning to add more servers? You’ll need load balancing to maintain the scalability and reliability of your website. Cloudflare offers powerful <a href="https://www.cloudflare.com/load-balancing" target="_blank" rel="noopener noreferrer">Load Balancing</a>, but there are situations where off-the-shelf options can’t satisfy your specific needs. For those situations, you can write your own Cloudflare Worker.</p>
-<p data-astro-cid-yoyuw6fx="">In this post, we’ll learn about load balancers and how to set them up at a low cost with Cloudflare Service Workers.</p>
-<p data-astro-cid-yoyuw6fx="">This post assumes you have a basic understanding of JavaScript, as that’s the language used to write a Cloudflare Worker.</p>
-<h3 data-astro-cid-yoyuw6fx="">The Basic Pattern</h3>
-<p data-astro-cid-yoyuw6fx="">The basic pattern starts with adding ‘fetch’ event listener to intercept the requests. You can configure which requests to intercept on the Cloudflare dashboard or using the <a href="https://developers.cloudflare.com/workers/api/#create-a-route" target="_blank" rel="noopener noreferrer">Cloudflare API</a>.</p>
-<p data-astro-cid-yoyuw6fx="">Then, modify the hostname of the URL and send the request to the new host.</p>
+<p data-astro-cid-byeekcgh=""><em>The following is a guest post by <a href="https://www.linkedin.com/in/jayaprabhakar" target="_blank" rel="noopener noreferrer">Jayaprabhakar Kadarkarai</a>, Developer of <a href="https://www.codiva.io" target="_blank" rel="noopener noreferrer">Codiva.io</a>, an Online IDE used by computer science students across the world. He works full stack to deliver low latency and scalable web applications.</em></p>
+<p data-astro-cid-byeekcgh="">Have you launched your website? Getting a lot of traffic? And you are planning to add more servers? You’ll need load balancing to maintain the scalability and reliability of your website. Cloudflare offers powerful <a href="https://www.cloudflare.com/load-balancing" target="_blank" rel="noopener noreferrer">Load Balancing</a>, but there are situations where off-the-shelf options can’t satisfy your specific needs. For those situations, you can write your own Cloudflare Worker.</p>
+<p data-astro-cid-byeekcgh="">In this post, we’ll learn about load balancers and how to set them up at a low cost with Cloudflare Service Workers.</p>
+<p data-astro-cid-byeekcgh="">This post assumes you have a basic understanding of JavaScript, as that’s the language used to write a Cloudflare Worker.</p>
+<h3 data-astro-cid-byeekcgh="">The Basic Pattern</h3>
+<p data-astro-cid-byeekcgh="">The basic pattern starts with adding ‘fetch’ event listener to intercept the requests. You can configure which requests to intercept on the Cloudflare dashboard or using the <a href="https://developers.cloudflare.com/workers/api/#create-a-route" target="_blank" rel="noopener noreferrer">Cloudflare API</a>.</p>
+<p data-astro-cid-byeekcgh="">Then, modify the hostname of the URL and send the request to the new host.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(event.request.url);</span></span>
@@ -37,10 +37,10 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">This doesn’t do anything useful yet, but this is the basic pattern that will be used in the rest of the examples.</p>
-<h3 data-astro-cid-yoyuw6fx="">Load Balancer with Random Routing</h3>
-<p data-astro-cid-yoyuw6fx="">When you have a list of origin servers, pick a random host to route to.</p>
-<p data-astro-cid-yoyuw6fx="">This is a very basic load balancing technique to evenly distribute the traffic across all origin servers.</p>
+<p data-astro-cid-byeekcgh="">This doesn’t do anything useful yet, but this is the basic pattern that will be used in the rest of the examples.</p>
+<h3 data-astro-cid-byeekcgh="">Load Balancer with Random Routing</h3>
+<p data-astro-cid-byeekcgh="">When you have a list of origin servers, pick a random host to route to.</p>
+<p data-astro-cid-byeekcgh="">This is a very basic load balancing technique to evenly distribute the traffic across all origin servers.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> hostnames </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "0.example.com"</span><span class="sk-24292e-fff">,</span></span>
@@ -65,8 +65,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">Load Balancer with Fallback</h3>
-<p data-astro-cid-yoyuw6fx="">What about when a host is down? A simple fallback strategy is to route the request to a different host. Use this only if you know the requests are idempotent. In general, this means GET requests are okay, but you might wish to handle POST requests another way.</p>
+<h3 data-astro-cid-byeekcgh="">Load Balancer with Fallback</h3>
+<p data-astro-cid-byeekcgh="">What about when a host is down? A simple fallback strategy is to route the request to a different host. Use this only if you know the requests are idempotent. In general, this means GET requests are okay, but you might wish to handle POST requests another way.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"></span>
@@ -100,9 +100,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">Geographic Routing</h3>
-<p data-astro-cid-yoyuw6fx="">Cloudflare adds <a href="https://support.cloudflare.com/hc/en-us/articles/200168236-What-does-Cloudflare-IP-Geolocation-do-" target="_blank" rel="noopener noreferrer">CF-IPCountry</a> header to all requests once Cloudflare IP Geolocation is enabled.</p>
-<p data-astro-cid-yoyuw6fx="">You can access it using:</p>
+<h3 data-astro-cid-byeekcgh="">Geographic Routing</h3>
+<p data-astro-cid-byeekcgh="">Cloudflare adds <a href="https://support.cloudflare.com/hc/en-us/articles/200168236-What-does-Cloudflare-IP-Geolocation-do-" target="_blank" rel="noopener noreferrer">CF-IPCountry</a> header to all requests once Cloudflare IP Geolocation is enabled.</p>
+<p data-astro-cid-byeekcgh="">You can access it using:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> countryCode </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> event.request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(‘</span><span class="sk-005cc5-fff">CF</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">IPCountry’);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -110,8 +110,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">We can use the countryCode to route requests from different locations to different servers in different regions.</p>
-<p data-astro-cid-yoyuw6fx="">For example, 80% of the traffic to Codiva.io is from the US and India. So, I have servers in two different regions (Oregon, USA; and Mumbai, India). Requests from India and &nbsp;other countries near it are routed to servers in India. All other requests are routed to the US data center.</p>
+<p data-astro-cid-byeekcgh="">We can use the countryCode to route requests from different locations to different servers in different regions.</p>
+<p data-astro-cid-byeekcgh="">For example, 80% of the traffic to Codiva.io is from the US and India. So, I have servers in two different regions (Oregon, USA; and Mumbai, India). Requests from India and &nbsp;other countries near it are routed to servers in India. All other requests are routed to the US data center.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> US_HOST</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "us.example.com"</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> IN_HOST</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "in.example.com"</span></span>
@@ -140,8 +140,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">Putting it all together</h3>
-<p data-astro-cid-yoyuw6fx="">Now, let us combine the geographic routing, random load balancing and fallback into a single worker:</p>
+<h3 data-astro-cid-byeekcgh="">Putting it all together</h3>
+<p data-astro-cid-byeekcgh="">Now, let us combine the geographic routing, random load balancing and fallback into a single worker:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> US_HOSTS</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "0.us.example.com"</span><span class="sk-24292e-fff">,</span></span>
@@ -205,6 +205,6 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">Recap</h3>
-<p data-astro-cid-yoyuw6fx="">In this article, you saw the power of Cloudflare workers and how simple it is to use it. Before implementing custom load balancer with workers, take a look at <a href="https://www.cloudflare.com/load-balancing" target="_blank" rel="noopener noreferrer">Cloudflare’s load balancer</a>.</p>
-<p data-astro-cid-yoyuw6fx="">For more examples, take a look at the <a href="https://developers.cloudflare.com/workers/recipes" target="_blank" rel="noopener noreferrer">recipes</a> on the developer docs page.</p>
+<h3 data-astro-cid-byeekcgh="">Recap</h3>
+<p data-astro-cid-byeekcgh="">In this article, you saw the power of Cloudflare workers and how simple it is to use it. Before implementing custom load balancer with workers, take a look at <a href="https://www.cloudflare.com/load-balancing" target="_blank" rel="noopener noreferrer">Cloudflare’s load balancer</a>.</p>
+<p data-astro-cid-byeekcgh="">For more examples, take a look at the <a href="https://developers.cloudflare.com/workers/recipes" target="_blank" rel="noopener noreferrer">recipes</a> on the developer docs page.</p>

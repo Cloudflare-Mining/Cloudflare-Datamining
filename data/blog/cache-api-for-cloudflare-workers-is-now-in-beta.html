@@ -1,12 +1,12 @@
-<p data-astro-cid-yoyuw6fx="">In October of last year we announced the launch of Cloudflare Workers. Workers allows you to run JavaScript from 150+ of Cloudflare’s data centers. This means that from the moment a request hits the Cloudflare network, you have full control over its destiny. One of the benefits of using Workers in combination with Cloudflare’s cache is that Workers allow you to have programmatic, and thus very granular control over the Cloudflare cache.</p>
-<p data-astro-cid-yoyuw6fx="">You can choose what to cache, how long to cache it for, the source it should be cached from, and you can even modify the cached result after it is retrieved from the cache.</p>
-<p data-astro-cid-yoyuw6fx="">We have seen many of our existing customers use Workers to enhance their usage of the Cloudflare cache, and we have seen many new customers join Cloudflare to take advantage of these unique benefits.</p>
-<h2 data-astro-cid-yoyuw6fx="">(Re-)Introducing the Cache API</h2>
-<p data-astro-cid-yoyuw6fx="">You can always have more control, so today we are announcing support for the Cache API! As some of you may know, Cloudflare Workers are built against the existing Service Worker APIs. One of the reasons we originally chose to model Cloudflare Workers after Service Workers was due to the existing familiarity and audience of Service Workers, as well as documentation.</p>
-<p data-astro-cid-yoyuw6fx="">We’ve received overwhelming feedback and evidence from customers that there are many uses for supporting an implementation modeled after the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache" target="_blank" rel="noopener noreferrer">Service Workers Cache API</a>. Today we are opening up a beta to offer our customers the ability to explicitly read and write items in our cache from within their Workers. The capability to do this will allow them to implement virtually any cache semantics they might need.</p>
-<h2 data-astro-cid-yoyuw6fx="">So what can you do with the Cache API?</h2>
-<h4 data-astro-cid-yoyuw6fx="">Cache Worker output</h4>
-<p data-astro-cid-yoyuw6fx="">Workers allow you to fully customize and manipulate a response before it is sent back to the user. Whether you are modifying the response from your origin, or assembling a response based on calls to multiple APIs, you can use the Cache API to cache the output and serve it directly on future similar requests.</p>
+<p data-astro-cid-byeekcgh="">In October of last year we announced the launch of Cloudflare Workers. Workers allows you to run JavaScript from 150+ of Cloudflare’s data centers. This means that from the moment a request hits the Cloudflare network, you have full control over its destiny. One of the benefits of using Workers in combination with Cloudflare’s cache is that Workers allow you to have programmatic, and thus very granular control over the Cloudflare cache.</p>
+<p data-astro-cid-byeekcgh="">You can choose what to cache, how long to cache it for, the source it should be cached from, and you can even modify the cached result after it is retrieved from the cache.</p>
+<p data-astro-cid-byeekcgh="">We have seen many of our existing customers use Workers to enhance their usage of the Cloudflare cache, and we have seen many new customers join Cloudflare to take advantage of these unique benefits.</p>
+<h2 data-astro-cid-byeekcgh="">(Re-)Introducing the Cache API</h2>
+<p data-astro-cid-byeekcgh="">You can always have more control, so today we are announcing support for the Cache API! As some of you may know, Cloudflare Workers are built against the existing Service Worker APIs. One of the reasons we originally chose to model Cloudflare Workers after Service Workers was due to the existing familiarity and audience of Service Workers, as well as documentation.</p>
+<p data-astro-cid-byeekcgh="">We’ve received overwhelming feedback and evidence from customers that there are many uses for supporting an implementation modeled after the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache" target="_blank" rel="noopener noreferrer">Service Workers Cache API</a>. Today we are opening up a beta to offer our customers the ability to explicitly read and write items in our cache from within their Workers. The capability to do this will allow them to implement virtually any cache semantics they might need.</p>
+<h2 data-astro-cid-byeekcgh="">So what can you do with the Cache API?</h2>
+<h4 data-astro-cid-byeekcgh="">Cache Worker output</h4>
+<p data-astro-cid-byeekcgh="">Workers allow you to fully customize and manipulate a response before it is sent back to the user. Whether you are modifying the response from your origin, or assembling a response based on calls to multiple APIs, you can use the Cache API to cache the output and serve it directly on future similar requests.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">event</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> cache </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> caches.default</span></span>
@@ -42,8 +42,8 @@
 		})
 	});
 </script>
-<h4 data-astro-cid-yoyuw6fx="">Cache POST requests</h4>
-<p data-astro-cid-yoyuw6fx="">Cloudflare ordinarily doesn’t cache POST requests because they can change state on a customer’s origin. However, some APIs and frameworks like GraphQL make every call a POST request, including those that do not change state. For these APIs it’s important to enable caching to speed things up.</p>
+<h4 data-astro-cid-byeekcgh="">Cache POST requests</h4>
+<p data-astro-cid-byeekcgh="">Cloudflare ordinarily doesn’t cache POST requests because they can change state on a customer’s origin. However, some APIs and frameworks like GraphQL make every call a POST request, including those that do not change state. For these APIs it’s important to enable caching to speed things up.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">event</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> cache </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> caches.default</span></span>
@@ -63,8 +63,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4 data-astro-cid-yoyuw6fx="">Set Cache-Tag headers from a Worker (Enterprise only)</h4>
-<p data-astro-cid-yoyuw6fx="">One of the ways to purge assets within the Cloudflare cache is using <a href="https://support.cloudflare.com/hc/en-us/articles/206596608-How-to-Purge-Cache-Using-Cache-Tags-Enterprise-only-" target="_blank" rel="noopener noreferrer">Cache-Tags</a>. Cache-Tags allow you to group assets by category, version, etc and purge them all at once using a single API call. Cache-Tags were traditionally set using an origin Cache-Tag header. Some backends, however, don’t allow you control over the response headers that are sent, which makes it challenging to set Cache-Tags at the origin. With the Cache API, you can set Cache-Tags directly from a Worker, without having to modify any code at your origin.</p>
+<h4 data-astro-cid-byeekcgh="">Set Cache-Tag headers from a Worker (Enterprise only)</h4>
+<p data-astro-cid-byeekcgh="">One of the ways to purge assets within the Cloudflare cache is using <a href="https://support.cloudflare.com/hc/en-us/articles/206596608-How-to-Purge-Cache-Using-Cache-Tags-Enterprise-only-" target="_blank" rel="noopener noreferrer">Cache-Tags</a>. Cache-Tags allow you to group assets by category, version, etc and purge them all at once using a single API call. Cache-Tags were traditionally set using an origin Cache-Tag header. Some backends, however, don’t allow you control over the response headers that are sent, which makes it challenging to set Cache-Tags at the origin. With the Cache API, you can set Cache-Tags directly from a Worker, without having to modify any code at your origin.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff"> event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleRequest</span><span class="sk-24292e-fff">(event))</span></span>
@@ -93,8 +93,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">These are just simple examples to get started, and we’ll be publishing many more in the coming weeks. We’re excited to see what everyone builds with the Cache API!</p>
-<h2 data-astro-cid-yoyuw6fx="">How to get access</h2>
-<p data-astro-cid-yoyuw6fx="">We are super excited for you to start playing with the Cache API. <strong>You can find <a href="https://developers.cloudflare.com/workers/reference/cache-api" target="_blank" rel="noopener noreferrer">documentation here</a>, and feel free to start using the APIs.</strong></p>
-<p data-astro-cid-yoyuw6fx="">We want to hear about all the cool ways you are using this. We also want to hear if you are having trouble or running into any issues.</p>
-<p data-astro-cid-yoyuw6fx="">Please feel free to contact us at <a href="mailto:cacheapibeta@cloudflare.com">cacheapibeta@cloudflare.com</a></p>
+<p data-astro-cid-byeekcgh="">These are just simple examples to get started, and we’ll be publishing many more in the coming weeks. We’re excited to see what everyone builds with the Cache API!</p>
+<h2 data-astro-cid-byeekcgh="">How to get access</h2>
+<p data-astro-cid-byeekcgh="">We are super excited for you to start playing with the Cache API. <strong>You can find <a href="https://developers.cloudflare.com/workers/reference/cache-api" target="_blank" rel="noopener noreferrer">documentation here</a>, and feel free to start using the APIs.</strong></p>
+<p data-astro-cid-byeekcgh="">We want to hear about all the cool ways you are using this. We also want to hear if you are having trouble or running into any issues.</p>
+<p data-astro-cid-byeekcgh="">Please feel free to contact us at <a href="mailto:cacheapibeta@cloudflare.com">cacheapibeta@cloudflare.com</a></p>

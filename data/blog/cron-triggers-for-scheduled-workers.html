@@ -1,19 +1,19 @@
-<p data-astro-cid-yoyuw6fx="">Today, we are excited to launch Cron Triggers to the Cloudflare Workers serverless compute platform. We’ve heard the developer feedback, and we want to give our users the ability to run a given Worker on a scheduled basis. In case you’re not familiar with Unix systems, the cron pattern allows developers to schedule jobs to run at fixed intervals. This pattern is ideal for running any types of periodic jobs like maintenance or calling third party APIs to get up-to-date data. Cron Triggers has been a highly requested feature even inside Cloudflare and we hope that you will find this feature as useful as we have!</p>
+<p data-astro-cid-byeekcgh="">Today, we are excited to launch Cron Triggers to the Cloudflare Workers serverless compute platform. We’ve heard the developer feedback, and we want to give our users the ability to run a given Worker on a scheduled basis. In case you’re not familiar with Unix systems, the cron pattern allows developers to schedule jobs to run at fixed intervals. This pattern is ideal for running any types of periodic jobs like maintenance or calling third party APIs to get up-to-date data. Cron Triggers has been a highly requested feature even inside Cloudflare and we hope that you will find this feature as useful as we have!</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="421" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW44GGJPX4Q72DFZCTR03ARM.gif" alt="Making Time for Cron Triggers: A Look Inside Embedded Image - TCknZT" width="715" height="421" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<h3 data-astro-cid-yoyuw6fx="">Where are Cron Triggers going to be run?</h3>
-<p data-astro-cid-yoyuw6fx="">Cron Triggers are executed from the edge. At Cloudflare, we believe strongly in edge computing and wanted our new feature to get all of the performance and reliability benefits of running on our edge. Thus, we wrote a service in core that is responsible for distributing schedules to a new edge service through Quicksilver which will then trigger the Workers themselves.</p>
-<h3 data-astro-cid-yoyuw6fx="">What’s happening under the hood?</h3>
-<p data-astro-cid-yoyuw6fx="">At a high level, schedules created through our API create records in our database with the information necessary to execute the Worker and the given cron schedule. These records are then picked up by another service which continuously evaluates the state of our edge and distributes the schedules between cities.</p>
-<p data-astro-cid-yoyuw6fx="">Once the schedules have been distributed to the edge, a service running in the edge node polls for changes to the schedules and makes sure they get sent to our runtime at the appropriate time.</p>
-<h3 data-astro-cid-yoyuw6fx="">New Event Type</h3>
+<h3 data-astro-cid-byeekcgh="">Where are Cron Triggers going to be run?</h3>
+<p data-astro-cid-byeekcgh="">Cron Triggers are executed from the edge. At Cloudflare, we believe strongly in edge computing and wanted our new feature to get all of the performance and reliability benefits of running on our edge. Thus, we wrote a service in core that is responsible for distributing schedules to a new edge service through Quicksilver which will then trigger the Workers themselves.</p>
+<h3 data-astro-cid-byeekcgh="">What’s happening under the hood?</h3>
+<p data-astro-cid-byeekcgh="">At a high level, schedules created through our API create records in our database with the information necessary to execute the Worker and the given cron schedule. These records are then picked up by another service which continuously evaluates the state of our edge and distributes the schedules between cities.</p>
+<p data-astro-cid-byeekcgh="">Once the schedules have been distributed to the edge, a service running in the edge node polls for changes to the schedules and makes sure they get sent to our runtime at the appropriate time.</p>
+<h3 data-astro-cid-byeekcgh="">New Event Type</h3>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="256" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487VTD8D5C2EYK5182FNG8.png&amp;w=715&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487VTD8D5C2EYK5182FNG8.png&amp;w=640&amp;h=229&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487VTD8D5C2EYK5182FNG8.png&amp;w=715&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487VTD8D5C2EYK5182FNG8.png&amp;w=750&amp;h=269&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487VTD8D5C2EYK5182FNG8.png&amp;w=828&amp;h=296&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487VTD8D5C2EYK5182FNG8.png&amp;w=1080&amp;h=387&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487VTD8D5C2EYK5182FNG8.png&amp;w=1280&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487VTD8D5C2EYK5182FNG8.png&amp;w=1430&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Making Time for Cron Triggers: A Look Inside Embedded Image - qRrYIH" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487VTD8D5C2EYK5182FNG8.png&amp;w=1920&amp;h=689&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="689" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="256" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-yoyuw6fx="">Cron Triggers gave us the opportunity to finally recognize a new Worker 'type' in our API. While Workers currently only run on web requests, we have lots of ideas for the future of edge computing that aren’t strictly tied to HTTP requests and responses. Expect to see even more new handlers in the future for other non-HTTP events like log information from your Worker (think custom wrangler tail!) or even TCP Workers.</p>
-<p data-astro-cid-yoyuw6fx="">Here’s an example of the new Javascript API:</p>
+<p data-astro-cid-byeekcgh="">Cron Triggers gave us the opportunity to finally recognize a new Worker 'type' in our API. While Workers currently only run on web requests, we have lots of ideas for the future of edge computing that aren’t strictly tied to HTTP requests and responses. Expect to see even more new handlers in the future for other non-HTTP events like log information from your Worker (think custom wrangler tail!) or even TCP Workers.</p>
+<p data-astro-cid-byeekcgh="">Here’s an example of the new Javascript API:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'scheduled'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">waitUntil</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">someAsyncFunction</span><span class="sk-24292e-fff">(event))</span></span>
@@ -41,7 +41,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">Where <code>event</code> has the following interface in Typescript:</p>
+<p data-astro-cid-byeekcgh="">Where <code>event</code> has the following interface in Typescript:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">interface</span><span class="sk-6f42c1-ffc799"> ScheduledEvent</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-e36209-fff">  type</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> 'scheduled'</span><span class="sk-24292e-fff">;</span></span>
@@ -52,12 +52,12 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">As long as your Worker has a handler for this new event type, you’ll be able to give it a schedule.</p>
-<h3 data-astro-cid-yoyuw6fx="">New APIs</h3>
-<h5 data-astro-cid-yoyuw6fx=""><strong>PUT</strong> /client/v4**/accounts/:account_identifier/workers/scripts/:name**</h5>
-<p data-astro-cid-yoyuw6fx="">The script upload API remains the same, but during script validation we now detect and return the registered event handlers.</p>
-<h5 data-astro-cid-yoyuw6fx=""><strong>PUT</strong> /client/v4**/accounts/:account_identifier/workers/scripts/:name/schedules**</h5>
-<h6 data-astro-cid-yoyuw6fx=""><strong>Body</strong></h6>
+<p data-astro-cid-byeekcgh="">As long as your Worker has a handler for this new event type, you’ll be able to give it a schedule.</p>
+<h3 data-astro-cid-byeekcgh="">New APIs</h3>
+<h5 data-astro-cid-byeekcgh=""><strong>PUT</strong> /client/v4**/accounts/:account_identifier/workers/scripts/:name**</h5>
+<p data-astro-cid-byeekcgh="">The script upload API remains the same, but during script validation we now detect and return the registered event handlers.</p>
+<h5 data-astro-cid-byeekcgh=""><strong>PUT</strong> /client/v4**/accounts/:account_identifier/workers/scripts/:name/schedules**</h5>
+<h6 data-astro-cid-byeekcgh=""><strong>Body</strong></h6>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[</span></span>
 <span class="line"><span class="sk-24292e-fff"> {</span><span class="sk-032f62-99ffe4">"cron"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"* * * * *"</span><span class="sk-24292e-fff">},</span></span>
@@ -68,9 +68,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">This will create or modify all schedules for a script, removing all schedules not in the list. For now, there’s a limit of 3 distinct cron schedules. Schedules can be set to run as often as one minute and don’t accept schedules with years in them (sorry, you’ll have to run your Y3K migration script another way).</p>
-<h5 data-astro-cid-yoyuw6fx=""><strong>GET</strong> /client/v4**/accounts/:account_identifier/workers/scripts/:name/schedules**</h5>
-<h6 data-astro-cid-yoyuw6fx=""><strong>Response</strong></h6>
+<p data-astro-cid-byeekcgh="">This will create or modify all schedules for a script, removing all schedules not in the list. For now, there’s a limit of 3 distinct cron schedules. Schedules can be set to run as often as one minute and don’t accept schedules with years in them (sorry, you’ll have to run your Y3K migration script another way).</p>
+<h5 data-astro-cid-byeekcgh=""><strong>GET</strong> /client/v4**/accounts/:account_identifier/workers/scripts/:name/schedules**</h5>
+<h6 data-astro-cid-byeekcgh=""><strong>Response</strong></h6>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4"> "schedules"</span><span class="sk-24292e-fff">: [</span></span>
@@ -87,11 +87,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">The Scheduler service is responsible for reading the schedules from Postgres and generating per-node schedules to place into Quicksilver. For now, the service simply avoids trying to execute your Worker on an edge node that may be disabled for some reason, but such an approach also gives us a lot of flexibility in deciding where your Worker executes.</p>
-<p data-astro-cid-yoyuw6fx="">In addition to edge node availability, we could optimize for compute cost, bandwidth, or even latency in the future!</p>
-<h3 data-astro-cid-yoyuw6fx="">What’s actually executing these schedules?</h3>
-<p data-astro-cid-yoyuw6fx="">To consume the schedules and actually trigger the Worker, we built a new service in Rust and deployed to our edge using HashiCorp <a href="https://blog.cloudflare.com/how-we-use-hashicorp-nomad">Nomad</a>. Nomad ensures that the schedule runner remains running in the edge node and can move it between machines as necessary. Rust was the best choice for this service since it needed to be fast with high availability and Cap’n Proto RPC support for calling into the runtime. With Tokio, Anyhow, Clap, and Serde, it was easy to quickly get the service up and running without having to really worry about async, error handling, or configuration.</p>
-<p data-astro-cid-yoyuw6fx="">On top of that, due to our specific needs for cron parsing, we built a specialized cron parser using nom that allowed us to quickly parse and compile expressions into values that check against a given time to determine if we should run a schedule.</p>
-<p data-astro-cid-yoyuw6fx="">Once the schedule runner has the schedules, it checks the time and selects the Workers that need to be run. To let the runtime know it’s time to run, we send a <a href="https://capnproto.org" target="_blank" rel="noopener noreferrer">Cap'n Proto</a> RPC message. The runtime then does its thing, calling the new ‘scheduled’ event handler instead of ‘fetch’.</p>
-<h3 data-astro-cid-yoyuw6fx="">How can I try this?</h3>
-<p data-astro-cid-yoyuw6fx="">As of today, the Cron Triggers feature is live! Please try it out by creating a Worker and finding the Triggers tab - we’re excited to see what you build with it!</p>
+<p data-astro-cid-byeekcgh="">The Scheduler service is responsible for reading the schedules from Postgres and generating per-node schedules to place into Quicksilver. For now, the service simply avoids trying to execute your Worker on an edge node that may be disabled for some reason, but such an approach also gives us a lot of flexibility in deciding where your Worker executes.</p>
+<p data-astro-cid-byeekcgh="">In addition to edge node availability, we could optimize for compute cost, bandwidth, or even latency in the future!</p>
+<h3 data-astro-cid-byeekcgh="">What’s actually executing these schedules?</h3>
+<p data-astro-cid-byeekcgh="">To consume the schedules and actually trigger the Worker, we built a new service in Rust and deployed to our edge using HashiCorp <a href="https://blog.cloudflare.com/how-we-use-hashicorp-nomad">Nomad</a>. Nomad ensures that the schedule runner remains running in the edge node and can move it between machines as necessary. Rust was the best choice for this service since it needed to be fast with high availability and Cap’n Proto RPC support for calling into the runtime. With Tokio, Anyhow, Clap, and Serde, it was easy to quickly get the service up and running without having to really worry about async, error handling, or configuration.</p>
+<p data-astro-cid-byeekcgh="">On top of that, due to our specific needs for cron parsing, we built a specialized cron parser using nom that allowed us to quickly parse and compile expressions into values that check against a given time to determine if we should run a schedule.</p>
+<p data-astro-cid-byeekcgh="">Once the schedule runner has the schedules, it checks the time and selects the Workers that need to be run. To let the runtime know it’s time to run, we send a <a href="https://capnproto.org" target="_blank" rel="noopener noreferrer">Cap'n Proto</a> RPC message. The runtime then does its thing, calling the new ‘scheduled’ event handler instead of ‘fetch’.</p>
+<h3 data-astro-cid-byeekcgh="">How can I try this?</h3>
+<p data-astro-cid-byeekcgh="">As of today, the Cron Triggers feature is live! Please try it out by creating a Worker and finding the Triggers tab - we’re excited to see what you build with it!</p>

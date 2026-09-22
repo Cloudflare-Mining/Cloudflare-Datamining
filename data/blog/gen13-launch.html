@@ -1,222 +1,222 @@
-<p data-astro-cid-yoyuw6fx="">Two years ago, Cloudflare deployed our <a href="https://blog.cloudflare.com/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor" target="_blank" rel="noopener noreferrer"><u>12th Generation server fleet</u></a>, based on AMD EPYC™ Genoa-X processors with their massive 3D V-Cache. That cache-heavy architecture was a perfect match for our request handling layer, FL1 at the time. But as we evaluated next-generation hardware, we faced a dilemma — the CPUs offering the biggest throughput gains came with a significant cache reduction. Our legacy software stack wasn't optimized for this, and the potential throughput benefits were being capped by increasing latency.</p>
-<p data-astro-cid-yoyuw6fx="">This blog describes how the <a href="https://blog.cloudflare.com/20-percent-internet-upgrade" target="_blank" rel="noopener noreferrer"><u>FL2 transition</u></a>, our Rust-based rewrite of Cloudflare's core request handling layer, allowed us to prove Gen 13's full potential and unlock performance gains that would have been impossible on our previous stack. FL2 removes the dependency on the larger cache, allowing for performance to scale with cores while maintaining our SLAs. Today, we are proud to announce the launch of Cloudflare's Gen 13 based on AMD EPYC™ 5th Gen Turin-based servers running FL2, effectively capturing and scaling performance at the edge.&nbsp;</p>
-<h2 data-astro-cid-yoyuw6fx="">What AMD EPYCTurin brings to the table</h2>
-<p data-astro-cid-yoyuw6fx=""><a href="https://www.amd.com/en/products/processors/server/epyc/9005-series.html" target="_blank" rel="noopener noreferrer"><u>AMD's EPYC™ 5th Generation Turin-based processors</u></a> deliver more than just a core count increase. The architecture delivers improvements across multiple dimensions of what Cloudflare servers require.</p>
+<p data-astro-cid-byeekcgh="">Two years ago, Cloudflare deployed our <a href="https://blog.cloudflare.com/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor" target="_blank" rel="noopener noreferrer"><u>12th Generation server fleet</u></a>, based on AMD EPYC™ Genoa-X processors with their massive 3D V-Cache. That cache-heavy architecture was a perfect match for our request handling layer, FL1 at the time. But as we evaluated next-generation hardware, we faced a dilemma — the CPUs offering the biggest throughput gains came with a significant cache reduction. Our legacy software stack wasn't optimized for this, and the potential throughput benefits were being capped by increasing latency.</p>
+<p data-astro-cid-byeekcgh="">This blog describes how the <a href="https://blog.cloudflare.com/20-percent-internet-upgrade" target="_blank" rel="noopener noreferrer"><u>FL2 transition</u></a>, our Rust-based rewrite of Cloudflare's core request handling layer, allowed us to prove Gen 13's full potential and unlock performance gains that would have been impossible on our previous stack. FL2 removes the dependency on the larger cache, allowing for performance to scale with cores while maintaining our SLAs. Today, we are proud to announce the launch of Cloudflare's Gen 13 based on AMD EPYC™ 5th Gen Turin-based servers running FL2, effectively capturing and scaling performance at the edge.&nbsp;</p>
+<h2 data-astro-cid-byeekcgh="">What AMD EPYCTurin brings to the table</h2>
+<p data-astro-cid-byeekcgh=""><a href="https://www.amd.com/en/products/processors/server/epyc/9005-series.html" target="_blank" rel="noopener noreferrer"><u>AMD's EPYC™ 5th Generation Turin-based processors</u></a> deliver more than just a core count increase. The architecture delivers improvements across multiple dimensions of what Cloudflare servers require.</p>
 <ul>
 	<li><strong>2x core count:</strong> up to 192 cores versus Gen 12's 96 cores, with SMT providing 384 threads</li>
 	<li><strong>Improved IPC:</strong> Zen 5's architectural improvements deliver better instructions-per-cycle compared to Zen 4</li>
 	<li><strong>Better power efficiency</strong>: Despite the higher core count, Turin consumes up to 32% fewer watts per core compared to Genoa-X</li>
 	<li><strong>DDR5-6400 support</strong>: Higher memory bandwidth to feed all those cores</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">However, Turin's high density OPNs make a deliberate tradeoff: prioritizing throughput over per core cache. Our analysis across the Turin stack highlighted this shift. For example, comparing the highest density Turin OPN to our Gen 12 Genoa-X processors reveals that Turin's 192 cores share 384MB of L3 cache. This leaves each core with access to just 2MB, one-sixth of Gen 12's allocation. For any workload that relies heavily on cache locality, which ours did, this reduction posed a serious challenge.</p>
-<div class="emdash-table-wrapper" data-astro-cid-zdje7xco="">
-	<table class="emdash-table" data-astro-cid-zdje7xco="">
-		<thead data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<th data-astro-cid-zdje7xco="">
+<p data-astro-cid-byeekcgh="">However, Turin's high density OPNs make a deliberate tradeoff: prioritizing throughput over per core cache. Our analysis across the Turin stack highlighted this shift. For example, comparing the highest density Turin OPN to our Gen 12 Genoa-X processors reveals that Turin's 192 cores share 384MB of L3 cache. This leaves each core with access to just 2MB, one-sixth of Gen 12's allocation. For any workload that relies heavily on cache locality, which ours did, this reduction posed a serious challenge.</p>
+<div class="emdash-table-wrapper" data-astro-cid-paimycxl="">
+	<table class="emdash-table" data-astro-cid-paimycxl="">
+		<thead data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<th data-astro-cid-paimycxl="">
 					<p>Generation</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Processor</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Cores/Threads</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>L3 Cache/Core</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+		<tbody data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Gen 12</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>AMD Genoa-X 9684X</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>96C/192T</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>12MB (3D V-Cache)</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Gen 13 Option 1</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>AMD Turin 9755</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>128C/256T</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>4MB</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Gen 13 Option 2</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>AMD Turin 9845</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>160C/320T</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>2MB</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Gen 13 Option 3</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>AMD Turin 9965</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>192C/384T</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>2MB</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<h2 data-astro-cid-yoyuw6fx="">Diagnosing the problem with performance counters</h2>
-<p data-astro-cid-yoyuw6fx="">For our FL1 request handling layer, NGINX- and LuaJIT-based code, this cache reduction presented a significant challenge. But we didn't just assume it would be a problem; we measured it.</p>
-<p data-astro-cid-yoyuw6fx="">During the CPU evaluation phase for Gen 13, we collected CPU performance counters and profiling data to identify exactly what was happening under the hood using <a href="https://docs.amd.com/r/en-US/68658-uProf-getting-started-guide/Identifying-Issues-Using-uProfPcm" target="_blank" rel="noopener noreferrer"><u>AMD uProf tool</u></a>. The data showed:</p>
+<h2 data-astro-cid-byeekcgh="">Diagnosing the problem with performance counters</h2>
+<p data-astro-cid-byeekcgh="">For our FL1 request handling layer, NGINX- and LuaJIT-based code, this cache reduction presented a significant challenge. But we didn't just assume it would be a problem; we measured it.</p>
+<p data-astro-cid-byeekcgh="">During the CPU evaluation phase for Gen 13, we collected CPU performance counters and profiling data to identify exactly what was happening under the hood using <a href="https://docs.amd.com/r/en-US/68658-uProf-getting-started-guide/Identifying-Issues-Using-uProfPcm" target="_blank" rel="noopener noreferrer"><u>AMD uProf tool</u></a>. The data showed:</p>
 <ul>
 	<li>L3 cache miss rates increased dramatically compared to Gen 12's server equipped with 3D V-cache processors</li>
 	<li>Memory fetch latency dominated request processing time as data that previously stayed in L3 now required trips to DRAM</li>
 	<li>The latency penalty scaled with utilization as we pushed CPU usage higher, and cache contention worsened</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">L3 cache hits complete in roughly 50 cycles; L3 cache misses requiring DRAM access take 350+ cycles, an order of magnitude difference. With 6x less cache per core, FL1 on Gen 13 was hitting memory far more often, incurring latency penalties.</p>
-<h2 data-astro-cid-yoyuw6fx="">The tradeoff: latency vs. throughput&nbsp;</h2>
-<p data-astro-cid-yoyuw6fx="">Our initial tests running FL1 on Gen 13 confirmed what the performance counters had already suggested. While the Turin processor could achieve higher throughput, it came at a steep latency cost.</p>
-<div class="emdash-table-wrapper" data-astro-cid-zdje7xco="">
-	<table class="emdash-table" data-astro-cid-zdje7xco="">
-		<thead data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<th data-astro-cid-zdje7xco="">
+<p data-astro-cid-byeekcgh="">L3 cache hits complete in roughly 50 cycles; L3 cache misses requiring DRAM access take 350+ cycles, an order of magnitude difference. With 6x less cache per core, FL1 on Gen 13 was hitting memory far more often, incurring latency penalties.</p>
+<h2 data-astro-cid-byeekcgh="">The tradeoff: latency vs. throughput&nbsp;</h2>
+<p data-astro-cid-byeekcgh="">Our initial tests running FL1 on Gen 13 confirmed what the performance counters had already suggested. While the Turin processor could achieve higher throughput, it came at a steep latency cost.</p>
+<div class="emdash-table-wrapper" data-astro-cid-paimycxl="">
+	<table class="emdash-table" data-astro-cid-paimycxl="">
+		<thead data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<th data-astro-cid-paimycxl="">
 					<p>Metric</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Gen 12 (FL1)</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Gen 13 - AMD Turin 9755 (FL1)</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Gen 13 - AMD Turin 9845 (FL1)</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Gen 13 - AMD Turin 9965 (FL1)</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Delta</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+		<tbody data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Core count</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>baseline</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>+33%</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>+67%</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>+100%</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>FL throughput</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>baseline</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>+10%</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>+31%</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>+62%</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Improvement</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Latency at low to moderate CPU utilization</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>baseline</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>+10%</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>+30%</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>+30%</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Regression</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Latency at high CPU utilization</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>baseline</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>&gt; 20%&nbsp;</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>&gt; 50%&nbsp;</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>&gt; 50%&nbsp;</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Unacceptable</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-yoyuw6fx="">The Gen 13 evaluation server with AMD Turin 9965 that generated 60% throughput gain was compelling, and the performance uplift provided the most improvement to Cloudflare’s total cost of ownership (TCO).&nbsp;</p>
-<p data-astro-cid-yoyuw6fx="">But a more than 50% latency penalty is not acceptable. The increase in request processing latency would directly impact customer experience. We faced a familiar infrastructure question: do we accept a solution with no TCO benefit, accept the increased latency tradeoff, or find a way to boost efficiency without adding latency?</p>
-<h2 data-astro-cid-yoyuw6fx="">Incremental gains with performance tuning</h2>
-<p data-astro-cid-yoyuw6fx="">To find a path to an optimal outcome, we collaborated with AMD to analyze the Turin 9965 data and run targeted optimization experiments. We systematically tested multiple configurations:</p>
+<p data-astro-cid-byeekcgh="">The Gen 13 evaluation server with AMD Turin 9965 that generated 60% throughput gain was compelling, and the performance uplift provided the most improvement to Cloudflare’s total cost of ownership (TCO).&nbsp;</p>
+<p data-astro-cid-byeekcgh="">But a more than 50% latency penalty is not acceptable. The increase in request processing latency would directly impact customer experience. We faced a familiar infrastructure question: do we accept a solution with no TCO benefit, accept the increased latency tradeoff, or find a way to boost efficiency without adding latency?</p>
+<h2 data-astro-cid-byeekcgh="">Incremental gains with performance tuning</h2>
+<p data-astro-cid-byeekcgh="">To find a path to an optimal outcome, we collaborated with AMD to analyze the Turin 9965 data and run targeted optimization experiments. We systematically tested multiple configurations:</p>
 <ul>
 	<li><strong>Hardware Tuning:</strong> Adjusting hardware prefetchers and Data Fabric (DF) Probe Filters, which showed only marginal gains</li>
 	<li><strong>Scaling Workers</strong>: Launching more FL1 workers, which improved throughput but cannibalized resources from other production services</li>
 	<li><strong>CPU Pinning &amp; Isolation:</strong> Adjusting workload isolation configurations to find optimal mix, with limited success&nbsp;</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">The configuration that ultimately provided the most value was <strong>AMD’s Platform Quality of Service (PQOS). PQOS </strong>extensions enable fine-grained regulation of shared resources like cache and memory bandwidth. Since Turin processors consist of one I/O Die and up to 12 Core Complex Dies (CCDs), each sharing an L3 cache across up to 16 cores, we put this to the test. Here is how the different experimental configurations performed.&nbsp;</p>
-<p data-astro-cid-yoyuw6fx="">First, we used PQOS to allocate a dedicated L3 cache share within a single CCD for FL1, the gains were minimal. However, when we scaled the concept to the socket level, dedicating an <em>entire</em> CCD strictly to FL1, we saw meaningful throughput gains while keeping latency acceptable.</p>
+<p data-astro-cid-byeekcgh="">The configuration that ultimately provided the most value was <strong>AMD’s Platform Quality of Service (PQOS). PQOS </strong>extensions enable fine-grained regulation of shared resources like cache and memory bandwidth. Since Turin processors consist of one I/O Die and up to 12 Core Complex Dies (CCDs), each sharing an L3 cache across up to 16 cores, we put this to the test. Here is how the different experimental configurations performed.&nbsp;</p>
+<p data-astro-cid-byeekcgh="">First, we used PQOS to allocate a dedicated L3 cache share within a single CCD for FL1, the gains were minimal. However, when we scaled the concept to the socket level, dedicating an <em>entire</em> CCD strictly to FL1, we saw meaningful throughput gains while keeping latency acceptable.</p>
 <div id="html-block-k2h" class="html-block">
 	<div style="margin-left:0pt">
 		<figure class="table">
@@ -314,142 +314,142 @@
 		</figure>
 	</div>
 </div>
-<h2 data-astro-cid-yoyuw6fx="">The opportunity: FL2 was already in progress</h2>
-<p data-astro-cid-yoyuw6fx="">Hardware tuning and resource configuration provided modest gains, but to truly unlock the performance potential of the Gen 13 architecture, we knew we would have to rewrite our software stack to fundamentally change how it utilized system resources.</p>
-<p data-astro-cid-yoyuw6fx="">Fortunately, we weren't starting from scratch. As we <a href="https://blog.cloudflare.com/20-percent-internet-upgrade" target="_blank" rel="noopener noreferrer"><u>announced during Birthday Week 2025</u></a>, we had already been rebuilding FL1 from the ground up. FL2 is a complete rewrite of our request handling layer in Rust, built on our <a href="https://blog.cloudflare.com/pingora-open-source" target="_blank" rel="noopener noreferrer"><u>Pingora</u></a> and <a href="https://blog.cloudflare.com/introducing-oxy" target="_blank" rel="noopener noreferrer"><u>Oxy</u></a> frameworks, replacing 15 years of NGINX and LuaJIT code.</p>
-<p data-astro-cid-yoyuw6fx="">The FL2 project wasn't initiated to solve the Gen 13 cache problem — it was driven by the need for better security (Rust's memory safety), faster development velocity (strict module system), and improved performance across the board (less CPU, less memory, modular execution).</p>
-<p data-astro-cid-yoyuw6fx="">FL2's cleaner architecture, with better memory access patterns and less dynamic allocation, might not depend on massive L3 caches the way FL1 did. This gave us an opportunity to use the FL2 transition to prove whether Gen 13's throughput gains could be realized without the latency penalty.</p>
-<h2 data-astro-cid-yoyuw6fx="">Proving it out: FL2 on Gen 13</h2>
-<p data-astro-cid-yoyuw6fx="">As the FL2 rollout progressed, production metrics from our Gen 13 servers validated what we had hypothesized.</p>
-<div class="emdash-table-wrapper" data-astro-cid-zdje7xco="">
-	<table class="emdash-table" data-astro-cid-zdje7xco="">
-		<thead data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<th data-astro-cid-zdje7xco="">
+<h2 data-astro-cid-byeekcgh="">The opportunity: FL2 was already in progress</h2>
+<p data-astro-cid-byeekcgh="">Hardware tuning and resource configuration provided modest gains, but to truly unlock the performance potential of the Gen 13 architecture, we knew we would have to rewrite our software stack to fundamentally change how it utilized system resources.</p>
+<p data-astro-cid-byeekcgh="">Fortunately, we weren't starting from scratch. As we <a href="https://blog.cloudflare.com/20-percent-internet-upgrade" target="_blank" rel="noopener noreferrer"><u>announced during Birthday Week 2025</u></a>, we had already been rebuilding FL1 from the ground up. FL2 is a complete rewrite of our request handling layer in Rust, built on our <a href="https://blog.cloudflare.com/pingora-open-source" target="_blank" rel="noopener noreferrer"><u>Pingora</u></a> and <a href="https://blog.cloudflare.com/introducing-oxy" target="_blank" rel="noopener noreferrer"><u>Oxy</u></a> frameworks, replacing 15 years of NGINX and LuaJIT code.</p>
+<p data-astro-cid-byeekcgh="">The FL2 project wasn't initiated to solve the Gen 13 cache problem — it was driven by the need for better security (Rust's memory safety), faster development velocity (strict module system), and improved performance across the board (less CPU, less memory, modular execution).</p>
+<p data-astro-cid-byeekcgh="">FL2's cleaner architecture, with better memory access patterns and less dynamic allocation, might not depend on massive L3 caches the way FL1 did. This gave us an opportunity to use the FL2 transition to prove whether Gen 13's throughput gains could be realized without the latency penalty.</p>
+<h2 data-astro-cid-byeekcgh="">Proving it out: FL2 on Gen 13</h2>
+<p data-astro-cid-byeekcgh="">As the FL2 rollout progressed, production metrics from our Gen 13 servers validated what we had hypothesized.</p>
+<div class="emdash-table-wrapper" data-astro-cid-paimycxl="">
+	<table class="emdash-table" data-astro-cid-paimycxl="">
+		<thead data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<th data-astro-cid-paimycxl="">
 					<p>Metric</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Gen 13 AMD Turin 9965 (FL1)</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Gen 13 AMD Turin 9965 (FL2)</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+		<tbody data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>FL requests per CPU%</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>baseline</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>50% higher</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Latency vs Gen 12</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>baseline</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>70% lower</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Throughput vs Gen 12</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>62% higher</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>100% higher</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-yoyuw6fx="">The out-of-the-box efficiency gains on our new FL2 stack were substantial, even before any system optimizations. FL2 slashed the latency penalty by 70%, allowing us to push Gen 13 to higher CPU utilization while strictly meeting our latency SLAs. Under FL1, this would have been impossible.</p>
-<p data-astro-cid-yoyuw6fx="">By effectively eliminating the cache bottleneck, FL2 enables our throughput to scale linearly with core count. The impact is undeniable on the high-density AMD Turin 9965: we achieved a 2x performance gain, unlocking the true potential of the hardware. With further system tuning, we expect to squeeze even more power out of our Gen 13 fleet.</p>
+<p data-astro-cid-byeekcgh="">The out-of-the-box efficiency gains on our new FL2 stack were substantial, even before any system optimizations. FL2 slashed the latency penalty by 70%, allowing us to push Gen 13 to higher CPU utilization while strictly meeting our latency SLAs. Under FL1, this would have been impossible.</p>
+<p data-astro-cid-byeekcgh="">By effectively eliminating the cache bottleneck, FL2 enables our throughput to scale linearly with core count. The impact is undeniable on the high-density AMD Turin 9965: we achieved a 2x performance gain, unlocking the true potential of the hardware. With further system tuning, we expect to squeeze even more power out of our Gen 13 fleet.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RW0AAZBVMAQA2ZF5NEDD.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RW0AAZBVMAQA2ZF5NEDD.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RW0AAZBVMAQA2ZF5NEDD.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RW0AAZBVMAQA2ZF5NEDD.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RW0AAZBVMAQA2ZF5NEDD.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RW0AAZBVMAQA2ZF5NEDD.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RW0AAZBVMAQA2ZF5NEDD.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RW0AAZBVMAQA2ZF5NEDD.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Generational improvement with Gen 13" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RW0AAZBVMAQA2ZF5NEDD.png&amp;w=1920&amp;h=1081&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1081" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<h2 data-astro-cid-yoyuw6fx="">Generational improvement with Gen 13</h2>
-<p data-astro-cid-yoyuw6fx="">With FL2 unlocking the immense throughput of the high-core-count AMD Turin 9965, we have officially selected these processors for our Gen 13 deployment. Hardware qualification is complete, and Gen 13 servers are now shipping at scale to support our global rollout.</p>
-<h3 data-astro-cid-yoyuw6fx="">Performance improvements</h3>
-<div class="emdash-table-wrapper" data-astro-cid-zdje7xco="">
-	<table class="emdash-table" data-astro-cid-zdje7xco="">
-		<thead data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<th data-astro-cid-zdje7xco="">
+<h2 data-astro-cid-byeekcgh="">Generational improvement with Gen 13</h2>
+<p data-astro-cid-byeekcgh="">With FL2 unlocking the immense throughput of the high-core-count AMD Turin 9965, we have officially selected these processors for our Gen 13 deployment. Hardware qualification is complete, and Gen 13 servers are now shipping at scale to support our global rollout.</p>
+<h3 data-astro-cid-byeekcgh="">Performance improvements</h3>
+<div class="emdash-table-wrapper" data-astro-cid-paimycxl="">
+	<table class="emdash-table" data-astro-cid-paimycxl="">
+		<thead data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<th data-astro-cid-paimycxl="">
 					<p><br></p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Gen 12&nbsp;</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Gen 13&nbsp;</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+		<tbody data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Processor</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>AMD EPYC™ 4th Gen Genoa-X 9684X</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>AMD EPYC™ 5th Gen Turin 9965</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Core count</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>96C/192T</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>192C/384T</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>FL throughput</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>baseline</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Up to +100%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Performance per watt</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>baseline</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Up to +50%</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">Gen 13 business impact</h3>
-<p data-astro-cid-yoyuw6fx=""><strong>Up to 2x throughput vs Gen 12 </strong>for uncompromising customer experience: By doubling our throughput capacity while staying within our latency SLAs, we guarantee our applications remain fast and responsive, and able to absorb massive traffic spikes.</p>
-<p data-astro-cid-yoyuw6fx=""><strong>50% better performance/watt vs Gen 12 </strong>for sustainable scaling: This gain in power efficiency not only reduces data center expansion costs, but allows us to process growing traffic with a vastly lower carbon footprint per request.</p>
-<p data-astro-cid-yoyuw6fx=""><strong>60% higher rack throughput vs Gen 12 </strong>for global edge upgrades: Because we achieved this throughput density while keeping the rack power budget constant, we can seamlessly deploy this next generation compute anywhere in the world across our global edge network, delivering top tier performance exactly where our customers want it.</p>
-<h2 data-astro-cid-yoyuw6fx="">Gen 13 + FL2: ready for the edge&nbsp;</h2>
-<p data-astro-cid-yoyuw6fx="">Our legacy request serving layer FL1 hit a cache contention wall on Gen 13, forcing an unacceptable tradeoff between throughput and latency. Instead of compromising, we built FL2.&nbsp;</p>
-<p data-astro-cid-yoyuw6fx="">Designed with a vastly leaner memory access pattern, FL2 removes our dependency on massive L3 caches and allows linear scaling with core count. Running on the Gen 13 AMD Turin platform, FL2 unlocks 2x the throughput and a 50% boost in power efficiency all while keeping latency within our SLAs. This leap forward is a great reminder of the importance of hardware-software co-design. Unconstrained by cache limits, Gen 13 servers are now ready to be deployed to serve millions of requests across Cloudflare’s global network.</p>
-<p data-astro-cid-yoyuw6fx="">If you're excited about working on infrastructure at global scale, <a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer"><u>we're hiring</u></a>.</p>
+<h3 data-astro-cid-byeekcgh="">Gen 13 business impact</h3>
+<p data-astro-cid-byeekcgh=""><strong>Up to 2x throughput vs Gen 12 </strong>for uncompromising customer experience: By doubling our throughput capacity while staying within our latency SLAs, we guarantee our applications remain fast and responsive, and able to absorb massive traffic spikes.</p>
+<p data-astro-cid-byeekcgh=""><strong>50% better performance/watt vs Gen 12 </strong>for sustainable scaling: This gain in power efficiency not only reduces data center expansion costs, but allows us to process growing traffic with a vastly lower carbon footprint per request.</p>
+<p data-astro-cid-byeekcgh=""><strong>60% higher rack throughput vs Gen 12 </strong>for global edge upgrades: Because we achieved this throughput density while keeping the rack power budget constant, we can seamlessly deploy this next generation compute anywhere in the world across our global edge network, delivering top tier performance exactly where our customers want it.</p>
+<h2 data-astro-cid-byeekcgh="">Gen 13 + FL2: ready for the edge&nbsp;</h2>
+<p data-astro-cid-byeekcgh="">Our legacy request serving layer FL1 hit a cache contention wall on Gen 13, forcing an unacceptable tradeoff between throughput and latency. Instead of compromising, we built FL2.&nbsp;</p>
+<p data-astro-cid-byeekcgh="">Designed with a vastly leaner memory access pattern, FL2 removes our dependency on massive L3 caches and allows linear scaling with core count. Running on the Gen 13 AMD Turin platform, FL2 unlocks 2x the throughput and a 50% boost in power efficiency all while keeping latency within our SLAs. This leap forward is a great reminder of the importance of hardware-software co-design. Unconstrained by cache limits, Gen 13 servers are now ready to be deployed to serve millions of requests across Cloudflare’s global network.</p>
+<p data-astro-cid-byeekcgh="">If you're excited about working on infrastructure at global scale, <a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer"><u>we're hiring</u></a>.</p>

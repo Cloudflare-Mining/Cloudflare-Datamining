@@ -1,19 +1,19 @@
-<p data-astro-cid-yoyuw6fx=""><em>This post is also available in <a href="https://blog.cloudflare.com/ja-jp/cloudflare-workers-unleashed-ja-jp">日本語</a>.</em></p>
-<p data-astro-cid-yoyuw6fx="">Exactly one year ago today, Cloudflare gave me a mission: Make it so people can run code on Cloudflare's edge. At the time, we didn't yet know what that would mean. Would it be container-based? A new Turing-incomplete domain-specific language? Lua? "Functions"? There were lots of ideas.</p>
-<p data-astro-cid-yoyuw6fx="">Eventually, we settled on what now seems the obvious choice: JavaScript, using the standard Service Workers API, running in a new environment built on V8. Five months ago, we <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">gave you a preview</a> of what we were building, and started the beta.</p>
-<p data-astro-cid-yoyuw6fx="">Today, with thousands of scripts deployed and many billions of requests served, <a href="https://www.cloudflare.com/developer-platform/workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> is now ready for everyone.</p>
-<p data-astro-cid-yoyuw6fx="">"Moving away from VCL and adopting Cloudflare Workers will allow us to do some creative routing that will let us deliver JavaScript to npm's millions of users even faster than we do now. We will be building our next generation of services on Cloudflare's platform and we get to do it in JavaScript!"</p>
-<p data-astro-cid-yoyuw6fx="">— CJ Silverio, CTO, npm, Inc.</p>
-<h3 data-astro-cid-yoyuw6fx="">What is the Cloud, really?</h3>
-<p data-astro-cid-yoyuw6fx="">Historically, web application code has been split between servers and browsers. Between them lies a vast but fundamentally <em>dumb</em> network which merely ferries data from point to point.</p>
-<p data-astro-cid-yoyuw6fx="">We don't believe this lives up to the promise of "The Cloud."</p>
-<p data-astro-cid-yoyuw6fx="">We believe the true dream of cloud computing is that your code lives in the network itself. Your code doesn't run in "us-west-4" or "South Central Asia (Mumbai)", it runs <em>everywhere</em>.</p>
-<p data-astro-cid-yoyuw6fx="">More concretely, it should run where it is most needed. When responding to a user in New Zealand, your code should run in New Zealand. When crunching data in your database, your code should run on the machines that store the data. When interacting with a third-party API, your code should run wherever that API is hosted. When human explorers reach Mars, they aren't going to be happy waiting a half an hour for your app to respond -- your code needs to be running on Mars.</p>
-<p data-astro-cid-yoyuw6fx="">Cloudflare Workers are our first step towards this vision. When you deploy a Worker, it is deployed to Cloudflare's entire edge network of over a hundred locations worldwide in under 30 seconds. Each request for your domain will be handled by your Worker at a Cloudflare location close to the end user, with no need for you to think about individual locations. The more locations we bring online, the more your code just "runs everywhere."</p>
-<p data-astro-cid-yoyuw6fx="">Well, OK… it won't run on Mars. Yet. You out there, Elon?</p>
-<h3 data-astro-cid-yoyuw6fx="">What's a Worker?</h3>
-<p data-astro-cid-yoyuw6fx="">Cloudflare Workers derive their name from Web Workers, and more specifically Service Workers, the W3C standard API for scripts that run in the background in a web browser and intercept HTTP requests. Cloudflare Workers are written against the same standard API, but run on Cloudflare's servers, not in a browser.</p>
-<p data-astro-cid-yoyuw6fx="">Here are the tools you get to work with:</p>
+<p data-astro-cid-byeekcgh=""><em>This post is also available in <a href="https://blog.cloudflare.com/ja-jp/cloudflare-workers-unleashed-ja-jp">日本語</a>.</em></p>
+<p data-astro-cid-byeekcgh="">Exactly one year ago today, Cloudflare gave me a mission: Make it so people can run code on Cloudflare's edge. At the time, we didn't yet know what that would mean. Would it be container-based? A new Turing-incomplete domain-specific language? Lua? "Functions"? There were lots of ideas.</p>
+<p data-astro-cid-byeekcgh="">Eventually, we settled on what now seems the obvious choice: JavaScript, using the standard Service Workers API, running in a new environment built on V8. Five months ago, we <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">gave you a preview</a> of what we were building, and started the beta.</p>
+<p data-astro-cid-byeekcgh="">Today, with thousands of scripts deployed and many billions of requests served, <a href="https://www.cloudflare.com/developer-platform/workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> is now ready for everyone.</p>
+<p data-astro-cid-byeekcgh="">"Moving away from VCL and adopting Cloudflare Workers will allow us to do some creative routing that will let us deliver JavaScript to npm's millions of users even faster than we do now. We will be building our next generation of services on Cloudflare's platform and we get to do it in JavaScript!"</p>
+<p data-astro-cid-byeekcgh="">— CJ Silverio, CTO, npm, Inc.</p>
+<h3 data-astro-cid-byeekcgh="">What is the Cloud, really?</h3>
+<p data-astro-cid-byeekcgh="">Historically, web application code has been split between servers and browsers. Between them lies a vast but fundamentally <em>dumb</em> network which merely ferries data from point to point.</p>
+<p data-astro-cid-byeekcgh="">We don't believe this lives up to the promise of "The Cloud."</p>
+<p data-astro-cid-byeekcgh="">We believe the true dream of cloud computing is that your code lives in the network itself. Your code doesn't run in "us-west-4" or "South Central Asia (Mumbai)", it runs <em>everywhere</em>.</p>
+<p data-astro-cid-byeekcgh="">More concretely, it should run where it is most needed. When responding to a user in New Zealand, your code should run in New Zealand. When crunching data in your database, your code should run on the machines that store the data. When interacting with a third-party API, your code should run wherever that API is hosted. When human explorers reach Mars, they aren't going to be happy waiting a half an hour for your app to respond -- your code needs to be running on Mars.</p>
+<p data-astro-cid-byeekcgh="">Cloudflare Workers are our first step towards this vision. When you deploy a Worker, it is deployed to Cloudflare's entire edge network of over a hundred locations worldwide in under 30 seconds. Each request for your domain will be handled by your Worker at a Cloudflare location close to the end user, with no need for you to think about individual locations. The more locations we bring online, the more your code just "runs everywhere."</p>
+<p data-astro-cid-byeekcgh="">Well, OK… it won't run on Mars. Yet. You out there, Elon?</p>
+<h3 data-astro-cid-byeekcgh="">What's a Worker?</h3>
+<p data-astro-cid-byeekcgh="">Cloudflare Workers derive their name from Web Workers, and more specifically Service Workers, the W3C standard API for scripts that run in the background in a web browser and intercept HTTP requests. Cloudflare Workers are written against the same standard API, but run on Cloudflare's servers, not in a browser.</p>
+<p data-astro-cid-byeekcgh="">Here are the tools you get to work with:</p>
 <ul>
 	<li>Execute any JavaScript code, using the latest standard language features.</li>
 	<li>Intercept and modify HTTP request and response URLs, status, headers, and body content.</li>
@@ -23,7 +23,7 @@
 	<li>Send asynchronous requests after the response has already been returned to the client (for example, for logging or analytics).</li>
 	<li>Control other Cloudflare features, such as caching behavior.</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">The possible uses for Workers are infinite, and we're excited to see what our customers come up with. Here are some ideas we've seen in the beta:</p>
+<p data-astro-cid-byeekcgh="">The possible uses for Workers are infinite, and we're excited to see what our customers come up with. Here are some ideas we've seen in the beta:</p>
 <ul>
 	<li>Route different types of requests to different origin servers.</li>
 	<li>Expand HTML templates on the edge, to <a href="https://www.cloudflare.com/learning/cdn/how-cdns-reduce-bandwidth-cost" target="_blank" rel="noopener noreferrer">reduce bandwidth costs</a> at your origin.</li>
@@ -38,7 +38,7 @@
 	<li>Collect analytics without running code in the user's browser.</li>
 	<li>Much more.</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">Here's an example.</p>
+<p data-astro-cid-byeekcgh="">Here's an example.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// A Worker which:</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// 1. Redirects visitors to the home page ("/") to a</span></span>
@@ -105,18 +105,18 @@
 		})
 	});
 </script>
-<h3 data-astro-cid-yoyuw6fx="">It's Really Fast</h3>
-<p data-astro-cid-yoyuw6fx="">Sometimes people ask us if JavaScript is "slow". Nothing could be further from the truth.</p>
-<p data-astro-cid-yoyuw6fx="">Workers uses the V8 JavaScript engine built by Google for Chrome. V8 is not only one of the fastest implementations of JavaScript, but one of the fastest implementations of any dynamically-typed language, period. Due to the immense amount of work that has gone into optimizing V8, it outperforms just about any popular server programming language with the possible exceptions of C/C++, Rust, and Go. (Incidentally, we will support those soon, via WebAssembly.)</p>
-<p data-astro-cid-yoyuw6fx="">The bottom line: <strong>A typical Worker script executes in less than one millisecond.</strong> Most users are unable to measure any <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank" rel="noopener noreferrer">latency</a> difference when they enable Workers -- except, of course, when their worker actually <em>improves</em> latency by responding directly from the edge.</p>
-<p data-astro-cid-yoyuw6fx="">On another speed-related note, Workers deploy fast, too. <strong>Workers deploy globally in under 30 seconds</strong> from the time you save and enable the script.</p>
-<h3 data-astro-cid-yoyuw6fx="">Pricing</h3>
-<p data-astro-cid-yoyuw6fx="">Workers are a paid add-on to Cloudflare. We wanted to keep the pricing as simple as possible, so here's the deal:</p>
+<h3 data-astro-cid-byeekcgh="">It's Really Fast</h3>
+<p data-astro-cid-byeekcgh="">Sometimes people ask us if JavaScript is "slow". Nothing could be further from the truth.</p>
+<p data-astro-cid-byeekcgh="">Workers uses the V8 JavaScript engine built by Google for Chrome. V8 is not only one of the fastest implementations of JavaScript, but one of the fastest implementations of any dynamically-typed language, period. Due to the immense amount of work that has gone into optimizing V8, it outperforms just about any popular server programming language with the possible exceptions of C/C++, Rust, and Go. (Incidentally, we will support those soon, via WebAssembly.)</p>
+<p data-astro-cid-byeekcgh="">The bottom line: <strong>A typical Worker script executes in less than one millisecond.</strong> Most users are unable to measure any <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank" rel="noopener noreferrer">latency</a> difference when they enable Workers -- except, of course, when their worker actually <em>improves</em> latency by responding directly from the edge.</p>
+<p data-astro-cid-byeekcgh="">On another speed-related note, Workers deploy fast, too. <strong>Workers deploy globally in under 30 seconds</strong> from the time you save and enable the script.</p>
+<h3 data-astro-cid-byeekcgh="">Pricing</h3>
+<p data-astro-cid-byeekcgh="">Workers are a paid add-on to Cloudflare. We wanted to keep the pricing as simple as possible, so here's the deal:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="364" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KF1B0W01AXYW9GWZ5T06.png&amp;w=715&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KF1B0W01AXYW9GWZ5T06.png&amp;w=640&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KF1B0W01AXYW9GWZ5T06.png&amp;w=715&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KF1B0W01AXYW9GWZ5T06.png&amp;w=750&amp;h=382&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KF1B0W01AXYW9GWZ5T06.png&amp;w=828&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KF1B0W01AXYW9GWZ5T06.png&amp;w=1080&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KF1B0W01AXYW9GWZ5T06.png&amp;w=1280&amp;h=652&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KF1B0W01AXYW9GWZ5T06.png&amp;w=1430&amp;h=728&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="$0.50 per million requests, with a $5 monthly minimum (covers your first 10 million requests)" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KF1B0W01AXYW9GWZ5T06.png&amp;w=1009&amp;h=514&amp;f=webp" data-lightbox-width="1009" data-lightbox-height="514" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="364" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<h3 data-astro-cid-yoyuw6fx="">Get Started</h3>
+<h3 data-astro-cid-byeekcgh="">Get Started</h3>
 <ul>
 	<li><a href="https://www.cloudflare.com/a/overview" target="_blank" rel="noopener noreferrer">Log into your Cloudflare account</a> and visit the "Workers" section to configure Workers.</li>
 	<li><a href="https://cloudflareworkers.com" target="_blank" rel="noopener noreferrer">Experiment with Workers in the Playground</a>, no account required.</li>
@@ -124,5 +124,5 @@
 	<li><a href="https://blog.cloudflare.com/introducing-cloudflare-workers">Check out the original announcement blog post</a> for more technical details.</li>
 	<li><a href="https://community.cloudflare.com/c/developers/workers" target="_blank" rel="noopener noreferrer">Discuss Workers in the Cloudflare Community.</a></li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">"Cloudflare Workers saves us a great deal of time. Managing bot traffic without Workers would consume valuable development and server resources that are better spent elsewhere."</p>
-<p data-astro-cid-yoyuw6fx="">— John Thompson, Senior System Administrator, MaxMind</p>
+<p data-astro-cid-byeekcgh="">"Cloudflare Workers saves us a great deal of time. Managing bot traffic without Workers would consume valuable development and server resources that are better spent elsewhere."</p>
+<p data-astro-cid-byeekcgh="">— John Thompson, Senior System Administrator, MaxMind</p>

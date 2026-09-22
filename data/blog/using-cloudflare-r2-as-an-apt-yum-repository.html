@@ -1,9 +1,9 @@
-<p data-astro-cid-yoyuw6fx="">In this blog post, we’re going to talk about how we use Cloudflare R2 as an <em>apt/yum</em> repository to bring <em>cloudflared</em> (the Cloudflare Tunnel daemon) to your Debian/Ubuntu and CentOS/RHEL systems and how you can do it for your own distributable in a few easy steps!</p>
-<p data-astro-cid-yoyuw6fx="">I work on <a href="https://www.cloudflare.com/en-gb/products/tunnel" target="_blank" rel="noopener noreferrer"><em>Cloudflare Tunnel</em></a>, a product which enables customers to quickly connect their private networks and services through the Cloudflare global network without needing to expose any public IPs or ports through their firewall. Cloudflare Tunnel is managed for users by <em>cloudflared</em>, a tool that runs on the same network as the private services. It proxies traffic for these services via Cloudflare, and users can then access these services securely through the Cloudflare network.</p>
-<p data-astro-cid-yoyuw6fx="">Our connector, <em>cloudflared,</em> was designed to be lightweight and flexible enough to be effectively deployed on a Raspberry Pi, a router, your laptop, or a server running on a data center with applications ranging from IoT control to private networking. Naturally, this means <em>cloudflared</em> comes built for a myriad of operating systems, architectures and package distributions: You could download the appropriate package from our <a href="https://github.com/cloudflare/cloudflared/releases" target="_blank" rel="noopener noreferrer">GitHub releases</a>, <em>brew install</em> it or <em>apt/yum install</em> it (<a href="https://pkg.cloudflare.com" target="_blank" rel="noopener noreferrer">https://pkg.cloudflare.com</a>).</p>
-<p data-astro-cid-yoyuw6fx="">In the rest of this blog post, I’ll use cloudflared as an example of how to create an apt/yum repository backed by <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer">Cloudflare’s object storage service R2</a>. Note that this can be any binary/distributable. I simply use cloudflared as an example because this is something we recently did and actually use in production.</p>
-<h2 data-astro-cid-yoyuw6fx="">How apt-get works</h2>
-<p data-astro-cid-yoyuw6fx="">Let’s see what happens when you run something like this on your terminal.</p>
+<p data-astro-cid-byeekcgh="">In this blog post, we’re going to talk about how we use Cloudflare R2 as an <em>apt/yum</em> repository to bring <em>cloudflared</em> (the Cloudflare Tunnel daemon) to your Debian/Ubuntu and CentOS/RHEL systems and how you can do it for your own distributable in a few easy steps!</p>
+<p data-astro-cid-byeekcgh="">I work on <a href="https://www.cloudflare.com/en-gb/products/tunnel" target="_blank" rel="noopener noreferrer"><em>Cloudflare Tunnel</em></a>, a product which enables customers to quickly connect their private networks and services through the Cloudflare global network without needing to expose any public IPs or ports through their firewall. Cloudflare Tunnel is managed for users by <em>cloudflared</em>, a tool that runs on the same network as the private services. It proxies traffic for these services via Cloudflare, and users can then access these services securely through the Cloudflare network.</p>
+<p data-astro-cid-byeekcgh="">Our connector, <em>cloudflared,</em> was designed to be lightweight and flexible enough to be effectively deployed on a Raspberry Pi, a router, your laptop, or a server running on a data center with applications ranging from IoT control to private networking. Naturally, this means <em>cloudflared</em> comes built for a myriad of operating systems, architectures and package distributions: You could download the appropriate package from our <a href="https://github.com/cloudflare/cloudflared/releases" target="_blank" rel="noopener noreferrer">GitHub releases</a>, <em>brew install</em> it or <em>apt/yum install</em> it (<a href="https://pkg.cloudflare.com" target="_blank" rel="noopener noreferrer">https://pkg.cloudflare.com</a>).</p>
+<p data-astro-cid-byeekcgh="">In the rest of this blog post, I’ll use cloudflared as an example of how to create an apt/yum repository backed by <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer">Cloudflare’s object storage service R2</a>. Note that this can be any binary/distributable. I simply use cloudflared as an example because this is something we recently did and actually use in production.</p>
+<h2 data-astro-cid-byeekcgh="">How apt-get works</h2>
+<p data-astro-cid-byeekcgh="">Let’s see what happens when you run something like this on your terminal.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> apt-get</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> cloudflared</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -29,7 +29,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">Let’s also assume that apt sources were already added like so:</p>
+<p data-astro-cid-byeekcgh="">Let’s also assume that apt sources were already added like so:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">  $</span><span class="sk-032f62-99ffe4"> echo</span><span class="sk-032f62-99ffe4"> 'deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared buster main'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sudo</span><span class="sk-032f62-99ffe4"> tee</span><span class="sk-032f62-99ffe4"> /etc/apt/sources.list.d/cloudflared.list</span></span>
 <span class="line"></span>
@@ -40,8 +40,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">From the source.list above, apt first looks up the <a href="https://pkg.cloudflare.com/cloudflared/dists/buster/Release" target="_blank" rel="noopener noreferrer">Release</a> file (or <a href="https://pkg.cloudflare.com/cloudflared/dists/buster/InRelease" target="_blank" rel="noopener noreferrer">InRelease</a> if it’s a signed package like cloudflared, but we will ignore this for the sake of simplicity).</p>
-<p data-astro-cid-yoyuw6fx="">A Release file contains a list of supported architectures and their md5, sha1 and sha256 checksums. It looks something like this:</p>
+<p data-astro-cid-byeekcgh="">From the source.list above, apt first looks up the <a href="https://pkg.cloudflare.com/cloudflared/dists/buster/Release" target="_blank" rel="noopener noreferrer">Release</a> file (or <a href="https://pkg.cloudflare.com/cloudflared/dists/buster/InRelease" target="_blank" rel="noopener noreferrer">InRelease</a> if it’s a signed package like cloudflared, but we will ignore this for the sake of simplicity).</p>
+<p data-astro-cid-byeekcgh="">A Release file contains a list of supported architectures and their md5, sha1 and sha256 checksums. It looks something like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-032f62-99ffe4"> https://pkg.cloudflare.com/cloudflared/dists/buster/Release</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Origin:</span><span class="sk-032f62-99ffe4"> cloudflared</span></span>
@@ -76,7 +76,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Depending on your system’s architecture, Debian picks the appropriate Packages location. A Packages file contains metadata about the binary apt wants to install, including location and its checksum. Let’s say it’s an amd64 machine. This means we’ll go here next:</p>
+<p data-astro-cid-byeekcgh="">Depending on your system’s architecture, Debian picks the appropriate Packages location. A Packages file contains metadata about the binary apt wants to install, including location and its checksum. Let’s say it’s an amd64 machine. This means we’ll go here next:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-032f62-99ffe4"> https://pkg.cloudflare.com/cloudflared/dists/buster/main/binary-amd64/Packages</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Package:</span><span class="sk-032f62-99ffe4"> cloudflared</span></span>
@@ -100,13 +100,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Notice the Filename field. This is where apt gets the deb from before running a dpkg command on it. What all of this means is the apt repository (and the yum repositories too) is basically a structured file system of mostly plaintext files and a deb.</p>
-<p data-astro-cid-yoyuw6fx="">The deb file is a Debian software package that contains two things: installable data (in our case, the <em>cloudflared</em> binary) and metadata about the installable.</p>
-<h2 data-astro-cid-yoyuw6fx="">Building our own apt repository</h2>
-<p data-astro-cid-yoyuw6fx="">Now that we know what happens when an apt-get install runs, let’s work our way backwards to construct the repository.</p>
-<h3 data-astro-cid-yoyuw6fx="">Create a deb file out of the binary</h3>
-<p data-astro-cid-yoyuw6fx=""><strong>Note:</strong> It is optional but recommended one signs the packages. See the section about how apt verifies packages <a href="https://blog.cloudflare.com/dont-use-apt-key">here</a><em>.</em></p>
-<p data-astro-cid-yoyuw6fx="">Debian files can be built by the <a href="https://man7.org/linux/man-pages/man1/dpkg-buildpackage.1.html" target="_blank" rel="noopener noreferrer">dpkg-buildpackage</a> tool in a linux or Debian environment. We use a handy command line tool called fpm (<a href="https://fpm.readthedocs.io/en/v1.13.1" target="_blank" rel="noopener noreferrer">https://fpm.readthedocs.io/en/v1.13.1/</a>) to do this because it works for both rpm and deb.</p>
+<p data-astro-cid-byeekcgh="">Notice the Filename field. This is where apt gets the deb from before running a dpkg command on it. What all of this means is the apt repository (and the yum repositories too) is basically a structured file system of mostly plaintext files and a deb.</p>
+<p data-astro-cid-byeekcgh="">The deb file is a Debian software package that contains two things: installable data (in our case, the <em>cloudflared</em> binary) and metadata about the installable.</p>
+<h2 data-astro-cid-byeekcgh="">Building our own apt repository</h2>
+<p data-astro-cid-byeekcgh="">Now that we know what happens when an apt-get install runs, let’s work our way backwards to construct the repository.</p>
+<h3 data-astro-cid-byeekcgh="">Create a deb file out of the binary</h3>
+<p data-astro-cid-byeekcgh=""><strong>Note:</strong> It is optional but recommended one signs the packages. See the section about how apt verifies packages <a href="https://blog.cloudflare.com/dont-use-apt-key">here</a><em>.</em></p>
+<p data-astro-cid-byeekcgh="">Debian files can be built by the <a href="https://man7.org/linux/man-pages/man1/dpkg-buildpackage.1.html" target="_blank" rel="noopener noreferrer">dpkg-buildpackage</a> tool in a linux or Debian environment. We use a handy command line tool called fpm (<a href="https://fpm.readthedocs.io/en/v1.13.1" target="_blank" rel="noopener noreferrer">https://fpm.readthedocs.io/en/v1.13.1/</a>) to do this because it works for both rpm and deb.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> fpm</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">di</span><span class="sk-24292e-fff">r</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> deb</span><span class="sk-005cc5-99ffe4"> -C</span><span class="sk-032f62-99ffe4"> /path/to/project</span><span class="sk-005cc5-99ffe4"> -name</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">project_nam</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> –version</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">versio</span><span class="sk-24292e-fff">n</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -114,11 +114,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">This yields a .deb file.</p>
-<h3 data-astro-cid-yoyuw6fx="">Create plaintext files needed by apt to lookup downloads</h3>
-<p data-astro-cid-yoyuw6fx="">Again, these files can be built by hand, but there are multiple <a href="https://wiki.debian.org/DebianRepository/Setup?action=show&amp;redirect=HowToSetupADebianRepository#Debian_Repository_Generation_Tools." target="_blank" rel="noopener noreferrer">tools</a> available to generate this:</p>
-<p data-astro-cid-yoyuw6fx="">We use <a href="https://wiki.debian.org/DebianRepository/Setup?action=show&amp;redirect=HowToSetupADebianRepository#reprepro." target="_blank" rel="noopener noreferrer">reprepro</a>.</p>
-<p data-astro-cid-yoyuw6fx="">Using it is as simple as</p>
+<p data-astro-cid-byeekcgh="">This yields a .deb file.</p>
+<h3 data-astro-cid-byeekcgh="">Create plaintext files needed by apt to lookup downloads</h3>
+<p data-astro-cid-byeekcgh="">Again, these files can be built by hand, but there are multiple <a href="https://wiki.debian.org/DebianRepository/Setup?action=show&amp;redirect=HowToSetupADebianRepository#Debian_Repository_Generation_Tools." target="_blank" rel="noopener noreferrer">tools</a> available to generate this:</p>
+<p data-astro-cid-byeekcgh="">We use <a href="https://wiki.debian.org/DebianRepository/Setup?action=show&amp;redirect=HowToSetupADebianRepository#reprepro." target="_blank" rel="noopener noreferrer">reprepro</a>.</p>
+<p data-astro-cid-byeekcgh="">Using it is as simple as</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> reprepro</span><span class="sk-032f62-99ffe4"> buster</span><span class="sk-032f62-99ffe4"> includedeb</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">path/to/the/de</span><span class="sk-24292e-fff">b</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -126,14 +126,14 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">reprepro neatly creates a bunch of folders in the structure we looked into above.</p>
-<h3 data-astro-cid-yoyuw6fx="">Upload them to Cloudflare R2</h3>
-<p data-astro-cid-yoyuw6fx="">We use Cloudflare R2 to now be the host for this structured file system. R2 lets us <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage" target="_blank" rel="noopener noreferrer">upload and serve objects</a> in this structured format. This means, we just need to upload the files in the same structure reprepro created them.</p>
-<p data-astro-cid-yoyuw6fx=""><a href="https://github.com/cloudflare/cloudflared/blob/135c8e6d13663d2aa2d3c9169cde0cfc1e6e2062/release_pkgs.py#L36" target="_blank" rel="noopener noreferrer">Here</a> is a copyable example of how we do it for cloudflared.</p>
-<h3 data-astro-cid-yoyuw6fx="">Serve them from an R2 worker</h3>
-<p data-astro-cid-yoyuw6fx="">For fine-grained control, we’ll write a very lightweight Cloudflare Worker to be the service we talk to and serve as the front-end API for apt to talk to. For an apt repository, we only need it to perform the GET function.</p>
-<p data-astro-cid-yoyuw6fx="">Here’s an example on how-to do this: <a href="https://developers.cloudflare.com/r2/examples/demo-worker" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/r2/examples/demo-worker/</a></p>
-<h2 data-astro-cid-yoyuw6fx="">Putting it all together</h2>
-<p data-astro-cid-yoyuw6fx=""><a href="https://github.com/cloudflare/cloudflared/blob/master/release_pkgs.py" target="_blank" rel="noopener noreferrer">Here</a> is a handy script we use to push cloudflared to R2 ready for apt/yum downloads and includes signing and publishing the pubkey.</p>
-<p data-astro-cid-yoyuw6fx="">And that’s it! You now have your own apt/yum repo without needing a server that needs to be maintained, there are no egress fees for downloads, and it is on the Cloudflare global network, protecting it against high request volumes. You can automate many of these steps to make it part of a release process.</p>
-<p data-astro-cid-yoyuw6fx="">Today, this is how cloudflared is distributed on the apt and yum repositories: <a href="https://pkg.cloudflare.com" target="_blank" rel="noopener noreferrer">https://pkg.cloudflare.com/</a></p>
+<p data-astro-cid-byeekcgh="">reprepro neatly creates a bunch of folders in the structure we looked into above.</p>
+<h3 data-astro-cid-byeekcgh="">Upload them to Cloudflare R2</h3>
+<p data-astro-cid-byeekcgh="">We use Cloudflare R2 to now be the host for this structured file system. R2 lets us <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage" target="_blank" rel="noopener noreferrer">upload and serve objects</a> in this structured format. This means, we just need to upload the files in the same structure reprepro created them.</p>
+<p data-astro-cid-byeekcgh=""><a href="https://github.com/cloudflare/cloudflared/blob/135c8e6d13663d2aa2d3c9169cde0cfc1e6e2062/release_pkgs.py#L36" target="_blank" rel="noopener noreferrer">Here</a> is a copyable example of how we do it for cloudflared.</p>
+<h3 data-astro-cid-byeekcgh="">Serve them from an R2 worker</h3>
+<p data-astro-cid-byeekcgh="">For fine-grained control, we’ll write a very lightweight Cloudflare Worker to be the service we talk to and serve as the front-end API for apt to talk to. For an apt repository, we only need it to perform the GET function.</p>
+<p data-astro-cid-byeekcgh="">Here’s an example on how-to do this: <a href="https://developers.cloudflare.com/r2/examples/demo-worker" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/r2/examples/demo-worker/</a></p>
+<h2 data-astro-cid-byeekcgh="">Putting it all together</h2>
+<p data-astro-cid-byeekcgh=""><a href="https://github.com/cloudflare/cloudflared/blob/master/release_pkgs.py" target="_blank" rel="noopener noreferrer">Here</a> is a handy script we use to push cloudflared to R2 ready for apt/yum downloads and includes signing and publishing the pubkey.</p>
+<p data-astro-cid-byeekcgh="">And that’s it! You now have your own apt/yum repo without needing a server that needs to be maintained, there are no egress fees for downloads, and it is on the Cloudflare global network, protecting it against high request volumes. You can automate many of these steps to make it part of a release process.</p>
+<p data-astro-cid-byeekcgh="">Today, this is how cloudflared is distributed on the apt and yum repositories: <a href="https://pkg.cloudflare.com" target="_blank" rel="noopener noreferrer">https://pkg.cloudflare.com/</a></p>

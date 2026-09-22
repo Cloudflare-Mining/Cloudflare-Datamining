@@ -1,338 +1,338 @@
-<p data-astro-cid-yoyuw6fx="">On June 12, 2025, Cloudflare suffered a significant service outage that affected a large set of our critical services, including Workers KV, WARP, Access, Gateway, Images, Stream, Workers AI, Turnstile and Challenges, AutoRAG, Zaraz, and parts of the Cloudflare Dashboard.</p>
-<p data-astro-cid-yoyuw6fx="">This outage lasted 2 hours and 28 minutes, and globally impacted all Cloudflare customers using the affected services. The cause of this outage was due to a failure in the underlying storage infrastructure used by our Workers KV service, which is a critical dependency for many Cloudflare products and relied upon for configuration, authentication and asset delivery across the affected services. Part of this infrastructure is backed by a third-party cloud provider, which experienced an outage today and directly impacted availability of our KV service.</p>
-<p data-astro-cid-yoyuw6fx="">We’re deeply sorry for this outage: this was a failure on our part, and while the proximate cause (or trigger) for this outage was a third-party vendor failure, we are ultimately responsible for our chosen dependencies and how we choose to architect around them.</p>
-<p data-astro-cid-yoyuw6fx="">This was not the result of an attack or other security event. No data was lost as a result of this incident. Cloudflare Magic Transit and Magic WAN, DNS, Cache, proxy, WAF and related services were not directly impacted by this incident.</p>
-<h2 data-astro-cid-yoyuw6fx="">What was impacted?</h2>
-<p data-astro-cid-yoyuw6fx="">As a rule, Cloudflare designs and builds our services on our own platform building blocks, and as such many of Cloudflare’s products are built to rely on the Workers KV service.&nbsp;</p>
-<p data-astro-cid-yoyuw6fx="">The following table details the impacted services, including the user-facing impact, operation failures, and increases in error rates observed:</p>
-<div class="emdash-table-wrapper" data-astro-cid-zdje7xco="">
-	<table class="emdash-table" data-astro-cid-zdje7xco="">
-		<thead data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<th data-astro-cid-zdje7xco="">
+<p data-astro-cid-byeekcgh="">On June 12, 2025, Cloudflare suffered a significant service outage that affected a large set of our critical services, including Workers KV, WARP, Access, Gateway, Images, Stream, Workers AI, Turnstile and Challenges, AutoRAG, Zaraz, and parts of the Cloudflare Dashboard.</p>
+<p data-astro-cid-byeekcgh="">This outage lasted 2 hours and 28 minutes, and globally impacted all Cloudflare customers using the affected services. The cause of this outage was due to a failure in the underlying storage infrastructure used by our Workers KV service, which is a critical dependency for many Cloudflare products and relied upon for configuration, authentication and asset delivery across the affected services. Part of this infrastructure is backed by a third-party cloud provider, which experienced an outage today and directly impacted availability of our KV service.</p>
+<p data-astro-cid-byeekcgh="">We’re deeply sorry for this outage: this was a failure on our part, and while the proximate cause (or trigger) for this outage was a third-party vendor failure, we are ultimately responsible for our chosen dependencies and how we choose to architect around them.</p>
+<p data-astro-cid-byeekcgh="">This was not the result of an attack or other security event. No data was lost as a result of this incident. Cloudflare Magic Transit and Magic WAN, DNS, Cache, proxy, WAF and related services were not directly impacted by this incident.</p>
+<h2 data-astro-cid-byeekcgh="">What was impacted?</h2>
+<p data-astro-cid-byeekcgh="">As a rule, Cloudflare designs and builds our services on our own platform building blocks, and as such many of Cloudflare’s products are built to rely on the Workers KV service.&nbsp;</p>
+<p data-astro-cid-byeekcgh="">The following table details the impacted services, including the user-facing impact, operation failures, and increases in error rates observed:</p>
+<div class="emdash-table-wrapper" data-astro-cid-paimycxl="">
+	<table class="emdash-table" data-astro-cid-paimycxl="">
+		<thead data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<th data-astro-cid-paimycxl="">
 					<p>Product/Service</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Impact</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+		<tbody data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Workers KV<br><br></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Workers KV saw 90.22% of requests failing: any key-value pair not cached and that required to retrieve the value from Workers KV's origin storage backends resulted in failed requests with response code 503 or 500.&nbsp;The remaining requests were successfully served from Workers KV's cache (status code 200 and 404) or returned errors within our expected limits and/or error budget.This did not impact data stored in Workers KV.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Access<br><br></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Access uses Workers KV to store application and policy configuration along with user identity information.During the incident Access failed 100% of identity based logins for all application types including Self-Hosted, SaaS and Infrastructure. User Identity information was unavailable to other services like WARP and Gateway during this incident. Access is designed to fail closed when it cannot successfully fetch policy configuration or a user’s identity.&nbsp;Active Infrastructure Application SSH sessions with command logging enabled failed to save logs due to a Workers KV dependency.&nbsp;Access’ System for Cross Domain Identity (SCIM) service was also impacted due to its reliance on Workers KV and Durable Objects (which depended on KV) to store user information. During this incident, user identities were not updated due to Workers KV updates failures. These failures would result in a 500 returned to identity providers. Some providers may require a manual re-synchronization but most customers would have seen immediate service restoration once Access’ SCIM service was restored due to retry logic by the identity provider.Service authentication based logins (e.g. service token, Mutual TLS, and IP-based policies) and Bypass policies were unaffected. No Access policy edits or changes were lost during this time.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Gateway<br><br></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>This incident did not affect most Gateway DNS queries, including those over IPv4, IPv6, DNS over TLS (DoT), and DNS over HTTPS (DoH).However, there were two exceptions:DoH queries with identity-based rules failed. This happened because Gateway couldn't retrieve the required user’s identity information.Authenticated DoH was disrupted for some users. Users with active sessions with valid authentication tokens were unaffected, but those needing to start new sessions or refresh authentication tokens could not.Users of Gateway proxy, egress, and TLS decryption were unable to connect, register, proxy, or log traffic.This was due to our reliance on Workers KV to retrieve up-to-date identity and device posture information. Each of these actions requires a call to Workers KV, and when unavailable, Gateway is designed to fail closed to prevent traffic from bypassing customer-configured rules.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>WARP<br><br><br></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>The WARP client was impacted due to core dependencies on Access and Workers KV, which is required for device registration and authentication. As a result, no new clients were able to connect or sign up during the incident.Existing WARP client users sessions that were routed through the Gateway proxy experienced disruptions, as Gateway was unable to perform its required policy evaluations.Additionally, the WARP emergency disconnect override was rendered unavailable because of a failure in its underlying dependency, Workers KV.Consumer WARP saw a similar sporadic impact as the Zero Trust version.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Dashboard<br><br></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Dashboard user logins and most of the existing dashboard sessions were unavailable. This was due to an outage affecting Turnstile, DO, KV, and Access. The specific causes for login failures were:Standard Logins (User/Password): Failed due to Turnstile unavailability.Sign-in with Google (OIDC) Logins: Failed due to a KV dependency issue.SSO Logins: Failed due to a full dependency on Access.The Cloudflare v4 API was not impacted during this incident.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Challenges and Turnstile<br><br></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>The Challenge platform that powers Cloudflare Challenges and Turnstile saw a high rate of failure and timeout for siteverify API requests during the incident window due to its dependencies on Workers KV and Durable Objects.We have kill switches in place to disable these calls in case of incidents and outages such as this. We activated these kill switches as a mitigation so that eyeballs are not blocked from proceeding. Notably, while these kill switches were active, Turnstile’s siteverify API (the API that validates issued tokens) could redeem valid tokens multiple times, potentially allowing for attacks where a bad actor might try to use a previously valid token to bypass.&nbsp;There was no impact to Turnstile’s ability to detect bots. A bot attempting to solve a challenge would still have failed the challenge and thus, not receive a token.&nbsp;</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Browser Isolation<br><br></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Existing Browser Isolation sessions via Link-based isolation were impacted due to a reliance on Gateway for policy evaluation.New link-based Browser Isolation sessions could not be initiated due to a dependency on Cloudflare Access. All Gateway-initiated isolation sessions failed due its Gateway dependency.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Images<br><br></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Batch uploads to Cloudflare Images were impacted during the incident window, with a 100% failure rate at the peak of the incident. Other uploads were not impacted.Overall image delivery dipped to around 97% success rate. Image Transformations were not significantly impacted, and Polish was not impacted.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Stream<br><br></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Stream’s error rate exceeded 90% during the incident window as video playlists were unable to be served. Stream Live observed a 100% error rate.Video uploads were not impacted.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Realtime<br><br></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>The Realtime TURN (Traversal Using Relays around NAT) service uses KV and was heavily impacted. Error rates were near 100% for the duration of the incident window.The Realtime SFU service (Selective Forwarding Unit) was unable to create new sessions, although existing connections were maintained. This caused a reduction to 20% of normal&nbsp;traffic during the impact window.&nbsp;</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Workers AI<br><br></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>All inference requests to Workers AI failed for the duration of the incident. Workers AI depends on Workers KV for distributing configuration and routing information for AI requests globally.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Pages &amp; Workers Assets<br><br></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Static assets served by Cloudflare Pages and Workers Assets (such as HTML, JavaScript, CSS, images, etc) are stored in Workers KV, cached, and retrieved at request time. Workers Assets saw an average error rate increase of around 0.06% of total requests during this time.&nbsp;During the incident window, Pages error rate peaked to ~100% and all Pages builds could not complete.&nbsp;</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>AutoRAG<br><br></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>AutoRAG relies on Workers AI models for both document conversion and generating vector embeddings during indexing, as well as LLM models for querying and search. AutoRAG was unavailable during the incident window because of the Workers AI dependency.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Durable Objects<br><br></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>SQLite-backed Durable Objects share the same underlying storage infrastructure as Workers KV. The average error rate during the incident window peaked at 22%, and dropped to 2% as services started to recover.Durable Object namespaces using the legacy key-value storage were not impacted.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>D1<br></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>D1 databases share the same underlying storage infrastructure as Workers KV and Durable Objects.Similar to Durable Objects, the average error rate during the incident window peaked at 22%, and dropped to 2% as services started to recover.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Queues &amp; Event Notifications<br></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Queues message operations including–pushing and consuming–were unavailable during the incident window.Queues uses KV to map each Queue to underlying Durable Objects that contain queued messages.Event Notifications use Queues as their underlying delivery mechanism.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>AI Gateway<br><br></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>AI Gateway is built on top of Workers and relies on Workers KV for client and internal configurations. During the incident window, AI Gateway saw error rates peak at 97% of requests until dependencies recovered.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>CDN<br><br></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Automated traffic management infrastructure was operational but acted with reduced efficacy during the impact period. In particular, registration requests from Zero Trust clients increased substantially as a result of the outage.The increase in requests imposed additional load in several Cloudflare locations, triggering response from automated traffic management. In response to these conditions, systems rerouted incoming CDN traffic to nearby locations, reducing impact to customers. There was a portion of traffic that was not rerouted as expected and is under investigation. CDN requests impacted by this issue would experience elevated latency, HTTP 499 errors, and / or HTTP 503 errors. Impacted Cloudflare service areas included São Paulo, Philadelphia, Atlanta, and Raleigh.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Workers / Workers for Platforms<br><br></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Workers and Workers for Platforms rely on a third party service for uploads. During the incident window, Workers saw an overall error rate peak to ~2% of total requests. Workers for Platforms saw an overall error rate peak to ~10% of total requests during the same time period.&nbsp;</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Workers Builds (CI/CD)<br>&nbsp;<br></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Starting at 18:03 UTC Workers builds could not receive new source code management push events due to Access being down.100% of new Workers Builds failed during the incident window.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Browser Rendering<br><br></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Browser Rendering depends on Browser Isolation for browser instance infrastructure.Requests to both the REST API and via the Workers Browser Binding were 100% impacted during the incident window.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>Zaraz<br></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>100% of requests were impacted during the incident window. Zaraz relies on Workers KV configs for websites when handling eyeball traffic. Due to the same dependency, attempts to save updates to Zaraz configs were unsuccessful during this period, but our monitoring shows that only a single user was affected.</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<h2 data-astro-cid-yoyuw6fx="">Background</h2>
-<p data-astro-cid-yoyuw6fx="">Workers KV is built as what we call a “coreless” service which means there should be no single point of failure as the service runs independently in each of our locations worldwide. However, Workers KV today relies on a central data store to provide a source of truth for data. A failure of that store caused a complete outage for cold reads and writes to the KV namespaces used by services across Cloudflare.</p>
-<p data-astro-cid-yoyuw6fx="">Workers KV is in the process of being transitioned to significantly more resilient infrastructure for its central store: regrettably, we had a gap in coverage which was exposed during this incident. Workers KV removed a storage provider as we worked to re-architect KV’s backend, including migrating it to Cloudflare R2, to prevent data consistency issues (caused by the original data syncing architecture), and to improve support for data residency requirements.</p>
-<p data-astro-cid-yoyuw6fx="">One of our principles is to build Cloudflare services on our own platform as much as possible, and Workers KV is no exception. Many of our internal and external services rely heavily on Workers KV, which under normal circumstances helps us deliver the most robust services possible, instead of service teams attempting to build their own storage services. In this case, the cascading impact from the failure from Workers KV exacerbated the issue and significantly broadened the blast radius.&nbsp;</p>
-<h2 data-astro-cid-yoyuw6fx="">Incident timeline and impact</h2>
-<p data-astro-cid-yoyuw6fx="">The incident timeline, including the initial impact, investigation, root cause, and remediation, are detailed below.&nbsp;</p>
+<h2 data-astro-cid-byeekcgh="">Background</h2>
+<p data-astro-cid-byeekcgh="">Workers KV is built as what we call a “coreless” service which means there should be no single point of failure as the service runs independently in each of our locations worldwide. However, Workers KV today relies on a central data store to provide a source of truth for data. A failure of that store caused a complete outage for cold reads and writes to the KV namespaces used by services across Cloudflare.</p>
+<p data-astro-cid-byeekcgh="">Workers KV is in the process of being transitioned to significantly more resilient infrastructure for its central store: regrettably, we had a gap in coverage which was exposed during this incident. Workers KV removed a storage provider as we worked to re-architect KV’s backend, including migrating it to Cloudflare R2, to prevent data consistency issues (caused by the original data syncing architecture), and to improve support for data residency requirements.</p>
+<p data-astro-cid-byeekcgh="">One of our principles is to build Cloudflare services on our own platform as much as possible, and Workers KV is no exception. Many of our internal and external services rely heavily on Workers KV, which under normal circumstances helps us deliver the most robust services possible, instead of service teams attempting to build their own storage services. In this case, the cascading impact from the failure from Workers KV exacerbated the issue and significantly broadened the blast radius.&nbsp;</p>
+<h2 data-astro-cid-byeekcgh="">Incident timeline and impact</h2>
+<p data-astro-cid-byeekcgh="">The incident timeline, including the initial impact, investigation, root cause, and remediation, are detailed below.&nbsp;</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="337" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=715&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=640&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=715&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=750&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=828&amp;h=390&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=1080&amp;h=509&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=1280&amp;h=603&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=1430&amp;h=674&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2847 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=1686&amp;h=794&amp;f=webp" data-lightbox-width="1686" data-lightbox-height="794" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="337" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-yoyuw6fx=""><sub><em>Workers KV error rates to storage infrastructure. 91% of requests to KV failed during the incident window.</em></sub></p>
+<p data-astro-cid-byeekcgh=""><sub><em>Workers KV error rates to storage infrastructure. 91% of requests to KV failed during the incident window.</em></sub></p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="366" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=715&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=640&amp;h=328&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=715&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=750&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=828&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=1080&amp;h=553&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=1280&amp;h=655&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=1430&amp;h=732&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2847 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=978&amp;h=501&amp;f=webp" data-lightbox-width="978" data-lightbox-height="501" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="366" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-yoyuw6fx=""><sub><em>Cloudflare Access percentage of successful requests. Cloudflare Access relies directly on Workers KV and serves as a good proxy to measure Workers KV availability over time.</em></sub></p>
-<p data-astro-cid-yoyuw6fx="">All timestamps referenced are in Coordinated Universal Time (UTC).</p>
-<div class="emdash-table-wrapper" data-astro-cid-zdje7xco="">
-	<table class="emdash-table" data-astro-cid-zdje7xco="">
-		<thead data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<th data-astro-cid-zdje7xco="">
+<p data-astro-cid-byeekcgh=""><sub><em>Cloudflare Access percentage of successful requests. Cloudflare Access relies directly on Workers KV and serves as a good proxy to measure Workers KV availability over time.</em></sub></p>
+<p data-astro-cid-byeekcgh="">All timestamps referenced are in Coordinated Universal Time (UTC).</p>
+<div class="emdash-table-wrapper" data-astro-cid-paimycxl="">
+	<table class="emdash-table" data-astro-cid-paimycxl="">
+		<thead data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<th data-astro-cid-paimycxl="">
 					<p>Time</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Event</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+		<tbody data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>2025-06-12 17:52</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>INCIDENT START<br>Cloudflare WARP team begins to see registrations of new devices fail and begin to investigate these failures and declares an incident.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>2025-06-12 18:05</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Cloudflare Access team received an alert due to a rapid increase in error rates.Service Level Objectives for multiple services drop below targets and trigger alerts across those teams.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>2025-06-12 18:06</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Multiple service-specific incidents are combined into a single incident as we identify a shared cause (Workers KV unavailability). Incident priority upgraded to P1.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>2025-06-12 18:21</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Incident priority upgraded to P0 from P1 as severity of impact becomes clear.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>2025-06-12 18:43</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Cloudflare Access begins exploring options to remove Workers KV dependency by migrating to a different backing datastore with the Workers KV engineering team. This was proactive in the event the storage infrastructure continued to be down.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>2025-06-12 19:09</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Zero Trust Gateway began working to remove dependencies on Workers KV by gracefully degrading rules that referenced Identity or Device Posture state.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>2025-06-12 19:32</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Access and Device Posture force drop identity and device posture requests to shed load on Workers KV until third-party service comes back online.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>2025-06-12 19:45</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Cloudflare teams continue to work on a path to deploying a Workers KV release against an alternative backing datastore and having critical services write configuration data to that store.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>2025-06-12 20:23</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Services begin to recover as storage infrastructure begins to recover. We continue to see a non-negligible error rate and infrastructure rate limits due to the influx of services repopulating caches.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>2025-06-12 20:25</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Access and Device Posture restore calling Workers KV as third-party service is restored.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>2025-06-12 20:28</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>IMPACT END&nbsp;<br>Service Level Objectives return to pre-incident level. Cloudflare teams continue to monitor systems to ensure services do not degrade as dependent systems recover.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p><br></p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>INCIDENT END<br>Cloudflare team see all affected services return to normal function. Service level objective alerts are recovered.</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<h2 data-astro-cid-yoyuw6fx="">Remediation and follow-up steps</h2>
-<p data-astro-cid-yoyuw6fx="">We’re taking immediate steps to improve the resiliency of services that depend on Workers KV and our storage infrastructure. This includes existing planned work that we are accelerating as a result of this incident.</p>
-<p data-astro-cid-yoyuw6fx="">This encompasses several workstreams, including efforts to avoid singular dependencies on storage infrastructure we do not own, improving the ability for us to recover critical services (including Access, Gateway and WARP)&nbsp;</p>
-<p data-astro-cid-yoyuw6fx="">Specifically:</p>
+<h2 data-astro-cid-byeekcgh="">Remediation and follow-up steps</h2>
+<p data-astro-cid-byeekcgh="">We’re taking immediate steps to improve the resiliency of services that depend on Workers KV and our storage infrastructure. This includes existing planned work that we are accelerating as a result of this incident.</p>
+<p data-astro-cid-byeekcgh="">This encompasses several workstreams, including efforts to avoid singular dependencies on storage infrastructure we do not own, improving the ability for us to recover critical services (including Access, Gateway and WARP)&nbsp;</p>
+<p data-astro-cid-byeekcgh="">Specifically:</p>
 <ul>
 	<li>(Actively in-flight): Bringing forward our work to improve the redundancy within Workers KV’s storage infrastructure, removing the dependency on any single provider. During the incident window we began work to cut over and backfill critical KV namespaces to our own infrastructure, in the event the incident continued. </li>
 	<li>(Actively in-flight): Short-term blast radius remediations for individual products that were impacted by this incident so that each product becomes resilient to any loss of service caused by any single point of failure, including third party dependencies.</li>
 	<li>(Actively in-flight): Implementing tooling that allows us to progressively re-enable namespaces during storage infrastructure incidents. This will allow us to ensure that key dependencies, including Access and WARP, are able to come up without risking a denial-of-service against our own infrastructure as caches are repopulated.</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">This list is not exhaustive: our teams continue to revisit design decisions and assess the infrastructure changes we need to make in both the near (immediate) term and long term to mitigate the incidents like this going forward.</p>
-<p data-astro-cid-yoyuw6fx="">This was a serious outage, and we understand that organizations and institutions that are large and small depend on us to protect and/or run their websites, applications, zero trust and network infrastructure.&nbsp; Again we are deeply sorry for the impact and are working diligently to improve our service resiliency.&nbsp;</p>
+<p data-astro-cid-byeekcgh="">This list is not exhaustive: our teams continue to revisit design decisions and assess the infrastructure changes we need to make in both the near (immediate) term and long term to mitigate the incidents like this going forward.</p>
+<p data-astro-cid-byeekcgh="">This was a serious outage, and we understand that organizations and institutions that are large and small depend on us to protect and/or run their websites, applications, zero trust and network infrastructure.&nbsp; Again we are deeply sorry for the impact and are working diligently to improve our service resiliency.&nbsp;</p>

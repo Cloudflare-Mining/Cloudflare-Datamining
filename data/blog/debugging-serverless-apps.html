@@ -1,18 +1,18 @@
-<p data-astro-cid-yoyuw6fx="">The Workers team have already done an amazing job of creating a functional, familiar edit and debug tooling experience in the Workers IDE. It's Chrome Developer Tools fully integrated to Workers.</p>
-<p data-astro-cid-yoyuw6fx=""><code>console.log</code> in your Worker goes straight to the console, just as if you were debugging locally! Furthermore, errors and even log lines come complete with call-site info, so you click and navigate straight to the relevant line.In this blog post I’m going to show a small and powerful technique I use to make debugging serverless apps simple and quick.</p>
-<p data-astro-cid-yoyuw6fx="">There is a <a href="https://developers.cloudflare.com/workers/writing-workers/debugging-tips" target="_blank" rel="noopener noreferrer">comprehensive guide</a> to common debugging approaches and I'm going to focus on returning debug information in a header. This is a great tip and one that I use to capture debug information when I'm using curl or Postman, or integration tests. It was a little finicky to get right the first time, so let me save you some trouble.</p>
-<p data-astro-cid-yoyuw6fx="">If you've followed <a href="https://blog.cloudflare.com/p/607ad519-5652-4688-9fff-33fbb1fc9d3f">part 1</a> or <a href="https://blog.cloudflare.com/p/5cd5d990-7b88-4e62-9615-9c51d33daae8">part 2</a> of my Workers series, you'll know I'm using Typescript, but the approach would equally apply to Javascript. In the rest of this example, I’ll be using the routing framework I created in part 2.</p>
-<h3 data-astro-cid-yoyuw6fx="">Requesting Debug Info</h3>
-<p data-astro-cid-yoyuw6fx="">I want my Worker to return debugging information whenever:</p>
+<p data-astro-cid-byeekcgh="">The Workers team have already done an amazing job of creating a functional, familiar edit and debug tooling experience in the Workers IDE. It's Chrome Developer Tools fully integrated to Workers.</p>
+<p data-astro-cid-byeekcgh=""><code>console.log</code> in your Worker goes straight to the console, just as if you were debugging locally! Furthermore, errors and even log lines come complete with call-site info, so you click and navigate straight to the relevant line.In this blog post I’m going to show a small and powerful technique I use to make debugging serverless apps simple and quick.</p>
+<p data-astro-cid-byeekcgh="">There is a <a href="https://developers.cloudflare.com/workers/writing-workers/debugging-tips" target="_blank" rel="noopener noreferrer">comprehensive guide</a> to common debugging approaches and I'm going to focus on returning debug information in a header. This is a great tip and one that I use to capture debug information when I'm using curl or Postman, or integration tests. It was a little finicky to get right the first time, so let me save you some trouble.</p>
+<p data-astro-cid-byeekcgh="">If you've followed <a href="https://blog.cloudflare.com/p/607ad519-5652-4688-9fff-33fbb1fc9d3f">part 1</a> or <a href="https://blog.cloudflare.com/p/5cd5d990-7b88-4e62-9615-9c51d33daae8">part 2</a> of my Workers series, you'll know I'm using Typescript, but the approach would equally apply to Javascript. In the rest of this example, I’ll be using the routing framework I created in part 2.</p>
+<h3 data-astro-cid-byeekcgh="">Requesting Debug Info</h3>
+<p data-astro-cid-byeekcgh="">I want my Worker to return debugging information whenever:</p>
 <ul>
 	<li>An X-Debug header is present or</li>
 	<li>a ?debug query parameter is present.</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">Exercise for the reader: You may also like to require a shared secret key (so that you control who can enable debugging information) and pass a log level.</p>
-<p data-astro-cid-yoyuw6fx="">I'd like my debug info to be the same that I'd see in the Workers IDE. That is, all the log lines and any exception info from the execution of my Worker.</p>
-<h3 data-astro-cid-yoyuw6fx="">Architecture</h3>
-<p data-astro-cid-yoyuw6fx="">Logging is orthogonal to the main request flow, so let's try keep it abstracted. Different frameworks use different terms for this abstraction. I’ll use the term <a href="https://en.wikipedia.org/wiki/Interceptor_pattern" target="_blank" rel="noopener noreferrer">interceptor</a>.</p>
-<p data-astro-cid-yoyuw6fx="">Let's define an interceptor as something that runs pre and/or post the main request flow.</p>
+<p data-astro-cid-byeekcgh="">Exercise for the reader: You may also like to require a shared secret key (so that you control who can enable debugging information) and pass a log level.</p>
+<p data-astro-cid-byeekcgh="">I'd like my debug info to be the same that I'd see in the Workers IDE. That is, all the log lines and any exception info from the execution of my Worker.</p>
+<h3 data-astro-cid-byeekcgh="">Architecture</h3>
+<p data-astro-cid-byeekcgh="">Logging is orthogonal to the main request flow, so let's try keep it abstracted. Different frameworks use different terms for this abstraction. I’ll use the term <a href="https://en.wikipedia.org/wiki/Interceptor_pattern" target="_blank" rel="noopener noreferrer">interceptor</a>.</p>
+<p data-astro-cid-byeekcgh="">Let's define an interceptor as something that runs pre and/or post the main request flow.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">/**</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"> * Intercepts requests before handlers and responses after handlers</span></span>
@@ -44,7 +44,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">And then run pre and post processing before and after the handler has executed.</p>
+<p data-astro-cid-byeekcgh="">And then run pre and post processing before and after the handler has executed.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">public async </span><span class="sk-6f42c1-ffc799">handle</span><span class="sk-24292e-fff">(request: Request): </span><span class="sk-005cc5-ffc799">Promise</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">Response</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">	this.preProcess(req);</span></span>
@@ -70,9 +70,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">OK, so with a generalized pattern to execute code before and after a request, let's add our first Interceptor:</p>
-<h3 data-astro-cid-yoyuw6fx="">LogInterceptor</h3>
-<p data-astro-cid-yoyuw6fx="">First we'll need a logger. This logger just redirects to console, but also keeps track of the log lines so the interceptor can retrieve them later.</p>
+<p data-astro-cid-byeekcgh="">OK, so with a generalized pattern to execute code before and after a request, let's add our first Interceptor:</p>
+<h3 data-astro-cid-byeekcgh="">LogInterceptor</h3>
+<p data-astro-cid-byeekcgh="">First we'll need a logger. This logger just redirects to console, but also keeps track of the log lines so the interceptor can retrieve them later.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> Logger</span><span class="sk-d73a49-a0a0a0"> implements</span><span class="sk-6f42c1-fff"> ILogger</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  public</span><span class="sk-e36209-fff"> logLines</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">[] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [];</span></span>
@@ -112,7 +112,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">The <code>LogInterceptor</code> is simple enough in post processing, if it detects the X-Debug header or debug query param, it adds all the log lines to the X-Debug response header as a URL-encoded string.</p>
+<p data-astro-cid-byeekcgh="">The <code>LogInterceptor</code> is simple enough in post processing, if it detects the X-Debug header or debug query param, it adds all the log lines to the X-Debug response header as a URL-encoded string.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> logger</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Logger</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"></span>
@@ -143,9 +143,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Now it's up to the client to display.</p>
-<h3 data-astro-cid-yoyuw6fx="">Decoding the result</h3>
-<p data-astro-cid-yoyuw6fx="">urldecode isn't native on most operating systems. There are Perl and Python implementations, but here's a Bash only function:</p>
+<p data-astro-cid-byeekcgh="">Now it's up to the client to display.</p>
+<h3 data-astro-cid-byeekcgh="">Decoding the result</h3>
+<p data-astro-cid-byeekcgh="">urldecode isn't native on most operating systems. There are Perl and Python implementations, but here's a Bash only function:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> urldecode</span><span class="sk-24292e-fff">() </span><span class="sk-032f62-99ffe4">{</span><span class="sk-032f62-99ffe4"> :</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-d73a49-a0a0a0">*//</span><span class="sk-032f62-99ffe4">+</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-032f62-99ffe4"> }"</span><span class="sk-24292e-fff">; </span><span class="sk-005cc5-ffc799">echo</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">_</span><span class="sk-d73a49-a0a0a0">//%/</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-24292e-fff">x</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-24292e-fff">; }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -153,8 +153,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Source: <a href="https://stackoverflow.com/questions/6250698/how-to-decode-url-encoded-string-in-shell" target="_blank" rel="noopener noreferrer">StackOverflow</a></p>
-<p data-astro-cid-yoyuw6fx="">Using that, we can call curl, extract the headers, grep for our X-Debug header and then invoke the urldecode function.</p>
+<p data-astro-cid-byeekcgh="">Source: <a href="https://stackoverflow.com/questions/6250698/how-to-decode-url-encoded-string-in-shell" target="_blank" rel="noopener noreferrer">StackOverflow</a></p>
+<p data-astro-cid-byeekcgh="">Using that, we can call curl, extract the headers, grep for our X-Debug header and then invoke the urldecode function.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> urldecode</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -sD</span><span class="sk-032f62-99ffe4"> - </span><span class="sk-005cc5-99ffe4">-o</span><span class="sk-032f62-99ffe4"> /dev/null https://cryptoserviceworker.com/api/all/spot/btc-usd </span><span class="sk-005cc5-99ffe4">-H</span><span class="sk-032f62-99ffe4"> "X-Debug:true" </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> x-debug`</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">x-debug:</span><span class="sk-032f62-99ffe4"> INFO:</span><span class="sk-032f62-99ffe4"> Handling:</span><span class="sk-032f62-99ffe4"> https://cryptoserviceworker.com/api/all/spot/btc-usd</span></span>
@@ -173,8 +173,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Boom. Decoded debug info right there in the console. Ship it.</p>
-<p data-astro-cid-yoyuw6fx="">If you log stack traces in your worker with <code>logger.error(e.stack)</code>, that will also format nicely:</p>
+<p data-astro-cid-byeekcgh="">Boom. Decoded debug info right there in the console. Ship it.</p>
+<p data-astro-cid-byeekcgh="">If you log stack traces in your worker with <code>logger.error(e.stack)</code>, that will also format nicely:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> urldecode</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -sD</span><span class="sk-032f62-99ffe4"> - </span><span class="sk-005cc5-99ffe4">-o</span><span class="sk-032f62-99ffe4"> /dev/null https://cryptoserviceworker.com/api/all/spot/btc-usd </span><span class="sk-005cc5-99ffe4">-H</span><span class="sk-032f62-99ffe4"> "X-Debug:true" </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> x-debug`</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">x-debug:</span><span class="sk-032f62-99ffe4"> INFO:</span><span class="sk-032f62-99ffe4"> Handling:</span><span class="sk-032f62-99ffe4"> https://cryptoserviceworker.com/api/all/spot/btc-usd</span></span>
@@ -196,11 +196,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">Summary</h3>
-<p data-astro-cid-yoyuw6fx="">In this post we:</p>
+<h3 data-astro-cid-byeekcgh="">Summary</h3>
+<p data-astro-cid-byeekcgh="">In this post we:</p>
 <ul>
 	<li>Defined a pre- and post-processing framework using Interceptors</li>
 	<li>Implemented a LogInterceptor to return logs generated as we were processing in the X-Debug header</li>
 	<li>Decoded them in bash</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">May the logs be with you.</p>
+<p data-astro-cid-byeekcgh="">May the logs be with you.</p>

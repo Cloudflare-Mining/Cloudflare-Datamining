@@ -1,25 +1,25 @@
-<p data-astro-cid-yoyuw6fx="">Every once in a while I run into an obscure computer technology that is a hidden gem, which over the years has become mostly forgotten. This is exactly how I feel about the <code>tcpdump</code> tool and its kernel counterpart the packet filter interface.</p>
-<p data-astro-cid-yoyuw6fx="">For example, say you run:</p>
-<p data-astro-cid-yoyuw6fx="">$ tcpdump -ni eth0 ip and udp and port 53</p>
-<p data-astro-cid-yoyuw6fx="">For most of us this command is pure magic, almost nobody understands what happens behind the scenes. This is understandable, there is little need to know how it works: the tool does its job very well, it's descriptive and very fast.</p>
-<p data-astro-cid-yoyuw6fx="">In this article I'll try to explain how <code>tcpdump</code> works and how we use its spinoffs to help fight the packet floods that hit us every day.</p>
-<p data-astro-cid-yoyuw6fx="">But first, we need a bit of history.</p>
-<h3 data-astro-cid-yoyuw6fx="">Historical context</h3>
-<p data-astro-cid-yoyuw6fx="">Since workstations became interconnected, network administrators had a need to "see" what is flowing on the wires. The ability to sniff the network traffic is necessary when things go wrong, even for the mostbasic debugging.</p>
-<p data-astro-cid-yoyuw6fx="">For this reason operating systems developed APIs for packet sniffing. But, as there wasn't any real standard for it every OS had to invent <a href="http://www.cs.columbia.edu/~nahum/w6998/lectures/vpk-columbia-nsdi-pf.pdf" target="_blank" rel="noopener noreferrer">a different API</a>: Sun’s STREAMS NIT, DEC's Ultrix Packet Filter, SGI’s Snoop and Xerox Alto had CMU/Stanford Packet Filter. This led to many complications. The simpler APIs just copied all the packets to the user space sniffer, which on a busy system resulted in a flood of useless work. The more complex APIs were able to filter packets beforepassing them to userspace, but it was often cumbersome and slow.</p>
-<p data-astro-cid-yoyuw6fx="">All this changed in 1993 when Steven McCanne and <a href="https://en.wikipedia.org/wiki/Van_Jacobson" target="_blank" rel="noopener noreferrer">Van Jacobson</a> published the paper introducing a better way of filtering packets in the kernel, they called it <a href="http://www.tcpdump.org/papers/bpf-usenix93.pdf" target="_blank" rel="noopener noreferrer">"The BSD Packet Filter" (BPF)</a>.</p>
-<p data-astro-cid-yoyuw6fx="">Since then <a href="https://en.wikipedia.org/wiki/Berkeley_Packet_Filter" target="_blank" rel="noopener noreferrer">the BPF</a> has taken the world by a storm and along with <code>libpcap</code> and <code>tcpdump</code> become the de-facto standard in network debugging.</p>
-<h3 data-astro-cid-yoyuw6fx="">Tcpdump dissected</h3>
-<p data-astro-cid-yoyuw6fx="">Tcpdump is composed of three logical parts:</p>
+<p data-astro-cid-byeekcgh="">Every once in a while I run into an obscure computer technology that is a hidden gem, which over the years has become mostly forgotten. This is exactly how I feel about the <code>tcpdump</code> tool and its kernel counterpart the packet filter interface.</p>
+<p data-astro-cid-byeekcgh="">For example, say you run:</p>
+<p data-astro-cid-byeekcgh="">$ tcpdump -ni eth0 ip and udp and port 53</p>
+<p data-astro-cid-byeekcgh="">For most of us this command is pure magic, almost nobody understands what happens behind the scenes. This is understandable, there is little need to know how it works: the tool does its job very well, it's descriptive and very fast.</p>
+<p data-astro-cid-byeekcgh="">In this article I'll try to explain how <code>tcpdump</code> works and how we use its spinoffs to help fight the packet floods that hit us every day.</p>
+<p data-astro-cid-byeekcgh="">But first, we need a bit of history.</p>
+<h3 data-astro-cid-byeekcgh="">Historical context</h3>
+<p data-astro-cid-byeekcgh="">Since workstations became interconnected, network administrators had a need to "see" what is flowing on the wires. The ability to sniff the network traffic is necessary when things go wrong, even for the mostbasic debugging.</p>
+<p data-astro-cid-byeekcgh="">For this reason operating systems developed APIs for packet sniffing. But, as there wasn't any real standard for it every OS had to invent <a href="http://www.cs.columbia.edu/~nahum/w6998/lectures/vpk-columbia-nsdi-pf.pdf" target="_blank" rel="noopener noreferrer">a different API</a>: Sun’s STREAMS NIT, DEC's Ultrix Packet Filter, SGI’s Snoop and Xerox Alto had CMU/Stanford Packet Filter. This led to many complications. The simpler APIs just copied all the packets to the user space sniffer, which on a busy system resulted in a flood of useless work. The more complex APIs were able to filter packets beforepassing them to userspace, but it was often cumbersome and slow.</p>
+<p data-astro-cid-byeekcgh="">All this changed in 1993 when Steven McCanne and <a href="https://en.wikipedia.org/wiki/Van_Jacobson" target="_blank" rel="noopener noreferrer">Van Jacobson</a> published the paper introducing a better way of filtering packets in the kernel, they called it <a href="http://www.tcpdump.org/papers/bpf-usenix93.pdf" target="_blank" rel="noopener noreferrer">"The BSD Packet Filter" (BPF)</a>.</p>
+<p data-astro-cid-byeekcgh="">Since then <a href="https://en.wikipedia.org/wiki/Berkeley_Packet_Filter" target="_blank" rel="noopener noreferrer">the BPF</a> has taken the world by a storm and along with <code>libpcap</code> and <code>tcpdump</code> become the de-facto standard in network debugging.</p>
+<h3 data-astro-cid-byeekcgh="">Tcpdump dissected</h3>
+<p data-astro-cid-byeekcgh="">Tcpdump is composed of three logical parts:</p>
 <ul>
 	<li>Expression parser: Tcpdump first parses a readable filter expression like <code>ip and udp and port 53</code>. The result is a short program in a special minimal bytecode, the BPF bytecode.</li>
 	<li>The BPF bytecode (filter program) is attached to the network tap interface.</li>
 	<li>Finally, tcpdump pretty prints filtered packets received from thenetwork tap. Pretty printing is far from a simple task, tcpdumpneeds to understand many network protocols to do it.</li>
 </ul>
-<h3 data-astro-cid-yoyuw6fx="">Expression parser</h3>
-<p data-astro-cid-yoyuw6fx="">Given a packet filtering expression, tcpdump produces a short program in the BPF bytecode. The easiest way to see the parser in action is to pass a <code>-d</code> flag, which will produce a readable assembly-like program:</p>
-<p data-astro-cid-yoyuw6fx="">$ sudo tcpdump -p -ni eth0 -d "ip and udp"<br>(000) ldh [12]<br>(001) jeq #0x800 jt 2 jf 5<br>(002) ldb [23]<br>(003) jeq #0x11 jt 4 jf 5<br>(004) ret #65535<br>(005) ret #0</p>
-<p data-astro-cid-yoyuw6fx="">This program reads like this:</p>
+<h3 data-astro-cid-byeekcgh="">Expression parser</h3>
+<p data-astro-cid-byeekcgh="">Given a packet filtering expression, tcpdump produces a short program in the BPF bytecode. The easiest way to see the parser in action is to pass a <code>-d</code> flag, which will produce a readable assembly-like program:</p>
+<p data-astro-cid-byeekcgh="">$ sudo tcpdump -p -ni eth0 -d "ip and udp"<br>(000) ldh [12]<br>(001) jeq #0x800 jt 2 jf 5<br>(002) ldb [23]<br>(003) jeq #0x11 jt 4 jf 5<br>(004) ret #65535<br>(005) ret #0</p>
+<p data-astro-cid-byeekcgh="">This program reads like this:</p>
 <ul>
 	<li>Load a half-word (2 bytes) from the packet at offset 12.</li>
 	<li>Check if the value is 0x0800, otherwise fail. This checks for the IP packet on top of <a href="http://www.networksorcery.com/enp/protocol/ethernet.htm" target="_blank" rel="noopener noreferrer">an Ethernet frame</a>.</li>
@@ -27,36 +27,36 @@
 	<li>Check if the value is 0x11, which is the UDP protocol number, otherwise fail.</li>
 	<li>Return success. Packet is matching the rule.</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">Here you can find <a href="https://www.kernel.org/doc/Documentation/networking/filter.txt" target="_blank" rel="noopener noreferrer">the full documentation of the assembly syntax</a>.</p>
-<p data-astro-cid-yoyuw6fx="">Less readable compiled bytecode is printed with <code>-ddd</code> option:</p>
-<p data-astro-cid-yoyuw6fx="">$ sudo tcpdump -p -ni eth0 -ddd "ip and udp"|tr "\n" ","<br>6,40 0 0 12,21 0 3 2048,48 0 0 23,21 0 1 17,6 0 0 65535,6 0 0 0,</p>
-<h3 data-astro-cid-yoyuw6fx="">Kernel API</h3>
-<p data-astro-cid-yoyuw6fx="">Tcpdump can open a network tap by requesting a <code>SOCK_RAW</code> socket and after a few magical <code>setsockopt</code> calls a filter can be set with <code>SO_ATTACH_FILTER</code> option:</p>
-<p data-astro-cid-yoyuw6fx="">sock = socket(PF_PACKET, SOCK_RAW, htons(ETH_P_ALL))<br>...<br>setsockopt(sock, SOL_SOCKET, SO_ATTACH_FILTER, ...)</p>
-<p data-astro-cid-yoyuw6fx="">From now on the BPF filter will be run against all received packets ona network interface and only packets matching that filter will bepassed to that network tap file descriptor.</p>
-<p data-astro-cid-yoyuw6fx="">All the gritty details are described in the<a href="https://www.kernel.org/doc/Documentation/networking/filter.txt" target="_blank" rel="noopener noreferrer"><code>Documentation/networking/filter.txt</code></a>file. For the best performance one can use<a href="https://www.kernel.org/doc/Documentation/networking/packet_mmap.txt" target="_blank" rel="noopener noreferrer">a zero-copy <code>PACKET_MMAP</code> / <code>PACKET_RX_RING</code> interface</a>,though most people should probably stick to the<a href="http://www.tcpdump.org/manpages/pcap.3pcap.html" target="_blank" rel="noopener noreferrer">high level <code>libpcap</code> API</a>.</p>
-<h3 data-astro-cid-yoyuw6fx="">The BPF bytecode</h3>
-<p data-astro-cid-yoyuw6fx="">In essence Tcpdump asks the kernel to execute a BPF program within thekernel context. This might sound risky, but actually isn't. Beforeexecuting the BPF bytecode kernel ensures that it's safe:</p>
+<p data-astro-cid-byeekcgh="">Here you can find <a href="https://www.kernel.org/doc/Documentation/networking/filter.txt" target="_blank" rel="noopener noreferrer">the full documentation of the assembly syntax</a>.</p>
+<p data-astro-cid-byeekcgh="">Less readable compiled bytecode is printed with <code>-ddd</code> option:</p>
+<p data-astro-cid-byeekcgh="">$ sudo tcpdump -p -ni eth0 -ddd "ip and udp"|tr "\n" ","<br>6,40 0 0 12,21 0 3 2048,48 0 0 23,21 0 1 17,6 0 0 65535,6 0 0 0,</p>
+<h3 data-astro-cid-byeekcgh="">Kernel API</h3>
+<p data-astro-cid-byeekcgh="">Tcpdump can open a network tap by requesting a <code>SOCK_RAW</code> socket and after a few magical <code>setsockopt</code> calls a filter can be set with <code>SO_ATTACH_FILTER</code> option:</p>
+<p data-astro-cid-byeekcgh="">sock = socket(PF_PACKET, SOCK_RAW, htons(ETH_P_ALL))<br>...<br>setsockopt(sock, SOL_SOCKET, SO_ATTACH_FILTER, ...)</p>
+<p data-astro-cid-byeekcgh="">From now on the BPF filter will be run against all received packets ona network interface and only packets matching that filter will bepassed to that network tap file descriptor.</p>
+<p data-astro-cid-byeekcgh="">All the gritty details are described in the<a href="https://www.kernel.org/doc/Documentation/networking/filter.txt" target="_blank" rel="noopener noreferrer"><code>Documentation/networking/filter.txt</code></a>file. For the best performance one can use<a href="https://www.kernel.org/doc/Documentation/networking/packet_mmap.txt" target="_blank" rel="noopener noreferrer">a zero-copy <code>PACKET_MMAP</code> / <code>PACKET_RX_RING</code> interface</a>,though most people should probably stick to the<a href="http://www.tcpdump.org/manpages/pcap.3pcap.html" target="_blank" rel="noopener noreferrer">high level <code>libpcap</code> API</a>.</p>
+<h3 data-astro-cid-byeekcgh="">The BPF bytecode</h3>
+<p data-astro-cid-byeekcgh="">In essence Tcpdump asks the kernel to execute a BPF program within thekernel context. This might sound risky, but actually isn't. Beforeexecuting the BPF bytecode kernel ensures that it's safe:</p>
 <ul>
 	<li>All the jumps are only forward, which guarantees that there aren't any loops in the BPF program. Therefore it must terminate.</li>
 	<li>All instructions, especially memory reads are valid and within range.</li>
 	<li>The single BPF program has less than 4096 instructions.</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">All this guarantees that the BPF programs executed within kernel context will run fast and will never infinitely loop. That means the BPF programs are not Turing complete, but in practice they are expressive enough for the job and deal with packet filtering very well.</p>
-<p data-astro-cid-yoyuw6fx="">The original concepts underlying the BPF were described in a 1993 and didn't require updates for many years. The Linux implementation on the other hand is steadily evolving: recently a <a href="http://lwn.net/Articles/437981" target="_blank" rel="noopener noreferrer">new and shiny just-in-time BPF compiler</a> was introduced, and a few months ago an attempt was made to upgrade the <a href="https://lwn.net/Articles/584377" target="_blank" rel="noopener noreferrer">BPF assembly to a 64-bit form</a>.</p>
-<h3 data-astro-cid-yoyuw6fx="">Not only tcpdump</h3>
-<p data-astro-cid-yoyuw6fx="">BPF is an absolutely marvelous and flexible way of filtering packets. For years it got reused in more places and now Linux uses BPF filters for:</p>
+<p data-astro-cid-byeekcgh="">All this guarantees that the BPF programs executed within kernel context will run fast and will never infinitely loop. That means the BPF programs are not Turing complete, but in practice they are expressive enough for the job and deal with packet filtering very well.</p>
+<p data-astro-cid-byeekcgh="">The original concepts underlying the BPF were described in a 1993 and didn't require updates for many years. The Linux implementation on the other hand is steadily evolving: recently a <a href="http://lwn.net/Articles/437981" target="_blank" rel="noopener noreferrer">new and shiny just-in-time BPF compiler</a> was introduced, and a few months ago an attempt was made to upgrade the <a href="https://lwn.net/Articles/584377" target="_blank" rel="noopener noreferrer">BPF assembly to a 64-bit form</a>.</p>
+<h3 data-astro-cid-byeekcgh="">Not only tcpdump</h3>
+<p data-astro-cid-byeekcgh="">BPF is an absolutely marvelous and flexible way of filtering packets. For years it got reused in more places and now Linux uses BPF filters for:</p>
 <ul>
 	<li>tcpdump-style packet filtering</li>
 	<li><a href="http://lxr.free-electrons.com/source/net/sched/cls_bpf.c" target="_blank" rel="noopener noreferrer">"cls_bpf"</a> classifier for traffic shaping (QoS)</li>
 	<li><a href="https://www.kernel.org/doc/Documentation/prctl/seccomp_filter.txt" target="_blank" rel="noopener noreferrer">"seccomp-bpf"</a> syscalls filter to sandbox applications</li>
 	<li>"xt_bpf" iptables module</li>
 </ul>
-<h3 data-astro-cid-yoyuw6fx="">How we use it</h3>
-<p data-astro-cid-yoyuw6fx="">CloudFlare deals with massive packet floods on a daily basis. It's very important for us to be able to drop malicious traffic fast, long before it hits the application.</p>
-<p data-astro-cid-yoyuw6fx="">Unfortunately matching before the application is not easy. Basic iptables filtering, for example looking just at the source IP, doesn't work as floods get more sophisticated. The iptables module closest to our needs is<a href="http://www.stearns.org/doc/iptables-u32.current.html" target="_blank" rel="noopener noreferrer">"xt_u32"</a>, but it's hard to understand and somewhat limited. Though it's generally <a href="https://github.com/smurfmonitor/dns-iptables-rules/blob/master/domain-blacklist.txt" target="_blank" rel="noopener noreferrer">pretty useful</a>, and to make it easier people wrote <a href="http://www.bortzmeyer.org/files/generate-netfilter-u32-dns-rule.py" target="_blank" rel="noopener noreferrer">rule generators</a>.</p>
-<p data-astro-cid-yoyuw6fx="">But what works for us best is the "xp_bpf" iptables module by Willem de Bruijn. With it we can match an iptable rule based on any BPF expression.</p>
-<p data-astro-cid-yoyuw6fx="">Unfortunately, our BPF bytecode became pretty complex and it can't be written as a usual tcpdump expression any more. Instead we rely on a custom crafted BPF bytecode, for example, this is an "xt_bpf" bytecode that matches a DNS query for "<a href="http://www.example.com" target="_blank" rel="noopener noreferrer">www.example.com</a>":</p>
+<h3 data-astro-cid-byeekcgh="">How we use it</h3>
+<p data-astro-cid-byeekcgh="">CloudFlare deals with massive packet floods on a daily basis. It's very important for us to be able to drop malicious traffic fast, long before it hits the application.</p>
+<p data-astro-cid-byeekcgh="">Unfortunately matching before the application is not easy. Basic iptables filtering, for example looking just at the source IP, doesn't work as floods get more sophisticated. The iptables module closest to our needs is<a href="http://www.stearns.org/doc/iptables-u32.current.html" target="_blank" rel="noopener noreferrer">"xt_u32"</a>, but it's hard to understand and somewhat limited. Though it's generally <a href="https://github.com/smurfmonitor/dns-iptables-rules/blob/master/domain-blacklist.txt" target="_blank" rel="noopener noreferrer">pretty useful</a>, and to make it easier people wrote <a href="http://www.bortzmeyer.org/files/generate-netfilter-u32-dns-rule.py" target="_blank" rel="noopener noreferrer">rule generators</a>.</p>
+<p data-astro-cid-byeekcgh="">But what works for us best is the "xp_bpf" iptables module by Willem de Bruijn. With it we can match an iptable rule based on any BPF expression.</p>
+<p data-astro-cid-byeekcgh="">Unfortunately, our BPF bytecode became pretty complex and it can't be written as a usual tcpdump expression any more. Instead we rely on a custom crafted BPF bytecode, for example, this is an "xt_bpf" bytecode that matches a DNS query for "<a href="http://www.example.com" target="_blank" rel="noopener noreferrer">www.example.com</a>":</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ld</span><span class="sk-6a737d-8b8b8b94"> #20</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">ldx</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-005cc5-a0a0a0">\*</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">\[0\]</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">0xf</span><span class="sk-24292e-fff">)</span></span>
@@ -85,18 +85,18 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">lb_0:<br>; Match: 076578616d706c6503636f6d00 '\x07example\x03com\x00'<br>ld [x + 0]<br>jneq #0x07657861, lb_1<br>ld [x + 4]<br>jneq #0x6d706c65, lb_1<br>ld [x + 8]<br>jneq #0x03636f6d, lb_1<br>ldb [x + 12]<br>jneq #0x00, lb_1<br>ret #1</p>
-<p data-astro-cid-yoyuw6fx="">lb_1:<br>ret #0</p>
-<p data-astro-cid-yoyuw6fx="">To compile it we use the tools from the <a href="https://github.com/torvalds/linux/tree/master/tools/net" target="_blank" rel="noopener noreferrer"><code>tools/net</code></a> directory:</p>
-<p data-astro-cid-yoyuw6fx="">$ bpf_asm drop_example_com.bpf<br>14,0 0 0 20,177 0 0 0,12 0 0 0,7 0 0 0,64 0 0 0,21 0 7 124090465,64 0 0 4,21 0 5 1836084325,64 0 0 8,21 0 3 56848237,80 0 0 12,21 0 1 0,6 0 0 1,6 0 0 0</p>
-<p data-astro-cid-yoyuw6fx="">Finally you can apply the rule like so:</p>
-<p data-astro-cid-yoyuw6fx="">iptables -A INPUT \<br>-p udp --dport 53 \<br>-m bpf --bytecode "14,0 0 0 20,177 0 0 0,12 0 0 0,7 0 0 0,64 0 0 0,21 0 7 124090465,64 0 0 4,21 0 5 1836084325,64 0 0 8,21 0 3 56848237,80 0 0 12,21 0 1 0,6 0 0 1,6 0 0 0," \<br>-j DROP</p>
-<p data-astro-cid-yoyuw6fx="">This is a fairly simple rule just looking for a particular bytes in the packet. The same could be achieved using "u32" or quot;string"modules. But "xt_bpf" gives us more flexibility. For example we can make the rule case insensitive:</p>
-<p data-astro-cid-yoyuw6fx="">...<br>lb_0:<br>; Match: 076578616d706c6503636f6d00 '\x07example\x03com\x00'<br>ld [x + 0]<br>or #0x00202020<br>jneq #0x07657861, lb_1<br>ld [x + 4]<br>or #0x20202020<br>jneq #0x6d706c65, lb_1<br>ld [x + 8]<br>or #0x00202020<br>jneq #0x03636f6d, lb_1<br>ldb [x + 12]<br>jneq #0x00, lb_1<br>ret #1<br>...</p>
-<p data-astro-cid-yoyuw6fx="">Or match all the subdomains of "example.com":</p>
-<p data-astro-cid-yoyuw6fx="">...<br>lb_0:<br>; Match: *<br>ldb [x + 0]<br>add x<br>add #1<br>tax<br>; Match: 076578616d706c6503636f6d00 '\x07example\x03com\x00'<br>ld [x + 0]<br>jneq #0x07657861, lb_1<br>ld [x + 4]<br>jneq #0x6d706c65, lb_1<br>ld [x + 8]<br>jneq #0x03636f6d, lb_1<br>ldb [x + 12]<br>jneq #0x00, lb_1<br>ret #1<br>...</p>
-<p data-astro-cid-yoyuw6fx="">These kind of rules are very useful, they allow us to pinpoint the malicious traffic and drop it early. Just in the last couple of weeks we dropped 870,213,889,941 packets with few BPF rules. Recently during a flood we saw 41 billion packets dropped throughout a night due to a single well placed rule.</p>
-<h3 data-astro-cid-yoyuw6fx="">Summary</h3>
-<p data-astro-cid-yoyuw6fx="">Just as intended by Steven McCanne and Van Jacobson, the BPF is still very useful and extremely fast. Even without enabling the BPF JIT we don't see any performance hit of applying complex BPF rules.</p>
-<p data-astro-cid-yoyuw6fx="">I'm sure we'll use more BPF filters in the future to shield ourselves from malicious traffic and to have more CPU to deal with legitimate requests.</p>
-<p data-astro-cid-yoyuw6fx="">Does generating BPF assembly sound like fun? <a href="http://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">We're hiring talented developers</a>, including to our <a href="https://blog.cloudflare.com/cloudflare-london-were-hiring">elite office in London</a>.</p>
+<p data-astro-cid-byeekcgh="">lb_0:<br>; Match: 076578616d706c6503636f6d00 '\x07example\x03com\x00'<br>ld [x + 0]<br>jneq #0x07657861, lb_1<br>ld [x + 4]<br>jneq #0x6d706c65, lb_1<br>ld [x + 8]<br>jneq #0x03636f6d, lb_1<br>ldb [x + 12]<br>jneq #0x00, lb_1<br>ret #1</p>
+<p data-astro-cid-byeekcgh="">lb_1:<br>ret #0</p>
+<p data-astro-cid-byeekcgh="">To compile it we use the tools from the <a href="https://github.com/torvalds/linux/tree/master/tools/net" target="_blank" rel="noopener noreferrer"><code>tools/net</code></a> directory:</p>
+<p data-astro-cid-byeekcgh="">$ bpf_asm drop_example_com.bpf<br>14,0 0 0 20,177 0 0 0,12 0 0 0,7 0 0 0,64 0 0 0,21 0 7 124090465,64 0 0 4,21 0 5 1836084325,64 0 0 8,21 0 3 56848237,80 0 0 12,21 0 1 0,6 0 0 1,6 0 0 0</p>
+<p data-astro-cid-byeekcgh="">Finally you can apply the rule like so:</p>
+<p data-astro-cid-byeekcgh="">iptables -A INPUT \<br>-p udp --dport 53 \<br>-m bpf --bytecode "14,0 0 0 20,177 0 0 0,12 0 0 0,7 0 0 0,64 0 0 0,21 0 7 124090465,64 0 0 4,21 0 5 1836084325,64 0 0 8,21 0 3 56848237,80 0 0 12,21 0 1 0,6 0 0 1,6 0 0 0," \<br>-j DROP</p>
+<p data-astro-cid-byeekcgh="">This is a fairly simple rule just looking for a particular bytes in the packet. The same could be achieved using "u32" or quot;string"modules. But "xt_bpf" gives us more flexibility. For example we can make the rule case insensitive:</p>
+<p data-astro-cid-byeekcgh="">...<br>lb_0:<br>; Match: 076578616d706c6503636f6d00 '\x07example\x03com\x00'<br>ld [x + 0]<br>or #0x00202020<br>jneq #0x07657861, lb_1<br>ld [x + 4]<br>or #0x20202020<br>jneq #0x6d706c65, lb_1<br>ld [x + 8]<br>or #0x00202020<br>jneq #0x03636f6d, lb_1<br>ldb [x + 12]<br>jneq #0x00, lb_1<br>ret #1<br>...</p>
+<p data-astro-cid-byeekcgh="">Or match all the subdomains of "example.com":</p>
+<p data-astro-cid-byeekcgh="">...<br>lb_0:<br>; Match: *<br>ldb [x + 0]<br>add x<br>add #1<br>tax<br>; Match: 076578616d706c6503636f6d00 '\x07example\x03com\x00'<br>ld [x + 0]<br>jneq #0x07657861, lb_1<br>ld [x + 4]<br>jneq #0x6d706c65, lb_1<br>ld [x + 8]<br>jneq #0x03636f6d, lb_1<br>ldb [x + 12]<br>jneq #0x00, lb_1<br>ret #1<br>...</p>
+<p data-astro-cid-byeekcgh="">These kind of rules are very useful, they allow us to pinpoint the malicious traffic and drop it early. Just in the last couple of weeks we dropped 870,213,889,941 packets with few BPF rules. Recently during a flood we saw 41 billion packets dropped throughout a night due to a single well placed rule.</p>
+<h3 data-astro-cid-byeekcgh="">Summary</h3>
+<p data-astro-cid-byeekcgh="">Just as intended by Steven McCanne and Van Jacobson, the BPF is still very useful and extremely fast. Even without enabling the BPF JIT we don't see any performance hit of applying complex BPF rules.</p>
+<p data-astro-cid-byeekcgh="">I'm sure we'll use more BPF filters in the future to shield ourselves from malicious traffic and to have more CPU to deal with legitimate requests.</p>
+<p data-astro-cid-byeekcgh="">Does generating BPF assembly sound like fun? <a href="http://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">We're hiring talented developers</a>, including to our <a href="https://blog.cloudflare.com/cloudflare-london-were-hiring">elite office in London</a>.</p>

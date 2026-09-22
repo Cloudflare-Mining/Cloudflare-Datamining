@@ -1,5 +1,5 @@
-<p data-astro-cid-yoyuw6fx="">If you're old enough (or interested enough) to have spent a lot of time messing around with the ASCII table then you might have run into a strange fact: it's possible to uppercase ASCII text using just bitwise AND.</p>
-<p data-astro-cid-yoyuw6fx="">And it turns out that in some situations this isn't just a curiosity, but actually useful. Here are the ASCII characters 0x20 (space) to 0x7E (tilde).</p>
+<p data-astro-cid-byeekcgh="">If you're old enough (or interested enough) to have spent a lot of time messing around with the ASCII table then you might have run into a strange fact: it's possible to uppercase ASCII text using just bitwise AND.</p>
+<p data-astro-cid-byeekcgh="">And it turns out that in some situations this isn't just a curiosity, but actually useful. Here are the ASCII characters 0x20 (space) to 0x7E (tilde).</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">     0123456789ABCDEF0123456789ABCDEF</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    +--------------------------------</span></span>
@@ -29,10 +29,10 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">It's immediately obvious that each lowercase letter has an ASCII code 0x20 more than the corresponding uppercase letter. For example, lowercase m is 0x6D and uppercase M is 0x4D. And since 0x20 is a single bit then it's possible to uppercase an ASCII letter by taking its code and applying <code>AND 0xDF</code> (masking out the 0x20 bit).</p>
-<p data-astro-cid-yoyuw6fx="">Performing <code>AND 0xDF</code> has no effect on the first two rows above: they, including the uppercase letters, are unchanged. Only the third row is affected. There the lowercase letters get uppercased but there's some collateral damage: `` { | } ~<code>change to</code>@ [ \ ] ^`.</p>
-<p data-astro-cid-yoyuw6fx="">But if you know that a string has a limited character set then this trick can come in handy. Lots of old protocols (SMTP, POP3, ...) use USASCII characters for their commands. DNS names are typically restricted to letters, numbers and -. Even HTTP recommends that use of USASCII for the HTTP header.</p>
-<p data-astro-cid-yoyuw6fx="">So, if you know that your string is <code>AND 0xDF</code>-safe then the following C code makes a very fast case-insensitive comparison:</p>
+<p data-astro-cid-byeekcgh="">It's immediately obvious that each lowercase letter has an ASCII code 0x20 more than the corresponding uppercase letter. For example, lowercase m is 0x6D and uppercase M is 0x4D. And since 0x20 is a single bit then it's possible to uppercase an ASCII letter by taking its code and applying <code>AND 0xDF</code> (masking out the 0x20 bit).</p>
+<p data-astro-cid-byeekcgh="">Performing <code>AND 0xDF</code> has no effect on the first two rows above: they, including the uppercase letters, are unchanged. Only the third row is affected. There the lowercase letters get uppercased but there's some collateral damage: `` { | } ~<code>change to</code>@ [ \ ] ^`.</p>
+<p data-astro-cid-byeekcgh="">But if you know that a string has a limited character set then this trick can come in handy. Lots of old protocols (SMTP, POP3, ...) use USASCII characters for their commands. DNS names are typically restricted to letters, numbers and -. Even HTTP recommends that use of USASCII for the HTTP header.</p>
+<p data-astro-cid-byeekcgh="">So, if you know that your string is <code>AND 0xDF</code>-safe then the following C code makes a very fast case-insensitive comparison:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Returns</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> if</span><span class="sk-032f62-99ffe4"> x</span><span class="sk-032f62-99ffe4"> ==</span><span class="sk-032f62-99ffe4"> y</span><span class="sk-24292e-fff"> (case </span><span class="sk-032f62-99ffe4">insensitive</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">int</span><span class="sk-032f62-99ffe4"> cmp</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> char</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">x,</span><span class="sk-032f62-99ffe4"> const</span><span class="sk-032f62-99ffe4"> char</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4"> y</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span></span>
@@ -48,4 +48,4 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">And that sort of low-level trickery turns out to matter when you are being hit by millions of DNS packets per second and need to make very, very fast filtering decisions.</p>
+<p data-astro-cid-byeekcgh="">And that sort of low-level trickery turns out to matter when you are being hit by millions of DNS packets per second and need to make very, very fast filtering decisions.</p>

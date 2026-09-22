@@ -1,18 +1,18 @@
-<p data-astro-cid-yoyuw6fx=""><em>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</em></p>
-<p data-astro-cid-yoyuw6fx="">Linuxのマルウェアは、Serkeley Packet Filter（BPF）ソケットプログラムに潜んでいます。BPFは、Linuxカーネルに埋め込んだ実行可能なロジックで、ネットワークトラフィックの処理方法をカスタマイズすることができます。インターネット上の最も執拗な脅威の一部は、これらのフィルターを使用して、特定の「マジック」パケットを受信するまで休止状態を維持します。これらのフィルターは何百もの命令になり、複雑な論理ジャンプを含むため、手作業によるリバースエンジニアリングはセキュリティ研究者にとってボトルネックとなります。</p>
-<p data-astro-cid-yoyuw6fx="">私たちはより良い方法を見つけるために、シンボリック実行を検討しました。これは、コードを単なる命令ではなく、一連の制約として扱う方法です。Z3証明者を使うことで、悪意のあるフィルターから逆算して、トリガーに必要なパケットを自動的に生成することができます。この記事では、何時間もかかる手作業による組み立て分析をわずか数秒で完了するタスクに、これを自動化するツールをどのように作ったかを説明します。</p>
-<h2 data-astro-cid-yoyuw6fx="">複雑さの上限</h2>
-<p data-astro-cid-yoyuw6fx="">悪意のあるフィルターの分解方法を見る前に、フィルターを実行しているエンジンを理解する必要があります。バークレーパケットフィルター（BPF）は、カーネルが一連のバイトコード指示に基づいてネットワークスタックから特定のパケットを引き出すことができる、非常に効率的な技術です。</p>
-<p data-astro-cid-yoyuw6fx="">可観測性とセキュリティに使用される強力な進化である<a href="https://blog.cloudflare.com/tag/ebpf" target="_blank" rel="noopener noreferrer">eBPF</a>（拡張BPF）は、多くの現代の開発者がご存知でしょうが、この記事では「classic」BPFに焦点を当てます。もともとtcpdumpなどのツール用に設計された従来のBPFは、わずか2つのレジスタを持つシンプルな仮想マシンを使用し、ネットワークトラフィックを高速に評価します。カーネルの内部で深く実行され、ユーザー空間のツールからトラフィックを「隠す」ことができるため、巧妙なバックドアを構築しようとするマルウェア作成者にとってお気に入りのツールとなっています。</p>
-<p data-astro-cid-yoyuw6fx=""><a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank" rel="noopener noreferrer"><u>LLM</u></a>を使用してBPF指示のコンテキスト表現を作成することで、アナリストの手作業によるオーバーヘッドはすでに削減されていますが、検証条件に対応するネットワークパケットを作成するには、LLMが提供するコンテキストが追加されても、依然として多くの作業が必要です。</p>
-<p data-astro-cid-yoyuw6fx="">ほとんどの場合、BPFプログラムに20個の命令しかない場合は問題ありませんが、一部のサンプルで観察されたように、BPFプログラムが100以上の命令で構成されている場合、指数関数的に複雑になり、時間がかかります。</p>
-<p data-astro-cid-yoyuw6fx="">問題を分解すると、結果に応じて実行パスを継続するか、停止して最終結果を確認するかの、バッファの読み取りと制約のチェックに確認できます。</p>
-<p data-astro-cid-yoyuw6fx="">決定論的な結果を持つこの種の問題は、与えられた制約で問題を解決する手段を持つ理論証明者であるZ3が解くことができます。</p>
-<h2 data-astro-cid-yoyuw6fx="">資料A：BPFDoor</h2>
-<p data-astro-cid-yoyuw6fx="">BPFDoorは、高度なパッシブLinuxバックドアであり、主に中国拠点の脅威アクター（別名：Earth Bluecrow）によるサイバースパイ活動に使用されます。少なくとも2021年以来活動しているこのマルウェアは、電気通信、教育、政府部門を標的とし、侵害されたネットワークに隠れた足掛かりを維持するように設計されており、特にアジアと中東での活動に重点を置いています。</p>
-<p data-astro-cid-yoyuw6fx="">BPFDoorは、BPFを使用して、特定のネットワークポートを開くことなく、すべての着信トラフィックを監視します。</p>
-<h3 data-astro-cid-yoyuw6fx="">BPFDoorの指示例</h3>
-<p data-astro-cid-yoyuw6fx=""><a href="https://www.fortinet.com/blog/threat-research/new-ebpf-filters-for-symbiote-and-bpfdoor-malware" target="_blank" rel="noopener noreferrer"><u>Fortinet</u></a>の調査で共有されたサンプル（82ed617816453eba2d755642e3efebfcbd19705ac626f6bc8ed238f4fc111bb0）に焦点を当ててみましょう。BPFの指示を分解して、注釈を追加すると、次のようになります。</p>
+<p data-astro-cid-byeekcgh=""><em>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</em></p>
+<p data-astro-cid-byeekcgh="">Linuxのマルウェアは、Serkeley Packet Filter（BPF）ソケットプログラムに潜んでいます。BPFは、Linuxカーネルに埋め込んだ実行可能なロジックで、ネットワークトラフィックの処理方法をカスタマイズすることができます。インターネット上の最も執拗な脅威の一部は、これらのフィルターを使用して、特定の「マジック」パケットを受信するまで休止状態を維持します。これらのフィルターは何百もの命令になり、複雑な論理ジャンプを含むため、手作業によるリバースエンジニアリングはセキュリティ研究者にとってボトルネックとなります。</p>
+<p data-astro-cid-byeekcgh="">私たちはより良い方法を見つけるために、シンボリック実行を検討しました。これは、コードを単なる命令ではなく、一連の制約として扱う方法です。Z3証明者を使うことで、悪意のあるフィルターから逆算して、トリガーに必要なパケットを自動的に生成することができます。この記事では、何時間もかかる手作業による組み立て分析をわずか数秒で完了するタスクに、これを自動化するツールをどのように作ったかを説明します。</p>
+<h2 data-astro-cid-byeekcgh="">複雑さの上限</h2>
+<p data-astro-cid-byeekcgh="">悪意のあるフィルターの分解方法を見る前に、フィルターを実行しているエンジンを理解する必要があります。バークレーパケットフィルター（BPF）は、カーネルが一連のバイトコード指示に基づいてネットワークスタックから特定のパケットを引き出すことができる、非常に効率的な技術です。</p>
+<p data-astro-cid-byeekcgh="">可観測性とセキュリティに使用される強力な進化である<a href="https://blog.cloudflare.com/tag/ebpf" target="_blank" rel="noopener noreferrer">eBPF</a>（拡張BPF）は、多くの現代の開発者がご存知でしょうが、この記事では「classic」BPFに焦点を当てます。もともとtcpdumpなどのツール用に設計された従来のBPFは、わずか2つのレジスタを持つシンプルな仮想マシンを使用し、ネットワークトラフィックを高速に評価します。カーネルの内部で深く実行され、ユーザー空間のツールからトラフィックを「隠す」ことができるため、巧妙なバックドアを構築しようとするマルウェア作成者にとってお気に入りのツールとなっています。</p>
+<p data-astro-cid-byeekcgh=""><a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank" rel="noopener noreferrer"><u>LLM</u></a>を使用してBPF指示のコンテキスト表現を作成することで、アナリストの手作業によるオーバーヘッドはすでに削減されていますが、検証条件に対応するネットワークパケットを作成するには、LLMが提供するコンテキストが追加されても、依然として多くの作業が必要です。</p>
+<p data-astro-cid-byeekcgh="">ほとんどの場合、BPFプログラムに20個の命令しかない場合は問題ありませんが、一部のサンプルで観察されたように、BPFプログラムが100以上の命令で構成されている場合、指数関数的に複雑になり、時間がかかります。</p>
+<p data-astro-cid-byeekcgh="">問題を分解すると、結果に応じて実行パスを継続するか、停止して最終結果を確認するかの、バッファの読み取りと制約のチェックに確認できます。</p>
+<p data-astro-cid-byeekcgh="">決定論的な結果を持つこの種の問題は、与えられた制約で問題を解決する手段を持つ理論証明者であるZ3が解くことができます。</p>
+<h2 data-astro-cid-byeekcgh="">資料A：BPFDoor</h2>
+<p data-astro-cid-byeekcgh="">BPFDoorは、高度なパッシブLinuxバックドアであり、主に中国拠点の脅威アクター（別名：Earth Bluecrow）によるサイバースパイ活動に使用されます。少なくとも2021年以来活動しているこのマルウェアは、電気通信、教育、政府部門を標的とし、侵害されたネットワークに隠れた足掛かりを維持するように設計されており、特にアジアと中東での活動に重点を置いています。</p>
+<p data-astro-cid-byeekcgh="">BPFDoorは、BPFを使用して、特定のネットワークポートを開くことなく、すべての着信トラフィックを監視します。</p>
+<h3 data-astro-cid-byeekcgh="">BPFDoorの指示例</h3>
+<p data-astro-cid-byeekcgh=""><a href="https://www.fortinet.com/blog/threat-research/new-ebpf-filters-for-symbiote-and-bpfdoor-malware" target="_blank" rel="noopener noreferrer"><u>Fortinet</u></a>の調査で共有されたサンプル（82ed617816453eba2d755642e3efebfcbd19705ac626f6bc8ed238f4fc111bb0）に焦点を当ててみましょう。BPFの指示を分解して、注釈を追加すると、次のようになります。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">000</span><span class="sk-24292e-fff">) ldh [</span><span class="sk-005cc5-ffc799">0xc</span><span class="sk-24292e-fff">]                   ; </span><span class="sk-6f42c1-ffc799">Read</span><span class="sk-24292e-fff"> halfword at offset </span><span class="sk-005cc5-ffc799">12</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">EtherType</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">001</span><span class="sk-24292e-fff">) jeq #</span><span class="sk-005cc5-ffc799">0x86dd</span><span class="sk-24292e-fff">, jt </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">, jf </span><span class="sk-005cc5-ffc799">6</span><span class="sk-24292e-fff">     ; </span><span class="sk-005cc5-ffc799">0x86DD</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">IPv6</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-24292e-fff"> ins </span><span class="sk-005cc5-ffc799">002</span><span class="sk-d73a49-a0a0a0"> else</span><span class="sk-24292e-fff"> ins </span><span class="sk-005cc5-ffc799">006</span></span>
@@ -53,16 +53,16 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">上記の例では、ACCEPTの結果につながる2つの経路（ステップ5とステップ13）が確立されています。また、そのオフセットや値を含め、特定のバイトがチェックされていることがはっきりとわかります。</p>
-<p data-astro-cid-yoyuw6fx="">これらの検証を行い、ACCEPTパスに一致するものを追跡すれば、パケットを自動的に作成できるはずです。</p>
-<h3 data-astro-cid-yoyuw6fx="">最短パスを計算する</h3>
-<p data-astro-cid-yoyuw6fx="">BPF指示で提示された条件を検証するパケットへの最短経路を見つけるには、望ましくない状態で終了していない経路を追跡しておく必要があります。</p>
-<p data-astro-cid-yoyuw6fx="">まずは小さなキューを作ることから始めます。このキューは、いくつかの重要なデータポイントを保持します。</p>
+<p data-astro-cid-byeekcgh="">上記の例では、ACCEPTの結果につながる2つの経路（ステップ5とステップ13）が確立されています。また、そのオフセットや値を含め、特定のバイトがチェックされていることがはっきりとわかります。</p>
+<p data-astro-cid-byeekcgh="">これらの検証を行い、ACCEPTパスに一致するものを追跡すれば、パケットを自動的に作成できるはずです。</p>
+<h3 data-astro-cid-byeekcgh="">最短パスを計算する</h3>
+<p data-astro-cid-byeekcgh="">BPF指示で提示された条件を検証するパケットへの最短経路を見つけるには、望ましくない状態で終了していない経路を追跡しておく必要があります。</p>
+<p data-astro-cid-byeekcgh="">まずは小さなキューを作ることから始めます。このキューは、いくつかの重要なデータポイントを保持します。</p>
 <ul>
 	<li>次の命令へのポインタ。</li>
 	<li>現在実行されている命令のパス＋次の命令までです。</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">条件をチェックしている命令に遭遇すると、ブール値を使用して結果を追跡し、これをキューに保存します。これにより、ACCEPT条件に到達する前の条件量のパスを比較し、最短のパスを計算することができます。擬似コードでは、これは次のように最適に表現できます：</p>
+<p data-astro-cid-byeekcgh="">条件をチェックしている命令に遭遇すると、ブール値を使用して結果を追跡し、これをキューに保存します。これにより、ACCEPT条件に到達する前の条件量のパスを比較し、最短のパスを計算することができます。擬似コードでは、これは次のように最適に表現できます：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">paths </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> []</span></span>
 <span class="line"><span class="sk-24292e-fff">queue </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> dequeue([(</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, [</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">])])</span></span>
@@ -100,7 +100,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">先ほどのBPFDoorの例に対してこのロジックを実行すると、受け入れられたパケットへの最短パスが表示されます。</p>
+<p data-astro-cid-byeekcgh="">先ほどのBPFDoorの例に対してこのロジックを実行すると、受け入れられたパケットへの最短パスが表示されます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">000</span><span class="sk-24292e-fff">) code</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0x28</span><span class="sk-24292e-fff"> jt</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff"> jf</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">  k</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0xc</span><span class="sk-24292e-fff">     ; </span><span class="sk-6f42c1-ffc799">Read</span><span class="sk-24292e-fff"> halfword at offset </span><span class="sk-005cc5-ffc799">12</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">EtherType</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">001</span><span class="sk-24292e-fff">) code</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0x15</span><span class="sk-24292e-fff"> jt</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff"> jf</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">4</span><span class="sk-24292e-fff">  k</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0x86dd</span><span class="sk-24292e-fff">  ; </span><span class="sk-6f42c1-ffc799">IPv6</span><span class="sk-24292e-fff"> packet</span></span>
@@ -114,15 +114,15 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">これは、BPF指示を分析し、バックドアのために受け入れられたパケットがどのように見えるかを理解する際に、BPF制約を自動的に解決するのに役立つ自動化機能です。しかし、さらに一歩踏み込むことができるとしたらどうでしょう。</p>
-<p data-astro-cid-yoyuw6fx="">もし、期待されたパケットを自動化された方法で返してくれる小さなツールを作成できたらどうなるでしょうか？</p>
-<h2 data-astro-cid-yoyuw6fx="">Z3とScapyの採用</h2>
-<p data-astro-cid-yoyuw6fx="">一連の制約が与えられた問題を解決するのに最適なツールの1つが、<a href="https://github.com/z3Prover/z3" target="_blank" rel="noopener noreferrer"><u>Z3</u></a>です。Microsoftが開発したこのツールは、定説証明者と名付けられ、内部で非常に複雑な数学的操作を行う使いやすい関数を公開します。</p>
-<p data-astro-cid-yoyuw6fx="">有効なマジックパケットを作成するために使用するもう1つのツールは、対話型のパケット操作のための人気のPythonライブラリである<a href="https://github.com/secdev/scapy" target="_blank" rel="noopener noreferrer"><u>scapy</u></a>です。</p>
-<p data-astro-cid-yoyuw6fx="">受け入れられたパケットへのパスを見つける方法がすでにあるので、この問題自体を解決し、この解決策をネットワークパケットのそれぞれのオフセットのバイトに変換するだけです。</p>
-<h3 data-astro-cid-yoyuw6fx="">シンボリック実行</h3>
-<p data-astro-cid-yoyuw6fx="">あるプログラムで実行されるパスを調べるのは、シンボリック実行と呼ばれるのが一般的な手法です。このテクニックでは、制約を含め変数として使用できる入力を与えています。成功したパスの結果を知ることで、ツールを調整してこれらの成功したパスをすべて見つけ、最終結果をコンテキストに基づいた形式で表示することができます。</p>
-<p data-astro-cid-yoyuw6fx="">これを機能させるためには、定数、レジスタ、さまざまなブール演算子などの状態を、チェックされている条件の結果として追跡できる小さなマシンを実装する必要があります。</p>
+<p data-astro-cid-byeekcgh="">これは、BPF指示を分析し、バックドアのために受け入れられたパケットがどのように見えるかを理解する際に、BPF制約を自動的に解決するのに役立つ自動化機能です。しかし、さらに一歩踏み込むことができるとしたらどうでしょう。</p>
+<p data-astro-cid-byeekcgh="">もし、期待されたパケットを自動化された方法で返してくれる小さなツールを作成できたらどうなるでしょうか？</p>
+<h2 data-astro-cid-byeekcgh="">Z3とScapyの採用</h2>
+<p data-astro-cid-byeekcgh="">一連の制約が与えられた問題を解決するのに最適なツールの1つが、<a href="https://github.com/z3Prover/z3" target="_blank" rel="noopener noreferrer"><u>Z3</u></a>です。Microsoftが開発したこのツールは、定説証明者と名付けられ、内部で非常に複雑な数学的操作を行う使いやすい関数を公開します。</p>
+<p data-astro-cid-byeekcgh="">有効なマジックパケットを作成するために使用するもう1つのツールは、対話型のパケット操作のための人気のPythonライブラリである<a href="https://github.com/secdev/scapy" target="_blank" rel="noopener noreferrer"><u>scapy</u></a>です。</p>
+<p data-astro-cid-byeekcgh="">受け入れられたパケットへのパスを見つける方法がすでにあるので、この問題自体を解決し、この解決策をネットワークパケットのそれぞれのオフセットのバイトに変換するだけです。</p>
+<h3 data-astro-cid-byeekcgh="">シンボリック実行</h3>
+<p data-astro-cid-byeekcgh="">あるプログラムで実行されるパスを調べるのは、シンボリック実行と呼ばれるのが一般的な手法です。このテクニックでは、制約を含め変数として使用できる入力を与えています。成功したパスの結果を知ることで、ツールを調整してこれらの成功したパスをすべて見つけ、最終結果をコンテキストに基づいた形式で表示することができます。</p>
+<p data-astro-cid-byeekcgh="">これを機能させるためには、定数、レジスタ、さまざまなブール演算子などの状態を、チェックされている条件の結果として追跡できる小さなマシンを実装する必要があります。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> BPFPacketCrafter</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-005cc5-fff">    MIN_PKT_SIZE</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-ffc799"> 64</span><span class="sk-6a737d-8b8b8b94">           # Minimum packet size (Ethernet + IP + UDP headers)</span></span>
@@ -149,7 +149,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">上記のコードで、シンボリックな実行中に状態を維持するためのマシンの大部分をカバーすることができました。もちろん、記録しておく必要のある条件はもっとありますが、これらは解決の過程で処理されます。ADD命令を処理するために、マシンはBPF操作をZ3追加にマッピングします。</p>
+<p data-astro-cid-byeekcgh="">上記のコードで、シンボリックな実行中に状態を維持するためのマシンの大部分をカバーすることができました。もちろん、記録しておく必要のある条件はもっとありますが、これらは解決の過程で処理されます。ADD命令を処理するために、マシンはBPF操作をZ3追加にマッピングします。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">def</span><span class="sk-6f42c1-ffc799"> _execute_ins</span><span class="sk-24292e-fff">(self, insn: BPFInsn):</span></span>
 <span class="line"><span class="sk-005cc5-a0a0a0">    cls</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> insn.cls</span></span>
@@ -163,8 +163,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">幸いなことに、BPF命令セットは実装が比較的簡単な小さな命令セットしかなく、2つのレジスタだけを追跡するのは、間違いなく歓迎すべき制約です！</p>
-<p data-astro-cid-yoyuw6fx="">このシンボリックな実行の全体的な仕組みは、以下のように抽象化された概要で説明することができます：</p>
+<p data-astro-cid-byeekcgh="">幸いなことに、BPF命令セットは実装が比較的簡単な小さな命令セットしかなく、2つのレジスタだけを追跡するのは、間違いなく歓迎すべき制約です！</p>
+<p data-astro-cid-byeekcgh="">このシンボリックな実行の全体的な仕組みは、以下のように抽象化された概要で説明することができます：</p>
 <ul>
 	<li>「x」（インデックス）と「a」（累積コンピュータ）レジスタをベースの状態に初期化します。</li>
 	<li>成功パスとして識別されたパスからの指示をループさせます。<ul>
@@ -176,7 +176,7 @@
 	<li>Z3ビットベクトル配列をバイトに変換します。</li>
 	<li>scapyを使用して、変換されたバイトのパケットを構築します。</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">Z3リゾルバーによって構築される制約を見ると、Z3がパケットバイトを構築するために取る実行ステップを追跡することができます。</p>
+<p data-astro-cid-byeekcgh="">Z3リゾルバーによって構築される制約を見ると、Z3がパケットバイトを構築するために取る実行ステップを追跡することができます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[</span><span class="sk-6f42c1-ffc799">If</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Concat</span><span class="sk-24292e-fff">(pkt_12, pkt_13) </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-005cc5-ffc799"> 0x800</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">    pkt_14 </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-005cc5-ffc799"> 0xF0</span><span class="sk-d73a49-a0a0a0"> ==</span><span class="sk-005cc5-ffc799"> 0x40</span><span class="sk-24292e-fff">,</span></span>
@@ -194,7 +194,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Z3表示の制約の最初の部分は、リンク層のBPF指示を処理する際に、有効なイーサネットIPを構築するために追加された制約です。「If」文は、検出されるプロトコルに基づいて特定の制約を適用します。</p>
+<p data-astro-cid-byeekcgh="">Z3表示の制約の最初の部分は、リンク層のBPF指示を処理する際に、有効なイーサネットIPを構築するために追加された制約です。「If」文は、検出されるプロトコルに基づいて特定の制約を適用します。</p>
 <ul>
 	<li>IPv4 Logic (0x0800):<ul>
 			<li>pkt_14 &amp; 240 == 64: Byte 14はIPヘッダーの始まりです。0xF0マスクは、ハイニブル（Versionフィールド）を分離して、バージョンが4（0x40）かどうかを確認します。</li>
@@ -206,15 +206,15 @@
 		</ul>
 	</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">異なる値がチェックされている2番目の部分を見ると、ネットワークパケット値が確認できます。</p>
+<p data-astro-cid-byeekcgh="">異なる値がチェックされている2番目の部分を見ると、ネットワークパケット値が確認できます。</p>
 <ul>
 	<li>0x86DD: IPv6ヘッダーのパケット条件。</li>
 	<li>0x11: UDPプロトコル番号。</li>
 	<li>0x35: 宛先ポート（53）。</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">予想される値の横に、指定されたパケット（例：pkt_12, pkt_13)。</p>
-<h3 data-astro-cid-yoyuw6fx="">パケットの作成</h3>
-<p data-astro-cid-yoyuw6fx="">これで、どのバイトが特定のオフセットに存在すべきかが確立されたので、それをscapyを使って実際のネットワークパケットに変換することができます。以前のZ3制約のバイトから新しいパケットを生成すると、パケットがどのようなものになるかを明確に確認でき、これをさらなる処理のために保存することができます。</p>
+<p data-astro-cid-byeekcgh="">予想される値の横に、指定されたパケット（例：pkt_12, pkt_13)。</p>
+<h3 data-astro-cid-byeekcgh="">パケットの作成</h3>
+<p data-astro-cid-byeekcgh="">これで、どのバイトが特定のオフセットに存在すべきかが確立されたので、それをscapyを使って実際のネットワークパケットに変換することができます。以前のZ3制約のバイトから新しいパケットを生成すると、パケットがどのようなものになるかを明確に確認でき、これをさらなる処理のために保存することができます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">###[ Ethernet ]###</span></span>
 <span class="line"><span class="sk-24292e-fff">  dst       </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">00</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">00</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">00</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">00</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">00</span></span>
@@ -239,8 +239,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">これらの新しく作成されたパケットは、ネットワーク上でこれらをスキャンすることで、これらのインプラントの存在を特定するために、さらなる調査や特定に使用することができます。</p>
-<h2 data-astro-cid-yoyuw6fx="">ご自身で試してみてください</h2>
-<p data-astro-cid-yoyuw6fx="">特定のBPF指示が何をしているのかを理解するのは、面倒で時間のかかる作業です。この例は、合計16の指示に過ぎませんが、私たちは、理解するのに少なくとも1日はかかる200以上の命令を検出したことがあります。Z3リゾルバーを使って、この時間をわずか数秒に短縮し、受け入れられたパケットへのパスだけでなく、そのためのパケットスクレイピングも表示できるようになりました。</p>
-<p data-astro-cid-yoyuw6fx="">当社は、コミュニティがBPFベースのインプラントの分解を自動化できるように、<strong>filterforge</strong>ツールをオープンソース化しました。ソースコードと使用例は、<a href="https://github.com/cloudflare/filterforge" target="_blank" rel="noopener noreferrer"><u>弊社のGitHubリポジトリ</u></a>でご覧いただけます。</p>
-<p data-astro-cid-yoyuw6fx="">この調査結果を公開し、アナリストがBPFの指示を理解するのに費やす時間を削減するためのツールを共有することで、他の人がこの形態の自動化を拡大するためにさらに研究を進めることを願っています。</p>
+<p data-astro-cid-byeekcgh="">これらの新しく作成されたパケットは、ネットワーク上でこれらをスキャンすることで、これらのインプラントの存在を特定するために、さらなる調査や特定に使用することができます。</p>
+<h2 data-astro-cid-byeekcgh="">ご自身で試してみてください</h2>
+<p data-astro-cid-byeekcgh="">特定のBPF指示が何をしているのかを理解するのは、面倒で時間のかかる作業です。この例は、合計16の指示に過ぎませんが、私たちは、理解するのに少なくとも1日はかかる200以上の命令を検出したことがあります。Z3リゾルバーを使って、この時間をわずか数秒に短縮し、受け入れられたパケットへのパスだけでなく、そのためのパケットスクレイピングも表示できるようになりました。</p>
+<p data-astro-cid-byeekcgh="">当社は、コミュニティがBPFベースのインプラントの分解を自動化できるように、<strong>filterforge</strong>ツールをオープンソース化しました。ソースコードと使用例は、<a href="https://github.com/cloudflare/filterforge" target="_blank" rel="noopener noreferrer"><u>弊社のGitHubリポジトリ</u></a>でご覧いただけます。</p>
+<p data-astro-cid-byeekcgh="">この調査結果を公開し、アナリストがBPFの指示を理解するのに費やす時間を削減するためのツールを共有することで、他の人がこの形態の自動化を拡大するためにさらに研究を進めることを願っています。</p>

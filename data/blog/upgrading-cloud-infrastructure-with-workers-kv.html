@@ -1,27 +1,27 @@
-<p data-astro-cid-yoyuw6fx=""><em>This is a guest post by</em> <em><a href="https://twitter.com/bcnzer" target="_blank" rel="noopener noreferrer">Ben Chartrand</a>, who is a Development Manager at</em> <em><a href="https://www.gettimely.com" target="_blank" rel="noopener noreferrer">Timely</a>. You can check out some of Ben's other Workers projects on his</em> <a href="https://github.com/bcnzer" target="_blank" rel="noopener noreferrer"><em>GitHub</em></a> <em>and his</em> <em><a href="https://liftcodeplay.com" target="_blank" rel="noopener noreferrer">blog</a>.</em></p>
-<p data-astro-cid-yoyuw6fx="">At <a href="https://www.gettimely.com" target="_blank" rel="noopener noreferrer">Timely</a> we started a project to migrate our web applications from legacy Azure services to a modern PaaS offering. In theory it meant no code changes.</p>
-<p data-astro-cid-yoyuw6fx="">We decided to start with our webhooks. All our endpoints can be grouped into four categories:</p>
+<p data-astro-cid-byeekcgh=""><em>This is a guest post by</em> <em><a href="https://twitter.com/bcnzer" target="_blank" rel="noopener noreferrer">Ben Chartrand</a>, who is a Development Manager at</em> <em><a href="https://www.gettimely.com" target="_blank" rel="noopener noreferrer">Timely</a>. You can check out some of Ben's other Workers projects on his</em> <a href="https://github.com/bcnzer" target="_blank" rel="noopener noreferrer"><em>GitHub</em></a> <em>and his</em> <em><a href="https://liftcodeplay.com" target="_blank" rel="noopener noreferrer">blog</a>.</em></p>
+<p data-astro-cid-byeekcgh="">At <a href="https://www.gettimely.com" target="_blank" rel="noopener noreferrer">Timely</a> we started a project to migrate our web applications from legacy Azure services to a modern PaaS offering. In theory it meant no code changes.</p>
+<p data-astro-cid-byeekcgh="">We decided to start with our webhooks. All our endpoints can be grouped into four categories:</p>
 <ol>
 	<li>Integration with internal tools i.e. HelpScout, monitoring endpoint for PagerDuty</li>
 	<li>Payment confirmations</li>
 	<li>Calendar integrations i.e. Google Calendar</li>
 	<li>SMS confirmations</li>
 </ol>
-<p data-astro-cid-yoyuw6fx="">Despite their limited number, these are vitally important. We did a lot of testing but it was clear we’d only really know if everything was working once we had production traffic. How could we migrate traffic?</p>
-<h3 data-astro-cid-yoyuw6fx="">Option 1</h3>
-<p data-astro-cid-yoyuw6fx="">Change the CNAME to point to the new hosting infrastructure. This is high risk. DNS takes time to propagate so, if we needed to roll back, it would take time. We would also be shifting over everything at once.</p>
-<h3 data-astro-cid-yoyuw6fx="">Option 2</h3>
-<p data-astro-cid-yoyuw6fx="">Use a traffic manager to shift a percentage of traffic using Cloudflare Load Balancing. We could start at, say, 5% traffic to the new infrastructure and, assuming everything appears to be ok, slowly increase the traffic.</p>
-<p data-astro-cid-yoyuw6fx="">In our case the vast majority of our traffic goes to our calendar integration endpoints. The other endpoints were unlikely to receive traffic, especially if started with just 5% of traffic. This wasn’t the best option.</p>
-<h3 data-astro-cid-yoyuw6fx="">Enter Option 3: Cloudflare Workers and Workers KV</h3>
-<p data-astro-cid-yoyuw6fx="">I remember thinking: wouldn’t it be great if we could migrate traffic one endpoint at a time? We have about 20. We could start at the low risk endpoints and progressively move our way up.</p>
-<p data-astro-cid-yoyuw6fx="">We were able to write a Cloudflare Worker script that:</p>
+<p data-astro-cid-byeekcgh="">Despite their limited number, these are vitally important. We did a lot of testing but it was clear we’d only really know if everything was working once we had production traffic. How could we migrate traffic?</p>
+<h3 data-astro-cid-byeekcgh="">Option 1</h3>
+<p data-astro-cid-byeekcgh="">Change the CNAME to point to the new hosting infrastructure. This is high risk. DNS takes time to propagate so, if we needed to roll back, it would take time. We would also be shifting over everything at once.</p>
+<h3 data-astro-cid-byeekcgh="">Option 2</h3>
+<p data-astro-cid-byeekcgh="">Use a traffic manager to shift a percentage of traffic using Cloudflare Load Balancing. We could start at, say, 5% traffic to the new infrastructure and, assuming everything appears to be ok, slowly increase the traffic.</p>
+<p data-astro-cid-byeekcgh="">In our case the vast majority of our traffic goes to our calendar integration endpoints. The other endpoints were unlikely to receive traffic, especially if started with just 5% of traffic. This wasn’t the best option.</p>
+<h3 data-astro-cid-byeekcgh="">Enter Option 3: Cloudflare Workers and Workers KV</h3>
+<p data-astro-cid-byeekcgh="">I remember thinking: wouldn’t it be great if we could migrate traffic one endpoint at a time? We have about 20. We could start at the low risk endpoints and progressively move our way up.</p>
+<p data-astro-cid-byeekcgh="">We were able to write a Cloudflare Worker script that:</p>
 <ul>
 	<li>Detected the path i.e. <em>/webhooks/paypal</em></li>
 	<li>If the path matched one our endpoints, we checked Workers KV (Key Value storage) to see if that endpoint was enabled. This was our feature flag / setting</li>
 	<li>If it was enabled and the path matched we redirected to the new infrastructure. This involved changing the domain but otherwise keeping the request as-is i.e. <strong>webhooks.currentdomain.com/webhooks/paypal</strong> to <strong>webhooks.newinfrastructure.com/webhooks/paypal</strong></li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">The first step was to add <code>passThroughOnException</code> mentioned in <a href="https://blog.cloudflare.com/dogfooding-edge-workers">this post</a>.</p>
+<p data-astro-cid-byeekcgh="">The first step was to add <code>passThroughOnException</code> mentioned in <a href="https://blog.cloudflare.com/dogfooding-edge-workers">this post</a>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener(</span><span class="sk-6f42c1-ffc799">'fetch'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> event</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> event.passThroughOnException</span><span class="sk-24292e-fff">()</span></span>
@@ -50,7 +50,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">Next, in the handleRequest method, I created a map of each endpoint (the path) and the corresponding Workers KV key, so I know where to look for the setting.</p>
+<p data-astro-cid-byeekcgh="">Next, in the handleRequest method, I created a map of each endpoint (the path) and the corresponding Workers KV key, so I know where to look for the setting.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> endpoints</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> Map</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   endpoints.set(</span><span class="sk-6f42c1-ffc799">'/monitoring'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> 'monitoring'</span><span class="sk-24292e-fff">)</span></span>
@@ -62,7 +62,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Next I inspect the path for each request. If the path matches then we check the setting. If so, we set a redirect flag.</p>
+<p data-astro-cid-byeekcgh="">Next I inspect the path for each request. If the path matches then we check the setting. If so, we set a redirect flag.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">   for</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">var</span><span class="sk-24292e-fff"> [key, </span><span class="sk-032f62-99ffe4">value]</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> endpoints.entries</span><span class="sk-24292e-fff">()) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">     if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">currentUrl.pathname.startsWith(key</span><span class="sk-24292e-fff">)) {</span></span>
@@ -79,7 +79,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">If the redirect flag is true we change the hostname in the request but leave everything else as-is. This involves creating a new Request object. If we are not redirecting we fetch the request.</p>
+<p data-astro-cid-byeekcgh="">If the redirect flag is true we change the hostname in the request but leave everything else as-is. This involves creating a new Request object. If we are not redirecting we fetch the request.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">   //</span><span class="sk-032f62-99ffe4"> Handle</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> request</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">   let</span><span class="sk-032f62-99ffe4"> response</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> null</span></span>
@@ -105,7 +105,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">Complete Code</h3>
+<h3 data-astro-cid-byeekcgh="">Complete Code</h3>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener(</span><span class="sk-6f42c1-ffc799">'fetch'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> event</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> event.passThroughOnException</span><span class="sk-24292e-fff">()</span></span>
@@ -177,32 +177,32 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">Why use Workers KV?</h3>
-<p data-astro-cid-yoyuw6fx="">We could have written everything as a hard coded script, which was updated each time to enable/disable redirection of traffic. This would require the team to make code changes and deploy the worker every time we wanted to make a change.</p>
-<p data-astro-cid-yoyuw6fx="">Using Workers KV, I enabled any member of the team to enable/disable endpoints using the Cloudflare API. To make things easier I created a Postman collection and shared it.</p>
-<h3 data-astro-cid-yoyuw6fx="">Go Live Problems - and Solutions!</h3>
-<p data-astro-cid-yoyuw6fx="">We went live with our first endpoint. The Workers script and KV worked fine but I noticed a small number of exceptions were being reported in Workers &gt; Worker Status.</p>
+<h3 data-astro-cid-byeekcgh="">Why use Workers KV?</h3>
+<p data-astro-cid-byeekcgh="">We could have written everything as a hard coded script, which was updated each time to enable/disable redirection of traffic. This would require the team to make code changes and deploy the worker every time we wanted to make a change.</p>
+<p data-astro-cid-byeekcgh="">Using Workers KV, I enabled any member of the team to enable/disable endpoints using the Cloudflare API. To make things easier I created a Postman collection and shared it.</p>
+<h3 data-astro-cid-byeekcgh="">Go Live Problems - and Solutions!</h3>
+<p data-astro-cid-byeekcgh="">We went live with our first endpoint. The Workers script and KV worked fine but I noticed a small number of exceptions were being reported in Workers &gt; Worker Status.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="447" height="324" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JWQEHMJW6N5T9WAF3TB5.png&amp;w=447&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JWQEHMJW6N5T9WAF3TB5.png&amp;w=447&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 447w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JWQEHMJW6N5T9WAF3TB5.png&amp;w=640&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JWQEHMJW6N5T9WAF3TB5.png&amp;w=750&amp;h=544&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JWQEHMJW6N5T9WAF3TB5.png&amp;w=828&amp;h=600&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JWQEHMJW6N5T9WAF3TB5.png&amp;w=894&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 894w" alt="Upgrading Cloud Infrastructure Made Easier and Safer Using Cloudflare Workers and Workers KV Embedded Image - BZPG8I" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JWQEHMJW6N5T9WAF3TB5.png&amp;w=447&amp;h=324&amp;f=webp" data-lightbox-width="447" data-lightbox-height="324" data-astro-cid-7nvefuv6="true" sizes="(min-width: 447px) 447px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="447" height="324" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-yoyuw6fx="">Cloudflare provides <a href="https://www.google.com/url?q=https%3A%2F%2Fdevelopers.cloudflare.com%2Fworkers%2Fwriting-workers%2Fdebugging-tips%2F&amp;sa=D&amp;ust=1547151883991000" target="_blank" rel="noopener noreferrer">Debugging Tips</a>. I followed the section “Make subrequests to your debug server” and decided to incorporate <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.loggly.com%2F&amp;sa=D&amp;ust=1547151883991000" target="_blank" rel="noopener noreferrer">Loggly</a>. I could now catch the exceptions and send it to Loggly by running a POST using <code>fetch</code> to the URL provided by Loggly. With this I quickly determined what the problem was and corrected the issue.</p>
-<p data-astro-cid-yoyuw6fx="">Another problem that came up was a plethora of 403s. This was highly visible in the Workers &gt; Status Code graph (the green).</p>
+<p data-astro-cid-byeekcgh="">Cloudflare provides <a href="https://www.google.com/url?q=https%3A%2F%2Fdevelopers.cloudflare.com%2Fworkers%2Fwriting-workers%2Fdebugging-tips%2F&amp;sa=D&amp;ust=1547151883991000" target="_blank" rel="noopener noreferrer">Debugging Tips</a>. I followed the section “Make subrequests to your debug server” and decided to incorporate <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.loggly.com%2F&amp;sa=D&amp;ust=1547151883991000" target="_blank" rel="noopener noreferrer">Loggly</a>. I could now catch the exceptions and send it to Loggly by running a POST using <code>fetch</code> to the URL provided by Loggly. With this I quickly determined what the problem was and corrected the issue.</p>
+<p data-astro-cid-byeekcgh="">Another problem that came up was a plethora of 403s. This was highly visible in the Workers &gt; Status Code graph (the green).</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="422" height="445" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462CPX1Z4EHC1W8NRAJ7AW.png&amp;w=422&amp;h=445&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462CPX1Z4EHC1W8NRAJ7AW.png&amp;w=422&amp;h=445&amp;f=webp&amp;fit=cover&amp;position=center 422w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462CPX1Z4EHC1W8NRAJ7AW.png&amp;w=640&amp;h=675&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462CPX1Z4EHC1W8NRAJ7AW.png&amp;w=750&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462CPX1Z4EHC1W8NRAJ7AW.png&amp;w=828&amp;h=873&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462CPX1Z4EHC1W8NRAJ7AW.png&amp;w=844&amp;h=890&amp;f=webp&amp;fit=cover&amp;position=center 844w" alt="Upgrading Cloud Infrastructure Made Easier and Safer Using Cloudflare Workers and Workers KV Embedded Image - OTphio" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462CPX1Z4EHC1W8NRAJ7AW.png&amp;w=422&amp;h=445&amp;f=webp" data-lightbox-width="422" data-lightbox-height="445" data-astro-cid-7nvefuv6="true" sizes="(min-width: 422px) 422px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="422" height="445" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-yoyuw6fx="">Turns out our IIS box had <a href="https://docs.microsoft.com/en-us/iis/configuration/system.webserver/security/dynamicipsecurity/denybyrequestrate" target="_blank" rel="noopener noreferrer">rate limiting</a> setup. Instead of returning a 429 (Too Many Requests), it returned 403 (Forbidden). Phew - it wasn’t an issue with my Worker or the new infrastructure!</p>
-<p data-astro-cid-yoyuw6fx="">We could have set up the rate limiting on the new infrastructure but we instead opted for <a href="https://www.cloudflare.com/rate-limiting" target="_blank" rel="noopener noreferrer">Cloudflare Rate Limiting</a>. It was cheap, easy to setup and meant the blocked requests didn’t even hit our infrastructure in the first place.</p>
-<h3 data-astro-cid-yoyuw6fx="">Where to From Here?</h3>
-<p data-astro-cid-yoyuw6fx="">As I write this we’ve transitioned all traffic. All endpoints are enabled. Once we’re ready to decommission the old infrastructure we will:</p>
+<p data-astro-cid-byeekcgh="">Turns out our IIS box had <a href="https://docs.microsoft.com/en-us/iis/configuration/system.webserver/security/dynamicipsecurity/denybyrequestrate" target="_blank" rel="noopener noreferrer">rate limiting</a> setup. Instead of returning a 429 (Too Many Requests), it returned 403 (Forbidden). Phew - it wasn’t an issue with my Worker or the new infrastructure!</p>
+<p data-astro-cid-byeekcgh="">We could have set up the rate limiting on the new infrastructure but we instead opted for <a href="https://www.cloudflare.com/rate-limiting" target="_blank" rel="noopener noreferrer">Cloudflare Rate Limiting</a>. It was cheap, easy to setup and meant the blocked requests didn’t even hit our infrastructure in the first place.</p>
+<h3 data-astro-cid-byeekcgh="">Where to From Here?</h3>
+<p data-astro-cid-byeekcgh="">As I write this we’ve transitioned all traffic. All endpoints are enabled. Once we’re ready to decommission the old infrastructure we will:</p>
 <ul>
 	<li>Change the CNAME to point to the new infrastructure</li>
 	<li>Disable the worker</li>
 	<li>Celebrate!</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">We’ll then move onto our new web application, such as our API or main web app. We’re likely to use one of two options:</p>
+<p data-astro-cid-byeekcgh="">We’ll then move onto our new web application, such as our API or main web app. We’re likely to use one of two options:</p>
 <ol>
 	<li>Use the traffic manager to migrate a percentage of traffic</li>
 	<li>Migrate traffic on a per-customer basis. It would be similar to above except we would store a setting per-customer (KV would store a setting per customer and we know the customer by the request header, which would have the customer ID). We could, for example, start with internal test accounts, then our beta users and, at the very end, migrate our VIPs.</li>
 </ol>
-<p data-astro-cid-yoyuw6fx="">Upgrading Cloud Infrastructure Made Easier and Safer Using Cloudflare Workers and Workers KV</p>
+<p data-astro-cid-byeekcgh="">Upgrading Cloud Infrastructure Made Easier and Safer Using Cloudflare Workers and Workers KV</p>

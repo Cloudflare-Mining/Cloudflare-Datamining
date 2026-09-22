@@ -1,18 +1,18 @@
-<p data-astro-cid-yoyuw6fx=""><em>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</em></p>
-<p data-astro-cid-yoyuw6fx="">ストリームでデータを処理することは、アプリケーションを構築する方法の基本です。あらゆる場所でストリーミングを機能させるために、<a href="https://streams.spec.whatwg.org" target="_blank" rel="noopener noreferrer"><u>WHATWG Streams Standard</u></a>（非公式には「Webストリーム」として知られる）は、ブラウザとサーバー間で動作する共通のAPIを確立するように設計されました。ブラウザに出荷され、Cloudflare Workers、Node.js、Deno、Bunそして、<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank" rel="noopener noreferrer"><u>fetch()</u></a>のようなAPIの基盤となりました。これは大仕事で、設計した人たちは、当時できていた制約とツールで難題を解決していました。</p>
-<p data-astro-cid-yoyuw6fx="">しかし、長年Webストリームを構築し、Node.jsとCloudflare Workersの両方で実装し、お客様とランタイムの本番環境の問題をデバッグし、開発者があまりにも多くのよくある落とし穴を通過できるようにしてきた結果、標準的なAPIには多くのリスクがあると確信するようになりました。段階的な改善だけでは簡単に修正できない基本的なユーザビリティとパフォーマンスの問題を解決することができます。問題はバグではなく、それらは、10年前なら理にかなっていたかもしれない設計上の判断の結果ですが、現在のJavaScript開発者のコードの書き方とは一致しません。</p>
-<p data-astro-cid-yoyuw6fx="">この記事では、Webストリームの基本的な問題をいくつか探り、JavaScriptの言語プリミティブに関連して構築された代替アプローチを紹介して、もっと良いものになることを実証します。</p>
-<p data-astro-cid-yoyuw6fx="">ベンチマークでは、この代替手段は、Webストリームよりも2倍から<em>120倍</em>速く、私がテストしたすべてのランタイム（Cloudflare Workers、Node.jsなど）で実行できます。Deno、Bun、主要ブラウザなど）に対応しています。この改善は、賢い最適化によるものではなく、最新のJavaScript言語機能をより効果的に活用する、根本的に異なる設計の選択によるものです。私は、前の仕事を否定するためにここにいます。それでは、次に展開するものについてお話しましょう。</p>
-<h2 data-astro-cid-yoyuw6fx="">どのような場所から来ているのか</h2>
-<p data-astro-cid-yoyuw6fx="">Streams Standardは、2014年から2016年にかけて「低レベルのI/Oプリミティブに効率的にマッピングするデータストリームを作成、構成、消費するためのAPI」を提供するという野心的な目標を掲げて開発されました。Webストリーム以前は、Webプラットフォームはストリーミングデータを処理する標準的な方法を持ち合わせていませんでした。</p>
-<p data-astro-cid-yoyuw6fx="">Node.jsは、ブラウザでも動作するように移植された当時、すでに独自の<a href="https://nodejs.org/api/stream.html" target="_blank" rel="noopener noreferrer"><u>ストリーミングAPI</u></a>を持っていましたが、WHATWGはWebブラウザのニーズのみを考慮するという憲章があるため、出発点としてそれを使用しないことを選択しました。サーバー側のランタイムがWebストリームを採用したのはその後、Cloudflare WorkersとDenoがそれぞれ第一級のWebストリームサポートで登場し、クロスランタイム互換性が優先されるようになった後です。</p>
-<p data-astro-cid-yoyuw6fx="">Webストリームの設計は、JavaScriptの非同期反復に進化するものです。<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of" target="_blank" rel="noopener noreferrer"><code><u>for await...of</u></code></a>構文は、Streams Standardが最初に最終化されてから2年後の<a href="https://262.ecma-international.org/9.0" target="_blank" rel="noopener noreferrer"><u>ES2018</u></a>まで出現しませんでした。このタイミングは、APIが最初に、JavaScriptで非同期シーケンスを消費するための逸脱的な方法となるものを利用できないことを意味します。代わりに、Specは独自のリーダー/ライターの獲得モデルを導入し、その決定はAPIのあらゆる側面に影響を与えました。</p>
+<p data-astro-cid-byeekcgh=""><em>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</em></p>
+<p data-astro-cid-byeekcgh="">ストリームでデータを処理することは、アプリケーションを構築する方法の基本です。あらゆる場所でストリーミングを機能させるために、<a href="https://streams.spec.whatwg.org" target="_blank" rel="noopener noreferrer"><u>WHATWG Streams Standard</u></a>（非公式には「Webストリーム」として知られる）は、ブラウザとサーバー間で動作する共通のAPIを確立するように設計されました。ブラウザに出荷され、Cloudflare Workers、Node.js、Deno、Bunそして、<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank" rel="noopener noreferrer"><u>fetch()</u></a>のようなAPIの基盤となりました。これは大仕事で、設計した人たちは、当時できていた制約とツールで難題を解決していました。</p>
+<p data-astro-cid-byeekcgh="">しかし、長年Webストリームを構築し、Node.jsとCloudflare Workersの両方で実装し、お客様とランタイムの本番環境の問題をデバッグし、開発者があまりにも多くのよくある落とし穴を通過できるようにしてきた結果、標準的なAPIには多くのリスクがあると確信するようになりました。段階的な改善だけでは簡単に修正できない基本的なユーザビリティとパフォーマンスの問題を解決することができます。問題はバグではなく、それらは、10年前なら理にかなっていたかもしれない設計上の判断の結果ですが、現在のJavaScript開発者のコードの書き方とは一致しません。</p>
+<p data-astro-cid-byeekcgh="">この記事では、Webストリームの基本的な問題をいくつか探り、JavaScriptの言語プリミティブに関連して構築された代替アプローチを紹介して、もっと良いものになることを実証します。</p>
+<p data-astro-cid-byeekcgh="">ベンチマークでは、この代替手段は、Webストリームよりも2倍から<em>120倍</em>速く、私がテストしたすべてのランタイム（Cloudflare Workers、Node.jsなど）で実行できます。Deno、Bun、主要ブラウザなど）に対応しています。この改善は、賢い最適化によるものではなく、最新のJavaScript言語機能をより効果的に活用する、根本的に異なる設計の選択によるものです。私は、前の仕事を否定するためにここにいます。それでは、次に展開するものについてお話しましょう。</p>
+<h2 data-astro-cid-byeekcgh="">どのような場所から来ているのか</h2>
+<p data-astro-cid-byeekcgh="">Streams Standardは、2014年から2016年にかけて「低レベルのI/Oプリミティブに効率的にマッピングするデータストリームを作成、構成、消費するためのAPI」を提供するという野心的な目標を掲げて開発されました。Webストリーム以前は、Webプラットフォームはストリーミングデータを処理する標準的な方法を持ち合わせていませんでした。</p>
+<p data-astro-cid-byeekcgh="">Node.jsは、ブラウザでも動作するように移植された当時、すでに独自の<a href="https://nodejs.org/api/stream.html" target="_blank" rel="noopener noreferrer"><u>ストリーミングAPI</u></a>を持っていましたが、WHATWGはWebブラウザのニーズのみを考慮するという憲章があるため、出発点としてそれを使用しないことを選択しました。サーバー側のランタイムがWebストリームを採用したのはその後、Cloudflare WorkersとDenoがそれぞれ第一級のWebストリームサポートで登場し、クロスランタイム互換性が優先されるようになった後です。</p>
+<p data-astro-cid-byeekcgh="">Webストリームの設計は、JavaScriptの非同期反復に進化するものです。<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of" target="_blank" rel="noopener noreferrer"><code><u>for await...of</u></code></a>構文は、Streams Standardが最初に最終化されてから2年後の<a href="https://262.ecma-international.org/9.0" target="_blank" rel="noopener noreferrer"><u>ES2018</u></a>まで出現しませんでした。このタイミングは、APIが最初に、JavaScriptで非同期シーケンスを消費するための逸脱的な方法となるものを利用できないことを意味します。代わりに、Specは独自のリーダー/ライターの獲得モデルを導入し、その決定はAPIのあらゆる側面に影響を与えました。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="289" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4634MBDMWVJNBE13YF7NAZ.png&amp;w=715&amp;h=289&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4634MBDMWVJNBE13YF7NAZ.png&amp;w=640&amp;h=259&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4634MBDMWVJNBE13YF7NAZ.png&amp;w=715&amp;h=289&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4634MBDMWVJNBE13YF7NAZ.png&amp;w=750&amp;h=303&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4634MBDMWVJNBE13YF7NAZ.png&amp;w=828&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4634MBDMWVJNBE13YF7NAZ.png&amp;w=1080&amp;h=437&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4634MBDMWVJNBE13YF7NAZ.png&amp;w=1280&amp;h=517&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4634MBDMWVJNBE13YF7NAZ.png&amp;w=1430&amp;h=578&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3183 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4634MBDMWVJNBE13YF7NAZ.png&amp;w=1042&amp;h=421&amp;f=webp" data-lightbox-width="1042" data-lightbox-height="421" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="289" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<h4 data-astro-cid-yoyuw6fx="">通常業務のための過剰なセレモニー</h4>
-<p data-astro-cid-yoyuw6fx="">ストリームでの最も一般的なタスクは、完了までを読み取ることです。Webストリームでは次のようになります：</p>
+<h4 data-astro-cid-byeekcgh="">通常業務のための過剰なセレモニー</h4>
+<p data-astro-cid-byeekcgh="">ストリームでの最も一般的なタスクは、完了までを読み取ることです。Webストリームでは次のようになります：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// First, we acquire a reader that gives an exclusive lock</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// on the stream...</span></span>
@@ -54,8 +54,8 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">このパターンは、ストリーミング固有のものだと思うかもしれません。しかし、そうではありません。リーダーの取得、ロック管理、<code>{ value, done }</code>プロトコルはすべて設計上の選択肢に過ぎず、要件ではありません。これらは、Webストリーム仕様がいつ、どのように書かれたかを示す人工知能です。非同期反復は、時間の経過とともに到着するシーケンスを処理するために正確に存在しますが、Streamの仕様が書かれた時点では、非同期反復はまだ存在していませんでした。ここでの複雑さは、純粋なAPIのオーバーヘッドであり、根本的な必要性ではありません。</p>
-<p data-astro-cid-yoyuw6fx="">Webストリームが<code>for await...of</code>をサポートするようになったので、代替アプローチを検討してください。</p>
+<p data-astro-cid-byeekcgh="">このパターンは、ストリーミング固有のものだと思うかもしれません。しかし、そうではありません。リーダーの取得、ロック管理、<code>{ value, done }</code>プロトコルはすべて設計上の選択肢に過ぎず、要件ではありません。これらは、Webストリーム仕様がいつ、どのように書かれたかを示す人工知能です。非同期反復は、時間の経過とともに到着するシーケンスを処理するために正確に存在しますが、Streamの仕様が書かれた時点では、非同期反復はまだ存在していませんでした。ここでの複雑さは、純粋なAPIのオーバーヘッドであり、根本的な必要性ではありません。</p>
+<p data-astro-cid-byeekcgh="">Webストリームが<code>for await...of</code>をサポートするようになったので、代替アプローチを検討してください。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunks</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [];</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunk</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> stream) {</span></span>
@@ -66,10 +66,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">定型文がはるかに少ないという点では優れていますが、すべてを解決するわけではありません。非同期イテレーションは、想定外のAPIに後付けされ、その結果を示しています。<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader" target="_blank" rel="noopener noreferrer"><u>BYOB（独自のバッファの使用）</u></a>読み取りのような機能は、イテレーションを通じてアクセスできません。リーダー、ロック、コントローラーなど、根本にある複雑さは依然あり、隠れているだけです。何か問題が発生した場合、またはAPIの追加機能が必要になる場合、開発者は元のAPIの雑草に戻り、なぜストリームが「ロック」されているのか、なぜ<code>releaseLock()</code>が期待していたことをしなかったのかを理解しようとしたり、制御できないコードのボトルネックを探し出したりすることになります。</p>
-<h4 data-astro-cid-yoyuw6fx="">ロックの問題</h4>
-<p data-astro-cid-yoyuw6fx="">Webストリームは、ロックモデルを使用して、複数のコンシューマーが読み取りをインターリーブするのを防ぎます。<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/getReader" target="_blank" rel="noopener noreferrer"><code><u>getReader()</u></code></a>を呼び出すと、ストリームはロックされます。ロックされている間、ストリームから直接読み込むことや、パイプを通すこと、またはキャンセルすることさえできません。唯一できるのは、実際にリーダーを保持しているコードだけです。</p>
-<p data-astro-cid-yoyuw6fx="">これは、簡単に間違っているのを知るまでは、理にかなっています。</p>
+<p data-astro-cid-byeekcgh="">定型文がはるかに少ないという点では優れていますが、すべてを解決するわけではありません。非同期イテレーションは、想定外のAPIに後付けされ、その結果を示しています。<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader" target="_blank" rel="noopener noreferrer"><u>BYOB（独自のバッファの使用）</u></a>読み取りのような機能は、イテレーションを通じてアクセスできません。リーダー、ロック、コントローラーなど、根本にある複雑さは依然あり、隠れているだけです。何か問題が発生した場合、またはAPIの追加機能が必要になる場合、開発者は元のAPIの雑草に戻り、なぜストリームが「ロック」されているのか、なぜ<code>releaseLock()</code>が期待していたことをしなかったのかを理解しようとしたり、制御できないコードのボトルネックを探し出したりすることになります。</p>
+<h4 data-astro-cid-byeekcgh="">ロックの問題</h4>
+<p data-astro-cid-byeekcgh="">Webストリームは、ロックモデルを使用して、複数のコンシューマーが読み取りをインターリーブするのを防ぎます。<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/getReader" target="_blank" rel="noopener noreferrer"><code><u>getReader()</u></code></a>を呼び出すと、ストリームはロックされます。ロックされている間、ストリームから直接読み込むことや、パイプを通すこと、またはキャンセルすることさえできません。唯一できるのは、実際にリーダーを保持しているコードだけです。</p>
+<p data-astro-cid-byeekcgh="">これは、簡単に間違っているのを知るまでは、理にかなっています。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> peekFirstChunk</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">stream</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> reader</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> stream.</span><span class="sk-6f42c1-ffc799">getReader</span><span class="sk-24292e-fff">();</span></span>
@@ -87,13 +87,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx=""><a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/releaseLock" target="_blank" rel="noopener noreferrer"><code><u>releaseLock()</u></code></a>を忘れるとストリームは恒久的に中断されます。<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/locked" target="_blank" rel="noopener noreferrer"><code><u>locked</u></code></a>プロパティは、ストリームがロックされていることを示しますが、なぜ、誰が、ロックがまだ使用可能かどうかは示しません。<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeTo" target="_blank" rel="noopener noreferrer"><u>パイプ処理</u></a>は内部的にロックを取得し、パイプの操作中、明らかではない方法でストリームを使用できないようにします。</p>
-<p data-astro-cid-yoyuw6fx="">また、読み取り保留中のロックを解除することに関する意味も長年不明瞭でした。read()を呼び出したのが待っていず、releaseLock()を呼び出した場合、どうなるのでしょうか？この仕様は、最近、ロックリリース時に保留中読み取りをキャンセルするように明確化されましたが、実装にはさまざまなものがあり、以前の特定されていない動作に依存したコードは壊れる可能性があります。</p>
-<p data-astro-cid-yoyuw6fx="">とはいえ、ロックイン自体は悪ではないという認識は重要です。実際、アプリケーションが適切かつ順番にデータを消費または生成するようにするための重要な目的を担っています。主な課題は、<code>getReader()</code>や<code>releaseLock()</code>などのAPIを使用して手動で実装されたものです。自動ロックと非同期反復可能読者の登場により、ユーザーの観点からロック対応が遥かに容易になりました。</p>
-<p data-astro-cid-yoyuw6fx="">実装者にとっては、ロックモデルはかなりの量の自明でない内部帳簿管理を追加します。すべての操作はロック状態を確認し、リーダーを追跡する必要があり、ロック、キャンセル、エラー状態間の相互作用によって、すべて正しく処理しなければならないエッジケースのマトリックスが作成されます。</p>
-<h4 data-astro-cid-yoyuw6fx="">BYOB：メリットのない複雑さ</h4>
-<p data-astro-cid-yoyuw6fx=""><a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader" target="_blank" rel="noopener noreferrer"><u>BYOB（Bring Your Own Buffer）</u></a>の読み取りは、開発者がストリームから読み取るときにメモリバッファを再利用できるように設計されており、高スループットシナリオ向けの重要な最適化です。アイデアは健全です。各チャンクに新しいバッファを割り当てるのではなく、独自のバッファを提供し、ストリームがそれを入力するのです。</p>
-<p data-astro-cid-yoyuw6fx="">実際には、（そしてもちろん、常に例外があります）、BYOBは測定可能な利益を得るために使用されることはほとんどありません。APIは、デフォルトの読み取りよりもはるかに複雑で、別のリーダータイプ（<code>ReadableStreamBYOBReader</code>）と他の特殊なクラス（例：<code>ReadableStreamBYOBRequest</code>)、バッファライフサイクルの慎重な管理、および<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer#transferring_arraybuffers" target="_blank" rel="noopener noreferrer"><u><code>ArrayBuffer</code>分離</u></a>の意味の理解が必要です。BYOB読み取りにバッファを渡すと、バッファはデプロイされ、ストリームに転送され、潜在的に異なるメモリ上で別のビューを取り戻すことができます。この移転ベースのモデルは、エラーが発生しやすく、混乱を招くこともあります。</p>
+<p data-astro-cid-byeekcgh=""><a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/releaseLock" target="_blank" rel="noopener noreferrer"><code><u>releaseLock()</u></code></a>を忘れるとストリームは恒久的に中断されます。<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/locked" target="_blank" rel="noopener noreferrer"><code><u>locked</u></code></a>プロパティは、ストリームがロックされていることを示しますが、なぜ、誰が、ロックがまだ使用可能かどうかは示しません。<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeTo" target="_blank" rel="noopener noreferrer"><u>パイプ処理</u></a>は内部的にロックを取得し、パイプの操作中、明らかではない方法でストリームを使用できないようにします。</p>
+<p data-astro-cid-byeekcgh="">また、読み取り保留中のロックを解除することに関する意味も長年不明瞭でした。read()を呼び出したのが待っていず、releaseLock()を呼び出した場合、どうなるのでしょうか？この仕様は、最近、ロックリリース時に保留中読み取りをキャンセルするように明確化されましたが、実装にはさまざまなものがあり、以前の特定されていない動作に依存したコードは壊れる可能性があります。</p>
+<p data-astro-cid-byeekcgh="">とはいえ、ロックイン自体は悪ではないという認識は重要です。実際、アプリケーションが適切かつ順番にデータを消費または生成するようにするための重要な目的を担っています。主な課題は、<code>getReader()</code>や<code>releaseLock()</code>などのAPIを使用して手動で実装されたものです。自動ロックと非同期反復可能読者の登場により、ユーザーの観点からロック対応が遥かに容易になりました。</p>
+<p data-astro-cid-byeekcgh="">実装者にとっては、ロックモデルはかなりの量の自明でない内部帳簿管理を追加します。すべての操作はロック状態を確認し、リーダーを追跡する必要があり、ロック、キャンセル、エラー状態間の相互作用によって、すべて正しく処理しなければならないエッジケースのマトリックスが作成されます。</p>
+<h4 data-astro-cid-byeekcgh="">BYOB：メリットのない複雑さ</h4>
+<p data-astro-cid-byeekcgh=""><a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader" target="_blank" rel="noopener noreferrer"><u>BYOB（Bring Your Own Buffer）</u></a>の読み取りは、開発者がストリームから読み取るときにメモリバッファを再利用できるように設計されており、高スループットシナリオ向けの重要な最適化です。アイデアは健全です。各チャンクに新しいバッファを割り当てるのではなく、独自のバッファを提供し、ストリームがそれを入力するのです。</p>
+<p data-astro-cid-byeekcgh="">実際には、（そしてもちろん、常に例外があります）、BYOBは測定可能な利益を得るために使用されることはほとんどありません。APIは、デフォルトの読み取りよりもはるかに複雑で、別のリーダータイプ（<code>ReadableStreamBYOBReader</code>）と他の特殊なクラス（例：<code>ReadableStreamBYOBRequest</code>)、バッファライフサイクルの慎重な管理、および<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer#transferring_arraybuffers" target="_blank" rel="noopener noreferrer"><u><code>ArrayBuffer</code>分離</u></a>の意味の理解が必要です。BYOB読み取りにバッファを渡すと、バッファはデプロイされ、ストリームに転送され、潜在的に異なるメモリ上で別のビューを取り戻すことができます。この移転ベースのモデルは、エラーが発生しやすく、混乱を招くこともあります。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> reader</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> stream.</span><span class="sk-6f42c1-ffc799">getReader</span><span class="sk-24292e-fff">({ mode: </span><span class="sk-032f62-99ffe4">'byob'</span><span class="sk-24292e-fff"> });</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> buffer</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> ArrayBuffer</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">1024</span><span class="sk-24292e-fff">);</span></span>
@@ -109,10 +109,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">また、BYOBは非同期イテレーションやTransformStreamsでは使用できないため、ゼロコピーでの読み取りを望む開発者は手動のリーダーループに戻されます。</p>
-<p data-astro-cid-yoyuw6fx="">実装者にとって、BYOBはかなり複雑さを増します。ストリームは、保留中のBYOBリクエストを追跡し、部分的なフィルを処理し、バッファ分離を正しく管理し、BYOBリーダーと基盤となるソースの間で調整する必要があります。<a href="https://github.com/web-platform-tests/wpt/tree/master/streams/readable-byte-streams" target="_blank" rel="noopener noreferrer"><u>読み取り可能なバイトストリームのWebプラットフォームテスト</u></a>には、BYOBエッジケース専用のテストファイルが含まれます。デタッチされたバッファ、不正なビュー、エンキュー後の応答順序などです。</p>
-<p data-astro-cid-yoyuw6fx="">BYOBはユーザーと実装者の両方にとって複雑になるものの、実際にはほとんど採用されていません。ほとんどの開発者は、デフォルトの読み取りにこだわって、割り当てのオーバーヘッドを受け入れます。</p>
-<p data-astro-cid-yoyuw6fx="">カスタムReadableStreamインスタンスのほとんどのユーザーランド実装では、デフォルトとBYOBの両方の読み取りサポートを単一ストリームで正しく実装するために必要なすべてのセレモニーを気にすることはありません。それには十分な理由があるのです。正確な情報を得るのは難しく、時間のかかるコードのほとんどはデフォルトの読み取りパスに頼らざるを得ません。以下の例は、「正しい」実装によって必要とされるものを示しています。これは、規模が大きく、複雑で、エラーが発生しやすく、一般的な開発者が本当に対処しなければならないレベルの複雑さではありません。</p>
+<p data-astro-cid-byeekcgh="">また、BYOBは非同期イテレーションやTransformStreamsでは使用できないため、ゼロコピーでの読み取りを望む開発者は手動のリーダーループに戻されます。</p>
+<p data-astro-cid-byeekcgh="">実装者にとって、BYOBはかなり複雑さを増します。ストリームは、保留中のBYOBリクエストを追跡し、部分的なフィルを処理し、バッファ分離を正しく管理し、BYOBリーダーと基盤となるソースの間で調整する必要があります。<a href="https://github.com/web-platform-tests/wpt/tree/master/streams/readable-byte-streams" target="_blank" rel="noopener noreferrer"><u>読み取り可能なバイトストリームのWebプラットフォームテスト</u></a>には、BYOBエッジケース専用のテストファイルが含まれます。デタッチされたバッファ、不正なビュー、エンキュー後の応答順序などです。</p>
+<p data-astro-cid-byeekcgh="">BYOBはユーザーと実装者の両方にとって複雑になるものの、実際にはほとんど採用されていません。ほとんどの開発者は、デフォルトの読み取りにこだわって、割り当てのオーバーヘッドを受け入れます。</p>
+<p data-astro-cid-byeekcgh="">カスタムReadableStreamインスタンスのほとんどのユーザーランド実装では、デフォルトとBYOBの両方の読み取りサポートを単一ストリームで正しく実装するために必要なすべてのセレモニーを気にすることはありません。それには十分な理由があるのです。正確な情報を得るのは難しく、時間のかかるコードのほとんどはデフォルトの読み取りパスに頼らざるを得ません。以下の例は、「正しい」実装によって必要とされるものを示しています。これは、規模が大きく、複雑で、エラーが発生しやすく、一般的な開発者が本当に対処しなければならないレベルの複雑さではありません。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> ReadableStream</span><span class="sk-24292e-fff">({</span></span>
 <span class="line"><span class="sk-24292e-fff">    type: </span><span class="sk-032f62-99ffe4">'bytes'</span><span class="sk-24292e-fff">,</span></span>
@@ -177,10 +177,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">ホストランタイムが、例えばフェッチ<code>Response</code>の<code>body</code>として、ランタイム自体からバイト指向のReadableStreamを提供する場合、ランタイム自体がBYOB読み取りの最適化された実装を提供する方がはるかに簡単であるものの、それらは依然としてデフォルトとBYOBの両方の読み取りパターンを処理できる必要があり、その要件はかなりの複雑さをもたらします。</p>
-<h4 data-astro-cid-yoyuw6fx="">バックプレッシャー：理論的には良いが、実際には壊れる</h4>
-<p data-astro-cid-yoyuw6fx="">Backpressure（バックプレッシャー）は、動作の遅いコンシューマーが速いプロデューサーの減速を知らせる機能で、Webストリームの第一級のコンセプトです。理論的には、です。実際のところ、このモデルには重大な欠陥がいくつかあります。</p>
-<p data-astro-cid-yoyuw6fx="">プライマリシグナルは、コントローラーの<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultController/desiredSize" target="_blank" rel="noopener noreferrer"><code><u>desiredSize</u></code></a>です。ポジティブ（データが必要）、Zero（容量大容量）、ネガティブ（容量超過）、Null（クローズ済み）です。プロデューサーは、この値をチェックし、プラスでない場合はエンキューを停止することになっています。ただし、これを強制するものはありません：<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultController/enqueue" target="_blank" rel="noopener noreferrer"><code><u>controller.enqueue()</u></code></a>望まれるリターゲットサイズの場合でも常に成功します。</p>
+<p data-astro-cid-byeekcgh="">ホストランタイムが、例えばフェッチ<code>Response</code>の<code>body</code>として、ランタイム自体からバイト指向のReadableStreamを提供する場合、ランタイム自体がBYOB読み取りの最適化された実装を提供する方がはるかに簡単であるものの、それらは依然としてデフォルトとBYOBの両方の読み取りパターンを処理できる必要があり、その要件はかなりの複雑さをもたらします。</p>
+<h4 data-astro-cid-byeekcgh="">バックプレッシャー：理論的には良いが、実際には壊れる</h4>
+<p data-astro-cid-byeekcgh="">Backpressure（バックプレッシャー）は、動作の遅いコンシューマーが速いプロデューサーの減速を知らせる機能で、Webストリームの第一級のコンセプトです。理論的には、です。実際のところ、このモデルには重大な欠陥がいくつかあります。</p>
+<p data-astro-cid-byeekcgh="">プライマリシグナルは、コントローラーの<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultController/desiredSize" target="_blank" rel="noopener noreferrer"><code><u>desiredSize</u></code></a>です。ポジティブ（データが必要）、Zero（容量大容量）、ネガティブ（容量超過）、Null（クローズ済み）です。プロデューサーは、この値をチェックし、プラスでない場合はエンキューを停止することになっています。ただし、これを強制するものはありません：<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultController/enqueue" target="_blank" rel="noopener noreferrer"><code><u>controller.enqueue()</u></code></a>望まれるリターゲットサイズの場合でも常に成功します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> ReadableStream</span><span class="sk-24292e-fff">({</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  start</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">controller</span><span class="sk-24292e-fff">) {</span></span>
@@ -195,9 +195,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Streamの実装は、バックプレッシャーを無視できます。また、一部の仕様定義された機能は、バックプレッシャーを明示的に破壊します。例えば、<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/tee" target="_blank" rel="noopener noreferrer"><code><u>tee()</u></code></a>は、1つのストリームから2つの分岐を作成します。一方のブランチの読み取り速度が他のブランチより速い場合、データは内部バッファに制限なく蓄積されます。速いコンシューマーは、遅いコンシューマーが追いつく間に無限のメモリ増加を引き起こす可能性があります。これを設定する方法も、遅いブランチをキャンセルする以外にオプトアウトする方法もありません。</p>
-<p data-astro-cid-yoyuw6fx="">Webストリームは、<code>highWaterMark</code>オプションとカスタマイズ可能なサイズ計算の形で、バックプレッシャーの動作を調整するための明確なメカニズムを提供しますが、これらは<code>desiredSize</code>と同様に無視されやすく、多くのアプリケーションはこれらに注意を払うことができません。</p>
-<p data-astro-cid-yoyuw6fx=""><code>WritableStream</code>側にも同じ問題が存在します。<code>WritableStream</code>には<code>高い透かし</code>と<code>目標のサイズ</code>があります。データの生産者が注意を払うべきですが、できないことが多いという<code>writer.ready</code>という約束があります。</p>
+<p data-astro-cid-byeekcgh="">Streamの実装は、バックプレッシャーを無視できます。また、一部の仕様定義された機能は、バックプレッシャーを明示的に破壊します。例えば、<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/tee" target="_blank" rel="noopener noreferrer"><code><u>tee()</u></code></a>は、1つのストリームから2つの分岐を作成します。一方のブランチの読み取り速度が他のブランチより速い場合、データは内部バッファに制限なく蓄積されます。速いコンシューマーは、遅いコンシューマーが追いつく間に無限のメモリ増加を引き起こす可能性があります。これを設定する方法も、遅いブランチをキャンセルする以外にオプトアウトする方法もありません。</p>
+<p data-astro-cid-byeekcgh="">Webストリームは、<code>highWaterMark</code>オプションとカスタマイズ可能なサイズ計算の形で、バックプレッシャーの動作を調整するための明確なメカニズムを提供しますが、これらは<code>desiredSize</code>と同様に無視されやすく、多くのアプリケーションはこれらに注意を払うことができません。</p>
+<p data-astro-cid-byeekcgh=""><code>WritableStream</code>側にも同じ問題が存在します。<code>WritableStream</code>には<code>高い透かし</code>と<code>目標のサイズ</code>があります。データの生産者が注意を払うべきですが、できないことが多いという<code>writer.ready</code>という約束があります。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> writable</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> getWritableStreamSomehow</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> writer</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> writable.</span><span class="sk-6f42c1-ffc799">getWriter</span><span class="sk-24292e-fff">();</span></span>
@@ -213,23 +213,23 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">実装者にとっては、バックプレッシャーは保証はせずに複雑さを増大させます。Queue Consumerのサイズを追跡し、<code>望ましいサイズ</code>を計算し、適切なタイミングで<code>pull()</code>を呼び出す機械はすべて正しく実装されなければなりません。しかし、これらのシグナルは助言であるため、すべての機能が、バックプレッシャーが解決できるはずの問題を実際に防ぐことはできません。</p>
-<h4 data-astro-cid-yoyuw6fx="">約束の隠れたコスト</h4>
-<p data-astro-cid-yoyuw6fx="">Webストリーム仕様では、多数のポイントでプロミスを作成する必要があり、多くの場合ホットパス上にあり、ユーザーに見えないことも少なくありません。各 <code>read()</code>の呼び出しはPromiseを返すだけではありません。内部的には、実装はキュー管理、<code>pull()</code>調整、およびバックプレッシャーシグナリングのために追加のPromiseを作成します。</p>
-<p data-astro-cid-yoyuw6fx="">このオーバーヘッドは、バッファ管理、完了、バックプレッシャー信号の約束に依存するので、義務付けられています。実装に特化したものもありますが、仕様に書かれている通りであれば避けられません。高頻度のストリーミング（動画フレーム、ネットワークパケット、リアルタイムデータ）では、このオーバーヘッドが相当なものになります。</p>
-<p data-astro-cid-yoyuw6fx="">問題はパイプラインでさらに悪化します。各<code>TransformStream</code>は、ソースとシンクの間にプロミスの仕組みをさらに一層追加します。仕様は同期の高速パスを定義しないため、データがすぐに利用可能であっても、約束された機械が実行されます。</p>
-<p data-astro-cid-yoyuw6fx="">実装者にとっては、この約束重視の設計が最適化の機会を制約します。この仕様では、特定の約束解決の順序付けが義務付けられているため、微妙なコンプライアンス違反のリスクを冒すことなく、バッチ操作や不要な非同期境界のスキップすることは困難です。実装者が行う隠れた内部最適化はたくさんありますが、それらを正しく行うことは複雑で困難な場合があります。</p>
-<p data-astro-cid-yoyuw6fx="">このブログ記事を書いている間に、VercelのMalte Ublが、VercelがNode.jsのパフォーマンス改善に関して行っているいくつかの調査について説明する独自の<a href="https://vercel.com/blog/we-ralph-wiggumed-webstreams-to-make-them-10x-faster" target="_blank" rel="noopener noreferrer"><u>ブログ記事</u></a>を公開しました。Webストリームの実装。その投稿では、Webストリームの実装すべてが直面する、以下の基本的なパフォーマンス最適化の問題について考察しています。</p>
+<p data-astro-cid-byeekcgh="">実装者にとっては、バックプレッシャーは保証はせずに複雑さを増大させます。Queue Consumerのサイズを追跡し、<code>望ましいサイズ</code>を計算し、適切なタイミングで<code>pull()</code>を呼び出す機械はすべて正しく実装されなければなりません。しかし、これらのシグナルは助言であるため、すべての機能が、バックプレッシャーが解決できるはずの問題を実際に防ぐことはできません。</p>
+<h4 data-astro-cid-byeekcgh="">約束の隠れたコスト</h4>
+<p data-astro-cid-byeekcgh="">Webストリーム仕様では、多数のポイントでプロミスを作成する必要があり、多くの場合ホットパス上にあり、ユーザーに見えないことも少なくありません。各 <code>read()</code>の呼び出しはPromiseを返すだけではありません。内部的には、実装はキュー管理、<code>pull()</code>調整、およびバックプレッシャーシグナリングのために追加のPromiseを作成します。</p>
+<p data-astro-cid-byeekcgh="">このオーバーヘッドは、バッファ管理、完了、バックプレッシャー信号の約束に依存するので、義務付けられています。実装に特化したものもありますが、仕様に書かれている通りであれば避けられません。高頻度のストリーミング（動画フレーム、ネットワークパケット、リアルタイムデータ）では、このオーバーヘッドが相当なものになります。</p>
+<p data-astro-cid-byeekcgh="">問題はパイプラインでさらに悪化します。各<code>TransformStream</code>は、ソースとシンクの間にプロミスの仕組みをさらに一層追加します。仕様は同期の高速パスを定義しないため、データがすぐに利用可能であっても、約束された機械が実行されます。</p>
+<p data-astro-cid-byeekcgh="">実装者にとっては、この約束重視の設計が最適化の機会を制約します。この仕様では、特定の約束解決の順序付けが義務付けられているため、微妙なコンプライアンス違反のリスクを冒すことなく、バッチ操作や不要な非同期境界のスキップすることは困難です。実装者が行う隠れた内部最適化はたくさんありますが、それらを正しく行うことは複雑で困難な場合があります。</p>
+<p data-astro-cid-byeekcgh="">このブログ記事を書いている間に、VercelのMalte Ublが、VercelがNode.jsのパフォーマンス改善に関して行っているいくつかの調査について説明する独自の<a href="https://vercel.com/blog/we-ralph-wiggumed-webstreams-to-make-them-10x-faster" target="_blank" rel="noopener noreferrer"><u>ブログ記事</u></a>を公開しました。Webストリームの実装。その投稿では、Webストリームの実装すべてが直面する、以下の基本的なパフォーマンス最適化の問題について考察しています。</p>
 <blockquote>
-	<p data-astro-cid-yoyuw6fx="">「または PipeTo()を検討してください。各チャンクは、読み取り、書き込み、バックプレッシャー、繰り返しという、完全なPromiseチェーンを通過していきます。読み取りごとに{value, done}の結果オブジェクトが割り当てられます。エラーの伝播によって追加のPromiseブランチが作成されます。</p>
-	<p data-astro-cid-yoyuw6fx="">これらは、どれも間違いではありません。これらの保証は、ストリームがセキュリティ境界を越えるブラウザでは、キャンセルセマンティクスは相手に乗じるすきを与えず、パイプの両端を制御できないブラウザでは重要です。しかし、サーバー上で、React Server Componentsを1KBのチャンクで3回変換すると、コストが蓄積されます。</p>
-	<p data-astro-cid-yoyuw6fx="">ネイティブのWebStream PipeThoughをベンチマークしたのは、1KBのチャンクに対して630MB/sです。同じパススルー変換で最大7,900 MB/sのNode.js Pipeline()。これは12倍のギャップであり、その差はほぼすべてPromiseとオブジェクト割り当てのオーバーヘッドです。」<br>- Malte Ubl, <a href="https://vercel.com/blog/we-ralph-wiggumed-webstreams-to-make-them-10x-faster" target="_blank" rel="noopener noreferrer"><u>https://vercel.com/blog/we-ralph-wiggumed-webstreams-to-make-them-10x-faster</u></a></p>
+	<p data-astro-cid-byeekcgh="">「または PipeTo()を検討してください。各チャンクは、読み取り、書き込み、バックプレッシャー、繰り返しという、完全なPromiseチェーンを通過していきます。読み取りごとに{value, done}の結果オブジェクトが割り当てられます。エラーの伝播によって追加のPromiseブランチが作成されます。</p>
+	<p data-astro-cid-byeekcgh="">これらは、どれも間違いではありません。これらの保証は、ストリームがセキュリティ境界を越えるブラウザでは、キャンセルセマンティクスは相手に乗じるすきを与えず、パイプの両端を制御できないブラウザでは重要です。しかし、サーバー上で、React Server Componentsを1KBのチャンクで3回変換すると、コストが蓄積されます。</p>
+	<p data-astro-cid-byeekcgh="">ネイティブのWebStream PipeThoughをベンチマークしたのは、1KBのチャンクに対して630MB/sです。同じパススルー変換で最大7,900 MB/sのNode.js Pipeline()。これは12倍のギャップであり、その差はほぼすべてPromiseとオブジェクト割り当てのオーバーヘッドです。」<br>- Malte Ubl, <a href="https://vercel.com/blog/we-ralph-wiggumed-webstreams-to-make-them-10x-faster" target="_blank" rel="noopener noreferrer"><u>https://vercel.com/blog/we-ralph-wiggumed-webstreams-to-make-them-10x-faster</u></a></p>
 </blockquote>
-<p data-astro-cid-yoyuw6fx="">研究の一環として、Node.jsの一連の改善提案をまとめましたWebストリームの実装により、特定のコードパスの約束を排除することで、最大10倍もの高速化を実現できます。これは、有用ではありますが、大きなオーバーヘッドを追加することを証明するものです。Node.jsのコアメンテナーの1人として、MalteとVercelの人々が改善提案を実現するお手伝いができることを楽しみにしています。</p>
-<p data-astro-cid-yoyuw6fx="">Cloudflare Workersに最近行った更新では、内部のデータパイプラインにも同様の変更を加えて、特定のアプリケーションシナリオで作成されるJavaScript約束の数を最大200倍減らしました。その結果、これらのアプリケーションのパフォーマンスは、数桁向上します。</p>
-<h3 data-astro-cid-yoyuw6fx="">現実世界の障害</h3>
-<h4 data-astro-cid-yoyuw6fx="">未消費の本体によるリソースの枯渇</h4>
-<p data-astro-cid-yoyuw6fx=""><code>fetch()</code>がレスポンスを返す場合、本文は<a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/body" target="_blank" rel="noopener noreferrer"><code><u>ReadableStream</u></code></a>です。ステータスだけを確認し、本文を消費またはキャンセルしない場合はどうなりますか？その答えは実装によって異なりますが、一般的な結果はリソースの漏洩です。</p>
+<p data-astro-cid-byeekcgh="">研究の一環として、Node.jsの一連の改善提案をまとめましたWebストリームの実装により、特定のコードパスの約束を排除することで、最大10倍もの高速化を実現できます。これは、有用ではありますが、大きなオーバーヘッドを追加することを証明するものです。Node.jsのコアメンテナーの1人として、MalteとVercelの人々が改善提案を実現するお手伝いができることを楽しみにしています。</p>
+<p data-astro-cid-byeekcgh="">Cloudflare Workersに最近行った更新では、内部のデータパイプラインにも同様の変更を加えて、特定のアプリケーションシナリオで作成されるJavaScript約束の数を最大200倍減らしました。その結果、これらのアプリケーションのパフォーマンスは、数桁向上します。</p>
+<h3 data-astro-cid-byeekcgh="">現実世界の障害</h3>
+<h4 data-astro-cid-byeekcgh="">未消費の本体によるリソースの枯渇</h4>
+<p data-astro-cid-byeekcgh=""><code>fetch()</code>がレスポンスを返す場合、本文は<a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/body" target="_blank" rel="noopener noreferrer"><code><u>ReadableStream</u></code></a>です。ステータスだけを確認し、本文を消費またはキャンセルしない場合はどうなりますか？その答えは実装によって異なりますが、一般的な結果はリソースの漏洩です。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> checkEndpoint</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">url</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(url);</span></span>
@@ -245,12 +245,12 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">このパターンは、<a href="https://nodejs.org/api/globals.html#fetch" target="_blank" rel="noopener noreferrer"><u>undici</u></a>（Node.jsに組み込まれた<code>fetch()</code>実装）を使用するNode.jsアプリケーションで接続プールを枯渇させる原因となっていました。同様の問題が他のランタイムでも発生しています。ストリームは基盤となる接続への参照を保持するため、明示的な消費またはキャンセルを行わなければ、接続はガベージコレクションまで続く可能性があります。</p>
-<p data-astro-cid-yoyuw6fx="">問題は、暗黙的にStreamブランチを作成するAPIによってさらに悪化しています。<a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/clone" target="_blank" rel="noopener noreferrer"><code><u>Request.clone()</u></code></a>と<a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/clone" target="_blank" rel="noopener noreferrer"><code><u>Response.clone()</u></code></a>ボディストリーム上で暗黙の<code>tee()</code>を実行します。これは見落としがちな詳細です。ロギングまたはリトライのロジックをクローンするコードは、無意識のうちに独立した消費を必要とする支社的なストリームを作成し、リソース管理の負担を増大させる可能性があります。</p>
-<p data-astro-cid-yoyuw6fx="">確かに、こうしたタイプの問題<em>は</em>実装のバグです。接続リークは間違いなく、undici氏が自身の実装で修正する必要があるものでしたが、仕様の複雑さにより、この種の問題に対処することは容易ではありません。</p>
-<blockquote data-astro-cid-yoyuw6fx="">「Node.jsのfetch()実装でストリームをクローニングするのは、見た目よりも難しいのです。リクエストまたはレスポンスの本文をクローンする際は、tee()を呼びます。これは、1つのストリームを2つのブランチに分割し、両方を消費する必要があります。あるコンシューマーが他のコンシューマーよりも読み取りが速い場合、データバッファは低速なブランチを待ちます。両方のブランチを適切に消費しないと、基盤となる接続がリークされます。1つのソースを共有する2人の読者の間で調整が必要なため、誤って元のリクエストを壊したり、接続プールを使い果たすことがよくあります。これは単純なAPI呼び出しですが、複雑な基盤となる仕組みを持つため正しく理解するのは難しいです。」- Mateo Collina、博士- Platformmatic共同創設者兼CTO、Node.js技術運営委員会委員長</blockquote>
-<h4 data-astro-cid-yoyuw6fx="">メモリの最前線を越える</h4>
-<p data-astro-cid-yoyuw6fx=""><a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/tee" target="_blank" rel="noopener noreferrer"><code><u>tee()</u></code></a>は、ストリームを2つの分岐に分割します。一見簡単ですが、この実装にはバッファリングが必要です。あるブランチが他のブランチより速く読み込まれた場合、遅いブランチが追いつくまでデータはどこかに保持される必要があります。</p>
+<p data-astro-cid-byeekcgh="">このパターンは、<a href="https://nodejs.org/api/globals.html#fetch" target="_blank" rel="noopener noreferrer"><u>undici</u></a>（Node.jsに組み込まれた<code>fetch()</code>実装）を使用するNode.jsアプリケーションで接続プールを枯渇させる原因となっていました。同様の問題が他のランタイムでも発生しています。ストリームは基盤となる接続への参照を保持するため、明示的な消費またはキャンセルを行わなければ、接続はガベージコレクションまで続く可能性があります。</p>
+<p data-astro-cid-byeekcgh="">問題は、暗黙的にStreamブランチを作成するAPIによってさらに悪化しています。<a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/clone" target="_blank" rel="noopener noreferrer"><code><u>Request.clone()</u></code></a>と<a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/clone" target="_blank" rel="noopener noreferrer"><code><u>Response.clone()</u></code></a>ボディストリーム上で暗黙の<code>tee()</code>を実行します。これは見落としがちな詳細です。ロギングまたはリトライのロジックをクローンするコードは、無意識のうちに独立した消費を必要とする支社的なストリームを作成し、リソース管理の負担を増大させる可能性があります。</p>
+<p data-astro-cid-byeekcgh="">確かに、こうしたタイプの問題<em>は</em>実装のバグです。接続リークは間違いなく、undici氏が自身の実装で修正する必要があるものでしたが、仕様の複雑さにより、この種の問題に対処することは容易ではありません。</p>
+<blockquote data-astro-cid-byeekcgh="">「Node.jsのfetch()実装でストリームをクローニングするのは、見た目よりも難しいのです。リクエストまたはレスポンスの本文をクローンする際は、tee()を呼びます。これは、1つのストリームを2つのブランチに分割し、両方を消費する必要があります。あるコンシューマーが他のコンシューマーよりも読み取りが速い場合、データバッファは低速なブランチを待ちます。両方のブランチを適切に消費しないと、基盤となる接続がリークされます。1つのソースを共有する2人の読者の間で調整が必要なため、誤って元のリクエストを壊したり、接続プールを使い果たすことがよくあります。これは単純なAPI呼び出しですが、複雑な基盤となる仕組みを持つため正しく理解するのは難しいです。」- Mateo Collina、博士- Platformmatic共同創設者兼CTO、Node.js技術運営委員会委員長</blockquote>
+<h4 data-astro-cid-byeekcgh="">メモリの最前線を越える</h4>
+<p data-astro-cid-byeekcgh=""><a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/tee" target="_blank" rel="noopener noreferrer"><code><u>tee()</u></code></a>は、ストリームを2つの分岐に分割します。一見簡単ですが、この実装にはバッファリングが必要です。あるブランチが他のブランチより速く読み込まれた場合、遅いブランチが追いつくまでデータはどこかに保持される必要があります。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> [</span><span class="sk-005cc5-fff">forHash</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">forStorage</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> response.body.</span><span class="sk-6f42c1-ffc799">tee</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"></span>
@@ -265,14 +265,14 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">仕様では、<code>tee()</code> のバッファ制限を義務付けていません。公平に言えば、この仕様は、仕様の観測可能な規範的要件が満たされる限り、実装が<code>tee()</code>やその他のAPIの実際の内部メカニズムを、適切と考える方法で実装することを許可しています。しかし、実装がStreamの仕様で記述された特定の方法で<code>tee()</code>を実装することを選択した場合、<code>tee()</code>には回避が困難な組み込み型のメモリ管理の問題が生じます。</p>
-<p data-astro-cid-yoyuw6fx="">実装部門は、これに対処するための独自の戦略を策定する必要がありました。Firefoxは当初リンクリスト方式を使っており、消費率の差に比例してO<code>(n)</code>メモリ増加が発生しました。Cloudflare Workersでは、バックプレッシャーが最速ではなく、最も遅いコンシューマーによって示される共有バッファモデルを実装することを選択しました。</p>
+<p data-astro-cid-byeekcgh="">仕様では、<code>tee()</code> のバッファ制限を義務付けていません。公平に言えば、この仕様は、仕様の観測可能な規範的要件が満たされる限り、実装が<code>tee()</code>やその他のAPIの実際の内部メカニズムを、適切と考える方法で実装することを許可しています。しかし、実装がStreamの仕様で記述された特定の方法で<code>tee()</code>を実装することを選択した場合、<code>tee()</code>には回避が困難な組み込み型のメモリ管理の問題が生じます。</p>
+<p data-astro-cid-byeekcgh="">実装部門は、これに対処するための独自の戦略を策定する必要がありました。Firefoxは当初リンクリスト方式を使っており、消費率の差に比例してO<code>(n)</code>メモリ増加が発生しました。Cloudflare Workersでは、バックプレッシャーが最速ではなく、最も遅いコンシューマーによって示される共有バッファモデルを実装することを選択しました。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="486" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JZVPEKHA6BRPKE8Q8T9K.png&amp;w=715&amp;h=486&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JZVPEKHA6BRPKE8Q8T9K.png&amp;w=640&amp;h=435&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JZVPEKHA6BRPKE8Q8T9K.png&amp;w=715&amp;h=486&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JZVPEKHA6BRPKE8Q8T9K.png&amp;w=750&amp;h=510&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JZVPEKHA6BRPKE8Q8T9K.png&amp;w=828&amp;h=563&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JZVPEKHA6BRPKE8Q8T9K.png&amp;w=1080&amp;h=734&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JZVPEKHA6BRPKE8Q8T9K.png&amp;w=1280&amp;h=870&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JZVPEKHA6BRPKE8Q8T9K.png&amp;w=1430&amp;h=972&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3183 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JZVPEKHA6BRPKE8Q8T9K.png&amp;w=782&amp;h=531&amp;f=webp" data-lightbox-width="782" data-lightbox-height="531" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="486" class="pt-portable-image-media"></div>
 </figure>
-<h4 data-astro-cid-yoyuw6fx="">バックプレッシャーのギャップを変革</h4>
-<p data-astro-cid-yoyuw6fx=""><code>TransformStream</code> は、処理ロジックを介した <code>読み取り可能/書き込み可能</code> なペアを作成します。<code>transform()</code> 関数は、読み取り時ではなく、<em>書き込み時</em>に実行されます。変換の処理は、利用者の準備ができているかどうかに関係なく、データが到着すると迅速に行われます。これにより、コンシューマーが遅いときに不要な作業が発生し、両側間のバックプレッシャーシグナリングにはギャップがあり、負荷の無制限なバッファリングが発生する可能性があります。仕様では、変換されるデータのプロデューサーが、変換の書き込み可能な側にある <code>writer.ready</code> シグナルに注意を払っていることが想定されますが、多くの場合、生産者はそれを無視してしまいます。</p>
-<p data-astro-cid-yoyuw6fx="">変換の <code>transform() </code>操作が同期的で、常に出力をすぐにキューに入れる場合、ダウンストリームのコンシューマーが遅くても、書き込み可能側にバックプレッシャーを返すことはありません。これは、多くの開発者が完全に見落とす仕様設計の結果です。ユーザーが1人につき、通常現時点でアクティブなストリームパイプラインの数も少数であるブラウザでは、このタイプのフットガンは何の影響もありませんが、ランタイム時のサーバー側またはエッジのパフォーマンスに大きな影響を与えます同時に数千のリクエストに対応する高速な遅延が発生します。</p>
+<h4 data-astro-cid-byeekcgh="">バックプレッシャーのギャップを変革</h4>
+<p data-astro-cid-byeekcgh=""><code>TransformStream</code> は、処理ロジックを介した <code>読み取り可能/書き込み可能</code> なペアを作成します。<code>transform()</code> 関数は、読み取り時ではなく、<em>書き込み時</em>に実行されます。変換の処理は、利用者の準備ができているかどうかに関係なく、データが到着すると迅速に行われます。これにより、コンシューマーが遅いときに不要な作業が発生し、両側間のバックプレッシャーシグナリングにはギャップがあり、負荷の無制限なバッファリングが発生する可能性があります。仕様では、変換されるデータのプロデューサーが、変換の書き込み可能な側にある <code>writer.ready</code> シグナルに注意を払っていることが想定されますが、多くの場合、生産者はそれを無視してしまいます。</p>
+<p data-astro-cid-byeekcgh="">変換の <code>transform() </code>操作が同期的で、常に出力をすぐにキューに入れる場合、ダウンストリームのコンシューマーが遅くても、書き込み可能側にバックプレッシャーを返すことはありません。これは、多くの開発者が完全に見落とす仕様設計の結果です。ユーザーが1人につき、通常現時点でアクティブなストリームパイプラインの数も少数であるブラウザでは、このタイプのフットガンは何の影響もありませんが、ランタイム時のサーバー側またはエッジのパフォーマンスに大きな影響を与えます同時に数千のリクエストに対応する高速な遅延が発生します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> fastTransform</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> TransformStream</span><span class="sk-24292e-fff">({</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  transform</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">chunk</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">controller</span><span class="sk-24292e-fff">) {</span></span>
@@ -291,7 +291,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">TransformStreamsは、コントローラーのバックプレッシャーをチェックし、それをライターに伝えるために、約束を使用します。</p>
+<p data-astro-cid-byeekcgh="">TransformStreamsは、コントローラーのバックプレッシャーをチェックし、それをライターに伝えるために、約束を使用します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> fastTransform</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> TransformStream</span><span class="sk-24292e-fff">({</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> transform</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">chunk</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">controller</span><span class="sk-24292e-fff">) {</span></span>
@@ -307,9 +307,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">しかし、ここでの難しさとして、<code>TransformStreamDefaultController</code>には Writers のような ready promise メカニズムがありません。そのため、<code>TransformStream</code>の実装では、<code>controller.desiredSize</code>が再び正の値になる時期を定期的にチェックするためのポーリングメカニズムを実装する必要があります。</p>
-<p data-astro-cid-yoyuw6fx="">パイプラインでは、問題がさらに悪化します。複数の変換（解析、変換、シリアル化など）を連鎖させる場合、各<code>TransformStream</code>には独自の内部読み取り可能および書き込み可能なバッファがあります。実装者が仕様に厳密に従う場合、データはプッシュ指向の方法でこれらのバッファを通過します。ソースはAの変換をプッシュし、Bの変換をプッシュし、Cの変換をプッシュし、それぞれが最終的なコンシューマーが転送する前に、中間バッファにデータを蓄積します削除し始めました3つの変換を使用して、6つの内部バッファを同時に満たすことができます。</p>
-<p data-astro-cid-yoyuw6fx="">Stream APIを使用する開発者は、ソース、変換、および書き込み可能な宛先を作成する際に、<code>highWaterMark</code>のようなオプションを使用することを覚えておくことが期待されていますが、多くの場合、忘れてしまったり、単に無視することを選択したりします。</p>
+<p data-astro-cid-byeekcgh="">しかし、ここでの難しさとして、<code>TransformStreamDefaultController</code>には Writers のような ready promise メカニズムがありません。そのため、<code>TransformStream</code>の実装では、<code>controller.desiredSize</code>が再び正の値になる時期を定期的にチェックするためのポーリングメカニズムを実装する必要があります。</p>
+<p data-astro-cid-byeekcgh="">パイプラインでは、問題がさらに悪化します。複数の変換（解析、変換、シリアル化など）を連鎖させる場合、各<code>TransformStream</code>には独自の内部読み取り可能および書き込み可能なバッファがあります。実装者が仕様に厳密に従う場合、データはプッシュ指向の方法でこれらのバッファを通過します。ソースはAの変換をプッシュし、Bの変換をプッシュし、Cの変換をプッシュし、それぞれが最終的なコンシューマーが転送する前に、中間バッファにデータを蓄積します削除し始めました3つの変換を使用して、6つの内部バッファを同時に満たすことができます。</p>
+<p data-astro-cid-byeekcgh="">Stream APIを使用する開発者は、ソース、変換、および書き込み可能な宛先を作成する際に、<code>highWaterMark</code>のようなオプションを使用することを覚えておくことが期待されていますが、多くの場合、忘れてしまったり、単に無視することを選択したりします。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">source</span></span>
 <span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeThrough</span><span class="sk-24292e-fff">(parse)      </span><span class="sk-6a737d-8b8b8b94">// buffers filling...</span></span>
@@ -321,12 +321,12 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">実装では、ID変換を崩壊させたり、観測できないパスを短縮したり、バッファ割り当てを遅らせたり、JavaScriptをまったく実行しないネイティブコードに戻るなどして、変換パイプラインを最適化する方法が見つかりました。Deno、Bun、Cloudflare Workersはすべて、オーバーヘッドの多くを排除するのに役立つ「ネイティブパス」最適化の実装に成功しています。Vercelの最近の<a href="https://vercel.com/blog/we-ralph-wiggumed-webstreams-to-make-them-10x-faster" target="_blank" rel="noopener noreferrer"><u>fast-webstreams</u></a>研究は、Node.jsの同様の最適化に取り組んでいます。しかし、最適化自体もかなりの複雑さを増し、TransformStreamが用いる本質的なプッシュ指向モデルから完全に脱却することはできません。</p>
+<p data-astro-cid-byeekcgh="">実装では、ID変換を崩壊させたり、観測できないパスを短縮したり、バッファ割り当てを遅らせたり、JavaScriptをまったく実行しないネイティブコードに戻るなどして、変換パイプラインを最適化する方法が見つかりました。Deno、Bun、Cloudflare Workersはすべて、オーバーヘッドの多くを排除するのに役立つ「ネイティブパス」最適化の実装に成功しています。Vercelの最近の<a href="https://vercel.com/blog/we-ralph-wiggumed-webstreams-to-make-them-10x-faster" target="_blank" rel="noopener noreferrer"><u>fast-webstreams</u></a>研究は、Node.jsの同様の最適化に取り組んでいます。しかし、最適化自体もかなりの複雑さを増し、TransformStreamが用いる本質的なプッシュ指向モデルから完全に脱却することはできません。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="373" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WJZXZYG44G6ERZAQF9HQ.png&amp;w=715&amp;h=373&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WJZXZYG44G6ERZAQF9HQ.png&amp;w=640&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WJZXZYG44G6ERZAQF9HQ.png&amp;w=715&amp;h=373&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WJZXZYG44G6ERZAQF9HQ.png&amp;w=750&amp;h=391&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WJZXZYG44G6ERZAQF9HQ.png&amp;w=828&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WJZXZYG44G6ERZAQF9HQ.png&amp;w=1080&amp;h=563&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WJZXZYG44G6ERZAQF9HQ.png&amp;w=1280&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WJZXZYG44G6ERZAQF9HQ.png&amp;w=1430&amp;h=746&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3183 Image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WJZXZYG44G6ERZAQF9HQ.png&amp;w=922&amp;h=481&amp;f=webp" data-lightbox-width="922" data-lightbox-height="481" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="373" class="pt-portable-image-media"></div>
 </figure>
-<h4 data-astro-cid-yoyuw6fx="">サーバーサイドレンダリングにおけるGCフラッシング</h4>
-<p data-astro-cid-yoyuw6fx="">Streamのサーバーサイドレンダリング（SSR）は、特に厄介なケースです。典型的なSSRストリームは何千もの小さなHTMLフラグメントをレンダリングし、それぞれがStreamの機械を通過する可能性があります。</p>
+<h4 data-astro-cid-byeekcgh="">サーバーサイドレンダリングにおけるGCフラッシング</h4>
+<p data-astro-cid-byeekcgh="">Streamのサーバーサイドレンダリング（SSR）は、特に厄介なケースです。典型的なSSRストリームは何千もの小さなHTMLフラグメントをレンダリングし、それぞれがStreamの機械を通過する可能性があります。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Each component enqueues a small chunk</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> renderComponent</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">controller</span><span class="sk-24292e-fff">) {</span></span>
@@ -343,36 +343,36 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">すべてのフラグメントは、<code>read()</code>呼び出し用に作成されたプロミス、バックプレッシャー調整のプロミス、中間バッファ割り当て、および<code>{ value, done } </code>結果オブジェクトを意味します。これらのほとんどは、ほぼ即座にガベージになります。</p>
-<p data-astro-cid-yoyuw6fx="">負荷がかかると、スループットを破壊する可能性のあるGC圧力が生じます。JavaScriptエンジンは、有益な作業をする代わりに、短期間のオブジェクトを収集するのに多大な時間を費やしてしまいます。GCが中断リクエスト処理を一時停止すると、遅延は予測不可能になります。私がSSRのワークロードでは、ガベージコレクションがリクエストあたりの総CPU時間のかなりの部分（最大50％を超える）を占めていることが分かりました。その時間を、実際にコンテンツのレンダリングに費やすことができます。</p>
-<p data-astro-cid-yoyuw6fx="">皮肉なことに、ストリーミングSSRはコンテンツを段階的に送信することでパフォーマンスを向上させるはずです。しかし、Streamを作成する機械のオーバーヘッドが、特に小さなコンポーネントを持つページでは、その改善効果を損なう可能性があります。開発者は、レスポンス全体をバッファリングする方が、Webストリームを介してストリーミングするよりも実際には高速であり、目的を完全に損なうことに気づくことがあります。</p>
-<h3 data-astro-cid-yoyuw6fx="">最適化の自転車操業</h3>
-<p data-astro-cid-yoyuw6fx="">使用可能なパフォーマンスを実現するために、主要なランタイムはすべて、Webストリームの非標準の内部最適化に依存してきました。Node.js、Deno、Bun、Cloudflare Workersはすべて、独自の回避策を開発しています。これは、機械の多くが観測されず、ショートカットされる可能性がある、システムレベルのI/Oに接続されたストリームに特に当てはまります。</p>
-<p data-astro-cid-yoyuw6fx="">こうした最適化の機会を見つけるだけでも、大仕事になる可能性があります。どの動作が観察可能で、どの動作を安全に回避できるのかを特定するには、エンドツーエンドで仕様を理解する必要があります。それでも、ある最適化が実際に仕様に準拠しているかどうかは不明であることが多いです。実装者は、互換性を損なうことなく、どの意味論を緩和できるかを判断する必要があります。これにより、ランタイムチームには、許容可能なパフォーマンスを達成するために、仕様の専門家になるという大きなプレッシャーがかかります。</p>
-<p data-astro-cid-yoyuw6fx="">こうした最適化は実装が難しく、エラーが発生しやすく、ランタイム間の動作が不整合になります。Bunの「<a href="https://bun.sh/docs/api/streams#direct-readablestream" target="_blank" rel="noopener noreferrer"><u>Direct Streams</u></a>」最適化は、意図的かつ観察可能な非標準的なアプローチを採用しており、仕様の多くのメカニズムを完全にバイパスしています。Cloudflare Workersの<a href="https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream" target="_blank" rel="noopener noreferrer"><code><u>IdentityTransformStream</u></code></a>は、パススルー変換の高速処理を提供しますが、Workers固有であり、<code>TransformStream</code>の標準ではない動作を実装しています。それぞれのランタイムには独自のトリックがあり、非標準ソリューションに偏りがちです。たいていの場合、それが高速化する唯一の方法だからです。</p>
-<p data-astro-cid-yoyuw6fx="">この断片化はポータビリティを損ないます。あるランタイムではうまく動作するコードが、「標準的な」APIsを使用している場合でも、別のランタイムでは動作が異なる（または低質になる）場合があります。ランタイム実装者にとって複雑な負担は相当なものであり、微妙な動作の違いは、クロスランタイムコードを書こうとする開発者、特に多くのランタイム環境で効率的に実行できなければならないフレームワークを維持する開発者にとって摩擦が生じます。</p>
-<p data-astro-cid-yoyuw6fx="">また、多くの最適化は、ユーザーコードに観測されない仕様の一部でのみ可能であることを強調する必要があります。代替手段、Bun「Direct Streams」のような代替手段は、仕様で定義された観測可能な動作から意図的に逸脱させることです。つまり、最適化が「不完全」に感じられることが多いということです。あるシナリオによっては動作するが、他のシナリオでは動作しない、あるランタイムでは動作するが、他のシナリオでは動作しないなどです。そのような場合があるたびに、Webストリームのアプローチ全体の持続不可能な複雑さが増大します。これが原因で、ほとんどのランタイム実装者は、準拠テストに合格したとしても、Streamの実装のさらなる改善に大規模な労力を費やすことはほとんどありません。</p>
-<p data-astro-cid-yoyuw6fx="">実装者は、こうした複雑な手順を踏む必要はありません。妥当なパフォーマンスを実現するために、仕様の意味を緩和する、またはバイパスする必要があることに気づいたなら、それは仕様自体に何かが間違っているという兆候です。適切に設計されたストリーミングAPIはデフォルトで効率的であるべきであり、各ランタイムが独自のエスケープハッシュを作成する必要はありません。</p>
-<h3 data-astro-cid-yoyuw6fx="">コンプライアンスの負担</h3>
-<p data-astro-cid-yoyuw6fx="">複雑な仕様では、複雑なエッジケースが生まれます。<a href="https://github.com/web-platform-tests/wpt/tree/master/streams" target="_blank" rel="noopener noreferrer"><u>StreamのWebプラットフォームテスト</u></a>は70以上のテストファイルにまたがっており、包括的なテストは良いことですが、テストする必要があるものが何であるかを示しています。</p>
-<p data-astro-cid-yoyuw6fx="">実装が通過しなければならない、不明瞭なテストのいくつかを考えてみましょう。</p>
+<p data-astro-cid-byeekcgh="">すべてのフラグメントは、<code>read()</code>呼び出し用に作成されたプロミス、バックプレッシャー調整のプロミス、中間バッファ割り当て、および<code>{ value, done } </code>結果オブジェクトを意味します。これらのほとんどは、ほぼ即座にガベージになります。</p>
+<p data-astro-cid-byeekcgh="">負荷がかかると、スループットを破壊する可能性のあるGC圧力が生じます。JavaScriptエンジンは、有益な作業をする代わりに、短期間のオブジェクトを収集するのに多大な時間を費やしてしまいます。GCが中断リクエスト処理を一時停止すると、遅延は予測不可能になります。私がSSRのワークロードでは、ガベージコレクションがリクエストあたりの総CPU時間のかなりの部分（最大50％を超える）を占めていることが分かりました。その時間を、実際にコンテンツのレンダリングに費やすことができます。</p>
+<p data-astro-cid-byeekcgh="">皮肉なことに、ストリーミングSSRはコンテンツを段階的に送信することでパフォーマンスを向上させるはずです。しかし、Streamを作成する機械のオーバーヘッドが、特に小さなコンポーネントを持つページでは、その改善効果を損なう可能性があります。開発者は、レスポンス全体をバッファリングする方が、Webストリームを介してストリーミングするよりも実際には高速であり、目的を完全に損なうことに気づくことがあります。</p>
+<h3 data-astro-cid-byeekcgh="">最適化の自転車操業</h3>
+<p data-astro-cid-byeekcgh="">使用可能なパフォーマンスを実現するために、主要なランタイムはすべて、Webストリームの非標準の内部最適化に依存してきました。Node.js、Deno、Bun、Cloudflare Workersはすべて、独自の回避策を開発しています。これは、機械の多くが観測されず、ショートカットされる可能性がある、システムレベルのI/Oに接続されたストリームに特に当てはまります。</p>
+<p data-astro-cid-byeekcgh="">こうした最適化の機会を見つけるだけでも、大仕事になる可能性があります。どの動作が観察可能で、どの動作を安全に回避できるのかを特定するには、エンドツーエンドで仕様を理解する必要があります。それでも、ある最適化が実際に仕様に準拠しているかどうかは不明であることが多いです。実装者は、互換性を損なうことなく、どの意味論を緩和できるかを判断する必要があります。これにより、ランタイムチームには、許容可能なパフォーマンスを達成するために、仕様の専門家になるという大きなプレッシャーがかかります。</p>
+<p data-astro-cid-byeekcgh="">こうした最適化は実装が難しく、エラーが発生しやすく、ランタイム間の動作が不整合になります。Bunの「<a href="https://bun.sh/docs/api/streams#direct-readablestream" target="_blank" rel="noopener noreferrer"><u>Direct Streams</u></a>」最適化は、意図的かつ観察可能な非標準的なアプローチを採用しており、仕様の多くのメカニズムを完全にバイパスしています。Cloudflare Workersの<a href="https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream" target="_blank" rel="noopener noreferrer"><code><u>IdentityTransformStream</u></code></a>は、パススルー変換の高速処理を提供しますが、Workers固有であり、<code>TransformStream</code>の標準ではない動作を実装しています。それぞれのランタイムには独自のトリックがあり、非標準ソリューションに偏りがちです。たいていの場合、それが高速化する唯一の方法だからです。</p>
+<p data-astro-cid-byeekcgh="">この断片化はポータビリティを損ないます。あるランタイムではうまく動作するコードが、「標準的な」APIsを使用している場合でも、別のランタイムでは動作が異なる（または低質になる）場合があります。ランタイム実装者にとって複雑な負担は相当なものであり、微妙な動作の違いは、クロスランタイムコードを書こうとする開発者、特に多くのランタイム環境で効率的に実行できなければならないフレームワークを維持する開発者にとって摩擦が生じます。</p>
+<p data-astro-cid-byeekcgh="">また、多くの最適化は、ユーザーコードに観測されない仕様の一部でのみ可能であることを強調する必要があります。代替手段、Bun「Direct Streams」のような代替手段は、仕様で定義された観測可能な動作から意図的に逸脱させることです。つまり、最適化が「不完全」に感じられることが多いということです。あるシナリオによっては動作するが、他のシナリオでは動作しない、あるランタイムでは動作するが、他のシナリオでは動作しないなどです。そのような場合があるたびに、Webストリームのアプローチ全体の持続不可能な複雑さが増大します。これが原因で、ほとんどのランタイム実装者は、準拠テストに合格したとしても、Streamの実装のさらなる改善に大規模な労力を費やすことはほとんどありません。</p>
+<p data-astro-cid-byeekcgh="">実装者は、こうした複雑な手順を踏む必要はありません。妥当なパフォーマンスを実現するために、仕様の意味を緩和する、またはバイパスする必要があることに気づいたなら、それは仕様自体に何かが間違っているという兆候です。適切に設計されたストリーミングAPIはデフォルトで効率的であるべきであり、各ランタイムが独自のエスケープハッシュを作成する必要はありません。</p>
+<h3 data-astro-cid-byeekcgh="">コンプライアンスの負担</h3>
+<p data-astro-cid-byeekcgh="">複雑な仕様では、複雑なエッジケースが生まれます。<a href="https://github.com/web-platform-tests/wpt/tree/master/streams" target="_blank" rel="noopener noreferrer"><u>StreamのWebプラットフォームテスト</u></a>は70以上のテストファイルにまたがっており、包括的なテストは良いことですが、テストする必要があるものが何であるかを示しています。</p>
+<p data-astro-cid-byeekcgh="">実装が通過しなければならない、不明瞭なテストのいくつかを考えてみましょう。</p>
 <ul>
 	<li>プロトタイプ汚染防御：1つのテストが<code>Object.prototype.</code>thenにパッチを適用し、Promiseの解決をインターセプトします。その後、<code>pipeTo()</code>および<code>tee()</code>操作がプロトタイプチェーンを介して内部値を漏洩しないことを検証します。これは、仕様の約束が多い内部機能が攻撃対象領域を作成するためにのみ存在するセキュリティプロパティをテストします。</li>
 	<li>WebAssemblyメモリの拒否：BYOB読み取りは、WebAssemblyメモリに支えられたArrayBuffersを明示的に拒否しなければなりません。WebAssemblyメモリは、通常のバッファのように見えますが、転送できません。このエッジケースは、Specのバッファ分離モデルによって存在します。より単純なAPIでは処理する必要がないのです。</li>
 	<li>ステートマシンの競合によるクラッシュ回帰：<code>byobRequest.respond()</code>の呼び出しを特定のテストで確認します<code>enqueue()</code>の後、ランタイムがクラッシュしない。このシーケンスにより、内部ステートマシンに競合が発生します。<code>enqueue()</code>は保留中の読み取りを実行し、<code>byobRequest</code>を無効化する必要がありますが、実装は開発者が複雑なAPIを正しく使用していない可能性が非常に高いため、メモリを破損するのではなく、その後の<code>respond()</code>を適切に処理する必要があります。</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">これらは、テスト作成者が完全に協力して考案したシナリオではありません。それらは仕様の設計の結果であり、現実世界のバグを反映しています。</p>
-<p data-astro-cid-yoyuw6fx="">ランタイムの実装者にとって、WPTスイートを通過することは、ほとんどのアプリケーションコードが遭遇することのない複雑なエッジケースを処理することを意味します。テストは、ハッピーなパスだけでなく、リーダー、ライター、コントローラー、キュー、戦略、そしてそれらすべてを接続する約束機械間の相互作用の完全なマトリックスをエンコードします。</p>
-<p data-astro-cid-yoyuw6fx="">よりシンプルなAPIは、概念が少なく、概念間の相互作用が少なく、適切なエッジケースが少なく、その結果、実装が実際に一貫して動作するという確信が高まります。</p>
-<h3 data-astro-cid-yoyuw6fx="">要点</h3>
-<p data-astro-cid-yoyuw6fx="">Webストリームは、ユーザーにとっても実装者にとっても複雑なものです。仕様の問題はバグではありません。設計どおりにAPIを使用することで実現されます。漸進的改善だけで修正できる問題ではありません。これらは、基本的な設計の選択の結果です。物事を改善するためには、異なる基盤が必要です。</p>
-<h2 data-astro-cid-yoyuw6fx="">より良いStream APIであることを可能に</h2>
-<p data-astro-cid-yoyuw6fx="">異なるランタイムでWebストリームの仕様を複数回実装し、問題点を直接確認した後、今日の第一原理から設計した場合のより良い代替ストリーミングAPIはどのようなものになるかを検討するタイミングだと決めました。</p>
-<p data-astro-cid-yoyuw6fx="">以下は概念実証です。完成した標準ではなく、プロダクションレディで利用可能なライブラリでもありません。必ずしも新しい何かの具体的提案でもありませんが、Webストリームの問題がストリーミングに固有のものではないことを示す議論の出発点です。 ;特定の設計上の選択の結果であり、違った方法で選択することも可能です。このAPIが正しい答えかどうかよりも、それがストリーミングプリミティブから実際に必要なものについての生産的な会話につながるかどうかより重要です。</p>
-<h3 data-astro-cid-yoyuw6fx="">ストリームとは？</h3>
-<p data-astro-cid-yoyuw6fx="">API設計について掘り下げる前に、ストリームとは何か？を考えてみましょう。</p>
-<p data-astro-cid-yoyuw6fx="">本質的には、ストリームは時間とともに到着するデータのシーケンスです。すべてを一度に行うことはできません。利用可能になるにつれて、徐々に処理していきます。</p>
-<p data-astro-cid-yoyuw6fx="">Unixパイプは、おそらくこのアイディアを最も純粋に表現したものです。</p>
+<p data-astro-cid-byeekcgh="">これらは、テスト作成者が完全に協力して考案したシナリオではありません。それらは仕様の設計の結果であり、現実世界のバグを反映しています。</p>
+<p data-astro-cid-byeekcgh="">ランタイムの実装者にとって、WPTスイートを通過することは、ほとんどのアプリケーションコードが遭遇することのない複雑なエッジケースを処理することを意味します。テストは、ハッピーなパスだけでなく、リーダー、ライター、コントローラー、キュー、戦略、そしてそれらすべてを接続する約束機械間の相互作用の完全なマトリックスをエンコードします。</p>
+<p data-astro-cid-byeekcgh="">よりシンプルなAPIは、概念が少なく、概念間の相互作用が少なく、適切なエッジケースが少なく、その結果、実装が実際に一貫して動作するという確信が高まります。</p>
+<h3 data-astro-cid-byeekcgh="">要点</h3>
+<p data-astro-cid-byeekcgh="">Webストリームは、ユーザーにとっても実装者にとっても複雑なものです。仕様の問題はバグではありません。設計どおりにAPIを使用することで実現されます。漸進的改善だけで修正できる問題ではありません。これらは、基本的な設計の選択の結果です。物事を改善するためには、異なる基盤が必要です。</p>
+<h2 data-astro-cid-byeekcgh="">より良いStream APIであることを可能に</h2>
+<p data-astro-cid-byeekcgh="">異なるランタイムでWebストリームの仕様を複数回実装し、問題点を直接確認した後、今日の第一原理から設計した場合のより良い代替ストリーミングAPIはどのようなものになるかを検討するタイミングだと決めました。</p>
+<p data-astro-cid-byeekcgh="">以下は概念実証です。完成した標準ではなく、プロダクションレディで利用可能なライブラリでもありません。必ずしも新しい何かの具体的提案でもありませんが、Webストリームの問題がストリーミングに固有のものではないことを示す議論の出発点です。 ;特定の設計上の選択の結果であり、違った方法で選択することも可能です。このAPIが正しい答えかどうかよりも、それがストリーミングプリミティブから実際に必要なものについての生産的な会話につながるかどうかより重要です。</p>
+<h3 data-astro-cid-byeekcgh="">ストリームとは？</h3>
+<p data-astro-cid-byeekcgh="">API設計について掘り下げる前に、ストリームとは何か？を考えてみましょう。</p>
+<p data-astro-cid-byeekcgh="">本質的には、ストリームは時間とともに到着するデータのシーケンスです。すべてを一度に行うことはできません。利用可能になるにつれて、徐々に処理していきます。</p>
+<p data-astro-cid-byeekcgh="">Unixパイプは、おそらくこのアイディアを最も純粋に表現したものです。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cat</span><span class="sk-032f62-99ffe4"> access.log</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> "error"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sort</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> uniq</span><span class="sk-005cc5-99ffe4"> -c</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -380,32 +380,32 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx=""><br>データは左から右に流れます。各ステージは入力を読み取り、作業を行い、出力を書き込みます。パイプリーダーの取得も、コントローラーロックの管理も必要ありません。下流段階が遅いと、当然ながら上流段階も遅くなります。バックプレッシャーはモデル内で暗黙的であり、学習する（または無視する）ための別個のメカニズムではありません。</p>
-<p data-astro-cid-yoyuw6fx="">JavaScriptでは、「時間とともに到着する一連のモノ」の自然なプリミティブはすでに言語にあります：非同期反復可能です。<code>for await...of</code>で消費します。反復を中止することで、消費を停止します。</p>
-<p data-astro-cid-yoyuw6fx="">これは、新しいAPIが維持しようとしている直感です。ストリームは反復のように感じられなければなりません。なぜなら、それこそが反復するものだからです。Webストリーム（リーダー、ライター、コントローラー、ロック、キューイング戦略）の複雑さは、この基本的なシンプルさを不明瞭にします。より優れたAPIは、単純なケースをシンプルにし、本当に必要な場合にのみ複雑さを増す必要があります。</p>
+<p data-astro-cid-byeekcgh=""><br>データは左から右に流れます。各ステージは入力を読み取り、作業を行い、出力を書き込みます。パイプリーダーの取得も、コントローラーロックの管理も必要ありません。下流段階が遅いと、当然ながら上流段階も遅くなります。バックプレッシャーはモデル内で暗黙的であり、学習する（または無視する）ための別個のメカニズムではありません。</p>
+<p data-astro-cid-byeekcgh="">JavaScriptでは、「時間とともに到着する一連のモノ」の自然なプリミティブはすでに言語にあります：非同期反復可能です。<code>for await...of</code>で消費します。反復を中止することで、消費を停止します。</p>
+<p data-astro-cid-byeekcgh="">これは、新しいAPIが維持しようとしている直感です。ストリームは反復のように感じられなければなりません。なぜなら、それこそが反復するものだからです。Webストリーム（リーダー、ライター、コントローラー、ロック、キューイング戦略）の複雑さは、この基本的なシンプルさを不明瞭にします。より優れたAPIは、単純なケースをシンプルにし、本当に必要な場合にのみ複雑さを増す必要があります。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="502" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TW9ZT041ZSNNR1VZPPH7.png&amp;w=715&amp;h=502&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TW9ZT041ZSNNR1VZPPH7.png&amp;w=640&amp;h=449&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TW9ZT041ZSNNR1VZPPH7.png&amp;w=715&amp;h=502&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TW9ZT041ZSNNR1VZPPH7.png&amp;w=750&amp;h=527&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TW9ZT041ZSNNR1VZPPH7.png&amp;w=828&amp;h=581&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TW9ZT041ZSNNR1VZPPH7.png&amp;w=1080&amp;h=758&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TW9ZT041ZSNNR1VZPPH7.png&amp;w=1280&amp;h=899&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TW9ZT041ZSNNR1VZPPH7.png&amp;w=1430&amp;h=1004&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3183 Image 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TW9ZT041ZSNNR1VZPPH7.png&amp;w=892&amp;h=626&amp;f=webp" data-lightbox-width="892" data-lightbox-height="626" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="502" class="pt-portable-image-media"></div>
 </figure>
-<h3 data-astro-cid-yoyuw6fx="">設計の原則</h3>
-<p data-astro-cid-yoyuw6fx="">私は、異なる原則に基づいて概念実証の代替案を作成しました。</p>
-<h4 data-astro-cid-yoyuw6fx="">Streamは反復可能です。</h4>
-<p data-astro-cid-yoyuw6fx="">隠れた内部状態を持つカスタム<code>ReadableStream</code>クラスはありません。読み取り可能なストリームは、単に <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_async_iterator_and_async_iterable_protocols" target="_blank" rel="noopener noreferrer"><code><u>AsyncIterable&lt;Uint8Array[]&gt;</u></code></a> です。<code>for await...of</code>で消費します。リーダーの取得も、ロックの管理も必要ありません。</p>
-<h4 data-astro-cid-yoyuw6fx="">プルスルー変換</h4>
-<p data-astro-cid-yoyuw6fx="">変換はコンシューマーがプルするまで実行されません。評価も隠れたバッファリングもありません。データは、ソースからコンシューマーへオンデマンドで流れ、変換を経てコンシューマーへ送信されます。反復を停止すると、処理は停止します。</p>
+<h3 data-astro-cid-byeekcgh="">設計の原則</h3>
+<p data-astro-cid-byeekcgh="">私は、異なる原則に基づいて概念実証の代替案を作成しました。</p>
+<h4 data-astro-cid-byeekcgh="">Streamは反復可能です。</h4>
+<p data-astro-cid-byeekcgh="">隠れた内部状態を持つカスタム<code>ReadableStream</code>クラスはありません。読み取り可能なストリームは、単に <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_async_iterator_and_async_iterable_protocols" target="_blank" rel="noopener noreferrer"><code><u>AsyncIterable&lt;Uint8Array[]&gt;</u></code></a> です。<code>for await...of</code>で消費します。リーダーの取得も、ロックの管理も必要ありません。</p>
+<h4 data-astro-cid-byeekcgh="">プルスルー変換</h4>
+<p data-astro-cid-byeekcgh="">変換はコンシューマーがプルするまで実行されません。評価も隠れたバッファリングもありません。データは、ソースからコンシューマーへオンデマンドで流れ、変換を経てコンシューマーへ送信されます。反復を停止すると、処理は停止します。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="541" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46V8P35R1SVYPAD72NZP79.png&amp;w=715&amp;h=541&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46V8P35R1SVYPAD72NZP79.png&amp;w=640&amp;h=484&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46V8P35R1SVYPAD72NZP79.png&amp;w=715&amp;h=541&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46V8P35R1SVYPAD72NZP79.png&amp;w=750&amp;h=567&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46V8P35R1SVYPAD72NZP79.png&amp;w=828&amp;h=627&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46V8P35R1SVYPAD72NZP79.png&amp;w=1080&amp;h=817&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46V8P35R1SVYPAD72NZP79.png&amp;w=1280&amp;h=969&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46V8P35R1SVYPAD72NZP79.png&amp;w=1430&amp;h=1082&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3183 Image 5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46V8P35R1SVYPAD72NZP79.png&amp;w=721&amp;h=546&amp;f=webp" data-lightbox-width="721" data-lightbox-height="546" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="541" class="pt-portable-image-media"></div>
 </figure>
-<h4 data-astro-cid-yoyuw6fx="">明示的なバックプレッシャー</h4>
-<p data-astro-cid-yoyuw6fx="">バックプレッシャーはデフォルトで厳格です。バッファが満杯になると、書き込みは静かに蓄積されるのではなく、拒否されます。スペースが利用可能になるまでブロック、最も古い削除、最新の削除など、代替ポリシーを設定できますが、明示的に選択する必要があります。静かなメモリ増加はもうありません。</p>
-<h4 data-astro-cid-yoyuw6fx="">バッチ処理されたチャンク</h4>
-<p data-astro-cid-yoyuw6fx="">反復ごとに1つのチャンクを生成するのではなく、ストリームは<code>Uint8Array[]:</code> チャンクの配列を生成します。これにより、複数のチャンクにわたる非同期オーバーヘッドが合理化され、ホットパスでの約束の作成とマイクロタスクの遅延が低減されます。</p>
-<h4 data-astro-cid-yoyuw6fx="">バイトのみ</h4>
-<p data-astro-cid-yoyuw6fx="">APIはバイト（<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array" target="_blank" rel="noopener noreferrer"><code><u>Uint8Array</u></code></a>）のみを処理します。文字列は自動的にUTF-8にエンコードされます。「バリューストリーム」と「バイトストリーム」の対比はありません。任意のJavaScript値をストリーミングするには、async iterablesを直接使用してください。APIは<code>Uint8Array</code>を使用しますが、チャンクは不透明なものとして扱われます。部分的な消費も、BYOBパターンも、ストリーミング機械自体内でのバイトレベルの操作もありません。チャンクが入り、チャンクが出てくると、変換で明示的に変更しない限り、変更は一切されません。</p>
-<h4 data-astro-cid-yoyuw6fx="">同期の高速パスが重要</h4>
-<p data-astro-cid-yoyuw6fx="">APIは、同期されたデータソースが必要であり、一般的であることを認識します。非同期スケジューリングが提供される唯一のオプションであるという理由だけで、アプリケーションは非同期スケジューリングのパフォーマンス上のコストを常に受け入れる必要はありません。同時に、同期処理と非同期処理の混在は危険です。同期パスは常に選択肢であり、常に明示的である必要があります。</p>
-<h3 data-astro-cid-yoyuw6fx="">新しいAPIの動作</h3>
-<h4 data-astro-cid-yoyuw6fx="">ストリームの作成と利用</h4>
-<p data-astro-cid-yoyuw6fx="">Webストリームでは、単純な生産者/消費者のペアを作成するには、<code>TransformStream</code>、手動でのエンコーディング、そして慎重なロック管理が必要です。</p>
+<h4 data-astro-cid-byeekcgh="">明示的なバックプレッシャー</h4>
+<p data-astro-cid-byeekcgh="">バックプレッシャーはデフォルトで厳格です。バッファが満杯になると、書き込みは静かに蓄積されるのではなく、拒否されます。スペースが利用可能になるまでブロック、最も古い削除、最新の削除など、代替ポリシーを設定できますが、明示的に選択する必要があります。静かなメモリ増加はもうありません。</p>
+<h4 data-astro-cid-byeekcgh="">バッチ処理されたチャンク</h4>
+<p data-astro-cid-byeekcgh="">反復ごとに1つのチャンクを生成するのではなく、ストリームは<code>Uint8Array[]:</code> チャンクの配列を生成します。これにより、複数のチャンクにわたる非同期オーバーヘッドが合理化され、ホットパスでの約束の作成とマイクロタスクの遅延が低減されます。</p>
+<h4 data-astro-cid-byeekcgh="">バイトのみ</h4>
+<p data-astro-cid-byeekcgh="">APIはバイト（<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array" target="_blank" rel="noopener noreferrer"><code><u>Uint8Array</u></code></a>）のみを処理します。文字列は自動的にUTF-8にエンコードされます。「バリューストリーム」と「バイトストリーム」の対比はありません。任意のJavaScript値をストリーミングするには、async iterablesを直接使用してください。APIは<code>Uint8Array</code>を使用しますが、チャンクは不透明なものとして扱われます。部分的な消費も、BYOBパターンも、ストリーミング機械自体内でのバイトレベルの操作もありません。チャンクが入り、チャンクが出てくると、変換で明示的に変更しない限り、変更は一切されません。</p>
+<h4 data-astro-cid-byeekcgh="">同期の高速パスが重要</h4>
+<p data-astro-cid-byeekcgh="">APIは、同期されたデータソースが必要であり、一般的であることを認識します。非同期スケジューリングが提供される唯一のオプションであるという理由だけで、アプリケーションは非同期スケジューリングのパフォーマンス上のコストを常に受け入れる必要はありません。同時に、同期処理と非同期処理の混在は危険です。同期パスは常に選択肢であり、常に明示的である必要があります。</p>
+<h3 data-astro-cid-byeekcgh="">新しいAPIの動作</h3>
+<h4 data-astro-cid-byeekcgh="">ストリームの作成と利用</h4>
+<p data-astro-cid-byeekcgh="">Webストリームでは、単純な生産者/消費者のペアを作成するには、<code>TransformStream</code>、手動でのエンコーディング、そして慎重なロック管理が必要です。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">readable</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">writable</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> TransformStream</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> enc</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> TextEncoder</span><span class="sk-24292e-fff">();</span></span>
@@ -425,8 +425,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">この比較的クリーンなバージョンでも、<code>TransformStream</code>、手動の<code>TextEncoder</code>と<code>TextDecoder</code>、および明示的なロックのリリースが必要です。</p>
-<p data-astro-cid-yoyuw6fx="">以下は、新しいAPIに対応するものです。</p>
+<p data-astro-cid-byeekcgh="">この比較的クリーンなバージョンでも、<code>TransformStream</code>、手動の<code>TextEncoder</code>と<code>TextDecoder</code>、および明示的なロックのリリースが必要です。</p>
+<p data-astro-cid-byeekcgh="">以下は、新しいAPIに対応するものです。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Stream } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'new-streams'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -444,10 +444,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">読み取り可能は、単に非同期の反復可能です。ストリーム全体を収集してデコードする<code>Stream.text()</code>など、任意の関数に渡すことができます。</p>
-<p data-astro-cid-yoyuw6fx="">ライターにはシンプルなインターフェースがあります: バッチ書き込み用の <code>write()、writev()</code>、完了を通知する <code>end()</code>、エラー用の <code>abort()</code>。これが本質的にこれだけです。</p>
-<p data-astro-cid-yoyuw6fx="">writerは具体的なクラスではありません。<code>write()</code>、<code>end()</code>、および<code>abort()</code>を実装するオブジェクトはどれでもライターになれるため、既存のAPIを適応させたり、サブクラス化せずに特殊な実装を作成したりすることが容易になります。<code>start()</code>、<code>write()</code>、<code>close()</code>、<code>abort()</code>コールバックなど、ライフサイクルと状態がバインドされている<code>WritableStream</code>に依存しないコントローラーを介して調整する必要がある複雑な<code>UnderlyingSink</code>プロトコルはありません。</p>
-<p data-astro-cid-yoyuw6fx="">以下は、書かれたすべてのデータを収集する単純なメモリ内ライターです。</p>
+<p data-astro-cid-byeekcgh="">読み取り可能は、単に非同期の反復可能です。ストリーム全体を収集してデコードする<code>Stream.text()</code>など、任意の関数に渡すことができます。</p>
+<p data-astro-cid-byeekcgh="">ライターにはシンプルなインターフェースがあります: バッチ書き込み用の <code>write()、writev()</code>、完了を通知する <code>end()</code>、エラー用の <code>abort()</code>。これが本質的にこれだけです。</p>
+<p data-astro-cid-byeekcgh="">writerは具体的なクラスではありません。<code>write()</code>、<code>end()</code>、および<code>abort()</code>を実装するオブジェクトはどれでもライターになれるため、既存のAPIを適応させたり、サブクラス化せずに特殊な実装を作成したりすることが容易になります。<code>start()</code>、<code>write()</code>、<code>close()</code>、<code>abort()</code>コールバックなど、ライフサイクルと状態がバインドされている<code>WritableStream</code>に依存しないコントローラーを介して調整する必要がある複雑な<code>UnderlyingSink</code>プロトコルはありません。</p>
+<p data-astro-cid-byeekcgh="">以下は、書かれたすべてのデータを収集する単純なメモリ内ライターです。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// A minimal writer implementation — just an object with methods</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> createBufferWriter</span><span class="sk-24292e-fff">() {</span></span>
@@ -488,9 +488,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">拡張すべきベースクラスも、実装すべき抽象メソッドも、調整すべきコントローラーもありません。正しい形のオブジェクトというだけです。</p>
-<h4 data-astro-cid-yoyuw6fx="">プルスルー変換</h4>
-<p data-astro-cid-yoyuw6fx="">新しいAPI設計では、変換はデータが消費されるまでいかなる作業も実行してはいけません。これが基本原則です。</p>
+<p data-astro-cid-byeekcgh="">拡張すべきベースクラスも、実装すべき抽象メソッドも、調整すべきコントローラーもありません。正しい形のオブジェクトというだけです。</p>
+<h4 data-astro-cid-byeekcgh="">プルスルー変換</h4>
+<p data-astro-cid-byeekcgh="">新しいAPI設計では、変換はデータが消費されるまでいかなる作業も実行してはいけません。これが基本原則です。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Nothing executes until iteration begins</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> output</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(source, compress, encrypt);</span></span>
@@ -506,9 +506,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx=""><code>Stream.pull()</code>は、レイジーパイプラインを作成します。<code>圧縮</code>と<code>暗号化</code>の変換は、出力の反復を始めるまで実行されません。各イテレーションでは、オンデマンドでパイプラインを介してデータがプルされます。</p>
-<p data-astro-cid-yoyuw6fx="">これは、パイプがセットアップされるとすぐに、ソースから変換にデータを積極的にポンピングし始めるWebストリームの<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeThrough" target="_blank" rel="noopener noreferrer"><code><u>pipeThrough()</u></code></a>とは根本的に異なります。プルセマンティックスは、処理が行われるタイミングを制御し、イテレーションを停止すると処理を停止することを意味します。</p>
-<p data-astro-cid-yoyuw6fx="">変換はステートレスにもステートフルにもできます。ステートレス変換は、チャンクを取得し、変換されたチャンクを返す関数です。</p>
+<p data-astro-cid-byeekcgh=""><code>Stream.pull()</code>は、レイジーパイプラインを作成します。<code>圧縮</code>と<code>暗号化</code>の変換は、出力の反復を始めるまで実行されません。各イテレーションでは、オンデマンドでパイプラインを介してデータがプルされます。</p>
+<p data-astro-cid-byeekcgh="">これは、パイプがセットアップされるとすぐに、ソースから変換にデータを積極的にポンピングし始めるWebストリームの<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeThrough" target="_blank" rel="noopener noreferrer"><code><u>pipeThrough()</u></code></a>とは根本的に異なります。プルセマンティックスは、処理が行われるタイミングを制御し、イテレーションを停止すると処理を停止することを意味します。</p>
+<p data-astro-cid-byeekcgh="">変換はステートレスにもステートフルにもできます。ステートレス変換は、チャンクを取得し、変換されたチャンクを返す関数です。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Stateless transform — a pure function</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Receives chunks or null (flush signal)</span></span>
@@ -527,7 +527,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">ステートフル変換は、呼び出し間で状態を維持するメンバー関数を持つ単純なオブジェクトです。</p>
+<p data-astro-cid-byeekcgh="">ステートフル変換は、呼び出し間で状態を維持するメンバー関数を持つ単純なオブジェクトです。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Stateful transform — a generator that wraps the source</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> createLineParser</span><span class="sk-24292e-fff">() {</span></span>
@@ -575,7 +575,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Abort時にクリーンアップが必要な変換には、Abortハンドラーを追加します。</p>
+<p data-astro-cid-byeekcgh="">Abort時にクリーンアップが必要な変換には、Abortハンドラーを追加します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Stateful transform with resource cleanup</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> createGzipCompressor</span><span class="sk-24292e-fff">() {</span></span>
@@ -607,20 +607,20 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">実装者にとって、<code>start()</code>、<code>transform()</code>、<code>flush()</code> メソッドとコントローラーの調整が、独自の隠れたステートマシンとバッファリングメカニズムを持つ <code>TransformStream</code> クラスに渡される Transformer プロトコルはありません。変換は単なる関数または単純なオブジェクト：実装とテストははるかに簡単です。</p>
-<h4 data-astro-cid-yoyuw6fx="">明示的なバックプレッシャーポリシー</h4>
-<p data-astro-cid-yoyuw6fx="">区切られたバッファがいっぱいになり、プロデューサーがさらに書き込みたい場合、できることはいくつかあります。</p>
+<p data-astro-cid-byeekcgh="">実装者にとって、<code>start()</code>、<code>transform()</code>、<code>flush()</code> メソッドとコントローラーの調整が、独自の隠れたステートマシンとバッファリングメカニズムを持つ <code>TransformStream</code> クラスに渡される Transformer プロトコルはありません。変換は単なる関数または単純なオブジェクト：実装とテストははるかに簡単です。</p>
+<h4 data-astro-cid-byeekcgh="">明示的なバックプレッシャーポリシー</h4>
+<p data-astro-cid-byeekcgh="">区切られたバッファがいっぱいになり、プロデューサーがさらに書き込みたい場合、できることはいくつかあります。</p>
 <ol>
 	<li>書き込みを拒否：それ以上のデータの受け入れを拒否</li>
 	<li>待機：スペースが利用可能になるまでブロック</li>
 	<li>古いデータを破棄：すでにバッファリングされているものを退避させ、スペースを作る</li>
 	<li>新しいデータを破棄：受信データをドロップする</li>
 </ol>
-<p data-astro-cid-yoyuw6fx="">これで、以上です。その他のレスポンスは、これらのバリエーション（「バッファのサイズを変更する」など、実際には選択を遅延させているだけ）、または一般的なストリーミングプリミティブに属さないドメイン固有のロジックのいずれかです。現在、Webストリームは現在、デフォルトで常に「待機」を選択します。</p>
+<p data-astro-cid-byeekcgh="">これで、以上です。その他のレスポンスは、これらのバリエーション（「バッファのサイズを変更する」など、実際には選択を遅延させているだけ）、または一般的なストリーミングプリミティブに属さないドメイン固有のロジックのいずれかです。現在、Webストリームは現在、デフォルトで常に「待機」を選択します。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="621" height="586" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Y53TC7S9Z2ZZF6TQFWJF.png&amp;w=621&amp;h=586&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Y53TC7S9Z2ZZF6TQFWJF.png&amp;w=621&amp;h=586&amp;f=webp&amp;fit=cover&amp;position=center 621w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Y53TC7S9Z2ZZF6TQFWJF.png&amp;w=640&amp;h=604&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Y53TC7S9Z2ZZF6TQFWJF.png&amp;w=750&amp;h=708&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Y53TC7S9Z2ZZF6TQFWJF.png&amp;w=828&amp;h=781&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Y53TC7S9Z2ZZF6TQFWJF.png&amp;w=1080&amp;h=1019&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Y53TC7S9Z2ZZF6TQFWJF.png&amp;w=1242&amp;h=1172&amp;f=webp&amp;fit=cover&amp;position=center 1242w" alt="BLOG-3183 Image 6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Y53TC7S9Z2ZZF6TQFWJF.png&amp;w=621&amp;h=586&amp;f=webp" data-lightbox-width="621" data-lightbox-height="586" data-astro-cid-7nvefuv6="true" sizes="(min-width: 621px) 621px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="621" height="586" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-yoyuw6fx="">新しいAPIでは、これら4つのいずれかを明示的に選択することになります。</p>
+<p data-astro-cid-byeekcgh="">新しいAPIでは、これら4つのいずれかを明示的に選択することになります。</p>
 <ul>
 	<li><code>strict</code>（デフォルト）：バッファがフルで、保留中の書き込みが多すぎる場合、書き込みを拒否します。プロデューサーがバックプレッシャーを無視する「消火活動的」パターンを捕捉します。</li>
 	<li><code>block</code>: バッファスペースが利用可能になるまで書き込みを待ちます。プロデューサーが適切に書き込みを待つと信頼できる場合に使います。</li>
@@ -637,8 +637,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">プロデューサーの協力を期待することはもうありません。選択したポリシーによって、バッファが満杯になったときに何が起こるかが決定されます。</p>
-<p data-astro-cid-yoyuw6fx="">プロデューサーの書き込みがコンシューマーの読み取りより速い場合の、各ポリシーの動作は次のようになります。</p>
+<p data-astro-cid-byeekcgh="">プロデューサーの協力を期待することはもうありません。選択したポリシーによって、バッファが満杯になったときに何が起こるかが決定されます。</p>
+<p data-astro-cid-byeekcgh="">プロデューサーの書き込みがコンシューマーの読み取りより速い場合の、各ポリシーの動作は次のようになります。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// strict: Catches fire-and-forget writes that ignore backpressure</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> strict</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">({ highWaterMark: </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">, backpressure: </span><span class="sk-032f62-99ffe4">'strict'</span><span class="sk-24292e-fff"> });</span></span>
@@ -672,7 +672,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4 data-astro-cid-yoyuw6fx="">マルチコンシューマーのパターンを顕著に</h4>
+<h4 data-astro-cid-byeekcgh="">マルチコンシューマーのパターンを顕著に</h4>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Share with explicit buffer management</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> shared</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">share</span><span class="sk-24292e-fff">(source, {</span></span>
@@ -687,11 +687,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">隠れた制限のないバッファを持つ<code>tee()</code>の代わりに、明示的なマルチコンシューマープリミティブが得られます。<code>Stream.share()</code>はプルベースです。コンシューマーは共有ソースからプルし、バッファ制限とバックプレッシャーポリシーを事前に設定します。</p>
-<p data-astro-cid-yoyuw6fx="">また、プッシュベースのマルチコンシューマーシナリオ用の<code>Stream.broadcast()</code>もあります。どちらも、コンシューマーが異なる速度で動作する場合にどうなるかについて考えなければなりません。なぜなら、それは隠れるべき問題ではない現実的な懸念だからです。</p>
-<h4 data-astro-cid-yoyuw6fx="">同期/非同期の分離</h4>
-<p data-astro-cid-yoyuw6fx="">すべてのストリーミングワークロードにI/Oが含まれるわけではありません。ソースがメモリ内にあり、変換が純粋な関数である場合、非同期機械学習はオーバーヘッドを追加します。あなたは、メリットがない「待機」の調整に対してお金を払っているのです。</p>
-<p data-astro-cid-yoyuw6fx="">新しいAPIには、完全なパラレル同期バージョンがあります。<code>Stream.pullSync()</code>、<code>Stream.bytesSync()</code>、<code>Stream.textSync()</code>などがあります。ソースと変換がすべて同期されている場合、単一の約束なしでパイプライン全体を処理できます。</p>
+<p data-astro-cid-byeekcgh="">隠れた制限のないバッファを持つ<code>tee()</code>の代わりに、明示的なマルチコンシューマープリミティブが得られます。<code>Stream.share()</code>はプルベースです。コンシューマーは共有ソースからプルし、バッファ制限とバックプレッシャーポリシーを事前に設定します。</p>
+<p data-astro-cid-byeekcgh="">また、プッシュベースのマルチコンシューマーシナリオ用の<code>Stream.broadcast()</code>もあります。どちらも、コンシューマーが異なる速度で動作する場合にどうなるかについて考えなければなりません。なぜなら、それは隠れるべき問題ではない現実的な懸念だからです。</p>
+<h4 data-astro-cid-byeekcgh="">同期/非同期の分離</h4>
+<p data-astro-cid-byeekcgh="">すべてのストリーミングワークロードにI/Oが含まれるわけではありません。ソースがメモリ内にあり、変換が純粋な関数である場合、非同期機械学習はオーバーヘッドを追加します。あなたは、メリットがない「待機」の調整に対してお金を払っているのです。</p>
+<p data-astro-cid-byeekcgh="">新しいAPIには、完全なパラレル同期バージョンがあります。<code>Stream.pullSync()</code>、<code>Stream.bytesSync()</code>、<code>Stream.textSync()</code>などがあります。ソースと変換がすべて同期されている場合、単一の約束なしでパイプライン全体を処理できます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Async — when source or transforms may be asynchronous</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> textAsync</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">(source);</span></span>
@@ -703,7 +703,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">以下は、圧縮、変換、消費を含む完全な同期パイプラインで、非同期オーバーヘッドがゼロです：</p>
+<p data-astro-cid-byeekcgh="">以下は、圧縮、変換、消費を含む完全な同期パイプラインで、非同期オーバーヘッドがゼロです：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Synchronous source from in-memory data</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> source</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">fromSync</span><span class="sk-24292e-fff">([inputBuffer]);</span></span>
@@ -719,10 +719,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">パイプライン全体が単一のコールスタックで実行されます。約束は作成されず、マイクロタスクキュースケジューリングも発生せず、短時間の非同期処理マシンによるGC圧力も発生しません。解析、圧縮、またはメモリ内データの変換など、CPUに依存するワークロードの場合、これは同等のWebストリームコードよりも大幅に高速化できます。これにより、すべてのコンポーネントが同期である場合でも、非同期境界が強制されます。</p>
-<p data-astro-cid-yoyuw6fx="">Webストリームには同期経路がありません。たとえソースにデータの準備ができていて、変換が純粋な関数だとしても、すべての操作でプロミスの作成とマイクロタスクのスケジューリングに対する支払いが発生します。Promisは、待ち時間が実際的に必要な場合に素晴らしいのですが、必ずしも待ち時間が必要ではありません。新しいAPIを使用すると、必要なときに同期ランドの状態に維持することができます。</p>
-<h4 data-astro-cid-yoyuw6fx="">情報とWebストリームのギャップを埋める</h4>
-<p data-astro-cid-yoyuw6fx="">非同期イテレータベースのアプローチは、この代替アプローチとWebストリームの間に自然な橋渡しを提供します。ReadableStreamからこの新しいアプローチにアクセスする場合、ReadableStreamがバイトを生成するように設定されている場合、入力としてreadableを渡すだけで、期待通りに機能します。</p>
+<p data-astro-cid-byeekcgh="">パイプライン全体が単一のコールスタックで実行されます。約束は作成されず、マイクロタスクキュースケジューリングも発生せず、短時間の非同期処理マシンによるGC圧力も発生しません。解析、圧縮、またはメモリ内データの変換など、CPUに依存するワークロードの場合、これは同等のWebストリームコードよりも大幅に高速化できます。これにより、すべてのコンポーネントが同期である場合でも、非同期境界が強制されます。</p>
+<p data-astro-cid-byeekcgh="">Webストリームには同期経路がありません。たとえソースにデータの準備ができていて、変換が純粋な関数だとしても、すべての操作でプロミスの作成とマイクロタスクのスケジューリングに対する支払いが発生します。Promisは、待ち時間が実際的に必要な場合に素晴らしいのですが、必ずしも待ち時間が必要ではありません。新しいAPIを使用すると、必要なときに同期ランドの状態に維持することができます。</p>
+<h4 data-astro-cid-byeekcgh="">情報とWebストリームのギャップを埋める</h4>
+<p data-astro-cid-byeekcgh="">非同期イテレータベースのアプローチは、この代替アプローチとWebストリームの間に自然な橋渡しを提供します。ReadableStreamからこの新しいアプローチにアクセスする場合、ReadableStreamがバイトを生成するように設定されている場合、入力としてreadableを渡すだけで、期待通りに機能します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> readable</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> getWebReadableStreamSomehow</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> input</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(readable, transform1, transform2);</span></span>
@@ -734,7 +734,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">別のアプローチではチャンクのバッチが発生するため、ReadableStreamに適応する場合、もう少し作業が必要になりますが、適応層は簡単です。</p>
+<p data-astro-cid-byeekcgh="">別のアプローチではチャンクのバッチが発生するため、ReadableStreamに適応する場合、もう少し作業が必要になりますが、適応層は簡単です。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function*</span><span class="sk-6f42c1-ffc799"> adapt</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">input</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  for</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunks</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> input) {</span></span>
@@ -751,229 +751,229 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4 data-astro-cid-yoyuw6fx="">現実世界における従来からの障害への対処方法</h4>
+<h4 data-astro-cid-byeekcgh="">現実世界における従来からの障害への対処方法</h4>
 <ul>
 	<li>消費されていない本文：プルセマンティックスは、反復するまで何も起こらないことを意味します。隠れたリソースの保持安全もありません。ストリームを消費しなければ、接続が開いたままにするバックグラウンドマシンはありません。</li>
 	<li>The <code>tee()</code> メモリの崖: <code>Stream.share()</code>明示的なバッファ設定が必要です<code>高いWA型</code>とBackpressureのポリシーを事前に選択すれば、コンシューマーが異なる速度で実行するときに静かな無限の成長はなくなります。</li>
 	<li>バックプレッシャーギャップを変革：プルスルー変換をオンデマンドで実行します。データが中間バッファを経由することはありません。消費者がプルした場合にのみ流れます。反復を止め、処理を止めます。</li>
 	<li>SSRでのGCスラッシング: バッチ処理されたチャンク（<code>Uint8Array[]</code>）は、非同期のオーバーヘッドを軽減します。<code>Stream.pullSync()</code> 経由でパイプラインを同期させるCPUを必要とするワークロードへの割り当てを完全に排除します。</li>
 </ul>
-<h3 data-astro-cid-yoyuw6fx="">パフォーマンス</h3>
-<p data-astro-cid-yoyuw6fx="">設計の選択はパフォーマンスに影響を与えます。以下は、この代替手段の参照実装のベンチマークで、Webストリーム（Node.js v24.x、Apple M1 Pro、平均10回以上実行）：</p>
-<div class="emdash-table-wrapper" data-astro-cid-zdje7xco="">
-	<table class="emdash-table" data-astro-cid-zdje7xco="">
-		<thead data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<th data-astro-cid-zdje7xco="">
+<h3 data-astro-cid-byeekcgh="">パフォーマンス</h3>
+<p data-astro-cid-byeekcgh="">設計の選択はパフォーマンスに影響を与えます。以下は、この代替手段の参照実装のベンチマークで、Webストリーム（Node.js v24.x、Apple M1 Pro、平均10回以上実行）：</p>
+<div class="emdash-table-wrapper" data-astro-cid-paimycxl="">
+	<table class="emdash-table" data-astro-cid-paimycxl="">
+		<thead data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<th data-astro-cid-paimycxl="">
 					<p>シナリオ</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>代替</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Webストリーム</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>差異</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+		<tbody data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>小さいチャンク（1KB × 5000）</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>約13 GB/秒</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>～4 GB/秒</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>最大3倍の高速化</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>小さなチャンク（100B × 10000）</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>～4 GB/秒</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>～450 MB/秒</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>最大8倍の速さ</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>非同期反復（8KB × 1000)</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>～530 GB/秒</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>最大35GB/秒</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>最大15倍の速さ</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>連鎖した3倍の変換（8KB x 500)</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>～275GB/秒</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>最大3 GB/秒</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>最大80～90倍の高速化</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>高頻度（64B × 20000）</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>～7.5 GB/秒</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>～280 MB/秒</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>最大25倍の高速化</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-yoyuw6fx="">連鎖した変換の結果は特に驚くべきものです。プルスルーセマンティックスは、Webストリームパイプラインを悩ませる中間バッファリングを排除します。各<code>TransformStream</code>が内部バッファを急速に満たす代わりに、データはオンデマンドでコンシューマーからソースへ流れます。</p>
-<p data-astro-cid-yoyuw6fx="">まず、Node.jsは、Webストリーム実装のパフォーマンスを完全に最適化するために、まだ大した労力を費やしていません。ホットパスを最適化するための小さな努力によって、Node.jsのパフォーマンス結果には大きな改善の余地があるでしょう。とはいえ、DenoとBunでベンチマークを実行すると、Webストリーム実装のどちらよりも、この代替イテレータベースのアプローチによる大幅なパフォーマンスの向上が示されています。</p>
-<p data-astro-cid-yoyuw6fx="">ブラウザベンチマーク（Chrome/Blink、3回の実行平均値）でも、一貫した向上が見られます。</p>
-<div class="emdash-table-wrapper" data-astro-cid-zdje7xco="">
-	<table class="emdash-table" data-astro-cid-zdje7xco="">
-		<thead data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<th data-astro-cid-zdje7xco="">
+<p data-astro-cid-byeekcgh="">連鎖した変換の結果は特に驚くべきものです。プルスルーセマンティックスは、Webストリームパイプラインを悩ませる中間バッファリングを排除します。各<code>TransformStream</code>が内部バッファを急速に満たす代わりに、データはオンデマンドでコンシューマーからソースへ流れます。</p>
+<p data-astro-cid-byeekcgh="">まず、Node.jsは、Webストリーム実装のパフォーマンスを完全に最適化するために、まだ大した労力を費やしていません。ホットパスを最適化するための小さな努力によって、Node.jsのパフォーマンス結果には大きな改善の余地があるでしょう。とはいえ、DenoとBunでベンチマークを実行すると、Webストリーム実装のどちらよりも、この代替イテレータベースのアプローチによる大幅なパフォーマンスの向上が示されています。</p>
+<p data-astro-cid-byeekcgh="">ブラウザベンチマーク（Chrome/Blink、3回の実行平均値）でも、一貫した向上が見られます。</p>
+<div class="emdash-table-wrapper" data-astro-cid-paimycxl="">
+	<table class="emdash-table" data-astro-cid-paimycxl="">
+		<thead data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<th data-astro-cid-paimycxl="">
 					<p>シナリオ</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>代替</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Webストリーム</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>差異</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+		<tbody data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>3KBチャンクをプッシュ</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>最大135,000オペレーション/秒</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>最大2万4,000運用/秒</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>最大5～6倍の高速化</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>100KBのチャンクをプッシュ</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>最大2万4,000運用/秒</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>3,000オペレーション/秒</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>最大7～8倍の高速化</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>3つの変換連鎖</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>最大4,600万オペレーション/秒</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>最大880オペレーション/秒</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>～5倍の高速化</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>5つの変換チェーン</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>最大2,400万オペレーション/秒</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>約550オペレーション/秒</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>最大4倍の速さ</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>bytes()消費</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>最大7万3,000件の運用/秒</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>最大11,000オペレーション/秒</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>最大6～7倍の高速化</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>非同期反復</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>最大110万運用/秒</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>1万オペレーション/秒</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>最大40～100倍の高速化</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-yoyuw6fx="">これらのベンチマークは、制御されたシナリオでのスループットを測定します。実際のパフォーマンスは、特定のユースケースによって異なります。Node.jsとブラウザの向上の違いは、環境ごとにWebストリームに対して異なる最適化経路を反映しています。</p>
-<p data-astro-cid-yoyuw6fx="">これらのベンチマークは、新しいAPIの純粋なTypeScript/JavaScript実装と、各ランタイムのWebストリームのネイティブ（JavaScript/C++/Rust）実装を比較していることに注意する必要があります。新しいAPIのリファレンス実装には、パフォーマンスの最適化機能がありませんでした。利益はすべて設計から得られます。ネイティブ実装では、さらなる改善が見られる可能性が高いでしょう。</p>
-<p data-astro-cid-yoyuw6fx="">この利点は、基本的な設計の選択肢がどのように組み合わされているかを示しています。バッチ処理は、非同期オーバーヘッドを合理化し、プルセマンティクスが中間バッファリングを排除し、データがすぐに利用可能であれば実装が同期の高速パスを使用できるようになるというメリットです。</p>
-<blockquote data-astro-cid-yoyuw6fx="">「私たちは、ノードストリームのパフォーマンスと一貫性を改善するために何度も行ってきましたが、ゼロから始めることには、独特の強みがあります。新しいストリームのアプローチは、従来型のお荷物になることなく、最新のランタイムの現実を取り入れ、よりシンプルで、パフォーマンスが高く、より一貫性のあるストリームモデルへの扉を開くことができるのです。」<br>- Robert Nagy、Node.js TSCメンバー兼Node.js Streamsコントリビューター</blockquote>
-<h2 data-astro-cid-yoyuw6fx="">今後の展開は？</h2>
-<p data-astro-cid-yoyuw6fx="">対話のきっかけとしてこれを公開します。何が正しかったのでしょうか？見逃していたものは？このモデルに合わないユースケースはありますか？このアプローチの移行経路はどのようなものになりますか？Webストリームの苦痛を感じた開発者からのフィードバックを集め、より良いAPIとはどのようなものになるべきかについて意見を集めることを目的としています。</p>
-<h3 data-astro-cid-yoyuw6fx="">ご自身で試してみてください</h3>
-<p data-astro-cid-yoyuw6fx="">この代替アプローチの参照実装は現在利用可能で、<a href="https://github.com/jasnell/new-streams" target="_blank" rel="noopener noreferrer"><u>https://github.com/jasnell/new-streams</u></a>でご覧いただけます。</p>
+<p data-astro-cid-byeekcgh="">これらのベンチマークは、制御されたシナリオでのスループットを測定します。実際のパフォーマンスは、特定のユースケースによって異なります。Node.jsとブラウザの向上の違いは、環境ごとにWebストリームに対して異なる最適化経路を反映しています。</p>
+<p data-astro-cid-byeekcgh="">これらのベンチマークは、新しいAPIの純粋なTypeScript/JavaScript実装と、各ランタイムのWebストリームのネイティブ（JavaScript/C++/Rust）実装を比較していることに注意する必要があります。新しいAPIのリファレンス実装には、パフォーマンスの最適化機能がありませんでした。利益はすべて設計から得られます。ネイティブ実装では、さらなる改善が見られる可能性が高いでしょう。</p>
+<p data-astro-cid-byeekcgh="">この利点は、基本的な設計の選択肢がどのように組み合わされているかを示しています。バッチ処理は、非同期オーバーヘッドを合理化し、プルセマンティクスが中間バッファリングを排除し、データがすぐに利用可能であれば実装が同期の高速パスを使用できるようになるというメリットです。</p>
+<blockquote data-astro-cid-byeekcgh="">「私たちは、ノードストリームのパフォーマンスと一貫性を改善するために何度も行ってきましたが、ゼロから始めることには、独特の強みがあります。新しいストリームのアプローチは、従来型のお荷物になることなく、最新のランタイムの現実を取り入れ、よりシンプルで、パフォーマンスが高く、より一貫性のあるストリームモデルへの扉を開くことができるのです。」<br>- Robert Nagy、Node.js TSCメンバー兼Node.js Streamsコントリビューター</blockquote>
+<h2 data-astro-cid-byeekcgh="">今後の展開は？</h2>
+<p data-astro-cid-byeekcgh="">対話のきっかけとしてこれを公開します。何が正しかったのでしょうか？見逃していたものは？このモデルに合わないユースケースはありますか？このアプローチの移行経路はどのようなものになりますか？Webストリームの苦痛を感じた開発者からのフィードバックを集め、より良いAPIとはどのようなものになるべきかについて意見を集めることを目的としています。</p>
+<h3 data-astro-cid-byeekcgh="">ご自身で試してみてください</h3>
+<p data-astro-cid-byeekcgh="">この代替アプローチの参照実装は現在利用可能で、<a href="https://github.com/jasnell/new-streams" target="_blank" rel="noopener noreferrer"><u>https://github.com/jasnell/new-streams</u></a>でご覧いただけます。</p>
 <ul>
 	<li>APIリファレンス：<a href="https://github.com/jasnell/new-streams/blob/main/API.md" target="_blank" rel="noopener noreferrer"><u>API.md</u></a>に完全なドキュメントがあります</li>
 	<li>例：<a href="https://github.com/jasnell/new-streams/tree/main/samples" target="_blank" rel="noopener noreferrer"><u>サンプルディレクトリ</u></a>には、共通パターンの動作するコードがあります</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">問題、議論、プルリクエストを歓迎します。私が取り上げていないWebストリームの問題に遭遇したり、このアプローチにギャップがある場合は、ぜひご連絡ください。しかし、ここでも「この新しいオブジェクトを全部使いましょう！」という考え方ではありません。 Webストリームの現状を超えて、第一の原則へと戻る議論を開始することです。</p>
-<p data-astro-cid-yoyuw6fx="">Webストリームは、他に何もない時にWebプラットフォームにストリーミングを持ち込むという野心的なプロジェクトでした。非同期イテレーション前、何年もの制作経験がエッジケースを明らかにする前、2014年当時の制約を考えると、設計者は合理的な選択をしました。</p>
-<p data-astro-cid-yoyuw6fx="">以来、私たちは多くのことを学びました。JavaScriptは進化を遂げました。現在設計されているストリーミングAPIは、よりシンプルで、より言語に合わせたものであり、バックプレッシャーやマルチコンシューマーの動作など、重要なことをより明確に示すことができます。</p>
-<p data-astro-cid-yoyuw6fx="">より良いStream APIが必要です。では、その使用例についてお話しましょう。</p>
+<p data-astro-cid-byeekcgh="">問題、議論、プルリクエストを歓迎します。私が取り上げていないWebストリームの問題に遭遇したり、このアプローチにギャップがある場合は、ぜひご連絡ください。しかし、ここでも「この新しいオブジェクトを全部使いましょう！」という考え方ではありません。 Webストリームの現状を超えて、第一の原則へと戻る議論を開始することです。</p>
+<p data-astro-cid-byeekcgh="">Webストリームは、他に何もない時にWebプラットフォームにストリーミングを持ち込むという野心的なプロジェクトでした。非同期イテレーション前、何年もの制作経験がエッジケースを明らかにする前、2014年当時の制約を考えると、設計者は合理的な選択をしました。</p>
+<p data-astro-cid-byeekcgh="">以来、私たちは多くのことを学びました。JavaScriptは進化を遂げました。現在設計されているストリーミングAPIは、よりシンプルで、より言語に合わせたものであり、バックプレッシャーやマルチコンシューマーの動作など、重要なことをより明確に示すことができます。</p>
+<p data-astro-cid-byeekcgh="">より良いStream APIが必要です。では、その使用例についてお話しましょう。</p>

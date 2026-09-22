@@ -1,23 +1,23 @@
-<p data-astro-cid-yoyuw6fx="">本日、Tiered Cacheシステムの変更により、ステータスコード530で、ユーザーの一部のリクエストが失敗しました。その影響は、合計で6時間近くも続きました。ピーク時には、すべてのリクエストの約5％が失敗したと推定されます。 システムの複雑さとテストに盲点があったため、この変更をテスト環境にリリースしたときには、このことに気がつきませんでした。</p>
-<p data-astro-cid-yoyuw6fx="">この失敗は、場所をまたいでキャッシュ可能なリクエストの処理方法の副次的影響が原因でした。一見すると、少し前に、リリースを開始した別のシステムが原因のエラーのように見えました。問題を引き起こした原因を正確に特定するために、当社のチームは何度も試行錯誤を繰り返しました。特定されると、ロールバックを迅速に処理し、87分で完了しました。</p>
-<p data-astro-cid-yoyuw6fx="">申し訳ございませんでした。このようなことが二度と起こらないように、対策を講じています。</p>
-<h3 data-astro-cid-yoyuw6fx="">背景</h3>
-<p data-astro-cid-yoyuw6fx="">Cloudflareの製品のひとつに、コンテンツ配信ネットワーク（CDN）があります。Webサイトのアセットをグローバルにキャッシュするために使用されます。しかし、データセンターは、必ずしもアセットをキャッシュするわけではありません。新規、期限切れの場合やパージされた場合などです。 そのような場合、ユーザーがそのアセットをリクエストすると、CDNはWebサイトのオリジンサーバーから新しいコピーを取得する必要があります。しかし、ユーザーがアクセスしているデータセンターは、オリジンサーバーからまだかなり離れている可能性があります。このことは、お客様にとってさらなる問題を提起します。アセットがデータセンターにキャッシュされないたびに、オリジンサーバーから新しいコピーを取得する必要があります。</p>
-<p data-astro-cid-yoyuw6fx="">Cacheヒット率を向上させるために、<a href="https://blog.cloudflare.com/ja-jp/introducing-smarter-tiered-cache-topology-generation-ja-jp">Tiered Cache</a>を採用しました。Tiered Cacheを使用して、CDNのデータセンターを、エンドユーザーに近い「下位層」とオリジンに近い「上位層」の階層に分類しています。下位層でキャッシュミスが発生すると、上位層をチェックします。上位層にアセットの新しいコピーがある場合、リクエストに応えてそれを提供することができます。これによりパフォーマンスが向上し、下位層のデータセンターにキャッシュされていないアセットを取得するために、Cloudflareがオリジンサーバーにアクセスしなければならない回数が減少します。</p>
-<h3 data-astro-cid-yoyuw6fx="">インシデントのタイムラインと影響</h3>
+<p data-astro-cid-byeekcgh="">本日、Tiered Cacheシステムの変更により、ステータスコード530で、ユーザーの一部のリクエストが失敗しました。その影響は、合計で6時間近くも続きました。ピーク時には、すべてのリクエストの約5％が失敗したと推定されます。 システムの複雑さとテストに盲点があったため、この変更をテスト環境にリリースしたときには、このことに気がつきませんでした。</p>
+<p data-astro-cid-byeekcgh="">この失敗は、場所をまたいでキャッシュ可能なリクエストの処理方法の副次的影響が原因でした。一見すると、少し前に、リリースを開始した別のシステムが原因のエラーのように見えました。問題を引き起こした原因を正確に特定するために、当社のチームは何度も試行錯誤を繰り返しました。特定されると、ロールバックを迅速に処理し、87分で完了しました。</p>
+<p data-astro-cid-byeekcgh="">申し訳ございませんでした。このようなことが二度と起こらないように、対策を講じています。</p>
+<h3 data-astro-cid-byeekcgh="">背景</h3>
+<p data-astro-cid-byeekcgh="">Cloudflareの製品のひとつに、コンテンツ配信ネットワーク（CDN）があります。Webサイトのアセットをグローバルにキャッシュするために使用されます。しかし、データセンターは、必ずしもアセットをキャッシュするわけではありません。新規、期限切れの場合やパージされた場合などです。 そのような場合、ユーザーがそのアセットをリクエストすると、CDNはWebサイトのオリジンサーバーから新しいコピーを取得する必要があります。しかし、ユーザーがアクセスしているデータセンターは、オリジンサーバーからまだかなり離れている可能性があります。このことは、お客様にとってさらなる問題を提起します。アセットがデータセンターにキャッシュされないたびに、オリジンサーバーから新しいコピーを取得する必要があります。</p>
+<p data-astro-cid-byeekcgh="">Cacheヒット率を向上させるために、<a href="https://blog.cloudflare.com/ja-jp/introducing-smarter-tiered-cache-topology-generation-ja-jp">Tiered Cache</a>を採用しました。Tiered Cacheを使用して、CDNのデータセンターを、エンドユーザーに近い「下位層」とオリジンに近い「上位層」の階層に分類しています。下位層でキャッシュミスが発生すると、上位層をチェックします。上位層にアセットの新しいコピーがある場合、リクエストに応えてそれを提供することができます。これによりパフォーマンスが向上し、下位層のデータセンターにキャッシュされていないアセットを取得するために、Cloudflareがオリジンサーバーにアクセスしなければならない回数が減少します。</p>
+<h3 data-astro-cid-byeekcgh="">インシデントのタイムラインと影響</h3>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="439" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NYN4ZWHJPG8X9S3SBCCB.png&amp;w=715&amp;h=439&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NYN4ZWHJPG8X9S3SBCCB.png&amp;w=640&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NYN4ZWHJPG8X9S3SBCCB.png&amp;w=715&amp;h=439&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NYN4ZWHJPG8X9S3SBCCB.png&amp;w=750&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NYN4ZWHJPG8X9S3SBCCB.png&amp;w=828&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NYN4ZWHJPG8X9S3SBCCB.png&amp;w=1080&amp;h=663&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NYN4ZWHJPG8X9S3SBCCB.png&amp;w=1280&amp;h=786&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NYN4ZWHJPG8X9S3SBCCB.png&amp;w=1430&amp;h=878&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1499 Embedded Image - 5W1wJs" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NYN4ZWHJPG8X9S3SBCCB.png&amp;w=1439&amp;h=883&amp;f=webp" data-lightbox-width="1439" data-lightbox-height="883" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="439" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-yoyuw6fx="">08:40 UTCに、バグを含むCDNコンポーネントのソフトウェアリリースを徐々にロールアウトし始めました。このバグは、Tiered Cache、Cloudflare Images、Bandwidth Allianceのいずれかが設定されたサイトにユーザーがアクセスしたときにトリガーされました。このバグが原因で、一部のお客様は、HTTPステータスコード530のエラーが返されました。データセンターのローカルキャッシュから直接提供が可能なコンテンツは影響を受けませんでした。</p>
-<p data-astro-cid-yoyuw6fx="">欠陥のあるコンポーネントがデータセンターのサブセットにリリースされた後、530で、断続的に増加しているとのお客様の報告を受け、調査を開始しました。</p>
-<p data-astro-cid-yoyuw6fx="">リリースが残りのデータセンターへグローバルにロールアウトし始めると、530の急激な増加がアラートをトリガーし、さらにお客様からの報告も増え、インシデントが宣言されたのです。</p>
-<p data-astro-cid-yoyuw6fx=""><strong>ステータスコード 530 で返されるリクエスト</strong></p>
+<p data-astro-cid-byeekcgh="">08:40 UTCに、バグを含むCDNコンポーネントのソフトウェアリリースを徐々にロールアウトし始めました。このバグは、Tiered Cache、Cloudflare Images、Bandwidth Allianceのいずれかが設定されたサイトにユーザーがアクセスしたときにトリガーされました。このバグが原因で、一部のお客様は、HTTPステータスコード530のエラーが返されました。データセンターのローカルキャッシュから直接提供が可能なコンテンツは影響を受けませんでした。</p>
+<p data-astro-cid-byeekcgh="">欠陥のあるコンポーネントがデータセンターのサブセットにリリースされた後、530で、断続的に増加しているとのお客様の報告を受け、調査を開始しました。</p>
+<p data-astro-cid-byeekcgh="">リリースが残りのデータセンターへグローバルにロールアウトし始めると、530の急激な増加がアラートをトリガーし、さらにお客様からの報告も増え、インシデントが宣言されたのです。</p>
+<p data-astro-cid-byeekcgh=""><strong>ステータスコード 530 で返されるリクエスト</strong></p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="315" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AN3DSGPH91K0TSRM43KG.png&amp;w=715&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AN3DSGPH91K0TSRM43KG.png&amp;w=640&amp;h=282&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AN3DSGPH91K0TSRM43KG.png&amp;w=715&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AN3DSGPH91K0TSRM43KG.png&amp;w=750&amp;h=330&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AN3DSGPH91K0TSRM43KG.png&amp;w=828&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AN3DSGPH91K0TSRM43KG.png&amp;w=1080&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AN3DSGPH91K0TSRM43KG.png&amp;w=1280&amp;h=564&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AN3DSGPH91K0TSRM43KG.png&amp;w=1430&amp;h=630&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Requests resulting in a response with status code 530" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AN3DSGPH91K0TSRM43KG.png&amp;w=1600&amp;h=705&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="705" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="315" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-yoyuw6fx="">17:03 UTCにデータセンターでリリースをロールバックすることで、不適切なリリースが原因であったことを確認しました。ロールバック後、530エラーの減少を確認しました。この確認後、グローバルなロールバックの加速が始まり、530が減少し始めました。UTC 18:04にTiered Cacheの上位層として構成されたすべてのデータセンターでリリースを元に戻すと、影響は終了しました。</p>
-<p data-astro-cid-yoyuw6fx="">タイムライン:</p>
+<p data-astro-cid-byeekcgh="">17:03 UTCにデータセンターでリリースをロールバックすることで、不適切なリリースが原因であったことを確認しました。ロールバック後、530エラーの減少を確認しました。この確認後、グローバルなロールバックの加速が始まり、530が減少し始めました。UTC 18:04にTiered Cacheの上位層として構成されたすべてのデータセンターでリリースを元に戻すと、影響は終了しました。</p>
+<p data-astro-cid-byeekcgh="">タイムライン:</p>
 <ul>
 	<li>2022-10-25 08:40：リリースは、データセンターの小さなサブセットにロールアウトされ始めました。</li>
 	<li>2022-10-25 10:35:個々の顧客アラートが発生し、500件のエラーコードの増加を示しています。</li>
@@ -31,11 +31,11 @@
 	<li>2022-10-25 18:04: すべての上位層でロールバックが完了しました。</li>
 	<li>2022-10-25 18:30: ロールバックが完了しました。</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">調査の初期段階では、指標としては、内部のDNSシステムの問題であるということ、同時にリリースがロールアウトされていたということです。次の項で示すように、それは障害の原因ではなく、副次的影響のものでした。</p>
-<h3 data-astro-cid-yoyuw6fx="">Tiered Cacheに分散トレースを追加すると問題が生じました</h3>
-<p data-astro-cid-yoyuw6fx="">パフォーマンス向上のために、サービスのさまざまな部分に監視コードを定期的に追加しています。監視コードは、さまざまなコンポーネントの実行を可視化し、改善できるボトルネックの特定に役立ちます。当社のチームは最近、Tiered Cacheのロジックにさらに分散トレースを追加しました。Tiered Cacheエントリーポイントコードは以下の通りです：</p>
-<p data-astro-cid-yoyuw6fx="">* 前：</p>
-<p data-astro-cid-yoyuw6fx="">* 後：</p>
+<p data-astro-cid-byeekcgh="">調査の初期段階では、指標としては、内部のDNSシステムの問題であるということ、同時にリリースがロールアウトされていたということです。次の項で示すように、それは障害の原因ではなく、副次的影響のものでした。</p>
+<h3 data-astro-cid-byeekcgh="">Tiered Cacheに分散トレースを追加すると問題が生じました</h3>
+<p data-astro-cid-byeekcgh="">パフォーマンス向上のために、サービスのさまざまな部分に監視コードを定期的に追加しています。監視コードは、さまざまなコンポーネントの実行を可視化し、改善できるボトルネックの特定に役立ちます。当社のチームは最近、Tiered Cacheのロジックにさらに分散トレースを追加しました。Tiered Cacheエントリーポイントコードは以下の通りです：</p>
+<p data-astro-cid-byeekcgh="">* 前：</p>
+<p data-astro-cid-byeekcgh="">* 後：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> _M</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">go</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">   -- code to run here</span></span>
@@ -64,7 +64,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">上記のコードは、既存のgo()関数をtrace_fn()でラップします。trace_fn()は、go()関数を呼び出し、その実行時間を報告します。</p>
+<p data-astro-cid-byeekcgh="">上記のコードは、既存のgo()関数をtrace_fn()でラップします。trace_fn()は、go()関数を呼び出し、その実行時間を報告します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">local</span><span class="sk-24292e-fff"> trace_fn </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> require</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"opentracing"</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-fff">trace_fn</span></span>
 <span class="line"></span>
@@ -80,8 +80,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">しかし、opentracingモジュールに関数を挿入するロジックは、すべてのリクエストで制御ヘッダーをクリアにします。</p>
-<p data-astro-cid-yoyuw6fx="">通常、これらの制御ヘッダーからデータを抽出してから、リクエストの処理方法のルーティン部分としてそれらをクリアします。</p>
+<p data-astro-cid-byeekcgh="">しかし、opentracingモジュールに関数を挿入するロジックは、すべてのリクエストで制御ヘッダーをクリアにします。</p>
+<p data-astro-cid-byeekcgh="">通常、これらの制御ヘッダーからデータを抽出してから、リクエストの処理方法のルーティン部分としてそれらをクリアします。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">require</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"opentracing"</span><span class="sk-24292e-fff">).</span><span class="sk-005cc5-ffc799">configure_module</span><span class="sk-24292e-fff">(conf,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  -- control header extractor</span></span>
@@ -94,15 +94,15 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">しかし、内部のTiered CacheTrafficは、下位階層からの制御ヘッダーがそのまま渡されることを想定しています。ヘッダーのクリアと上位層の使用という組み合わせは、リクエストのルーティングに重要な情報を利用できないことを意味していました。影響を受けるリクエストのサブセットでは、オリジンサーバーのIPアドレスの内部DNSルックアップで解決するホスト名がありませんでした。その結果、クライアントに530のDNSエラーが返されました。</p>
-<h3 data-astro-cid-yoyuw6fx="">改善とフォローアップのステップ</h3>
-<p data-astro-cid-yoyuw6fx="">再発防止のために、バグの修正に加え、今後このような問題を検出、防止に役立つ一連の変更点を確認しました。</p>
+<p data-astro-cid-byeekcgh="">しかし、内部のTiered CacheTrafficは、下位階層からの制御ヘッダーがそのまま渡されることを想定しています。ヘッダーのクリアと上位層の使用という組み合わせは、リクエストのルーティングに重要な情報を利用できないことを意味していました。影響を受けるリクエストのサブセットでは、オリジンサーバーのIPアドレスの内部DNSルックアップで解決するホスト名がありませんでした。その結果、クライアントに530のDNSエラーが返されました。</p>
+<h3 data-astro-cid-byeekcgh="">改善とフォローアップのステップ</h3>
+<p data-astro-cid-byeekcgh="">再発防止のために、バグの修正に加え、今後このような問題を検出、防止に役立つ一連の変更点を確認しました。</p>
 <ul>
 	<li>リリース計画の早い段階で、Tiered Cacheの上位層として構成された大規模なデータセンターを含めます。これにより、グローバルリリースの前に、同様の問題にいち早く気づくことができるようになります。</li>
 	<li>受入試験の範囲を拡大し、様々なTiered Cacheトポロジーを含むより幅広い構成を含めます。</li>
 	<li>リクエストの完全なコンテキストを持たず、制御ヘッダーに追加のホスト情報が必要な状況において、より積極的にアラートを出します。</li>
 	<li>このようなエラーで当社のシステムが正しく早期に機能停止することを確認し、開発およびテスト中に問題を特定するのに役立ちました。</li>
 </ul>
-<h3 data-astro-cid-yoyuw6fx="">まとめ</h3>
-<p data-astro-cid-yoyuw6fx="">Tiered Cacheをご利用の多数のお客様に影響を与えるインシデントを経験しました。欠陥のあるコンポーネントを特定した後、問題を迅速にロールバックし、修正できました。このため、サービスにアクセスしようとしたお客様やエンドユーザー様に混乱を招いてしまい、深くお詫び申し上げます。</p>
-<p data-astro-cid-yoyuw6fx="">今後、このような事態の発生を防止する改善策を、早急に講じる予定です。</p>
+<h3 data-astro-cid-byeekcgh="">まとめ</h3>
+<p data-astro-cid-byeekcgh="">Tiered Cacheをご利用の多数のお客様に影響を与えるインシデントを経験しました。欠陥のあるコンポーネントを特定した後、問題を迅速にロールバックし、修正できました。このため、サービスにアクセスしようとしたお客様やエンドユーザー様に混乱を招いてしまい、深くお詫び申し上げます。</p>
+<p data-astro-cid-byeekcgh="">今後、このような事態の発生を防止する改善策を、早急に講じる予定です。</p>

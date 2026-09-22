@@ -1,12 +1,12 @@
-<p data-astro-cid-yoyuw6fx="">生成AIを支える大規模言語モデル（LLM）と拡散モデルの構築には、大規模なインフラスストラクチャが必要です。最も明白なコンポーネントは数百から数千のGPUによるコンピューティングですが、同様に重要な（そしてしばしば見落とされる）コンポーネントは、 <strong>データストレージインフラストラクチャです。</strong> トレーニングデータセットのサイズはテラバイトからペタバイトになる可能性があり、このデータは数千のプロセスで並行して読み取る必要があります。さらに、モデルのチェックポイントはトレーニングの実行中に頻繁に保存する必要があり、LLMの場合、これらのチェックポイントはそれぞれ数百ギガバイトになることがあります！</p>
-<p data-astro-cid-yoyuw6fx="">ストレージコストとスケーラビリティを管理するために、多くの機械学習チームがデータセットとチェックポイントをホストするためにオブジェクトストレージに移行してきました。残念ながら、ほとんどのオブジェクトストアプロバイダーは、ユーザーを自社のプラットフォームに「ロックイン」するために、エグレス料金を使用しています。このことより、データやモデルのチェックポイントを移動させるにはコストがかかりすぎるため、複数のクラウドプロバイダーでGPUの能力を活用したり、他の場所で低価格や動的な価格設定を利用することは非常に困難です。クラウドGPUが不足し、新しいハードウェアオプションが市場に参入している今、柔軟性を保つことはこれまで以上に重要です。</p>
-<p data-astro-cid-yoyuw6fx="">高いエグレス料金に加え、オブジェクトストア中心の機械学習トレーニングには技術的な障壁があります。オブジェクトストレージとコンピューティングクラスター間のデータの読み込み/書き込みには、高いスループット、ネットワーク帯域幅の効率的な使用、決定性、弾力性（異なる数のGPUでトレーニングする能力）などが求められます。これらを正しく、確実に処理するためのトレーニングソフトを作るのは大変です！</p>
-<p data-astro-cid-yoyuw6fx="">本日は、MosaicMLのツールとCloudflare R2を併用することで、これらの課題にどのように対処できるかをご紹介します。第一に、MosaicMLのオープンソースである<a href="https://github.com/mosaicml/streaming" target="_blank" rel="noopener noreferrer">StreamingDataset</a>と<a href="https://github.com/mosaicml/composer" target="_blank" rel="noopener noreferrer">Composer</a>ライブラリを使えば、トレーニングデータのストリームインやモデルのチェックポイントをR2に読み込み/書き込みを簡単に戻すことができます。必要なのは、インターネット接続だけです。第二に、R2のゼロエグレス料金により、データ転送料を支払うことなく、コンピューティングプロバイダー間のGPUの利用可能性と価格に応じてジョブを開始/停止/移動/リサイズすることができます。MosaicMLのトレーニングプラットフォームは、複数のクラウドにまたがるトレーニングジョブのオーケストレーションを非常に簡単に行うことができます。</p>
-<p data-astro-cid-yoyuw6fx="">CloudflareとMosaicMLが一丸となり、切り替えコストゼロで世界中_どこでもあらゆる_コンピューティングパワーでLLMを訓練する自由が実現します。これにより、よりスピーディに、低い訓練実施コストで、ベンダーロックイン根絶が実現します。</p>
-<blockquote data-astro-cid-yoyuw6fx=""><em>「MosaicMLトレーニングプラットフォームを使用することで、お客様はR2を耐久性のあるストレージバックエンドとして効率的に使用し、あらゆるコンピューティングプロバイダー上でLLMをトレーニングすることができ、さらにエグレス料金はゼロです。AI企業は法外なクラウドコストに直面しており、最高のモデルを最高の価格でトレーニングするためのスピードと柔軟性を提供できるツールを求めています。」</em>– <strong>Naveen Rao（MosaicML社CEO兼共同創業者</strong></blockquote>
-<h3 data-astro-cid-yoyuw6fx="">StreamingDatasetを使ったR2からのデータ読み込み</h3>
-<p data-astro-cid-yoyuw6fx="">R2から効率的かつ決定論的にデータを読み込むには、MosaicML <a href="https://github.com/mosaicml/streaming" target="_blank" rel="noopener noreferrer">StreamingDataset</a>ライブラリを使用することができます。まず、トレーニングデータ（画像、テキスト、動画、何でもOKです！）を、提供されているPython APIを使って `<code>.mds</code>` シャードファイルに書き込みます。</p>
-<p data-astro-cid-yoyuw6fx="">データセットが変換されたら、R2にアップロードできます。以下では、`<code>awscli</code>`コマンドラインツールを使って説明しますが、`wrangler`やお好みのS3互換ツールを使うこともできます。StreamingDatasetは、近日中にR2へのクラウド直接書き込みにも対応する予定です！</p>
+<p data-astro-cid-byeekcgh="">生成AIを支える大規模言語モデル（LLM）と拡散モデルの構築には、大規模なインフラスストラクチャが必要です。最も明白なコンポーネントは数百から数千のGPUによるコンピューティングですが、同様に重要な（そしてしばしば見落とされる）コンポーネントは、 <strong>データストレージインフラストラクチャです。</strong> トレーニングデータセットのサイズはテラバイトからペタバイトになる可能性があり、このデータは数千のプロセスで並行して読み取る必要があります。さらに、モデルのチェックポイントはトレーニングの実行中に頻繁に保存する必要があり、LLMの場合、これらのチェックポイントはそれぞれ数百ギガバイトになることがあります！</p>
+<p data-astro-cid-byeekcgh="">ストレージコストとスケーラビリティを管理するために、多くの機械学習チームがデータセットとチェックポイントをホストするためにオブジェクトストレージに移行してきました。残念ながら、ほとんどのオブジェクトストアプロバイダーは、ユーザーを自社のプラットフォームに「ロックイン」するために、エグレス料金を使用しています。このことより、データやモデルのチェックポイントを移動させるにはコストがかかりすぎるため、複数のクラウドプロバイダーでGPUの能力を活用したり、他の場所で低価格や動的な価格設定を利用することは非常に困難です。クラウドGPUが不足し、新しいハードウェアオプションが市場に参入している今、柔軟性を保つことはこれまで以上に重要です。</p>
+<p data-astro-cid-byeekcgh="">高いエグレス料金に加え、オブジェクトストア中心の機械学習トレーニングには技術的な障壁があります。オブジェクトストレージとコンピューティングクラスター間のデータの読み込み/書き込みには、高いスループット、ネットワーク帯域幅の効率的な使用、決定性、弾力性（異なる数のGPUでトレーニングする能力）などが求められます。これらを正しく、確実に処理するためのトレーニングソフトを作るのは大変です！</p>
+<p data-astro-cid-byeekcgh="">本日は、MosaicMLのツールとCloudflare R2を併用することで、これらの課題にどのように対処できるかをご紹介します。第一に、MosaicMLのオープンソースである<a href="https://github.com/mosaicml/streaming" target="_blank" rel="noopener noreferrer">StreamingDataset</a>と<a href="https://github.com/mosaicml/composer" target="_blank" rel="noopener noreferrer">Composer</a>ライブラリを使えば、トレーニングデータのストリームインやモデルのチェックポイントをR2に読み込み/書き込みを簡単に戻すことができます。必要なのは、インターネット接続だけです。第二に、R2のゼロエグレス料金により、データ転送料を支払うことなく、コンピューティングプロバイダー間のGPUの利用可能性と価格に応じてジョブを開始/停止/移動/リサイズすることができます。MosaicMLのトレーニングプラットフォームは、複数のクラウドにまたがるトレーニングジョブのオーケストレーションを非常に簡単に行うことができます。</p>
+<p data-astro-cid-byeekcgh="">CloudflareとMosaicMLが一丸となり、切り替えコストゼロで世界中_どこでもあらゆる_コンピューティングパワーでLLMを訓練する自由が実現します。これにより、よりスピーディに、低い訓練実施コストで、ベンダーロックイン根絶が実現します。</p>
+<blockquote data-astro-cid-byeekcgh=""><em>「MosaicMLトレーニングプラットフォームを使用することで、お客様はR2を耐久性のあるストレージバックエンドとして効率的に使用し、あらゆるコンピューティングプロバイダー上でLLMをトレーニングすることができ、さらにエグレス料金はゼロです。AI企業は法外なクラウドコストに直面しており、最高のモデルを最高の価格でトレーニングするためのスピードと柔軟性を提供できるツールを求めています。」</em>– <strong>Naveen Rao（MosaicML社CEO兼共同創業者</strong></blockquote>
+<h3 data-astro-cid-byeekcgh="">StreamingDatasetを使ったR2からのデータ読み込み</h3>
+<p data-astro-cid-byeekcgh="">R2から効率的かつ決定論的にデータを読み込むには、MosaicML <a href="https://github.com/mosaicml/streaming" target="_blank" rel="noopener noreferrer">StreamingDataset</a>ライブラリを使用することができます。まず、トレーニングデータ（画像、テキスト、動画、何でもOKです！）を、提供されているPython APIを使って `<code>.mds</code>` シャードファイルに書き込みます。</p>
+<p data-astro-cid-byeekcgh="">データセットが変換されたら、R2にアップロードできます。以下では、`<code>awscli</code>`コマンドラインツールを使って説明しますが、`wrangler`やお好みのS3互換ツールを使うこともできます。StreamingDatasetは、近日中にR2へのクラウド直接書き込みにも対応する予定です！</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> numpy </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-24292e-fff"> np</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">from</span><span class="sk-005cc5-fff"> PIL</span><span class="sk-d73a49-a0a0a0"> import</span><span class="sk-24292e-fff"> Image</span></span>
@@ -55,7 +55,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">最後に、R2バケットへの読み込みアクセス権を持つデバイスにデータを読み込むことができます。個々のサンプルをフェッチし、データセット上でループし、標準的なPyTorchのデータローダーにフィードできます。</p>
+<p data-astro-cid-byeekcgh="">最後に、R2バケットへの読み込みアクセス権を持つデバイスにデータを読み込むことができます。個々のサンプルをフェッチし、データセット上でループし、標準的なPyTorchのデータローダーにフィードできます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> aws</span><span class="sk-032f62-99ffe4"> s3</span><span class="sk-032f62-99ffe4"> cp</span><span class="sk-005cc5-99ffe4"> --recursive</span><span class="sk-032f62-99ffe4"> path-to-dataset</span><span class="sk-032f62-99ffe4"> s3://my-bucket/folder</span><span class="sk-005cc5-99ffe4"> --endpoint-url</span><span class="sk-24292e-fff"> $S3_ENDPOINT_URL</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -63,7 +63,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">StreamingDatasetは、高いパフォーマンス、弾力的な決定性、高速な再開、マルチワーカーサポート機能を備えており、すぐに利用できます。また、ダウンロードの帯域幅を最小限に抑えるために、スマートシャッフリングと分散を使用しています。LLMや拡散モデルなどのさまざまなワークロードにおいて、R2のようなオブジェクトストアからトレーニングする場合、トレーニングスループットに影響がない（dataloaderのボトルネックがない）ことが分かっています。詳細は、StreamingDatasetの<a href="https://www.mosaicml.com/blog/mosaicml-streamingdataset" target="_blank" rel="noopener noreferrer">発表をお知らせするブログ</a>をご確認ください！</p>
+<p data-astro-cid-byeekcgh="">StreamingDatasetは、高いパフォーマンス、弾力的な決定性、高速な再開、マルチワーカーサポート機能を備えており、すぐに利用できます。また、ダウンロードの帯域幅を最小限に抑えるために、スマートシャッフリングと分散を使用しています。LLMや拡散モデルなどのさまざまなワークロードにおいて、R2のようなオブジェクトストアからトレーニングする場合、トレーニングスループットに影響がない（dataloaderのボトルネックがない）ことが分かっています。詳細は、StreamingDatasetの<a href="https://www.mosaicml.com/blog/mosaicml-streamingdataset" target="_blank" rel="noopener noreferrer">発表をお知らせするブログ</a>をご確認ください！</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">from</span><span class="sk-24292e-fff"> torch.utils.data </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> DataLoader</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">from</span><span class="sk-24292e-fff"> streaming </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> StreamingDataset</span></span>
@@ -92,9 +92,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">Composerを使ったR2へのモデルチェックポイントの読み込み/書き込みについて</h3>
-<p data-astro-cid-yoyuw6fx="">トレーニングループにデータをストリーミングすることで問題の半分は解決しますが、モデルのチェックポイントをどのようにロード/保存するのでしょうか？幸い、 <a href="https://github.com/mosaicml/composer" target="_blank" rel="noopener noreferrer">Composer</a>のようなトレーニングライブラリを使用すれば、R2パスを指定するのと同じくらい簡単です！</p>
-<p data-astro-cid-yoyuw6fx="">Composerは非同期アップロードを使用して、トレーニング中にチェックポイントが保存される際の待ち時間を最小限に抑えます。また、マルチGPUやマルチノードのトレーニングでもすぐに動作し、 **共有ファイルシステムを必要としません。**つまり、コンピューティングクラスターに高価なEFS/NFSシステムを設定する必要がなく、パブリッククラウドで毎月数千ドル以上を節約できることを意味します。インターネット接続と適切な認証情報さえあれば、チェックポイントはR2バケットに安全に到達し、プライベートモデル用のスケーラブルで安全なストレージを提供します。</p>
+<h3 data-astro-cid-byeekcgh="">Composerを使ったR2へのモデルチェックポイントの読み込み/書き込みについて</h3>
+<p data-astro-cid-byeekcgh="">トレーニングループにデータをストリーミングすることで問題の半分は解決しますが、モデルのチェックポイントをどのようにロード/保存するのでしょうか？幸い、 <a href="https://github.com/mosaicml/composer" target="_blank" rel="noopener noreferrer">Composer</a>のようなトレーニングライブラリを使用すれば、R2パスを指定するのと同じくらい簡単です！</p>
+<p data-astro-cid-byeekcgh="">Composerは非同期アップロードを使用して、トレーニング中にチェックポイントが保存される際の待ち時間を最小限に抑えます。また、マルチGPUやマルチノードのトレーニングでもすぐに動作し、 **共有ファイルシステムを必要としません。**つまり、コンピューティングクラスターに高価なEFS/NFSシステムを設定する必要がなく、パブリッククラウドで毎月数千ドル以上を節約できることを意味します。インターネット接続と適切な認証情報さえあれば、チェックポイントはR2バケットに安全に到達し、プライベートモデル用のスケーラブルで安全なストレージを提供します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">from</span><span class="sk-24292e-fff"> composer </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> Trainer</span></span>
 <span class="line"><span class="sk-005cc5-fff">...</span></span>
@@ -116,16 +116,16 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">MosaicMLとR2を使って、どこでも効率よくトレーニングができる</h3>
-<p data-astro-cid-yoyuw6fx="">上記のツールとCloudflare R2を併用することで、ユーザーはトレーニング用ワークロードをあらゆるコンピューティングプロバイダー上で自由に実行でき、切り替えコストもゼロになります。</p>
-<p data-astro-cid-yoyuw6fx="">図Xでは、MosaicMLトレーニングプラットフォームを使って、Oracle Cloud Infrastructure上でLLMトレーニングジョブを起動し、データをストリームインし、チェックポイントをR2にアップロードしています。途中でジョブを一時停止し、Amazon Web Services上の別のGPUセットでシームレスに再開します。Composerは、R2で最後に保存したチェックポイントからモデルの重みをロードし、ストリーミングデータローダーは瞬時に正しいバッチに再開されます。トレーニングは決定的に続きます。最後に、再びGoogle Cloudに移動して実行を終了します。</p>
-<p data-astro-cid-yoyuw6fx="">3つのクラウドプロバイダーでLLMをトレーニングするため、私たちが支払うコストはGPUコンピューティングとデータストレージのみです。Cloudflare R2により、エグレス料金は発生せず、ロックインを避けることができます！</p>
-<p data-astro-cid-yoyuw6fx=""><em>MosaicMLトレーニングプラットフォームとCloudflare R2を使用して、3つの異なるクラウドプロバイダー間でゼロエグレス料金でLLMトレーニングジョブを実行。</em></p>
+<h3 data-astro-cid-byeekcgh="">MosaicMLとR2を使って、どこでも効率よくトレーニングができる</h3>
+<p data-astro-cid-byeekcgh="">上記のツールとCloudflare R2を併用することで、ユーザーはトレーニング用ワークロードをあらゆるコンピューティングプロバイダー上で自由に実行でき、切り替えコストもゼロになります。</p>
+<p data-astro-cid-byeekcgh="">図Xでは、MosaicMLトレーニングプラットフォームを使って、Oracle Cloud Infrastructure上でLLMトレーニングジョブを起動し、データをストリームインし、チェックポイントをR2にアップロードしています。途中でジョブを一時停止し、Amazon Web Services上の別のGPUセットでシームレスに再開します。Composerは、R2で最後に保存したチェックポイントからモデルの重みをロードし、ストリーミングデータローダーは瞬時に正しいバッチに再開されます。トレーニングは決定的に続きます。最後に、再びGoogle Cloudに移動して実行を終了します。</p>
+<p data-astro-cid-byeekcgh="">3つのクラウドプロバイダーでLLMをトレーニングするため、私たちが支払うコストはGPUコンピューティングとデータストレージのみです。Cloudflare R2により、エグレス料金は発生せず、ロックインを避けることができます！</p>
+<p data-astro-cid-byeekcgh=""><em>MosaicMLトレーニングプラットフォームとCloudflare R2を使用して、3つの異なるクラウドプロバイダー間でゼロエグレス料金でLLMトレーニングジョブを実行。</em></p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="466" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4893NZBN9HYQ2E2GFYTJXM.png&amp;w=715&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4893NZBN9HYQ2E2GFYTJXM.png&amp;w=640&amp;h=417&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4893NZBN9HYQ2E2GFYTJXM.png&amp;w=715&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4893NZBN9HYQ2E2GFYTJXM.png&amp;w=750&amp;h=489&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4893NZBN9HYQ2E2GFYTJXM.png&amp;w=828&amp;h=540&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4893NZBN9HYQ2E2GFYTJXM.png&amp;w=1080&amp;h=704&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4893NZBN9HYQ2E2GFYTJXM.png&amp;w=1280&amp;h=834&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4893NZBN9HYQ2E2GFYTJXM.png&amp;w=1430&amp;h=932&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Using the MosaicML training platform with Cloudflare R2 to run an LLM training job across three different cloud providers, with zero egress fees." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4893NZBN9HYQ2E2GFYTJXM.png&amp;w=1920&amp;h=1252&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1252" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="466" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-yoyuw6fx=""><em>MCLIコマンドラインツールを使用して、コンピュートクラスタ、シークレット、サブミットランを管理する。</em></p>
+<p data-astro-cid-byeekcgh=""><em>MCLIコマンドラインツールを使用して、コンピュートクラスタ、シークレット、サブミットランを管理する。</em></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mcli</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-032f62-99ffe4"> clusters</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">NAME</span><span class="sk-032f62-99ffe4">            PROVIDER</span><span class="sk-032f62-99ffe4">      GPU_TYPE</span><span class="sk-032f62-99ffe4">   GPUS</span><span class="sk-032f62-99ffe4">             INSTANCE</span><span class="sk-032f62-99ffe4">                   NODES</span></span>
@@ -155,7 +155,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx=""><em>MCLIジョブテンプレート。実行名、Dockerイメージ、コマンドセット、実行するコンピューティングクラスターの指定。</em></p>
+<p data-astro-cid-byeekcgh=""><em>MCLIジョブテンプレート。実行名、Dockerイメージ、コマンドセット、実行するコンピューティングクラスターの指定。</em></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">### mpt-125m-r2.yaml ###</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># set up secrets once with `mcli create secret ...`</span></span>
@@ -187,9 +187,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">今すぐ始めましょう</h3>
-<p data-astro-cid-yoyuw6fx="">MosaicMLプラットフォームは、トレーニングを次のレベルに引き上げるための貴重なツールです。この記事では、Cloudflare R2が、あらゆるコンピューティングプロバイダー（あるいはそのすべて）を利用して、独自のデータでモデルをトレーニングできるようにする方法を探りました。R2のストレージはエグレス料金を排除することで、MosaicMLのトレーニングを補完し、最大限の自律性と制御を実現する非常に費用対効果の高い製品です。この組み合わせなら、時間の経過とともに組織のニーズに合わせてクラウドサービスプロバイダーを切り替えていくことが可能です。</p>
-<p data-astro-cid-yoyuw6fx="">MosaicMLを使用して、お客様のデータでカスタムの最先端AIをトレーニングする方法については、 <a href="https://www.mosaicml.com" target="_blank" rel="noopener noreferrer">こちら</a>をご覧いただくか、<a href="https://docs.google.com/forms/d/e/1FAIpQLSepW7QB3Xkv6T7GJRwrR9DmGAEjm5G2lBxJC7PUe3JXcBZYbw/viewform" target="_blank" rel="noopener noreferrer">当社までお問い合わせください</a>。</p>
+<h3 data-astro-cid-byeekcgh="">今すぐ始めましょう</h3>
+<p data-astro-cid-byeekcgh="">MosaicMLプラットフォームは、トレーニングを次のレベルに引き上げるための貴重なツールです。この記事では、Cloudflare R2が、あらゆるコンピューティングプロバイダー（あるいはそのすべて）を利用して、独自のデータでモデルをトレーニングできるようにする方法を探りました。R2のストレージはエグレス料金を排除することで、MosaicMLのトレーニングを補完し、最大限の自律性と制御を実現する非常に費用対効果の高い製品です。この組み合わせなら、時間の経過とともに組織のニーズに合わせてクラウドサービスプロバイダーを切り替えていくことが可能です。</p>
+<p data-astro-cid-byeekcgh="">MosaicMLを使用して、お客様のデータでカスタムの最先端AIをトレーニングする方法については、 <a href="https://www.mosaicml.com" target="_blank" rel="noopener noreferrer">こちら</a>をご覧いただくか、<a href="https://docs.google.com/forms/d/e/1FAIpQLSepW7QB3Xkv6T7GJRwrR9DmGAEjm5G2lBxJC7PUe3JXcBZYbw/viewform" target="_blank" rel="noopener noreferrer">当社までお問い合わせください</a>。</p>
 <div id="html-block-k2d" class="html-block">
 	<div style="padding-top:56.25%"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/e87f8536439db9b5eea7dfd33ad2f11e/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fe87f8536439db9b5eea7dfd33ad2f11e%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 </div>

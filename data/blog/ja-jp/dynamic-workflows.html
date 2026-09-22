@@ -1,17 +1,17 @@
-<p data-astro-cid-yoyuw6fx=""><em>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</em></p>
-<p data-astro-cid-yoyuw6fx="">8年前にWorkersを初めてローンチしたとき、それは開発者向けの直接プラットフォームでした。長年にわたり、私たちはエコシステムを拡大・拡張してきました。これにより、プラットフォームはWorkers上で直接構築するだけでなく、<em>その</em>お客様が多くのマルチテナントアプリケーションを通じて<em>当社</em>にコードを出荷できるようになる可能性もあります。Workers：アプリでは、ユーザーが欲しい結果を記述し、AIが実装を書きます。マルチテナントSaaSでは、すべてのお客様のビジネスロジックが、実行時に、プラットフォームがこれまでに見たことのないTypeScriptを使用します。独自のツールを作成して実行するエージェント。すべてのリポジトリが独自のパイプラインを定義するCI/CD製品。</p>
-<p data-astro-cid-yoyuw6fx="">先月、<a href="https://blog.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Dynamic Workersのオープンベータ版</u></a>を出荷した際、私たちはこれらのプラットフォームに、<em>コンピューティング</em>側でクリーンなプリミティブを提供しました。Workersランタイムに実行時にコードを渡すと、同じマシン上で数ミリ秒で、分離されたサンドボックス化されたWorkerが返されます。<a href="https://blog.cloudflare.com/durable-object-facets-dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Durable Object Facets</u></a>は、同じ考え方を<em>ストレージ</em>にも拡張しました。動的にロードされる各アプリは、オンデマンドで起動される独自のSQLiteデータベースを持つことができ、プラットフォームがスーパーバイザーとして前に位置します。<a href="https://blog.cloudflare.com/artifacts-git-for-agents-beta" target="_blank" rel="noopener noreferrer"><u>Artifacts</u></a>は、<em>ソース管理</em>に対しても同様の機能を提供しました。Gitネイティブでバージョン管理されたファイルシステムを、数千万単位で作成できます。エージェントごとに1つ、セッションごとに1つ、テナントごとに1つといった具合にです。そのため、ストレージやソース制御のために動的なデプロイメントが可能です。今後の展開は？</p>
-<p data-astro-cid-yoyuw6fx="">現在は、<a href="https://github.com/cloudflare/dynamic-workflows" target="_blank" rel="noopener noreferrer"><strong><u>Dynamic Workflows</u></strong></a>で耐久性の高い実行と動的デプロイを橋渡ししています。</p>
-<h2 data-astro-cid-yoyuw6fx="">耐久性のある実行と動的実行のギャップ</h2>
-<p data-astro-cid-yoyuw6fx=""><a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workflows</u></a>は、当社の耐久性のある実行エンジンです。これは、<code>run(event, step)</code>関数を、すべてのステップが失敗しても存続し、数時間または数日間スリープでき、外部イベントを待つことができ、アイソレートがリサイクルされると中断した場所から正確に再開されるプログラムに変換します。単一のリクエストを超えて「継続」する必要があるものすべてに最適なプリミティブです。オンボーディングフロー、動画トランスコーディングパイプライン、複数段階の課金、長期実行されるエージェントループ、そして — <a href="https://blog.cloudflare.com/workflows-v2" target="_blank" rel="noopener noreferrer"><u>Workflows V2</u></a>以降 — 最大50,000の同時インスタンスと、アカウントあたり毎秒300の新規インスタンスに対応し、エージェント時代に向けて再設計されました。</p>
-<p data-astro-cid-yoyuw6fx="">しかし、Workflowsには、常に暗号化された前提があります。ワークフローコードはデプロイメントの一部であるということです。あなたの <code>wrangler.jsonc</code>には、<em>"エンジンが <code>WORKFLOWS</code>を呼び出すと、<code>MyWorkflow</code></em>というクラスが実行されます。" というブロックがあります<em>。</em>1つのバインディング、1つのクラス。都度、デプロイごとに。</p>
-<p data-astro-cid-yoyuw6fx="">すべてのコードを所有している場合は問題ありません。従来のアプリケーションを実行している場合は問題ありません。</p>
-<p data-astro-cid-yoyuw6fx=""><em>お客様が</em>ワークフローを出荷させたいと思った瞬間、機能を停止します。</p>
-<p data-astro-cid-yoyuw6fx="">例えば、AIがすべてのテナントのTypeScriptを書き込むアプリプラットフォームを構築しているとします。例えば、各リポジトリが独自のパイプラインを持つCI/CD製品を実行しているとします。各エージェントが独自の耐久性のあるプランを記述するエージェントSDKを使用しているとします。いずれの場合も、ワークフローはテナントごと、エージェント、リクエストごとに異なります。バインドするクラスはありません。</p>
-<p data-astro-cid-yoyuw6fx="">これはDynamic Workersがコンピューティングのために解決し、Durable Object Facetsがストレージのために解決したものと同じ形の問題です。耐久性のある実行を実現する方法をまだ解決していませんでした。</p>
-<h2 data-astro-cid-yoyuw6fx="">動的ワークフロー</h2>
-<p data-astro-cid-yoyuw6fx=""><code>@cloudflare/dynamic-workflows</code>は小さなライブラリです。およそ300行のTypeScript。単一のWorker — <strong>Worker Loader</strong> — が、すべての<code>create()</code>呼び出しを別のテナントのコードにルーティングでき、重要なことに、ワークフローが実際に実行される数秒、数時間、あるいは数日後に、その同じコードに<code>run(event, step)</code>をディスパッチします。</p>
-<p data-astro-cid-yoyuw6fx="">全体のパターンは次の通りです。Worker Loader：</p>
+<p data-astro-cid-byeekcgh=""><em>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</em></p>
+<p data-astro-cid-byeekcgh="">8年前にWorkersを初めてローンチしたとき、それは開発者向けの直接プラットフォームでした。長年にわたり、私たちはエコシステムを拡大・拡張してきました。これにより、プラットフォームはWorkers上で直接構築するだけでなく、<em>その</em>お客様が多くのマルチテナントアプリケーションを通じて<em>当社</em>にコードを出荷できるようになる可能性もあります。Workers：アプリでは、ユーザーが欲しい結果を記述し、AIが実装を書きます。マルチテナントSaaSでは、すべてのお客様のビジネスロジックが、実行時に、プラットフォームがこれまでに見たことのないTypeScriptを使用します。独自のツールを作成して実行するエージェント。すべてのリポジトリが独自のパイプラインを定義するCI/CD製品。</p>
+<p data-astro-cid-byeekcgh="">先月、<a href="https://blog.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Dynamic Workersのオープンベータ版</u></a>を出荷した際、私たちはこれらのプラットフォームに、<em>コンピューティング</em>側でクリーンなプリミティブを提供しました。Workersランタイムに実行時にコードを渡すと、同じマシン上で数ミリ秒で、分離されたサンドボックス化されたWorkerが返されます。<a href="https://blog.cloudflare.com/durable-object-facets-dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Durable Object Facets</u></a>は、同じ考え方を<em>ストレージ</em>にも拡張しました。動的にロードされる各アプリは、オンデマンドで起動される独自のSQLiteデータベースを持つことができ、プラットフォームがスーパーバイザーとして前に位置します。<a href="https://blog.cloudflare.com/artifacts-git-for-agents-beta" target="_blank" rel="noopener noreferrer"><u>Artifacts</u></a>は、<em>ソース管理</em>に対しても同様の機能を提供しました。Gitネイティブでバージョン管理されたファイルシステムを、数千万単位で作成できます。エージェントごとに1つ、セッションごとに1つ、テナントごとに1つといった具合にです。そのため、ストレージやソース制御のために動的なデプロイメントが可能です。今後の展開は？</p>
+<p data-astro-cid-byeekcgh="">現在は、<a href="https://github.com/cloudflare/dynamic-workflows" target="_blank" rel="noopener noreferrer"><strong><u>Dynamic Workflows</u></strong></a>で耐久性の高い実行と動的デプロイを橋渡ししています。</p>
+<h2 data-astro-cid-byeekcgh="">耐久性のある実行と動的実行のギャップ</h2>
+<p data-astro-cid-byeekcgh=""><a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workflows</u></a>は、当社の耐久性のある実行エンジンです。これは、<code>run(event, step)</code>関数を、すべてのステップが失敗しても存続し、数時間または数日間スリープでき、外部イベントを待つことができ、アイソレートがリサイクルされると中断した場所から正確に再開されるプログラムに変換します。単一のリクエストを超えて「継続」する必要があるものすべてに最適なプリミティブです。オンボーディングフロー、動画トランスコーディングパイプライン、複数段階の課金、長期実行されるエージェントループ、そして — <a href="https://blog.cloudflare.com/workflows-v2" target="_blank" rel="noopener noreferrer"><u>Workflows V2</u></a>以降 — 最大50,000の同時インスタンスと、アカウントあたり毎秒300の新規インスタンスに対応し、エージェント時代に向けて再設計されました。</p>
+<p data-astro-cid-byeekcgh="">しかし、Workflowsには、常に暗号化された前提があります。ワークフローコードはデプロイメントの一部であるということです。あなたの <code>wrangler.jsonc</code>には、<em>"エンジンが <code>WORKFLOWS</code>を呼び出すと、<code>MyWorkflow</code></em>というクラスが実行されます。" というブロックがあります<em>。</em>1つのバインディング、1つのクラス。都度、デプロイごとに。</p>
+<p data-astro-cid-byeekcgh="">すべてのコードを所有している場合は問題ありません。従来のアプリケーションを実行している場合は問題ありません。</p>
+<p data-astro-cid-byeekcgh=""><em>お客様が</em>ワークフローを出荷させたいと思った瞬間、機能を停止します。</p>
+<p data-astro-cid-byeekcgh="">例えば、AIがすべてのテナントのTypeScriptを書き込むアプリプラットフォームを構築しているとします。例えば、各リポジトリが独自のパイプラインを持つCI/CD製品を実行しているとします。各エージェントが独自の耐久性のあるプランを記述するエージェントSDKを使用しているとします。いずれの場合も、ワークフローはテナントごと、エージェント、リクエストごとに異なります。バインドするクラスはありません。</p>
+<p data-astro-cid-byeekcgh="">これはDynamic Workersがコンピューティングのために解決し、Durable Object Facetsがストレージのために解決したものと同じ形の問題です。耐久性のある実行を実現する方法をまだ解決していませんでした。</p>
+<h2 data-astro-cid-byeekcgh="">動的ワークフロー</h2>
+<p data-astro-cid-byeekcgh=""><code>@cloudflare/dynamic-workflows</code>は小さなライブラリです。およそ300行のTypeScript。単一のWorker — <strong>Worker Loader</strong> — が、すべての<code>create()</code>呼び出しを別のテナントのコードにルーティングでき、重要なことに、ワークフローが実際に実行される数秒、数時間、あるいは数日後に、その同じコードに<code>run(event, step)</code>をディスパッチします。</p>
+<p data-astro-cid-byeekcgh="">全体のパターンは次の通りです。Worker Loader：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">  createDynamicWorkflowEntrypoint,</span></span>
@@ -69,7 +69,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">お使いの <code>wrangler.jsonc</code> に追加します:</p>
+<p data-astro-cid-byeekcgh="">お使いの <code>wrangler.jsonc</code> に追加します:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">"workflows"</span><span class="sk-24292e-fff">: [</span></span>
 <span class="line"><span class="sk-24292e-fff">		{</span></span>
@@ -83,7 +83,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">テナントは、プレーンで構文的なWorkflowsコードを記述します。自分たちが派遣されていることに気づいていないのです。</p>
+<p data-astro-cid-byeekcgh="">テナントは、プレーンで構文的なWorkflowsコードを記述します。自分たちが派遣されていることに気づいていないのです。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { WorkflowEntrypoint } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cloudflare:workers'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -104,19 +104,19 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">これで、以上です。テナントは、ごく通常のWorkflowバインディングのように見えるものに対して<code>env.WORKFLOWS.create(...)</code>を呼び出します。ワークフローID、<code>.status()</code>、<code>.pause()</code>、リトライ、ハイバネーション、耐久性のあるステップ、<code>step.sleep('24時間')</code>、<code>step.waitForEvent()</code>— すべてが上手く機能するのです。</p>
-<p data-astro-cid-yoyuw6fx="">ライブラリが処理するのは1つことだけです。Workflowsエンジンが最終的に起動して<code>run(event, step)</code>を呼び出すと、最終的に<em>正しいテナントの</em>コード内に行き着くのです。</p>
-<h2 data-astro-cid-yoyuw6fx="">仕組み</h2>
-<p data-astro-cid-yoyuw6fx="">3つの層があります。上はWorkflowsエンジン（プラットフォーム）、中央はWorker Loader、下はテナントのコード（Dynamic Worker）です。</p>
+<p data-astro-cid-byeekcgh="">これで、以上です。テナントは、ごく通常のWorkflowバインディングのように見えるものに対して<code>env.WORKFLOWS.create(...)</code>を呼び出します。ワークフローID、<code>.status()</code>、<code>.pause()</code>、リトライ、ハイバネーション、耐久性のあるステップ、<code>step.sleep('24時間')</code>、<code>step.waitForEvent()</code>— すべてが上手く機能するのです。</p>
+<p data-astro-cid-byeekcgh="">ライブラリが処理するのは1つことだけです。Workflowsエンジンが最終的に起動して<code>run(event, step)</code>を呼び出すと、最終的に<em>正しいテナントの</em>コード内に行き着くのです。</p>
+<h2 data-astro-cid-byeekcgh="">仕組み</h2>
+<p data-astro-cid-byeekcgh="">3つの層があります。上はWorkflowsエンジン（プラットフォーム）、中央はWorker Loader、下はテナントのコード（Dynamic Worker）です。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="450" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VVMRDTGXQP4V0XKKQJAH.png&amp;w=715&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VVMRDTGXQP4V0XKKQJAH.png&amp;w=640&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VVMRDTGXQP4V0XKKQJAH.png&amp;w=715&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VVMRDTGXQP4V0XKKQJAH.png&amp;w=750&amp;h=472&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VVMRDTGXQP4V0XKKQJAH.png&amp;w=828&amp;h=521&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VVMRDTGXQP4V0XKKQJAH.png&amp;w=1080&amp;h=680&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VVMRDTGXQP4V0XKKQJAH.png&amp;w=1280&amp;h=806&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VVMRDTGXQP4V0XKKQJAH.png&amp;w=1430&amp;h=900&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3296 image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VVMRDTGXQP4V0XKKQJAH.png&amp;w=1920&amp;h=1208&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1208" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="450" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-yoyuw6fx="">リクエストがWorker Loaderに届くと、その場で正しい動的コードの実行をルーティングします。残りの実行は、これら3つのレイヤー間の受け渡しで、時間と共に左から右へ、リクエストが入り、エンジンにバウンスし、持続され、後に再びバウンスします。</p>
-<p data-astro-cid-yoyuw6fx="">フローの流れを認証する：</p>
-<p data-astro-cid-yoyuw6fx=""><strong>① → ② テナントのコードを入力します。</strong>Worker Loaderは、HTTPリクエストを受信し、どのテナントに対するものであるかを判断し、Worker Loaderを介してそのテナントのコードを読み込み、リクエストをその<code>default.fetch</code>に転送します。テナントに手渡される<code>env</code>には、<code>WORKFLOWS: wrapWorkflowBinding({ tenantId })</code>が含まれています。テナントに関する限り、それは実際のWorkflowバインディングのように見え、動作します。</p>
-<p data-astro-cid-yoyuw6fx=""><strong>③ Worker Loaderまで。</strong>テナントが<code>env.WORKFLOWS.create({ params })</code>を呼び出すと、実際には、Worker LoaderにRemote Procedure Call（RPC）を作成しています。ラップされたバインディングは、ランタイムが読み込み時にテナントのメタデータに特化した<code>WorkerEntrypoint</code>サブクラス（<code>DynamicWorkflowBinding</code>）です。そのため、Worker Loaderから<code>{ DynamicWorkflowBinding }をエクスポートする</code>必要があります。ランタイムは、<code>cloudflare:workers</code>のエクスポートでクラスを検索することにより、テナントごとのスタブを構築します。Dynamic Worker境界をまたぐバインディングは、RPCスタブである<em>必要</em>があります。プレーンの<code>{ create, get }</code> オブジェクトは構造化複製されず、未加工の<code>Workflow</code>バインディングもシリアル化できません。</p>
-<p data-astro-cid-yoyuw6fx="">Worker Loader内部では、ラップされたバインディングがペイロードを透過的に書き換えます。</p>
+<p data-astro-cid-byeekcgh="">リクエストがWorker Loaderに届くと、その場で正しい動的コードの実行をルーティングします。残りの実行は、これら3つのレイヤー間の受け渡しで、時間と共に左から右へ、リクエストが入り、エンジンにバウンスし、持続され、後に再びバウンスします。</p>
+<p data-astro-cid-byeekcgh="">フローの流れを認証する：</p>
+<p data-astro-cid-byeekcgh=""><strong>① → ② テナントのコードを入力します。</strong>Worker Loaderは、HTTPリクエストを受信し、どのテナントに対するものであるかを判断し、Worker Loaderを介してそのテナントのコードを読み込み、リクエストをその<code>default.fetch</code>に転送します。テナントに手渡される<code>env</code>には、<code>WORKFLOWS: wrapWorkflowBinding({ tenantId })</code>が含まれています。テナントに関する限り、それは実際のWorkflowバインディングのように見え、動作します。</p>
+<p data-astro-cid-byeekcgh=""><strong>③ Worker Loaderまで。</strong>テナントが<code>env.WORKFLOWS.create({ params })</code>を呼び出すと、実際には、Worker LoaderにRemote Procedure Call（RPC）を作成しています。ラップされたバインディングは、ランタイムが読み込み時にテナントのメタデータに特化した<code>WorkerEntrypoint</code>サブクラス（<code>DynamicWorkflowBinding</code>）です。そのため、Worker Loaderから<code>{ DynamicWorkflowBinding }をエクスポートする</code>必要があります。ランタイムは、<code>cloudflare:workers</code>のエクスポートでクラスを検索することにより、テナントごとのスタブを構築します。Dynamic Worker境界をまたぐバインディングは、RPCスタブである<em>必要</em>があります。プレーンの<code>{ create, get }</code> オブジェクトは構造化複製されず、未加工の<code>Workflow</code>バインディングもシリアル化できません。</p>
+<p data-astro-cid-byeekcgh="">Worker Loader内部では、ラップされたバインディングがペイロードを透過的に書き換えます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">tenant calls</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799">  create</span><span class="sk-24292e-fff">({ params</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> { name</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> 'Alice'</span><span class="sk-24292e-fff"> } })</span></span>
 <span class="line"><span class="sk-24292e-fff">                            │</span></span>
@@ -131,10 +131,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx=""><strong>④ エンジンまで。</strong>次にWorker Loaderは、エンベロープを引数として、<em>実際の</em><code>WORKFLOWS</code>バインディングで<code>.create()</code> を呼び出します。ここから、Workflowsエンジンが引き継ぎます。<code>event.payload</code>（エンベロープを含む）を保持し、実行をスケジュールします。エンジンが後でワークフローを起動するたびに（それが24時間のスリープ後、クラッシュ、またはデプロイの後であろうと）、メタデータはペイロードと共に乗り、実行のルーティングを待ちます。</p>
-<p data-astro-cid-yoyuw6fx="">つまり、メタデータを認証ではなくルーティングヒントとして扱うということです。テナントは、<code>instance.status()</code>を介してそれを読み戻すことができます。秘密情報を入れないでください。</p>
-<p data-astro-cid-yoyuw6fx=""><strong>⑤ → ⑥ エンジンが下降します。</strong>エンジンがステップを実行する準備ができると、<code>wrangler.jsonc</code>で登録されたクラスの<code>.run(event,step)</code>を呼び出します。これは、<code>createDynamicWorkflowEnpoint</code>が提供したものです。そのクラスはエンベロープを展開し、メタデータを<code>loadRunner</code>コールバック<em>が</em>書いたものに渡し、ラップされていないイベントをコールバックが返すランナーに転送します。</p>
-<p data-astro-cid-yoyuw6fx="">コールバックは興味深いことが起きる場所で、完全にお客様のものになります。R2からテナントの最新ソースを取得します。プラン階層を確認し、地域を選択します。テナントごとのログ記録用にtail Workerを接続します。<a href="https://www.npmjs.com/package/@cloudflare/worker-bundler" target="_blank" rel="noopener noreferrer"><code><u>@cloudflare/worker-bundler</u></code></a>でTypeScriptをオンザフライでバンドルします。一般的なケースでは、Worker Loaderに引き渡すだけです。</p>
+<p data-astro-cid-byeekcgh=""><strong>④ エンジンまで。</strong>次にWorker Loaderは、エンベロープを引数として、<em>実際の</em><code>WORKFLOWS</code>バインディングで<code>.create()</code> を呼び出します。ここから、Workflowsエンジンが引き継ぎます。<code>event.payload</code>（エンベロープを含む）を保持し、実行をスケジュールします。エンジンが後でワークフローを起動するたびに（それが24時間のスリープ後、クラッシュ、またはデプロイの後であろうと）、メタデータはペイロードと共に乗り、実行のルーティングを待ちます。</p>
+<p data-astro-cid-byeekcgh="">つまり、メタデータを認証ではなくルーティングヒントとして扱うということです。テナントは、<code>instance.status()</code>を介してそれを読み戻すことができます。秘密情報を入れないでください。</p>
+<p data-astro-cid-byeekcgh=""><strong>⑤ → ⑥ エンジンが下降します。</strong>エンジンがステップを実行する準備ができると、<code>wrangler.jsonc</code>で登録されたクラスの<code>.run(event,step)</code>を呼び出します。これは、<code>createDynamicWorkflowEnpoint</code>が提供したものです。そのクラスはエンベロープを展開し、メタデータを<code>loadRunner</code>コールバック<em>が</em>書いたものに渡し、ラップされていないイベントをコールバックが返すランナーに転送します。</p>
+<p data-astro-cid-byeekcgh="">コールバックは興味深いことが起きる場所で、完全にお客様のものになります。R2からテナントの最新ソースを取得します。プラン階層を確認し、地域を選択します。テナントごとのログ記録用にtail Workerを接続します。<a href="https://www.npmjs.com/package/@cloudflare/worker-bundler" target="_blank" rel="noopener noreferrer"><code><u>@cloudflare/worker-bundler</u></code></a>でTypeScriptをオンザフライでバンドルします。一般的なケースでは、Worker Loaderに引き渡すだけです。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> stub</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">LOADER</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(tenantId, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> loadTenantCode</span><span class="sk-24292e-fff">(tenantId));</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> stub.</span><span class="sk-6f42c1-ffc799">getEntrypoint</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'TenantWorkflow'</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -143,9 +143,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx=""><br>Worker LoaderはID別にキャッシュするため、多くのステップを何時間も実行するワークフローは、それらの間で同じ動的Workerを再利用します。最終的に分離が追い出されると、次の <code>step.do()</code> は再びコードをプルして、行き続けます。テナントのワークフローは、何が起こったかに気づきません。Dynamic Workerは、数メガバイトのメモリを使用して1桁ミリ秒で起動するため、ディスパッチのオーバーヘッドは本質的に無料です。独自のワークフローコードを持つ100万のテナントを保有でき、それぞれが必要なステップ境界で遅延してスピンアップされ、アイドル状態になっているテナントのいずれもコストはかかりません。</p>
-<h3 data-astro-cid-yoyuw6fx="">エスケープハック</h3>
-<p data-astro-cid-yoyuw6fx=""><code>WorkflowEntrypoint</code>を自身でサブクラス化する場合 — たとえば、<code>run() </code>の周りにロギングを追加したり、テナントごとの可観測性を確保したり、カスタム状態をスレッド化したりする目的で — ライブラリは、 <code>createDynamicWorkflowEntrypoint</code>の基盤となっている、より低レベルの<code>dispatchWorkflow</code>プリミティブを公開しています。</p>
+<p data-astro-cid-byeekcgh=""><br>Worker LoaderはID別にキャッシュするため、多くのステップを何時間も実行するワークフローは、それらの間で同じ動的Workerを再利用します。最終的に分離が追い出されると、次の <code>step.do()</code> は再びコードをプルして、行き続けます。テナントのワークフローは、何が起こったかに気づきません。Dynamic Workerは、数メガバイトのメモリを使用して1桁ミリ秒で起動するため、ディスパッチのオーバーヘッドは本質的に無料です。独自のワークフローコードを持つ100万のテナントを保有でき、それぞれが必要なステップ境界で遅延してスピンアップされ、アイドル状態になっているテナントのいずれもコストはかかりません。</p>
+<h3 data-astro-cid-byeekcgh="">エスケープハック</h3>
+<p data-astro-cid-byeekcgh=""><code>WorkflowEntrypoint</code>を自身でサブクラス化する場合 — たとえば、<code>run() </code>の周りにロギングを追加したり、テナントごとの可観測性を確保したり、カスタム状態をスレッド化したりする目的で — ライブラリは、 <code>createDynamicWorkflowEntrypoint</code>の基盤となっている、より低レベルの<code>dispatchWorkflow</code>プリミティブを公開しています。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { dispatchWorkflow } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@cloudflare/dynamic-workflows'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -165,24 +165,24 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">その他のすべて（ID、一時停止/再開、<code>sendEvent</code>、リトライ）は、そのまま実際のWorkflowsエンジンに渡されます。</p>
-<h2 data-astro-cid-yoyuw6fx="">Dynamic Workersはプリミティブ</h2>
-<p data-astro-cid-yoyuw6fx="">ちょっと具体的な説明から考えてみましょう。このライブラリのすべての興味深い行は、アウトバウンド側の<code>.create()</code>のラッパー、またはインバウンド側の<code>WorkflowEntrypoint</code>のラッパーのいずれかです。実際の作業（テナントのコードのスピンアップ、サンドボックス化、境界を越えたRPCルーティング、分離のキャッシング、ステップ間のハイバネーション）はすべてDynamic Workersによって行われます。</p>
-<p data-astro-cid-yoyuw6fx="">これが現実のストーリーであり、Workflowsより遥かに大きな規模です</p>
-<p data-astro-cid-yoyuw6fx="">Dynamic Workersは、すべてを組み込むプリミティブです。<a href="https://blog.cloudflare.com/durable-object-facets-dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Durable Object Facets</u></a>は、Durable Objectsに適用される同じパターンです。Dynamic Workflowsは、<code>WorkflowEntrypoint</code>に適用されるパターンと同じです。それぞれが、これまでの静的バインディングとお客様に手渡できる動的バージョンの間のエンベロープとラップを解除するための接着剤です。</p>
-<p data-astro-cid-yoyuw6fx="">Workflowsにとどまりません。現在Workersで公開されているバインディングはすべて、対応するものです。つまり、各プロデューサーが独自のハンドラー、キャッシュ、データベース、オブジェクトストア、AIバインディング、そしてすべてのテナントが独自のツールを持ち込むMCPサーバーを送信するキューです。現在、Workerに何にバインドしていても、間もなく動的にバインドできるようになります。テナントごと、エージェント、リクエストごとに、アイドル状態のコストはゼロです。</p>
-<p data-astro-cid-yoyuw6fx="">このようなプラットフォームを運営するための単位経済は、率直に言って途方もないものです。かつてはマルチテナント製品を出荷するということは、すべての顧客に独自のコンテナ、独自のデータベース、独自のディスク、独自のスケジューラを提供し、オーケストレーション用接着剤、サービスメッシュ、ヘアプル型請求計算でつなぎ合わせることを意味していました。そうしたアプリケーションの多くは、少なくとも数千人の顧客をサポートしなければなりません。数百万ドルに達することもあります。Dynamic Workersとその上に構成するすべてのものでは、アイドル状態のテナントは約ゼロで、アクティブなテナントは分離レベルのマルチテナンシーを通じて同じハードウェアを共有します。フロアの高さは桁違いに低下します。これまでは、数千人の有料顧客を利用していたプラットフォームが、数千万ドル単位の顧客に合理的にサービスを提供できるようになりました。</p>
-<h2 data-astro-cid-yoyuw6fx="">この取り組みの内容</h2>
-<h3 data-astro-cid-yoyuw6fx="">エンジニアのように計画するエージェントプラットフォーム</h3>
-<p data-astro-cid-yoyuw6fx="">コーディングエージェント — <a href="https://opencode.ai" target="_blank" rel="noopener noreferrer"><u>OpenCode</u></a>、<a href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener noreferrer"><u>Claude Code</u></a>、Codex、Pi — は、過去1年間で、LLMが時系列なツール呼び出しよりも<em>コードを書く</em>方がはるかに得意であることを証明しました。<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Cloudflare Agents SDK</u></a>と<a href="https://blog.cloudflare.com/project-think" target="_blank" rel="noopener noreferrer"><u>Project Think</u></a>は、そのインサイトを耐久性のある実行にまで拡張します。ファイバーやサブエージェントのようなプリミティブを使用することで、エージェントの長期実行プランは、ユーザーが気づくことなく、クラッシュ、ハイバネーション、再デプロイを乗り越えることができます。</p>
-<p data-astro-cid-yoyuw6fx="">Dynamic Workflowsは、そのプランを<em>第一級のCloudflare Workflow</em>にするものです。つまり、エージェントが文字通り記述し、プラットフォームが文字通り実行し、その背後には完全な耐久性メカニズムが備わっています。モデルが分前に書いた<code>run(event, step)</code>関数は、すべての<code>step.do(...)</code>が独立して再試行可能で、すべての<code>step.sleep('24時間')</code>が無料でハイバネーションし、すべての<code>step.waitForEvent(...)</code>は、人間が次のアクションを承認するのを無期限に待ちます。エージェントはワークフローを書き込み、プラットフォームがそれを実行するプランの内容を事前に知る必要はありません。</p>
-<h3 data-astro-cid-yoyuw6fx="">ユーザーがロジックを持ち込むSDKとフレームワーク</h3>
-<p data-astro-cid-yoyuw6fx="">顧客が<code>run(event, step)</code>関数を記述するフレームワーク（ワークフロービルダーUI、ビジュアルオートメーションツール、テナントごとの拡張システム、非開発者向けローコードツールなど）を出荷する場合、Dynamic Workflowsは妥協することなく機能させるためのプリミティブとなります。<code>wrapWorkflowBinding({ tenantId })</code>を一度呼び出し、結果を<code>WORKFLOWS</code>としてコードに渡すと、作成されたすべてのワークフローインスタンスは自動的にタグ付けされ、ルーティングされ、サンドボックスで実行されます。フレームワークはWorker Loaderを所有します。ユーザーがワークフローを所有している一方を気にする必要はありません。</p>
-<h3 data-astro-cid-yoyuw6fx="">原始的速度のCI/CD</h3>
-<p data-astro-cid-yoyuw6fx="">こちらは、当社で最も興奮しているユースケースです。</p>
-<p data-astro-cid-yoyuw6fx="">既存のCI/CDプラットフォームはすべて、その根底において、リポジトリごとの設定ファイルをディスパッチするものです。<em>「これらのステップをこの順序で、これらのシークレットを使って実行し、これらのディレクトリをキャッシュし、これらのアーティファクトをアップロードする。」</em>各リポジトリには独自のパイプラインがあります。各ブランチは独自のバリアントを持つことがあります。各プルリクエストにより、完了まで実行されなければならないパイプラインのインスタンスが生成され、マシンがクラッシュしたり、不安定なステップを切り抜けたり、ログをストリーミングしたり、承認のために一時停止したり、結果を保持する必要があります。</p>
-<p data-astro-cid-yoyuw6fx="">それこそが、耐久性のあるワークフローの<em>まさに</em>その形です。これまで、CIがそのような方法で構築されなかった理由は、<strong>ワークフロー自体がリポジトリごとに異なり、ランタイム時にディスパッチされ、プロビジョニングコストがゼロであるような</strong>クラウドプリミティブが存在しなかったためです。これで完了です。</p>
-<p data-astro-cid-yoyuw6fx="">これは、CIパイプラインが、お客様のレポジトリで出荷したコードだけの場合の例です。例えば、<code>.cloudflare/ci.ts</code> の場合です。ワークフロー自体は現実のものであり、以下の<code>runInSandbox() / summarise()</code> / GitHubバインディングヘルパーはプラットフォームが提供する接着剤で、ディスパッチャで一度だけ出荷するようなものです。</p>
+<p data-astro-cid-byeekcgh="">その他のすべて（ID、一時停止/再開、<code>sendEvent</code>、リトライ）は、そのまま実際のWorkflowsエンジンに渡されます。</p>
+<h2 data-astro-cid-byeekcgh="">Dynamic Workersはプリミティブ</h2>
+<p data-astro-cid-byeekcgh="">ちょっと具体的な説明から考えてみましょう。このライブラリのすべての興味深い行は、アウトバウンド側の<code>.create()</code>のラッパー、またはインバウンド側の<code>WorkflowEntrypoint</code>のラッパーのいずれかです。実際の作業（テナントのコードのスピンアップ、サンドボックス化、境界を越えたRPCルーティング、分離のキャッシング、ステップ間のハイバネーション）はすべてDynamic Workersによって行われます。</p>
+<p data-astro-cid-byeekcgh="">これが現実のストーリーであり、Workflowsより遥かに大きな規模です</p>
+<p data-astro-cid-byeekcgh="">Dynamic Workersは、すべてを組み込むプリミティブです。<a href="https://blog.cloudflare.com/durable-object-facets-dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Durable Object Facets</u></a>は、Durable Objectsに適用される同じパターンです。Dynamic Workflowsは、<code>WorkflowEntrypoint</code>に適用されるパターンと同じです。それぞれが、これまでの静的バインディングとお客様に手渡できる動的バージョンの間のエンベロープとラップを解除するための接着剤です。</p>
+<p data-astro-cid-byeekcgh="">Workflowsにとどまりません。現在Workersで公開されているバインディングはすべて、対応するものです。つまり、各プロデューサーが独自のハンドラー、キャッシュ、データベース、オブジェクトストア、AIバインディング、そしてすべてのテナントが独自のツールを持ち込むMCPサーバーを送信するキューです。現在、Workerに何にバインドしていても、間もなく動的にバインドできるようになります。テナントごと、エージェント、リクエストごとに、アイドル状態のコストはゼロです。</p>
+<p data-astro-cid-byeekcgh="">このようなプラットフォームを運営するための単位経済は、率直に言って途方もないものです。かつてはマルチテナント製品を出荷するということは、すべての顧客に独自のコンテナ、独自のデータベース、独自のディスク、独自のスケジューラを提供し、オーケストレーション用接着剤、サービスメッシュ、ヘアプル型請求計算でつなぎ合わせることを意味していました。そうしたアプリケーションの多くは、少なくとも数千人の顧客をサポートしなければなりません。数百万ドルに達することもあります。Dynamic Workersとその上に構成するすべてのものでは、アイドル状態のテナントは約ゼロで、アクティブなテナントは分離レベルのマルチテナンシーを通じて同じハードウェアを共有します。フロアの高さは桁違いに低下します。これまでは、数千人の有料顧客を利用していたプラットフォームが、数千万ドル単位の顧客に合理的にサービスを提供できるようになりました。</p>
+<h2 data-astro-cid-byeekcgh="">この取り組みの内容</h2>
+<h3 data-astro-cid-byeekcgh="">エンジニアのように計画するエージェントプラットフォーム</h3>
+<p data-astro-cid-byeekcgh="">コーディングエージェント — <a href="https://opencode.ai" target="_blank" rel="noopener noreferrer"><u>OpenCode</u></a>、<a href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener noreferrer"><u>Claude Code</u></a>、Codex、Pi — は、過去1年間で、LLMが時系列なツール呼び出しよりも<em>コードを書く</em>方がはるかに得意であることを証明しました。<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Cloudflare Agents SDK</u></a>と<a href="https://blog.cloudflare.com/project-think" target="_blank" rel="noopener noreferrer"><u>Project Think</u></a>は、そのインサイトを耐久性のある実行にまで拡張します。ファイバーやサブエージェントのようなプリミティブを使用することで、エージェントの長期実行プランは、ユーザーが気づくことなく、クラッシュ、ハイバネーション、再デプロイを乗り越えることができます。</p>
+<p data-astro-cid-byeekcgh="">Dynamic Workflowsは、そのプランを<em>第一級のCloudflare Workflow</em>にするものです。つまり、エージェントが文字通り記述し、プラットフォームが文字通り実行し、その背後には完全な耐久性メカニズムが備わっています。モデルが分前に書いた<code>run(event, step)</code>関数は、すべての<code>step.do(...)</code>が独立して再試行可能で、すべての<code>step.sleep('24時間')</code>が無料でハイバネーションし、すべての<code>step.waitForEvent(...)</code>は、人間が次のアクションを承認するのを無期限に待ちます。エージェントはワークフローを書き込み、プラットフォームがそれを実行するプランの内容を事前に知る必要はありません。</p>
+<h3 data-astro-cid-byeekcgh="">ユーザーがロジックを持ち込むSDKとフレームワーク</h3>
+<p data-astro-cid-byeekcgh="">顧客が<code>run(event, step)</code>関数を記述するフレームワーク（ワークフロービルダーUI、ビジュアルオートメーションツール、テナントごとの拡張システム、非開発者向けローコードツールなど）を出荷する場合、Dynamic Workflowsは妥協することなく機能させるためのプリミティブとなります。<code>wrapWorkflowBinding({ tenantId })</code>を一度呼び出し、結果を<code>WORKFLOWS</code>としてコードに渡すと、作成されたすべてのワークフローインスタンスは自動的にタグ付けされ、ルーティングされ、サンドボックスで実行されます。フレームワークはWorker Loaderを所有します。ユーザーがワークフローを所有している一方を気にする必要はありません。</p>
+<h3 data-astro-cid-byeekcgh="">原始的速度のCI/CD</h3>
+<p data-astro-cid-byeekcgh="">こちらは、当社で最も興奮しているユースケースです。</p>
+<p data-astro-cid-byeekcgh="">既存のCI/CDプラットフォームはすべて、その根底において、リポジトリごとの設定ファイルをディスパッチするものです。<em>「これらのステップをこの順序で、これらのシークレットを使って実行し、これらのディレクトリをキャッシュし、これらのアーティファクトをアップロードする。」</em>各リポジトリには独自のパイプラインがあります。各ブランチは独自のバリアントを持つことがあります。各プルリクエストにより、完了まで実行されなければならないパイプラインのインスタンスが生成され、マシンがクラッシュしたり、不安定なステップを切り抜けたり、ログをストリーミングしたり、承認のために一時停止したり、結果を保持する必要があります。</p>
+<p data-astro-cid-byeekcgh="">それこそが、耐久性のあるワークフローの<em>まさに</em>その形です。これまで、CIがそのような方法で構築されなかった理由は、<strong>ワークフロー自体がリポジトリごとに異なり、ランタイム時にディスパッチされ、プロビジョニングコストがゼロであるような</strong>クラウドプリミティブが存在しなかったためです。これで完了です。</p>
+<p data-astro-cid-byeekcgh="">これは、CIパイプラインが、お客様のレポジトリで出荷したコードだけの場合の例です。例えば、<code>.cloudflare/ci.ts</code> の場合です。ワークフロー自体は現実のものであり、以下の<code>runInSandbox() / summarise()</code> / GitHubバインディングヘルパーはプラットフォームが提供する接着剤で、ディスパッチャで一度だけ出荷するようなものです。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { WorkflowEntrypoint } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cloudflare:workers'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -222,19 +222,19 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">プラットフォームがディストリビューターを所有する。Webフックを取り込み、どのリポジトリから来たかを特定し、<em>そのリポジトリの</em><code>CIPipeline</code>クラスをDynamic Workerとして読み込み、Dynamic Workflowsに実行を引き渡します。プラットフォームは、パイプラインに何があるのかを把握しません。しかし、その必要はありません。これは、お客様のリポジトリに存在する耐久性のある関数を実行するものです。</p>
-<p data-astro-cid-yoyuw6fx="">それでは、各ステップの実際の内容を整理しましょう。</p>
+<p data-astro-cid-byeekcgh="">プラットフォームがディストリビューターを所有する。Webフックを取り込み、どのリポジトリから来たかを特定し、<em>そのリポジトリの</em><code>CIPipeline</code>クラスをDynamic Workerとして読み込み、Dynamic Workflowsに実行を引き渡します。プラットフォームは、パイプラインに何があるのかを把握しません。しかし、その必要はありません。これは、お客様のリポジトリに存在する耐久性のある関数を実行するものです。</p>
+<p data-astro-cid-byeekcgh="">それでは、各ステップの実際の内容を整理しましょう。</p>
 <ul>
 	<li><a href="https://blog.cloudflare.com/artifacts-git-for-agents-beta" target="_blank" rel="noopener noreferrer"><strong><u>Artifacts</u></strong></a>は、Cloudflareのグローバルに分散されたネットワーク上に存在する、Gitネイティブのバージョン管理されたファイルシステムをすべてのリポジトリに提供します。<a href="https://github.com/cloudflare/artifact-fs" target="_blank" rel="noopener noreferrer"><u>ArtifactFS</u></a>はツリーを遅延なくハイライトするため、マルチGBのリポジトリでも1桁の秒以内に動作可能です。また、<code>fork()</code>は、<code>gitクローン</code>を課すことなく、各CIを独自に分離したコピーを提供します。</li>
 	<li><a href="https://blog.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><strong><u>Dynamic Workers</u></strong></a>は、リポジトリのデータと同じマシン上で、ミリ秒で起動するサンドボックス化された分離で各軽量なステップ（lint、フォーマット、タイプチェック、バンドル）を実行します。VMのプロビジョニング、イメージのプル、コールドスタートは不要です。</li>
 	<li><a href="https://developers.cloudflare.com/dynamic-workers/usage/dynamic-workflows" target="_blank" rel="noopener noreferrer"><strong><u>動的ワークフロー</u></strong></a>が全体を一体化させます。ステップは再試行可能で耐久性があります。実行は承認を待ちながら、無料でハイバネーションします。デプロイ、立ち退き、クラッシュがあっても状態と進捗はそのままです。</li>
 	<li><a href="https://blog.cloudflare.com/sandbox-ga" target="_blank" rel="noopener noreferrer"><strong><u>サンドボックス</u></strong></a>は、<code>Dockerビルド</code>が必要なステップ、Postgresの実行が必要な統合スイート、8コアが必要なRustのコンパイルといった、厄介な部分に対応します。R2へのスナップショットは、数秒のウォームスタートでもあります。</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">中規模のJSリポジトリにおける従来のCI実行は、次のようなものになります: <em>VM割り当て（15-30秒） → ベースイメージのプル（10秒） → <code>git clone</code>（10秒） → <code>npm ci</code>（30-60秒） → テスト実行（実際の作業） → 環境の破棄</em>。最初のテストが実行される数分間のセレモニーで、仮想マシン全体の料金を支払います。</p>
-<p data-astro-cid-yoyuw6fx="">このスタックの同じパイプラインは、次のようになります： <em>リポジトリのエッジフォーク（秒） → 各ステップが新しいアイソレートまたはスナップショット復元されたサンドボックスをミリ秒で起動 → 実際の作業を実行 → ハイバネートします。</em>コールドスタートは必要ありません。何かを事前にプロビジョニングする必要はありません。何も可視化する必要はありません。リポジトリは移動せず、コンピューティングが来ます。</p>
-<p data-astro-cid-yoyuw6fx="">CIはこれまでに高速化することはなく、また高速化されなかった理由は、これらのプリミティブが同じ場所に存在していないためです。実現可能になりました。</p>
-<h2 data-astro-cid-yoyuw6fx="">ぜひお試しください</h2>
-<p data-astro-cid-yoyuw6fx=""><code>@cloudflare/dynamic-workflows</code> はMITライセンスで、本日よりnpmで利用可能です。</p>
+<p data-astro-cid-byeekcgh="">中規模のJSリポジトリにおける従来のCI実行は、次のようなものになります: <em>VM割り当て（15-30秒） → ベースイメージのプル（10秒） → <code>git clone</code>（10秒） → <code>npm ci</code>（30-60秒） → テスト実行（実際の作業） → 環境の破棄</em>。最初のテストが実行される数分間のセレモニーで、仮想マシン全体の料金を支払います。</p>
+<p data-astro-cid-byeekcgh="">このスタックの同じパイプラインは、次のようになります： <em>リポジトリのエッジフォーク（秒） → 各ステップが新しいアイソレートまたはスナップショット復元されたサンドボックスをミリ秒で起動 → 実際の作業を実行 → ハイバネートします。</em>コールドスタートは必要ありません。何かを事前にプロビジョニングする必要はありません。何も可視化する必要はありません。リポジトリは移動せず、コンピューティングが来ます。</p>
+<p data-astro-cid-byeekcgh="">CIはこれまでに高速化することはなく、また高速化されなかった理由は、これらのプリミティブが同じ場所に存在していないためです。実現可能になりました。</p>
+<h2 data-astro-cid-byeekcgh="">ぜひお試しください</h2>
+<p data-astro-cid-byeekcgh=""><code>@cloudflare/dynamic-workflows</code> はMITライセンスで、本日よりnpmで利用可能です。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> @cloudflare/dynamic-workflows</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -242,6 +242,6 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Workers有料プランのオープンベータ版であるDynamic Workers上で動作します。この<a href="https://github.com/cloudflare/dynamic-workflows" target="_blank" rel="noopener noreferrer"><u>リポジトリ</u></a>には、動作例が含まれています。インタラクティブなブラウザのプレイグラウンドで、<code>TenantWorkflow</code>クラスを記述し、<strong>Run</strong>をクリックすると、ライブストリーミングログと、各<code>step.do()</code>が実行されるにつれて点灯するステップごとのチェックリストで、ステップの実行を確認できます。コミットします。クローン、デプロイし、同僚に見せる。</p>
-<p data-astro-cid-yoyuw6fx="">プラットフォーム、SDK、フレームワーク、またはCI/CD製品であり、自社のプロセスでコードを実行することなく、顧客に独自のワークフローを提供したい場合、これはあなたのために構築されたプリミティブです。耐久性のあるプランを記述するエージェントを構築する場合、これはプランを<em>実際の</em>Workflowsにするプリミティブです。もしこのすべてを見ているだけで、その上に構築するのも楽しいように思えるなら、あなたが作るものをぜひご覧ください。</p>
-<p data-astro-cid-yoyuw6fx=""><a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Developers Discord</u></a>で私たちを見つけてください。</p>
+<p data-astro-cid-byeekcgh="">Workers有料プランのオープンベータ版であるDynamic Workers上で動作します。この<a href="https://github.com/cloudflare/dynamic-workflows" target="_blank" rel="noopener noreferrer"><u>リポジトリ</u></a>には、動作例が含まれています。インタラクティブなブラウザのプレイグラウンドで、<code>TenantWorkflow</code>クラスを記述し、<strong>Run</strong>をクリックすると、ライブストリーミングログと、各<code>step.do()</code>が実行されるにつれて点灯するステップごとのチェックリストで、ステップの実行を確認できます。コミットします。クローン、デプロイし、同僚に見せる。</p>
+<p data-astro-cid-byeekcgh="">プラットフォーム、SDK、フレームワーク、またはCI/CD製品であり、自社のプロセスでコードを実行することなく、顧客に独自のワークフローを提供したい場合、これはあなたのために構築されたプリミティブです。耐久性のあるプランを記述するエージェントを構築する場合、これはプランを<em>実際の</em>Workflowsにするプリミティブです。もしこのすべてを見ているだけで、その上に構築するのも楽しいように思えるなら、あなたが作るものをぜひご覧ください。</p>
+<p data-astro-cid-byeekcgh=""><a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Developers Discord</u></a>で私たちを見つけてください。</p>

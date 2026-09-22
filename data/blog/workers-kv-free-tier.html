@@ -1,18 +1,18 @@
-<p data-astro-cid-yoyuw6fx="">In May 2019, we launched <a href="https://www.cloudflare.com/products/workers-kv" target="_blank" rel="noopener noreferrer">Workers KV</a>, letting developers store key-value data and make that data globally accessible from Workers running in Cloudflare’s over 200 data centers.</p>
-<p data-astro-cid-yoyuw6fx="">Today, we’re announcing a Free Tier for Workers KV that opens up global, low-latency data storage to every developer on the Workers platform. Additionally, to expand Workers KV’s use cases even further, we’re also raising the maximum value size from 10 MB to 25 MB. You can now write an application that serves larger static files directly or JSON blobs directly from KV.</p>
-<p data-astro-cid-yoyuw6fx="">Together with our announcement of the <a href="https://blog.cloudflare.com/introducing-workers-durable-objects">Durable Objects limited beta last month</a>, the Workers platform continues to move toward providing storage solutions for applications that are globally deployed as easily as an application running in a single data center today.</p>
-<h3 data-astro-cid-yoyuw6fx="">What are the new free tier limits?</h3>
-<p data-astro-cid-yoyuw6fx="">The free tier includes 100,000 read operations and 1,000 each of write, list and delete operations per day, resetting daily at UTC 00:00, with a maximum total storage size of 1 GB. Operations that exceed these limits will fail with an error.</p>
-<p data-astro-cid-yoyuw6fx="">Additional KV usage costs $0.50 per million read operations, $5.00 per million list, write and delete operations and $0.50 per GB of stored data.</p>
-<p data-astro-cid-yoyuw6fx="">We intentionally chose these limits to prioritize use cases where KV works well - infrequently written data that may be frequently read around the globe.</p>
-<h3 data-astro-cid-yoyuw6fx="">What is the new KV value size limit?</h3>
-<p data-astro-cid-yoyuw6fx="">We’re raising the value size limit in Workers KV from 10 MB to 25 MB. Users frequently store static assets in Workers KV to then be served by Workers code. To make it as easy as possible to deploy your entire site on Workers, we’re raising the value size limit to handle even larger assets.</p>
-<p data-astro-cid-yoyuw6fx="">Since Workers Sites <a href="https://www.cloudflare.com/developer-platform/solutions/hosting" target="_blank" rel="noopener noreferrer">hosts your site</a> from Workers KV, the increased size limit also means Workers Sites assets can now be as large as 25 MB.</p>
-<h3 data-astro-cid-yoyuw6fx="">How does Workers KV work?</h3>
-<p data-astro-cid-yoyuw6fx="">Workers KV stores key-value pairs and caches hot keys in Cloudflare’s data centers around the world. When a request hits a Worker that uses KV, it retrieves the KV pair from Cloudflare’s local cache with low latency if the pair has been accessed recently.</p>
-<p data-astro-cid-yoyuw6fx="">While some programs running on the Workers platform are stateless, it is often necessary to distribute files or configuration data to running Workers. Workers KV allows you to persist data and access it across multiple Workers calls.</p>
-<p data-astro-cid-yoyuw6fx="">For example, let’s say I wanted to serve a static text file from Cloudflare’s edge. I could provision my own <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage" target="_blank" rel="noopener noreferrer">object storage</a>, host it on my own domain, and put that domain behind Cloudflare.</p>
-<p data-astro-cid-yoyuw6fx="">With Workers KV, however, that reduces down to a few simple steps. First, I bind my KV namespace to my Workers code with Wrangler.</p>
+<p data-astro-cid-byeekcgh="">In May 2019, we launched <a href="https://www.cloudflare.com/products/workers-kv" target="_blank" rel="noopener noreferrer">Workers KV</a>, letting developers store key-value data and make that data globally accessible from Workers running in Cloudflare’s over 200 data centers.</p>
+<p data-astro-cid-byeekcgh="">Today, we’re announcing a Free Tier for Workers KV that opens up global, low-latency data storage to every developer on the Workers platform. Additionally, to expand Workers KV’s use cases even further, we’re also raising the maximum value size from 10 MB to 25 MB. You can now write an application that serves larger static files directly or JSON blobs directly from KV.</p>
+<p data-astro-cid-byeekcgh="">Together with our announcement of the <a href="https://blog.cloudflare.com/introducing-workers-durable-objects">Durable Objects limited beta last month</a>, the Workers platform continues to move toward providing storage solutions for applications that are globally deployed as easily as an application running in a single data center today.</p>
+<h3 data-astro-cid-byeekcgh="">What are the new free tier limits?</h3>
+<p data-astro-cid-byeekcgh="">The free tier includes 100,000 read operations and 1,000 each of write, list and delete operations per day, resetting daily at UTC 00:00, with a maximum total storage size of 1 GB. Operations that exceed these limits will fail with an error.</p>
+<p data-astro-cid-byeekcgh="">Additional KV usage costs $0.50 per million read operations, $5.00 per million list, write and delete operations and $0.50 per GB of stored data.</p>
+<p data-astro-cid-byeekcgh="">We intentionally chose these limits to prioritize use cases where KV works well - infrequently written data that may be frequently read around the globe.</p>
+<h3 data-astro-cid-byeekcgh="">What is the new KV value size limit?</h3>
+<p data-astro-cid-byeekcgh="">We’re raising the value size limit in Workers KV from 10 MB to 25 MB. Users frequently store static assets in Workers KV to then be served by Workers code. To make it as easy as possible to deploy your entire site on Workers, we’re raising the value size limit to handle even larger assets.</p>
+<p data-astro-cid-byeekcgh="">Since Workers Sites <a href="https://www.cloudflare.com/developer-platform/solutions/hosting" target="_blank" rel="noopener noreferrer">hosts your site</a> from Workers KV, the increased size limit also means Workers Sites assets can now be as large as 25 MB.</p>
+<h3 data-astro-cid-byeekcgh="">How does Workers KV work?</h3>
+<p data-astro-cid-byeekcgh="">Workers KV stores key-value pairs and caches hot keys in Cloudflare’s data centers around the world. When a request hits a Worker that uses KV, it retrieves the KV pair from Cloudflare’s local cache with low latency if the pair has been accessed recently.</p>
+<p data-astro-cid-byeekcgh="">While some programs running on the Workers platform are stateless, it is often necessary to distribute files or configuration data to running Workers. Workers KV allows you to persist data and access it across multiple Workers calls.</p>
+<p data-astro-cid-byeekcgh="">For example, let’s say I wanted to serve a static text file from Cloudflare’s edge. I could provision my own <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage" target="_blank" rel="noopener noreferrer">object storage</a>, host it on my own domain, and put that domain behind Cloudflare.</p>
+<p data-astro-cid-byeekcgh="">With Workers KV, however, that reduces down to a few simple steps. First, I bind my KV namespace to my Workers code with Wrangler.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> kv:namespace</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> "BUCKET"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -38,7 +38,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">Then, in my wrangler.toml, I add my new namespace id to associate it with my Worker.</p>
+<p data-astro-cid-byeekcgh="">Then, in my wrangler.toml, I add my new namespace id to associate it with my Worker.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">kv_namespaces</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [</span></span>
 <span class="line"><span class="sk-24292e-fff"> {</span><span class="sk-6f42c1-ffc799">binding</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> “BUCKET", id = &lt;insert-id-here&gt;}</span></span>
@@ -48,7 +48,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">I can upload a new text file from the command line using Wrangler:</p>
+<p data-astro-cid-byeekcgh="">I can upload a new text file from the command line using Wrangler:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> kv:key</span><span class="sk-032f62-99ffe4"> put</span><span class="sk-005cc5-99ffe4"> --binding=BUCKET</span><span class="sk-032f62-99ffe4"> "my-file"</span><span class="sk-032f62-99ffe4"> value.txt</span><span class="sk-005cc5-99ffe4"> --path</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -56,7 +56,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">And then serve that file from my Workers script with low latency from any of Cloudflare’s points of presence around the globe!</p>
+<p data-astro-cid-byeekcgh="">And then serve that file from my Workers script with low latency from any of Cloudflare’s points of presence around the globe!</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleEvent</span><span class="sk-24292e-fff">(event))</span></span>
@@ -76,14 +76,14 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Beyond file hosting, Workers users have built many other types of applications with Workers KV:</p>
+<p data-astro-cid-byeekcgh="">Beyond file hosting, Workers users have built many other types of applications with Workers KV:</p>
 <ul>
 	<li>Mass redirects - handle billions of HTTP redirects.</li>
 	<li>Access control rules - validate user requests to your API.</li>
 	<li>Translation keys - dynamically localize your web pages.</li>
 	<li>Configuration data - manage who can access your origin.</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">While Workers KV provides low latency access across the globe, it may not return the most up-to-date data if updates to keys are happening more than once a minute or from multiple data centers simultaneously. For use cases that cannot tolerate stale data, Durable Objects is a better solution.</p>
-<h3 data-astro-cid-yoyuw6fx="">Get started with Workers KV today, for free</h3>
-<p data-astro-cid-yoyuw6fx="">The free tier and increased limits are live now!</p>
-<p data-astro-cid-yoyuw6fx="">You can get started with Workers and Workers KV in the Cloudflare dash. To check out an example of how to use Workers KV, check out the <a href="https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app" target="_blank" rel="noopener noreferrer">tutorial</a> in the Workers documentation.</p>
+<p data-astro-cid-byeekcgh="">While Workers KV provides low latency access across the globe, it may not return the most up-to-date data if updates to keys are happening more than once a minute or from multiple data centers simultaneously. For use cases that cannot tolerate stale data, Durable Objects is a better solution.</p>
+<h3 data-astro-cid-byeekcgh="">Get started with Workers KV today, for free</h3>
+<p data-astro-cid-byeekcgh="">The free tier and increased limits are live now!</p>
+<p data-astro-cid-byeekcgh="">You can get started with Workers and Workers KV in the Cloudflare dash. To check out an example of how to use Workers KV, check out the <a href="https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app" target="_blank" rel="noopener noreferrer">tutorial</a> in the Workers documentation.</p>

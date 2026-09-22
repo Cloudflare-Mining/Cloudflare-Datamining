@@ -1,17 +1,17 @@
-<p data-astro-cid-yoyuw6fx=""><em>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</em></p>
-<p data-astro-cid-yoyuw6fx=""><code>node:http</code>クライアントとサーバーAPIのサポートを追加することで、<a href="https://www.cloudflare.com/developer-platform/products/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a>上でNode.jsアプリケーションをより簡単に実行できるようになります。この大幅な追加により、使い慣れたNode.js HTTPインターフェースがエッジで使用され、既存のExpress.js、Koa、およびその他のNode.jsアプリケーションを、ゼロコールドスタート、自動スケーリング、そしてユーザーの遅延の大幅な低減を実現します。そのすべてをコードベースを書き換えることもありません。レガシーアプリケーションを最新のサーバーレスプラットフォームに移行する場合も、既存のAPIを使用して新しいアプリケーションを構築する場合も、既存の開発パターンやフレームワークを維持しながら、Workersのグローバルネットワークを活用することができます。</p>
-<h2 data-astro-cid-yoyuw6fx="">課題：Node.jsスタイルサーバーレス環境におけるHTTP</h2>
-<p data-astro-cid-yoyuw6fx="">Cloudflare Workersは、直接TCP接続が利用できない独自の<a href="https://www.cloudflare.com/learning/serverless/what-is-serverless" target="_blank" rel="noopener noreferrer"><u>サーバーレス</u></a>環境で動作します。その代わり、すべてのネットワーキングオペレーションは、Workersランタイム自体の外にある特殊サービスによって完全に管理されます。<a href="https://blog.cloudflare.com/introducing-oxy" target="_blank" rel="noopener noreferrer"><u>Open Egress Router（OER）</u></a>や<a href="https://github.com/cloudflare/pingora" target="_blank" rel="noopener noreferrer"><u>Pingora</u></a>などのシステムで、接続プーリング、接続をウォーム、エグレスIPの管理、複雑なネットワークの詳細をすべて処理します。つまり、開発者がTLSネゴシエーション、接続管理、ネットワーク最適化について心配する必要は、すべて自動的に処理されるということです。</p>
-<p data-astro-cid-yoyuw6fx="">この完全管理されたアプローチは、実際には特定のNode.js APIをサポートできない理由です。これらのネットワークの決定は、パフォーマンスとセキュリティのためにシステムレベルで処理されます。この点が、Workersを従来のNode.js環境とは異なる点にしていますが、サーバーレスコンピューティングにも適しています。複雑化せずにエンタープライズグレードのネットワークを手に入れることができます。</p>
-<p data-astro-cid-yoyuw6fx="">この根本的な違いにより、既存のNode.jsコードパターンと互換性を維持しながら、エッジでHTTP APIがどのように動作するかを再考する必要がありました。</p>
-<p data-astro-cid-yoyuw6fx="">当社のソリューション：Workersがすでに優れているWeb標準技術の上に構築することで、コア`node:http` APIを実装しました。仕組みは次のとおりです。</p>
-<h3 data-astro-cid-yoyuw6fx="">HTTPクライアントAPI</h3>
-<p data-astro-cid-yoyuw6fx=""><code>node:http</code>クライアント実装には、ご存じの重要なAPIが含まれます。</p>
+<p data-astro-cid-byeekcgh=""><em>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</em></p>
+<p data-astro-cid-byeekcgh=""><code>node:http</code>クライアントとサーバーAPIのサポートを追加することで、<a href="https://www.cloudflare.com/developer-platform/products/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a>上でNode.jsアプリケーションをより簡単に実行できるようになります。この大幅な追加により、使い慣れたNode.js HTTPインターフェースがエッジで使用され、既存のExpress.js、Koa、およびその他のNode.jsアプリケーションを、ゼロコールドスタート、自動スケーリング、そしてユーザーの遅延の大幅な低減を実現します。そのすべてをコードベースを書き換えることもありません。レガシーアプリケーションを最新のサーバーレスプラットフォームに移行する場合も、既存のAPIを使用して新しいアプリケーションを構築する場合も、既存の開発パターンやフレームワークを維持しながら、Workersのグローバルネットワークを活用することができます。</p>
+<h2 data-astro-cid-byeekcgh="">課題：Node.jsスタイルサーバーレス環境におけるHTTP</h2>
+<p data-astro-cid-byeekcgh="">Cloudflare Workersは、直接TCP接続が利用できない独自の<a href="https://www.cloudflare.com/learning/serverless/what-is-serverless" target="_blank" rel="noopener noreferrer"><u>サーバーレス</u></a>環境で動作します。その代わり、すべてのネットワーキングオペレーションは、Workersランタイム自体の外にある特殊サービスによって完全に管理されます。<a href="https://blog.cloudflare.com/introducing-oxy" target="_blank" rel="noopener noreferrer"><u>Open Egress Router（OER）</u></a>や<a href="https://github.com/cloudflare/pingora" target="_blank" rel="noopener noreferrer"><u>Pingora</u></a>などのシステムで、接続プーリング、接続をウォーム、エグレスIPの管理、複雑なネットワークの詳細をすべて処理します。つまり、開発者がTLSネゴシエーション、接続管理、ネットワーク最適化について心配する必要は、すべて自動的に処理されるということです。</p>
+<p data-astro-cid-byeekcgh="">この完全管理されたアプローチは、実際には特定のNode.js APIをサポートできない理由です。これらのネットワークの決定は、パフォーマンスとセキュリティのためにシステムレベルで処理されます。この点が、Workersを従来のNode.js環境とは異なる点にしていますが、サーバーレスコンピューティングにも適しています。複雑化せずにエンタープライズグレードのネットワークを手に入れることができます。</p>
+<p data-astro-cid-byeekcgh="">この根本的な違いにより、既存のNode.jsコードパターンと互換性を維持しながら、エッジでHTTP APIがどのように動作するかを再考する必要がありました。</p>
+<p data-astro-cid-byeekcgh="">当社のソリューション：Workersがすでに優れているWeb標準技術の上に構築することで、コア`node:http` APIを実装しました。仕組みは次のとおりです。</p>
+<h3 data-astro-cid-byeekcgh="">HTTPクライアントAPI</h3>
+<p data-astro-cid-byeekcgh=""><code>node:http</code>クライアント実装には、ご存じの重要なAPIが含まれます。</p>
 <ul>
 	<li><code>http.get()</code> - シンプルなGETリクエストの場合</li>
 	<li><code>http.request()</code> - HTTPリクエストを完全に制御するために</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">これらのAPIの実装は、Workersがネイティブに使用する標準<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank" rel="noopener noreferrer"><code><u>fetch()</u></code></a> APIの上に構築されており、Node.jsの互換性を維持しながら優れたパフォーマンスを提供します。</p>
+<p data-astro-cid-byeekcgh="">これらのAPIの実装は、Workersがネイティブに使用する標準<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank" rel="noopener noreferrer"><code><u>fetch()</u></code></a> APIの上に構築されており、Node.jsの互換性を維持しながら優れたパフォーマンスを提供します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> http </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:http'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -58,7 +58,7 @@
 		})
 	});
 </script>
-<h3 data-astro-cid-yoyuw6fx="">サポートされているもの</h3>
+<h3 data-astro-cid-byeekcgh="">サポートされているもの</h3>
 <ul>
 	<li>Standard HTTPメソッド（GET、POST、PUT、DELETEなど）</li>
 	<li>リクエストヘッダーとレスポンスヘッダー</li>
@@ -66,17 +66,17 @@
 	<li>ストリーミング応答</li>
 	<li>Basic認証</li>
 </ul>
-<h3 data-astro-cid-yoyuw6fx="">現在の制限</h3>
+<h3 data-astro-cid-byeekcgh="">現在の制限</h3>
 <ul>
 	<li><a href="https://nodejs.org/api/http.html#class-httpagent" target="_blank" rel="noopener noreferrer"><code><u>エージェント</u></code></a>APIは提供されていますが、ノーオペレーションとして動作します。</li>
 	<li><a href="https://nodejs.org/docs/v22.19.0/api/http.html#responseaddtrailersheaders" target="_blank" rel="noopener noreferrer"><u>トレーラー</u></a>、<a href="https://nodejs.org/docs/v22.19.0/api/http.html#responsewriteearlyhintshints-callback" target="_blank" rel="noopener noreferrer"><u>初期のヒント</u></a>、および<a href="https://nodejs.org/docs/v22.19.0/api/http.html#event-continue" target="_blank" rel="noopener noreferrer"><u>1xxレスポンス</u></a>はサポートされません。</li>
 	<li>TLS固有のオプションはサポートされません（TLSはWorkersによって自動的に処理されます）。</li>
 </ul>
-<h2 data-astro-cid-yoyuw6fx="">HTTPサーバーAPI</h2>
-<p data-astro-cid-yoyuw6fx="">サーバー側の実装で、特に興味深いことがわかります。Workersは特定のポートでリッスンする従来のTCPサーバーを作成できないため、Node.jsスタイルのサーバーをWorkersのリクエスト処理モデルに接続するブリッジシステムを作成しました。</p>
-<p data-astro-cid-yoyuw6fx="">HTTPサーバーを作成して<code>listen(port)</code>を呼び出すと、TCPソケットを開く代わりに、サーバーはWorker内の内部テーブルに登録されます。この内部テーブルは、http.createServerと識別子としてポート番号を使って、着信フェッチリクエストの実行や次に、2つの方法のいずれかを使用して、Workerの受信リクエストをNode.jsスタイルサーバーにブリッジします。</p>
-<h3 data-astro-cid-yoyuw6fx=""><code>handleAsNodeRequest</code>との手動統合</h3>
-<p data-astro-cid-yoyuw6fx="">このアプローチは、Node.js HTTPサーバーを他のWorker機能と統合できる柔軟性を提供し、デフォルトの<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc" target="_blank" rel="noopener noreferrer"><u>エントリーポイント</u></a>に<code>fetch</code>、 <code>scheduled</code> 、<code>queue</code>など複数のハンドラーを持つことができます。</p>
+<h2 data-astro-cid-byeekcgh="">HTTPサーバーAPI</h2>
+<p data-astro-cid-byeekcgh="">サーバー側の実装で、特に興味深いことがわかります。Workersは特定のポートでリッスンする従来のTCPサーバーを作成できないため、Node.jsスタイルのサーバーをWorkersのリクエスト処理モデルに接続するブリッジシステムを作成しました。</p>
+<p data-astro-cid-byeekcgh="">HTTPサーバーを作成して<code>listen(port)</code>を呼び出すと、TCPソケットを開く代わりに、サーバーはWorker内の内部テーブルに登録されます。この内部テーブルは、http.createServerと識別子としてポート番号を使って、着信フェッチリクエストの実行や次に、2つの方法のいずれかを使用して、Workerの受信リクエストをNode.jsスタイルサーバーにブリッジします。</p>
+<h3 data-astro-cid-byeekcgh=""><code>handleAsNodeRequest</code>との手動統合</h3>
+<p data-astro-cid-byeekcgh="">このアプローチは、Node.js HTTPサーバーを他のWorker機能と統合できる柔軟性を提供し、デフォルトの<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc" target="_blank" rel="noopener noreferrer"><u>エントリーポイント</u></a>に<code>fetch</code>、 <code>scheduled</code> 、<code>queue</code>など複数のハンドラーを持つことができます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { handleAsNodeRequest } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cloudflare:node'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createServer } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:http'</span><span class="sk-24292e-fff">;</span></span>
@@ -115,14 +115,14 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">このアプローチは、次のことを必要とする場合に最適です。</p>
+<p data-astro-cid-byeekcgh="">このアプローチは、次のことを必要とする場合に最適です。</p>
 <ul>
 	<li><a href="https://www.cloudflare.com/developer-platform/products/workers-kv" target="_blank" rel="noopener noreferrer"><u>KV</u></a>、<a href="https://www.cloudflare.com/developer-platform/products/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>、または<a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>など他のWorkers機能と統合</li>
 	<li>一部のルートをNode.jsサーバーに委任する一方で、</li>
 	<li>カスタムミドルウェアやリクエスト処理を適用する</li>
 </ul>
-<h3 data-astro-cid-yoyuw6fx=""><code>httpServerHandler</code>との自動統合</h3>
-<p data-astro-cid-yoyuw6fx="">追加機能や複雑性なしにNode.js HTTPサーバーを統合したい場合には、`httpServerHandler` 関数を使用できます。この関数は、統合を自動的に処理します。このソリューションは、Workers固有の機能を必要としないアプリケーションに最適です。</p>
+<h3 data-astro-cid-byeekcgh=""><code>httpServerHandler</code>との自動統合</h3>
+<p data-astro-cid-byeekcgh="">追加機能や複雑性なしにNode.js HTTPサーバーを統合したい場合には、`httpServerHandler` 関数を使用できます。この関数は、統合を自動的に処理します。このソリューションは、Workers固有の機能を必要としないアプリケーションに最適です。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { httpServerHandler } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cloudflare:node'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createServer } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:http'</span><span class="sk-24292e-fff">;</span></span>
@@ -152,8 +152,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2 data-astro-cid-yoyuw6fx=""><a href="https://expressjs.com" target="_blank" rel="noopener noreferrer"><u>Express.js</u></a>、<a href="https://koajs.com" target="_blank" rel="noopener noreferrer"><u>Koa.js</u></a>、およびフレームワークの互換性</h2>
-<p data-astro-cid-yoyuw6fx="">これらのHTTP APIが、Workers上でExpress.jsのような人気のNode.jsフレームワークを実行することを可能にします。これらのフレームワークのミドルウェアのいずれかが期待通りに機能しない場合は、Cloudflare Workersリポジトリに<a href="https://github.com/cloudflare/workerd/issues" target="_blank" rel="noopener noreferrer"><u>問題を開いてください</u></a>。</p>
+<h2 data-astro-cid-byeekcgh=""><a href="https://expressjs.com" target="_blank" rel="noopener noreferrer"><u>Express.js</u></a>、<a href="https://koajs.com" target="_blank" rel="noopener noreferrer"><u>Koa.js</u></a>、およびフレームワークの互換性</h2>
+<p data-astro-cid-byeekcgh="">これらのHTTP APIが、Workers上でExpress.jsのような人気のNode.jsフレームワークを実行することを可能にします。これらのフレームワークのミドルウェアのいずれかが期待通りに機能しない場合は、Cloudflare Workersリポジトリに<a href="https://github.com/cloudflare/workerd/issues" target="_blank" rel="noopener noreferrer"><u>問題を開いてください</u></a>。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { httpServerHandler } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cloudflare:node'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> express </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'express'</span><span class="sk-24292e-fff">;</span></span>
@@ -180,7 +180,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx=""><a href="https://expressjs.com" target="_blank" rel="noopener noreferrer"><u>Express.js</u></a>に加えて、<a href="https://koajs.com" target="_blank" rel="noopener noreferrer"><u>Koa.js</u></a>もサポートされています：</p>
+<p data-astro-cid-byeekcgh=""><a href="https://expressjs.com" target="_blank" rel="noopener noreferrer"><u>Express.js</u></a>に加えて、<a href="https://koajs.com" target="_blank" rel="noopener noreferrer"><u>Koa.js</u></a>もサポートされています：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> Koa </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'koa'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { httpServerHandler } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cloudflare:node'</span><span class="sk-24292e-fff">;</span></span>
@@ -199,10 +199,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2 data-astro-cid-yoyuw6fx="">サーバーレス<a href="http://node.js" target="_blank" rel="noopener noreferrer"><u>Node.js</u></a>アプリケーションを始める</h2>
-<p data-astro-cid-yoyuw6fx=""><code>node:http</code>と<code>node:https</code>のAPIは、Node.jsとの互換性が有効になっているWorkersで利用可能です。<a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates/#nodejs-compatibility-flag" target="_blank" rel="noopener noreferrer"><code><u>nodejs_compat</u></code></a>互換性フラグを使用して、互換性の日付が2025年8月15日までに指定されています。</p>
-<p data-astro-cid-yoyuw6fx=""><code>node:http</code>サポートの追加により、新しいアプリケーションの構築でも、既存のアプリケーションの移行でも、Cloudflare WorkersをエッジでJavaScriptを実行するための最高のプラットフォームにするという当社の目標に近づきます。</p>
+<h2 data-astro-cid-byeekcgh="">サーバーレス<a href="http://node.js" target="_blank" rel="noopener noreferrer"><u>Node.js</u></a>アプリケーションを始める</h2>
+<p data-astro-cid-byeekcgh=""><code>node:http</code>と<code>node:https</code>のAPIは、Node.jsとの互換性が有効になっているWorkersで利用可能です。<a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates/#nodejs-compatibility-flag" target="_blank" rel="noopener noreferrer"><code><u>nodejs_compat</u></code></a>互換性フラグを使用して、互換性の日付が2025年8月15日までに指定されています。</p>
+<p data-astro-cid-byeekcgh=""><code>node:http</code>サポートの追加により、新しいアプリケーションの構築でも、既存のアプリケーションの移行でも、Cloudflare WorkersをエッジでJavaScriptを実行するための最高のプラットフォームにするという当社の目標に近づきます。</p>
 <div id="html-block-k4h" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=%3Chttps%3A%2F%2Fgithub.com%2Fcloudflare%2Ftemplates%2Ftree%2Fmain%2Fnodejs-http-server-template"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a>
 	<p></p>
 </div>
-<p data-astro-cid-yoyuw6fx="">試されますか？<a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs" target="_blank" rel="noopener noreferrer"><u>WorkerでNode.jsの互換性を有効化</u></a>し、<a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs/http" target="_blank" rel="noopener noreferrer"><u>エッジで使い慣れたHTTP API</u></a>の可能性を模索し始めましょう。</p>
+<p data-astro-cid-byeekcgh="">試されますか？<a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs" target="_blank" rel="noopener noreferrer"><u>WorkerでNode.jsの互換性を有効化</u></a>し、<a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs/http" target="_blank" rel="noopener noreferrer"><u>エッジで使い慣れたHTTP API</u></a>の可能性を模索し始めましょう。</p>

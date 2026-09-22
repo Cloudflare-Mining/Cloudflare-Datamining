@@ -1,72 +1,72 @@
-<p data-astro-cid-yoyuw6fx="">If you followed <a href="https://blog.cloudflare.com/p/607ad519-5652-4688-9fff-33fbb1fc9d3f">part one</a>, I have an environment setup where I can write Typescript with tests and deploy to the Cloudflare Edge with <code>npm run upload</code>. For this post, I want to take one of the <a href="https://developers.cloudflare.com/workers/recipes/aggregating-multiple-requests" target="_blank" rel="noopener noreferrer">Worker Recipes</a> further.</p>
-<p data-astro-cid-yoyuw6fx="">I'm going to build a mini HTTP request routing and handling framework, then use it to build a <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway" target="_blank" rel="noopener noreferrer">gateway</a> to multiple cryptocurrency API providers. My point here is that in a single file, with no dependencies, you can quickly build pretty sophisticated logic and deploy fast and easily to the Edge. Furthermore, using modern Typescript with async/await and the rich type structure, you also write clean, async code.</p>
-<p data-astro-cid-yoyuw6fx="">OK, here we go...</p>
-<p data-astro-cid-yoyuw6fx="">My API will look like this:</p>
-<div class="emdash-table-wrapper" data-astro-cid-zdje7xco="">
-	<table class="emdash-table" data-astro-cid-zdje7xco="">
-		<thead data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<th data-astro-cid-zdje7xco="">
+<p data-astro-cid-byeekcgh="">If you followed <a href="https://blog.cloudflare.com/p/607ad519-5652-4688-9fff-33fbb1fc9d3f">part one</a>, I have an environment setup where I can write Typescript with tests and deploy to the Cloudflare Edge with <code>npm run upload</code>. For this post, I want to take one of the <a href="https://developers.cloudflare.com/workers/recipes/aggregating-multiple-requests" target="_blank" rel="noopener noreferrer">Worker Recipes</a> further.</p>
+<p data-astro-cid-byeekcgh="">I'm going to build a mini HTTP request routing and handling framework, then use it to build a <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway" target="_blank" rel="noopener noreferrer">gateway</a> to multiple cryptocurrency API providers. My point here is that in a single file, with no dependencies, you can quickly build pretty sophisticated logic and deploy fast and easily to the Edge. Furthermore, using modern Typescript with async/await and the rich type structure, you also write clean, async code.</p>
+<p data-astro-cid-byeekcgh="">OK, here we go...</p>
+<p data-astro-cid-byeekcgh="">My API will look like this:</p>
+<div class="emdash-table-wrapper" data-astro-cid-paimycxl="">
+	<table class="emdash-table" data-astro-cid-paimycxl="">
+		<thead data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<th data-astro-cid-paimycxl="">
 					<p>Verb</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Path</p>
 				</th>
-				<th data-astro-cid-zdje7xco="">
+				<th data-astro-cid-paimycxl="">
 					<p>Description</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-zdje7xco="">
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+		<tbody data-astro-cid-paimycxl="">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>GET</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>/api/ping</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Check the Worker is up</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>GET</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>/api/all/spot/:symbol</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Aggregate the responses from all our configured gateways</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>GET</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>/api/race/spot/:symbol</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Return the response of the provider who responds fastest</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-zdje7xco="">
-				<td data-astro-cid-zdje7xco="true">
+			<tr data-astro-cid-paimycxl="">
+				<td data-astro-cid-paimycxl="true">
 					<p>GET</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>/api/direct/:exchange/spot/:symbol</p>
 				</td>
-				<td data-astro-cid-zdje7xco="true">
+				<td data-astro-cid-paimycxl="true">
 					<p>Pass through the request to the gateway. E.g. gdax or bitfinex</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">The Framework</h3>
-<p data-astro-cid-yoyuw6fx="">OK, this is Typescript, I get interfaces and I'm going to use them. Here's my ultra-mini-http-routing framework definition:</p>
+<h3 data-astro-cid-byeekcgh="">The Framework</h3>
+<p data-astro-cid-byeekcgh="">OK, this is Typescript, I get interfaces and I'm going to use them. Here's my ultra-mini-http-routing framework definition:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> interface</span><span class="sk-6f42c1-ffc799"> IRouter</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  route</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">req</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> RequestContextBase</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> IRouteHandler</span><span class="sk-24292e-fff">;</span></span>
@@ -122,8 +122,8 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">So basically all requests will go to <code>IRouter</code>. If it finds an <code>IRoute</code> that returns an <code>IRouterHandler</code>, then it will call that and pass in <code>RequestContextBase</code>, which is just the request with a parsed URL for convenience.</p>
-<p data-astro-cid-yoyuw6fx="">I stopped short of dependency injection, so here's the router implementation with 4 routes we've implemented (Ping, Race, All and Direct). Each route corresponds to one of the four operations I defined in the API above and returns the corresponding <code>IRouteHandler</code>.</p>
+<p data-astro-cid-byeekcgh="">So basically all requests will go to <code>IRouter</code>. If it finds an <code>IRoute</code> that returns an <code>IRouterHandler</code>, then it will call that and pass in <code>RequestContextBase</code>, which is just the request with a parsed URL for convenience.</p>
+<p data-astro-cid-byeekcgh="">I stopped short of dependency injection, so here's the router implementation with 4 routes we've implemented (Ping, Race, All and Direct). Each route corresponds to one of the four operations I defined in the API above and returns the corresponding <code>IRouteHandler</code>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> Router</span><span class="sk-d73a49-a0a0a0"> implements</span><span class="sk-6f42c1-fff"> IRouter</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  public</span><span class="sk-e36209-fff"> routes</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> IRoute</span><span class="sk-24292e-fff">[];</span></span>
@@ -174,7 +174,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">You can see above I return a NotFoundHandler if we can't find a matching route. Its implementation is below. It's easy to see how 401, 405, 500 and all the common handlers could be implemented.</p>
+<p data-astro-cid-byeekcgh="">You can see above I return a NotFoundHandler if we can't find a matching route. Its implementation is below. It's easy to see how 401, 405, 500 and all the common handlers could be implemented.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">/**</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"> * 404 Not Found</span></span>
@@ -192,7 +192,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Now let's start with Ping. The framework separates matching a route and handling the request. Firstly the route:</p>
+<p data-astro-cid-byeekcgh="">Now let's start with Ping. The framework separates matching a route and handling the request. Firstly the route:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> PingRoute</span><span class="sk-d73a49-a0a0a0"> implements</span><span class="sk-6f42c1-fff"> IRoute</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  public</span><span class="sk-6f42c1-ffc799"> match</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">req</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> RequestContextBase</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> IRouteHandler</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-005cc5-ffc799"> null</span><span class="sk-24292e-fff"> {</span></span>
@@ -210,7 +210,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Simple enough, if the URL starts with <code>/api/ping</code>, handle the request with a <code>PingRouteHandler</code></p>
+<p data-astro-cid-byeekcgh="">Simple enough, if the URL starts with <code>/api/ping</code>, handle the request with a <code>PingRouteHandler</code></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> PingRouteHandler</span><span class="sk-d73a49-a0a0a0"> implements</span><span class="sk-6f42c1-fff"> IRouteHandler</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  public</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-6f42c1-ffc799"> handle</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">req</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> RequestContextBase</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">&gt; {</span></span>
@@ -225,7 +225,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">So at this point, if you followed along with Part 1, you can do:</p>
+<p data-astro-cid-byeekcgh="">So at this point, if you followed along with Part 1, you can do:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npm</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> upload</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-032f62-99ffe4"> https://cryptoserviceworker.com/api/ping</span></span>
@@ -235,7 +235,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">OK, next the <code>AllHandler</code>, this aggregates the responses. Firstly the route matcher:</p>
+<p data-astro-cid-byeekcgh="">OK, next the <code>AllHandler</code>, this aggregates the responses. Firstly the route matcher:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> AllRoute</span><span class="sk-d73a49-a0a0a0"> implements</span><span class="sk-6f42c1-fff"> IRoute</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  public</span><span class="sk-6f42c1-ffc799"> match</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">req</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> RequestContextBase</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> IRouteHandler</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-005cc5-ffc799"> null</span><span class="sk-24292e-fff"> {</span></span>
@@ -250,7 +250,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">And if the route matches, we'll handle it by farming off the requests to our downstream handlers:</p>
+<p data-astro-cid-byeekcgh="">And if the route matches, we'll handle it by farming off the requests to our downstream handlers:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> AllHandler</span><span class="sk-d73a49-a0a0a0"> implements</span><span class="sk-6f42c1-fff"> IRouteHandler</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  constructor</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">private</span><span class="sk-d73a49-a0a0a0"> readonly</span><span class="sk-e36209-fff"> handlers</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> IRouteHandler</span><span class="sk-24292e-fff">[] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> []) {</span></span>
@@ -274,9 +274,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">I'm cheating a bit here because I haven't shown you the code for <code>HandlerFactory</code> or the implementation of <code>handle</code> for each one. You can look up the full source <a href="https://github.com/stevenpack/cryptoserviceworker/blob/master/src/service-worker.ts" target="_blank" rel="noopener noreferrer">here</a>.</p>
-<p data-astro-cid-yoyuw6fx="">Take a moment here to appreciate just what's happening. You're writing very expressive async code that in a few lines, is able to multiplex a request to multiple endpoints and aggregate the results. Furthermore, it's running in a sandboxed environment in a data center very close to your end user. <strong>Edge-side code is a game changer.</strong></p>
-<p data-astro-cid-yoyuw6fx="">Let's see it in action.</p>
+<p data-astro-cid-byeekcgh="">I'm cheating a bit here because I haven't shown you the code for <code>HandlerFactory</code> or the implementation of <code>handle</code> for each one. You can look up the full source <a href="https://github.com/stevenpack/cryptoserviceworker/blob/master/src/service-worker.ts" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<p data-astro-cid-byeekcgh="">Take a moment here to appreciate just what's happening. You're writing very expressive async code that in a few lines, is able to multiplex a request to multiple endpoints and aggregate the results. Furthermore, it's running in a sandboxed environment in a data center very close to your end user. <strong>Edge-side code is a game changer.</strong></p>
+<p data-astro-cid-byeekcgh="">Let's see it in action.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-032f62-99ffe4"> https://cryptoserviceworker.com/api/all/spot/btc-usd</span></span>
 <span class="line"><span class="sk-24292e-fff">[  </span></span>
@@ -298,7 +298,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Cool, OK, who's fastest? First, the route handler:</p>
+<p data-astro-cid-byeekcgh="">Cool, OK, who's fastest? First, the route handler:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> RaceRoute</span><span class="sk-d73a49-a0a0a0"> implements</span><span class="sk-6f42c1-fff"> IRoute</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  public</span><span class="sk-6f42c1-ffc799"> match</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">req</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> RequestContextBase</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> IRouteHandler</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-005cc5-ffc799"> null</span><span class="sk-24292e-fff"> {</span></span>
@@ -313,7 +313,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">And the handler. Basically just using <code>Promise.race</code> to pick the winner</p>
+<p data-astro-cid-byeekcgh="">And the handler. Basically just using <code>Promise.race</code> to pick the winner</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> RaceHandler</span><span class="sk-d73a49-a0a0a0"> implements</span><span class="sk-6f42c1-fff"> IRouteHandler</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  constructor</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">private</span><span class="sk-d73a49-a0a0a0"> readonly</span><span class="sk-e36209-fff"> handlers</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> IRouteHandler</span><span class="sk-24292e-fff">[] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> []) {</span></span>
@@ -338,7 +338,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">So who's fastest? Tonight it's gdax.</p>
+<p data-astro-cid-byeekcgh="">So who's fastest? Tonight it's gdax.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> https://cryptoserviceworker.com/api/race/spot/btc-usd</span></span>
 <span class="line"><span class="sk-24292e-fff">{  </span></span>
@@ -352,13 +352,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">Summary</h3>
-<p data-astro-cid-yoyuw6fx="">Using Typescript+Workers, in &lt; 500 lines of code, we were able to</p>
+<h3 data-astro-cid-byeekcgh="">Summary</h3>
+<p data-astro-cid-byeekcgh="">Using Typescript+Workers, in &lt; 500 lines of code, we were able to</p>
 <ul>
 	<li>Define an interface for a mini HTTP routing and handling framework</li>
 	<li>Implement a basic implementation of that framework</li>
 	<li>Build Routes and Handlers to provide Ping, All, Race and Direct handlers</li>
 	<li>Deploy it to 160+ data centers with <code>npm run upload</code></li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">Stay tuned for more, and PRs welcome, particularly for more providers.</p>
-<p data-astro-cid-yoyuw6fx=""><em>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange" target="_blank" rel="noopener noreferrer">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers" target="_blank" rel="noopener noreferrer">Cloudflare Community Forum</a>.</em></p>
+<p data-astro-cid-byeekcgh="">Stay tuned for more, and PRs welcome, particularly for more providers.</p>
+<p data-astro-cid-byeekcgh=""><em>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange" target="_blank" rel="noopener noreferrer">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers" target="_blank" rel="noopener noreferrer">Cloudflare Community Forum</a>.</em></p>

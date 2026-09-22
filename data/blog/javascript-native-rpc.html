@@ -1,4 +1,4 @@
-<p data-astro-cid-yoyuw6fx="">Cloudflare Workers now features a built-in RPC (Remote Procedure Call) system enabling seamless Worker-to-Worker and Worker-to-Durable Object communication, with almost no boilerplate. You just define a class:</p>
+<p data-astro-cid-byeekcgh="">Cloudflare Workers now features a built-in RPC (Remote Procedure Call) system enabling seamless Worker-to-Worker and Worker-to-Durable Object communication, with almost no boilerplate. You just define a class:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> MyService</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> WorkerEntrypoint</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  sum</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">a</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">b</span><span class="sk-24292e-fff">) {</span></span>
@@ -28,7 +28,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">And then you call it:</p>
+<p data-astro-cid-byeekcgh="">And then you call it:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">let three </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> await env.MY_SERVICE.</span><span class="sk-6f42c1-ffc799">sum</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -36,10 +36,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">No schemas. No routers. Just define methods of a class. Then call them. That's it.</p>
-<h2 data-astro-cid-yoyuw6fx="">But that's not it</h2>
-<p data-astro-cid-yoyuw6fx="">This isn't just any old RPC. We've designed an RPC system so expressive that calling a remote service can feel like using a library – without any need to actually import a library! This is important not just for ease of use, but also security: fewer dependencies means fewer critical security updates and less exposure to supply-chain attacks.</p>
-<p data-astro-cid-yoyuw6fx="">To this end, here are some of the features of Workers RPC:</p>
+<p data-astro-cid-byeekcgh="">No schemas. No routers. Just define methods of a class. Then call them. That's it.</p>
+<h2 data-astro-cid-byeekcgh="">But that's not it</h2>
+<p data-astro-cid-byeekcgh="">This isn't just any old RPC. We've designed an RPC system so expressive that calling a remote service can feel like using a library – without any need to actually import a library! This is important not just for ease of use, but also security: fewer dependencies means fewer critical security updates and less exposure to supply-chain attacks.</p>
+<p data-astro-cid-byeekcgh="">To this end, here are some of the features of Workers RPC:</p>
 <ul>
 	<li>For starters, you can pass <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#supported_types" target="_blank" rel="noopener noreferrer"><strong>Structured Clonable</strong></a> <strong>types</strong> as the params or return value of an RPC. (That means that, unlike JSON, Dates just work, and you can even have cycles.)</li>
 	<li>You can additionally pass <strong>functions</strong> in the params or return value of other functions. When the other side calls the function you passed to it, they make a new RPC back to you.</li>
@@ -50,18 +50,18 @@
 	<li>All of this is <em>secure</em>, based on the <strong>object-capability model</strong>.</li>
 	<li>The <a href="https://github.com/cloudflare/workerd/blob/03629a6553751d3614a8b91926e380213e100d94/src/workerd/io/worker-interface.capnp#L302" target="_blank" rel="noopener noreferrer">protocol</a> and <a href="https://github.com/cloudflare/workerd/blob/03629a6553751d3614a8b91926e380213e100d94/src/workerd/api/worker-rpc.c++" target="_blank" rel="noopener noreferrer">implementation</a> are fully open source as part of <a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer">workerd</a>.</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">Workers RPC is a JavaScript-native RPC system. Under the hood, it is built on <a href="https://capnproto.org/rpc.html" target="_blank" rel="noopener noreferrer">Cap'n Proto</a>. However, unlike Cap'n Proto, Workers RPC does not require you to write a schema. (Of course, you can use TypeScript if you like, and we provide tools to help with this.)</p>
-<p data-astro-cid-yoyuw6fx="">In general, Workers RPC is designed to "just work" using idiomatic JavaScript code, so you shouldn't have to spend too much time looking at docs. We'll give you an overview in this blog post. But if you want to understand the full feature set, <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer">check out the documentation</a>.</p>
-<h2 data-astro-cid-yoyuw6fx="">Why RPC? (And what is RPC anyway?)</h2>
-<p data-astro-cid-yoyuw6fx="">Remote Procedure Calls (RPC) are a way of expressing communications between two programs over a network. Without RPC, you might communicate using a protocol like HTTP. With HTTP, though, you must format and parse your communications as an HTTP request and response, perhaps designed in <a href="https://en.wikipedia.org/wiki/REST" target="_blank" rel="noopener noreferrer">REST</a> style. RPC systems try to make communications look like a regular function call instead, as if you were calling a library rather than a remote service. The RPC system provides a "stub" object on the client side which stands in for the real server-side object. When a method is called on the stub, the RPC system figures out how to serialize and transmit the parameters to the server, invoke the method on the server, and then transmit the return value back.</p>
-<p data-astro-cid-yoyuw6fx="">The merits of RPC have been subject to a great deal of debate. RPC is often accused of committing many of the <a href="https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing" target="_blank" rel="noopener noreferrer">fallacies of distributed computing</a>.</p>
-<p data-astro-cid-yoyuw6fx="">But this reputation is outdated. When RPC was first invented some 40 years ago, async programming barely existed. We did not have Promises, much less async and await. Early RPC was synchronous: calls would block the calling thread waiting for a reply. At best, latency made the program slow. At worst, network failures would hang or crash the program. No wonder it was deemed "broken".</p>
-<p data-astro-cid-yoyuw6fx="">Things are different today. We have Promise and async and await, and we can throw exceptions on network failures. We even understand how RPCs can be pipelined so that a chain of calls takes only one network round trip. Many large distributed systems you likely use every day are built on RPC. It works.</p>
-<p data-astro-cid-yoyuw6fx="">The fact is, RPC fits the programming model we're used to. Every programmer is trained to think in terms of APIs composed of function calls, not in terms of byte stream protocols nor even REST. Using RPC frees you from the need to constantly translate between mental models, allowing you to move faster.</p>
-<h2 data-astro-cid-yoyuw6fx="">Example: Authentication Service</h2>
-<p data-astro-cid-yoyuw6fx="">Here's a common scenario: You have one Worker that implements an application, and another Worker that is responsible for authenticating user credentials. The app Worker needs to call the auth Worker on each request to check the user's cookie.</p>
-<p data-astro-cid-yoyuw6fx="">This example uses a <strong>Service Binding</strong>, which is a way of configuring one Worker with a private channel to talk to another, without going through a public URL. Here, we have an application Worker that has been configured with a service binding to the Auth worker.</p>
-<p data-astro-cid-yoyuw6fx="">Before RPC, all communications between Workers needed to use HTTP. So, you might write code like this:</p>
+<p data-astro-cid-byeekcgh="">Workers RPC is a JavaScript-native RPC system. Under the hood, it is built on <a href="https://capnproto.org/rpc.html" target="_blank" rel="noopener noreferrer">Cap'n Proto</a>. However, unlike Cap'n Proto, Workers RPC does not require you to write a schema. (Of course, you can use TypeScript if you like, and we provide tools to help with this.)</p>
+<p data-astro-cid-byeekcgh="">In general, Workers RPC is designed to "just work" using idiomatic JavaScript code, so you shouldn't have to spend too much time looking at docs. We'll give you an overview in this blog post. But if you want to understand the full feature set, <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer">check out the documentation</a>.</p>
+<h2 data-astro-cid-byeekcgh="">Why RPC? (And what is RPC anyway?)</h2>
+<p data-astro-cid-byeekcgh="">Remote Procedure Calls (RPC) are a way of expressing communications between two programs over a network. Without RPC, you might communicate using a protocol like HTTP. With HTTP, though, you must format and parse your communications as an HTTP request and response, perhaps designed in <a href="https://en.wikipedia.org/wiki/REST" target="_blank" rel="noopener noreferrer">REST</a> style. RPC systems try to make communications look like a regular function call instead, as if you were calling a library rather than a remote service. The RPC system provides a "stub" object on the client side which stands in for the real server-side object. When a method is called on the stub, the RPC system figures out how to serialize and transmit the parameters to the server, invoke the method on the server, and then transmit the return value back.</p>
+<p data-astro-cid-byeekcgh="">The merits of RPC have been subject to a great deal of debate. RPC is often accused of committing many of the <a href="https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing" target="_blank" rel="noopener noreferrer">fallacies of distributed computing</a>.</p>
+<p data-astro-cid-byeekcgh="">But this reputation is outdated. When RPC was first invented some 40 years ago, async programming barely existed. We did not have Promises, much less async and await. Early RPC was synchronous: calls would block the calling thread waiting for a reply. At best, latency made the program slow. At worst, network failures would hang or crash the program. No wonder it was deemed "broken".</p>
+<p data-astro-cid-byeekcgh="">Things are different today. We have Promise and async and await, and we can throw exceptions on network failures. We even understand how RPCs can be pipelined so that a chain of calls takes only one network round trip. Many large distributed systems you likely use every day are built on RPC. It works.</p>
+<p data-astro-cid-byeekcgh="">The fact is, RPC fits the programming model we're used to. Every programmer is trained to think in terms of APIs composed of function calls, not in terms of byte stream protocols nor even REST. Using RPC frees you from the need to constantly translate between mental models, allowing you to move faster.</p>
+<h2 data-astro-cid-byeekcgh="">Example: Authentication Service</h2>
+<p data-astro-cid-byeekcgh="">Here's a common scenario: You have one Worker that implements an application, and another Worker that is responsible for authenticating user credentials. The app Worker needs to call the auth Worker on each request to check the user's cookie.</p>
+<p data-astro-cid-byeekcgh="">This example uses a <strong>Service Binding</strong>, which is a way of configuring one Worker with a private channel to talk to another, without going through a public URL. Here, we have an application Worker that has been configured with a service binding to the Auth worker.</p>
+<p data-astro-cid-byeekcgh="">Before RPC, all communications between Workers needed to use HTTP. So, you might write code like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// OLD STYLE: HTTP-based service bindings.</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
@@ -106,7 +106,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Meanwhile, your auth server might look like:</p>
+<p data-astro-cid-byeekcgh="">Meanwhile, your auth server might look like:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// OLD STYLE: HTTP-based auth server.</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
@@ -143,7 +143,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">This code has a lot of boilerplate involved in setting up an HTTP request to the auth service. With RPC, we can instead express this as a function call:</p>
+<p data-astro-cid-byeekcgh="">This code has a lot of boilerplate involved in setting up an HTTP request to the auth service. With RPC, we can instead express this as a function call:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// NEW STYLE: RPC-based service bindings</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
@@ -167,7 +167,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">And the server side becomes:</p>
+<p data-astro-cid-byeekcgh="">And the server side becomes:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// NEW STYLE: RPC-based auth server.</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { WorkerEntrypoint } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "cloudflare:workers"</span><span class="sk-24292e-fff">;</span></span>
@@ -194,16 +194,16 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">This is a pretty nice simplification… but we can do much more!</p>
-<h3 data-astro-cid-yoyuw6fx="">Let's get fancy! Or should I say… classy?</h3>
-<p data-astro-cid-yoyuw6fx="">Let's say we want our auth service to do a little more. Instead of just checking cookies, it provides a whole API around user accounts. In particular, it should let you:</p>
+<p data-astro-cid-byeekcgh="">This is a pretty nice simplification… but we can do much more!</p>
+<h3 data-astro-cid-byeekcgh="">Let's get fancy! Or should I say… classy?</h3>
+<p data-astro-cid-byeekcgh="">Let's say we want our auth service to do a little more. Instead of just checking cookies, it provides a whole API around user accounts. In particular, it should let you:</p>
 <ul>
 	<li>Get or update the user's profile info.</li>
 	<li>Send the user an email notification.</li>
 	<li>Append to the user's activity log.</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">But, these operations should only be allowed after presenting the user's credentials.</p>
-<p data-astro-cid-yoyuw6fx="">Here's what the server might look like:</p>
+<p data-astro-cid-byeekcgh="">But, these operations should only be allowed after presenting the user's credentials.</p>
+<p data-astro-cid-byeekcgh="">Here's what the server might look like:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { WorkerEntrypoint, RpcTarget } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "cloudflare:workers"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -267,7 +267,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Now we can write a Worker that uses this API while displaying a web page:</p>
+<p data-astro-cid-byeekcgh="">Now we can write a Worker that uses this API while displaying a web page:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">req</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">) {</span></span>
@@ -295,7 +295,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Finally, this worker needs to be configured with a service binding pointing at the AuthService class. Its wrangler.toml may look like:</p>
+<p data-astro-cid-byeekcgh="">Finally, this worker needs to be configured with a service binding pointing at the AuthService class. Its wrangler.toml may look like:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "app-worker"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">main</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "./src/app.js"</span></span>
@@ -310,23 +310,23 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">Wait, how?</h3>
-<p data-astro-cid-yoyuw6fx="">What exactly happened here? The Server created an instance of the class User and returned it to the client. It has methods that the client can then just call? Are we somehow transferring code over the wire?</p>
-<p data-astro-cid-yoyuw6fx="">No, absolutely not! All code runs strictly in the <a href="https://developers.cloudflare.com/workers/reference/how-workers-works/#isolates" target="_blank" rel="noopener noreferrer">isolate</a> where it was originally loaded. What actually happens is, when the return value is passed over RPC, all class instances are replaced with RPC stubs. The stub, when called, makes a new RPC back to the server, where it calls the method on the original User object that was created there:</p>
+<h3 data-astro-cid-byeekcgh="">Wait, how?</h3>
+<p data-astro-cid-byeekcgh="">What exactly happened here? The Server created an instance of the class User and returned it to the client. It has methods that the client can then just call? Are we somehow transferring code over the wire?</p>
+<p data-astro-cid-byeekcgh="">No, absolutely not! All code runs strictly in the <a href="https://developers.cloudflare.com/workers/reference/how-workers-works/#isolates" target="_blank" rel="noopener noreferrer">isolate</a> where it was originally loaded. What actually happens is, when the return value is passed over RPC, all class instances are replaced with RPC stubs. The stub, when called, makes a new RPC back to the server, where it calls the method on the original User object that was created there:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="358" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469P0A8V434F90FDJDWBE9.png&amp;w=715&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469P0A8V434F90FDJDWBE9.png&amp;w=640&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469P0A8V434F90FDJDWBE9.png&amp;w=715&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469P0A8V434F90FDJDWBE9.png&amp;w=750&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469P0A8V434F90FDJDWBE9.png&amp;w=828&amp;h=415&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469P0A8V434F90FDJDWBE9.png&amp;w=1080&amp;h=541&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469P0A8V434F90FDJDWBE9.png&amp;w=1280&amp;h=641&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469P0A8V434F90FDJDWBE9.png&amp;w=1430&amp;h=716&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2378 Embedded Image - rWx2Zb" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469P0A8V434F90FDJDWBE9.png&amp;w=1920&amp;h=960&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="960" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="358" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-yoyuw6fx="">But then you might ask: how does the RPC stub know what methods are available? Is a list of methods passed over the wire?</p>
-<p data-astro-cid-yoyuw6fx="">In fact, no. The RPC stub is a special object called a "<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy" target="_blank" rel="noopener noreferrer">Proxy</a>". It implements a "wildcard method", that is, it appears to have an infinite number of methods of every possible name. When you try to call a method, the name you called is sent to the server. If the original object has no such method, an exception is thrown.</p>
-<h3 data-astro-cid-yoyuw6fx="">Did you spot the security?</h3>
-<p data-astro-cid-yoyuw6fx="">In the above example, we see that RPC is easy to use. We made an object! We called it! It all just felt natural, like calling a local API! Hooray!</p>
-<p data-astro-cid-yoyuw6fx="">But there's another extremely important property that the AuthService API has which you may have missed: <strong>As designed, you cannot perform any operation on a user without first checking the cookie.</strong> This is true despite the fact that the individual method calls do not require sending the cookie again, and the User object itself doesn't store the cookie.</p>
-<p data-astro-cid-yoyuw6fx="">The trick is, the initial checkCookie() RPC is what returns a User object in the first place. The AuthService API does not provide any other way to obtain a User instance. The RPC client cannot create a User object out of thin air, and cannot call methods of an object without first explicitly receiving a reference to it.</p>
-<p data-astro-cid-yoyuw6fx="">This is called capability-based security: we say that the User reference received by the client is a "capability", because receiving it grants the client the ability to perform operations on the user. The getProfile() method grants this capability only when the client has presented the correct cookie.</p>
-<p data-astro-cid-yoyuw6fx="">Capability-based security is often like this: security can be woven naturally into your APIs, rather than feel like an additional concern bolted on top.</p>
-<h3 data-astro-cid-yoyuw6fx="">More security: Named entrypoints</h3>
-<p data-astro-cid-yoyuw6fx="">Another subtle but important detail to call out: in the above example, the auth service's RPC API is exported as a named class:</p>
+<p data-astro-cid-byeekcgh="">But then you might ask: how does the RPC stub know what methods are available? Is a list of methods passed over the wire?</p>
+<p data-astro-cid-byeekcgh="">In fact, no. The RPC stub is a special object called a "<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy" target="_blank" rel="noopener noreferrer">Proxy</a>". It implements a "wildcard method", that is, it appears to have an infinite number of methods of every possible name. When you try to call a method, the name you called is sent to the server. If the original object has no such method, an exception is thrown.</p>
+<h3 data-astro-cid-byeekcgh="">Did you spot the security?</h3>
+<p data-astro-cid-byeekcgh="">In the above example, we see that RPC is easy to use. We made an object! We called it! It all just felt natural, like calling a local API! Hooray!</p>
+<p data-astro-cid-byeekcgh="">But there's another extremely important property that the AuthService API has which you may have missed: <strong>As designed, you cannot perform any operation on a user without first checking the cookie.</strong> This is true despite the fact that the individual method calls do not require sending the cookie again, and the User object itself doesn't store the cookie.</p>
+<p data-astro-cid-byeekcgh="">The trick is, the initial checkCookie() RPC is what returns a User object in the first place. The AuthService API does not provide any other way to obtain a User instance. The RPC client cannot create a User object out of thin air, and cannot call methods of an object without first explicitly receiving a reference to it.</p>
+<p data-astro-cid-byeekcgh="">This is called capability-based security: we say that the User reference received by the client is a "capability", because receiving it grants the client the ability to perform operations on the user. The getProfile() method grants this capability only when the client has presented the correct cookie.</p>
+<p data-astro-cid-byeekcgh="">Capability-based security is often like this: security can be woven naturally into your APIs, rather than feel like an additional concern bolted on top.</p>
+<h3 data-astro-cid-byeekcgh="">More security: Named entrypoints</h3>
+<p data-astro-cid-byeekcgh="">Another subtle but important detail to call out: in the above example, the auth service's RPC API is exported as a named class:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> AuthService</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> WorkerEntrypoint</span><span class="sk-24292e-fff"> {</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -334,7 +334,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">And in our wrangler.toml for the calling worker, we had to specify an "entrypoint", matching the class name:</p>
+<p data-astro-cid-byeekcgh="">And in our wrangler.toml for the calling worker, we had to specify an "entrypoint", matching the class name:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">entrypoint</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "AuthService"</span><span class="sk-6a737d-8b8b8b94">  # name of the exported RPC class</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -342,14 +342,14 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">In the past, service bindings would bind to the "default" entrypoint, declared with export default {. But, the default entrypoint is also typically exposed to the Internet, e.g. automatically mapped to a hostname under workers.dev (unless you explicitly turn that off). It can be tricky to safely assume that requests arriving at this entrypoint are in any way trusted.</p>
-<p data-astro-cid-yoyuw6fx="">With named entrypoints, this all changes. A named entrypoint is only accessible to Workers which have explicitly declared a binding to it. By default, only Workers on your own account can declare such bindings. Moreover, the binding must be declared at deploy time; a Worker cannot create new service bindings at runtime.</p>
-<p data-astro-cid-yoyuw6fx="">Thus, you can trust that requests arriving at a named entrypoint can only have come from Workers on your account and for which you explicitly created a service binding. In the future, we plan to extend this pattern further with the ability to lock down entrypoints, audit which Workers have bindings to them, tell the callee information about who is calling at runtime, and so on. With these tools, there is no need to write code in your app itself to authenticate access to internal APIs; the system does it for you.</p>
-<h3 data-astro-cid-yoyuw6fx="">What about type safety?</h3>
-<p data-astro-cid-yoyuw6fx="">Workers RPC works in an entirely dynamically-typed way, just as JavaScript itself does. But just as you can apply TypeScript on top of JavaScript in general, you can apply it to Workers RPC.</p>
-<p data-astro-cid-yoyuw6fx="">The <a href="https://www.npmjs.com/package/@cloudflare/workers-types" target="_blank" rel="noopener noreferrer"><code>@cloudflare/workers-types package</code></a> defines the type <code>Service&lt;MyEntrypointType&gt;</code>, which describes the type of a service binding. <code>MyEntrypointType</code> is the type of your server-side interface. <code>Service&lt;MyEntrypointType&gt;</code> applies all the necessary transformations to turn this into a client-side type, such as converting all methods to async, replacing functions and <code>RpcTargets</code> with (properly-typed) stubs, and so on.</p>
-<p data-astro-cid-yoyuw6fx="">It is up to you to share the definition of <code>MyEntrypointType</code> between your server app and its clients. You might do this by defining the interface in a separate shared TypeScript file, or by extracting a <code>.d.ts</code> type declaration file from your server code using <a href="https://www.typescriptlang.org/tsconfig/#declaration" target="_blank" rel="noopener noreferrer"><code>tsc --declaration</code></a>.</p>
-<p data-astro-cid-yoyuw6fx="">With that done, you can apply types to your client:</p>
+<p data-astro-cid-byeekcgh="">In the past, service bindings would bind to the "default" entrypoint, declared with export default {. But, the default entrypoint is also typically exposed to the Internet, e.g. automatically mapped to a hostname under workers.dev (unless you explicitly turn that off). It can be tricky to safely assume that requests arriving at this entrypoint are in any way trusted.</p>
+<p data-astro-cid-byeekcgh="">With named entrypoints, this all changes. A named entrypoint is only accessible to Workers which have explicitly declared a binding to it. By default, only Workers on your own account can declare such bindings. Moreover, the binding must be declared at deploy time; a Worker cannot create new service bindings at runtime.</p>
+<p data-astro-cid-byeekcgh="">Thus, you can trust that requests arriving at a named entrypoint can only have come from Workers on your account and for which you explicitly created a service binding. In the future, we plan to extend this pattern further with the ability to lock down entrypoints, audit which Workers have bindings to them, tell the callee information about who is calling at runtime, and so on. With these tools, there is no need to write code in your app itself to authenticate access to internal APIs; the system does it for you.</p>
+<h3 data-astro-cid-byeekcgh="">What about type safety?</h3>
+<p data-astro-cid-byeekcgh="">Workers RPC works in an entirely dynamically-typed way, just as JavaScript itself does. But just as you can apply TypeScript on top of JavaScript in general, you can apply it to Workers RPC.</p>
+<p data-astro-cid-byeekcgh="">The <a href="https://www.npmjs.com/package/@cloudflare/workers-types" target="_blank" rel="noopener noreferrer"><code>@cloudflare/workers-types package</code></a> defines the type <code>Service&lt;MyEntrypointType&gt;</code>, which describes the type of a service binding. <code>MyEntrypointType</code> is the type of your server-side interface. <code>Service&lt;MyEntrypointType&gt;</code> applies all the necessary transformations to turn this into a client-side type, such as converting all methods to async, replacing functions and <code>RpcTargets</code> with (properly-typed) stubs, and so on.</p>
+<p data-astro-cid-byeekcgh="">It is up to you to share the definition of <code>MyEntrypointType</code> between your server app and its clients. You might do this by defining the interface in a separate shared TypeScript file, or by extracting a <code>.d.ts</code> type declaration file from your server code using <a href="https://www.typescriptlang.org/tsconfig/#declaration" target="_blank" rel="noopener noreferrer"><code>tsc --declaration</code></a>.</p>
+<p data-astro-cid-byeekcgh="">With that done, you can apply types to your client:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { WorkerEntrypoint } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "cloudflare:workers"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -379,9 +379,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2 data-astro-cid-yoyuw6fx="">RPC to Durable Objects</h2>
-<p data-astro-cid-yoyuw6fx=""><a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a> allow you to create a "named" worker instance somewhere on the network that multiple other workers can then talk to, in order to coordinate between them. Each Durable Object also has its own private on-disk storage where it can store state long-term.</p>
-<p data-astro-cid-yoyuw6fx="">Previously, communications with a Durable Object had to take the form of HTTP requests and responses. With RPC, you can now just declare methods on your Durable Object class, and call them on the stub. One catch: to opt into RPC, you must declare your Durable Object class with extends DurableObject, like so:</p>
+<h2 data-astro-cid-byeekcgh="">RPC to Durable Objects</h2>
+<p data-astro-cid-byeekcgh=""><a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a> allow you to create a "named" worker instance somewhere on the network that multiple other workers can then talk to, in order to coordinate between them. Each Durable Object also has its own private on-disk storage where it can store state long-term.</p>
+<p data-astro-cid-byeekcgh="">Previously, communications with a Durable Object had to take the form of HTTP requests and responses. With RPC, you can now just declare methods on your Durable Object class, and call them on the stub. One catch: to opt into RPC, you must declare your Durable Object class with extends DurableObject, like so:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { DurableObject } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "cloudflare:workers"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -399,7 +399,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Now we can call it like:</p>
+<p data-astro-cid-byeekcgh="">Now we can call it like:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> stub </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">COUNTER_NAMESPACE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(id);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> value </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> stub.</span><span class="sk-6f42c1-ffc799">increment</span><span class="sk-24292e-fff">();</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -408,7 +408,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx=""><code>TypeScript</code> is supported here too, by defining your binding with type <code>DurableObjectNamespace&lt;ServerType&gt;</code>:</p>
+<p data-astro-cid-byeekcgh=""><code>TypeScript</code> is supported here too, by defining your binding with type <code>DurableObjectNamespace&lt;ServerType&gt;</code>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">interface</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-e36209-fff">  COUNTER_NAMESPACE</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> DurableObjectNamespace</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Counter</span><span class="sk-24292e-fff">&gt;;</span></span>
@@ -418,9 +418,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx="">Eliding awaits with speculative calls</h3>
-<p data-astro-cid-yoyuw6fx="">When talking to a Durable Object, the object may be somewhere else in the world from the caller. RPCs must cross the network. This takes time: despite our best efforts, we still haven't figured out how to make information travel faster than the speed of light.</p>
-<p data-astro-cid-yoyuw6fx="">When you have a complex RPC interface where one call returns an object on which you wish to make further method calls, it's easy to end up with slow code that makes too many round trips over the network.</p>
+<h3 data-astro-cid-byeekcgh="">Eliding awaits with speculative calls</h3>
+<p data-astro-cid-byeekcgh="">When talking to a Durable Object, the object may be somewhere else in the world from the caller. RPCs must cross the network. This takes time: despite our best efforts, we still haven't figured out how to make information travel faster than the speed of light.</p>
+<p data-astro-cid-byeekcgh="">When you have a complex RPC interface where one call returns an object on which you wish to make further method calls, it's easy to end up with slow code that makes too many round trips over the network.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Makes three round trips.</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> foo </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> stub.</span><span class="sk-6f42c1-ffc799">foo</span><span class="sk-24292e-fff">();</span></span>
@@ -431,7 +431,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Workers RPC features a way to avoid this: If you know that a call will return a value containing a stub, and all you want to do with it is invoke a method on that stub, you can <em>skip awaiting it</em>:</p>
+<p data-astro-cid-byeekcgh="">Workers RPC features a way to avoid this: If you know that a call will return a value containing a stub, and all you want to do with it is invoke a method on that stub, you can <em>skip awaiting it</em>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Same thing, only one round trip.</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> foo </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> stub.</span><span class="sk-6f42c1-ffc799">foo</span><span class="sk-24292e-fff">();</span></span>
@@ -442,15 +442,15 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Whoa! How does this work?</p>
-<p data-astro-cid-yoyuw6fx="">RPC methods do not return normal promises. Instead, they return special RPC promises. These objects are "<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#thenables" target="_blank" rel="noopener noreferrer">custom thenables</a>", which means you can use them in all the ways you'd use a regular Promise, like awaiting it or calling .then() on it.</p>
-<p data-astro-cid-yoyuw6fx="">But an RPC promise is more than just a thenable. It is also a proxy. Like an RPC stub, it has a wildcard property. You can use this to express speculative RPC calls on the eventual result, before it has actually resolved. These speculative calls will be sent to the server immediately, so that they can begin executing as soon as the first RPC has finished there, before the result has actually made its way back over the network to the client.</p>
-<p data-astro-cid-yoyuw6fx="">This feature is also known as "Promise Pipelining". Although it isn't explicitly a security feature, it is commonly provided by object-capability RPC systems like Cap'n Proto.</p>
-<h2 data-astro-cid-yoyuw6fx="">The future: Custom Bindings Marketplace?</h2>
-<p data-astro-cid-yoyuw6fx="">For now, Service Bindings and Durable Objects only allow communication between Workers running on the same account. So, RPC can only be used to talk between your own Workers.</p>
-<p data-astro-cid-yoyuw6fx="">But we'd like to take it further.</p>
-<p data-astro-cid-yoyuw6fx="">We have previously explained <a href="https://blog.cloudflare.com/workers-environment-live-object-bindings">why Workers environments contain live objects</a>, also known as "bindings". But today, only Cloudflare can add new binding types to the Workers platform – like Queues, KV, or D1. But what if <em>anyone</em> could invent their own binding type, and give it to other people?</p>
-<p data-astro-cid-yoyuw6fx="">Previously, we thought this would require creating a way to automatically load client libraries into the calling Workers. That seemed scary: it meant using someone's binding would require trusting their code to run inside your isolate. With RPC, there's no such trust. The binding only sees exactly what you explicitly pass to it. It cannot compromise the rest of your Worker.</p>
-<p data-astro-cid-yoyuw6fx="">Could Workers RPC provide the basis for a "bindings marketplace", where people can offer rich JavaScript APIs to each other in an easy and secure way? We're excited to explore and find out.</p>
-<h2 data-astro-cid-yoyuw6fx="">Try it now</h2>
-<p data-astro-cid-yoyuw6fx="">Workers RPC is available today for all Workers users. To get started, <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer">check out the docs</a>.</p>
+<p data-astro-cid-byeekcgh="">Whoa! How does this work?</p>
+<p data-astro-cid-byeekcgh="">RPC methods do not return normal promises. Instead, they return special RPC promises. These objects are "<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#thenables" target="_blank" rel="noopener noreferrer">custom thenables</a>", which means you can use them in all the ways you'd use a regular Promise, like awaiting it or calling .then() on it.</p>
+<p data-astro-cid-byeekcgh="">But an RPC promise is more than just a thenable. It is also a proxy. Like an RPC stub, it has a wildcard property. You can use this to express speculative RPC calls on the eventual result, before it has actually resolved. These speculative calls will be sent to the server immediately, so that they can begin executing as soon as the first RPC has finished there, before the result has actually made its way back over the network to the client.</p>
+<p data-astro-cid-byeekcgh="">This feature is also known as "Promise Pipelining". Although it isn't explicitly a security feature, it is commonly provided by object-capability RPC systems like Cap'n Proto.</p>
+<h2 data-astro-cid-byeekcgh="">The future: Custom Bindings Marketplace?</h2>
+<p data-astro-cid-byeekcgh="">For now, Service Bindings and Durable Objects only allow communication between Workers running on the same account. So, RPC can only be used to talk between your own Workers.</p>
+<p data-astro-cid-byeekcgh="">But we'd like to take it further.</p>
+<p data-astro-cid-byeekcgh="">We have previously explained <a href="https://blog.cloudflare.com/workers-environment-live-object-bindings">why Workers environments contain live objects</a>, also known as "bindings". But today, only Cloudflare can add new binding types to the Workers platform – like Queues, KV, or D1. But what if <em>anyone</em> could invent their own binding type, and give it to other people?</p>
+<p data-astro-cid-byeekcgh="">Previously, we thought this would require creating a way to automatically load client libraries into the calling Workers. That seemed scary: it meant using someone's binding would require trusting their code to run inside your isolate. With RPC, there's no such trust. The binding only sees exactly what you explicitly pass to it. It cannot compromise the rest of your Worker.</p>
+<p data-astro-cid-byeekcgh="">Could Workers RPC provide the basis for a "bindings marketplace", where people can offer rich JavaScript APIs to each other in an easy and secure way? We're excited to explore and find out.</p>
+<h2 data-astro-cid-byeekcgh="">Try it now</h2>
+<p data-astro-cid-byeekcgh="">Workers RPC is available today for all Workers users. To get started, <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer">check out the docs</a>.</p>

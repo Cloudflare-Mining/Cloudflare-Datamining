@@ -1,5 +1,5 @@
-<p data-astro-cid-yoyuw6fx="">Cloudflare WorkersでJavaScriptモジュールのサポートを開始します。JavaScriptで記述されたWorkerの例を見れば、過去数年間にインターネット上で出現するようになった次のコードスニペットに気付くかもしれません:</p>
-<p data-astro-cid-yoyuw6fx="">上記の構文は「<a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" target="_blank" rel="noopener noreferrer">Service Worker</a>」APIとして知られており、Webブラウザで使用するために標準化することが提案されました。JavaScriptファイルをWebページにアタッチして、そのHTTP要求と応答を変更し、仮想エンドポイントのように動作させることができます。それはまさにWorkersにとって必要なものであり、 <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank" rel="noopener noreferrer"><code>fetch()</code></a>や <a href="https://developers.cloudflare.com/workers/runtime-apis/cache" target="_blank" rel="noopener noreferrer"><code>caches</code></a>などの標準的なWeb APIともうまく統合されていました。</p>
+<p data-astro-cid-byeekcgh="">Cloudflare WorkersでJavaScriptモジュールのサポートを開始します。JavaScriptで記述されたWorkerの例を見れば、過去数年間にインターネット上で出現するようになった次のコードスニペットに気付くかもしれません:</p>
+<p data-astro-cid-byeekcgh="">上記の構文は「<a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" target="_blank" rel="noopener noreferrer">Service Worker</a>」APIとして知られており、Webブラウザで使用するために標準化することが提案されました。JavaScriptファイルをWebページにアタッチして、そのHTTP要求と応答を変更し、仮想エンドポイントのように動作させることができます。それはまさにWorkersにとって必要なものであり、 <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank" rel="noopener noreferrer"><code>fetch()</code></a>や <a href="https://developers.cloudflare.com/workers/runtime-apis/cache" target="_blank" rel="noopener noreferrer"><code>caches</code></a>などの標準的なWeb APIともうまく統合されていました。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">event</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Hello Worker!"</span><span class="sk-24292e-fff">));</span></span>
@@ -27,10 +27,10 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">モジュールを導入する前に、サービスWorker APIが引き続きサポートされることを明確にしておきましょう。 「APIまたは機能が非推奨になっているため、_あなたの_書いたコードを_あなた自身で_書き直す必要がります」というメールを受け取りたりたい開発者は居ません。あなたは私たちからそれを知らされることはありません。私たちがこの決定を下した理由を知りたい場合は、Workersに向けた<a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers">下位互換性</a>への取り組みについてご確認ください。</p>
-<h3 data-astro-cid-yoyuw6fx=""><strong>JavaScriptモジュールとは</strong></h3>
-<p data-astro-cid-yoyuw6fx="">ECMAScript（略称「ES」）モジュールとも呼ばれるJavaScriptモジュールは、JavaScriptでコードをインポートおよびエクスポートするための標準APIです。これは、JavaScriptの「ES6」言語仕様によって導入され、ほとんどのWebブラウザ、Node.js、Deno、そして現在はCloudflare Workersによって実装されています。以下は、これがどのように機能するかを示す例です：</p>
-<p data-astro-cid-yoyuw6fx="">「export」キーワードは、「getDate」関数を現在のモジュールからエクスポートすることを示します。次に、別のモジュールから「import」を使用して、その機能を使用できます。</p>
+<p data-astro-cid-byeekcgh="">モジュールを導入する前に、サービスWorker APIが引き続きサポートされることを明確にしておきましょう。 「APIまたは機能が非推奨になっているため、_あなたの_書いたコードを_あなた自身で_書き直す必要がります」というメールを受け取りたりたい開発者は居ません。あなたは私たちからそれを知らされることはありません。私たちがこの決定を下した理由を知りたい場合は、Workersに向けた<a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers">下位互換性</a>への取り組みについてご確認ください。</p>
+<h3 data-astro-cid-byeekcgh=""><strong>JavaScriptモジュールとは</strong></h3>
+<p data-astro-cid-byeekcgh="">ECMAScript（略称「ES」）モジュールとも呼ばれるJavaScriptモジュールは、JavaScriptでコードをインポートおよびエクスポートするための標準APIです。これは、JavaScriptの「ES6」言語仕様によって導入され、ほとんどのWebブラウザ、Node.js、Deno、そして現在はCloudflare Workersによって実装されています。以下は、これがどのように機能するかを示す例です：</p>
+<p data-astro-cid-byeekcgh="">「export」キーワードは、「getDate」関数を現在のモジュールからエクスポートすることを示します。次に、別のモジュールから「import」を使用して、その機能を使用できます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// filename: ./src/util.js</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> getDate</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">time</span><span class="sk-24292e-fff">) {</span></span>
@@ -41,7 +41,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">以上は基本ですが、モジュールでできることは他にもたくさんあります。これにより、格調高い方法でコードの整理、保守、再利用を、簡単に行うことができます。ここでは、モジュールの_すべて_ の側面について説明することはできませんが、詳細については、モジュールに関する <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules" target="_blank" rel="noopener noreferrer">MDNガイド</a> またはLin Clarkによる<a href="https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive" target="_blank" rel="noopener noreferrer">技術的な詳細</a>をご覧になることをお勧めします。</p>
+<p data-astro-cid-byeekcgh="">以上は基本ですが、モジュールでできることは他にもたくさんあります。これにより、格調高い方法でコードの整理、保守、再利用を、簡単に行うことができます。ここでは、モジュールの_すべて_ の側面について説明することはできませんが、詳細については、モジュールに関する <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules" target="_blank" rel="noopener noreferrer">MDNガイド</a> またはLin Clarkによる<a href="https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive" target="_blank" rel="noopener noreferrer">技術的な詳細</a>をご覧になることをお勧めします。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// filename: ./src/index.js</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { getDate } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./util.js"</span></span>
@@ -52,9 +52,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx=""><strong>Workersでモジュールを使用するにはどうすればよいですか？</strong></h3>
-<p data-astro-cid-yoyuw6fx="">Workerを表すデフォルトのモジュールをエクスポートできます。「addEventListener」を使用する代わりに、各イベントハンドラーはそのモジュールの関数として定義されます。現在、cronトリガーでは、HTTPおよびWebSocketリクエストの「<a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker" target="_blank" rel="noopener noreferrer">fetch</a>」と、「<a href="https://developers.cloudflare.com/workers/runtime-apis/scheduled-event#syntax-module-worker" target="_blank" rel="noopener noreferrer">scheduled</a>」をサポートしています。</p>
-<p data-astro-cid-yoyuw6fx="">また、各イベントハンドラーのパラメーターなど、他のいくつかの違いにも気付くかもしれません。単一の「イベント」オブジェクトの代わりに、必要とされるパラメータ群はそれぞれ分散されています。最初のパラメータはイベントタイプに固有です。「fetch」の場合は <a href="https://developers.cloudflare.com/workers/runtime-apis/request" target="_blank" rel="noopener noreferrer">リクエスト</a> オブジェクトであり、「scheduled」の場合はcronスケジュールを含む <a href="https://developers.cloudflare.com/workers/runtime-apis/scheduled-event#properties-1" target="_blank" rel="noopener noreferrer">コントーラー</a> です。</p>
+<h3 data-astro-cid-byeekcgh=""><strong>Workersでモジュールを使用するにはどうすればよいですか？</strong></h3>
+<p data-astro-cid-byeekcgh="">Workerを表すデフォルトのモジュールをエクスポートできます。「addEventListener」を使用する代わりに、各イベントハンドラーはそのモジュールの関数として定義されます。現在、cronトリガーでは、HTTPおよびWebSocketリクエストの「<a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker" target="_blank" rel="noopener noreferrer">fetch</a>」と、「<a href="https://developers.cloudflare.com/workers/runtime-apis/scheduled-event#syntax-module-worker" target="_blank" rel="noopener noreferrer">scheduled</a>」をサポートしています。</p>
+<p data-astro-cid-byeekcgh="">また、各イベントハンドラーのパラメーターなど、他のいくつかの違いにも気付くかもしれません。単一の「イベント」オブジェクトの代わりに、必要とされるパラメータ群はそれぞれ分散されています。最初のパラメータはイベントタイプに固有です。「fetch」の場合は <a href="https://developers.cloudflare.com/workers/runtime-apis/request" target="_blank" rel="noopener noreferrer">リクエスト</a> オブジェクトであり、「scheduled」の場合はcronスケジュールを含む <a href="https://developers.cloudflare.com/workers/runtime-apis/scheduled-event#properties-1" target="_blank" rel="noopener noreferrer">コントーラー</a> です。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">environment</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">context</span><span class="sk-24292e-fff">) {</span></span>
@@ -69,10 +69,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">2番目のパラメータは、環境変数を含むオブジェクトです（「<a href="https://developers.cloudflare.com/workers/platform/environment-variables" target="_blank" rel="noopener noreferrer">バインディング</a>」とも呼ばれます）。以前は、各変数はWorkerのグローバルスコープに挿入されていました。単純なソリューションではありますが、コードに変数を魔法のように表示させるのは混乱を招きます。これで、環境オブジェクトを使用して、環境変数にアクセスするモジュールとライブラリを制御できます。このメカニズムは、欠陥のある、または不要な挙動をするサードパーティライブラリがすべての変数または機密を列挙するのを防止することができるため、より安全です。</p>
-<p data-astro-cid-yoyuw6fx="">3番目のパラメータはコンテキストオブジェクトであり、 &nbsp;<a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#waituntil" target="_blank" rel="noopener noreferrer"><code>waitUntil()</code></a> を使用してバックグラウンドタスクを登録できます。これは、イベントの実行をブロックしてはならないロギングやエラーレポートなどのタスクに役立ちます。</p>
-<p data-astro-cid-yoyuw6fx="">これらをすべてまとめると、複数のモジュールをインポートおよびエクスポートしたり、新しいイベントハンドラー構文を使用したりできます。</p>
-<p data-astro-cid-yoyuw6fx="">今週初めに<a href="https://blog.cloudflare.com/ja-jp/durable-objects-ga-ja-jp">一般提供</a>された、クラスもエクスポートできるDurable Objectsをお忘れなく！Durable Objectクラスを定義する方法です。これは増加された値を返す「Counter」Durable Objectの別の例です。</p>
+<p data-astro-cid-byeekcgh="">2番目のパラメータは、環境変数を含むオブジェクトです（「<a href="https://developers.cloudflare.com/workers/platform/environment-variables" target="_blank" rel="noopener noreferrer">バインディング</a>」とも呼ばれます）。以前は、各変数はWorkerのグローバルスコープに挿入されていました。単純なソリューションではありますが、コードに変数を魔法のように表示させるのは混乱を招きます。これで、環境オブジェクトを使用して、環境変数にアクセスするモジュールとライブラリを制御できます。このメカニズムは、欠陥のある、または不要な挙動をするサードパーティライブラリがすべての変数または機密を列挙するのを防止することができるため、より安全です。</p>
+<p data-astro-cid-byeekcgh="">3番目のパラメータはコンテキストオブジェクトであり、 &nbsp;<a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#waituntil" target="_blank" rel="noopener noreferrer"><code>waitUntil()</code></a> を使用してバックグラウンドタスクを登録できます。これは、イベントの実行をブロックしてはならないロギングやエラーレポートなどのタスクに役立ちます。</p>
+<p data-astro-cid-byeekcgh="">これらをすべてまとめると、複数のモジュールをインポートおよびエクスポートしたり、新しいイベントハンドラー構文を使用したりできます。</p>
+<p data-astro-cid-byeekcgh="">今週初めに<a href="https://blog.cloudflare.com/ja-jp/durable-objects-ga-ja-jp">一般提供</a>された、クラスもエクスポートできるDurable Objectsをお忘れなく！Durable Objectクラスを定義する方法です。これは増加された値を返す「Counter」Durable Objectの別の例です。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// filename: ./src/error.js</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> logError</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">url</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">error</span><span class="sk-24292e-fff">) {</span></span>
@@ -105,7 +105,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx=""><strong>JavaScript以外のモジュールはありますか？</strong></h3>
+<h3 data-astro-cid-byeekcgh=""><strong>JavaScript以外のモジュールはありますか？</strong></h3>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// filename: ./src/counter.js</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> Counter</span><span class="sk-24292e-fff"> {</span></span>
@@ -139,9 +139,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">はい！モジュールは主にJavaScript用ですが、他のモジュールタイプもサポートしています。ただし、一部はまだ標準化されていません。</p>
-<p data-astro-cid-yoyuw6fx="">たとえば、 <a href="https://developer.mozilla.org/en-US/docs/WebAssembly" target="_blank" rel="noopener noreferrer">WebAssembly</a>を<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module/Module#synchronously_compiling_a_webassembly_module" target="_blank" rel="noopener noreferrer">モジュール</a>としてインポートできます。以前、サービスWorker APIには、WebAssemblyがバインディングとして含まれていました。 WebAssemblyは外部リソースではなくコードとして表現する必要があるため、これは間違いだったと思います。モジュールを使用して、WebAssemblyをインポートする新しい方法は次のとおりです：</p>
-<p data-astro-cid-yoyuw6fx="">現在はサポートされていませんが、この <a href="https://github.com/WebAssembly/esm-integration/tree/main/proposals/esm-integration#webassemblyes-module-integration" target="_blank" rel="noopener noreferrer">提案</a>で概説されているように、将来はWebAssemblyモジュールとJavaScriptモジュールをより緊密に統合できることを楽しみにしています。以下に示す人間工学的な改善は、WebAssemblyをJavaScriptエコシステムにさらに組み込むために大いに役立つ可能性があります。</p>
+<p data-astro-cid-byeekcgh="">はい！モジュールは主にJavaScript用ですが、他のモジュールタイプもサポートしています。ただし、一部はまだ標準化されていません。</p>
+<p data-astro-cid-byeekcgh="">たとえば、 <a href="https://developer.mozilla.org/en-US/docs/WebAssembly" target="_blank" rel="noopener noreferrer">WebAssembly</a>を<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module/Module#synchronously_compiling_a_webassembly_module" target="_blank" rel="noopener noreferrer">モジュール</a>としてインポートできます。以前、サービスWorker APIには、WebAssemblyがバインディングとして含まれていました。 WebAssemblyは外部リソースではなくコードとして表現する必要があるため、これは間違いだったと思います。モジュールを使用して、WebAssemblyをインポートする新しい方法は次のとおりです：</p>
+<p data-astro-cid-byeekcgh="">現在はサポートされていませんが、この <a href="https://github.com/WebAssembly/esm-integration/tree/main/proposals/esm-integration#webassemblyes-module-integration" target="_blank" rel="noopener noreferrer">提案</a>で概説されているように、将来はWebAssemblyモジュールとJavaScriptモジュールをより緊密に統合できることを楽しみにしています。以下に示す人間工学的な改善は、WebAssemblyをJavaScriptエコシステムにさらに組み込むために大いに役立つ可能性があります。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> module </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./lib/hello.wasm"</span></span>
 <span class="line"></span>
@@ -157,7 +157,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">テキストモジュールとバイナリモジュールのサポートも追加しました。これにより、Stringと ArrayBufferをインポートできるようになりました。標準化されていませんが、HTMLファイルや画像などのリソースを簡単にインポートできるようになりました。</p>
+<p data-astro-cid-byeekcgh="">テキストモジュールとバイナリモジュールのサポートも追加しました。これにより、Stringと ArrayBufferをインポートできるようになりました。標準化されていませんが、HTMLファイルや画像などのリソースを簡単にインポートできるようになりました。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { hello } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./lib/hello.wasm"</span></span>
 <span class="line"></span>
@@ -171,7 +171,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-yoyuw6fx=""><strong>開始方法</strong></h3>
+<h3 data-astro-cid-byeekcgh=""><strong>開始方法</strong></h3>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">&lt;!-- filename: ./public/index.html --&gt;</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">&lt;!</span><span class="sk-22863a-ffc799">DOCTYPE</span><span class="sk-6f42c1-ffc799"> html</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
@@ -201,11 +201,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">モジュールを使い始めるには多くの方法があります。</p>
-<p data-astro-cid-yoyuw6fx="">まず、 <a href="https://cloudflareworkers.com/#a47f44190209e87bc95d5127ae0b2c84:https://welcome.developers.workers.dev" target="_blank" rel="noopener noreferrer">プレイグラウンド</a> （アカウントは不要）またはダッシュボードの <a href="https://workers.new" target="_blank" rel="noopener noreferrer">クイックエディタ</a>を使用して、ブラウザでモジュールを試すことができます。ブラウザは、モジュールを使用していることを自動的に検出しサービスWorker APIからシームレスに切り替えることができます。現在のところ、ブラウザで作成できるJavaScriptモジュールは1つだけですが、間もなく複数のモジュールの作成が可能になる予定です。</p>
-<p data-astro-cid-yoyuw6fx="">冒険心があり、モジュールを使用して_新しい_ プロジェクトを始めてみたい方は、Workers向けの次世代コマンドラインインターフェイス（CLI）である<a href="https://blog.cloudflare.com/ja-jp/wrangler-v2-beta-ja-jp">wrangler 2.0</a>のベータリリースをお試しいただけます。</p>
-<p data-astro-cid-yoyuw6fx="">既存のプロジェクトでは、<a href="https://github.com/cloudflare/wrangler" target="_blank" rel="noopener noreferrer">wrangler 1.0</a> （リリース1.17以降）を使用することをお勧めします。モジュールを有効にするには、「<a href="https://developers.cloudflare.com/workers/cli-wrangler/configuration#modules" target="_blank" rel="noopener noreferrer">wrangler.toml</a>」構成を次の例に合わせます：</p>
-<p data-astro-cid-yoyuw6fx=""><a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker" target="_blank" rel="noopener noreferrer">モジュール</a>の詳細を説明するために<a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">ドキュメント</a>を更新しました。ただし、両方の形式を紹介するように移行するため、一部では引き続きサービスWorker APIを使用します。（おまけとしてTypeScriptもあります！）</p>
+<p data-astro-cid-byeekcgh="">モジュールを使い始めるには多くの方法があります。</p>
+<p data-astro-cid-byeekcgh="">まず、 <a href="https://cloudflareworkers.com/#a47f44190209e87bc95d5127ae0b2c84:https://welcome.developers.workers.dev" target="_blank" rel="noopener noreferrer">プレイグラウンド</a> （アカウントは不要）またはダッシュボードの <a href="https://workers.new" target="_blank" rel="noopener noreferrer">クイックエディタ</a>を使用して、ブラウザでモジュールを試すことができます。ブラウザは、モジュールを使用していることを自動的に検出しサービスWorker APIからシームレスに切り替えることができます。現在のところ、ブラウザで作成できるJavaScriptモジュールは1つだけですが、間もなく複数のモジュールの作成が可能になる予定です。</p>
+<p data-astro-cid-byeekcgh="">冒険心があり、モジュールを使用して_新しい_ プロジェクトを始めてみたい方は、Workers向けの次世代コマンドラインインターフェイス（CLI）である<a href="https://blog.cloudflare.com/ja-jp/wrangler-v2-beta-ja-jp">wrangler 2.0</a>のベータリリースをお試しいただけます。</p>
+<p data-astro-cid-byeekcgh="">既存のプロジェクトでは、<a href="https://github.com/cloudflare/wrangler" target="_blank" rel="noopener noreferrer">wrangler 1.0</a> （リリース1.17以降）を使用することをお勧めします。モジュールを有効にするには、「<a href="https://developers.cloudflare.com/workers/cli-wrangler/configuration#modules" target="_blank" rel="noopener noreferrer">wrangler.toml</a>」構成を次の例に合わせます：</p>
+<p data-astro-cid-byeekcgh=""><a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker" target="_blank" rel="noopener noreferrer">モジュール</a>の詳細を説明するために<a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">ドキュメント</a>を更新しました。ただし、両方の形式を紹介するように移行するため、一部では引き続きサービスWorker APIを使用します。（おまけとしてTypeScriptもあります！）</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>name = "my-worker"</span></span>
 <span class="line"><span>type = "javascript"</span></span>
@@ -228,7 +228,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">モジュールで何か問題が発生したり、お気づきの点がある場合は、私たちにお知らせください。確認させていただきます。コーディングをお楽しみいただき、あなたがモジュールを使用して作成されるものを楽しみにしています！</p>
+<p data-astro-cid-byeekcgh="">モジュールで何か問題が発生したり、お気づきの点がある場合は、私たちにお知らせください。確認させていただきます。コーディングをお楽しみいただき、あなたがモジュールを使用して作成されるものを楽しみにしています！</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="229" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=715&amp;h=229&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=640&amp;h=205&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=715&amp;h=229&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=750&amp;h=240&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=828&amp;h=265&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=1080&amp;h=346&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=1280&amp;h=410&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=1430&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-785 Embedded Image - Erw4Ne" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=1200&amp;h=385&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="385" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="229" class="pt-portable-image-media"></div>
 </figure>

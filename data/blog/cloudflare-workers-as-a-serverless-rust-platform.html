@@ -1,13 +1,13 @@
-<p data-astro-cid-yoyuw6fx=""><em><strong>Update</strong>: Rust Tooling for Workers has improved significantly since this post. Go <a href="https://blog.cloudflare.com/introducing-wrangler-cli">here</a> to check out Wrangler, our new Rust+Workers cli</em></p>
-<hr class="emdash-break emdash-break-line" data-astro-cid-7mewxrht="">
-<p data-astro-cid-yoyuw6fx="">The Workers team just <a href="https://blog.cloudflare.com/webassembly-on-cloudflare-workers">announced support</a> for WebAssembly (WASM) within Workers. If you saw my post on <a href="https://blog.cloudflare.com/internet-native-applications">Internet Native Apps</a>, you'll know that I believe WebAssembly will play a big part in the apps of the future.</p>
-<p data-astro-cid-yoyuw6fx="">It's exciting times for Rust developers. Cloudflare's Serverless Platform, Cloudflare Workers, allows you to compile your code to WASM, upload to 150+ data centers and invoke those functions just as easily as if they were JavaScript functions. Today I'm going to convert my lipsum generator to use Rust and explore the developer experience (hint: it's already pretty nice).</p>
-<p data-astro-cid-yoyuw6fx="">The Workers teams notes in the documentation:</p>
-<blockquote data-astro-cid-yoyuw6fx="">...WASM is not always the right tool for the job. For lightweight tasks like redirecting a request to a different URL or checking an authorization token, sticking to pure JavaScript is probably both faster and easier than WASM. WASM programs operate in their own separate memory space, which means that it's necessary to copy data in and out of that space in order to operate on it. Code that mostly interacts with external objects without doing any serious "number crunching" likely does not benefit from WASM.</blockquote>
-<p data-astro-cid-yoyuw6fx="">OK, I'm unlikely to gain significant performance improvements on this particular project, but it serves as a good opportunity illustrate the developer experience and tooling. ?</p>
-<h2 data-astro-cid-yoyuw6fx="">Setup the environment with wasm-pack</h2>
-<p data-astro-cid-yoyuw6fx="">Coding with WASM has been bleeding edge for a while, but Rust's tool for WASM development recently reached a fairly ergonomic state and even got a <a href="https://rustwasm.github.io/wasm-pack" target="_blank" rel="noopener noreferrer">website</a>. Make sure you have the <a href="https://rustwasm.github.io/wasm-pack/book/prerequisites/index.html" target="_blank" rel="noopener noreferrer">prerequisites</a> installed and then follow the steps below to get started.</p>
-<p data-astro-cid-yoyuw6fx="">wasm-pack allows you to compile Rust to WebAssembly, as well as generate bindings between JavaScript objects and Rust objects. We'll talk about why that's important later.</p>
+<p data-astro-cid-byeekcgh=""><em><strong>Update</strong>: Rust Tooling for Workers has improved significantly since this post. Go <a href="https://blog.cloudflare.com/introducing-wrangler-cli">here</a> to check out Wrangler, our new Rust+Workers cli</em></p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-yq53pyv4="">
+<p data-astro-cid-byeekcgh="">The Workers team just <a href="https://blog.cloudflare.com/webassembly-on-cloudflare-workers">announced support</a> for WebAssembly (WASM) within Workers. If you saw my post on <a href="https://blog.cloudflare.com/internet-native-applications">Internet Native Apps</a>, you'll know that I believe WebAssembly will play a big part in the apps of the future.</p>
+<p data-astro-cid-byeekcgh="">It's exciting times for Rust developers. Cloudflare's Serverless Platform, Cloudflare Workers, allows you to compile your code to WASM, upload to 150+ data centers and invoke those functions just as easily as if they were JavaScript functions. Today I'm going to convert my lipsum generator to use Rust and explore the developer experience (hint: it's already pretty nice).</p>
+<p data-astro-cid-byeekcgh="">The Workers teams notes in the documentation:</p>
+<blockquote data-astro-cid-byeekcgh="">...WASM is not always the right tool for the job. For lightweight tasks like redirecting a request to a different URL or checking an authorization token, sticking to pure JavaScript is probably both faster and easier than WASM. WASM programs operate in their own separate memory space, which means that it's necessary to copy data in and out of that space in order to operate on it. Code that mostly interacts with external objects without doing any serious "number crunching" likely does not benefit from WASM.</blockquote>
+<p data-astro-cid-byeekcgh="">OK, I'm unlikely to gain significant performance improvements on this particular project, but it serves as a good opportunity illustrate the developer experience and tooling. ?</p>
+<h2 data-astro-cid-byeekcgh="">Setup the environment with wasm-pack</h2>
+<p data-astro-cid-byeekcgh="">Coding with WASM has been bleeding edge for a while, but Rust's tool for WASM development recently reached a fairly ergonomic state and even got a <a href="https://rustwasm.github.io/wasm-pack" target="_blank" rel="noopener noreferrer">website</a>. Make sure you have the <a href="https://rustwasm.github.io/wasm-pack/book/prerequisites/index.html" target="_blank" rel="noopener noreferrer">prerequisites</a> installed and then follow the steps below to get started.</p>
+<p data-astro-cid-byeekcgh="">wasm-pack allows you to compile Rust to WebAssembly, as well as generate bindings between JavaScript objects and Rust objects. We'll talk about why that's important later.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Install wasm-pack</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> https://rustwasm.github.io/wasm-pack/installer/init.sh</span><span class="sk-005cc5-99ffe4"> -sSf</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sh</span></span>
@@ -44,7 +44,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">The <a href="https://rustwasm.github.io/wasm-pack/book/tutorial/template-deep-dive/cargo-toml.html" target="_blank" rel="noopener noreferrer">WASM book</a> describes some of the glue in the Cargo.toml file, but the meat of the project is here:</p>
+<p data-astro-cid-byeekcgh="">The <a href="https://rustwasm.github.io/wasm-pack/book/tutorial/template-deep-dive/cargo-toml.html" target="_blank" rel="noopener noreferrer">WASM book</a> describes some of the glue in the Cargo.toml file, but the meat of the project is here:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">...</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">#[wasm_bindgen]</span></span>
@@ -61,12 +61,12 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">This does two things</p>
+<p data-astro-cid-byeekcgh="">This does two things</p>
 <ol>
 	<li>Binds to the "external" function in our host environment where the WASM will run. If that's the browser, it will popup a window.</li>
 	<li>It also defines a Rust function, greet() which will be made available as a function callable from the host environment, in our case JavaScript.</li>
 </ol>
-<p data-astro-cid-yoyuw6fx="">Build with <code>wasm-pack build</code></p>
+<p data-astro-cid-byeekcgh="">Build with <code>wasm-pack build</code></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wasm-pack</span><span class="sk-032f62-99ffe4"> build</span></span>
 <span class="line"><span class="sk-24292e-fff">  </span></span>
@@ -89,8 +89,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Subsequent builds will be faster. We eventually want to ship that .wasm file to a Worker, but I'd like to keep things local and test in a browser first.</p>
-<p data-astro-cid-yoyuw6fx="">There's an <a href="https://www.npmjs.com/package/create-wasm-app" target="_blank" rel="noopener noreferrer">npm</a> package that will create a templated webpack webapp, preconfigured to import WebAssembly node modules, which we'll use as a test harness.</p>
+<p data-astro-cid-byeekcgh="">Subsequent builds will be faster. We eventually want to ship that .wasm file to a Worker, but I'd like to keep things local and test in a browser first.</p>
+<p data-astro-cid-byeekcgh="">There's an <a href="https://www.npmjs.com/package/create-wasm-app" target="_blank" rel="noopener noreferrer">npm</a> package that will create a templated webpack webapp, preconfigured to import WebAssembly node modules, which we'll use as a test harness.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npm</span><span class="sk-032f62-99ffe4"> init</span><span class="sk-032f62-99ffe4"> wasm-app</span><span class="sk-032f62-99ffe4"> www</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">npx:</span><span class="sk-032f62-99ffe4"> installed</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> 2.533s</span></span>
@@ -100,7 +100,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Install the dependencies with <code>npm install</code> and then <code>npm start</code> to fire up the webpack bundled web server to serve your page</p>
+<p data-astro-cid-byeekcgh="">Install the dependencies with <code>npm install</code> and then <code>npm start</code> to fire up the webpack bundled web server to serve your page</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npm</span><span class="sk-032f62-99ffe4"> start</span></span>
 <span class="line"></span>
@@ -113,13 +113,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Open your web browser at <a href="http://localhost:8080" target="_blank" rel="noopener noreferrer">http://localhost:8080</a> and you should see your first WASM generated content!</p>
+<p data-astro-cid-byeekcgh="">Open your web browser at <a href="http://localhost:8080" target="_blank" rel="noopener noreferrer">http://localhost:8080</a> and you should see your first WASM generated content!</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="262" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z1YPCBM3P9DWREC1FMJ8.png&amp;w=715&amp;h=262&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z1YPCBM3P9DWREC1FMJ8.png&amp;w=640&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z1YPCBM3P9DWREC1FMJ8.png&amp;w=715&amp;h=262&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z1YPCBM3P9DWREC1FMJ8.png&amp;w=750&amp;h=275&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z1YPCBM3P9DWREC1FMJ8.png&amp;w=828&amp;h=303&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z1YPCBM3P9DWREC1FMJ8.png&amp;w=1080&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z1YPCBM3P9DWREC1FMJ8.png&amp;w=1280&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z1YPCBM3P9DWREC1FMJ8.png&amp;w=1430&amp;h=524&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Rust WASM Hello World" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z1YPCBM3P9DWREC1FMJ8.png&amp;w=1038&amp;h=380&amp;f=webp" data-lightbox-width="1038" data-lightbox-height="380" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="262" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-yoyuw6fx="">OK, that's promising, but it's not actually our code. Our greet function returned <code>"Hello, bob-ross-lorem-ipsum-rust!"</code></p>
-<p data-astro-cid-yoyuw6fx="">If we open up <code>www/index.js</code>, we can see this:</p>
+<p data-astro-cid-byeekcgh="">OK, that's promising, but it's not actually our code. Our greet function returned <code>"Hello, bob-ross-lorem-ipsum-rust!"</code></p>
+<p data-astro-cid-byeekcgh="">If we open up <code>www/index.js</code>, we can see this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> wasm</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> "hello-wasm-pack"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -129,8 +129,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">So it's importing a node module "hello-wasm-pack" which was part of the template. We want to import our <em>own</em> module we built with <code>cargo generate</code> earlier.</p>
-<p data-astro-cid-yoyuw6fx="">First, expose our WASM package as a node module:</p>
+<p data-astro-cid-byeekcgh="">So it's importing a node module "hello-wasm-pack" which was part of the template. We want to import our <em>own</em> module we built with <code>cargo generate</code> earlier.</p>
+<p data-astro-cid-byeekcgh="">First, expose our WASM package as a node module:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Create a global node_modules entry pointing to your local wasm pkg</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> pkg</span></span>
@@ -142,7 +142,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Then make it available as a node_module in our test harness.</p>
+<p data-astro-cid-byeekcgh="">Then make it available as a node_module in our test harness.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> ../www</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npm</span><span class="sk-032f62-99ffe4"> link</span><span class="sk-032f62-99ffe4"> bob-ross-lorem-ipsum-rust</span></span>
@@ -152,7 +152,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Import it in the index.js file</p>
+<p data-astro-cid-byeekcgh="">Import it in the index.js file</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">//import</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> wasm</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> "hello-wasm-pack"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> wasm</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> "bob-ross-lorem-ipsum-rust"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -161,7 +161,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">and run!</p>
+<p data-astro-cid-byeekcgh="">and run!</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> build</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> start</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -170,19 +170,19 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Better! That's our code.</p>
+<p data-astro-cid-byeekcgh="">Better! That's our code.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="466" height="144" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QQKGV4DGTARHVRV2YKYY.png&amp;w=466&amp;h=144&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QQKGV4DGTARHVRV2YKYY.png&amp;w=466&amp;h=144&amp;f=webp&amp;fit=cover&amp;position=center 466w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QQKGV4DGTARHVRV2YKYY.png&amp;w=640&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QQKGV4DGTARHVRV2YKYY.png&amp;w=750&amp;h=232&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QQKGV4DGTARHVRV2YKYY.png&amp;w=828&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QQKGV4DGTARHVRV2YKYY.png&amp;w=932&amp;h=288&amp;f=webp&amp;fit=cover&amp;position=center 932w" alt="Rust WASM Hello World 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QQKGV4DGTARHVRV2YKYY.png&amp;w=466&amp;h=144&amp;f=webp" data-lightbox-width="466" data-lightbox-height="144" data-astro-cid-7nvefuv6="true" sizes="(min-width: 466px) 466px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="466" height="144" class="pt-portable-image-media"></div>
 </figure>
-<h3 data-astro-cid-yoyuw6fx="">Quick recap</h3>
-<p data-astro-cid-yoyuw6fx="">We have:</p>
+<h3 data-astro-cid-byeekcgh="">Quick recap</h3>
+<p data-astro-cid-byeekcgh="">We have:</p>
 <ul>
 	<li>A Hello, World WASM module</li>
 	<li>Exposed as an npm module</li>
 	<li>A webpack app which imports that module</li>
 	<li>And invokes the greet() function</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">We're now going to port our Bob Ross Lorem Ipsum generator to Rust, and try it out locally before uploading as a worker. Check it out on in the <a href="https://github.com/stevenpack/bob-ross-lipsum-rust" target="_blank" rel="noopener noreferrer">GitHub</a> repo, or follow along.</p>
+<p data-astro-cid-byeekcgh="">We're now going to port our Bob Ross Lorem Ipsum generator to Rust, and try it out locally before uploading as a worker. Check it out on in the <a href="https://github.com/stevenpack/bob-ross-lipsum-rust" target="_blank" rel="noopener noreferrer">GitHub</a> repo, or follow along.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"></span>
 <span class="line"><span class="sk-d73a49-ffc799">use</span><span class="sk-6f42c1-ffc799"> std</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">vec</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">Vec</span><span class="sk-24292e-fff">;</span></span>
@@ -266,7 +266,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Running the tests shows everything looks good:</p>
+<p data-astro-cid-byeekcgh="">Running the tests shows everything looks good:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cargo</span><span class="sk-032f62-99ffe4"> test</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-005cc5-99ffe4"> --nocapture</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    Finished</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-24292e-fff"> [unoptimized </span><span class="sk-032f62-99ffe4">+</span><span class="sk-032f62-99ffe4"> debuginfo]</span><span class="sk-032f62-99ffe4"> target</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">in</span><span class="sk-032f62-99ffe4"> 0.40s</span><span class="sk-24292e-fff">                                                                                       </span></span>
@@ -282,7 +282,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">And I've exposed the method to WASM like this:</p>
+<p data-astro-cid-byeekcgh="">And I've exposed the method to WASM like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">#[wasm_bindgen]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">pub</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> get_phrase_text</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">phrase_cnt:</span><span class="sk-032f62-99ffe4"> usize,</span><span class="sk-032f62-99ffe4"> new_line:</span><span class="sk-032f62-99ffe4"> usize</span><span class="sk-24292e-fff">) -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> String</span><span class="sk-032f62-99ffe4"> {</span></span>
@@ -293,7 +293,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">So, we should be good to call our WASM from the browser test harness. Let's modify <code>www/index.js</code> to invoke <code>get_phrase_text</code> and fire it up in the browser!</p>
+<p data-astro-cid-byeekcgh="">So, we should be good to call our WASM from the browser test harness. Let's modify <code>www/index.js</code> to invoke <code>get_phrase_text</code> and fire it up in the browser!</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">//wasm.greet();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> phraseText </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> wasm.</span><span class="sk-6f42c1-ffc799">get_phrase_text</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">100</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">10</span><span class="sk-24292e-fff">);</span></span>
@@ -304,15 +304,15 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Fail.</p>
+<p data-astro-cid-byeekcgh="">Fail.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="148" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NDC3EYSSD9EPZ40KR2PK.png&amp;w=715&amp;h=148&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NDC3EYSSD9EPZ40KR2PK.png&amp;w=640&amp;h=132&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NDC3EYSSD9EPZ40KR2PK.png&amp;w=715&amp;h=148&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NDC3EYSSD9EPZ40KR2PK.png&amp;w=750&amp;h=155&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NDC3EYSSD9EPZ40KR2PK.png&amp;w=828&amp;h=171&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NDC3EYSSD9EPZ40KR2PK.png&amp;w=1080&amp;h=224&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NDC3EYSSD9EPZ40KR2PK.png&amp;w=1280&amp;h=265&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NDC3EYSSD9EPZ40KR2PK.png&amp;w=1430&amp;h=296&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Rust WASM Fail no entropy" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NDC3EYSSD9EPZ40KR2PK.png&amp;w=1152&amp;h=239&amp;f=webp" data-lightbox-width="1152" data-lightbox-height="239" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="148" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-yoyuw6fx="">If you've played around with Rust, you'll know how jarring it can be to see your code compile and tests pass, only to have it blow up at runtime. The strictness of the language means your code behaves exactly as you expect more often than other languages, so this failure really threw me.</p>
-<p data-astro-cid-yoyuw6fx="">Analysing the stack trace, we can see the failure starts at FromEntropy. My first instinct was that the WASM host didn't support providing entropy. I re-jigged the code to use a time-based seed instead and that failed too. The common theme seemed to be both entropy, and the current time, both make system calls.</p>
-<p data-astro-cid-yoyuw6fx="">Reading through the relevant Github issues which discuss this <a href="https://github.com/rustwasm/team/issues/16" target="_blank" rel="noopener noreferrer">here</a> and <a href="https://github.com/rust-lang/rust/pull/47102" target="_blank" rel="noopener noreferrer">here</a>, it looks like the design for how Rust generated WASM will handle system calls remains open. If the compiler isn't able to guarantee the system calls will be available, shouldn't the linker fail to compile? I think the answer lies in the <code>wasm-unknown-unknown</code> triplet that we compile to. There are no guarantees on what the target platform provides when you target unknown, so you're on your own.</p>
-<p data-astro-cid-yoyuw6fx="">That said, we know that the v8 JavaScript engine will be our host in both the browser, and in Workers. There are libraries which allow us to make all Web APIs defined in the ECMAScript standard available to Rust, such as <a href="https://rustwasm.github.io/wasm-bindgen/api/js_sys/index.html" target="_blank" rel="noopener noreferrer">js-sys</a></p>
-<p data-astro-cid-yoyuw6fx="">Using that, I can rewrite the failing <code>get_rng()</code> method to return a pseudo-random number generated seed with a time-based value using the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" rel="noopener noreferrer">Date</a> object provided by the JavaScript host, rather than making a system call. Full code listing is on <a href="https://github.com/stevenpack/bob-ross-lipsum-rust" target="_blank" rel="noopener noreferrer">Github</a></p>
+<p data-astro-cid-byeekcgh="">If you've played around with Rust, you'll know how jarring it can be to see your code compile and tests pass, only to have it blow up at runtime. The strictness of the language means your code behaves exactly as you expect more often than other languages, so this failure really threw me.</p>
+<p data-astro-cid-byeekcgh="">Analysing the stack trace, we can see the failure starts at FromEntropy. My first instinct was that the WASM host didn't support providing entropy. I re-jigged the code to use a time-based seed instead and that failed too. The common theme seemed to be both entropy, and the current time, both make system calls.</p>
+<p data-astro-cid-byeekcgh="">Reading through the relevant Github issues which discuss this <a href="https://github.com/rustwasm/team/issues/16" target="_blank" rel="noopener noreferrer">here</a> and <a href="https://github.com/rust-lang/rust/pull/47102" target="_blank" rel="noopener noreferrer">here</a>, it looks like the design for how Rust generated WASM will handle system calls remains open. If the compiler isn't able to guarantee the system calls will be available, shouldn't the linker fail to compile? I think the answer lies in the <code>wasm-unknown-unknown</code> triplet that we compile to. There are no guarantees on what the target platform provides when you target unknown, so you're on your own.</p>
+<p data-astro-cid-byeekcgh="">That said, we know that the v8 JavaScript engine will be our host in both the browser, and in Workers. There are libraries which allow us to make all Web APIs defined in the ECMAScript standard available to Rust, such as <a href="https://rustwasm.github.io/wasm-bindgen/api/js_sys/index.html" target="_blank" rel="noopener noreferrer">js-sys</a></p>
+<p data-astro-cid-byeekcgh="">Using that, I can rewrite the failing <code>get_rng()</code> method to return a pseudo-random number generated seed with a time-based value using the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" rel="noopener noreferrer">Date</a> object provided by the JavaScript host, rather than making a system call. Full code listing is on <a href="https://github.com/stevenpack/bob-ross-lipsum-rust" target="_blank" rel="noopener noreferrer">Github</a></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">fn</span><span class="sk-6f42c1-ffc799"> get_rng</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> SmallRng</span><span class="sk-24292e-fff"> {    </span></span>
 <span class="line"><span class="sk-d73a49-ffc799">    use</span><span class="sk-6f42c1-ffc799"> js_sys</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">Date</span><span class="sk-24292e-fff">;</span></span>
@@ -329,18 +329,18 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">After another <code>wasm-pack build</code> and reloading our test page...</p>
+<p data-astro-cid-byeekcgh="">After another <code>wasm-pack build</code> and reloading our test page...</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="392" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472A345G0H2MKCJH2GQNSC.png&amp;w=715&amp;h=392&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472A345G0H2MKCJH2GQNSC.png&amp;w=640&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472A345G0H2MKCJH2GQNSC.png&amp;w=715&amp;h=392&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472A345G0H2MKCJH2GQNSC.png&amp;w=750&amp;h=411&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472A345G0H2MKCJH2GQNSC.png&amp;w=828&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472A345G0H2MKCJH2GQNSC.png&amp;w=1080&amp;h=592&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472A345G0H2MKCJH2GQNSC.png&amp;w=1280&amp;h=702&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472A345G0H2MKCJH2GQNSC.png&amp;w=1430&amp;h=784&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Generating random phrases" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472A345G0H2MKCJH2GQNSC.png&amp;w=810&amp;h=444&amp;f=webp" data-lightbox-width="810" data-lightbox-height="444" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="392" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-yoyuw6fx="">Huzzah! OK, if my WASM module returns the right output in Chrome, I'm feeling good about it working in Workers.</p>
-<h2 data-astro-cid-yoyuw6fx="">From local browser harness to Workers</h2>
-<p data-astro-cid-yoyuw6fx="">You can use the <a href="https://developers.cloudflare.com/workers/api" target="_blank" rel="noopener noreferrer">API</a> or UI to upload. Below, I upload the .wasm file in my /pkg director and bind it to the global variable BOBROSS_WASM, where it will be available in my Worker.</p>
+<p data-astro-cid-byeekcgh="">Huzzah! OK, if my WASM module returns the right output in Chrome, I'm feeling good about it working in Workers.</p>
+<h2 data-astro-cid-byeekcgh="">From local browser harness to Workers</h2>
+<p data-astro-cid-byeekcgh="">You can use the <a href="https://developers.cloudflare.com/workers/api" target="_blank" rel="noopener noreferrer">API</a> or UI to upload. Below, I upload the .wasm file in my /pkg director and bind it to the global variable BOBROSS_WASM, where it will be available in my Worker.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="571" height="409" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QX6RB7E4APKS8BJNTBD5.png&amp;w=571&amp;h=409&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QX6RB7E4APKS8BJNTBD5.png&amp;w=571&amp;h=409&amp;f=webp&amp;fit=cover&amp;position=center 571w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QX6RB7E4APKS8BJNTBD5.png&amp;w=640&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QX6RB7E4APKS8BJNTBD5.png&amp;w=750&amp;h=537&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QX6RB7E4APKS8BJNTBD5.png&amp;w=828&amp;h=593&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QX6RB7E4APKS8BJNTBD5.png&amp;w=1080&amp;h=774&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QX6RB7E4APKS8BJNTBD5.png&amp;w=1142&amp;h=818&amp;f=webp&amp;fit=cover&amp;position=center 1142w" alt="Rust WASM upload" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QX6RB7E4APKS8BJNTBD5.png&amp;w=571&amp;h=409&amp;f=webp" data-lightbox-width="571" data-lightbox-height="409" data-astro-cid-7nvefuv6="true" sizes="(min-width: 571px) 571px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="571" height="409" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-yoyuw6fx="">If you're following and looked at the output of the <code>wasm-pack build</code> command, you might have noticed it produced a JavaScript glue file in the pkg folder, which is actually what the browser executed.</p>
-<p data-astro-cid-yoyuw6fx="">It looks like this:</p>
+<p data-astro-cid-byeekcgh="">If you're following and looked at the output of the <code>wasm-pack build</code> command, you might have noticed it produced a JavaScript glue file in the pkg folder, which is actually what the browser executed.</p>
+<p data-astro-cid-byeekcgh="">It looks like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">/*</span><span class="sk-032f62-99ffe4"> tslint:disable</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">/</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> wasm</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> './bob_ross_lorem_ipsum_rust_bg'</span><span class="sk-24292e-fff">;</span></span>
@@ -415,8 +415,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">It takes care of the marshalling of strings from WASM into JavaScript and freeing the memory it uses. In an ideal world, we'd just include this in our Worker and be done. However, there a few differences between how Workers instantiates WebAssembly modules and the browser.</p>
-<p data-astro-cid-yoyuw6fx="">You need to:</p>
+<p data-astro-cid-byeekcgh="">It takes care of the marshalling of strings from WASM into JavaScript and freeing the memory it uses. In an ideal world, we'd just include this in our Worker and be done. However, there a few differences between how Workers instantiates WebAssembly modules and the browser.</p>
+<p data-astro-cid-byeekcgh="">You need to:</p>
 <ul>
 	<li>Remove the import line</li>
 	<li>Remove the export keywords</li>
@@ -424,8 +424,8 @@
 	<li>Create an importObject referencing the methods</li>
 	<li>Pass that in when you create the WebAssembly instance</li>
 </ul>
-<p data-astro-cid-yoyuw6fx=""><em>Update 28-Dec-2018: wasm-bindgen has been updated since this post. See this <a href="https://github.com/stevenpack/bob-ross-lipsum-rust/pull/1" target="_blank" rel="noopener noreferrer">PR</a> if you're getting errors related to the glue code. Thanks <a href="https://github.com/andrewdavidmackenzie" target="_blank" rel="noopener noreferrer">Andrew</a>!</em></p>
-<p data-astro-cid-yoyuw6fx="">You can view a <a href="https://blog.cloudflare.com/content/images/2018/10/rust-wasm-local-vs-worker-diff.png">side-by-side diff</a> or a <a href="https://github.com/stevenpack/bob-ross-lipsum-rust/blob/master/worker/glue-to-worker.patch" target="_blank" rel="noopener noreferrer">patch</a> to see the changes required to have it run in a Worker. Include the modified glue code into your worker and you can now call it like any other function. (Thanks for the tip Jake Riesterer!)</p>
+<p data-astro-cid-byeekcgh=""><em>Update 28-Dec-2018: wasm-bindgen has been updated since this post. See this <a href="https://github.com/stevenpack/bob-ross-lipsum-rust/pull/1" target="_blank" rel="noopener noreferrer">PR</a> if you're getting errors related to the glue code. Thanks <a href="https://github.com/andrewdavidmackenzie" target="_blank" rel="noopener noreferrer">Andrew</a>!</em></p>
+<p data-astro-cid-byeekcgh="">You can view a <a href="https://blog.cloudflare.com/content/images/2018/10/rust-wasm-local-vs-worker-diff.png">side-by-side diff</a> or a <a href="https://github.com/stevenpack/bob-ross-lipsum-rust/blob/master/worker/glue-to-worker.patch" target="_blank" rel="noopener noreferrer">patch</a> to see the changes required to have it run in a Worker. Include the modified glue code into your worker and you can now call it like any other function. (Thanks for the tip Jake Riesterer!)</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Request</span><span class="sk-032f62-99ffe4"> Handler</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-032f62-99ffe4"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span></span>
@@ -450,13 +450,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Success!</p>
+<p data-astro-cid-byeekcgh="">Success!</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="705" height="354" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4GM8J3KBH99ZEWE0A8Y.png&amp;w=705&amp;h=354&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4GM8J3KBH99ZEWE0A8Y.png&amp;w=640&amp;h=321&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4GM8J3KBH99ZEWE0A8Y.png&amp;w=705&amp;h=354&amp;f=webp&amp;fit=cover&amp;position=center 705w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4GM8J3KBH99ZEWE0A8Y.png&amp;w=750&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4GM8J3KBH99ZEWE0A8Y.png&amp;w=828&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4GM8J3KBH99ZEWE0A8Y.png&amp;w=1080&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4GM8J3KBH99ZEWE0A8Y.png&amp;w=1280&amp;h=643&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4GM8J3KBH99ZEWE0A8Y.png&amp;w=1410&amp;h=708&amp;f=webp&amp;fit=cover&amp;position=center 1410w" alt="Serverless Rust on the Edge" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4GM8J3KBH99ZEWE0A8Y.png&amp;w=705&amp;h=354&amp;f=webp" data-lightbox-width="705" data-lightbox-height="354" data-astro-cid-7nvefuv6="true" sizes="(min-width: 705px) 705px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="705" height="354" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-yoyuw6fx="">The full <a href="https://github.com/stevenpack/bob-ross-lipsum-rust/blob/master/worker/worker.js" target="_blank" rel="noopener noreferrer">source code</a> is on Github.</p>
-<h3 data-astro-cid-yoyuw6fx="">Summary</h3>
-<p data-astro-cid-yoyuw6fx="">We can compile Rust to WASM, and call it from Serverless functions woven into the very fabric of the Internet. That's huge and I can't wait to do more of it.</p>
-<p data-astro-cid-yoyuw6fx="">There's some wrangling of the generated code required, but the tooling will improve over time. Once you've modified the glue code, calling a function in Rust generated WASM modules is just as simple as JavaScript.</p>
-<p data-astro-cid-yoyuw6fx="">Are we Serverless yet? Yes we are.</p>
-<p data-astro-cid-yoyuw6fx="">In a future post, I'll extract out the phrases and the UI to the <a href="https://developers.cloudflare.com/workers/kv" target="_blank" rel="noopener noreferrer">KV store</a> to show a full fledged serverless app powered by Rust and WASM.</p>
+<p data-astro-cid-byeekcgh="">The full <a href="https://github.com/stevenpack/bob-ross-lipsum-rust/blob/master/worker/worker.js" target="_blank" rel="noopener noreferrer">source code</a> is on Github.</p>
+<h3 data-astro-cid-byeekcgh="">Summary</h3>
+<p data-astro-cid-byeekcgh="">We can compile Rust to WASM, and call it from Serverless functions woven into the very fabric of the Internet. That's huge and I can't wait to do more of it.</p>
+<p data-astro-cid-byeekcgh="">There's some wrangling of the generated code required, but the tooling will improve over time. Once you've modified the glue code, calling a function in Rust generated WASM modules is just as simple as JavaScript.</p>
+<p data-astro-cid-byeekcgh="">Are we Serverless yet? Yes we are.</p>
+<p data-astro-cid-byeekcgh="">In a future post, I'll extract out the phrases and the UI to the <a href="https://developers.cloudflare.com/workers/kv" target="_blank" rel="noopener noreferrer">KV store</a> to show a full fledged serverless app powered by Rust and WASM.</p>

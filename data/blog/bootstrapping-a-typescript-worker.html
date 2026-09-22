@@ -1,17 +1,17 @@
-<p data-astro-cid-yoyuw6fx="">Cloudflare <a href="https://developers.cloudflare.com/workers/about" target="_blank" rel="noopener noreferrer">Workers</a> allows you to quickly deploy Javascript code to our 150+ data centers around the world and execute very close to your end-user. The edit/compile/debug story is already pretty amazing using the <a href="https://dash.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Workers IDE</a> with integrated Chrome Dev Tools. However, for those hankering for some <a href="https://www.typescriptlang.org" target="_blank" rel="noopener noreferrer">Typescript</a> and an IDE with static analysis, autocomplete and that jazz, follow along to see one way to set up a Typescript project with <a href="https://www.jetbrains.com/webstorm" target="_blank" rel="noopener noreferrer">Webstorm</a> and npm run upload your code straight to the edge.</p>
-<h3 data-astro-cid-yoyuw6fx="">Pre Requisites</h3>
-<p data-astro-cid-yoyuw6fx="">My environment looks like this:</p>
+<p data-astro-cid-byeekcgh="">Cloudflare <a href="https://developers.cloudflare.com/workers/about" target="_blank" rel="noopener noreferrer">Workers</a> allows you to quickly deploy Javascript code to our 150+ data centers around the world and execute very close to your end-user. The edit/compile/debug story is already pretty amazing using the <a href="https://dash.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Workers IDE</a> with integrated Chrome Dev Tools. However, for those hankering for some <a href="https://www.typescriptlang.org" target="_blank" rel="noopener noreferrer">Typescript</a> and an IDE with static analysis, autocomplete and that jazz, follow along to see one way to set up a Typescript project with <a href="https://www.jetbrains.com/webstorm" target="_blank" rel="noopener noreferrer">Webstorm</a> and npm run upload your code straight to the edge.</p>
+<h3 data-astro-cid-byeekcgh="">Pre Requisites</h3>
+<p data-astro-cid-byeekcgh="">My environment looks like this:</p>
 <ul>
 	<li>macOS High Sierra</li>
 	<li>node v8.11.3</li>
 	<li>npm v5.6.0</li>
 	<li>Webstorm v2018.1.3</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">You'll also need a <a href="https://support.cloudflare.com/hc/en-us/articles/201720164" target="_blank" rel="noopener noreferrer">Cloudflare domain</a> and to <a href="https://www.cloudflare.com/a/workers" target="_blank" rel="noopener noreferrer">activate Workers</a> on it.</p>
-<p data-astro-cid-yoyuw6fx="">I'll be using cryptoserviceworker.com</p>
-<p data-astro-cid-yoyuw6fx="">I'll also use Yeoman to build our initial scaffolding. Install it with <code>npm install yo -g</code></p>
-<h2 data-astro-cid-yoyuw6fx="">Getting Started</h2>
-<p data-astro-cid-yoyuw6fx="">Let's start with a minimal node app with a "hello world" class and a test.</p>
+<p data-astro-cid-byeekcgh="">You'll also need a <a href="https://support.cloudflare.com/hc/en-us/articles/201720164" target="_blank" rel="noopener noreferrer">Cloudflare domain</a> and to <a href="https://www.cloudflare.com/a/workers" target="_blank" rel="noopener noreferrer">activate Workers</a> on it.</p>
+<p data-astro-cid-byeekcgh="">I'll be using cryptoserviceworker.com</p>
+<p data-astro-cid-byeekcgh="">I'll also use Yeoman to build our initial scaffolding. Install it with <code>npm install yo -g</code></p>
+<h2 data-astro-cid-byeekcgh="">Getting Started</h2>
+<p data-astro-cid-byeekcgh="">Let's start with a minimal node app with a "hello world" class and a test.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">mkdir</span><span class="sk-032f62-99ffe4"> cryptoserviceworker</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4"> cryptoserviceworker</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> generator-node-typescript</span><span class="sk-005cc5-99ffe4"> -g</span></span>
@@ -39,7 +39,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-yoyuw6fx="">That generator creates the following directory structure:</p>
+<p data-astro-cid-byeekcgh="">That generator creates the following directory structure:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">drwxr-xr-x</span><span class="sk-005cc5-ffc799">   16</span><span class="sk-032f62-99ffe4"> steve</span><span class="sk-032f62-99ffe4">  staff</span><span class="sk-005cc5-ffc799">     512</span><span class="sk-032f62-99ffe4"> Jun</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-032f62-99ffe4"> 20:40</span><span class="sk-032f62-99ffe4"> .</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">drwxr-xr-x</span><span class="sk-005cc5-ffc799">   10</span><span class="sk-032f62-99ffe4"> steve</span><span class="sk-032f62-99ffe4">  staff</span><span class="sk-005cc5-ffc799">     320</span><span class="sk-032f62-99ffe4"> Jun</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-032f62-99ffe4"> 20:35</span><span class="sk-032f62-99ffe4"> ..</span></span>
@@ -62,9 +62,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">It includes default settings, a task runner, an initial Typescript config and more. We won't use all of it, but it's a good starting point.</p>
-<h2 data-astro-cid-yoyuw6fx="">First Test</h2>
-<p data-astro-cid-yoyuw6fx="">If we take a look at the contents of <code>src/greeter.ts</code>, we'll see it's a very Typescript implementation of hello world.</p>
+<p data-astro-cid-byeekcgh="">It includes default settings, a task runner, an initial Typescript config and more. We won't use all of it, but it's a good starting point.</p>
+<h2 data-astro-cid-byeekcgh="">First Test</h2>
+<p data-astro-cid-byeekcgh="">If we take a look at the contents of <code>src/greeter.ts</code>, we'll see it's a very Typescript implementation of hello world.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> greeter.ts</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-24292e-fff"> class Greeter {</span></span>
@@ -83,7 +83,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Because Yeoman has set up our test infrastructure, we should be able exercise the code using the greeter test in <code>__tests__/greeter-spec.ts</code></p>
+<p data-astro-cid-byeekcgh="">Because Yeoman has set up our test infrastructure, we should be able exercise the code using the greeter test in <code>__tests__/greeter-spec.ts</code></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> Greeter</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> '../src/greeter'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -96,7 +96,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">This generator uses jest. It's installed locally, but let's install it globally for convenience and run it!</p>
+<p data-astro-cid-byeekcgh="">This generator uses jest. It's installed locally, but let's install it globally for convenience and run it!</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> jest</span><span class="sk-005cc5-99ffe4"> -g</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">jest</span></span>
@@ -114,14 +114,14 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">OK, so we have a testable Typescript template. Let's fire up Webstorm and write some code!</p>
-<h3 data-astro-cid-yoyuw6fx="">Hello, World with Workers</h3>
-<p data-astro-cid-yoyuw6fx="">A hello world implementation in Typescript might look something like this:</p>
+<p data-astro-cid-byeekcgh="">OK, so we have a testable Typescript template. Let's fire up Webstorm and write some code!</p>
+<h3 data-astro-cid-byeekcgh="">Hello, World with Workers</h3>
+<p data-astro-cid-byeekcgh="">A hello world implementation in Typescript might look something like this:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="383" height="139" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467H6HQP8BTFCMABN2529V.png&amp;w=383&amp;h=139&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467H6HQP8BTFCMABN2529V.png&amp;w=383&amp;h=139&amp;f=webp&amp;fit=cover&amp;position=center 383w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467H6HQP8BTFCMABN2529V.png&amp;w=640&amp;h=232&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467H6HQP8BTFCMABN2529V.png&amp;w=750&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467H6HQP8BTFCMABN2529V.png&amp;w=766&amp;h=278&amp;f=webp&amp;fit=cover&amp;position=center 766w" alt="Hello world first attempt" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467H6HQP8BTFCMABN2529V.png&amp;w=383&amp;h=139&amp;f=webp" data-lightbox-width="383" data-lightbox-height="139" data-astro-cid-7nvefuv6="true" sizes="(min-width: 383px) 383px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="383" height="139" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-yoyuw6fx="">Webstorm doesn't like it as you can see from the red error highlights. Even though Request and Response are part of the Service Worker API and will be available to us in the V8 runtime, Typescript doesn't know about them yet. <a href="https://www.npmjs.com/package/node-fetch" target="_blank" rel="noopener noreferrer">node-fetch</a> provides an implementation for node, so let’s install that.</p>
+<p data-astro-cid-byeekcgh="">Webstorm doesn't like it as you can see from the red error highlights. Even though Request and Response are part of the Service Worker API and will be available to us in the V8 runtime, Typescript doesn't know about them yet. <a href="https://www.npmjs.com/package/node-fetch" target="_blank" rel="noopener noreferrer">node-fetch</a> provides an implementation for node, so let’s install that.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> node-fetch</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> @types/node-fetch</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -130,11 +130,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">That made Webstorm happier. It’s been able to locate the type definitions.</p>
+<p data-astro-cid-byeekcgh="">That made Webstorm happier. It’s been able to locate the type definitions.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="444" height="149" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48N5WY6G92CD7N0WR6NGNF.png&amp;w=444&amp;h=149&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48N5WY6G92CD7N0WR6NGNF.png&amp;w=444&amp;h=149&amp;f=webp&amp;fit=cover&amp;position=center 444w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48N5WY6G92CD7N0WR6NGNF.png&amp;w=640&amp;h=215&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48N5WY6G92CD7N0WR6NGNF.png&amp;w=750&amp;h=252&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48N5WY6G92CD7N0WR6NGNF.png&amp;w=828&amp;h=278&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48N5WY6G92CD7N0WR6NGNF.png&amp;w=888&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 888w" alt="Hello world with type defs" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48N5WY6G92CD7N0WR6NGNF.png&amp;w=444&amp;h=149&amp;f=webp" data-lightbox-width="444" data-lightbox-height="149" data-astro-cid-7nvefuv6="true" sizes="(min-width: 444px) 444px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="444" height="149" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-yoyuw6fx="">Now let's write a test. Create a new file <strong>tests</strong>/worker-spec.ts:</p>
+<p data-astro-cid-byeekcgh="">Now let's write a test. Create a new file <strong>tests</strong>/worker-spec.ts:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Request } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "node-fetch"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Worker } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "../src/worker"</span><span class="sk-24292e-fff">;</span></span>
@@ -152,8 +152,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">And delete the other files and tests so we're just working worker.ts and worker-spect.ts</p>
-<p data-astro-cid-yoyuw6fx="">Run <code>jest</code></p>
+<p data-astro-cid-byeekcgh="">And delete the other files and tests so we're just working worker.ts and worker-spect.ts</p>
+<p data-astro-cid-byeekcgh="">Run <code>jest</code></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> PASS</span><span class="sk-032f62-99ffe4">  __tests__/worker-spec.ts</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> PASS</span><span class="sk-032f62-99ffe4">  __tests__/worker-spec.js</span></span>
@@ -167,9 +167,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">OK, so our test passed, but notice it ran both the Typescript and the Javascript? Let's restrict to just Typescript. Go into package.json, locate jest and change</p>
-<p data-astro-cid-yoyuw6fx=""><code>"testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js)$",</code> to<code>"testRegex": "(/__tests__/.*)\\-spec.ts$"</code></p>
-<p data-astro-cid-yoyuw6fx="">Run it again:</p>
+<p data-astro-cid-byeekcgh="">OK, so our test passed, but notice it ran both the Typescript and the Javascript? Let's restrict to just Typescript. Go into package.json, locate jest and change</p>
+<p data-astro-cid-byeekcgh=""><code>"testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js)$",</code> to<code>"testRegex": "(/__tests__/.*)\\-spec.ts$"</code></p>
+<p data-astro-cid-byeekcgh="">Run it again:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">jest</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> PASS</span><span class="sk-032f62-99ffe4">  __tests__/worker-spec.ts</span></span>
@@ -186,9 +186,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Better. OK, ship it!</p>
-<h3 data-astro-cid-yoyuw6fx="">From Local Typescript to Worker Compatible Javascript.</h3>
-<p data-astro-cid-yoyuw6fx="">Let's take a look at <code>src/worker.js</code> to see how our Typescript transpiled.</p>
+<p data-astro-cid-byeekcgh="">Better. OK, ship it!</p>
+<h3 data-astro-cid-byeekcgh="">From Local Typescript to Worker Compatible Javascript.</h3>
+<p data-astro-cid-byeekcgh="">Let's take a look at <code>src/worker.js</code> to see how our Typescript transpiled.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">"use strict"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">Object.</span><span class="sk-6f42c1-ffc799">defineProperty</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">exports</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"__esModule"</span><span class="sk-24292e-fff">, { value: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> });</span></span>
@@ -204,24 +204,24 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Actually, let's try it in the Cloudflare Workers IDE and try it for real. Go to your <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer">dashboard</a>, click the Workers icon and then "Launch Editor"</p>
+<p data-astro-cid-byeekcgh="">Actually, let's try it in the Cloudflare Workers IDE and try it for real. Go to your <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer">dashboard</a>, click the Workers icon and then "Launch Editor"</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="403" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481MX1A7821XN8QHEV8NQA.png&amp;w=715&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481MX1A7821XN8QHEV8NQA.png&amp;w=640&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481MX1A7821XN8QHEV8NQA.png&amp;w=715&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481MX1A7821XN8QHEV8NQA.png&amp;w=750&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481MX1A7821XN8QHEV8NQA.png&amp;w=828&amp;h=467&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481MX1A7821XN8QHEV8NQA.png&amp;w=1080&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481MX1A7821XN8QHEV8NQA.png&amp;w=1280&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481MX1A7821XN8QHEV8NQA.png&amp;w=1430&amp;h=806&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Workers Dashboard" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481MX1A7821XN8QHEV8NQA.png&amp;w=988&amp;h=557&amp;f=webp" data-lightbox-width="988" data-lightbox-height="557" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="403" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-yoyuw6fx="">First things first, check the canonical Hello World implementation works.</p>
+<p data-astro-cid-byeekcgh="">First things first, check the canonical Hello World implementation works.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="145" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MX2RSKDQWQTSFYT2FKFB.png&amp;w=715&amp;h=145&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MX2RSKDQWQTSFYT2FKFB.png&amp;w=640&amp;h=130&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MX2RSKDQWQTSFYT2FKFB.png&amp;w=715&amp;h=145&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MX2RSKDQWQTSFYT2FKFB.png&amp;w=750&amp;h=152&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MX2RSKDQWQTSFYT2FKFB.png&amp;w=828&amp;h=168&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MX2RSKDQWQTSFYT2FKFB.png&amp;w=1080&amp;h=219&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MX2RSKDQWQTSFYT2FKFB.png&amp;w=1280&amp;h=260&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MX2RSKDQWQTSFYT2FKFB.png&amp;w=1430&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Hello world in IDE" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MX2RSKDQWQTSFYT2FKFB.png&amp;w=1033&amp;h=210&amp;f=webp" data-lightbox-width="1033" data-lightbox-height="210" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="145" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-yoyuw6fx="">Awesome, now let's replace it with our "transpiled from Typescript" version:</p>
+<p data-astro-cid-byeekcgh="">Awesome, now let's replace it with our "transpiled from Typescript" version:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="452" height="370" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YCY7K8EPM34XG0HVDZ5G.png&amp;w=452&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YCY7K8EPM34XG0HVDZ5G.png&amp;w=452&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center 452w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YCY7K8EPM34XG0HVDZ5G.png&amp;w=640&amp;h=524&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YCY7K8EPM34XG0HVDZ5G.png&amp;w=750&amp;h=614&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YCY7K8EPM34XG0HVDZ5G.png&amp;w=828&amp;h=678&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YCY7K8EPM34XG0HVDZ5G.png&amp;w=904&amp;h=740&amp;f=webp&amp;fit=cover&amp;position=center 904w" alt="Fail 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YCY7K8EPM34XG0HVDZ5G.png&amp;w=452&amp;h=370&amp;f=webp" data-lightbox-width="452" data-lightbox-height="370" data-astro-cid-7nvefuv6="true" sizes="(min-width: 452px) 452px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="452" height="370" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-yoyuw6fx="">Fail. OK, so the out of the box "transpiled from typescript" is not going to work. Let's make the changes necessary to get it run manually, then incorporate that into the build process.</p>
-<p data-astro-cid-yoyuw6fx=""><strong>Error #1: Uncaught ReferenceError: exports is not defined at line 2</strong>That's easy enough, let's add <code>var exports = {}</code>. Update Preview.</p>
-<p data-astro-cid-yoyuw6fx=""><strong>Error #2: Uncaught ReferenceError: require is not defined at line 4</strong></p>
-<p data-astro-cid-yoyuw6fx="">True, we're running in V8 on the Cloudflare Edge and the only code is what we uploaded. There are no "node_modules" to include. Plus, that line was only for dev anyway. Remove it. Update Preview.</p>
-<p data-astro-cid-yoyuw6fx=""><strong>Error #3: No event handlers were registered. This script does nothing.</strong></p>
-<p data-astro-cid-yoyuw6fx="">Right, we need to invoke the code. Let's add a snippet to the top of the file to actually invoke our worker.</p>
+<p data-astro-cid-byeekcgh="">Fail. OK, so the out of the box "transpiled from typescript" is not going to work. Let's make the changes necessary to get it run manually, then incorporate that into the build process.</p>
+<p data-astro-cid-byeekcgh=""><strong>Error #1: Uncaught ReferenceError: exports is not defined at line 2</strong>That's easy enough, let's add <code>var exports = {}</code>. Update Preview.</p>
+<p data-astro-cid-byeekcgh=""><strong>Error #2: Uncaught ReferenceError: require is not defined at line 4</strong></p>
+<p data-astro-cid-byeekcgh="">True, we're running in V8 on the Cloudflare Edge and the only code is what we uploaded. There are no "node_modules" to include. Plus, that line was only for dev anyway. Remove it. Update Preview.</p>
+<p data-astro-cid-byeekcgh=""><strong>Error #3: No event handlers were registered. This script does nothing.</strong></p>
+<p data-astro-cid-byeekcgh="">Right, we need to invoke the code. Let's add a snippet to the top of the file to actually invoke our worker.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> worker </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-005cc5-ffc799"> exports</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">Worker</span><span class="sk-24292e-fff">();</span></span>
@@ -232,23 +232,23 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx=""><strong>Error #4: Uncaught ReferenceError: <code>node_fetch_1</code> is not defined</strong></p>
-<p data-astro-cid-yoyuw6fx="">Right, we removed that because <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request" target="_blank" rel="noopener noreferrer">Response</a> is a native object when it runs in the context of a worker. So remove the <code>node_fetch_1</code> prefix.</p>
-<p data-astro-cid-yoyuw6fx=""><strong>Error #5: exports.__esModule = true does nothing</strong></p>
-<p data-astro-cid-yoyuw6fx="">So let's remove that.</p>
-<p data-astro-cid-yoyuw6fx="">Success!!</p>
+<p data-astro-cid-byeekcgh=""><strong>Error #4: Uncaught ReferenceError: <code>node_fetch_1</code> is not defined</strong></p>
+<p data-astro-cid-byeekcgh="">Right, we removed that because <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request" target="_blank" rel="noopener noreferrer">Response</a> is a native object when it runs in the context of a worker. So remove the <code>node_fetch_1</code> prefix.</p>
+<p data-astro-cid-byeekcgh=""><strong>Error #5: exports.__esModule = true does nothing</strong></p>
+<p data-astro-cid-byeekcgh="">So let's remove that.</p>
+<p data-astro-cid-byeekcgh="">Success!!</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="362" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481SFJXZDGBHKA49TR2DSN.png&amp;w=715&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481SFJXZDGBHKA49TR2DSN.png&amp;w=640&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481SFJXZDGBHKA49TR2DSN.png&amp;w=715&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481SFJXZDGBHKA49TR2DSN.png&amp;w=750&amp;h=380&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481SFJXZDGBHKA49TR2DSN.png&amp;w=828&amp;h=419&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481SFJXZDGBHKA49TR2DSN.png&amp;w=1080&amp;h=547&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481SFJXZDGBHKA49TR2DSN.png&amp;w=1280&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481SFJXZDGBHKA49TR2DSN.png&amp;w=1430&amp;h=724&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Success" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481SFJXZDGBHKA49TR2DSN.png&amp;w=752&amp;h=381&amp;f=webp" data-lightbox-width="752" data-lightbox-height="381" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="362" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-yoyuw6fx="">OK, so with some massaging, we got a Worker transpiled from Typescript to execute. We:</p>
+<p data-astro-cid-byeekcgh="">OK, so with some massaging, we got a Worker transpiled from Typescript to execute. We:</p>
 <ul>
 	<li>Added a line to create an exports object</li>
 	<li>Removed the dev dependency on "node_fetch"</li>
 	<li>Removed the exports.__esModule = true line</li>
 </ul>
-<p data-astro-cid-yoyuw6fx="">Let's add that to our build process so we can have "Worker-ready" Javascript every time we make a change to our Typescript.</p>
-<h3 data-astro-cid-yoyuw6fx="">Grunt</h3>
-<p data-astro-cid-yoyuw6fx="">I'm going to use Grunt to automate that. Here's my new <code>worker.ts</code></p>
+<p data-astro-cid-byeekcgh="">Let's add that to our build process so we can have "Worker-ready" Javascript every time we make a change to our Typescript.</p>
+<h3 data-astro-cid-byeekcgh="">Grunt</h3>
+<p data-astro-cid-byeekcgh="">I'm going to use Grunt to automate that. Here's my new <code>worker.ts</code></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// --BEGIN PREAMBLE--</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">/// //Invoke worker</span></span>
@@ -277,7 +277,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">I want to uncomment the preamble to invoke our script, comment out the dev dependencies and remove the __esmodule line. Let's install Grunt, a text-replace module and create a <code>Gruntfile.js</code></p>
+<p data-astro-cid-byeekcgh="">I want to uncomment the preamble to invoke our script, comment out the dev dependencies and remove the __esmodule line. Let's install Grunt, a text-replace module and create a <code>Gruntfile.js</code></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> grunt-cli</span><span class="sk-005cc5-99ffe4"> -g</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> grunt</span><span class="sk-005cc5-99ffe4"> --save-dev</span></span>
@@ -288,7 +288,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">My <code>Gruntfile.js</code> looks like this</p>
+<p data-astro-cid-byeekcgh="">My <code>Gruntfile.js</code> looks like this</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">module.exports = function (grunt) {</span></span>
 <span class="line"></span>
@@ -341,8 +341,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">There are two tasks. The first is the comment/uncomment step that we want before our Typescript is transpiled.</p>
-<p data-astro-cid-yoyuw6fx="">The second is to remove the <code>exports.__esmodule = true</code> line</p>
+<p data-astro-cid-byeekcgh="">There are two tasks. The first is the comment/uncomment step that we want before our Typescript is transpiled.</p>
+<p data-astro-cid-byeekcgh="">The second is to remove the <code>exports.__esmodule = true</code> line</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> grunt</span><span class="sk-032f62-99ffe4"> prepare-typescript</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Running</span><span class="sk-032f62-99ffe4"> "replace:comments"</span><span class="sk-24292e-fff"> (replace) task</span></span>
@@ -354,7 +354,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">If we open <code>build/worker.ts</code>, we see this:</p>
+<p data-astro-cid-byeekcgh="">If we open <code>build/worker.ts</code>, we see this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// --BEGIN PREAMBLE--</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"> //Invoke worker</span></span>
@@ -380,7 +380,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Opening <code>build/worker.js</code> you'll see a whole lot of code generated for handling async functions. That's because we're using the <code>async</code> keyword in the preamble.</p>
+<p data-astro-cid-byeekcgh="">Opening <code>build/worker.js</code> you'll see a whole lot of code generated for handling async functions. That's because we're using the <code>async</code> keyword in the preamble.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">"use strict"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">var</span><span class="sk-032f62-99ffe4"> __awaiter</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> (this &amp;&amp; </span><span class="sk-6f42c1-ffc799">this.__awaiter</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-24292e-fff"> function (</span><span class="sk-6f42c1-ffc799">thisArg,</span><span class="sk-032f62-99ffe4"> _arguments,</span><span class="sk-032f62-99ffe4"> P,</span><span class="sk-032f62-99ffe4"> generator</span><span class="sk-24292e-fff">) {</span></span>
@@ -450,14 +450,14 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Now let's remove that <code>exports.__esModule = true</code> line.</p>
-<p data-astro-cid-yoyuw6fx=""><code>grunt fix-export</code></p>
-<p data-astro-cid-yoyuw6fx="">and now we'll see instead in the worker.js <code>// exports line commented by build</code>.</p>
-<h3 data-astro-cid-yoyuw6fx="">Put it together</h3>
-<p data-astro-cid-yoyuw6fx="">I just want to run <code>npm run build</code> and get Worker-friendly Javascript. Let's modify <code>package.json</code> to do just that. Change</p>
-<p data-astro-cid-yoyuw6fx=""><code>"build": "tsc --pretty"</code> to <code>"build": "grunt prepare-typescript &amp;&amp; tsc build/*.ts --pretty --skipLibCheck; grunt fix-export",</code></p>
-<p data-astro-cid-yoyuw6fx="">And run it.</p>
-<p data-astro-cid-yoyuw6fx=""><code>npm run build</code> will result in</p>
+<p data-astro-cid-byeekcgh="">Now let's remove that <code>exports.__esModule = true</code> line.</p>
+<p data-astro-cid-byeekcgh=""><code>grunt fix-export</code></p>
+<p data-astro-cid-byeekcgh="">and now we'll see instead in the worker.js <code>// exports line commented by build</code>.</p>
+<h3 data-astro-cid-byeekcgh="">Put it together</h3>
+<p data-astro-cid-byeekcgh="">I just want to run <code>npm run build</code> and get Worker-friendly Javascript. Let's modify <code>package.json</code> to do just that. Change</p>
+<p data-astro-cid-byeekcgh=""><code>"build": "tsc --pretty"</code> to <code>"build": "grunt prepare-typescript &amp;&amp; tsc build/*.ts --pretty --skipLibCheck; grunt fix-export",</code></p>
+<p data-astro-cid-byeekcgh="">And run it.</p>
+<p data-astro-cid-byeekcgh=""><code>npm run build</code> will result in</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">"use strict"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">var</span><span class="sk-032f62-99ffe4"> __awaiter</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> (this &amp;&amp; </span><span class="sk-6f42c1-ffc799">this.__awaiter</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-24292e-fff"> function (</span><span class="sk-6f42c1-ffc799">thisArg,</span><span class="sk-032f62-99ffe4"> _arguments,</span><span class="sk-032f62-99ffe4"> P,</span><span class="sk-032f62-99ffe4"> generator</span><span class="sk-24292e-fff">) {</span></span>
@@ -527,12 +527,12 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Paste that into the Workers IDE... works first time.</p>
-<h3 data-astro-cid-yoyuw6fx="">Automated upload</h3>
-<p data-astro-cid-yoyuw6fx="">It's going to get old uploading from our IDE to the Web IDE every time we want to test a change and we're going to want to auto deploy from CI at some point. Thankfully there's <a href="https://developers.cloudflare.com/workers/api" target="_blank" rel="noopener noreferrer">Workers Configuration API</a>, which makes it very simple to upload a Worker automatically:</p>
-<p data-astro-cid-yoyuw6fx=""><code>curl -X PUT "https://api.cloudflare.com/client/v4/zones/:zone_id/workers/script" -H "X-Auth-Email:YOUR_CLOUDFLARE_EMAIL" -H "X-Auth-Key:ACCOUNT_AUTH_KEY" -H "Content-Type:application/javascript" --data-binary "@PATH_TO_YOUR_WORKER_SCRIPT"</code></p>
-<p data-astro-cid-yoyuw6fx="">OK, so we need our zone ID, Cloudflare email, auth key and path to the binary. I'm going to create Grunt task that uses the <a href="https://www.npmjs.com/package/dotenv" target="_blank" rel="noopener noreferrer">dotenv</a> package to load config from a .env file or environment variables.</p>
-<p data-astro-cid-yoyuw6fx="">Create a <code>.env</code> file that looks like this:</p>
+<p data-astro-cid-byeekcgh="">Paste that into the Workers IDE... works first time.</p>
+<h3 data-astro-cid-byeekcgh="">Automated upload</h3>
+<p data-astro-cid-byeekcgh="">It's going to get old uploading from our IDE to the Web IDE every time we want to test a change and we're going to want to auto deploy from CI at some point. Thankfully there's <a href="https://developers.cloudflare.com/workers/api" target="_blank" rel="noopener noreferrer">Workers Configuration API</a>, which makes it very simple to upload a Worker automatically:</p>
+<p data-astro-cid-byeekcgh=""><code>curl -X PUT "https://api.cloudflare.com/client/v4/zones/:zone_id/workers/script" -H "X-Auth-Email:YOUR_CLOUDFLARE_EMAIL" -H "X-Auth-Key:ACCOUNT_AUTH_KEY" -H "Content-Type:application/javascript" --data-binary "@PATH_TO_YOUR_WORKER_SCRIPT"</code></p>
+<p data-astro-cid-byeekcgh="">OK, so we need our zone ID, Cloudflare email, auth key and path to the binary. I'm going to create Grunt task that uses the <a href="https://www.npmjs.com/package/dotenv" target="_blank" rel="noopener noreferrer">dotenv</a> package to load config from a .env file or environment variables.</p>
+<p data-astro-cid-byeekcgh="">Create a <code>.env</code> file that looks like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">CF_WORKER_ZONE_ID</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">xxxxxxxxxxxxxxxxxxx</span></span>
 <span class="line"><span class="sk-24292e-fff">CF_WORKER_EMAIL</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">steve@example.com</span></span>
@@ -543,15 +543,15 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">To locate your zone ID and auth key, go to the dashboard, select your zone and click the "Overview" icon.</p>
+<p data-astro-cid-byeekcgh="">To locate your zone ID and auth key, go to the dashboard, select your zone and click the "Overview" icon.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="484" height="219" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TD7N31DVDQH1CT9HY9NN.png&amp;w=484&amp;h=219&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TD7N31DVDQH1CT9HY9NN.png&amp;w=484&amp;h=219&amp;f=webp&amp;fit=cover&amp;position=center 484w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TD7N31DVDQH1CT9HY9NN.png&amp;w=640&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TD7N31DVDQH1CT9HY9NN.png&amp;w=750&amp;h=339&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TD7N31DVDQH1CT9HY9NN.png&amp;w=828&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TD7N31DVDQH1CT9HY9NN.png&amp;w=968&amp;h=438&amp;f=webp&amp;fit=cover&amp;position=center 968w" alt="Overview" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TD7N31DVDQH1CT9HY9NN.png&amp;w=484&amp;h=219&amp;f=webp" data-lightbox-width="484" data-lightbox-height="219" data-astro-cid-7nvefuv6="true" sizes="(min-width: 484px) 484px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="484" height="219" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-yoyuw6fx="">The zone ID is right there, then click "Get API key" and choose the "Global API Key" to get the Auth Key.</p>
+<p data-astro-cid-byeekcgh="">The zone ID is right there, then click "Get API key" and choose the "Global API Key" to get the Auth Key.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="146" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469R4SYPSRF9PY7YT5WQ0E.png&amp;w=715&amp;h=146&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469R4SYPSRF9PY7YT5WQ0E.png&amp;w=640&amp;h=131&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469R4SYPSRF9PY7YT5WQ0E.png&amp;w=715&amp;h=146&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469R4SYPSRF9PY7YT5WQ0E.png&amp;w=750&amp;h=153&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469R4SYPSRF9PY7YT5WQ0E.png&amp;w=828&amp;h=169&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469R4SYPSRF9PY7YT5WQ0E.png&amp;w=1080&amp;h=221&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469R4SYPSRF9PY7YT5WQ0E.png&amp;w=1280&amp;h=261&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469R4SYPSRF9PY7YT5WQ0E.png&amp;w=1430&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="API key" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469R4SYPSRF9PY7YT5WQ0E.png&amp;w=936&amp;h=191&amp;f=webp" data-lightbox-width="936" data-lightbox-height="191" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="146" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-yoyuw6fx="">Fill out your .env with those values and then add the following to your Gruntfile which will:</p>
+<p data-astro-cid-byeekcgh="">Fill out your .env with those values and then add the following to your Gruntfile which will:</p>
 <ul>
 	<li>Read your config</li>
 	<li>Upload to Cloudflare</li>
@@ -665,8 +665,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Finally, let's add a new task to <code>package.json</code> so we can just <code>npm run upload</code> any time we update our Worker.</p>
-<p data-astro-cid-yoyuw6fx=""><code>"upload": "grunt upload-worker"</code></p>
+<p data-astro-cid-byeekcgh="">Finally, let's add a new task to <code>package.json</code> so we can just <code>npm run upload</code> any time we update our Worker.</p>
+<p data-astro-cid-byeekcgh=""><code>"upload": "grunt upload-worker"</code></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> upload-worker</span></span>
 <span class="line"></span>
@@ -687,13 +687,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Voila! Script uploaded. OK, so if it's uploaded, we can call call it remotely:</p>
-<p data-astro-cid-yoyuw6fx=""><code>$ curl https://cryptoserviceworker.com/hello</code></p>
-<p data-astro-cid-yoyuw6fx="">Hmmm... nothing. Ah, we haven't actually configured Workers to route any requests to our Worker. You can do this via the API, but since it's a one off, I'll do it in the web IDE.</p>
+<p data-astro-cid-byeekcgh="">Voila! Script uploaded. OK, so if it's uploaded, we can call call it remotely:</p>
+<p data-astro-cid-byeekcgh=""><code>$ curl https://cryptoserviceworker.com/hello</code></p>
+<p data-astro-cid-byeekcgh="">Hmmm... nothing. Ah, we haven't actually configured Workers to route any requests to our Worker. You can do this via the API, but since it's a one off, I'll do it in the web IDE.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="411" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48V23BF21W5V9NAKBA4958.png&amp;w=715&amp;h=411&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48V23BF21W5V9NAKBA4958.png&amp;w=640&amp;h=368&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48V23BF21W5V9NAKBA4958.png&amp;w=715&amp;h=411&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48V23BF21W5V9NAKBA4958.png&amp;w=750&amp;h=431&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48V23BF21W5V9NAKBA4958.png&amp;w=828&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48V23BF21W5V9NAKBA4958.png&amp;w=1080&amp;h=621&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48V23BF21W5V9NAKBA4958.png&amp;w=1280&amp;h=736&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48V23BF21W5V9NAKBA4958.png&amp;w=1430&amp;h=822&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Add routes" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48V23BF21W5V9NAKBA4958.png&amp;w=776&amp;h=446&amp;f=webp" data-lightbox-width="776" data-lightbox-height="446" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="411" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-yoyuw6fx="">And try again:</p>
+<p data-astro-cid-byeekcgh="">And try again:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-032f62-99ffe4"> https://cryptoserviceworker.com/hello</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> world!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -702,7 +702,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-yoyuw6fx="">Success! OK, so to recap:</p>
+<p data-astro-cid-byeekcgh="">Success! OK, so to recap:</p>
 <ul>
 	<li>We've bootstrapped a Typescript project using NodeJS and Webstorm</li>
 	<li>Written a "Hello, World" worker in Typescript</li>
@@ -711,5 +711,5 @@
 	<li>...</li>
 	<li>Profit</li>
 </ul>
-<hr class="emdash-break emdash-break-line" data-astro-cid-7mewxrht="">
-<p data-astro-cid-yoyuw6fx=""><em>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange" target="_blank" rel="noopener noreferrer">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers" target="_blank" rel="noopener noreferrer">Cloudflare Community Forum</a>.</em></p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-yq53pyv4="">
+<p data-astro-cid-byeekcgh=""><em>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange" target="_blank" rel="noopener noreferrer">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers" target="_blank" rel="noopener noreferrer">Cloudflare Community Forum</a>.</em></p>
