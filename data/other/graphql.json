@@ -487,6 +487,7 @@
 	"AccountAiGatewayConversationAnalysesAdaptive": {
 		"__description": "Individual analyzed AI Gateway conversations. This list is a sample: adaptive sampling means not every conversation is retained as a row, and counts extrapolate through sampleInterval while listings do not - an aggregate may report more conversations than this node can list. A conversation active across several analysis periods appears once per period, each row with that period's usage; conversationId identifies repeats",
 		"assistantTurns": "Assistant turns in the analyzed trajectory",
+		"chosenCheaper": "1 when the pick has a known price and chosenCostEstimate is below costEstimate; 0 also covers a pick with no known price",
 		"chosenCostEstimate": "Estimated cost in USD had the classifier's pick served this row's requests, at that model's per-token prices; 0 when the pick has no known price (chosenPriced = 0) or nothing was measured",
 		"chosenPriced": "1 when a price is known for the classifier's pick; 0 means chosenCostEstimate and savingEstimate are absent, not zero",
 		"classifierChosen": "Model the classifier judged the cheapest sufficient for the conversation; its id may be spelled differently from servedModel's. Empty when not classified",
@@ -501,7 +502,7 @@
 		"outcome": "'ok' when analyzed end to end, 'skip' when refused",
 		"requiredTier": "Cheapest tier judged sufficient; empty when not classified or when verdict is 'skip'",
 		"sampleInterval": "How many rows this row stands for under adaptive sampling; multiply when extrapolating from listed rows",
-		"savingEstimate": "costEstimate minus chosenCostEstimate, positive where the pick is cheaper; 0 when the pick has no known price",
+		"savingEstimate": "costEstimate minus chosenCostEstimate; 0 when the pick has no known price. The two sides are estimated differently, so it can be negative even for a cheaper model - chosenCheaper marks the rows where it is positive",
 		"servedModel": "The provider/model that served the analyzed part of the conversation; empty when not classified",
 		"servedTier": "Tier of the served model; empty when not classified or when verdict is 'skip'",
 		"sessionId": "Application or framework session identifier",
@@ -574,8 +575,8 @@
 	"AccountAiGatewayConversationAnalysesAdaptiveGroupsSum": {
 		"__description": "",
 		"chosenCostEstimate": "Total estimated cost in USD had the classifier's pick served the grouped conversations, their token counts priced at that model's per-token prices. A row whose pick has no known price (chosenPriced = 0) contributes 0, so subtract this from costEstimate only under a chosenPriced filter - or read savingEstimate, which does that",
-		"costEstimate": "Total estimated cost in USD across the grouped conversations; an estimate from token counts and model rates, not a billing figure, and cached input is priced as fresh",
-		"savingEstimate": "costEstimate minus chosenCostEstimate over rows whose pick has a known price: the estimated USD saved had the classifier's pick served them. Positive where the pick is cheaper; filter verdict to 'overkill' for the conversations a cheaper model would have handled. On the same footing as costEstimate (an estimate, cached input priced as fresh), and a conversation that used several models has every token repriced",
+		"costEstimate": "Total estimated cost in USD across the grouped conversations: the cost the gateway logged for each request, summed. Not a billing figure",
+		"savingEstimate": "costEstimate minus chosenCostEstimate over rows whose pick has a known price: the estimated USD saved had the classifier's pick served them. Filter verdict to 'overkill' for the conversations a cheaper model would have handled. The two sides are estimated differently, so a row can come out negative even where the pick is the cheaper model; filter chosenCheaper to 1 to leave those out. A conversation that used several models has every token repriced",
 		"tokensIn": "Total input tokens across the grouped conversations",
 		"tokensInCached": "Cached part of the total input tokens (provider-side prompt caching), not a pool beside tokensIn",
 		"tokensOut": "Total output tokens across the grouped conversations"
@@ -599,6 +600,7 @@
 	"AccountAiGatewayConversationAnalysesStagingAdaptive": {
 		"__description": "Individual analyzed AI Gateway conversations with adaptive sampling (staging)",
 		"assistantTurns": "Assistant turns in the analyzed trajectory",
+		"chosenCheaper": "1 when the pick has a known price and chosenCostEstimate is below costEstimate; 0 also covers a pick with no known price",
 		"chosenCostEstimate": "Estimated cost in USD had the classifier's pick served this row's requests, at that model's per-token prices; 0 when the pick has no known price (chosenPriced = 0) or nothing was measured",
 		"chosenPriced": "1 when a price is known for the classifier's pick; 0 means chosenCostEstimate and savingEstimate are absent, not zero",
 		"classifierChosen": "Model the classifier judged the cheapest sufficient for the conversation; its id may be spelled differently from servedModel's. Empty when not classified",
@@ -613,7 +615,7 @@
 		"outcome": "'ok' when analyzed end to end, 'skip' when refused",
 		"requiredTier": "Cheapest tier judged sufficient; empty when not classified or when verdict is 'skip'",
 		"sampleInterval": "How many rows this row stands for under adaptive sampling; multiply when extrapolating from listed rows",
-		"savingEstimate": "costEstimate minus chosenCostEstimate, positive where the pick is cheaper; 0 when the pick has no known price",
+		"savingEstimate": "costEstimate minus chosenCostEstimate; 0 when the pick has no known price. The two sides are estimated differently, so it can be negative even for a cheaper model - chosenCheaper marks the rows where it is positive",
 		"servedModel": "The provider/model that served the analyzed part of the conversation; empty when not classified",
 		"servedTier": "Tier of the served model; empty when not classified or when verdict is 'skip'",
 		"sessionId": "Application or framework session identifier",
@@ -686,8 +688,8 @@
 	"AccountAiGatewayConversationAnalysesStagingAdaptiveGroupsSum": {
 		"__description": "",
 		"chosenCostEstimate": "Total estimated cost in USD had the classifier's pick served the grouped conversations, their token counts priced at that model's per-token prices. A row whose pick has no known price (chosenPriced = 0) contributes 0, so subtract this from costEstimate only under a chosenPriced filter - or read savingEstimate, which does that",
-		"costEstimate": "Total estimated cost in USD across the grouped conversations; an estimate from token counts and model rates, not a billing figure, and cached input is priced as fresh",
-		"savingEstimate": "costEstimate minus chosenCostEstimate over rows whose pick has a known price: the estimated USD saved had the classifier's pick served them. Positive where the pick is cheaper; filter verdict to 'overkill' for the conversations a cheaper model would have handled. On the same footing as costEstimate (an estimate, cached input priced as fresh), and a conversation that used several models has every token repriced",
+		"costEstimate": "Total estimated cost in USD across the grouped conversations: the cost the gateway logged for each request, summed. Not a billing figure",
+		"savingEstimate": "costEstimate minus chosenCostEstimate over rows whose pick has a known price: the estimated USD saved had the classifier's pick served them. Filter verdict to 'overkill' for the conversations a cheaper model would have handled. The two sides are estimated differently, so a row can come out negative even where the pick is the cheaper model; filter chosenCheaper to 1 to leave those out. A conversation that used several models has every token repriced",
 		"tokensIn": "Total input tokens across the grouped conversations",
 		"tokensInCached": "Cached part of the total input tokens (provider-side prompt caching), not a pool beside tokensIn",
 		"tokensOut": "Total output tokens across the grouped conversations"
@@ -8957,6 +8959,10 @@
 		"buyer": "The buyer wallet. Empty for outcomes without a known buyer.",
 		"date": "The date the payment outcome occurred",
 		"datetime": "The date and time the payment outcome occurred",
+		"datetimeFifteenMinutes": "The date and time the payment outcome occurred truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time the payment outcome occurred truncated to five minutes",
+		"datetimeHour": "The date and time the payment outcome occurred truncated to the hour",
+		"datetimeMinute": "The date and time the payment outcome occurred truncated to the minute",
 		"errorCode": "The coordinator error code, or an empty string when no error occurred",
 		"event": "The payment outcome, such as payment_required, settled, or settle_rejected",
 		"host": "The origin host.",
@@ -10662,6 +10668,9 @@
 	"AccountRumPageloadEventsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"bot": "Indicates if the request is likely from a bot (non-human traffic). Returns 1 if from a bot, 0 otherwise.",
+		"browserEngine": "Browser engine name (e.g. Blink, Gecko, WebKit)",
+		"browserEngineVersion": "Browser engine version string (e.g. 131)",
+		"browserVersion": "Browser version string (e.g. 131, 18.3)",
 		"countryName": "Client country ISO 3166 alpha2 code",
 		"customTagInternalSxg": "Signed Exchange enabled status",
 		"date": "Request date from browser",
@@ -10673,6 +10682,7 @@
 		"deliveryType": "Delivery type of the request",
 		"deviceType": "Device type used for view the page",
 		"navigationType": "Navigation type of the request",
+		"osVersion": "OS version string (e.g. 15.2, 10)",
 		"refererHost": "Host of the HTTP request referer",
 		"refererPath": "Path of the HTTP request referer",
 		"refererScheme": "Scheme of the HTTP request referer (http or https)",
@@ -10731,6 +10741,9 @@
 	"AccountRumPerformanceEventsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"bot": "Indicates if the request is likely from a bot (non-human traffic). Returns 1 if from a bot, 0 otherwise.",
+		"browserEngine": "Browser engine name (e.g. Blink, Gecko, WebKit)",
+		"browserEngineVersion": "Browser engine version string (e.g. 131)",
+		"browserVersion": "Browser version string (e.g. 131, 18.3)",
 		"countryName": "Client country ISO 3166 alpha2 code",
 		"customTagInternalSxg": "Signed Exchange enabled status",
 		"date": "Request date from browser",
@@ -10742,6 +10755,7 @@
 		"deliveryType": "Delivery type of the request",
 		"deviceType": "Device type used for view the page",
 		"navigationType": "Navigation type of the request",
+		"osVersion": "OS version string (e.g. 15.2, 10)",
 		"refererHost": "Host of the HTTP request referer",
 		"refererPath": "Path of the HTTP request referer",
 		"refererScheme": "Scheme of the HTTP request referer (http or https)",
@@ -10856,6 +10870,9 @@
 	"AccountRumWebVitalsEventsAdaptive": {
 		"__description": "Beta. RUM Web Vitals event metrics with adaptive sampling",
 		"bot": "Indicates if the request is likely from a bot (non-human traffic). Returns 1 if from a bot, 0 otherwise.",
+		"browserEngine": "Browser engine name (e.g. Blink, Gecko, WebKit)",
+		"browserEngineVersion": "Browser engine version string (e.g. 131)",
+		"browserVersion": "Browser version string (e.g. 131, 18.3)",
 		"countryName": "Client country ISO 3166 alpha2 code",
 		"cumulativeLayoutShift": "Cumulative Layout Shift (Core Web Vitals) (-1 indicates N/A)",
 		"cumulativeLayoutShiftCurrentRect": "Layout values of the rectangular area after the changes",
@@ -10892,6 +10909,7 @@
 		"lcpResourceLoadDelay": "Largest Contentful Paint resource load delay in microseconds (-1 indicates N/A)",
 		"lcpResourceLoadTime": "Largest Contentful Paint resource load time in microseconds (-1 indicates N/A)",
 		"navigationType": "Navigation type of the request",
+		"osVersion": "OS version string (e.g. 15.2, 10)",
 		"refererHost": "Host of the HTTP request referer",
 		"refererPath": "Path of the HTTP request referer",
 		"refererScheme": "Scheme of the HTTP request referer (http or https)",
@@ -10941,6 +10959,9 @@
 	"AccountRumWebVitalsEventsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"bot": "Indicates if the request is likely from a bot (non-human traffic). Returns 1 if from a bot, 0 otherwise.",
+		"browserEngine": "Browser engine name (e.g. Blink, Gecko, WebKit)",
+		"browserEngineVersion": "Browser engine version string (e.g. 131)",
+		"browserVersion": "Browser version string (e.g. 131, 18.3)",
 		"countryName": "Client country ISO 3166 alpha2 code",
 		"cumulativeLayoutShiftElement": "DOM selector name of the largest layout shift",
 		"cumulativeLayoutShiftPath": "Observed path of the Cumulative Layout Shift (Core Web Vitals)",
@@ -10967,6 +10988,7 @@
 		"lcpFetchPriority": "Fetch priority of the LCP element.",
 		"lcpInitiatorType": "Initiator type of the LCP element.",
 		"navigationType": "Navigation type of the request",
+		"osVersion": "OS version string (e.g. 15.2, 10)",
 		"refererHost": "Host of the HTTP request referer",
 		"refererPath": "Path of the HTTP request referer",
 		"refererScheme": "Scheme of the HTTP request referer (http or https)",
@@ -13777,6 +13799,7 @@
 		"lccUsernameLeakedCount": "Number of events whose Leaked Credential Check result indicates a leaked username or similar password.",
 		"successfulLoginCount": "Number of successful login events.",
 		"topASNCounts": "Approximate event counts for topASNs.",
+		"topASNDescriptions": "Client ASN network operator names, positionally aligned with topASNs and topASNCounts. Entries are UNKNOWN when the operator cannot be identified.",
 		"topASNs": "Top 10 client ASNs, positionally aligned with topASNCounts.",
 		"topCountries": "Top 10 country codes, positionally aligned with topCountryCounts.",
 		"topCountryCounts": "Approximate event counts for topCountries.",
@@ -17295,7 +17318,7 @@
 		"__description": "Scalar type types.Float32"
 	},
 	"float64": {
-		"__description": "Scalar type types.Float64"
+		"__description": "Scalar type float64"
 	},
 	"int16": {
 		"__description": "Scalar type int16"
