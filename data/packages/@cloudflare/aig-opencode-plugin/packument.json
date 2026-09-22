@@ -1,36 +1,74 @@
 {
 	"name": "@cloudflare/aig-opencode-plugin",
 	"dist-tags": {
-		"latest": "2026.9.18"
+		"latest": "2026.9.20"
 	},
 	"versions": {
 		"2026.9.18": {
 			"name": "@cloudflare/aig-opencode-plugin",
 			"version": "2026.9.18",
 			"dependencies": {
-				"@opencode-ai/plugin": "1.18.4",
+				"solid-js": "1.9.15",
 				"@opentui/core": "0.4.2",
 				"@opentui/solid": "0.4.2",
-				"solid-js": "1.9.15"
+				"@opencode-ai/plugin": "1.18.4"
 			},
 			"devDependencies": {
 				"vitest": "4.1.10",
-				"@repo/eslint-config": "0.0.0",
 				"@repo/tools": "0.0.0",
+				"@repo/eslint-config": "0.0.0",
 				"@repo/typescript-config": "0.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-OASx5kLlgB22fRSiLsndZB0QfscLiEzDvYfmVGIkMlAYwkak9miQEaPRhtAVEGx1jM5cayP24kOA16JrEcxTzA==",
 				"shasum": "69d863a3d1fc428971b746729633d70130c3cb9d",
 				"tarball": "https://registry.npmjs.org/@cloudflare/aig-opencode-plugin/-/aig-opencode-plugin-2026.9.18.tgz",
 				"fileCount": 16,
-				"unpackedSize": 49017,
+				"integrity": "sha512-OASx5kLlgB22fRSiLsndZB0QfscLiEzDvYfmVGIkMlAYwkak9miQEaPRhtAVEGx1jM5cayP24kOA16JrEcxTzA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCLiHhE3bnntrZGZUp21dWEmeqM2rksgCi4Ckvy2PartQIhAJsm7JKhg/is4pSHSqsgIoi5MO1/gW4yk+EcXR/TPIlH"
+						"sig": "MEYCIQCLiHhE3bnntrZGZUp21dWEmeqM2rksgCi4Ckvy2PartQIhAJsm7JKhg/is4pSHSqsgIoi5MO1/gW4yk+EcXR/TPIlH",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 49017
+			}
+		},
+		"2026.9.20": {
+			"name": "@cloudflare/aig-opencode-plugin",
+			"version": "2026.9.20",
+			"dependencies": {
+				"@opencode-ai/plugin": "1.18.4"
+			},
+			"devDependencies": {
+				"vitest": "4.1.10",
+				"solid-js": "1.9.12",
+				"@repo/tools": "0.0.0",
+				"@opentui/core": "0.5.11",
+				"@opentui/solid": "0.5.11",
+				"@repo/eslint-config": "0.0.0",
+				"@repo/typescript-config": "0.0.0"
+			},
+			"peerDependencies": {
+				"solid-js": "^1.9.12",
+				"@opentui/core": ">=0.4.5",
+				"@opentui/solid": ">=0.4.5"
+			},
+			"dist": {
+				"shasum": "471cf8918ff8db5b275443b0c1d9313d97fe8330",
+				"tarball": "https://registry.npmjs.org/@cloudflare/aig-opencode-plugin/-/aig-opencode-plugin-2026.9.20.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-r2V3J8J9xfeDk78zoLRy2gzaaCnH5XrDCQty7aPrzC9HnZRHWlG/4IfFMJRnmCWLxHtNg6p9ozZv0F6Nkh5I+A==",
+				"signatures": [
+					{
+						"sig": "MEUCIHiVbsZ9wLlEfESz2wWFmxawOb3Hza8VmIbQEBwBDQeIAiEAqMmWmTenAzdmpUffQ9TSr2wyD41jfU1WhRbk3eV991k=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIHiXv/GkH2Wmdrpz5/9qJySSkoni0Rcw/5ndabRYP1HjAiEA0uLQBvnQKwvw72n5sgfLeSw3MM7AquAxtR9VVwMmS20="
+					}
+				],
+				"unpackedSize": 49139
 			}
 		}
 	}
