@@ -1,7 +1,7 @@
 {
 	"DELETE /accounts/{account_id}/devices/settings": {
 		"operationId": "zero-trust-accounts-delete-device-settings-for-zero-trust-account",
-		"summary": "Reset device settings for a Zero Trust account with defaults. This turns off all proxying.",
+		"summary": "Reset device settings",
 		"description": "Resets the current device settings for a Zero Trust account.",
 		"parameters": [
 			{
@@ -301,7 +301,7 @@
 	},
 	"GET /accounts/{account_id}/devices/settings": {
 		"operationId": "zero-trust-accounts-get-device-settings-for-zero-trust-account",
-		"summary": "Get device settings for a Zero Trust account",
+		"summary": "Get device settings",
 		"description": "Describes the current device settings for a Zero Trust account.",
 		"parameters": [
 			{
@@ -3184,8 +3184,8 @@
 	},
 	"PATCH /accounts/{account_id}/devices/settings": {
 		"operationId": "zero-trust-accounts-patch-device-settings-for-the-zero-trust-account",
-		"summary": "Patch device settings for a Zero Trust account",
-		"description": "Patches the current device settings for a Zero Trust account.",
+		"summary": "Update device settings",
+		"description": "Updates the device settings for a Zero Trust account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3264,7 +3264,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Patch device settings for a Zero Trust account response.",
+				"description": "Update device settings for a Zero Trust account response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3438,7 +3438,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Patch device settings for a Zero Trust account response failure.",
+				"description": "Update device settings for a Zero Trust account response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3544,7 +3544,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.settings",
-		"x-fern-sdk-method-name": "edit",
+		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/gateway/configuration": {
@@ -5530,8 +5530,8 @@
 	},
 	"PUT /accounts/{account_id}/devices/settings": {
 		"operationId": "zero-trust-accounts-update-device-settings-for-the-zero-trust-account",
-		"summary": "Update device settings for a Zero Trust account",
-		"description": "Updates the current device settings for a Zero Trust account.",
+		"summary": "Update device settings (deprecated)",
+		"description": "Deprecated: use \"PATCH /accounts/{account_id}/devices/settings\" instead",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -5875,6 +5875,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -5888,8 +5889,9 @@
 		"x-api-token-group": [
 			"Zero Trust Write"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.settings",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.devices.v1.settings",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},

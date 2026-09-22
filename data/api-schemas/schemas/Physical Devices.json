@@ -1322,7 +1322,7 @@
 	"POST /accounts/{account_id}/devices/physical-devices/{device_id}/revoke": {
 		"operationId": "revoke-device",
 		"summary": "Revoke device registrations",
-		"description": "Revokes all WARP registrations associated with the specified device.",
+		"description": "Revokes all WARP registrations associated with the specified device. Prefer \"delete\" operation instead, \"revoke\" does not release virtual IPs.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1473,6 +1473,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -1484,10 +1485,10 @@
 		"x-api-token-group": [
 			"Zero Trust Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices",
 		"x-fern-sdk-method-name": "revoke",
-		"x-forge-hidden": true,
-		"x-forge-require-confirmation": "This operation revokes a device's session destructively."
+		"x-forge-hidden": true
 	}
 }

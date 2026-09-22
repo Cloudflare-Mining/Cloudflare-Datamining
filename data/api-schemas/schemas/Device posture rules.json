@@ -1,7 +1,7 @@
 {
 	"DELETE /accounts/{account_id}/devices/posture/{rule_id}": {
 		"operationId": "device-posture-rules-delete-device-posture-rule",
-		"summary": "Delete a device posture rule",
+		"summary": "Delete posture rule",
 		"description": "Deletes a device posture rule.",
 		"parameters": [
 			{
@@ -260,13 +260,13 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.posture",
+		"x-fern-sdk-group-name": "zero-trust.devices.posture.rules",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/posture": {
 		"operationId": "device-posture-rules-list-device-posture-rules",
-		"summary": "List device posture rules",
+		"summary": "List posture rules",
 		"description": "Fetches device posture rules for a Zero Trust account.",
 		"parameters": [
 			{
@@ -1444,13 +1444,13 @@
 			"Device posture rules"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.posture",
+		"x-fern-sdk-group-name": "zero-trust.devices.posture.rules",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/posture/{rule_id}": {
 		"operationId": "device-posture-rules-device-posture-rules-details",
-		"summary": "Get device posture rule details",
+		"summary": "Get posture rule",
 		"description": "Fetches a single device posture rule.",
 		"parameters": [
 			{
@@ -2617,13 +2617,13 @@
 			"Device posture rules"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.posture",
+		"x-fern-sdk-group-name": "zero-trust.devices.posture.rules",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/devices/posture": {
 		"operationId": "device-posture-rules-create-device-posture-rule",
-		"summary": "Create a device posture rule",
+		"summary": "Create posture rule",
 		"description": "Creates a new device posture rule.",
 		"parameters": [
 			{
@@ -4702,13 +4702,13 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.posture",
+		"x-fern-sdk-group-name": "zero-trust.devices.posture.rules",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/devices/posture/{rule_id}": {
 		"operationId": "device-posture-rules-update-device-posture-rule",
-		"summary": "Update a device posture rule",
+		"summary": "Update posture rule",
 		"description": "Updates a device posture rule.",
 		"parameters": [
 			{
@@ -6799,7 +6799,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.posture",
+		"x-fern-sdk-group-name": "zero-trust.devices.posture.rules",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	}

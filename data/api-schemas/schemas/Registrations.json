@@ -1122,7 +1122,7 @@
 	"POST /accounts/{account_id}/devices/registrations/revoke": {
 		"operationId": "revoke-registrations",
 		"summary": "Revoke registrations",
-		"description": "Revokes a list of WARP registrations.",
+		"description": "Revokes a list of WARP registrations. Prefer \"delete\" operation instead, \"revoke\" does not release virtual IPs.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1312,6 +1312,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -1323,11 +1324,11 @@
 		"x-api-token-group": [
 			"Zero Trust Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.registrations",
 		"x-fern-sdk-method-name": "revoke",
-		"x-forge-hidden": true,
-		"x-forge-require-confirmation": "This operation revokes device registrations destructively."
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/devices/registrations/unrevoke": {
 		"operationId": "unrevoke-registrations",
@@ -1522,6 +1523,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -1533,7 +1535,8 @@
 		"x-api-token-group": [
 			"Zero Trust Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.registrations",
 		"x-fern-sdk-method-name": "unrevoke",
 		"x-forge-hidden": true

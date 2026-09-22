@@ -1,8 +1,8 @@
 {
 	"GET /accounts/{account_id}/devices/resilience/disconnect": {
 		"operationId": "devices-resilience-retrieve-global-warp-override",
-		"summary": "Retrieve Global WARP override state",
-		"description": "Fetch the Global WARP override state.",
+		"summary": "Get Global Disconnect",
+		"description": "Fetch the Global WARP disconnect state.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -16,7 +16,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Fetch Global WARP override state response.",
+				"description": "Get Global WARP disconnect state response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -150,7 +150,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Fetch Global WARP override state failure.",
+				"description": "Get Global WARP disconnect state failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -258,14 +258,14 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.resilience.global-warp-override",
-		"x-fern-sdk-method-name": "get",
+		"x-fern-sdk-group-name": "zero-trust.devices.resilience",
+		"x-fern-sdk-method-name": "get-global-disconnect",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/devices/resilience/disconnect": {
 		"operationId": "devices-resilience-set-global-warp-override",
-		"summary": "Set Global WARP override state",
-		"description": "Sets the Global WARP override state.",
+		"summary": "Set Global Disconnect",
+		"description": "Sets the Global WARP disconnect state.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -307,7 +307,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Set Global WARP override state response.",
+				"description": "Set Global WARP disconnect state response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -441,7 +441,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Set Global WARP override state response failure.",
+				"description": "Set Global WARP disconnect state response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -546,8 +546,8 @@
 			"Zero Trust Resilience Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.resilience.global-warp-override",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-group-name": "zero-trust.devices.resilience",
+		"x-fern-sdk-method-name": "set-global-disconnect",
 		"x-forge-hidden": true
 	}
 }

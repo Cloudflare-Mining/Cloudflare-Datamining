@@ -1,7 +1,7 @@
 {
 	"DELETE /accounts/{account_id}/devices/posture/integration/{integration_id}": {
 		"operationId": "device-posture-integrations-delete-device-posture-integration",
-		"summary": "Delete a device posture integration",
+		"summary": "Delete posture integration",
 		"description": "Delete a configured device posture integration.",
 		"parameters": [
 			{
@@ -258,7 +258,7 @@
 	},
 	"GET /accounts/{account_id}/devices/posture/integration": {
 		"operationId": "device-posture-integrations-list-device-posture-integrations",
-		"summary": "List your device posture integrations",
+		"summary": "List posture integrations",
 		"description": "Fetches the list of device posture integrations for an account.",
 		"parameters": [
 			{
@@ -596,7 +596,7 @@
 	},
 	"GET /accounts/{account_id}/devices/posture/integration/{integration_id}": {
 		"operationId": "device-posture-integrations-device-posture-integration-details",
-		"summary": "Get device posture integration details",
+		"summary": "Get posture integration",
 		"description": "Fetches details for a single device posture integration.",
 		"parameters": [
 			{
@@ -923,7 +923,7 @@
 	},
 	"PATCH /accounts/{account_id}/devices/posture/integration/{integration_id}": {
 		"operationId": "device-posture-integrations-update-device-posture-integration",
-		"summary": "Update a device posture integration",
+		"summary": "Update posture integration",
 		"description": "Updates a configured device posture integration.",
 		"parameters": [
 			{
@@ -1533,12 +1533,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.posture.integrations",
-		"x-fern-sdk-method-name": "edit",
+		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/devices/posture/integration": {
 		"operationId": "device-posture-integrations-create-device-posture-integration",
-		"summary": "Create a device posture integration",
+		"summary": "Create posture integration",
 		"description": "Create a new device posture integration.",
 		"parameters": [
 			{
