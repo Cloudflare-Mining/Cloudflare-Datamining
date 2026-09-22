@@ -808,25 +808,29 @@
 										"firstObserved": {
 											"type": "number"
 										},
-										"group": {
-											"type": "object",
-											"properties": {
-												"issueIds": {
-													"type": "array",
-													"items": {
-														"type": "string"
-													}
-												}
-											},
-											"required": [
-												"issueIds"
-											]
-										},
 										"id": {
 											"type": "string"
 										},
 										"lastObserved": {
 											"type": "number"
+										},
+										"members": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"fingerprint": {
+														"type": "string"
+													},
+													"issueId": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"issueId",
+													"fingerprint"
+												],
+												"type": "object"
+											}
 										},
 										"service": {
 											"type": "string"
@@ -1314,6 +1318,15 @@
 				}
 			},
 			{
+				"name": "type",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 1
+				}
+			},
+			{
 				"name": "status",
 				"in": "query",
 				"schema": {
@@ -1478,25 +1491,29 @@
 											"firstObserved": {
 												"type": "number"
 											},
-											"group": {
-												"type": "object",
-												"properties": {
-													"issueIds": {
-														"type": "array",
-														"items": {
-															"type": "string"
-														}
-													}
-												},
-												"required": [
-													"issueIds"
-												]
-											},
 											"id": {
 												"type": "string"
 											},
 											"lastObserved": {
 												"type": "number"
+											},
+											"members": {
+												"type": "array",
+												"items": {
+													"properties": {
+														"fingerprint": {
+															"type": "string"
+														},
+														"issueId": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"issueId",
+														"fingerprint"
+													],
+													"type": "object"
+												}
 											},
 											"service": {
 												"type": "string"
@@ -1992,25 +2009,29 @@
 												"firstObserved": {
 													"type": "number"
 												},
-												"group": {
-													"type": "object",
-													"properties": {
-														"issueIds": {
-															"type": "array",
-															"items": {
-																"type": "string"
-															}
-														}
-													},
-													"required": [
-														"issueIds"
-													]
-												},
 												"id": {
 													"type": "string"
 												},
 												"lastObserved": {
 													"type": "number"
+												},
+												"members": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"fingerprint": {
+																"type": "string"
+															},
+															"issueId": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"issueId",
+															"fingerprint"
+														],
+														"type": "object"
+													}
 												},
 												"service": {
 													"type": "string"
@@ -4352,25 +4373,29 @@
 										"firstObserved": {
 											"type": "number"
 										},
-										"group": {
-											"type": "object",
-											"properties": {
-												"issueIds": {
-													"type": "array",
-													"items": {
-														"type": "string"
-													}
-												}
-											},
-											"required": [
-												"issueIds"
-											]
-										},
 										"id": {
 											"type": "string"
 										},
 										"lastObserved": {
 											"type": "number"
+										},
+										"members": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"fingerprint": {
+														"type": "string"
+													},
+													"issueId": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"issueId",
+													"fingerprint"
+												],
+												"type": "object"
+											}
 										},
 										"service": {
 											"type": "string"
@@ -5729,25 +5754,29 @@
 										"firstObserved": {
 											"type": "number"
 										},
-										"group": {
-											"type": "object",
-											"properties": {
-												"issueIds": {
-													"type": "array",
-													"items": {
-														"type": "string"
-													}
-												}
-											},
-											"required": [
-												"issueIds"
-											]
-										},
 										"id": {
 											"type": "string"
 										},
 										"lastObserved": {
 											"type": "number"
+										},
+										"members": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"fingerprint": {
+														"type": "string"
+													},
+													"issueId": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"issueId",
+													"fingerprint"
+												],
+												"type": "object"
+											}
 										},
 										"service": {
 											"type": "string"
@@ -6249,25 +6278,29 @@
 										"firstObserved": {
 											"type": "number"
 										},
-										"group": {
-											"type": "object",
-											"properties": {
-												"issueIds": {
-													"type": "array",
-													"items": {
-														"type": "string"
-													}
-												}
-											},
-											"required": [
-												"issueIds"
-											]
-										},
 										"id": {
 											"type": "string"
 										},
 										"lastObserved": {
 											"type": "number"
+										},
+										"members": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"fingerprint": {
+														"type": "string"
+													},
+													"issueId": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"issueId",
+													"fingerprint"
+												],
+												"type": "object"
+											}
 										},
 										"service": {
 											"type": "string"

@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_id}/workers/observability/zones/{zone_id}/observability/tracing/rules": {
+	"DELETE /zones/{zone_id}/observability/tracing/rules": {
 		"operationId": "zone.observability.tracing.rules.delete",
 		"summary": "Delete zone trace rules",
 		"description": "Delete every sampling override from a zone's managed Cloudflare Traces ruleset.",
@@ -363,14 +363,11 @@
 		"tags": [
 			"Observability"
 		],
-		"x-api-token-group": [
-			"Workers Observability Write"
-		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.tracing.rules",
 		"x-fern-sdk-method-name": "delete"
 	},
-	"DELETE /accounts/{account_id}/workers/observability/zones/{zone_id}/observability/tracing/settings": {
+	"DELETE /zones/{zone_id}/observability/tracing/settings": {
 		"operationId": "zone.observability.tracing.settings.delete",
 		"summary": "Reset zone tracing settings",
 		"description": "Reset the zone-level Cloudflare Traces settings to their defaults while preserving the sampling rules.",
@@ -452,11 +449,12 @@
 											"type": "boolean"
 										},
 										"propagation_policy": {
-											"description": "When inbound trace context may be continued.",
+											"description": "When inbound trace context may be continued. Authenticated propagation is not supported yet.",
 											"type": "string",
 											"enum": [
+												"accept",
 												"authenticated",
-												"unauthenticated"
+												"reject"
 											]
 										},
 										"sampling_ratio": {
@@ -724,14 +722,11 @@
 		"tags": [
 			"Observability"
 		],
-		"x-api-token-group": [
-			"Workers Observability Write"
-		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.tracing.settings",
 		"x-fern-sdk-method-name": "delete"
 	},
-	"GET /accounts/{account_id}/workers/observability/zones/{zone_id}/observability/tracing/rules": {
+	"GET /zones/{zone_id}/observability/tracing/rules": {
 		"operationId": "zone.observability.tracing.rules.get",
 		"summary": "View zone trace rules",
 		"description": "Retrieve the ordered sampling overrides for a zone's managed Cloudflare Traces ruleset.",
@@ -1095,15 +1090,11 @@
 		"tags": [
 			"Observability"
 		],
-		"x-api-token-group": [
-			"Workers Observability Write",
-			"Workers Observability Read"
-		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.tracing.rules",
 		"x-fern-sdk-method-name": "get"
 	},
-	"GET /accounts/{account_id}/workers/observability/zones/{zone_id}/observability/tracing/settings": {
+	"GET /zones/{zone_id}/observability/tracing/settings": {
 		"operationId": "zone.observability.tracing.settings.get",
 		"summary": "View zone tracing settings",
 		"description": "Retrieve the zone-level Cloudflare Traces settings.",
@@ -1185,11 +1176,12 @@
 											"type": "boolean"
 										},
 										"propagation_policy": {
-											"description": "When inbound trace context may be continued.",
+											"description": "When inbound trace context may be continued. Authenticated propagation is not supported yet.",
 											"type": "string",
 											"enum": [
+												"accept",
 												"authenticated",
-												"unauthenticated"
+												"reject"
 											]
 										},
 										"sampling_ratio": {
@@ -1457,15 +1449,11 @@
 		"tags": [
 			"Observability"
 		],
-		"x-api-token-group": [
-			"Workers Observability Write",
-			"Workers Observability Read"
-		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.tracing.settings",
 		"x-fern-sdk-method-name": "get"
 	},
-	"PATCH /accounts/{account_id}/workers/observability/zones/{zone_id}/observability/tracing/settings": {
+	"PATCH /zones/{zone_id}/observability/tracing/settings": {
 		"operationId": "zone.observability.tracing.settings.update",
 		"summary": "Update zone tracing settings",
 		"description": "Update the zone-level Cloudflare Traces settings.",
@@ -1512,11 +1500,12 @@
 								"type": "boolean"
 							},
 							"propagation_policy": {
-								"description": "When inbound trace context may be continued.",
+								"description": "When inbound trace context may be continued. Authenticated propagation is not supported yet.",
 								"type": "string",
 								"enum": [
+									"accept",
 									"authenticated",
-									"unauthenticated"
+									"reject"
 								]
 							},
 							"sampling_ratio": {
@@ -1598,11 +1587,12 @@
 											"type": "boolean"
 										},
 										"propagation_policy": {
-											"description": "When inbound trace context may be continued.",
+											"description": "When inbound trace context may be continued. Authenticated propagation is not supported yet.",
 											"type": "string",
 											"enum": [
+												"accept",
 												"authenticated",
-												"unauthenticated"
+												"reject"
 											]
 										},
 										"sampling_ratio": {
@@ -1870,14 +1860,11 @@
 		"tags": [
 			"Observability"
 		],
-		"x-api-token-group": [
-			"Workers Observability Write"
-		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.tracing.settings",
 		"x-fern-sdk-method-name": "update"
 	},
-	"PUT /accounts/{account_id}/workers/observability/zones/{zone_id}/observability/tracing/rules": {
+	"PUT /zones/{zone_id}/observability/tracing/rules": {
 		"operationId": "zone.observability.tracing.rules.update",
 		"summary": "Replace zone trace rules",
 		"description": "Replace all sampling overrides in a zone's managed Cloudflare Traces ruleset. Rules are evaluated in the supplied order.",
@@ -2308,9 +2295,6 @@
 		},
 		"tags": [
 			"Observability"
-		],
-		"x-api-token-group": [
-			"Workers Observability Write"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.tracing.rules",

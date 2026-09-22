@@ -679,6 +679,12 @@
 																"format": "int32",
 																"nullable": true
 															},
+															"request_id": {
+																"description": "The request ID supplied when this run was queued via the manual queue endpoint, so customers can locate their manually-triggered run in this history listing. Absent for runs picked up by normal polling.",
+																"type": "string",
+																"format": "uuid",
+																"nullable": true
+															},
 															"run_id": {
 																"type": "integer",
 																"format": "int64"
