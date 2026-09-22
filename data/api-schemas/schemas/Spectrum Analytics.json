@@ -10,7 +10,8 @@
 				"schema": {
 					"allOf": [
 						{
-							"description": "Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified."
+							"description": "Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified.",
+							"type": "string"
 						},
 						{
 							"type": "string",
@@ -27,7 +28,8 @@
 				"schema": {
 					"allOf": [
 						{
-							"description": "End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified."
+							"description": "End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified.",
+							"type": "string"
 						},
 						{
 							"type": "string",
@@ -184,7 +186,8 @@
 												"since": {
 													"allOf": [
 														{
-															"description": "Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified."
+															"description": "Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified.",
+															"type": "string"
 														},
 														{
 															"type": "string",
@@ -197,7 +200,8 @@
 												"until": {
 													"allOf": [
 														{
-															"description": "End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified."
+															"description": "End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified.",
+															"type": "string"
 														},
 														{
 															"type": "string",
@@ -267,7 +271,8 @@
 									"required": [
 										"query",
 										"result"
-									]
+									],
+									"type": "object"
 								}
 							]
 						}
@@ -403,7 +408,11 @@
 		"x-api-token-group": [
 			"User Details Write",
 			"User Details Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "spectrum.analytics.zones.report",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/spectrum/analytics/aggregate/current": {
 		"operationId": "spectrum-aggregate-analytics-get-current-aggregated-analytics",
@@ -545,7 +554,8 @@
 													"appID": {
 														"allOf": [
 															{
-																"description": "Application identifier."
+																"description": "Application identifier.",
+																"type": "string"
 															},
 															{
 																"description": "Identifier.",
@@ -583,14 +593,15 @@
 												"type": "object"
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
 			},
-			"4xx": {
+			"4XX": {
 				"description": "Get current aggregated analytics response failure.",
 				"content": {
 					"application/json": {
@@ -718,7 +729,11 @@
 		],
 		"x-api-token-group": [
 			"Analytics Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "spectrum.analytics.aggregates.currents",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/spectrum/analytics/events/bytime": {
 		"operationId": "spectrum-analytics-(-by-time)-get-analytics-by-time",
@@ -779,7 +794,8 @@
 				"schema": {
 					"allOf": [
 						{
-							"description": "End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified."
+							"description": "End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified.",
+							"type": "string"
 						},
 						{
 							"type": "string",
@@ -829,7 +845,8 @@
 				"schema": {
 					"allOf": [
 						{
-							"description": "Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified."
+							"description": "Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified.",
+							"type": "string"
 						},
 						{
 							"type": "string",
@@ -1001,10 +1018,8 @@
 													"minimum": 0
 												},
 												"max": {
+													"description": "Maximum result for each selected metrics across all data.",
 													"allOf": [
-														{
-															"description": "Maximum result for each selected metrics across all data."
-														},
 														{
 															"type": "object",
 															"example": {
@@ -1018,10 +1033,8 @@
 													]
 												},
 												"min": {
+													"description": "Minimum result for each selected metrics across all data.",
 													"allOf": [
-														{
-															"description": "Minimum result for each selected metrics across all data."
-														},
 														{
 															"type": "object",
 															"example": {
@@ -1086,7 +1099,8 @@
 														"since": {
 															"allOf": [
 																{
-																	"description": "Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified."
+																	"description": "Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified.",
+																	"type": "string"
 																},
 																{
 																	"type": "string",
@@ -1110,7 +1124,8 @@
 														"until": {
 															"allOf": [
 																{
-																	"description": "End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified."
+																	"description": "End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified.",
+																	"type": "string"
 																},
 																{
 																	"type": "string",
@@ -1142,10 +1157,8 @@
 													}
 												},
 												"totals": {
+													"description": "Total result for each selected metrics across all data.",
 													"allOf": [
-														{
-															"description": "Total result for each selected metrics across all data."
-														},
 														{
 															"type": "object",
 															"example": {
@@ -1169,14 +1182,15 @@
 												"query"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
 			},
-			"4xx": {
+			"4XX": {
 				"description": "Get analytics by time response failure.",
 				"content": {
 					"application/json": {
@@ -1304,7 +1318,11 @@
 		],
 		"x-api-token-group": [
 			"Analytics Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "spectrum.analytics.events.bytimes",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/spectrum/analytics/events/summary": {
 		"operationId": "spectrum-analytics-(-summary)-get-analytics-summary",
@@ -1365,7 +1383,8 @@
 				"schema": {
 					"allOf": [
 						{
-							"description": "End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified."
+							"description": "End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified.",
+							"type": "string"
 						},
 						{
 							"type": "string",
@@ -1415,7 +1434,8 @@
 				"schema": {
 					"allOf": [
 						{
-							"description": "Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified."
+							"description": "Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified.",
+							"type": "string"
 						},
 						{
 							"type": "string",
@@ -1567,10 +1587,8 @@
 													"minimum": 0
 												},
 												"max": {
+													"description": "Maximum result for each selected metrics across all data.",
 													"allOf": [
-														{
-															"description": "Maximum result for each selected metrics across all data."
-														},
 														{
 															"type": "object",
 															"example": {
@@ -1584,10 +1602,8 @@
 													]
 												},
 												"min": {
+													"description": "Minimum result for each selected metrics across all data.",
 													"allOf": [
-														{
-															"description": "Minimum result for each selected metrics across all data."
-														},
 														{
 															"type": "object",
 															"example": {
@@ -1652,7 +1668,8 @@
 														"since": {
 															"allOf": [
 																{
-																	"description": "Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified."
+																	"description": "Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified.",
+																	"type": "string"
 																},
 																{
 																	"type": "string",
@@ -1676,7 +1693,8 @@
 														"until": {
 															"allOf": [
 																{
-																	"description": "End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified."
+																	"description": "End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified.",
+																	"type": "string"
 																},
 																{
 																	"type": "string",
@@ -1708,10 +1726,8 @@
 													}
 												},
 												"totals": {
+													"description": "Total result for each selected metrics across all data.",
 													"allOf": [
-														{
-															"description": "Total result for each selected metrics across all data."
-														},
 														{
 															"type": "object",
 															"example": {
@@ -1735,14 +1751,15 @@
 												"query"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				}
 			},
-			"4xx": {
+			"4XX": {
 				"description": "Get analytics summary response failure.",
 				"content": {
 					"application/json": {
@@ -1870,6 +1887,10 @@
 		],
 		"x-api-token-group": [
 			"Analytics Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "spectrum.analytics.events.summaries",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	}
 }

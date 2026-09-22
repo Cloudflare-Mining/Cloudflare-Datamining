@@ -2451,7 +2451,8 @@
 				"description": "Filter by event kind",
 				"schema": {
 					"type": "string"
-				}
+				},
+				"x-fern-parameter-name": "kind"
 			}
 		],
 		"responses": {
@@ -4733,6 +4734,14 @@
 														"description": "Snapshot Interface",
 														"type": "object",
 														"properties": {
+															"health_reason": {
+																"description": "Comma-separated list of reasons for health score",
+																"type": "string"
+															},
+															"health_score": {
+																"description": "Aggregate health score (0-100)",
+																"type": "number"
+															},
 															"ip_addresses": {
 																"type": "array",
 																"items": {
@@ -6357,6 +6366,14 @@
 																	"description": "Snapshot Interface",
 																	"type": "object",
 																	"properties": {
+																		"health_reason": {
+																			"description": "Comma-separated list of reasons for health score",
+																			"type": "string"
+																		},
+																		"health_score": {
+																			"description": "Aggregate health score (0-100)",
+																			"type": "number"
+																		},
 																		"ip_addresses": {
 																			"type": "array",
 																			"items": {

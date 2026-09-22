@@ -1210,7 +1210,7 @@
 	"POST /accounts/{account_id}/billable/usage": {
 		"operationId": "billable-usage-v2-query-account-usage",
 		"summary": "Query Account Usage (Version 2, Alpha, Restricted)",
-		"description": "Returns cost and usage data for a single Cloudflare account, aligned\nwith the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/)\nCost and Usage dataset specification.\n\nThis is the filterable counterpart to `GET` on the same path. It is a\nread-only operation and requires only the `#billing:read` permission;\n`POST` is used so that filter criteria can be supplied in a request body\nrather than in the query string.\n\nEach record represents one billable metric for one account on one day.\nThis includes all metered usage, including usage that falls within\nfree-tier allowances and may result in zero cost.\n\n**Note:** Cost and pricing fields are not yet populated and\nwill be absent from responses until billing integration is complete.\n\nThe request body is optional. When it is omitted, or when `TimePeriod`\nis omitted, the range defaults to the start of the current month through\ntoday. The maximum date range is 31 days.\n\nFilters of different kinds are combined with AND. Values within one tag\nfilter are combined with OR. Filter values that do not match usage\nproduce an empty result set.\n\nResults can be grouped by up to two customer resource-tag keys. Grouped\nvalues are returned in the `Tags` field. Usage without a requested tag\nremains in an untagged group, with that key omitted from `Tags`.\n\nRequests using tag filtering or grouping return HTTP 400 when tag-aware\nusage data is unavailable.\n",
+		"description": "Returns cost and usage data for a single Cloudflare account, aligned\nwith the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/)\nCost and Usage dataset specification.\n\nThis is the filterable counterpart to `GET` on the same path. It is a\nread-only operation and requires only the `#billing:read` permission;\n`POST` is used so that filter criteria can be supplied in a request body\nrather than in the query string.\n\nEach record represents one billable metric for one account on one day.\nThis includes all metered usage, including usage that falls within\nfree-tier allowances and may result in zero cost.\n\n**Note:** Cost and pricing fields are not yet populated and\nwill be absent from responses until billing integration is complete.\n\nThe request body is optional. When it is omitted, or when `TimePeriod`\nis omitted, the range defaults to the start of the current month through\ntoday. The maximum date range is 31 days.\n\nFilters of different kinds are combined with AND. Values within one tag\nfilter are combined with OR. Filter values that do not match usage\nproduce an empty result set.\n\nResults can be grouped by up to two groups, in any combination of\ndimension keys and resource-tag keys. Tag groups are returned in the\n`Tags` field. Usage without a requested tag remains in an untagged\ngroup, with that key omitted from `Tags`.\n\nRequests that use tag filtering or tag grouping return HTTP 400 when the\nunderlying usage data source does not support tags.\n\nRequests that use dimension grouping return HTTP 400 when the\nunderlying usage data source does not support dimensions.\n",
 		"parameters": [
 			{
 				"description": "Identifies the Cloudflare account.",
@@ -1265,14 +1265,14 @@
 										"uniqueItems": true
 									},
 									"Tags": {
-										"description": "Restrict results by customer resource tags. Filters for different keys are combined with AND, while values within one filter are combined with OR. Keys must be unique and are case-sensitive.",
+										"description": "Restrict results by resource tags. Filters for different keys are combined with AND, while values within one filter are combined with OR. Keys must be unique and are case-sensitive.",
 										"type": "array",
 										"items": {
-											"description": "Values accepted for one customer resource-tag key.",
+											"description": "Values accepted for one resource-tag key.",
 											"type": "object",
 											"properties": {
 												"Key": {
-													"description": "Case-sensitive customer resource-tag key.",
+													"description": "Case-sensitive resource-tag key.",
 													"type": "string",
 													"example": "team",
 													"maxLength": 256,
@@ -1306,25 +1306,26 @@
 								"additionalProperties": false
 							},
 							"GroupBy": {
-								"description": "Customer resource tags used to split result rows. At most two unique tag keys may be supplied.",
+								"description": "Grouping definitions used to split result rows. At most two unique keys may be supplied.",
 								"type": "array",
 								"items": {
-									"description": "A customer resource-tag key used to split result rows.",
+									"description": "A definition used to split result rows. TAG groups by a case-sensitive resource-tag key. DIMENSION groups by a usage dimension key — account_id, zone_id and region are the documented keys, and any other dimension key carried by the usage data is accepted and returned under that same key.",
 									"type": "object",
 									"properties": {
 										"Key": {
-											"description": "Case-sensitive customer resource-tag key.",
+											"description": "Case-sensitive resource-tag key (for TAG) or dimension key (for DIMENSION), e.g. team, region, account_id or zone_id.",
 											"type": "string",
-											"example": "team",
+											"example": "region",
 											"maxLength": 256,
 											"minLength": 1
 										},
 										"Type": {
-											"description": "Dimension category. Currently only customer resource tags are supported.",
+											"description": "Group category.",
 											"type": "string",
-											"example": "TAG",
+											"example": "DIMENSION",
 											"enum": [
-												"TAG"
+												"TAG",
+												"DIMENSION"
 											]
 										}
 									},

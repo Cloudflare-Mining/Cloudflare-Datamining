@@ -823,11 +823,15 @@
 													},
 													"issueId": {
 														"type": "string"
+													},
+													"title": {
+														"type": "string"
 													}
 												},
 												"required": [
 													"issueId",
-													"fingerprint"
+													"fingerprint",
+													"title"
 												],
 												"type": "object"
 											}
@@ -1506,11 +1510,15 @@
 														},
 														"issueId": {
 															"type": "string"
+														},
+														"title": {
+															"type": "string"
 														}
 													},
 													"required": [
 														"issueId",
-														"fingerprint"
+														"fingerprint",
+														"title"
 													],
 													"type": "object"
 												}
@@ -2024,11 +2032,15 @@
 															},
 															"issueId": {
 																"type": "string"
+															},
+															"title": {
+																"type": "string"
 															}
 														},
 														"required": [
 															"issueId",
-															"fingerprint"
+															"fingerprint",
+															"title"
 														],
 														"type": "object"
 													}
@@ -4388,11 +4400,15 @@
 													},
 													"issueId": {
 														"type": "string"
+													},
+													"title": {
+														"type": "string"
 													}
 												},
 												"required": [
 													"issueId",
-													"fingerprint"
+													"fingerprint",
+													"title"
 												],
 												"type": "object"
 											}
@@ -5769,11 +5785,15 @@
 													},
 													"issueId": {
 														"type": "string"
+													},
+													"title": {
+														"type": "string"
 													}
 												},
 												"required": [
 													"issueId",
-													"fingerprint"
+													"fingerprint",
+													"title"
 												],
 												"type": "object"
 											}
@@ -6293,11 +6313,15 @@
 													},
 													"issueId": {
 														"type": "string"
+													},
+													"title": {
+														"type": "string"
 													}
 												},
 												"required": [
 													"issueId",
-													"fingerprint"
+													"fingerprint",
+													"title"
 												],
 												"type": "object"
 											}

@@ -4557,5 +4557,395 @@
 		"x-fern-sdk-group-name": "ai-gateway.billing.topup",
 		"x-fern-sdk-method-name": "status",
 		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/ai/websearch": {
+		"operationId": "workers-ai-ai-gateway-web-search",
+		"summary": "Search the web through AI Gateway",
+		"description": "Run a web search through a configured AI Gateway.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"byokAlias": {
+								"type": "string",
+								"pattern": "^[A-Za-z0-9_-]{1,64}$"
+							},
+							"limit": {
+								"type": "integer",
+								"maximum": 10,
+								"minimum": 1
+							},
+							"options": {
+								"type": "object",
+								"properties": {
+									"gateway": {
+										"type": "object",
+										"properties": {
+											"id": {
+												"type": "string",
+												"minLength": 1
+											}
+										},
+										"required": [
+											"id"
+										]
+									}
+								},
+								"required": [
+									"gateway"
+								]
+							},
+							"provider": {
+								"type": "string",
+								"maxLength": 1024,
+								"minLength": 1
+							},
+							"query": {
+								"minLength": 1,
+								"type": "string"
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"query",
+							"options"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Web search results",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"items": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"description": {
+												"type": "string"
+											},
+											"faviconUrl": {
+												"type": "string",
+												"format": "uri"
+											},
+											"imageUrl": {
+												"type": "string",
+												"format": "uri"
+											},
+											"lastModifiedDate": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"title": {
+												"type": "string"
+											},
+											"url": {
+												"type": "string",
+												"format": "uri"
+											}
+										},
+										"required": [
+											"url",
+											"title"
+										],
+										"type": "object"
+									}
+								},
+								"metadata": {
+									"type": "object",
+									"properties": {
+										"latencyMs": {
+											"type": "number"
+										},
+										"query": {
+											"type": "string"
+										},
+										"requestId": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"query",
+										"requestId",
+										"latencyMs"
+									]
+								}
+							},
+							"required": [
+								"items",
+								"metadata"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid request or gateway configuration",
+				"content": {
+					"application/json": {
+						"schema": {
+							"anyOf": [
+								{
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"nullable": true
+											}
+										},
+										"result": {
+											"anyOf": [
+												{
+													"nullable": true
+												},
+												{
+													"type": "object"
+												},
+												{
+													"nullable": true
+												}
+											]
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"error": {
+											"type": "object",
+											"properties": {
+												"category": {
+													"type": "string",
+													"enum": [
+														"gateway",
+														"credential",
+														"provider",
+														"internal"
+													]
+												},
+												"code": {
+													"type": "string"
+												},
+												"gatewayRequestId": {
+													"type": "string"
+												},
+												"retryable": {
+													"type": "boolean"
+												},
+												"status": {
+													"type": "integer"
+												}
+											},
+											"required": [
+												"category",
+												"code",
+												"status",
+												"retryable",
+												"gatewayRequestId"
+											]
+										},
+										"ok": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"ok",
+										"error"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Web search is not enabled",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"category": {
+											"type": "string",
+											"enum": [
+												"gateway",
+												"credential",
+												"provider",
+												"internal"
+											]
+										},
+										"code": {
+											"type": "string"
+										},
+										"gatewayRequestId": {
+											"type": "string"
+										},
+										"retryable": {
+											"type": "boolean"
+										},
+										"status": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"category",
+										"code",
+										"status",
+										"retryable",
+										"gatewayRequestId"
+									]
+								},
+								"ok": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"ok",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"502": {
+				"description": "Web search provider failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"category": {
+											"type": "string",
+											"enum": [
+												"gateway",
+												"credential",
+												"provider",
+												"internal"
+											]
+										},
+										"code": {
+											"type": "string"
+										},
+										"gatewayRequestId": {
+											"type": "string"
+										},
+										"retryable": {
+											"type": "boolean"
+										},
+										"status": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"category",
+										"code",
+										"status",
+										"retryable",
+										"gatewayRequestId"
+									]
+								},
+								"ok": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"ok",
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"AI Gateway"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway",
+		"x-fern-sdk-method-name": "web-search"
 	}
 }

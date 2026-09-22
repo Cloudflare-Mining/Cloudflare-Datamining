@@ -268,7 +268,7 @@
 			"MoQ Relays"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "moq.relays",
+		"x-fern-sdk-group-name": "realtime.moq.relays",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-require-confirmation": "Deleting this relay revokes every token issued for it, so publishers and subscribers can no longer connect. This cannot be undone.",
 		"x-stability": "beta"
@@ -540,7 +540,7 @@
 			"MoQ Relays"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "moq.relays.tokens",
+		"x-fern-sdk-group-name": "realtime.moq.relays.tokens",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-require-confirmation": "Revoking this token blocks new connections that present it. Sessions already connected with it stay up.",
 		"x-stability": "beta"
@@ -825,7 +825,7 @@
 			"MoQ Relays"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "moq.relays",
+		"x-fern-sdk-group-name": "realtime.moq.relays",
 		"x-fern-sdk-method-name": "list",
 		"x-stability": "beta"
 	},
@@ -1164,7 +1164,7 @@
 			"MoQ Relays"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "moq.relays",
+		"x-fern-sdk-group-name": "realtime.moq.relays",
 		"x-fern-sdk-method-name": "get",
 		"x-stability": "beta"
 	},
@@ -1535,7 +1535,7 @@
 			"MoQ Relays"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "moq.relays.tokens",
+		"x-fern-sdk-group-name": "realtime.moq.relays.tokens",
 		"x-fern-sdk-method-name": "list",
 		"x-stability": "beta"
 	},
@@ -2029,7 +2029,7 @@
 			"MoQ Relays"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "moq.relays",
+		"x-fern-sdk-group-name": "realtime.moq.relays",
 		"x-fern-sdk-method-name": "create",
 		"x-stability": "beta"
 	},
@@ -2498,7 +2498,7 @@
 			"MoQ Relays"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "moq.relays.tokens",
+		"x-fern-sdk-group-name": "realtime.moq.relays.tokens",
 		"x-fern-sdk-method-name": "create",
 		"x-stability": "beta"
 	},
@@ -2886,7 +2886,7 @@
 			"MoQ Relays"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "moq.relays",
+		"x-fern-sdk-group-name": "realtime.moq.relays",
 		"x-fern-sdk-method-name": "update",
 		"x-stability": "beta"
 	}
