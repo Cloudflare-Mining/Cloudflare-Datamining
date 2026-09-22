@@ -29,12 +29,10 @@
 	<li>Design, build, and ship internal products — forecasting models, dashboards, planning systems, and automated workflows — using AI/agentic tooling to structure messy data, run scenario analyses, and improve planning accuracy.</li>
 	<li>Identify high-leverage opportunities to automate repetitive work, introduce new tools and methodologies, and continuously improve how planning and deployment operate at scale.</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Cross-Functional Collaboration</strong></p>
 <ul>
 	<li>Act as a central layer across planning, operations, engineering, logistics, procurement, and finance to keep Cloudflare's global deployments moving smoothly.</li>
 </ul>
-<p>&nbsp;</p>
 <h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
 	<li>Experience in capacity planning, infrastructure planning, production/operations planning, supply planning, or a related technical planning role.</li>
