@@ -182,6 +182,30 @@
 														"example": 0,
 														"default": 0
 													},
+													"browser_extension_config": {
+														"description": "Browser extension proxy settings. Required when profile_type is browser_extension and invalid for WARP profiles.",
+														"type": "object",
+														"properties": {
+															"proxy_control": {
+																"description": "Whether the user may disable the browser extension proxy.",
+																"type": "string",
+																"enum": [
+																	"unlocked",
+																	"locked"
+																]
+															},
+															"proxy_enabled": {
+																"description": "Whether the browser extension proxy is active.",
+																"type": "boolean"
+															}
+														},
+														"additionalProperties": false,
+														"nullable": true,
+														"required": [
+															"proxy_enabled",
+															"proxy_control"
+														]
+													},
 													"captive_portal": {
 														"description": "Turn on the captive portal after the specified amount of time.",
 														"type": "number",
@@ -189,9 +213,10 @@
 														"default": 180
 													},
 													"default": {
-														"description": "Whether the policy is the default policy for an account.",
+														"description": "Whether the policy is the account default. WARP group profiles cannot set this field.",
 														"type": "boolean",
-														"example": false
+														"example": false,
+														"default": false
 													},
 													"description": {
 														"description": "A description of the policy.",
@@ -570,6 +595,16 @@
 														"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 														"type": "number",
 														"example": 100
+													},
+													"profile_type": {
+														"description": "The client type to which the device settings profile applies.",
+														"type": "string",
+														"example": "warp",
+														"default": "warp",
+														"enum": [
+															"warp",
+															"browser_extension"
+														]
 													},
 													"register_interface_ip_with_dns": {
 														"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
@@ -1905,6 +1940,21 @@
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
+			},
+			{
+				"name": "profile_type",
+				"in": "query",
+				"description": "Filter profiles by client type. When omitted, only WARP profiles are returned.",
+				"schema": {
+					"description": "The client type to which the device settings profile applies.",
+					"type": "string",
+					"example": "warp",
+					"default": "warp",
+					"enum": [
+						"warp",
+						"browser_extension"
+					]
+				}
 			}
 		],
 		"responses": {
@@ -2064,6 +2114,30 @@
 														"example": 0,
 														"default": 0
 													},
+													"browser_extension_config": {
+														"description": "Browser extension proxy settings. Required when profile_type is browser_extension and invalid for WARP profiles.",
+														"type": "object",
+														"properties": {
+															"proxy_control": {
+																"description": "Whether the user may disable the browser extension proxy.",
+																"type": "string",
+																"enum": [
+																	"unlocked",
+																	"locked"
+																]
+															},
+															"proxy_enabled": {
+																"description": "Whether the browser extension proxy is active.",
+																"type": "boolean"
+															}
+														},
+														"additionalProperties": false,
+														"nullable": true,
+														"required": [
+															"proxy_enabled",
+															"proxy_control"
+														]
+													},
 													"captive_portal": {
 														"description": "Turn on the captive portal after the specified amount of time.",
 														"type": "number",
@@ -2071,9 +2145,10 @@
 														"default": 180
 													},
 													"default": {
-														"description": "Whether the policy is the default policy for an account.",
+														"description": "Whether the policy is the account default. WARP group profiles cannot set this field.",
 														"type": "boolean",
-														"example": false
+														"example": false,
+														"default": false
 													},
 													"description": {
 														"description": "A description of the policy.",
@@ -2452,6 +2527,16 @@
 														"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 														"type": "number",
 														"example": 100
+													},
+													"profile_type": {
+														"description": "The client type to which the device settings profile applies.",
+														"type": "string",
+														"example": "warp",
+														"default": "warp",
+														"enum": [
+															"warp",
+															"browser_extension"
+														]
 													},
 													"register_interface_ip_with_dns": {
 														"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
@@ -3179,6 +3264,16 @@
 													"maxLength": 36,
 													"x-auditable": true
 												},
+												"profile_type": {
+													"description": "The client type to which the device settings profile applies.",
+													"type": "string",
+													"example": "warp",
+													"default": "warp",
+													"enum": [
+														"warp",
+														"browser_extension"
+													]
+												},
 												"register_interface_ip_with_dns": {
 													"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 													"type": "boolean",
@@ -3543,6 +3638,30 @@
 													"example": 0,
 													"default": 0
 												},
+												"browser_extension_config": {
+													"description": "Browser extension proxy settings. Required when profile_type is browser_extension and invalid for WARP profiles.",
+													"type": "object",
+													"properties": {
+														"proxy_control": {
+															"description": "Whether the user may disable the browser extension proxy.",
+															"type": "string",
+															"enum": [
+																"unlocked",
+																"locked"
+															]
+														},
+														"proxy_enabled": {
+															"description": "Whether the browser extension proxy is active.",
+															"type": "boolean"
+														}
+													},
+													"additionalProperties": false,
+													"nullable": true,
+													"required": [
+														"proxy_enabled",
+														"proxy_control"
+													]
+												},
 												"captive_portal": {
 													"description": "Turn on the captive portal after the specified amount of time.",
 													"type": "number",
@@ -3550,9 +3669,10 @@
 													"default": 180
 												},
 												"default": {
-													"description": "Whether the policy is the default policy for an account.",
+													"description": "Whether the policy is the account default. WARP group profiles cannot set this field.",
 													"type": "boolean",
-													"example": false
+													"example": false,
+													"default": false
 												},
 												"description": {
 													"description": "A description of the policy.",
@@ -3931,6 +4051,16 @@
 													"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 													"type": "number",
 													"example": 100
+												},
+												"profile_type": {
+													"description": "The client type to which the device settings profile applies.",
+													"type": "string",
+													"example": "warp",
+													"default": "warp",
+													"enum": [
+														"warp",
+														"browser_extension"
+													]
 												},
 												"register_interface_ip_with_dns": {
 													"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
@@ -7099,6 +7229,16 @@
 													"maxLength": 36,
 													"x-auditable": true
 												},
+												"profile_type": {
+													"description": "The client type to which the device settings profile applies.",
+													"type": "string",
+													"example": "warp",
+													"default": "warp",
+													"enum": [
+														"warp",
+														"browser_extension"
+													]
+												},
 												"register_interface_ip_with_dns": {
 													"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 													"type": "boolean",
@@ -7362,11 +7502,41 @@
 								"example": 0,
 								"default": 0
 							},
+							"browser_extension_config": {
+								"description": "Browser extension proxy settings. Required when profile_type is browser_extension and invalid for WARP profiles.",
+								"type": "object",
+								"properties": {
+									"proxy_control": {
+										"description": "Whether the user may disable the browser extension proxy.",
+										"type": "string",
+										"enum": [
+											"unlocked",
+											"locked"
+										]
+									},
+									"proxy_enabled": {
+										"description": "Whether the browser extension proxy is active.",
+										"type": "boolean"
+									}
+								},
+								"additionalProperties": false,
+								"nullable": true,
+								"required": [
+									"proxy_enabled",
+									"proxy_control"
+								]
+							},
 							"captive_portal": {
 								"description": "Turn on the captive portal after the specified amount of time.",
 								"type": "number",
 								"example": 180,
 								"default": 180
+							},
+							"default": {
+								"description": "Whether the policy is the account default. WARP group profiles cannot set this field.",
+								"type": "boolean",
+								"example": false,
+								"default": false
 							},
 							"description": {
 								"description": "A description of the policy.",
@@ -7606,6 +7776,16 @@
 								"type": "number",
 								"example": 100
 							},
+							"profile_type": {
+								"description": "The client type to which the device settings profile applies.",
+								"type": "string",
+								"example": "warp",
+								"default": "warp",
+								"enum": [
+									"warp",
+									"browser_extension"
+								]
+							},
 							"register_interface_ip_with_dns": {
 								"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 								"type": "boolean",
@@ -7832,6 +8012,30 @@
 													"example": 0,
 													"default": 0
 												},
+												"browser_extension_config": {
+													"description": "Browser extension proxy settings. Required when profile_type is browser_extension and invalid for WARP profiles.",
+													"type": "object",
+													"properties": {
+														"proxy_control": {
+															"description": "Whether the user may disable the browser extension proxy.",
+															"type": "string",
+															"enum": [
+																"unlocked",
+																"locked"
+															]
+														},
+														"proxy_enabled": {
+															"description": "Whether the browser extension proxy is active.",
+															"type": "boolean"
+														}
+													},
+													"additionalProperties": false,
+													"nullable": true,
+													"required": [
+														"proxy_enabled",
+														"proxy_control"
+													]
+												},
 												"captive_portal": {
 													"description": "Turn on the captive portal after the specified amount of time.",
 													"type": "number",
@@ -7839,9 +8043,10 @@
 													"default": 180
 												},
 												"default": {
-													"description": "Whether the policy is the default policy for an account.",
+													"description": "Whether the policy is the account default. WARP group profiles cannot set this field.",
 													"type": "boolean",
-													"example": false
+													"example": false,
+													"default": false
 												},
 												"description": {
 													"description": "A description of the policy.",
@@ -8220,6 +8425,16 @@
 													"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 													"type": "number",
 													"example": 100
+												},
+												"profile_type": {
+													"description": "The client type to which the device settings profile applies.",
+													"type": "string",
+													"example": "warp",
+													"default": "warp",
+													"enum": [
+														"warp",
+														"browser_extension"
+													]
 												},
 												"register_interface_ip_with_dns": {
 													"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
@@ -8763,11 +8978,41 @@
 								"example": 0,
 								"default": 0
 							},
+							"browser_extension_config": {
+								"description": "Browser extension proxy settings. Required when profile_type is browser_extension and invalid for WARP profiles.",
+								"type": "object",
+								"properties": {
+									"proxy_control": {
+										"description": "Whether the user may disable the browser extension proxy.",
+										"type": "string",
+										"enum": [
+											"unlocked",
+											"locked"
+										]
+									},
+									"proxy_enabled": {
+										"description": "Whether the browser extension proxy is active.",
+										"type": "boolean"
+									}
+								},
+								"additionalProperties": false,
+								"nullable": true,
+								"required": [
+									"proxy_enabled",
+									"proxy_control"
+								]
+							},
 							"captive_portal": {
 								"description": "Turn on the captive portal after the specified amount of time.",
 								"type": "number",
 								"example": 180,
 								"default": 180
+							},
+							"default": {
+								"description": "Whether the policy is the account default. WARP group profiles cannot set this field.",
+								"type": "boolean",
+								"example": false,
+								"default": false
 							},
 							"description": {
 								"allOf": [
@@ -9016,6 +9261,16 @@
 								"type": "number",
 								"example": 100
 							},
+							"profile_type": {
+								"description": "The client type to which the device settings profile applies.",
+								"type": "string",
+								"example": "warp",
+								"default": "warp",
+								"enum": [
+									"warp",
+									"browser_extension"
+								]
+							},
 							"register_interface_ip_with_dns": {
 								"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 								"type": "boolean",
@@ -9104,9 +9359,7 @@
 							}
 						},
 						"required": [
-							"name",
-							"precedence",
-							"match"
+							"name"
 						]
 					}
 				}
@@ -9247,6 +9500,30 @@
 													"example": 0,
 													"default": 0
 												},
+												"browser_extension_config": {
+													"description": "Browser extension proxy settings. Required when profile_type is browser_extension and invalid for WARP profiles.",
+													"type": "object",
+													"properties": {
+														"proxy_control": {
+															"description": "Whether the user may disable the browser extension proxy.",
+															"type": "string",
+															"enum": [
+																"unlocked",
+																"locked"
+															]
+														},
+														"proxy_enabled": {
+															"description": "Whether the browser extension proxy is active.",
+															"type": "boolean"
+														}
+													},
+													"additionalProperties": false,
+													"nullable": true,
+													"required": [
+														"proxy_enabled",
+														"proxy_control"
+													]
+												},
 												"captive_portal": {
 													"description": "Turn on the captive portal after the specified amount of time.",
 													"type": "number",
@@ -9254,9 +9531,10 @@
 													"default": 180
 												},
 												"default": {
-													"description": "Whether the policy is the default policy for an account.",
+													"description": "Whether the policy is the account default. WARP group profiles cannot set this field.",
 													"type": "boolean",
-													"example": false
+													"example": false,
+													"default": false
 												},
 												"description": {
 													"description": "A description of the policy.",
@@ -9635,6 +9913,16 @@
 													"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 													"type": "number",
 													"example": 100
+												},
+												"profile_type": {
+													"description": "The client type to which the device settings profile applies.",
+													"type": "string",
+													"example": "warp",
+													"default": "warp",
+													"enum": [
+														"warp",
+														"browser_extension"
+													]
 												},
 												"register_interface_ip_with_dns": {
 													"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",

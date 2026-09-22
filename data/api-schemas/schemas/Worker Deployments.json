@@ -520,10 +520,12 @@
 																"x-auditable": true
 															},
 															"versions": {
+																"description": "Worker versions included in this deployment. Each object must contain a `version_id` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{\"version_id\":\"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f\",\"percentage\":100}]'`, or from a JSON file with `--versions @versions.json`.",
 																"type": "array",
 																"items": {
 																	"properties": {
 																		"percentage": {
+																			"description": "Percentage of traffic served by this version.",
 																			"type": "number",
 																			"example": 100,
 																			"maximum": 100,
@@ -531,6 +533,7 @@
 																			"x-auditable": true
 																		},
 																		"version_id": {
+																			"description": "Identifier of the Worker Version.",
 																			"type": "string",
 																			"format": "uuid",
 																			"x-auditable": true
@@ -542,6 +545,12 @@
 																	],
 																	"type": "object"
 																},
+																"example": [
+																	{
+																		"percentage": 100,
+																		"version_id": "023e105f-2a42-4f8b-a1c1-73f6a2a30c0f"
+																	}
+																],
 																"x-auditable": true
 															}
 														},
@@ -888,10 +897,12 @@
 													"x-auditable": true
 												},
 												"versions": {
+													"description": "Worker versions included in this deployment. Each object must contain a `version_id` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{\"version_id\":\"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f\",\"percentage\":100}]'`, or from a JSON file with `--versions @versions.json`.",
 													"type": "array",
 													"items": {
 														"properties": {
 															"percentage": {
+																"description": "Percentage of traffic served by this version.",
 																"type": "number",
 																"example": 100,
 																"maximum": 100,
@@ -899,6 +910,7 @@
 																"x-auditable": true
 															},
 															"version_id": {
+																"description": "Identifier of the Worker Version.",
 																"type": "string",
 																"format": "uuid",
 																"x-auditable": true
@@ -910,6 +922,12 @@
 														],
 														"type": "object"
 													},
+													"example": [
+														{
+															"percentage": 100,
+															"version_id": "023e105f-2a42-4f8b-a1c1-73f6a2a30c0f"
+														}
+													],
 													"x-auditable": true
 												}
 											},
@@ -1162,10 +1180,12 @@
 								"x-auditable": true
 							},
 							"versions": {
+								"description": "Worker versions included in this deployment. Each object must contain a `version_id` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{\"version_id\":\"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f\",\"percentage\":100}]'`, or from a JSON file with `--versions @versions.json`.",
 								"type": "array",
 								"items": {
 									"properties": {
 										"percentage": {
+											"description": "Percentage of traffic served by this version.",
 											"type": "number",
 											"example": 100,
 											"maximum": 100,
@@ -1173,6 +1193,7 @@
 											"x-auditable": true
 										},
 										"version_id": {
+											"description": "Identifier of the Worker Version.",
 											"type": "string",
 											"format": "uuid",
 											"x-auditable": true
@@ -1184,6 +1205,12 @@
 									],
 									"type": "object"
 								},
+								"example": [
+									{
+										"percentage": 100,
+										"version_id": "023e105f-2a42-4f8b-a1c1-73f6a2a30c0f"
+									}
+								],
 								"x-auditable": true
 							}
 						},
@@ -1342,10 +1369,12 @@
 													"x-auditable": true
 												},
 												"versions": {
+													"description": "Worker versions included in this deployment. Each object must contain a `version_id` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{\"version_id\":\"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f\",\"percentage\":100}]'`, or from a JSON file with `--versions @versions.json`.",
 													"type": "array",
 													"items": {
 														"properties": {
 															"percentage": {
+																"description": "Percentage of traffic served by this version.",
 																"type": "number",
 																"example": 100,
 																"maximum": 100,
@@ -1353,6 +1382,7 @@
 																"x-auditable": true
 															},
 															"version_id": {
+																"description": "Identifier of the Worker Version.",
 																"type": "string",
 																"format": "uuid",
 																"x-auditable": true
@@ -1364,6 +1394,12 @@
 														],
 														"type": "object"
 													},
+													"example": [
+														{
+															"percentage": 100,
+															"version_id": "023e105f-2a42-4f8b-a1c1-73f6a2a30c0f"
+														}
+													],
 													"x-auditable": true
 												}
 											},

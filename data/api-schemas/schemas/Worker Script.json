@@ -20803,6 +20803,15 @@
 																"type": "string",
 																"example": "/foo /bar 301\n/news/* /blog/:splat"
 															},
+															"base_path": {
+																"description": "The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.",
+																"type": "string",
+																"example": "/docs/",
+																"default": "/",
+																"nullable": true,
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
 															"html_handling": {
 																"description": "Determines the redirects and rewrites of requests for HTML content.",
 																"type": "string",
