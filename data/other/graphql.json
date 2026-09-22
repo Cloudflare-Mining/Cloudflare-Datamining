@@ -16290,6 +16290,7 @@
 		"leakedCredentialHitCount": "Number of events with any leaked credential check hit (username leaked, password leaked, or username/password similar) for a user id. Broader than passwordLeakedCount, which counts password-leaked results only.",
 		"passwordLeakedCount": "Number of leaked credential check results where the password was leaked (username_and_password_leaked or password_leaked) for a user id.",
 		"successfulLoginCount": "Number of successful login attempts for a user id.",
+		"topASNDescriptions": "Array of top 5 client ASN network operator names for a user id, positionally aligned with topASNs. Entries are UNKNOWN when the operator cannot be identified.",
 		"topASNs": "Array of top 5 ASNs for a user id.",
 		"topCities": "Array of top 5 city names for a user id.",
 		"topCountries": "Array of top 5 country codes (alpha2) for a user id.",
@@ -16335,6 +16336,7 @@
 		"bmDetectionTags": "Abuse detections.",
 		"botScore": "The final score originated from bot management detections.",
 		"clientASN": "The ASN number associated with the event.",
+		"clientASNDescription": "Name of the network operator that owns the client ASN associated with the event (UNKNOWN when the operator cannot be identified).",
 		"clientCity": "City name.",
 		"clientCountry": "Country code (alpha2).",
 		"clientIP": "The visitor's IP address (IPv4 or IPv6).",
@@ -17293,7 +17295,7 @@
 		"__description": "Scalar type types.Float32"
 	},
 	"float64": {
-		"__description": "Scalar type float64"
+		"__description": "Scalar type types.Float64"
 	},
 	"int16": {
 		"__description": "Scalar type int16"
