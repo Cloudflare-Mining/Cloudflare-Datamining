@@ -1,0 +1,207 @@
+<p data-astro-cid-yoyuw6fx="">適切な制御手段を持たないWebサイト所有者は、長年、コンテンツがAIトレーニングに利用されることを黙認するか、検索による発見可能性を低下させるかのどちらかを選択せざるを得ない難しい状況にありました。これは、インターネット上の大手組織の一部が、1つが検索とAIトレーニングの両方の役割を持つクローラーを運用しているためであり、一方を拒否すれば、もう一方も拒否することになるためです。</p>
+<p data-astro-cid-yoyuw6fx="">本日Cloudflareは、検索インデックスへの登録を維持しながら、同じクローラーによるコンテンツのトレーニング利用を拒否できる新しい<a href="https://blog.cloudflare.com/bot-preference-sync" target="_blank" rel="noopener noreferrer"><u>［AIトレーニングを許可しない］</u></a>設定を発表します。Apple、Google、Microsoftは、この設定を尊重しているか、指定された期間内に尊重することを表明しています。</p>
+<p data-astro-cid-yoyuw6fx="">トレーニングをめぐる問題で最も難しかったのは、複合用途クローラーへの対応でした。次の課題はAI要約です。サイト全体で要約への使用を一律に許可または禁止するだけでは、十分ではありません。要約にコンテンツを使用するかどうかだけでなく、どの程度使用するかも重要だからです。AI要約を拒否できる仕組みは、複合用途クローラーの運営者にすでに求めている要件の1つです。来年初めまでには、運営者ごとに個別に設定するのではなく、Cloudflareで一度設定するだけで、要約に使用されるコンテンツの量を調整できるようにすることを目指しています。</p>
+<h2 data-astro-cid-yoyuw6fx="">意思表示だけでは不十分な理由</h2>
+<p data-astro-cid-yoyuw6fx="">ほとんどのサイト所有者は、人間、エージェント、そして善良なボットにサイトを見つけてもらいたいと考えています。しかし、オープンインターネットの多くは広告、サブスクリプション、または訪問者との直接的な関係によって支えられており、こうしたビジネスモデルで収益が生じるのは、実際に誰かがサイトを訪れたときだけです。</p>
+<p data-astro-cid-yoyuw6fx="">ほぼすべてのサイト所有者が、検索エンジンからサイトを見つけてもらうことは有益だと考えています。実際、検索ボットをブロックしているCloudflareサイトは1%未満です。一方、AIトレーニングについては事情が異なり、17%のサイトが、コンテンツをAIトレーニングに使用されないようにする何らかの機能を有効にしています。このためCloudflareは、すべてのAIを一律にブロックする機能ではなく、用途に応じて細かく設定できる機能が必要だと判断しました。</p>
+<p data-astro-cid-yoyuw6fx="">robots.txtに指示を記載するだけでは、この問題は解決できません。robots.txtは誰でも手軽に公開できる一方、実際に自分のサイトのクロール元や目的を知ることはできず、robots.txtを無視するクローラーを止めることもできません。</p>
+<p data-astro-cid-yoyuw6fx="">一方、ネットワーク側であれば対応できます。Cloudflareは、サイト所有者が設定した方針を公開するとともに、クロール元と目的を判別します。そして、方針を無視するクローラーをブロックし、各運営者が実際にどのように対応しているかを<a href="https://radar.cloudflare.com/ai-insights#ai-bot-transparency" target="_blank" rel="noopener noreferrer"><u>Radar</u></a>で公開します。</p>
+<p data-astro-cid-yoyuw6fx="">ただし、クローラーをブロックしても、そのクローラーを排除できるだけで、クローラー側の行動を変えることはできません。より望ましいのは、サイト所有者に選択を迫らない運営者が増えることです。そこでCloudflareは7月以降、クローラーの運営者と直接話し合ってきました。その反応は前向きなものでした。ほぼすべての運営者が、サイト所有者には、自分のコンテンツがどのように使われるかを把握し、制御する権利が必要であり、その選択が尊重されるという安心感も必要だという考えに同意しました。このような運営者をサイト所有者が見分けられるように、Cloudflareは「Accountable」という認定区分を設けました。</p>
+<p data-astro-cid-yoyuw6fx="">「Accountable」は、現在すでに提供されている機能だけでなく、今後その機能を提供するという具体的な確約も評価します。「Accountable」と認められるには、ボット運営者が以下の要件を満たしているか、今後満たすことを確約している必要があります：</p>
+<ol>
+	<li>robots.txtまたは同様の標準を利用して、サイト所有者がAIトレーニングへの利用を拒否できる仕組みを提供すること。</li>
+	<li>サイト所有者がAI要約への利用を拒否できる仕組みを提供すること。現在は各運営者に直接設定し、来年からはCloudflareを通じても設定できるようにすること（詳細は後述）。</li>
+	<li>どのページがトレーニングに利用可能な状態になったかをURL単位で確認できるようにし、コンテンツが検索結果にどのように表示されたかを示す指標も提供すること。</li>
+	<li>AIトレーニングへの利用を拒否しても、従来の検索結果には影響しないことを保証すること。</li>
+</ol>
+<p data-astro-cid-yoyuw6fx="">Apple、Google、Microsoftはいずれも、「Accountable」の要件を満たしていることを示しています。各社は、現在利用できる機能に加え、開発中の機能についても提供期限を明確にしています。各社のクローラーの詳細については、以下で説明します。</p>
+<h2 data-astro-cid-yoyuw6fx="">新しいセキュリティ設定オプション</h2>
+<p data-astro-cid-yoyuw6fx="">Cloudflareは、ボットを活動目的（1つのボットが複数の目的を担っている場合もあります）に基づいて分類します。設定で制御できる動作は、次の3種類です：</p>
+<ul>
+	<li><strong>検索</strong>：検索インデックスを構築するためのクロール。</li>
+	<li><strong>トレーニング</strong>：モデルをトレーニングまたは微調整を行うためのクロール。</li>
+	<li><strong>エージェント</strong>：チャット取得ボットやブラウザー操作エージェントなど、人間に代わってページにアクセスするユーザー指示型エージェント。</li>
+</ul>
+<p data-astro-cid-yoyuw6fx="">複合用途クローラーとは、検索とAIトレーニングの両方の役割を兼ね備えたクローラーであり、適切な制御手段がなければ、サイト所有者は一方の用途だけを拒否できません。これが、前述したトレードオフを生み出していました。</p>
+<p data-astro-cid-yoyuw6fx="">「Accountable」な複合用途クローラーは、サイト所有者に検索とAIトレーニングの二者択一を迫りません。このようなクローラーまでブロックしないようにするため、Cloudflareは［AIトレーニングを許可しない］設定を導入します。この名称は、robots.txtに記載される「Disallow:」ディレクティブに由来しています。</p>
+<h3 data-astro-cid-yoyuw6fx="">［ブロック］設定の意味が変わります</h3>
+<p data-astro-cid-yoyuw6fx="">これまで［ブロック］と［広告のあるページでブロック］は、複合用途クローラーには適用されませんでした。複合用途クローラーをブロックすると、検索でサイトを見つけてもらいにくくなる可能性があったためです。新しい［AIトレーニングを許可しない］設定の導入後は、［ブロック］と［広告のあるページでブロック］が、複合用途クローラーを含む<em>すべての</em>トレーニングクローラーに適用されます。</p>
+<p data-astro-cid-yoyuw6fx="">検索、トレーニング、エージェントの制御は、ドメイン単位で設定します。［AIトレーニングを許可しない］の追加後は以下の設定が選択できます：</p>
+<ol>
+	<li><strong>許可</strong>：別の設定またはWAFルールでブロックされていない限り、すべてのクローラーを許可します。</li>
+	<li><strong>AIトレーニングを許可しない</strong>：Bot Preference Syncが、AIトレーニングへの利用を拒否する方針をrobots.txtに公開します。「Accountable」な複合用途クローラーは、検索目的であれば引き続きアクセスできますが、その他のトレーニングクローラーはすべてブロックされます。これには、Amazon、Anthropic、Meta、OpenAIが運用するトレーニング専用クローラーも含まれます。これらをブロックしても検索には影響しません。この設定を使用できるのはトレーニングのみで、検索やエージェントには使用できません。</li>
+	<li><strong>広告のあるページでブロック</strong>：複合用途クローラーを含むクローラーを、広告を配信していると検出されたページでのみブロックします。</li>
+	<li><strong>ブロック</strong>：複合用途クローラーを含むすべてのクローラーをブロックします。</li>
+</ol>
+<p data-astro-cid-yoyuw6fx="">［AIトレーニングを許可しない］は、robots.txtに方針を公開することで機能します。一方、広告のあるページだけを対象とする方針は、robots.txtでは表現できません。Cloudflareは広告を配信しているページを検出できますが、対象ページが多く、頻繁に変化するため、その一覧をrobots.txtに記載することは現実的ではありません。そのため、［広告のあるページでAIトレーニングを許可しない］という設定は用意されていません。</p>
+<p data-astro-cid-yoyuw6fx="">エージェントの場合、複合用途クローラーのように、検索での見つけやすさとのトレードオフは生じません。また、エージェントに対する拒否の意思を示すための標準的なディレクティブも、まだ確立されていません。そのため、現時点ではエージェント向けの［許可しない］設定は追加しません。<a href="https://datatracker.ietf.org/wg/aipref/documents" target="_blank" rel="noopener noreferrer"><u>ai-prefs</u></a>などの標準が普及した段階で、この方針を見直します。</p>
+<h2 data-astro-cid-yoyuw6fx="">9月15日に何が変わりますか？</h2>
+<p data-astro-cid-yoyuw6fx="">Bot ManagementとAI Crawl Controlに、以下の変更を行います：</p>
+<ol>
+	<li>［ブロック］と［広告のあるページでブロック］が、Applebot、Bingbot、Googlebotなどの複合用途クローラーにも適用されるようになります。そのため、どちらの設定もAIトレーニングだけでなく検索にも影響します。検索での表示を<em>維持</em>しながらAIトレーニングを停止するには、［AIトレーニングを許可しない］を使用してください。</li>
+	<li>［AIボットをブロック］は廃止され、検索、トレーニング、エージェントを個別に設定できる、より細かな制御機能に置き換えられます。</li>
+	<li>Managed Robots.txtは廃止され、Bot Preference Syncに置き換えられます。Managed Robots.txtを有効にしているお客様は、自動的に新しい方式へ移行されます。</li>
+	<li>一部の新規ドメインでは、［AIトレーニングを許可しない］が推奨設定に含まれるようになります。</li>
+	<li>既存のお客様の設定は、以下のとおり新しい制御機能へ移行されます。</li>
+</ol>
+<h3 data-astro-cid-yoyuw6fx="">必要な対応</h3>
+<p data-astro-cid-yoyuw6fx="">ほとんどの場合、何もする必要はありません。現在の設定は自動的に引き継がれます。</p>
+<p data-astro-cid-yoyuw6fx="">複合用途クローラーを検索も含めて完全に停止したい場合は、［ブロック］を選択してください。Applebot、Bingbot、Googlebotはサイトにアクセスできなくなり、検索での表示にも影響します。</p>
+<h4 data-astro-cid-yoyuw6fx="">検索／トレーニング／エージェントの制御を一度も使用していない既存ドメイン</h4>
+<p data-astro-cid-yoyuw6fx="">これまで検索、トレーニング、エージェントの個別設定を使用していなかったサイトは、従来の［AIボットをブロック］設定に基づいて、新しい設定へ移行されます：</p>
+<div id="html-block-j4r7kdhox" class="html-block">
+	<figure class="table table-style-align-center">
+		<table>
+			<thead>
+				<tr>
+					<th>(従来)<br>［AIをブロック］設定</th>
+					<th>(新規)<br>検索設定</th>
+					<th>(新規)<br>トレーニング設定</th>
+					<th>(新規)<br>エージェント設定</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>無効（未選択）</th>
+					<td>許可</td>
+					<td>許可</td>
+					<td>許可</td>
+				</tr>
+				<tr>
+					<th>ブロック</th>
+					<td>許可</td>
+					<td>AIトレーニングを許可しない</td>
+					<td>広告のあるページでブロック</td>
+				</tr>
+				<tr>
+					<th>広告のあるページでブロック</th>
+					<td>許可</td>
+					<td>AIトレーニングを許可しない</td>
+					<td>広告のあるページでブロック</td>
+				</tr>
+			</tbody>
+		</table>
+	</figure>
+</div>
+<h4 data-astro-cid-yoyuw6fx="">検索／トレーニング／エージェントの制御を以前に設定した既存ドメイン</h4>
+<p data-astro-cid-yoyuw6fx="">これまで検索、トレーニング、エージェントを個別に設定していたドメインでは、新しい定義に移行した後も、現在の設定と実質的に同じ効果が維持されます。従来のトレーニング設定で［ブロック］または［広告のあるページでブロック］を選択していた場合は、［AIトレーニングを許可しない］へ移行されます。</p>
+<div id="html-block-ny9qjp2ub" class="html-block">
+	<figure class="table table-style-align-center">
+		<table>
+			<thead>
+				<tr>
+					<th>制御</th>
+					<th>従来の設定</th>
+					<th>新しい設定</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th rowspan="3">検索</th>
+					<td>許可</td>
+					<td>許可</td>
+				</tr>
+				<tr>
+					<td>ブロック</td>
+					<td>ブロック</td>
+				</tr>
+				<tr>
+					<td>広告のあるページでブロック</td>
+					<td>広告のあるページでブロック</td>
+				</tr>
+				<tr>
+					<th rowspan="3">トレーニング</th>
+					<td>許可</td>
+					<td>許可</td>
+				</tr>
+				<tr>
+					<td>ブロック</td>
+					<td><strong>AIトレーニングを許可しない</strong></td>
+				</tr>
+				<tr>
+					<td>広告のあるページでブロック</td>
+					<td><strong>AIトレーニングを許可しない</strong></td>
+				</tr>
+				<tr>
+					<th rowspan="3">エージェント</th>
+					<td>許可</td>
+					<td>許可</td>
+				</tr>
+				<tr>
+					<td>ブロック</td>
+					<td>ブロック</td>
+				</tr>
+				<tr>
+					<td>広告のあるページでブロック</td>
+					<td>広告のあるページでブロック</td>
+				</tr>
+			</tbody>
+		</table>
+	</figure>
+</div>
+<h3 data-astro-cid-yoyuw6fx="">新規ドメインの推奨設定</h3>
+<p data-astro-cid-yoyuw6fx="">9月15日以降、新しいドメインを追加する際には、そのサイトが広告収益を得ているかどうかに応じて、2種類の推奨設定のいずれかが表示されます。広告収益を得るには、人間が実際にページを見る必要があります。しかし、AIトレーニングでは、その訪問がAIの回答に置き換わります。また、エージェントは広告を見る人がいない状態でページを取得します。そのため、広告で収益化しているサイトには、より制限の厳しい設定が推奨されます。これらの設定は、オンボーディング中でも、その後でも、いつでも変更できます。</p>
+<div id="html-block-yt7uq7yv4" class="html-block">
+	<figure class="table table-style-align-center">
+		<table>
+			<thead>
+				<tr>
+					<th>設定</th>
+					<th>サイトが広告で収益化されていない</th>
+					<th>サイトが広告で収益化されている</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>プリファレンス同期</th>
+					<td>有効</td>
+					<td>有効</td>
+				</tr>
+				<tr>
+					<th>検索</th>
+					<td>許可</td>
+					<td>許可</td>
+				</tr>
+				<tr>
+					<th>トレーニング</th>
+					<td>許可</td>
+					<td>AIトレーニングを許可しない</td>
+				</tr>
+				<tr>
+					<th>エージェント</th>
+					<td>許可</td>
+					<td>広告のあるページでブロック</td>
+				</tr>
+			</tbody>
+		</table>
+	</figure>
+</div>
+<p class="has-text-align-center" data-astro-cid-yoyuw6fx=""><em>新規ドメインの推奨設定。</em></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA//7+/Pr69fPz8fDw9PT09/b28/Ly6ujo////////+Pf39fT0+Pj4+vr69/b27u3t/////////fz8+fn5/Pz8////+/r68/Ly/////////////P39/////////v7+9vX1/////////////f7+////////////9/f3/////////f//+/39////////////9vf3////////+/39+fv7/v///////v//9fb2////////+vz8+fr6/v///////v//9PX1" alt="" width="715" height="797" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=715&amp;h=797&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=640&amp;h=713&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=715&amp;h=797&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=750&amp;h=836&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=828&amp;h=923&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=1080&amp;h=1204&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=1280&amp;h=1427&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=1430&amp;h=1594&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3499 2.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=772&amp;h=861&amp;f=webp" data-lightbox-width="772" data-lightbox-height="861" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="797" class="pt-portable-image-media"></div>
+	<figcaption data-astro-cid-7nvefuv6="">新しいドメインのオンボーディング画面です。［広告が表示されるページで収益を得ています］を選択した場合の推奨設定が表示されています。</figcaption>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h2 data-astro-cid-yoyuw6fx="">これは個々の複合用途クローラーにとって何を意味しますか？</h2>
+<p data-astro-cid-yoyuw6fx="">Applebot、Bingbot、Googlebotは「Accountable」に指定されています。Apple、Google、Microsoftは、コンテンツの利用方法をパブリッシャーが選べることと、その利用方法を明確にすることを共通の原則としています。［AIトレーニングを許可しない］を選択しても、各クローラーは検索目的で引き続きサイトをクロールできます。［ブロック］を選択すると、検索を含むすべてのクロールが停止します。</p>
+<p data-astro-cid-yoyuw6fx="">Amazon、Anthropic、Meta、OpenAIの関連クローラーも「Accountable」に分類されています。これらの企業は、検索用クローラーとAIトレーニング用クローラーを分けています。そのためCloudflareは、検索に影響を与えずに、AIトレーニング用クローラーだけをブロックできます。</p>
+<h3 data-astro-cid-yoyuw6fx="">Applebot</h3>
+<p data-astro-cid-yoyuw6fx="">Applebotでは、robots.txtに「Applebot-Extended」向けのDisallowルールを追加することで、AIトレーニングへの利用を拒否できます。また、ページのHTMLにnosnippet <a href="https://support.apple.com/en-us/119829#:~:text=nosnippet%3A%20Applebot,products%20and%20services." target="_blank" rel="noopener noreferrer"><u>ディレクティブ</u></a>を指定することで、AI要約に関する方針を示すこともできます。コンテンツを<a href="https://support.apple.com/en-us/119829#:~:text=Marking%20paywalled%20content,the%20next%20section." target="_blank" rel="noopener noreferrer"><u>有料コンテンツ</u></a>として指定し、生成AIの回答から除外することも可能です。Applebotには、URL単位で利用状況を確認するためのツールがまだありません。ただし、CloudflareはAppleのチームと協議しており、来年の提供に向けて開発中の仕組みについて説明を受けています。またAppleは、AIトレーニングへの利用を拒否しても<a href="https://support.apple.com/en-us/119829#:~:text=Applebot%2DExtended%20and%20controlling%20data%20usage" target="_blank" rel="noopener noreferrer"><u>検索順位には影響しない</u></a>と表明しています。</p>
+<h3 data-astro-cid-yoyuw6fx="">Googlebot</h3>
+<p data-astro-cid-yoyuw6fx="">Googlebotでは、robots.txtに「Google-Extended」向けのDisallowルールを追加することで、AIトレーニングへの利用を拒否できます。また、Webマスター向けポータルには、サイトのコンテンツを生成AIによる検索結果から除外するための設定があります。Googlebotは、通常の検索結果とAI要約に関する指標やレポートも提供しています。Googleは、既存の機能や最近導入した機能に加え、現在開発中の機能についても情報を共有しました。その中には、Google-Extendedによる利用状況をURL単位で確認しやすくするツールも含まれており、数週間以内に提供される予定です。またGoogleは、Google-Extendedを拒否しても<a href="https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers#google-extended:~:text=Google%2DExtended%20does%20not%20impact%20a%20site%27s%20inclusion%20in%20Google%20Search%20nor%20is%20it%20used%20as%20a%20ranking%20signal%20in%20Google%20Search." target="_blank" rel="noopener noreferrer"><u>検索順位には影響しない</u></a>と表明しています。</p>
+<h3 data-astro-cid-yoyuw6fx="">Bingbot</h3>
+<p data-astro-cid-yoyuw6fx="">Bingbotは、<a href="https://www.bing.com/webmasters/help/ai-performance-9f8e7d6c" target="_blank" rel="noopener noreferrer"><u>Webmaster Tools</u></a>で、細かな制御機能と利用状況の情報を提供しています。現在、サイト所有者はBingの<code>NOARCHIVE</code> <a href="https://blogs.bing.com/webmaster/september-2023/Announcing-new-options-for-webmasters-to-control-usage-of-their-content-in-Bing-Chat#:~:text=Content%20tagged%20NOARCHIVE%20will%20not%20be%20included%20in%20Bing%20Chat%20answers%2C%20not%20be%20linked%20to%20in%20the%20answers.%20Going%20forward%2C%20for%20content%20in%20our%20Bing%20Index%20that%20is%20labeled%20NOARCHIVE%2C%20we%20will%20not%20use%20the%20content%20for%20training%20Microsoft%E2%80%99s%20generative%20AI%20foundation%20models." target="_blank" rel="noopener noreferrer"><u>メタタグ</u></a>を使用して、AIトレーニングへの利用を拒否できます。Microsoftはこの機能を拡張し、robots.txtに記載されたトレーニング拒否の方針をドメインまたはサイト単位で尊重する仕組みを開発しています。提供開始は2027年初めの予定です。現時点でBingによるトレーニングを拒否したいCloudflareのお客様は、<code>NOARCHIVE</code>タグに加えて、<a href="https://www.bing.com/webmasters/help/block-urls-from-bing-264e560a" target="_blank" rel="noopener noreferrer"><u>URLのブロックまたはコンテンツ削除ツール</u></a>も使用できます。またMicrosoftは、<code>NOARCHIVE</code><a href="https://blogs.bing.com/webmaster/september-2023/Announcing-new-options-for-webmasters-to-control-usage-of-their-content-in-Bing-Chat#:~:text=We%20also%20heard%20from%20publishers%20that%20they%20want%20to%20exercise%20these%20choices%20without%20impacting%20how%20Bing%20users%20can%20discover%20web%20content%20on%20Bing%E2%80%99s%20search%20results%20page.%20We%20can%20assure%20publishers%20that%20content%20with%20the%20NOCACHE%20tag%20or%20NOARCHIVE%20tag%20will%20still%20appear%20in%20our%20search%20results." target="_blank" rel="noopener noreferrer"><u>を使用しても検索順位には影響しない</u></a>と表明しています。</p>
+<p data-astro-cid-yoyuw6fx="">Microsoftがこの仕組みを提供するまでは、［AIトレーニングを許可しない］を選択しても、robots.txtを通じてトレーニング拒否の方針がBingへ自動的に伝わることはありません。これは、Bingbotなどの複合用途クローラーには適用されなかった、従来のトレーニングの［ブロック］設定と実質的に同じ動作です。</p>
+<h3 data-astro-cid-yoyuw6fx="">継続的な取り組み</h3>
+<p data-astro-cid-yoyuw6fx="">Cloudflareは、機能や標準の進化に合わせて、すべてのAIクローラー運営者への働きかけと協議を続けます。Cloudflare <a href="https://radar.cloudflare.com/ai-insights#ai-bot-transparency" target="_blank" rel="noopener noreferrer"><u>Radar</u></a>では、「Accountable」なクローラー運営者が提供している制御機能、透明性、レポート機能を公開しています。&nbsp;</p>
+<p data-astro-cid-yoyuw6fx="">インターネットをより良いものにするには、双方に選択肢が必要です。クローラーにはオープンWebへアクセスする手段が必要です。一方、Webを作る人々には、自分たちのコンテンツがどのように使われるかを適切に制御する手段が必要です。今回の発表は、そのバランスの実現に向けた具体的な一歩です。</p>
+<p data-astro-cid-yoyuw6fx="">この取り組みを前進させるには、インフラストラクチャプロバイダー、コンテンツ制作者、テクノロジー企業、IETFなどの標準化団体が協力し、これらの考え方をオープンで相互運用可能な標準にする必要があります。</p>
+<h2 data-astro-cid-yoyuw6fx="">今後の予定：AI要約</h2>
+<p data-astro-cid-yoyuw6fx="">AIトレーニングとAI要約は、サイト所有者にとって異なる問題です。AIトレーニングでは、コンテンツをAIモデルの構築に使用してよいかどうかが問題になります。一方、AI要約は、人々が企業やサイトをどのように見つけ、評価し、最終的に訪問するかに影響します。どちらも重要ですが、ビジネスに与える影響は異なります。</p>
+<p data-astro-cid-yoyuw6fx="">まず必要なのは、AI要約への利用を拒否できる仕組みです。「Accountable」に指定された運営者は、すでにその機能を提供しているか、提供に向けた作業を進めています。これにより、サイト所有者には拒否する選択肢があるという、重要な基準が確立されます。</p>
+<p data-astro-cid-yoyuw6fx="">ただし、サイト全体でAI要約への利用を許可するか、すべて禁止するかという二者択一では、制御が大まかすぎます。適切な判断は、サイトの種類、コンテンツ、求める成果によって異なります。パブリッシャーにとってAIトレーニングは、コンテンツを誰が制御するのか、対価をどうするのか、独自コンテンツを持続的に提供できるのかという根本的な問題です。一方、AI要約では、利用者がパブリッシャーのサイトを訪れるのか、それとも検索やAIサービス内で回答を得て終わるのかが、より差し迫った問題になります。その他の企業でも、AI要約は見込み顧客とWebサイトの間に入る存在になりつつあります。質問への回答、選択肢の比較、製品の推奨などを行い、そもそもサイトを訪れるかどうかの判断にも影響します。</p>
+<p data-astro-cid-yoyuw6fx="">データを見ると、AI要約の影響は一様ではありません。消費者の<a href="https://www.pewresearch.org/chart/a-majority-of-americans-say-they-read-ai-summaries-at-the-top-of-search-results" target="_blank" rel="noopener noreferrer"><u>半数以上</u></a>が検索結果の要約を読んでいます。そのような消費者は、要約を読んだ後に<a href="https://www.bain.com/insights/goodbye-clicks-hello-ai-zero-click-search-redefines-marketing" target="_blank" rel="noopener noreferrer"><u>検索を終了する</u></a>可能性が<a href="https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results" target="_blank" rel="noopener noreferrer"><u>40%以上高く</u></a>、Webサイトへの訪問数が減る可能性があります。一方、AI検索からサイトを訪れた消費者のコンバージョン率は、通常の検索から訪れた消費者の<a href="https://aisearch.similarweb.com/blog/ai-visibility-roi" target="_blank" rel="noopener noreferrer"><u>3倍</u></a>から<a href="https://quickseo.ai/blog/ai-search-vs-google-search-in-2026-40-stats-that-show-why-your-brand-needs-to-track-both#:~:text=AI%20search%20traffic%20converts%20at%2014.2%25%2C%20compared%20to%20Google%E2%80%99s%202.8%25" target="_blank" rel="noopener noreferrer"><u>5倍超</u></a>です。AIによって訪問数は減るかもしれませんが、購入などの行動につながりやすい顧客が増える可能性があります。</p>
+<p data-astro-cid-yoyuw6fx="">これは、単純に良いこととも悪いこととも言えません。広告収益型のパブリッシャーは、できるだけ多くの人に訪問してもらうことを重視するでしょう。一方、小売業者は、訪問者の数が少なくても、購入する可能性が高い人を歓迎するかもしれません。Cloudflareの役割は、どちらを選ぶべきか決めることではありません。それぞれのサイト所有者が十分な情報に基づいて判断できるよう、必要な情報と制御手段を提供することです。</p>
+<p data-astro-cid-yoyuw6fx="">AI要約への利用を拒否できる仕組みは重要な第一歩ですが、それだけで十分ではありません。Cloudflareが次に目指すのは、AI要約がビジネスに与える影響をサイト所有者が把握し、コンテンツをどの程度使用させるかを細かく調整できるようにすることです。<a href="https://datatracker.ietf.org/wg/aipref/documents" target="_blank" rel="noopener noreferrer"><u>ai-prefs</u></a>などのオープン標準も、その実現に重要な役割を果たします。</p>
+<p data-astro-cid-yoyuw6fx=""><a href="mailto:%E3%81%93%E3%81%AE%E8%AD%B0%E8%AB%96%E3%81%AB%E5%8F%82%E5%8A%A0%E3%81%97%E3%81%9F%E3%81%84%E6%96%B9%E3%82%84%E3%80%81%E3%81%94%E6%84%8F%E8%A6%8B%E3%82%92%E3%81%8A%E5%AF%84%E3%81%9B%E3%81%84%E3%81%9F%E3%81%A0%E3%81%91%E3%82%8B%E6%96%B9%E3%81%AF%E3%80%81crawlercontrols@cloudflare.com" target="_blank" rel="noopener noreferrer">この議論に参加したい方や、ご意見をお寄せいただける方は、<u>crawlercontrols@cloudflare.com</u></a>までご連絡ください。</p>
+<p data-astro-cid-yoyuw6fx="">これらの新しい制御機能は、すべてのプランのお客様が利用できます。ドメイン（ゾーン）の<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fsettings" target="_blank" rel="noopener noreferrer"><u>セキュリティ設定</u></a>から設定できます。まだCloudflareをご利用でない場合は、<a href="https://www.cloudflare.com/lp/pg-one-platform" target="_blank" rel="noopener noreferrer"><u>無料で開始</u></a>して、お望みのトラフィック制御を今すぐ設定しましょう。</p>

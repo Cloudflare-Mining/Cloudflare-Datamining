@@ -1,0 +1,207 @@
+<p data-astro-cid-yoyuw6fx="">En l'absence de contrôles adéquats, les propriétaires de sites web étaient depuis longtemps confrontés à un dilemme&nbsp;: autoriser l'utilisation de leur contenu pour l'entraînement des&nbsp;IA ou risquer de voir diminuer leur référencement dans les résultats de recherche. Ce dilemme s'explique par le fait que certaines des plus grandes entreprises du web utilisent des robots d'exploration à usage mixte&nbsp;: un même robot d'exploration sert à la fois à la recherche et à l'entraînement des&nbsp;IA, et refuser une option revient à refuser l’autre.</p>
+<p data-astro-cid-yoyuw6fx="">Aujourd'hui, Cloudflare annonce un nouveau paramètre «&nbsp;<a href="https://blog.cloudflare.com/bot-preference-sync" target="_blank" rel="noopener noreferrer"><u>Refuser l'entraînement des&nbsp;IA</u></a>&nbsp;», qui vous permet de préserver facilement l'indexation de votre site web aux fins de la recherche, tout en interdisant à ces mêmes robots d'exploration d'utiliser votre contenu pour l'entraînement. Apple, Google et Microsoft respectent ce paramètre ou se sont engagés&nbsp;(dans un délai précis) à le respecter.</p>
+<p data-astro-cid-yoyuw6fx="">Les robots d’exploration à usage mixte constituaient l'aspect le plus difficile de la problématique de l'entraînement&nbsp;; la prochaine question sera celle des résumés générés par l'IA. L'application d'un «&nbsp;oui&nbsp;» ou d'un «&nbsp;non&nbsp;» généralisé à l'ensemble du site est trop simpliste&nbsp;: en effet, la part de votre contenu qui apparaît dans un résumé généré par l'IA est tout aussi importante que l'inclusion ou non de votre contenu dans ce résumé. La possibilité de désactiver les résumés générés par l'IA fait déjà partie des exigences que nous avons établies pour les opérateurs de robots d'exploration à usage mixte. D'ici le début de l'année prochaine, notre objectif est de vous permettre de contrôler la part de votre contenu qui sera incluse en configurant une fois seulement un paramètre sur Cloudflare, plutôt que séparément, auprès de chaque opérateur.</p>
+<h2 data-astro-cid-yoyuw6fx="">Pourquoi il ne suffit pas de demander</h2>
+<p data-astro-cid-yoyuw6fx="">La plupart des propriétaires de sites souhaitent être trouvés&nbsp;: par les utilisateurs humains, par les agents et par les bots&nbsp;(légitimes). Cependant, une part importante de l'Internet ouvert est financée par la publicité, les abonnements ou les relations directes avec les visiteurs, et ces modèles ne génèrent des revenus que lorsqu'un utilisateur humain consulte effectivement un site.</p>
+<p data-astro-cid-yoyuw6fx="">Presque tous les propriétaires de sites considèrent que la recherche est utile&nbsp;: moins de 1&nbsp;% des sites hébergés sur Cloudflare choisissent de bloquer les robots d'exploration. L'entraînement des&nbsp;IA, en revanche, est une tout autre problématique&nbsp;: 17&nbsp;% des sites choisissent de déployer un mécanisme destiné à l'interdire. C'est précisément pour cette raison que nous avons décidé que les propriétaires de sites avaient besoin de contrôles plus précis, plutôt que d'une fonctionnalité généraliste «&nbsp;Bloquer les&nbsp;IA&nbsp;».</p>
+<p data-astro-cid-yoyuw6fx="">Une directive robots.txt ne suffit pas, à elle seule, à résoudre ce problème. Tous les sites peuvent publier une directive, mais celle-ci ne permet pas d'identifier l'auteur de l'exploration, de déterminer à quelles fins cette exploration a lieu, ni d'empêcher un robot d'exploration de l'ignorer.</p>
+<p data-astro-cid-yoyuw6fx="">Un réseau peut, en revanche, résoudre ce dilemme&nbsp;: nous publions la préférence, nous identifions les robots d'exploration, nous classons leurs motivations et nous bloquons ceux qui l'ignorent&nbsp;; ensuite, nous publions les actions qu'effectue réellement chaque opérateur sur <a href="https://radar.cloudflare.com/ai-insights#ai-bot-transparency" target="_blank" rel="noopener noreferrer"><u>Radar</u></a>.</p>
+<p data-astro-cid-yoyuw6fx="">Toutefois, le blocage empêche les robots d'exploration d'accéder à un site&nbsp;; il ne modifie en rien leur comportement. L'idéal serait que les opérateurs de bots ne vous imposent pas du tout ce choix&nbsp;; c'est pourquoi, depuis juillet, nous échangeons directement avec eux. Les réactions ont été encourageantes&nbsp;: presque tous se sont accordés à dire que les propriétaires de sites web devaient bénéficier de contrôle et de transparence au regard de l'utilisation de leurs contenus, et qu'ils devaient avoir l'assurance que leurs choix seraient respectés. Pour aider les propriétaires de sites à bien comprendre cela, nous avons créé une certification&nbsp;: «&nbsp;Responsable&nbsp;».</p>
+<p data-astro-cid-yoyuw6fx="">La certification «&nbsp;Responsable&nbsp;» reconnaît à la fois les fonctionnalités disponibles à ce jour et les engagements concrets pris pour les mettre en œuvre. Pour être éligible, un opérateur de bots doit satisfaire aux exigences suivantes ou s'engager à les respecter&nbsp;:</p>
+<ol>
+	<li>Un mécanisme permettant aux propriétaires de sites de refuser que leur contenu soit utilisé pour l'entraînement des&nbsp;IA, via le fichier robots.txt ou une norme similaire.</li>
+	<li>Un mécanisme permettant aux propriétaires de sites de désactiver les résumés générés par l'IA, mis en place directement avec l'opérateur, puis via Cloudflare, l'année prochaine (voir la section ci-dessous pour plus de détails).</li>
+	<li>Une visibilité au niveau des URL permettant de savoir quelles pages ont été mises à disposition pour l'entraînement, ainsi que des indicateurs montrant comment le contenu apparaissait dans les résultats de recherche.</li>
+	<li>L'assurance que le fait de refuser de contribuer à l'entraînement des&nbsp;IA n'aura aucune incidence sur les résultats de recherche traditionnelle.</li>
+</ol>
+<p data-astro-cid-yoyuw6fx="">Apple, Google et Microsoft démontrent tous qu’ils satisfont aux conditions requises pour bénéficier de la certification «&nbsp;Responsable&nbsp;». Chacun d'entre eux allie les fonctionnalités déjà disponibles à des engagements assortis de délais, pour les fonctionnalités qui sont encore en cours de développement. Vous trouverez ci-dessous des informations détaillées sur les robots d'exploration de chacune de ces entreprises.</p>
+<h2 data-astro-cid-yoyuw6fx="">Nouvelles options de paramètres de sécurité</h2>
+<p data-astro-cid-yoyuw6fx="">Cloudflare classe les bots en fonction de leur comportement, et un même bot peut présenter différents comportements. Les contrôles couvrent trois comportements&nbsp;:</p>
+<ul>
+	<li><strong>Recherche</strong>&nbsp;: exploration pour constituer un index de recherche.</li>
+	<li><strong>Entraînement</strong>&nbsp;: exploration pour entraîner ou affiner un modèle.</li>
+	<li><strong>Agent</strong>&nbsp;: agents pilotés par un utilisateur et consultant une page pour le compte d'un utilisateur humain (par exemple, bots de récupération de messages de chat et agents simulant l'utilisation d'un navigateur).</li>
+</ul>
+<p data-astro-cid-yoyuw6fx="">Un robot d’exploration à usage mixte est un robot unique assurant à la fois des fonctions de recherche et d'entraînement. En l'absence de contrôles, cette combinaison entraîne le dilemme décrit ci-dessus&nbsp;: les propriétaires de sites ne peuvent pas refuser une utilisation sans refuser l'autre.</p>
+<p data-astro-cid-yoyuw6fx="">Afin d’éviter de bloquer les robots d’exploration à usage mixte avec la certification «&nbsp;Responsable&nbsp;» (c'est-à-dire ceux qui n’imposent pas ce compromis aux propriétaires de sites web), nous déployons un nouveau paramètre&nbsp;: «&nbsp;Refuser l’entraînement des&nbsp;IA&nbsp;». Le paramètre «&nbsp;Refuser l’entraînement des&nbsp;IA&nbsp;» est publie une directive «&nbsp;Disallow:&nbsp;» dans le fichier robots.txt.</p>
+<h3 data-astro-cid-yoyuw6fx="">Le paramètre «&nbsp;Bloquer&nbsp;» a désormais une nouvelle signification</h3>
+<p data-astro-cid-yoyuw6fx="">Les options «&nbsp;Bloquer&nbsp;» et «&nbsp;Bloquer sur les pages contenant des publicités&nbsp;» ne s’appliquaient auparavant pas aux robots d’exploration à usage mixte, car le blocage de ces robots risquait également d’affecter la visibilité dans les résultats de recherche. Maintenant que le nouveau paramètre «&nbsp;Refuser l'entraînement des&nbsp;IA&nbsp;» est disponible, les options «&nbsp;Bloquer&nbsp;» et «&nbsp;Bloquer sur les pages contenant des publicités&nbsp;» s'appliquent à <em>tous</em> les robots d'exploration, y compris aux robots à usage mixte.</p>
+<p data-astro-cid-yoyuw6fx="">Les contrôles relatifs à l'entraînement, à la recherche et aux agents s'appliquent au niveau du domaine. Avec l’ajout du paramètre «&nbsp;Refuser l'entraînement des&nbsp;IA&nbsp;», les paramètres disponibles son&nbsp;t:</p>
+<ol>
+	<li><strong>Autoriser</strong>&nbsp;: tous les robots d’exploration sont autorisés, sauf s'ils sont bloqués par un autre paramètre ou une règle de pare-feu WAF.</li>
+	<li><strong>Refuser l'entraînement des&nbsp;IA</strong>&nbsp;: Bot&nbsp;Preference&nbsp;Sync publie la préférence applicable de refus de l'entraînement dans le fichier robots.txt. Les robots d'exploration à usage mixte avec la certification «&nbsp;Responsable&nbsp;» restent autorisés pour l'indexation. Tous les autres robots d'exploration utilisés pour l'entraînement sont bloqués, notamment ceux exploités exclusivement à cette fin par Amazon, Anthropic, Meta et OpenAI&nbsp;; leur blocage n'a aucune incidence sur les résultats de recherche. L'option «&nbsp;Refuser l'entraînement des&nbsp;IA&nbsp;» est uniquement disponible dans les paramètres relatifs à l'entraînement, et non dans les paramètres concernant la recherche ou les agents.</li>
+	<li><strong>Bloquer sur les pages contenant des publicités</strong>&nbsp;: les robots d'exploration, y compris les robots à usage mixte, sont uniquement bloqués sur les pages identifiées comme diffusant une publicité.</li>
+	<li><strong>Bloquer</strong>&nbsp;: tous les robots d'exploration, y compris les robots à usage mixte, sont bloqués.</li>
+</ol>
+<p data-astro-cid-yoyuw6fx="">Le paramètre «&nbsp;Refuser l'entraînement des IA&nbsp;» publie une préférence d'interdiction dans le fichier robots.txt. Une préférence concernant uniquement les publicités ne peut pas être mise en œuvre de cette manière&nbsp;: Cloudflare est capable de détecter les pages qui diffusent des publicités, mais cette liste est trop longue et trop fréquemment modifiée pour pouvoir être énumérée dans le fichier robots.txt. C'est pourquoi l'option «&nbsp;Refuser l'entraînement des&nbsp;IA&nbsp;» n'est pas disponible pour les pages contenant des publicités.</p>
+<p data-astro-cid-yoyuw6fx="">Les agents ne suscitent pas le même dilemme entre recherche et visibilité que les robots d'exploration à usage mixte, et il n'existe pas encore sur Internet de directive bien établie permettant d'exprimer des préférences «&nbsp;Disallow&nbsp;» à l'intention des agents. Pour l'instant, nous n'avons pas prévu de paramètre «&nbsp;Disallow&nbsp;» pour les agents. À mesure que des normes telles que <a href="https://datatracker.ietf.org/wg/aipref/documents" target="_blank" rel="noopener noreferrer"><u>ai-prefs</u></a> arriveront à maturité, nous réexaminerons cette approche.</p>
+<h2 data-astro-cid-yoyuw6fx="">Qu'est-ce qui changera le 15&nbsp;septembre&nbsp;?</h2>
+<p data-astro-cid-yoyuw6fx="">Nous apportons les modifications suivantes à Bot&nbsp;Management et AI&nbsp;Crawl Control&nbsp;:</p>
+<ol>
+	<li>Les options «&nbsp;Bloquer&nbsp;» et «&nbsp;Bloquer sur les pages contenant des publicités&nbsp;» s'appliquent désormais aux robots d'exploration à usage mixte, notamment à Applebot, Bingbot et Googlebot&nbsp;; ces deux paramètres ont donc une incidence sur la recherche ainsi que sur l'apprentissage. Pour refuser l'entraînement, mais <em>conserver</em> la recherche, utilisez le paramètre «&nbsp;Refuser l'entraînement des&nbsp;IA&nbsp;».</li>
+	<li>La fonction «&nbsp;Bloquer les bots&nbsp;IA&nbsp;» sera abandonnée au profit de contrôles plus granulaires concernant la recherche, l'entraînement et les agents.</li>
+	<li>La fonctionnalité Managed&nbsp;Robots.txt sera abandonnée au profit de Bot&nbsp;Preference&nbsp;Sync. Les clients ayant activé Managed&nbsp;Robots.txt seront migrés vers le nouveau système.</li>
+	<li>L'option «&nbsp;Refuser l'entraînement des&nbsp;IA&nbsp;» sera désormais intégrée à la configuration recommandée pour certains nouveaux domaines.</li>
+	<li>Les préférences des clients existants seront migrées vers les nouveaux contrôles, comme décrit ci-dessous.</li>
+</ol>
+<h3 data-astro-cid-yoyuw6fx="">Ce que vous devez faire</h3>
+<p data-astro-cid-yoyuw6fx="">Rien, dans presque tous les cas. Vos paramètres actuels seront transférés automatiquement.</p>
+<p data-astro-cid-yoyuw6fx="">Si vous souhaitez interdire complètement les robots d'exploration à usage mixte, vous devez désormais le préciser. Sélectionnez l'option «&nbsp;Bloquer&nbsp;»&nbsp;; cela empêchera Applebot, Bingbot et Googlebot d’accéder à votre site, y compris pour la recherche.</p>
+<h4 data-astro-cid-yoyuw6fx="">Domaines existants n'ayant jamais utilisé les contrôles relatifs à la recherche, à l'entraînement et aux agents.</h4>
+<p data-astro-cid-yoyuw6fx="">La configuration des propriétaires de sites qui n'ont jamais défini de contrôles plus précis sera migrée vers les nouveaux paramètres en fonction du paramètre «&nbsp;Bloquer les bots&nbsp;IA&nbsp;» existant&nbsp;:</p>
+<div id="html-block-j4r7kdhox" class="html-block">
+	<figure class="table table-style-align-center">
+		<table>
+			<thead>
+				<tr>
+					<th>(ancien paramètre)<br>Paramètre « Bloquer l'IA »</th>
+					<th>(Nouveau)<br>Paramètre pour la recherche</th>
+					<th>(Nouveau)<br>Paramètre pour l'entraînement</th>
+					<th>(Nouveau)<br>Paramètre pour les agents</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>Désactivé (non sélectionné</th>
+					<td>Autoriser</td>
+					<td>Autoriser</td>
+					<td>Autoriser</td>
+				</tr>
+				<tr>
+					<th>Bloquer</th>
+					<td>Autoriser</td>
+					<td>Refuser l’entraînement des IA</td>
+					<td>Bloquer sur les pages contenant des publicités</td>
+				</tr>
+				<tr>
+					<th>Bloquer sur les pages contenant des publicités</th>
+					<td>Autoriser</td>
+					<td>Refuser l’entraînement des IA</td>
+					<td>Bloquer sur les pages contenant des publicités</td>
+				</tr>
+			</tbody>
+		</table>
+	</figure>
+</div>
+<h4 data-astro-cid-yoyuw6fx="">Domaines existants ayant précédemment configuré les contrôles pour la recherche, l'entraînement et les agents</h4>
+<p data-astro-cid-yoyuw6fx="">Si les contrôles granulaires ont déjà été configurés pour certains domaines, l'effet concret de leurs choix sera conservé avec les nouvelles définitions. Les sélections précédentes «&nbsp;Bloquer&nbsp;» ou «&nbsp;Bloquer sur les pages contenant des publicités&nbsp;» pour l'entraînement seront migrées vers «&nbsp;Refuser l'entraînement des IA&nbsp;».</p>
+<div id="html-block-ny9qjp2ub" class="html-block">
+	<figure class="table table-style-align-center">
+		<table>
+			<thead>
+				<tr>
+					<th>Contrôle</th>
+					<th>Ancien paramètre</th>
+					<th>Nouveau paramètre</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th rowspan="3">Rechercher</th>
+					<td>Autoriser</td>
+					<td>Autoriser</td>
+				</tr>
+				<tr>
+					<td>Bloquer</td>
+					<td>Bloquer</td>
+				</tr>
+				<tr>
+					<td>Bloquer sur les pages contenant des publicités</td>
+					<td>Bloquer sur les pages contenant des publicités</td>
+				</tr>
+				<tr>
+					<th rowspan="3">Entraînement</th>
+					<td>Autoriser</td>
+					<td>Autoriser</td>
+				</tr>
+				<tr>
+					<td>Bloquer</td>
+					<td><strong>Refuser l’entraînement des IA</strong></td>
+				</tr>
+				<tr>
+					<td>Block on pages with ads</td>
+					<td><strong>Refuser l’entraînement des IA</strong></td>
+				</tr>
+				<tr>
+					<th rowspan="3">Agent</th>
+					<td>Autoriser</td>
+					<td>Autoriser</td>
+				</tr>
+				<tr>
+					<td>Bloquer</td>
+					<td>Bloquer</td>
+				</tr>
+				<tr>
+					<td>Bloquer sur les pages contenant des publicités</td>
+					<td>Bloquer sur les pages contenant des publicités</td>
+				</tr>
+			</tbody>
+		</table>
+	</figure>
+</div>
+<h3 data-astro-cid-yoyuw6fx="">Recommandations pour les nouveaux domaines</h3>
+<p data-astro-cid-yoyuw6fx="">À partir du 15&nbsp;septembre, les clients intégrant un nouveau domaine se verront proposer l'une des deux configurations prédéfinies, selon que le site génère ou non des revenus publicitaires. Les revenus publicitaires dépendent du fait qu'un utilisateur humain consulte effectivement la page. L'entraînement remplace cette visite par une réponse&nbsp;; les agents consultent la page sans que les publicités soient affichées. Les paramètres par défaut pour les sites financés par la publicité sont donc plus restrictifs. Vous pouvez modifier n'importe lequel de ces paramètres pendant l'intégration ou le modifier ultérieurement, à tout moment.</p>
+<div id="html-block-yt7uq7yv4" class="html-block">
+	<figure class="table table-style-align-center">
+		<table>
+			<thead>
+				<tr>
+					<th>Paramètre</th>
+					<th>Le site ne génère aucun revenu publicitaire</th>
+					<th>Le site génère des revenus publicitaires</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>Synchronisation des préférences</th>
+					<td>Activé</td>
+					<td>Activé</td>
+				</tr>
+				<tr>
+					<th>Rechercher</th>
+					<td>Autoriser</td>
+					<td>Autoriser</td>
+				</tr>
+				<tr>
+					<th>Entraînement</th>
+					<td>Autoriser</td>
+					<td>Refuser l’entraînement des IA</td>
+				</tr>
+				<tr>
+					<th>Agent</th>
+					<td>Autoriser</td>
+					<td>Bloquer sur les pages contenant des publicités</td>
+				</tr>
+			</tbody>
+		</table>
+	</figure>
+</div>
+<p class="has-text-align-center" data-astro-cid-yoyuw6fx=""><em>Paramètres recommandés pour les nouveaux domaines.</em></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA//7+/Pr69fPz8fDw9PT09/b28/Ly6ujo////////+Pf39fT0+Pj4+vr69/b27u3t/////////fz8+fn5/Pz8////+/r68/Ly/////////////P39/////////v7+9vX1/////////////f7+////////////9/f3/////////f//+/39////////////9vf3////////+/39+fv7/v///////v//9fb2////////+vz8+fr6/v///////v//9PX1" alt="" width="715" height="797" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=715&amp;h=797&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=640&amp;h=713&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=715&amp;h=797&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=750&amp;h=836&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=828&amp;h=923&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=1080&amp;h=1204&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=1280&amp;h=1427&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=1430&amp;h=1594&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3499 2.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=772&amp;h=861&amp;f=webp" data-lightbox-width="772" data-lightbox-height="861" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="797" class="pt-portable-image-media"></div>
+	<figcaption data-astro-cid-7nvefuv6="">Capture d'écran du processus d'intégration d'un nouveau domaine, présentant les paramètres recommandés lorsque l'option « I monetize pages that serve ads » (Monétisation des pages diffusant des publicités) est sélectionnée.</figcaption>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h2 data-astro-cid-yoyuw6fx="">Quelles sont les implications pour certains robots d'exploration à usage mixte&nbsp;?</h2>
+<p data-astro-cid-yoyuw6fx="">Applebot, Bingbot et Googlebot ont reçu la certification «&nbsp;Responsable&nbsp;». Apple, Google et Microsoft adhèrent aux mêmes principes de liberté de choix des éditeurs et de transparence. Lorsque le paramètre «&nbsp;Refuser l'entraînement des IA&nbsp;» est activé, ces bots peuvent continuer à explorer votre site à des fins de recherche. En revanche, sélectionner l'option «&nbsp;Bloquer&nbsp;» les arrête entièrement.</p>
+<p data-astro-cid-yoyuw6fx="">Nous classons également les robots d'exploration concernés d'Amazon, d'Anthropic, de Meta et d'OpenAI dans la catégorie «&nbsp;Responsable&nbsp;». Ces entreprises séparent leurs robots de recherche de leurs robots d'entraînement, permettant ainsi à Cloudflare de bloquer le robot d'entraînement sans que cela n'affecte la recherche.</p>
+<h3 data-astro-cid-yoyuw6fx="">Applebot</h3>
+<p data-astro-cid-yoyuw6fx="">Applebot permet aux propriétaires de sites d'interdire l'entraînement en ajoutant une règle «&nbsp;Disallow&nbsp;» dans le fichier robots.txt pour Applebot-Extended. À l'heure actuelle, les propriétaires de sites peuvent également indiquer leurs préférences concernant les résumés générés par l'IA via la <a href="https://support.apple.com/en-us/119829#:~:text=nosnippet%3A%20Applebot,products%20and%20services." target="_blank" rel="noopener noreferrer"><u>directive</u></a> «&nbsp;nosnippet&nbsp;» dans le code HTML de la page. Le contenu peut également être marqué comme <a href="https://support.apple.com/en-us/119829#:~:text=Marking%20paywalled%20content,the%20next%20section." target="_blank" rel="noopener noreferrer"><u>contenu payant</u></a> afin de l'exclure des résultats générés. Applebot ne propose pas encore d'outil permettant d'effectuer une inspection au niveau de l'URL. Nous avons toutefois rencontré l'équipe, qui nous a donné des précisions sur la solution qu'elle élabore actuellement pour l'année prochaine. Apple a également déclaré que le fait d’interdire l'entraînement <a href="https://support.apple.com/en-us/119829#:~:text=Applebot%2DExtended%20and%20controlling%20data%20usage" target="_blank" rel="noopener noreferrer"><u>n’a aucune incidence sur le classement dans les résultats de recherche</u></a>.</p>
+<h3 data-astro-cid-yoyuw6fx="">Googlebot</h3>
+<p data-astro-cid-yoyuw6fx="">Googlebot permet aux propriétaires de sites de refuser l’entraînement en ajoutant une règle «&nbsp;Disallow&nbsp;» au fichier robots.txt pour Google-Extended. Il propose également un sélecteur sur son portail pour webmasters permettant d'exclure le contenu d’un site des résultats de recherche génératifs. Googlebot fournit également aux propriétaires de sites des indicateurs et des rapports concernant les résultats de recherche et les résumés générés par l'IA. Google a communiqué des informations sur ses contrôles existants et récemment lancés, ainsi que sur les outils en cours de développement, notamment des outils supplémentaires de transparence au niveau des URL destinés aux propriétaires de sites pour Google-Extended, dont le lancement est prévu dans les semaines à venir. Google a également déclaré que la désactivation de Google-Extended <a href="https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers#google-extended:~:text=Google%2DExtended%20does%20not%20impact%20a%20site%27s%20inclusion%20in%20Google%20Search%20nor%20is%20it%20used%20as%20a%20ranking%20signal%20in%20Google%20Search." target="_blank" rel="noopener noreferrer"><u>n’a aucune incidence sur le classement dans les résultats de recherche</u></a>.</p>
+<h3 data-astro-cid-yoyuw6fx="">Bingbot</h3>
+<p data-astro-cid-yoyuw6fx="">Bingbot offre des options de contrôle précises et une grande transparence avec ses outils <a href="https://www.bing.com/webmasters/help/ai-performance-9f8e7d6c" target="_blank" rel="noopener noreferrer"><u>Webmaster Tools</u></a>. Les propriétaires de sites peuvent actuellement indiquer leurs préférences concernant l'entraînement des&nbsp;IA via la <a href="https://blogs.bing.com/webmaster/september-2023/Announcing-new-options-for-webmasters-to-control-usage-of-their-content-in-Bing-Chat#:~:text=Content%20tagged%20NOARCHIVE%20will%20not%20be%20included%20in%20Bing%20Chat%20answers%2C%20not%20be%20linked%20to%20in%20the%20answers.%20Going%20forward%2C%20for%20content%20in%20our%20Bing%20Index%20that%20is%20labeled%20NOARCHIVE%2C%20we%20will%20not%20use%20the%20content%20for%20training%20Microsoft%E2%80%99s%20generative%20AI%20foundation%20models." target="_blank" rel="noopener noreferrer"><u>balise méta</u></a> <code>NOARCHIVE</code> de Bing. Microsoft étend ces fonctionnalités et développe actuellement un mécanisme permettant de respecter également une préférence de refus de l'entraînement définie dans le fichier robots.txt sur l'ensemble du domaine ou du site&nbsp;; la mise en œuvre est prévue début&nbsp;2027. Outre l’utilisation de la balise <code>NOARCHIVE</code>, les clients de Cloudflare qui souhaitent dès aujourd’hui exclure l'utilisation de leur contenu aux fins de l'entraînement de Bing peuvent s'appuyer sur <a href="https://www.bing.com/webmasters/help/block-urls-from-bing-264e560a" target="_blank" rel="noopener noreferrer"><u>l'outil de blocage d'URL ou de suppression de contenu</u></a>. Microsoft a également déclaré que l’utilisation de <code>NOARCHIVE</code> <a href="https://blogs.bing.com/webmaster/september-2023/Announcing-new-options-for-webmasters-to-control-usage-of-their-content-in-Bing-Chat#:~:text=We%20also%20heard%20from%20publishers%20that%20they%20want%20to%20exercise%20these%20choices%20without%20impacting%20how%20Bing%20users%20can%20discover%20web%20content%20on%20Bing%E2%80%99s%20search%20results%20page.%20We%20can%20assure%20publishers%20that%20content%20with%20the%20NOCACHE%20tag%20or%20NOARCHIVE%20tag%20will%20still%20appear%20in%20our%20search%20results." target="_blank" rel="noopener noreferrer"><u>n’aura aucune incidence sur le classement dans les résultats de recherche</u></a>.</p>
+<p data-astro-cid-yoyuw6fx="">Tant que cette fonctionnalité ne sera pas disponible, sélectionner «&nbsp;Refuser l'entraînement des&nbsp;IA&nbsp;» ne transmettra pas automatiquement, via le fichier robots.txt, la préférence de refus de l'entraînement à Bing. Ce comportement correspond à celui de l'ancien paramètre «&nbsp;Bloquer l'entraînement&nbsp;», qui ne s'appliquait pas aux robots d'exploration à usage mixte, tels que Bingbot.</p>
+<h3 data-astro-cid-yoyuw6fx="">Des progrès continus</h3>
+<p data-astro-cid-yoyuw6fx="">Nous continuerons à contacter et à collaborer avec tous les opérateurs de robots d'exploration pilotés par&nbsp;IA, à mesure que ces fonctionnalités évolueront. Cloudflare <a href="https://radar.cloudflare.com/ai-insights#ai-bot-transparency" target="_blank" rel="noopener noreferrer"><u>Radar</u></a> assure un suivi public des contrôles, de la transparence et des rapports fournis par les opérateurs de robots d'exploration ayant obtenu la certification «&nbsp;Responsable&nbsp;».&nbsp;</p>
+<p data-astro-cid-yoyuw6fx="">Pour contribuer à bâtir un Internet meilleur, les deux parties doivent disposer d'une certaine autonomie&nbsp;: les robots d'exploration doivent pouvoir accéder au web ouvert, et les créateurs de ce web doivent disposer d'un contrôle effectif sur l'utilisation de leur travail. L'annonce faite aujourd'hui marque une avancée concrète vers cet équilibre.</p>
+<p data-astro-cid-yoyuw6fx="">Pour assurer la continuité des progrès, les fournisseurs d'infrastructures, les créateurs de contenus, les entreprises technologiques et les organismes de normalisation, tels qu'Internet Engineering Task Force&nbsp;(IETF), devront collaborer afin de traduire ces principes en normes ouvertes et interopérables.</p>
+<h2 data-astro-cid-yoyuw6fx="">Prochaine étape&nbsp;: les résumés générés par l'IA</h2>
+<p data-astro-cid-yoyuw6fx="">L'entraînement des IA et les résumés générés par l’IA entraînent différentes questions pour les propriétaires de sites. L'entraînement des IA détermine si un contenu peut être utilisé pour développer des modèles d'IA, tandis que les résumés générés par l'IA influencent la manière dont les internautes découvrent, évaluent et, en fin de compte, consultent le site web d'une entreprise. Ces deux aspects sont importants, mais ont des répercussions différentes sur les entreprises.</p>
+<p data-astro-cid-yoyuw6fx="">Les contrôles permettant de refuser l'utilisation de contenus dans les résumés générés par l'IA constituent la première étape. Les opérateurs ayant obtenu la certification «&nbsp;Responsable&nbsp;» fournissent ou développent actuellement cette fonctionnalité, établissant un principe fondamental&nbsp;: les propriétaires des sites peuvent refuser.</p>
+<p data-astro-cid-yoyuw6fx="">Cependant, le choix d'autoriser ou d'interdire les résumés générés par l'IA pour l'ensemble du site reste un outil peu précis. Une décision pertinente dépend du site, du contenu et de la finalité commerciale. Pour les éditeurs, l'entraînement des&nbsp;IA soulève des questions fondamentales concernant le contrôle, la rémunération et la pérennité des contenus originaux. Les résumés générés par l'IA soulèvent une question distincte, et souvent plus immédiate, concernant la diffusion&nbsp;: l'internaute se rend-il sur le site de l'éditeur, ou consulte-t-il la réponse directement dans le cadre d'une recherche ou d'une expérience d'utilisation de l'IA&nbsp;? Pour de nombreuses autres entreprises, les résumés générés par l'IA constituent de plus en plus souvent un maillon entre un client potentiel et un site web. Ils peuvent répondre à une question, comparer différentes alternatives, recommander un produit ou aider un internaute à décider s'il souhaite consulter le site web de l'entreprise.</p>
+<p data-astro-cid-yoyuw6fx="">Les données montrent des résultats mitigés. <a href="https://www.pewresearch.org/chart/a-majority-of-americans-say-they-read-ai-summaries-at-the-top-of-search-results" target="_blank" rel="noopener noreferrer"><u>Plus de la moitié</u></a> des consommateurs lisent les résumés générés par l'IA inclus dans les résultats de recherche, et ces consommateurs sont <a href="https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results" target="_blank" rel="noopener noreferrer"><u>plus de 40&nbsp;% plus susceptibles</u></a> de <a href="https://www.bain.com/insights/goodbye-clicks-hello-ai-zero-click-search-redefines-marketing" target="_blank" rel="noopener noreferrer"><u>mettre fin à leur recherche</u></a> après avoir lu un résumé. Cela peut entraîner une baisse du nombre de visites sur un site web. Cependant, le taux de conversion des consommateurs orientés par une recherche avec l'IA est <a href="https://aisearch.similarweb.com/blog/ai-visibility-roi" target="_blank" rel="noopener noreferrer"><u>trois fois</u></a> à <a href="https://quickseo.ai/blog/ai-search-vs-google-search-in-2026-40-stats-that-show-why-your-brand-needs-to-track-both#:~:text=AI%20search%20traffic%20converts%20at%2014.2%25%2C%20compared%20to%20Google%E2%80%99s%202.8%25" target="_blank" rel="noopener noreferrer"><u>plus de cinq fois</u></a> supérieur à celui des visiteurs issus d'une recherche traditionnelle. Si l’IA peut entraîner une baisse du nombre de visites, elle envoie également des clients affichant une intention d'achat beaucoup plus marquée.</p>
+<p data-astro-cid-yoyuw6fx="">En soi, cela n’est ni bon, ni mauvais. Un éditeur financé par la publicité peut chercher à optimiser son volume d'audience. Un revendeur peut, quant à lui, préférer recevoir des visiteurs moins nombreux, mais plus enclins à acheter. Le rôle de Cloudflare n'est pas de choisir à leur place, mais de leur fournir la visibilité et le contrôle nécessaires pour prendre une décision bien informée.</p>
+<p data-astro-cid-yoyuw6fx="">Les options de refus d'utilisation des contenus dans les résumés générés par l'IA sont un bon point de départ, mais ils ne constituent pas une solution définitive. Notre prochain objectif est d'aider les propriétaires de sites à comprendre l'impact des résumés générés par l'IA sur leur activité et de leur donner davantage de contrôle sur la part de leur contenu pouvant être utilisée dans ces résumés. Les normes ouvertes telles que <a href="https://datatracker.ietf.org/wg/aipref/documents" target="_blank" rel="noopener noreferrer"><u>ai-prefs</u></a> joueront un rôle important pour y parvenir.</p>
+<p data-astro-cid-yoyuw6fx="">Si vous souhaitez participer à cette conversation ou nous faire part de vos commentaires, veuillez nous écrire à l'adresse <a href="mailto:crawlercontrols@cloudflare.com" target="_blank" rel="noopener noreferrer"><u>crawlercontrols@cloudflare.com</u></a>.</p>
+<p data-astro-cid-yoyuw6fx="">Ces nouveaux contrôles sont disponibles pour tous les clients, dans toutes les offres, et peuvent être configurés depuis les <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fsettings" target="_blank" rel="noopener noreferrer"><u>Paramètres de sécurité</u></a> au niveau du domaine&nbsp;(zone). Votre site n’est pas encore hébergé sur Cloudflare&nbsp;? <a href="https://www.cloudflare.com/lp/pg-one-platform" target="_blank" rel="noopener noreferrer"><u>Souscrivez à notre offre gratuite</u></a> et définissez dès aujourd’hui les mesures de contrôle du trafic que vous souhaitez mettre en oeuvre.</p>
