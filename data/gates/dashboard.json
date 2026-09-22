@@ -208,6 +208,9 @@
 	"aig-catalog-multi-provider-spike": {
 		"enabled": false
 	},
+	"aig-insights-cloudflare-auto-upsell": {
+		"enabled": false
+	},
 	"aig-insights-custom-attribution": {
 		"enabled": true
 	},
@@ -661,7 +664,7 @@
 		"enabled": true
 	},
 	"connect-with-artifacts": {
-		"enabled": false
+		"enabled": true
 	},
 	"connect-with-cursor-origin": {
 		"enabled": true
@@ -1376,12 +1379,6 @@
 	"edgeworkerdb-maintenance-banner": {
 		"enabled": true
 	},
-	"email-deprecate-old-ui": {
-		"enabled": true
-	},
-	"email-onboarding-wizard": {
-		"enabled": true
-	},
 	"email-routing-account-destination-addresses": {
 		"enabled": true
 	},
@@ -1392,9 +1389,6 @@
 		"enabled": true
 	},
 	"email-sending-account-nav": {
-		"enabled": true
-	},
-	"email-sending-preview": {
 		"enabled": true
 	},
 	"email-sending-simulator": {
