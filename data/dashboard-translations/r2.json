@@ -984,7 +984,7 @@
 	"r2.migrator.create_source.populated_from_file": "Populated from %{fileName}",
 	"r2.migrator.create_source.keys_limit_exceeded": "More than 10,000 keys in list - Please resubmit with maximum 10,000 keys",
 	"r2.migrator.create_source.populated_from_file_with_limit": "Populated from %{fileName} - Only first 10,000 keys imported",
-	"r2.migrator.create_source.file_too_large": "File size is too big: must be under 1 MB",
+	"r2.migrator.create_source.file_too_large": "File size is too big: must be 1 MiB or smaller",
 	"r2.migrator.create_source.file_size_too_large": "File size is too big: must be under 20 MB",
 	"r2.migrator.create_source.feedback_prompt": "Want to leave us feedback on Data Migration? <0>Feedback form survey</0>",
 	"r2.migrator.select_destination.title": "Select destination R2 bucket",
