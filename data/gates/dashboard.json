@@ -103,17 +103,14 @@
 	"ai-audit-v2": {
 		"enabled": true
 	},
-	"ai-auto-rag-aig-models": {
-		"enabled": true
-	},
 	"ai-auto-rag-disable-max-num-rules": {
 		"enabled": true
 	},
 	"ai-auto-rag-public-endpoint-metrics": {
 		"enabled": false
 	},
-	"ai-auto-rag-skip-domain-verification": {
-		"enabled": true
+	"ai-auto-rag-remove-beta": {
+		"enabled": false
 	},
 	"ai-auto-rag-test-models": {
 		"enabled": true
@@ -1383,6 +1380,9 @@
 		"enabled": true
 	},
 	"email-onboarding-wizard": {
+		"enabled": true
+	},
+	"email-routing-account-destination-addresses": {
 		"enabled": true
 	},
 	"email-routing-email-worker-maze-study": {
