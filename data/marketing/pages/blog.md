@@ -20,7 +20,7 @@ Vary support is now available in Cache Rules on every plan. You can normalize kn
 
 [![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2RH1BWX8086HXJT21CBD9PE.01M2RH1CGYTGNVA73ZP6Z4GJBR.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/vary-support/)
 
-September 22, 2026 [<h2>Introducing Worker Previews: isolated preview environments for every change your agent makes</h2>](https://blog.cloudflare.com/worker-previews/)
+September 22, 2026 [<h2>Introducing Worker Previews: Isolated preview environments for every change your agent makes</h2>](https://blog.cloudflare.com/worker-previews/)
 
 Worker Previews gives every branch its own URL, configuration, state, and observability, so you and your agents can test changes in parallel without affecting production.
 
