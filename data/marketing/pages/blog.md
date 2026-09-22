@@ -10,6 +10,24 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+September 22, 2026 [<h2>We just shipped support for the ugliest part of HTTP: Vary</h2>](https://blog.cloudflare.com/vary-support/)
+
+Vary support is now available in Cache Rules on every plan. You can normalize known negotiation headers, pass exact values through to the origin when those small differences matter, or bypass cache when the variation is too unpredictable.
+
+![Alex Krivit](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Q0QQ4YF44E63CZ5V25R6.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Zaidoon Abd Al Hadi](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VAC8T0NPDPFZ06GAZW3H.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Alex Krivit](https://blog.cloudflare.com/author/alex/) and  [Zaidoon Abd Al Hadi](https://blog.cloudflare.com/author/zaidoon/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2RH1BWX8086HXJT21CBD9PE.01M2RH1CGYTGNVA73ZP6Z4GJBR.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/vary-support/)
+
+September 22, 2026 [<h2>Introducing Worker Previews: isolated preview environments for every change your agent makes</h2>](https://blog.cloudflare.com/worker-previews/)
+
+Worker Previews gives every branch its own URL, configuration, state, and observability, so you and your agents can test changes in parallel without affecting production.
+
+![Yomna Shousha](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D53TR5Q6CJV4H84YN9FN.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![William Taylor](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M31X946ZD6G5H8162HX7A2PN.01M31X94YKHHV0A63REEGJP07Q.webp&w=64&h=64&f=webp&fit=cover&position=center)![Nanda Syahrasyad](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M31XBRAZNN5JZZN8WA0JNAW1.01M31XBS3S1JAWK32RPCT9EY1S.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Yomna Shousha](https://blog.cloudflare.com/author/yomna-shousha/),  [William Taylor](https://blog.cloudflare.com/author/william-taylor/), and  [Nanda Syahrasyad](https://blog.cloudflare.com/author/nanda-syahrasyad/)
+
 September 21, 2026 [<h2>Python Workers are now generally available</h2>](https://blog.cloudflare.com/python-workers-ga/)
 
 Python Workers allow developers to run Python web frameworks and AI orchestration libraries natively in the Cloudflare Workers runtime. You can seamlessly integrate with Cloudflare's ecosystem including D1, R2, and Workers AI without writing any JavaScript glue code.
@@ -17,8 +35,6 @@ Python Workers allow developers to run Python web frameworks and AI orchestratio
 ![Gyeongjae Choi](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYT1GVVH6V865W8Z5B63CYZT.webp&w=64&h=64&f=webp&fit=cover&position=center)![Dominik Picheta](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P5G8RRA9GKFZA6BYERZ1.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Hood Chatham](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DGCR56ZBCN9NTBRE18MF.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Gyeongjae Choi](https://blog.cloudflare.com/author/gyeongjae-choi/),  [Dominik Picheta](https://blog.cloudflare.com/author/dominik/), and  [Hood Chatham](https://blog.cloudflare.com/author/hood/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2V34BA05P39V3QCVSXF412X.01M2V34C4FZEN00M4XFVXH4W2K.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/python-workers-ga/)
 
 September 18, 2026 [<h2>Saving another 100TB of RAM with math (and Rust)</h2>](https://blog.cloudflare.com/saving-100-tb-of-ram-with-math/)
 
@@ -147,22 +163,6 @@ Cloudflare OAuth now supports optional scopes, giving users more control over wh
 ![Miller Vargas](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0E2HM2Z37MDHV3RTS1N280R.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Adam Bouhmad](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46V48CPK64MWTYNSCVTA3E.webp&w=64&h=64&f=webp&fit=cover&position=center)![José Enrique Rodríguez](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0E2KF6STNPG58C7R3CDSF28.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Miller Vargas](https://blog.cloudflare.com/author/miller-vargas/),  [Adam Bouhmad](https://blog.cloudflare.com/author/adam-bouhmad/), and  [José Enrique Rodríguez](https://blog.cloudflare.com/author/jose-enrique-rodriguez/)
-
-August 19, 2026 [<h2>A revisit of remote Spectre attacks on Cloudflare Workers</h2>](https://blog.cloudflare.com/revisiting-spectre-attacks-on-workers/)
-
-In 2024 and 2025, we reassessed remote Spectre attacks on our Workers infrastructure. We share details about the new attack primitives like Spectre gadgets, remote timers, achieving co-location and how new defenses further harden Cloudflare Workers.
-
-![Martin Schwarzl](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Q44FVCNYF3AKGF6DGP9G.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Albert Pedersen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X1RPT45576XPREMG1CQ3.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Martin Schwarzl](https://blog.cloudflare.com/author/martin/) and  [Albert Pedersen](https://blog.cloudflare.com/author/albert-pedersen/)
-
-August 18, 2026 [<h2>BGP Role model: tracking the adoption of RFC 9234</h2>](https://blog.cloudflare.com/rfc9234-bgp-role-model/)
-
-RFC 9234 lets routers reject route leaks on their own, using BGP Roles and the Only to Customer attribute. We measured who has deployed it, and found two Tier 1 networks unexpectedly stripping OTC.
-
-![Bryton Herdes](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYAJP648S3013NEXJ8RKZF1Y.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Iliana Xygkou](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYAGC1W8ZPJBM3V4CJ2523N8.png&w=64&h=64&f=webp&fit=cover&position=center)![Mingwei Zhang](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ER28A8EPWVBKJWBWZ58R.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Bryton Herdes](https://blog.cloudflare.com/author/bryton/),  [Iliana Xygkou](https://blog.cloudflare.com/author/iliana-xygkou/), and  [Mingwei Zhang](https://blog.cloudflare.com/author/mingwei/)
 
 Load more
 
