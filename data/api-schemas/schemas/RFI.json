@@ -56,7 +56,9 @@
 			{
 				"name": "status",
 				"in": "query",
+				"description": "Status filter. Projects with a narrowed dashboard vocabulary accept only their customer-facing values.",
 				"schema": {
+					"description": "Status filter. Projects with a narrowed dashboard vocabulary accept only their customer-facing values.",
 					"type": "string"
 				}
 			},
@@ -130,7 +132,8 @@
 				"in": "query",
 				"schema": {
 					"type": "string"
-				}
+				},
+				"x-fern-parameter-name": "filterAccountId"
 			},
 			{
 				"name": "metadata",
@@ -480,7 +483,7 @@
 									]
 								},
 								"status": {
-									"description": "RFI status",
+									"description": "RFI status. Project-specific dashboard surfaces may return a narrowed customer-facing vocabulary.",
 									"type": "string",
 									"example": "accepted",
 									"enum": [
@@ -490,6 +493,7 @@
 										"in_progress",
 										"awaiting_customer",
 										"awaiting_external",
+										"response_needed",
 										"completed",
 										"closed"
 									]
@@ -901,7 +905,7 @@
 									]
 								},
 								"status": {
-									"description": "RFI status",
+									"description": "RFI status. Project-specific dashboard surfaces may return a narrowed customer-facing vocabulary.",
 									"type": "string",
 									"example": "accepted",
 									"enum": [
@@ -911,6 +915,7 @@
 										"in_progress",
 										"awaiting_customer",
 										"awaiting_external",
+										"response_needed",
 										"completed",
 										"closed"
 									]
@@ -1321,7 +1326,7 @@
 									]
 								},
 								"status": {
-									"description": "RFI status",
+									"description": "RFI status. Project-specific dashboard surfaces may return a narrowed customer-facing vocabulary.",
 									"type": "string",
 									"example": "accepted",
 									"enum": [
@@ -1331,6 +1336,7 @@
 										"in_progress",
 										"awaiting_customer",
 										"awaiting_external",
+										"response_needed",
 										"completed",
 										"closed"
 									]

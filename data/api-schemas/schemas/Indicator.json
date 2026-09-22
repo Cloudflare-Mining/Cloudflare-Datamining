@@ -378,12 +378,18 @@
 															"enum": [
 																"threat-signals"
 															]
+														},
+														"title": {
+															"description": "Threat Signals article title; null for historical provenance without a stored title.",
+															"type": "string",
+															"nullable": true
 														}
 													},
 													"required": [
 														"system",
 														"resourceType",
-														"resourceId"
+														"resourceId",
+														"title"
 													],
 													"type": "object"
 												}
@@ -1695,12 +1701,18 @@
 																		"enum": [
 																			"threat-signals"
 																		]
+																	},
+																	"title": {
+																		"description": "Threat Signals article title; null for historical provenance without a stored title.",
+																		"type": "string",
+																		"nullable": true
 																	}
 																},
 																"required": [
 																	"system",
 																	"resourceType",
-																	"resourceId"
+																	"resourceId",
+																	"title"
 																],
 																"type": "object"
 															}

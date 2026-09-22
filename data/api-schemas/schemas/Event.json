@@ -5647,6 +5647,11 @@
 										"enum": [
 											"threat-signals"
 										]
+									},
+									"title": {
+										"description": "Threat Signals article title; null for historical provenance without a stored title.",
+										"type": "string",
+										"nullable": true
 									}
 								},
 								"required": [
