@@ -1,0 +1,300 @@
+{
+	"GET /accounts/{account_id}/pay-per-use/enabled-domains": {
+		"operationId": "pay-per-use.listEnabledDomains",
+		"summary": "List enabled Pay Per Use domains",
+		"description": "Returns publisher domains associated with the requesting Pay Per Use operator through an accepted price agreement. License expiration is the earlier non-null boundary from the price agreement and publisher zone lifecycles. A future expiration remains active and is exposed to the operator. After expiration, the license remains listed as expired for one calendar month before it is omitted; an active agreement for the same domain takes precedence. The requesting account must be an active Pay Per Use operator.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account identifier for the participant",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"x-auditable": true
+			},
+			{
+				"name": "cursor",
+				"in": "query",
+				"description": "Opaque, account-bound cursor returned by the previous page. Cursors expire after one hour; restart pagination without a cursor after receiving a 400 response for an expired cursor.",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Maximum number of domains to return",
+				"schema": {
+					"type": "integer",
+					"default": 100,
+					"maximum": 100,
+					"minimum": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Enabled domains returned successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"cursor": {
+											"description": "Opaque, account-bound cursor for the next page. It expires after one hour and is null on the final page.",
+											"type": "string",
+											"nullable": true
+										},
+										"domains": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"domain": {
+														"type": "string",
+														"minLength": 1
+													},
+													"license_expires_at": {
+														"description": "Earlier non-null exclusive expiration from the accepted price agreement and publisher zone lifecycles, or null when neither expires",
+														"type": "string",
+														"format": "date-time",
+														"nullable": true
+													},
+													"license_status": {
+														"description": "Whether the selected accepted price agreement is currently active or retained after expiration",
+														"type": "string",
+														"enum": [
+															"active",
+															"expired"
+														]
+													}
+												},
+												"required": [
+													"domain",
+													"license_status",
+													"license_expires_at"
+												]
+											}
+										}
+									},
+									"required": [
+										"cursor",
+										"domains"
+									]
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer"
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"type": "integer"
+										},
+										"total_count": {
+											"type": "integer"
+										},
+										"total_pages": {
+											"description": "TotalPages is a pointer so that if TotalPages == 0 we return that there\nare indeed 0 pages. omitempty would have removed the field otherwise.\nThis is important as a customer may be relying on always reading this\nproperty and it should not be absent just because it is 0, only absent\nif a value is never provided.",
+											"type": "integer"
+										}
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid cursor or page size",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Invalid or insufficiently scoped API token",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Account is not an active Pay Per Use operator",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Enabled domains could not be retrieved",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"ppu_enabled_domains"
+		],
+		"x-fern-sdk-group-name": "pay-per-use.enabled-domains",
+		"x-fern-sdk-method-name": "list"
+	}
+}

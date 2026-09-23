@@ -1,0 +1,472 @@
+{
+	"POST /accounts/{account_id}/pay-per-use/usage-reports": {
+		"operationId": "pay-per-use.submitUsageReport",
+		"summary": "Submit a participant usage report",
+		"description": "Validates and submits a usage report for an active Pay Per Use participant. The complete report is rejected if any item is invalid.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account identifier for the participant",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"x-auditable": true
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/jsonl": {
+					"schema": {
+						"description": "UTF-8 JSON Lines document with exactly one object per line and a maximum entry size of 32 KiB, excluding its LF or CRLF line terminator. Each object requires used_at (an RFC 3339 timestamp string, any UTC offset, between the Unix epoch and now), an absolute HTTP or HTTPS source URL with a hostname, and an opaque id that is a nonempty string or a number. Event IDs are assumed unique within a participant and are not enforced by this endpoint. No other or duplicate fields are accepted.",
+						"type": "string"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "An identical usage report was already stored successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"entry_count": {
+											"type": "integer",
+											"minimum": 1
+										},
+										"sha256": {
+											"description": "SHA-256 checksum of the exact submitted request body",
+											"type": "string",
+											"pattern": "^[0-9a-f]{64}$"
+										},
+										"submission_id": {
+											"description": "Monotonically increasing submission ID scoped to the participant account",
+											"type": "integer",
+											"format": "int64",
+											"minimum": 1
+										}
+									},
+									"required": [
+										"submission_id",
+										"entry_count",
+										"sha256"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"201": {
+				"description": "Usage report stored successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"entry_count": {
+											"type": "integer",
+											"minimum": 1
+										},
+										"sha256": {
+											"description": "SHA-256 checksum of the exact submitted request body",
+											"type": "string",
+											"pattern": "^[0-9a-f]{64}$"
+										},
+										"submission_id": {
+											"description": "Monotonically increasing submission ID scoped to the participant account",
+											"type": "integer",
+											"format": "int64",
+											"minimum": 1
+										}
+									},
+									"required": [
+										"submission_id",
+										"entry_count",
+										"sha256"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Malformed JSON request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Invalid or insufficiently scoped API token",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Account is not eligible to submit participant usage reports",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"413": {
+				"description": "Request exceeds the 100 MiB body limit or a JSONL entry exceeds the 32 KiB entry limit",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"415": {
+				"description": "Content-Type is not application/jsonl",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"422": {
+				"description": "One or more usage report items failed validation",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"entry_count": {
+											"type": "integer",
+											"minimum": 0
+										},
+										"error": {
+											"type": "object",
+											"properties": {
+												"code": {
+													"type": "string"
+												},
+												"field": {
+													"type": "string"
+												},
+												"line": {
+													"type": "integer",
+													"minimum": 1
+												},
+												"message": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"code",
+												"message"
+											]
+										}
+									},
+									"required": [
+										"entry_count",
+										"error"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Too many concurrent usage report submissions",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Report storage or metadata finalization failed",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"ppu_usage_reports"
+		],
+		"x-fern-sdk-group-name": "pay-per-use.usage-reports",
+		"x-fern-sdk-method-name": "submit"
+	}
+}

@@ -2,7 +2,7 @@
 	"GET /accounts/{account_id}/registrar-sandbox/extensions": {
 		"operationId": "sandbox-registrar-extension-list",
 		"summary": "List extensions",
-		"description": "Returns metadata and JSON Schema documents describing the expected input\nstructure for registration operations on each supported\nextension (TLD).\n\nThis endpoint uses cursor-based pagination. Results are ordered by\nextension name by default. To fetch the next page, pass the `cursor`\nvalue from the `result_info` object in the response as the `cursor`\nquery parameter in your next request. An empty `cursor` string\nindicates there are no more pages.\n\nSupports HTTP conditional GET via `ETag`. Include the `ETag` value\nfrom a previous response in an `If-None-Match` header to receive a\n`304 Not Modified` when the data has not changed.\n",
+		"description": "Returns metadata and JSON Schema documents describing the expected input\nstructure for registration and transfer operations on each supported\nextension (TLD).\n\nThis endpoint uses cursor-based pagination. Results are ordered by\nextension name by default. To fetch the next page, pass the `cursor`\nvalue from the `result_info` object in the response as the `cursor`\nquery parameter in your next request. An empty `cursor` string\nindicates there are no more pages.\n\nSupports HTTP conditional GET via `ETag`. Include the `ETag` value\nfrom a previous response in an `If-None-Match` header to receive a\n`304 Not Modified` when the data has not changed.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -196,7 +196,7 @@
 										"result": {
 											"type": "array",
 											"items": {
-												"description": "Extension entry with metadata and JSON Schema documents for the registration operation.",
+												"description": "Extension entry with metadata and JSON Schema documents for registration and transfer operations.",
 												"type": "object",
 												"properties": {
 													"metadata": {
@@ -220,11 +220,16 @@
 													"registration_schema": {
 														"description": "JSON Schema describing the expected input structure for registration operations on this extension.",
 														"type": "object"
+													},
+													"transfer_schema": {
+														"description": "JSON Schema describing the expected input structure for transfer operations on this extension.",
+														"type": "object"
 													}
 												},
 												"required": [
 													"metadata",
-													"registration_schema"
+													"registration_schema",
+													"transfer_schema"
 												]
 											}
 										},
@@ -394,7 +399,7 @@
 	"GET /accounts/{account_id}/registrar-sandbox/extensions/{extension}": {
 		"operationId": "sandbox-registrar-extension-get",
 		"summary": "Get extension",
-		"description": "Returns metadata and JSON Schema documents describing the expected input\nstructure for registration operations on a specific\nextension (TLD).\n\nSupports HTTP conditional GET via `ETag`. Include the `ETag` value\nfrom a previous response in an `If-None-Match` header to receive a\n`304 Not Modified` when the data has not changed.\n",
+		"description": "Returns metadata and JSON Schema documents describing the expected input\nstructure for registration and transfer operations on a specific\nextension (TLD).\n\nSupports HTTP conditional GET via `ETag`. Include the `ETag` value\nfrom a previous response in an `If-None-Match` header to receive a\n`304 Not Modified` when the data has not changed.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -540,7 +545,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "Extension entry with metadata and JSON Schema documents for the registration operation.",
+											"description": "Extension entry with metadata and JSON Schema documents for registration and transfer operations.",
 											"type": "object",
 											"properties": {
 												"metadata": {
@@ -564,11 +569,16 @@
 												"registration_schema": {
 													"description": "JSON Schema describing the expected input structure for registration operations on this extension.",
 													"type": "object"
+												},
+												"transfer_schema": {
+													"description": "JSON Schema describing the expected input structure for transfer operations on this extension.",
+													"type": "object"
 												}
 											},
 											"required": [
 												"metadata",
-												"registration_schema"
+												"registration_schema",
+												"transfer_schema"
 											]
 										}
 									},
@@ -719,7 +729,7 @@
 	"GET /accounts/{account_id}/registrar/extensions": {
 		"operationId": "registrar-extension-list",
 		"summary": "List extensions",
-		"description": "Returns metadata and JSON Schema documents describing the expected input\nstructure for registration operations on each supported\nextension (TLD).\n\nThis endpoint uses cursor-based pagination. Results are ordered by\nextension name by default. To fetch the next page, pass the `cursor`\nvalue from the `result_info` object in the response as the `cursor`\nquery parameter in your next request. An empty `cursor` string\nindicates there are no more pages.\n\nSupports HTTP conditional GET via `ETag`. Include the `ETag` value\nfrom a previous response in an `If-None-Match` header to receive a\n`304 Not Modified` when the data has not changed.\n",
+		"description": "Returns metadata and JSON Schema documents describing the expected input\nstructure for registration and transfer operations on each supported\nextension (TLD).\n\nThis endpoint uses cursor-based pagination. Results are ordered by\nextension name by default. To fetch the next page, pass the `cursor`\nvalue from the `result_info` object in the response as the `cursor`\nquery parameter in your next request. An empty `cursor` string\nindicates there are no more pages.\n\nSupports HTTP conditional GET via `ETag`. Include the `ETag` value\nfrom a previous response in an `If-None-Match` header to receive a\n`304 Not Modified` when the data has not changed.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -913,7 +923,7 @@
 										"result": {
 											"type": "array",
 											"items": {
-												"description": "Extension entry with metadata and JSON Schema documents for the registration operation.",
+												"description": "Extension entry with metadata and JSON Schema documents for registration and transfer operations.",
 												"type": "object",
 												"properties": {
 													"metadata": {
@@ -937,11 +947,16 @@
 													"registration_schema": {
 														"description": "JSON Schema describing the expected input structure for registration operations on this extension.",
 														"type": "object"
+													},
+													"transfer_schema": {
+														"description": "JSON Schema describing the expected input structure for transfer operations on this extension.",
+														"type": "object"
 													}
 												},
 												"required": [
 													"metadata",
-													"registration_schema"
+													"registration_schema",
+													"transfer_schema"
 												]
 											}
 										},
@@ -1111,7 +1126,7 @@
 	"GET /accounts/{account_id}/registrar/extensions/{extension}": {
 		"operationId": "registrar-extension-get",
 		"summary": "Get extension",
-		"description": "Returns metadata and JSON Schema documents describing the expected input\nstructure for registration operations on a specific\nextension (TLD).\n\nSupports HTTP conditional GET via `ETag`. Include the `ETag` value\nfrom a previous response in an `If-None-Match` header to receive a\n`304 Not Modified` when the data has not changed.\n",
+		"description": "Returns metadata and JSON Schema documents describing the expected input\nstructure for registration and transfer operations on a specific\nextension (TLD).\n\nSupports HTTP conditional GET via `ETag`. Include the `ETag` value\nfrom a previous response in an `If-None-Match` header to receive a\n`304 Not Modified` when the data has not changed.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1257,7 +1272,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "Extension entry with metadata and JSON Schema documents for the registration operation.",
+											"description": "Extension entry with metadata and JSON Schema documents for registration and transfer operations.",
 											"type": "object",
 											"properties": {
 												"metadata": {
@@ -1281,11 +1296,16 @@
 												"registration_schema": {
 													"description": "JSON Schema describing the expected input structure for registration operations on this extension.",
 													"type": "object"
+												},
+												"transfer_schema": {
+													"description": "JSON Schema describing the expected input structure for transfer operations on this extension.",
+													"type": "object"
 												}
 											},
 											"required": [
 												"metadata",
-												"registration_schema"
+												"registration_schema",
+												"transfer_schema"
 											]
 										}
 									},

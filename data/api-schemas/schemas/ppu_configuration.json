@@ -1,0 +1,2068 @@
+{
+	"GET /accounts/{account_id}/pay-per-use/operator/configuration": {
+		"operationId": "pay-per-crawl.getPPUOperatorConfiguration",
+		"summary": "Get pay-per-use operator configuration",
+		"description": "Gets the pay-per-use operator configuration for an account, including its read-only non-billable classification.",
+		"parameters": [
+			{
+				"description": "account id",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"x-auditable": true
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"type": "array",
+												"items": "[Circular ~.GET /accounts/{account_id}/pay-per-use/operator/configuration.responses.200.content.application/json.schema.properties.errors.items]"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"type": "array",
+												"items": "[Circular ~.GET /accounts/{account_id}/pay-per-use/operator/configuration.responses.200.content.application/json.schema.properties.messages.items]"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"default_price_usd_microcents": {
+											"description": "Default price in microcents. 1 USD = 100,000,000 microcents. Must be a multiple of 100,000 ($0.001) between $0.001 and $9,999.999.",
+											"type": "integer",
+											"maximum": 999999900000,
+											"minimum": 100000,
+											"multipleOf": 100000
+										},
+										"enabled": {
+											"type": "boolean"
+										},
+										"name": {
+											"type": "string"
+										},
+										"non_billable": {
+											"description": "Whether this operator is classified for local-only, non-billable settlement.",
+											"type": "boolean",
+											"readOnly": true
+										}
+									},
+									"required": [
+										"name",
+										"enabled",
+										"default_price_usd_microcents",
+										"non_billable"
+									]
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer"
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"type": "integer"
+										},
+										"total_count": {
+											"type": "integer"
+										},
+										"total_pages": {
+											"description": "TotalPages is a pointer so that if TotalPages == 0 we return that there\nare indeed 0 pages. omitempty would have removed the field otherwise.\nThis is important as a customer may be relying on always reading this\nproperty and it should not be absent just because it is 0, only absent\nif a value is never provided.",
+											"type": "integer"
+										}
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not Found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"ppu_configuration"
+		],
+		"x-fern-sdk-group-name": "pay-per-crawl.pay-per-use.operator",
+		"x-fern-sdk-method-name": "get-configuration"
+	},
+	"GET /zones/{zone_id}/pay-per-use/can_be_enabled": {
+		"operationId": "pay-per-crawl.getPPUZoneCanBeEnabled",
+		"summary": "Get pay-per-use zone eligibility",
+		"description": "Gets whether pay-per-use can be enabled for a zone and the current zone-level grace period.",
+		"parameters": [
+			{
+				"description": "zone id",
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"x-auditable": true
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"type": "array",
+												"items": "[Circular ~.GET /zones/{zone_id}/pay-per-use/can_be_enabled.responses.200.content.application/json.schema.properties.errors.items]"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"type": "array",
+												"items": "[Circular ~.GET /zones/{zone_id}/pay-per-use/can_be_enabled.responses.200.content.application/json.schema.properties.messages.items]"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"can_be_enabled": {
+											"type": "boolean"
+										},
+										"disabled_at": {
+											"description": "The start of the current disabled period after an enabled zone is disabled directly or by eligibility revocation. Null before the first disabled period and while enabled. Restoring eligibility alone does not clear it.",
+											"type": "string",
+											"format": "date-time",
+											"nullable": true
+										},
+										"enabled": {
+											"type": "boolean"
+										},
+										"expires_at": {
+											"description": "The exclusive end of the zone-level grace period. Existing agreements remain usable until this time while the zone is disabled. Null while enabled or when a disabled zone has no grace period.",
+											"type": "string",
+											"format": "date-time",
+											"nullable": true
+										},
+										"id": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"can_be_enabled",
+										"disabled_at",
+										"expires_at",
+										"enabled"
+									]
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer"
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"type": "integer"
+										},
+										"total_count": {
+											"type": "integer"
+										},
+										"total_pages": {
+											"description": "TotalPages is a pointer so that if TotalPages == 0 we return that there\nare indeed 0 pages. omitempty would have removed the field otherwise.\nThis is important as a customer may be relying on always reading this\nproperty and it should not be absent just because it is 0, only absent\nif a value is never provided.",
+											"type": "integer"
+										}
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"ppu_configuration"
+		],
+		"x-fern-sdk-group-name": "pay-per-crawl.pay-per-use.zones",
+		"x-fern-sdk-method-name": "get-can-be-enabled"
+	},
+	"GET /zones/{zone_id}/pay-per-use/configuration": {
+		"operationId": "pay-per-crawl.getPPUZoneConfiguration",
+		"summary": "Get pay-per-use zone configuration",
+		"description": "Gets the pay-per-use configuration and zone-level grace period for a zone.",
+		"parameters": [
+			{
+				"description": "zone id",
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"x-auditable": true
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"type": "array",
+												"items": "[Circular ~.GET /zones/{zone_id}/pay-per-use/configuration.responses.200.content.application/json.schema.properties.errors.items]"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"type": "array",
+												"items": "[Circular ~.GET /zones/{zone_id}/pay-per-use/configuration.responses.200.content.application/json.schema.properties.messages.items]"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"can_be_enabled": {
+											"type": "boolean"
+										},
+										"disabled_at": {
+											"description": "The start of the current disabled period after an enabled zone is disabled directly or by eligibility revocation. Null before the first disabled period and while enabled. Restoring eligibility alone does not clear it.",
+											"type": "string",
+											"format": "date-time",
+											"nullable": true
+										},
+										"enabled": {
+											"type": "boolean"
+										},
+										"expires_at": {
+											"description": "The exclusive end of the zone-level grace period. Existing agreements remain usable until this time while the zone is disabled. Null while enabled or when a disabled zone has no grace period.",
+											"type": "string",
+											"format": "date-time",
+											"nullable": true
+										}
+									},
+									"required": [
+										"can_be_enabled",
+										"disabled_at",
+										"expires_at",
+										"enabled"
+									]
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer"
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"type": "integer"
+										},
+										"total_count": {
+											"type": "integer"
+										},
+										"total_pages": {
+											"description": "TotalPages is a pointer so that if TotalPages == 0 we return that there\nare indeed 0 pages. omitempty would have removed the field otherwise.\nThis is important as a customer may be relying on always reading this\nproperty and it should not be absent just because it is 0, only absent\nif a value is never provided.",
+											"type": "integer"
+										}
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"ppu_configuration"
+		],
+		"x-fern-sdk-group-name": "pay-per-crawl.pay-per-use.zones",
+		"x-fern-sdk-method-name": "get-configuration"
+	},
+	"PATCH /accounts/{account_id}/pay-per-use/operator/configuration": {
+		"operationId": "pay-per-crawl.patchPPUOperatorConfiguration",
+		"summary": "Update pay-per-use operator configuration",
+		"description": "Updates one or more fields of an existing pay-per-use operator configuration. Re-enabling a disabled operator requires completed Stripe onboarding; an already-enabled operator is not affected by later Stripe status changes. A Cloudflare-verified operator's name and default price cannot be changed.",
+		"parameters": [
+			{
+				"description": "account id",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"x-auditable": true
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"default_price_usd_microcents": {
+								"description": "Default price in microcents. 1 USD = 100,000,000 microcents. Must be a multiple of 100,000 ($0.001) between $0.001 and $9,999.999.",
+								"type": "integer",
+								"maximum": 999999900000,
+								"minimum": 100000,
+								"multipleOf": 100000
+							},
+							"enabled": {
+								"type": "boolean"
+							},
+							"name": {
+								"type": "string"
+							}
+						},
+						"minProperties": 1
+					}
+				}
+			},
+			"description": "Pay-per-use operator configuration update",
+			"required": true,
+			"x-auditable": true
+		},
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"type": "array",
+												"items": "[Circular ~.PATCH /accounts/{account_id}/pay-per-use/operator/configuration.responses.200.content.application/json.schema.properties.errors.items]"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"type": "array",
+												"items": "[Circular ~.PATCH /accounts/{account_id}/pay-per-use/operator/configuration.responses.200.content.application/json.schema.properties.messages.items]"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"default_price_usd_microcents": {
+											"description": "Default price in microcents. 1 USD = 100,000,000 microcents. Must be a multiple of 100,000 ($0.001) between $0.001 and $9,999.999.",
+											"type": "integer",
+											"maximum": 999999900000,
+											"minimum": 100000,
+											"multipleOf": 100000
+										},
+										"enabled": {
+											"type": "boolean"
+										},
+										"name": {
+											"type": "string"
+										},
+										"non_billable": {
+											"description": "Whether this operator is classified for local-only, non-billable settlement.",
+											"type": "boolean",
+											"readOnly": true
+										}
+									},
+									"required": [
+										"name",
+										"enabled",
+										"default_price_usd_microcents",
+										"non_billable"
+									]
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer"
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"type": "integer"
+										},
+										"total_count": {
+											"type": "integer"
+										},
+										"total_pages": {
+											"description": "TotalPages is a pointer so that if TotalPages == 0 we return that there\nare indeed 0 pages. omitempty would have removed the field otherwise.\nThis is important as a customer may be relying on always reading this\nproperty and it should not be absent just because it is 0, only absent\nif a value is never provided.",
+											"type": "integer"
+										}
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not Found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Conflict",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"ppu_configuration"
+		],
+		"x-fern-sdk-group-name": "pay-per-crawl.pay-per-use.operator",
+		"x-fern-sdk-method-name": "update-configuration"
+	},
+	"PATCH /accounts/{account_id}/pay-per-use/zones_can_be_enabled": {
+		"operationId": "pay-per-crawl.setPPUZonesCanBeEnabled",
+		"summary": "Set pay-per-use zone eligibility",
+		"description": "Sets pay-per-use eligibility for a list of account zones. An omitted can_be_enabled value leaves that zone unchanged. Revoking eligibility disables the zone immediately while existing accepted licenses remain active until the start of the next UTC month.",
+		"parameters": [
+			{
+				"description": "account id",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"x-auditable": true
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"zones": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"can_be_enabled": {
+											"type": "boolean"
+										},
+										"id": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id"
+									]
+								},
+								"maxItems": 100,
+								"minItems": 1
+							}
+						},
+						"required": [
+							"zones"
+						]
+					}
+				}
+			},
+			"description": "Pay-per-use zone eligibility updates",
+			"required": true,
+			"x-auditable": true
+		},
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"type": "array",
+												"items": "[Circular ~.PATCH /accounts/{account_id}/pay-per-use/zones_can_be_enabled.responses.200.content.application/json.schema.properties.errors.items]"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"type": "array",
+												"items": "[Circular ~.PATCH /accounts/{account_id}/pay-per-use/zones_can_be_enabled.responses.200.content.application/json.schema.properties.messages.items]"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer"
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"type": "integer"
+										},
+										"total_count": {
+											"type": "integer"
+										},
+										"total_pages": {
+											"description": "TotalPages is a pointer so that if TotalPages == 0 we return that there\nare indeed 0 pages. omitempty would have removed the field otherwise.\nThis is important as a customer may be relying on always reading this\nproperty and it should not be absent just because it is 0, only absent\nif a value is never provided.",
+											"type": "integer"
+										}
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"ppu_configuration"
+		],
+		"x-fern-sdk-group-name": "pay-per-crawl.pay-per-use.zones",
+		"x-fern-sdk-method-name": "set-can-be-enabled"
+	},
+	"PATCH /zones/{zone_id}/pay-per-use/configuration": {
+		"operationId": "pay-per-crawl.patchPPUZoneConfiguration",
+		"summary": "Update pay-per-use zone configuration",
+		"description": "Enables or disables an existing pay-per-use zone configuration. Omitting enabled leaves the zone unchanged. Enabling a disabled zone requires completed publisher Stripe onboarding; an already-enabled zone is not affected by later Stripe status changes. Disabling starts a disabled period immediately while existing accepted licenses remain active until the start of the next UTC month; re-enabling before expiry clears the schedule and restores those licenses.",
+		"parameters": [
+			{
+				"description": "zone id",
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"x-auditable": true
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"enabled": {
+								"type": "boolean"
+							}
+						}
+					}
+				}
+			},
+			"description": "Pay-per-use zone configuration update",
+			"required": true,
+			"x-auditable": true
+		},
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"type": "array",
+												"items": "[Circular ~.PATCH /zones/{zone_id}/pay-per-use/configuration.responses.200.content.application/json.schema.properties.errors.items]"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"type": "array",
+												"items": "[Circular ~.PATCH /zones/{zone_id}/pay-per-use/configuration.responses.200.content.application/json.schema.properties.messages.items]"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"can_be_enabled": {
+											"type": "boolean"
+										},
+										"disabled_at": {
+											"description": "The start of the current disabled period after an enabled zone is disabled directly or by eligibility revocation. Null before the first disabled period and while enabled. Restoring eligibility alone does not clear it.",
+											"type": "string",
+											"format": "date-time",
+											"nullable": true
+										},
+										"enabled": {
+											"type": "boolean"
+										},
+										"expires_at": {
+											"description": "The exclusive end of the zone-level grace period. Existing agreements remain usable until this time while the zone is disabled. Null while enabled or when a disabled zone has no grace period.",
+											"type": "string",
+											"format": "date-time",
+											"nullable": true
+										}
+									},
+									"required": [
+										"can_be_enabled",
+										"disabled_at",
+										"expires_at",
+										"enabled"
+									]
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer"
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"type": "integer"
+										},
+										"total_count": {
+											"type": "integer"
+										},
+										"total_pages": {
+											"description": "TotalPages is a pointer so that if TotalPages == 0 we return that there\nare indeed 0 pages. omitempty would have removed the field otherwise.\nThis is important as a customer may be relying on always reading this\nproperty and it should not be absent just because it is 0, only absent\nif a value is never provided.",
+											"type": "integer"
+										}
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not Found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Conflict",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"ppu_configuration"
+		],
+		"x-fern-sdk-group-name": "pay-per-crawl.pay-per-use.zones",
+		"x-fern-sdk-method-name": "update-configuration"
+	},
+	"PUT /accounts/{account_id}/pay-per-use/operator/configuration": {
+		"operationId": "pay-per-crawl.putPPUOperatorConfiguration",
+		"summary": "Set pay-per-use operator configuration",
+		"description": "Creates or updates the pay-per-use operator configuration for an account. Creating an enabled configuration or re-enabling a disabled operator requires completed Stripe onboarding; an already-enabled operator is not affected by later Stripe status changes. A Cloudflare-verified operator's name and default price cannot be changed.",
+		"parameters": [
+			{
+				"description": "account id",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"x-auditable": true
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"default_price_usd_microcents": {
+								"description": "Default price in microcents. 1 USD = 100,000,000 microcents. Must be a multiple of 100,000 ($0.001) between $0.001 and $9,999.999.",
+								"type": "integer",
+								"maximum": 999999900000,
+								"minimum": 100000,
+								"multipleOf": 100000
+							},
+							"enabled": {
+								"type": "boolean"
+							},
+							"name": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"enabled",
+							"default_price_usd_microcents"
+						]
+					}
+				}
+			},
+			"description": "Pay-per-use operator configuration",
+			"required": true,
+			"x-auditable": true
+		},
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"type": "array",
+												"items": "[Circular ~.PUT /accounts/{account_id}/pay-per-use/operator/configuration.responses.200.content.application/json.schema.properties.errors.items]"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"type": "array",
+												"items": "[Circular ~.PUT /accounts/{account_id}/pay-per-use/operator/configuration.responses.200.content.application/json.schema.properties.messages.items]"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"default_price_usd_microcents": {
+											"description": "Default price in microcents. 1 USD = 100,000,000 microcents. Must be a multiple of 100,000 ($0.001) between $0.001 and $9,999.999.",
+											"type": "integer",
+											"maximum": 999999900000,
+											"minimum": 100000,
+											"multipleOf": 100000
+										},
+										"enabled": {
+											"type": "boolean"
+										},
+										"name": {
+											"type": "string"
+										},
+										"non_billable": {
+											"description": "Whether this operator is classified for local-only, non-billable settlement.",
+											"type": "boolean",
+											"readOnly": true
+										}
+									},
+									"required": [
+										"name",
+										"enabled",
+										"default_price_usd_microcents",
+										"non_billable"
+									]
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer"
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"type": "integer"
+										},
+										"total_count": {
+											"type": "integer"
+										},
+										"total_pages": {
+											"description": "TotalPages is a pointer so that if TotalPages == 0 we return that there\nare indeed 0 pages. omitempty would have removed the field otherwise.\nThis is important as a customer may be relying on always reading this\nproperty and it should not be absent just because it is 0, only absent\nif a value is never provided.",
+											"type": "integer"
+										}
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Conflict",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"ppu_configuration"
+		],
+		"x-fern-sdk-group-name": "pay-per-crawl.pay-per-use.operator",
+		"x-fern-sdk-method-name": "set-configuration"
+	}
+}

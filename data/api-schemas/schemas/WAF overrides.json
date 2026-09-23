@@ -284,7 +284,8 @@
 									"example": "shop.example.com/*",
 									"type": "string",
 									"x-auditable": true
-								}
+								},
+								"x-stainless-collection-type": "set"
 							}
 						},
 						"required": [
@@ -479,7 +480,8 @@
 									"example": "shop.example.com/*",
 									"type": "string",
 									"x-auditable": true
-								}
+								},
+								"x-stainless-collection-type": "set"
 							}
 						},
 						"required": [

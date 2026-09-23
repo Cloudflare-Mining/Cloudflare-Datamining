@@ -1,0 +1,787 @@
+{
+	"GET /accounts/{account_id}/pay-per-use/usage-stats": {
+		"operationId": "pay-per-crawl.getPPUUsageStats",
+		"summary": "Get pay-per-use usage statistics",
+		"description": "Returns reported usage and the full gross value across all Pay Per Use zones in a publisher account over an explicit UTC range of at most 31 days. Usage from every domain and snapshotted price is summed by buyer. Ranges up to and including 7 days use hourly data points; longer ranges use daily data points. Because source data is aggregated hourly, both requested bounds are rounded down to the selected UTC interval and the resolved bounds are returned in the response. The resolved range must contain at least one complete interval. Empty periods are omitted. Buyers and their data points are paginated, while totals cover every buyer in the range. Values are raw usage counts and USD microcents; total_price_usd_microcents is the full value before the publisher revenue share.",
+		"parameters": [
+			{
+				"description": "account id",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"x-auditable": true
+			},
+			{
+				"name": "since",
+				"in": "query",
+				"description": "Requested inclusive beginning of the statistics range as an RFC3339 timestamp. Rounded down to the selected UTC interval.",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "date-time"
+				}
+			},
+			{
+				"name": "until",
+				"in": "query",
+				"description": "Requested exclusive end of the statistics range as an RFC3339 timestamp. Rounded down to the selected UTC interval. The requested duration from since cannot exceed 31 days.",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "date-time"
+				}
+			},
+			{
+				"description": "Page number.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"description": "Results per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer",
+					"default": 100,
+					"maximum": 100,
+					"minimum": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Usage statistics returned successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"buyers": {
+											"description": "Range-wide usage and gross value totals for the current buyer page, ordered by buyer name and operator ID.",
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"operator_id": {
+														"description": "Stable identifier for the buyer.",
+														"type": "string",
+														"maxLength": 32,
+														"minLength": 32,
+														"pattern": "^[0-9a-f]{32}$"
+													},
+													"operator_name": {
+														"type": "string"
+													},
+													"total_price_usd_microcents": {
+														"description": "Full gross value attributed to this buyer over the resolved range before the publisher revenue share.",
+														"type": "integer",
+														"format": "int64",
+														"minimum": 1
+													},
+													"usage_count": {
+														"description": "Number of reported usage events attributed to this buyer over the resolved range.",
+														"type": "integer",
+														"format": "int64",
+														"minimum": 1
+													}
+												},
+												"required": [
+													"operator_id",
+													"operator_name",
+													"usage_count",
+													"total_price_usd_microcents"
+												]
+											}
+										},
+										"data": {
+											"description": "Sparse time-series data for buyers on the current page.",
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"operator_id": {
+														"description": "Stable identifier for the buyer represented by this data point.",
+														"type": "string",
+														"maxLength": 32,
+														"minLength": 32,
+														"pattern": "^[0-9a-f]{32}$"
+													},
+													"operator_name": {
+														"type": "string"
+													},
+													"period_start": {
+														"description": "Inclusive start of the UTC hour or day represented by this data point.",
+														"type": "string",
+														"format": "date-time"
+													},
+													"total_price_usd_microcents": {
+														"description": "Full gross value of this data point in USD microcents before the publisher revenue share.",
+														"type": "integer",
+														"format": "int64",
+														"minimum": 1
+													},
+													"usage_count": {
+														"type": "integer",
+														"format": "int64",
+														"minimum": 1
+													}
+												},
+												"required": [
+													"period_start",
+													"operator_id",
+													"operator_name",
+													"usage_count",
+													"total_price_usd_microcents"
+												]
+											}
+										},
+										"interval": {
+											"description": "UTC aggregation interval selected from the requested range duration.",
+											"type": "string",
+											"enum": [
+												"hour",
+												"day"
+											]
+										},
+										"last_updated_at": {
+											"description": "Time the latest included usage-report rollup run finished, or null before the first run completes.",
+											"type": "string",
+											"format": "date-time",
+											"nullable": true
+										},
+										"since": {
+											"description": "Inclusive beginning of the resolved range after UTC interval alignment.",
+											"type": "string",
+											"format": "date-time"
+										},
+										"totals": {
+											"type": "object",
+											"properties": {
+												"total_price_usd_microcents": {
+													"description": "Full gross value of reported usage in USD microcents before the publisher revenue share. 1 USD = 100,000,000 microcents.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												},
+												"usage_count": {
+													"description": "Number of reported usage events in the selected window.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												}
+											},
+											"required": [
+												"usage_count",
+												"total_price_usd_microcents"
+											]
+										},
+										"until": {
+											"description": "Exclusive end of the resolved range after UTC interval alignment.",
+											"type": "string",
+											"format": "date-time"
+										}
+									},
+									"required": [
+										"interval",
+										"since",
+										"until",
+										"last_updated_at",
+										"totals",
+										"buyers",
+										"data"
+									]
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer"
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"type": "integer"
+										},
+										"total_count": {
+											"type": "integer"
+										},
+										"total_pages": {
+											"description": "TotalPages is a pointer so that if TotalPages == 0 we return that there\nare indeed 0 pages. omitempty would have removed the field otherwise.\nThis is important as a customer may be relying on always reading this\nproperty and it should not be absent just because it is 0, only absent\nif a value is never provided.",
+											"type": "integer"
+										}
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Usage statistics could not be retrieved",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"ppu_usage_stats"
+		],
+		"x-fern-sdk-group-name": "pay-per-crawl.pay-per-use.usage-stats",
+		"x-fern-sdk-method-name": "get-account"
+	},
+	"GET /zones/{zone_id}/pay-per-use/usage-stats": {
+		"operationId": "pay-per-crawl.getPPUZoneUsageStats",
+		"summary": "Get pay-per-use usage statistics for a zone",
+		"description": "Returns reported usage and the full gross value for one Pay Per Use zone over an explicit UTC range of at most 31 days. Usage from every snapshotted price is summed by buyer. Ranges up to and including 7 days use hourly data points; longer ranges use daily data points. Because source data is aggregated hourly, both requested bounds are rounded down to the selected UTC interval and the resolved bounds are returned in the response. The resolved range must contain at least one complete interval. Empty periods are omitted. Buyers and their data points are paginated, while totals cover every buyer in the range. Values are raw usage counts and USD microcents; total_price_usd_microcents is the full value before the publisher revenue share.",
+		"parameters": [
+			{
+				"description": "zone id",
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"x-auditable": true
+			},
+			{
+				"name": "since",
+				"in": "query",
+				"description": "Requested inclusive beginning of the statistics range as an RFC3339 timestamp. Rounded down to the selected UTC interval.",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "date-time"
+				}
+			},
+			{
+				"name": "until",
+				"in": "query",
+				"description": "Requested exclusive end of the statistics range as an RFC3339 timestamp. Rounded down to the selected UTC interval. The requested duration from since cannot exceed 31 days.",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "date-time"
+				}
+			},
+			{
+				"description": "Page number.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"description": "Results per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer",
+					"default": 100,
+					"maximum": 100,
+					"minimum": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Usage statistics returned successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"buyers": {
+											"description": "Range-wide usage and gross value totals for the current buyer page, ordered by buyer name and operator ID.",
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"operator_id": {
+														"description": "Stable identifier for the buyer.",
+														"type": "string",
+														"maxLength": 32,
+														"minLength": 32,
+														"pattern": "^[0-9a-f]{32}$"
+													},
+													"operator_name": {
+														"type": "string"
+													},
+													"total_price_usd_microcents": {
+														"description": "Full gross value attributed to this buyer over the resolved range before the publisher revenue share.",
+														"type": "integer",
+														"format": "int64",
+														"minimum": 1
+													},
+													"usage_count": {
+														"description": "Number of reported usage events attributed to this buyer over the resolved range.",
+														"type": "integer",
+														"format": "int64",
+														"minimum": 1
+													}
+												},
+												"required": [
+													"operator_id",
+													"operator_name",
+													"usage_count",
+													"total_price_usd_microcents"
+												]
+											}
+										},
+										"data": {
+											"description": "Sparse time-series data for buyers on the current page.",
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"operator_id": {
+														"description": "Stable identifier for the buyer represented by this data point.",
+														"type": "string",
+														"maxLength": 32,
+														"minLength": 32,
+														"pattern": "^[0-9a-f]{32}$"
+													},
+													"operator_name": {
+														"type": "string"
+													},
+													"period_start": {
+														"description": "Inclusive start of the UTC hour or day represented by this data point.",
+														"type": "string",
+														"format": "date-time"
+													},
+													"total_price_usd_microcents": {
+														"description": "Full gross value of this data point in USD microcents before the publisher revenue share.",
+														"type": "integer",
+														"format": "int64",
+														"minimum": 1
+													},
+													"usage_count": {
+														"type": "integer",
+														"format": "int64",
+														"minimum": 1
+													}
+												},
+												"required": [
+													"period_start",
+													"operator_id",
+													"operator_name",
+													"usage_count",
+													"total_price_usd_microcents"
+												]
+											}
+										},
+										"interval": {
+											"description": "UTC aggregation interval selected from the requested range duration.",
+											"type": "string",
+											"enum": [
+												"hour",
+												"day"
+											]
+										},
+										"last_updated_at": {
+											"description": "Time the latest included usage-report rollup run finished, or null before the first run completes.",
+											"type": "string",
+											"format": "date-time",
+											"nullable": true
+										},
+										"since": {
+											"description": "Inclusive beginning of the resolved range after UTC interval alignment.",
+											"type": "string",
+											"format": "date-time"
+										},
+										"totals": {
+											"type": "object",
+											"properties": {
+												"total_price_usd_microcents": {
+													"description": "Full gross value of reported usage in USD microcents before the publisher revenue share. 1 USD = 100,000,000 microcents.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												},
+												"usage_count": {
+													"description": "Number of reported usage events in the selected window.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												}
+											},
+											"required": [
+												"usage_count",
+												"total_price_usd_microcents"
+											]
+										},
+										"until": {
+											"description": "Exclusive end of the resolved range after UTC interval alignment.",
+											"type": "string",
+											"format": "date-time"
+										}
+									},
+									"required": [
+										"interval",
+										"since",
+										"until",
+										"last_updated_at",
+										"totals",
+										"buyers",
+										"data"
+									]
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer"
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"type": "integer"
+										},
+										"total_count": {
+											"type": "integer"
+										},
+										"total_pages": {
+											"description": "TotalPages is a pointer so that if TotalPages == 0 we return that there\nare indeed 0 pages. omitempty would have removed the field otherwise.\nThis is important as a customer may be relying on always reading this\nproperty and it should not be absent just because it is 0, only absent\nif a value is never provided.",
+											"type": "integer"
+										}
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not Found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Usage statistics could not be retrieved",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"ppu_usage_stats"
+		],
+		"x-fern-sdk-group-name": "pay-per-crawl.pay-per-use.usage-stats",
+		"x-fern-sdk-method-name": "get-zone"
+	}
+}

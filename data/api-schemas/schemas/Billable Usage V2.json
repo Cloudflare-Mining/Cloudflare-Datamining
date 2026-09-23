@@ -105,12 +105,12 @@
 												"nullable": true
 											},
 											"BillingAccountId": {
-												"description": "Public identifier of the Cloudflare account (account tag).",
+												"description": "Public identifier of the Cloudflare account (account tag). Omitted when account is not part of the requested grouping.",
 												"type": "string",
 												"example": "023e105f4ecef8ad9ca31a8372d0c353"
 											},
 											"BillingAccountName": {
-												"description": "Display name of the Cloudflare account.",
+												"description": "Display name of the Cloudflare account. Omitted when account is not part of the requested grouping.",
 												"type": "string",
 												"example": "My Account"
 											},
@@ -326,12 +326,9 @@
 											"ServiceProviderName",
 											"InvoiceIssuerName",
 											"HostProviderName",
-											"BillingAccountId",
-											"BillingAccountName",
 											"ChargePeriodStart",
 											"ChargePeriodEnd",
 											"x_BillableMetricId",
-											"x_BillableMetricName",
 											"ChargeCategory",
 											"ChargeFrequency",
 											"ChargeDescription",
@@ -848,12 +845,12 @@
 												"nullable": true
 											},
 											"BillingAccountId": {
-												"description": "Public identifier of the Cloudflare account (account tag).",
+												"description": "Public identifier of the Cloudflare account (account tag). Omitted when account is not part of the requested grouping.",
 												"type": "string",
 												"example": "023e105f4ecef8ad9ca31a8372d0c353"
 											},
 											"BillingAccountName": {
-												"description": "Display name of the Cloudflare account.",
+												"description": "Display name of the Cloudflare account. Omitted when account is not part of the requested grouping.",
 												"type": "string",
 												"example": "My Account"
 											},
@@ -1069,12 +1066,9 @@
 											"ServiceProviderName",
 											"InvoiceIssuerName",
 											"HostProviderName",
-											"BillingAccountId",
-											"BillingAccountName",
 											"ChargePeriodStart",
 											"ChargePeriodEnd",
 											"x_BillableMetricId",
-											"x_BillableMetricName",
 											"ChargeCategory",
 											"ChargeFrequency",
 											"ChargeDescription",
@@ -1430,12 +1424,12 @@
 												"nullable": true
 											},
 											"BillingAccountId": {
-												"description": "Public identifier of the Cloudflare account (account tag).",
+												"description": "Public identifier of the Cloudflare account (account tag). Omitted when account is not part of the requested grouping.",
 												"type": "string",
 												"example": "023e105f4ecef8ad9ca31a8372d0c353"
 											},
 											"BillingAccountName": {
-												"description": "Display name of the Cloudflare account.",
+												"description": "Display name of the Cloudflare account. Omitted when account is not part of the requested grouping.",
 												"type": "string",
 												"example": "My Account"
 											},
@@ -1651,12 +1645,9 @@
 											"ServiceProviderName",
 											"InvoiceIssuerName",
 											"HostProviderName",
-											"BillingAccountId",
-											"BillingAccountName",
 											"ChargePeriodStart",
 											"ChargePeriodEnd",
 											"x_BillableMetricId",
-											"x_BillableMetricName",
 											"ChargeCategory",
 											"ChargeFrequency",
 											"ChargeDescription",

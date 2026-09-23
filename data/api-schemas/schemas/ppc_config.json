@@ -344,7 +344,8 @@
 											"description": "Price in microcents 1 USD = 100,000,000 microcents. Must be 0 or a multiple of 100,000 $0.001. Range: $0.001–$9,999.999.",
 											"type": "integer",
 											"maximum": 999999900000,
-											"minimum": 0
+											"minimum": 0,
+											"multipleOf": 100000
 										}
 									}
 								},
@@ -438,7 +439,7 @@
 	"PATCH /accounts/{account_id}/pay-per-crawl/zones_can_be_enabled": {
 		"operationId": "pay-per-crawl.setZonesCanBeEnabled",
 		"summary": "Set can_be_enabled setting on zones",
-		"description": "Allows an account admin to set the can_be_enabled setting on a list of zones.",
+		"description": "Allows an account admin to set the can_be_enabled setting on a list of zones. An omitted can_be_enabled value leaves that zone unchanged.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -465,16 +466,21 @@
 										"can_be_enabled": {
 											"type": "boolean"
 										},
-										"enabled": {
-											"type": "boolean"
-										},
 										"id": {
 											"type": "string"
 										}
-									}
-								}
+									},
+									"required": [
+										"id"
+									]
+								},
+								"maxItems": 100,
+								"minItems": 1
 							}
-						}
+						},
+						"required": [
+							"zones"
+						]
 					}
 				}
 			},
@@ -703,7 +709,8 @@
 								"description": "Price in microcents 1 USD = 100,000,000 microcents. Must be 0 or a multiple of 100,000 $0.001. Range: $0.001–$9,999.999.",
 								"type": "integer",
 								"maximum": 999999900000,
-								"minimum": 0
+								"minimum": 0,
+								"multipleOf": 100000
 							}
 						}
 					}
@@ -829,7 +836,8 @@
 											"description": "Price in microcents 1 USD = 100,000,000 microcents. Must be 0 or a multiple of 100,000 $0.001. Range: $0.001–$9,999.999.",
 											"type": "integer",
 											"maximum": 999999900000,
-											"minimum": 0
+											"minimum": 0,
+											"multipleOf": 100000
 										}
 									}
 								},
@@ -1207,32 +1215,45 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"type": "object",
-						"properties": {
-							"bot_overrides": {
+						"allOf": [
+							{
 								"type": "object",
-								"additionalProperties": {
-									"type": "string",
-									"enum": [
-										"charge",
-										"bypass"
-									]
+								"properties": {
+									"bot_overrides": {
+										"type": "object",
+										"additionalProperties": {
+											"type": "string",
+											"enum": [
+												"charge",
+												"bypass"
+											]
+										}
+									},
+									"enabled": {
+										"type": "boolean"
+									},
+									"price_usd_microcents": {
+										"description": "Price in microcents 1 USD = 100,000,000 microcents. Must be 0 or a multiple of 100,000 $0.001. Range: $0.001–$9,999.999.",
+										"type": "integer",
+										"maximum": 999999900000,
+										"minimum": 0,
+										"multipleOf": 100000
+									}
 								}
 							},
-							"enabled": {
-								"type": "boolean"
-							},
-							"price_usd_microcents": {
-								"description": "Price in microcents 1 USD = 100,000,000 microcents. Must be 0 or a multiple of 100,000 $0.001. Range: $0.001–$9,999.999.",
-								"type": "integer",
-								"maximum": 999999900000,
-								"minimum": 0
+							{
+								"required": [
+									"enabled",
+									"price_usd_microcents",
+									"bot_overrides"
+								],
+								"type": "object"
 							}
-						}
+						]
 					}
 				}
 			},
-			"description": "Data for setting flag on zones",
+			"description": "Data for fully replacing a pay-per-crawl zone configuration",
 			"required": true,
 			"x-auditable": true
 		},
@@ -1352,7 +1373,8 @@
 											"description": "Price in microcents 1 USD = 100,000,000 microcents. Must be 0 or a multiple of 100,000 $0.001. Range: $0.001–$9,999.999.",
 											"type": "integer",
 											"maximum": 999999900000,
-											"minimum": 0
+											"minimum": 0,
+											"multipleOf": 100000
 										}
 									}
 								},

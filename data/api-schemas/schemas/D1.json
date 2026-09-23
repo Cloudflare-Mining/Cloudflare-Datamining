@@ -2,7 +2,7 @@
 	"DELETE /accounts/{account_id}/d1/database/{database_id}": {
 		"operationId": "d1-delete-database",
 		"summary": "Delete D1 Database",
-		"description": "Deletes the specified D1 database.",
+		"description": "Delete a D1 database.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -291,12 +291,12 @@
 				"type": "boolean"
 			}
 		],
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This permanently deletes the D1 database and all of its data."
 	},
 	"GET /accounts/{account_id}/d1/database": {
 		"operationId": "d1-list-databases",
 		"summary": "List D1 Databases",
-		"description": "Returns a list of D1 databases.",
+		"description": "List D1 databases in your account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -668,13 +668,12 @@
 				},
 				"type": "boolean"
 			}
-		],
-		"x-forge-hidden": true
+		]
 	},
 	"GET /accounts/{account_id}/d1/database/{database_id}": {
 		"operationId": "d1-get-database",
 		"summary": "Get D1 Database",
-		"description": "Returns the specified D1 database.",
+		"description": "Get details for a specific D1 database.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1007,6 +1006,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "d1",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
 		"x-forge-globals": [
 			{
 				"alias": "v",
@@ -1069,13 +1069,12 @@
 				},
 				"type": "boolean"
 			}
-		],
-		"x-forge-hidden": true
+		]
 	},
 	"GET /accounts/{account_id}/d1/database/{database_id}/time_travel/bookmark": {
 		"operationId": "d1-time-travel-get-bookmark",
 		"summary": "Get D1 database bookmark",
-		"description": "Retrieves the current bookmark, or the nearest bookmark at or before a provided timestamp.\nBookmarks can be used with the restore endpoint to revert the database to a previous point in time.\n",
+		"description": "Retrieve the current bookmark, or the nearest bookmark at or before a provided timestamp.\nBookmarks can be used with the restore endpoint to revert the database to a previous point in time.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1380,13 +1379,12 @@
 				},
 				"type": "boolean"
 			}
-		],
-		"x-forge-hidden": true
+		]
 	},
 	"PATCH /accounts/{account_id}/d1/database/{database_id}": {
 		"operationId": "d1-update-partial-database",
 		"summary": "Update D1 Database partially",
-		"description": "Updates partially the specified D1 database.",
+		"description": "Partially update a D1 database's configuration.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1782,7 +1780,7 @@
 	"POST /accounts/{account_id}/d1/database": {
 		"operationId": "d1-create-database",
 		"summary": "Create D1 Database",
-		"description": "Returns the created D1 database.",
+		"description": "Create a new D1 database in your account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2196,13 +2194,12 @@
 				},
 				"type": "boolean"
 			}
-		],
-		"x-forge-hidden": true
+		]
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/export": {
 		"operationId": "d1-export-database",
 		"summary": "Export D1 Database as SQL",
-		"description": "Returns a URL where the SQL contents of your D1 can be downloaded. Note: this process may take\nsome time for larger DBs, during which your D1 will be unavailable to serve queries. To avoid\nblocking your DB unnecessarily, an in-progress export must be continually polled or will automatically cancel.\n",
+		"description": "Export the SQL contents of a D1 database and return a URL where they can be downloaded. Note: this process may take\nsome time for larger DBs, during which your D1 will be unavailable to serve queries. To avoid\nblocking your DB unnecessarily, an in-progress export must be continually polled or will automatically cancel.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2640,6 +2637,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "d1",
 		"x-fern-sdk-method-name": "export",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
 		"x-forge-globals": [
 			{
 				"alias": "v",
@@ -2702,13 +2700,12 @@
 				},
 				"type": "boolean"
 			}
-		],
-		"x-forge-hidden": true
+		]
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/import": {
 		"operationId": "d1-import-database",
 		"summary": "Import SQL into your D1 Database",
-		"description": "Generates a temporary URL for uploading an SQL file to, then instructing the D1 to import it\nand polling it for status updates. Imports block the D1 for their duration.\n",
+		"description": "Generate a temporary URL for uploading an SQL file to, then instruct the D1 to import it\nand poll it for status updates. Imports block the D1 for their duration.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3267,6 +3264,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "d1",
 		"x-fern-sdk-method-name": "import",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
 		"x-forge-globals": [
 			{
 				"alias": "v",
@@ -3329,13 +3327,12 @@
 				},
 				"type": "boolean"
 			}
-		],
-		"x-forge-hidden": true
+		]
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/query": {
 		"operationId": "d1-query-database",
 		"summary": "Query D1 Database",
-		"description": "Returns the query result as an object.",
+		"description": "Execute a SQL query against a D1 database and return results as objects.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3721,6 +3718,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "d1",
 		"x-fern-sdk-method-name": "query",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
 		"x-forge-globals": [
 			{
 				"alias": "v",
@@ -3783,13 +3781,12 @@
 				},
 				"type": "boolean"
 			}
-		],
-		"x-forge-hidden": true
+		]
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/raw": {
 		"operationId": "d1-raw-database-query",
 		"summary": "Raw D1 Database query",
-		"description": "Returns the query result rows as arrays rather than objects. This is a performance-optimized version of the /query endpoint.",
+		"description": "Execute a SQL query against a D1 database and return result rows as arrays rather than objects. This is a performance-optimized version of the /query endpoint.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4199,6 +4196,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "d1",
 		"x-fern-sdk-method-name": "raw",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
 		"x-forge-globals": [
 			{
 				"alias": "v",
@@ -4261,13 +4259,12 @@
 				},
 				"type": "boolean"
 			}
-		],
-		"x-forge-hidden": true
+		]
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/time_travel/restore": {
 		"operationId": "d1-time-travel-restore",
 		"summary": "Restore D1 Database to a bookmark or point in time",
-		"description": "Restores a D1 database to a previous point in time either via a bookmark or a timestamp.\n",
+		"description": "Restore a D1 database to a previous point in time either via a bookmark or a timestamp.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4607,12 +4604,12 @@
 				"type": "boolean"
 			}
 		],
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This reverts the D1 database to a previous point in time. Data written after the bookmark will be lost."
 	},
 	"PUT /accounts/{account_id}/d1/database/{database_id}": {
 		"operationId": "d1-update-database",
 		"summary": "Update D1 Database",
-		"description": "Updates the specified D1 database.",
+		"description": "Update a D1 database's configuration.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4943,6 +4940,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "d1",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
 		"x-forge-globals": [
 			{
 				"alias": "v",
@@ -5005,7 +5003,6 @@
 				},
 				"type": "boolean"
 			}
-		],
-		"x-forge-hidden": true
+		]
 	}
 }

@@ -548,7 +548,8 @@
 															"example": "api.mysite.com/some/endpoint*",
 															"type": "string",
 															"x-auditable": true
-														}
+														},
+														"x-stainless-collection-type": "set"
 													}
 												},
 												"additionalProperties": false,
@@ -922,7 +923,8 @@
 														"example": "api.mysite.com/some/endpoint*",
 														"type": "string",
 														"x-auditable": true
-													}
+													},
+													"x-stainless-collection-type": "set"
 												}
 											},
 											"additionalProperties": false,
@@ -1161,7 +1163,8 @@
 									"example": "shop.example.com/*",
 									"type": "string",
 									"x-auditable": true
-								}
+								},
+								"x-stainless-collection-type": "set"
 							}
 						},
 						"required": [
@@ -1372,7 +1375,8 @@
 														"example": "api.mysite.com/some/endpoint*",
 														"type": "string",
 														"x-auditable": true
-													}
+													},
+													"x-stainless-collection-type": "set"
 												}
 											},
 											"additionalProperties": false,
@@ -1604,7 +1608,8 @@
 									"example": "shop.example.com/*",
 									"type": "string",
 									"x-auditable": true
-								}
+								},
+								"x-stainless-collection-type": "set"
 							}
 						},
 						"required": [
@@ -1815,7 +1820,8 @@
 														"example": "api.mysite.com/some/endpoint*",
 														"type": "string",
 														"x-auditable": true
-													}
+													},
+													"x-stainless-collection-type": "set"
 												}
 											},
 											"additionalProperties": false,

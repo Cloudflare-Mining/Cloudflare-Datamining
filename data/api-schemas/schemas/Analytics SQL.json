@@ -78,32 +78,115 @@
 				}
 			},
 			"400": {
-				"description": "The request is malformed.",
+				"description": "The request is malformed, or authentication was rejected by the API gateway before the request reached the SQL service.\n",
 				"content": {
 					"application/json": {
 						"schema": {
-							"type": "object",
-							"properties": {
-								"code": {
-									"description": "Machine-readable error code.",
-									"type": "integer",
-									"format": "int64",
-									"minimum": 0
+							"oneOf": [
+								{
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "Machine-readable error code.",
+											"type": "integer",
+											"format": "int64",
+											"minimum": 0
+										},
+										"error_chain": {
+											"description": "Additional errors that caused this error.",
+											"type": "array",
+											"items": "[Circular ~.GET /analytics/sql.responses.400.content.application/json.schema.oneOf.0]"
+										},
+										"message": {
+											"description": "Human-readable error message.",
+											"type": "string"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"code",
+										"message"
+									]
 								},
-								"error_chain": {
-									"description": "Additional errors that caused this error.",
-									"type": "array",
-									"items": "[Circular ~.GET /analytics/sql.responses.400.content.application/json.schema]"
-								},
-								"message": {
-									"description": "Human-readable error message.",
-									"type": "string"
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Machine-readable error code.",
+														"type": "integer",
+														"format": "int64",
+														"minimum": 0
+													},
+													"error_chain": {
+														"description": "Additional errors that caused this error.",
+														"type": "array",
+														"items": "[Circular ~.GET /analytics/sql.responses.400.content.application/json.schema.oneOf.1.properties.errors.items]"
+													},
+													"message": {
+														"description": "Human-readable error message.",
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"code",
+													"message"
+												]
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Machine-readable error code.",
+														"type": "integer",
+														"format": "int64",
+														"minimum": 0
+													},
+													"error_chain": {
+														"description": "Additional errors that caused this error.",
+														"type": "array",
+														"items": "[Circular ~.GET /analytics/sql.responses.400.content.application/json.schema.oneOf.1.properties.messages.items]"
+													},
+													"message": {
+														"description": "Human-readable error message.",
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"code",
+													"message"
+												]
+											}
+										},
+										"result": {
+											"type": "object",
+											"additionalProperties": true,
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
 								}
-							},
-							"additionalProperties": false,
-							"required": [
-								"code",
-								"message"
 							]
 						}
 					}
@@ -209,7 +292,7 @@
 	"GET /analytics/sql/introspection": {
 		"operationId": "sql-api-introspection",
 		"summary": "List available analytics datasets",
-		"description": "Returns the analytics dataset catalogue. By default, the response contains dataset names and descriptions. Set `include_columns` to include each dataset's column names, descriptions, and data types. The caller must have Account Analytics Read permission on the account identified by `account_tag`. Dataset names, descriptions, and columns are the same for every authorized account. When `include_custom_attributes` is set, the response also includes custom attribute names and types discovered from that account's own data, which legitimately differs per caller.\n",
+		"description": "Returns the analytics dataset catalogue. By default, the response contains dataset names, titles, descriptions, and kinds. Set `include_columns` to include each dataset's column names, descriptions, and data types. The caller must have Account Analytics Read permission on the account identified by `account_tag`. Dataset names, descriptions, and columns are the same for every authorized account. When `include_custom_attributes` is set, the response also includes a capped set of custom attribute names and types discovered from the preceding seven days of that account's own data, which legitimately differs per caller.\n",
 		"parameters": [
 			{
 				"name": "account_tag",
@@ -217,7 +300,8 @@
 				"description": "Account whose available analytics datasets are returned.",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"pattern": "^[0-9a-f]{32}$"
 				},
 				"example": "0123456789abcdef0123456789abcdef"
 			},
@@ -233,7 +317,7 @@
 			{
 				"name": "include_custom_attributes",
 				"in": "query",
-				"description": "Include custom attribute names and types for each dataset that supports them.",
+				"description": "Include a capped set of custom attribute names and types observed during the preceding seven days. Requires a nonempty dataset_name.\n",
 				"schema": {
 					"type": "boolean",
 					"default": false
@@ -424,32 +508,115 @@
 				}
 			},
 			"400": {
-				"description": "The request is malformed.",
+				"description": "The request is malformed, or authentication was rejected by the API gateway before the request reached the SQL service.\n",
 				"content": {
 					"application/json": {
 						"schema": {
-							"type": "object",
-							"properties": {
-								"code": {
-									"description": "Machine-readable error code.",
-									"type": "integer",
-									"format": "int64",
-									"minimum": 0
+							"oneOf": [
+								{
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "Machine-readable error code.",
+											"type": "integer",
+											"format": "int64",
+											"minimum": 0
+										},
+										"error_chain": {
+											"description": "Additional errors that caused this error.",
+											"type": "array",
+											"items": "[Circular ~.GET /analytics/sql/introspection.responses.400.content.application/json.schema.oneOf.0]"
+										},
+										"message": {
+											"description": "Human-readable error message.",
+											"type": "string"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"code",
+										"message"
+									]
 								},
-								"error_chain": {
-									"description": "Additional errors that caused this error.",
-									"type": "array",
-									"items": "[Circular ~.GET /analytics/sql/introspection.responses.400.content.application/json.schema]"
-								},
-								"message": {
-									"description": "Human-readable error message.",
-									"type": "string"
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Machine-readable error code.",
+														"type": "integer",
+														"format": "int64",
+														"minimum": 0
+													},
+													"error_chain": {
+														"description": "Additional errors that caused this error.",
+														"type": "array",
+														"items": "[Circular ~.GET /analytics/sql/introspection.responses.400.content.application/json.schema.oneOf.1.properties.errors.items]"
+													},
+													"message": {
+														"description": "Human-readable error message.",
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"code",
+													"message"
+												]
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Machine-readable error code.",
+														"type": "integer",
+														"format": "int64",
+														"minimum": 0
+													},
+													"error_chain": {
+														"description": "Additional errors that caused this error.",
+														"type": "array",
+														"items": "[Circular ~.GET /analytics/sql/introspection.responses.400.content.application/json.schema.oneOf.1.properties.messages.items]"
+													},
+													"message": {
+														"description": "Human-readable error message.",
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"code",
+													"message"
+												]
+											}
+										},
+										"result": {
+											"type": "object",
+											"additionalProperties": true,
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
 								}
-							},
-							"additionalProperties": false,
-							"required": [
-								"code",
-								"message"
 							]
 						}
 					}
@@ -467,7 +634,7 @@
 				}
 			},
 			"422": {
-				"description": "The account tag is invalid or unknown.",
+				"description": "The account tag is invalid or unknown, or the requested introspection options cannot be combined.\n",
 				"content": {
 					"text/plain": {
 						"schema": {
@@ -547,9 +714,10 @@
 										"type": "object",
 										"properties": {
 											"accountTag": {
-												"description": "Account tag used to authorize and scope the query.",
+												"description": "Account tag used to authorize and scope the query. Must be a 32-character lowercase hex string.\n",
 												"type": "string",
-												"example": "0123456789abcdef0123456789abcdef"
+												"example": "0123456789abcdef0123456789abcdef",
+												"pattern": "^[0-9a-f]{32}$"
 											}
 										},
 										"additionalProperties": false,
@@ -561,10 +729,10 @@
 										"type": "object",
 										"properties": {
 											"zoneTag": {
-												"description": "Zone tag used to authorize and scope the query. Must be a 32-character lowercase hex string or a UUID with hyphens (8-4-4-4-12 format).\n",
+												"description": "Zone tag used to authorize and scope the query. Must be a 32-character lowercase hex string.\n",
 												"type": "string",
-												"example": "023e105f-2fd3-4989-9d76-34a245f8ca0f",
-												"pattern": "^[0-9a-f]{32}$|^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+												"example": "023e105f2fd349899d7634a245f8ca0f",
+												"pattern": "^[0-9a-f]{32}$"
 											}
 										},
 										"additionalProperties": false,
@@ -685,32 +853,115 @@
 				}
 			},
 			"400": {
-				"description": "The request is malformed.",
+				"description": "The request is malformed, or authentication was rejected by the API gateway before the request reached the SQL service.\n",
 				"content": {
 					"application/json": {
 						"schema": {
-							"type": "object",
-							"properties": {
-								"code": {
-									"description": "Machine-readable error code.",
-									"type": "integer",
-									"format": "int64",
-									"minimum": 0
+							"oneOf": [
+								{
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "Machine-readable error code.",
+											"type": "integer",
+											"format": "int64",
+											"minimum": 0
+										},
+										"error_chain": {
+											"description": "Additional errors that caused this error.",
+											"type": "array",
+											"items": "[Circular ~.POST /analytics/sql.responses.400.content.application/json.schema.oneOf.0]"
+										},
+										"message": {
+											"description": "Human-readable error message.",
+											"type": "string"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"code",
+										"message"
+									]
 								},
-								"error_chain": {
-									"description": "Additional errors that caused this error.",
-									"type": "array",
-									"items": "[Circular ~.POST /analytics/sql.responses.400.content.application/json.schema]"
-								},
-								"message": {
-									"description": "Human-readable error message.",
-									"type": "string"
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Machine-readable error code.",
+														"type": "integer",
+														"format": "int64",
+														"minimum": 0
+													},
+													"error_chain": {
+														"description": "Additional errors that caused this error.",
+														"type": "array",
+														"items": "[Circular ~.POST /analytics/sql.responses.400.content.application/json.schema.oneOf.1.properties.errors.items]"
+													},
+													"message": {
+														"description": "Human-readable error message.",
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"code",
+													"message"
+												]
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Machine-readable error code.",
+														"type": "integer",
+														"format": "int64",
+														"minimum": 0
+													},
+													"error_chain": {
+														"description": "Additional errors that caused this error.",
+														"type": "array",
+														"items": "[Circular ~.POST /analytics/sql.responses.400.content.application/json.schema.oneOf.1.properties.messages.items]"
+													},
+													"message": {
+														"description": "Human-readable error message.",
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"code",
+													"message"
+												]
+											}
+										},
+										"result": {
+											"type": "object",
+											"additionalProperties": true,
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
 								}
-							},
-							"additionalProperties": false,
-							"required": [
-								"code",
-								"message"
 							]
 						}
 					}

@@ -388,7 +388,6 @@
 											"message": "art.api.resource.insufficient_permissions"
 										}
 									],
-									"messages": [],
 									"result": null,
 									"success": false
 								}
@@ -461,7 +460,12 @@
 											"message": "art.api.resource.insufficient_permissions"
 										}
 									],
-									"messages": [],
+									"messages": [
+										{
+											"code": 1000,
+											"message": "API in beta: expect breaking changes."
+										}
+									],
 									"result": null,
 									"success": false
 								}
@@ -552,7 +556,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "analytics.query",
-		"x-fern-sdk-method-name": "artAnalyticsQuerySummary",
+		"x-fern-sdk-method-name": "summary",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/analytics/query/{dataset}/timeseries": {
@@ -976,7 +980,6 @@
 											"message": "art.api.resource.insufficient_permissions"
 										}
 									],
-									"messages": [],
 									"result": null,
 									"success": false
 								}
@@ -1049,7 +1052,12 @@
 											"message": "art.api.resource.insufficient_permissions"
 										}
 									],
-									"messages": [],
+									"messages": [
+										{
+											"code": 1000,
+											"message": "API in beta: expect breaking changes."
+										}
+									],
 									"result": null,
 									"success": false
 								}
@@ -1140,7 +1148,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "analytics.query",
-		"x-fern-sdk-method-name": "artAnalyticsQueryTimeseries",
+		"x-fern-sdk-method-name": "timeseries",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/analytics/query/{dataset}/top-n": {
@@ -1552,7 +1560,6 @@
 											"message": "art.api.resource.insufficient_permissions"
 										}
 									],
-									"messages": [],
 									"result": null,
 									"success": false
 								}
@@ -1625,7 +1632,12 @@
 											"message": "art.api.resource.insufficient_permissions"
 										}
 									],
-									"messages": [],
+									"messages": [
+										{
+											"code": 1000,
+											"message": "API in beta: expect breaking changes."
+										}
+									],
 									"result": null,
 									"success": false
 								}
@@ -1716,7 +1728,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "analytics.query",
-		"x-fern-sdk-method-name": "artAnalyticsQueryTopN",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "top-n",
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"n": {
+				"flagName": "limit"
+			}
+		}
 	}
 }

@@ -323,7 +323,6 @@
 											"message": "art.api.resource.insufficient_permissions"
 										}
 									],
-									"messages": [],
 									"result": null,
 									"success": false
 								}
@@ -396,7 +395,12 @@
 											"message": "art.api.resource.insufficient_permissions"
 										}
 									],
-									"messages": [],
+									"messages": [
+										{
+											"code": 1000,
+											"message": "API in beta: expect breaking changes."
+										}
+									],
 									"result": null,
 									"success": false
 								}
@@ -486,9 +490,14 @@
 			"Zero Trust Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "analytics.query",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "analytics.query.data-security.content-findings",
+		"x-fern-sdk-method-name": "top-n",
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"n": {
+				"flagName": "limit"
+			}
+		}
 	},
 	"POST /accounts/{account_id}/analytics/query/data-security/findings/summary": {
 		"operationId": "data-security-findings-summary",
@@ -852,7 +861,6 @@
 											"message": "art.api.resource.insufficient_permissions"
 										}
 									],
-									"messages": [],
 									"result": null,
 									"success": false
 								}
@@ -925,7 +933,12 @@
 											"message": "art.api.resource.insufficient_permissions"
 										}
 									],
-									"messages": [],
+									"messages": [
+										{
+											"code": 1000,
+											"message": "API in beta: expect breaking changes."
+										}
+									],
 									"result": null,
 									"success": false
 								}
@@ -1015,8 +1028,8 @@
 			"Zero Trust Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "analytics.query",
-		"x-fern-sdk-method-name": "dataSecurityFindingsSummary",
+		"x-fern-sdk-group-name": "analytics.query.data-security.findings",
+		"x-fern-sdk-method-name": "summary",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/analytics/query/data-security/findings/timeseries": {
@@ -1376,7 +1389,6 @@
 											"message": "art.api.resource.insufficient_permissions"
 										}
 									],
-									"messages": [],
 									"result": null,
 									"success": false
 								}
@@ -1449,7 +1461,12 @@
 											"message": "art.api.resource.insufficient_permissions"
 										}
 									],
-									"messages": [],
+									"messages": [
+										{
+											"code": 1000,
+											"message": "API in beta: expect breaking changes."
+										}
+									],
 									"result": null,
 									"success": false
 								}
@@ -1539,8 +1556,8 @@
 			"Zero Trust Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "analytics.query",
-		"x-fern-sdk-method-name": "dataSecurityFindingsTimeseries",
+		"x-fern-sdk-group-name": "analytics.query.data-security.findings",
+		"x-fern-sdk-method-name": "timeseries",
 		"x-forge-hidden": true
 	}
 }
