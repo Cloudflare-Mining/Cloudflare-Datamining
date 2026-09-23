@@ -343,6 +343,39 @@
 															"example": "Widget Corps Internal Applications",
 															"x-auditable": true
 														},
+														"service_token_inactivity": {
+															"description": "Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.",
+															"type": "object",
+															"properties": {
+																"action": {
+																	"description": "The action applied to an inactive service token.",
+																	"type": "string",
+																	"example": "disable",
+																	"enum": [
+																		"disable",
+																		"delete"
+																	]
+																},
+																"enabled": {
+																	"description": "Whether automatic enforcement for inactive service tokens is enabled.",
+																	"type": "boolean",
+																	"example": true
+																},
+																"inactivity_threshold_days": {
+																	"description": "The number of days a service token must be inactive before the configured action is applied.",
+																	"type": "integer",
+																	"example": 30,
+																	"maximum": 365,
+																	"minimum": 30
+																}
+															},
+															"required": [
+																"enabled",
+																"inactivity_threshold_days",
+																"action"
+															],
+															"x-auditable": true
+														},
 														"session_duration": {
 															"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 															"type": "string",
@@ -1140,6 +1173,39 @@
 								"example": "Widget Corps Internal Applications",
 								"x-auditable": true
 							},
+							"service_token_inactivity": {
+								"description": "Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.",
+								"type": "object",
+								"properties": {
+									"action": {
+										"description": "The action applied to an inactive service token.",
+										"type": "string",
+										"example": "disable",
+										"enum": [
+											"disable",
+											"delete"
+										]
+									},
+									"enabled": {
+										"description": "Whether automatic enforcement for inactive service tokens is enabled.",
+										"type": "boolean",
+										"example": true
+									},
+									"inactivity_threshold_days": {
+										"description": "The number of days a service token must be inactive before the configured action is applied.",
+										"type": "integer",
+										"example": 30,
+										"maximum": 365,
+										"minimum": 30
+									}
+								},
+								"required": [
+									"enabled",
+									"inactivity_threshold_days",
+									"action"
+								],
+								"x-auditable": true
+							},
 							"session_duration": {
 								"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 								"type": "string",
@@ -1504,6 +1570,39 @@
 													"description": "The name of your Zero Trust organization.",
 													"type": "string",
 													"example": "Widget Corps Internal Applications",
+													"x-auditable": true
+												},
+												"service_token_inactivity": {
+													"description": "Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.",
+													"type": "object",
+													"properties": {
+														"action": {
+															"description": "The action applied to an inactive service token.",
+															"type": "string",
+															"example": "disable",
+															"enum": [
+																"disable",
+																"delete"
+															]
+														},
+														"enabled": {
+															"description": "Whether automatic enforcement for inactive service tokens is enabled.",
+															"type": "boolean",
+															"example": true
+														},
+														"inactivity_threshold_days": {
+															"description": "The number of days a service token must be inactive before the configured action is applied.",
+															"type": "integer",
+															"example": 30,
+															"maximum": 365,
+															"minimum": 30
+														}
+													},
+													"required": [
+														"enabled",
+														"inactivity_threshold_days",
+														"action"
+													],
 													"x-auditable": true
 												},
 												"session_duration": {
@@ -2160,6 +2259,39 @@
 								"example": "Widget Corps Internal Applications",
 								"x-auditable": true
 							},
+							"service_token_inactivity": {
+								"description": "Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.",
+								"type": "object",
+								"properties": {
+									"action": {
+										"description": "The action applied to an inactive service token.",
+										"type": "string",
+										"example": "disable",
+										"enum": [
+											"disable",
+											"delete"
+										]
+									},
+									"enabled": {
+										"description": "Whether automatic enforcement for inactive service tokens is enabled.",
+										"type": "boolean",
+										"example": true
+									},
+									"inactivity_threshold_days": {
+										"description": "The number of days a service token must be inactive before the configured action is applied.",
+										"type": "integer",
+										"example": 30,
+										"maximum": 365,
+										"minimum": 30
+									}
+								},
+								"required": [
+									"enabled",
+									"inactivity_threshold_days",
+									"action"
+								],
+								"x-auditable": true
+							},
 							"session_duration": {
 								"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 								"type": "string",
@@ -2520,6 +2652,39 @@
 													"description": "The name of your Zero Trust organization.",
 													"type": "string",
 													"example": "Widget Corps Internal Applications",
+													"x-auditable": true
+												},
+												"service_token_inactivity": {
+													"description": "Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.",
+													"type": "object",
+													"properties": {
+														"action": {
+															"description": "The action applied to an inactive service token.",
+															"type": "string",
+															"example": "disable",
+															"enum": [
+																"disable",
+																"delete"
+															]
+														},
+														"enabled": {
+															"description": "Whether automatic enforcement for inactive service tokens is enabled.",
+															"type": "boolean",
+															"example": true
+														},
+														"inactivity_threshold_days": {
+															"description": "The number of days a service token must be inactive before the configured action is applied.",
+															"type": "integer",
+															"example": 30,
+															"maximum": 365,
+															"minimum": 30
+														}
+													},
+													"required": [
+														"enabled",
+														"inactivity_threshold_days",
+														"action"
+													],
 													"x-auditable": true
 												},
 												"session_duration": {

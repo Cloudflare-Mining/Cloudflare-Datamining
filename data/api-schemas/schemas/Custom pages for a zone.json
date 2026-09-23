@@ -1,12 +1,13 @@
 {
-	"GET /zones/{zone_identifier}/custom_pages": {
+	"GET /zones/{zone_id}/custom_pages": {
 		"operationId": "custom-pages-for-a-zone-list-custom-pages",
 		"summary": "List custom pages",
-		"description": "Fetches all the custom pages at the zone level.",
+		"description": "Lists all custom page configurations for a zone.",
 		"parameters": [
 			{
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"in": "path",
+				"description": "Identifier of the Cloudflare zone.",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
@@ -363,17 +364,17 @@
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
-	"GET /zones/{zone_identifier}/custom_pages/{identifier}": {
+	"GET /zones/{zone_id}/custom_pages/{identifier}": {
 		"operationId": "custom-pages-for-a-zone-get-a-custom-page",
 		"summary": "Get a custom page",
-		"description": "Fetches the details of a custom page.",
+		"description": "Returns the configuration for a custom page type at the zone level.",
 		"parameters": [
 			{
 				"name": "identifier",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Error Page Types",
+					"description": "Custom page type.",
 					"type": "string",
 					"example": "ratelimit_block",
 					"enum": [
@@ -392,8 +393,9 @@
 				}
 			},
 			{
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"in": "path",
+				"description": "Identifier of the Cloudflare zone.",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
@@ -612,14 +614,15 @@
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
-	"POST /zones/{zone_identifier}/custom_pages/preview_tokens": {
+	"POST /zones/{zone_id}/custom_pages/preview_tokens": {
 		"operationId": "custom-pages-for-a-zone-create-preview-token",
 		"summary": "Create a preview token",
-		"description": "Creates a signed JWT token used to preview custom pages before they are published. The API gateway rewrites zone-scoped requests to the account-level service endpoint.",
+		"description": "Creates a signed JWT for previewing a zone-level custom page before it is published.",
 		"parameters": [
 			{
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"in": "path",
+				"description": "Identifier of the Cloudflare zone.",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
@@ -924,17 +927,17 @@
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
-	"PUT /zones/{zone_identifier}/custom_pages/{identifier}": {
+	"PUT /zones/{zone_id}/custom_pages/{identifier}": {
 		"operationId": "custom-pages-for-a-zone-update-a-custom-page",
 		"summary": "Update a custom page",
-		"description": "Updates the configuration of an existing custom page.",
+		"description": "Updates the configuration for a custom page type at the zone level.",
 		"parameters": [
 			{
 				"name": "identifier",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Error Page Types",
+					"description": "Custom page type.",
 					"type": "string",
 					"example": "ratelimit_block",
 					"enum": [
@@ -953,8 +956,9 @@
 				}
 			},
 			{
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"in": "path",
+				"description": "Identifier of the Cloudflare zone.",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",

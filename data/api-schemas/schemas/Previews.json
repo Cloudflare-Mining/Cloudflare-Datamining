@@ -37,7 +37,7 @@
 			{
 				"name": "force",
 				"in": "query",
-				"description": "If true, delete the Preview even when a service binding, Durable Object, or other binding still references it. The delete also removes those bindings and Durable Objects.",
+				"description": "If true, delete the Preview even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Preview are deleted even if other Workers reference them.",
 				"schema": {
 					"type": "boolean"
 				}

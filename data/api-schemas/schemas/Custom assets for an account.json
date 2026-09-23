@@ -1,8 +1,8 @@
 {
-	"DELETE /accounts/{account_identifier}/custom_pages/assets/{asset_name}": {
+	"DELETE /accounts/{account_id}/custom_pages/assets/{asset_name}": {
 		"operationId": "custom-assets-for-an-account-delete-a-custom-asset",
 		"summary": "Delete a custom asset",
-		"description": "Deletes an existing custom asset.",
+		"description": "Deletes a custom asset from an account.",
 		"parameters": [
 			{
 				"name": "asset_name",
@@ -18,8 +18,9 @@
 				}
 			},
 			{
-				"name": "account_identifier",
+				"name": "account_id",
 				"in": "path",
+				"description": "Identifier of the Cloudflare account.",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
@@ -169,14 +170,15 @@
 		"x-fern-sdk-method-name": "asset",
 		"x-forge-hidden": true
 	},
-	"GET /accounts/{account_identifier}/custom_pages/assets": {
+	"GET /accounts/{account_id}/custom_pages/assets": {
 		"operationId": "custom-assets-for-an-account-list-custom-assets",
 		"summary": "List custom assets",
-		"description": "Fetches all the custom assets at the account level.",
+		"description": "Lists custom assets for an account.",
 		"parameters": [
 			{
-				"name": "account_identifier",
+				"name": "account_id",
 				"in": "path",
+				"description": "Identifier of the Cloudflare account.",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
@@ -189,6 +191,7 @@
 			{
 				"name": "page",
 				"in": "query",
+				"description": "Page number of paginated results.",
 				"schema": {
 					"type": "integer",
 					"default": 1,
@@ -198,6 +201,7 @@
 			{
 				"name": "per_page",
 				"in": "query",
+				"description": "Number of custom assets per page.",
 				"schema": {
 					"type": "integer",
 					"default": 20,
@@ -518,10 +522,10 @@
 		"x-fern-sdk-method-name": "assets",
 		"x-forge-hidden": true
 	},
-	"GET /accounts/{account_identifier}/custom_pages/assets/{asset_name}": {
+	"GET /accounts/{account_id}/custom_pages/assets/{asset_name}": {
 		"operationId": "custom-assets-for-an-account-get-a-custom-asset",
 		"summary": "Get a custom asset",
-		"description": "Fetches the details of a custom asset.",
+		"description": "Returns a custom asset for an account.",
 		"parameters": [
 			{
 				"name": "asset_name",
@@ -537,8 +541,9 @@
 				}
 			},
 			{
-				"name": "account_identifier",
+				"name": "account_id",
 				"in": "path",
+				"description": "Identifier of the Cloudflare account.",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
@@ -823,14 +828,15 @@
 		"x-fern-sdk-method-name": "asset",
 		"x-forge-hidden": true
 	},
-	"POST /accounts/{account_identifier}/custom_pages/assets": {
+	"POST /accounts/{account_id}/custom_pages/assets": {
 		"operationId": "custom-assets-for-an-account-create-a-custom-asset",
 		"summary": "Create a custom asset",
-		"description": "Creates a new custom asset at the account level.",
+		"description": "Creates a custom asset for an account.",
 		"parameters": [
 			{
-				"name": "account_identifier",
+				"name": "account_id",
 				"in": "path",
+				"description": "Identifier of the Cloudflare account.",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
@@ -1150,10 +1156,10 @@
 		"x-fern-sdk-method-name": "asset",
 		"x-forge-hidden": true
 	},
-	"PUT /accounts/{account_identifier}/custom_pages/assets/{asset_name}": {
+	"PUT /accounts/{account_id}/custom_pages/assets/{asset_name}": {
 		"operationId": "custom-assets-for-an-account-update-a-custom-asset",
 		"summary": "Update a custom asset",
-		"description": "Updates the configuration of an existing custom asset.",
+		"description": "Updates a custom asset for an account.",
 		"parameters": [
 			{
 				"name": "asset_name",
@@ -1169,8 +1175,9 @@
 				}
 			},
 			{
-				"name": "account_identifier",
+				"name": "account_id",
 				"in": "path",
+				"description": "Identifier of the Cloudflare account.",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",

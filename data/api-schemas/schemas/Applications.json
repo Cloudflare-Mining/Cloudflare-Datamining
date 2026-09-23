@@ -5209,14 +5209,14 @@
 														"minimum": 0
 													},
 													"ip_subnets": {
-														"description": "IP subnets matched by the application.",
+														"description": "IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.",
 														"type": "array",
 														"items": {
 															"type": "string"
 														},
 														"example": [
 															"192.168.1.0/24",
-															"10.0.0.0/8"
+															"2001:db8::/48"
 														],
 														"x-stainless-collection-type": "set"
 													},
@@ -5973,14 +5973,14 @@
 													"minimum": 0
 												},
 												"ip_subnets": {
-													"description": "IP subnets matched by the application.",
+													"description": "IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.",
 													"type": "array",
 													"items": {
 														"type": "string"
 													},
 													"example": [
 														"192.168.1.0/24",
-														"10.0.0.0/8"
+														"2001:db8::/48"
 													],
 													"x-stainless-collection-type": "set"
 												},
@@ -7555,7 +7555,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Updates the network matchers for the application. Omitted matcher lists are left unchanged; send an empty array to clear a list.",
+						"description": "Update the network matchers for the application. The service preserves omitted\nmatcher lists; send an empty array to clear a list. The resulting application must\ncontain at least one hostname or IP subnet. Support domains and port/protocol pairs\ndo not satisfy this requirement.\n",
 						"type": "object",
 						"properties": {
 							"hostnames": {
@@ -7571,14 +7571,14 @@
 								"x-stainless-collection-type": "set"
 							},
 							"ip_subnets": {
-								"description": "IP subnets matched by the application.",
+								"description": "IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.",
 								"type": "array",
 								"items": {
 									"type": "string"
 								},
 								"example": [
 									"192.168.1.0/24",
-									"10.0.0.0/8"
+									"2001:db8::/48"
 								],
 								"x-stainless-collection-type": "set"
 							},
@@ -7785,14 +7785,14 @@
 													"minimum": 0
 												},
 												"ip_subnets": {
-													"description": "IP subnets matched by the application.",
+													"description": "IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.",
 													"type": "array",
 													"items": {
 														"type": "string"
 													},
 													"example": [
 														"192.168.1.0/24",
-														"10.0.0.0/8"
+														"2001:db8::/48"
 													],
 													"x-stainless-collection-type": "set"
 												},
@@ -9506,6 +9506,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"description": "Defines a custom application. At least one hostname or IP subnet is required.\nSupport domains and port/protocol pairs do not satisfy this requirement.\n",
 						"type": "object",
 						"properties": {
 							"category_id": {
@@ -9534,14 +9535,14 @@
 								"example": "HR"
 							},
 							"ip_subnets": {
-								"description": "IP subnets matched by the application.",
+								"description": "IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.",
 								"type": "array",
 								"items": {
 									"type": "string"
 								},
 								"example": [
 									"192.168.1.0/24",
-									"10.0.0.0/8"
+									"2001:db8::/48"
 								],
 								"x-stainless-collection-type": "set"
 							},
@@ -9575,6 +9576,72 @@
 								"x-stainless-collection-type": "set"
 							}
 						},
+						"anyOf": [
+							{
+								"properties": {
+									"hostnames": {
+										"allOf": [
+											{
+												"description": "Hostnames matched by the application.",
+												"type": "array",
+												"items": {
+													"type": "string"
+												},
+												"example": [
+													"example.com",
+													"foo.com"
+												],
+												"x-stainless-collection-type": "set"
+											},
+											{
+												"items": {
+													"minLength": 1,
+													"pattern": ".*\\S.*",
+													"type": "string"
+												},
+												"minItems": 1,
+												"type": "array"
+											}
+										]
+									}
+								},
+								"required": [
+									"hostnames"
+								],
+								"type": "object"
+							},
+							{
+								"properties": {
+									"ip_subnets": {
+										"allOf": [
+											{
+												"description": "IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.",
+												"type": "array",
+												"items": {
+													"type": "string"
+												},
+												"example": [
+													"192.168.1.0/24",
+													"2001:db8::/48"
+												],
+												"x-stainless-collection-type": "set"
+											},
+											{
+												"items": {
+													"type": "string"
+												},
+												"minItems": 1,
+												"type": "array"
+											}
+										]
+									}
+								},
+								"required": [
+									"ip_subnets"
+								],
+								"type": "object"
+							}
+						],
 						"required": [
 							"name",
 							"human_id",
@@ -9758,14 +9825,14 @@
 													"minimum": 0
 												},
 												"ip_subnets": {
-													"description": "IP subnets matched by the application.",
+													"description": "IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.",
 													"type": "array",
 													"items": {
 														"type": "string"
 													},
 													"example": [
 														"192.168.1.0/24",
-														"10.0.0.0/8"
+														"2001:db8::/48"
 													],
 													"x-stainless-collection-type": "set"
 												},

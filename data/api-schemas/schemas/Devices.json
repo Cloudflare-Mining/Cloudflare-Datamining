@@ -832,7 +832,1289 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.policies.custom",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
+	},
+	"DELETE /accounts/{account_id}/devices/policy/{policy_id}/exclude": {
+		"operationId": "devices-delete-split-tunnel-exclude-list-for-a-device-settings-policy",
+		"summary": "Reset Split Tunnel exclude list",
+		"description": "Resets the Split Tunnel exclude list to the default value for the selected device profile.",
+		"parameters": [
+			{
+				"name": "policy_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"name": "reset_defaults",
+				"in": "query",
+				"description": "Deprecated and ignored. Deleting the list always restores the defaults.",
+				"schema": {
+					"type": "boolean",
+					"default": true
+				},
+				"deprecated": true
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Reset the Split Tunnel exclude list for a device settings profile response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"type": "object"
+													},
+													"nullable": true
+												},
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"type": "number",
+															"example": 1
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"type": "number",
+															"example": 20
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"type": "number",
+															"example": 2000
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"oneOf": [
+													{
+														"type": "object",
+														"properties": {
+															"address": {
+																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																"type": "string",
+																"example": "192.0.2.0/24",
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"description": {
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																"type": "string",
+																"example": "Exclude testing domains from the tunnel",
+																"maxLength": 100,
+																"x-stainless-terraform-configurability": "computed_optional"
+															}
+														},
+														"required": [
+															"address"
+														]
+													},
+													{
+														"type": "object",
+														"properties": {
+															"description": {
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																"type": "string",
+																"example": "Exclude testing domains from the tunnel",
+																"maxLength": 100,
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"host": {
+																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																"type": "string",
+																"example": "*.example.com",
+																"x-stainless-terraform-configurability": "computed_optional"
+															}
+														},
+														"required": [
+															"host"
+														]
+													}
+												]
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Reset the Split Tunnel exclude list for a device settings profile response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Devices"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
+		"x-auditable": true,
+		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.excludes",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
+	},
+	"DELETE /accounts/{account_id}/devices/policy/{policy_id}/fallback_domains": {
+		"operationId": "devices-delete-local-domain-fallback-list-for-a-device-settings-policy",
+		"summary": "Reset Local Domain Fallback",
+		"description": "Restores the default Local Domain Fallback list for a specific device profile.",
+		"parameters": [
+			{
+				"name": "policy_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"name": "reset_defaults",
+				"in": "query",
+				"description": "Deprecated and ignored. Deleting the list always restores the defaults.",
+				"schema": {
+					"type": "boolean",
+					"default": true
+				},
+				"deprecated": true
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Reset the Local Domain Fallback list for a device settings profile response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"type": "object"
+													},
+													"nullable": true
+												},
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"type": "number",
+															"example": 1
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"type": "number",
+															"example": 20
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"type": "number",
+															"example": 2000
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"description": {
+														"description": "A description of the fallback domain, displayed in the client UI.",
+														"type": "string",
+														"example": "Domain bypass for local development",
+														"maxLength": 100,
+														"x-auditable": true
+													},
+													"dns_server": {
+														"description": "A list of IP addresses to handle domain resolution.",
+														"type": "array",
+														"items": {
+															"description": "IPv4 or IPv6 address.",
+															"type": "string",
+															"example": "1.1.1.1",
+															"x-auditable": true
+														}
+													},
+													"suffix": {
+														"description": "The domain suffix to match when resolving locally.",
+														"type": "string",
+														"example": "example.com",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"suffix"
+												]
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Reset the Local Domain Fallback list for a device settings profile response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Devices"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
+		"x-auditable": true,
+		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.fallback-domains",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
+	},
+	"DELETE /accounts/{account_id}/devices/policy/exclude": {
+		"operationId": "devices-delete-split-tunnel-exclude-list",
+		"summary": "Reset Split Tunnel exclude list",
+		"description": "Resets the Split Tunnel exclude list to the default value.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"name": "reset_defaults",
+				"in": "query",
+				"description": "Deprecated and ignored. Deleting the list always restores the defaults.",
+				"schema": {
+					"type": "boolean",
+					"default": true
+				},
+				"deprecated": true
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Reset the Split Tunnel exclude list response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"type": "object"
+													},
+													"nullable": true
+												},
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"type": "number",
+															"example": 1
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"type": "number",
+															"example": 20
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"type": "number",
+															"example": 2000
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"oneOf": [
+													{
+														"type": "object",
+														"properties": {
+															"address": {
+																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
+																"type": "string",
+																"example": "192.0.2.0/24",
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"description": {
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																"type": "string",
+																"example": "Exclude testing domains from the tunnel",
+																"maxLength": 100,
+																"x-stainless-terraform-configurability": "computed_optional"
+															}
+														},
+														"required": [
+															"address"
+														]
+													},
+													{
+														"type": "object",
+														"properties": {
+															"description": {
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
+																"type": "string",
+																"example": "Exclude testing domains from the tunnel",
+																"maxLength": 100,
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"host": {
+																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
+																"type": "string",
+																"example": "*.example.com",
+																"x-stainless-terraform-configurability": "computed_optional"
+															}
+														},
+														"required": [
+															"host"
+														]
+													}
+												]
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Reset the Split Tunnel exclude list response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Devices"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
+		"x-auditable": true,
+		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.excludes",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
+	},
+	"DELETE /accounts/{account_id}/devices/policy/fallback_domains": {
+		"operationId": "devices-delete-local-domain-fallback-list",
+		"summary": "Reset Local Domain Fallback",
+		"description": "Restores the default Local Domain Fallback list for the default device profile.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"name": "reset_defaults",
+				"in": "query",
+				"description": "Deprecated and ignored. Deleting the list always restores the defaults.",
+				"schema": {
+					"type": "boolean",
+					"default": true
+				},
+				"deprecated": true
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Reset your Local Domain Fallback list response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"type": "object"
+													},
+													"nullable": true
+												},
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"type": "number",
+															"example": 1
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"type": "number",
+															"example": 20
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"type": "number",
+															"example": 2000
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"description": {
+														"description": "A description of the fallback domain, displayed in the client UI.",
+														"type": "string",
+														"example": "Domain bypass for local development",
+														"maxLength": 100,
+														"x-auditable": true
+													},
+													"dns_server": {
+														"description": "A list of IP addresses to handle domain resolution.",
+														"type": "array",
+														"items": {
+															"description": "IPv4 or IPv6 address.",
+															"type": "string",
+															"example": "1.1.1.1",
+															"x-auditable": true
+														}
+													},
+													"suffix": {
+														"description": "The domain suffix to match when resolving locally.",
+														"type": "string",
+														"example": "example.com",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"suffix"
+												]
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Reset your Local Domain Fallback list response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Devices"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
+		"x-auditable": true,
+		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.fallback-domains",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
 	},
@@ -2768,7 +4050,7 @@
 			"Devices"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.policies.custom",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -3494,7 +4776,7 @@
 			"Devices"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.policies.default",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -4305,7 +5587,7 @@
 			"Devices"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.policies.custom",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -4624,7 +5906,8 @@
 			"Devices"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.policies.custom.excludes",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.excludes",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -4927,7 +6210,8 @@
 			"Devices"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.policies.custom.fallback-domains",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.fallback-domains",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -5246,7 +6530,8 @@
 			"Devices"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.policies.custom.includes",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.includes",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -5554,7 +6839,8 @@
 			"Devices"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.policies.default.excludes",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.excludes",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -5846,7 +7132,8 @@
 			"Devices"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.policies.default.fallback-domains",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.fallback-domains",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -6154,7 +7441,8 @@
 			"Devices"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.policies.default.includes",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.includes",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -6409,7 +7697,8 @@
 			"SSL and Certificates Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.policies.default.certificates",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.certificates",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -7483,7 +8772,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.policies.default",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
@@ -8710,7 +9999,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.policies.custom",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
@@ -8984,7 +10273,8 @@
 			"SSL and Certificates Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.policies.default.certificates",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.certificates",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
@@ -10212,7 +11502,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.policies.custom",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
@@ -11097,7 +12387,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.policies.custom.excludes",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.excludes",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
@@ -11444,7 +12735,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.policies.custom.fallback-domains",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.fallback-domains",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
@@ -11823,7 +13115,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.policies.custom.includes",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.includes",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
@@ -12191,7 +13484,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.policies.default.excludes",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.excludes",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
@@ -12527,7 +13821,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.policies.default.fallback-domains",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.fallback-domains",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
@@ -12895,7 +14190,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.policies.default.includes",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.includes",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	}

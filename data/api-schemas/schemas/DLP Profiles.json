@@ -2915,6 +2915,12 @@
 																		"type": "string",
 																		"format": "uuid"
 																	},
+																	"integration_id": {
+																		"type": "string",
+																		"format": "uuid",
+																		"readOnly": true,
+																		"x-stainless-terraform-configurability": "computed"
+																	},
 																	"name": {
 																		"type": "string"
 																	},
@@ -3424,6 +3430,7 @@
 																},
 																"required": [
 																	"id",
+																	"integration_id",
 																	"name",
 																	"entries",
 																	"shared_entries",
@@ -5981,6 +5988,12 @@
 																	"type": "string",
 																	"format": "uuid"
 																},
+																"integration_id": {
+																	"type": "string",
+																	"format": "uuid",
+																	"readOnly": true,
+																	"x-stainless-terraform-configurability": "computed"
+																},
 																"name": {
 																	"type": "string"
 																},
@@ -6490,6 +6503,7 @@
 															},
 															"required": [
 																"id",
+																"integration_id",
 																"name",
 																"entries",
 																"shared_entries",
@@ -10436,6 +10450,12 @@
 																	"type": "string",
 																	"format": "uuid"
 																},
+																"integration_id": {
+																	"type": "string",
+																	"format": "uuid",
+																	"readOnly": true,
+																	"x-stainless-terraform-configurability": "computed"
+																},
 																"name": {
 																	"type": "string"
 																},
@@ -10945,6 +10965,7 @@
 															},
 															"required": [
 																"id",
+																"integration_id",
 																"name",
 																"entries",
 																"shared_entries",
@@ -13501,6 +13522,12 @@
 																	"type": "string",
 																	"format": "uuid"
 																},
+																"integration_id": {
+																	"type": "string",
+																	"format": "uuid",
+																	"readOnly": true,
+																	"x-stainless-terraform-configurability": "computed"
+																},
 																"name": {
 																	"type": "string"
 																},
@@ -14010,6 +14037,7 @@
 															},
 															"required": [
 																"id",
+																"integration_id",
 																"name",
 																"entries",
 																"shared_entries",
@@ -17574,6 +17602,12 @@
 																	"type": "string",
 																	"format": "uuid"
 																},
+																"integration_id": {
+																	"type": "string",
+																	"format": "uuid",
+																	"readOnly": true,
+																	"x-stainless-terraform-configurability": "computed"
+																},
 																"name": {
 																	"type": "string"
 																},
@@ -18083,6 +18117,7 @@
 															},
 															"required": [
 																"id",
+																"integration_id",
 																"name",
 																"entries",
 																"shared_entries",
@@ -20728,6 +20763,12 @@
 																	"type": "string",
 																	"format": "uuid"
 																},
+																"integration_id": {
+																	"type": "string",
+																	"format": "uuid",
+																	"readOnly": true,
+																	"x-stainless-terraform-configurability": "computed"
+																},
 																"name": {
 																	"type": "string"
 																},
@@ -21237,6 +21278,7 @@
 															},
 															"required": [
 																"id",
+																"integration_id",
 																"name",
 																"entries",
 																"shared_entries",
@@ -24907,6 +24949,12 @@
 																	"type": "string",
 																	"format": "uuid"
 																},
+																"integration_id": {
+																	"type": "string",
+																	"format": "uuid",
+																	"readOnly": true,
+																	"x-stainless-terraform-configurability": "computed"
+																},
 																"name": {
 																	"type": "string"
 																},
@@ -25416,6 +25464,7 @@
 															},
 															"required": [
 																"id",
+																"integration_id",
 																"name",
 																"entries",
 																"shared_entries",
@@ -28054,6 +28103,12 @@
 																	"type": "string",
 																	"format": "uuid"
 																},
+																"integration_id": {
+																	"type": "string",
+																	"format": "uuid",
+																	"readOnly": true,
+																	"x-stainless-terraform-configurability": "computed"
+																},
 																"name": {
 																	"type": "string"
 																},
@@ -28563,6 +28618,7 @@
 															},
 															"required": [
 																"id",
+																"integration_id",
 																"name",
 																"entries",
 																"shared_entries",

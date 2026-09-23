@@ -699,6 +699,12 @@
 																		"maximum": 65535,
 																		"minimum": 1
 																	},
+																	"origin_worker_id": {
+																		"description": "Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. tls may only be \"off\" or \"flexible\".",
+																		"type": "string",
+																		"example": "277b7815c871434b960b60729659000a",
+																		"pattern": "^[0-9a-f]{32}$"
+																	},
 																	"protocol": {
 																		"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
 																		"type": "string",
@@ -729,14 +735,15 @@
 																		]
 																	},
 																	"traffic_type": {
-																		"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.",
+																		"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. When set to \"worker\", traffic is sent to the Worker specified by `origin_worker_id`.",
 																		"type": "string",
 																		"example": "direct",
 																		"default": "direct",
 																		"enum": [
 																			"direct",
 																			"http",
-																			"https"
+																			"https",
+																			"worker"
 																		]
 																	},
 																	"virtual_network_id": {
@@ -1340,6 +1347,12 @@
 																	"maximum": 65535,
 																	"minimum": 1
 																},
+																"origin_worker_id": {
+																	"description": "Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. tls may only be \"off\" or \"flexible\".",
+																	"type": "string",
+																	"example": "277b7815c871434b960b60729659000a",
+																	"pattern": "^[0-9a-f]{32}$"
+																},
 																"protocol": {
 																	"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
 																	"type": "string",
@@ -1370,14 +1383,15 @@
 																	]
 																},
 																"traffic_type": {
-																	"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.",
+																	"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. When set to \"worker\", traffic is sent to the Worker specified by `origin_worker_id`.",
 																	"type": "string",
 																	"example": "direct",
 																	"default": "direct",
 																	"enum": [
 																		"direct",
 																		"http",
-																		"https"
+																		"https",
+																		"worker"
 																	]
 																},
 																"virtual_network_id": {
@@ -2205,6 +2219,12 @@
 												"maximum": 65535,
 												"minimum": 1
 											},
+											"origin_worker_id": {
+												"description": "Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. tls may only be \"off\" or \"flexible\".",
+												"type": "string",
+												"example": "277b7815c871434b960b60729659000a",
+												"pattern": "^[0-9a-f]{32}$"
+											},
 											"protocol": {
 												"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
 												"type": "string",
@@ -2235,14 +2255,15 @@
 												]
 											},
 											"traffic_type": {
-												"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.",
+												"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. When set to \"worker\", traffic is sent to the Worker specified by `origin_worker_id`.",
 												"type": "string",
 												"example": "direct",
 												"default": "direct",
 												"enum": [
 													"direct",
 													"http",
-													"https"
+													"https",
+													"worker"
 												]
 											},
 											"virtual_network_id": {
@@ -2657,6 +2678,12 @@
 																	"maximum": 65535,
 																	"minimum": 1
 																},
+																"origin_worker_id": {
+																	"description": "Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. tls may only be \"off\" or \"flexible\".",
+																	"type": "string",
+																	"example": "277b7815c871434b960b60729659000a",
+																	"pattern": "^[0-9a-f]{32}$"
+																},
 																"protocol": {
 																	"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
 																	"type": "string",
@@ -2687,14 +2714,15 @@
 																	]
 																},
 																"traffic_type": {
-																	"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.",
+																	"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. When set to \"worker\", traffic is sent to the Worker specified by `origin_worker_id`.",
 																	"type": "string",
 																	"example": "direct",
 																	"default": "direct",
 																	"enum": [
 																		"direct",
 																		"http",
-																		"https"
+																		"https",
+																		"worker"
 																	]
 																},
 																"virtual_network_id": {
@@ -3200,6 +3228,12 @@
 												"maximum": 65535,
 												"minimum": 1
 											},
+											"origin_worker_id": {
+												"description": "Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. tls may only be \"off\" or \"flexible\".",
+												"type": "string",
+												"example": "277b7815c871434b960b60729659000a",
+												"pattern": "^[0-9a-f]{32}$"
+											},
 											"protocol": {
 												"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
 												"type": "string",
@@ -3230,14 +3264,15 @@
 												]
 											},
 											"traffic_type": {
-												"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.",
+												"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. When set to \"worker\", traffic is sent to the Worker specified by `origin_worker_id`.",
 												"type": "string",
 												"example": "direct",
 												"default": "direct",
 												"enum": [
 													"direct",
 													"http",
-													"https"
+													"https",
+													"worker"
 												]
 											},
 											"virtual_network_id": {
@@ -3652,6 +3687,12 @@
 																	"maximum": 65535,
 																	"minimum": 1
 																},
+																"origin_worker_id": {
+																	"description": "Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. tls may only be \"off\" or \"flexible\".",
+																	"type": "string",
+																	"example": "277b7815c871434b960b60729659000a",
+																	"pattern": "^[0-9a-f]{32}$"
+																},
 																"protocol": {
 																	"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
 																	"type": "string",
@@ -3682,14 +3723,15 @@
 																	]
 																},
 																"traffic_type": {
-																	"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.",
+																	"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. When set to \"worker\", traffic is sent to the Worker specified by `origin_worker_id`.",
 																	"type": "string",
 																	"example": "direct",
 																	"default": "direct",
 																	"enum": [
 																		"direct",
 																		"http",
-																		"https"
+																		"https",
+																		"worker"
 																	]
 																},
 																"virtual_network_id": {

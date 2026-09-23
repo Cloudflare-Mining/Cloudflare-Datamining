@@ -286,6 +286,14 @@
 					"description": "Identifier for the Worker, which can be ID or name.",
 					"type": "string"
 				}
+			},
+			{
+				"name": "force",
+				"in": "query",
+				"description": "If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.",
+				"schema": {
+					"type": "boolean"
+				}
 			}
 		],
 		"responses": {

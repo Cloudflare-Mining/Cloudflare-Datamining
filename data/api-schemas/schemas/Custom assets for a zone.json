@@ -1,8 +1,8 @@
 {
-	"DELETE /zones/{zone_identifier}/custom_pages/assets/{asset_name}": {
+	"DELETE /zones/{zone_id}/custom_pages/assets/{asset_name}": {
 		"operationId": "custom-assets-for-a-zone-delete-a-custom-asset",
 		"summary": "Delete a custom asset",
-		"description": "Deletes an existing custom asset.",
+		"description": "Deletes a custom asset from a zone.",
 		"parameters": [
 			{
 				"name": "asset_name",
@@ -18,8 +18,9 @@
 				}
 			},
 			{
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"in": "path",
+				"description": "Identifier of the Cloudflare zone.",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
@@ -176,14 +177,15 @@
 		"x-fern-sdk-method-name": "v2",
 		"x-forge-hidden": true
 	},
-	"GET /zones/{zone_identifier}/custom_pages/assets": {
+	"GET /zones/{zone_id}/custom_pages/assets": {
 		"operationId": "custom-assets-for-a-zone-list-custom-assets",
 		"summary": "List custom assets",
-		"description": "Fetches all the custom assets at the zone level.",
+		"description": "Lists custom assets for a zone.",
 		"parameters": [
 			{
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"in": "path",
+				"description": "Identifier of the Cloudflare zone.",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
@@ -196,6 +198,7 @@
 			{
 				"name": "page",
 				"in": "query",
+				"description": "Page number of paginated results.",
 				"schema": {
 					"type": "integer",
 					"default": 1,
@@ -205,6 +208,7 @@
 			{
 				"name": "per_page",
 				"in": "query",
+				"description": "Number of custom assets per page.",
 				"schema": {
 					"type": "integer",
 					"default": 20,
@@ -533,10 +537,10 @@
 		"x-fern-sdk-method-name": "v2",
 		"x-forge-hidden": true
 	},
-	"GET /zones/{zone_identifier}/custom_pages/assets/{asset_name}": {
+	"GET /zones/{zone_id}/custom_pages/assets/{asset_name}": {
 		"operationId": "custom-assets-for-a-zone-get-a-custom-asset",
 		"summary": "Get a custom asset",
-		"description": "Fetches the details of a custom asset.",
+		"description": "Returns a custom asset for a zone.",
 		"parameters": [
 			{
 				"name": "asset_name",
@@ -552,8 +556,9 @@
 				}
 			},
 			{
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"in": "path",
+				"description": "Identifier of the Cloudflare zone.",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
@@ -846,14 +851,15 @@
 		"x-fern-sdk-method-name": "v2",
 		"x-forge-hidden": true
 	},
-	"POST /zones/{zone_identifier}/custom_pages/assets": {
+	"POST /zones/{zone_id}/custom_pages/assets": {
 		"operationId": "custom-assets-for-a-zone-create-a-custom-asset",
 		"summary": "Create a custom asset",
-		"description": "Creates a new custom asset at the zone level.",
+		"description": "Creates a custom asset for a zone.",
 		"parameters": [
 			{
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"in": "path",
+				"description": "Identifier of the Cloudflare zone.",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
@@ -1180,10 +1186,10 @@
 		"x-fern-sdk-method-name": "v2",
 		"x-forge-hidden": true
 	},
-	"PUT /zones/{zone_identifier}/custom_pages/assets/{asset_name}": {
+	"PUT /zones/{zone_id}/custom_pages/assets/{asset_name}": {
 		"operationId": "custom-assets-for-a-zone-update-a-custom-asset",
 		"summary": "Update a custom asset",
-		"description": "Updates the configuration of an existing custom asset.",
+		"description": "Updates a custom asset for a zone.",
 		"parameters": [
 			{
 				"name": "asset_name",
@@ -1199,8 +1205,9 @@
 				}
 			},
 			{
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"in": "path",
+				"description": "Identifier of the Cloudflare zone.",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",

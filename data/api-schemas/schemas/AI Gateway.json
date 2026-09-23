@@ -3202,6 +3202,11 @@
 								"type": "integer",
 								"example": 5000,
 								"minimum": 1000
+							},
+							"payment_method_id": {
+								"description": "Stripe PaymentMethod to charge instead of the customer's default payment method.",
+								"type": "string",
+								"example": "pm_123"
 							}
 						},
 						"additionalProperties": false,

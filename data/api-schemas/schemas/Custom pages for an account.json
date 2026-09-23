@@ -1,12 +1,13 @@
 {
-	"GET /accounts/{account_identifier}/custom_pages": {
+	"GET /accounts/{account_id}/custom_pages": {
 		"operationId": "custom-pages-for-an-account-list-custom-pages",
 		"summary": "List custom pages",
-		"description": "Fetches all the custom pages at the account level.",
+		"description": "Lists all custom page configurations for an account.",
 		"parameters": [
 			{
-				"name": "account_identifier",
+				"name": "account_id",
 				"in": "path",
+				"description": "Identifier of the Cloudflare account.",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
@@ -364,17 +365,17 @@
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
-	"GET /accounts/{account_identifier}/custom_pages/{identifier}": {
+	"GET /accounts/{account_id}/custom_pages/{identifier}": {
 		"operationId": "custom-pages-for-an-account-get-a-custom-page",
 		"summary": "Get a custom page",
-		"description": "Fetches the details of a custom page.",
+		"description": "Returns the configuration for a custom page type at the account level.",
 		"parameters": [
 			{
 				"name": "identifier",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Error Page Types",
+					"description": "Custom page type.",
 					"type": "string",
 					"example": "ratelimit_block",
 					"enum": [
@@ -393,8 +394,9 @@
 				}
 			},
 			{
-				"name": "account_identifier",
+				"name": "account_id",
 				"in": "path",
+				"description": "Identifier of the Cloudflare account.",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
@@ -709,14 +711,15 @@
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
-	"POST /accounts/{account_identifier}/custom_pages/preview_tokens": {
+	"POST /accounts/{account_id}/custom_pages/preview_tokens": {
 		"operationId": "custom-pages-for-an-account-create-preview-token",
 		"summary": "Create a preview token",
-		"description": "Creates a signed JWT token used to preview custom pages before they are published.",
+		"description": "Creates a signed JWT for previewing an account-level custom page before it is published.",
 		"parameters": [
 			{
-				"name": "account_identifier",
+				"name": "account_id",
 				"in": "path",
+				"description": "Identifier of the Cloudflare account.",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
@@ -1022,17 +1025,17 @@
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
-	"PUT /accounts/{account_identifier}/custom_pages/{identifier}": {
+	"PUT /accounts/{account_id}/custom_pages/{identifier}": {
 		"operationId": "custom-pages-for-an-account-update-a-custom-page",
 		"summary": "Update a custom page",
-		"description": "Updates the configuration of an existing custom page.",
+		"description": "Updates the configuration for a custom page type at the account level.",
 		"parameters": [
 			{
 				"name": "identifier",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Error Page Types",
+					"description": "Custom page type.",
 					"type": "string",
 					"example": "ratelimit_block",
 					"enum": [
@@ -1051,8 +1054,9 @@
 				}
 			},
 			{
-				"name": "account_identifier",
+				"name": "account_id",
 				"in": "path",
+				"description": "Identifier of the Cloudflare account.",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",

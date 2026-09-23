@@ -183,7 +183,8 @@
 						"OPENAI",
 						"SALESFORCE",
 						"SERVICENOW",
-						"SLACK"
+						"SLACK",
+						"ZOOM"
 					]
 				}
 			},
@@ -378,47 +379,56 @@
 																"type": "object",
 																"properties": {
 																	"category": {
-																		"description": "Category information for a finding.",
 																		"type": "object",
-																		"properties": {
-																			"observation": {
-																				"description": "The type of the observation.",
-																				"type": "string",
-																				"example": "Issue",
-																				"enum": [
-																					"Issue",
-																					"Insight",
-																					"Activity"
+																		"allOf": [
+																			{
+																				"description": "Category information for a finding.",
+																				"type": "object",
+																				"properties": {
+																					"observation": {
+																						"description": "The type of the observation.",
+																						"type": "string",
+																						"example": "Issue",
+																						"enum": [
+																							"Issue",
+																							"Insight",
+																							"Activity"
+																						]
+																					},
+																					"product": {
+																						"description": "The product category.",
+																						"type": "string",
+																						"example": "SaaS",
+																						"enum": [
+																							"SaaS",
+																							"Cloud"
+																						]
+																					},
+																					"type": {
+																						"description": "The type of the finding category.",
+																						"type": "string",
+																						"example": "Content",
+																						"enum": [
+																							"Content",
+																							"Posture"
+																						]
+																					}
+																				},
+																				"example": {
+																					"observation": "Issue",
+																					"product": "SaaS",
+																					"type": "Posture"
+																				},
+																				"required": [
+																					"observation",
+																					"product",
+																					"type"
 																				]
 																			},
-																			"product": {
-																				"description": "The product category.",
-																				"type": "string",
-																				"example": "SaaS",
-																				"enum": [
-																					"SaaS",
-																					"Cloud"
-																				]
-																			},
-																			"type": {
-																				"description": "The type of the finding category.",
-																				"type": "string",
-																				"example": "Content",
-																				"enum": [
-																					"Content",
-																					"Posture"
-																				]
+																			{
+																				"readOnly": true,
+																				"type": "object"
 																			}
-																		},
-																		"example": {
-																			"observation": "Issue",
-																			"product": "SaaS",
-																			"type": "Posture"
-																		},
-																		"required": [
-																			"observation",
-																			"product",
-																			"type"
 																		]
 																	},
 																	"description": {
@@ -431,7 +441,8 @@
 																		"description": "The unique identifier of the finding.",
 																		"type": "string",
 																		"format": "uuid",
-																		"example": "a20895dd-9c3b-43bd-a608-71c98c6c2d94"
+																		"example": "a20895dd-9c3b-43bd-a608-71c98c6c2d94",
+																		"readOnly": true
 																	},
 																	"name": {
 																		"description": "The name of the finding.",
@@ -439,20 +450,30 @@
 																		"example": "Slack File Publicly Accessible"
 																	},
 																	"severity": {
-																		"description": "The severity level of a finding.",
 																		"type": "string",
-																		"example": "High",
-																		"enum": [
-																			"Critical",
-																			"High",
-																			"Medium",
-																			"Low"
+																		"allOf": [
+																			{
+																				"description": "The severity level of a finding.",
+																				"type": "string",
+																				"example": "High",
+																				"enum": [
+																					"Critical",
+																					"High",
+																					"Medium",
+																					"Low"
+																				]
+																			},
+																			{
+																				"description": "Default severity used when no integration-specific severity override exists.",
+																				"type": "string"
+																			}
 																		]
 																	},
 																	"vendor": {
 																		"description": "The SaaS/Cloud vendor of the platform with which the finding is associated.",
 																		"type": "string",
-																		"example": "Google Workspace"
+																		"example": "Google Workspace",
+																		"readOnly": true
 																	}
 																},
 																"required": [
@@ -1374,47 +1395,56 @@
 															"type": "object",
 															"properties": {
 																"category": {
-																	"description": "Category information for a finding.",
 																	"type": "object",
-																	"properties": {
-																		"observation": {
-																			"description": "The type of the observation.",
-																			"type": "string",
-																			"example": "Issue",
-																			"enum": [
-																				"Issue",
-																				"Insight",
-																				"Activity"
+																	"allOf": [
+																		{
+																			"description": "Category information for a finding.",
+																			"type": "object",
+																			"properties": {
+																				"observation": {
+																					"description": "The type of the observation.",
+																					"type": "string",
+																					"example": "Issue",
+																					"enum": [
+																						"Issue",
+																						"Insight",
+																						"Activity"
+																					]
+																				},
+																				"product": {
+																					"description": "The product category.",
+																					"type": "string",
+																					"example": "SaaS",
+																					"enum": [
+																						"SaaS",
+																						"Cloud"
+																					]
+																				},
+																				"type": {
+																					"description": "The type of the finding category.",
+																					"type": "string",
+																					"example": "Content",
+																					"enum": [
+																						"Content",
+																						"Posture"
+																					]
+																				}
+																			},
+																			"example": {
+																				"observation": "Issue",
+																				"product": "SaaS",
+																				"type": "Posture"
+																			},
+																			"required": [
+																				"observation",
+																				"product",
+																				"type"
 																			]
 																		},
-																		"product": {
-																			"description": "The product category.",
-																			"type": "string",
-																			"example": "SaaS",
-																			"enum": [
-																				"SaaS",
-																				"Cloud"
-																			]
-																		},
-																		"type": {
-																			"description": "The type of the finding category.",
-																			"type": "string",
-																			"example": "Content",
-																			"enum": [
-																				"Content",
-																				"Posture"
-																			]
+																		{
+																			"readOnly": true,
+																			"type": "object"
 																		}
-																	},
-																	"example": {
-																		"observation": "Issue",
-																		"product": "SaaS",
-																		"type": "Posture"
-																	},
-																	"required": [
-																		"observation",
-																		"product",
-																		"type"
 																	]
 																},
 																"description": {
@@ -1427,7 +1457,8 @@
 																	"description": "The unique identifier of the finding.",
 																	"type": "string",
 																	"format": "uuid",
-																	"example": "a20895dd-9c3b-43bd-a608-71c98c6c2d94"
+																	"example": "a20895dd-9c3b-43bd-a608-71c98c6c2d94",
+																	"readOnly": true
 																},
 																"name": {
 																	"description": "The name of the finding.",
@@ -1435,20 +1466,30 @@
 																	"example": "Slack File Publicly Accessible"
 																},
 																"severity": {
-																	"description": "The severity level of a finding.",
 																	"type": "string",
-																	"example": "High",
-																	"enum": [
-																		"Critical",
-																		"High",
-																		"Medium",
-																		"Low"
+																	"allOf": [
+																		{
+																			"description": "The severity level of a finding.",
+																			"type": "string",
+																			"example": "High",
+																			"enum": [
+																				"Critical",
+																				"High",
+																				"Medium",
+																				"Low"
+																			]
+																		},
+																		{
+																			"description": "Default severity used when no integration-specific severity override exists.",
+																			"type": "string"
+																		}
 																	]
 																},
 																"vendor": {
 																	"description": "The SaaS/Cloud vendor of the platform with which the finding is associated.",
 																	"type": "string",
-																	"example": "Google Workspace"
+																	"example": "Google Workspace",
+																	"readOnly": true
 																}
 															},
 															"required": [
@@ -4823,47 +4864,56 @@
 															"type": "object",
 															"properties": {
 																"category": {
-																	"description": "Category information for a finding.",
 																	"type": "object",
-																	"properties": {
-																		"observation": {
-																			"description": "The type of the observation.",
-																			"type": "string",
-																			"example": "Issue",
-																			"enum": [
-																				"Issue",
-																				"Insight",
-																				"Activity"
+																	"allOf": [
+																		{
+																			"description": "Category information for a finding.",
+																			"type": "object",
+																			"properties": {
+																				"observation": {
+																					"description": "The type of the observation.",
+																					"type": "string",
+																					"example": "Issue",
+																					"enum": [
+																						"Issue",
+																						"Insight",
+																						"Activity"
+																					]
+																				},
+																				"product": {
+																					"description": "The product category.",
+																					"type": "string",
+																					"example": "SaaS",
+																					"enum": [
+																						"SaaS",
+																						"Cloud"
+																					]
+																				},
+																				"type": {
+																					"description": "The type of the finding category.",
+																					"type": "string",
+																					"example": "Content",
+																					"enum": [
+																						"Content",
+																						"Posture"
+																					]
+																				}
+																			},
+																			"example": {
+																				"observation": "Issue",
+																				"product": "SaaS",
+																				"type": "Posture"
+																			},
+																			"required": [
+																				"observation",
+																				"product",
+																				"type"
 																			]
 																		},
-																		"product": {
-																			"description": "The product category.",
-																			"type": "string",
-																			"example": "SaaS",
-																			"enum": [
-																				"SaaS",
-																				"Cloud"
-																			]
-																		},
-																		"type": {
-																			"description": "The type of the finding category.",
-																			"type": "string",
-																			"example": "Content",
-																			"enum": [
-																				"Content",
-																				"Posture"
-																			]
+																		{
+																			"readOnly": true,
+																			"type": "object"
 																		}
-																	},
-																	"example": {
-																		"observation": "Issue",
-																		"product": "SaaS",
-																		"type": "Posture"
-																	},
-																	"required": [
-																		"observation",
-																		"product",
-																		"type"
 																	]
 																},
 																"description": {
@@ -4876,7 +4926,8 @@
 																	"description": "The unique identifier of the finding.",
 																	"type": "string",
 																	"format": "uuid",
-																	"example": "a20895dd-9c3b-43bd-a608-71c98c6c2d94"
+																	"example": "a20895dd-9c3b-43bd-a608-71c98c6c2d94",
+																	"readOnly": true
 																},
 																"name": {
 																	"description": "The name of the finding.",
@@ -4884,20 +4935,30 @@
 																	"example": "Slack File Publicly Accessible"
 																},
 																"severity": {
-																	"description": "The severity level of a finding.",
 																	"type": "string",
-																	"example": "High",
-																	"enum": [
-																		"Critical",
-																		"High",
-																		"Medium",
-																		"Low"
+																	"allOf": [
+																		{
+																			"description": "The severity level of a finding.",
+																			"type": "string",
+																			"example": "High",
+																			"enum": [
+																				"Critical",
+																				"High",
+																				"Medium",
+																				"Low"
+																			]
+																		},
+																		{
+																			"description": "Default severity used when no integration-specific severity override exists.",
+																			"type": "string"
+																		}
 																	]
 																},
 																"vendor": {
 																	"description": "The SaaS/Cloud vendor of the platform with which the finding is associated.",
 																	"type": "string",
-																	"example": "Google Workspace"
+																	"example": "Google Workspace",
+																	"readOnly": true
 																}
 															},
 															"required": [
@@ -5633,47 +5694,56 @@
 															"type": "object",
 															"properties": {
 																"category": {
-																	"description": "Category information for a finding.",
 																	"type": "object",
-																	"properties": {
-																		"observation": {
-																			"description": "The type of the observation.",
-																			"type": "string",
-																			"example": "Issue",
-																			"enum": [
-																				"Issue",
-																				"Insight",
-																				"Activity"
+																	"allOf": [
+																		{
+																			"description": "Category information for a finding.",
+																			"type": "object",
+																			"properties": {
+																				"observation": {
+																					"description": "The type of the observation.",
+																					"type": "string",
+																					"example": "Issue",
+																					"enum": [
+																						"Issue",
+																						"Insight",
+																						"Activity"
+																					]
+																				},
+																				"product": {
+																					"description": "The product category.",
+																					"type": "string",
+																					"example": "SaaS",
+																					"enum": [
+																						"SaaS",
+																						"Cloud"
+																					]
+																				},
+																				"type": {
+																					"description": "The type of the finding category.",
+																					"type": "string",
+																					"example": "Content",
+																					"enum": [
+																						"Content",
+																						"Posture"
+																					]
+																				}
+																			},
+																			"example": {
+																				"observation": "Issue",
+																				"product": "SaaS",
+																				"type": "Posture"
+																			},
+																			"required": [
+																				"observation",
+																				"product",
+																				"type"
 																			]
 																		},
-																		"product": {
-																			"description": "The product category.",
-																			"type": "string",
-																			"example": "SaaS",
-																			"enum": [
-																				"SaaS",
-																				"Cloud"
-																			]
-																		},
-																		"type": {
-																			"description": "The type of the finding category.",
-																			"type": "string",
-																			"example": "Content",
-																			"enum": [
-																				"Content",
-																				"Posture"
-																			]
+																		{
+																			"readOnly": true,
+																			"type": "object"
 																		}
-																	},
-																	"example": {
-																		"observation": "Issue",
-																		"product": "SaaS",
-																		"type": "Posture"
-																	},
-																	"required": [
-																		"observation",
-																		"product",
-																		"type"
 																	]
 																},
 																"description": {
@@ -5686,7 +5756,8 @@
 																	"description": "The unique identifier of the finding.",
 																	"type": "string",
 																	"format": "uuid",
-																	"example": "a20895dd-9c3b-43bd-a608-71c98c6c2d94"
+																	"example": "a20895dd-9c3b-43bd-a608-71c98c6c2d94",
+																	"readOnly": true
 																},
 																"name": {
 																	"description": "The name of the finding.",
@@ -5694,20 +5765,30 @@
 																	"example": "Slack File Publicly Accessible"
 																},
 																"severity": {
-																	"description": "The severity level of a finding.",
 																	"type": "string",
-																	"example": "High",
-																	"enum": [
-																		"Critical",
-																		"High",
-																		"Medium",
-																		"Low"
+																	"allOf": [
+																		{
+																			"description": "The severity level of a finding.",
+																			"type": "string",
+																			"example": "High",
+																			"enum": [
+																				"Critical",
+																				"High",
+																				"Medium",
+																				"Low"
+																			]
+																		},
+																		{
+																			"description": "Default severity used when no integration-specific severity override exists.",
+																			"type": "string"
+																		}
 																	]
 																},
 																"vendor": {
 																	"description": "The SaaS/Cloud vendor of the platform with which the finding is associated.",
 																	"type": "string",
-																	"example": "Google Workspace"
+																	"example": "Google Workspace",
+																	"readOnly": true
 																}
 															},
 															"required": [
@@ -6437,47 +6518,56 @@
 															"type": "object",
 															"properties": {
 																"category": {
-																	"description": "Category information for a finding.",
 																	"type": "object",
-																	"properties": {
-																		"observation": {
-																			"description": "The type of the observation.",
-																			"type": "string",
-																			"example": "Issue",
-																			"enum": [
-																				"Issue",
-																				"Insight",
-																				"Activity"
+																	"allOf": [
+																		{
+																			"description": "Category information for a finding.",
+																			"type": "object",
+																			"properties": {
+																				"observation": {
+																					"description": "The type of the observation.",
+																					"type": "string",
+																					"example": "Issue",
+																					"enum": [
+																						"Issue",
+																						"Insight",
+																						"Activity"
+																					]
+																				},
+																				"product": {
+																					"description": "The product category.",
+																					"type": "string",
+																					"example": "SaaS",
+																					"enum": [
+																						"SaaS",
+																						"Cloud"
+																					]
+																				},
+																				"type": {
+																					"description": "The type of the finding category.",
+																					"type": "string",
+																					"example": "Content",
+																					"enum": [
+																						"Content",
+																						"Posture"
+																					]
+																				}
+																			},
+																			"example": {
+																				"observation": "Issue",
+																				"product": "SaaS",
+																				"type": "Posture"
+																			},
+																			"required": [
+																				"observation",
+																				"product",
+																				"type"
 																			]
 																		},
-																		"product": {
-																			"description": "The product category.",
-																			"type": "string",
-																			"example": "SaaS",
-																			"enum": [
-																				"SaaS",
-																				"Cloud"
-																			]
-																		},
-																		"type": {
-																			"description": "The type of the finding category.",
-																			"type": "string",
-																			"example": "Content",
-																			"enum": [
-																				"Content",
-																				"Posture"
-																			]
+																		{
+																			"readOnly": true,
+																			"type": "object"
 																		}
-																	},
-																	"example": {
-																		"observation": "Issue",
-																		"product": "SaaS",
-																		"type": "Posture"
-																	},
-																	"required": [
-																		"observation",
-																		"product",
-																		"type"
 																	]
 																},
 																"description": {
@@ -6490,7 +6580,8 @@
 																	"description": "The unique identifier of the finding.",
 																	"type": "string",
 																	"format": "uuid",
-																	"example": "a20895dd-9c3b-43bd-a608-71c98c6c2d94"
+																	"example": "a20895dd-9c3b-43bd-a608-71c98c6c2d94",
+																	"readOnly": true
 																},
 																"name": {
 																	"description": "The name of the finding.",
@@ -6498,20 +6589,30 @@
 																	"example": "Slack File Publicly Accessible"
 																},
 																"severity": {
-																	"description": "The severity level of a finding.",
 																	"type": "string",
-																	"example": "High",
-																	"enum": [
-																		"Critical",
-																		"High",
-																		"Medium",
-																		"Low"
+																	"allOf": [
+																		{
+																			"description": "The severity level of a finding.",
+																			"type": "string",
+																			"example": "High",
+																			"enum": [
+																				"Critical",
+																				"High",
+																				"Medium",
+																				"Low"
+																			]
+																		},
+																		{
+																			"description": "Default severity used when no integration-specific severity override exists.",
+																			"type": "string"
+																		}
 																	]
 																},
 																"vendor": {
 																	"description": "The SaaS/Cloud vendor of the platform with which the finding is associated.",
 																	"type": "string",
-																	"example": "Google Workspace"
+																	"example": "Google Workspace",
+																	"readOnly": true
 																}
 															},
 															"required": [
@@ -7130,47 +7231,56 @@
 															"type": "object",
 															"properties": {
 																"category": {
-																	"description": "Category information for a finding.",
 																	"type": "object",
-																	"properties": {
-																		"observation": {
-																			"description": "The type of the observation.",
-																			"type": "string",
-																			"example": "Issue",
-																			"enum": [
-																				"Issue",
-																				"Insight",
-																				"Activity"
+																	"allOf": [
+																		{
+																			"description": "Category information for a finding.",
+																			"type": "object",
+																			"properties": {
+																				"observation": {
+																					"description": "The type of the observation.",
+																					"type": "string",
+																					"example": "Issue",
+																					"enum": [
+																						"Issue",
+																						"Insight",
+																						"Activity"
+																					]
+																				},
+																				"product": {
+																					"description": "The product category.",
+																					"type": "string",
+																					"example": "SaaS",
+																					"enum": [
+																						"SaaS",
+																						"Cloud"
+																					]
+																				},
+																				"type": {
+																					"description": "The type of the finding category.",
+																					"type": "string",
+																					"example": "Content",
+																					"enum": [
+																						"Content",
+																						"Posture"
+																					]
+																				}
+																			},
+																			"example": {
+																				"observation": "Issue",
+																				"product": "SaaS",
+																				"type": "Posture"
+																			},
+																			"required": [
+																				"observation",
+																				"product",
+																				"type"
 																			]
 																		},
-																		"product": {
-																			"description": "The product category.",
-																			"type": "string",
-																			"example": "SaaS",
-																			"enum": [
-																				"SaaS",
-																				"Cloud"
-																			]
-																		},
-																		"type": {
-																			"description": "The type of the finding category.",
-																			"type": "string",
-																			"example": "Content",
-																			"enum": [
-																				"Content",
-																				"Posture"
-																			]
+																		{
+																			"readOnly": true,
+																			"type": "object"
 																		}
-																	},
-																	"example": {
-																		"observation": "Issue",
-																		"product": "SaaS",
-																		"type": "Posture"
-																	},
-																	"required": [
-																		"observation",
-																		"product",
-																		"type"
 																	]
 																},
 																"description": {
@@ -7183,7 +7293,8 @@
 																	"description": "The unique identifier of the finding.",
 																	"type": "string",
 																	"format": "uuid",
-																	"example": "a20895dd-9c3b-43bd-a608-71c98c6c2d94"
+																	"example": "a20895dd-9c3b-43bd-a608-71c98c6c2d94",
+																	"readOnly": true
 																},
 																"name": {
 																	"description": "The name of the finding.",
@@ -7191,20 +7302,30 @@
 																	"example": "Slack File Publicly Accessible"
 																},
 																"severity": {
-																	"description": "The severity level of a finding.",
 																	"type": "string",
-																	"example": "High",
-																	"enum": [
-																		"Critical",
-																		"High",
-																		"Medium",
-																		"Low"
+																	"allOf": [
+																		{
+																			"description": "The severity level of a finding.",
+																			"type": "string",
+																			"example": "High",
+																			"enum": [
+																				"Critical",
+																				"High",
+																				"Medium",
+																				"Low"
+																			]
+																		},
+																		{
+																			"description": "Default severity used when no integration-specific severity override exists.",
+																			"type": "string"
+																		}
 																	]
 																},
 																"vendor": {
 																	"description": "The SaaS/Cloud vendor of the platform with which the finding is associated.",
 																	"type": "string",
-																	"example": "Google Workspace"
+																	"example": "Google Workspace",
+																	"readOnly": true
 																}
 															},
 															"required": [
