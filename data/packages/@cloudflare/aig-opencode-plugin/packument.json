@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/aig-opencode-plugin",
 	"dist-tags": {
-		"latest": "2026.9.21"
+		"latest": "2026.9.22"
 	},
 	"versions": {
 		"2026.9.18": {
@@ -104,11 +104,51 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQCAD2q89CwPcVAnp6eUQxYITi42++KkEsDws50B8odEgwIgT7Ac6gdhDllFz3thJtpPR4gpK07RR8T87EDt51BSEK8="
+						"sig": "MEUCIQCAD2q89CwPcVAnp6eUQxYITi42++KkEsDws50B8odEgwIgT7Ac6gdhDllFz3thJtpPR4gpK07RR8T87EDt51BSEK8=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"unpackedSize": 70377
+			}
+		},
+		"2026.9.22": {
+			"name": "@cloudflare/aig-opencode-plugin",
+			"version": "2026.9.22",
+			"dependencies": {
+				"@opencode-ai/plugin": "1.18.4"
+			},
+			"devDependencies": {
+				"vitest": "4.1.10",
+				"solid-js": "1.9.12",
+				"@repo/tools": "0.0.0",
+				"@opentui/core": "0.5.11",
+				"@opentui/solid": "0.5.11",
+				"@opencode/theme": "2.0.10",
+				"@opencode/plugin": "2.0.10",
+				"@repo/eslint-config": "0.0.0",
+				"@repo/typescript-config": "0.0.0"
+			},
+			"peerDependencies": {
+				"solid-js": ">=1.9.0",
+				"@opentui/core": ">=0.4.5",
+				"@opentui/solid": ">=0.4.5"
+			},
+			"dist": {
+				"shasum": "a77602f5a9c89ae8879d2cdc07a8f0c32684a91a",
+				"tarball": "https://registry.npmjs.org/@cloudflare/aig-opencode-plugin/-/aig-opencode-plugin-2026.9.22.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-KUt33WNokaP9+xxgUuhXJYxtye2S1FdjBEI08TLmwyK2UdjKGTMeZgcgVMErsrmT2ZAnQYFCr4gxfrdFQgNp0w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD0Km32DH+ic1KMSUVLd49G1mzIXf2z5OWkVHkyPbmzugIgFLYdinms2falPKqNhxObvvfnHnkxa5Vyz96zrT57oBY=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIAN78B32PgL+Wxm2poOpy14U7V7JkFXU5V7Jd+xRboH/AiAX/Hd1piHfr7HbHfn4qq091Hav1Yln4TkOZ7pQPTHnYA=="
+					}
+				],
+				"unpackedSize": 68719
 			}
 		}
 	}
