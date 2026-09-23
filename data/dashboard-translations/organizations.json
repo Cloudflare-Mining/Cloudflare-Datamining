@@ -345,9 +345,17 @@
 	"organizations.eligibility.org_account_already_in_organization": "One or more of your enterprise accounts is already part of an Organization.",
 	"organizations.eligibility.timeout": "We couldn't verify your eligibility for Orgs Beta. Please try again. If the problem persists, you likely have access to more Accounts than is currently supported. If you believe this is not correct, please contact support.",
 	"organizations.eligibility.error": "Unable to create Organization. Please contact your account team.",
-	"organizations.support_account_select.title": "Select account",
-	"organizations.support_account_select.description": "Choose an enterprise account associated with this support ticket.",
-	"organizations.support_account_select.label": "Select account",
-	"organizations.support_account_select.confirm": "Confirm",
-	"organizations.support_account_select.search_placeholder": "Search by account name or ID number"
+	"organizations.support_account_select.title": "Contact support",
+	"organizations.support_account_select.description": "Choose an Enterprise account where you are a Super Administrator.",
+	"organizations.support_account_select.label": "Account",
+	"organizations.support_account_select.confirm": "Continue to support",
+	"organizations.support_account_select.cancel": "Cancel",
+	"organizations.support_account_select.search_placeholder": "Search by account name",
+	"organizations.support_account_select.loading": "Loading accounts…",
+	"organizations.support_account_select.loading_more": "Loading more accounts...",
+	"organizations.support_account_select.no_results": "No accounts match your search",
+	"organizations.support_account_select.error": "We couldn't load these accounts. Try again.",
+	"organizations.support_account_select.super_admin_required": "Super Administrator required",
+	"organizations.support_account_select.contract_customer_required": "Enterprise account required",
+	"organizations.support_account_select.both_requirements": "Super Administrator of an Enterprise account required"
 }
