@@ -1033,6 +1033,9 @@
 	"deseng-rules-analytics": {
 		"enabled": false
 	},
+	"deseng-skeleton-loading": {
+		"enabled": true
+	},
 	"deseng-skip-accounts-list": {
 		"enabled": true
 	},
@@ -1385,6 +1388,9 @@
 	"email-routing-subdomains": {
 		"enabled": true
 	},
+	"email-routing-workers-migration": {
+		"enabled": false
+	},
 	"email-sending-account-nav": {
 		"enabled": true
 	},
@@ -1436,14 +1442,6 @@
 	},
 	"flagship": {
 		"enabled": true
-	},
-	"fractus": {
-		"enabled": true,
-		"branches": [
-			"baseline",
-			"qwik",
-			"remix"
-		]
 	},
 	"fractus-calls": {
 		"enabled": false
