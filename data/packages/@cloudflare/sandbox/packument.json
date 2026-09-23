@@ -3,8 +3,8 @@
 	"dist-tags": {
 		"beta": "0.0.0-1558ec9",
 		"release-0-12-6": "0.12.6",
-		"next": "0.13.0-next.769.1",
-		"latest": "0.12.9"
+		"latest": "0.12.10",
+		"next": "0.13.0-next.776.1"
 	},
 	"versions": {
 		"0.0.0-1c0902c": {
@@ -7258,8 +7258,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIBRPWt+vY27oVHCg5p8OHjNkn0LyegnqySkV57RCVzLwAiAEjVjWzbASvs/HGH8+N2dGy/T7U4Zho08Agd4h/9Fy4g=="
+						"sig": "MEQCIBRPWt+vY27oVHCg5p8OHjNkn0LyegnqySkV57RCVzLwAiAEjVjWzbASvs/HGH8+N2dGy/T7U4Zho08Agd4h/9Fy4g==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -7269,6 +7269,102 @@
 					}
 				},
 				"unpackedSize": 2429054
+			}
+		},
+		"0.13.0-next.776.1": {
+			"name": "@cloudflare/sandbox",
+			"version": "0.13.0-next.776.1",
+			"dependencies": {
+				"hono": "^4.12.26",
+				"capnweb": "^0.8.0",
+				"aws4fetch": "^1.0.20",
+				"@cloudflare/containers": "^0.3.7"
+			},
+			"devDependencies": {
+				"acorn": "^8.14.0",
+				"wrangler": "^4.102.0",
+				"@types/bun": "^1.3.14",
+				"tar-stream": "^3.2.0",
+				"async-mutex": "^0.5.0",
+				"@repo/shared": "^0.0.0",
+				"@types/acorn": "^4.0.6",
+				"@xterm/xterm": "^6.0.0",
+				"@openai/agents": "^0.3.3",
+				"@opencode-ai/sdk": "^1.1.40",
+				"@types/tar-stream": "^3.1.4"
+			},
+			"peerDependencies": {
+				"@xterm/xterm": ">=5.0.0",
+				"@openai/agents": "^0.3.3",
+				"@opencode-ai/sdk": "^1.1.40"
+			},
+			"dist": {
+				"shasum": "4ec64d72932563bec2ffd7a319787d0a0377c78c",
+				"tarball": "https://registry.npmjs.org/@cloudflare/sandbox/-/sandbox-0.13.0-next.776.1.tgz",
+				"fileCount": 62,
+				"integrity": "sha512-AxZFzSgqvgeqepjo54+zPu2Kj6AyBVYpmxpNYZ8leJ1vVT8RU8zgEw16Okvi7JhysFMBuI7H/qy6MiMDGNlO5Q==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD+bykWHfBTRiPObYvLpmBs0krNMJcMdzXFAxhClxIjKQIhAMojDv8OzgaiE83bXu06fwklZRzQwQ17LL8tDmuxarFX",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"sig": "MEUCIBMFjjHgkRXhP2T6pO+phzirX0DEqxLJ6oP5gT7Co3jrAiEA9EuhjqlgHTASHwotcKehzQhrkOBg4KZAyYTrcYLWVXk=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fsandbox@0.13.0-next.776.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 2431051
+			}
+		},
+		"0.12.10": {
+			"name": "@cloudflare/sandbox",
+			"version": "0.12.10",
+			"dependencies": {
+				"hono": "^4.13.7",
+				"capnweb": "^0.8.0",
+				"aws4fetch": "^1.0.20",
+				"@cloudflare/containers": "^0.3.5"
+			},
+			"devDependencies": {
+				"wrangler": "^4.102.0",
+				"@repo/shared": "^0.0.0",
+				"@xterm/xterm": "^6.0.0",
+				"@openai/agents": "^0.3.3",
+				"@opencode-ai/sdk": "^1.1.40"
+			},
+			"peerDependencies": {
+				"@xterm/xterm": ">=5.0.0",
+				"@openai/agents": "^0.3.3",
+				"@opencode-ai/sdk": "^1.1.40"
+			},
+			"dist": {
+				"shasum": "8795daab354eae09b19d02797e2aee2042f41bb6",
+				"tarball": "https://registry.npmjs.org/@cloudflare/sandbox/-/sandbox-0.12.10.tgz",
+				"fileCount": 34,
+				"integrity": "sha512-245s6xEdR1v0Jti0YYd8ORWcTG/f/ksjJfpubvnbky0KxFC/ZDOpbpNKdtyiRBYZqmJGtEncYW7Cwge47tDrpg==",
+				"signatures": [
+					{
+						"sig": "MEUCIFplMKcKfmiwHaj9jS3YH7O1Z19qf4ANY+k0DrKwO2MnAiEAmyuifj/kQbFld91i4wTqoPWdwfxEOSvGF4RrRaPW3RI=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQD89+G2sxCjhDMnCioRlpPLJCIIa/wrSXpcdkrt+vuTtAIhAMAi4z/+qhdcu31KBToX38sQ/elb4Zo0DatTo+exyCT3"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fsandbox@0.12.10",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 2218391
 			}
 		}
 	}
