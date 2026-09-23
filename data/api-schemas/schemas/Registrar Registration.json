@@ -470,7 +470,7 @@
 														"x-auditable": true
 													},
 													"expires_at": {
-														"description": "When the domain registration expires. Ready registrations include this value; only `registration_pending` may return null.",
+														"description": "When the domain registration expires. Ready registrations include this value; only `registration_pending` and `transfer_pending` may return null.",
 														"type": "string",
 														"format": "date-time",
 														"example": "2026-01-15T10:00:00Z",
@@ -491,12 +491,13 @@
 														]
 													},
 													"status": {
-														"description": "Current registration status.\n- `active`: The domain operates with an active registration.\n- `registration_pending`: Registration remains in progress.\n- `expired`: The domain registration expired.\n- `suspended`: The registry suspended the domain.\n- `redemption_period`: The domain entered the redemption grace period.\n- `pending_delete`: The registry scheduled the domain for deletion.\n",
+														"description": "Current registration status.\n- `active`: The domain operates with an active registration.\n- `registration_pending`: Registration remains in progress.\n- `transfer_pending`: Domain transfer is in progress.\n- `expired`: The domain registration expired.\n- `suspended`: The registry suspended the domain.\n- `redemption_period`: The domain entered the redemption grace period.\n- `pending_delete`: The registry scheduled the domain for deletion.\n",
 														"type": "string",
 														"example": "active",
 														"enum": [
 															"active",
 															"registration_pending",
+															"transfer_pending",
 															"expired",
 															"suspended",
 															"redemption_period",
@@ -887,7 +888,7 @@
 													"x-auditable": true
 												},
 												"expires_at": {
-													"description": "When the domain registration expires. Ready registrations include this value; only `registration_pending` may return null.",
+													"description": "When the domain registration expires. Ready registrations include this value; only `registration_pending` and `transfer_pending` may return null.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2026-01-15T10:00:00Z",
@@ -908,12 +909,13 @@
 													]
 												},
 												"status": {
-													"description": "Current registration status.\n- `active`: The domain operates with an active registration.\n- `registration_pending`: Registration remains in progress.\n- `expired`: The domain registration expired.\n- `suspended`: The registry suspended the domain.\n- `redemption_period`: The domain entered the redemption grace period.\n- `pending_delete`: The registry scheduled the domain for deletion.\n",
+													"description": "Current registration status.\n- `active`: The domain operates with an active registration.\n- `registration_pending`: Registration remains in progress.\n- `transfer_pending`: Domain transfer is in progress.\n- `expired`: The domain registration expired.\n- `suspended`: The registry suspended the domain.\n- `redemption_period`: The domain entered the redemption grace period.\n- `pending_delete`: The registry scheduled the domain for deletion.\n",
 													"type": "string",
 													"example": "active",
 													"enum": [
 														"active",
 														"registration_pending",
+														"transfer_pending",
 														"expired",
 														"suspended",
 														"redemption_period",
@@ -1172,8 +1174,6 @@
 									"result": {
 										"completed": false,
 										"context": {
-											"blocked_by": "registry",
-											"detail": "Awaiting registry confirmation. This may take up to 24 hours.",
 											"domain_name": "example.com"
 										},
 										"created_at": "2025-10-27T10:00:00Z",
@@ -2555,7 +2555,7 @@
 														"x-auditable": true
 													},
 													"expires_at": {
-														"description": "When the domain registration expires. Ready registrations include this value; only `registration_pending` may return null.",
+														"description": "When the domain registration expires. Ready registrations include this value; only `registration_pending` and `transfer_pending` may return null.",
 														"type": "string",
 														"format": "date-time",
 														"example": "2026-01-15T10:00:00Z",
@@ -2576,12 +2576,13 @@
 														]
 													},
 													"status": {
-														"description": "Current registration status.\n- `active`: The domain operates with an active registration.\n- `registration_pending`: Registration remains in progress.\n- `expired`: The domain registration expired.\n- `suspended`: The registry suspended the domain.\n- `redemption_period`: The domain entered the redemption grace period.\n- `pending_delete`: The registry scheduled the domain for deletion.\n",
+														"description": "Current registration status.\n- `active`: The domain operates with an active registration.\n- `registration_pending`: Registration remains in progress.\n- `transfer_pending`: Domain transfer is in progress.\n- `expired`: The domain registration expired.\n- `suspended`: The registry suspended the domain.\n- `redemption_period`: The domain entered the redemption grace period.\n- `pending_delete`: The registry scheduled the domain for deletion.\n",
 														"type": "string",
 														"example": "active",
 														"enum": [
 															"active",
 															"registration_pending",
+															"transfer_pending",
 															"expired",
 															"suspended",
 															"redemption_period",
@@ -2972,7 +2973,7 @@
 													"x-auditable": true
 												},
 												"expires_at": {
-													"description": "When the domain registration expires. Ready registrations include this value; only `registration_pending` may return null.",
+													"description": "When the domain registration expires. Ready registrations include this value; only `registration_pending` and `transfer_pending` may return null.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2026-01-15T10:00:00Z",
@@ -2993,12 +2994,13 @@
 													]
 												},
 												"status": {
-													"description": "Current registration status.\n- `active`: The domain operates with an active registration.\n- `registration_pending`: Registration remains in progress.\n- `expired`: The domain registration expired.\n- `suspended`: The registry suspended the domain.\n- `redemption_period`: The domain entered the redemption grace period.\n- `pending_delete`: The registry scheduled the domain for deletion.\n",
+													"description": "Current registration status.\n- `active`: The domain operates with an active registration.\n- `registration_pending`: Registration remains in progress.\n- `transfer_pending`: Domain transfer is in progress.\n- `expired`: The domain registration expired.\n- `suspended`: The registry suspended the domain.\n- `redemption_period`: The domain entered the redemption grace period.\n- `pending_delete`: The registry scheduled the domain for deletion.\n",
 													"type": "string",
 													"example": "active",
 													"enum": [
 														"active",
 														"registration_pending",
+														"transfer_pending",
 														"expired",
 														"suspended",
 														"redemption_period",
@@ -3257,8 +3259,6 @@
 									"result": {
 										"completed": false,
 										"context": {
-											"blocked_by": "registry",
-											"detail": "Awaiting registry confirmation. This may take up to 24 hours.",
 											"domain_name": "example.com"
 										},
 										"created_at": "2025-10-27T10:00:00Z",
@@ -5902,370 +5902,375 @@
 								"additionalProperties": true
 							},
 							"contacts": {
-								"description": "Provides contact data for the registration request.\n\nThe per-extension schema from\n`GET /accounts/{account_id}/registrar/extensions/{extension}` defines the\naccepted contact roles. Every currently supported extension requires only\n`contacts.registrant` from API callers. Callers may provide additional roles\nsuch as `technical`, `administrator`, and `billing` when the extension\nschema includes them. When a registry requires an omitted role, Cloudflare\nmay derive that contact from `contacts.registrant`.\n\nWhen the request omits either the entire `contacts` object or\n`contacts.registrant`, the system uses the account's default address book\nentry as the registrant contact. The account owner must configure this\ndefault at `https://dash.cloudflare.com/{account_id}/domains/registrations`,\nwhere they can create or update the address book entry and accept the\nrequired agreement. Dashboard settings currently provide the only way to\nmanage address book entries.\n\nWithout either a default address book entry or a registrant contact, the\nregistration request fails validation.\n",
 								"type": "object",
-								"properties": {
-									"administrator": {
-										"description": "Optional administrator contact. Accepted only when the extension\nschema includes this role. When the registry requires an omitted\ncontact, Cloudflare may derive it from `contacts.registrant`.\n",
-										"allOf": [
-											{
-												"description": "Contact data for the domain registration. This information\nis submitted to the domain registry and, depending on extension and\nprivacy settings, may appear in public WHOIS records.\n",
-												"type": "object",
-												"properties": {
-													"email": {
-														"description": "Email address for the registrant. Used for domain-related\ncommunications from the registry, including ownership verification\nand renewal notices.\n",
-														"type": "string",
-														"format": "email",
-														"example": "ada@example.com"
-													},
-													"fax": {
-														"description": "Fax number in E.164 format (e.g., `+1.5555555555`). Optional.\nMost registrations do not require a fax number.\n",
-														"type": "string",
-														"example": "+1.5555555555"
-													},
-													"phone": {
-														"description": "Phone number in E.164 format: `+{country_code}.{number}` without spaces or dashes. Examples: `+1.5555555555` (US), `+44.2071234567` (UK), `+81.312345678` (Japan).",
-														"type": "string",
-														"example": "+1.5555555555"
-													},
-													"postal_info": {
-														"description": "Postal/mailing information for the contact. The `name` field is the\ncomplete contact name in one string. Some registries require a complete\npersonal name, including a family or last name where applicable, but this\nAPI does not accept separate first-name and last-name fields for\nregistration contacts.\n",
+								"allOf": [
+									{
+										"description": "Provides contact data for the registration request.\n\nThe per-extension schema from\n`GET /accounts/{account_id}/registrar/extensions/{extension}` defines the\naccepted contact roles. Every currently supported extension requires only\n`contacts.registrant` from API callers. Callers may provide additional roles\nsuch as `technical`, `administrator`, and `billing` when the extension\nschema includes them. When a registry requires an omitted role, Cloudflare\nmay derive that contact from `contacts.registrant`.\n\nWhen the request omits either the entire `contacts` object or\n`contacts.registrant`, the system uses the account's default address book\nentry as the registrant contact. The account owner must configure this\ndefault at `https://dash.cloudflare.com/{account_id}/domains/registrations`,\nwhere they can create or update the address book entry and accept the\nrequired agreement. Dashboard settings currently provide the only way to\nmanage address book entries.\n\nWithout either a default address book entry or a registrant contact, the\nregistration request fails validation.\n",
+										"type": "object",
+										"properties": {
+											"administrator": {
+												"description": "Optional administrator contact. Accepted only when the extension\nschema includes this role. When the registry requires an omitted\ncontact, Cloudflare may derive it from `contacts.registrant`.\n",
+												"allOf": [
+													{
+														"description": "Contact data for the domain registration. This information\nis submitted to the domain registry and, depending on extension and\nprivacy settings, may appear in public WHOIS records.\n",
 														"type": "object",
 														"properties": {
-															"address": {
-																"description": "Physical mailing address for the registrant contact.",
+															"email": {
+																"description": "Email address for the registrant. Used for domain-related\ncommunications from the registry, including ownership verification\nand renewal notices.\n",
+																"type": "string",
+																"format": "email",
+																"example": "ada@example.com"
+															},
+															"fax": {
+																"description": "Fax number in E.164 format (e.g., `+1.5555555555`). Optional.\nMost registrations do not require a fax number.\n",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"phone": {
+																"description": "Phone number in E.164 format: `+{country_code}.{number}` without spaces or dashes. Examples: `+1.5555555555` (US), `+44.2071234567` (UK), `+81.312345678` (Japan).",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"postal_info": {
+																"description": "Postal/mailing information for the contact. The `name` field is the\ncomplete contact name in one string. Some registries require a complete\npersonal name, including a family or last name where applicable, but this\nAPI does not accept separate first-name and last-name fields for\nregistration contacts.\n",
 																"type": "object",
 																"properties": {
-																	"city": {
-																		"description": "City or locality name.",
-																		"type": "string",
-																		"example": "Austin"
+																	"address": {
+																		"description": "Physical mailing address for the registrant contact.",
+																		"type": "object",
+																		"properties": {
+																			"city": {
+																				"description": "City or locality name.",
+																				"type": "string",
+																				"example": "Austin"
+																			},
+																			"country_code": {
+																				"description": "Two-letter country code per ISO 3166-1 alpha-2 (e.g., `US`, `GB`, `CA`, `DE`).",
+																				"type": "string",
+																				"example": "US"
+																			},
+																			"postal_code": {
+																				"description": "Postal or ZIP code.",
+																				"type": "string",
+																				"example": "78701"
+																			},
+																			"state": {
+																				"description": "State, province, or region. Use the standard abbreviation where applicable (e.g., `TX` for Texas, `ON` for Ontario).",
+																				"type": "string",
+																				"example": "TX"
+																			},
+																			"street": {
+																				"description": "Street address including building/suite number.",
+																				"type": "string",
+																				"example": "123 Main St"
+																			}
+																		},
+																		"required": [
+																			"street",
+																			"city",
+																			"state",
+																			"postal_code",
+																			"country_code"
+																		]
 																	},
-																	"country_code": {
-																		"description": "Two-letter country code per ISO 3166-1 alpha-2 (e.g., `US`, `GB`, `CA`, `DE`).",
+																	"name": {
+																		"description": "Full legal name of the contact, including all required name components for an individual or authorized representative. Some registries require a complete personal name that includes a family or last name where applicable. Provide the complete name in this single field, for example `Ada Lovelace`; do not send separate first-name or last-name fields.",
 																		"type": "string",
-																		"example": "US"
+																		"example": "Ada Lovelace"
 																	},
-																	"postal_code": {
-																		"description": "Postal or ZIP code.",
+																	"organization": {
+																		"description": "Organization or company name. Optional for individual registrants.",
 																		"type": "string",
-																		"example": "78701"
-																	},
-																	"state": {
-																		"description": "State, province, or region. Use the standard abbreviation where applicable (e.g., `TX` for Texas, `ON` for Ontario).",
-																		"type": "string",
-																		"example": "TX"
-																	},
-																	"street": {
-																		"description": "Street address including building/suite number.",
-																		"type": "string",
-																		"example": "123 Main St"
+																		"example": "Example Inc"
 																	}
 																},
 																"required": [
-																	"street",
-																	"city",
-																	"state",
-																	"postal_code",
-																	"country_code"
+																	"name",
+																	"address"
 																]
-															},
-															"name": {
-																"description": "Full legal name of the contact, including all required name components for an individual or authorized representative. Some registries require a complete personal name that includes a family or last name where applicable. Provide the complete name in this single field, for example `Ada Lovelace`; do not send separate first-name or last-name fields.",
-																"type": "string",
-																"example": "Ada Lovelace"
-															},
-															"organization": {
-																"description": "Organization or company name. Optional for individual registrants.",
-																"type": "string",
-																"example": "Example Inc"
 															}
 														},
 														"required": [
-															"name",
-															"address"
+															"phone",
+															"email",
+															"postal_info"
 														]
 													}
-												},
-												"required": [
-													"phone",
-													"email",
-													"postal_info"
 												]
-											}
-										]
-									},
-									"billing": {
-										"description": "Optional billing contact. Accepted only when the extension schema\nincludes this role. When the registry requires an omitted contact,\nCloudflare may derive it from `contacts.registrant`.\n",
-										"allOf": [
-											{
-												"description": "Contact data for the domain registration. This information\nis submitted to the domain registry and, depending on extension and\nprivacy settings, may appear in public WHOIS records.\n",
-												"type": "object",
-												"properties": {
-													"email": {
-														"description": "Email address for the registrant. Used for domain-related\ncommunications from the registry, including ownership verification\nand renewal notices.\n",
-														"type": "string",
-														"format": "email",
-														"example": "ada@example.com"
-													},
-													"fax": {
-														"description": "Fax number in E.164 format (e.g., `+1.5555555555`). Optional.\nMost registrations do not require a fax number.\n",
-														"type": "string",
-														"example": "+1.5555555555"
-													},
-													"phone": {
-														"description": "Phone number in E.164 format: `+{country_code}.{number}` without spaces or dashes. Examples: `+1.5555555555` (US), `+44.2071234567` (UK), `+81.312345678` (Japan).",
-														"type": "string",
-														"example": "+1.5555555555"
-													},
-													"postal_info": {
-														"description": "Postal/mailing information for the contact. The `name` field is the\ncomplete contact name in one string. Some registries require a complete\npersonal name, including a family or last name where applicable, but this\nAPI does not accept separate first-name and last-name fields for\nregistration contacts.\n",
+											},
+											"billing": {
+												"description": "Optional billing contact. Accepted only when the extension schema\nincludes this role. When the registry requires an omitted contact,\nCloudflare may derive it from `contacts.registrant`.\n",
+												"allOf": [
+													{
+														"description": "Contact data for the domain registration. This information\nis submitted to the domain registry and, depending on extension and\nprivacy settings, may appear in public WHOIS records.\n",
 														"type": "object",
 														"properties": {
-															"address": {
-																"description": "Physical mailing address for the registrant contact.",
+															"email": {
+																"description": "Email address for the registrant. Used for domain-related\ncommunications from the registry, including ownership verification\nand renewal notices.\n",
+																"type": "string",
+																"format": "email",
+																"example": "ada@example.com"
+															},
+															"fax": {
+																"description": "Fax number in E.164 format (e.g., `+1.5555555555`). Optional.\nMost registrations do not require a fax number.\n",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"phone": {
+																"description": "Phone number in E.164 format: `+{country_code}.{number}` without spaces or dashes. Examples: `+1.5555555555` (US), `+44.2071234567` (UK), `+81.312345678` (Japan).",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"postal_info": {
+																"description": "Postal/mailing information for the contact. The `name` field is the\ncomplete contact name in one string. Some registries require a complete\npersonal name, including a family or last name where applicable, but this\nAPI does not accept separate first-name and last-name fields for\nregistration contacts.\n",
 																"type": "object",
 																"properties": {
-																	"city": {
-																		"description": "City or locality name.",
-																		"type": "string",
-																		"example": "Austin"
+																	"address": {
+																		"description": "Physical mailing address for the registrant contact.",
+																		"type": "object",
+																		"properties": {
+																			"city": {
+																				"description": "City or locality name.",
+																				"type": "string",
+																				"example": "Austin"
+																			},
+																			"country_code": {
+																				"description": "Two-letter country code per ISO 3166-1 alpha-2 (e.g., `US`, `GB`, `CA`, `DE`).",
+																				"type": "string",
+																				"example": "US"
+																			},
+																			"postal_code": {
+																				"description": "Postal or ZIP code.",
+																				"type": "string",
+																				"example": "78701"
+																			},
+																			"state": {
+																				"description": "State, province, or region. Use the standard abbreviation where applicable (e.g., `TX` for Texas, `ON` for Ontario).",
+																				"type": "string",
+																				"example": "TX"
+																			},
+																			"street": {
+																				"description": "Street address including building/suite number.",
+																				"type": "string",
+																				"example": "123 Main St"
+																			}
+																		},
+																		"required": [
+																			"street",
+																			"city",
+																			"state",
+																			"postal_code",
+																			"country_code"
+																		]
 																	},
-																	"country_code": {
-																		"description": "Two-letter country code per ISO 3166-1 alpha-2 (e.g., `US`, `GB`, `CA`, `DE`).",
+																	"name": {
+																		"description": "Full legal name of the contact, including all required name components for an individual or authorized representative. Some registries require a complete personal name that includes a family or last name where applicable. Provide the complete name in this single field, for example `Ada Lovelace`; do not send separate first-name or last-name fields.",
 																		"type": "string",
-																		"example": "US"
+																		"example": "Ada Lovelace"
 																	},
-																	"postal_code": {
-																		"description": "Postal or ZIP code.",
+																	"organization": {
+																		"description": "Organization or company name. Optional for individual registrants.",
 																		"type": "string",
-																		"example": "78701"
-																	},
-																	"state": {
-																		"description": "State, province, or region. Use the standard abbreviation where applicable (e.g., `TX` for Texas, `ON` for Ontario).",
-																		"type": "string",
-																		"example": "TX"
-																	},
-																	"street": {
-																		"description": "Street address including building/suite number.",
-																		"type": "string",
-																		"example": "123 Main St"
+																		"example": "Example Inc"
 																	}
 																},
 																"required": [
-																	"street",
-																	"city",
-																	"state",
-																	"postal_code",
-																	"country_code"
+																	"name",
+																	"address"
 																]
-															},
-															"name": {
-																"description": "Full legal name of the contact, including all required name components for an individual or authorized representative. Some registries require a complete personal name that includes a family or last name where applicable. Provide the complete name in this single field, for example `Ada Lovelace`; do not send separate first-name or last-name fields.",
-																"type": "string",
-																"example": "Ada Lovelace"
-															},
-															"organization": {
-																"description": "Organization or company name. Optional for individual registrants.",
-																"type": "string",
-																"example": "Example Inc"
 															}
 														},
 														"required": [
-															"name",
-															"address"
+															"phone",
+															"email",
+															"postal_info"
 														]
 													}
-												},
-												"required": [
-													"phone",
-													"email",
-													"postal_info"
 												]
-											}
-										]
-									},
-									"registrant": {
-										"description": "Optional registrant contact. If omitted, the account's default\naddress book entry is used instead.\n",
-										"allOf": [
-											{
-												"description": "Contact data for the domain registration. This information\nis submitted to the domain registry and, depending on extension and\nprivacy settings, may appear in public WHOIS records.\n",
-												"type": "object",
-												"properties": {
-													"email": {
-														"description": "Email address for the registrant. Used for domain-related\ncommunications from the registry, including ownership verification\nand renewal notices.\n",
-														"type": "string",
-														"format": "email",
-														"example": "ada@example.com"
-													},
-													"fax": {
-														"description": "Fax number in E.164 format (e.g., `+1.5555555555`). Optional.\nMost registrations do not require a fax number.\n",
-														"type": "string",
-														"example": "+1.5555555555"
-													},
-													"phone": {
-														"description": "Phone number in E.164 format: `+{country_code}.{number}` without spaces or dashes. Examples: `+1.5555555555` (US), `+44.2071234567` (UK), `+81.312345678` (Japan).",
-														"type": "string",
-														"example": "+1.5555555555"
-													},
-													"postal_info": {
-														"description": "Postal/mailing information for the contact. The `name` field is the\ncomplete contact name in one string. Some registries require a complete\npersonal name, including a family or last name where applicable, but this\nAPI does not accept separate first-name and last-name fields for\nregistration contacts.\n",
+											},
+											"registrant": {
+												"description": "Optional registrant contact. If omitted, the account's default\naddress book entry is used instead.\n",
+												"allOf": [
+													{
+														"description": "Contact data for the domain registration. This information\nis submitted to the domain registry and, depending on extension and\nprivacy settings, may appear in public WHOIS records.\n",
 														"type": "object",
 														"properties": {
-															"address": {
-																"description": "Physical mailing address for the registrant contact.",
+															"email": {
+																"description": "Email address for the registrant. Used for domain-related\ncommunications from the registry, including ownership verification\nand renewal notices.\n",
+																"type": "string",
+																"format": "email",
+																"example": "ada@example.com"
+															},
+															"fax": {
+																"description": "Fax number in E.164 format (e.g., `+1.5555555555`). Optional.\nMost registrations do not require a fax number.\n",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"phone": {
+																"description": "Phone number in E.164 format: `+{country_code}.{number}` without spaces or dashes. Examples: `+1.5555555555` (US), `+44.2071234567` (UK), `+81.312345678` (Japan).",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"postal_info": {
+																"description": "Postal/mailing information for the contact. The `name` field is the\ncomplete contact name in one string. Some registries require a complete\npersonal name, including a family or last name where applicable, but this\nAPI does not accept separate first-name and last-name fields for\nregistration contacts.\n",
 																"type": "object",
 																"properties": {
-																	"city": {
-																		"description": "City or locality name.",
-																		"type": "string",
-																		"example": "Austin"
+																	"address": {
+																		"description": "Physical mailing address for the registrant contact.",
+																		"type": "object",
+																		"properties": {
+																			"city": {
+																				"description": "City or locality name.",
+																				"type": "string",
+																				"example": "Austin"
+																			},
+																			"country_code": {
+																				"description": "Two-letter country code per ISO 3166-1 alpha-2 (e.g., `US`, `GB`, `CA`, `DE`).",
+																				"type": "string",
+																				"example": "US"
+																			},
+																			"postal_code": {
+																				"description": "Postal or ZIP code.",
+																				"type": "string",
+																				"example": "78701"
+																			},
+																			"state": {
+																				"description": "State, province, or region. Use the standard abbreviation where applicable (e.g., `TX` for Texas, `ON` for Ontario).",
+																				"type": "string",
+																				"example": "TX"
+																			},
+																			"street": {
+																				"description": "Street address including building/suite number.",
+																				"type": "string",
+																				"example": "123 Main St"
+																			}
+																		},
+																		"required": [
+																			"street",
+																			"city",
+																			"state",
+																			"postal_code",
+																			"country_code"
+																		]
 																	},
-																	"country_code": {
-																		"description": "Two-letter country code per ISO 3166-1 alpha-2 (e.g., `US`, `GB`, `CA`, `DE`).",
+																	"name": {
+																		"description": "Full legal name of the contact, including all required name components for an individual or authorized representative. Some registries require a complete personal name that includes a family or last name where applicable. Provide the complete name in this single field, for example `Ada Lovelace`; do not send separate first-name or last-name fields.",
 																		"type": "string",
-																		"example": "US"
+																		"example": "Ada Lovelace"
 																	},
-																	"postal_code": {
-																		"description": "Postal or ZIP code.",
+																	"organization": {
+																		"description": "Organization or company name. Optional for individual registrants.",
 																		"type": "string",
-																		"example": "78701"
-																	},
-																	"state": {
-																		"description": "State, province, or region. Use the standard abbreviation where applicable (e.g., `TX` for Texas, `ON` for Ontario).",
-																		"type": "string",
-																		"example": "TX"
-																	},
-																	"street": {
-																		"description": "Street address including building/suite number.",
-																		"type": "string",
-																		"example": "123 Main St"
+																		"example": "Example Inc"
 																	}
 																},
 																"required": [
-																	"street",
-																	"city",
-																	"state",
-																	"postal_code",
-																	"country_code"
+																	"name",
+																	"address"
 																]
-															},
-															"name": {
-																"description": "Full legal name of the contact, including all required name components for an individual or authorized representative. Some registries require a complete personal name that includes a family or last name where applicable. Provide the complete name in this single field, for example `Ada Lovelace`; do not send separate first-name or last-name fields.",
-																"type": "string",
-																"example": "Ada Lovelace"
-															},
-															"organization": {
-																"description": "Organization or company name. Optional for individual registrants.",
-																"type": "string",
-																"example": "Example Inc"
 															}
 														},
 														"required": [
-															"name",
-															"address"
+															"phone",
+															"email",
+															"postal_info"
 														]
 													}
-												},
-												"required": [
-													"phone",
-													"email",
-													"postal_info"
 												]
-											}
-										]
-									},
-									"technical": {
-										"description": "Optional technical contact. Accepted only when the extension schema\nincludes this role. When the registry requires an omitted contact,\nCloudflare may derive it from `contacts.registrant`.\n",
-										"allOf": [
-											{
-												"description": "Contact data for the domain registration. This information\nis submitted to the domain registry and, depending on extension and\nprivacy settings, may appear in public WHOIS records.\n",
-												"type": "object",
-												"properties": {
-													"email": {
-														"description": "Email address for the registrant. Used for domain-related\ncommunications from the registry, including ownership verification\nand renewal notices.\n",
-														"type": "string",
-														"format": "email",
-														"example": "ada@example.com"
-													},
-													"fax": {
-														"description": "Fax number in E.164 format (e.g., `+1.5555555555`). Optional.\nMost registrations do not require a fax number.\n",
-														"type": "string",
-														"example": "+1.5555555555"
-													},
-													"phone": {
-														"description": "Phone number in E.164 format: `+{country_code}.{number}` without spaces or dashes. Examples: `+1.5555555555` (US), `+44.2071234567` (UK), `+81.312345678` (Japan).",
-														"type": "string",
-														"example": "+1.5555555555"
-													},
-													"postal_info": {
-														"description": "Postal/mailing information for the contact. The `name` field is the\ncomplete contact name in one string. Some registries require a complete\npersonal name, including a family or last name where applicable, but this\nAPI does not accept separate first-name and last-name fields for\nregistration contacts.\n",
+											},
+											"technical": {
+												"description": "Optional technical contact. Accepted only when the extension schema\nincludes this role. When the registry requires an omitted contact,\nCloudflare may derive it from `contacts.registrant`.\n",
+												"allOf": [
+													{
+														"description": "Contact data for the domain registration. This information\nis submitted to the domain registry and, depending on extension and\nprivacy settings, may appear in public WHOIS records.\n",
 														"type": "object",
 														"properties": {
-															"address": {
-																"description": "Physical mailing address for the registrant contact.",
+															"email": {
+																"description": "Email address for the registrant. Used for domain-related\ncommunications from the registry, including ownership verification\nand renewal notices.\n",
+																"type": "string",
+																"format": "email",
+																"example": "ada@example.com"
+															},
+															"fax": {
+																"description": "Fax number in E.164 format (e.g., `+1.5555555555`). Optional.\nMost registrations do not require a fax number.\n",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"phone": {
+																"description": "Phone number in E.164 format: `+{country_code}.{number}` without spaces or dashes. Examples: `+1.5555555555` (US), `+44.2071234567` (UK), `+81.312345678` (Japan).",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"postal_info": {
+																"description": "Postal/mailing information for the contact. The `name` field is the\ncomplete contact name in one string. Some registries require a complete\npersonal name, including a family or last name where applicable, but this\nAPI does not accept separate first-name and last-name fields for\nregistration contacts.\n",
 																"type": "object",
 																"properties": {
-																	"city": {
-																		"description": "City or locality name.",
-																		"type": "string",
-																		"example": "Austin"
+																	"address": {
+																		"description": "Physical mailing address for the registrant contact.",
+																		"type": "object",
+																		"properties": {
+																			"city": {
+																				"description": "City or locality name.",
+																				"type": "string",
+																				"example": "Austin"
+																			},
+																			"country_code": {
+																				"description": "Two-letter country code per ISO 3166-1 alpha-2 (e.g., `US`, `GB`, `CA`, `DE`).",
+																				"type": "string",
+																				"example": "US"
+																			},
+																			"postal_code": {
+																				"description": "Postal or ZIP code.",
+																				"type": "string",
+																				"example": "78701"
+																			},
+																			"state": {
+																				"description": "State, province, or region. Use the standard abbreviation where applicable (e.g., `TX` for Texas, `ON` for Ontario).",
+																				"type": "string",
+																				"example": "TX"
+																			},
+																			"street": {
+																				"description": "Street address including building/suite number.",
+																				"type": "string",
+																				"example": "123 Main St"
+																			}
+																		},
+																		"required": [
+																			"street",
+																			"city",
+																			"state",
+																			"postal_code",
+																			"country_code"
+																		]
 																	},
-																	"country_code": {
-																		"description": "Two-letter country code per ISO 3166-1 alpha-2 (e.g., `US`, `GB`, `CA`, `DE`).",
+																	"name": {
+																		"description": "Full legal name of the contact, including all required name components for an individual or authorized representative. Some registries require a complete personal name that includes a family or last name where applicable. Provide the complete name in this single field, for example `Ada Lovelace`; do not send separate first-name or last-name fields.",
 																		"type": "string",
-																		"example": "US"
+																		"example": "Ada Lovelace"
 																	},
-																	"postal_code": {
-																		"description": "Postal or ZIP code.",
+																	"organization": {
+																		"description": "Organization or company name. Optional for individual registrants.",
 																		"type": "string",
-																		"example": "78701"
-																	},
-																	"state": {
-																		"description": "State, province, or region. Use the standard abbreviation where applicable (e.g., `TX` for Texas, `ON` for Ontario).",
-																		"type": "string",
-																		"example": "TX"
-																	},
-																	"street": {
-																		"description": "Street address including building/suite number.",
-																		"type": "string",
-																		"example": "123 Main St"
+																		"example": "Example Inc"
 																	}
 																},
 																"required": [
-																	"street",
-																	"city",
-																	"state",
-																	"postal_code",
-																	"country_code"
+																	"name",
+																	"address"
 																]
-															},
-															"name": {
-																"description": "Full legal name of the contact, including all required name components for an individual or authorized representative. Some registries require a complete personal name that includes a family or last name where applicable. Provide the complete name in this single field, for example `Ada Lovelace`; do not send separate first-name or last-name fields.",
-																"type": "string",
-																"example": "Ada Lovelace"
-															},
-															"organization": {
-																"description": "Organization or company name. Optional for individual registrants.",
-																"type": "string",
-																"example": "Example Inc"
 															}
 														},
 														"required": [
-															"name",
-															"address"
+															"phone",
+															"email",
+															"postal_info"
 														]
 													}
-												},
-												"required": [
-													"phone",
-													"email",
-													"postal_info"
 												]
 											}
-										]
+										}
 									}
-								}
+								]
 							},
 							"domain_name": {
 								"description": "Provides a fully qualified domain name (FQDN), including the extension\n(e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies\na registration. Cloudflare permits only one registration per domain, making\nthe domain name a natural idempotency key for registration requests.\n",
@@ -7275,370 +7280,375 @@
 								"additionalProperties": true
 							},
 							"contacts": {
-								"description": "Provides contact data for the registration request.\n\nThe per-extension schema from\n`GET /accounts/{account_id}/registrar/extensions/{extension}` defines the\naccepted contact roles. Every currently supported extension requires only\n`contacts.registrant` from API callers. Callers may provide additional roles\nsuch as `technical`, `administrator`, and `billing` when the extension\nschema includes them. When a registry requires an omitted role, Cloudflare\nmay derive that contact from `contacts.registrant`.\n\nWhen the request omits either the entire `contacts` object or\n`contacts.registrant`, the system uses the account's default address book\nentry as the registrant contact. The account owner must configure this\ndefault at `https://dash.cloudflare.com/{account_id}/domains/registrations`,\nwhere they can create or update the address book entry and accept the\nrequired agreement. Dashboard settings currently provide the only way to\nmanage address book entries.\n\nWithout either a default address book entry or a registrant contact, the\nregistration request fails validation.\n",
 								"type": "object",
-								"properties": {
-									"administrator": {
-										"description": "Optional administrator contact. Accepted only when the extension\nschema includes this role. When the registry requires an omitted\ncontact, Cloudflare may derive it from `contacts.registrant`.\n",
-										"allOf": [
-											{
-												"description": "Contact data for the domain registration. This information\nis submitted to the domain registry and, depending on extension and\nprivacy settings, may appear in public WHOIS records.\n",
-												"type": "object",
-												"properties": {
-													"email": {
-														"description": "Email address for the registrant. Used for domain-related\ncommunications from the registry, including ownership verification\nand renewal notices.\n",
-														"type": "string",
-														"format": "email",
-														"example": "ada@example.com"
-													},
-													"fax": {
-														"description": "Fax number in E.164 format (e.g., `+1.5555555555`). Optional.\nMost registrations do not require a fax number.\n",
-														"type": "string",
-														"example": "+1.5555555555"
-													},
-													"phone": {
-														"description": "Phone number in E.164 format: `+{country_code}.{number}` without spaces or dashes. Examples: `+1.5555555555` (US), `+44.2071234567` (UK), `+81.312345678` (Japan).",
-														"type": "string",
-														"example": "+1.5555555555"
-													},
-													"postal_info": {
-														"description": "Postal/mailing information for the contact. The `name` field is the\ncomplete contact name in one string. Some registries require a complete\npersonal name, including a family or last name where applicable, but this\nAPI does not accept separate first-name and last-name fields for\nregistration contacts.\n",
+								"allOf": [
+									{
+										"description": "Provides contact data for the registration request.\n\nThe per-extension schema from\n`GET /accounts/{account_id}/registrar/extensions/{extension}` defines the\naccepted contact roles. Every currently supported extension requires only\n`contacts.registrant` from API callers. Callers may provide additional roles\nsuch as `technical`, `administrator`, and `billing` when the extension\nschema includes them. When a registry requires an omitted role, Cloudflare\nmay derive that contact from `contacts.registrant`.\n\nWhen the request omits either the entire `contacts` object or\n`contacts.registrant`, the system uses the account's default address book\nentry as the registrant contact. The account owner must configure this\ndefault at `https://dash.cloudflare.com/{account_id}/domains/registrations`,\nwhere they can create or update the address book entry and accept the\nrequired agreement. Dashboard settings currently provide the only way to\nmanage address book entries.\n\nWithout either a default address book entry or a registrant contact, the\nregistration request fails validation.\n",
+										"type": "object",
+										"properties": {
+											"administrator": {
+												"description": "Optional administrator contact. Accepted only when the extension\nschema includes this role. When the registry requires an omitted\ncontact, Cloudflare may derive it from `contacts.registrant`.\n",
+												"allOf": [
+													{
+														"description": "Contact data for the domain registration. This information\nis submitted to the domain registry and, depending on extension and\nprivacy settings, may appear in public WHOIS records.\n",
 														"type": "object",
 														"properties": {
-															"address": {
-																"description": "Physical mailing address for the registrant contact.",
+															"email": {
+																"description": "Email address for the registrant. Used for domain-related\ncommunications from the registry, including ownership verification\nand renewal notices.\n",
+																"type": "string",
+																"format": "email",
+																"example": "ada@example.com"
+															},
+															"fax": {
+																"description": "Fax number in E.164 format (e.g., `+1.5555555555`). Optional.\nMost registrations do not require a fax number.\n",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"phone": {
+																"description": "Phone number in E.164 format: `+{country_code}.{number}` without spaces or dashes. Examples: `+1.5555555555` (US), `+44.2071234567` (UK), `+81.312345678` (Japan).",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"postal_info": {
+																"description": "Postal/mailing information for the contact. The `name` field is the\ncomplete contact name in one string. Some registries require a complete\npersonal name, including a family or last name where applicable, but this\nAPI does not accept separate first-name and last-name fields for\nregistration contacts.\n",
 																"type": "object",
 																"properties": {
-																	"city": {
-																		"description": "City or locality name.",
-																		"type": "string",
-																		"example": "Austin"
+																	"address": {
+																		"description": "Physical mailing address for the registrant contact.",
+																		"type": "object",
+																		"properties": {
+																			"city": {
+																				"description": "City or locality name.",
+																				"type": "string",
+																				"example": "Austin"
+																			},
+																			"country_code": {
+																				"description": "Two-letter country code per ISO 3166-1 alpha-2 (e.g., `US`, `GB`, `CA`, `DE`).",
+																				"type": "string",
+																				"example": "US"
+																			},
+																			"postal_code": {
+																				"description": "Postal or ZIP code.",
+																				"type": "string",
+																				"example": "78701"
+																			},
+																			"state": {
+																				"description": "State, province, or region. Use the standard abbreviation where applicable (e.g., `TX` for Texas, `ON` for Ontario).",
+																				"type": "string",
+																				"example": "TX"
+																			},
+																			"street": {
+																				"description": "Street address including building/suite number.",
+																				"type": "string",
+																				"example": "123 Main St"
+																			}
+																		},
+																		"required": [
+																			"street",
+																			"city",
+																			"state",
+																			"postal_code",
+																			"country_code"
+																		]
 																	},
-																	"country_code": {
-																		"description": "Two-letter country code per ISO 3166-1 alpha-2 (e.g., `US`, `GB`, `CA`, `DE`).",
+																	"name": {
+																		"description": "Full legal name of the contact, including all required name components for an individual or authorized representative. Some registries require a complete personal name that includes a family or last name where applicable. Provide the complete name in this single field, for example `Ada Lovelace`; do not send separate first-name or last-name fields.",
 																		"type": "string",
-																		"example": "US"
+																		"example": "Ada Lovelace"
 																	},
-																	"postal_code": {
-																		"description": "Postal or ZIP code.",
+																	"organization": {
+																		"description": "Organization or company name. Optional for individual registrants.",
 																		"type": "string",
-																		"example": "78701"
-																	},
-																	"state": {
-																		"description": "State, province, or region. Use the standard abbreviation where applicable (e.g., `TX` for Texas, `ON` for Ontario).",
-																		"type": "string",
-																		"example": "TX"
-																	},
-																	"street": {
-																		"description": "Street address including building/suite number.",
-																		"type": "string",
-																		"example": "123 Main St"
+																		"example": "Example Inc"
 																	}
 																},
 																"required": [
-																	"street",
-																	"city",
-																	"state",
-																	"postal_code",
-																	"country_code"
+																	"name",
+																	"address"
 																]
-															},
-															"name": {
-																"description": "Full legal name of the contact, including all required name components for an individual or authorized representative. Some registries require a complete personal name that includes a family or last name where applicable. Provide the complete name in this single field, for example `Ada Lovelace`; do not send separate first-name or last-name fields.",
-																"type": "string",
-																"example": "Ada Lovelace"
-															},
-															"organization": {
-																"description": "Organization or company name. Optional for individual registrants.",
-																"type": "string",
-																"example": "Example Inc"
 															}
 														},
 														"required": [
-															"name",
-															"address"
+															"phone",
+															"email",
+															"postal_info"
 														]
 													}
-												},
-												"required": [
-													"phone",
-													"email",
-													"postal_info"
 												]
-											}
-										]
-									},
-									"billing": {
-										"description": "Optional billing contact. Accepted only when the extension schema\nincludes this role. When the registry requires an omitted contact,\nCloudflare may derive it from `contacts.registrant`.\n",
-										"allOf": [
-											{
-												"description": "Contact data for the domain registration. This information\nis submitted to the domain registry and, depending on extension and\nprivacy settings, may appear in public WHOIS records.\n",
-												"type": "object",
-												"properties": {
-													"email": {
-														"description": "Email address for the registrant. Used for domain-related\ncommunications from the registry, including ownership verification\nand renewal notices.\n",
-														"type": "string",
-														"format": "email",
-														"example": "ada@example.com"
-													},
-													"fax": {
-														"description": "Fax number in E.164 format (e.g., `+1.5555555555`). Optional.\nMost registrations do not require a fax number.\n",
-														"type": "string",
-														"example": "+1.5555555555"
-													},
-													"phone": {
-														"description": "Phone number in E.164 format: `+{country_code}.{number}` without spaces or dashes. Examples: `+1.5555555555` (US), `+44.2071234567` (UK), `+81.312345678` (Japan).",
-														"type": "string",
-														"example": "+1.5555555555"
-													},
-													"postal_info": {
-														"description": "Postal/mailing information for the contact. The `name` field is the\ncomplete contact name in one string. Some registries require a complete\npersonal name, including a family or last name where applicable, but this\nAPI does not accept separate first-name and last-name fields for\nregistration contacts.\n",
+											},
+											"billing": {
+												"description": "Optional billing contact. Accepted only when the extension schema\nincludes this role. When the registry requires an omitted contact,\nCloudflare may derive it from `contacts.registrant`.\n",
+												"allOf": [
+													{
+														"description": "Contact data for the domain registration. This information\nis submitted to the domain registry and, depending on extension and\nprivacy settings, may appear in public WHOIS records.\n",
 														"type": "object",
 														"properties": {
-															"address": {
-																"description": "Physical mailing address for the registrant contact.",
+															"email": {
+																"description": "Email address for the registrant. Used for domain-related\ncommunications from the registry, including ownership verification\nand renewal notices.\n",
+																"type": "string",
+																"format": "email",
+																"example": "ada@example.com"
+															},
+															"fax": {
+																"description": "Fax number in E.164 format (e.g., `+1.5555555555`). Optional.\nMost registrations do not require a fax number.\n",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"phone": {
+																"description": "Phone number in E.164 format: `+{country_code}.{number}` without spaces or dashes. Examples: `+1.5555555555` (US), `+44.2071234567` (UK), `+81.312345678` (Japan).",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"postal_info": {
+																"description": "Postal/mailing information for the contact. The `name` field is the\ncomplete contact name in one string. Some registries require a complete\npersonal name, including a family or last name where applicable, but this\nAPI does not accept separate first-name and last-name fields for\nregistration contacts.\n",
 																"type": "object",
 																"properties": {
-																	"city": {
-																		"description": "City or locality name.",
-																		"type": "string",
-																		"example": "Austin"
+																	"address": {
+																		"description": "Physical mailing address for the registrant contact.",
+																		"type": "object",
+																		"properties": {
+																			"city": {
+																				"description": "City or locality name.",
+																				"type": "string",
+																				"example": "Austin"
+																			},
+																			"country_code": {
+																				"description": "Two-letter country code per ISO 3166-1 alpha-2 (e.g., `US`, `GB`, `CA`, `DE`).",
+																				"type": "string",
+																				"example": "US"
+																			},
+																			"postal_code": {
+																				"description": "Postal or ZIP code.",
+																				"type": "string",
+																				"example": "78701"
+																			},
+																			"state": {
+																				"description": "State, province, or region. Use the standard abbreviation where applicable (e.g., `TX` for Texas, `ON` for Ontario).",
+																				"type": "string",
+																				"example": "TX"
+																			},
+																			"street": {
+																				"description": "Street address including building/suite number.",
+																				"type": "string",
+																				"example": "123 Main St"
+																			}
+																		},
+																		"required": [
+																			"street",
+																			"city",
+																			"state",
+																			"postal_code",
+																			"country_code"
+																		]
 																	},
-																	"country_code": {
-																		"description": "Two-letter country code per ISO 3166-1 alpha-2 (e.g., `US`, `GB`, `CA`, `DE`).",
+																	"name": {
+																		"description": "Full legal name of the contact, including all required name components for an individual or authorized representative. Some registries require a complete personal name that includes a family or last name where applicable. Provide the complete name in this single field, for example `Ada Lovelace`; do not send separate first-name or last-name fields.",
 																		"type": "string",
-																		"example": "US"
+																		"example": "Ada Lovelace"
 																	},
-																	"postal_code": {
-																		"description": "Postal or ZIP code.",
+																	"organization": {
+																		"description": "Organization or company name. Optional for individual registrants.",
 																		"type": "string",
-																		"example": "78701"
-																	},
-																	"state": {
-																		"description": "State, province, or region. Use the standard abbreviation where applicable (e.g., `TX` for Texas, `ON` for Ontario).",
-																		"type": "string",
-																		"example": "TX"
-																	},
-																	"street": {
-																		"description": "Street address including building/suite number.",
-																		"type": "string",
-																		"example": "123 Main St"
+																		"example": "Example Inc"
 																	}
 																},
 																"required": [
-																	"street",
-																	"city",
-																	"state",
-																	"postal_code",
-																	"country_code"
+																	"name",
+																	"address"
 																]
-															},
-															"name": {
-																"description": "Full legal name of the contact, including all required name components for an individual or authorized representative. Some registries require a complete personal name that includes a family or last name where applicable. Provide the complete name in this single field, for example `Ada Lovelace`; do not send separate first-name or last-name fields.",
-																"type": "string",
-																"example": "Ada Lovelace"
-															},
-															"organization": {
-																"description": "Organization or company name. Optional for individual registrants.",
-																"type": "string",
-																"example": "Example Inc"
 															}
 														},
 														"required": [
-															"name",
-															"address"
+															"phone",
+															"email",
+															"postal_info"
 														]
 													}
-												},
-												"required": [
-													"phone",
-													"email",
-													"postal_info"
 												]
-											}
-										]
-									},
-									"registrant": {
-										"description": "Optional registrant contact. If omitted, the account's default\naddress book entry is used instead.\n",
-										"allOf": [
-											{
-												"description": "Contact data for the domain registration. This information\nis submitted to the domain registry and, depending on extension and\nprivacy settings, may appear in public WHOIS records.\n",
-												"type": "object",
-												"properties": {
-													"email": {
-														"description": "Email address for the registrant. Used for domain-related\ncommunications from the registry, including ownership verification\nand renewal notices.\n",
-														"type": "string",
-														"format": "email",
-														"example": "ada@example.com"
-													},
-													"fax": {
-														"description": "Fax number in E.164 format (e.g., `+1.5555555555`). Optional.\nMost registrations do not require a fax number.\n",
-														"type": "string",
-														"example": "+1.5555555555"
-													},
-													"phone": {
-														"description": "Phone number in E.164 format: `+{country_code}.{number}` without spaces or dashes. Examples: `+1.5555555555` (US), `+44.2071234567` (UK), `+81.312345678` (Japan).",
-														"type": "string",
-														"example": "+1.5555555555"
-													},
-													"postal_info": {
-														"description": "Postal/mailing information for the contact. The `name` field is the\ncomplete contact name in one string. Some registries require a complete\npersonal name, including a family or last name where applicable, but this\nAPI does not accept separate first-name and last-name fields for\nregistration contacts.\n",
+											},
+											"registrant": {
+												"description": "Optional registrant contact. If omitted, the account's default\naddress book entry is used instead.\n",
+												"allOf": [
+													{
+														"description": "Contact data for the domain registration. This information\nis submitted to the domain registry and, depending on extension and\nprivacy settings, may appear in public WHOIS records.\n",
 														"type": "object",
 														"properties": {
-															"address": {
-																"description": "Physical mailing address for the registrant contact.",
+															"email": {
+																"description": "Email address for the registrant. Used for domain-related\ncommunications from the registry, including ownership verification\nand renewal notices.\n",
+																"type": "string",
+																"format": "email",
+																"example": "ada@example.com"
+															},
+															"fax": {
+																"description": "Fax number in E.164 format (e.g., `+1.5555555555`). Optional.\nMost registrations do not require a fax number.\n",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"phone": {
+																"description": "Phone number in E.164 format: `+{country_code}.{number}` without spaces or dashes. Examples: `+1.5555555555` (US), `+44.2071234567` (UK), `+81.312345678` (Japan).",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"postal_info": {
+																"description": "Postal/mailing information for the contact. The `name` field is the\ncomplete contact name in one string. Some registries require a complete\npersonal name, including a family or last name where applicable, but this\nAPI does not accept separate first-name and last-name fields for\nregistration contacts.\n",
 																"type": "object",
 																"properties": {
-																	"city": {
-																		"description": "City or locality name.",
-																		"type": "string",
-																		"example": "Austin"
+																	"address": {
+																		"description": "Physical mailing address for the registrant contact.",
+																		"type": "object",
+																		"properties": {
+																			"city": {
+																				"description": "City or locality name.",
+																				"type": "string",
+																				"example": "Austin"
+																			},
+																			"country_code": {
+																				"description": "Two-letter country code per ISO 3166-1 alpha-2 (e.g., `US`, `GB`, `CA`, `DE`).",
+																				"type": "string",
+																				"example": "US"
+																			},
+																			"postal_code": {
+																				"description": "Postal or ZIP code.",
+																				"type": "string",
+																				"example": "78701"
+																			},
+																			"state": {
+																				"description": "State, province, or region. Use the standard abbreviation where applicable (e.g., `TX` for Texas, `ON` for Ontario).",
+																				"type": "string",
+																				"example": "TX"
+																			},
+																			"street": {
+																				"description": "Street address including building/suite number.",
+																				"type": "string",
+																				"example": "123 Main St"
+																			}
+																		},
+																		"required": [
+																			"street",
+																			"city",
+																			"state",
+																			"postal_code",
+																			"country_code"
+																		]
 																	},
-																	"country_code": {
-																		"description": "Two-letter country code per ISO 3166-1 alpha-2 (e.g., `US`, `GB`, `CA`, `DE`).",
+																	"name": {
+																		"description": "Full legal name of the contact, including all required name components for an individual or authorized representative. Some registries require a complete personal name that includes a family or last name where applicable. Provide the complete name in this single field, for example `Ada Lovelace`; do not send separate first-name or last-name fields.",
 																		"type": "string",
-																		"example": "US"
+																		"example": "Ada Lovelace"
 																	},
-																	"postal_code": {
-																		"description": "Postal or ZIP code.",
+																	"organization": {
+																		"description": "Organization or company name. Optional for individual registrants.",
 																		"type": "string",
-																		"example": "78701"
-																	},
-																	"state": {
-																		"description": "State, province, or region. Use the standard abbreviation where applicable (e.g., `TX` for Texas, `ON` for Ontario).",
-																		"type": "string",
-																		"example": "TX"
-																	},
-																	"street": {
-																		"description": "Street address including building/suite number.",
-																		"type": "string",
-																		"example": "123 Main St"
+																		"example": "Example Inc"
 																	}
 																},
 																"required": [
-																	"street",
-																	"city",
-																	"state",
-																	"postal_code",
-																	"country_code"
+																	"name",
+																	"address"
 																]
-															},
-															"name": {
-																"description": "Full legal name of the contact, including all required name components for an individual or authorized representative. Some registries require a complete personal name that includes a family or last name where applicable. Provide the complete name in this single field, for example `Ada Lovelace`; do not send separate first-name or last-name fields.",
-																"type": "string",
-																"example": "Ada Lovelace"
-															},
-															"organization": {
-																"description": "Organization or company name. Optional for individual registrants.",
-																"type": "string",
-																"example": "Example Inc"
 															}
 														},
 														"required": [
-															"name",
-															"address"
+															"phone",
+															"email",
+															"postal_info"
 														]
 													}
-												},
-												"required": [
-													"phone",
-													"email",
-													"postal_info"
 												]
-											}
-										]
-									},
-									"technical": {
-										"description": "Optional technical contact. Accepted only when the extension schema\nincludes this role. When the registry requires an omitted contact,\nCloudflare may derive it from `contacts.registrant`.\n",
-										"allOf": [
-											{
-												"description": "Contact data for the domain registration. This information\nis submitted to the domain registry and, depending on extension and\nprivacy settings, may appear in public WHOIS records.\n",
-												"type": "object",
-												"properties": {
-													"email": {
-														"description": "Email address for the registrant. Used for domain-related\ncommunications from the registry, including ownership verification\nand renewal notices.\n",
-														"type": "string",
-														"format": "email",
-														"example": "ada@example.com"
-													},
-													"fax": {
-														"description": "Fax number in E.164 format (e.g., `+1.5555555555`). Optional.\nMost registrations do not require a fax number.\n",
-														"type": "string",
-														"example": "+1.5555555555"
-													},
-													"phone": {
-														"description": "Phone number in E.164 format: `+{country_code}.{number}` without spaces or dashes. Examples: `+1.5555555555` (US), `+44.2071234567` (UK), `+81.312345678` (Japan).",
-														"type": "string",
-														"example": "+1.5555555555"
-													},
-													"postal_info": {
-														"description": "Postal/mailing information for the contact. The `name` field is the\ncomplete contact name in one string. Some registries require a complete\npersonal name, including a family or last name where applicable, but this\nAPI does not accept separate first-name and last-name fields for\nregistration contacts.\n",
+											},
+											"technical": {
+												"description": "Optional technical contact. Accepted only when the extension schema\nincludes this role. When the registry requires an omitted contact,\nCloudflare may derive it from `contacts.registrant`.\n",
+												"allOf": [
+													{
+														"description": "Contact data for the domain registration. This information\nis submitted to the domain registry and, depending on extension and\nprivacy settings, may appear in public WHOIS records.\n",
 														"type": "object",
 														"properties": {
-															"address": {
-																"description": "Physical mailing address for the registrant contact.",
+															"email": {
+																"description": "Email address for the registrant. Used for domain-related\ncommunications from the registry, including ownership verification\nand renewal notices.\n",
+																"type": "string",
+																"format": "email",
+																"example": "ada@example.com"
+															},
+															"fax": {
+																"description": "Fax number in E.164 format (e.g., `+1.5555555555`). Optional.\nMost registrations do not require a fax number.\n",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"phone": {
+																"description": "Phone number in E.164 format: `+{country_code}.{number}` without spaces or dashes. Examples: `+1.5555555555` (US), `+44.2071234567` (UK), `+81.312345678` (Japan).",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"postal_info": {
+																"description": "Postal/mailing information for the contact. The `name` field is the\ncomplete contact name in one string. Some registries require a complete\npersonal name, including a family or last name where applicable, but this\nAPI does not accept separate first-name and last-name fields for\nregistration contacts.\n",
 																"type": "object",
 																"properties": {
-																	"city": {
-																		"description": "City or locality name.",
-																		"type": "string",
-																		"example": "Austin"
+																	"address": {
+																		"description": "Physical mailing address for the registrant contact.",
+																		"type": "object",
+																		"properties": {
+																			"city": {
+																				"description": "City or locality name.",
+																				"type": "string",
+																				"example": "Austin"
+																			},
+																			"country_code": {
+																				"description": "Two-letter country code per ISO 3166-1 alpha-2 (e.g., `US`, `GB`, `CA`, `DE`).",
+																				"type": "string",
+																				"example": "US"
+																			},
+																			"postal_code": {
+																				"description": "Postal or ZIP code.",
+																				"type": "string",
+																				"example": "78701"
+																			},
+																			"state": {
+																				"description": "State, province, or region. Use the standard abbreviation where applicable (e.g., `TX` for Texas, `ON` for Ontario).",
+																				"type": "string",
+																				"example": "TX"
+																			},
+																			"street": {
+																				"description": "Street address including building/suite number.",
+																				"type": "string",
+																				"example": "123 Main St"
+																			}
+																		},
+																		"required": [
+																			"street",
+																			"city",
+																			"state",
+																			"postal_code",
+																			"country_code"
+																		]
 																	},
-																	"country_code": {
-																		"description": "Two-letter country code per ISO 3166-1 alpha-2 (e.g., `US`, `GB`, `CA`, `DE`).",
+																	"name": {
+																		"description": "Full legal name of the contact, including all required name components for an individual or authorized representative. Some registries require a complete personal name that includes a family or last name where applicable. Provide the complete name in this single field, for example `Ada Lovelace`; do not send separate first-name or last-name fields.",
 																		"type": "string",
-																		"example": "US"
+																		"example": "Ada Lovelace"
 																	},
-																	"postal_code": {
-																		"description": "Postal or ZIP code.",
+																	"organization": {
+																		"description": "Organization or company name. Optional for individual registrants.",
 																		"type": "string",
-																		"example": "78701"
-																	},
-																	"state": {
-																		"description": "State, province, or region. Use the standard abbreviation where applicable (e.g., `TX` for Texas, `ON` for Ontario).",
-																		"type": "string",
-																		"example": "TX"
-																	},
-																	"street": {
-																		"description": "Street address including building/suite number.",
-																		"type": "string",
-																		"example": "123 Main St"
+																		"example": "Example Inc"
 																	}
 																},
 																"required": [
-																	"street",
-																	"city",
-																	"state",
-																	"postal_code",
-																	"country_code"
+																	"name",
+																	"address"
 																]
-															},
-															"name": {
-																"description": "Full legal name of the contact, including all required name components for an individual or authorized representative. Some registries require a complete personal name that includes a family or last name where applicable. Provide the complete name in this single field, for example `Ada Lovelace`; do not send separate first-name or last-name fields.",
-																"type": "string",
-																"example": "Ada Lovelace"
-															},
-															"organization": {
-																"description": "Organization or company name. Optional for individual registrants.",
-																"type": "string",
-																"example": "Example Inc"
 															}
 														},
 														"required": [
-															"name",
-															"address"
+															"phone",
+															"email",
+															"postal_info"
 														]
 													}
-												},
-												"required": [
-													"phone",
-													"email",
-													"postal_info"
 												]
 											}
-										]
+										}
 									}
-								}
+								]
 							},
 							"domain_name": {
 								"description": "Provides a fully qualified domain name (FQDN), including the extension\n(e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies\na registration. Cloudflare permits only one registration per domain, making\nthe domain name a natural idempotency key for registration requests.\n",

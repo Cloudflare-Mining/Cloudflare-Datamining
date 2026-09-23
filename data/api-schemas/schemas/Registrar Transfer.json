@@ -1,0 +1,1496 @@
+{
+	"GET /accounts/{account_id}/registrar/registrations/{domain_name}/transfer-in-status": {
+		"operationId": "registrar-domain-transfer-get-status",
+		"summary": "Get Transfer Status",
+		"description": "Returns the current status of a domain transfer workflow.\n\nUse this endpoint to poll transfer progress after initiating a transfer\nwith `POST /accounts/{account_id}/registrar/registrations/{domain_name}/transfer-in`.\nThe URL is provided in the `links.self` field of the transfer response.\n\n### Transfer timelines\nTransfers typically take 1–10 days due to ICANN-mandated approval windows.\n\n### Workflow states\n\n**Terminal states:** `succeeded` and `failed` are terminal and always\nhave `completed: true`.\n\n**Non-terminal states:**\n- `in_progress`: Transfer has been submitted to the registry and is being\n  processed. Continue polling.\n- `blocked`: The workflow is waiting on the losing registrar or registry\n  to release the domain. This is the **most common state** for transfers\n  and is entirely normal — it means the ICANN transfer approval window is\n  in effect. The losing registrar has up to 5 days to approve or reject.\n  Continue polling with longer intervals (e.g., every 30–60 minutes).\n- `action_required`: The user needs to take action (e.g., the FOA email\n  needs to be accepted). See `context` for details on what is needed.\n- `pending`: Transfer workflow created but not yet started processing.\n\n### Polling guidance\nAdjust your polling interval based on the current workflow state:\n- `pending` or `in_progress`: Poll every 30 seconds.\n- `blocked`: The transfer is waiting on a third party (e.g., losing\n  registrar approval). Poll every 30–60 minutes.\n- `action_required`: Stop polling. The workflow will not advance until\n  the user takes action. Check `context` for details on what is needed.\n- `succeeded` or `failed`: Terminal — stop polling.\n",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID. Required for all Registrar API operations.",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true
+				}
+			},
+			{
+				"name": "domain_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Provides a fully qualified domain name (FQDN), including the extension\n(e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies\na registration. Cloudflare permits only one registration per domain, making\nthe domain name a natural idempotency key for registration requests.\n",
+					"type": "string",
+					"example": "example.com",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Transfer workflow status.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"action_required": {
+								"description": "The transfer workflow is paused because the user needs to\ntake action. Check `context` for details.\n",
+								"summary": "User action required",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"completed": false,
+										"context": {
+											"domain_name": "example.com",
+											"foa_required": true,
+											"transfer_status": "awaiting_foa"
+										},
+										"created_at": "2025-10-27T10:00:00Z",
+										"links": {
+											"resource": "/accounts/abc/registrar/registrations/example.com",
+											"self": "/accounts/abc/registrar/registrations/example.com/transfer-in-status"
+										},
+										"state": "action_required",
+										"updated_at": "2025-10-27T12:00:00Z"
+									},
+									"success": true
+								}
+							},
+							"blocked": {
+								"description": "The transfer is waiting on the losing registrar or registry\nto release the domain. This is the most common state during\na transfer and is entirely normal. The ICANN transfer approval\nwindow gives the losing registrar up to 5 days to approve or\nreject.\n",
+								"summary": "Waiting on losing registrar",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"completed": false,
+										"context": {
+											"domain_name": "example.com",
+											"transfer_status": "awaiting_approval"
+										},
+										"created_at": "2025-10-27T10:00:00Z",
+										"links": {
+											"resource": "/accounts/abc/registrar/registrations/example.com",
+											"self": "/accounts/abc/registrar/registrations/example.com/transfer-in-status"
+										},
+										"state": "blocked",
+										"updated_at": "2025-10-28T14:30:00Z"
+									},
+									"success": true
+								}
+							},
+							"failed": {
+								"description": "Terminal state. The transfer could not be completed. Common\nreasons include the losing registrar rejecting the transfer\nor an invalid auth code.\n",
+								"summary": "Transfer failed",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"completed": true,
+										"context": {
+											"domain_name": "example.com"
+										},
+										"created_at": "2025-10-27T10:00:00Z",
+										"error": {
+											"code": "transfer_rejected",
+											"message": "Transfer rejected"
+										},
+										"links": {
+											"resource": "/accounts/abc/registrar/registrations/example.com",
+											"self": "/accounts/abc/registrar/registrations/example.com/transfer-in-status"
+										},
+										"state": "failed",
+										"updated_at": "2025-10-30T12:00:00Z"
+									},
+									"success": true
+								}
+							},
+							"in_progress": {
+								"description": "The transfer has been submitted to the registry. This is the\ninitial state after the transfer request is processed.\n",
+								"summary": "Transfer submitted, awaiting registry approval",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"completed": false,
+										"context": {
+											"domain_name": "example.com"
+										},
+										"created_at": "2025-10-27T10:00:00Z",
+										"links": {
+											"resource": "/accounts/abc/registrar/registrations/example.com",
+											"self": "/accounts/abc/registrar/registrations/example.com/transfer-in-status"
+										},
+										"state": "in_progress",
+										"updated_at": "2025-10-27T10:05:00Z"
+									},
+									"success": true
+								}
+							},
+							"succeeded": {
+								"description": "Terminal state. The domain has been transferred to Cloudflare.\nFetch the full registration resource via\n`GET /accounts/{account_id}/registrar/registrations/{domain_name}`.\n",
+								"summary": "Transfer completed successfully",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"completed": true,
+										"context": {
+											"domain_name": "example.com"
+										},
+										"created_at": "2025-10-27T10:00:00Z",
+										"links": {
+											"resource": "/accounts/abc/registrar/registrations/example.com",
+											"self": "/accounts/abc/registrar/registrations/example.com/transfer-in-status"
+										},
+										"state": "succeeded",
+										"updated_at": "2025-10-30T08:15:00Z"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Status of an async registration workflow.",
+											"type": "object",
+											"properties": {
+												"completed": {
+													"description": "Indicates whether the workflow reached a terminal state. A `succeeded` or `failed` state returns `true`; `pending`, `in_progress`, `action_required`, and `blocked` return `false`.",
+													"type": "boolean",
+													"example": false
+												},
+												"context": {
+													"description": "Provides workflow-specific data.\n\nFor domain-centric workflows, `context.domain_name` identifies the\nworkflow subject.\n",
+													"type": "object",
+													"additionalProperties": true
+												},
+												"created_at": {
+													"type": "string",
+													"format": "date-time"
+												},
+												"error": {
+													"type": "object",
+													"allOf": [
+														{
+															"description": "Provides error details when a workflow reaches the `failed` state. The workflow type (registration, update, etc.) and underlying registry response determine the specific codes and messages. Workflow error codes differ from immediate HTTP error `errors[].code` values in non-2xx responses. Surface `error.message` to the user for context.",
+															"type": "object",
+															"properties": {
+																"code": {
+																	"description": "Machine-readable error code identifying the failure reason.",
+																	"type": "string",
+																	"example": "registry_rejected"
+																},
+																"message": {
+																	"description": "Human-readable explanation of the failure. May include registry-specific details.",
+																	"type": "string",
+																	"example": "Registry rejected the request."
+																}
+															},
+															"required": [
+																"code",
+																"message"
+															]
+														}
+													],
+													"nullable": true
+												},
+												"links": {
+													"type": "object",
+													"properties": {
+														"resource": {
+															"description": "URL to the domain resource.",
+															"type": "string",
+															"example": "/accounts/{account_id}/registrar/registrations/example.com"
+														},
+														"self": {
+															"description": "URL to this status resource.",
+															"type": "string",
+															"example": "/accounts/{account_id}/registrar/registrations/example.com/registration-status"
+														}
+													},
+													"required": [
+														"self"
+													]
+												},
+												"state": {
+													"description": "Describes the workflow lifecycle state.\n- `pending`: The workflow awaits processing.\n- `in_progress`: Processing started. Continue polling `links.self`.\n  An internal deadline limits the duration of this state.\n- `action_required`: The workflow pauses for user action. See\n  `context.action` for details. Stop automated polling until the user\n  completes the required action.\n- `blocked`: A third party, such as the domain extension's registry or\n  a losing registrar, prevents progress. Continue polling because the\n  block may resolve when the third party responds.\n- `succeeded`: Terminal state. The operation completed successfully.\n  `completed` equals `true`. For registrations,\n  `context.registration` contains the resulting registration resource.\n- `failed`: Terminal state. The operation failed. `completed` equals\n  `true`. See `error.code` and `error.message` for the reason. Require\n  user review before retrying.\n",
+													"type": "string",
+													"example": "in_progress",
+													"enum": [
+														"pending",
+														"in_progress",
+														"action_required",
+														"blocked",
+														"succeeded",
+														"failed"
+													]
+												},
+												"updated_at": {
+													"type": "string",
+													"format": "date-time"
+												}
+											},
+											"required": [
+												"state",
+												"completed",
+												"created_at",
+												"updated_at",
+												"links"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get transfer status failure.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"workflow_not_found": {
+								"summary": "No transfer workflow found",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "No workflow found for example.com"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Registrar Transfer"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "registrar.registrations",
+		"x-fern-sdk-method-name": "get-transfer-status"
+	},
+	"POST /accounts/{account_id}/registrar/registrations/{domain_name}/transfer-in": {
+		"operationId": "registrar-domain-transfer-in-create",
+		"summary": "Initiate Transfer",
+		"description": "Starts a domain transfer-in workflow. This is typically a billable\noperation — successful transfers charge the account's default payment\nmethod, except for extensions with zero transfer pricing (e.g. UK\nextensions). All successful domain transfers are non-refundable.\n\n### How transfers work\nDomain transfers move a domain from another registrar to Cloudflare.\nTransfers typically take 1-10 days due to ICANN-mandated approval windows.\n\n### Prerequisites\n- The domain must already have a zone in the Cloudflare account (added\n  through the dashboard or zone API).\n- The zone must have DNSSec disabled.\n- For billable transfers (i.e. extensions with non-zero transfer pricing), the\n  account must have a billing profile with a valid default payment method.\n  Set this up at `https://dash.cloudflare.com/{account_id}/billing/payment-info`.\n- The domain must be unlocked at the current registrar.\n- An authorization/EPP code from the current registrar is required,\n  except for UK extensions — see Auth code below.\n\n### Auth code\nAn authorization code (also called EPP code, transfer key, or auth-info code)\nis required for most extensions, with the exception of UK extensions. Obtain\nthis from your current registrar's control panel.\n\nThe auth code in the request body must be base64-encoded per RFC 4648 §4 (standard\nalphabet, no line breaks).\n\n### Response behavior\nSuccessful transfer initiation returns `202 Accepted`. Validation or\ninitiation failures return the documented `4XX` responses. Poll\n`GET /accounts/{account_id}/registrar/registrations/{domain_name}/transfer-in-status` to track progress.\n\n### Premium domains\nPremium domain transfers are not currently supported by this API. Please use\nthe [dashboard](https://dash.cloudflare.com/) for now.\n\n### Billing\nThe account's default payment method is charged upon successful transfer\ncompletion, unless the extension has zero transfer pricing (e.g. UK\nextensions). The transfer adds time to the domain's existing expiration\ndate (typically 1 year).\n",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID. Required for all Registrar API operations.",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true
+				}
+			},
+			{
+				"name": "domain_name",
+				"in": "path",
+				"description": "Domain name to transfer.",
+				"required": true,
+				"schema": {
+					"description": "Provides a fully qualified domain name (FQDN), including the extension\n(e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies\na registration. Cloudflare permits only one registration per domain, making\nthe domain name a natural idempotency key for registration requests.\n",
+					"type": "string",
+					"example": "example.com",
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "Prefer",
+				"in": "header",
+				"description": "Set to `respond-async` to indicate a preference for asynchronous\nprocessing (RFC 7240).\n",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"examples": {
+						"minimal": {
+							"description": "Minimal request with just domain name and auth code. Contacts are\ngathered from the account's configured default address book entry\n(returns 400 if none is configured). All other fields use their\ndefault values.\n",
+							"summary": "Minimal transfer request",
+							"value": {
+								"auth_code": "bml4b3M+Pj5hcmNoLWxpbnV4"
+							}
+						},
+						"with_options": {
+							"description": "Transfer specifying all optional fields.\n",
+							"summary": "Transfer with explicit options",
+							"value": {
+								"auth_code": "bml4b3M+Pj5hcmNoLWxpbnV4",
+								"auto_renew": true,
+								"contacts": {
+									"registrant": {
+										"email": "ada@example.com",
+										"phone": "+1.5555555555",
+										"postal_info": {
+											"address": {
+												"city": "Austin",
+												"country_code": "US",
+												"postal_code": "78701",
+												"state": "TX",
+												"street": "123 Main St"
+											},
+											"name": "Ada Lovelace",
+											"organization": "Example Inc"
+										}
+									}
+								},
+								"privacy_mode": "redaction"
+							}
+						}
+					},
+					"schema": {
+						"type": "object",
+						"properties": {
+							"auth_code": {
+								"description": "The EPP/authorization code from your current registrar, base64-encoded\nper RFC 4648 §4. Obtain this from your current registrar's control panel.\nRequired for all extensions, except for UK.\n",
+								"type": "string",
+								"format": "byte",
+								"example": "bml4b3M+Pj5hcmNoLWxpbnV4"
+							},
+							"auto_renew": {
+								"description": "Enable or disable automatic renewal after transfer. Defaults to `false` if omitted.\n",
+								"type": "boolean",
+								"example": false,
+								"default": false
+							},
+							"contact_extensions": {
+								"description": "Registry-specific contact extension values for the registrant.\n`GET /accounts/{account_id}/registrar/extensions/{extension}` documents the\nrequired keys and allowed values for each extension in the\n`transfer_schema.properties.contact_extensions` object.\n\nExamples include `.us` nexus fields, `.uk` registrant type fields,\nand `.ca` legal type fields. Include this object only when the extension's\ntransfer schema defines `contact_extensions`.\n",
+								"type": "object",
+								"example": {
+									"application_purpose": "P3",
+									"nexus_category": "C11"
+								},
+								"additionalProperties": true
+							},
+							"contacts": {
+								"type": "object",
+								"allOf": [
+									{
+										"description": "Provides contact data for the registration request.\n\nThe per-extension schema from\n`GET /accounts/{account_id}/registrar/extensions/{extension}` defines the\naccepted contact roles. Every currently supported extension requires only\n`contacts.registrant` from API callers. Callers may provide additional roles\nsuch as `technical`, `administrator`, and `billing` when the extension\nschema includes them. When a registry requires an omitted role, Cloudflare\nmay derive that contact from `contacts.registrant`.\n\nWhen the request omits either the entire `contacts` object or\n`contacts.registrant`, the system uses the account's default address book\nentry as the registrant contact. The account owner must configure this\ndefault at `https://dash.cloudflare.com/{account_id}/domains/registrations`,\nwhere they can create or update the address book entry and accept the\nrequired agreement. Dashboard settings currently provide the only way to\nmanage address book entries.\n\nWithout either a default address book entry or a registrant contact, the\nregistration request fails validation.\n",
+										"type": "object",
+										"properties": {
+											"administrator": {
+												"description": "Optional administrator contact. Accepted only when the extension\nschema includes this role. When the registry requires an omitted\ncontact, Cloudflare may derive it from `contacts.registrant`.\n",
+												"allOf": [
+													{
+														"description": "Contact data for the domain registration. This information\nis submitted to the domain registry and, depending on extension and\nprivacy settings, may appear in public WHOIS records.\n",
+														"type": "object",
+														"properties": {
+															"email": {
+																"description": "Email address for the registrant. Used for domain-related\ncommunications from the registry, including ownership verification\nand renewal notices.\n",
+																"type": "string",
+																"format": "email",
+																"example": "ada@example.com"
+															},
+															"fax": {
+																"description": "Fax number in E.164 format (e.g., `+1.5555555555`). Optional.\nMost registrations do not require a fax number.\n",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"phone": {
+																"description": "Phone number in E.164 format: `+{country_code}.{number}` without spaces or dashes. Examples: `+1.5555555555` (US), `+44.2071234567` (UK), `+81.312345678` (Japan).",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"postal_info": {
+																"description": "Postal/mailing information for the contact. The `name` field is the\ncomplete contact name in one string. Some registries require a complete\npersonal name, including a family or last name where applicable, but this\nAPI does not accept separate first-name and last-name fields for\nregistration contacts.\n",
+																"type": "object",
+																"properties": {
+																	"address": {
+																		"description": "Physical mailing address for the registrant contact.",
+																		"type": "object",
+																		"properties": {
+																			"city": {
+																				"description": "City or locality name.",
+																				"type": "string",
+																				"example": "Austin"
+																			},
+																			"country_code": {
+																				"description": "Two-letter country code per ISO 3166-1 alpha-2 (e.g., `US`, `GB`, `CA`, `DE`).",
+																				"type": "string",
+																				"example": "US"
+																			},
+																			"postal_code": {
+																				"description": "Postal or ZIP code.",
+																				"type": "string",
+																				"example": "78701"
+																			},
+																			"state": {
+																				"description": "State, province, or region. Use the standard abbreviation where applicable (e.g., `TX` for Texas, `ON` for Ontario).",
+																				"type": "string",
+																				"example": "TX"
+																			},
+																			"street": {
+																				"description": "Street address including building/suite number.",
+																				"type": "string",
+																				"example": "123 Main St"
+																			}
+																		},
+																		"required": [
+																			"street",
+																			"city",
+																			"state",
+																			"postal_code",
+																			"country_code"
+																		]
+																	},
+																	"name": {
+																		"description": "Full legal name of the contact, including all required name components for an individual or authorized representative. Some registries require a complete personal name that includes a family or last name where applicable. Provide the complete name in this single field, for example `Ada Lovelace`; do not send separate first-name or last-name fields.",
+																		"type": "string",
+																		"example": "Ada Lovelace"
+																	},
+																	"organization": {
+																		"description": "Organization or company name. Optional for individual registrants.",
+																		"type": "string",
+																		"example": "Example Inc"
+																	}
+																},
+																"required": [
+																	"name",
+																	"address"
+																]
+															}
+														},
+														"required": [
+															"phone",
+															"email",
+															"postal_info"
+														]
+													}
+												]
+											},
+											"billing": {
+												"description": "Optional billing contact. Accepted only when the extension schema\nincludes this role. When the registry requires an omitted contact,\nCloudflare may derive it from `contacts.registrant`.\n",
+												"allOf": [
+													{
+														"description": "Contact data for the domain registration. This information\nis submitted to the domain registry and, depending on extension and\nprivacy settings, may appear in public WHOIS records.\n",
+														"type": "object",
+														"properties": {
+															"email": {
+																"description": "Email address for the registrant. Used for domain-related\ncommunications from the registry, including ownership verification\nand renewal notices.\n",
+																"type": "string",
+																"format": "email",
+																"example": "ada@example.com"
+															},
+															"fax": {
+																"description": "Fax number in E.164 format (e.g., `+1.5555555555`). Optional.\nMost registrations do not require a fax number.\n",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"phone": {
+																"description": "Phone number in E.164 format: `+{country_code}.{number}` without spaces or dashes. Examples: `+1.5555555555` (US), `+44.2071234567` (UK), `+81.312345678` (Japan).",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"postal_info": {
+																"description": "Postal/mailing information for the contact. The `name` field is the\ncomplete contact name in one string. Some registries require a complete\npersonal name, including a family or last name where applicable, but this\nAPI does not accept separate first-name and last-name fields for\nregistration contacts.\n",
+																"type": "object",
+																"properties": {
+																	"address": {
+																		"description": "Physical mailing address for the registrant contact.",
+																		"type": "object",
+																		"properties": {
+																			"city": {
+																				"description": "City or locality name.",
+																				"type": "string",
+																				"example": "Austin"
+																			},
+																			"country_code": {
+																				"description": "Two-letter country code per ISO 3166-1 alpha-2 (e.g., `US`, `GB`, `CA`, `DE`).",
+																				"type": "string",
+																				"example": "US"
+																			},
+																			"postal_code": {
+																				"description": "Postal or ZIP code.",
+																				"type": "string",
+																				"example": "78701"
+																			},
+																			"state": {
+																				"description": "State, province, or region. Use the standard abbreviation where applicable (e.g., `TX` for Texas, `ON` for Ontario).",
+																				"type": "string",
+																				"example": "TX"
+																			},
+																			"street": {
+																				"description": "Street address including building/suite number.",
+																				"type": "string",
+																				"example": "123 Main St"
+																			}
+																		},
+																		"required": [
+																			"street",
+																			"city",
+																			"state",
+																			"postal_code",
+																			"country_code"
+																		]
+																	},
+																	"name": {
+																		"description": "Full legal name of the contact, including all required name components for an individual or authorized representative. Some registries require a complete personal name that includes a family or last name where applicable. Provide the complete name in this single field, for example `Ada Lovelace`; do not send separate first-name or last-name fields.",
+																		"type": "string",
+																		"example": "Ada Lovelace"
+																	},
+																	"organization": {
+																		"description": "Organization or company name. Optional for individual registrants.",
+																		"type": "string",
+																		"example": "Example Inc"
+																	}
+																},
+																"required": [
+																	"name",
+																	"address"
+																]
+															}
+														},
+														"required": [
+															"phone",
+															"email",
+															"postal_info"
+														]
+													}
+												]
+											},
+											"registrant": {
+												"description": "Optional registrant contact. If omitted, the account's default\naddress book entry is used instead.\n",
+												"allOf": [
+													{
+														"description": "Contact data for the domain registration. This information\nis submitted to the domain registry and, depending on extension and\nprivacy settings, may appear in public WHOIS records.\n",
+														"type": "object",
+														"properties": {
+															"email": {
+																"description": "Email address for the registrant. Used for domain-related\ncommunications from the registry, including ownership verification\nand renewal notices.\n",
+																"type": "string",
+																"format": "email",
+																"example": "ada@example.com"
+															},
+															"fax": {
+																"description": "Fax number in E.164 format (e.g., `+1.5555555555`). Optional.\nMost registrations do not require a fax number.\n",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"phone": {
+																"description": "Phone number in E.164 format: `+{country_code}.{number}` without spaces or dashes. Examples: `+1.5555555555` (US), `+44.2071234567` (UK), `+81.312345678` (Japan).",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"postal_info": {
+																"description": "Postal/mailing information for the contact. The `name` field is the\ncomplete contact name in one string. Some registries require a complete\npersonal name, including a family or last name where applicable, but this\nAPI does not accept separate first-name and last-name fields for\nregistration contacts.\n",
+																"type": "object",
+																"properties": {
+																	"address": {
+																		"description": "Physical mailing address for the registrant contact.",
+																		"type": "object",
+																		"properties": {
+																			"city": {
+																				"description": "City or locality name.",
+																				"type": "string",
+																				"example": "Austin"
+																			},
+																			"country_code": {
+																				"description": "Two-letter country code per ISO 3166-1 alpha-2 (e.g., `US`, `GB`, `CA`, `DE`).",
+																				"type": "string",
+																				"example": "US"
+																			},
+																			"postal_code": {
+																				"description": "Postal or ZIP code.",
+																				"type": "string",
+																				"example": "78701"
+																			},
+																			"state": {
+																				"description": "State, province, or region. Use the standard abbreviation where applicable (e.g., `TX` for Texas, `ON` for Ontario).",
+																				"type": "string",
+																				"example": "TX"
+																			},
+																			"street": {
+																				"description": "Street address including building/suite number.",
+																				"type": "string",
+																				"example": "123 Main St"
+																			}
+																		},
+																		"required": [
+																			"street",
+																			"city",
+																			"state",
+																			"postal_code",
+																			"country_code"
+																		]
+																	},
+																	"name": {
+																		"description": "Full legal name of the contact, including all required name components for an individual or authorized representative. Some registries require a complete personal name that includes a family or last name where applicable. Provide the complete name in this single field, for example `Ada Lovelace`; do not send separate first-name or last-name fields.",
+																		"type": "string",
+																		"example": "Ada Lovelace"
+																	},
+																	"organization": {
+																		"description": "Organization or company name. Optional for individual registrants.",
+																		"type": "string",
+																		"example": "Example Inc"
+																	}
+																},
+																"required": [
+																	"name",
+																	"address"
+																]
+															}
+														},
+														"required": [
+															"phone",
+															"email",
+															"postal_info"
+														]
+													}
+												]
+											},
+											"technical": {
+												"description": "Optional technical contact. Accepted only when the extension schema\nincludes this role. When the registry requires an omitted contact,\nCloudflare may derive it from `contacts.registrant`.\n",
+												"allOf": [
+													{
+														"description": "Contact data for the domain registration. This information\nis submitted to the domain registry and, depending on extension and\nprivacy settings, may appear in public WHOIS records.\n",
+														"type": "object",
+														"properties": {
+															"email": {
+																"description": "Email address for the registrant. Used for domain-related\ncommunications from the registry, including ownership verification\nand renewal notices.\n",
+																"type": "string",
+																"format": "email",
+																"example": "ada@example.com"
+															},
+															"fax": {
+																"description": "Fax number in E.164 format (e.g., `+1.5555555555`). Optional.\nMost registrations do not require a fax number.\n",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"phone": {
+																"description": "Phone number in E.164 format: `+{country_code}.{number}` without spaces or dashes. Examples: `+1.5555555555` (US), `+44.2071234567` (UK), `+81.312345678` (Japan).",
+																"type": "string",
+																"example": "+1.5555555555"
+															},
+															"postal_info": {
+																"description": "Postal/mailing information for the contact. The `name` field is the\ncomplete contact name in one string. Some registries require a complete\npersonal name, including a family or last name where applicable, but this\nAPI does not accept separate first-name and last-name fields for\nregistration contacts.\n",
+																"type": "object",
+																"properties": {
+																	"address": {
+																		"description": "Physical mailing address for the registrant contact.",
+																		"type": "object",
+																		"properties": {
+																			"city": {
+																				"description": "City or locality name.",
+																				"type": "string",
+																				"example": "Austin"
+																			},
+																			"country_code": {
+																				"description": "Two-letter country code per ISO 3166-1 alpha-2 (e.g., `US`, `GB`, `CA`, `DE`).",
+																				"type": "string",
+																				"example": "US"
+																			},
+																			"postal_code": {
+																				"description": "Postal or ZIP code.",
+																				"type": "string",
+																				"example": "78701"
+																			},
+																			"state": {
+																				"description": "State, province, or region. Use the standard abbreviation where applicable (e.g., `TX` for Texas, `ON` for Ontario).",
+																				"type": "string",
+																				"example": "TX"
+																			},
+																			"street": {
+																				"description": "Street address including building/suite number.",
+																				"type": "string",
+																				"example": "123 Main St"
+																			}
+																		},
+																		"required": [
+																			"street",
+																			"city",
+																			"state",
+																			"postal_code",
+																			"country_code"
+																		]
+																	},
+																	"name": {
+																		"description": "Full legal name of the contact, including all required name components for an individual or authorized representative. Some registries require a complete personal name that includes a family or last name where applicable. Provide the complete name in this single field, for example `Ada Lovelace`; do not send separate first-name or last-name fields.",
+																		"type": "string",
+																		"example": "Ada Lovelace"
+																	},
+																	"organization": {
+																		"description": "Organization or company name. Optional for individual registrants.",
+																		"type": "string",
+																		"example": "Example Inc"
+																	}
+																},
+																"required": [
+																	"name",
+																	"address"
+																]
+															}
+														},
+														"required": [
+															"phone",
+															"email",
+															"postal_info"
+														]
+													}
+												]
+											}
+										}
+									}
+								]
+							},
+							"privacy_mode": {
+								"description": "WHOIS privacy mode to apply after transfer completes. Defaults to\nthe extension's default privacy mode (typically `redaction`).\n",
+								"type": "string",
+								"example": "redaction",
+								"enum": [
+									"off",
+									"redaction"
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"202": {
+				"description": "Transfer initiated. The workflow is now processing asynchronously.\nPoll `GET /accounts/{account_id}/registrar/registrations/{domain_name}/transfer-in-status` to track\nprogress. Transfers typically take 1–10 days.\n",
+				"headers": {
+					"Location": {
+						"description": "URL of the transfer status resource (same as `links.self`).",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"Preference-Applied": {
+						"description": "Set to `respond-async` when the server honored the preference.",
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"examples": {
+							"transfer_initiated": {
+								"summary": "Transfer initiated successfully",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"completed": false,
+										"context": {
+											"domain_name": "example.com"
+										},
+										"created_at": "2025-10-27T10:00:00Z",
+										"links": {
+											"resource": "/accounts/abc/registrar/registrations/example.com",
+											"self": "/accounts/abc/registrar/registrations/example.com/transfer-in-status"
+										},
+										"state": "pending",
+										"updated_at": "2025-10-27T10:00:01Z"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Status of an async registration workflow.",
+											"type": "object",
+											"properties": {
+												"completed": {
+													"description": "Indicates whether the workflow reached a terminal state. A `succeeded` or `failed` state returns `true`; `pending`, `in_progress`, `action_required`, and `blocked` return `false`.",
+													"type": "boolean",
+													"example": false
+												},
+												"context": {
+													"description": "Provides workflow-specific data.\n\nFor domain-centric workflows, `context.domain_name` identifies the\nworkflow subject.\n",
+													"type": "object",
+													"additionalProperties": true
+												},
+												"created_at": {
+													"type": "string",
+													"format": "date-time"
+												},
+												"error": {
+													"type": "object",
+													"allOf": [
+														{
+															"description": "Provides error details when a workflow reaches the `failed` state. The workflow type (registration, update, etc.) and underlying registry response determine the specific codes and messages. Workflow error codes differ from immediate HTTP error `errors[].code` values in non-2xx responses. Surface `error.message` to the user for context.",
+															"type": "object",
+															"properties": {
+																"code": {
+																	"description": "Machine-readable error code identifying the failure reason.",
+																	"type": "string",
+																	"example": "registry_rejected"
+																},
+																"message": {
+																	"description": "Human-readable explanation of the failure. May include registry-specific details.",
+																	"type": "string",
+																	"example": "Registry rejected the request."
+																}
+															},
+															"required": [
+																"code",
+																"message"
+															]
+														}
+													],
+													"nullable": true
+												},
+												"links": {
+													"type": "object",
+													"properties": {
+														"resource": {
+															"description": "URL to the domain resource.",
+															"type": "string",
+															"example": "/accounts/{account_id}/registrar/registrations/example.com"
+														},
+														"self": {
+															"description": "URL to this status resource.",
+															"type": "string",
+															"example": "/accounts/{account_id}/registrar/registrations/example.com/registration-status"
+														}
+													},
+													"required": [
+														"self"
+													]
+												},
+												"state": {
+													"description": "Describes the workflow lifecycle state.\n- `pending`: The workflow awaits processing.\n- `in_progress`: Processing started. Continue polling `links.self`.\n  An internal deadline limits the duration of this state.\n- `action_required`: The workflow pauses for user action. See\n  `context.action` for details. Stop automated polling until the user\n  completes the required action.\n- `blocked`: A third party, such as the domain extension's registry or\n  a losing registrar, prevents progress. Continue polling because the\n  block may resolve when the third party responds.\n- `succeeded`: Terminal state. The operation completed successfully.\n  `completed` equals `true`. For registrations,\n  `context.registration` contains the resulting registration resource.\n- `failed`: Terminal state. The operation failed. `completed` equals\n  `true`. See `error.code` and `error.message` for the reason. Require\n  user review before retrying.\n",
+													"type": "string",
+													"example": "in_progress",
+													"enum": [
+														"pending",
+														"in_progress",
+														"action_required",
+														"blocked",
+														"succeeded",
+														"failed"
+													]
+												},
+												"updated_at": {
+													"type": "string",
+													"format": "date-time"
+												}
+											},
+											"required": [
+												"state",
+												"completed",
+												"created_at",
+												"updated_at",
+												"links"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Transfer initiation failure.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"auth_code_missing": {
+								"description": "An authorization/EPP code is required. Obtain this from your\ncurrent registrar's control panel.\n",
+								"summary": "Auth code is required",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "object at root is missing required properties: auth_code",
+											"source": {
+												"pointer": "/auth_code"
+											}
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"auth_code_non_base64": {
+								"description": "The auth code must be base64 encoded.\n",
+								"summary": "Auth code contains non-alphabet characters or is incorrectly padded",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "Auth code must be a base64 encoded string",
+											"source": {
+												"pointer": "/auth_code"
+											}
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"domain_not_found": {
+								"description": "The domain could not be found. Ensure the domain has a zone\nin the Cloudflare account and the domain name is correct.\n",
+								"summary": "Domain not found",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "Domain not found",
+											"source": {
+												"pointer": "/domain_name"
+											}
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"extension_not_supported": {
+								"summary": "Extension not supported",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "TLD Not supported by the API",
+											"source": {
+												"pointer": "/domain_name"
+											}
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"max_term_limit_hit": {
+								"description": "Domain is already near the maximum term defined by the registry\nand transferring it would hit said limit.\n",
+								"summary": "Transfer would make domain registration exceed max term",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "Domain registration term would exceed maximum",
+											"source": {
+												"pointer": "/domain_name"
+											}
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"no_registrant_contact": {
+								"description": "Account does not have a default contact set and the\nrequest does not include a registrant contact.\n",
+								"summary": "No registrant contact",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "No registrant contact provided and no default address book entry found for this account."
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"transfer_already_in_progress": {
+								"description": "A transfer workflow already exists for this domain.\n",
+								"summary": "Transfer already in progress",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "A workflow already exists for this resource. Use GET status to check its progress."
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Registrar Transfer"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "registrar.registrations",
+		"x-fern-sdk-method-name": "transfer-in"
+	}
+}
