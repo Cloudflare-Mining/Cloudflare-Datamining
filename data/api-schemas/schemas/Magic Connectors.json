@@ -196,17 +196,6 @@
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
-												"primary": {
-													"type": "boolean",
-													"default": true,
-													"x-auditable": true,
-													"x-stainless-terraform-configurability": "computed_optional"
-												},
-												"site_id": {
-													"type": "string",
-													"x-auditable": true,
-													"x-stainless-terraform-configurability": "computed_optional"
-												},
 												"timezone": {
 													"type": "string",
 													"x-auditable": true,
@@ -222,8 +211,7 @@
 												"interrupt_window_hour_of_day",
 												"interrupt_window_duration_hours",
 												"interrupt_window_days_of_week",
-												"interrupt_window_embargo_dates",
-												"primary"
+												"interrupt_window_embargo_dates"
 											]
 										}
 									},
@@ -831,17 +819,6 @@
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
-													"primary": {
-														"type": "boolean",
-														"default": true,
-														"x-auditable": true,
-														"x-stainless-terraform-configurability": "computed_optional"
-													},
-													"site_id": {
-														"type": "string",
-														"x-auditable": true,
-														"x-stainless-terraform-configurability": "computed_optional"
-													},
 													"timezone": {
 														"type": "string",
 														"x-auditable": true,
@@ -857,8 +834,7 @@
 													"interrupt_window_hour_of_day",
 													"interrupt_window_duration_hours",
 													"interrupt_window_days_of_week",
-													"interrupt_window_embargo_dates",
-													"primary"
+													"interrupt_window_embargo_dates"
 												]
 											}
 										}
@@ -1389,17 +1365,6 @@
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
-												"primary": {
-													"type": "boolean",
-													"default": true,
-													"x-auditable": true,
-													"x-stainless-terraform-configurability": "computed_optional"
-												},
-												"site_id": {
-													"type": "string",
-													"x-auditable": true,
-													"x-stainless-terraform-configurability": "computed_optional"
-												},
 												"timezone": {
 													"type": "string",
 													"x-auditable": true,
@@ -1415,8 +1380,7 @@
 												"interrupt_window_hour_of_day",
 												"interrupt_window_duration_hours",
 												"interrupt_window_days_of_week",
-												"interrupt_window_embargo_dates",
-												"primary"
+												"interrupt_window_embargo_dates"
 											]
 										}
 									},
@@ -7732,17 +7696,6 @@
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
-									"primary": {
-										"type": "boolean",
-										"default": true,
-										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
-									},
-									"site_id": {
-										"type": "string",
-										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
-									},
 									"timezone": {
 										"type": "string",
 										"x-auditable": true,
@@ -7935,17 +7888,6 @@
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
-												"primary": {
-													"type": "boolean",
-													"default": true,
-													"x-auditable": true,
-													"x-stainless-terraform-configurability": "computed_optional"
-												},
-												"site_id": {
-													"type": "string",
-													"x-auditable": true,
-													"x-stainless-terraform-configurability": "computed_optional"
-												},
 												"timezone": {
 													"type": "string",
 													"x-auditable": true,
@@ -7961,8 +7903,7 @@
 												"interrupt_window_hour_of_day",
 												"interrupt_window_duration_hours",
 												"interrupt_window_days_of_week",
-												"interrupt_window_embargo_dates",
-												"primary"
+												"interrupt_window_embargo_dates"
 											]
 										}
 									},
@@ -8476,17 +8417,6 @@
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
-									"primary": {
-										"type": "boolean",
-										"default": true,
-										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
-									},
-									"site_id": {
-										"type": "string",
-										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
-									},
 									"timezone": {
 										"type": "string",
 										"x-auditable": true,
@@ -8670,17 +8600,6 @@
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
-												"primary": {
-													"type": "boolean",
-													"default": true,
-													"x-auditable": true,
-													"x-stainless-terraform-configurability": "computed_optional"
-												},
-												"site_id": {
-													"type": "string",
-													"x-auditable": true,
-													"x-stainless-terraform-configurability": "computed_optional"
-												},
 												"timezone": {
 													"type": "string",
 													"x-auditable": true,
@@ -8696,8 +8615,7 @@
 												"interrupt_window_hour_of_day",
 												"interrupt_window_duration_hours",
 												"interrupt_window_days_of_week",
-												"interrupt_window_embargo_dates",
-												"primary"
+												"interrupt_window_embargo_dates"
 											]
 										}
 									},
@@ -9947,17 +9865,6 @@
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
-									"primary": {
-										"type": "boolean",
-										"default": true,
-										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
-									},
-									"site_id": {
-										"type": "string",
-										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
-									},
 									"timezone": {
 										"type": "string",
 										"x-auditable": true,
@@ -10150,17 +10057,6 @@
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
-												"primary": {
-													"type": "boolean",
-													"default": true,
-													"x-auditable": true,
-													"x-stainless-terraform-configurability": "computed_optional"
-												},
-												"site_id": {
-													"type": "string",
-													"x-auditable": true,
-													"x-stainless-terraform-configurability": "computed_optional"
-												},
 												"timezone": {
 													"type": "string",
 													"x-auditable": true,
@@ -10176,8 +10072,7 @@
 												"interrupt_window_hour_of_day",
 												"interrupt_window_duration_hours",
 												"interrupt_window_days_of_week",
-												"interrupt_window_embargo_dates",
-												"primary"
+												"interrupt_window_embargo_dates"
 											]
 										}
 									},
