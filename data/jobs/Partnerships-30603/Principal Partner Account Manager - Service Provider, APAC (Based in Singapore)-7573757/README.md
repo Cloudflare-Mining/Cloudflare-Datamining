@@ -5,29 +5,40 @@
 </div>
 <p><strong>Available Location:</strong> Singapore&nbsp;</p>
 <p><strong>Role Summary</strong></p>
-<p>We are seeking an exceptionally accomplished Principal Partner Account Manager to join our Service Provider (SP) and MSSP team and lead our APJ Service Provider (SP) &amp; MSSP GTM strategy. Based in Singapore and reporting to the Senior Director, Global Service Provider Sales, you will be the driving force behind Cloudflare’s most strategic and high-value Service Provider partners. In an era where Cloudflare is moving toward highly automated operating models, you will leverage strategic data layers and automated pipelines to optimize partner engagement, eliminate manual overhead, and drive significant revenue growth. This role is ideal for a tech-forward leader who can articulate how Cloudflare seamlessly integrates into modern cloud operating models while steering cross-functional internal and external teams through an evolving technological landscape.</p>
+<p>Cloudflare is looking for a senior industry builder to define the next chapter of our Service Provider and Managed Security Service Provider business across APAC.</p>
+<p>This is not a traditional partner-management role. You will hold the regional mandate to turn a small number of strategically important Service Providers into scaled routes to market for Cloudflare. Working across executive leadership, Product, Engineering, Sales, and partner delivery organizations, you will shape what we build together, how it is commercialized, and how it reaches customers across the region.</p>
+<p>Based in Singapore and reporting to the Senior Director, Global Service Provider Sales, you will lead Cloudflare’s most consequential Service Provider relationships in APAC. Your scope will include joint business models, co-developed managed services, technical and commercial integration, executive governance, and multi-year growth plans.</p>
+<p>The opportunity is suited to someone who has moved beyond managing established partner programs and wants to create a market-making ecosystem strategy. You will operate with significant autonomy, influence Cloudflare’s regional and global priorities, and help leading Service Providers evolve from resale relationships into deeply integrated platform partners.</p>
+<p><strong>What Makes This Role Distinctive</strong></p>
+<ul>
+	<li>A regional category-building mandate: Define how Cloudflare partners with the largest Service Providers and MSSPs across one of the world’s most diverse and rapidly evolving markets.</li>
+	<li>Influence beyond sales: Bring market intelligence directly into Cloudflare’s product, engineering, packaging, and investment decisions.</li>
+	<li>Depth over volume: Focus on a small number of high-consequence partnerships where technical integration and executive sponsorship can create material, multi-year growth.</li>
+	<li>Builder-level autonomy: Create the operating model, governance, propositions, and repeatable plays—not simply inherit and run an established program.</li>
+	<li>Global visibility: Represent APAC priorities within Cloudflare’s global Service Provider strategy and help shape models that can be replicated in other regions.</li>
+</ul>
 <p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li>Create and implement strategic partner account plans for Service Providers that align with overall business objectives and automated growth targets.</li>
-	<li>Identify opportunities for joint ventures, co-marketing initiatives, and solutions integration that leverage the strengths of each partner.</li>
-	<li>Build joint go-to-market services and solution stack offerings, ensuring alignment with modern cloud architecture.</li>
-	<li>Drive high-level engagement between Cloudflare leadership and the SP’s senior executives, industry leads, and delivery teams to establish long-term market competitiveness.</li>
-	<li>Partner with internal teams to support the creation of scalable implementation practices, including automated training frameworks, certifications, and reusable reference architectures.</li>
-	<li>Own and run business and quarterly planning reviews, utilizing internal data layers to track partner performance metrics, revenue attribution, and market impact.</li>
-	<li>Leverage automated reporting pipelines to accurately forecast SP business weekly and drive pipeline development across multiple SP partners.</li>
+	<li><strong>Strategic Vision &amp; Ownership: </strong>Architect and execute master multi-year partner account strategies for Tier-1 Service Providers, aligning deep technical integration with macro APAC business expansion and automated growth models.<br><strong>Ecosystem &amp; Joint Venture Innovation:</strong> Conceptualize, structure, and launch high-impact joint ventures, co-investment frameworks, and repeatable solution stacks that combine Cloudflare’s edge platform with partner core offerings to capture dominating market share.</li>
+	<li><strong>Architecture &amp; Offer Development:</strong> Lead the co-creation of next-generation, cloud-native services and managed solution offerings, setting the regional standard for how SP/MSSP partners build, package, and monetize on Cloudflare’s architecture.</li>
+	<li><strong>C-Suite &amp; Executive Alignment:&nbsp;</strong>Forge, nurture, and leverage C-level relationships (CEO, CTO, Chief Revenue Officer) across the SP landscape to position Cloudflare as an indispensable strategic partner and secure long-term board-level commitments.</li>
+	<li><strong>Operational Scale &amp; Framework Design:&nbsp;</strong>Champion the regional rollout of scalable, automated enablement frameworks, standardized reference architectures, and self-sustaining partner delivery models in collaboration with global product and engineering leads.</li>
+	<li><strong>Strategic Governance &amp; Data Intelligence:</strong> Direct regional business reviews and quarterly planning, utilizing advanced data layers to evaluate ecosystem health, map revenue attribution, and optimize market penetration strategy.</li>
+	<li><strong>Ecosystem Forecasting &amp; Pipeline Leadership:&nbsp;</strong>Oversee high-accuracy, long-range forecasting pipelines across the APAC SP portfolio, driving proactive pipeline generation strategies that consistently outperform regional growth targets.</li>
+	<li><strong>Shape Cloudflare’s priorities:</strong> Bring partner and market insight into internal product, packaging, enablement, and go-to-market decisions. Serve as the senior voice of the APAC Service Provider ecosystem inside Cloudflare.</li>
+	<li><strong>Lead through influence:</strong> Mobilize virtual teams across Sales, Solutions Engineering, Product, Engineering, Marketing, Legal, Finance, and partner organizations without relying on direct reporting authority.</li>
+	<li><strong>Represent Cloudflare in the market:</strong> Act as a senior spokesperson with Service Provider executives, industry forums, and ecosystem leaders, helping shape the conversation around the future of cloud connectivity, cybersecurity, and managed services.</li>
 </ul>
 <p><strong>Role Requirements</strong></p>
 <ul>
-	<li>10+ years of experience working with Asia Service Provider partnerships, with a proven track record of driving GTM success.</li>
-	<li>Experience working in the Technology sector, with deep network and/or cybersecurity experience being an absolute must.</li>
-	<li>Strong background in business development with Service Providers, with the ability to independently build strategies while navigating matrixed corporate environments.</li>
-	<li>Executive presence, negotiation skills, and a demonstrated ability to manage large enterprise partnerships and complex stakeholder environments.</li>
-	<li>Familiarity with data-driven decision-making and comfort operating alongside automated pipelines, tools, and modern data layers.</li>
-	<li>Excellent communication and presentation skills, with the ability to influence and motivate cross-functional teams.</li>
-	<li>Ability to travel 30-40% of the time across the APAC region.</li>
-	<li>Relevant Bachelor’s Degree.</li>
-	<li>Experience or familiarity with modern development workflows, automation tools, or AI-driven cloud operating ecosystems.</li>
-	<li>Established executive relationships within the tier-1 telecommunications industry across Asia.</li>
+	<li>15+ years of extensive senior-level experience building and scaling significant Service Provider, telecommunications, MSSP, cloud, or technology-platform partnerships across multiple APAC markets. Evidence of impact is valued more than a fixed number of years.</li>
+	<li>Recognized industry expertise in the Cybersecurity, Edge Computing, and Networking sectors, with a profound understanding of modern cloud platform economics.</li>
+	<li>Exceptional track record of negotiating complex, high-stakes corporate agreements and driving consensus within highly matrixed, global enterprise environments.</li>
+	<li>Demonstrated capability to design long-term business development strategies independently while orchestrating cross-functional teams across Sales, Engineering, Product, and Marketing.</li>
+	<li>High fluency in leveraging enterprise data architectures, AI-driven workflows, and automated pipeline tooling to inform strategic decisions and scale operational reach.</li>
+	<li>Demonstrated ability to build trusted C-suite and senior executive relationships across the APAC Service Provider ecosystem; an established regional network is highly valued.</li>
+	<li>Executive communication, negotiation, and storytelling skills, with the ability to simplify complex market and technology shifts into clear decisions and mobilize senior stakeholders.</li>
+	<li>Ability to travel 30–40% across the APAC region.</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
