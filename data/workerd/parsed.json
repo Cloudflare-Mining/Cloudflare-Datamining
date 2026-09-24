@@ -4244,6 +4244,13 @@
 						"experimental": true
 					},
 					"type": "Bool"
+				},
+				{
+					"name": "durableObjectIoTasksPreventEviction",
+					"annotations": {
+						"compatEnableFlag": "durable_object_io_tasks_prevent_eviction"
+					},
+					"type": "Bool"
 				}
 			]
 		},
