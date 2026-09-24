@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+September 24, 2026 [<h2>How Cloudflare addressed a cross-tenant data exposure vulnerability in Containers</h2>](https://blog.cloudflare.com/containers-cross-tenant-vulnerability/)
+
+External security researchers at Accomplish identified a vulnerability in Cloudflare Containers that could expose residual disk data from previous workloads. We explain how the issue worked, how we investigated it, and the steps we took to remediate it.
+
+![Rushil Mehra](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46J6BD75BMVWF262C8M1AN.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Cody Roseborough](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M38E1YCKQQ7SK9HMG29XA6XQ.01M38E1ZKXSRPP7CARW0XHHGHQ.png&w=64&h=64&f=webp&fit=cover&position=center)![Avishek Sarkar](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M38E47B3HVDJXBZ730J0520B.01M38E484WQSDS96PP5Z1H7JYR.png&w=64&h=64&f=webp&fit=cover&position=center)![Hrushikesh Deshpande](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46TCFGG70368SEB6CXEHN8.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Rushil Mehra](https://blog.cloudflare.com/author/rushil-mehra/),  [Cody Roseborough](https://blog.cloudflare.com/author/cody-roseborough/),  [Avishek Sarkar](https://blog.cloudflare.com/author/avishek-sarkar/), and  [Hrushikesh Deshpande](https://blog.cloudflare.com/author/hrushikesh-deshpande/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M38DQFQRTYYSM43H964E1E3F.01M38DQGBNEE0N3C6WAXNMGS0H.png&w=1200&h=675&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/containers-cross-tenant-vulnerability/)
+
 September 22, 2026 [<h2>We just shipped support for the ugliest part of HTTP: Vary</h2>](https://blog.cloudflare.com/vary-support/)
 
 Vary support is now available in Cache Rules on every plan. You can normalize known negotiation headers, pass exact values through to the origin when those small differences matter, or bypass cache when the variation is too unpredictable.
@@ -17,8 +27,6 @@ Vary support is now available in Cache Rules on every plan. You can normalize kn
 ![Alex Krivit](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Q0QQ4YF44E63CZ5V25R6.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Zaidoon Abd Al Hadi](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VAC8T0NPDPFZ06GAZW3H.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Alex Krivit](https://blog.cloudflare.com/author/alex/) and  [Zaidoon Abd Al Hadi](https://blog.cloudflare.com/author/zaidoon/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2RH1BWX8086HXJT21CBD9PE.01M2RH1CGYTGNVA73ZP6Z4GJBR.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/vary-support/)
 
 September 22, 2026 [<h2>Introducing Worker Previews: Isolated preview environments for every change your agent makes</h2>](https://blog.cloudflare.com/worker-previews/)
 
@@ -155,14 +163,6 @@ Cloudflare's new Bot Preference Sync automatically aligns your robots.txt file w
 ![Jin-Hee Lee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GG1XJCDV61NM8YJGK6YN.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Jin-Hee Lee](https://blog.cloudflare.com/author/jin-hee-lee/)
-
-August 20, 2026 [<h2>From all-or-nothing to task-based OAuth consent</h2>](https://blog.cloudflare.com/task-based-oauth-consent/)
-
-Cloudflare OAuth now supports optional scopes, giving users more control over what an app can access and helping developers build secure consent flows around the task at hand.
-
-![Miller Vargas](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0E2HM2Z37MDHV3RTS1N280R.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Adam Bouhmad](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46V48CPK64MWTYNSCVTA3E.webp&w=64&h=64&f=webp&fit=cover&position=center)![José Enrique Rodríguez](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0E2KF6STNPG58C7R3CDSF28.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Miller Vargas](https://blog.cloudflare.com/author/miller-vargas/),  [Adam Bouhmad](https://blog.cloudflare.com/author/adam-bouhmad/), and  [José Enrique Rodríguez](https://blog.cloudflare.com/author/jose-enrique-rodriguez/)
 
 Load more
 
