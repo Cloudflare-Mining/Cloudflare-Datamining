@@ -174,12 +174,16 @@
 																"x-auditable": true
 															},
 															"is_pending_reconnect": {
-																"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																"type": "boolean",
-																"example": false,
-																"deprecated": true,
-																"x-fern-ignore": true,
-																"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																"allOf": [
+																	{
+																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																		"type": "boolean",
+																		"example": false,
+																		"deprecated": true,
+																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																	}
+																],
+																"x-fern-ignore": true
 															},
 															"opened_at": {
 																"description": "Timestamp of when the connection was established.",
@@ -443,12 +447,16 @@
 																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
-																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																		"type": "boolean",
-																		"example": false,
-																		"deprecated": true,
-																		"x-fern-ignore": true,
-																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																		"allOf": [
+																			{
+																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																				"type": "boolean",
+																				"example": false,
+																				"deprecated": true,
+																				"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																			}
+																		],
+																		"x-fern-ignore": true
 																	},
 																	"opened_at": {
 																		"description": "Timestamp of when the connection was established.",
@@ -1209,12 +1217,16 @@
 																"x-auditable": true
 															},
 															"is_pending_reconnect": {
-																"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																"type": "boolean",
-																"example": false,
-																"deprecated": true,
-																"x-fern-ignore": true,
-																"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																"allOf": [
+																	{
+																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																		"type": "boolean",
+																		"example": false,
+																		"deprecated": true,
+																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																	}
+																],
+																"x-fern-ignore": true
 															},
 															"opened_at": {
 																"description": "Timestamp of when the connection was established.",
@@ -1459,12 +1471,16 @@
 																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
-																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																		"type": "boolean",
-																		"example": false,
-																		"deprecated": true,
-																		"x-fern-ignore": true,
-																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																		"allOf": [
+																			{
+																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																				"type": "boolean",
+																				"example": false,
+																				"deprecated": true,
+																				"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																			}
+																		],
+																		"x-fern-ignore": true
 																	},
 																	"opened_at": {
 																		"description": "Timestamp of when the connection was established.",
@@ -2008,12 +2024,16 @@
 																	"x-auditable": true
 																},
 																"is_pending_reconnect": {
-																	"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																	"type": "boolean",
-																	"example": false,
-																	"deprecated": true,
-																	"x-fern-ignore": true,
-																	"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																	"allOf": [
+																		{
+																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																			"type": "boolean",
+																			"example": false,
+																			"deprecated": true,
+																			"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																		}
+																	],
+																	"x-fern-ignore": true
 																},
 																"opened_at": {
 																	"description": "Timestamp of when the connection was established.",
@@ -2322,12 +2342,16 @@
 																			"x-auditable": true
 																		},
 																		"is_pending_reconnect": {
-																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																			"type": "boolean",
-																			"example": false,
-																			"deprecated": true,
-																			"x-fern-ignore": true,
-																			"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																			"allOf": [
+																				{
+																					"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																					"type": "boolean",
+																					"example": false,
+																					"deprecated": true,
+																					"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																				}
+																			],
+																			"x-fern-ignore": true
 																		},
 																		"opened_at": {
 																			"description": "Timestamp of when the connection was established.",
@@ -2742,12 +2766,16 @@
 																"x-auditable": true
 															},
 															"is_pending_reconnect": {
-																"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																"type": "boolean",
-																"example": false,
-																"deprecated": true,
-																"x-fern-ignore": true,
-																"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																"allOf": [
+																	{
+																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																		"type": "boolean",
+																		"example": false,
+																		"deprecated": true,
+																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																	}
+																],
+																"x-fern-ignore": true
 															},
 															"opened_at": {
 																"description": "Timestamp of when the connection was established.",
@@ -3011,12 +3039,16 @@
 																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
-																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																		"type": "boolean",
-																		"example": false,
-																		"deprecated": true,
-																		"x-fern-ignore": true,
-																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																		"allOf": [
+																			{
+																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																				"type": "boolean",
+																				"example": false,
+																				"deprecated": true,
+																				"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																			}
+																		],
+																		"x-fern-ignore": true
 																	},
 																	"opened_at": {
 																		"description": "Timestamp of when the connection was established.",
@@ -3462,12 +3494,16 @@
 																	"x-auditable": true
 																},
 																"is_pending_reconnect": {
-																	"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																	"type": "boolean",
-																	"example": false,
-																	"deprecated": true,
-																	"x-fern-ignore": true,
-																	"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																	"allOf": [
+																		{
+																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																			"type": "boolean",
+																			"example": false,
+																			"deprecated": true,
+																			"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																		}
+																	],
+																	"x-fern-ignore": true
 																},
 																"opened_at": {
 																	"description": "Timestamp of when the connection was established.",
@@ -3713,12 +3749,16 @@
 																			"x-auditable": true
 																		},
 																		"is_pending_reconnect": {
-																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																			"type": "boolean",
-																			"example": false,
-																			"deprecated": true,
-																			"x-fern-ignore": true,
-																			"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																			"allOf": [
+																				{
+																					"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																					"type": "boolean",
+																					"example": false,
+																					"deprecated": true,
+																					"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																				}
+																			],
+																			"x-fern-ignore": true
 																		},
 																		"opened_at": {
 																			"description": "Timestamp of when the connection was established.",
@@ -4081,12 +4121,16 @@
 																"x-auditable": true
 															},
 															"is_pending_reconnect": {
-																"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																"type": "boolean",
-																"example": false,
-																"deprecated": true,
-																"x-fern-ignore": true,
-																"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																"allOf": [
+																	{
+																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																		"type": "boolean",
+																		"example": false,
+																		"deprecated": true,
+																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																	}
+																],
+																"x-fern-ignore": true
 															},
 															"opened_at": {
 																"description": "Timestamp of when the connection was established.",
@@ -4287,12 +4331,16 @@
 																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
-																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																		"type": "boolean",
-																		"example": false,
-																		"deprecated": true,
-																		"x-fern-ignore": true,
-																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																		"allOf": [
+																			{
+																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																				"type": "boolean",
+																				"example": false,
+																				"deprecated": true,
+																				"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																			}
+																		],
+																		"x-fern-ignore": true
 																	},
 																	"opened_at": {
 																		"description": "Timestamp of when the connection was established.",
@@ -5163,12 +5211,16 @@
 																			"x-auditable": true
 																		},
 																		"is_pending_reconnect": {
-																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																			"type": "boolean",
-																			"example": false,
-																			"deprecated": true,
-																			"x-fern-ignore": true,
-																			"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																			"allOf": [
+																				{
+																					"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																					"type": "boolean",
+																					"example": false,
+																					"deprecated": true,
+																					"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																				}
+																			],
+																			"x-fern-ignore": true
 																		},
 																		"opened_at": {
 																			"description": "Timestamp of when the connection was established.",
@@ -5327,12 +5379,16 @@
 																			"x-auditable": true
 																		},
 																		"is_pending_reconnect": {
-																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																			"type": "boolean",
-																			"example": false,
-																			"deprecated": true,
-																			"x-fern-ignore": true,
-																			"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																			"allOf": [
+																				{
+																					"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																					"type": "boolean",
+																					"example": false,
+																					"deprecated": true,
+																					"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																				}
+																			],
+																			"x-fern-ignore": true
 																		},
 																		"opened_at": {
 																			"description": "Timestamp of when the connection was established.",
@@ -5636,12 +5692,16 @@
 																					"x-auditable": true
 																				},
 																				"is_pending_reconnect": {
-																					"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																					"type": "boolean",
-																					"example": false,
-																					"deprecated": true,
-																					"x-fern-ignore": true,
-																					"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																					"allOf": [
+																						{
+																							"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																							"type": "boolean",
+																							"example": false,
+																							"deprecated": true,
+																							"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																						}
+																					],
+																					"x-fern-ignore": true
 																				},
 																				"opened_at": {
 																					"description": "Timestamp of when the connection was established.",
@@ -5800,12 +5860,16 @@
 																					"x-auditable": true
 																				},
 																				"is_pending_reconnect": {
-																					"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																					"type": "boolean",
-																					"example": false,
-																					"deprecated": true,
-																					"x-fern-ignore": true,
-																					"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																					"allOf": [
+																						{
+																							"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																							"type": "boolean",
+																							"example": false,
+																							"deprecated": true,
+																							"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																						}
+																					],
+																					"x-fern-ignore": true
 																				},
 																				"opened_at": {
 																					"description": "Timestamp of when the connection was established.",
@@ -6340,12 +6404,16 @@
 																	"x-auditable": true
 																},
 																"is_pending_reconnect": {
-																	"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																	"type": "boolean",
-																	"example": false,
-																	"deprecated": true,
-																	"x-fern-ignore": true,
-																	"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																	"allOf": [
+																		{
+																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																			"type": "boolean",
+																			"example": false,
+																			"deprecated": true,
+																			"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																		}
+																	],
+																	"x-fern-ignore": true
 																},
 																"opened_at": {
 																	"description": "Timestamp of when the connection was established.",
@@ -6635,12 +6703,16 @@
 																			"x-auditable": true
 																		},
 																		"is_pending_reconnect": {
-																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																			"type": "boolean",
-																			"example": false,
-																			"deprecated": true,
-																			"x-fern-ignore": true,
-																			"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																			"allOf": [
+																				{
+																					"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																					"type": "boolean",
+																					"example": false,
+																					"deprecated": true,
+																					"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																				}
+																			],
+																			"x-fern-ignore": true
 																		},
 																		"opened_at": {
 																			"description": "Timestamp of when the connection was established.",
@@ -7031,12 +7103,16 @@
 																"x-auditable": true
 															},
 															"is_pending_reconnect": {
-																"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																"type": "boolean",
-																"example": false,
-																"deprecated": true,
-																"x-fern-ignore": true,
-																"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																"allOf": [
+																	{
+																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																		"type": "boolean",
+																		"example": false,
+																		"deprecated": true,
+																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																	}
+																],
+																"x-fern-ignore": true
 															},
 															"opened_at": {
 																"description": "Timestamp of when the connection was established.",
@@ -7281,12 +7357,16 @@
 																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
-																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																		"type": "boolean",
-																		"example": false,
-																		"deprecated": true,
-																		"x-fern-ignore": true,
-																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																		"allOf": [
+																			{
+																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																				"type": "boolean",
+																				"example": false,
+																				"deprecated": true,
+																				"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																			}
+																		],
+																		"x-fern-ignore": true
 																	},
 																	"opened_at": {
 																		"description": "Timestamp of when the connection was established.",
@@ -9251,12 +9331,16 @@
 																"x-auditable": true
 															},
 															"is_pending_reconnect": {
-																"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																"type": "boolean",
-																"example": false,
-																"deprecated": true,
-																"x-fern-ignore": true,
-																"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																"allOf": [
+																	{
+																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																		"type": "boolean",
+																		"example": false,
+																		"deprecated": true,
+																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																	}
+																],
+																"x-fern-ignore": true
 															},
 															"opened_at": {
 																"description": "Timestamp of when the connection was established.",
@@ -9520,12 +9604,16 @@
 																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
-																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																		"type": "boolean",
-																		"example": false,
-																		"deprecated": true,
-																		"x-fern-ignore": true,
-																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																		"allOf": [
+																			{
+																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																				"type": "boolean",
+																				"example": false,
+																				"deprecated": true,
+																				"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																			}
+																		],
+																		"x-fern-ignore": true
 																	},
 																	"opened_at": {
 																		"description": "Timestamp of when the connection was established.",
@@ -9946,12 +10034,16 @@
 																"x-auditable": true
 															},
 															"is_pending_reconnect": {
-																"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																"type": "boolean",
-																"example": false,
-																"deprecated": true,
-																"x-fern-ignore": true,
-																"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																"allOf": [
+																	{
+																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																		"type": "boolean",
+																		"example": false,
+																		"deprecated": true,
+																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																	}
+																],
+																"x-fern-ignore": true
 															},
 															"opened_at": {
 																"description": "Timestamp of when the connection was established.",
@@ -10196,12 +10288,16 @@
 																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
-																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																		"type": "boolean",
-																		"example": false,
-																		"deprecated": true,
-																		"x-fern-ignore": true,
-																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																		"allOf": [
+																			{
+																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																				"type": "boolean",
+																				"example": false,
+																				"deprecated": true,
+																				"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																			}
+																		],
+																		"x-fern-ignore": true
 																	},
 																	"opened_at": {
 																		"description": "Timestamp of when the connection was established.",
@@ -10626,12 +10722,16 @@
 																"x-auditable": true
 															},
 															"is_pending_reconnect": {
-																"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																"type": "boolean",
-																"example": false,
-																"deprecated": true,
-																"x-fern-ignore": true,
-																"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																"allOf": [
+																	{
+																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																		"type": "boolean",
+																		"example": false,
+																		"deprecated": true,
+																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																	}
+																],
+																"x-fern-ignore": true
 															},
 															"opened_at": {
 																"description": "Timestamp of when the connection was established.",
@@ -10895,12 +10995,16 @@
 																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
-																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																		"type": "boolean",
-																		"example": false,
-																		"deprecated": true,
-																		"x-fern-ignore": true,
-																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																		"allOf": [
+																			{
+																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																				"type": "boolean",
+																				"example": false,
+																				"deprecated": true,
+																				"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																			}
+																		],
+																		"x-fern-ignore": true
 																	},
 																	"opened_at": {
 																		"description": "Timestamp of when the connection was established.",
@@ -11688,12 +11792,16 @@
 																"x-auditable": true
 															},
 															"is_pending_reconnect": {
-																"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																"type": "boolean",
-																"example": false,
-																"deprecated": true,
-																"x-fern-ignore": true,
-																"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																"allOf": [
+																	{
+																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																		"type": "boolean",
+																		"example": false,
+																		"deprecated": true,
+																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																	}
+																],
+																"x-fern-ignore": true
 															},
 															"opened_at": {
 																"description": "Timestamp of when the connection was established.",
@@ -11938,12 +12046,16 @@
 																		"x-auditable": true
 																	},
 																	"is_pending_reconnect": {
-																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
-																		"type": "boolean",
-																		"example": false,
-																		"deprecated": true,
-																		"x-fern-ignore": true,
-																		"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																		"allOf": [
+																			{
+																				"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+																				"type": "boolean",
+																				"example": false,
+																				"deprecated": true,
+																				"x-stainless-deprecation-message": "This functionality has been removed. The is_pending_reconnect field will now always report false."
+																			}
+																		],
+																		"x-fern-ignore": true
 																	},
 																	"opened_at": {
 																		"description": "Timestamp of when the connection was established.",

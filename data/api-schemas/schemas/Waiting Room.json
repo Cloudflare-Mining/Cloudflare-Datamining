@@ -27,12 +27,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Delete waiting room response",
@@ -46,6 +40,79 @@
 									"allOf": [
 										{
 											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"type": "object",
+													"nullable": true
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
 											"required": [
 												"success",
 												"errors",
@@ -106,6 +173,79 @@
 											"allOf": [
 												{
 													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"type": "object",
+															"nullable": true
+														},
+														"success": {
+															"type": "boolean"
+														}
+													},
 													"required": [
 														"success",
 														"errors",
@@ -284,7 +424,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "waiting-rooms",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes the waiting room from the zone."
 	},
 	"DELETE /zones/{zone_id}/waiting_rooms/{waiting_room_id}/events/{event_id}": {
 		"operationId": "waiting-room-delete-event",
@@ -324,12 +465,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Delete event response",
@@ -343,6 +478,79 @@
 									"allOf": [
 										{
 											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"type": "object",
+													"nullable": true
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
 											"required": [
 												"success",
 												"errors",
@@ -403,6 +611,79 @@
 											"allOf": [
 												{
 													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"type": "object",
+															"nullable": true
+														},
+														"success": {
+															"type": "boolean"
+														}
+													},
 													"required": [
 														"success",
 														"errors",
@@ -581,7 +862,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "waiting-rooms.events",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes the event from the waiting room."
 	},
 	"DELETE /zones/{zone_id}/waiting_rooms/{waiting_room_id}/rules/{rule_id}": {
 		"operationId": "waiting-room-delete-waiting-room-rule",
@@ -622,12 +904,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Delete Waiting Room Rule response",
@@ -1155,7 +1431,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "waiting-rooms.rules",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes the rule from the waiting room."
 	},
 	"GET /accounts/{account_id}/waiting_rooms": {
 		"operationId": "waiting-room-list-waiting-rooms-account",
@@ -1436,6 +1713,7 @@
 															"da-DK",
 															"fi-FI",
 															"lt-LT",
+															"lv-LV",
 															"ms-MY",
 															"nb-NO",
 															"ro-RO",
@@ -1868,6 +2146,7 @@
 																	"da-DK",
 																	"fi-FI",
 																	"lt-LT",
+																	"lv-LV",
 																	"ms-MY",
 																	"nb-NO",
 																	"ro-RO",
@@ -2472,6 +2751,7 @@
 															"da-DK",
 															"fi-FI",
 															"lt-LT",
+															"lv-LV",
 															"ms-MY",
 															"nb-NO",
 															"ro-RO",
@@ -2904,6 +3184,7 @@
 																	"da-DK",
 																	"fi-FI",
 																	"lt-LT",
+																	"lv-LV",
 																	"ms-MY",
 																	"nb-NO",
 																	"ro-RO",
@@ -3271,6 +3552,79 @@
 									"allOf": [
 										{
 											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"type": "object",
+													"nullable": true
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
 											"required": [
 												"success",
 												"errors",
@@ -3404,6 +3758,7 @@
 														"da-DK",
 														"fi-FI",
 														"lt-LT",
+														"lv-LV",
 														"ms-MY",
 														"nb-NO",
 														"ro-RO",
@@ -3608,6 +3963,79 @@
 											"allOf": [
 												{
 													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"type": "object",
+															"nullable": true
+														},
+														"success": {
+															"type": "boolean"
+														}
+													},
 													"required": [
 														"success",
 														"errors",
@@ -3741,6 +4169,7 @@
 																"da-DK",
 																"fi-FI",
 																"lt-LT",
+																"lv-LV",
 																"ms-MY",
 																"nb-NO",
 																"ro-RO",
@@ -4858,6 +5287,79 @@
 									"allOf": [
 										{
 											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"type": "object",
+													"nullable": true
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
 											"required": [
 												"success",
 												"errors",
@@ -5042,6 +5544,79 @@
 											"allOf": [
 												{
 													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"type": "object",
+															"nullable": true
+														},
+														"success": {
+															"type": "boolean"
+														}
+													},
 													"required": [
 														"success",
 														"errors",
@@ -5398,6 +5973,79 @@
 									"allOf": [
 										{
 											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"type": "object",
+													"nullable": true
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
 											"required": [
 												"success",
 												"errors",
@@ -5543,6 +6191,79 @@
 											"allOf": [
 												{
 													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"type": "object",
+															"nullable": true
+														},
+														"success": {
+															"type": "boolean"
+														}
+													},
 													"required": [
 														"success",
 														"errors",
@@ -6408,6 +7129,79 @@
 									"allOf": [
 										{
 											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"type": "object",
+													"nullable": true
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
 											"required": [
 												"success",
 												"errors",
@@ -6491,6 +7285,79 @@
 											"allOf": [
 												{
 													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"type": "object",
+															"nullable": true
+														},
+														"success": {
+															"type": "boolean"
+														}
+													},
 													"required": [
 														"success",
 														"errors",
@@ -6726,6 +7593,79 @@
 									"allOf": [
 										{
 											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"type": "object",
+													"nullable": true
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
 											"required": [
 												"success",
 												"errors",
@@ -6794,6 +7734,79 @@
 											"allOf": [
 												{
 													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"type": "object",
+															"nullable": true
+														},
+														"success": {
+															"type": "boolean"
+														}
+													},
 													"required": [
 														"success",
 														"errors",
@@ -7114,6 +8127,7 @@
 									"da-DK",
 									"fi-FI",
 									"lt-LT",
+									"lv-LV",
 									"ms-MY",
 									"nb-NO",
 									"ro-RO",
@@ -7291,6 +8305,79 @@
 									"allOf": [
 										{
 											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"type": "object",
+													"nullable": true
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
 											"required": [
 												"success",
 												"errors",
@@ -7424,6 +8511,7 @@
 														"da-DK",
 														"fi-FI",
 														"lt-LT",
+														"lv-LV",
 														"ms-MY",
 														"nb-NO",
 														"ro-RO",
@@ -7628,6 +8716,79 @@
 											"allOf": [
 												{
 													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"type": "object",
+															"nullable": true
+														},
+														"success": {
+															"type": "boolean"
+														}
+													},
 													"required": [
 														"success",
 														"errors",
@@ -7761,6 +8922,7 @@
 																"da-DK",
 																"fi-FI",
 																"lt-LT",
+																"lv-LV",
 																"ms-MY",
 																"nb-NO",
 																"ro-RO",
@@ -8263,6 +9425,79 @@
 									"allOf": [
 										{
 											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"type": "object",
+													"nullable": true
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
 											"required": [
 												"success",
 												"errors",
@@ -8447,6 +9682,79 @@
 											"allOf": [
 												{
 													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"type": "object",
+															"nullable": true
+														},
+														"success": {
+															"type": "boolean"
+														}
+													},
 													"required": [
 														"success",
 														"errors",
@@ -9452,6 +10760,79 @@
 									"allOf": [
 										{
 											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"type": "object",
+													"nullable": true
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
 											"required": [
 												"success",
 												"errors",
@@ -9520,6 +10901,79 @@
 											"allOf": [
 												{
 													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"type": "object",
+															"nullable": true
+														},
+														"success": {
+															"type": "boolean"
+														}
+													},
 													"required": [
 														"success",
 														"errors",
@@ -9829,6 +11283,7 @@
 									"da-DK",
 									"fi-FI",
 									"lt-LT",
+									"lv-LV",
 									"ms-MY",
 									"nb-NO",
 									"ro-RO",
@@ -10006,6 +11461,79 @@
 									"allOf": [
 										{
 											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"type": "object",
+													"nullable": true
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
 											"required": [
 												"success",
 												"errors",
@@ -10139,6 +11667,7 @@
 														"da-DK",
 														"fi-FI",
 														"lt-LT",
+														"lv-LV",
 														"ms-MY",
 														"nb-NO",
 														"ro-RO",
@@ -10343,6 +11872,79 @@
 											"allOf": [
 												{
 													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"type": "object",
+															"nullable": true
+														},
+														"success": {
+															"type": "boolean"
+														}
+													},
 													"required": [
 														"success",
 														"errors",
@@ -10476,6 +12078,7 @@
 																"da-DK",
 																"fi-FI",
 																"lt-LT",
+																"lv-LV",
 																"ms-MY",
 																"nb-NO",
 																"ro-RO",
@@ -10968,6 +12571,79 @@
 									"allOf": [
 										{
 											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"type": "object",
+													"nullable": true
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
 											"required": [
 												"success",
 												"errors",
@@ -11152,6 +12828,79 @@
 											"allOf": [
 												{
 													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"type": "object",
+															"nullable": true
+														},
+														"success": {
+															"type": "boolean"
+														}
+													},
 													"required": [
 														"success",
 														"errors",
@@ -12105,6 +13854,79 @@
 									"allOf": [
 										{
 											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"type": "object",
+													"nullable": true
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
 											"required": [
 												"success",
 												"errors",
@@ -12166,6 +13988,79 @@
 											"allOf": [
 												{
 													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"type": "object",
+															"nullable": true
+														},
+														"success": {
+															"type": "boolean"
+														}
+													},
 													"required": [
 														"success",
 														"errors",
@@ -12478,6 +14373,7 @@
 									"da-DK",
 									"fi-FI",
 									"lt-LT",
+									"lv-LV",
 									"ms-MY",
 									"nb-NO",
 									"ro-RO",
@@ -12655,6 +14551,79 @@
 									"allOf": [
 										{
 											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"type": "object",
+													"nullable": true
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
 											"required": [
 												"success",
 												"errors",
@@ -12788,6 +14757,7 @@
 														"da-DK",
 														"fi-FI",
 														"lt-LT",
+														"lv-LV",
 														"ms-MY",
 														"nb-NO",
 														"ro-RO",
@@ -12992,6 +14962,79 @@
 											"allOf": [
 												{
 													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"type": "object",
+															"nullable": true
+														},
+														"success": {
+															"type": "boolean"
+														}
+													},
 													"required": [
 														"success",
 														"errors",
@@ -13125,6 +15168,7 @@
 																"da-DK",
 																"fi-FI",
 																"lt-LT",
+																"lv-LV",
 																"ms-MY",
 																"nb-NO",
 																"ro-RO",
@@ -13627,6 +15671,79 @@
 									"allOf": [
 										{
 											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"type": "object",
+													"nullable": true
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
 											"required": [
 												"success",
 												"errors",
@@ -13811,6 +15928,79 @@
 											"allOf": [
 												{
 													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"type": "object",
+															"nullable": true
+														},
+														"success": {
+															"type": "boolean"
+														}
+													},
 													"required": [
 														"success",
 														"errors",
@@ -14770,6 +16960,79 @@
 									"allOf": [
 										{
 											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"type": "object",
+													"nullable": true
+												},
+												"success": {
+													"type": "boolean"
+												}
+											},
 											"required": [
 												"success",
 												"errors",
@@ -14838,6 +17101,79 @@
 											"allOf": [
 												{
 													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"type": "object",
+															"nullable": true
+														},
+														"success": {
+															"type": "boolean"
+														}
+													},
 													"required": [
 														"success",
 														"errors",

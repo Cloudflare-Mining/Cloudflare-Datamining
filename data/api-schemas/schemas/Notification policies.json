@@ -839,6 +839,18 @@
 																	"x-auditable": true
 																}
 															},
+															"token_id": {
+																"description": "Access service token IDs to include for expiring_service_token_alert. Omit this property to include all current and future service tokens.",
+																"type": "array",
+																"items": {
+																	"minLength": 1,
+																	"pattern": "\\S",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"minItems": 1,
+																"uniqueItems": true
+															},
 															"traffic_exclusions": {
 																"description": "Used for configuring traffic_anomalies_alert",
 																"type": "array",
@@ -1628,6 +1640,18 @@
 																"x-auditable": true
 															}
 														},
+														"token_id": {
+															"description": "Access service token IDs to include for expiring_service_token_alert. Omit this property to include all current and future service tokens.",
+															"type": "array",
+															"items": {
+																"minLength": 1,
+																"pattern": "\\S",
+																"type": "string",
+																"x-auditable": true
+															},
+															"minItems": 1,
+															"uniqueItems": true
+														},
 														"traffic_exclusions": {
 															"description": "Used for configuring traffic_anomalies_alert",
 															"type": "array",
@@ -2275,6 +2299,18 @@
 																		"type": "string",
 																		"x-auditable": true
 																	}
+																},
+																"token_id": {
+																	"description": "Access service token IDs to include for expiring_service_token_alert. Omit this property to include all current and future service tokens.",
+																	"type": "array",
+																	"items": {
+																		"minLength": 1,
+																		"pattern": "\\S",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"minItems": 1,
+																	"uniqueItems": true
 																},
 																"traffic_exclusions": {
 																	"description": "Used for configuring traffic_anomalies_alert",
@@ -3231,6 +3267,18 @@
 											"type": "string",
 											"x-auditable": true
 										}
+									},
+									"token_id": {
+										"description": "Access service token IDs to include for expiring_service_token_alert. Omit this property to include all current and future service tokens.",
+										"type": "array",
+										"items": {
+											"minLength": 1,
+											"pattern": "\\S",
+											"type": "string",
+											"x-auditable": true
+										},
+										"minItems": 1,
+										"uniqueItems": true
 									},
 									"traffic_exclusions": {
 										"description": "Used for configuring traffic_anomalies_alert",
@@ -4591,6 +4639,18 @@
 											"type": "string",
 											"x-auditable": true
 										}
+									},
+									"token_id": {
+										"description": "Access service token IDs to include for expiring_service_token_alert. Omit this property to include all current and future service tokens.",
+										"type": "array",
+										"items": {
+											"minLength": 1,
+											"pattern": "\\S",
+											"type": "string",
+											"x-auditable": true
+										},
+										"minItems": 1,
+										"uniqueItems": true
 									},
 									"traffic_exclusions": {
 										"description": "Used for configuring traffic_anomalies_alert",
