@@ -1690,6 +1690,33 @@
 		"__description": "",
 		"durationMs": "Confidence interval for the corresponding point estimate"
 	},
+	"AccountArtifactsStorageAdaptiveGroups": {
+		"__description": "Artifacts repository storage snapshots with adaptive sampling",
+		"dimensions": "List of dimensions to group by",
+		"max": "The max of values for a metric per dimension"
+	},
+	"AccountArtifactsStorageAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "The date the storage snapshot was recorded",
+		"datetime": "The date and time the storage snapshot was recorded",
+		"datetimeFifteenMinutes": "The date and time the storage snapshot was recorded, truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time the storage snapshot was recorded, truncated to five minutes",
+		"datetimeHour": "The date and time the storage snapshot was recorded, truncated to the hour",
+		"datetimeMinute": "The date and time the storage snapshot was recorded, truncated to the minute",
+		"datetimeSixHours": "The date and time the storage snapshot was recorded, truncated to start of six hour window",
+		"repositoryName": "The name of the repository within its namespace",
+		"repositoryNamespace": "The namespace of the repository"
+	},
+	"AccountArtifactsStorageAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountArtifactsStorageAdaptiveGroupsMax": {
+		"__description": "",
+		"repositorySizeBytes": "The maximum size of the repository (measured in bytes) observed over the queried time period."
+	},
+	"AccountArtifactsStorageAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountAuditLogsGroups": {
 		"__description": "Audit log events grouped by account, time, actor, action, and resource dimensions.",
 		"count": "The number of audit log events.",
@@ -7477,6 +7504,36 @@
 		"bits": "Confidence interval for the corresponding point estimate",
 		"packets": "Confidence interval for the corresponding point estimate"
 	},
+	"AccountMagicTransitFragNeededErrorsAdaptiveGroups": {
+		"__description": "Network analytics data for Magic Transit ICMP frag needed traffic",
+		"confidence": "ALPHA - DO NOT USE",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountMagicTransitFragNeededErrorsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountMagicTransitFragNeededErrorsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"datetimeFiveMinutes": "",
+		"ipDestinationAddress": "Value of the Destination Address header field in the IPv4 or IPv6 packet"
+	},
+	"AccountMagicTransitFragNeededErrorsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMagicTransitFragNeededErrorsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountMagicTransitFragNeededErrorsAdaptiveGroupsSum": {
+		"__description": "",
+		"packets": "Sum of packets received"
+	},
+	"AccountMagicTransitFragNeededErrorsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"packets": "Confidence interval for the corresponding point estimate"
+	},
 	"AccountMagicTransitNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Magic Transit traffic",
 		"avg": "The average of values for a metric per dimension",
@@ -9245,7 +9302,8 @@
 		"__description": "Aggregated OHTTP relay request metrics with adaptive sampling",
 		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of OHTTP relay requests",
-		"dimensions": "List of dimensions to group by"
+		"dimensions": "List of dimensions to group by",
+		"quantiles": ""
 	},
 	"AccountOhttpRelayRequestMetricsAdaptiveGroupsConfidence": {
 		"__description": "",
@@ -9269,6 +9327,16 @@
 	},
 	"AccountOhttpRelayRequestMetricsAdaptiveGroupsOrderBy": {
 		"__description": ""
+	},
+	"AccountOhttpRelayRequestMetricsAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"processingDurationMsP25": "Time spent processing the request before sending it upstream in milliseconds (25th percentile)",
+		"processingDurationMsP50": "Time spent processing the request before sending it upstream in milliseconds (50th percentile)",
+		"processingDurationMsP75": "Time spent processing the request before sending it upstream in milliseconds (75th percentile)",
+		"processingDurationMsP90": "Time spent processing the request before sending it upstream in milliseconds (90th percentile)",
+		"processingDurationMsP95": "Time spent processing the request before sending it upstream in milliseconds (95th percentile)",
+		"processingDurationMsP99": "Time spent processing the request before sending it upstream in milliseconds (99th percentile)",
+		"processingDurationMsP999": "Time spent processing the request before sending it upstream in milliseconds (99.9th percentile)"
 	},
 	"AccountPageShieldReportsAdaptiveGroups": {
 		"__description": "Page Shield CSP reports",
@@ -11173,6 +11241,7 @@
 		"aiSearchIngestedItemsAdaptiveGroups": "",
 		"aiSearchPublicEventsAdaptiveGroups": "",
 		"artifactsEventsAdaptiveGroups": "",
+		"artifactsStorageAdaptiveGroups": "",
 		"auditLogsGroups": "",
 		"autoRAGConfigAPIAdaptiveGroups": "",
 		"autoRAGEngineAdaptiveGroups": "",
@@ -11268,6 +11337,7 @@
 		"magicFirewallRateLimitNetworkAnalyticsAdaptiveGroups": "",
 		"magicFirewallSamplesAdaptiveGroups": "",
 		"magicIDPSNetworkAnalyticsAdaptiveGroups": "",
+		"magicTransitFragNeededErrorsAdaptiveGroups": "",
 		"magicTransitNetworkAnalyticsAdaptiveGroups": "",
 		"magicTransitTunnelHealthCheckSLOsAdaptiveGroups": "",
 		"magicTransitTunnelHealthChecksAdaptiveGroups": "",
@@ -17097,6 +17167,7 @@
 		"aiSearchIngestedItemsAdaptiveGroups": "AI Search Ingested Items Analytics",
 		"aiSearchPublicEventsAdaptiveGroups": "AI Search public endpoint analytics: searches, result clicks and view-more interactions reported by the public search snippet",
 		"artifactsEventsAdaptiveGroups": "Artifacts events with adaptive sampling",
+		"artifactsStorageAdaptiveGroups": "Artifacts repository storage snapshots with adaptive sampling",
 		"auditLogsGroups": "Audit log events grouped by account, time, actor, action, and resource dimensions.",
 		"autoRAGConfigAPIAdaptiveGroups": "AutoRAG Config API Search Analytics",
 		"autoRAGEngineAdaptiveGroups": "AutoRAG Engine Ingestion Analytics",
@@ -17192,6 +17263,7 @@
 		"magicFirewallRateLimitNetworkAnalyticsAdaptiveGroups": "Network analytics data for Magic Firewall Ratelimiting",
 		"magicFirewallSamplesAdaptiveGroups": "Data to visualize traffic allowed and blocked by Magic Firewall rules",
 		"magicIDPSNetworkAnalyticsAdaptiveGroups": "Network analytics data for Magic IDS",
+		"magicTransitFragNeededErrorsAdaptiveGroups": "Network analytics data for Magic Transit ICMP frag needed traffic",
 		"magicTransitNetworkAnalyticsAdaptiveGroups": "Network analytics data for Magic Transit traffic",
 		"magicTransitTunnelHealthCheckSLOsAdaptiveGroups": "Magic Transit Tunnel Health Check SLO events with adaptive sampling.",
 		"magicTransitTunnelHealthChecksAdaptiveGroups": "Beta. Magic Transit Health check results for customer GRE Tunnels with adaptive sampling (ABR).",
