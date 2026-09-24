@@ -271,11 +271,11 @@ Upon graduation, you have a few options depending on your setup:
 
 The Startup Program is a one-time opportunity per startup and credits cannot be transferred between accounts. However, if you manage multiple distinct startups, you are welcome to apply for each one using different account IDs and email addresses.
 
-###### How long does approval take, and how will I be notified?
+###### How long does approval take and how will I be notified?
 
 Our review process typically takes up to 48 hours. Once approved, you'll receive a confirmation email at the address provided in your application form.
 
-* **Haven't heard back?** Please check your spam folder or reach out to us at [startups@cloudflare.com](mailto:startups@cloudflare.com).
+* **Haven't heard back?** We are a small team and do our best to be responsive. Please check your spam folder or, if it has been longer than a week reach out to us at [startups@cloudflare.com](mailto:startups@cloudflare.com).
 * **Was your application rejected?** Our team will always provide a reason for the decision. If you believe you qualify and can provide supporting information, we're happy to re-evaluate your application.
 
 ###### What support do I have access to?
