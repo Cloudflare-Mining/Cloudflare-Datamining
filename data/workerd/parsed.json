@@ -4365,6 +4365,21 @@
 			]
 		},
 		{
+			"name": "workerd/src/workerd/io/trace.capnp:SpanStatus",
+			"fields": [
+				{
+					"name": "code",
+					"annotations": {},
+					"type": "workerd/src/workerd/io/trace.capnp:SpanStatusCode"
+				},
+				{
+					"name": "message",
+					"annotations": {},
+					"type": "workerd/src/workerd/io/trace.capnp:SpanStatus.message"
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/io/trace.capnp:UserSpanData",
 			"fields": [
 				{
@@ -8366,6 +8381,23 @@
 				},
 				{
 					"name": "aborted",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/io/trace.capnp:SpanStatusCode",
+			"enumerants": [
+				{
+					"name": "unset",
+					"annotations": {}
+				},
+				{
+					"name": "ok",
+					"annotations": {}
+				},
+				{
+					"name": "error",
 					"annotations": {}
 				}
 			]
