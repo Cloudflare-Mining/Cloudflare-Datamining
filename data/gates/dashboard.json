@@ -217,6 +217,9 @@
 	"aig-insights-custom-attribution": {
 		"enabled": true
 	},
+	"aig-model-aliases": {
+		"enabled": false
+	},
 	"aig-policies": {
 		"enabled": true
 	},
@@ -2440,6 +2443,12 @@
 	},
 	"r2-bandwidth-metrics": {
 		"enabled": true
+	},
+	"r2-bucket-bandwidth-metrics": {
+		"enabled": false
+	},
+	"r2-bucket-traffic-overview": {
+		"enabled": false
 	},
 	"r2-data-access-logs": {
 		"enabled": true
