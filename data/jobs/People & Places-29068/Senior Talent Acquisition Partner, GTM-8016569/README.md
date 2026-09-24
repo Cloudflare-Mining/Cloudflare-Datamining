@@ -3,65 +3,36 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3>Available Locations</h3>
+<h2>Available Locations</h2>
 <ul>
-	<li>Atlanta, US</li>
 	<li>Austin, US</li>
-	<li>Denver, US</li>
-	<li>New York, US</li>
 </ul>
-<p><strong>Applications will be accepted until November 01, 2026.</strong></p>
-<p><strong>Role summary&nbsp;</strong></p>
-<p>In this role, you will focus on the buildout and expansion of our global network infrastructure across 700+ datacenter locations. You will work closely with Cloudflare’s Site Reliability Engineering (SRE) team, Network Engineering team, and various global partners—including hardware vendors, datacenter providers, and ISPs—to aggressively scale and maintain our physical footprint. This is a highly visible position requiring a strong blend of physical networking knowledge, datacenter infrastructure expertise, basic data analysis, and proactive project coordination.</p>
-<p>&nbsp;</p>
-<p><strong>Role Responsibilities</strong></p>
+<h2>About the Role</h2>
+<p>We are hiring for a&nbsp;<strong>Senior Talent Acquisition Business Partner&nbsp;</strong>to join our Americas (AMER) team. In this role, you will act as a true talent advisor and go-to-market specialist, driving the expansion of hiring across the region. You will operate autonomously, utilizing your deep market expertise, AI-driven strategies, and extensive network to hire top-tier talent for Cloudflare.</p>
+<h2>Responsibilities</h2>
 <ul>
-	<li><strong>Provisioning &amp; Deployment:</strong> Provision, configure, monitor, and maintain physical hardware, networking devices, and software in both greenfield deployments and brownfield migrations.</li>
-	<li><strong>Remote Datacenter Operations:</strong> Perform server administration remotely using IPMI/BMC out-of-band management tools for server provisioning, troubleshooting, and firmware updates.</li>
-	<li><strong>Automation &amp; AI Workflows:</strong> Build scripts using Python and other tools to eliminate repetitive toil. Actively leverage and develop agentic AI tools to reduce administrative overhead.</li>
-	<li><strong>Vendor &amp; Contractor Management:</strong> Direct remote hands and field contractors on rack-and-stack installations, optical cross-connects, cable management, power (AC/DC), and cooling requirements.</li>
-	<li><strong>Technical Guidance:</strong> Provide technical leadership to remote contractors and junior team members during on-site deployments, walking them through configurations and quality control.</li>
-	<li><strong>Documentation &amp; Process Improvement:</strong> Create and maintain standardized SOPs, MOPs, runbooks, and visibility metrics to ensure operational consistency across all global regions.</li>
-	<li><strong>Cross-Functional Collaboration:</strong> Partner with Infrastructure Planning, SRE, and Network Engineering teams on global expansion projects. Limited travel required.</li>
+	<li><strong>End-to-End Recruitment &amp; Talent Strategy:</strong>&nbsp;Build and execute comprehensive talent strategies to help hiring leaders build high-performing teams, functioning similarly to how a salesperson puts together a go-to-market plan.</li>
+	<li><strong>Proactive Pipeline &amp; Passive Candidate Outreach:</strong> Draw upon an extensive network of industry contacts to build proactive pipeline strategies for a variety of roles.</li>
+	<li><strong>Stakeholder Management &amp; Advising:</strong> Build and maintain solid relationships with AMER leadership and cross-functional stakeholders, including Finance, HRBPs, and compensation teams.</li>
+	<li><strong>AI-Agent Integration &amp; Process Optimization:</strong>&nbsp;Partner with internal automated AI agents and generative tools to eliminate legacy manual tasks, optimize administrative outreach workflows at scale, and synthesize complex market data to inform regional talent strategies.</li>
+	<li><strong>Data Utilization &amp; Analytics:</strong>&nbsp;Leverage foundational data layers and recruitment analytics to inform talent strategies, actively analyzing metrics such as time-to-hire and source efficiency to drive optimal operational decisions.</li>
+	<li><strong>Employer Branding &amp; Market Awareness:</strong> Lead and execute strategic employer branding initiatives tailored to the AMER market to elevate Cloudflare's profile as a top destination for talent.</li>
 </ul>
-<p><strong>Role Requirements&nbsp;</strong></p>
-<p><strong>Must-Have Skills</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
-	<li><strong>5+ years</strong> of hands-on experience in Data Center Operations, Network Engineering, Linux System Administration, SRE, or DevOps.</li>
-	<li><strong>Datacenter Infrastructure:</strong> In-depth knowledge of physical power/cooling, optics (CWDM/DWDM), cable standards, and remote "lights-out" management (IPMI/BMC).</li>
-	<li><strong>Networking Foundations:</strong> Strong grasp of network protocols, topologies, and design, with experience troubleshooting physical and logical network connectivity.</li>
-	<li><strong>Automation &amp; Tooling:</strong> Proficient in writing Python or Bash scripts to automate operational tasks. Experience using or building agentic AI tools for workflow efficiency is required.</li>
-	<li><strong>Configuration Management:</strong> Hands-on experience with tools such as SaltStack, Ansible, Puppet, or Chef.</li>
-	<li><strong>Operational Drive:</strong> Proven capability to manage global vendors, anticipate blockers before execution, spot failure patterns, and write precise MOPs/SOPs.</li>
+	<li><strong>Strategic Problem Solving:</strong>&nbsp;Ability to operate two "plays" ahead, anticipating potential bottlenecks before they materialize, and resolving complex organizational issues with high autonomy.</li>
+	<li><strong>Negotiation &amp; Closing Skills:</strong>&nbsp;Effective negotiation capabilities to secure top-tier candidates, driven by a deep understanding of Cloudflare's unique value proposition.</li>
+	<li><strong>AI &amp; Ecosystem Proficiency:</strong>&nbsp;Demonstrated capability to leverage automated workflows, AI-powered sourcing environments, and LLMs for complex boolean logic, market mapping, and productivity multiplication.</li>
+	<li><strong>Candidate Experience Focus:</strong>&nbsp;Strong organizational skills to eliminate operational friction, ensuring clear communication and proactive engagement throughout the interview lifecycle.</li>
+	<li><strong>Communication &amp; Feedback:</strong>&nbsp;Exceptional written and verbal communication skills with the ability to influence and advise senior stakeholders across the Americas region.</li>
+	<li><strong>Adaptability &amp; Self-Direction:</strong>&nbsp;Comfort thriving in ever-changing environments, taking complete responsibility for outcomes while seamlessly navigating an evolving technological and organizational landscape.</li>
 </ul>
-<p><strong>Nice-To-Have Skills</strong></p>
-<ul>
-	<li>Bachelor’s degree in Computer Science, Engineering, MIS, or equivalent practical experience.</li>
-	<li>Familiarity with network NOS platforms: Juniper Junos, Cisco IOS/NX-OS, Arista EOS, SONiC, Ciena, or Nokia/Infinera.</li>
-	<li>Core internet routing knowledge (BGP, Anycast) and load balancing concepts (Nginx, HAProxy).</li>
-	<li>Basic program management experience using JIRA, Excel, or Google Sheets to track multi-region rollouts.</li>
-	<li>Multi-lingual capabilities and experience managing infrastructure across diverse international regions.</li>
-	<li>Linux certifications (RHCSA/RHCE) or programming experience in Go.</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Professional level network certification(s) (JNCIP, CCNP, etc) or higher.</li>
-	<li>Linux certifications. Experience with continuous / rapid deployment.</li>
-	<li>Experience working in a 24/7/365 mission-critical service environment (on-call rotation required)</li>
-	<li>Knowledge of the OSI-model and experience isolating network, hardware and software issues.</li>
-</ul>
-<h3>&nbsp;</h3>
-<h3>Compensation</h3>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For Colorado based hires: Estimated annual salary of $114,000 - $157,000</li>
-	<li>For New York City, Washington, Washington D.C. based hires: Estimated annual salary of $126,000 - $173,000.</li>
-</ul>
+<h2>Compensation</h2>
 <h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare's equity plan.</p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p>Health &amp; Welfare Benefits</p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<h3>Health &amp; Welfare Benefits</h3>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -72,14 +43,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p>Financial Benefits</p>
+<h3>Financial Benefits</h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p>Time Off</p>
+<h3>Time Off</h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
