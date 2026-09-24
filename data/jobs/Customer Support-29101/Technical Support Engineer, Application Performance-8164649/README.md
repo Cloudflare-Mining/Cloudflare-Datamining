@@ -3,47 +3,43 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: London</strong></p>
-<p><strong>About the Team</strong></p>
-<p>The Cloudflare Data Intelligence &amp; Analytics (DIA) team has built a unified data &amp; ML platform to provide our internal Business Partners with actionable analytics, insights, and recommendations.</p>
-<p>Our goals are to:</p>
+<p><strong>Available Locations: </strong>Hybrid - Austin, TX</p>
+<p><strong>Schedule: </strong>This is a full-time, Tuesday-Saturday role requiring a firm start time of 11:00 AM Central Time to align with our global operations. This role requires you to be able to come into our Austin office twice a week.</p>
+<h4>About the Department</h4>
+<p>The Customer Support Team is dedicated to resolving complex issues and providing technical assistance across various channels, including phone, email, chat, and social media. Our team passionately advocates for all customers, from individual Wordpress bloggers to Fortune 500 customers handling millions of clients daily. By actively listening to real-world pain points and use cases, we serve as the vital link between our customers and the rest of Cloudflare and play a key role in building a better Internet every day!</p>
+<h4>What You’ll do</h4>
+<p>As a Technical Support Engineer at Cloudflare, you’ll work directly with customers and cross-functional teams to tackle a variety of technical challenges. You’ll gain hands-on experience with our products, learn the inner workings of Cloudflare’s offerings, and deepen your understanding of internet technologies. This role also provides opportunities to develop valuable technical and professional skills, as well as job shadowing experiences to explore different roles within the company. Join us to enhance your skill set while making a real impact!</p>
+<h4>Responsibilities&nbsp;</h4>
 <ul>
-	<li>Democratize data &amp; intelligence for humans and agents</li>
-	<li>Build a context layer and an AI systems layer upon our unified data &amp; content platform</li>
-	<li>Support Cloudflare’s critical business needs</li>
+	<li>Fulfill support requests by communicating with Cloudflare customers via chat, email, and phone</li>
+	<li>Collaborate with senior engineers to analyze and troubleshoot customer issues</li>
+	<li>Track support requests using our ticketing system</li>
+	<li>Participate in team meetings to discuss and share feedback</li>
+	<li>Help define and update AI skills and conversational journeys to ensure up-to-date knowledge is available in automated workflows, as well as updating other internal- and public-facing documentation as needed.</li>
+	<li>Provide feedback on our product and potential improvements based on customer interactions</li>
+	<li>Support the team in testing new releases and reporting bugs</li>
+	<li>Perform other duties/projects as assigned&nbsp;</li>
 </ul>
-<p>DIA is a ~ 75-member strong geographically distributed but organizationally centralized team. This role is within the growth &amp; adoption analytics pod based in London that works across several business functions, offering broad exposure to Cloudflare's entire business.</p>
-<p><strong>Role Summary</strong></p>
-<p>We are looking for an experienced Senior Data Analyst in London to scale our growth &amp; adoption analytics initiatives. You will be a trusted data advisor to our business partners, a technical coach to your peers, and the lead in terms of shaping AI-first data models, workflows, and agent-ready-datasets.</p>
-<p>Success in this role will rely on marrying a strong analytics background with product and business acumen to deliver highly strategic and compelling insights that accelerate growth and influence adoption. This role also requires a deep understanding of data infrastructure, job orchestration, and lineage, all with the use of AI-tooling as default.</p>
-<p><strong>Role Responsibilities</strong></p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>Own the development and maintenance of agent-ready curated datasets end-to-end</li>
-	<li>Provide analytics support and a strategic perspective to our business partners</li>
-	<li>Partner with data engineers, product managers, and stakeholders to enable data-driven answers to key business problems</li>
-	<li>Review Merge Requests created by your team of humans and agents</li>
-	<li>Take initiative to gather requirements, define, build, and maintain pipelines and metrics</li>
-	<li>Tell easily digestible and highly actionable stories with data to help stakeholders understand analytical insights</li>
+	<li>3-5 years of experience working in a technical Customer Support role, preferably as part of a team working with large enterprise customers</li>
+	<li>Self-driven and comfortable learning new technologies and systems on an ongoing basis</li>
+	<li>Excellent written and verbal communication skills</li>
+	<li>Strong understanding of how the Internet works at OSI Model layers 3, 4, and 7</li>
+	<li>Strong understanding of DNS, SSL/TLS, and HTTP(S) protocols</li>
+	<li>General understanding of HTTP reverse proxying, caching, and load balancing</li>
+	<li>Experience using Linux and associated command line tools, including curl, dig, traceroute, openssl, git, etc.</li>
+	<li>Experience writing scripts in Bash, Python, JavaScript, or other scripting languages</li>
+	<li>Experience installing and configuring web servers like Apache, Nginx, and/or IIS</li>
 </ul>
-<p><strong>Role Requirements</strong></p>
+<h4>Bonus Points</h4>
 <ul>
-	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields</li>
-	<li>Demonstrable proficiency with analytics-relevant AI-tooling</li>
-	<li>4+ years experience in a centralized data analytics teams in close partnership with business stakeholders</li>
-	<li>Expert-level proficiency in writing and optimizing complex SQL queries is mandatory, with a proven ability to performance-tune complex queries and manage analysis workflows against large, petabyte-scale datasets (Candidates will be assessed on advanced SQL skills including window functions and common table expressions (CTEs))</li>
-	<li>3+ years experience working in version control environments using platforms such as Gitlab or Github</li>
-	<li>2+ years experience working with job orchestration tools like Apache Airflow, both as a pipeline developer and reviewer</li>
-	<li>2+ years experience with data ingestion and transformation frameworks (e.g., dbt, Fivetran, or custom/in-house developed platforms)</li>
-	<li>Initiative, curiosity, strong stakeholder engagement, and empathy</li>
-	<li>Experience translating business questions into analysis frameworks, converting results into business recommendations, and presenting those to stakeholders</li>
+	<li>Prior experience with the Cloudflare platform, especially for personal projects/websites</li>
+	<li>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</li>
+	<li>Experience configuring network or application firewalls</li>
+	<li>Degrees or certifications in Computer Science, Information Technology, and related fields</li>
+	<li>Fluency in Mandarin, Spanish, and/or Portuguese</li>
 </ul>
-<p><strong>Nice-to-Have Experience</strong></p>
-<ul>
-	<li>Experience and/or a keen interest in internet security, protocols, and edge-development</li>
-	<li>Analytics experience in a fast-growing technology, SaaS, or subscription-based business</li>
-	<li>Experience with statistical analysis programming languages (Python, R etc.)</li>
-</ul>
-<p>&nbsp;</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
