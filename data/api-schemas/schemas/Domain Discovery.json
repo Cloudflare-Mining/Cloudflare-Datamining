@@ -387,29 +387,42 @@
 																"example": "example.com"
 															},
 															"pricing": {
-																"description": "Provides annual pricing information for a registrable domain. This object\nappears only when `registrable` is `true`. The API returns all per-year\nprices as strings to preserve decimal precision.\n\n`registration_cost` and `renewal_cost` frequently have the same value, but\nmay differ, especially when registries set different premium rates for\ninitial registration and renewal. For a multi-year registration (e.g., 4\nyears), `registration_cost` applies to the first year and `renewal_cost`\napplies to each subsequent year. The values reflect the current registry\nrate, which may change over time. Search and Check may surface premium\npricing, but this API currently supports standard registrations only.\n",
-																"type": "object",
-																"properties": {
-																	"currency": {
-																		"description": "ISO-4217 currency code for the prices (e.g., \"USD\", \"EUR\", \"GBP\").",
-																		"type": "string",
-																		"example": "USD"
+																"allOf": [
+																	{
+																		"description": "Provides annual pricing information for a given domain.\nThe API returns all per-year prices as strings to preserve decimal precision.\n\n`renewal_cost` and `registration_cost` or `transfer_cost` are frequently the same value,\nbut may differ due to premium rates for certain domains.\n\nFor a multi-year operations, the operation's cost applies to the first year\nand `renewal_cost` applies to each subsequent year. The values reflect the current\nregistry rate, which can change over time.\n",
+																		"type": "object",
+																		"properties": {
+																			"currency": {
+																				"description": "ISO-4217 currency code for the prices (e.g., \"USD\", \"EUR\", \"GBP\").",
+																				"type": "string",
+																				"example": "USD"
+																			},
+																			"renewal_cost": {
+																				"description": "Per-year renewal cost for this domain. Applied to each year beyond\nthe first year of a multi-year registration, and to each annual\nauto-renewal thereafter. May differ from `registration_cost`,\nespecially for premium domains where initial registration often\ncosts more than renewals.\n",
+																				"type": "string",
+																				"example": "8.57"
+																			}
+																		},
+																		"required": [
+																			"currency",
+																			"renewal_cost"
+																		]
 																	},
-																	"registration_cost": {
-																		"description": "The first-year cost to register this domain. For premium domains\n(`tier: premium`), the registry sets this price, which may significantly\nexceed standard pricing. For multi-year registrations, this cost applies\nto the first year only; `renewal_cost` applies to subsequent years.\n",
-																		"type": "string",
-																		"example": "8.57"
-																	},
-																	"renewal_cost": {
-																		"description": "Per-year renewal cost for this domain. Applied to each year beyond\nthe first year of a multi-year registration, and to each annual\nauto-renewal thereafter. May differ from `registration_cost`,\nespecially for premium domains where initial registration often\ncosts more than renewals.\n",
-																		"type": "string",
-																		"example": "8.57"
+																	{
+																		"properties": {
+																			"registration_cost": {
+																				"description": "The first-year cost to register this domain.",
+																				"type": "string",
+																				"example": "8.57"
+																			}
+																		},
+																		"required": [
+																			"currency",
+																			"renewal_cost",
+																			"registration_cost"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"currency",
-																	"registration_cost",
-																	"renewal_cost"
 																]
 															},
 															"reason": {
@@ -1015,29 +1028,42 @@
 																"example": "example.com"
 															},
 															"pricing": {
-																"description": "Provides annual pricing information for a registrable domain. This object\nappears only when `registrable` is `true`. The API returns all per-year\nprices as strings to preserve decimal precision.\n\n`registration_cost` and `renewal_cost` frequently have the same value, but\nmay differ, especially when registries set different premium rates for\ninitial registration and renewal. For a multi-year registration (e.g., 4\nyears), `registration_cost` applies to the first year and `renewal_cost`\napplies to each subsequent year. The values reflect the current registry\nrate, which may change over time. Search and Check may surface premium\npricing, but this API currently supports standard registrations only.\n",
-																"type": "object",
-																"properties": {
-																	"currency": {
-																		"description": "ISO-4217 currency code for the prices (e.g., \"USD\", \"EUR\", \"GBP\").",
-																		"type": "string",
-																		"example": "USD"
+																"allOf": [
+																	{
+																		"description": "Provides annual pricing information for a given domain.\nThe API returns all per-year prices as strings to preserve decimal precision.\n\n`renewal_cost` and `registration_cost` or `transfer_cost` are frequently the same value,\nbut may differ due to premium rates for certain domains.\n\nFor a multi-year operations, the operation's cost applies to the first year\nand `renewal_cost` applies to each subsequent year. The values reflect the current\nregistry rate, which can change over time.\n",
+																		"type": "object",
+																		"properties": {
+																			"currency": {
+																				"description": "ISO-4217 currency code for the prices (e.g., \"USD\", \"EUR\", \"GBP\").",
+																				"type": "string",
+																				"example": "USD"
+																			},
+																			"renewal_cost": {
+																				"description": "Per-year renewal cost for this domain. Applied to each year beyond\nthe first year of a multi-year registration, and to each annual\nauto-renewal thereafter. May differ from `registration_cost`,\nespecially for premium domains where initial registration often\ncosts more than renewals.\n",
+																				"type": "string",
+																				"example": "8.57"
+																			}
+																		},
+																		"required": [
+																			"currency",
+																			"renewal_cost"
+																		]
 																	},
-																	"registration_cost": {
-																		"description": "The first-year cost to register this domain. For premium domains\n(`tier: premium`), the registry sets this price, which may significantly\nexceed standard pricing. For multi-year registrations, this cost applies\nto the first year only; `renewal_cost` applies to subsequent years.\n",
-																		"type": "string",
-																		"example": "8.57"
-																	},
-																	"renewal_cost": {
-																		"description": "Per-year renewal cost for this domain. Applied to each year beyond\nthe first year of a multi-year registration, and to each annual\nauto-renewal thereafter. May differ from `registration_cost`,\nespecially for premium domains where initial registration often\ncosts more than renewals.\n",
-																		"type": "string",
-																		"example": "8.57"
+																	{
+																		"properties": {
+																			"registration_cost": {
+																				"description": "The first-year cost to register this domain.",
+																				"type": "string",
+																				"example": "8.57"
+																			}
+																		},
+																		"required": [
+																			"currency",
+																			"renewal_cost",
+																			"registration_cost"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"currency",
-																	"registration_cost",
-																	"renewal_cost"
 																]
 															},
 															"reason": {
@@ -1650,29 +1676,42 @@
 																"example": "example.com"
 															},
 															"pricing": {
-																"description": "Provides annual pricing information for a registrable domain. This object\nappears only when `registrable` is `true`. The API returns all per-year\nprices as strings to preserve decimal precision.\n\n`registration_cost` and `renewal_cost` frequently have the same value, but\nmay differ, especially when registries set different premium rates for\ninitial registration and renewal. For a multi-year registration (e.g., 4\nyears), `registration_cost` applies to the first year and `renewal_cost`\napplies to each subsequent year. The values reflect the current registry\nrate, which may change over time. Search and Check may surface premium\npricing, but this API currently supports standard registrations only.\n",
-																"type": "object",
-																"properties": {
-																	"currency": {
-																		"description": "ISO-4217 currency code for the prices (e.g., \"USD\", \"EUR\", \"GBP\").",
-																		"type": "string",
-																		"example": "USD"
+																"allOf": [
+																	{
+																		"description": "Provides annual pricing information for a given domain.\nThe API returns all per-year prices as strings to preserve decimal precision.\n\n`renewal_cost` and `registration_cost` or `transfer_cost` are frequently the same value,\nbut may differ due to premium rates for certain domains.\n\nFor a multi-year operations, the operation's cost applies to the first year\nand `renewal_cost` applies to each subsequent year. The values reflect the current\nregistry rate, which can change over time.\n",
+																		"type": "object",
+																		"properties": {
+																			"currency": {
+																				"description": "ISO-4217 currency code for the prices (e.g., \"USD\", \"EUR\", \"GBP\").",
+																				"type": "string",
+																				"example": "USD"
+																			},
+																			"renewal_cost": {
+																				"description": "Per-year renewal cost for this domain. Applied to each year beyond\nthe first year of a multi-year registration, and to each annual\nauto-renewal thereafter. May differ from `registration_cost`,\nespecially for premium domains where initial registration often\ncosts more than renewals.\n",
+																				"type": "string",
+																				"example": "8.57"
+																			}
+																		},
+																		"required": [
+																			"currency",
+																			"renewal_cost"
+																		]
 																	},
-																	"registration_cost": {
-																		"description": "The first-year cost to register this domain. For premium domains\n(`tier: premium`), the registry sets this price, which may significantly\nexceed standard pricing. For multi-year registrations, this cost applies\nto the first year only; `renewal_cost` applies to subsequent years.\n",
-																		"type": "string",
-																		"example": "8.57"
-																	},
-																	"renewal_cost": {
-																		"description": "Per-year renewal cost for this domain. Applied to each year beyond\nthe first year of a multi-year registration, and to each annual\nauto-renewal thereafter. May differ from `registration_cost`,\nespecially for premium domains where initial registration often\ncosts more than renewals.\n",
-																		"type": "string",
-																		"example": "8.57"
+																	{
+																		"properties": {
+																			"registration_cost": {
+																				"description": "The first-year cost to register this domain.",
+																				"type": "string",
+																				"example": "8.57"
+																			}
+																		},
+																		"required": [
+																			"currency",
+																			"renewal_cost",
+																			"registration_cost"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"currency",
-																	"registration_cost",
-																	"renewal_cost"
 																]
 															},
 															"reason": {
@@ -2305,29 +2344,42 @@
 																"example": "example.com"
 															},
 															"pricing": {
-																"description": "Provides annual pricing information for a registrable domain. This object\nappears only when `registrable` is `true`. The API returns all per-year\nprices as strings to preserve decimal precision.\n\n`registration_cost` and `renewal_cost` frequently have the same value, but\nmay differ, especially when registries set different premium rates for\ninitial registration and renewal. For a multi-year registration (e.g., 4\nyears), `registration_cost` applies to the first year and `renewal_cost`\napplies to each subsequent year. The values reflect the current registry\nrate, which may change over time. Search and Check may surface premium\npricing, but this API currently supports standard registrations only.\n",
-																"type": "object",
-																"properties": {
-																	"currency": {
-																		"description": "ISO-4217 currency code for the prices (e.g., \"USD\", \"EUR\", \"GBP\").",
-																		"type": "string",
-																		"example": "USD"
+																"allOf": [
+																	{
+																		"description": "Provides annual pricing information for a given domain.\nThe API returns all per-year prices as strings to preserve decimal precision.\n\n`renewal_cost` and `registration_cost` or `transfer_cost` are frequently the same value,\nbut may differ due to premium rates for certain domains.\n\nFor a multi-year operations, the operation's cost applies to the first year\nand `renewal_cost` applies to each subsequent year. The values reflect the current\nregistry rate, which can change over time.\n",
+																		"type": "object",
+																		"properties": {
+																			"currency": {
+																				"description": "ISO-4217 currency code for the prices (e.g., \"USD\", \"EUR\", \"GBP\").",
+																				"type": "string",
+																				"example": "USD"
+																			},
+																			"renewal_cost": {
+																				"description": "Per-year renewal cost for this domain. Applied to each year beyond\nthe first year of a multi-year registration, and to each annual\nauto-renewal thereafter. May differ from `registration_cost`,\nespecially for premium domains where initial registration often\ncosts more than renewals.\n",
+																				"type": "string",
+																				"example": "8.57"
+																			}
+																		},
+																		"required": [
+																			"currency",
+																			"renewal_cost"
+																		]
 																	},
-																	"registration_cost": {
-																		"description": "The first-year cost to register this domain. For premium domains\n(`tier: premium`), the registry sets this price, which may significantly\nexceed standard pricing. For multi-year registrations, this cost applies\nto the first year only; `renewal_cost` applies to subsequent years.\n",
-																		"type": "string",
-																		"example": "8.57"
-																	},
-																	"renewal_cost": {
-																		"description": "Per-year renewal cost for this domain. Applied to each year beyond\nthe first year of a multi-year registration, and to each annual\nauto-renewal thereafter. May differ from `registration_cost`,\nespecially for premium domains where initial registration often\ncosts more than renewals.\n",
-																		"type": "string",
-																		"example": "8.57"
+																	{
+																		"properties": {
+																			"registration_cost": {
+																				"description": "The first-year cost to register this domain.",
+																				"type": "string",
+																				"example": "8.57"
+																			}
+																		},
+																		"required": [
+																			"currency",
+																			"renewal_cost",
+																			"registration_cost"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"currency",
-																	"registration_cost",
-																	"renewal_cost"
 																]
 															},
 															"reason": {
@@ -2564,5 +2616,949 @@
 				"positional": true
 			}
 		}
+	},
+	"POST /accounts/{account_id}/registrar/domain-transfer-check": {
+		"operationId": "registrar-domain-discovery-transfer-check",
+		"summary": "Check domain transfer eligibility",
+		"description": "Performs real-time, authoritative eligibility checks directly against needed upstreams.\nUse this endpoint to verify a domain is available before\nattempting a transfer via `POST /registrations/:domain_name/transfer-in`.\n\n**Note:** This endpoint uses POST to accept a list of domains in the request\nbody. It is a read-only operation — it does not create, modify, or reserve\nany domains.\n\n### Behavior\n- Maximum 10 domains per request\n- Pricing is only returned for domains where `transferable: true`\n- Results are not cached; each request queries the registry & other needed upstreams\n\n## Extension Support\n\nAll `.uk` extensions (`.uk`, `.co.uk`, etc) do not support auth codes. As such,\nCloudflare will ignore the `auth_code` section of this request for Nominet domains.\n\nThis means that a `.uk` domain depends on public data to obtain domain information, \nso it might be a few minutes outdated.\n\n### Workflow\n1. Call this endpoint with domains the user wants to transfer.\n2. For each domain where `transferable: true`, present pricing to the user.\n3. For each domain where `transferable: false`, present reasons to the user\n4. Proceed to `POST /registrations/:domain_name/transfer-in` only for the `transferable: true` domains.\n",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID. Required for all Registrar API operations.",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true
+				}
+			}
+		],
+		"requestBody": {
+			"description": "List of transferable domain objects to check.",
+			"required": true,
+			"content": {
+				"application/json": {
+					"examples": {
+						"dot_uk_domain": {
+							"description": "Nominet, which is the `.uk` registry, does not support auth codes.",
+							"summary": "Check a single `.uk` domain",
+							"value": {
+								"domains": [
+									{
+										"domain_name": "example.co.uk"
+									}
+								]
+							}
+						},
+						"multiple_domains": {
+							"summary": "Check multiple domains",
+							"value": {
+								"domains": [
+									{
+										"auth_code": "YXV0aF9jb2RlCg==",
+										"domain_name": "example.com"
+									},
+									{
+										"domain_name": "example.uk"
+									},
+									{
+										"auth_code": "U2xlZXB5IEhvcnNlcwo=",
+										"domain_name": "example.horse"
+									}
+								]
+							}
+						},
+						"single_domain": {
+							"summary": "Check single domain",
+							"value": {
+								"domains": [
+									{
+										"auth_code": "SSdtIGEgc2VjcmV0IDozCg==",
+										"domain_name": "example.com"
+									}
+								]
+							}
+						}
+					},
+					"schema": {
+						"description": "Request body for checking domain transfer eligibility.",
+						"type": "object",
+						"properties": {
+							"domains": {
+								"description": "List of domain objects to evaluate for transfer eligibility.",
+								"type": "array",
+								"items": {
+									"additionalProperties": false,
+									"properties": {
+										"auth_code": {
+											"description": "Base64-encoded auth/EPP code from the current registrar.\nRequired for most TLDs. `.uk` namespaces do not use auth\ncodes.\n",
+											"type": "string",
+											"format": "byte",
+											"example": "YmFzZTY0LWF1dGgtY29kZQ=="
+										},
+										"domain_name": {
+											"description": "Fully qualified domain name (FQDN) to check for transfer eligibility.",
+											"type": "string",
+											"example": "example.com"
+										}
+									},
+									"required": [
+										"domain_name"
+									],
+									"type": "object"
+								},
+								"maxItems": 10,
+								"minItems": 1
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"domains"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Successfully returned transfer eligibility results.\nEach requested domain appears in `result.domains` keyed by domain\nname. A domain result includes `name`, `transferable`, and `reasons`.\n",
+				"content": {
+					"application/json": {
+						"examples": {
+							"all_transferable": {
+								"description": "Every requested domain currently meets transfer prerequisites.",
+								"summary": "All domains transferable",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"domains": {
+											"example.com": {
+												"name": "example.com",
+												"pricing": {
+													"currency": "USD",
+													"renewal_cost": "10.11",
+													"transfer_cost": "8.57"
+												},
+												"reasons": [],
+												"transferable": true
+											},
+											"mybrand.net": {
+												"name": "mybrand.net",
+												"pricing": {
+													"currency": "USD",
+													"renewal_cost": "12.50",
+													"transfer_cost": "9.99"
+												},
+												"reasons": [],
+												"transferable": true
+											}
+										}
+									},
+									"success": true
+								}
+							},
+							"invalid_auth_code": {
+								"description": "The domain exists but the supplied auth code does not pass checks.",
+								"summary": "Invalid auth code",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"domains": {
+											"example.com": {
+												"name": "example.com",
+												"reasons": [
+													{
+														"code": "invalid_auth_code"
+													}
+												],
+												"transferable": false
+											}
+										}
+									},
+									"success": true
+								}
+							},
+							"mixed_eligibility": {
+								"description": "Some domains are transferable while others fail specific checks.",
+								"summary": "Mixed transferability results",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"domains": {
+											"cloudflare.com": {
+												"name": "cloudflare.com",
+												"reasons": [
+													{
+														"code": "domain_on_cloudflare"
+													}
+												],
+												"transferable": false
+											},
+											"locked-example.com": {
+												"name": "locked-example.com",
+												"reasons": [
+													{
+														"code": "domain_locked"
+													}
+												],
+												"transferable": false
+											},
+											"move-ready.net": {
+												"name": "move-ready.net",
+												"pricing": {
+													"currency": "USD",
+													"renewal_cost": "12.50",
+													"transfer_cost": "9.99"
+												},
+												"reasons": [],
+												"transferable": true
+											},
+											"pending-transfer.dev": {
+												"name": "pending-transfer.dev",
+												"reasons": [
+													{
+														"code": "registry_status"
+													}
+												],
+												"transferable": false
+											}
+										}
+									},
+									"success": true
+								}
+							},
+							"partial_upstream_failure": {
+								"description": "One or more domains failed internal upstream checks while others were evaluated successfully.",
+								"summary": "Partial results with top-level errors",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "Internal API failure for domain flaky-example.com",
+											"source": {
+												"pointer": "/domains/1"
+											}
+										}
+									],
+									"messages": [],
+									"result": {
+										"domains": {
+											"stable-example.com": {
+												"name": "stable-example.com",
+												"pricing": {
+													"currency": "USD",
+													"renewal_cost": "10.11",
+													"transfer_cost": "8.57"
+												},
+												"reasons": [],
+												"transferable": true
+											}
+										}
+									},
+									"success": true
+								}
+							},
+							"unsupported_or_invalid_domain": {
+								"description": "Domain-level validation failures are returned as reason codes.",
+								"summary": "Unsupported extension or invalid domain format",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"domains": {
+											"example.horse": {
+												"name": "example.horse",
+												"reasons": [
+													{
+														"code": "extension_not_supported"
+													}
+												],
+												"transferable": false
+											},
+											"invalid@@domain": {
+												"name": "invalid@@domain",
+												"reasons": [
+													{
+														"code": "domain_unsupported"
+													}
+												],
+												"transferable": false
+											}
+										}
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Contains the transfer eligibility results.",
+											"type": "object",
+											"properties": {
+												"domains": {
+													"description": "Maps domain names to transfer eligibility results.\nEach value contains `name`, `transferable`, and `reasons`.\n",
+													"type": "object",
+													"additionalProperties": {
+														"description": "Transfer eligibility for a single domain.\n`reasons` is always present:\n- Empty when `transferable` is `true`.\n- One or more reason objects when `transferable` is `false`.\n",
+														"type": "object",
+														"properties": {
+															"name": {
+																"description": "The check evaluates this domain name.",
+																"type": "string",
+																"example": "example.com"
+															},
+															"pricing": {
+																"allOf": [
+																	{
+																		"description": "Provides annual pricing information for a given domain.\nThe API returns all per-year prices as strings to preserve decimal precision.\n\n`renewal_cost` and `registration_cost` or `transfer_cost` are frequently the same value,\nbut may differ due to premium rates for certain domains.\n\nFor a multi-year operations, the operation's cost applies to the first year\nand `renewal_cost` applies to each subsequent year. The values reflect the current\nregistry rate, which can change over time.\n",
+																		"type": "object",
+																		"properties": {
+																			"currency": {
+																				"description": "ISO-4217 currency code for the prices (e.g., \"USD\", \"EUR\", \"GBP\").",
+																				"type": "string",
+																				"example": "USD"
+																			},
+																			"renewal_cost": {
+																				"description": "Per-year renewal cost for this domain. Applied to each year beyond\nthe first year of a multi-year registration, and to each annual\nauto-renewal thereafter. May differ from `registration_cost`,\nespecially for premium domains where initial registration often\ncosts more than renewals.\n",
+																				"type": "string",
+																				"example": "8.57"
+																			}
+																		},
+																		"required": [
+																			"currency",
+																			"renewal_cost"
+																		]
+																	},
+																	{
+																		"properties": {
+																			"transfer_cost": {
+																				"description": "The first-year cost to transfer this domain.",
+																				"type": "string",
+																				"example": "8.57"
+																			}
+																		},
+																		"required": [
+																			"currency",
+																			"renewal_cost",
+																			"transfer_cost"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"reasons": {
+																"description": "Machine-readable transfer eligibility reasons.",
+																"type": "array",
+																"items": {
+																	"properties": {
+																		"code": {
+																			"description": "Transfer eligibility reason code.\n- `extension_not_supported_via_api`: This API excludes the extension; dashboard flows support it.\n- `extension_not_supported`: Cloudflare Registrar excludes the extension.\n- `domain_premium`: This API currently excludes premium transfers.\n- `extension_disallows_transfer`: Extension currently blocks transfer operations.\n- `domain_not_exists`: No registration record exists for the domain.\n- `domain_on_cloudflare`: Cloudflare already serves as the domain's registrar.\n- `domain_locked`: Losing registrar reports transfer-prohibited lock status.\n- `registry_status`: Registry status currently blocks transfer (for example, pending transfer or deletion state).\n- `domain_outside_transfer_window`: Domain is within a transfer wait window (for example, recently registered).\n- `domain_max_term`: Completing transfer would exceed the registry maximum term.\n- `invalid_auth_code`: The provided auth code is incorrect.\n- `invalid_auth_code_format`: Auth code fails Base64 validation.\n- `dnssec_enabled`: DNSSEC is enabled. It must be disabled before transfer.\n- `zone_not_found`: The target account lacks a Cloudflare zone for the domain.\n- `zone_status_invalid`: The Cloudflare zone cannot transfer in its current state.\n- `invalid_zone_plan`: The zone plan fails transfer requirements.\n- `domain_unsupported`: This endpoint rejects the domain name format.\n",
+																			"type": "string",
+																			"example": "domain_locked",
+																			"enum": [
+																				"extension_not_supported_via_api",
+																				"extension_not_supported",
+																				"domain_premium",
+																				"extension_disallows_transfer",
+																				"domain_not_exists",
+																				"domain_on_cloudflare",
+																				"domain_locked",
+																				"registry_status",
+																				"domain_outside_transfer_window",
+																				"domain_max_term",
+																				"invalid_auth_code",
+																				"invalid_auth_code_format",
+																				"dnssec_enabled",
+																				"zone_not_found",
+																				"zone_status_invalid",
+																				"invalid_zone_plan",
+																				"domain_unsupported"
+																			]
+																		}
+																	},
+																	"required": [
+																		"code"
+																	],
+																	"type": "object"
+																}
+															},
+															"transferable": {
+																"description": "Indicates whether this API can currently transfer the domain.\n- `true`: Transfer prerequisites pass.\n- `false`: One or more prerequisites fail. See `reasons`.\n",
+																"type": "boolean",
+																"example": false
+															}
+														},
+														"oneOf": [
+															{
+																"properties": {
+																	"reasons": {
+																		"type": "array",
+																		"items": {
+																			"properties": {
+																				"code": {
+																					"description": "Transfer eligibility reason code.\n- `extension_not_supported_via_api`: This API excludes the extension; dashboard flows support it.\n- `extension_not_supported`: Cloudflare Registrar excludes the extension.\n- `domain_premium`: This API currently excludes premium transfers.\n- `extension_disallows_transfer`: Extension currently blocks transfer operations.\n- `domain_not_exists`: No registration record exists for the domain.\n- `domain_on_cloudflare`: Cloudflare already serves as the domain's registrar.\n- `domain_locked`: Losing registrar reports transfer-prohibited lock status.\n- `registry_status`: Registry status currently blocks transfer (for example, pending transfer or deletion state).\n- `domain_outside_transfer_window`: Domain is within a transfer wait window (for example, recently registered).\n- `domain_max_term`: Completing transfer would exceed the registry maximum term.\n- `invalid_auth_code`: The provided auth code is incorrect.\n- `invalid_auth_code_format`: Auth code fails Base64 validation.\n- `dnssec_enabled`: DNSSEC is enabled. It must be disabled before transfer.\n- `zone_not_found`: The target account lacks a Cloudflare zone for the domain.\n- `zone_status_invalid`: The Cloudflare zone cannot transfer in its current state.\n- `invalid_zone_plan`: The zone plan fails transfer requirements.\n- `domain_unsupported`: This endpoint rejects the domain name format.\n",
+																					"type": "string",
+																					"example": "domain_locked",
+																					"enum": [
+																						"extension_not_supported_via_api",
+																						"extension_not_supported",
+																						"domain_premium",
+																						"extension_disallows_transfer",
+																						"domain_not_exists",
+																						"domain_on_cloudflare",
+																						"domain_locked",
+																						"registry_status",
+																						"domain_outside_transfer_window",
+																						"domain_max_term",
+																						"invalid_auth_code",
+																						"invalid_auth_code_format",
+																						"dnssec_enabled",
+																						"zone_not_found",
+																						"zone_status_invalid",
+																						"invalid_zone_plan",
+																						"domain_unsupported"
+																					]
+																				}
+																			},
+																			"required": [
+																				"code"
+																			],
+																			"type": "object"
+																		},
+																		"maxItems": 0
+																	},
+																	"transferable": {
+																		"type": "boolean",
+																		"enum": [
+																			true
+																		]
+																	}
+																},
+																"required": [
+																	"pricing",
+																	"transferable"
+																],
+																"title": "Transferable Result",
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"reasons": {
+																		"type": "array",
+																		"items": {
+																			"properties": {
+																				"code": {
+																					"description": "Transfer eligibility reason code.\n- `extension_not_supported_via_api`: This API excludes the extension; dashboard flows support it.\n- `extension_not_supported`: Cloudflare Registrar excludes the extension.\n- `domain_premium`: This API currently excludes premium transfers.\n- `extension_disallows_transfer`: Extension currently blocks transfer operations.\n- `domain_not_exists`: No registration record exists for the domain.\n- `domain_on_cloudflare`: Cloudflare already serves as the domain's registrar.\n- `domain_locked`: Losing registrar reports transfer-prohibited lock status.\n- `registry_status`: Registry status currently blocks transfer (for example, pending transfer or deletion state).\n- `domain_outside_transfer_window`: Domain is within a transfer wait window (for example, recently registered).\n- `domain_max_term`: Completing transfer would exceed the registry maximum term.\n- `invalid_auth_code`: The provided auth code is incorrect.\n- `invalid_auth_code_format`: Auth code fails Base64 validation.\n- `dnssec_enabled`: DNSSEC is enabled. It must be disabled before transfer.\n- `zone_not_found`: The target account lacks a Cloudflare zone for the domain.\n- `zone_status_invalid`: The Cloudflare zone cannot transfer in its current state.\n- `invalid_zone_plan`: The zone plan fails transfer requirements.\n- `domain_unsupported`: This endpoint rejects the domain name format.\n",
+																					"type": "string",
+																					"example": "domain_locked",
+																					"enum": [
+																						"extension_not_supported_via_api",
+																						"extension_not_supported",
+																						"domain_premium",
+																						"extension_disallows_transfer",
+																						"domain_not_exists",
+																						"domain_on_cloudflare",
+																						"domain_locked",
+																						"registry_status",
+																						"domain_outside_transfer_window",
+																						"domain_max_term",
+																						"invalid_auth_code",
+																						"invalid_auth_code_format",
+																						"dnssec_enabled",
+																						"zone_not_found",
+																						"zone_status_invalid",
+																						"invalid_zone_plan",
+																						"domain_unsupported"
+																					]
+																				}
+																			},
+																			"required": [
+																				"code"
+																			],
+																			"type": "object"
+																		},
+																		"minItems": 1
+																	},
+																	"transferable": {
+																		"type": "boolean",
+																		"enum": [
+																			false
+																		]
+																	}
+																},
+																"required": [
+																	"transferable"
+																],
+																"title": "Non-Transferable Result",
+																"type": "object"
+															}
+														],
+														"required": [
+															"name",
+															"transferable",
+															"reasons"
+														]
+													}
+												}
+											},
+											"required": [
+												"domains"
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid request body.\nCommon causes include:\n- Missing `domains` array.\n- Empty `domains` array.\n- More than 10 domains in one request.\n- Missing `domain_name` in a domain object.\n- Duplicate domain names in the request list.\n- Unexpected properties in the payload.\n",
+				"content": {
+					"application/json": {
+						"examples": {
+							"domains_missing": {
+								"description": "The root payload must include a `domains` array.",
+								"summary": "Missing domains field",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "object at root is missing required properties: domains",
+											"source": {
+												"pointer": "/domains"
+											}
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"duplicate_domain_name": {
+								"description": "Duplicate domain names are rejected to keep response keys unique.",
+								"summary": "Duplicate domain name",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "Duplicate domain name",
+											"source": {
+												"pointer": "/domains/1"
+											}
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"too_many_domains": {
+								"description": "The request exceeds the maximum limit of 10 domains per request. Split into multiple requests.",
+								"summary": "Too many domains",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "array at `/domains` is too long (maximum: 10)",
+											"source": {
+												"pointer": "/domains"
+											}
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Transfer checks failed for all requested domains due to internal\nupstream errors.\n",
+				"content": {
+					"application/json": {
+						"examples": {
+							"all_domains_failed": {
+								"summary": "All domain checks failed upstream",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "Internal API failure for domain example.com",
+											"source": {
+												"pointer": "/domains/0"
+											}
+										},
+										{
+											"code": 10000,
+											"message": "Internal API failure for domain mybrand.net",
+											"source": {
+												"pointer": "/domains/1"
+											}
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"description": "Location of the invalid value that caused the error.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON Pointer to the invalid or missing request value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"pointer"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Domain Discovery"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "registrar.registrations",
+		"x-fern-sdk-method-name": "transfer-check"
 	}
 }

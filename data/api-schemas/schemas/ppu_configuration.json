@@ -2,7 +2,7 @@
 	"GET /accounts/{account_id}/pay-per-use/operator/configuration": {
 		"operationId": "pay-per-crawl.getPPUOperatorConfiguration",
 		"summary": "Get pay-per-use operator configuration",
-		"description": "Gets the pay-per-use operator configuration for an account, including its read-only non-billable classification.",
+		"description": "Gets the pay-per-use operator configuration for an account, including its read-only non-billable classification timestamp.",
 		"parameters": [
 			{
 				"description": "account id",
@@ -127,9 +127,11 @@
 										"name": {
 											"type": "string"
 										},
-										"non_billable": {
-											"description": "Whether this operator is classified for local-only, non-billable settlement.",
-											"type": "boolean",
+										"non_billable_since": {
+											"description": "When this operator was classified for local-only, non-billable settlement. Null for billable operators. Immutable.",
+											"type": "string",
+											"format": "date-time",
+											"nullable": true,
 											"readOnly": true
 										}
 									},
@@ -137,7 +139,7 @@
 										"name",
 										"enabled",
 										"default_price_usd_microcents",
-										"non_billable"
+										"non_billable_since"
 									]
 								},
 								"result_info": {
@@ -399,6 +401,13 @@
 										},
 										"id": {
 											"type": "string"
+										},
+										"non_billable_since": {
+											"description": "When this zone was classified for local-only, non-billable settlement. Null for billable or unconfigured zones. Immutable.",
+											"type": "string",
+											"format": "date-time",
+											"nullable": true,
+											"readOnly": true
 										}
 									},
 									"required": [
@@ -406,7 +415,8 @@
 										"can_be_enabled",
 										"disabled_at",
 										"expires_at",
-										"enabled"
+										"enabled",
+										"non_billable_since"
 									]
 								},
 								"result_info": {
@@ -495,7 +505,7 @@
 	"GET /zones/{zone_id}/pay-per-use/configuration": {
 		"operationId": "pay-per-crawl.getPPUZoneConfiguration",
 		"summary": "Get pay-per-use zone configuration",
-		"description": "Gets the pay-per-use configuration and zone-level grace period for a zone.",
+		"description": "Gets the pay-per-use configuration, zone-level grace period, and read-only non-billable classification timestamp for a zone.",
 		"parameters": [
 			{
 				"description": "zone id",
@@ -605,32 +615,51 @@
 									}
 								},
 								"result": {
-									"type": "object",
-									"properties": {
-										"can_be_enabled": {
-											"type": "boolean"
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"can_be_enabled": {
+													"type": "boolean"
+												},
+												"disabled_at": {
+													"description": "The start of the current disabled period after an enabled zone is disabled directly or by eligibility revocation. Null before the first disabled period and while enabled. Restoring eligibility alone does not clear it.",
+													"type": "string",
+													"format": "date-time",
+													"nullable": true
+												},
+												"enabled": {
+													"type": "boolean"
+												},
+												"expires_at": {
+													"description": "The exclusive end of the zone-level grace period. Existing agreements remain usable until this time while the zone is disabled. Null while enabled or when a disabled zone has no grace period.",
+													"type": "string",
+													"format": "date-time",
+													"nullable": true
+												}
+											},
+											"required": [
+												"can_be_enabled",
+												"disabled_at",
+												"expires_at",
+												"enabled"
+											]
 										},
-										"disabled_at": {
-											"description": "The start of the current disabled period after an enabled zone is disabled directly or by eligibility revocation. Null before the first disabled period and while enabled. Restoring eligibility alone does not clear it.",
-											"type": "string",
-											"format": "date-time",
-											"nullable": true
-										},
-										"enabled": {
-											"type": "boolean"
-										},
-										"expires_at": {
-											"description": "The exclusive end of the zone-level grace period. Existing agreements remain usable until this time while the zone is disabled. Null while enabled or when a disabled zone has no grace period.",
-											"type": "string",
-											"format": "date-time",
-											"nullable": true
+										{
+											"properties": {
+												"non_billable_since": {
+													"description": "When this zone was classified for local-only, non-billable settlement. Null for billable or unconfigured zones. Immutable.",
+													"type": "string",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true
+												}
+											},
+											"required": [
+												"non_billable_since"
+											],
+											"type": "object"
 										}
-									},
-									"required": [
-										"can_be_enabled",
-										"disabled_at",
-										"expires_at",
-										"enabled"
 									]
 								},
 								"result_info": {
@@ -871,18 +900,12 @@
 										},
 										"name": {
 											"type": "string"
-										},
-										"non_billable": {
-											"description": "Whether this operator is classified for local-only, non-billable settlement.",
-											"type": "boolean",
-											"readOnly": true
 										}
 									},
 									"required": [
 										"name",
 										"enabled",
-										"default_price_usd_microcents",
-										"non_billable"
+										"default_price_usd_microcents"
 									]
 								},
 								"result_info": {
@@ -1886,18 +1909,12 @@
 										},
 										"name": {
 											"type": "string"
-										},
-										"non_billable": {
-											"description": "Whether this operator is classified for local-only, non-billable settlement.",
-											"type": "boolean",
-											"readOnly": true
 										}
 									},
 									"required": [
 										"name",
 										"enabled",
-										"default_price_usd_microcents",
-										"non_billable"
+										"default_price_usd_microcents"
 									]
 								},
 								"result_info": {

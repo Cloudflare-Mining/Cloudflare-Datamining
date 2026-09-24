@@ -833,8 +833,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/devices/policy/{policy_id}/exclude": {
 		"operationId": "devices-delete-split-tunnel-exclude-list-for-a-device-settings-policy",
@@ -1167,8 +1166,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.excludes",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/devices/policy/{policy_id}/fallback_domains": {
 		"operationId": "devices-delete-local-domain-fallback-list-for-a-device-settings-policy",
@@ -1485,8 +1483,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.fallback-domains",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/devices/policy/exclude": {
 		"operationId": "devices-delete-split-tunnel-exclude-list",
@@ -1808,8 +1805,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.excludes",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/devices/policy/fallback_domains": {
 		"operationId": "devices-delete-local-domain-fallback-list",
@@ -2115,8 +2111,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.fallback-domains",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/devices": {
 		"operationId": "devices-list-devices",
@@ -2525,8 +2520,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.v1",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/devices/{device_id}": {
 		"operationId": "devices-device-details",
@@ -2923,8 +2917,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.v1",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/{device_id}/override_codes": {
 		"operationId": "devices-list-admin-override-code-for-device",
@@ -3211,10 +3204,9 @@
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "zero-trust.devices.override-codes",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/devices/policies": {
 		"operationId": "devices-list-device-settings-policies",
@@ -4051,8 +4043,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/devices/policy": {
 		"operationId": "devices-get-default-device-settings-policy",
@@ -4777,8 +4768,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}": {
 		"operationId": "devices-get-device-settings-policy-by-id",
@@ -5588,8 +5578,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}/exclude": {
 		"operationId": "devices-get-split-tunnel-exclude-list-for-a-device-settings-policy",
@@ -5908,8 +5897,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.excludes",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}/fallback_domains": {
 		"operationId": "devices-get-local-domain-fallback-list-for-a-device-settings-policy",
@@ -6212,8 +6200,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.fallback-domains",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}/include": {
 		"operationId": "devices-get-split-tunnel-include-list-for-a-device-settings-policy",
@@ -6532,8 +6519,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.includes",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/policy/exclude": {
 		"operationId": "devices-get-split-tunnel-exclude-list",
@@ -6841,8 +6827,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.excludes",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/policy/fallback_domains": {
 		"operationId": "devices-get-local-domain-fallback-list",
@@ -7134,8 +7119,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.fallback-domains",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/policy/include": {
 		"operationId": "devices-get-split-tunnel-include-list",
@@ -7443,8 +7427,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.includes",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/devices/policy/certificates": {
 		"operationId": "devices-get-policy-certificates",
@@ -7699,8 +7682,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.certificates",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/devices/policy": {
 		"operationId": "devices-update-default-device-settings-policy",
@@ -8773,8 +8755,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PATCH /accounts/{account_id}/devices/policy/{policy_id}": {
 		"operationId": "devices-update-device-settings-policy",
@@ -9990,8 +9971,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PATCH /zones/{zone_id}/devices/policy/certificates": {
 		"operationId": "devices-update-policy-certificates",
@@ -10265,8 +10245,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.certificates",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/devices/policy": {
 		"operationId": "devices-create-device-settings-policy",
@@ -11493,8 +11472,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/devices/revoke": {
 		"operationId": "devices-revoke-devices",
@@ -11746,8 +11724,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.v1",
-		"x-fern-sdk-method-name": "revoke",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "revoke"
 	},
 	"POST /accounts/{account_id}/devices/unrevoke": {
 		"operationId": "devices-unrevoke-devices",
@@ -11999,8 +11976,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.v1",
-		"x-fern-sdk-method-name": "unrevoke",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "unrevoke"
 	},
 	"PUT /accounts/{account_id}/devices/policy/{policy_id}/exclude": {
 		"operationId": "devices-set-split-tunnel-exclude-list-for-a-device-settings-policy",
@@ -12379,8 +12355,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.excludes",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/devices/policy/{policy_id}/fallback_domains": {
 		"operationId": "devices-set-local-domain-fallback-list-for-a-device-settings-policy",
@@ -12727,8 +12702,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.fallback-domains",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/devices/policy/{policy_id}/include": {
 		"operationId": "devices-set-split-tunnel-include-list-for-a-device-settings-policy",
@@ -13107,8 +13081,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.includes",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/devices/policy/exclude": {
 		"operationId": "devices-set-split-tunnel-exclude-list",
@@ -13476,8 +13449,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.excludes",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/devices/policy/fallback_domains": {
 		"operationId": "devices-set-local-domain-fallback-list",
@@ -13813,8 +13785,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.fallback-domains",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/devices/policy/include": {
 		"operationId": "devices-set-split-tunnel-include-list",
@@ -14182,7 +14153,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.includes",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

@@ -19,6 +19,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -303,8 +304,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.proxy-endpoints",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/gateway/proxy_endpoints": {
 		"operationId": "zero-trust-gateway-proxy-endpoints-list-proxy-endpoints",
@@ -316,6 +316,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -966,8 +967,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.proxy-endpoints",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}": {
 		"operationId": "zero-trust-gateway-proxy-endpoints-proxy-endpoint-details",
@@ -989,6 +989,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -1501,8 +1502,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.proxy-endpoints",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}": {
 		"operationId": "zero-trust-gateway-proxy-endpoints-update-proxy-endpoint",
@@ -1524,6 +1524,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -2061,8 +2062,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.proxy-endpoints",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/gateway/proxy_endpoints": {
 		"operationId": "zero-trust-gateway-proxy-endpoints-create-proxy-endpoint",
@@ -2074,6 +2074,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -2660,7 +2661,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.proxy-endpoints",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

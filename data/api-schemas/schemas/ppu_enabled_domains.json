@@ -72,12 +72,25 @@
 															"active",
 															"expired"
 														]
+													},
+													"non_billable_since": {
+														"description": "When the publisher zone was classified for local-only, non-billable settlement. Null for billable zones.",
+														"type": "string",
+														"format": "date-time",
+														"nullable": true
+													},
+													"price_usd_microcents": {
+														"description": "Price of the selected accepted agreement in microcents. For an active license this is the price currently in effect; for an expired license it is the last accepted price.",
+														"type": "integer",
+														"format": "int64"
 													}
 												},
 												"required": [
 													"domain",
 													"license_status",
-													"license_expires_at"
+													"license_expires_at",
+													"price_usd_microcents",
+													"non_billable_since"
 												]
 											}
 										}

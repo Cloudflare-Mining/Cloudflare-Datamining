@@ -203,8 +203,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.limits",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/email/sending/messages/{message_id}": {
 		"operationId": "email-sending-get-email-message",
@@ -744,8 +743,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.reputation",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/email/sending/send": {
 		"operationId": "email-sending-account-send-builder",

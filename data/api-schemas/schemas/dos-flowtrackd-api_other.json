@@ -5735,7 +5735,8 @@
 					"type": "string",
 					"x-auditable": true
 				},
-				"explode": false
+				"explode": false,
+				"x-fern-parameter-name": "filter-mode"
 			},
 			{
 				"name": "page",
@@ -7179,7 +7180,8 @@
 					"type": "string",
 					"x-auditable": true
 				},
-				"explode": false
+				"explode": false,
+				"x-fern-parameter-name": "filter-mode"
 			},
 			{
 				"name": "page",
@@ -9231,7 +9233,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.advanced-dns-protection.configs.dns.protection.rules",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"mode": {
+				"flagName": "protection-mode"
+			}
+		}
 	},
 	"PATCH /accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist/{prefix_id}": {
 		"operationId": "updateAllowlistPrefix",
@@ -10245,7 +10252,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.syn.protection.filters",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"mode": {
+				"flagName": "filter-mode"
+			}
+		}
 	},
 	"PATCH /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules/{rule_id}": {
 		"operationId": "updateSynProtectionRule",
@@ -10612,7 +10624,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.syn.protection.rules",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"mode": {
+				"flagName": "protection-mode"
+			}
+		}
 	},
 	"PATCH /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters/{filter_id}": {
 		"operationId": "updateTcpFlowProtectionFilter",
@@ -10947,7 +10964,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.tcp.flow.protection.filters",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"mode": {
+				"flagName": "filter-mode"
+			}
+		}
 	},
 	"PATCH /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules/{rule_id}": {
 		"operationId": "updateTcpFlowProtectionRule",
@@ -11303,7 +11325,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.tcp.flow.protection.rules",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"mode": {
+				"flagName": "protection-mode"
+			}
+		}
 	},
 	"PATCH /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_protection_status": {
 		"operationId": "updateProtectionStatus",
@@ -11977,7 +12004,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.advanced-dns-protection.configs.dns.protection.rules",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"mode": {
+				"flagName": "protection-mode"
+			}
+		}
 	},
 	"POST /accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist": {
 		"operationId": "createAllowlistedPrefix",
@@ -13361,7 +13393,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.syn.protection.filters",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"mode": {
+				"flagName": "filter-mode"
+			}
+		}
 	},
 	"POST /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules": {
 		"operationId": "createSynProtectionRule",
@@ -13732,7 +13769,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.syn.protection.rules",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"mode": {
+				"flagName": "protection-mode"
+			}
+		}
 	},
 	"POST /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters": {
 		"operationId": "createTcpFlowProtectionFilter",
@@ -14058,7 +14100,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.tcp.flow.protection.filters",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"mode": {
+				"flagName": "filter-mode"
+			}
+		}
 	},
 	"POST /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules": {
 		"operationId": "createTcpFlowProtectionRule",
@@ -14418,6 +14465,11 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.tcp.flow.protection.rules",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"mode": {
+				"flagName": "protection-mode"
+			}
+		}
 	}
 }

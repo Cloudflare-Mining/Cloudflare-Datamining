@@ -19,6 +19,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -303,8 +304,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.pacfiles",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/gateway/pacfiles": {
 		"operationId": "zero-trust-gateway-pacfiles-list",
@@ -316,9 +316,31 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
+				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"description": "Page number of paginated results.",
+				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of items per page.",
+				"schema": {
+					"type": "integer",
+					"default": 50,
+					"maximum": 200,
+					"minimum": 1
 				}
 			}
 		],
@@ -475,6 +497,21 @@
 													}
 												},
 												"type": "object"
+											}
+										}
+									},
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result_info": {
+											"type": "object",
+											"properties": {
+												"total_pages": {
+													"description": "Indicate the total number of pages.",
+													"type": "number",
+													"example": 100
+												}
 											}
 										}
 									},
@@ -644,6 +681,21 @@
 												}
 											},
 											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"total_pages": {
+															"description": "Indicate the total number of pages.",
+															"type": "number",
+															"example": 100
+														}
+													}
+												}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -755,8 +807,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.pacfiles",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/gateway/pacfiles/{pacfile_id}": {
 		"operationId": "zero-trust-gateway-pacfiles-details",
@@ -778,6 +829,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -1163,8 +1215,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.pacfiles",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/gateway/pacfiles": {
 		"operationId": "zero-trust-gateway-pacfiles-create-pacfile",
@@ -1176,6 +1227,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -1600,8 +1652,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.pacfiles",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/gateway/pacfiles/{pacfile_id}": {
 		"operationId": "zero-trust-gateway-pacfiles-update",
@@ -1623,6 +1674,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -2042,7 +2094,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.pacfiles",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

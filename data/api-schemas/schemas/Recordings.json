@@ -23,8 +23,7 @@
 				"schema": {
 					"description": "The app identifier tag.",
 					"type": "string",
-					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-					"maxLength": 32
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543"
 				}
 			},
 			{
@@ -882,8 +881,7 @@
 				"schema": {
 					"description": "The app identifier tag.",
 					"type": "string",
-					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-					"maxLength": 32
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543"
 				}
 			},
 			{
@@ -1316,8 +1314,7 @@
 				"schema": {
 					"description": "The app identifier tag.",
 					"type": "string",
-					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-					"maxLength": 32
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543"
 				}
 			},
 			{
@@ -1543,8 +1540,7 @@
 				"schema": {
 					"description": "The app identifier tag.",
 					"type": "string",
-					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-					"maxLength": 32
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543"
 				}
 			}
 		],
@@ -2346,8 +2342,7 @@
 				"schema": {
 					"description": "The app identifier tag.",
 					"type": "string",
-					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-					"maxLength": 32
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543"
 				}
 			}
 		],
@@ -2600,15 +2595,12 @@
 			{
 				"name": "app_id",
 				"in": "path",
-				"description": "A Cloudflare-generated unique identifier for an item.",
 				"required": true,
 				"schema": {
+					"description": "The app identifier tag.",
 					"type": "string",
-					"maxLength": 32,
-					"minLength": 32,
-					"pattern": "^[a-f0-9]{32}$"
-				},
-				"example": "2a95132c15732412d22c1476fa83f27a"
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543"
+				}
 			},
 			{
 				"name": "recording_id",

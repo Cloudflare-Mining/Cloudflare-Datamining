@@ -434,6 +434,13 @@
 														"type": "string",
 														"format": "date-time"
 													},
+													"non_billable_since": {
+														"description": "When the proposing publisher zone was classified for local-only, non-billable settlement. Null for billable zones.",
+														"type": "string",
+														"format": "date-time",
+														"nullable": true,
+														"readOnly": true
+													},
 													"price_id": {
 														"description": "Use this value to accept or reject this specific pending proposal.",
 														"type": "integer",
@@ -450,6 +457,7 @@
 												"required": [
 													"price_id",
 													"price_usd_microcents",
+													"non_billable_since",
 													"created_at"
 												]
 											}
@@ -814,6 +822,13 @@
 													"name": {
 														"type": "string"
 													},
+													"non_billable_since": {
+														"description": "When this operator was classified for local-only, non-billable settlement. Null for billable operators. Always matches the requesting zone's classification.",
+														"type": "string",
+														"format": "date-time",
+														"nullable": true,
+														"readOnly": true
+													},
 													"operator_id": {
 														"description": "Stable pay-per-use operator identifier.",
 														"type": "string",
@@ -911,7 +926,8 @@
 												"required": [
 													"operator_id",
 													"name",
-													"default_price_usd_microcents"
+													"default_price_usd_microcents",
+													"non_billable_since"
 												]
 											}
 										}

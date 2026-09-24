@@ -296,8 +296,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.settings",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/devices/settings": {
 		"operationId": "zero-trust-accounts-get-device-settings-for-zero-trust-account",
@@ -593,8 +592,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.settings",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/gateway": {
 		"operationId": "zero-trust-accounts-get-zero-trust-account-information",
@@ -606,6 +604,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
@@ -930,8 +929,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/gateway/configuration": {
 		"operationId": "zero-trust-accounts-get-zero-trust-account-configuration",
@@ -943,6 +941,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
@@ -1309,6 +1308,7 @@
 																	"required": [
 																		"enabled"
 																	],
+																	"x-fern-availability": "deprecated",
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"extended_email_matching": {
@@ -1851,6 +1851,7 @@
 																			"required": [
 																				"enabled"
 																			],
+																			"x-fern-availability": "deprecated",
 																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"extended_email_matching": {
@@ -2132,8 +2133,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.configurations",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/gateway/configuration/custom_certificate": {
 		"operationId": "zero-trust-accounts-get-zero-trust-certificate-configuration",
@@ -2145,6 +2145,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
@@ -2192,6 +2193,7 @@
 							"required": [
 								"enabled"
 							],
+							"x-fern-availability": "deprecated",
 							"x-stainless-terraform-configurability": "optional"
 						}
 					}
@@ -2240,6 +2242,7 @@
 									"required": [
 										"enabled"
 									],
+									"x-fern-availability": "deprecated",
 									"x-stainless-terraform-configurability": "optional"
 								},
 								{
@@ -2345,10 +2348,9 @@
 		"tags": [
 			"Zero Trust accounts"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "zero-trust.gateway.configurations.custom-certificate",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/gateway/egress_cidr_pairs": {
 		"operationId": "zero-trust-accounts-get-egress-cidr-pairs",
@@ -2360,6 +2362,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
@@ -2728,6 +2731,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
@@ -3179,8 +3183,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.logging",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/devices/settings": {
 		"operationId": "zero-trust-accounts-patch-device-settings-for-the-zero-trust-account",
@@ -3544,8 +3547,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.settings",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PATCH /accounts/{account_id}/gateway/configuration": {
 		"operationId": "zero-trust-accounts-patch-zero-trust-account-configuration",
@@ -3557,6 +3559,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
@@ -3849,6 +3852,7 @@
 										"required": [
 											"enabled"
 										],
+										"x-fern-availability": "deprecated",
 										"x-stainless-terraform-configurability": "optional"
 									},
 									"extended_email_matching": {
@@ -4366,6 +4370,7 @@
 																	"required": [
 																		"enabled"
 																	],
+																	"x-fern-availability": "deprecated",
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"extended_email_matching": {
@@ -4908,6 +4913,7 @@
 																			"required": [
 																				"enabled"
 																			],
+																			"x-fern-availability": "deprecated",
 																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"extended_email_matching": {
@@ -5189,8 +5195,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.configurations",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/gateway": {
 		"operationId": "zero-trust-accounts-create-zero-trust-account",
@@ -5202,6 +5207,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
@@ -5525,8 +5531,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/devices/settings": {
 		"operationId": "zero-trust-accounts-update-device-settings-for-the-zero-trust-account",
@@ -5892,8 +5897,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.v1.settings",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/gateway/configuration": {
 		"operationId": "zero-trust-accounts-update-zero-trust-account-configuration.",
@@ -5905,6 +5909,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
@@ -6197,6 +6202,7 @@
 										"required": [
 											"enabled"
 										],
+										"x-fern-availability": "deprecated",
 										"x-stainless-terraform-configurability": "optional"
 									},
 									"extended_email_matching": {
@@ -6714,6 +6720,7 @@
 																	"required": [
 																		"enabled"
 																	],
+																	"x-fern-availability": "deprecated",
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"extended_email_matching": {
@@ -7256,6 +7263,7 @@
 																			"required": [
 																				"enabled"
 																			],
+																			"x-fern-availability": "deprecated",
 																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"extended_email_matching": {
@@ -7537,8 +7545,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.configurations",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/gateway/logging": {
 		"operationId": "zero-trust-accounts-update-logging-settings-for-the-zero-trust-account",
@@ -7550,6 +7557,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
@@ -8098,7 +8106,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.logging",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

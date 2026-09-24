@@ -22,6 +22,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -303,8 +304,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/gateway/rules": {
 		"operationId": "zero-trust-gateway-rules-list-zero-trust-gateway-rules",
@@ -316,6 +316,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -2481,8 +2482,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/gateway/rules/{rule_id}": {
 		"operationId": "zero-trust-gateway-rules-zero-trust-gateway-rule-details",
@@ -2507,6 +2507,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -4524,8 +4525,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/gateway/rules/tenant": {
 		"operationId": "zero-trust-gateway-rules-list-zero-trust-gateway-rules-tenant",
@@ -4537,6 +4537,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -6621,8 +6622,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
-		"x-fern-sdk-method-name": "list-tenant",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list-tenant"
 	},
 	"PATCH /accounts/{account_id}/gateway/rules": {
 		"operationId": "zero-trust-gateway-rules-patch-multiple-zero-trust-gateway-rules",
@@ -6634,6 +6634,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -8792,6 +8793,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -10857,6 +10859,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -13684,8 +13687,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/gateway/rules/{rule_id}/reset_expiration": {
 		"operationId": "zero-trust-gateway-rules-reset-expiration-zero-trust-gateway-rule",
@@ -13710,6 +13712,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -15725,8 +15728,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
-		"x-fern-sdk-method-name": "reset-expiration",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "reset-expiration"
 	},
 	"PUT /accounts/{account_id}/gateway/rules/{rule_id}": {
 		"operationId": "zero-trust-gateway-rules-update-zero-trust-gateway-rule",
@@ -15751,6 +15753,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -18577,7 +18580,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

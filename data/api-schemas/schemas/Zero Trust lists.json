@@ -21,6 +21,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -302,8 +303,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.lists",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/gateway/lists": {
 		"operationId": "zero-trust-lists-list-zero-trust-lists",
@@ -315,6 +315,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -340,7 +341,8 @@
 					],
 					"x-auditable": true
 				},
-				"deprecated": true
+				"deprecated": true,
+				"x-fern-availability": "deprecated"
 			},
 			{
 				"name": "filter",
@@ -921,8 +923,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.lists",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/gateway/lists/{list_id}": {
 		"operationId": "zero-trust-lists-zero-trust-list-details",
@@ -946,6 +947,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -1401,8 +1403,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.lists",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/gateway/lists/{list_id}/items": {
 		"operationId": "zero-trust-lists-zero-trust-list-items",
@@ -1426,9 +1427,31 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
+				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"description": "Page number of paginated results.",
+				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of items per page.",
+				"schema": {
+					"type": "integer",
+					"default": 50,
+					"maximum": 1000,
+					"minimum": 1
 				}
 			}
 		],
@@ -1592,6 +1615,11 @@
 													"description": "Show the total results available without any search parameters.",
 													"type": "number",
 													"example": 2000
+												},
+												"total_pages": {
+													"description": "Indicate the total number of pages.",
+													"type": "number",
+													"example": 100
 												}
 											}
 										}
@@ -1765,6 +1793,11 @@
 															"description": "Show the total results available without any search parameters.",
 															"type": "number",
 															"example": 2000
+														},
+														"total_pages": {
+															"description": "Indicate the total number of pages.",
+															"type": "number",
+															"example": 100
 														}
 													}
 												}
@@ -1877,8 +1910,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.lists.items",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"PATCH /accounts/{account_id}/gateway/lists/{list_id}": {
 		"operationId": "zero-trust-lists-patch-zero-trust-list",
@@ -1902,6 +1934,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -2401,8 +2434,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.lists",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/gateway/lists": {
 		"operationId": "zero-trust-lists-create-zero-trust-list",
@@ -2414,6 +2446,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -2921,8 +2954,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.lists",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/gateway/lists/upload": {
 		"operationId": "zero-trust-lists-create-zero-trust-list-from-csv",
@@ -2934,6 +2966,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -3430,6 +3463,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Specify the Cloudflare account identifier.",
 					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
@@ -3935,7 +3969,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.lists",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

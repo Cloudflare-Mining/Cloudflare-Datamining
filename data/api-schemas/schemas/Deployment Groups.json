@@ -170,10 +170,9 @@
 			"Deployment Groups"
 		],
 		"x-auditable": true,
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zero-trust.devices.deployment-groups",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/devices/deployment-groups": {
 		"operationId": "list-deployment-groups",
@@ -464,10 +463,9 @@
 		"tags": [
 			"Deployment Groups"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zero-trust.devices.deployment-groups",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/devices/deployment-groups/{group_id}": {
 		"operationId": "get-deployment-group",
@@ -703,10 +701,9 @@
 		"tags": [
 			"Deployment Groups"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zero-trust.devices.deployment-groups",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/devices/deployment-groups/{group_id}": {
 		"operationId": "update-deployment-group",
@@ -996,10 +993,9 @@
 			"Deployment Groups"
 		],
 		"x-auditable": true,
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zero-trust.devices.deployment-groups",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/devices/deployment-groups": {
 		"operationId": "create-deployment-group",
@@ -1286,9 +1282,8 @@
 			"Deployment Groups"
 		],
 		"x-auditable": true,
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zero-trust.devices.deployment-groups",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

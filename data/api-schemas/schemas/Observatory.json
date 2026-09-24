@@ -185,21 +185,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
+														"minimum": 1000,
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -223,21 +214,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
+														"minimum": 1000,
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -301,8 +283,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "speed.pages.tests",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /zones/{zone_id}/speed_api/schedule/{url}": {
 		"operationId": "speed-delete-test-schedule",
@@ -490,21 +471,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
+														"minimum": 1000,
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -528,21 +500,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
+														"minimum": 1000,
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -606,8 +569,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "speed.schedule",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/speed_api/availabilities": {
 		"operationId": "speed-get-availabilities",
@@ -1045,21 +1007,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
+														"minimum": 1000,
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -1083,21 +1036,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
+														"minimum": 1000,
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -1162,8 +1106,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "speed.availabilities",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/speed_api/pages": {
 		"operationId": "speed-list-pages",
@@ -1649,21 +1592,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
+														"minimum": 1000,
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -1687,21 +1621,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
+														"minimum": 1000,
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -1766,8 +1691,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "speed.pages",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/speed_api/pages/{url}/tests": {
 		"operationId": "speed-list-test-history",
@@ -2289,21 +2213,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
+														"minimum": 1000,
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -2327,21 +2242,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
+														"minimum": 1000,
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -2406,8 +2312,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "speed.pages.tests",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/speed_api/pages/{url}/tests/{test_id}": {
 		"operationId": "speed-get-test",
@@ -2845,21 +2750,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
+														"minimum": 1000,
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -2883,21 +2779,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
+														"minimum": 1000,
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -2962,8 +2849,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "speed.pages.tests",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/speed_api/pages/{url}/trend": {
 		"operationId": "speed-list-page-trend",
@@ -3266,21 +3152,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
+														"minimum": 1000,
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -3304,21 +3181,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
+														"minimum": 1000,
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -3383,8 +3251,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "speed.pages",
-		"x-fern-sdk-method-name": "trend",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "trend"
 	},
 	"GET /zones/{zone_id}/speed_api/schedule/{url}": {
 		"operationId": "speed-get-scheduled-test",
@@ -3612,21 +3479,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
+														"minimum": 1000,
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -3650,21 +3508,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
+														"minimum": 1000,
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -3729,8 +3578,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "speed.schedule",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /zones/{zone_id}/speed_api/pages/{url}/tests": {
 		"operationId": "speed-create-test",
@@ -4208,21 +4056,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
+														"minimum": 1000,
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -4246,21 +4085,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
+														"minimum": 1000,
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -4324,8 +4154,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "speed.pages.tests",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /zones/{zone_id}/speed_api/schedule/{url}": {
 		"operationId": "speed-create-scheduled-test",
@@ -4869,21 +4698,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
+														"minimum": 1000,
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -4907,21 +4727,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
+														"minimum": 1000,
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -4985,7 +4796,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "speed.schedule",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

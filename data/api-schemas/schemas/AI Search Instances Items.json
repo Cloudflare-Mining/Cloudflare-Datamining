@@ -2,7 +2,7 @@
 	"DELETE /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}": {
 		"operationId": "ai-search-namespace-instance-delete-item",
 		"summary": "Delete Item.",
-		"description": "Deletes a file from a managed AI Search instance and triggers a reindex.",
+		"description": "Deletes a file from a managed AI Search instance and removes its indexed data.",
 		"parameters": [
 			{
 				"name": "id",
@@ -120,6 +120,57 @@
 			},
 			"404": {
 				"description": "Item not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "AI Search instance overloaded. A retried DELETE may return 404 if the earlier attempt completed; treat that as deleted.",
+				"headers": {
+					"Retry-After": {
+						"description": "Seconds to wait before retrying.",
+						"required": true,
+						"schema": {
+							"description": "Seconds to wait before retrying.",
+							"type": "string",
+							"example": "1"
+						}
+					}
+				},
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2152,7 +2203,17 @@
 				}
 			},
 			"429": {
-				"description": "Monthly storage quota exceeded.",
+				"description": "Monthly ingestion quota exceeded; Monthly storage quota exceeded; Ai search instance overloaded",
+				"headers": {
+					"Retry-After": {
+						"description": "Seconds to wait before retrying.",
+						"schema": {
+							"description": "Seconds to wait before retrying.",
+							"type": "string",
+							"example": "10"
+						}
+					}
+				},
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2161,19 +2222,71 @@
 								"errors": {
 									"type": "array",
 									"items": {
-										"properties": {
-											"code": {
-												"type": "number"
+										"anyOf": [
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7111
+														]
+													},
+													"message": {
+														"type": "string",
+														"enum": [
+															"monthly_ingestion_quota_exceeded"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
 											},
-											"message": {
-												"type": "string"
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7112
+														]
+													},
+													"message": {
+														"type": "string",
+														"enum": [
+															"monthly_storage_quota_exceeded"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7114
+														]
+													},
+													"message": {
+														"type": "string",
+														"enum": [
+															"ai_search_instance_overloaded"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
 											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
+										]
 									}
 								},
 								"success": {
@@ -2691,7 +2804,130 @@
 				}
 			},
 			"429": {
-				"description": "Monthly storage quota exceeded.",
+				"description": "Item write rate limited; Monthly ingestion quota exceeded; Monthly storage quota exceeded; Ai search instance overloaded",
+				"headers": {
+					"Retry-After": {
+						"description": "Seconds to wait before retrying.",
+						"schema": {
+							"description": "Seconds to wait before retrying.",
+							"type": "string",
+							"example": "10"
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"anyOf": [
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7095
+														]
+													},
+													"message": {
+														"type": "string",
+														"enum": [
+															"item_write_rate_limited"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7111
+														]
+													},
+													"message": {
+														"type": "string",
+														"enum": [
+															"monthly_ingestion_quota_exceeded"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7112
+														]
+													},
+													"message": {
+														"type": "string",
+														"enum": [
+															"monthly_storage_quota_exceeded"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7114
+														]
+													},
+													"message": {
+														"type": "string",
+														"enum": [
+															"ai_search_instance_overloaded"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										]
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"499": {
+				"description": "Client disconnected during upload.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3088,7 +3324,17 @@
 				}
 			},
 			"429": {
-				"description": "Monthly storage quota exceeded.",
+				"description": "Monthly ingestion quota exceeded; Monthly storage quota exceeded; Ai search instance overloaded",
+				"headers": {
+					"Retry-After": {
+						"description": "Seconds to wait before retrying.",
+						"schema": {
+							"description": "Seconds to wait before retrying.",
+							"type": "string",
+							"example": "10"
+						}
+					}
+				},
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3097,19 +3343,71 @@
 								"errors": {
 									"type": "array",
 									"items": {
-										"properties": {
-											"code": {
-												"type": "number"
+										"anyOf": [
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7111
+														]
+													},
+													"message": {
+														"type": "string",
+														"enum": [
+															"monthly_ingestion_quota_exceeded"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
 											},
-											"message": {
-												"type": "string"
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7112
+														]
+													},
+													"message": {
+														"type": "string",
+														"enum": [
+															"monthly_storage_quota_exceeded"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7114
+														]
+													},
+													"message": {
+														"type": "string",
+														"enum": [
+															"ai_search_instance_overloaded"
+														]
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
 											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
+										]
 									}
 								},
 								"success": {

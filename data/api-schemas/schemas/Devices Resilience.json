@@ -258,9 +258,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.resilience",
-		"x-fern-sdk-method-name": "get-global-disconnect",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.devices.emergency-disconnect",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/devices/resilience/disconnect": {
 		"operationId": "devices-resilience-set-global-warp-override",
@@ -546,8 +545,7 @@
 			"Zero Trust Resilience Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.resilience",
-		"x-fern-sdk-method-name": "set-global-disconnect",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.devices.emergency-disconnect",
+		"x-fern-sdk-method-name": "set"
 	}
 }

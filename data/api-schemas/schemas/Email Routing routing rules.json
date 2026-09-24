@@ -2,7 +2,7 @@
 	"DELETE /zones/{zone_id}/email/routing/rules/{rule_identifier}": {
 		"operationId": "email-routing-routing-rules-delete-routing-rule",
 		"summary": "Delete routing rule",
-		"description": "Delete a specific routing rule.",
+		"description": "Deletes a routing rule so matching incoming messages are no longer forwarded by it.",
 		"parameters": [
 			{
 				"name": "rule_identifier",
@@ -306,7 +306,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.rules",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This operation permanently deletes an Email Routing rule."
 	},
 	"GET /accounts/{account_id}/email/routing/rules": {
 		"operationId": "email-routing-routing-rules-list-account-routing-rules",
@@ -715,13 +715,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.rules",
-		"x-fern-sdk-method-name": "list-account",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list-account"
 	},
 	"GET /zones/{zone_id}/email/routing/rules": {
 		"operationId": "email-routing-routing-rules-list-routing-rules",
 		"summary": "List routing rules",
-		"description": "Lists existing routing rules.",
+		"description": "Lists the routing rules that match incoming messages for a zone.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -1109,8 +1108,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.rules",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/email/routing/rules/{rule_identifier}": {
 		"operationId": "email-routing-routing-rules-get-routing-rule",
@@ -1419,8 +1417,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.rules",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/email/routing/rules/catch_all": {
 		"operationId": "email-routing-routing-rules-get-catch-all-rule",
@@ -1686,9 +1683,8 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "email-routing.rules.catch-alls",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "email-routing.rules.catch-all",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/email/routing/rules/plan": {
 		"operationId": "email-routing-routing-rules-plan-account-routing-rules",
@@ -2418,8 +2414,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.rules",
-		"x-fern-sdk-method-name": "plan",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "plan"
 	},
 	"POST /zones/{zone_id}/email/routing/rules": {
 		"operationId": "email-routing-routing-rules-create-routing-rule",
@@ -2854,8 +2849,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.rules",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /zones/{zone_id}/email/routing/rules/{rule_identifier}": {
 		"operationId": "email-routing-routing-rules-update-routing-rule",
@@ -3303,8 +3297,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.rules",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /zones/{zone_id}/email/routing/rules/catch_all": {
 		"operationId": "email-routing-routing-rules-update-catch-all-rule",
@@ -3685,8 +3678,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "email-routing.rules.catch-alls",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "email-routing.rules.catch-all",
+		"x-fern-sdk-method-name": "update"
 	}
 }

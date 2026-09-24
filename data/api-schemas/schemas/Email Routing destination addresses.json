@@ -221,12 +221,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.addresses",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This operation permanently deletes a destination address."
 	},
 	"GET /accounts/{account_id}/email/routing/addresses": {
 		"operationId": "email-routing-destination-addresses-list-destination-addresses",
 		"summary": "List destination addresses",
-		"description": "Lists existing destination addresses.",
+		"description": "Lists destination addresses configured for Email Routing in an account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -544,8 +544,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.addresses",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/email/routing/addresses/{destination_address_identifier}": {
 		"operationId": "email-routing-destination-addresses-get-a-destination-address",
@@ -769,8 +768,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.addresses",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/email/routing/addresses/{destination_address_identifier}": {
 		"operationId": "email-routing-destination-addresses-update-destination-address",
@@ -1018,8 +1016,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.addresses",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/email/routing/addresses": {
 		"operationId": "email-routing-destination-addresses-create-a-destination-address",
@@ -1251,7 +1248,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.addresses",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

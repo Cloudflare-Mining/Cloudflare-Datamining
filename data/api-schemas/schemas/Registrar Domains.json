@@ -1418,31 +1418,27 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"allOf": [
-							{
-								"type": "object",
-								"properties": {
-									"auto_renew": {
-										"description": "Auto-renew controls whether subscription is automatically renewed upon domain expiration.",
-										"type": "boolean",
-										"example": true,
-										"x-auditable": true
-									},
-									"locked": {
-										"description": "Shows whether a registrar lock is in place for a domain.",
-										"type": "boolean",
-										"example": false,
-										"x-auditable": true
-									},
-									"privacy": {
-										"description": "Privacy option controls redacting WHOIS information.",
-										"type": "boolean",
-										"example": true,
-										"x-auditable": true
-									}
-								}
+						"type": "object",
+						"properties": {
+							"auto_renew": {
+								"description": "Auto-renew controls whether subscription is automatically renewed upon domain expiration.",
+								"type": "boolean",
+								"example": true,
+								"x-auditable": true
+							},
+							"locked": {
+								"description": "Shows whether a registrar lock is in place for a domain.",
+								"type": "boolean",
+								"example": false,
+								"x-auditable": true
+							},
+							"privacy": {
+								"description": "Privacy option controls redacting WHOIS information.",
+								"type": "boolean",
+								"example": true,
+								"x-auditable": true
 							}
-						]
+						}
 					}
 				}
 			}

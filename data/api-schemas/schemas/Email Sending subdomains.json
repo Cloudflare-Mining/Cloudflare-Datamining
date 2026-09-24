@@ -155,7 +155,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.subdomains",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This operation disables sending and removes the subdomain's Email Sending DNS records."
 	},
 	"GET /zones/{zone_id}/email/sending/subdomains": {
 		"operationId": "email-sending-subdomains-list-sending-subdomains",
@@ -420,8 +420,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.subdomains",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/email/sending/subdomains/{subdomain_id}": {
 		"operationId": "email-sending-subdomains-get-sending-subdomain",
@@ -661,8 +660,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.subdomains",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/email/sending/subdomains/{subdomain_id}/dns": {
 		"operationId": "email-sending-subdomains-get-sending-subdomain-dns",
@@ -939,8 +937,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.subdomains.dns",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/email/sending/subdomains/{subdomain_id}/dns/status": {
 		"operationId": "email-sending-subdomains-get-sending-subdomain-dns-status",
@@ -1471,8 +1468,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.subdomains.dns",
-		"x-fern-sdk-method-name": "get-status",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "status"
 	},
 	"GET /zones/{zone_id}/email/sending/subdomains/{subdomain_id}/reputation/complaints": {
 		"operationId": "email-sending-subdomains-get-sending-subdomain-reputation-complaints",
@@ -1679,8 +1675,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.subdomains.reputation",
-		"x-fern-sdk-method-name": "get-complaints",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get-complaints"
 	},
 	"PATCH /zones/{zone_id}/email/sending/subdomains/{subdomain_id}": {
 		"operationId": "email-sending-subdomains-update-sending-subdomain",
@@ -1959,8 +1954,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.subdomains",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"POST /zones/{zone_id}/email/sending/subdomains": {
 		"operationId": "email-sending-subdomains-create-sending-subdomain",
@@ -2207,8 +2201,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.subdomains",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /zones/{zone_id}/email/sending/subdomains/{subdomain_id}/dns": {
 		"operationId": "email-sending-subdomains-fix-sending-subdomain-dns",
@@ -2745,8 +2738,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.subdomains.dns",
-		"x-fern-sdk-method-name": "fix",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "fix"
 	},
 	"POST /zones/{zone_id}/email/sending/subdomains/preview": {
 		"operationId": "email-sending-subdomains-preview-sending-subdomain",
@@ -3271,7 +3263,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.subdomains",
-		"x-fern-sdk-method-name": "preview",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "preview"
 	}
 }
