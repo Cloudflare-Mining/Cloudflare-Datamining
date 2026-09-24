@@ -225,8 +225,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.crawl",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}": {
 		"operationId": "brapi-delete_DevtoolsBrowserDelete",
@@ -306,8 +305,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/browser-rendering/crawl/{job_id}": {
 		"operationId": "brapi-get_CrawlResult",
@@ -644,8 +642,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.crawl",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/browser-rendering/devtools/browser": {
 		"operationId": "brapi-get_DevtoolsBrowserAcquire",
@@ -854,8 +851,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser",
-		"x-fern-sdk-method-name": "launch",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "launch"
 	},
 	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}": {
 		"operationId": "brapi-get_DevtoolsBrowser",
@@ -1075,8 +1071,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser",
-		"x-fern-sdk-method-name": "connect",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "connect"
 	},
 	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json": {
 		"operationId": "brapi-get_DevtoolsJson",
@@ -1273,8 +1268,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.json",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/activate/{target_id}": {
 		"operationId": "brapi-get_DevtoolsJsonActivate",
@@ -1480,8 +1474,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser.targets",
-		"x-fern-sdk-method-name": "activate",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "activate"
 	},
 	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/close/{target_id}": {
 		"operationId": "brapi-get_DevtoolsJsonClose",
@@ -1687,8 +1680,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser.targets",
-		"x-fern-sdk-method-name": "close",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "close"
 	},
 	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/list": {
 		"operationId": "brapi-get_DevtoolsJsonList",
@@ -1885,8 +1877,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser.targets",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/list/{target_id}": {
 		"operationId": "brapi-get_DevtoolsJsonTarget",
@@ -2118,8 +2109,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser.targets",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/protocol": {
 		"operationId": "brapi-get_DevtoolsJsonProtocol",
@@ -2349,8 +2339,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser",
-		"x-fern-sdk-method-name": "protocol",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "protocol"
 	},
 	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/version": {
 		"operationId": "brapi-get_DevtoolsJsonVersion",
@@ -2531,8 +2520,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser",
-		"x-fern-sdk-method-name": "version",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "version"
 	},
 	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/page/{target_id}": {
 		"operationId": "brapi-get_DevtoolsPage",
@@ -2694,8 +2682,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser.page",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/browser-rendering/devtools/session": {
 		"operationId": "brapi-get_DevtoolsSessionList",
@@ -2831,8 +2818,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.session",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/browser-rendering/devtools/session/{session_id}": {
 		"operationId": "brapi-get_DevtoolsSessionDetails",
@@ -2955,8 +2941,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.session",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/browser-rendering/recording/{session_id}": {
 		"operationId": "brapi-get_Recording",
@@ -3022,10 +3007,17 @@
 											"type": "number"
 										},
 										"events": {
-											"description": "Recording events.",
-											"type": "array",
-											"items": {
-												"nullable": true
+											"description": "Recording events by target ID.",
+											"type": "object",
+											"additionalProperties": {
+												"items": {
+													"additionalProperties": {
+														"nullable": true,
+														"type": "object"
+													},
+													"type": "object"
+												},
+												"type": "array"
 											}
 										},
 										"sessionId": {
@@ -3198,8 +3190,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.recording",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/browser-rendering/recording/{session_id}/network": {
 		"operationId": "brapi-get_RecordingNetwork",
@@ -3370,8 +3361,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.recording.network",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/browser-rendering/accessibilityTree": {
 		"operationId": "brapi-post_AccessibilityTree",
@@ -4506,8 +4496,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.quick-action",
-		"x-fern-sdk-method-name": "accessibility-tree",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "accessibility-tree"
 	},
 	"POST /accounts/{account_id}/browser-rendering/content": {
 		"operationId": "brapi-post_Content",
@@ -5508,8 +5497,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.quick-action",
-		"x-fern-sdk-method-name": "content",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "content"
 	},
 	"POST /accounts/{account_id}/browser-rendering/crawl": {
 		"operationId": "brapi-post_Crawl",
@@ -6828,8 +6816,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.crawl",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/browser-rendering/devtools/browser": {
 		"operationId": "brapi-post_DevtoolsAcquire",
@@ -7035,8 +7022,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/live_view": {
 		"operationId": "brapi-post_DevtoolsLiveView",
@@ -7325,8 +7311,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser.live-view",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/browser-rendering/json": {
 		"operationId": "brapi-post_Json",
@@ -8375,8 +8360,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.quick-action",
-		"x-fern-sdk-method-name": "json",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "json"
 	},
 	"POST /accounts/{account_id}/browser-rendering/links": {
 		"operationId": "brapi-post_Links",
@@ -9388,8 +9372,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.quick-action",
-		"x-fern-sdk-method-name": "links",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "links"
 	},
 	"POST /accounts/{account_id}/browser-rendering/markdown": {
 		"operationId": "brapi-post_Markdown",
@@ -10390,8 +10373,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.quick-action",
-		"x-fern-sdk-method-name": "markdown",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "markdown"
 	},
 	"POST /accounts/{account_id}/browser-rendering/pdf": {
 		"operationId": "brapi-post_Pdf",
@@ -11459,8 +11441,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.quick-action",
-		"x-fern-sdk-method-name": "pdf",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "pdf"
 	},
 	"POST /accounts/{account_id}/browser-rendering/scrape": {
 		"operationId": "brapi-post_Scrape",
@@ -12555,8 +12536,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.quick-action",
-		"x-fern-sdk-method-name": "scrape",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "scrape"
 	},
 	"POST /accounts/{account_id}/browser-rendering/screenshot": {
 		"operationId": "brapi-post_Screenshot",
@@ -13621,8 +13601,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.quick-action",
-		"x-fern-sdk-method-name": "screenshot",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "screenshot"
 	},
 	"POST /accounts/{account_id}/browser-rendering/snapshot": {
 		"operationId": "brapi-post_Snapshot",
@@ -14845,8 +14824,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.quick-action",
-		"x-fern-sdk-method-name": "snapshot",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "snapshot"
 	},
 	"PUT /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/new": {
 		"operationId": "brapi-put_DevtoolsJsonNew",
@@ -15044,7 +15022,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser.targets",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

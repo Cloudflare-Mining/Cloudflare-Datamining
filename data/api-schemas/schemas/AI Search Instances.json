@@ -203,9 +203,9 @@
 											"x-auditable": true
 										},
 										"hybrid_search_enabled": {
-											"description": "Deprecated — use index_method instead.",
+											"description": "Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance.",
 											"type": "boolean",
-											"default": false,
+											"default": true,
 											"deprecated": true,
 											"x-auditable": true
 										},
@@ -219,10 +219,10 @@
 											"x-auditable": true
 										},
 										"index_method": {
-											"description": "Controls which storage backends are used during indexing. Defaults to vector-only.",
+											"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
 											"type": "object",
 											"default": {
-												"keyword": false,
+												"keyword": true,
 												"vector": true
 											},
 											"properties": {
@@ -746,6 +746,7 @@
 											"x-auditable": true
 										},
 										"type": {
+											"description": "Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.",
 											"type": "string",
 											"enum": [
 												"r2",
@@ -1099,9 +1100,9 @@
 											"x-auditable": true
 										},
 										"hybrid_search_enabled": {
-											"description": "Deprecated — use index_method instead.",
+											"description": "Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance.",
 											"type": "boolean",
-											"default": false,
+											"default": true,
 											"deprecated": true,
 											"x-auditable": true
 										},
@@ -1115,10 +1116,10 @@
 											"x-auditable": true
 										},
 										"index_method": {
-											"description": "Controls which storage backends are used during indexing. Defaults to vector-only.",
+											"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
 											"type": "object",
 											"default": {
-												"keyword": false,
+												"keyword": true,
 												"vector": true
 											},
 											"properties": {
@@ -1642,6 +1643,7 @@
 											"x-auditable": true
 										},
 										"type": {
+											"description": "Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.",
 											"type": "string",
 											"enum": [
 												"r2",
@@ -1837,6 +1839,17 @@
 					"description": "Filter instances whose id contains this string (case-insensitive).",
 					"type": "string",
 					"maxLength": 64
+				}
+			},
+			{
+				"name": "hostname",
+				"in": "query",
+				"description": "Filter by exact Search for Agents hostname (case-insensitive).",
+				"schema": {
+					"description": "Filter by exact Search for Agents hostname (case-insensitive).",
+					"type": "string",
+					"maxLength": 253,
+					"minLength": 1
 				}
 			},
 			{
@@ -2856,9 +2869,9 @@
 											"x-auditable": true
 										},
 										"hybrid_search_enabled": {
-											"description": "Deprecated — use index_method instead.",
+											"description": "Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance.",
 											"type": "boolean",
-											"default": false,
+											"default": true,
 											"deprecated": true,
 											"x-auditable": true
 										},
@@ -2872,10 +2885,10 @@
 											"x-auditable": true
 										},
 										"index_method": {
-											"description": "Controls which storage backends are used during indexing. Defaults to vector-only.",
+											"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
 											"type": "object",
 											"default": {
-												"keyword": false,
+												"keyword": true,
 												"vector": true
 											},
 											"properties": {
@@ -3399,6 +3412,7 @@
 											"x-auditable": true
 										},
 										"type": {
+											"description": "Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.",
 											"type": "string",
 											"enum": [
 												"r2",
@@ -3745,6 +3759,17 @@
 					"description": "Filter instances whose id contains this string (case-insensitive).",
 					"type": "string",
 					"maxLength": 64
+				}
+			},
+			{
+				"name": "hostname",
+				"in": "query",
+				"description": "Filter by exact Search for Agents hostname (case-insensitive).",
+				"schema": {
+					"description": "Filter by exact Search for Agents hostname (case-insensitive).",
+					"type": "string",
+					"maxLength": 253,
+					"minLength": 1
 				}
 			},
 			{
@@ -4792,9 +4817,9 @@
 											"x-auditable": true
 										},
 										"hybrid_search_enabled": {
-											"description": "Deprecated — use index_method instead.",
+											"description": "Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance.",
 											"type": "boolean",
-											"default": false,
+											"default": true,
 											"deprecated": true,
 											"x-auditable": true
 										},
@@ -4808,10 +4833,10 @@
 											"x-auditable": true
 										},
 										"index_method": {
-											"description": "Controls which storage backends are used during indexing. Defaults to vector-only.",
+											"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
 											"type": "object",
 											"default": {
-												"keyword": false,
+												"keyword": true,
 												"vector": true
 											},
 											"properties": {
@@ -5335,6 +5360,7 @@
 											"x-auditable": true
 										},
 										"type": {
+											"description": "Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.",
 											"type": "string",
 											"enum": [
 												"r2",
@@ -5664,8 +5690,8 @@
 	},
 	"POST /accounts/{account_id}/ai-search/instances": {
 		"operationId": "ai-search-create-instance",
-		"summary": "Create an AI Search instance.",
-		"description": "Create a new AI Search instance with the given configuration.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
+		"summary": "Create an AI Search instance (Search for Agents requires the default namespace).",
+		"description": "Create a new AI Search instance with the given configuration. If type is omitted or null, a non-blank HTTP(S) source infers web-crawler and an existing R2 bucket source infers r2. A missing or blank source without a type creates a managed upload-only instance. Search for Agents instances require the default namespace.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -5837,9 +5863,9 @@
 								"x-auditable": true
 							},
 							"hybrid_search_enabled": {
-								"description": "Deprecated — use index_method instead.",
+								"description": "Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance.",
 								"type": "boolean",
-								"default": false,
+								"default": true,
 								"deprecated": true,
 								"x-auditable": true
 							},
@@ -5853,10 +5879,10 @@
 								"x-auditable": true
 							},
 							"index_method": {
-								"description": "Controls which storage backends are used during indexing. Defaults to vector-only.",
+								"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
 								"type": "object",
 								"default": {
-									"keyword": false,
+									"keyword": true,
 									"vector": true
 								},
 								"properties": {
@@ -6343,6 +6369,7 @@
 								"x-auditable": true
 							},
 							"type": {
+								"description": "Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.",
 								"type": "string",
 								"enum": [
 									"r2",
@@ -6540,9 +6567,9 @@
 											"x-auditable": true
 										},
 										"hybrid_search_enabled": {
-											"description": "Deprecated — use index_method instead.",
+											"description": "Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance.",
 											"type": "boolean",
-											"default": false,
+											"default": true,
 											"deprecated": true,
 											"x-auditable": true
 										},
@@ -6556,10 +6583,10 @@
 											"x-auditable": true
 										},
 										"index_method": {
-											"description": "Controls which storage backends are used during indexing. Defaults to vector-only.",
+											"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
 											"type": "object",
 											"default": {
-												"keyword": false,
+												"keyword": true,
 												"vector": true
 											},
 											"properties": {
@@ -7083,6 +7110,7 @@
 											"x-auditable": true
 										},
 										"type": {
+											"description": "Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.",
 											"type": "string",
 											"enum": [
 												"r2",
@@ -7153,6 +7181,46 @@
 			},
 			"403": {
 				"description": "Max instances reached.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Search for Agents hostname belongs to another namespace (7106) or Search for Agents metadata requires the default namespace (7109).",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -7891,6 +7959,46 @@
 						}
 					}
 				}
+			},
+			"429": {
+				"description": "Monthly query quota exceeded.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
 			}
 		},
 		"deprecated": true,
@@ -8460,6 +8568,46 @@
 						}
 					}
 				}
+			},
+			"429": {
+				"description": "Monthly query quota exceeded.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
 			}
 		},
 		"deprecated": true,
@@ -8493,8 +8641,8 @@
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces/{name}/instances": {
 		"operationId": "ai-search-namespace-create-instance",
-		"summary": "Create an AI Search instance.",
-		"description": "Create a new AI Search instance with the given configuration.",
+		"summary": "Create an AI Search instance (Search for Agents requires the default namespace).",
+		"description": "Create a new AI Search instance with the given configuration. If type is omitted or null, a non-blank HTTP(S) source infers web-crawler and an existing R2 bucket source infers r2. A missing or blank source without a type creates a managed upload-only instance. Search for Agents instances require the default namespace.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -8676,9 +8824,9 @@
 								"x-auditable": true
 							},
 							"hybrid_search_enabled": {
-								"description": "Deprecated — use index_method instead.",
+								"description": "Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance.",
 								"type": "boolean",
-								"default": false,
+								"default": true,
 								"deprecated": true,
 								"x-auditable": true
 							},
@@ -8692,10 +8840,10 @@
 								"x-auditable": true
 							},
 							"index_method": {
-								"description": "Controls which storage backends are used during indexing. Defaults to vector-only.",
+								"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
 								"type": "object",
 								"default": {
-									"keyword": false,
+									"keyword": true,
 									"vector": true
 								},
 								"properties": {
@@ -9182,6 +9330,7 @@
 								"x-auditable": true
 							},
 							"type": {
+								"description": "Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.",
 								"type": "string",
 								"enum": [
 									"r2",
@@ -9379,9 +9528,9 @@
 											"x-auditable": true
 										},
 										"hybrid_search_enabled": {
-											"description": "Deprecated — use index_method instead.",
+											"description": "Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance.",
 											"type": "boolean",
-											"default": false,
+											"default": true,
 											"deprecated": true,
 											"x-auditable": true
 										},
@@ -9395,10 +9544,10 @@
 											"x-auditable": true
 										},
 										"index_method": {
-											"description": "Controls which storage backends are used during indexing. Defaults to vector-only.",
+											"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
 											"type": "object",
 											"default": {
-												"keyword": false,
+												"keyword": true,
 												"vector": true
 											},
 											"properties": {
@@ -9922,6 +10071,7 @@
 											"x-auditable": true
 										},
 										"type": {
+											"description": "Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.",
 											"type": "string",
 											"enum": [
 												"r2",
@@ -10029,6 +10179,46 @@
 						}
 					}
 				}
+			},
+			"409": {
+				"description": "Search for Agents hostname belongs to another namespace (7106) or Search for Agents metadata requires the default namespace (7109).",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -10068,7 +10258,7 @@
 				"flagName": "namespace"
 			},
 			"source": {
-				"description": "R2 bucket name or root website URL to index."
+				"description": "R2 bucket name or HTTP(S) root website URL to index. When type is omitted, the source determines it."
 			},
 			"source_params": {
 				"description": "Optional data source settings as a JSON object."
@@ -10721,6 +10911,46 @@
 			},
 			"404": {
 				"description": "Not Found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Monthly query quota exceeded.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -11484,6 +11714,46 @@
 						}
 					}
 				}
+			},
+			"429": {
+				"description": "Monthly query quota exceeded.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -11530,8 +11800,8 @@
 	},
 	"PUT /accounts/{account_id}/ai-search/instances/{id}": {
 		"operationId": "ai-search-update-instance",
-		"summary": "Update an AI Search instance.",
-		"description": "Update the configuration of an AI Search instance.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
+		"summary": "Update an AI Search instance (Search for Agents metadata requires the default namespace).",
+		"description": "Update an AI Search instance. Submitting Search for Agents metadata requires the default namespace; omitting or removing it is allowed elsewhere. Submit Search for Agents metadata and restrictive or unknown public endpoint changes or custom domains in separate PUT requests, even when resubmitting unchanged metadata.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -11712,10 +11982,10 @@
 								"x-auditable": true
 							},
 							"index_method": {
-								"description": "Controls which storage backends are used during indexing. Defaults to vector-only.",
+								"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
 								"type": "object",
 								"default": {
-									"keyword": false,
+									"keyword": true,
 									"vector": true
 								},
 								"properties": {
@@ -12416,9 +12686,9 @@
 											"x-auditable": true
 										},
 										"hybrid_search_enabled": {
-											"description": "Deprecated — use index_method instead.",
+											"description": "Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance.",
 											"type": "boolean",
-											"default": false,
+											"default": true,
 											"deprecated": true,
 											"x-auditable": true
 										},
@@ -12432,10 +12702,10 @@
 											"x-auditable": true
 										},
 										"index_method": {
-											"description": "Controls which storage backends are used during indexing. Defaults to vector-only.",
+											"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
 											"type": "object",
 											"default": {
-												"keyword": false,
+												"keyword": true,
 												"vector": true
 											},
 											"properties": {
@@ -12959,6 +13229,7 @@
 											"x-auditable": true
 										},
 										"type": {
+											"description": "Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.",
 											"type": "string",
 											"enum": [
 												"r2",
@@ -13068,7 +13339,7 @@
 				}
 			},
 			"409": {
-				"description": "Instance status modified concurrently please retry.",
+				"description": "Instance status modified concurrently, Search for Agents hostname used by another namespace, Search for Agents metadata submitted outside the default namespace (7109), or Search for Agents metadata combined with a pre-commit public endpoint or custom domain change (7110; split into separate PUT requests).",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -13139,8 +13410,8 @@
 	},
 	"PUT /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}": {
 		"operationId": "ai-search-namespace-update-instance",
-		"summary": "Update an AI Search instance.",
-		"description": "Update the configuration of an AI Search instance.",
+		"summary": "Update an AI Search instance (Search for Agents metadata requires the default namespace).",
+		"description": "Update an AI Search instance. Submitting Search for Agents metadata requires the default namespace; omitting or removing it is allowed elsewhere. Submit Search for Agents metadata and restrictive or unknown public endpoint changes or custom domains in separate PUT requests, even when resubmitting unchanged metadata.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -13331,10 +13602,10 @@
 								"x-auditable": true
 							},
 							"index_method": {
-								"description": "Controls which storage backends are used during indexing. Defaults to vector-only.",
+								"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
 								"type": "object",
 								"default": {
-									"keyword": false,
+									"keyword": true,
 									"vector": true
 								},
 								"properties": {
@@ -14035,9 +14306,9 @@
 											"x-auditable": true
 										},
 										"hybrid_search_enabled": {
-											"description": "Deprecated — use index_method instead.",
+											"description": "Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance.",
 											"type": "boolean",
-											"default": false,
+											"default": true,
 											"deprecated": true,
 											"x-auditable": true
 										},
@@ -14051,10 +14322,10 @@
 											"x-auditable": true
 										},
 										"index_method": {
-											"description": "Controls which storage backends are used during indexing. Defaults to vector-only.",
+											"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
 											"type": "object",
 											"default": {
-												"keyword": false,
+												"keyword": true,
 												"vector": true
 											},
 											"properties": {
@@ -14578,6 +14849,7 @@
 											"x-auditable": true
 										},
 										"type": {
+											"description": "Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.",
 											"type": "string",
 											"enum": [
 												"r2",
@@ -14687,7 +14959,7 @@
 				}
 			},
 			"409": {
-				"description": "Instance status modified concurrently please retry.",
+				"description": "Instance status modified concurrently, Search for Agents hostname used by another namespace, Search for Agents metadata submitted outside the default namespace (7109), or Search for Agents metadata combined with a pre-commit public endpoint or custom domain change (7110; split into separate PUT requests).",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -14764,7 +15036,7 @@
 				"flagName": "namespace"
 			},
 			"source": {
-				"description": "R2 bucket name or root website URL to index."
+				"description": "R2 bucket name or HTTP(S) root website URL to index."
 			},
 			"source_params": {
 				"description": "Optional data source settings as a JSON object."

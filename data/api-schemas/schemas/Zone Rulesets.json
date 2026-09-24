@@ -35,7 +35,8 @@
 				"schema": {
 					"type": "boolean",
 					"default": false
-				}
+				},
+				"x-fern-parameter-name": "validate-only"
 			}
 		],
 		"responses": {
@@ -303,7 +304,8 @@
 				"schema": {
 					"type": "boolean",
 					"default": false
-				}
+				},
+				"x-fern-parameter-name": "validate-only"
 			}
 		],
 		"responses": {
@@ -8139,6 +8141,30 @@
 																												"deprecated": true,
 																												"title": "Signed Exchanges",
 																												"x-stainless-deprecation-message": "Signed Exchanges (SXG) is deprecated."
+																											},
+																											"webmcp_enabled": {
+																												"description": "Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents.",
+																												"type": "boolean",
+																												"example": true,
+																												"title": "WebMCP"
+																											},
+																											"webmcp_packs": {
+																												"description": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement.",
+																												"type": "array",
+																												"items": {
+																													"description": "A tool-pack identifier understood by the WebMCP interceptor.",
+																													"maxLength": 128,
+																													"minLength": 1,
+																													"pattern": "^[A-Za-z0-9._:/@-]+$",
+																													"type": "string"
+																												},
+																												"example": [
+																													"c2pa",
+																													"mcp-server-client"
+																												],
+																												"maxItems": 100,
+																												"title": "WebMCP Tool Packs",
+																												"uniqueItems": true
 																											}
 																										}
 																									},
@@ -9110,7 +9136,8 @@
 				"schema": {
 					"type": "boolean",
 					"default": false
-				}
+				},
+				"x-fern-parameter-name": "validate-only"
 			}
 		],
 		"responses": {
@@ -17791,6 +17818,30 @@
 																										"deprecated": true,
 																										"title": "Signed Exchanges",
 																										"x-stainless-deprecation-message": "Signed Exchanges (SXG) is deprecated."
+																									},
+																									"webmcp_enabled": {
+																										"description": "Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents.",
+																										"type": "boolean",
+																										"example": true,
+																										"title": "WebMCP"
+																									},
+																									"webmcp_packs": {
+																										"description": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement.",
+																										"type": "array",
+																										"items": {
+																											"description": "A tool-pack identifier understood by the WebMCP interceptor.",
+																											"maxLength": 128,
+																											"minLength": 1,
+																											"pattern": "^[A-Za-z0-9._:/@-]+$",
+																											"type": "string"
+																										},
+																										"example": [
+																											"c2pa",
+																											"mcp-server-client"
+																										],
+																										"maxItems": 100,
+																										"title": "WebMCP Tool Packs",
+																										"uniqueItems": true
 																									}
 																								}
 																							},
@@ -27187,6 +27238,30 @@
 																										"deprecated": true,
 																										"title": "Signed Exchanges",
 																										"x-stainless-deprecation-message": "Signed Exchanges (SXG) is deprecated."
+																									},
+																									"webmcp_enabled": {
+																										"description": "Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents.",
+																										"type": "boolean",
+																										"example": true,
+																										"title": "WebMCP"
+																									},
+																									"webmcp_packs": {
+																										"description": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement.",
+																										"type": "array",
+																										"items": {
+																											"description": "A tool-pack identifier understood by the WebMCP interceptor.",
+																											"maxLength": 128,
+																											"minLength": 1,
+																											"pattern": "^[A-Za-z0-9._:/@-]+$",
+																											"type": "string"
+																										},
+																										"example": [
+																											"c2pa",
+																											"mcp-server-client"
+																										],
+																										"maxItems": 100,
+																										"title": "WebMCP Tool Packs",
+																										"uniqueItems": true
 																									}
 																								}
 																							},
@@ -36006,6 +36081,30 @@
 																										"deprecated": true,
 																										"title": "Signed Exchanges",
 																										"x-stainless-deprecation-message": "Signed Exchanges (SXG) is deprecated."
+																									},
+																									"webmcp_enabled": {
+																										"description": "Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents.",
+																										"type": "boolean",
+																										"example": true,
+																										"title": "WebMCP"
+																									},
+																									"webmcp_packs": {
+																										"description": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement.",
+																										"type": "array",
+																										"items": {
+																											"description": "A tool-pack identifier understood by the WebMCP interceptor.",
+																											"maxLength": 128,
+																											"minLength": 1,
+																											"pattern": "^[A-Za-z0-9._:/@-]+$",
+																											"type": "string"
+																										},
+																										"example": [
+																											"c2pa",
+																											"mcp-server-client"
+																										],
+																										"maxItems": 100,
+																										"title": "WebMCP Tool Packs",
+																										"uniqueItems": true
 																									}
 																								}
 																							},
@@ -44826,6 +44925,30 @@
 																										"deprecated": true,
 																										"title": "Signed Exchanges",
 																										"x-stainless-deprecation-message": "Signed Exchanges (SXG) is deprecated."
+																									},
+																									"webmcp_enabled": {
+																										"description": "Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents.",
+																										"type": "boolean",
+																										"example": true,
+																										"title": "WebMCP"
+																									},
+																									"webmcp_packs": {
+																										"description": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement.",
+																										"type": "array",
+																										"items": {
+																											"description": "A tool-pack identifier understood by the WebMCP interceptor.",
+																											"maxLength": 128,
+																											"minLength": 1,
+																											"pattern": "^[A-Za-z0-9._:/@-]+$",
+																											"type": "string"
+																										},
+																										"example": [
+																											"c2pa",
+																											"mcp-server-client"
+																										],
+																										"maxItems": 100,
+																										"title": "WebMCP Tool Packs",
+																										"uniqueItems": true
 																									}
 																								}
 																							},
@@ -54272,6 +54395,30 @@
 																										"deprecated": true,
 																										"title": "Signed Exchanges",
 																										"x-stainless-deprecation-message": "Signed Exchanges (SXG) is deprecated."
+																									},
+																									"webmcp_enabled": {
+																										"description": "Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents.",
+																										"type": "boolean",
+																										"example": true,
+																										"title": "WebMCP"
+																									},
+																									"webmcp_packs": {
+																										"description": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement.",
+																										"type": "array",
+																										"items": {
+																											"description": "A tool-pack identifier understood by the WebMCP interceptor.",
+																											"maxLength": 128,
+																											"minLength": 1,
+																											"pattern": "^[A-Za-z0-9._:/@-]+$",
+																											"type": "string"
+																										},
+																										"example": [
+																											"c2pa",
+																											"mcp-server-client"
+																										],
+																										"maxItems": 100,
+																										"title": "WebMCP Tool Packs",
+																										"uniqueItems": true
 																									}
 																								}
 																							},
@@ -55254,7 +55401,8 @@
 				"schema": {
 					"type": "boolean",
 					"default": false
-				}
+				},
+				"x-fern-parameter-name": "validate-only"
 			}
 		],
 		"requestBody": {
@@ -62824,6 +62972,30 @@
 																"deprecated": true,
 																"title": "Signed Exchanges",
 																"x-stainless-deprecation-message": "Signed Exchanges (SXG) is deprecated."
+															},
+															"webmcp_enabled": {
+																"description": "Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents.",
+																"type": "boolean",
+																"example": true,
+																"title": "WebMCP"
+															},
+															"webmcp_packs": {
+																"description": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement.",
+																"type": "array",
+																"items": {
+																	"description": "A tool-pack identifier understood by the WebMCP interceptor.",
+																	"maxLength": 128,
+																	"minLength": 1,
+																	"pattern": "^[A-Za-z0-9._:/@-]+$",
+																	"type": "string"
+																},
+																"example": [
+																	"c2pa",
+																	"mcp-server-client"
+																],
+																"maxItems": 100,
+																"title": "WebMCP Tool Packs",
+																"uniqueItems": true
 															}
 														}
 													},
@@ -71382,6 +71554,30 @@
 																												"deprecated": true,
 																												"title": "Signed Exchanges",
 																												"x-stainless-deprecation-message": "Signed Exchanges (SXG) is deprecated."
+																											},
+																											"webmcp_enabled": {
+																												"description": "Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents.",
+																												"type": "boolean",
+																												"example": true,
+																												"title": "WebMCP"
+																											},
+																											"webmcp_packs": {
+																												"description": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement.",
+																												"type": "array",
+																												"items": {
+																													"description": "A tool-pack identifier understood by the WebMCP interceptor.",
+																													"maxLength": 128,
+																													"minLength": 1,
+																													"pattern": "^[A-Za-z0-9._:/@-]+$",
+																													"type": "string"
+																												},
+																												"example": [
+																													"c2pa",
+																													"mcp-server-client"
+																												],
+																												"maxItems": 100,
+																												"title": "WebMCP Tool Packs",
+																												"uniqueItems": true
 																											}
 																										}
 																									},
@@ -72329,7 +72525,8 @@
 				"schema": {
 					"type": "boolean",
 					"default": false
-				}
+				},
+				"x-fern-parameter-name": "validate-only"
 			}
 		],
 		"requestBody": {
@@ -80015,6 +80212,30 @@
 																			"deprecated": true,
 																			"title": "Signed Exchanges",
 																			"x-stainless-deprecation-message": "Signed Exchanges (SXG) is deprecated."
+																		},
+																		"webmcp_enabled": {
+																			"description": "Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents.",
+																			"type": "boolean",
+																			"example": true,
+																			"title": "WebMCP"
+																		},
+																		"webmcp_packs": {
+																			"description": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement.",
+																			"type": "array",
+																			"items": {
+																				"description": "A tool-pack identifier understood by the WebMCP interceptor.",
+																				"maxLength": 128,
+																				"minLength": 1,
+																				"pattern": "^[A-Za-z0-9._:/@-]+$",
+																				"type": "string"
+																			},
+																			"example": [
+																				"c2pa",
+																				"mcp-server-client"
+																			],
+																			"maxItems": 100,
+																			"title": "WebMCP Tool Packs",
+																			"uniqueItems": true
 																		}
 																	}
 																},
@@ -88509,6 +88730,30 @@
 																												"deprecated": true,
 																												"title": "Signed Exchanges",
 																												"x-stainless-deprecation-message": "Signed Exchanges (SXG) is deprecated."
+																											},
+																											"webmcp_enabled": {
+																												"description": "Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents.",
+																												"type": "boolean",
+																												"example": true,
+																												"title": "WebMCP"
+																											},
+																											"webmcp_packs": {
+																												"description": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement.",
+																												"type": "array",
+																												"items": {
+																													"description": "A tool-pack identifier understood by the WebMCP interceptor.",
+																													"maxLength": 128,
+																													"minLength": 1,
+																													"pattern": "^[A-Za-z0-9._:/@-]+$",
+																													"type": "string"
+																												},
+																												"example": [
+																													"c2pa",
+																													"mcp-server-client"
+																												],
+																												"maxItems": 100,
+																												"title": "WebMCP Tool Packs",
+																												"uniqueItems": true
 																											}
 																										}
 																									},
@@ -89468,7 +89713,8 @@
 				"schema": {
 					"type": "boolean",
 					"default": false
-				}
+				},
+				"x-fern-parameter-name": "validate-only"
 			}
 		],
 		"requestBody": {
@@ -97038,6 +97284,30 @@
 																"deprecated": true,
 																"title": "Signed Exchanges",
 																"x-stainless-deprecation-message": "Signed Exchanges (SXG) is deprecated."
+															},
+															"webmcp_enabled": {
+																"description": "Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents.",
+																"type": "boolean",
+																"example": true,
+																"title": "WebMCP"
+															},
+															"webmcp_packs": {
+																"description": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement.",
+																"type": "array",
+																"items": {
+																	"description": "A tool-pack identifier understood by the WebMCP interceptor.",
+																	"maxLength": 128,
+																	"minLength": 1,
+																	"pattern": "^[A-Za-z0-9._:/@-]+$",
+																	"type": "string"
+																},
+																"example": [
+																	"c2pa",
+																	"mcp-server-client"
+																],
+																"maxItems": 100,
+																"title": "WebMCP Tool Packs",
+																"uniqueItems": true
 															}
 														}
 													},
@@ -105596,6 +105866,30 @@
 																												"deprecated": true,
 																												"title": "Signed Exchanges",
 																												"x-stainless-deprecation-message": "Signed Exchanges (SXG) is deprecated."
+																											},
+																											"webmcp_enabled": {
+																												"description": "Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents.",
+																												"type": "boolean",
+																												"example": true,
+																												"title": "WebMCP"
+																											},
+																											"webmcp_packs": {
+																												"description": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement.",
+																												"type": "array",
+																												"items": {
+																													"description": "A tool-pack identifier understood by the WebMCP interceptor.",
+																													"maxLength": 128,
+																													"minLength": 1,
+																													"pattern": "^[A-Za-z0-9._:/@-]+$",
+																													"type": "string"
+																												},
+																												"example": [
+																													"c2pa",
+																													"mcp-server-client"
+																												],
+																												"maxItems": 100,
+																												"title": "WebMCP Tool Packs",
+																												"uniqueItems": true
 																											}
 																										}
 																									},
@@ -106555,7 +106849,8 @@
 				"schema": {
 					"type": "boolean",
 					"default": false
-				}
+				},
+				"x-fern-parameter-name": "validate-only"
 			}
 		],
 		"requestBody": {
@@ -114238,6 +114533,30 @@
 																			"deprecated": true,
 																			"title": "Signed Exchanges",
 																			"x-stainless-deprecation-message": "Signed Exchanges (SXG) is deprecated."
+																		},
+																		"webmcp_enabled": {
+																			"description": "Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents.",
+																			"type": "boolean",
+																			"example": true,
+																			"title": "WebMCP"
+																		},
+																		"webmcp_packs": {
+																			"description": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement.",
+																			"type": "array",
+																			"items": {
+																				"description": "A tool-pack identifier understood by the WebMCP interceptor.",
+																				"maxLength": 128,
+																				"minLength": 1,
+																				"pattern": "^[A-Za-z0-9._:/@-]+$",
+																				"type": "string"
+																			},
+																			"example": [
+																				"c2pa",
+																				"mcp-server-client"
+																			],
+																			"maxItems": 100,
+																			"title": "WebMCP Tool Packs",
+																			"uniqueItems": true
 																		}
 																	}
 																},
@@ -122727,6 +123046,30 @@
 																												"deprecated": true,
 																												"title": "Signed Exchanges",
 																												"x-stainless-deprecation-message": "Signed Exchanges (SXG) is deprecated."
+																											},
+																											"webmcp_enabled": {
+																												"description": "Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents.",
+																												"type": "boolean",
+																												"example": true,
+																												"title": "WebMCP"
+																											},
+																											"webmcp_packs": {
+																												"description": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement.",
+																												"type": "array",
+																												"items": {
+																													"description": "A tool-pack identifier understood by the WebMCP interceptor.",
+																													"maxLength": 128,
+																													"minLength": 1,
+																													"pattern": "^[A-Za-z0-9._:/@-]+$",
+																													"type": "string"
+																												},
+																												"example": [
+																													"c2pa",
+																													"mcp-server-client"
+																												],
+																												"maxItems": 100,
+																												"title": "WebMCP Tool Packs",
+																												"uniqueItems": true
 																											}
 																										}
 																									},
@@ -123711,7 +124054,8 @@
 				"schema": {
 					"type": "boolean",
 					"default": false
-				}
+				},
+				"x-fern-parameter-name": "validate-only"
 			}
 		],
 		"requestBody": {
@@ -131350,6 +131694,30 @@
 																			"deprecated": true,
 																			"title": "Signed Exchanges",
 																			"x-stainless-deprecation-message": "Signed Exchanges (SXG) is deprecated."
+																		},
+																		"webmcp_enabled": {
+																			"description": "Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents.",
+																			"type": "boolean",
+																			"example": true,
+																			"title": "WebMCP"
+																		},
+																		"webmcp_packs": {
+																			"description": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement.",
+																			"type": "array",
+																			"items": {
+																				"description": "A tool-pack identifier understood by the WebMCP interceptor.",
+																				"maxLength": 128,
+																				"minLength": 1,
+																				"pattern": "^[A-Za-z0-9._:/@-]+$",
+																				"type": "string"
+																			},
+																			"example": [
+																				"c2pa",
+																				"mcp-server-client"
+																			],
+																			"maxItems": 100,
+																			"title": "WebMCP Tool Packs",
+																			"uniqueItems": true
 																		}
 																	}
 																},
@@ -139839,6 +140207,30 @@
 																												"deprecated": true,
 																												"title": "Signed Exchanges",
 																												"x-stainless-deprecation-message": "Signed Exchanges (SXG) is deprecated."
+																											},
+																											"webmcp_enabled": {
+																												"description": "Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents.",
+																												"type": "boolean",
+																												"example": true,
+																												"title": "WebMCP"
+																											},
+																											"webmcp_packs": {
+																												"description": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement.",
+																												"type": "array",
+																												"items": {
+																													"description": "A tool-pack identifier understood by the WebMCP interceptor.",
+																													"maxLength": 128,
+																													"minLength": 1,
+																													"pattern": "^[A-Za-z0-9._:/@-]+$",
+																													"type": "string"
+																												},
+																												"example": [
+																													"c2pa",
+																													"mcp-server-client"
+																												],
+																												"maxItems": 100,
+																												"title": "WebMCP Tool Packs",
+																												"uniqueItems": true
 																											}
 																										}
 																									},

@@ -905,6 +905,18 @@
 			}
 		}
 	],
+	"PARAMETERS /accounts/{account_id}/containers/applications/{application_id}/instances-v2": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string",
+				"example": "account-123"
+			}
+		}
+	],
 	"PARAMETERS /accounts/{account_id}/containers/applications/{application_id}/instances/{instance_id}": [
 		{
 			"description": "Account identifier.",

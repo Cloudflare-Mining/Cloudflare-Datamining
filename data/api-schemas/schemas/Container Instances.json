@@ -1,8 +1,8 @@
 {
 	"GET /accounts/{account_id}/containers/applications/{application_id}/instances": {
 		"operationId": "listContainerInstances",
-		"summary": "List container instances",
-		"description": "Lists container instances belonging to an application.\n",
+		"summary": "List container instances (deprecated)",
+		"description": "Deprecated: use `instances-v2` instead. Lists container instances belonging to an application.\n",
 		"parameters": [
 			{
 				"name": "application_id",
@@ -61,111 +61,81 @@
 							"allOf": [
 								{
 									"type": "object",
-									"allOf": [
-										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": []
-												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+													"documentation_url": {
+														"type": "string"
 													},
-													"example": []
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"type": "boolean",
-													"example": true
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											]
-										},
-										{
-											"properties": {
-												"result_info": {
-													"type": "object",
-													"properties": {
-														"next_page_token": {
-															"description": "The token to use to retrieve the next page of results.",
-															"type": "string"
-														},
-														"page_token": {
-															"description": "The page token sent in the request.",
-															"type": "string"
-														},
-														"per_page": {
-															"description": "The number of items per page requested.",
-															"type": "integer"
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
 														}
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"result_info"
-											],
-											"type": "object"
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									]
 								},
 								{
@@ -331,10 +301,813 @@
 											"required": [
 												"instances"
 											]
+										},
+										"result_info": {
+											"description": "Cursor pagination details for a v4 API list response.",
+											"type": "object",
+											"properties": {
+												"next_page_token": {
+													"description": "The token to use to retrieve the next page of results.",
+													"type": "string"
+												},
+												"page_token": {
+													"description": "The page token sent in the request.",
+													"type": "string"
+												},
+												"per_page": {
+													"description": "The number of items per page requested.",
+													"type": "integer"
+												}
+											}
 										}
 									},
 									"required": [
-										"result"
+										"result",
+										"result_info"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Container instance APIs are not enabled for this application or the request was invalid.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Response body when an Application is not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "An internal error has occurred.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"deprecated": true,
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Container Instances"
+		],
+		"x-api-token-group": [
+			"Workers Containers Write",
+			"Workers Containers Read"
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "containers.applications.instances",
+		"x-fern-sdk-method-name": "list-v1"
+	},
+	"GET /accounts/{account_id}/containers/applications/{application_id}/instances-v2": {
+		"operationId": "listContainerInstances_v2",
+		"summary": "List container instances",
+		"description": "Lists container instances belonging to an application.\n",
+		"parameters": [
+			{
+				"name": "application_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "An Application ID represents an identifier of an application.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Maximum number of instances to return per page. Defaults to 100.",
+				"schema": {
+					"type": "integer",
+					"maximum": 1000,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "page_token",
+				"in": "query",
+				"description": "Opaque token from a previous response to retrieve the next page.",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "state",
+				"in": "query",
+				"description": "Filters instances by lifecycle state. `active` includes provisioning, running, and stopping instances; `not-active` includes stopped and failed instances. When omitted, all instances are returned.\n",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"active",
+						"not-active"
+					]
+				}
+			},
+			{
+				"name": "name_prefix",
+				"in": "query",
+				"description": "Filter instances by a case-sensitive name prefix, falling back to the actor ID when no name is known. Keep the same prefix when using a page token.\n",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List of container instances.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Container instances belonging to an application.",
+											"type": "array",
+											"items": {
+												"description": "A container instance belonging to an application.",
+												"allOf": [
+													{
+														"description": "The last-reported state of a logical container instance.",
+														"type": "object",
+														"properties": {
+															"application_id": {
+																"description": "An Application ID represents an identifier of an application.",
+																"type": "string"
+															},
+															"configuration": {
+																"description": "The resources allocated to the container instance.",
+																"type": "object",
+																"properties": {
+																	"disk": {
+																		"description": "Disk allocated to the container instance, in decimal MB.",
+																		"type": "integer",
+																		"minimum": 1
+																	},
+																	"memory": {
+																		"description": "Memory allocated to the container instance, in MiB.",
+																		"type": "integer",
+																		"minimum": 1
+																	},
+																	"vcpu": {
+																		"description": "Number of virtual CPUs allocated to the container instance.",
+																		"type": "number",
+																		"exclusiveMinimum": true,
+																		"minimum": 0
+																	}
+																},
+																"required": [
+																	"vcpu",
+																	"memory",
+																	"disk"
+																]
+															},
+															"id": {
+																"description": "A container instance ID (64-character hex Durable Object actor ID).",
+																"type": "string",
+																"maxLength": 64,
+																"minLength": 64,
+																"pattern": "^[a-f0-9]{64}$"
+															},
+															"image": {
+																"description": "The image for the current container placement, when one is available.\n",
+																"allOf": [
+																	{
+																		"description": "Image url.",
+																		"type": "string"
+																	}
+																]
+															},
+															"location": {
+																"description": "The location of the instance's current container placement.",
+																"type": "object",
+																"properties": {
+																	"name": {
+																		"description": "Unique location code used to identify locations on a logical level.",
+																		"type": "string"
+																	},
+																	"region": {
+																		"description": "Represents a group of datacenters. Choose one of \"AFR\", \"APAC\", \"EEUR\", \"ENAM\", \"WNAM\", \"ME\", \"OC\", \"SAM\", or \"WEUR\".\n",
+																		"type": "string",
+																		"example": "WNAM"
+																	}
+																},
+																"required": [
+																	"name",
+																	"region"
+																]
+															},
+															"name": {
+																"description": "The customer-provided instance name, when available. Its UTF-8 encoding uses at most 1,024 bytes.\n",
+																"type": "string"
+															},
+															"started_at": {
+																"description": "The time at which the current container placement started, when one exists.",
+																"allOf": [
+																	{
+																		"description": "UTC timestamp string in ISO 8601 format.",
+																		"type": "string",
+																		"example": "2021-04-01T12:32:41.488Z"
+																	}
+																]
+															},
+															"status": {
+																"description": "The latest known status of a container instance.",
+																"type": "object",
+																"properties": {
+																	"exit_code": {
+																		"description": "The process exit code, when the runtime reports one.",
+																		"type": "integer"
+																	},
+																	"state": {
+																		"description": "The current lifecycle state of a container instance.",
+																		"type": "string",
+																		"enum": [
+																			"provisioning",
+																			"running",
+																			"failed",
+																			"stopping",
+																			"stopped",
+																			"unhealthy",
+																			"inactive",
+																			"unknown"
+																		]
+																	},
+																	"updated_at": {
+																		"description": "UTC timestamp string in ISO 8601 format.",
+																		"type": "string",
+																		"example": "2021-04-01T12:32:41.488Z"
+																	}
+																},
+																"required": [
+																	"state",
+																	"updated_at"
+																]
+															}
+														},
+														"required": [
+															"id",
+															"status"
+														]
+													},
+													{
+														"properties": {
+															"application_id": {
+																"description": "An Application ID represents an identifier of an application.",
+																"type": "string"
+															},
+															"image": {
+																"description": "The image for the current container placement, or the image currently configured for the application when the instance lacks a placement.\n",
+																"allOf": [
+																	{
+																		"description": "Image url.",
+																		"type": "string"
+																	}
+																]
+															}
+														},
+														"required": [
+															"application_id",
+															"image"
+														],
+														"type": "object"
+													}
+												]
+											}
+										},
+										"result_info": {
+											"description": "Cursor pagination details for a v4 API list response.",
+											"type": "object",
+											"properties": {
+												"next_page_token": {
+													"description": "The token to use to retrieve the next page of results.",
+													"type": "string"
+												},
+												"page_token": {
+													"description": "The page token sent in the request.",
+													"type": "string"
+												},
+												"per_page": {
+													"description": "The number of items per page requested.",
+													"type": "integer"
+												}
+											}
+										}
+									},
+									"required": [
+										"result",
+										"result_info"
 									],
 									"type": "object"
 								}
@@ -797,6 +1570,11 @@
 			"Workers Containers Read"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-pagination": {
+			"cursor": "$request.page_token",
+			"next_cursor": "$response.result_info.next_page_token",
+			"results": "$response.result"
+		},
 		"x-fern-sdk-group-name": "containers.applications.instances",
 		"x-fern-sdk-method-name": "list"
 	},

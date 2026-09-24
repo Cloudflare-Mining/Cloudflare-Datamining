@@ -292,7 +292,7 @@
 	"GET /analytics/sql/introspection": {
 		"operationId": "sql-api-introspection",
 		"summary": "List available analytics datasets",
-		"description": "Returns the analytics dataset catalogue. By default, the response contains dataset names, titles, descriptions, and kinds. Set `include_columns` to include each dataset's column names, descriptions, and data types. The caller must have Account Analytics Read permission on the account identified by `account_tag`. Dataset names, descriptions, and columns are the same for every authorized account. When `include_custom_attributes` is set, the response also includes a capped set of custom attribute names and types discovered from the preceding seven days of that account's own data, which legitimately differs per caller.\n",
+		"description": "Returns the analytics dataset catalogue. By default, the response contains dataset names, titles, descriptions, and kinds. Set `include_columns` to include each dataset's column names, descriptions, and data types. The caller must have Account Analytics Read permission on the account identified by `account_tag`. Dataset names, descriptions, and columns are the same for every authorized account. When `include_custom_attributes` is set, the response also includes custom attribute names and types discovered from that account's own data, which legitimately differs per caller.\n\nThe catalogue lists the datasets this deployment is able to describe, which is not a fixed list. Some datasets are described by the service that owns them and are listed only where that service is available, so the same account may see a different catalogue in different environments, and datasets may appear or disappear without a change to this API. Clients should query the catalogue rather than hard-coding it, and should not treat a dataset's absence as proof that it does not exist.\n\nWorkers Analytics Engine datasets are named by the account that writes them, so they are discovered from that account's own data rather than from a fixed list. They appear as `events.analyticsEngine.<dataset_name>` and differ per account. A dataset is listed for as long as any of its data is retained, so it does not disappear from the catalogue merely because writes have stopped. An account with a very large number of datasets may receive a truncated list. Set `include_wae=false` to omit them.\n\nLog Explorer datasets are listed only where the account has them, so they differ per account and are not part of the static catalogue. Set `include_lex=false` to omit them.\n",
 		"parameters": [
 			{
 				"name": "account_tag",
@@ -324,9 +324,27 @@
 				}
 			},
 			{
+				"name": "include_wae",
+				"in": "query",
+				"description": "Include Workers Analytics Engine datasets, which are discovered from the account's own data. Set to `false` to return only datasets described from the static catalogue, which avoids that lookup.\n",
+				"schema": {
+					"type": "boolean",
+					"default": true
+				}
+			},
+			{
+				"name": "include_lex",
+				"in": "query",
+				"description": "Include Log Explorer datasets, which are listed only where the account has them. Set to `false` to return only datasets described from the static catalogue, which avoids that lookup.\n",
+				"schema": {
+					"type": "boolean",
+					"default": false
+				}
+			},
+			{
 				"name": "dataset_name",
 				"in": "query",
-				"description": "Return only the dataset with this exact name. An empty value does not filter the catalogue. An unknown name returns a successful response with an empty `datasets` array.\n",
+				"description": "Return only the dataset with this exact name. An empty value is treated as if the parameter had been omitted, and does not filter the catalogue. A name that matches no dataset in this deployment's catalogue is rejected with `422`; a dataset that exists but is not describable here is rejected identically, so the two cases cannot be told apart.\n\nA Workers Analytics Engine dataset is named in full, as `events.analyticsEngine.<dataset_name>`; the namespace on its own returns every such dataset the account has. A `dataset_name` the account does not have is rejected with `422` like any other unknown name.\n",
 				"schema": {
 					"type": "string"
 				},
@@ -407,6 +425,32 @@
 												"description": "What kind of dataset this is. Determines aggregation rules and sampling behavior. Exactly one of `events`, `states`, or `logs` is present.\n",
 												"type": "object",
 												"properties": {
+													"availability": {
+														"description": "Scopes the dataset is enabled for, as reported by the service that owns it. Absent when availability is not applicable to the dataset.",
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"scope": {
+																	"description": "Whether the dataset is enabled for the whole account or for a single zone.",
+																	"type": "string",
+																	"enum": [
+																		"account",
+																		"zone"
+																	]
+																},
+																"zone": {
+																	"description": "Zone tag. Present only when `scope` is `zone`.",
+																	"type": "string",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353"
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"scope"
+															]
+														}
+													},
 													"events": {
 														"description": "Row-per-event analytics dataset. Aggregations describe the cumulative effect of those events.\n",
 														"type": "object",
@@ -634,9 +678,10 @@
 				}
 			},
 			"422": {
-				"description": "The account tag is invalid or unknown, or the requested introspection options cannot be combined.\n",
+				"description": "The request could not be processed. This is returned when the account tag is invalid or unknown, when `include_custom_attributes` is set without a `dataset_name`, when a Workers Analytics Engine `dataset_name` is supplied alongside `include_wae=false` or contains characters a dataset name cannot contain, or when the supplied criteria match no dataset that this deployment can describe — either because no such dataset exists or because it is not describable here. The message names the criteria that matched nothing.\n",
 				"content": {
 					"text/plain": {
+						"example": "Input was invalid: There are no introspectable datasets matching the provided criteria (dataset_name=`events.nonexistent`)",
 						"schema": {
 							"type": "string"
 						}

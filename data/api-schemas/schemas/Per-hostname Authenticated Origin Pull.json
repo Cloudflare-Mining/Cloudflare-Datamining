@@ -4254,6 +4254,11 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "origin-tls-client-auth.hostnames",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"config": {
+				"flagName": "hostname-config"
+			}
+		}
 	}
 }

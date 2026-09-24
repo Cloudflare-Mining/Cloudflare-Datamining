@@ -2151,6 +2151,46 @@
 					}
 				}
 			},
+			"429": {
+				"description": "Monthly storage quota exceeded.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
 			"503": {
 				"description": "Unable to sync item.",
 				"content": {
@@ -2651,7 +2691,7 @@
 				}
 			},
 			"429": {
-				"description": "Item write rate limited.",
+				"description": "Monthly storage quota exceeded.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3009,6 +3049,46 @@
 			},
 			"409": {
 				"description": "Item key already exist.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Monthly storage quota exceeded.",
 				"content": {
 					"application/json": {
 						"schema": {

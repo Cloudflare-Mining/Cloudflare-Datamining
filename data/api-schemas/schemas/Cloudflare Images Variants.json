@@ -12,7 +12,7 @@
 					"type": "string",
 					"example": "hero",
 					"maxLength": 99,
-					"pattern": "^[a-zA-Z0-9]$",
+					"pattern": "^[a-zA-Z0-9]+$",
 					"x-auditable": true
 				}
 			},
@@ -387,7 +387,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.variants",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": false,
 		"x-forge-require-confirmation": "This operation will delete this variant."
 	},
 	"GET /accounts/{account_id}/images/v1/variants": {
@@ -513,7 +512,7 @@
 																	"type": "string",
 																	"example": "hero",
 																	"maxLength": 99,
-																	"pattern": "^[a-zA-Z0-9]$",
+																	"pattern": "^[a-zA-Z0-9]+$",
 																	"x-auditable": true
 																},
 																"neverRequireSignedURLs": {
@@ -696,7 +695,7 @@
 																			"type": "string",
 																			"example": "hero",
 																			"maxLength": 99,
-																			"pattern": "^[a-zA-Z0-9]$",
+																			"pattern": "^[a-zA-Z0-9]+$",
 																			"x-auditable": true
 																		},
 																		"neverRequireSignedURLs": {
@@ -884,8 +883,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.variants",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": false
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/images/v1/variants/{variant_id}": {
 		"operationId": "cloudflare-images-variants-variant-details",
@@ -900,7 +898,7 @@
 					"type": "string",
 					"example": "hero",
 					"maxLength": 99,
-					"pattern": "^[a-zA-Z0-9]$",
+					"pattern": "^[a-zA-Z0-9]+$",
 					"x-auditable": true
 				}
 			},
@@ -1039,7 +1037,7 @@
 															"type": "string",
 															"example": "hero",
 															"maxLength": 99,
-															"pattern": "^[a-zA-Z0-9]$",
+															"pattern": "^[a-zA-Z0-9]+$",
 															"x-auditable": true
 														},
 														"neverRequireSignedURLs": {
@@ -1237,7 +1235,7 @@
 																	"type": "string",
 																	"example": "hero",
 																	"maxLength": 99,
-																	"pattern": "^[a-zA-Z0-9]$",
+																	"pattern": "^[a-zA-Z0-9]+$",
 																	"x-auditable": true
 																},
 																"neverRequireSignedURLs": {
@@ -1423,8 +1421,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.variants",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": false
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/images/v1/variants/{variant_id}/flat": {
 		"operationId": "cloudflare-images-variants-variant-details-flat",
@@ -1439,7 +1436,7 @@
 					"type": "string",
 					"example": "hero",
 					"maxLength": 99,
-					"pattern": "^[a-zA-Z0-9]$",
+					"pattern": "^[a-zA-Z0-9]+$",
 					"x-auditable": true
 				}
 			},
@@ -1575,7 +1572,7 @@
 													"type": "string",
 													"example": "hero",
 													"maxLength": 99,
-													"pattern": "^[a-zA-Z0-9]$",
+													"pattern": "^[a-zA-Z0-9]+$",
 													"x-auditable": true
 												},
 												"neverRequireSignedURLs": {
@@ -1768,7 +1765,7 @@
 															"type": "string",
 															"example": "hero",
 															"maxLength": 99,
-															"pattern": "^[a-zA-Z0-9]$",
+															"pattern": "^[a-zA-Z0-9]+$",
 															"x-auditable": true
 														},
 														"neverRequireSignedURLs": {
@@ -1934,6 +1931,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -1950,7 +1948,8 @@
 			"Images Read",
 			"Images Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "images.v1.variants-flat",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
@@ -1968,7 +1967,7 @@
 					"type": "string",
 					"example": "hero",
 					"maxLength": 99,
-					"pattern": "^[a-zA-Z0-9]$",
+					"pattern": "^[a-zA-Z0-9]+$",
 					"x-auditable": true
 				}
 			},
@@ -2179,7 +2178,7 @@
 															"type": "string",
 															"example": "hero",
 															"maxLength": 99,
-															"pattern": "^[a-zA-Z0-9]$",
+															"pattern": "^[a-zA-Z0-9]+$",
 															"x-auditable": true
 														},
 														"neverRequireSignedURLs": {
@@ -2377,7 +2376,7 @@
 																	"type": "string",
 																	"example": "hero",
 																	"maxLength": 99,
-																	"pattern": "^[a-zA-Z0-9]$",
+																	"pattern": "^[a-zA-Z0-9]+$",
 																	"x-auditable": true
 																},
 																"neverRequireSignedURLs": {
@@ -2562,8 +2561,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.variants",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": false
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/images/v1/variants": {
 		"operationId": "cloudflare-images-variants-create-a-variant",
@@ -2595,7 +2593,7 @@
 								"type": "string",
 								"example": "hero",
 								"maxLength": 99,
-								"pattern": "^[a-zA-Z0-9]$",
+								"pattern": "^[a-zA-Z0-9]+$",
 								"x-auditable": true
 							},
 							"neverRequireSignedURLs": {
@@ -2785,7 +2783,7 @@
 															"type": "string",
 															"example": "hero",
 															"maxLength": 99,
-															"pattern": "^[a-zA-Z0-9]$",
+															"pattern": "^[a-zA-Z0-9]+$",
 															"x-auditable": true
 														},
 														"neverRequireSignedURLs": {
@@ -2983,7 +2981,7 @@
 																	"type": "string",
 																	"example": "hero",
 																	"maxLength": 99,
-																	"pattern": "^[a-zA-Z0-9]$",
+																	"pattern": "^[a-zA-Z0-9]+$",
 																	"x-auditable": true
 																},
 																"neverRequireSignedURLs": {
@@ -3168,7 +3166,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.variants",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": false
+		"x-fern-sdk-method-name": "create"
 	}
 }

@@ -388,7 +388,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": false,
 		"x-forge-require-confirmation": "This operation will delete this image."
 	},
 	"GET /accounts/{account_id}/images/v1": {
@@ -943,6 +942,7 @@
 			"Images Write"
 		],
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "images.v1",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
@@ -1506,8 +1506,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": false
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/images/v1/{image_id}/blob": {
 		"operationId": "cloudflare-images-base-image",
@@ -1683,8 +1682,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images",
-		"x-fern-sdk-method-name": "get-blob",
-		"x-forge-hidden": false
+		"x-fern-sdk-method-name": "get-blob"
 	},
 	"GET /accounts/{account_id}/images/v1/stats": {
 		"operationId": "cloudflare-images-images-usage-statistics",
@@ -2102,8 +2100,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images",
-		"x-fern-sdk-method-name": "stats",
-		"x-forge-hidden": false
+		"x-fern-sdk-method-name": "stats"
 	},
 	"GET /accounts/{account_id}/images/v2": {
 		"operationId": "cloudflare-images-list-images-v2",
@@ -2641,8 +2638,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": false
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/images/v2/metadata/keys": {
 		"operationId": "cloudflare-images-list-metadata-keys",
@@ -3484,8 +3480,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": false
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/images/v1": {
 		"operationId": "cloudflare-images-upload-an-image-via-url",
@@ -4077,8 +4072,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": false
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/images/v1/direct_upload": {
 		"operationId": "cloudflare-images-create-authenticated-direct-upload-url-v-1",
@@ -4496,6 +4490,7 @@
 			"Images Write"
 		],
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "images.v1.direct-uploads",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
@@ -4947,7 +4942,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images",
-		"x-fern-sdk-method-name": "direct-upload",
-		"x-forge-hidden": false
+		"x-fern-sdk-method-name": "direct-upload"
 	}
 }

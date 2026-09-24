@@ -604,7 +604,7 @@
 														"example": 100
 													},
 													"profile_type": {
-														"description": "The client type to which the device settings profile applies.",
+														"description": "The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.",
 														"type": "string",
 														"example": "warp",
 														"default": "warp",
@@ -3235,7 +3235,7 @@
 				"in": "query",
 				"description": "Filter profiles by client type. When omitted, only WARP profiles are returned.",
 				"schema": {
-					"description": "The client type to which the device settings profile applies.",
+					"description": "The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.",
 					"type": "string",
 					"example": "warp",
 					"default": "warp",
@@ -3825,7 +3825,7 @@
 														"example": 100
 													},
 													"profile_type": {
-														"description": "The client type to which the device settings profile applies.",
+														"description": "The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.",
 														"type": "string",
 														"example": "warp",
 														"default": "warp",
@@ -4568,7 +4568,7 @@
 													"x-auditable": true
 												},
 												"profile_type": {
-													"description": "The client type to which the device settings profile applies.",
+													"description": "The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.",
 													"type": "string",
 													"example": "warp",
 													"default": "warp",
@@ -5363,7 +5363,7 @@
 													"example": 100
 												},
 												"profile_type": {
-													"description": "The client type to which the device settings profile applies.",
+													"description": "The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.",
 													"type": "string",
 													"example": "warp",
 													"default": "warp",
@@ -8561,7 +8561,7 @@
 													"x-auditable": true
 												},
 												"profile_type": {
-													"description": "The client type to which the device settings profile applies.",
+													"description": "The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.",
 													"type": "string",
 													"example": "warp",
 													"default": "warp",
@@ -9113,16 +9113,6 @@
 								"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 								"type": "number",
 								"example": 100
-							},
-							"profile_type": {
-								"description": "The client type to which the device settings profile applies.",
-								"type": "string",
-								"example": "warp",
-								"default": "warp",
-								"enum": [
-									"warp",
-									"browser_extension"
-								]
 							},
 							"register_interface_ip_with_dns": {
 								"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
@@ -9772,7 +9762,7 @@
 													"example": 100
 												},
 												"profile_type": {
-													"description": "The client type to which the device settings profile applies.",
+													"description": "The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.",
 													"type": "string",
 													"example": "warp",
 													"default": "warp",
@@ -10615,7 +10605,7 @@
 								"example": 100
 							},
 							"profile_type": {
-								"description": "The client type to which the device settings profile applies.",
+								"description": "The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.",
 								"type": "string",
 								"example": "warp",
 								"default": "warp",
@@ -11275,7 +11265,7 @@
 													"example": 100
 												},
 												"profile_type": {
-													"description": "The client type to which the device settings profile applies.",
+													"description": "The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.",
 													"type": "string",
 													"example": "warp",
 													"default": "warp",
