@@ -2024,6 +2024,9 @@
 	"pay-per-crawl-show-testing-crawlers": {
 		"enabled": true
 	},
+	"pay-per-use-mock-data": {
+		"enabled": true
+	},
 	"pay-per-use-v1": {
 		"enabled": true
 	},
@@ -2915,6 +2918,12 @@
 	"threat-intel-new-nav": {
 		"enabled": true
 	},
+	"threat-signals-custom-ai-skills": {
+		"enabled": false
+	},
+	"threat-signals-enabled": {
+		"enabled": false
+	},
 	"threat-signals-search": {
 		"enabled": false
 	},
@@ -3049,7 +3058,7 @@
 		"enabled": false
 	},
 	"unified-observability": {
-		"enabled": false
+		"enabled": true
 	},
 	"unintended-registration": {
 		"enabled": true
