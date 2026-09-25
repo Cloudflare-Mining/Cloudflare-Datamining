@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+September 25, 2026 [<h2>Agents can now set up your website's security with Turnstile Spin</h2>](https://blog.cloudflare.com/turnstile-spin/)
+
+Misconfiguring Turnstile by skipping backend validation leaves sites exposed to bots. Turnstile Spin fixes incomplete setups by using your preferred AI coding agent to wire up server-side verification.
+
+![Jules Lemee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M39NSXNPCF10P4Z6JA0RQA40.01M39NSYFNRMXAWS5CQP67TDNS.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Jules Lemee](https://blog.cloudflare.com/author/jules-lemee/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M39NWTASMSZ5QNR34B69DE9W.01M39NWV0E5V2VQFG38NH7SPK8.png&w=1365&h=768&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/turnstile-spin/)
+
 September 24, 2026 [<h2>How Cloudflare addressed a cross-tenant data exposure vulnerability in Containers</h2>](https://blog.cloudflare.com/containers-cross-tenant-vulnerability/)
 
 External security researchers at Accomplish identified a vulnerability in Cloudflare Containers that could expose residual disk data from previous workloads. We explain how the issue worked, how we investigated it, and the steps we took to remediate it.
@@ -17,8 +27,6 @@ External security researchers at Accomplish identified a vulnerability in Cloudf
 ![Rushil Mehra](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46J6BD75BMVWF262C8M1AN.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Cody Roseborough](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M38E1YCKQQ7SK9HMG29XA6XQ.01M38E1ZKXSRPP7CARW0XHHGHQ.png&w=64&h=64&f=webp&fit=cover&position=center)![Avishek Sarkar](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M38E47B3HVDJXBZ730J0520B.01M38E484WQSDS96PP5Z1H7JYR.png&w=64&h=64&f=webp&fit=cover&position=center)![Hrushikesh Deshpande](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46TCFGG70368SEB6CXEHN8.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Rushil Mehra](https://blog.cloudflare.com/author/rushil-mehra/),  [Cody Roseborough](https://blog.cloudflare.com/author/cody-roseborough/),  [Avishek Sarkar](https://blog.cloudflare.com/author/avishek-sarkar/), and  [Hrushikesh Deshpande](https://blog.cloudflare.com/author/hrushikesh-deshpande/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M38DQFQRTYYSM43H964E1E3F.01M38DQGBNEE0N3C6WAXNMGS0H.png&w=1200&h=675&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/containers-cross-tenant-vulnerability/)
 
 September 22, 2026 [<h2>We just shipped support for the ugliest part of HTTP: Vary</h2>](https://blog.cloudflare.com/vary-support/)
 
@@ -155,14 +163,6 @@ We migrated the Cloudflare Blog to EmDash to prove our stack at massive scale. H
 ![Kody Jackson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WYRNEDQXNFYKHFAH3WFJ.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Diogo Carneiro](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0TETGHBYR0R4NPWVRQS2TQK.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Amy Dutton](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0TE76JV4WWSR820WP54D0RW.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Kody Jackson](https://blog.cloudflare.com/author/kody/),  [Diogo Carneiro](https://blog.cloudflare.com/author/diogo-carneiro/), and  [Amy Dutton](https://blog.cloudflare.com/author/amy-dutton/)
-
-August 21, 2026 [<h2>Say it once: introducing Bot Preference Sync</h2>](https://blog.cloudflare.com/bot-preference-sync/)
-
-Cloudflare's new Bot Preference Sync automatically aligns your robots.txt file with your AI bot policies for Search, Agent, and Training. Easily manage which bots access your content without maintaining static files.
-
-![Jin-Hee Lee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GG1XJCDV61NM8YJGK6YN.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Jin-Hee Lee](https://blog.cloudflare.com/author/jin-hee-lee/)
 
 Load more
 
