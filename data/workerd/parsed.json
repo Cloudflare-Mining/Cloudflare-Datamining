@@ -7747,6 +7747,11 @@
 					"name": "serviceName",
 					"annotations": {},
 					"type": "Text"
+				},
+				{
+					"name": "retryPolicy",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.DurableObjectNamespaceDesignator.RetryPolicy"
 				}
 			]
 		},
@@ -7767,6 +7772,21 @@
 					"name": "innerBindings",
 					"annotations": {},
 					"type": "List(workerd/src/workerd/server/workerd.capnp:Worker.Binding)"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.DurableObjectNamespaceDesignator.RetryPolicy",
+			"fields": [
+				{
+					"name": "maxAttempts",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "timeoutMs",
+					"annotations": {},
+					"type": "UInt32"
 				}
 			]
 		},
