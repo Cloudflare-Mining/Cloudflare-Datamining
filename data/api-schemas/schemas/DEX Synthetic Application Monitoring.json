@@ -265,7 +265,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -369,10 +370,13 @@
 													"properties": {
 														"result": {
 															"type": "array",
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"nullable": true
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -517,7 +521,8 @@
 														]
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -634,6 +639,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -821,7 +829,8 @@
 												"type": "object"
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -944,11 +953,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			},
 			{
 				"user_service_key": []
@@ -1963,11 +1972,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			},
 			{
 				"user_service_key": []
@@ -2933,7 +2942,8 @@
 												"over_time"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3056,11 +3066,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			},
 			{
 				"user_service_key": []
@@ -3415,7 +3425,8 @@
 												"isps"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3538,11 +3549,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			},
 			{
 				"user_service_key": []
@@ -3720,10 +3731,13 @@
 											"properties": {
 												"result": {
 													"type": "array",
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"nullable": true
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -3868,7 +3882,8 @@
 												]
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3990,6 +4005,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -4273,7 +4291,8 @@
 												"data"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -4395,6 +4414,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -5637,11 +5659,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			},
 			{
 				"user_service_key": []
@@ -6008,11 +6030,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			},
 			{
 				"user_service_key": []
@@ -6363,11 +6385,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			},
 			{
 				"user_service_key": []
@@ -7035,6 +7057,7 @@
 													"example": "0h5m0s"
 												},
 												"kind": {
+													"type": "string",
 													"enum": [
 														"http"
 													]
@@ -7081,7 +7104,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -7204,11 +7228,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			},
 			{
 				"user_service_key": []
@@ -7478,7 +7502,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -7601,11 +7626,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			},
 			{
 				"user_service_key": []
@@ -8395,7 +8420,8 @@
 												"tests"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -8518,11 +8544,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			},
 			{
 				"user_service_key": []
@@ -8690,7 +8716,8 @@
 												"uniqueDevicesTotal"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -8813,11 +8840,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			},
 			{
 				"user_service_key": []
@@ -9088,7 +9115,8 @@
 												"hops"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -9211,11 +9239,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			},
 			{
 				"user_service_key": []
@@ -9428,6 +9456,7 @@
 													"example": "0h5m0s"
 												},
 												"kind": {
+													"type": "string",
 													"enum": [
 														"traceroute"
 													]
@@ -9870,7 +9899,8 @@
 												"interval"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -9993,11 +10023,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			},
 			{
 				"user_service_key": []
@@ -10205,6 +10235,7 @@
 													"example": "0h5m0s"
 												},
 												"kind": {
+													"type": "string",
 													"enum": [
 														"traceroute"
 													]
@@ -10222,6 +10253,7 @@
 															"nullable": true,
 															"properties": {
 																"unit": {
+																	"type": "string",
 																	"enum": [
 																		"hours"
 																	]
@@ -10295,7 +10327,8 @@
 												"id"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -10418,11 +10451,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			},
 			{
 				"user_service_key": []
@@ -10688,7 +10721,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -10811,11 +10845,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			},
 			{
 				"user_service_key": []
@@ -11229,7 +11263,8 @@
 												"data"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -11351,6 +11386,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -11773,7 +11811,8 @@
 												"data"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -11895,6 +11934,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

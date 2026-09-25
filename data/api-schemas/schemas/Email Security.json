@@ -2,7 +2,7 @@
 	"DELETE /accounts/{account_id}/email-security/investigate/bulk/{job_id}": {
 		"operationId": "email_security_delete_bulk_job",
 		"summary": "Delete a bulk action job",
-		"description": "Deletes the job, removing it from all list and detail endpoints. Only jobs in a terminal state (`COMPLETED`, `CANCELLED`, `FAILED`, or `SKIPPED`) can be deleted. To stop an in-progress job without removing it, use the cancel endpoint instead.",
+		"description": "Deletes the job, removing it from all list and detail endpoints. Only jobs in a terminal state (`COMPLETED`, `CANCELLED`, or `FAILED`) can be deleted. To stop an in-progress job without removing it, use the cancel endpoint instead.",
 		"responses": {
 			"200": {
 				"description": "Job deleted.",
@@ -252,7 +252,7 @@
 		"x-fern-sdk-group-name": "email-security.investigate.bulk",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
-		"x-forge-require-confirmation": "This operation permanently deletes the completed, cancelled, failed, or skipped bulk action job from all list and detail endpoints.",
+		"x-forge-require-confirmation": "This operation permanently deletes the completed, cancelled, or failed bulk action job from all list and detail endpoints.",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate": {
@@ -3827,7 +3827,9 @@
 			{
 				"name": "status",
 				"in": "query",
+				"description": "Filter by job status.",
 				"schema": {
+					"description": "Status of a bulk action job.",
 					"type": "string",
 					"enum": [
 						"PENDING",
@@ -3835,8 +3837,7 @@
 						"PROCESSING",
 						"COMPLETED",
 						"FAILED",
-						"CANCELLED",
-						"SKIPPED"
+						"CANCELLED"
 					]
 				}
 			}
@@ -4178,6 +4179,7 @@
 														"nullable": true
 													},
 													"status": {
+														"description": "Status of a bulk action job.",
 														"type": "string",
 														"enum": [
 															"PENDING",
@@ -4185,8 +4187,7 @@
 															"PROCESSING",
 															"COMPLETED",
 															"FAILED",
-															"CANCELLED",
-															"SKIPPED"
+															"CANCELLED"
 														]
 													},
 													"status_message": {
@@ -4749,6 +4750,7 @@
 													"nullable": true
 												},
 												"status": {
+													"description": "Status of a bulk action job.",
 													"type": "string",
 													"enum": [
 														"PENDING",
@@ -4756,8 +4758,7 @@
 														"PROCESSING",
 														"COMPLETED",
 														"FAILED",
-														"CANCELLED",
-														"SKIPPED"
+														"CANCELLED"
 													]
 												},
 												"status_message": {
@@ -4961,11 +4962,12 @@
 			{
 				"name": "status",
 				"in": "query",
+				"description": "Filter by message status.",
 				"schema": {
+					"description": "Status of a message within a bulk action job.",
 					"type": "string",
 					"enum": [
 						"PENDING",
-						"DISCOVERING",
 						"PROCESSING",
 						"COMPLETED",
 						"FAILED",
@@ -5661,10 +5663,10 @@
 														"type": "integer"
 													},
 													"status": {
+														"description": "Status of a message within a bulk action job.",
 														"type": "string",
 														"enum": [
 															"PENDING",
-															"DISCOVERING",
 															"PROCESSING",
 															"COMPLETED",
 															"FAILED",
@@ -8030,6 +8032,7 @@
 													"nullable": true
 												},
 												"status": {
+													"description": "Status of a bulk action job.",
 													"type": "string",
 													"enum": [
 														"PENDING",
@@ -8037,8 +8040,7 @@
 														"PROCESSING",
 														"COMPLETED",
 														"FAILED",
-														"CANCELLED",
-														"SKIPPED"
+														"CANCELLED"
 													]
 												},
 												"status_message": {
@@ -8554,6 +8556,7 @@
 													"nullable": true
 												},
 												"status": {
+													"description": "Status of a bulk action job.",
 													"type": "string",
 													"enum": [
 														"PENDING",
@@ -8561,8 +8564,7 @@
 														"PROCESSING",
 														"COMPLETED",
 														"FAILED",
-														"CANCELLED",
-														"SKIPPED"
+														"CANCELLED"
 													]
 												},
 												"status_message": {

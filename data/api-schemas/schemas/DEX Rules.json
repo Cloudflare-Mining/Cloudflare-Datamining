@@ -130,7 +130,8 @@
 											"type": "boolean",
 											"nullable": true
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -253,11 +254,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			},
 			{
 				"user_service_key": []
@@ -609,7 +610,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -732,11 +734,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			},
 			{
 				"user_service_key": []
@@ -1001,7 +1003,8 @@
 												"created_at"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1124,11 +1127,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			},
 			{
 				"user_service_key": []
@@ -1418,7 +1421,8 @@
 												"created_at"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1541,11 +1545,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			},
 			{
 				"user_service_key": []
@@ -1824,7 +1828,8 @@
 												"created_at"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1947,11 +1952,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			},
 			{
 				"user_service_key": []
